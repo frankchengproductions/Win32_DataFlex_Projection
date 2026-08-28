@@ -14,7 +14,7 @@ The folder structure of this project resembles the structure within the Win32 Me
 
 ## Remarks
 * This DataFlex Language Projection only translates the necessary data structures / constants in order to call all the APIs included.
-* DataFlex does not support union data type. Thus when unions are defined as `UChar[Length] Union#`
+* DataFlex does not support union data type. Thus all unions are defined as `UChar[Length] Union#`
 * All structure alignments are specifically translated for running under 64 bit Windows (As all 32 bit Windows are out of support)
 
 ## Acknowledgement
