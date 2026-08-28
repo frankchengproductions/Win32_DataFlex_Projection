@@ -1,0 +1,250 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-wergetflags
+External_Function WerGetFlags "WerGetFlags" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pdwFlags ;	// WER_FAULT_REPORTING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregisteradditionalprocess
+External_Function WerRegisterAdditionalProcess "WerRegisterAdditionalProcess" KERNEL32.dll ;
+	UInteger processId ;
+	UInteger captureExtraInfoForThreadId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregisterapplocaldump
+External_Function WerRegisterAppLocalDump "WerRegisterAppLocalDump" KERNEL32.dll ;
+	WString localAppDataRelativePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregistercustommetadata
+External_Function WerRegisterCustomMetadata "WerRegisterCustomMetadata" KERNEL32.dll ;
+	WString key ;	// PWSTR
+	WString value ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregisterexcludedmemoryblock
+External_Function WerRegisterExcludedMemoryBlock "WerRegisterExcludedMemoryBlock" KERNEL32.dll ;
+	Pointer address ;	// Pointer*
+	UInteger size ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregisterfile
+External_Function WerRegisterFile "WerRegisterFile" KERNEL32.dll ;
+	WString pwzFile ;	// PWSTR
+	Integer regFileType ;	// WER_REGISTER_FILE_TYPE
+	UInteger dwFlags ;	// WER_FILE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregistermemoryblock
+External_Function WerRegisterMemoryBlock "WerRegisterMemoryBlock" KERNEL32.dll ;
+	Pointer pvAddress ;	// Pointer*
+	UInteger dwSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werregisterruntimeexceptionmodule
+External_Function WerRegisterRuntimeExceptionModule "WerRegisterRuntimeExceptionModule" KERNEL32.dll ;
+	WString pwszOutOfProcessCallbackDll ;	// PWSTR
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-wersetflags
+External_Function WerSetFlags "WerSetFlags" KERNEL32.dll ;
+	UInteger dwFlags ;	// WER_FAULT_REPORTING
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregisteradditionalprocess
+External_Function WerUnregisterAdditionalProcess "WerUnregisterAdditionalProcess" KERNEL32.dll ;
+	UInteger processId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregisterapplocaldump
+External_Function WerUnregisterAppLocalDump "WerUnregisterAppLocalDump" KERNEL32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregistercustommetadata
+External_Function WerUnregisterCustomMetadata "WerUnregisterCustomMetadata" KERNEL32.dll ;
+	WString key ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregisterexcludedmemoryblock
+External_Function WerUnregisterExcludedMemoryBlock "WerUnregisterExcludedMemoryBlock" KERNEL32.dll ;
+	Pointer address ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregisterfile
+External_Function WerUnregisterFile "WerUnregisterFile" KERNEL32.dll ;
+	WString pwzFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregistermemoryblock
+External_Function WerUnregisterMemoryBlock "WerUnregisterMemoryBlock" KERNEL32.dll ;
+	Pointer pvAddress ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werunregisterruntimeexceptionmodule
+External_Function WerUnregisterRuntimeExceptionModule "WerUnregisterRuntimeExceptionModule" KERNEL32.dll ;
+	WString pwszOutOfProcessCallbackDll ;	// PWSTR
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-weraddexcludedapplication
+External_Function WerAddExcludedApplication "WerAddExcludedApplication" wer.dll ;
+	WString pwzExeName ;	// PWSTR
+	Integer bAllUsers ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werfreestring
+External_Function WerFreeString "WerFreeString" wer.dll ;
+	WString pwszStr ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werremoveexcludedapplication
+External_Function WerRemoveExcludedApplication "WerRemoveExcludedApplication" wer.dll ;
+	WString pwzExeName ;	// PWSTR
+	Integer bAllUsers ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportadddump
+External_Function WerReportAddDump "WerReportAddDump" wer.dll ;
+	Pointer hReportHandle ;	// HREPORT
+	Pointer hProcess ;	// HANDLE
+	Pointer hThread ;	// HANDLE
+	Integer dumpType ;	// WER_DUMP_TYPE
+	Pointer pExceptionParam ;	// WER_EXCEPTION_INFORMATION*
+	Pointer pDumpCustomOptions ;	// WER_DUMP_CUSTOM_OPTIONS*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportaddfile
+External_Function WerReportAddFile "WerReportAddFile" wer.dll ;
+	Pointer hReportHandle ;	// HREPORT
+	WString pwzPath ;	// PWSTR
+	Integer repFileType ;	// WER_FILE_TYPE
+	UInteger dwFileFlags ;	// WER_FILE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportclosehandle
+External_Function WerReportCloseHandle "WerReportCloseHandle" wer.dll ;
+	Pointer hReportHandle ;	// HREPORT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportcreate
+External_Function WerReportCreate "WerReportCreate" wer.dll ;
+	WString pwzEventType ;	// PWSTR
+	Integer repType ;	// WER_REPORT_TYPE
+	Pointer pReportInformation ;	// WER_REPORT_INFORMATION*
+	Pointer phReportHandle ;	// HREPORT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportsetparameter
+External_Function WerReportSetParameter "WerReportSetParameter" wer.dll ;
+	Pointer hReportHandle ;	// HREPORT
+	UInteger dwparamID ;
+	WString pwzName ;	// PWSTR
+	WString pwzValue ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportsetuioption
+External_Function WerReportSetUIOption "WerReportSetUIOption" wer.dll ;
+	Pointer hReportHandle ;	// HREPORT
+	Integer repUITypeID ;	// WER_REPORT_UI
+	WString pwzValue ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werreportsubmit
+External_Function WerReportSubmit "WerReportSubmit" wer.dll ;
+	Pointer hReportHandle ;	// HREPORT
+	Integer consent ;	// WER_CONSENT
+	UInteger dwFlags ;	// WER_SUBMIT_FLAGS
+	Pointer pSubmitResult ;	// WER_SUBMIT_RESULT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werstoreclose
+External_Function WerStoreClose "WerStoreClose" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werstoregetfirstreportkey
+External_Function WerStoreGetFirstReportKey "WerStoreGetFirstReportKey" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	Pointer ppszReportKey ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werstoregetnextreportkey
+External_Function WerStoreGetNextReportKey "WerStoreGetNextReportKey" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	Pointer ppszReportKey ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function WerStoreGetReportCount "WerStoreGetReportCount" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	Pointer pdwReportCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WerStoreGetSizeOnDisk "WerStoreGetSizeOnDisk" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	Pointer pqwSizeInBytes ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werstoreopen
+External_Function WerStoreOpen "WerStoreOpen" wer.dll ;
+	Integer repStoreType ;	// REPORT_STORE_TYPES
+	Pointer phReportStore ;	// HREPORTSTORE*
+	Returns Integer	// HRESULT
+
+External_Function WerStorePurge "WerStorePurge" wer.dll ;
+	Returns Integer	// HRESULT
+
+External_Function WerStoreQueryReportMetadataV1 "WerStoreQueryReportMetadataV1" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	WString pszReportKey ;	// PWSTR
+	Pointer pReportMetadata ;	// WER_REPORT_METADATA_V1*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/werapi/nf-werapi-werstorequeryreportmetadatav2
+External_Function WerStoreQueryReportMetadataV2 "WerStoreQueryReportMetadataV2" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	WString pszReportKey ;	// PWSTR
+	Pointer pReportMetadata ;	// WER_REPORT_METADATA_V2*
+	Returns Integer	// HRESULT
+
+External_Function WerStoreQueryReportMetadataV3 "WerStoreQueryReportMetadataV3" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	WString pszReportKey ;	// PWSTR
+	Pointer pReportMetadata ;	// WER_REPORT_METADATA_V3*
+	Returns Integer	// HRESULT
+
+External_Function WerStoreUploadReport "WerStoreUploadReport" wer.dll ;
+	Pointer hReportStore ;	// HREPORTSTORE
+	WString pszReportKey ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pSubmitResult ;	// WER_SUBMIT_RESULT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/errorrep/nf-errorrep-adderexcludedapplicationa
+External_Function AddERExcludedApplicationA "AddERExcludedApplicationA" faultrep.dll ;
+	String szApplication ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errorrep/nf-errorrep-adderexcludedapplicationw
+External_Function AddERExcludedApplicationW "AddERExcludedApplicationW" faultrep.dll ;
+	WString wszApplication ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errorrep/nf-errorrep-reportfault
+External_Function ReportFault "ReportFault" faultrep.dll ;
+	Pointer pep ;	// EXCEPTION_POINTERS*
+	UInteger dwOpt ;
+	Returns Integer	// EFaultRepRetVal
+
+// https://learn.microsoft.com/windows/win32/api/errorrep/nf-errorrep-werreporthang
+External_Function WerReportHang "WerReportHang" faultrep.dll ;
+	Pointer hwndHungApp ;	// HWND
+	WString pwzHungApplicationName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

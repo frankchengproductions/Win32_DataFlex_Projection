@@ -1,0 +1,1583 @@
+Use UI
+
+External_Function ODBCGetTryWaitValue "ODBCGetTryWaitValue" ODBC32.dll ;
+	Returns UInteger
+
+External_Function ODBCSetTryWaitValue "ODBCSetTryWaitValue" ODBC32.dll ;
+	UInteger dwValue ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlallocconnect-function
+External_Function SQLAllocConnect "SQLAllocConnect" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	Pointer ConnectionHandle ;	// Pointer**
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlallocenv-function
+External_Function SQLAllocEnv "SQLAllocEnv" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer**
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlallochandle-function
+External_Function SQLAllocHandle "SQLAllocHandle" ODBC32.dll ;
+	Short HandleType ;
+	Pointer InputHandle ;	// Pointer*
+	Pointer OutputHandle ;	// Pointer**
+	Returns Short
+
+External_Function SQLAllocHandleStd "SQLAllocHandleStd" ODBC32.dll ;
+	Short fHandleType ;
+	Pointer hInput ;	// Pointer*
+	Pointer phOutput ;	// Pointer**
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlallocstmt-function
+External_Function SQLAllocStmt "SQLAllocStmt" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	Pointer StatementHandle ;	// Pointer**
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlbindcol-function
+External_Function SQLBindCol "SQLBindCol" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort ColumnNumber ;
+	Short TargetType ;
+	Pointer TargetValue ;	// Pointer*
+	Bigint BufferLength ;
+	Pointer StrLen_or_Ind ;	// Bigint*
+	Returns Short
+
+External_Function SQLBindParam "SQLBindParam" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort ParameterNumber ;
+	Short ValueType ;
+	Short ParameterType ;
+	UBigint LengthPrecision ;
+	Short ParameterScale ;
+	Pointer ParameterValue ;	// Pointer*
+	Pointer StrLen_or_Ind ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlbindparameter-function
+External_Function SQLBindParameter "SQLBindParameter" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort ipar ;
+	Short fParamType ;
+	Short fCType ;
+	Short fSqlType ;
+	UBigint cbColDef ;
+	Short ibScale ;
+	Pointer rgbValue ;	// Pointer*
+	Bigint cbValueMax ;
+	Pointer pcbValue ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlbrowseconnect-function
+External_Function SQLBrowseConnect "SQLBrowseConnect" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szConnStrIn ;	// UChar*
+	Short cchConnStrIn ;
+	Pointer szConnStrOut ;	// UChar*
+	Short cchConnStrOutMax ;
+	Pointer pcchConnStrOut ;	// Short*
+	Returns Short
+
+External_Function SQLBrowseConnectA "SQLBrowseConnectA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szConnStrIn ;	// UChar*
+	Short cbConnStrIn ;
+	Pointer szConnStrOut ;	// UChar*
+	Short cbConnStrOutMax ;
+	Pointer pcbConnStrOut ;	// Short*
+	Returns Short
+
+External_Function SQLBrowseConnectW "SQLBrowseConnectW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szConnStrIn ;	// UShort*
+	Short cchConnStrIn ;
+	Pointer szConnStrOut ;	// UShort*
+	Short cchConnStrOutMax ;
+	Pointer pcchConnStrOut ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlbulkoperations-function
+External_Function SQLBulkOperations "SQLBulkOperations" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Short Operation ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcancel-function
+External_Function SQLCancel "SQLCancel" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcancelhandle-function
+External_Function SQLCancelHandle "SQLCancelHandle" ODBC32.dll ;
+	Short HandleType ;
+	Pointer InputHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlclosecursor-function
+External_Function SQLCloseCursor "SQLCloseCursor" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcolattribute-function
+External_Function SQLColAttribute "SQLColAttribute" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort ColumnNumber ;
+	UShort FieldIdentifier ;
+	Pointer CharacterAttribute ;	// Pointer*
+	Short BufferLength ;
+	Pointer StringLength ;	// Short*
+	Pointer NumericAttribute ;	// Bigint*
+	Returns Short
+
+External_Function SQLColAttributeA "SQLColAttributeA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Short iCol ;
+	Short iField ;
+	Pointer pCharAttr ;	// Pointer*
+	Short cbCharAttrMax ;
+	Pointer pcbCharAttr ;	// Short*
+	Pointer pNumAttr ;	// Bigint*
+	Returns Short
+
+External_Function SQLColAttributeW "SQLColAttributeW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort iCol ;
+	UShort iField ;
+	Pointer pCharAttr ;	// Pointer*
+	Short cbDescMax ;
+	Pointer pcbCharAttr ;	// Short*
+	Pointer pNumAttr ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcolattributes-function
+External_Function SQLColAttributes "SQLColAttributes" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort icol ;
+	UShort fDescType ;
+	Pointer rgbDesc ;	// Pointer*
+	Short cbDescMax ;
+	Pointer pcbDesc ;	// Short*
+	Pointer pfDesc ;	// Bigint*
+	Returns Short
+
+External_Function SQLColAttributesA "SQLColAttributesA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort icol ;
+	UShort fDescType ;
+	Pointer rgbDesc ;	// Pointer*
+	Short cbDescMax ;
+	Pointer pcbDesc ;	// Short*
+	Pointer pfDesc ;	// Bigint*
+	Returns Short
+
+External_Function SQLColAttributesW "SQLColAttributesW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort icol ;
+	UShort fDescType ;
+	Pointer rgbDesc ;	// Pointer*
+	Short cbDescMax ;
+	Pointer pcbDesc ;	// Short*
+	Pointer pfDesc ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcolumnprivileges-function
+External_Function SQLColumnPrivileges "SQLColumnPrivileges" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cchTableName ;
+	Pointer szColumnName ;	// UChar*
+	Short cchColumnName ;
+	Returns Short
+
+External_Function SQLColumnPrivilegesA "SQLColumnPrivilegesA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	Pointer szColumnName ;	// UChar*
+	Short cbColumnName ;
+	Returns Short
+
+External_Function SQLColumnPrivilegesW "SQLColumnPrivilegesW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	Pointer szColumnName ;	// UShort*
+	Short cchColumnName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcolumns-function
+External_Function SQLColumns "SQLColumns" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer CatalogName ;	// UChar*
+	Short NameLength1 ;
+	Pointer SchemaName ;	// UChar*
+	Short NameLength2 ;
+	Pointer TableName ;	// UChar*
+	Short NameLength3 ;
+	Pointer ColumnName ;	// UChar*
+	Short NameLength4 ;
+	Returns Short
+
+External_Function SQLColumnsA "SQLColumnsA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	Pointer szColumnName ;	// UChar*
+	Short cbColumnName ;
+	Returns Short
+
+External_Function SQLColumnsW "SQLColumnsW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	Pointer szColumnName ;	// UShort*
+	Short cchColumnName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcompleteasync-function
+External_Function SQLCompleteAsync "SQLCompleteAsync" ODBC32.dll ;
+	Short HandleType ;
+	Pointer Handle ;	// Pointer*
+	Pointer AsyncRetCodePtr ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlconnect-function
+External_Function SQLConnect "SQLConnect" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	Pointer ServerName ;	// UChar*
+	Short NameLength1 ;
+	Pointer UserName ;	// UChar*
+	Short NameLength2 ;
+	Pointer Authentication ;	// UChar*
+	Short NameLength3 ;
+	Returns Short
+
+External_Function SQLConnectA "SQLConnectA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szDSN ;	// UChar*
+	Short cbDSN ;
+	Pointer szUID ;	// UChar*
+	Short cbUID ;
+	Pointer szAuthStr ;	// UChar*
+	Short cbAuthStr ;
+	Returns Short
+
+External_Function SQLConnectW "SQLConnectW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szDSN ;	// UShort*
+	Short cchDSN ;
+	Pointer szUID ;	// UShort*
+	Short cchUID ;
+	Pointer szAuthStr ;	// UShort*
+	Short cchAuthStr ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlcopydesc-function
+External_Function SQLCopyDesc "SQLCopyDesc" ODBC32.dll ;
+	Pointer SourceDescHandle ;	// Pointer*
+	Pointer TargetDescHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqldatasources-function
+External_Function SQLDataSources "SQLDataSources" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	UShort Direction ;
+	Pointer ServerName ;	// UChar*
+	Short BufferLength1 ;
+	Pointer NameLength1Ptr ;	// Short*
+	Pointer Description ;	// UChar*
+	Short BufferLength2 ;
+	Pointer NameLength2Ptr ;	// Short*
+	Returns Short
+
+External_Function SQLDataSourcesA "SQLDataSourcesA" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	UShort fDirection ;
+	Pointer szDSN ;	// UChar*
+	Short cbDSNMax ;
+	Pointer pcbDSN ;	// Short*
+	Pointer szDescription ;	// UChar*
+	Short cbDescriptionMax ;
+	Pointer pcbDescription ;	// Short*
+	Returns Short
+
+External_Function SQLDataSourcesW "SQLDataSourcesW" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	UShort fDirection ;
+	Pointer szDSN ;	// UShort*
+	Short cchDSNMax ;
+	Pointer pcchDSN ;	// Short*
+	Pointer wszDescription ;	// UShort*
+	Short cchDescriptionMax ;
+	Pointer pcchDescription ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqldescribecol-function
+External_Function SQLDescribeCol "SQLDescribeCol" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort ColumnNumber ;
+	Pointer ColumnName ;	// UChar*
+	Short BufferLength ;
+	Pointer NameLength ;	// Short*
+	Pointer DataType ;	// Short*
+	Pointer ColumnSize ;	// UBigint*
+	Pointer DecimalDigits ;	// Short*
+	Pointer Nullable ;	// Short*
+	Returns Short
+
+External_Function SQLDescribeColA "SQLDescribeColA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort icol ;
+	Pointer szColName ;	// UChar*
+	Short cbColNameMax ;
+	Pointer pcbColName ;	// Short*
+	Pointer pfSqlType ;	// Short*
+	Pointer pcbColDef ;	// UBigint*
+	Pointer pibScale ;	// Short*
+	Pointer pfNullable ;	// Short*
+	Returns Short
+
+External_Function SQLDescribeColW "SQLDescribeColW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort icol ;
+	Pointer szColName ;	// UShort*
+	Short cchColNameMax ;
+	Pointer pcchColName ;	// Short*
+	Pointer pfSqlType ;	// Short*
+	Pointer pcbColDef ;	// UBigint*
+	Pointer pibScale ;	// Short*
+	Pointer pfNullable ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqldescribeparam-function
+External_Function SQLDescribeParam "SQLDescribeParam" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort ipar ;
+	Pointer pfSqlType ;	// Short*
+	Pointer pcbParamDef ;	// UBigint*
+	Pointer pibScale ;	// Short*
+	Pointer pfNullable ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqldisconnect-function
+External_Function SQLDisconnect "SQLDisconnect" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqldriverconnect-function
+External_Function SQLDriverConnect "SQLDriverConnect" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	LongPtr hwnd ;
+	Pointer szConnStrIn ;	// UChar*
+	Short cchConnStrIn ;
+	Pointer szConnStrOut ;	// UChar*
+	Short cchConnStrOutMax ;
+	Pointer pcchConnStrOut ;	// Short*
+	UShort fDriverCompletion ;
+	Returns Short
+
+External_Function SQLDriverConnectA "SQLDriverConnectA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	LongPtr hwnd ;
+	Pointer szConnStrIn ;	// UChar*
+	Short cbConnStrIn ;
+	Pointer szConnStrOut ;	// UChar*
+	Short cbConnStrOutMax ;
+	Pointer pcbConnStrOut ;	// Short*
+	UShort fDriverCompletion ;
+	Returns Short
+
+External_Function SQLDriverConnectW "SQLDriverConnectW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	LongPtr hwnd ;
+	Pointer szConnStrIn ;	// UShort*
+	Short cchConnStrIn ;
+	Pointer szConnStrOut ;	// UShort*
+	Short cchConnStrOutMax ;
+	Pointer pcchConnStrOut ;	// Short*
+	UShort fDriverCompletion ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqldrivers-function
+External_Function SQLDrivers "SQLDrivers" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	UShort fDirection ;
+	Pointer szDriverDesc ;	// UChar*
+	Short cchDriverDescMax ;
+	Pointer pcchDriverDesc ;	// Short*
+	Pointer szDriverAttributes ;	// UChar*
+	Short cchDrvrAttrMax ;
+	Pointer pcchDrvrAttr ;	// Short*
+	Returns Short
+
+External_Function SQLDriversA "SQLDriversA" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	UShort fDirection ;
+	Pointer szDriverDesc ;	// UChar*
+	Short cbDriverDescMax ;
+	Pointer pcbDriverDesc ;	// Short*
+	Pointer szDriverAttributes ;	// UChar*
+	Short cbDrvrAttrMax ;
+	Pointer pcbDrvrAttr ;	// Short*
+	Returns Short
+
+External_Function SQLDriversW "SQLDriversW" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	UShort fDirection ;
+	Pointer szDriverDesc ;	// UShort*
+	Short cchDriverDescMax ;
+	Pointer pcchDriverDesc ;	// Short*
+	Pointer szDriverAttributes ;	// UShort*
+	Short cchDrvrAttrMax ;
+	Pointer pcchDrvrAttr ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlendtran-function
+External_Function SQLEndTran "SQLEndTran" ODBC32.dll ;
+	Short HandleType ;
+	Pointer Handle ;	// Pointer*
+	Short CompletionType ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlerror-function
+External_Function SQLError "SQLError" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	Pointer ConnectionHandle ;	// Pointer*
+	Pointer StatementHandle ;	// Pointer*
+	Pointer Sqlstate ;	// UChar*
+	Pointer NativeError ;	// Integer*
+	Pointer MessageText ;	// UChar*
+	Short BufferLength ;
+	Pointer TextLength ;	// Short*
+	Returns Short
+
+External_Function SQLErrorA "SQLErrorA" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	Pointer hdbc ;	// Pointer*
+	Pointer hstmt ;	// Pointer*
+	Pointer szSqlState ;	// UChar*
+	Pointer pfNativeError ;	// Integer*
+	Pointer szErrorMsg ;	// UChar*
+	Short cbErrorMsgMax ;
+	Pointer pcbErrorMsg ;	// Short*
+	Returns Short
+
+External_Function SQLErrorW "SQLErrorW" ODBC32.dll ;
+	Pointer henv ;	// Pointer*
+	Pointer hdbc ;	// Pointer*
+	Pointer hstmt ;	// Pointer*
+	Pointer wszSqlState ;	// UShort*
+	Pointer pfNativeError ;	// Integer*
+	Pointer wszErrorMsg ;	// UShort*
+	Short cchErrorMsgMax ;
+	Pointer pcchErrorMsg ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlexecdirect-function
+External_Function SQLExecDirect "SQLExecDirect" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer StatementText ;	// UChar*
+	Integer TextLength ;
+	Returns Short
+
+External_Function SQLExecDirectA "SQLExecDirectA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szSqlStr ;	// UChar*
+	Integer cbSqlStr ;
+	Returns Short
+
+External_Function SQLExecDirectW "SQLExecDirectW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szSqlStr ;	// UShort*
+	Integer TextLength ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlexecute-function
+External_Function SQLExecute "SQLExecute" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlextendedfetch-function
+External_Function SQLExtendedFetch "SQLExtendedFetch" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort fFetchType ;
+	Bigint irow ;
+	Pointer pcrow ;	// UBigint*
+	Pointer rgfRowStatus ;	// UShort*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlfetch-function
+External_Function SQLFetch "SQLFetch" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlfetchscroll-function
+External_Function SQLFetchScroll "SQLFetchScroll" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Short FetchOrientation ;
+	Bigint FetchOffset ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlforeignkeys-function
+External_Function SQLForeignKeys "SQLForeignKeys" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szPkCatalogName ;	// UChar*
+	Short cchPkCatalogName ;
+	Pointer szPkSchemaName ;	// UChar*
+	Short cchPkSchemaName ;
+	Pointer szPkTableName ;	// UChar*
+	Short cchPkTableName ;
+	Pointer szFkCatalogName ;	// UChar*
+	Short cchFkCatalogName ;
+	Pointer szFkSchemaName ;	// UChar*
+	Short cchFkSchemaName ;
+	Pointer szFkTableName ;	// UChar*
+	Short cchFkTableName ;
+	Returns Short
+
+External_Function SQLForeignKeysA "SQLForeignKeysA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szPkCatalogName ;	// UChar*
+	Short cbPkCatalogName ;
+	Pointer szPkSchemaName ;	// UChar*
+	Short cbPkSchemaName ;
+	Pointer szPkTableName ;	// UChar*
+	Short cbPkTableName ;
+	Pointer szFkCatalogName ;	// UChar*
+	Short cbFkCatalogName ;
+	Pointer szFkSchemaName ;	// UChar*
+	Short cbFkSchemaName ;
+	Pointer szFkTableName ;	// UChar*
+	Short cbFkTableName ;
+	Returns Short
+
+External_Function SQLForeignKeysW "SQLForeignKeysW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szPkCatalogName ;	// UShort*
+	Short cchPkCatalogName ;
+	Pointer szPkSchemaName ;	// UShort*
+	Short cchPkSchemaName ;
+	Pointer szPkTableName ;	// UShort*
+	Short cchPkTableName ;
+	Pointer szFkCatalogName ;	// UShort*
+	Short cchFkCatalogName ;
+	Pointer szFkSchemaName ;	// UShort*
+	Short cchFkSchemaName ;
+	Pointer szFkTableName ;	// UShort*
+	Short cchFkTableName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlfreeconnect-function
+External_Function SQLFreeConnect "SQLFreeConnect" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlfreeenv-function
+External_Function SQLFreeEnv "SQLFreeEnv" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlfreehandle-function
+External_Function SQLFreeHandle "SQLFreeHandle" ODBC32.dll ;
+	Short HandleType ;
+	Pointer Handle ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlfreestmt-function
+External_Function SQLFreeStmt "SQLFreeStmt" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort Option ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetconnectattr-function
+External_Function SQLGetConnectAttr "SQLGetConnectAttr" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	Integer Attribute ;
+	Pointer Value ;	// Pointer*
+	Integer BufferLength ;
+	Pointer StringLengthPtr ;	// Integer*
+	Returns Short
+
+External_Function SQLGetConnectAttrA "SQLGetConnectAttrA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValueMax ;
+	Pointer pcbValue ;	// Integer*
+	Returns Short
+
+External_Function SQLGetConnectAttrW "SQLGetConnectAttrW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValueMax ;
+	Pointer pcbValue ;	// Integer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetconnectoption-function
+External_Function SQLGetConnectOption "SQLGetConnectOption" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	UShort Option ;
+	Pointer Value ;	// Pointer*
+	Returns Short
+
+External_Function SQLGetConnectOptionA "SQLGetConnectOptionA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	UShort fOption ;
+	Pointer pvParam ;	// Pointer*
+	Returns Short
+
+External_Function SQLGetConnectOptionW "SQLGetConnectOptionW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	UShort fOption ;
+	Pointer pvParam ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetcursorname-function
+External_Function SQLGetCursorName "SQLGetCursorName" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer CursorName ;	// UChar*
+	Short BufferLength ;
+	Pointer NameLengthPtr ;	// Short*
+	Returns Short
+
+External_Function SQLGetCursorNameA "SQLGetCursorNameA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCursor ;	// UChar*
+	Short cbCursorMax ;
+	Pointer pcbCursor ;	// Short*
+	Returns Short
+
+External_Function SQLGetCursorNameW "SQLGetCursorNameW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCursor ;	// UShort*
+	Short cchCursorMax ;
+	Pointer pcchCursor ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetdata-function
+External_Function SQLGetData "SQLGetData" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort ColumnNumber ;
+	Short TargetType ;
+	Pointer TargetValue ;	// Pointer*
+	Bigint BufferLength ;
+	Pointer StrLen_or_IndPtr ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetdescfield-function
+External_Function SQLGetDescField "SQLGetDescField" ODBC32.dll ;
+	Pointer DescriptorHandle ;	// Pointer*
+	Short RecNumber ;
+	Short FieldIdentifier ;
+	Pointer Value ;	// Pointer*
+	Integer BufferLength ;
+	Pointer StringLength ;	// Integer*
+	Returns Short
+
+External_Function SQLGetDescFieldA "SQLGetDescFieldA" ODBC32.dll ;
+	Pointer hdesc ;	// Pointer*
+	Short iRecord ;
+	Short iField ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbBufferLength ;
+	Pointer StringLength ;	// Integer*
+	Returns Short
+
+External_Function SQLGetDescFieldW "SQLGetDescFieldW" ODBC32.dll ;
+	Pointer hdesc ;	// Pointer*
+	Short iRecord ;
+	Short iField ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbBufferLength ;
+	Pointer StringLength ;	// Integer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetdescrec-function
+External_Function SQLGetDescRec "SQLGetDescRec" ODBC32.dll ;
+	Pointer DescriptorHandle ;	// Pointer*
+	Short RecNumber ;
+	Pointer Name ;	// UChar*
+	Short BufferLength ;
+	Pointer StringLengthPtr ;	// Short*
+	Pointer TypePtr ;	// Short*
+	Pointer SubTypePtr ;	// Short*
+	Pointer LengthPtr ;	// Bigint*
+	Pointer PrecisionPtr ;	// Short*
+	Pointer ScalePtr ;	// Short*
+	Pointer NullablePtr ;	// Short*
+	Returns Short
+
+External_Function SQLGetDescRecA "SQLGetDescRecA" ODBC32.dll ;
+	Pointer hdesc ;	// Pointer*
+	Short iRecord ;
+	Pointer szName ;	// UChar*
+	Short cbNameMax ;
+	Pointer pcbName ;	// Short*
+	Pointer pfType ;	// Short*
+	Pointer pfSubType ;	// Short*
+	Pointer pLength ;	// Bigint*
+	Pointer pPrecision ;	// Short*
+	Pointer pScale ;	// Short*
+	Pointer pNullable ;	// Short*
+	Returns Short
+
+External_Function SQLGetDescRecW "SQLGetDescRecW" ODBC32.dll ;
+	Pointer hdesc ;	// Pointer*
+	Short iRecord ;
+	Pointer szName ;	// UShort*
+	Short cchNameMax ;
+	Pointer pcchName ;	// Short*
+	Pointer pfType ;	// Short*
+	Pointer pfSubType ;	// Short*
+	Pointer pLength ;	// Bigint*
+	Pointer pPrecision ;	// Short*
+	Pointer pScale ;	// Short*
+	Pointer pNullable ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetdiagfield-function
+External_Function SQLGetDiagField "SQLGetDiagField" ODBC32.dll ;
+	Short HandleType ;
+	Pointer Handle ;	// Pointer*
+	Short RecNumber ;
+	Short DiagIdentifier ;
+	Pointer DiagInfo ;	// Pointer*
+	Short BufferLength ;
+	Pointer StringLength ;	// Short*
+	Returns Short
+
+External_Function SQLGetDiagFieldA "SQLGetDiagFieldA" ODBC32.dll ;
+	Short fHandleType ;
+	Pointer handle ;	// Pointer*
+	Short iRecord ;
+	Short fDiagField ;
+	Pointer rgbDiagInfo ;	// Pointer*
+	Short cbDiagInfoMax ;
+	Pointer pcbDiagInfo ;	// Short*
+	Returns Short
+
+External_Function SQLGetDiagFieldW "SQLGetDiagFieldW" ODBC32.dll ;
+	Short fHandleType ;
+	Pointer handle ;	// Pointer*
+	Short iRecord ;
+	Short fDiagField ;
+	Pointer rgbDiagInfo ;	// Pointer*
+	Short cbBufferLength ;
+	Pointer pcbStringLength ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetdiagrec-function
+External_Function SQLGetDiagRec "SQLGetDiagRec" ODBC32.dll ;
+	Short HandleType ;
+	Pointer Handle ;	// Pointer*
+	Short RecNumber ;
+	Pointer Sqlstate ;	// UChar*
+	Pointer NativeError ;	// Integer*
+	Pointer MessageText ;	// UChar*
+	Short BufferLength ;
+	Pointer TextLength ;	// Short*
+	Returns Short
+
+External_Function SQLGetDiagRecA "SQLGetDiagRecA" ODBC32.dll ;
+	Short fHandleType ;
+	Pointer handle ;	// Pointer*
+	Short iRecord ;
+	Pointer szSqlState ;	// UChar*
+	Pointer pfNativeError ;	// Integer*
+	Pointer szErrorMsg ;	// UChar*
+	Short cbErrorMsgMax ;
+	Pointer pcbErrorMsg ;	// Short*
+	Returns Short
+
+External_Function SQLGetDiagRecW "SQLGetDiagRecW" ODBC32.dll ;
+	Short fHandleType ;
+	Pointer handle ;	// Pointer*
+	Short iRecord ;
+	Pointer szSqlState ;	// UShort*
+	Pointer pfNativeError ;	// Integer*
+	Pointer szErrorMsg ;	// UShort*
+	Short cchErrorMsgMax ;
+	Pointer pcchErrorMsg ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetenvattr-function
+External_Function SQLGetEnvAttr "SQLGetEnvAttr" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	Integer Attribute ;
+	Pointer Value ;	// Pointer*
+	Integer BufferLength ;
+	Pointer StringLength ;	// Integer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetfunctions-function
+External_Function SQLGetFunctions "SQLGetFunctions" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	UShort FunctionId ;
+	Pointer Supported ;	// UShort*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetinfo-function
+External_Function SQLGetInfo "SQLGetInfo" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	UShort InfoType ;
+	Pointer InfoValue ;	// Pointer*
+	Short BufferLength ;
+	Pointer StringLengthPtr ;	// Short*
+	Returns Short
+
+External_Function SQLGetInfoA "SQLGetInfoA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	UShort fInfoType ;
+	Pointer rgbInfoValue ;	// Pointer*
+	Short cbInfoValueMax ;
+	Pointer pcbInfoValue ;	// Short*
+	Returns Short
+
+External_Function SQLGetInfoW "SQLGetInfoW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	UShort fInfoType ;
+	Pointer rgbInfoValue ;	// Pointer*
+	Short cbInfoValueMax ;
+	Pointer pcbInfoValue ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetstmtattr-function
+External_Function SQLGetStmtAttr "SQLGetStmtAttr" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Integer Attribute ;
+	Pointer Value ;	// Pointer*
+	Integer BufferLength ;
+	Pointer StringLength ;	// Integer*
+	Returns Short
+
+External_Function SQLGetStmtAttrA "SQLGetStmtAttrA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValueMax ;
+	Pointer pcbValue ;	// Integer*
+	Returns Short
+
+External_Function SQLGetStmtAttrW "SQLGetStmtAttrW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValueMax ;
+	Pointer pcbValue ;	// Integer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgetstmtoption-function
+External_Function SQLGetStmtOption "SQLGetStmtOption" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort Option ;
+	Pointer Value ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlgettypeinfo-function
+External_Function SQLGetTypeInfo "SQLGetTypeInfo" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Short DataType ;
+	Returns Short
+
+External_Function SQLGetTypeInfoA "SQLGetTypeInfoA" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Short DataType ;
+	Returns Short
+
+External_Function SQLGetTypeInfoW "SQLGetTypeInfoW" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Short DataType ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlmoreresults-function
+External_Function SQLMoreResults "SQLMoreResults" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlnativesql-function
+External_Function SQLNativeSql "SQLNativeSql" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szSqlStrIn ;	// UChar*
+	Integer cchSqlStrIn ;
+	Pointer szSqlStr ;	// UChar*
+	Integer cchSqlStrMax ;
+	Pointer pcbSqlStr ;	// Integer*
+	Returns Short
+
+External_Function SQLNativeSqlA "SQLNativeSqlA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szSqlStrIn ;	// UChar*
+	Integer cbSqlStrIn ;
+	Pointer szSqlStr ;	// UChar*
+	Integer cbSqlStrMax ;
+	Pointer pcbSqlStr ;	// Integer*
+	Returns Short
+
+External_Function SQLNativeSqlW "SQLNativeSqlW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Pointer szSqlStrIn ;	// UShort*
+	Integer cchSqlStrIn ;
+	Pointer szSqlStr ;	// UShort*
+	Integer cchSqlStrMax ;
+	Pointer pcchSqlStr ;	// Integer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlnumparams-function
+External_Function SQLNumParams "SQLNumParams" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer pcpar ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlnumresultcols-function
+External_Function SQLNumResultCols "SQLNumResultCols" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer ColumnCount ;	// Short*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlparamdata-function
+External_Function SQLParamData "SQLParamData" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer Value ;	// Pointer**
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlparamoptions-function
+External_Function SQLParamOptions "SQLParamOptions" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UBigint crow ;
+	Pointer pirow ;	// UBigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlprepare-function
+External_Function SQLPrepare "SQLPrepare" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer StatementText ;	// UChar*
+	Integer TextLength ;
+	Returns Short
+
+External_Function SQLPrepareA "SQLPrepareA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szSqlStr ;	// UChar*
+	Integer cbSqlStr ;
+	Returns Short
+
+External_Function SQLPrepareW "SQLPrepareW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szSqlStr ;	// UShort*
+	Integer cchSqlStr ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlprimarykeys-function
+External_Function SQLPrimaryKeys "SQLPrimaryKeys" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cchTableName ;
+	Returns Short
+
+External_Function SQLPrimaryKeysA "SQLPrimaryKeysA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	Returns Short
+
+External_Function SQLPrimaryKeysW "SQLPrimaryKeysW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlprocedurecolumns-function
+External_Function SQLProcedureColumns "SQLProcedureColumns" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cchSchemaName ;
+	Pointer szProcName ;	// UChar*
+	Short cchProcName ;
+	Pointer szColumnName ;	// UChar*
+	Short cchColumnName ;
+	Returns Short
+
+External_Function SQLProcedureColumnsA "SQLProcedureColumnsA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szProcName ;	// UChar*
+	Short cbProcName ;
+	Pointer szColumnName ;	// UChar*
+	Short cbColumnName ;
+	Returns Short
+
+External_Function SQLProcedureColumnsW "SQLProcedureColumnsW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szProcName ;	// UShort*
+	Short cchProcName ;
+	Pointer szColumnName ;	// UShort*
+	Short cchColumnName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlprocedures-function
+External_Function SQLProcedures "SQLProcedures" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cchSchemaName ;
+	Pointer szProcName ;	// UChar*
+	Short cchProcName ;
+	Returns Short
+
+External_Function SQLProceduresA "SQLProceduresA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szProcName ;	// UChar*
+	Short cbProcName ;
+	Returns Short
+
+External_Function SQLProceduresW "SQLProceduresW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szProcName ;	// UShort*
+	Short cchProcName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlputdata-function
+External_Function SQLPutData "SQLPutData" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer Data ;	// Pointer*
+	Bigint StrLen_or_Ind ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlrowcount-function
+External_Function SQLRowCount "SQLRowCount" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer RowCount ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetconnectattr-function
+External_Function SQLSetConnectAttr "SQLSetConnectAttr" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	Integer Attribute ;
+	Pointer Value ;	// Pointer*
+	Integer StringLength ;
+	Returns Short
+
+External_Function SQLSetConnectAttrA "SQLSetConnectAttrA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValue ;
+	Returns Short
+
+External_Function SQLSetConnectAttrW "SQLSetConnectAttrW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValue ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetconnectoption-function
+External_Function SQLSetConnectOption "SQLSetConnectOption" ODBC32.dll ;
+	Pointer ConnectionHandle ;	// Pointer*
+	UShort Option ;
+	UBigint Value ;
+	Returns Short
+
+External_Function SQLSetConnectOptionA "SQLSetConnectOptionA" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	UShort fOption ;
+	UBigint vParam ;
+	Returns Short
+
+External_Function SQLSetConnectOptionW "SQLSetConnectOptionW" ODBC32.dll ;
+	Pointer hdbc ;	// Pointer*
+	UShort fOption ;
+	UBigint vParam ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetcursorname-function
+External_Function SQLSetCursorName "SQLSetCursorName" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer CursorName ;	// UChar*
+	Short NameLength ;
+	Returns Short
+
+External_Function SQLSetCursorNameA "SQLSetCursorNameA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCursor ;	// UChar*
+	Short cbCursor ;
+	Returns Short
+
+External_Function SQLSetCursorNameW "SQLSetCursorNameW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCursor ;	// UShort*
+	Short cchCursor ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetdescfield-function
+External_Function SQLSetDescField "SQLSetDescField" ODBC32.dll ;
+	Pointer DescriptorHandle ;	// Pointer*
+	Short RecNumber ;
+	Short FieldIdentifier ;
+	Pointer Value ;	// Pointer*
+	Integer BufferLength ;
+	Returns Short
+
+External_Function SQLSetDescFieldW "SQLSetDescFieldW" ODBC32.dll ;
+	Pointer DescriptorHandle ;	// Pointer*
+	Short RecNumber ;
+	Short FieldIdentifier ;
+	Pointer Value ;	// Pointer*
+	Integer BufferLength ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetdescrec-function
+External_Function SQLSetDescRec "SQLSetDescRec" ODBC32.dll ;
+	Pointer DescriptorHandle ;	// Pointer*
+	Short RecNumber ;
+	Short Type ;
+	Short SubType ;
+	Bigint Length ;
+	Short Precision ;
+	Short Scale ;
+	Pointer Data ;	// Pointer*
+	Pointer StringLength ;	// Bigint*
+	Pointer Indicator ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetenvattr-function
+External_Function SQLSetEnvAttr "SQLSetEnvAttr" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	Integer Attribute ;
+	Pointer Value ;	// Pointer*
+	Integer StringLength ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetparam-function
+External_Function SQLSetParam "SQLSetParam" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort ParameterNumber ;
+	Short ValueType ;
+	Short ParameterType ;
+	UBigint LengthPrecision ;
+	Short ParameterScale ;
+	Pointer ParameterValue ;	// Pointer*
+	Pointer StrLen_or_Ind ;	// Bigint*
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetpos-function
+External_Function SQLSetPos "SQLSetPos" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UBigint irow ;
+	UShort fOption ;
+	UShort fLock ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetscrolloptions-function
+External_Function SQLSetScrollOptions "SQLSetScrollOptions" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort fConcurrency ;
+	Bigint crowKeyset ;
+	UShort crowRowset ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetstmtattr-function
+External_Function SQLSetStmtAttr "SQLSetStmtAttr" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Integer Attribute ;
+	Pointer Value ;	// Pointer*
+	Integer StringLength ;
+	Returns Short
+
+External_Function SQLSetStmtAttrW "SQLSetStmtAttrW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Integer fAttribute ;
+	Pointer rgbValue ;	// Pointer*
+	Integer cbValueMax ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlsetstmtoption-function
+External_Function SQLSetStmtOption "SQLSetStmtOption" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort Option ;
+	UBigint Value ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlspecialcolumns-function
+External_Function SQLSpecialColumns "SQLSpecialColumns" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	UShort IdentifierType ;
+	Pointer CatalogName ;	// UChar*
+	Short NameLength1 ;
+	Pointer SchemaName ;	// UChar*
+	Short NameLength2 ;
+	Pointer TableName ;	// UChar*
+	Short NameLength3 ;
+	UShort Scope ;
+	UShort Nullable ;
+	Returns Short
+
+External_Function SQLSpecialColumnsA "SQLSpecialColumnsA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort fColType ;
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	UShort fScope ;
+	UShort fNullable ;
+	Returns Short
+
+External_Function SQLSpecialColumnsW "SQLSpecialColumnsW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	UShort fColType ;
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	UShort fScope ;
+	UShort fNullable ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqlstatistics-function
+External_Function SQLStatistics "SQLStatistics" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer CatalogName ;	// UChar*
+	Short NameLength1 ;
+	Pointer SchemaName ;	// UChar*
+	Short NameLength2 ;
+	Pointer TableName ;	// UChar*
+	Short NameLength3 ;
+	UShort Unique ;
+	UShort Reserved ;
+	Returns Short
+
+External_Function SQLStatisticsA "SQLStatisticsA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	UShort fUnique ;
+	UShort fAccuracy ;
+	Returns Short
+
+External_Function SQLStatisticsW "SQLStatisticsW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	UShort fUnique ;
+	UShort fAccuracy ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqltableprivileges-function
+External_Function SQLTablePrivileges "SQLTablePrivileges" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cchTableName ;
+	Returns Short
+
+External_Function SQLTablePrivilegesA "SQLTablePrivilegesA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	Returns Short
+
+External_Function SQLTablePrivilegesW "SQLTablePrivilegesW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqltables-function
+External_Function SQLTables "SQLTables" ODBC32.dll ;
+	Pointer StatementHandle ;	// Pointer*
+	Pointer CatalogName ;	// UChar*
+	Short NameLength1 ;
+	Pointer SchemaName ;	// UChar*
+	Short NameLength2 ;
+	Pointer TableName ;	// UChar*
+	Short NameLength3 ;
+	Pointer TableType ;	// UChar*
+	Short NameLength4 ;
+	Returns Short
+
+External_Function SQLTablesA "SQLTablesA" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UChar*
+	Short cbCatalogName ;
+	Pointer szSchemaName ;	// UChar*
+	Short cbSchemaName ;
+	Pointer szTableName ;	// UChar*
+	Short cbTableName ;
+	Pointer szTableType ;	// UChar*
+	Short cbTableType ;
+	Returns Short
+
+External_Function SQLTablesW "SQLTablesW" ODBC32.dll ;
+	Pointer hstmt ;	// Pointer*
+	Pointer szCatalogName ;	// UShort*
+	Short cchCatalogName ;
+	Pointer szSchemaName ;	// UShort*
+	Short cchSchemaName ;
+	Pointer szTableName ;	// UShort*
+	Short cchTableName ;
+	Pointer szTableType ;	// UShort*
+	Short cchTableType ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/odbc/reference/syntax/sqltransact-function
+External_Function SQLTransact "SQLTransact" ODBC32.dll ;
+	Pointer EnvironmentHandle ;	// Pointer*
+	Pointer ConnectionHandle ;	// Pointer*
+	UShort CompletionType ;
+	Returns Short
+
+External_Function SQLCloseEnumServers "SQLCloseEnumServers" odbcbcp.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Returns Short
+
+External_Function SQLGetNextEnumeration "SQLGetNextEnumeration" odbcbcp.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer prgEnumData ;	// UChar*
+	Pointer piEnumLength ;	// Integer*
+	Returns Short
+
+External_Function SQLInitEnumServers "SQLInitEnumServers" odbcbcp.dll ;
+	WString pwchServerName ;	// PWSTR
+	WString pwchInstanceName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+External_Function SQLLinkedCatalogsA "SQLLinkedCatalogsA" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	String param1 ;	// PSTR
+	Short param2 ;
+	Returns Short
+
+External_Function SQLLinkedCatalogsW "SQLLinkedCatalogsW" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	WString param1 ;	// PWSTR
+	Short param2 ;
+	Returns Short
+
+External_Function SQLLinkedServers "SQLLinkedServers" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-batch
+External_Function bcp_batch "bcp_batch" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-bind
+External_Function bcp_bind "bcp_bind" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Pointer param1 ;	// UChar*
+	Integer param2 ;
+	Integer param3 ;
+	Pointer param4 ;	// UChar*
+	Integer param5 ;
+	Integer param6 ;
+	Integer param7 ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-colfmt
+External_Function bcp_colfmt "bcp_colfmt" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	UChar param2 ;
+	Integer param3 ;
+	Integer param4 ;
+	Pointer param5 ;	// UChar*
+	Integer param6 ;
+	Integer param7 ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-collen
+External_Function bcp_collen "bcp_collen" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	Integer param2 ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-colptr
+External_Function bcp_colptr "bcp_colptr" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Pointer param1 ;	// UChar*
+	Integer param2 ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-columns
+External_Function bcp_columns "bcp_columns" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-control
+External_Function bcp_control "bcp_control" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	Pointer param2 ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-done
+External_Function bcp_done "bcp_done" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-exec
+External_Function bcp_exec "bcp_exec" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Pointer param1 ;	// Integer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-getcolfmt
+External_Function bcp_getcolfmt "bcp_getcolfmt" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	Integer param2 ;
+	Pointer param3 ;	// Pointer*
+	Integer param4 ;
+	Pointer param5 ;	// Integer*
+	Returns Short
+
+External_Function bcp_initA "bcp_initA" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	String param1 ;	// PSTR
+	String param2 ;	// PSTR
+	String param3 ;	// PSTR
+	Integer param4 ;
+	Returns Short
+
+External_Function bcp_initW "bcp_initW" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	WString param1 ;	// PWSTR
+	WString param2 ;	// PWSTR
+	WString param3 ;	// PWSTR
+	Integer param4 ;
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-moretext
+External_Function bcp_moretext "bcp_moretext" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	Pointer param2 ;	// UChar*
+	Returns Short
+
+External_Function bcp_readfmtA "bcp_readfmtA" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	String param1 ;	// PSTR
+	Returns Short
+
+External_Function bcp_readfmtW "bcp_readfmtW" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	WString param1 ;	// PWSTR
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-sendrow
+External_Function bcp_sendrow "bcp_sendrow" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Returns Short
+
+// https://learn.microsoft.com/sql/relational-databases/native-client-odbc-extensions-bulk-copy-functions/bcp-setcolfmt
+External_Function bcp_setcolfmt "bcp_setcolfmt" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	Integer param1 ;
+	Integer param2 ;
+	Pointer param3 ;	// Pointer*
+	Integer param4 ;
+	Returns Short
+
+External_Function bcp_writefmtA "bcp_writefmtA" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	String param1 ;	// PSTR
+	Returns Short
+
+External_Function bcp_writefmtW "bcp_writefmtW" odbcbcp.dll ;
+	Pointer param0 ;	// Pointer*
+	WString param1 ;	// PWSTR
+	Returns Short
+
+External_Function dbprtypeA "dbprtypeA" odbcbcp.dll ;
+	Integer param0 ;
+	Returns Pointer	// PSTR
+
+External_Function dbprtypeW "dbprtypeW" odbcbcp.dll ;
+	Integer param0 ;
+	Returns Pointer	// PWSTR
+
+
+Procedure DataFlex_Init
+End_Procedure
+

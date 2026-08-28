@@ -1,0 +1,1529 @@
+Use UI
+
+External_Function GdiDeleteSpoolFileHandle "GdiDeleteSpoolFileHandle" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+External_Function GdiEndDocEMF "GdiEndDocEMF" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+External_Function GdiEndPageEMF "GdiEndPageEMF" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	UInteger dwOptimization ;
+	Returns Integer	// BOOL
+
+External_Function GdiGetDC "GdiGetDC" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Returns Pointer	// HDC
+
+External_Function GdiGetDevmodeForPage "GdiGetDevmodeForPage" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	UInteger dwPageNumber ;
+	Pointer pCurrDM ;	// DEVMODEW**
+	Pointer pLastDM ;	// DEVMODEW**
+	Returns Integer	// BOOL
+
+External_Function GdiGetPageCount "GdiGetPageCount" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Returns UInteger
+
+External_Function GdiGetPageHandle "GdiGetPageHandle" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	UInteger Page ;
+	Pointer pdwPageType ;	// UInteger*
+	Returns Pointer	// HANDLE
+
+External_Function GdiGetSpoolFileHandle "GdiGetSpoolFileHandle" GDI32.dll ;
+	WString pwszPrinterName ;	// PWSTR
+	Pointer pDevmode ;	// DEVMODEW*
+	WString pwszDocName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+External_Function GdiPlayPageEMF "GdiPlayPageEMF" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Pointer hemf ;	// HANDLE
+	Pointer prectDocument ;	// RECT*
+	Pointer prectBorder ;	// RECT*
+	Pointer prectClip ;	// RECT*
+	Returns Integer	// BOOL
+
+External_Function GdiResetDCEMF "GdiResetDCEMF" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Pointer pCurrDM ;	// DEVMODEW*
+	Returns Integer	// BOOL
+
+External_Function GdiStartDocEMF "GdiStartDocEMF" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Pointer pDocInfo ;	// DOCINFOW*
+	Returns Integer	// BOOL
+
+External_Function GdiStartPageEMF "GdiStartPageEMF" GDI32.dll ;
+	Pointer SpoolFileHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+External_Function CommonPropertySheetUIA "CommonPropertySheetUIA" COMPSTUI.dll ;
+	Pointer hWndOwner ;	// HWND
+	Pointer pfnPropSheetUI ;	// PFNPROPSHEETUI
+	LongPtr lParam ;	// LPARAM
+	Pointer pResult ;	// UInteger*
+	Returns Integer
+
+External_Function CommonPropertySheetUIW "CommonPropertySheetUIW" COMPSTUI.dll ;
+	Pointer hWndOwner ;	// HWND
+	Pointer pfnPropSheetUI ;	// PFNPROPSHEETUI
+	LongPtr lParam ;	// LPARAM
+	Pointer pResult ;	// UInteger*
+	Returns Integer
+
+External_Function GetCPSUIUserData "GetCPSUIUserData" COMPSTUI.dll ;
+	Pointer hDlg ;	// HWND
+	Returns ULongPtr
+
+External_Function SetCPSUIUserData "SetCPSUIUserData" COMPSTUI.dll ;
+	Pointer hDlg ;	// HWND
+	ULongPtr CPSUIUserData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/abortprinter
+External_Function AbortPrinter "AbortPrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+External_Function AddFormA "AddFormA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	Returns Integer	// BOOL
+
+External_Function AddFormW "AddFormW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addjob
+External_Function AddJobA "AddJobA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pData ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addjob
+External_Function AddJobW "AddJobW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pData ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addmonitor
+External_Function AddMonitorA "AddMonitorA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer pMonitors ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addmonitor
+External_Function AddMonitorW "AddMonitorW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer pMonitors ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addport
+External_Function AddPortA "AddPortA" winspool.drv ;
+	String pName ;	// PSTR
+	Pointer hWnd ;	// HWND
+	String pMonitorName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addport
+External_Function AddPortW "AddPortW" winspool.drv ;
+	WString pName ;	// PWSTR
+	Pointer hWnd ;	// HWND
+	WString pMonitorName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprintprocessor
+External_Function AddPrintProcessorA "AddPrintProcessorA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	String pPathName ;	// PSTR
+	String pPrintProcessorName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprintprocessor
+External_Function AddPrintProcessorW "AddPrintProcessorW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	WString pPathName ;	// PWSTR
+	WString pPrintProcessorName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprintprovidor
+External_Function AddPrintProvidorA "AddPrintProvidorA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer pProvidorInfo ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprintprovidor
+External_Function AddPrintProvidorW "AddPrintProvidorW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer pProvidorInfo ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinter
+External_Function AddPrinterA "AddPrinterA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer pPrinter ;	// UChar*
+	Returns Pointer	// PRINTER_HANDLE
+
+External_Function AddPrinterConnection2A "AddPrinterConnection2A" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	String pszName ;	// PSTR
+	UInteger dwLevel ;
+	Pointer pConnectionInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterconnection2
+External_Function AddPrinterConnection2W "AddPrinterConnection2W" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	WString pszName ;	// PWSTR
+	UInteger dwLevel ;
+	Pointer pConnectionInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterconnection
+External_Function AddPrinterConnectionA "AddPrinterConnectionA" winspool.drv ;
+	String pName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterconnection
+External_Function AddPrinterConnectionW "AddPrinterConnectionW" winspool.drv ;
+	WString pName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterdriver
+External_Function AddPrinterDriverA "AddPrinterDriverA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterdriverex
+External_Function AddPrinterDriverExA "AddPrinterDriverExA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer lpbDriverInfo ;	// UChar*
+	UInteger dwFileCopyFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterdriverex
+External_Function AddPrinterDriverExW "AddPrinterDriverExW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer lpbDriverInfo ;	// UChar*
+	UInteger dwFileCopyFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinterdriver
+External_Function AddPrinterDriverW "AddPrinterDriverW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/addprinter
+External_Function AddPrinterW "AddPrinterW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer pPrinter ;	// UChar*
+	Returns Pointer	// PRINTER_HANDLE
+
+// https://learn.microsoft.com/windows/win32/printdocs/advanceddocumentproperties
+External_Function AdvancedDocumentPropertiesA "AdvancedDocumentPropertiesA" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pDeviceName ;	// PSTR
+	Pointer pDevModeOutput ;	// DEVMODEA*
+	Pointer pDevModeInput ;	// DEVMODEA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/printdocs/advanceddocumentproperties
+External_Function AdvancedDocumentPropertiesW "AdvancedDocumentPropertiesW" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pDeviceName ;	// PWSTR
+	Pointer pDevModeOutput ;	// DEVMODEW*
+	Pointer pDevModeInput ;	// DEVMODEW*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/printdocs/closeprinter
+External_Function ClosePrinter "ClosePrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/closespoolfilehandle
+External_Function CloseSpoolFileHandle "CloseSpoolFileHandle" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer hSpoolFile ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/commitspooldata
+External_Function CommitSpoolData "CommitSpoolData" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer hSpoolFile ;	// HANDLE
+	UInteger cbCommit ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/printdocs/configureport
+External_Function ConfigurePortA "ConfigurePortA" winspool.drv ;
+	String pName ;	// PSTR
+	Pointer hWnd ;	// HWND
+	String pPortName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/configureport
+External_Function ConfigurePortW "ConfigurePortW" winspool.drv ;
+	WString pName ;	// PWSTR
+	Pointer hWnd ;	// HWND
+	WString pPortName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/connecttoprinterdlg
+External_Function ConnectToPrinterDlg "ConnectToPrinterDlg" winspool.drv ;
+	Pointer hwnd ;	// HWND
+	UInteger Flags ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/printdocs/coreprinterdriverinstalled
+External_Function CorePrinterDriverInstalledA "CorePrinterDriverInstalledA" winspool.drv ;
+	String pszServer ;	// PSTR
+	String pszEnvironment ;	// PSTR
+	Guid CoreDriverGUID ;
+	FILETIME ftDriverDate ;
+	UBigint dwlDriverVersion ;
+	Pointer pbDriverInstalled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/coreprinterdriverinstalled
+External_Function CorePrinterDriverInstalledW "CorePrinterDriverInstalledW" winspool.drv ;
+	WString pszServer ;	// PWSTR
+	WString pszEnvironment ;	// PWSTR
+	Guid CoreDriverGUID ;
+	FILETIME ftDriverDate ;
+	UBigint dwlDriverVersion ;
+	Pointer pbDriverInstalled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prnasnot/nf-prnasnot-createprintasyncnotifychannel
+External_Function CreatePrintAsyncNotifyChannel "CreatePrintAsyncNotifyChannel" winspool.drv ;
+	WString pszName ;	// PWSTR
+	Pointer pNotificationType ;	// Guid*
+	Integer eUserFilter ;	// PrintAsyncNotifyUserFilter
+	Integer eConversationStyle ;	// PrintAsyncNotifyConversationStyle
+	Pointer pCallback ;	// IPrintAsyncNotifyCallback
+	Pointer ppIAsynchNotification ;	// IPrintAsyncNotifyChannel*
+	Returns Integer	// HRESULT
+
+External_Function CreatePrinterIC "CreatePrinterIC" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pDevMode ;	// DEVMODEW*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteform
+External_Function DeleteFormA "DeleteFormA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pFormName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteform
+External_Function DeleteFormW "DeleteFormW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pFormName ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function DeleteJobNamedProperty "DeleteJobNamedProperty" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	WString pszName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/deletemonitor
+External_Function DeleteMonitorA "DeleteMonitorA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	String pMonitorName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deletemonitor
+External_Function DeleteMonitorW "DeleteMonitorW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	WString pMonitorName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteport
+External_Function DeletePortA "DeletePortA" winspool.drv ;
+	String pName ;	// PSTR
+	Pointer hWnd ;	// HWND
+	String pPortName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteport
+External_Function DeletePortW "DeletePortW" winspool.drv ;
+	WString pName ;	// PWSTR
+	Pointer hWnd ;	// HWND
+	WString pPortName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprintprocessor
+External_Function DeletePrintProcessorA "DeletePrintProcessorA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	String pPrintProcessorName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprintprocessor
+External_Function DeletePrintProcessorW "DeletePrintProcessorW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	WString pPrintProcessorName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprintprovidor
+External_Function DeletePrintProvidorA "DeletePrintProvidorA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	String pPrintProvidorName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprintprovidor
+External_Function DeletePrintProvidorW "DeletePrintProvidorW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	WString pPrintProvidorName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinter
+External_Function DeletePrinter "DeletePrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterconnection
+External_Function DeletePrinterConnectionA "DeletePrinterConnectionA" winspool.drv ;
+	String pName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterconnection
+External_Function DeletePrinterConnectionW "DeletePrinterConnectionW" winspool.drv ;
+	WString pName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdata
+External_Function DeletePrinterDataA "DeletePrinterDataA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pValueName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdataex
+External_Function DeletePrinterDataExA "DeletePrinterDataExA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pKeyName ;	// PSTR
+	String pValueName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdataex
+External_Function DeletePrinterDataExW "DeletePrinterDataExW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pKeyName ;	// PWSTR
+	WString pValueName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdata
+External_Function DeletePrinterDataW "DeletePrinterDataW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pValueName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdriver
+External_Function DeletePrinterDriverA "DeletePrinterDriverA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	String pDriverName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdriverex
+External_Function DeletePrinterDriverExA "DeletePrinterDriverExA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	String pDriverName ;	// PSTR
+	UInteger dwDeleteFlag ;
+	UInteger dwVersionFlag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdriverex
+External_Function DeletePrinterDriverExW "DeletePrinterDriverExW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	WString pDriverName ;	// PWSTR
+	UInteger dwDeleteFlag ;
+	UInteger dwVersionFlag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdriverpackage
+External_Function DeletePrinterDriverPackageA "DeletePrinterDriverPackageA" winspool.drv ;
+	String pszServer ;	// PSTR
+	String pszInfPath ;	// PSTR
+	String pszEnvironment ;	// PSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdriverpackage
+External_Function DeletePrinterDriverPackageW "DeletePrinterDriverPackageW" winspool.drv ;
+	WString pszServer ;	// PWSTR
+	WString pszInfPath ;	// PWSTR
+	WString pszEnvironment ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterdriver
+External_Function DeletePrinterDriverW "DeletePrinterDriverW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	WString pDriverName ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function DeletePrinterIC "DeletePrinterIC" winspool.drv ;
+	Pointer hPrinterIC ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterkey
+External_Function DeletePrinterKeyA "DeletePrinterKeyA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pKeyName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/deleteprinterkey
+External_Function DeletePrinterKeyW "DeletePrinterKeyW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pKeyName ;	// PWSTR
+	Returns UInteger
+
+External_Function DevQueryPrint "DevQueryPrint" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pDevMode ;	// DEVMODEA*
+	Pointer pResID ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function DevQueryPrintEx "DevQueryPrintEx" winspool.drv ;
+	Pointer pDQPInfo ;	// DEVQUERYPRINT_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/documentproperties
+External_Function DocumentPropertiesA "DocumentPropertiesA" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pDeviceName ;	// PSTR
+	Pointer pDevModeOutput ;	// DEVMODEA*
+	Pointer pDevModeInput ;	// DEVMODEA*
+	UInteger fMode ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/printdocs/documentproperties
+External_Function DocumentPropertiesW "DocumentPropertiesW" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pDeviceName ;	// PWSTR
+	Pointer pDevModeOutput ;	// DEVMODEW*
+	Pointer pDevModeInput ;	// DEVMODEW*
+	UInteger fMode ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/printdocs/enddocprinter
+External_Function EndDocPrinter "EndDocPrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/endpageprinter
+External_Function EndPagePrinter "EndPagePrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumforms
+External_Function EnumFormsA "EnumFormsA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumforms
+External_Function EnumFormsW "EnumFormsW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function EnumJobNamedProperties "EnumJobNamedProperties" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	Pointer pcProperties ;	// UInteger*
+	Pointer ppProperties ;	// PrintNamedProperty**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumjobs
+External_Function EnumJobsA "EnumJobsA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger FirstJob ;
+	UInteger NoJobs ;
+	UInteger Level ;
+	Pointer pJob ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumjobs
+External_Function EnumJobsW "EnumJobsW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger FirstJob ;
+	UInteger NoJobs ;
+	UInteger Level ;
+	Pointer pJob ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enummonitors
+External_Function EnumMonitorsA "EnumMonitorsA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer pMonitor ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enummonitors
+External_Function EnumMonitorsW "EnumMonitorsW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer pMonitor ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumports
+External_Function EnumPortsA "EnumPortsA" winspool.drv ;
+	String pName ;	// PSTR
+	UInteger Level ;
+	Pointer pPort ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumports
+External_Function EnumPortsW "EnumPortsW" winspool.drv ;
+	WString pName ;	// PWSTR
+	UInteger Level ;
+	Pointer pPort ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprintprocessordatatypes
+External_Function EnumPrintProcessorDatatypesA "EnumPrintProcessorDatatypesA" winspool.drv ;
+	String pName ;	// PSTR
+	String pPrintProcessorName ;	// PSTR
+	UInteger Level ;
+	Pointer pDatatypes ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprintprocessordatatypes
+External_Function EnumPrintProcessorDatatypesW "EnumPrintProcessorDatatypesW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pPrintProcessorName ;	// PWSTR
+	UInteger Level ;
+	Pointer pDatatypes ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprintprocessors
+External_Function EnumPrintProcessorsA "EnumPrintProcessorsA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	UInteger Level ;
+	Pointer pPrintProcessorInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprintprocessors
+External_Function EnumPrintProcessorsW "EnumPrintProcessorsW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	UInteger Level ;
+	Pointer pPrintProcessorInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterdata
+External_Function EnumPrinterDataA "EnumPrinterDataA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger dwIndex ;
+	Pointer pValueName ;	// PSTR
+	UInteger cbValueName ;
+	Pointer pcbValueName ;	// UInteger*
+	Pointer pType ;	// UInteger*
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Pointer pcbData ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterdataex
+External_Function EnumPrinterDataExA "EnumPrinterDataExA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pKeyName ;	// PSTR
+	Pointer pEnumValues ;	// UChar*
+	UInteger cbEnumValues ;
+	Pointer pcbEnumValues ;	// UInteger*
+	Pointer pnEnumValues ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterdataex
+External_Function EnumPrinterDataExW "EnumPrinterDataExW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pKeyName ;	// PWSTR
+	Pointer pEnumValues ;	// UChar*
+	UInteger cbEnumValues ;
+	Pointer pcbEnumValues ;	// UInteger*
+	Pointer pnEnumValues ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterdata
+External_Function EnumPrinterDataW "EnumPrinterDataW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger dwIndex ;
+	Pointer pValueName ;	// PWSTR
+	UInteger cbValueName ;
+	Pointer pcbValueName ;	// UInteger*
+	Pointer pType ;	// UInteger*
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Pointer pcbData ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterdrivers
+External_Function EnumPrinterDriversA "EnumPrinterDriversA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterdrivers
+External_Function EnumPrinterDriversW "EnumPrinterDriversW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterkey
+External_Function EnumPrinterKeyA "EnumPrinterKeyA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pKeyName ;	// PSTR
+	Pointer pSubkey ;	// PSTR
+	UInteger cbSubkey ;
+	Pointer pcbSubkey ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinterkey
+External_Function EnumPrinterKeyW "EnumPrinterKeyW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pKeyName ;	// PWSTR
+	Pointer pSubkey ;	// PWSTR
+	UInteger cbSubkey ;
+	Pointer pcbSubkey ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinters
+External_Function EnumPrintersA "EnumPrintersA" winspool.drv ;
+	UInteger Flags ;
+	String Name ;	// PSTR
+	UInteger Level ;
+	Pointer pPrinterEnum ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/enumprinters
+External_Function EnumPrintersW "EnumPrintersW" winspool.drv ;
+	UInteger Flags ;
+	WString Name ;	// PWSTR
+	UInteger Level ;
+	Pointer pPrinterEnum ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Pointer pcReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function ExtDeviceMode "ExtDeviceMode" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hInst ;	// HANDLE
+	Pointer pDevModeOutput ;	// DEVMODEA*
+	String pDeviceName ;	// PSTR
+	String pPort ;	// PSTR
+	Pointer pDevModeInput ;	// DEVMODEA*
+	String pProfile ;	// PSTR
+	UInteger fMode ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/printdocs/findcloseprinterchangenotification
+External_Function FindClosePrinterChangeNotification "FindClosePrinterChangeNotification" winspool.drv ;
+	Pointer hChange ;	// FINDPRINTERCHANGENOTIFICATION_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/findfirstprinterchangenotification
+External_Function FindFirstPrinterChangeNotification "FindFirstPrinterChangeNotification" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger fdwFilter ;
+	UInteger fdwOptions ;
+	Pointer pPrinterNotifyOptions ;	// Pointer*
+	Returns Pointer	// FINDPRINTERCHANGENOTIFICATION_HANDLE
+
+// https://learn.microsoft.com/windows/win32/printdocs/findnextprinterchangenotification
+External_Function FindNextPrinterChangeNotification "FindNextPrinterChangeNotification" winspool.drv ;
+	Pointer hChange ;	// FINDPRINTERCHANGENOTIFICATION_HANDLE
+	Pointer pdwChange ;	// UInteger*
+	Pointer pvReserved ;	// Pointer*
+	Pointer ppPrinterNotifyInfo ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/flushprinter
+External_Function FlushPrinter "FlushPrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pBuf ;	// Pointer*
+	UInteger cbBuf ;
+	Pointer pcWritten ;	// UInteger*
+	UInteger cSleep ;
+	Returns Integer	// BOOL
+
+External_Function FreePrintNamedPropertyArray "FreePrintNamedPropertyArray" winspool.drv ;
+	UInteger cProperties ;
+	Pointer ppProperties ;	// PrintNamedProperty**
+	Returns Pointer
+
+External_Function FreePrintPropertyValue "FreePrintPropertyValue" winspool.drv ;
+	Pointer pValue ;	// PrintPropertyValue*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/printdocs/freeprinternotifyinfo
+External_Function FreePrinterNotifyInfo "FreePrinterNotifyInfo" winspool.drv ;
+	Pointer pPrinterNotifyInfo ;	// PRINTER_NOTIFY_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getcoreprinterdrivers
+External_Function GetCorePrinterDriversA "GetCorePrinterDriversA" winspool.drv ;
+	String pszServer ;	// PSTR
+	String pszEnvironment ;	// PSTR
+	String pszzCoreDriverDependencies ;	// PSTR
+	UInteger cCorePrinterDrivers ;
+	Pointer pCorePrinterDrivers ;	// CORE_PRINTER_DRIVERA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/getcoreprinterdrivers
+External_Function GetCorePrinterDriversW "GetCorePrinterDriversW" winspool.drv ;
+	WString pszServer ;	// PWSTR
+	WString pszEnvironment ;	// PWSTR
+	WString pszzCoreDriverDependencies ;	// PWSTR
+	UInteger cCorePrinterDrivers ;
+	Pointer pCorePrinterDrivers ;	// CORE_PRINTER_DRIVERW*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/getdefaultprinter
+External_Function GetDefaultPrinterA "GetDefaultPrinterA" winspool.drv ;
+	Pointer pszBuffer ;	// PSTR
+	Pointer pcchBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getdefaultprinter
+External_Function GetDefaultPrinterW "GetDefaultPrinterW" winspool.drv ;
+	Pointer pszBuffer ;	// PWSTR
+	Pointer pcchBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getform
+External_Function GetFormA "GetFormA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pFormName ;	// PSTR
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getform
+External_Function GetFormW "GetFormW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pFormName ;	// PWSTR
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getjob
+External_Function GetJobA "GetJobA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	UInteger Level ;
+	Pointer pJob ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function GetJobNamedPropertyValue "GetJobNamedPropertyValue" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	WString pszName ;	// PWSTR
+	Pointer pValue ;	// PrintPropertyValue*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/getjob
+External_Function GetJobW "GetJobW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	UInteger Level ;
+	Pointer pJob ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprintexecutiondata
+External_Function GetPrintExecutionData "GetPrintExecutionData" winspool.drv ;
+	Pointer pData ;	// PRINT_EXECUTION_DATA*
+	Returns Integer	// BOOL
+
+External_Function GetPrintOutputInfo "GetPrintOutputInfo" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	WString pszPrinter ;	// PWSTR
+	Pointer phFile ;	// HANDLE*
+	Pointer ppszOutputFile ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprintprocessordirectory
+External_Function GetPrintProcessorDirectoryA "GetPrintProcessorDirectoryA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	UInteger Level ;
+	Pointer pPrintProcessorInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprintprocessordirectory
+External_Function GetPrintProcessorDirectoryW "GetPrintProcessorDirectoryW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	UInteger Level ;
+	Pointer pPrintProcessorInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinter
+External_Function GetPrinterA "GetPrinterA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pPrinter ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdata
+External_Function GetPrinterDataA "GetPrinterDataA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pValueName ;	// PSTR
+	Pointer pType ;	// UInteger*
+	Pointer pData ;	// UChar*
+	UInteger nSize ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdataex
+External_Function GetPrinterDataExA "GetPrinterDataExA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pKeyName ;	// PSTR
+	String pValueName ;	// PSTR
+	Pointer pType ;	// UInteger*
+	Pointer pData ;	// UChar*
+	UInteger nSize ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdataex
+External_Function GetPrinterDataExW "GetPrinterDataExW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pKeyName ;	// PWSTR
+	WString pValueName ;	// PWSTR
+	Pointer pType ;	// UInteger*
+	Pointer pData ;	// UChar*
+	UInteger nSize ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdata
+External_Function GetPrinterDataW "GetPrinterDataW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pValueName ;	// PWSTR
+	Pointer pType ;	// UInteger*
+	Pointer pData ;	// UChar*
+	UInteger nSize ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns UInteger
+
+External_Function GetPrinterDriver2A "GetPrinterDriver2A" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pEnvironment ;	// PSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriver2
+External_Function GetPrinterDriver2W "GetPrinterDriver2W" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pEnvironment ;	// PWSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriver
+External_Function GetPrinterDriverA "GetPrinterDriverA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pEnvironment ;	// PSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriverdirectory
+External_Function GetPrinterDriverDirectoryA "GetPrinterDriverDirectoryA" winspool.drv ;
+	String pName ;	// PSTR
+	String pEnvironment ;	// PSTR
+	UInteger Level ;
+	Pointer pDriverDirectory ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriverdirectory
+External_Function GetPrinterDriverDirectoryW "GetPrinterDriverDirectoryW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pEnvironment ;	// PWSTR
+	UInteger Level ;
+	Pointer pDriverDirectory ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriverpackagepath
+External_Function GetPrinterDriverPackagePathA "GetPrinterDriverPackagePathA" winspool.drv ;
+	String pszServer ;	// PSTR
+	String pszEnvironment ;	// PSTR
+	String pszLanguage ;	// PSTR
+	String pszPackageID ;	// PSTR
+	Pointer pszDriverPackageCab ;	// PSTR
+	UInteger cchDriverPackageCab ;
+	Pointer pcchRequiredSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriverpackagepath
+External_Function GetPrinterDriverPackagePathW "GetPrinterDriverPackagePathW" winspool.drv ;
+	WString pszServer ;	// PWSTR
+	WString pszEnvironment ;	// PWSTR
+	WString pszLanguage ;	// PWSTR
+	WString pszPackageID ;	// PWSTR
+	Pointer pszDriverPackageCab ;	// PWSTR
+	UInteger cchDriverPackageCab ;
+	Pointer pcchRequiredSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinterdriver
+External_Function GetPrinterDriverW "GetPrinterDriverW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pEnvironment ;	// PWSTR
+	UInteger Level ;
+	Pointer pDriverInfo ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getprinter
+External_Function GetPrinterW "GetPrinterW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pPrinter ;	// UChar*
+	UInteger cbBuf ;
+	Pointer pcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/getspoolfilehandle
+External_Function GetSpoolFileHandle "GetSpoolFileHandle" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/printdocs/installprinterdriverfrompackage
+External_Function InstallPrinterDriverFromPackageA "InstallPrinterDriverFromPackageA" winspool.drv ;
+	String pszServer ;	// PSTR
+	String pszInfPath ;	// PSTR
+	String pszDriverName ;	// PSTR
+	String pszEnvironment ;	// PSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/installprinterdriverfrompackage
+External_Function InstallPrinterDriverFromPackageW "InstallPrinterDriverFromPackageW" winspool.drv ;
+	WString pszServer ;	// PWSTR
+	WString pszInfPath ;	// PWSTR
+	WString pszDriverName ;	// PWSTR
+	WString pszEnvironment ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/isvaliddevmode
+External_Function IsValidDevmodeA "IsValidDevmodeA" winspool.drv ;
+	Pointer pDevmode ;	// DEVMODEA*
+	ULongPtr DevmodeSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/isvaliddevmode
+External_Function IsValidDevmodeW "IsValidDevmodeW" winspool.drv ;
+	Pointer pDevmode ;	// DEVMODEW*
+	ULongPtr DevmodeSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/openprinter2
+External_Function OpenPrinter2A "OpenPrinter2A" winspool.drv ;
+	String pPrinterName ;	// PSTR
+	Pointer phPrinter ;	// PRINTER_HANDLE*
+	Pointer pDefault ;	// PRINTER_DEFAULTSA*
+	Pointer pOptions ;	// PRINTER_OPTIONSA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/openprinter2
+External_Function OpenPrinter2W "OpenPrinter2W" winspool.drv ;
+	WString pPrinterName ;	// PWSTR
+	Pointer phPrinter ;	// PRINTER_HANDLE*
+	Pointer pDefault ;	// PRINTER_DEFAULTSW*
+	Pointer pOptions ;	// PRINTER_OPTIONSW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/openprinter
+External_Function OpenPrinterA "OpenPrinterA" winspool.drv ;
+	String pPrinterName ;	// PSTR
+	Pointer phPrinter ;	// PRINTER_HANDLE*
+	Pointer pDefault ;	// PRINTER_DEFAULTSA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/openprinter
+External_Function OpenPrinterW "OpenPrinterW" winspool.drv ;
+	WString pPrinterName ;	// PWSTR
+	Pointer phPrinter ;	// PRINTER_HANDLE*
+	Pointer pDefault ;	// PRINTER_DEFAULTSW*
+	Returns Integer	// BOOL
+
+External_Function PlayGdiScriptOnPrinterIC "PlayGdiScriptOnPrinterIC" winspool.drv ;
+	Pointer hPrinterIC ;	// HANDLE
+	Pointer pIn ;	// UChar*
+	UInteger cIn ;
+	Pointer pOut ;	// UChar*
+	UInteger cOut ;
+	UInteger ul ;
+	Returns Integer	// BOOL
+
+External_Function PrinterMessageBoxA "PrinterMessageBoxA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Error ;
+	Pointer hWnd ;	// HWND
+	String pText ;	// PSTR
+	String pCaption ;	// PSTR
+	UInteger dwType ;
+	Returns UInteger
+
+External_Function PrinterMessageBoxW "PrinterMessageBoxW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Error ;
+	Pointer hWnd ;	// HWND
+	WString pText ;	// PWSTR
+	WString pCaption ;	// PWSTR
+	UInteger dwType ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/printerproperties
+External_Function PrinterProperties "PrinterProperties" winspool.drv ;
+	Pointer hWnd ;	// HWND
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/readprinter
+External_Function ReadPrinter "ReadPrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pBuf ;	// Pointer*
+	UInteger cbBuf ;
+	Pointer pNoBytesRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/prnasnot/nf-prnasnot-registerforprintasyncnotifications
+External_Function RegisterForPrintAsyncNotifications "RegisterForPrintAsyncNotifications" winspool.drv ;
+	WString pszName ;	// PWSTR
+	Pointer pNotificationType ;	// Guid*
+	Integer eUserFilter ;	// PrintAsyncNotifyUserFilter
+	Integer eConversationStyle ;	// PrintAsyncNotifyConversationStyle
+	Pointer pCallback ;	// IPrintAsyncNotifyCallback
+	Pointer phNotify ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/reportjobprocessingprogress
+External_Function ReportJobProcessingProgress "ReportJobProcessingProgress" winspool.drv ;
+	Pointer printerHandle ;	// HANDLE
+	UInteger jobId ;
+	Integer jobOperation ;	// EPrintXPSJobOperation
+	Integer jobProgress ;	// EPrintXPSJobProgress
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/resetprinter
+External_Function ResetPrinterA "ResetPrinterA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pDefault ;	// PRINTER_DEFAULTSA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/resetprinter
+External_Function ResetPrinterW "ResetPrinterW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pDefault ;	// PRINTER_DEFAULTSW*
+	Returns Integer	// BOOL
+
+External_Function RouterFreeBidiResponseContainer "RouterFreeBidiResponseContainer" winspool.drv ;
+	Pointer pData ;	// BIDI_RESPONSE_CONTAINER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/schedulejob
+External_Function ScheduleJob "ScheduleJob" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setdefaultprinter
+External_Function SetDefaultPrinterA "SetDefaultPrinterA" winspool.drv ;
+	String pszPrinter ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setdefaultprinter
+External_Function SetDefaultPrinterW "SetDefaultPrinterW" winspool.drv ;
+	WString pszPrinter ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setform
+External_Function SetFormA "SetFormA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pFormName ;	// PSTR
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setform
+External_Function SetFormW "SetFormW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pFormName ;	// PWSTR
+	UInteger Level ;
+	Pointer pForm ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setjob
+External_Function SetJobA "SetJobA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	UInteger Level ;
+	Pointer pJob ;	// UChar*
+	UInteger Command ;
+	Returns Integer	// BOOL
+
+External_Function SetJobNamedProperty "SetJobNamedProperty" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	Pointer pProperty ;	// PrintNamedProperty*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/setjob
+External_Function SetJobW "SetJobW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	UInteger Level ;
+	Pointer pJob ;	// UChar*
+	UInteger Command ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setport
+External_Function SetPortA "SetPortA" winspool.drv ;
+	String pName ;	// PSTR
+	String pPortName ;	// PSTR
+	UInteger dwLevel ;
+	Pointer pPortInfo ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setport
+External_Function SetPortW "SetPortW" winspool.drv ;
+	WString pName ;	// PWSTR
+	WString pPortName ;	// PWSTR
+	UInteger dwLevel ;
+	Pointer pPortInfo ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setprinter
+External_Function SetPrinterA "SetPrinterA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pPrinter ;	// UChar*
+	UInteger Command ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/setprinterdata
+External_Function SetPrinterDataA "SetPrinterDataA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pValueName ;	// PSTR
+	UInteger Type ;
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/setprinterdataex
+External_Function SetPrinterDataExA "SetPrinterDataExA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	String pKeyName ;	// PSTR
+	String pValueName ;	// PSTR
+	UInteger Type ;
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/setprinterdataex
+External_Function SetPrinterDataExW "SetPrinterDataExW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pKeyName ;	// PWSTR
+	WString pValueName ;	// PWSTR
+	UInteger Type ;
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/setprinterdata
+External_Function SetPrinterDataW "SetPrinterDataW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	WString pValueName ;	// PWSTR
+	UInteger Type ;
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/setprinter
+External_Function SetPrinterW "SetPrinterW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pPrinter ;	// UChar*
+	UInteger Command ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/printdocs/startdocprinter
+External_Function StartDocPrinterA "StartDocPrinterA" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pDocInfo ;	// DOC_INFO_1A*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/startdocprinter
+External_Function StartDocPrinterW "StartDocPrinterW" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Level ;
+	Pointer pDocInfo ;	// DOC_INFO_1W*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/startpageprinter
+External_Function StartPagePrinter "StartPagePrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/prnasnot/nf-prnasnot-unregisterforprintasyncnotifications
+External_Function UnRegisterForPrintAsyncNotifications "UnRegisterForPrintAsyncNotifications" winspool.drv ;
+	Pointer param0 ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/uploadprinterdriverpackage
+External_Function UploadPrinterDriverPackageA "UploadPrinterDriverPackageA" winspool.drv ;
+	String pszServer ;	// PSTR
+	String pszInfPath ;	// PSTR
+	String pszEnvironment ;	// PSTR
+	UInteger dwFlags ;
+	Pointer hwnd ;	// HWND
+	Pointer pszDestInfPath ;	// PSTR
+	Pointer pcchDestInfPath ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/printdocs/uploadprinterdriverpackage
+External_Function UploadPrinterDriverPackageW "UploadPrinterDriverPackageW" winspool.drv ;
+	WString pszServer ;	// PWSTR
+	WString pszInfPath ;	// PWSTR
+	WString pszEnvironment ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer hwnd ;	// HWND
+	Pointer pszDestInfPath ;	// PWSTR
+	Pointer pcchDestInfPath ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WaitForPrinterChange "WaitForPrinterChange" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/printdocs/writeprinter
+External_Function WritePrinter "WritePrinter" winspool.drv ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pBuf ;	// Pointer*
+	UInteger cbBuf ;
+	Pointer pcWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function XcvDataW "XcvDataW" winspool.drv ;
+	Pointer hXcv ;	// HANDLE
+	WString pszDataName ;	// PWSTR
+	Pointer pInputData ;	// UChar*
+	UInteger cbInputData ;
+	Pointer pOutputData ;	// UChar*
+	UInteger cbOutputData ;
+	Pointer pcbOutputNeeded ;	// UInteger*
+	Pointer pdwStatus ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function AddPrintDeviceObject "AddPrintDeviceObject" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer phDeviceObject ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function AppendPrinterNotifyInfoData "AppendPrinterNotifyInfoData" SPOOLSS.dll ;
+	Pointer pInfoDest ;	// PRINTER_NOTIFY_INFO*
+	Pointer pDataSrc ;	// PRINTER_NOTIFY_INFO_DATA*
+	UInteger fdwFlags ;
+	Returns Integer	// BOOL
+
+External_Function CallRouterFindFirstPrinterChangeNotification "CallRouterFindFirstPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinterRPC ;	// HANDLE
+	UInteger fdwFilterFlags ;
+	UInteger fdwOptions ;
+	Pointer hNotify ;	// HANDLE
+	Pointer pPrinterNotifyOptions ;	// PRINTER_NOTIFY_OPTIONS*
+	Returns UInteger
+
+External_Function GetJobAttributes "GetJobAttributes" SPOOLSS.dll ;
+	WString pPrinterName ;	// PWSTR
+	Pointer pDevmode ;	// DEVMODEW*
+	Pointer pAttributeInfo ;	// ATTRIBUTE_INFO_3*
+	Returns Integer	// BOOL
+
+External_Function GetJobAttributesEx "GetJobAttributesEx" SPOOLSS.dll ;
+	WString pPrinterName ;	// PWSTR
+	Pointer pDevmode ;	// DEVMODEW*
+	UInteger dwLevel ;
+	Pointer pAttributeInfo ;	// UChar*
+	UInteger nSize ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+External_Function ImpersonatePrinterClient "ImpersonatePrinterClient" SPOOLSS.dll ;
+	Pointer hToken ;	// HANDLE
+	Returns Integer	// BOOL
+
+External_Function PartialReplyPrinterChangeNotification "PartialReplyPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pDataSrc ;	// PRINTER_NOTIFY_INFO_DATA*
+	Returns Integer	// BOOL
+
+External_Function ProvidorFindClosePrinterChangeNotification "ProvidorFindClosePrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+External_Function ProvidorFindFirstPrinterChangeNotification "ProvidorFindFirstPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger fdwFlags ;
+	UInteger fdwOptions ;
+	Pointer hNotify ;	// HANDLE
+	Pointer pPrinterNotifyOptions ;	// Pointer*
+	Pointer pvReserved1 ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function RemovePrintDeviceObject "RemovePrintDeviceObject" SPOOLSS.dll ;
+	Pointer hDeviceObject ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function ReplyPrinterChangeNotification "ReplyPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger fdwChangeFlags ;
+	Pointer pdwResult ;	// UInteger*
+	Pointer pPrinterNotifyInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function ReplyPrinterChangeNotificationEx "ReplyPrinterChangeNotificationEx" SPOOLSS.dll ;
+	Pointer hNotify ;	// HANDLE
+	UInteger dwColor ;
+	UInteger fdwFlags ;
+	Pointer pdwResult ;	// UInteger*
+	Pointer pPrinterNotifyInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function RevertToPrinterSelf "RevertToPrinterSelf" SPOOLSS.dll ;
+	Returns Pointer	// HANDLE
+
+External_Function RouterAllocBidiMem "RouterAllocBidiMem" SPOOLSS.dll ;
+	ULongPtr NumBytes ;
+	Returns Pointer	// Pointer*
+
+
+Procedure DataFlex_Init
+End_Procedure
+

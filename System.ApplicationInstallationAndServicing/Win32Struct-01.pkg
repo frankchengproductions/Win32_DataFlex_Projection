@@ -1,0 +1,175 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-actctxa
+Struct ACTCTXA
+	UInteger cbSize
+	UInteger dwFlags
+	Pointer lpSource										// PSTR
+	UShort wProcessorArchitecture
+	UShort wLangId
+	Integer iMissingAlignment1
+	Pointer lpAssemblyDirectory								// PSTR
+	Pointer lpResourceName									// PSTR
+	Pointer lpApplicationName								// PSTR
+	Pointer hModule											// HMODULE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-actctxw
+Struct ACTCTXW
+	UInteger cbSize
+	UInteger dwFlags
+	Pointer lpSource										// PWSTR
+	UShort wProcessorArchitecture
+	UShort wLangId
+	Integer iMissingAlignment1
+	Pointer lpAssemblyDirectory								// PWSTR
+	Pointer lpResourceName									// PWSTR
+	Pointer lpApplicationName								// PWSTR
+	Pointer hModule											// HMODULE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-actctx_section_keyed_data
+Struct ACTCTX_SECTION_KEYED_DATA
+	UInteger cbSize
+	UInteger ulDataFormatVersion
+	Pointer lpData											// Pointer*
+	UInteger ulLength
+	Integer iMissingAlignment1
+	Pointer lpSectionGlobalData								// Pointer*
+	UInteger ulSectionGlobalDataLength
+	Integer iMissingAlignment2
+	Pointer lpSectionBase									// Pointer*
+	UInteger ulSectionTotalLength
+	Integer iMissingAlignment3
+	Pointer hActCtx											// HANDLE
+	UInteger ulAssemblyRosterIndex
+	UInteger ulFlags
+	ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA AssemblyMetadata
+End_Struct
+
+Struct DELTA_HASH
+	UInteger HashSize
+	UChar[32] HashValue
+End_Struct
+
+Struct DELTA_HEADER_INFO
+	Bigint FileTypeSet
+	Bigint FileType
+	Bigint Flags
+	ULongPtr TargetSize
+	FILETIME TargetFileTime
+	UInteger TargetHashAlgId								// ALG_ID
+	DELTA_HASH TargetHash
+End_Struct
+
+Struct DELTA_INPUT
+	UChar[8] UnionName1
+	ULongPtr uSize
+	Integer Editable										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DELTA_OUTPUT
+	Pointer lpStart											// Pointer*
+	ULongPtr uSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msi/ns-msi-msifilehashinfo
+Struct MSIFILEHASHINFO
+	UInteger dwFileHashInfoSize
+	UInteger[4] dwData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msi/ns-msi-msipatchsequenceinfoa
+Struct MSIPATCHSEQUENCEINFOA
+	Pointer szPatchData										// PSTR
+	Integer ePatchDataType									// MSIPATCHDATATYPE
+	UInteger dwOrder
+	UInteger uStatus
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msi/ns-msi-msipatchsequenceinfow
+Struct MSIPATCHSEQUENCEINFOW
+	Pointer szPatchData										// PWSTR
+	Integer ePatchDataType									// MSIPATCHDATATYPE
+	UInteger dwOrder
+	UInteger uStatus
+	Integer iMissingAlignment1
+End_Struct
+
+Struct PATCH_IGNORE_RANGE
+	UInteger OffsetInOldFile
+	UInteger LengthInBytes
+End_Struct
+
+Struct PATCH_INTERLEAVE_MAP
+	UInteger CountRanges
+	UChar[4] UnionName1
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO_A
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	Pointer OldFileName										// PSTR
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO_H
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	Pointer OldFileHandle									// HANDLE
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO_W
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	Pointer OldFileName										// PWSTR
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OPTION_DATA
+	UInteger SizeOfThisStruct
+	UInteger SymbolOptionFlags
+	Pointer NewFileSymbolPath								// PSTR
+	Pointer OldFileSymbolPathArray							// PSTR*
+	UInteger ExtendedOptionFlags
+	Integer iMissingAlignment1
+	Pointer SymLoadCallback									// PPATCH_SYMLOAD_CALLBACK
+	Pointer SymLoadContext									// Pointer*
+	Pointer InterleaveMapArray								// PATCH_INTERLEAVE_MAP**
+	UInteger MaxLzxWindowSize
+	Integer iMissingAlignment2
+End_Struct
+
+Struct PATCH_RETAIN_RANGE
+	UInteger OffsetInOldFile
+	UInteger LengthInBytes
+	UInteger OffsetInNewFile
+End_Struct
+
+Struct PROTECTED_FILE_DATA
+	UShort[260] FileName
+	UInteger FileNumber
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

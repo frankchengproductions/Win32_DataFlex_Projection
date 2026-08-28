@@ -1,0 +1,562 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pifmgr_closeproperties
+External_Function PifMgr_CloseProperties "PifMgr_CloseProperties" SHELL32.dll ;
+	Pointer hProps ;	// HANDLE
+	UInteger flOpt ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pifmgr_getproperties
+External_Function PifMgr_GetProperties "PifMgr_GetProperties" SHELL32.dll ;
+	Pointer hProps ;	// HANDLE
+	String pszGroup ;	// PSTR
+	Pointer lpProps ;	// Pointer*
+	Integer cbProps ;
+	UInteger flOpt ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pifmgr_openproperties
+External_Function PifMgr_OpenProperties "PifMgr_OpenProperties" SHELL32.dll ;
+	WString pszApp ;	// PWSTR
+	WString pszPIF ;	// PWSTR
+	UInteger hInf ;
+	UInteger flOpt ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pifmgr_setproperties
+External_Function PifMgr_SetProperties "PifMgr_SetProperties" SHELL32.dll ;
+	Pointer hProps ;	// HANDLE
+	String pszGroup ;	// PSTR
+	Pointer lpProps ;	// Pointer*
+	Integer cbProps ;
+	UInteger flOpt ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl/nf-shobjidl-shadddefaultpropertiesbyext
+External_Function SHAddDefaultPropertiesByExt "SHAddDefaultPropertiesByExt" SHELL32.dll ;
+	WString pszExt ;	// PWSTR
+	Pointer pPropStore ;	// IPropertyStore
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetpropertystoreforwindow
+External_Function SHGetPropertyStoreForWindow "SHGetPropertyStoreForWindow" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgetpropertystorefromidlist
+External_Function SHGetPropertyStoreFromIDList "SHGetPropertyStoreFromIDList" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Integer flags ;	// GETPROPERTYSTOREFLAGS
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgetpropertystorefromparsingname
+External_Function SHGetPropertyStoreFromParsingName "SHGetPropertyStoreFromParsingName" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Pointer pbc ;	// IBindCtx
+	Integer flags ;	// GETPROPERTYSTOREFLAGS
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shpropstgcreate
+External_Function SHPropStgCreate "SHPropStgCreate" SHELL32.dll ;
+	Pointer psstg ;	// IPropertySetStorage
+	Pointer fmtid ;	// Guid*
+	Pointer pclsid ;	// Guid*
+	UInteger grfFlags ;
+	UInteger grfMode ;
+	UInteger dwDisposition ;
+	Pointer ppstg ;	// IPropertyStorage*
+	Pointer puCodePage ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shpropstgreadmultiple
+External_Function SHPropStgReadMultiple "SHPropStgReadMultiple" SHELL32.dll ;
+	Pointer pps ;	// IPropertyStorage
+	UInteger uCodePage ;
+	UInteger cpspec ;
+	Pointer rgpspec ;	// PROPSPEC*
+	Pointer rgvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shpropstgwritemultiple
+External_Function SHPropStgWriteMultiple "SHPropStgWriteMultiple" SHELL32.dll ;
+	Pointer pps ;	// IPropertyStorage
+	Pointer puCodePage ;	// UInteger*
+	UInteger cpspec ;
+	Pointer rgpspec ;	// PROPSPEC*
+	Pointer rgvar ;	// PROPVARIANT*
+	UInteger propidNameFirst ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscoercetocanonicalvalue
+External_Function PSCoerceToCanonicalValue "PSCoerceToCanonicalValue" PROPSYS.dll ;
+	Pointer key ;	// PROPERTYKEY*
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreateadapterfrompropertystore
+External_Function PSCreateAdapterFromPropertyStore "PSCreateAdapterFromPropertyStore" PROPSYS.dll ;
+	Pointer pps ;	// IPropertyStore
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatedelayedmultiplexpropertystore
+External_Function PSCreateDelayedMultiplexPropertyStore "PSCreateDelayedMultiplexPropertyStore" PROPSYS.dll ;
+	Integer flags ;	// GETPROPERTYSTOREFLAGS
+	Pointer pdpsf ;	// IDelayedPropertyStoreFactory
+	Pointer rgStoreIds ;	// UInteger*
+	UInteger cStores ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatememorypropertystore
+External_Function PSCreateMemoryPropertyStore "PSCreateMemoryPropertyStore" PROPSYS.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatemultiplexpropertystore
+External_Function PSCreateMultiplexPropertyStore "PSCreateMultiplexPropertyStore" PROPSYS.dll ;
+	Pointer prgpunkStores ;	// IUnknown*
+	UInteger cStores ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatepropertychangearray
+External_Function PSCreatePropertyChangeArray "PSCreatePropertyChangeArray" PROPSYS.dll ;
+	Pointer rgpropkey ;	// PROPERTYKEY*
+	Pointer rgflags ;	// PKA_FLAGS*
+	Pointer rgpropvar ;	// PROPVARIANT*
+	UInteger cChanges ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatepropertystorefromobject
+External_Function PSCreatePropertyStoreFromObject "PSCreatePropertyStoreFromObject" PROPSYS.dll ;
+	Pointer punk ;	// IUnknown
+	UInteger grfMode ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatepropertystorefrompropertysetstorage
+External_Function PSCreatePropertyStoreFromPropertySetStorage "PSCreatePropertyStoreFromPropertySetStorage" PROPSYS.dll ;
+	Pointer ppss ;	// IPropertySetStorage
+	UInteger grfMode ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pscreatesimplepropertychange
+External_Function PSCreateSimplePropertyChange "PSCreateSimplePropertyChange" PROPSYS.dll ;
+	Integer flags ;	// PKA_FLAGS
+	Pointer key ;	// PROPERTYKEY*
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psenumeratepropertydescriptions
+External_Function PSEnumeratePropertyDescriptions "PSEnumeratePropertyDescriptions" PROPSYS.dll ;
+	Integer filterOn ;	// PROPDESC_ENUMFILTER
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psformatfordisplay
+External_Function PSFormatForDisplay "PSFormatForDisplay" PROPSYS.dll ;
+	Pointer propkey ;	// PROPERTYKEY*
+	Pointer propvar ;	// PROPVARIANT*
+	Integer pdfFlags ;	// PROPDESC_FORMAT_FLAGS
+	Pointer pwszText ;	// PWSTR
+	UInteger cchText ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psformatfordisplayalloc
+External_Function PSFormatForDisplayAlloc "PSFormatForDisplayAlloc" PROPSYS.dll ;
+	Pointer key ;	// PROPERTYKEY*
+	Pointer propvar ;	// PROPVARIANT*
+	Integer pdff ;	// PROPDESC_FORMAT_FLAGS
+	Pointer ppszDisplay ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psformatpropertyvalue
+External_Function PSFormatPropertyValue "PSFormatPropertyValue" PROPSYS.dll ;
+	Pointer pps ;	// IPropertyStore
+	Pointer ppd ;	// IPropertyDescription
+	Integer pdff ;	// PROPDESC_FORMAT_FLAGS
+	Pointer ppszDisplay ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetimagereferenceforvalue
+External_Function PSGetImageReferenceForValue "PSGetImageReferenceForValue" PROPSYS.dll ;
+	Pointer propkey ;	// PROPERTYKEY*
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer ppszImageRes ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetitempropertyhandler
+External_Function PSGetItemPropertyHandler "PSGetItemPropertyHandler" PROPSYS.dll ;
+	Pointer punkItem ;	// IUnknown
+	Integer fReadWrite ;	// BOOL
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetitempropertyhandlerwithcreateobject
+External_Function PSGetItemPropertyHandlerWithCreateObject "PSGetItemPropertyHandlerWithCreateObject" PROPSYS.dll ;
+	Pointer punkItem ;	// IUnknown
+	Integer fReadWrite ;	// BOOL
+	Pointer punkCreateObject ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetnamefrompropertykey
+External_Function PSGetNameFromPropertyKey "PSGetNameFromPropertyKey" PROPSYS.dll ;
+	Pointer propkey ;	// PROPERTYKEY*
+	Pointer ppszCanonicalName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetnamedpropertyfrompropertystorage
+External_Function PSGetNamedPropertyFromPropertyStorage "PSGetNamedPropertyFromPropertyStorage" PROPSYS.dll ;
+	LongPtr psps ;	// PCUSERIALIZEDPROPSTORAGE
+	UInteger cb ;
+	WString pszName ;	// PWSTR
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescription
+External_Function PSGetPropertyDescription "PSGetPropertyDescription" PROPSYS.dll ;
+	Pointer propkey ;	// PROPERTYKEY*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescriptionbyname
+External_Function PSGetPropertyDescriptionByName "PSGetPropertyDescriptionByName" PROPSYS.dll ;
+	WString pszCanonicalName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertydescriptionlistfromstring
+External_Function PSGetPropertyDescriptionListFromString "PSGetPropertyDescriptionListFromString" PROPSYS.dll ;
+	WString pszPropList ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertyfrompropertystorage
+External_Function PSGetPropertyFromPropertyStorage "PSGetPropertyFromPropertyStorage" PROPSYS.dll ;
+	LongPtr psps ;	// PCUSERIALIZEDPROPSTORAGE
+	UInteger cb ;
+	Pointer rpkey ;	// PROPERTYKEY*
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertykeyfromname
+External_Function PSGetPropertyKeyFromName "PSGetPropertyKeyFromName" PROPSYS.dll ;
+	WString pszName ;	// PWSTR
+	Pointer ppropkey ;	// PROPERTYKEY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertysystem
+External_Function PSGetPropertySystem "PSGetPropertySystem" PROPSYS.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psgetpropertyvalue
+External_Function PSGetPropertyValue "PSGetPropertyValue" PROPSYS.dll ;
+	Pointer pps ;	// IPropertyStore
+	Pointer ppd ;	// IPropertyDescription
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pslookuppropertyhandlerclsid
+External_Function PSLookupPropertyHandlerCLSID "PSLookupPropertyHandlerCLSID" PROPSYS.dll ;
+	WString pszFilePath ;	// PWSTR
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_delete
+External_Function PSPropertyBag_Delete "PSPropertyBag_Delete" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readbool
+External_Function PSPropertyBag_ReadBOOL "PSPropertyBag_ReadBOOL" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readbstr
+External_Function PSPropertyBag_ReadBSTR "PSPropertyBag_ReadBSTR" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readdword
+External_Function PSPropertyBag_ReadDWORD "PSPropertyBag_ReadDWORD" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readguid
+External_Function PSPropertyBag_ReadGUID "PSPropertyBag_ReadGUID" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readint
+External_Function PSPropertyBag_ReadInt "PSPropertyBag_ReadInt" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readlong
+External_Function PSPropertyBag_ReadLONG "PSPropertyBag_ReadLONG" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readpointl
+External_Function PSPropertyBag_ReadPOINTL "PSPropertyBag_ReadPOINTL" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// POINTL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readpoints
+External_Function PSPropertyBag_ReadPOINTS "PSPropertyBag_ReadPOINTS" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// POINTS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readpropertykey
+External_Function PSPropertyBag_ReadPropertyKey "PSPropertyBag_ReadPropertyKey" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// PROPERTYKEY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readrectl
+External_Function PSPropertyBag_ReadRECTL "PSPropertyBag_ReadRECTL" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// RECTL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readshort
+External_Function PSPropertyBag_ReadSHORT "PSPropertyBag_ReadSHORT" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// Short*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readstr
+External_Function PSPropertyBag_ReadStr "PSPropertyBag_ReadStr" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// PWSTR
+	Integer characterCount ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readstralloc
+External_Function PSPropertyBag_ReadStrAlloc "PSPropertyBag_ReadStrAlloc" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readstream
+External_Function PSPropertyBag_ReadStream "PSPropertyBag_ReadStream" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// IStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readtype
+External_Function PSPropertyBag_ReadType "PSPropertyBag_ReadType" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer var ;	// VARIANT*
+	UShort type ;	// VARENUM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readulonglong
+External_Function PSPropertyBag_ReadULONGLONG "PSPropertyBag_ReadULONGLONG" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_readunknown
+External_Function PSPropertyBag_ReadUnknown "PSPropertyBag_ReadUnknown" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writebool
+External_Function PSPropertyBag_WriteBOOL "PSPropertyBag_WriteBOOL" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Integer value ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writebstr
+External_Function PSPropertyBag_WriteBSTR "PSPropertyBag_WriteBSTR" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// BSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writedword
+External_Function PSPropertyBag_WriteDWORD "PSPropertyBag_WriteDWORD" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	UInteger value ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writeguid
+External_Function PSPropertyBag_WriteGUID "PSPropertyBag_WriteGUID" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writeint
+External_Function PSPropertyBag_WriteInt "PSPropertyBag_WriteInt" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Integer value ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writelong
+External_Function PSPropertyBag_WriteLONG "PSPropertyBag_WriteLONG" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Integer value ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writepointl
+External_Function PSPropertyBag_WritePOINTL "PSPropertyBag_WritePOINTL" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// POINTL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writepoints
+External_Function PSPropertyBag_WritePOINTS "PSPropertyBag_WritePOINTS" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// POINTS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writepropertykey
+External_Function PSPropertyBag_WritePropertyKey "PSPropertyBag_WritePropertyKey" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// PROPERTYKEY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writerectl
+External_Function PSPropertyBag_WriteRECTL "PSPropertyBag_WriteRECTL" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// RECTL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writeshort
+External_Function PSPropertyBag_WriteSHORT "PSPropertyBag_WriteSHORT" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Short value ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writestr
+External_Function PSPropertyBag_WriteStr "PSPropertyBag_WriteStr" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	WString value ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writestream
+External_Function PSPropertyBag_WriteStream "PSPropertyBag_WriteStream" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer value ;	// IStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writeulonglong
+External_Function PSPropertyBag_WriteULONGLONG "PSPropertyBag_WriteULONGLONG" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	UBigint value ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertybag_writeunknown
+External_Function PSPropertyBag_WriteUnknown "PSPropertyBag_WriteUnknown" PROPSYS.dll ;
+	Pointer propBag ;	// IPropertyBag
+	WString propName ;	// PWSTR
+	Pointer punk ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pspropertykeyfromstring
+External_Function PSPropertyKeyFromString "PSPropertyKeyFromString" PROPSYS.dll ;
+	WString pszString ;	// PWSTR
+	Pointer pkey ;	// PROPERTYKEY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psrefreshpropertyschema
+External_Function PSRefreshPropertySchema "PSRefreshPropertySchema" PROPSYS.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psregisterpropertyschema
+External_Function PSRegisterPropertySchema "PSRegisterPropertySchema" PROPSYS.dll ;
+	WString pszPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-pssetpropertyvalue
+External_Function PSSetPropertyValue "PSSetPropertyValue" PROPSYS.dll ;
+	Pointer pps ;	// IPropertyStore
+	Pointer ppd ;	// IPropertyDescription
+	Pointer propvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psstringfrompropertykey
+External_Function PSStringFromPropertyKey "PSStringFromPropertyKey" PROPSYS.dll ;
+	Pointer pkey ;	// PROPERTYKEY*
+	Pointer psz ;	// PWSTR
+	UInteger cch ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-psunregisterpropertyschema
+External_Function PSUnregisterPropertySchema "PSUnregisterPropertySchema" PROPSYS.dll ;
+	WString pszPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

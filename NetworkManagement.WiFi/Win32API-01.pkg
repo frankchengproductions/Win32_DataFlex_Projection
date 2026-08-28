@@ -1,0 +1,523 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdcancelopensession
+External_Function WFDCancelOpenSession "WFDCancelOpenSession" wlanapi.dll ;
+	Pointer hSessionHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdclosehandle
+External_Function WFDCloseHandle "WFDCloseHandle" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdclosesession
+External_Function WFDCloseSession "WFDCloseSession" wlanapi.dll ;
+	Pointer hSessionHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdopenhandle
+External_Function WFDOpenHandle "WFDOpenHandle" wlanapi.dll ;
+	UInteger dwClientVersion ;
+	Pointer pdwNegotiatedVersion ;	// UInteger*
+	Pointer phClientHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdopenlegacysession
+External_Function WFDOpenLegacySession "WFDOpenLegacySession" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pLegacyMacAddress ;	// UChar**
+	Pointer phSessionHandle ;	// HANDLE*
+	Pointer pGuidSessionInterface ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdstartopensession
+External_Function WFDStartOpenSession "WFDStartOpenSession" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pDeviceAddress ;	// UChar**
+	Pointer pvContext ;	// Pointer*
+	Pointer pfnCallback ;	// WFD_OPEN_SESSION_COMPLETE_CALLBACK
+	Pointer phSessionHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wfdupdatedevicevisibility
+External_Function WFDUpdateDeviceVisibility "WFDUpdateDeviceVisibility" wlanapi.dll ;
+	Pointer pDeviceAddress ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanallocatememory
+External_Function WlanAllocateMemory "WlanAllocateMemory" wlanapi.dll ;
+	UInteger dwMemorySize ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanclosehandle
+External_Function WlanCloseHandle "WlanCloseHandle" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanconnect
+External_Function WlanConnect "WlanConnect" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pConnectionParameters ;	// WLAN_CONNECTION_PARAMETERS*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+External_Function WlanConnect2 "WlanConnect2" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pConnectionParameters ;	// WLAN_CONNECTION_PARAMETERS_V2*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlandeleteprofile
+External_Function WlanDeleteProfile "WlanDeleteProfile" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlandeviceservicecommand
+External_Function WlanDeviceServiceCommand "WlanDeviceServiceCommand" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pDeviceServiceGuid ;	// Guid*
+	UInteger dwOpCode ;
+	UInteger dwInBufferSize ;
+	Pointer pInBuffer ;	// Pointer*
+	UInteger dwOutBufferSize ;
+	Pointer pOutBuffer ;	// Pointer*
+	Pointer pdwBytesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlandisconnect
+External_Function WlanDisconnect "WlanDisconnect" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanenuminterfaces
+External_Function WlanEnumInterfaces "WlanEnumInterfaces" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	Pointer ppInterfaceList ;	// WLAN_INTERFACE_INFO_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanextractpsdiedatalist
+External_Function WlanExtractPsdIEDataList "WlanExtractPsdIEDataList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	UInteger dwIeDataSize ;
+	Pointer pRawIeData ;	// UChar*
+	WString strFormat ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Pointer ppPsdIEDataList ;	// WLAN_RAW_DATA_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanfreememory
+External_Function WlanFreeMemory "WlanFreeMemory" wlanapi.dll ;
+	Pointer pMemory ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetavailablenetworklist
+External_Function WlanGetAvailableNetworkList "WlanGetAvailableNetworkList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	UInteger dwFlags ;
+	Pointer pReserved ;	// Pointer*
+	Pointer ppAvailableNetworkList ;	// WLAN_AVAILABLE_NETWORK_LIST**
+	Returns UInteger
+
+External_Function WlanGetAvailableNetworkList2 "WlanGetAvailableNetworkList2" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	UInteger dwFlags ;
+	Pointer pReserved ;	// Pointer*
+	Pointer ppAvailableNetworkList ;	// WLAN_AVAILABLE_NETWORK_LIST_V2**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetfilterlist
+External_Function WlanGetFilterList "WlanGetFilterList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer wlanFilterListType ;	// WLAN_FILTER_LIST_TYPE
+	Pointer pReserved ;	// Pointer*
+	Pointer ppNetworkList ;	// DOT11_NETWORK_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetinterfacecapability
+External_Function WlanGetInterfaceCapability "WlanGetInterfaceCapability" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pReserved ;	// Pointer*
+	Pointer ppCapability ;	// WLAN_INTERFACE_CAPABILITY**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetnetworkbsslist
+External_Function WlanGetNetworkBssList "WlanGetNetworkBssList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pDot11Ssid ;	// DOT11_SSID*
+	Integer dot11BssType ;	// DOT11_BSS_TYPE
+	Integer bSecurityEnabled ;	// BOOL
+	Pointer pReserved ;	// Pointer*
+	Pointer ppWlanBssList ;	// WLAN_BSS_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetprofile
+External_Function WlanGetProfile "WlanGetProfile" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Pointer pstrProfileXml ;	// PWSTR*
+	Pointer pdwFlags ;	// UInteger*
+	Pointer pdwGrantedAccess ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetprofilecustomuserdata
+External_Function WlanGetProfileCustomUserData "WlanGetProfileCustomUserData" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Pointer pdwDataSize ;	// UInteger*
+	Pointer ppData ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetprofilelist
+External_Function WlanGetProfileList "WlanGetProfileList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pReserved ;	// Pointer*
+	Pointer ppProfileList ;	// WLAN_PROFILE_INFO_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetsecuritysettings
+External_Function WlanGetSecuritySettings "WlanGetSecuritySettings" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer SecurableObject ;	// WLAN_SECURABLE_OBJECT
+	Pointer pValueType ;	// WLAN_OPCODE_VALUE_TYPE*
+	Pointer pstrCurrentSDDL ;	// PWSTR*
+	Pointer pdwGrantedAccess ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlangetsupporteddeviceservices
+External_Function WlanGetSupportedDeviceServices "WlanGetSupportedDeviceServices" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer ppDevSvcGuidList ;	// WLAN_DEVICE_SERVICE_GUID_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkforcestart
+External_Function WlanHostedNetworkForceStart "WlanHostedNetworkForceStart" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkforcestop
+External_Function WlanHostedNetworkForceStop "WlanHostedNetworkForceStop" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkinitsettings
+External_Function WlanHostedNetworkInitSettings "WlanHostedNetworkInitSettings" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkqueryproperty
+External_Function WlanHostedNetworkQueryProperty "WlanHostedNetworkQueryProperty" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer OpCode ;	// WLAN_HOSTED_NETWORK_OPCODE
+	Pointer pdwDataSize ;	// UInteger*
+	Pointer ppvData ;	// Pointer**
+	Pointer pWlanOpcodeValueType ;	// WLAN_OPCODE_VALUE_TYPE*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkquerysecondarykey
+External_Function WlanHostedNetworkQuerySecondaryKey "WlanHostedNetworkQuerySecondaryKey" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pdwKeyLength ;	// UInteger*
+	Pointer ppucKeyData ;	// UChar**
+	Pointer pbIsPassPhrase ;	// BOOL*
+	Pointer pbPersistent ;	// BOOL*
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkquerystatus
+External_Function WlanHostedNetworkQueryStatus "WlanHostedNetworkQueryStatus" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer ppWlanHostedNetworkStatus ;	// WLAN_HOSTED_NETWORK_STATUS**
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkrefreshsecuritysettings
+External_Function WlanHostedNetworkRefreshSecuritySettings "WlanHostedNetworkRefreshSecuritySettings" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworksetproperty
+External_Function WlanHostedNetworkSetProperty "WlanHostedNetworkSetProperty" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer OpCode ;	// WLAN_HOSTED_NETWORK_OPCODE
+	UInteger dwDataSize ;
+	Pointer pvData ;	// Pointer*
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworksetsecondarykey
+External_Function WlanHostedNetworkSetSecondaryKey "WlanHostedNetworkSetSecondaryKey" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	UInteger dwKeyLength ;
+	Pointer pucKeyData ;	// UChar*
+	Integer bIsPassPhrase ;	// BOOL
+	Integer bPersistent ;	// BOOL
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkstartusing
+External_Function WlanHostedNetworkStartUsing "WlanHostedNetworkStartUsing" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanhostednetworkstopusing
+External_Function WlanHostedNetworkStopUsing "WlanHostedNetworkStopUsing" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pFailReason ;	// WLAN_HOSTED_NETWORK_REASON*
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanihvcontrol
+External_Function WlanIhvControl "WlanIhvControl" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Integer Type ;	// WLAN_IHV_CONTROL_TYPE
+	UInteger dwInBufferSize ;
+	Pointer pInBuffer ;	// Pointer*
+	UInteger dwOutBufferSize ;
+	Pointer pOutBuffer ;	// Pointer*
+	Pointer pdwBytesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanopenhandle
+External_Function WlanOpenHandle "WlanOpenHandle" wlanapi.dll ;
+	UInteger dwClientVersion ;
+	Pointer pReserved ;	// Pointer*
+	Pointer pdwNegotiatedVersion ;	// UInteger*
+	Pointer phClientHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanqueryautoconfigparameter
+External_Function WlanQueryAutoConfigParameter "WlanQueryAutoConfigParameter" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer OpCode ;	// WLAN_AUTOCONF_OPCODE
+	Pointer pReserved ;	// Pointer*
+	Pointer pdwDataSize ;	// UInteger*
+	Pointer ppData ;	// Pointer**
+	Pointer pWlanOpcodeValueType ;	// WLAN_OPCODE_VALUE_TYPE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanqueryinterface
+External_Function WlanQueryInterface "WlanQueryInterface" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Integer OpCode ;	// WLAN_INTF_OPCODE
+	Pointer pReserved ;	// Pointer*
+	Pointer pdwDataSize ;	// UInteger*
+	Pointer ppData ;	// Pointer**
+	Pointer pWlanOpcodeValueType ;	// WLAN_OPCODE_VALUE_TYPE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanreasoncodetostring
+External_Function WlanReasonCodeToString "WlanReasonCodeToString" wlanapi.dll ;
+	UInteger dwReasonCode ;
+	UInteger dwBufferSize ;
+	WString pStringBuffer ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanregisterdeviceservicenotification
+External_Function WlanRegisterDeviceServiceNotification "WlanRegisterDeviceServiceNotification" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pDevSvcGuidList ;	// WLAN_DEVICE_SERVICE_GUID_LIST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanregisternotification
+External_Function WlanRegisterNotification "WlanRegisterNotification" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	UInteger dwNotifSource ;	// WLAN_NOTIFICATION_SOURCES
+	Integer bIgnoreDuplicate ;	// BOOL
+	Pointer funcCallback ;	// WLAN_NOTIFICATION_CALLBACK
+	Pointer pCallbackContext ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Pointer pdwPrevNotifSource ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanregistervirtualstationnotification
+External_Function WlanRegisterVirtualStationNotification "WlanRegisterVirtualStationNotification" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer bRegister ;	// BOOL
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanrenameprofile
+External_Function WlanRenameProfile "WlanRenameProfile" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strOldProfileName ;	// PWSTR
+	WString strNewProfileName ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansavetemporaryprofile
+External_Function WlanSaveTemporaryProfile "WlanSaveTemporaryProfile" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	WString strAllUserProfileSecurity ;	// PWSTR
+	UInteger dwFlags ;
+	Integer bOverWrite ;	// BOOL
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanscan
+External_Function WlanScan "WlanScan" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer pDot11Ssid ;	// DOT11_SSID*
+	Pointer pIeData ;	// WLAN_RAW_DATA*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetautoconfigparameter
+External_Function WlanSetAutoConfigParameter "WlanSetAutoConfigParameter" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer OpCode ;	// WLAN_AUTOCONF_OPCODE
+	UInteger dwDataSize ;
+	Pointer pData ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetfilterlist
+External_Function WlanSetFilterList "WlanSetFilterList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer wlanFilterListType ;	// WLAN_FILTER_LIST_TYPE
+	Pointer pNetworkList ;	// DOT11_NETWORK_LIST*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetinterface
+External_Function WlanSetInterface "WlanSetInterface" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	Integer OpCode ;	// WLAN_INTF_OPCODE
+	UInteger dwDataSize ;
+	Pointer pData ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofile
+External_Function WlanSetProfile "WlanSetProfile" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	UInteger dwFlags ;
+	WString strProfileXml ;	// PWSTR
+	WString strAllUserProfileSecurity ;	// PWSTR
+	Integer bOverwrite ;	// BOOL
+	Pointer pReserved ;	// Pointer*
+	Pointer pdwReasonCode ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofilecustomuserdata
+External_Function WlanSetProfileCustomUserData "WlanSetProfileCustomUserData" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	UInteger dwDataSize ;
+	Pointer pData ;	// UChar*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofileeapuserdata
+External_Function WlanSetProfileEapUserData "WlanSetProfileEapUserData" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	EAP_METHOD_TYPE eapType ;
+	UInteger dwFlags ;	// WLAN_SET_EAPHOST_FLAGS
+	UInteger dwEapUserDataSize ;
+	Pointer pbEapUserData ;	// UChar*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofileeapxmluserdata
+External_Function WlanSetProfileEapXmlUserData "WlanSetProfileEapXmlUserData" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	UInteger dwFlags ;	// WLAN_SET_EAPHOST_FLAGS
+	WString strEapXmlUserData ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofilelist
+External_Function WlanSetProfileList "WlanSetProfileList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	UInteger dwItems ;
+	Pointer strProfileNames ;	// PWSTR*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetprofileposition
+External_Function WlanSetProfilePosition "WlanSetProfilePosition" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Pointer pInterfaceGuid ;	// Guid*
+	WString strProfileName ;	// PWSTR
+	UInteger dwPosition ;
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetpsdiedatalist
+External_Function WlanSetPsdIEDataList "WlanSetPsdIEDataList" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	WString strFormat ;	// PWSTR
+	Pointer pPsdIEDataList ;	// WLAN_RAW_DATA_LIST*
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlansetsecuritysettings
+External_Function WlanSetSecuritySettings "WlanSetSecuritySettings" wlanapi.dll ;
+	Pointer hClientHandle ;	// HANDLE
+	Integer SecurableObject ;	// WLAN_SECURABLE_OBJECT
+	WString strModifiedSDDL ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/nf-wlanapi-wlanuieditprofile
+External_Function WlanUIEditProfile "WlanUIEditProfile" wlanui.dll ;
+	UInteger dwClientVersion ;
+	WString wstrProfileName ;	// PWSTR
+	Pointer pInterfaceGuid ;	// Guid*
+	Pointer hWnd ;	// HWND
+	Integer wlStartPage ;	// WL_DISPLAY_PAGES
+	Pointer pReserved ;	// Pointer*
+	Pointer pWlanReasonCode ;	// UInteger*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

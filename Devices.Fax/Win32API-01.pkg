@@ -1,0 +1,407 @@
+Use UI
+
+External_Function FaxAbort "FaxAbort" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger JobId ;
+	Returns Integer	// BOOL
+
+External_Function FaxAccessCheck "FaxAccessCheck" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger AccessMask ;
+	Returns Integer	// BOOL
+
+External_Function FaxClose "FaxClose" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxcompletejobparamsa
+External_Function FaxCompleteJobParamsA "FaxCompleteJobParamsA" WINFAX.dll ;
+	Pointer JobParams ;	// FAX_JOB_PARAMA**
+	Pointer CoverpageInfo ;	// FAX_COVERPAGE_INFOA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxcompletejobparamsw
+External_Function FaxCompleteJobParamsW "FaxCompleteJobParamsW" WINFAX.dll ;
+	Pointer JobParams ;	// FAX_JOB_PARAMW**
+	Pointer CoverpageInfo ;	// FAX_COVERPAGE_INFOW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxconnectfaxservera
+External_Function FaxConnectFaxServerA "FaxConnectFaxServerA" WINFAX.dll ;
+	String MachineName ;	// PSTR
+	Pointer FaxHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxconnectfaxserverw
+External_Function FaxConnectFaxServerW "FaxConnectFaxServerW" WINFAX.dll ;
+	WString MachineName ;	// PWSTR
+	Pointer FaxHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenableroutingmethoda
+External_Function FaxEnableRoutingMethodA "FaxEnableRoutingMethodA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	String RoutingGuid ;	// PSTR
+	Integer Enabled ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenableroutingmethodw
+External_Function FaxEnableRoutingMethodW "FaxEnableRoutingMethodW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	WString RoutingGuid ;	// PWSTR
+	Integer Enabled ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumglobalroutinginfoa
+External_Function FaxEnumGlobalRoutingInfoA "FaxEnumGlobalRoutingInfoA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer RoutingInfo ;	// FAX_GLOBAL_ROUTING_INFOA**
+	Pointer MethodsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumglobalroutinginfow
+External_Function FaxEnumGlobalRoutingInfoW "FaxEnumGlobalRoutingInfoW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer RoutingInfo ;	// FAX_GLOBAL_ROUTING_INFOW**
+	Pointer MethodsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumjobsa
+External_Function FaxEnumJobsA "FaxEnumJobsA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer JobEntry ;	// FAX_JOB_ENTRYA**
+	Pointer JobsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumjobsw
+External_Function FaxEnumJobsW "FaxEnumJobsW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer JobEntry ;	// FAX_JOB_ENTRYW**
+	Pointer JobsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumportsa
+External_Function FaxEnumPortsA "FaxEnumPortsA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer PortInfo ;	// FAX_PORT_INFOA**
+	Pointer PortsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumportsw
+External_Function FaxEnumPortsW "FaxEnumPortsW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer PortInfo ;	// FAX_PORT_INFOW**
+	Pointer PortsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumroutingmethodsa
+External_Function FaxEnumRoutingMethodsA "FaxEnumRoutingMethodsA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer RoutingMethod ;	// FAX_ROUTING_METHODA**
+	Pointer MethodsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxenumroutingmethodsw
+External_Function FaxEnumRoutingMethodsW "FaxEnumRoutingMethodsW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer RoutingMethod ;	// FAX_ROUTING_METHODW**
+	Pointer MethodsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function FaxFreeBuffer "FaxFreeBuffer" WINFAX.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetconfigurationa
+External_Function FaxGetConfigurationA "FaxGetConfigurationA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer FaxConfig ;	// FAX_CONFIGURATIONA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetconfigurationw
+External_Function FaxGetConfigurationW "FaxGetConfigurationW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer FaxConfig ;	// FAX_CONFIGURATIONW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetdevicestatusa
+External_Function FaxGetDeviceStatusA "FaxGetDeviceStatusA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer DeviceStatus ;	// FAX_DEVICE_STATUSA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetdevicestatusw
+External_Function FaxGetDeviceStatusW "FaxGetDeviceStatusW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer DeviceStatus ;	// FAX_DEVICE_STATUSW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetjoba
+External_Function FaxGetJobA "FaxGetJobA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger JobId ;
+	Pointer JobEntry ;	// FAX_JOB_ENTRYA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetjobw
+External_Function FaxGetJobW "FaxGetJobW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger JobId ;
+	Pointer JobEntry ;	// FAX_JOB_ENTRYW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetloggingcategoriesa
+External_Function FaxGetLoggingCategoriesA "FaxGetLoggingCategoriesA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer Categories ;	// FAX_LOG_CATEGORYA**
+	Pointer NumberCategories ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetloggingcategoriesw
+External_Function FaxGetLoggingCategoriesW "FaxGetLoggingCategoriesW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer Categories ;	// FAX_LOG_CATEGORYW**
+	Pointer NumberCategories ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function FaxGetPageData "FaxGetPageData" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger JobId ;
+	Pointer Buffer ;	// UChar**
+	Pointer BufferSize ;	// UInteger*
+	Pointer ImageWidth ;	// UInteger*
+	Pointer ImageHeight ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetporta
+External_Function FaxGetPortA "FaxGetPortA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer PortInfo ;	// FAX_PORT_INFOA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetportw
+External_Function FaxGetPortW "FaxGetPortW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer PortInfo ;	// FAX_PORT_INFOW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetroutinginfoa
+External_Function FaxGetRoutingInfoA "FaxGetRoutingInfoA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	String RoutingGuid ;	// PSTR
+	Pointer RoutingInfoBuffer ;	// UChar**
+	Pointer RoutingInfoBufferSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxgetroutinginfow
+External_Function FaxGetRoutingInfoW "FaxGetRoutingInfoW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	WString RoutingGuid ;	// PWSTR
+	Pointer RoutingInfoBuffer ;	// UChar**
+	Pointer RoutingInfoBufferSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function FaxInitializeEventQueue "FaxInitializeEventQueue" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer CompletionPort ;	// HANDLE
+	ULongPtr CompletionKey ;
+	Pointer hWnd ;	// HWND
+	UInteger MessageStart ;
+	Returns Integer	// BOOL
+
+External_Function FaxOpenPort "FaxOpenPort" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger DeviceId ;
+	UInteger Flags ;
+	Pointer FaxPortHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxprintcoverpagea
+External_Function FaxPrintCoverPageA "FaxPrintCoverPageA" WINFAX.dll ;
+	Pointer FaxContextInfo ;	// FAX_CONTEXT_INFOA*
+	Pointer CoverPageInfo ;	// FAX_COVERPAGE_INFOA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxprintcoverpagew
+External_Function FaxPrintCoverPageW "FaxPrintCoverPageW" WINFAX.dll ;
+	Pointer FaxContextInfo ;	// FAX_CONTEXT_INFOW*
+	Pointer CoverPageInfo ;	// FAX_COVERPAGE_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxregisterroutingextensionw
+External_Function FaxRegisterRoutingExtensionW "FaxRegisterRoutingExtensionW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	WString ExtensionName ;	// PWSTR
+	WString FriendlyName ;	// PWSTR
+	WString ImageName ;	// PWSTR
+	Pointer CallBack ;	// PFAX_ROUTING_INSTALLATION_CALLBACKW
+	Pointer Context ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxregisterserviceproviderw
+External_Function FaxRegisterServiceProviderW "FaxRegisterServiceProviderW" WINFAX.dll ;
+	WString DeviceProvider ;	// PWSTR
+	WString FriendlyName ;	// PWSTR
+	WString ImageName ;	// PWSTR
+	WString TspName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsenddocumenta
+External_Function FaxSendDocumentA "FaxSendDocumentA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	String FileName ;	// PSTR
+	Pointer JobParams ;	// FAX_JOB_PARAMA*
+	Pointer CoverpageInfo ;	// FAX_COVERPAGE_INFOA*
+	Pointer FaxJobId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsenddocumentforbroadcasta
+External_Function FaxSendDocumentForBroadcastA "FaxSendDocumentForBroadcastA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	String FileName ;	// PSTR
+	Pointer FaxJobId ;	// UInteger*
+	Pointer FaxRecipientCallback ;	// PFAX_RECIPIENT_CALLBACKA
+	Pointer Context ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsenddocumentforbroadcastw
+External_Function FaxSendDocumentForBroadcastW "FaxSendDocumentForBroadcastW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	WString FileName ;	// PWSTR
+	Pointer FaxJobId ;	// UInteger*
+	Pointer FaxRecipientCallback ;	// PFAX_RECIPIENT_CALLBACKW
+	Pointer Context ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsenddocumentw
+External_Function FaxSendDocumentW "FaxSendDocumentW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	WString FileName ;	// PWSTR
+	Pointer JobParams ;	// FAX_JOB_PARAMW*
+	Pointer CoverpageInfo ;	// FAX_COVERPAGE_INFOW*
+	Pointer FaxJobId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetconfigurationa
+External_Function FaxSetConfigurationA "FaxSetConfigurationA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer FaxConfig ;	// FAX_CONFIGURATIONA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetconfigurationw
+External_Function FaxSetConfigurationW "FaxSetConfigurationW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer FaxConfig ;	// FAX_CONFIGURATIONW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetglobalroutinginfoa
+External_Function FaxSetGlobalRoutingInfoA "FaxSetGlobalRoutingInfoA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer RoutingInfo ;	// FAX_GLOBAL_ROUTING_INFOA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetglobalroutinginfow
+External_Function FaxSetGlobalRoutingInfoW "FaxSetGlobalRoutingInfoW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer RoutingInfo ;	// FAX_GLOBAL_ROUTING_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetjoba
+External_Function FaxSetJobA "FaxSetJobA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger JobId ;
+	UInteger Command ;
+	Pointer JobEntry ;	// FAX_JOB_ENTRYA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetjobw
+External_Function FaxSetJobW "FaxSetJobW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	UInteger JobId ;
+	UInteger Command ;
+	Pointer JobEntry ;	// FAX_JOB_ENTRYW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetloggingcategoriesa
+External_Function FaxSetLoggingCategoriesA "FaxSetLoggingCategoriesA" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer Categories ;	// FAX_LOG_CATEGORYA*
+	UInteger NumberCategories ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetloggingcategoriesw
+External_Function FaxSetLoggingCategoriesW "FaxSetLoggingCategoriesW" WINFAX.dll ;
+	Pointer FaxHandle ;	// HANDLE
+	Pointer Categories ;	// FAX_LOG_CATEGORYW*
+	UInteger NumberCategories ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetporta
+External_Function FaxSetPortA "FaxSetPortA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer PortInfo ;	// FAX_PORT_INFOA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetportw
+External_Function FaxSetPortW "FaxSetPortW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	Pointer PortInfo ;	// FAX_PORT_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetroutinginfoa
+External_Function FaxSetRoutingInfoA "FaxSetRoutingInfoA" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	String RoutingGuid ;	// PSTR
+	Pointer RoutingInfoBuffer ;	// UChar*
+	UInteger RoutingInfoBufferSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxsetroutinginfow
+External_Function FaxSetRoutingInfoW "FaxSetRoutingInfoW" WINFAX.dll ;
+	Pointer FaxPortHandle ;	// HANDLE
+	WString RoutingGuid ;	// PWSTR
+	Pointer RoutingInfoBuffer ;	// UChar*
+	UInteger RoutingInfoBufferSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxstartprintjoba
+External_Function FaxStartPrintJobA "FaxStartPrintJobA" WINFAX.dll ;
+	String PrinterName ;	// PSTR
+	Pointer PrintInfo ;	// FAX_PRINT_INFOA*
+	Pointer FaxJobId ;	// UInteger*
+	Pointer FaxContextInfo ;	// FAX_CONTEXT_INFOA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winfax/nf-winfax-faxstartprintjobw
+External_Function FaxStartPrintJobW "FaxStartPrintJobW" WINFAX.dll ;
+	WString PrinterName ;	// PWSTR
+	Pointer PrintInfo ;	// FAX_PRINT_INFOW*
+	Pointer FaxJobId ;	// UInteger*
+	Pointer FaxContextInfo ;	// FAX_CONTEXT_INFOW*
+	Returns Integer	// BOOL
+
+External_Function FaxUnregisterServiceProviderW "FaxUnregisterServiceProviderW" WINFAX.dll ;
+	WString DeviceProvider ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fxsutility/nf-fxsutility-cansendtofaxrecipient
+External_Function CanSendToFaxRecipient "CanSendToFaxRecipient" fxsutility.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fxsutility/nf-fxsutility-sendtofaxrecipient
+External_Function SendToFaxRecipient "SendToFaxRecipient" fxsutility.dll ;
+	Integer sndMode ;	// SendToMode
+	WString lpFileName ;	// PWSTR
+	Returns UInteger
+
+External_Function StiCreateInstanceW "StiCreateInstanceW" STI.dll ;
+	Pointer hinst ;	// HINSTANCE
+	UInteger dwVer ;
+	Pointer ppSti ;	// IStillImageW*
+	Pointer punkOuter ;	// IUnknown
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

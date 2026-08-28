@@ -1,0 +1,1201 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addresourceattributeace
+External_Function AddResourceAttributeAce "AddResourceAttributeAce" KERNEL32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	Pointer pAttributeInfo ;	// CLAIM_SECURITY_ATTRIBUTES_INFORMATION*
+	Pointer pReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addscopedpolicyidace
+External_Function AddScopedPolicyIDAce "AddScopedPolicyIDAce" KERNEL32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-checktokencapability
+External_Function CheckTokenCapability "CheckTokenCapability" KERNEL32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Pointer CapabilitySidToCheck ;	// PSID
+	Pointer HasCapability ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-checktokenmembershipex
+External_Function CheckTokenMembershipEx "CheckTokenMembershipEx" KERNEL32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Pointer SidToCheck ;	// PSID
+	UInteger Flags ;
+	Pointer IsMember ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getappcontainerace
+External_Function GetAppContainerAce "GetAppContainerAce" KERNEL32.dll ;
+	Pointer Acl ;	// ACL*
+	UInteger StartingAceIndex ;
+	Pointer AppContainerAce ;	// Pointer**
+	Pointer AppContainerAceIndex ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getcachedsigninglevel
+External_Function GetCachedSigningLevel "GetCachedSigningLevel" KERNEL32.dll ;
+	Pointer File ;	// HANDLE
+	Pointer Flags ;	// UInteger*
+	Pointer SigningLevel ;	// UInteger*
+	Pointer Thumbprint ;	// UChar*
+	Pointer ThumbprintSize ;	// UInteger*
+	Pointer ThumbprintAlgorithm ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setcachedsigninglevel
+External_Function SetCachedSigningLevel "SetCachedSigningLevel" KERNEL32.dll ;
+	Pointer SourceFiles ;	// HANDLE*
+	UInteger SourceFileCount ;
+	UInteger Flags ;
+	Pointer TargetFile ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getuserobjectsecurity
+External_Function GetUserObjectSecurity "GetUserObjectSecurity" USER32.dll ;
+	Pointer hObj ;	// HANDLE
+	Pointer pSIRequested ;	// UInteger*
+	Pointer pSID ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setuserobjectsecurity
+External_Function SetUserObjectSecurity "SetUserObjectSecurity" USER32.dll ;
+	Pointer hObj ;	// HANDLE
+	Pointer pSIRequested ;	// OBJECT_SECURITY_INFORMATION*
+	Pointer pSID ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheck
+External_Function AccessCheck "AccessCheck" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Pointer PrivilegeSet ;	// PRIVILEGE_SET*
+	Pointer PrivilegeSetLength ;	// UInteger*
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatus ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-accesscheckandauditalarma
+External_Function AccessCheckAndAuditAlarmA "AccessCheckAndAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	String ObjectTypeName ;	// PSTR
+	String ObjectName ;	// PSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger DesiredAccess ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatus ;	// BOOL*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheckandauditalarmw
+External_Function AccessCheckAndAuditAlarmW "AccessCheckAndAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	WString ObjectTypeName ;	// PWSTR
+	WString ObjectName ;	// PWSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger DesiredAccess ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatus ;	// BOOL*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheckbytype
+External_Function AccessCheckByType "AccessCheckByType" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Pointer PrivilegeSet ;	// PRIVILEGE_SET*
+	Pointer PrivilegeSetLength ;	// UInteger*
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatus ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-accesscheckbytypeandauditalarma
+External_Function AccessCheckByTypeAndAuditAlarmA "AccessCheckByTypeAndAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	String ObjectTypeName ;	// PSTR
+	String ObjectName ;	// PSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	UInteger DesiredAccess ;
+	Integer AuditType ;	// AUDIT_EVENT_TYPE
+	UInteger Flags ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatus ;	// BOOL*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheckbytypeandauditalarmw
+External_Function AccessCheckByTypeAndAuditAlarmW "AccessCheckByTypeAndAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	WString ObjectTypeName ;	// PWSTR
+	WString ObjectName ;	// PWSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	UInteger DesiredAccess ;
+	Integer AuditType ;	// AUDIT_EVENT_TYPE
+	UInteger Flags ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatus ;	// BOOL*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheckbytyperesultlist
+External_Function AccessCheckByTypeResultList "AccessCheckByTypeResultList" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Pointer PrivilegeSet ;	// PRIVILEGE_SET*
+	Pointer PrivilegeSetLength ;	// UInteger*
+	Pointer GrantedAccessList ;	// UInteger*
+	Pointer AccessStatusList ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-accesscheckbytyperesultlistandauditalarma
+External_Function AccessCheckByTypeResultListAndAuditAlarmA "AccessCheckByTypeResultListAndAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	String ObjectTypeName ;	// PSTR
+	String ObjectName ;	// PSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	UInteger DesiredAccess ;
+	Integer AuditType ;	// AUDIT_EVENT_TYPE
+	UInteger Flags ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatusList ;	// UInteger*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-accesscheckbytyperesultlistandauditalarmbyhandlea
+External_Function AccessCheckByTypeResultListAndAuditAlarmByHandleA "AccessCheckByTypeResultListAndAuditAlarmByHandleA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	Pointer ClientToken ;	// HANDLE
+	String ObjectTypeName ;	// PSTR
+	String ObjectName ;	// PSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	UInteger DesiredAccess ;
+	Integer AuditType ;	// AUDIT_EVENT_TYPE
+	UInteger Flags ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccess ;	// UInteger*
+	Pointer AccessStatusList ;	// UInteger*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheckbytyperesultlistandauditalarmbyhandlew
+External_Function AccessCheckByTypeResultListAndAuditAlarmByHandleW "AccessCheckByTypeResultListAndAuditAlarmByHandleW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	Pointer ClientToken ;	// HANDLE
+	WString ObjectTypeName ;	// PWSTR
+	WString ObjectName ;	// PWSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	UInteger DesiredAccess ;
+	Integer AuditType ;	// AUDIT_EVENT_TYPE
+	UInteger Flags ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccessList ;	// UInteger*
+	Pointer AccessStatusList ;	// UInteger*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-accesscheckbytyperesultlistandauditalarmw
+External_Function AccessCheckByTypeResultListAndAuditAlarmW "AccessCheckByTypeResultListAndAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	WString ObjectTypeName ;	// PWSTR
+	WString ObjectName ;	// PWSTR
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer PrincipalSelfSid ;	// PSID
+	UInteger DesiredAccess ;
+	Integer AuditType ;	// AUDIT_EVENT_TYPE
+	UInteger Flags ;
+	Pointer ObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Integer ObjectCreation ;	// BOOL
+	Pointer GrantedAccessList ;	// UInteger*
+	Pointer AccessStatusList ;	// UInteger*
+	Pointer pfGenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addaccessallowedace
+External_Function AddAccessAllowedAce "AddAccessAllowedAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addaccessallowedaceex
+External_Function AddAccessAllowedAceEx "AddAccessAllowedAceEx" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addaccessallowedobjectace
+External_Function AddAccessAllowedObjectAce "AddAccessAllowedObjectAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer ObjectTypeGuid ;	// Guid*
+	Pointer InheritedObjectTypeGuid ;	// Guid*
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addaccessdeniedace
+External_Function AddAccessDeniedAce "AddAccessDeniedAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addaccessdeniedaceex
+External_Function AddAccessDeniedAceEx "AddAccessDeniedAceEx" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addaccessdeniedobjectace
+External_Function AddAccessDeniedObjectAce "AddAccessDeniedObjectAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer ObjectTypeGuid ;	// Guid*
+	Pointer InheritedObjectTypeGuid ;	// Guid*
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addace
+External_Function AddAce "AddAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger dwStartingAceIndex ;
+	Pointer pAceList ;	// Pointer*
+	UInteger nAceListLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addauditaccessace
+External_Function AddAuditAccessAce "AddAuditAccessAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger dwAccessMask ;
+	Pointer pSid ;	// PSID
+	Integer bAuditSuccess ;	// BOOL
+	Integer bAuditFailure ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addauditaccessaceex
+External_Function AddAuditAccessAceEx "AddAuditAccessAceEx" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger dwAccessMask ;
+	Pointer pSid ;	// PSID
+	Integer bAuditSuccess ;	// BOOL
+	Integer bAuditFailure ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addauditaccessobjectace
+External_Function AddAuditAccessObjectAce "AddAuditAccessObjectAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger AccessMask ;
+	Pointer ObjectTypeGuid ;	// Guid*
+	Pointer InheritedObjectTypeGuid ;	// Guid*
+	Pointer pSid ;	// PSID
+	Integer bAuditSuccess ;	// BOOL
+	Integer bAuditFailure ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-addconditionalace
+External_Function AddConditionalAce "AddConditionalAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UChar AceType ;
+	UInteger AccessMask ;
+	Pointer pSid ;	// PSID
+	WString ConditionStr ;	// PWSTR
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-addmandatoryace
+External_Function AddMandatoryAce "AddMandatoryAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceRevision ;	// ACE_REVISION
+	UInteger AceFlags ;	// ACE_FLAGS
+	UInteger MandatoryPolicy ;
+	Pointer pLabelSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-adjusttokengroups
+External_Function AdjustTokenGroups "AdjustTokenGroups" ADVAPI32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Integer ResetToDefault ;	// BOOL
+	Pointer NewState ;	// TOKEN_GROUPS*
+	UInteger BufferLength ;
+	Pointer PreviousState ;	// TOKEN_GROUPS*
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-adjusttokenprivileges
+External_Function AdjustTokenPrivileges "AdjustTokenPrivileges" ADVAPI32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Integer DisableAllPrivileges ;	// BOOL
+	Pointer NewState ;	// TOKEN_PRIVILEGES*
+	UInteger BufferLength ;
+	Pointer PreviousState ;	// TOKEN_PRIVILEGES*
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-allocateandinitializesid
+External_Function AllocateAndInitializeSid "AllocateAndInitializeSid" ADVAPI32.dll ;
+	Pointer[6] pIdentifierAuthority ;	// SID_IDENTIFIER_AUTHORITY*
+	UChar nSubAuthorityCount ;
+	UInteger nSubAuthority0 ;
+	UInteger nSubAuthority1 ;
+	UInteger nSubAuthority2 ;
+	UInteger nSubAuthority3 ;
+	UInteger nSubAuthority4 ;
+	UInteger nSubAuthority5 ;
+	UInteger nSubAuthority6 ;
+	UInteger nSubAuthority7 ;
+	Pointer pSid ;	// PSID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-allocatelocallyuniqueid
+External_Function AllocateLocallyUniqueId "AllocateLocallyUniqueId" ADVAPI32.dll ;
+	Pointer Luid ;	// LUID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-areallaccessesgranted
+External_Function AreAllAccessesGranted "AreAllAccessesGranted" ADVAPI32.dll ;
+	UInteger GrantedAccess ;
+	UInteger DesiredAccess ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-areanyaccessesgranted
+External_Function AreAnyAccessesGranted "AreAnyAccessesGranted" ADVAPI32.dll ;
+	UInteger GrantedAccess ;
+	UInteger DesiredAccess ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-checktokenmembership
+External_Function CheckTokenMembership "CheckTokenMembership" ADVAPI32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Pointer SidToCheck ;	// PSID
+	Pointer IsMember ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-converttoautoinheritprivateobjectsecurity
+External_Function ConvertToAutoInheritPrivateObjectSecurity "ConvertToAutoInheritPrivateObjectSecurity" ADVAPI32.dll ;
+	Pointer ParentDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer CurrentSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer NewSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer ObjectType ;	// Guid*
+	UChar IsDirectoryObject ;	// BOOLEAN
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-copysid
+External_Function CopySid "CopySid" ADVAPI32.dll ;
+	UInteger nDestinationSidLength ;
+	Pointer pDestinationSid ;	// PSID
+	Pointer pSourceSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-createprivateobjectsecurity
+External_Function CreatePrivateObjectSecurity "CreatePrivateObjectSecurity" ADVAPI32.dll ;
+	Pointer ParentDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer CreatorDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer NewDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Integer IsDirectoryObject ;	// BOOL
+	Pointer Token ;	// HANDLE
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-createprivateobjectsecurityex
+External_Function CreatePrivateObjectSecurityEx "CreatePrivateObjectSecurityEx" ADVAPI32.dll ;
+	Pointer ParentDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer CreatorDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer NewDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer ObjectType ;	// Guid*
+	Integer IsContainerObject ;	// BOOL
+	UInteger AutoInheritFlags ;	// SECURITY_AUTO_INHERIT_FLAGS
+	Pointer Token ;	// HANDLE
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-createprivateobjectsecuritywithmultipleinheritance
+External_Function CreatePrivateObjectSecurityWithMultipleInheritance "CreatePrivateObjectSecurityWithMultipleInheritance" ADVAPI32.dll ;
+	Pointer ParentDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer CreatorDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer NewDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer ObjectTypes ;	// Guid**
+	UInteger GuidCount ;
+	Integer IsContainerObject ;	// BOOL
+	UInteger AutoInheritFlags ;	// SECURITY_AUTO_INHERIT_FLAGS
+	Pointer Token ;	// HANDLE
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-createrestrictedtoken
+External_Function CreateRestrictedToken "CreateRestrictedToken" ADVAPI32.dll ;
+	Pointer ExistingTokenHandle ;	// HANDLE
+	UInteger Flags ;	// CREATE_RESTRICTED_TOKEN_FLAGS
+	UInteger DisableSidCount ;
+	Pointer SidsToDisable ;	// SID_AND_ATTRIBUTES*
+	UInteger DeletePrivilegeCount ;
+	Pointer PrivilegesToDelete ;	// LUID_AND_ATTRIBUTES*
+	UInteger RestrictedSidCount ;
+	Pointer SidsToRestrict ;	// SID_AND_ATTRIBUTES*
+	Pointer NewTokenHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-createwellknownsid
+External_Function CreateWellKnownSid "CreateWellKnownSid" ADVAPI32.dll ;
+	Integer WellKnownSidType ;	// WELL_KNOWN_SID_TYPE
+	Pointer DomainSid ;	// PSID
+	Pointer pSid ;	// PSID
+	Pointer cbSid ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-deleteace
+External_Function DeleteAce "DeleteAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-destroyprivateobjectsecurity
+External_Function DestroyPrivateObjectSecurity "DestroyPrivateObjectSecurity" ADVAPI32.dll ;
+	Pointer ObjectDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-duplicatetoken
+External_Function DuplicateToken "DuplicateToken" ADVAPI32.dll ;
+	Pointer ExistingTokenHandle ;	// HANDLE
+	Integer ImpersonationLevel ;	// SECURITY_IMPERSONATION_LEVEL
+	Pointer DuplicateTokenHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-duplicatetokenex
+External_Function DuplicateTokenEx "DuplicateTokenEx" ADVAPI32.dll ;
+	Pointer hExistingToken ;	// HANDLE
+	UInteger dwDesiredAccess ;	// TOKEN_ACCESS_MASK
+	Pointer lpTokenAttributes ;	// SECURITY_ATTRIBUTES*
+	Integer ImpersonationLevel ;	// SECURITY_IMPERSONATION_LEVEL
+	Integer TokenType ;	// TOKEN_TYPE
+	Pointer phNewToken ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-equaldomainsid
+External_Function EqualDomainSid "EqualDomainSid" ADVAPI32.dll ;
+	Pointer pSid1 ;	// PSID
+	Pointer pSid2 ;	// PSID
+	Pointer pfEqual ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-equalprefixsid
+External_Function EqualPrefixSid "EqualPrefixSid" ADVAPI32.dll ;
+	Pointer pSid1 ;	// PSID
+	Pointer pSid2 ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-equalsid
+External_Function EqualSid "EqualSid" ADVAPI32.dll ;
+	Pointer pSid1 ;	// PSID
+	Pointer pSid2 ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-findfirstfreeace
+External_Function FindFirstFreeAce "FindFirstFreeAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	Pointer pAce ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-freesid
+External_Function FreeSid "FreeSid" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getace
+External_Function GetAce "GetAce" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger dwAceIndex ;
+	Pointer pAce ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getaclinformation
+External_Function GetAclInformation "GetAclInformation" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	Pointer pAclInformation ;	// Pointer*
+	UInteger nAclInformationLength ;
+	Integer dwAclInformationClass ;	// ACL_INFORMATION_CLASS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfilesecuritya
+External_Function GetFileSecurityA "GetFileSecurityA" ADVAPI32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger RequestedInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getfilesecurityw
+External_Function GetFileSecurityW "GetFileSecurityW" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger RequestedInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getkernelobjectsecurity
+External_Function GetKernelObjectSecurity "GetKernelObjectSecurity" ADVAPI32.dll ;
+	Pointer Handle ;	// HANDLE
+	UInteger RequestedInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getlengthsid
+External_Function GetLengthSid "GetLengthSid" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getprivateobjectsecurity
+External_Function GetPrivateObjectSecurity "GetPrivateObjectSecurity" ADVAPI32.dll ;
+	Pointer ObjectDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ResultantDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger DescriptorLength ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptorcontrol
+External_Function GetSecurityDescriptorControl "GetSecurityDescriptorControl" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pControl ;	// UShort*
+	Pointer lpdwRevision ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptordacl
+External_Function GetSecurityDescriptorDacl "GetSecurityDescriptorDacl" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer lpbDaclPresent ;	// BOOL*
+	Pointer pDacl ;	// ACL**
+	Pointer lpbDaclDefaulted ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptorgroup
+External_Function GetSecurityDescriptorGroup "GetSecurityDescriptorGroup" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pGroup ;	// PSID*
+	Pointer lpbGroupDefaulted ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptorlength
+External_Function GetSecurityDescriptorLength "GetSecurityDescriptorLength" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptorowner
+External_Function GetSecurityDescriptorOwner "GetSecurityDescriptorOwner" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pOwner ;	// PSID*
+	Pointer lpbOwnerDefaulted ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptorrmcontrol
+External_Function GetSecurityDescriptorRMControl "GetSecurityDescriptorRMControl" ADVAPI32.dll ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer RMControl ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsecuritydescriptorsacl
+External_Function GetSecurityDescriptorSacl "GetSecurityDescriptorSacl" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer lpbSaclPresent ;	// BOOL*
+	Pointer pSacl ;	// ACL**
+	Pointer lpbSaclDefaulted ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsididentifierauthority
+External_Function GetSidIdentifierAuthority "GetSidIdentifierAuthority" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Returns Pointer[6]	// SID_IDENTIFIER_AUTHORITY*
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsidlengthrequired
+External_Function GetSidLengthRequired "GetSidLengthRequired" ADVAPI32.dll ;
+	UChar nSubAuthorityCount ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsidsubauthority
+External_Function GetSidSubAuthority "GetSidSubAuthority" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	UInteger nSubAuthority ;
+	Returns Pointer	// UInteger*
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getsidsubauthoritycount
+External_Function GetSidSubAuthorityCount "GetSidSubAuthorityCount" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-gettokeninformation
+External_Function GetTokenInformation "GetTokenInformation" ADVAPI32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Integer TokenInformationClass ;	// TOKEN_INFORMATION_CLASS
+	Pointer TokenInformation ;	// Pointer*
+	UInteger TokenInformationLength ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-getwindowsaccountdomainsid
+External_Function GetWindowsAccountDomainSid "GetWindowsAccountDomainSid" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Pointer pDomainSid ;	// PSID
+	Pointer cbDomainSid ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-impersonateanonymoustoken
+External_Function ImpersonateAnonymousToken "ImpersonateAnonymousToken" ADVAPI32.dll ;
+	Pointer ThreadHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-impersonateloggedonuser
+External_Function ImpersonateLoggedOnUser "ImpersonateLoggedOnUser" ADVAPI32.dll ;
+	Pointer hToken ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-impersonateself
+External_Function ImpersonateSelf "ImpersonateSelf" ADVAPI32.dll ;
+	Integer ImpersonationLevel ;	// SECURITY_IMPERSONATION_LEVEL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-initializeacl
+External_Function InitializeAcl "InitializeAcl" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	UInteger nAclLength ;
+	UInteger dwAclRevision ;	// ACE_REVISION
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-initializesecuritydescriptor
+External_Function InitializeSecurityDescriptor "InitializeSecurityDescriptor" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger dwRevision ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-initializesid
+External_Function InitializeSid "InitializeSid" ADVAPI32.dll ;
+	Pointer Sid ;	// PSID
+	Pointer[6] pIdentifierAuthority ;	// SID_IDENTIFIER_AUTHORITY*
+	UChar nSubAuthorityCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-istokenrestricted
+External_Function IsTokenRestricted "IsTokenRestricted" ADVAPI32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-isvalidacl
+External_Function IsValidAcl "IsValidAcl" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-isvalidsecuritydescriptor
+External_Function IsValidSecurityDescriptor "IsValidSecurityDescriptor" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-isvalidsid
+External_Function IsValidSid "IsValidSid" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-iswellknownsid
+External_Function IsWellKnownSid "IsWellKnownSid" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Integer WellKnownSidType ;	// WELL_KNOWN_SID_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-logonusera
+External_Function LogonUserA "LogonUserA" ADVAPI32.dll ;
+	String lpszUsername ;	// PSTR
+	String lpszDomain ;	// PSTR
+	String lpszPassword ;	// PSTR
+	UInteger dwLogonType ;	// LOGON32_LOGON
+	UInteger dwLogonProvider ;	// LOGON32_PROVIDER
+	Pointer phToken ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-logonuserexa
+External_Function LogonUserExA "LogonUserExA" ADVAPI32.dll ;
+	String lpszUsername ;	// PSTR
+	String lpszDomain ;	// PSTR
+	String lpszPassword ;	// PSTR
+	UInteger dwLogonType ;	// LOGON32_LOGON
+	UInteger dwLogonProvider ;	// LOGON32_PROVIDER
+	Pointer phToken ;	// HANDLE*
+	Pointer ppLogonSid ;	// PSID*
+	Pointer ppProfileBuffer ;	// Pointer**
+	Pointer pdwProfileLength ;	// UInteger*
+	Pointer pQuotaLimits ;	// QUOTA_LIMITS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-logonuserexw
+External_Function LogonUserExW "LogonUserExW" ADVAPI32.dll ;
+	WString lpszUsername ;	// PWSTR
+	WString lpszDomain ;	// PWSTR
+	WString lpszPassword ;	// PWSTR
+	UInteger dwLogonType ;	// LOGON32_LOGON
+	UInteger dwLogonProvider ;	// LOGON32_PROVIDER
+	Pointer phToken ;	// HANDLE*
+	Pointer ppLogonSid ;	// PSID*
+	Pointer ppProfileBuffer ;	// Pointer**
+	Pointer pdwProfileLength ;	// UInteger*
+	Pointer pQuotaLimits ;	// QUOTA_LIMITS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-logonuserw
+External_Function LogonUserW "LogonUserW" ADVAPI32.dll ;
+	WString lpszUsername ;	// PWSTR
+	WString lpszDomain ;	// PWSTR
+	WString lpszPassword ;	// PWSTR
+	UInteger dwLogonType ;	// LOGON32_LOGON
+	UInteger dwLogonProvider ;	// LOGON32_PROVIDER
+	Pointer phToken ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupaccountnamea
+External_Function LookupAccountNameA "LookupAccountNameA" ADVAPI32.dll ;
+	String lpSystemName ;	// PSTR
+	String lpAccountName ;	// PSTR
+	Pointer Sid ;	// PSID
+	Pointer cbSid ;	// UInteger*
+	Pointer ReferencedDomainName ;	// PSTR
+	Pointer cchReferencedDomainName ;	// UInteger*
+	Pointer peUse ;	// SID_NAME_USE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupaccountnamew
+External_Function LookupAccountNameW "LookupAccountNameW" ADVAPI32.dll ;
+	WString lpSystemName ;	// PWSTR
+	WString lpAccountName ;	// PWSTR
+	Pointer Sid ;	// PSID
+	Pointer cbSid ;	// UInteger*
+	Pointer ReferencedDomainName ;	// PWSTR
+	Pointer cchReferencedDomainName ;	// UInteger*
+	Pointer peUse ;	// SID_NAME_USE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupaccountsida
+External_Function LookupAccountSidA "LookupAccountSidA" ADVAPI32.dll ;
+	String lpSystemName ;	// PSTR
+	Pointer Sid ;	// PSID
+	Pointer Name ;	// PSTR
+	Pointer cchName ;	// UInteger*
+	Pointer ReferencedDomainName ;	// PSTR
+	Pointer cchReferencedDomainName ;	// UInteger*
+	Pointer peUse ;	// SID_NAME_USE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupaccountsidw
+External_Function LookupAccountSidW "LookupAccountSidW" ADVAPI32.dll ;
+	WString lpSystemName ;	// PWSTR
+	Pointer Sid ;	// PSID
+	Pointer Name ;	// PWSTR
+	Pointer cchName ;	// UInteger*
+	Pointer ReferencedDomainName ;	// PWSTR
+	Pointer cchReferencedDomainName ;	// UInteger*
+	Pointer peUse ;	// SID_NAME_USE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupprivilegedisplaynamea
+External_Function LookupPrivilegeDisplayNameA "LookupPrivilegeDisplayNameA" ADVAPI32.dll ;
+	String lpSystemName ;	// PSTR
+	String lpName ;	// PSTR
+	Pointer lpDisplayName ;	// PSTR
+	Pointer cchDisplayName ;	// UInteger*
+	Pointer lpLanguageId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupprivilegedisplaynamew
+External_Function LookupPrivilegeDisplayNameW "LookupPrivilegeDisplayNameW" ADVAPI32.dll ;
+	WString lpSystemName ;	// PWSTR
+	WString lpName ;	// PWSTR
+	Pointer lpDisplayName ;	// PWSTR
+	Pointer cchDisplayName ;	// UInteger*
+	Pointer lpLanguageId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupprivilegenamea
+External_Function LookupPrivilegeNameA "LookupPrivilegeNameA" ADVAPI32.dll ;
+	String lpSystemName ;	// PSTR
+	Pointer lpLuid ;	// LUID*
+	Pointer lpName ;	// PSTR
+	Pointer cchName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupprivilegenamew
+External_Function LookupPrivilegeNameW "LookupPrivilegeNameW" ADVAPI32.dll ;
+	WString lpSystemName ;	// PWSTR
+	Pointer lpLuid ;	// LUID*
+	Pointer lpName ;	// PWSTR
+	Pointer cchName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupprivilegevaluea
+External_Function LookupPrivilegeValueA "LookupPrivilegeValueA" ADVAPI32.dll ;
+	String lpSystemName ;	// PSTR
+	String lpName ;	// PSTR
+	Pointer lpLuid ;	// LUID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-lookupprivilegevaluew
+External_Function LookupPrivilegeValueW "LookupPrivilegeValueW" ADVAPI32.dll ;
+	WString lpSystemName ;	// PWSTR
+	WString lpName ;	// PWSTR
+	Pointer lpLuid ;	// LUID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-makeabsolutesd
+External_Function MakeAbsoluteSD "MakeAbsoluteSD" ADVAPI32.dll ;
+	Pointer pSelfRelativeSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pAbsoluteSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer lpdwAbsoluteSecurityDescriptorSize ;	// UInteger*
+	Pointer pDacl ;	// ACL*
+	Pointer lpdwDaclSize ;	// UInteger*
+	Pointer pSacl ;	// ACL*
+	Pointer lpdwSaclSize ;	// UInteger*
+	Pointer pOwner ;	// PSID
+	Pointer lpdwOwnerSize ;	// UInteger*
+	Pointer pPrimaryGroup ;	// PSID
+	Pointer lpdwPrimaryGroupSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-makeselfrelativesd
+External_Function MakeSelfRelativeSD "MakeSelfRelativeSD" ADVAPI32.dll ;
+	Pointer pAbsoluteSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pSelfRelativeSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer lpdwBufferLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-mapgenericmask
+External_Function MapGenericMask "MapGenericMask" ADVAPI32.dll ;
+	Pointer AccessMask ;	// UInteger*
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-objectcloseauditalarma
+External_Function ObjectCloseAuditAlarmA "ObjectCloseAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	Integer GenerateOnClose ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-objectcloseauditalarmw
+External_Function ObjectCloseAuditAlarmW "ObjectCloseAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	Integer GenerateOnClose ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-objectdeleteauditalarma
+External_Function ObjectDeleteAuditAlarmA "ObjectDeleteAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	Integer GenerateOnClose ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-objectdeleteauditalarmw
+External_Function ObjectDeleteAuditAlarmW "ObjectDeleteAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	Integer GenerateOnClose ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-objectopenauditalarma
+External_Function ObjectOpenAuditAlarmA "ObjectOpenAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	String ObjectTypeName ;	// PSTR
+	String ObjectName ;	// PSTR
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	UInteger GrantedAccess ;
+	Pointer Privileges ;	// PRIVILEGE_SET*
+	Integer ObjectCreation ;	// BOOL
+	Integer AccessGranted ;	// BOOL
+	Pointer GenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-objectopenauditalarmw
+External_Function ObjectOpenAuditAlarmW "ObjectOpenAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	WString ObjectTypeName ;	// PWSTR
+	WString ObjectName ;	// PWSTR
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	UInteger GrantedAccess ;
+	Pointer Privileges ;	// PRIVILEGE_SET*
+	Integer ObjectCreation ;	// BOOL
+	Integer AccessGranted ;	// BOOL
+	Pointer GenerateOnClose ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-objectprivilegeauditalarma
+External_Function ObjectPrivilegeAuditAlarmA "ObjectPrivilegeAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	Pointer HandleId ;	// Pointer*
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	Pointer Privileges ;	// PRIVILEGE_SET*
+	Integer AccessGranted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-objectprivilegeauditalarmw
+External_Function ObjectPrivilegeAuditAlarmW "ObjectPrivilegeAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	Pointer HandleId ;	// Pointer*
+	Pointer ClientToken ;	// HANDLE
+	UInteger DesiredAccess ;
+	Pointer Privileges ;	// PRIVILEGE_SET*
+	Integer AccessGranted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-privilegecheck
+External_Function PrivilegeCheck "PrivilegeCheck" ADVAPI32.dll ;
+	Pointer ClientToken ;	// HANDLE
+	Pointer RequiredPrivileges ;	// PRIVILEGE_SET*
+	Pointer pfResult ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-privilegedserviceauditalarma
+External_Function PrivilegedServiceAuditAlarmA "PrivilegedServiceAuditAlarmA" ADVAPI32.dll ;
+	String SubsystemName ;	// PSTR
+	String ServiceName ;	// PSTR
+	Pointer ClientToken ;	// HANDLE
+	Pointer Privileges ;	// PRIVILEGE_SET*
+	Integer AccessGranted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-privilegedserviceauditalarmw
+External_Function PrivilegedServiceAuditAlarmW "PrivilegedServiceAuditAlarmW" ADVAPI32.dll ;
+	WString SubsystemName ;	// PWSTR
+	WString ServiceName ;	// PWSTR
+	Pointer ClientToken ;	// HANDLE
+	Pointer Privileges ;	// PRIVILEGE_SET*
+	Integer AccessGranted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-querysecurityaccessmask
+External_Function QuerySecurityAccessMask "QuerySecurityAccessMask" ADVAPI32.dll ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer DesiredAccess ;	// UInteger*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-reverttoself
+External_Function RevertToSelf "RevertToSelf" ADVAPI32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setaclinformation
+External_Function SetAclInformation "SetAclInformation" ADVAPI32.dll ;
+	Pointer pAcl ;	// ACL*
+	Pointer pAclInformation ;	// Pointer*
+	UInteger nAclInformationLength ;
+	Integer dwAclInformationClass ;	// ACL_INFORMATION_CLASS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfilesecuritya
+External_Function SetFileSecurityA "SetFileSecurityA" ADVAPI32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setfilesecurityw
+External_Function SetFileSecurityW "SetFileSecurityW" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setkernelobjectsecurity
+External_Function SetKernelObjectSecurity "SetKernelObjectSecurity" ADVAPI32.dll ;
+	Pointer Handle ;	// HANDLE
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setprivateobjectsecurity
+External_Function SetPrivateObjectSecurity "SetPrivateObjectSecurity" ADVAPI32.dll ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ModificationDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer ObjectsSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Pointer Token ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setprivateobjectsecurityex
+External_Function SetPrivateObjectSecurityEx "SetPrivateObjectSecurityEx" ADVAPI32.dll ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ModificationDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer ObjectsSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	UInteger AutoInheritFlags ;	// SECURITY_AUTO_INHERIT_FLAGS
+	Pointer GenericMapping ;	// GENERIC_MAPPING*
+	Pointer Token ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecurityaccessmask
+External_Function SetSecurityAccessMask "SetSecurityAccessMask" ADVAPI32.dll ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer DesiredAccess ;	// UInteger*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecuritydescriptorcontrol
+External_Function SetSecurityDescriptorControl "SetSecurityDescriptorControl" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UShort ControlBitsOfInterest ;	// SECURITY_DESCRIPTOR_CONTROL
+	UShort ControlBitsToSet ;	// SECURITY_DESCRIPTOR_CONTROL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecuritydescriptordacl
+External_Function SetSecurityDescriptorDacl "SetSecurityDescriptorDacl" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Integer bDaclPresent ;	// BOOL
+	Pointer pDacl ;	// ACL*
+	Integer bDaclDefaulted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecuritydescriptorgroup
+External_Function SetSecurityDescriptorGroup "SetSecurityDescriptorGroup" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pGroup ;	// PSID
+	Integer bGroupDefaulted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecuritydescriptorowner
+External_Function SetSecurityDescriptorOwner "SetSecurityDescriptorOwner" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pOwner ;	// PSID
+	Integer bOwnerDefaulted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecuritydescriptorrmcontrol
+External_Function SetSecurityDescriptorRMControl "SetSecurityDescriptorRMControl" ADVAPI32.dll ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer RMControl ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-setsecuritydescriptorsacl
+External_Function SetSecurityDescriptorSacl "SetSecurityDescriptorSacl" ADVAPI32.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Integer bSaclPresent ;	// BOOL
+	Pointer pSacl ;	// ACL*
+	Integer bSaclDefaulted ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-settokeninformation
+External_Function SetTokenInformation "SetTokenInformation" ADVAPI32.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Integer TokenInformationClass ;	// TOKEN_INFORMATION_CLASS
+	Pointer TokenInformation ;	// Pointer*
+	UInteger TokenInformationLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winternl/nf-winternl-rtlconvertsidtounicodestring
+External_Function RtlConvertSidToUnicodeString "RtlConvertSidToUnicodeString" ntdll.dll ;
+	Pointer UnicodeString ;	// UNICODE_STRING*
+	Pointer Sid ;	// PSID
+	UChar AllocateDestinationString ;	// BOOLEAN
+	Returns Integer	// NTSTATUS
+
+External_Function RtlNormalizeSecurityDescriptor "RtlNormalizeSecurityDescriptor" ntdll.dll ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	UInteger SecurityDescriptorLength ;
+	Pointer NewSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer NewSecurityDescriptorLength ;	// UInteger*
+	UChar CheckOnly ;	// BOOLEAN
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-derivecapabilitysidsfromname
+External_Function DeriveCapabilitySidsFromName "DeriveCapabilitySidsFromName" api-ms-win-security-base-l1-2-2.dll ;
+	WString CapName ;	// PWSTR
+	Pointer CapabilityGroupSids ;	// PSID**
+	Pointer CapabilityGroupSidCount ;	// UInteger*
+	Pointer CapabilitySids ;	// PSID**
+	Pointer CapabilitySidCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

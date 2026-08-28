@@ -1,0 +1,388 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-emptyworkingset
+External_Function K32EmptyWorkingSet "K32EmptyWorkingSet" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumdevicedrivers
+External_Function K32EnumDeviceDrivers "K32EnumDeviceDrivers" KERNEL32.dll ;
+	Pointer lpImageBase ;	// Pointer**
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumpagefilesa
+External_Function K32EnumPageFilesA "K32EnumPageFilesA" KERNEL32.dll ;
+	Pointer pCallBackRoutine ;	// PENUM_PAGE_FILE_CALLBACKA
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumpagefilesa
+External_Function K32EnumPageFilesW "K32EnumPageFilesW" KERNEL32.dll ;
+	Pointer pCallBackRoutine ;	// PENUM_PAGE_FILE_CALLBACKW
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumprocessmodules
+External_Function K32EnumProcessModules "K32EnumProcessModules" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lphModule ;	// HMODULE*
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumprocessmodulesex
+External_Function K32EnumProcessModulesEx "K32EnumProcessModulesEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lphModule ;	// HMODULE*
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	UInteger dwFilterFlag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumprocesses
+External_Function K32EnumProcesses "K32EnumProcesses" KERNEL32.dll ;
+	Pointer lpidProcess ;	// UInteger*
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverbasenamea
+External_Function K32GetDeviceDriverBaseNameA "K32GetDeviceDriverBaseNameA" KERNEL32.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverbasenamea
+External_Function K32GetDeviceDriverBaseNameW "K32GetDeviceDriverBaseNameW" KERNEL32.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpBaseName ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverfilenamew
+External_Function K32GetDeviceDriverFileNameA "K32GetDeviceDriverFileNameA" KERNEL32.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverfilenamew
+External_Function K32GetDeviceDriverFileNameW "K32GetDeviceDriverFileNameW" KERNEL32.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpFilename ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmappedfilenamew
+External_Function K32GetMappedFileNameA "K32GetMappedFileNameA" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpv ;	// Pointer*
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmappedfilenamew
+External_Function K32GetMappedFileNameW "K32GetMappedFileNameW" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpv ;	// Pointer*
+	Pointer lpFilename ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulebasenamew
+External_Function K32GetModuleBaseNameA "K32GetModuleBaseNameA" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpBaseName ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulebasenamew
+External_Function K32GetModuleBaseNameW "K32GetModuleBaseNameW" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpBaseName ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulefilenameexw
+External_Function K32GetModuleFileNameExA "K32GetModuleFileNameExA" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulefilenameexw
+External_Function K32GetModuleFileNameExW "K32GetModuleFileNameExW" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpFilename ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmoduleinformation
+External_Function K32GetModuleInformation "K32GetModuleInformation" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpmodinfo ;	// MODULEINFO*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getperformanceinfo
+External_Function K32GetPerformanceInfo "K32GetPerformanceInfo" KERNEL32.dll ;
+	Pointer pPerformanceInformation ;	// PERFORMANCE_INFORMATION*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+External_Function K32GetProcessImageFileNameA "K32GetProcessImageFileNameA" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpImageFileName ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+External_Function K32GetProcessImageFileNameW "K32GetProcessImageFileNameW" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpImageFileName ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getprocessmemoryinfo
+External_Function K32GetProcessMemoryInfo "K32GetProcessMemoryInfo" KERNEL32.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer ppsmemCounters ;	// PROCESS_MEMORY_COUNTERS*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getwschanges
+External_Function K32GetWsChanges "K32GetWsChanges" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpWatchInfo ;	// PSAPI_WS_WATCH_INFORMATION*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getwschangesex
+External_Function K32GetWsChangesEx "K32GetWsChangesEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpWatchInfoEx ;	// PSAPI_WS_WATCH_INFORMATION_EX*
+	Pointer cb ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-initializeprocessforwswatch
+External_Function K32InitializeProcessForWsWatch "K32InitializeProcessForWsWatch" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-queryworkingset
+External_Function K32QueryWorkingSet "K32QueryWorkingSet" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-queryworkingsetex
+External_Function K32QueryWorkingSetEx "K32QueryWorkingSetEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-emptyworkingset
+External_Function EmptyWorkingSet "EmptyWorkingSet" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumdevicedrivers
+External_Function EnumDeviceDrivers "EnumDeviceDrivers" PSAPI.dll ;
+	Pointer lpImageBase ;	// Pointer**
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumpagefilesa
+External_Function EnumPageFilesA "EnumPageFilesA" PSAPI.dll ;
+	Pointer pCallBackRoutine ;	// PENUM_PAGE_FILE_CALLBACKA
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumpagefilesw
+External_Function EnumPageFilesW "EnumPageFilesW" PSAPI.dll ;
+	Pointer pCallBackRoutine ;	// PENUM_PAGE_FILE_CALLBACKW
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumprocessmodules
+External_Function EnumProcessModules "EnumProcessModules" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lphModule ;	// HMODULE*
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumprocessmodulesex
+External_Function EnumProcessModulesEx "EnumProcessModulesEx" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lphModule ;	// HMODULE*
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	UInteger dwFilterFlag ;	// ENUM_PROCESS_MODULES_EX_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-enumprocesses
+External_Function EnumProcesses "EnumProcesses" PSAPI.dll ;
+	Pointer lpidProcess ;	// UInteger*
+	UInteger cb ;
+	Pointer lpcbNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverbasenamea
+External_Function GetDeviceDriverBaseNameA "GetDeviceDriverBaseNameA" PSAPI.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverbasenamew
+External_Function GetDeviceDriverBaseNameW "GetDeviceDriverBaseNameW" PSAPI.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpBaseName ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverfilenamea
+External_Function GetDeviceDriverFileNameA "GetDeviceDriverFileNameA" PSAPI.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getdevicedriverfilenamew
+External_Function GetDeviceDriverFileNameW "GetDeviceDriverFileNameW" PSAPI.dll ;
+	Pointer ImageBase ;	// Pointer*
+	Pointer lpFilename ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmappedfilenamea
+External_Function GetMappedFileNameA "GetMappedFileNameA" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpv ;	// Pointer*
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmappedfilenamew
+External_Function GetMappedFileNameW "GetMappedFileNameW" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpv ;	// Pointer*
+	Pointer lpFilename ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulebasenamea
+External_Function GetModuleBaseNameA "GetModuleBaseNameA" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpBaseName ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulebasenamew
+External_Function GetModuleBaseNameW "GetModuleBaseNameW" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpBaseName ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulefilenameexa
+External_Function GetModuleFileNameExA "GetModuleFileNameExA" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpFilename ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmodulefilenameexw
+External_Function GetModuleFileNameExW "GetModuleFileNameExW" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpFilename ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getmoduleinformation
+External_Function GetModuleInformation "GetModuleInformation" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hModule ;	// HMODULE
+	Pointer lpmodinfo ;	// MODULEINFO*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getperformanceinfo
+External_Function GetPerformanceInfo "GetPerformanceInfo" PSAPI.dll ;
+	Pointer pPerformanceInformation ;	// PERFORMANCE_INFORMATION*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getprocessimagefilenamea
+External_Function GetProcessImageFileNameA "GetProcessImageFileNameA" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpImageFileName ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getprocessimagefilenamew
+External_Function GetProcessImageFileNameW "GetProcessImageFileNameW" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpImageFileName ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getprocessmemoryinfo
+External_Function GetProcessMemoryInfo "GetProcessMemoryInfo" PSAPI.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer ppsmemCounters ;	// PROCESS_MEMORY_COUNTERS*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getwschanges
+External_Function GetWsChanges "GetWsChanges" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpWatchInfo ;	// PSAPI_WS_WATCH_INFORMATION*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-getwschangesex
+External_Function GetWsChangesEx "GetWsChangesEx" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpWatchInfoEx ;	// PSAPI_WS_WATCH_INFORMATION_EX*
+	Pointer cb ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-initializeprocessforwswatch
+External_Function InitializeProcessForWsWatch "InitializeProcessForWsWatch" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-queryworkingset
+External_Function QueryWorkingSet "QueryWorkingSet" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/psapi/nf-psapi-queryworkingsetex
+External_Function QueryWorkingSetEx "QueryWorkingSetEx" PSAPI.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

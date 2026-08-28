@@ -1,0 +1,366 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joyconfigchanged
+External_Function joyConfigChanged "joyConfigChanged" WINMM.dll ;
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function DirectInput8Create "DirectInput8Create" DINPUT8.dll ;
+	Pointer hinst ;	// HINSTANCE
+	UInteger dwVersion ;
+	Pointer riidltf ;	// Guid*
+	Pointer ppvOut ;	// Pointer**
+	Pointer punkOuter ;	// IUnknown
+	Returns Integer	// HRESULT
+
+External_Function HidD_FlushQueue "HidD_FlushQueue" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_FreePreparsedData "HidD_FreePreparsedData" HID.dll ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetAttributes "HidD_GetAttributes" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Attributes ;	// HIDD_ATTRIBUTES*
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetConfiguration "HidD_GetConfiguration" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Configuration ;	// HIDD_CONFIGURATION*
+	UInteger ConfigurationLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetFeature "HidD_GetFeature" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer ReportBuffer ;	// Pointer*
+	UInteger ReportBufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetHidGuid "HidD_GetHidGuid" HID.dll ;
+	Pointer HidGuid ;	// Guid*
+	Returns Pointer
+
+External_Function HidD_GetIndexedString "HidD_GetIndexedString" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	UInteger StringIndex ;
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetInputReport "HidD_GetInputReport" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer ReportBuffer ;	// Pointer*
+	UInteger ReportBufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetManufacturerString "HidD_GetManufacturerString" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetMsGenreDescriptor "HidD_GetMsGenreDescriptor" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetNumInputBuffers "HidD_GetNumInputBuffers" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer NumberBuffers ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetPhysicalDescriptor "HidD_GetPhysicalDescriptor" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetPreparsedData "HidD_GetPreparsedData" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer PreparsedData ;	// PHIDP_PREPARSED_DATA*
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetProductString "HidD_GetProductString" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_GetSerialNumberString "HidD_GetSerialNumberString" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_SetConfiguration "HidD_SetConfiguration" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer Configuration ;	// HIDD_CONFIGURATION*
+	UInteger ConfigurationLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_SetFeature "HidD_SetFeature" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer ReportBuffer ;	// Pointer*
+	UInteger ReportBufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_SetNumInputBuffers "HidD_SetNumInputBuffers" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	UInteger NumberBuffers ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidD_SetOutputReport "HidD_SetOutputReport" HID.dll ;
+	Pointer HidDeviceObject ;	// HANDLE
+	Pointer ReportBuffer ;	// Pointer*
+	UInteger ReportBufferLength ;
+	Returns UChar	// BOOLEAN
+
+External_Function HidP_GetButtonArray "HidP_GetButtonArray" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer ButtonData ;	// HIDP_BUTTON_ARRAY_DATA*
+	Pointer ButtonDataLength ;	// UShort*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetButtonCaps "HidP_GetButtonCaps" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	Pointer ButtonCaps ;	// HIDP_BUTTON_CAPS*
+	Pointer ButtonCapsLength ;	// UShort*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetCaps "HidP_GetCaps" HID.dll ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Capabilities ;	// HIDP_CAPS*
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetData "HidP_GetData" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	Pointer DataList ;	// HIDP_DATA*
+	Pointer DataLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetExtendedAttributes "HidP_GetExtendedAttributes" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort DataIndex ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Attributes ;	// HIDP_EXTENDED_ATTRIBUTES*
+	Pointer LengthAttributes ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetLinkCollectionNodes "HidP_GetLinkCollectionNodes" HID.dll ;
+	Pointer LinkCollectionNodes ;	// HIDP_LINK_COLLECTION_NODE*
+	Pointer LinkCollectionNodesLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetScaledUsageValue "HidP_GetScaledUsageValue" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer UsageValue ;	// Integer*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetSpecificButtonCaps "HidP_GetSpecificButtonCaps" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer ButtonCaps ;	// HIDP_BUTTON_CAPS*
+	Pointer ButtonCapsLength ;	// UShort*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetSpecificValueCaps "HidP_GetSpecificValueCaps" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer ValueCaps ;	// HIDP_VALUE_CAPS*
+	Pointer ValueCapsLength ;	// UShort*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetUsageValue "HidP_GetUsageValue" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer UsageValue ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetUsageValueArray "HidP_GetUsageValueArray" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer UsageValue ;	// PSTR
+	UShort UsageValueByteLength ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetUsages "HidP_GetUsages" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	Pointer UsageList ;	// UShort*
+	Pointer UsageLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetUsagesEx "HidP_GetUsagesEx" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort LinkCollection ;
+	Pointer ButtonList ;	// USAGE_AND_PAGE*
+	Pointer UsageLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_GetValueCaps "HidP_GetValueCaps" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	Pointer ValueCaps ;	// HIDP_VALUE_CAPS*
+	Pointer ValueCapsLength ;	// UShort*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_InitializeReportForID "HidP_InitializeReportForID" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UChar ReportID ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_MaxDataListLength "HidP_MaxDataListLength" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns UInteger
+
+External_Function HidP_MaxUsageListLength "HidP_MaxUsageListLength" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Returns UInteger
+
+External_Function HidP_SetButtonArray "HidP_SetButtonArray" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Pointer ButtonData ;	// HIDP_BUTTON_ARRAY_DATA*
+	UShort ButtonDataLength ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_SetData "HidP_SetData" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	Pointer DataList ;	// HIDP_DATA*
+	Pointer DataLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_SetScaledUsageValue "HidP_SetScaledUsageValue" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	Integer UsageValue ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_SetUsageValue "HidP_SetUsageValue" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	UInteger UsageValue ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_SetUsageValueArray "HidP_SetUsageValueArray" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	UShort Usage ;
+	String UsageValue ;	// PSTR
+	UShort UsageValueByteLength ;
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	Pointer Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_SetUsages "HidP_SetUsages" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	Pointer UsageList ;	// UShort*
+	Pointer UsageLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_TranslateUsagesToI8042ScanCodes "HidP_TranslateUsagesToI8042ScanCodes" HID.dll ;
+	Pointer ChangedUsageList ;	// UShort*
+	UInteger UsageListLength ;
+	Integer KeyAction ;	// HIDP_KEYBOARD_DIRECTION
+	Pointer ModifierState ;	// HIDP_KEYBOARD_MODIFIER_STATE*
+	Pointer InsertCodesProcedure ;	// PHIDP_INSERT_SCANCODES
+	Pointer InsertCodesContext ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_UnsetUsages "HidP_UnsetUsages" HID.dll ;
+	Integer ReportType ;	// HIDP_REPORT_TYPE
+	UShort UsagePage ;
+	UShort LinkCollection ;
+	Pointer UsageList ;	// UShort*
+	Pointer UsageLength ;	// UInteger*
+	LongPtr PreparsedData ;	// PHIDP_PREPARSED_DATA
+	String Report ;	// PSTR
+	UInteger ReportLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function HidP_UsageListDifference "HidP_UsageListDifference" HID.dll ;
+	Pointer PreviousUsageList ;	// UShort*
+	Pointer CurrentUsageList ;	// UShort*
+	Pointer BreakUsageList ;	// UShort*
+	Pointer MakeUsageList ;	// UShort*
+	UInteger UsageListLength ;
+	Returns Integer	// NTSTATUS
+
+
+Procedure DataFlex_Init
+End_Procedure
+

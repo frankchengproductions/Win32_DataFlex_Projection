@@ -1,0 +1,1351 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-dxva2createdirect3ddevicemanager9
+External_Function DXVA2CreateDirect3DDeviceManager9 "DXVA2CreateDirect3DDeviceManager9" dxva2.dll ;
+	Pointer pResetToken ;	// UInteger*
+	Pointer ppDeviceManager ;	// IDirect3DDeviceManager9*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/nf-dxva2api-dxva2createvideoservice
+External_Function DXVA2CreateVideoService "DXVA2CreateVideoService" dxva2.dll ;
+	Pointer pDD ;	// IDirect3DDevice9
+	Pointer riid ;	// Guid*
+	Pointer ppService ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/nf-dxvahd-dxvahd_createdevice
+External_Function DXVAHD_CreateDevice "DXVAHD_CreateDevice" dxva2.dll ;
+	Pointer pD3DDevice ;	// IDirect3DDevice9Ex
+	Pointer pContentDesc ;	// DXVAHD_CONTENT_DESC*
+	Integer Usage ;	// DXVAHD_DEVICE_USAGE
+	Pointer pPlugin ;	// PDXVAHDSW_Plugin
+	Pointer ppDevice ;	// IDXVAHD_Device*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/opmapi/nf-opmapi-opmgetvideooutputfortarget
+External_Function OPMGetVideoOutputForTarget "OPMGetVideoOutputForTarget" dxva2.dll ;
+	Pointer pAdapterLuid ;	// LUID*
+	UInteger VidPnTarget ;
+	Integer vos ;	// OPM_VIDEO_OUTPUT_SEMANTICS
+	Pointer ppOPMVideoOutput ;	// IOPMVideoOutput*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/opmapi/nf-opmapi-opmgetvideooutputsfromhmonitor
+External_Function OPMGetVideoOutputsFromHMONITOR "OPMGetVideoOutputsFromHMONITOR" dxva2.dll ;
+	Pointer hMonitor ;	// HMONITOR
+	Integer vos ;	// OPM_VIDEO_OUTPUT_SEMANTICS
+	Pointer pulNumVideoOutputs ;	// UInteger*
+	Pointer pppOPMVideoOutputArray ;	// IOPMVideoOutput**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/opmapi/nf-opmapi-opmgetvideooutputsfromidirect3ddevice9object
+External_Function OPMGetVideoOutputsFromIDirect3DDevice9Object "OPMGetVideoOutputsFromIDirect3DDevice9Object" dxva2.dll ;
+	Pointer pDirect3DDevice9 ;	// IDirect3DDevice9
+	Integer vos ;	// OPM_VIDEO_OUTPUT_SEMANTICS
+	Pointer pulNumVideoOutputs ;	// UInteger*
+	Pointer pppOPMVideoOutputArray ;	// IOPMVideoOutput**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-createpropertystore
+External_Function CreatePropertyStore "CreatePropertyStore" MFPlat.dll ;
+	Pointer ppStore ;	// IPropertyStore*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfaddperiodiccallback
+External_Function MFAddPeriodicCallback "MFAddPeriodicCallback" MFPlat.dll ;
+	Pointer Callback ;	// MFPERIODICCALLBACK
+	Pointer pContext ;	// IUnknown
+	Pointer pdwKey ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfallocateserialworkqueue
+External_Function MFAllocateSerialWorkQueue "MFAllocateSerialWorkQueue" MFPlat.dll ;
+	UInteger dwWorkQueue ;
+	Pointer pdwWorkQueue ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfallocateworkqueue
+External_Function MFAllocateWorkQueue "MFAllocateWorkQueue" MFPlat.dll ;
+	Pointer pdwWorkQueue ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfallocateworkqueueex
+External_Function MFAllocateWorkQueueEx "MFAllocateWorkQueueEx" MFPlat.dll ;
+	Integer WorkQueueType ;	// MFASYNC_WORKQUEUE_TYPE
+	Pointer pdwWorkQueue ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfaveragetimeperframetoframerate
+External_Function MFAverageTimePerFrameToFrameRate "MFAverageTimePerFrameToFrameRate" MFPlat.dll ;
+	UBigint unAverageTimePerFrame ;
+	Pointer punNumerator ;	// UInteger*
+	Pointer punDenominator ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfbegincreatefile
+External_Function MFBeginCreateFile "MFBeginCreateFile" MFPlat.dll ;
+	Integer AccessMode ;	// MF_FILE_ACCESSMODE
+	Integer OpenMode ;	// MF_FILE_OPENMODE
+	Integer fFlags ;	// MF_FILE_FLAGS
+	WString pwszFilePath ;	// PWSTR
+	Pointer pCallback ;	// IMFAsyncCallback
+	Pointer pState ;	// IUnknown
+	Pointer ppCancelCookie ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfbeginregisterworkqueuewithmmcss
+External_Function MFBeginRegisterWorkQueueWithMMCSS "MFBeginRegisterWorkQueueWithMMCSS" MFPlat.dll ;
+	UInteger dwWorkQueueId ;
+	WString wszClass ;	// PWSTR
+	UInteger dwTaskId ;
+	Pointer pDoneCallback ;	// IMFAsyncCallback
+	Pointer pDoneState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfbeginregisterworkqueuewithmmcssex
+External_Function MFBeginRegisterWorkQueueWithMMCSSEx "MFBeginRegisterWorkQueueWithMMCSSEx" MFPlat.dll ;
+	UInteger dwWorkQueueId ;
+	WString wszClass ;	// PWSTR
+	UInteger dwTaskId ;
+	Integer lPriority ;
+	Pointer pDoneCallback ;	// IMFAsyncCallback
+	Pointer pDoneState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfbeginunregisterworkqueuewithmmcss
+External_Function MFBeginUnregisterWorkQueueWithMMCSS "MFBeginUnregisterWorkQueueWithMMCSS" MFPlat.dll ;
+	UInteger dwWorkQueueId ;
+	Pointer pDoneCallback ;	// IMFAsyncCallback
+	Pointer pDoneState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcalculatebitmapimagesize
+External_Function MFCalculateBitmapImageSize "MFCalculateBitmapImageSize" MFPlat.dll ;
+	Pointer pBMIH ;	// BITMAPINFOHEADER*
+	UInteger cbBufSize ;
+	Pointer pcbImageSize ;	// UInteger*
+	Pointer pbKnown ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcalculateimagesize
+External_Function MFCalculateImageSize "MFCalculateImageSize" MFPlat.dll ;
+	Pointer guidSubtype ;	// Guid*
+	UInteger unWidth ;
+	UInteger unHeight ;
+	Pointer pcbImageSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcancelcreatefile
+External_Function MFCancelCreateFile "MFCancelCreateFile" MFPlat.dll ;
+	Pointer pCancelCookie ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcancelworkitem
+External_Function MFCancelWorkItem "MFCancelWorkItem" MFPlat.dll ;
+	UBigint Key ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcombinesamples
+External_Function MFCombineSamples "MFCombineSamples" MFPlat.dll ;
+	Pointer pSample ;	// IMFSample
+	Pointer pSampleToAdd ;	// IMFSample
+	UInteger dwMaxMergedDurationInMS ;
+	Pointer pMerged ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcomparefulltopartialmediatype
+External_Function MFCompareFullToPartialMediaType "MFCompareFullToPartialMediaType" MFPlat.dll ;
+	Pointer pMFTypeFull ;	// IMFMediaType
+	Pointer pMFTypePartial ;	// IMFMediaType
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfconvertcolorinfofromdxva
+External_Function MFConvertColorInfoFromDXVA "MFConvertColorInfoFromDXVA" MFPlat.dll ;
+	Pointer pToFormat ;	// MFVIDEOFORMAT*
+	UInteger dwFromDXVA ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfconvertcolorinfotodxva
+External_Function MFConvertColorInfoToDXVA "MFConvertColorInfoToDXVA" MFPlat.dll ;
+	Pointer pdwToDXVA ;	// UInteger*
+	Pointer pFromFormat ;	// MFVIDEOFORMAT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfconvertfromfp16array
+External_Function MFConvertFromFP16Array "MFConvertFromFP16Array" MFPlat.dll ;
+	Pointer pDest ;	// Float*
+	Pointer pSrc ;	// UShort*
+	UInteger dwCount ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfconverttofp16array
+External_Function MFConvertToFP16Array "MFConvertToFP16Array" MFPlat.dll ;
+	Pointer pDest ;	// UShort*
+	Pointer pSrc ;	// Float*
+	UInteger dwCount ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcopyimage
+External_Function MFCopyImage "MFCopyImage" MFPlat.dll ;
+	Pointer pDest ;	// UChar*
+	Integer lDestStride ;
+	Pointer pSrc ;	// UChar*
+	Integer lSrcStride ;
+	UInteger dwWidthInBytes ;
+	UInteger dwLines ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreate2dmediabuffer
+External_Function MFCreate2DMediaBuffer "MFCreate2DMediaBuffer" MFPlat.dll ;
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger dwFourCC ;
+	Integer fBottomUp ;	// BOOL
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreateammediatypefrommfmediatype
+External_Function MFCreateAMMediaTypeFromMFMediaType "MFCreateAMMediaTypeFromMFMediaType" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Guid guidFormatBlockType ;
+	Pointer ppAMType ;	// AM_MEDIA_TYPE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatealignedmemorybuffer
+External_Function MFCreateAlignedMemoryBuffer "MFCreateAlignedMemoryBuffer" MFPlat.dll ;
+	UInteger cbMaxLength ;
+	UInteger cbAligment ;
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreateasyncresult
+External_Function MFCreateAsyncResult "MFCreateAsyncResult" MFPlat.dll ;
+	Pointer punkObject ;	// IUnknown
+	Pointer pCallback ;	// IMFAsyncCallback
+	Pointer punkState ;	// IUnknown
+	Pointer ppAsyncResult ;	// IMFAsyncResult*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreateattributes
+External_Function MFCreateAttributes "MFCreateAttributes" MFPlat.dll ;
+	Pointer ppMFAttributes ;	// IMFAttributes*
+	UInteger cInitialSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreateaudiomediatype
+External_Function MFCreateAudioMediaType "MFCreateAudioMediaType" MFPlat.dll ;
+	Pointer pAudioFormat ;	// WAVEFORMATEX*
+	Pointer ppIAudioMediaType ;	// IMFAudioMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatecollection
+External_Function MFCreateCollection "MFCreateCollection" MFPlat.dll ;
+	Pointer ppIMFCollection ;	// IMFCollection*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatecontentdecryptorcontext
+External_Function MFCreateContentDecryptorContext "MFCreateContentDecryptorContext" MFPlat.dll ;
+	Pointer guidMediaProtectionSystemId ;	// Guid*
+	Pointer pD3DManager ;	// IMFDXGIDeviceManager
+	Pointer pContentProtectionDevice ;	// IMFContentProtectionDevice
+	Pointer ppContentDecryptorContext ;	// IMFContentDecryptorContext*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatecontentprotectiondevice
+External_Function MFCreateContentProtectionDevice "MFCreateContentProtectionDevice" MFPlat.dll ;
+	Pointer ProtectionSystemId ;	// Guid*
+	Pointer ContentProtectionDevice ;	// IMFContentProtectionDevice*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfd3d12/nf-mfd3d12-mfcreated3d12synchronizationobject
+External_Function MFCreateD3D12SynchronizationObject "MFCreateD3D12SynchronizationObject" MFPlat.dll ;
+	Pointer pDevice ;	// ID3D12Device
+	Pointer riid ;	// Guid*
+	Pointer ppvSyncObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatedxgidevicemanager
+External_Function MFCreateDXGIDeviceManager "MFCreateDXGIDeviceManager" MFPlat.dll ;
+	Pointer resetToken ;	// UInteger*
+	Pointer ppDeviceManager ;	// IMFDXGIDeviceManager*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatedxgisurfacebuffer
+External_Function MFCreateDXGISurfaceBuffer "MFCreateDXGISurfaceBuffer" MFPlat.dll ;
+	Pointer riid ;	// Guid*
+	Pointer punkSurface ;	// IUnknown
+	UInteger uSubresourceIndex ;
+	Integer fBottomUpWhenLinear ;	// BOOL
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatedxsurfacebuffer
+External_Function MFCreateDXSurfaceBuffer "MFCreateDXSurfaceBuffer" MFPlat.dll ;
+	Pointer riid ;	// Guid*
+	Pointer punkSurface ;	// IUnknown
+	Integer fBottomUpWhenLinear ;	// BOOL
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreateeventqueue
+External_Function MFCreateEventQueue "MFCreateEventQueue" MFPlat.dll ;
+	Pointer ppMediaEventQueue ;	// IMFMediaEventQueue*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatefile
+External_Function MFCreateFile "MFCreateFile" MFPlat.dll ;
+	Integer AccessMode ;	// MF_FILE_ACCESSMODE
+	Integer OpenMode ;	// MF_FILE_OPENMODE
+	Integer fFlags ;	// MF_FILE_FLAGS
+	WString pwszFileURL ;	// PWSTR
+	Pointer ppIByteStream ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatelegacymediabufferonmfmediabuffer
+External_Function MFCreateLegacyMediaBufferOnMFMediaBuffer "MFCreateLegacyMediaBufferOnMFMediaBuffer" MFPlat.dll ;
+	Pointer pSample ;	// IMFSample
+	Pointer pMFMediaBuffer ;	// IMFMediaBuffer
+	UInteger cbOffset ;
+	Pointer ppMediaBuffer ;	// IMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemfbytestreamonstream
+External_Function MFCreateMFByteStreamOnStream "MFCreateMFByteStreamOnStream" MFPlat.dll ;
+	Pointer pStream ;	// IStream
+	Pointer ppByteStream ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemfbytestreamonstreamex
+External_Function MFCreateMFByteStreamOnStreamEx "MFCreateMFByteStreamOnStreamEx" MFPlat.dll ;
+	Pointer punkStream ;	// IUnknown
+	Pointer ppByteStream ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemfbytestreamwrapper
+External_Function MFCreateMFByteStreamWrapper "MFCreateMFByteStreamWrapper" MFPlat.dll ;
+	Pointer pStream ;	// IMFByteStream
+	Pointer ppStreamWrapper ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemfvideoformatfrommfmediatype
+External_Function MFCreateMFVideoFormatFromMFMediaType "MFCreateMFVideoFormatFromMFMediaType" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer ppMFVF ;	// MFVIDEOFORMAT**
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediabufferfrommediatype
+External_Function MFCreateMediaBufferFromMediaType "MFCreateMediaBufferFromMediaType" MFPlat.dll ;
+	Pointer pMediaType ;	// IMFMediaType
+	Bigint llDuration ;
+	UInteger dwMinLength ;
+	UInteger dwMinAlignment ;
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediabufferwrapper
+External_Function MFCreateMediaBufferWrapper "MFCreateMediaBufferWrapper" MFPlat.dll ;
+	Pointer pBuffer ;	// IMFMediaBuffer
+	UInteger cbOffset ;
+	UInteger dwLength ;
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediaevent
+External_Function MFCreateMediaEvent "MFCreateMediaEvent" MFPlat.dll ;
+	UInteger met ;
+	Pointer guidExtendedType ;	// Guid*
+	Integer hrStatus ;	// HRESULT
+	Pointer pvValue ;	// PROPVARIANT*
+	Pointer ppEvent ;	// IMFMediaEvent*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediaextensionactivate
+External_Function MFCreateMediaExtensionActivate "MFCreateMediaExtensionActivate" MFPlat.dll ;
+	WString szActivatableClassId ;	// PWSTR
+	Pointer pConfiguration ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediatype
+External_Function MFCreateMediaType "MFCreateMediaType" MFPlat.dll ;
+	Pointer ppMFType ;	// IMFMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemediatypefromproperties
+External_Function MFCreateMediaTypeFromProperties "MFCreateMediaTypeFromProperties" MFPlat.dll ;
+	Pointer punkStream ;	// IUnknown
+	Pointer ppMediaType ;	// IMFMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemediatypefromrepresentation
+External_Function MFCreateMediaTypeFromRepresentation "MFCreateMediaTypeFromRepresentation" MFPlat.dll ;
+	Guid guidRepresentation ;
+	Pointer pvRepresentation ;	// Pointer*
+	Pointer ppIMediaType ;	// IMFMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatememorybuffer
+External_Function MFCreateMemoryBuffer "MFCreateMemoryBuffer" MFPlat.dll ;
+	UInteger cbMaxLength ;
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemuxstreamattributes
+External_Function MFCreateMuxStreamAttributes "MFCreateMuxStreamAttributes" MFPlat.dll ;
+	Pointer pAttributesToMux ;	// IMFCollection
+	Pointer ppMuxAttribs ;	// IMFAttributes*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemuxstreammediatype
+External_Function MFCreateMuxStreamMediaType "MFCreateMuxStreamMediaType" MFPlat.dll ;
+	Pointer pMediaTypesToMux ;	// IMFCollection
+	Pointer ppMuxMediaType ;	// IMFMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatemuxstreamsample
+External_Function MFCreateMuxStreamSample "MFCreateMuxStreamSample" MFPlat.dll ;
+	Pointer pSamplesToMux ;	// IMFCollection
+	Pointer ppMuxSample ;	// IMFSample*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepresentationdescriptor
+External_Function MFCreatePresentationDescriptor "MFCreatePresentationDescriptor" MFPlat.dll ;
+	UInteger cStreamDescriptors ;
+	Pointer apStreamDescriptors ;	// IMFStreamDescriptor*
+	Pointer ppPresentationDescriptor ;	// IMFPresentationDescriptor*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepropertiesfrommediatype
+External_Function MFCreatePropertiesFromMediaType "MFCreatePropertiesFromMediaType" MFPlat.dll ;
+	Pointer pMediaType ;	// IMFMediaType
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatesample
+External_Function MFCreateSample "MFCreateSample" MFPlat.dll ;
+	Pointer ppIMFSample ;	// IMFSample*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesourceresolver
+External_Function MFCreateSourceResolver "MFCreateSourceResolver" MFPlat.dll ;
+	Pointer ppISourceResolver ;	// IMFSourceResolver*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatestreamdescriptor
+External_Function MFCreateStreamDescriptor "MFCreateStreamDescriptor" MFPlat.dll ;
+	UInteger dwStreamIdentifier ;
+	UInteger cMediaTypes ;
+	Pointer apMediaTypes ;	// IMFMediaType*
+	Pointer ppDescriptor ;	// IMFStreamDescriptor*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatestreamonmfbytestream
+External_Function MFCreateStreamOnMFByteStream "MFCreateStreamOnMFByteStream" MFPlat.dll ;
+	Pointer pByteStream ;	// IMFByteStream
+	Pointer ppStream ;	// IStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatestreamonmfbytestreamex
+External_Function MFCreateStreamOnMFByteStreamEx "MFCreateStreamOnMFByteStreamEx" MFPlat.dll ;
+	Pointer pByteStream ;	// IMFByteStream
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesystemtimesource
+External_Function MFCreateSystemTimeSource "MFCreateSystemTimeSource" MFPlat.dll ;
+	Pointer ppSystemTimeSource ;	// IMFPresentationTimeSource*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatetempfile
+External_Function MFCreateTempFile "MFCreateTempFile" MFPlat.dll ;
+	Integer AccessMode ;	// MF_FILE_ACCESSMODE
+	Integer OpenMode ;	// MF_FILE_OPENMODE
+	Integer fFlags ;	// MF_FILE_FLAGS
+	Pointer ppIByteStream ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetrackedsample
+External_Function MFCreateTrackedSample "MFCreateTrackedSample" MFPlat.dll ;
+	Pointer ppMFSample ;	// IMFTrackedSample*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mftransform/nf-mftransform-mfcreatetransformactivate
+External_Function MFCreateTransformActivate "MFCreateTransformActivate" MFPlat.dll ;
+	Pointer ppActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatevideomediatype
+External_Function MFCreateVideoMediaType "MFCreateVideoMediaType" MFPlat.dll ;
+	Pointer pVideoFormat ;	// MFVIDEOFORMAT*
+	Pointer ppIVideoMediaType ;	// IMFVideoMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatevideomediatypefrombitmapinfoheader
+External_Function MFCreateVideoMediaTypeFromBitMapInfoHeader "MFCreateVideoMediaTypeFromBitMapInfoHeader" MFPlat.dll ;
+	Pointer pbmihBitMapInfoHeader ;	// BITMAPINFOHEADER*
+	UInteger dwPixelAspectRatioX ;
+	UInteger dwPixelAspectRatioY ;
+	Integer InterlaceMode ;	// MFVideoInterlaceMode
+	UBigint VideoFlags ;
+	UBigint qwFramesPerSecondNumerator ;
+	UBigint qwFramesPerSecondDenominator ;
+	UInteger dwMaxBitRate ;
+	Pointer ppIVideoMediaType ;	// IMFVideoMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatevideomediatypefrombitmapinfoheaderex
+External_Function MFCreateVideoMediaTypeFromBitMapInfoHeaderEx "MFCreateVideoMediaTypeFromBitMapInfoHeaderEx" MFPlat.dll ;
+	Pointer pbmihBitMapInfoHeader ;	// BITMAPINFOHEADER*
+	UInteger cbBitMapInfoHeader ;
+	UInteger dwPixelAspectRatioX ;
+	UInteger dwPixelAspectRatioY ;
+	Integer InterlaceMode ;	// MFVideoInterlaceMode
+	UBigint VideoFlags ;
+	UInteger dwFramesPerSecondNumerator ;
+	UInteger dwFramesPerSecondDenominator ;
+	UInteger dwMaxBitRate ;
+	Pointer ppIVideoMediaType ;	// IMFVideoMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatevideomediatypefromsubtype
+External_Function MFCreateVideoMediaTypeFromSubtype "MFCreateVideoMediaTypeFromSubtype" MFPlat.dll ;
+	Pointer pAMSubtype ;	// Guid*
+	Pointer ppIVideoMediaType ;	// IMFVideoMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatevideosampleallocatorex
+External_Function MFCreateVideoSampleAllocatorEx "MFCreateVideoSampleAllocatorEx" MFPlat.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppSampleAllocator ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatewicbitmapbuffer
+External_Function MFCreateWICBitmapBuffer "MFCreateWICBitmapBuffer" MFPlat.dll ;
+	Pointer riid ;	// Guid*
+	Pointer punkSurface ;	// IUnknown
+	Pointer ppBuffer ;	// IMFMediaBuffer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfcreatewaveformatexfrommfmediatype
+External_Function MFCreateWaveFormatExFromMFMediaType "MFCreateWaveFormatExFromMFMediaType" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer ppWF ;	// WAVEFORMATEX**
+	Pointer pcbSize ;	// UInteger*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-mfdeserializeattributesfromstream
+External_Function MFDeserializeAttributesFromStream "MFDeserializeAttributesFromStream" MFPlat.dll ;
+	Pointer pAttr ;	// IMFAttributes
+	UInteger dwOptions ;
+	Pointer pStm ;	// IStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfdeserializepresentationdescriptor
+External_Function MFDeserializePresentationDescriptor "MFDeserializePresentationDescriptor" MFPlat.dll ;
+	UInteger cbData ;
+	Pointer pbData ;	// UChar*
+	Pointer ppPD ;	// IMFPresentationDescriptor*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfendcreatefile
+External_Function MFEndCreateFile "MFEndCreateFile" MFPlat.dll ;
+	Pointer pResult ;	// IMFAsyncResult
+	Pointer ppFile ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfendregisterworkqueuewithmmcss
+External_Function MFEndRegisterWorkQueueWithMMCSS "MFEndRegisterWorkQueueWithMMCSS" MFPlat.dll ;
+	Pointer pResult ;	// IMFAsyncResult
+	Pointer pdwTaskId ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfendunregisterworkqueuewithmmcss
+External_Function MFEndUnregisterWorkQueueWithMMCSS "MFEndUnregisterWorkQueueWithMMCSS" MFPlat.dll ;
+	Pointer pResult ;	// IMFAsyncResult
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfframeratetoaveragetimeperframe
+External_Function MFFrameRateToAverageTimePerFrame "MFFrameRateToAverageTimePerFrame" MFPlat.dll ;
+	UInteger unNumerator ;
+	UInteger unDenominator ;
+	Pointer punAverageTimePerFrame ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetattributesasblob
+External_Function MFGetAttributesAsBlob "MFGetAttributesAsBlob" MFPlat.dll ;
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer pBuf ;	// UChar*
+	UInteger cbBufSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetattributesasblobsize
+External_Function MFGetAttributesAsBlobSize "MFGetAttributesAsBlobSize" MFPlat.dll ;
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer pcbBufSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetcontentprotectionsystemclsid
+External_Function MFGetContentProtectionSystemCLSID "MFGetContentProtectionSystemCLSID" MFPlat.dll ;
+	Pointer guidProtectionSystemID ;	// Guid*
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetmftmerit
+External_Function MFGetMFTMerit "MFGetMFTMerit" MFPlat.dll ;
+	Pointer pMFT ;	// IUnknown
+	UInteger cbVerifier ;
+	Pointer verifier ;	// UChar*
+	Pointer merit ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetplugincontrol
+External_Function MFGetPluginControl "MFGetPluginControl" MFPlat.dll ;
+	Pointer ppPluginControl ;	// IMFPluginControl*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetstrideforbitmapinfoheader
+External_Function MFGetStrideForBitmapInfoHeader "MFGetStrideForBitmapInfoHeader" MFPlat.dll ;
+	UInteger format ;
+	UInteger dwWidth ;
+	Pointer pStride ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfgetsupportedmimetypes
+External_Function MFGetSupportedMimeTypes "MFGetSupportedMimeTypes" MFPlat.dll ;
+	Pointer pPropVarMimeTypeArray ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfgetsupportedschemes
+External_Function MFGetSupportedSchemes "MFGetSupportedSchemes" MFPlat.dll ;
+	Pointer pPropVarSchemeArray ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfgetsystemtime
+External_Function MFGetSystemTime "MFGetSystemTime" MFPlat.dll ;
+	Returns Bigint
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgettimerperiodicity
+External_Function MFGetTimerPeriodicity "MFGetTimerPeriodicity" MFPlat.dll ;
+	Pointer Periodicity ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetuncompressedvideoformat
+External_Function MFGetUncompressedVideoFormat "MFGetUncompressedVideoFormat" MFPlat.dll ;
+	Pointer pVideoFormat ;	// MFVIDEOFORMAT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetworkqueuemmcssclass
+External_Function MFGetWorkQueueMMCSSClass "MFGetWorkQueueMMCSSClass" MFPlat.dll ;
+	UInteger dwWorkQueueId ;
+	Pointer pwszClass ;	// PWSTR
+	Pointer pcchClass ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetworkqueuemmcsspriority
+External_Function MFGetWorkQueueMMCSSPriority "MFGetWorkQueueMMCSSPriority" MFPlat.dll ;
+	UInteger dwWorkQueueId ;
+	Pointer lPriority ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfgetworkqueuemmcsstaskid
+External_Function MFGetWorkQueueMMCSSTaskId "MFGetWorkQueueMMCSSTaskId" MFPlat.dll ;
+	UInteger dwWorkQueueId ;
+	Pointer pdwTaskId ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfheapalloc
+External_Function MFHeapAlloc "MFHeapAlloc" MFPlat.dll ;
+	ULongPtr nSize ;
+	UInteger dwFlags ;
+	String pszFile ;	// PSTR
+	Integer line ;
+	Integer eat ;	// EAllocationType
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfheapfree
+External_Function MFHeapFree "MFHeapFree" MFPlat.dll ;
+	Pointer pv ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitammediatypefrommfmediatype
+External_Function MFInitAMMediaTypeFromMFMediaType "MFInitAMMediaTypeFromMFMediaType" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Guid guidFormatBlockType ;
+	Pointer pAMType ;	// AM_MEDIA_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitattributesfromblob
+External_Function MFInitAttributesFromBlob "MFInitAttributesFromBlob" MFPlat.dll ;
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer pBuf ;	// UChar*
+	UInteger cbBufSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromammediatype
+External_Function MFInitMediaTypeFromAMMediaType "MFInitMediaTypeFromAMMediaType" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pAMType ;	// AM_MEDIA_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefrommfvideoformat
+External_Function MFInitMediaTypeFromMFVideoFormat "MFInitMediaTypeFromMFVideoFormat" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pMFVF ;	// MFVIDEOFORMAT*
+	UInteger cbBufSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefrommpeg1videoinfo
+External_Function MFInitMediaTypeFromMPEG1VideoInfo "MFInitMediaTypeFromMPEG1VideoInfo" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pMP1VI ;	// MPEG1VIDEOINFO*
+	UInteger cbBufSize ;
+	Pointer pSubtype ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefrommpeg2videoinfo
+External_Function MFInitMediaTypeFromMPEG2VideoInfo "MFInitMediaTypeFromMPEG2VideoInfo" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pMP2VI ;	// MPEG2VIDEOINFO*
+	UInteger cbBufSize ;
+	Pointer pSubtype ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromvideoinfoheader
+External_Function MFInitMediaTypeFromVideoInfoHeader "MFInitMediaTypeFromVideoInfoHeader" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pVIH ;	// VIDEOINFOHEADER*
+	UInteger cbBufSize ;
+	Pointer pSubtype ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromvideoinfoheader2
+External_Function MFInitMediaTypeFromVideoInfoHeader2 "MFInitMediaTypeFromVideoInfoHeader2" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pVIH2 ;	// VIDEOINFOHEADER2*
+	UInteger cbBufSize ;
+	Pointer pSubtype ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitmediatypefromwaveformatex
+External_Function MFInitMediaTypeFromWaveFormatEx "MFInitMediaTypeFromWaveFormatEx" MFPlat.dll ;
+	Pointer pMFType ;	// IMFMediaType
+	Pointer pWaveFormat ;	// WAVEFORMATEX*
+	UInteger cbBufSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitvideoformat
+External_Function MFInitVideoFormat "MFInitVideoFormat" MFPlat.dll ;
+	Pointer pVideoFormat ;	// MFVIDEOFORMAT*
+	Integer type ;	// MFStandardVideoFormat
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinitvideoformat_rgb
+External_Function MFInitVideoFormat_RGB "MFInitVideoFormat_RGB" MFPlat.dll ;
+	Pointer pVideoFormat ;	// MFVIDEOFORMAT*
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger D3Dfmt ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfinvokecallback
+External_Function MFInvokeCallback "MFInvokeCallback" MFPlat.dll ;
+	Pointer pAsyncResult ;	// IMFAsyncResult
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfiscontentprotectiondevicesupported
+External_Function MFIsContentProtectionDeviceSupported "MFIsContentProtectionDeviceSupported" MFPlat.dll ;
+	Pointer ProtectionSystemId ;	// Guid*
+	Pointer isSupported ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mflockdxgidevicemanager
+External_Function MFLockDXGIDeviceManager "MFLockDXGIDeviceManager" MFPlat.dll ;
+	Pointer pResetToken ;	// UInteger*
+	Pointer ppManager ;	// IMFDXGIDeviceManager*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mflockplatform
+External_Function MFLockPlatform "MFLockPlatform" MFPlat.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mflocksharedworkqueue
+External_Function MFLockSharedWorkQueue "MFLockSharedWorkQueue" MFPlat.dll ;
+	WString wszClass ;	// PWSTR
+	Integer BasePriority ;
+	Pointer pdwTaskId ;	// UInteger*
+	Pointer pID ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mflockworkqueue
+External_Function MFLockWorkQueue "MFLockWorkQueue" MFPlat.dll ;
+	UInteger dwWorkQueue ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfmapdx9formattodxgiformat
+External_Function MFMapDX9FormatToDXGIFormat "MFMapDX9FormatToDXGIFormat" MFPlat.dll ;
+	UInteger dx9 ;
+	Returns Integer	// DXGI_FORMAT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfmapdxgiformattodx9format
+External_Function MFMapDXGIFormatToDX9Format "MFMapDXGIFormatToDX9Format" MFPlat.dll ;
+	Integer dx11 ;	// DXGI_FORMAT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputwaitingworkitem
+External_Function MFPutWaitingWorkItem "MFPutWaitingWorkItem" MFPlat.dll ;
+	Pointer hEvent ;	// HANDLE
+	Integer Priority ;
+	Pointer pResult ;	// IMFAsyncResult
+	Pointer pKey ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputworkitem
+External_Function MFPutWorkItem "MFPutWorkItem" MFPlat.dll ;
+	UInteger dwQueue ;
+	Pointer pCallback ;	// IMFAsyncCallback
+	Pointer pState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputworkitem2
+External_Function MFPutWorkItem2 "MFPutWorkItem2" MFPlat.dll ;
+	UInteger dwQueue ;
+	Integer Priority ;
+	Pointer pCallback ;	// IMFAsyncCallback
+	Pointer pState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputworkitemex
+External_Function MFPutWorkItemEx "MFPutWorkItemEx" MFPlat.dll ;
+	UInteger dwQueue ;
+	Pointer pResult ;	// IMFAsyncResult
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfputworkitemex2
+External_Function MFPutWorkItemEx2 "MFPutWorkItemEx2" MFPlat.dll ;
+	UInteger dwQueue ;
+	Integer Priority ;
+	Pointer pResult ;	// IMFAsyncResult
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfregisterlocalbytestreamhandler
+External_Function MFRegisterLocalByteStreamHandler "MFRegisterLocalByteStreamHandler" MFPlat.dll ;
+	WString szFileExtension ;	// PWSTR
+	WString szMimeType ;	// PWSTR
+	Pointer pActivate ;	// IMFActivate
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfregisterlocalschemehandler
+External_Function MFRegisterLocalSchemeHandler "MFRegisterLocalSchemeHandler" MFPlat.dll ;
+	WString szScheme ;	// PWSTR
+	Pointer pActivate ;	// IMFActivate
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfregisterplatformwithmmcss
+External_Function MFRegisterPlatformWithMMCSS "MFRegisterPlatformWithMMCSS" MFPlat.dll ;
+	WString wszClass ;	// PWSTR
+	Pointer pdwTaskId ;	// UInteger*
+	Integer lPriority ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfremoveperiodiccallback
+External_Function MFRemovePeriodicCallback "MFRemovePeriodicCallback" MFPlat.dll ;
+	UInteger dwKey ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfscheduleworkitem
+External_Function MFScheduleWorkItem "MFScheduleWorkItem" MFPlat.dll ;
+	Pointer pCallback ;	// IMFAsyncCallback
+	Pointer pState ;	// IUnknown
+	Bigint Timeout ;
+	Pointer pKey ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfscheduleworkitemex
+External_Function MFScheduleWorkItemEx "MFScheduleWorkItemEx" MFPlat.dll ;
+	Pointer pResult ;	// IMFAsyncResult
+	Bigint Timeout ;
+	Pointer pKey ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/nf-mfobjects-mfserializeattributestostream
+External_Function MFSerializeAttributesToStream "MFSerializeAttributesToStream" MFPlat.dll ;
+	Pointer pAttr ;	// IMFAttributes
+	UInteger dwOptions ;
+	Pointer pStm ;	// IStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfserializepresentationdescriptor
+External_Function MFSerializePresentationDescriptor "MFSerializePresentationDescriptor" MFPlat.dll ;
+	Pointer pPD ;	// IMFPresentationDescriptor
+	Pointer pcbData ;	// UInteger*
+	Pointer ppbData ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfshutdown
+External_Function MFShutdown "MFShutdown" MFPlat.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfsplitsample
+External_Function MFSplitSample "MFSplitSample" MFPlat.dll ;
+	Pointer pSample ;	// IMFSample
+	Pointer pOutputSamples ;	// IMFSample*
+	UInteger dwOutputSampleMaxCount ;
+	Pointer pdwOutputSampleCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfstartup
+External_Function MFStartup "MFStartup" MFPlat.dll ;
+	UInteger Version ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftenum
+External_Function MFTEnum "MFTEnum" MFPlat.dll ;
+	Guid guidCategory ;
+	UInteger Flags ;
+	Pointer pInputType ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pOutputType ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer ppclsidMFT ;	// Guid**
+	Pointer pcMFTs ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftenum2
+External_Function MFTEnum2 "MFTEnum2" MFPlat.dll ;
+	Guid guidCategory ;
+	UInteger Flags ;
+	Pointer pInputType ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pOutputType ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer pppMFTActivate ;	// IMFActivate**
+	Pointer pnumMFTActivate ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftenumex
+External_Function MFTEnumEx "MFTEnumEx" MFPlat.dll ;
+	Guid guidCategory ;
+	UInteger Flags ;
+	Pointer pInputType ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pOutputType ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pppMFTActivate ;	// IMFActivate**
+	Pointer pnumMFTActivate ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftgetinfo
+External_Function MFTGetInfo "MFTGetInfo" MFPlat.dll ;
+	Guid clsidMFT ;
+	Pointer pszName ;	// PWSTR*
+	Pointer ppInputTypes ;	// MFT_REGISTER_TYPE_INFO**
+	Pointer pcInputTypes ;	// UInteger*
+	Pointer ppOutputTypes ;	// MFT_REGISTER_TYPE_INFO**
+	Pointer pcOutputTypes ;	// UInteger*
+	Pointer ppAttributes ;	// IMFAttributes*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftregister
+External_Function MFTRegister "MFTRegister" MFPlat.dll ;
+	Guid clsidMFT ;
+	Guid guidCategory ;
+	WString pszName ;	// PWSTR
+	UInteger Flags ;
+	UInteger cInputTypes ;
+	Pointer pInputTypes ;	// MFT_REGISTER_TYPE_INFO*
+	UInteger cOutputTypes ;
+	Pointer pOutputTypes ;	// MFT_REGISTER_TYPE_INFO*
+	Pointer pAttributes ;	// IMFAttributes
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftregisterlocal
+External_Function MFTRegisterLocal "MFTRegisterLocal" MFPlat.dll ;
+	Pointer pClassFactory ;	// IClassFactory
+	Pointer guidCategory ;	// Guid*
+	WString pszName ;	// PWSTR
+	UInteger Flags ;
+	UInteger cInputTypes ;
+	Pointer pInputTypes ;	// MFT_REGISTER_TYPE_INFO*
+	UInteger cOutputTypes ;
+	Pointer pOutputTypes ;	// MFT_REGISTER_TYPE_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftregisterlocalbyclsid
+External_Function MFTRegisterLocalByCLSID "MFTRegisterLocalByCLSID" MFPlat.dll ;
+	Pointer clisdMFT ;	// Guid*
+	Pointer guidCategory ;	// Guid*
+	WString pszName ;	// PWSTR
+	UInteger Flags ;
+	UInteger cInputTypes ;
+	Pointer pInputTypes ;	// MFT_REGISTER_TYPE_INFO*
+	UInteger cOutputTypes ;
+	Pointer pOutputTypes ;	// MFT_REGISTER_TYPE_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftunregister
+External_Function MFTUnregister "MFTUnregister" MFPlat.dll ;
+	Guid clsidMFT ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftunregisterlocal
+External_Function MFTUnregisterLocal "MFTUnregisterLocal" MFPlat.dll ;
+	Pointer pClassFactory ;	// IClassFactory
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mftunregisterlocalbyclsid
+External_Function MFTUnregisterLocalByCLSID "MFTUnregisterLocalByCLSID" MFPlat.dll ;
+	Guid clsidMFT ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfunlockdxgidevicemanager
+External_Function MFUnlockDXGIDeviceManager "MFUnlockDXGIDeviceManager" MFPlat.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfunlockplatform
+External_Function MFUnlockPlatform "MFUnlockPlatform" MFPlat.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfunlockworkqueue
+External_Function MFUnlockWorkQueue "MFUnlockWorkQueue" MFPlat.dll ;
+	UInteger dwWorkQueue ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfunregisterplatformfrommmcss
+External_Function MFUnregisterPlatformFromMMCSS "MFUnregisterPlatformFromMMCSS" MFPlat.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfunwrapmediatype
+External_Function MFUnwrapMediaType "MFUnwrapMediaType" MFPlat.dll ;
+	Pointer pWrap ;	// IMFMediaType
+	Pointer ppOrig ;	// IMFMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfvalidatemediatypesize
+External_Function MFValidateMediaTypeSize "MFValidateMediaTypeSize" MFPlat.dll ;
+	Guid FormatType ;
+	Pointer pBlock ;	// UChar*
+	UInteger cbSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfwrapmediatype
+External_Function MFWrapMediaType "MFWrapMediaType" MFPlat.dll ;
+	Pointer pOrig ;	// IMFMediaType
+	Pointer MajorType ;	// Guid*
+	Pointer SubType ;	// Guid*
+	Pointer ppWrap ;	// IMFMediaType*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/nf-mfapi-mfllmuldiv
+External_Function MFllMulDiv "MFllMulDiv" MFPlat.dll ;
+	Bigint a ;
+	Bigint b ;
+	Bigint c ;
+	Bigint d ;
+	Returns Bigint
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-createnamedpropertystore
+External_Function CreateNamedPropertyStore "CreateNamedPropertyStore" MF.dll ;
+	Pointer ppStore ;	// INamedPropertyStore*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreate3gpmediasink
+External_Function MFCreate3GPMediaSink "MFCreate3GPMediaSink" MF.dll ;
+	Pointer pIByteStream ;	// IMFByteStream
+	Pointer pVideoMediaType ;	// IMFMediaType
+	Pointer pAudioMediaType ;	// IMFMediaType
+	Pointer ppIMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateac3mediasink
+External_Function MFCreateAC3MediaSink "MFCreateAC3MediaSink" MF.dll ;
+	Pointer pTargetByteStream ;	// IMFByteStream
+	Pointer pAudioMediaType ;	// IMFMediaType
+	Pointer ppMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateadtsmediasink
+External_Function MFCreateADTSMediaSink "MFCreateADTSMediaSink" MF.dll ;
+	Pointer pTargetByteStream ;	// IMFByteStream
+	Pointer pAudioMediaType ;	// IMFMediaType
+	Pointer ppMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfcontentinfo
+External_Function MFCreateASFContentInfo "MFCreateASFContentInfo" MF.dll ;
+	Pointer ppIContentInfo ;	// IMFASFContentInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfindexer
+External_Function MFCreateASFIndexer "MFCreateASFIndexer" MF.dll ;
+	Pointer ppIIndexer ;	// IMFASFIndexer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfindexerbytestream
+External_Function MFCreateASFIndexerByteStream "MFCreateASFIndexerByteStream" MF.dll ;
+	Pointer pIContentByteStream ;	// IMFByteStream
+	UBigint cbIndexStartOffset ;
+	Pointer pIIndexByteStream ;	// IMFByteStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfmediasink
+External_Function MFCreateASFMediaSink "MFCreateASFMediaSink" MF.dll ;
+	Pointer pIByteStream ;	// IMFByteStream
+	Pointer ppIMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfmediasinkactivate
+External_Function MFCreateASFMediaSinkActivate "MFCreateASFMediaSinkActivate" MF.dll ;
+	WString pwszFileName ;	// PWSTR
+	Pointer pContentInfo ;	// IMFASFContentInfo
+	Pointer ppIActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfmultiplexer
+External_Function MFCreateASFMultiplexer "MFCreateASFMultiplexer" MF.dll ;
+	Pointer ppIMultiplexer ;	// IMFASFMultiplexer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfprofile
+External_Function MFCreateASFProfile "MFCreateASFProfile" MF.dll ;
+	Pointer ppIProfile ;	// IMFASFProfile*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfprofilefrompresentationdescriptor
+External_Function MFCreateASFProfileFromPresentationDescriptor "MFCreateASFProfileFromPresentationDescriptor" MF.dll ;
+	Pointer pIPD ;	// IMFPresentationDescriptor
+	Pointer ppIProfile ;	// IMFASFProfile*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfsplitter
+External_Function MFCreateASFSplitter "MFCreateASFSplitter" MF.dll ;
+	Pointer ppISplitter ;	// IMFASFSplitter*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfstreamselector
+External_Function MFCreateASFStreamSelector "MFCreateASFStreamSelector" MF.dll ;
+	Pointer pIASFProfile ;	// IMFASFProfile
+	Pointer ppSelector ;	// IMFASFStreamSelector*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfstreamingmediasink
+External_Function MFCreateASFStreamingMediaSink "MFCreateASFStreamingMediaSink" MF.dll ;
+	Pointer pIByteStream ;	// IMFByteStream
+	Pointer ppIMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreateasfstreamingmediasinkactivate
+External_Function MFCreateASFStreamingMediaSinkActivate "MFCreateASFStreamingMediaSinkActivate" MF.dll ;
+	Pointer pByteStreamActivate ;	// IMFActivate
+	Pointer pContentInfo ;	// IMFASFContentInfo
+	Pointer ppIActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateaggregatesource
+External_Function MFCreateAggregateSource "MFCreateAggregateSource" MF.dll ;
+	Pointer pSourceCollection ;	// IMFCollection
+	Pointer ppAggSource ;	// IMFMediaSource*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateaudiorenderer
+External_Function MFCreateAudioRenderer "MFCreateAudioRenderer" MF.dll ;
+	Pointer pAudioAttributes ;	// IMFAttributes
+	Pointer ppSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateaudiorendereractivate
+External_Function MFCreateAudioRendererActivate "MFCreateAudioRendererActivate" MF.dll ;
+	Pointer ppActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatecredentialcache
+External_Function MFCreateCredentialCache "MFCreateCredentialCache" MF.dll ;
+	Pointer ppCache ;	// IMFNetCredentialCache*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatedevicesource
+External_Function MFCreateDeviceSource "MFCreateDeviceSource" MF.dll ;
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer ppSource ;	// IMFMediaSource*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatedevicesourceactivate
+External_Function MFCreateDeviceSourceActivate "MFCreateDeviceSourceActivate" MF.dll ;
+	Pointer pAttributes ;	// IMFAttributes
+	Pointer ppActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfcontentdecryptionmodule/nf-mfcontentdecryptionmodule-mfcreateencryptedmediaextensionsstoreactivate
+External_Function MFCreateEncryptedMediaExtensionsStoreActivate "MFCreateEncryptedMediaExtensionsStoreActivate" MF.dll ;
+	Pointer pmpHost ;	// IMFPMPHostApp
+	Pointer objectStream ;	// IStream
+	WString classId ;	// PWSTR
+	Pointer activate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatefmpeg4mediasink
+External_Function MFCreateFMPEG4MediaSink "MFCreateFMPEG4MediaSink" MF.dll ;
+	Pointer pIByteStream ;	// IMFByteStream
+	Pointer pVideoMediaType ;	// IMFMediaType
+	Pointer pAudioMediaType ;	// IMFMediaType
+	Pointer ppIMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemp3mediasink
+External_Function MFCreateMP3MediaSink "MFCreateMP3MediaSink" MF.dll ;
+	Pointer pTargetByteStream ;	// IMFByteStream
+	Pointer ppMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatempeg4mediasink
+External_Function MFCreateMPEG4MediaSink "MFCreateMPEG4MediaSink" MF.dll ;
+	Pointer pIByteStream ;	// IMFByteStream
+	Pointer pVideoMediaType ;	// IMFMediaType
+	Pointer pAudioMediaType ;	// IMFMediaType
+	Pointer ppIMediaSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemediasession
+External_Function MFCreateMediaSession "MFCreateMediaSession" MF.dll ;
+	Pointer pConfiguration ;	// IMFAttributes
+	Pointer ppMediaSession ;	// IMFMediaSession*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatemuxsink
+External_Function MFCreateMuxSink "MFCreateMuxSink" MF.dll ;
+	Guid guidOutputSubType ;
+	Pointer pOutputAttributes ;	// IMFAttributes
+	Pointer pOutputByteStream ;	// IMFByteStream
+	Pointer ppMuxSink ;	// IMFMediaSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatenetschemeplugin
+External_Function MFCreateNetSchemePlugin "MFCreateNetSchemePlugin" MF.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppvHandler ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepmpmediasession
+External_Function MFCreatePMPMediaSession "MFCreatePMPMediaSession" MF.dll ;
+	UInteger dwCreationFlags ;
+	Pointer pConfiguration ;	// IMFAttributes
+	Pointer ppMediaSession ;	// IMFMediaSession*
+	Pointer ppEnablerActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepmpserver
+External_Function MFCreatePMPServer "MFCreatePMPServer" MF.dll ;
+	UInteger dwCreationFlags ;
+	Pointer ppPMPServer ;	// IMFPMPServer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatepresentationclock
+External_Function MFCreatePresentationClock "MFCreatePresentationClock" MF.dll ;
+	Pointer ppPresentationClock ;	// IMFPresentationClock*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wmcontainer/nf-wmcontainer-mfcreatepresentationdescriptorfromasfprofile
+External_Function MFCreatePresentationDescriptorFromASFProfile "MFCreatePresentationDescriptorFromASFProfile" MF.dll ;
+	Pointer pIProfile ;	// IMFASFProfile
+	Pointer ppIPD ;	// IMFPresentationDescriptor*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateprotectedenvironmentaccess
+External_Function MFCreateProtectedEnvironmentAccess "MFCreateProtectedEnvironmentAccess" MF.dll ;
+	Pointer ppAccess ;	// IMFProtectedEnvironmentAccess*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateproxylocator
+External_Function MFCreateProxyLocator "MFCreateProxyLocator" MF.dll ;
+	WString pszProtocol ;	// PWSTR
+	Pointer pProxyConfig ;	// IPropertyStore
+	Pointer ppProxyLocator ;	// IMFNetProxyLocator*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreateremotedesktopplugin
+External_Function MFCreateRemoteDesktopPlugin "MFCreateRemoteDesktopPlugin" MF.dll ;
+	Pointer ppPlugin ;	// IMFRemoteDesktopPlugin*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesamplecopiermft
+External_Function MFCreateSampleCopierMFT "MFCreateSampleCopierMFT" MF.dll ;
+	Pointer ppCopierMFT ;	// IMFTransform*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesamplegrabbersinkactivate
+External_Function MFCreateSampleGrabberSinkActivate "MFCreateSampleGrabberSinkActivate" MF.dll ;
+	Pointer pIMFMediaType ;	// IMFMediaType
+	Pointer pIMFSampleGrabberSinkCallback ;	// IMFSampleGrabberSinkCallback
+	Pointer ppIActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesequencersegmentoffset
+External_Function MFCreateSequencerSegmentOffset "MFCreateSequencerSegmentOffset" MF.dll ;
+	UInteger dwId ;
+	Bigint hnsOffset ;
+	Pointer pvarSegmentOffset ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesequencersource
+External_Function MFCreateSequencerSource "MFCreateSequencerSource" MF.dll ;
+	Pointer pReserved ;	// IUnknown
+	Pointer ppSequencerSource ;	// IMFSequencerSource*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatesimpletypehandler
+External_Function MFCreateSimpleTypeHandler "MFCreateSimpleTypeHandler" MF.dll ;
+	Pointer ppHandler ;	// IMFMediaTypeHandler*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatestandardqualitymanager
+External_Function MFCreateStandardQualityManager "MFCreateStandardQualityManager" MF.dll ;
+	Pointer ppQualityManager ;	// IMFQualityManager*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetopoloader
+External_Function MFCreateTopoLoader "MFCreateTopoLoader" MF.dll ;
+	Pointer ppObj ;	// IMFTopoLoader*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetopology
+External_Function MFCreateTopology "MFCreateTopology" MF.dll ;
+	Pointer ppTopo ;	// IMFTopology*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetopologynode
+External_Function MFCreateTopologyNode "MFCreateTopologyNode" MF.dll ;
+	Integer NodeType ;	// MF_TOPOLOGY_TYPE
+	Pointer ppNode ;	// IMFTopologyNode*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetranscodeprofile
+External_Function MFCreateTranscodeProfile "MFCreateTranscodeProfile" MF.dll ;
+	Pointer ppTranscodeProfile ;	// IMFTranscodeProfile*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetranscodesinkactivate
+External_Function MFCreateTranscodeSinkActivate "MFCreateTranscodeSinkActivate" MF.dll ;
+	Pointer ppActivate ;	// IMFActivate*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetranscodetopology
+External_Function MFCreateTranscodeTopology "MFCreateTranscodeTopology" MF.dll ;
+	Pointer pSrc ;	// IMFMediaSource
+	WString pwszOutputFilePath ;	// PWSTR
+	Pointer pProfile ;	// IMFTranscodeProfile
+	Pointer ppTranscodeTopo ;	// IMFTopology*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/nf-mfidl-mfcreatetranscodetopologyfrombytestream
+External_Function MFCreateTranscodeTopologyFromByteStream "MFCreateTranscodeTopologyFromByteStream" MF.dll ;
+	Pointer pSrc ;	// IMFMediaSource
+	Pointer pOutputStream ;	// IMFByteStream
+	Pointer pProfile ;	// IMFTranscodeProfile
+	Pointer ppTranscodeTopo ;	// IMFTopology*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

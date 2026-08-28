@@ -1,0 +1,88 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-printwindow
+External_Function PrintWindow "PrintWindow" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hdcBlt ;	// HDC
+	UInteger nFlags ;	// PRINT_WINDOW_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-abortdoc
+External_Function AbortDoc "AbortDoc" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-enddoc
+External_Function EndDoc "EndDoc" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-endpage
+External_Function EndPage "EndPage" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-escape
+External_Function Escape "Escape" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Integer iEscape ;
+	Integer cjIn ;
+	String pvIn ;	// PSTR
+	Pointer pvOut ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-extescape
+External_Function ExtEscape "ExtEscape" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Integer iEscape ;
+	Integer cjInput ;
+	String lpInData ;	// PSTR
+	Integer cjOutput ;
+	Pointer lpOutData ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setabortproc
+External_Function SetAbortProc "SetAbortProc" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer proc ;	// ABORTPROC
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-startdoca
+External_Function StartDocA "StartDocA" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer lpdi ;	// DOCINFOA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-startdocw
+External_Function StartDocW "StartDocW" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer lpdi ;	// DOCINFOW*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-startpage
+External_Function StartPage "StartPage" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-devicecapabilitiesa
+External_Function DeviceCapabilitiesA "DeviceCapabilitiesA" winspool.drv ;
+	String pDevice ;	// PSTR
+	String pPort ;	// PSTR
+	UShort fwCapability ;	// PRINTER_DEVICE_CAPABILITIES
+	Pointer pOutput ;	// PSTR
+	Pointer pDevMode ;	// DEVMODEA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-devicecapabilitiesw
+External_Function DeviceCapabilitiesW "DeviceCapabilitiesW" winspool.drv ;
+	WString pDevice ;	// PWSTR
+	WString pPort ;	// PWSTR
+	UShort fwCapability ;	// PRINTER_DEVICE_CAPABILITIES
+	Pointer pOutput ;	// PWSTR
+	Pointer pDevMode ;	// DEVMODEW*
+	Returns Integer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

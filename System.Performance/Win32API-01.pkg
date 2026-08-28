@@ -1,0 +1,993 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/profileapi/nf-profileapi-queryperformancecounter
+External_Function QueryPerformanceCounter "QueryPerformanceCounter" KERNEL32.dll ;
+	Pointer lpPerformanceCount ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/profileapi/nf-profileapi-queryperformancefrequency
+External_Function QueryPerformanceFrequency "QueryPerformanceFrequency" KERNEL32.dll ;
+	Pointer lpFrequency ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfaddcounters
+External_Function PerfAddCounters "PerfAddCounters" ADVAPI32.dll ;
+	Pointer hQuery ;	// HANDLE
+	Pointer pCounters ;	// PERF_COUNTER_IDENTIFIER*
+	UInteger cbCounters ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfclosequeryhandle
+External_Function PerfCloseQueryHandle "PerfCloseQueryHandle" ADVAPI32.dll ;
+	Pointer hQuery ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfcreateinstance
+External_Function PerfCreateInstance "PerfCreateInstance" ADVAPI32.dll ;
+	Pointer ProviderHandle ;	// HANDLE
+	Pointer CounterSetGuid ;	// Guid*
+	WString Name ;	// PWSTR
+	UInteger Id ;
+	Returns Pointer	// PERF_COUNTERSET_INSTANCE*
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfdecrementulongcountervalue
+External_Function PerfDecrementULongCounterValue "PerfDecrementULongCounterValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	UInteger Value ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfdecrementulonglongcountervalue
+External_Function PerfDecrementULongLongCounterValue "PerfDecrementULongLongCounterValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	UBigint Value ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfdeletecounters
+External_Function PerfDeleteCounters "PerfDeleteCounters" ADVAPI32.dll ;
+	Pointer hQuery ;	// HANDLE
+	Pointer pCounters ;	// PERF_COUNTER_IDENTIFIER*
+	UInteger cbCounters ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfdeleteinstance
+External_Function PerfDeleteInstance "PerfDeleteInstance" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer InstanceBlock ;	// PERF_COUNTERSET_INSTANCE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfenumeratecounterset
+External_Function PerfEnumerateCounterSet "PerfEnumerateCounterSet" ADVAPI32.dll ;
+	WString szMachine ;	// PWSTR
+	Pointer pCounterSetIds ;	// Guid*
+	UInteger cCounterSetIds ;
+	Pointer pcCounterSetIdsActual ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfenumeratecountersetinstances
+External_Function PerfEnumerateCounterSetInstances "PerfEnumerateCounterSetInstances" ADVAPI32.dll ;
+	WString szMachine ;	// PWSTR
+	Pointer pCounterSetId ;	// Guid*
+	Pointer pInstances ;	// PERF_INSTANCE_HEADER*
+	UInteger cbInstances ;
+	Pointer pcbInstancesActual ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfincrementulongcountervalue
+External_Function PerfIncrementULongCounterValue "PerfIncrementULongCounterValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	UInteger Value ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfincrementulonglongcountervalue
+External_Function PerfIncrementULongLongCounterValue "PerfIncrementULongLongCounterValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	UBigint Value ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfopenqueryhandle
+External_Function PerfOpenQueryHandle "PerfOpenQueryHandle" ADVAPI32.dll ;
+	WString szMachine ;	// PWSTR
+	Pointer phQuery ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfquerycounterdata
+External_Function PerfQueryCounterData "PerfQueryCounterData" ADVAPI32.dll ;
+	Pointer hQuery ;	// HANDLE
+	Pointer pCounterBlock ;	// PERF_DATA_HEADER*
+	UInteger cbCounterBlock ;
+	Pointer pcbCounterBlockActual ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfquerycounterinfo
+External_Function PerfQueryCounterInfo "PerfQueryCounterInfo" ADVAPI32.dll ;
+	Pointer hQuery ;	// HANDLE
+	Pointer pCounters ;	// PERF_COUNTER_IDENTIFIER*
+	UInteger cbCounters ;
+	Pointer pcbCountersActual ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfquerycountersetregistrationinfo
+External_Function PerfQueryCounterSetRegistrationInfo "PerfQueryCounterSetRegistrationInfo" ADVAPI32.dll ;
+	WString szMachine ;	// PWSTR
+	Pointer pCounterSetId ;	// Guid*
+	Integer requestCode ;	// PerfRegInfoType
+	UInteger requestLangId ;
+	Pointer pbRegInfo ;	// UChar*
+	UInteger cbRegInfo ;
+	Pointer pcbRegInfoActual ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfqueryinstance
+External_Function PerfQueryInstance "PerfQueryInstance" ADVAPI32.dll ;
+	Pointer ProviderHandle ;	// HANDLE
+	Pointer CounterSetGuid ;	// Guid*
+	WString Name ;	// PWSTR
+	UInteger Id ;
+	Returns Pointer	// PERF_COUNTERSET_INSTANCE*
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfsetcounterrefvalue
+External_Function PerfSetCounterRefValue "PerfSetCounterRefValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	Pointer Address ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfsetcountersetinfo
+External_Function PerfSetCounterSetInfo "PerfSetCounterSetInfo" ADVAPI32.dll ;
+	Pointer ProviderHandle ;	// HANDLE
+	Pointer Template ;	// PERF_COUNTERSET_INFO*
+	UInteger TemplateSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfsetulongcountervalue
+External_Function PerfSetULongCounterValue "PerfSetULongCounterValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	UInteger Value ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfsetulonglongcountervalue
+External_Function PerfSetULongLongCounterValue "PerfSetULongLongCounterValue" ADVAPI32.dll ;
+	Pointer Provider ;	// HANDLE
+	Pointer Instance ;	// PERF_COUNTERSET_INSTANCE*
+	UInteger CounterId ;
+	UBigint Value ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfstartprovider
+External_Function PerfStartProvider "PerfStartProvider" ADVAPI32.dll ;
+	Pointer ProviderGuid ;	// Guid*
+	Pointer ControlCallback ;	// PERFLIBREQUEST
+	Pointer phProvider ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfstartproviderex
+External_Function PerfStartProviderEx "PerfStartProviderEx" ADVAPI32.dll ;
+	Pointer ProviderGuid ;	// Guid*
+	Pointer ProviderContext ;	// PERF_PROVIDER_CONTEXT*
+	Pointer Provider ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/perflib/nf-perflib-perfstopprovider
+External_Function PerfStopProvider "PerfStopProvider" ADVAPI32.dll ;
+	Pointer ProviderHandle ;	// HANDLE
+	Returns UInteger
+
+External_Function BackupPerfRegistryToFileW "BackupPerfRegistryToFileW" loadperf.dll ;
+	WString szFileName ;	// PWSTR
+	WString szCommentString ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/loadperf/nf-loadperf-installperfdlla
+External_Function InstallPerfDllA "InstallPerfDllA" loadperf.dll ;
+	String szComputerName ;	// PSTR
+	String lpIniFile ;	// PSTR
+	ULongPtr dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/loadperf/nf-loadperf-installperfdllw
+External_Function InstallPerfDllW "InstallPerfDllW" loadperf.dll ;
+	WString szComputerName ;	// PWSTR
+	WString lpIniFile ;	// PWSTR
+	ULongPtr dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/loadperf/nf-loadperf-loadperfcountertextstringsa
+External_Function LoadPerfCounterTextStringsA "LoadPerfCounterTextStringsA" loadperf.dll ;
+	String lpCommandLine ;	// PSTR
+	Integer bQuietModeArg ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/loadperf/nf-loadperf-loadperfcountertextstringsw
+External_Function LoadPerfCounterTextStringsW "LoadPerfCounterTextStringsW" loadperf.dll ;
+	WString lpCommandLine ;	// PWSTR
+	Integer bQuietModeArg ;	// BOOL
+	Returns UInteger
+
+External_Function RestorePerfRegistryFromFileW "RestorePerfRegistryFromFileW" loadperf.dll ;
+	WString szFileName ;	// PWSTR
+	WString szLangId ;	// PWSTR
+	Returns UInteger
+
+External_Function SetServiceAsTrustedA "SetServiceAsTrustedA" loadperf.dll ;
+	String szReserved ;	// PSTR
+	String szServiceName ;	// PSTR
+	Returns UInteger
+
+External_Function SetServiceAsTrustedW "SetServiceAsTrustedW" loadperf.dll ;
+	WString szReserved ;	// PWSTR
+	WString szServiceName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/loadperf/nf-loadperf-unloadperfcountertextstringsa
+External_Function UnloadPerfCounterTextStringsA "UnloadPerfCounterTextStringsA" loadperf.dll ;
+	String lpCommandLine ;	// PSTR
+	Integer bQuietModeArg ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/loadperf/nf-loadperf-unloadperfcountertextstringsw
+External_Function UnloadPerfCounterTextStringsW "UnloadPerfCounterTextStringsW" loadperf.dll ;
+	WString lpCommandLine ;	// PWSTR
+	Integer bQuietModeArg ;	// BOOL
+	Returns UInteger
+
+External_Function UpdatePerfNameFilesA "UpdatePerfNameFilesA" loadperf.dll ;
+	String szNewCtrFilePath ;	// PSTR
+	String szNewHlpFilePath ;	// PSTR
+	String szLanguageID ;	// PSTR
+	ULongPtr dwModes ;
+	Returns UInteger
+
+External_Function UpdatePerfNameFilesW "UpdatePerfNameFilesW" loadperf.dll ;
+	WString szNewCtrFilePath ;	// PWSTR
+	WString szNewHlpFilePath ;	// PWSTR
+	WString szLanguageID ;	// PWSTR
+	ULongPtr dwModes ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhaddcountera
+External_Function PdhAddCounterA "PdhAddCounterA" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	String szFullCounterPath ;	// PSTR
+	ULongPtr dwUserData ;
+	Pointer phCounter ;	// PDH_HCOUNTER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhaddcounterw
+External_Function PdhAddCounterW "PdhAddCounterW" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	WString szFullCounterPath ;	// PWSTR
+	ULongPtr dwUserData ;
+	Pointer phCounter ;	// PDH_HCOUNTER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhaddenglishcountera
+External_Function PdhAddEnglishCounterA "PdhAddEnglishCounterA" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	String szFullCounterPath ;	// PSTR
+	ULongPtr dwUserData ;
+	Pointer phCounter ;	// PDH_HCOUNTER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhaddenglishcounterw
+External_Function PdhAddEnglishCounterW "PdhAddEnglishCounterW" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	WString szFullCounterPath ;	// PWSTR
+	ULongPtr dwUserData ;
+	Pointer phCounter ;	// PDH_HCOUNTER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhbindinputdatasourcea
+External_Function PdhBindInputDataSourceA "PdhBindInputDataSourceA" pdh.dll ;
+	Pointer phDataSource ;	// PDH_HLOG*
+	String LogFileNameList ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhbindinputdatasourcew
+External_Function PdhBindInputDataSourceW "PdhBindInputDataSourceW" pdh.dll ;
+	Pointer phDataSource ;	// PDH_HLOG*
+	WString LogFileNameList ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhbrowsecountersa
+External_Function PdhBrowseCountersA "PdhBrowseCountersA" pdh.dll ;
+	Pointer pBrowseDlgData ;	// PDH_BROWSE_DLG_CONFIG_A*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhbrowsecountersha
+External_Function PdhBrowseCountersHA "PdhBrowseCountersHA" pdh.dll ;
+	Pointer pBrowseDlgData ;	// PDH_BROWSE_DLG_CONFIG_HA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhbrowsecountershw
+External_Function PdhBrowseCountersHW "PdhBrowseCountersHW" pdh.dll ;
+	Pointer pBrowseDlgData ;	// PDH_BROWSE_DLG_CONFIG_HW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhbrowsecountersw
+External_Function PdhBrowseCountersW "PdhBrowseCountersW" pdh.dll ;
+	Pointer pBrowseDlgData ;	// PDH_BROWSE_DLG_CONFIG_W*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhcalculatecounterfromrawvalue
+External_Function PdhCalculateCounterFromRawValue "PdhCalculateCounterFromRawValue" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UInteger dwFormat ;	// PDH_FMT
+	Pointer rawValue1 ;	// PDH_RAW_COUNTER*
+	Pointer rawValue2 ;	// PDH_RAW_COUNTER*
+	Pointer fmtValue ;	// PDH_FMT_COUNTERVALUE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhcloselog
+External_Function PdhCloseLog "PdhCloseLog" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhclosequery
+External_Function PdhCloseQuery "PdhCloseQuery" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhcollectquerydata
+External_Function PdhCollectQueryData "PdhCollectQueryData" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhcollectquerydataex
+External_Function PdhCollectQueryDataEx "PdhCollectQueryDataEx" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	UInteger dwIntervalTime ;
+	Pointer hNewDataEvent ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhcollectquerydatawithtime
+External_Function PdhCollectQueryDataWithTime "PdhCollectQueryDataWithTime" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	Pointer pllTimeStamp ;	// Bigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhcomputecounterstatistics
+External_Function PdhComputeCounterStatistics "PdhComputeCounterStatistics" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UInteger dwFormat ;	// PDH_FMT
+	UInteger dwFirstEntry ;
+	UInteger dwNumEntries ;
+	Pointer lpRawValueArray ;	// PDH_RAW_COUNTER*
+	Pointer data ;	// PDH_STATISTICS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhconnectmachinea
+External_Function PdhConnectMachineA "PdhConnectMachineA" pdh.dll ;
+	String szMachineName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhconnectmachinew
+External_Function PdhConnectMachineW "PdhConnectMachineW" pdh.dll ;
+	WString szMachineName ;	// PWSTR
+	Returns UInteger
+
+External_Function PdhCreateSQLTablesA "PdhCreateSQLTablesA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	Returns UInteger
+
+External_Function PdhCreateSQLTablesW "PdhCreateSQLTablesW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumlogsetnamesa
+External_Function PdhEnumLogSetNamesA "PdhEnumLogSetNamesA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	Pointer mszDataSetNameList ;	// PSTR
+	Pointer pcchBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumlogsetnamesw
+External_Function PdhEnumLogSetNamesW "PdhEnumLogSetNamesW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	Pointer mszDataSetNameList ;	// PWSTR
+	Pointer pcchBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenummachinesa
+External_Function PdhEnumMachinesA "PdhEnumMachinesA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	Pointer mszMachineList ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenummachinesha
+External_Function PdhEnumMachinesHA "PdhEnumMachinesHA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	Pointer mszMachineList ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenummachineshw
+External_Function PdhEnumMachinesHW "PdhEnumMachinesHW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	Pointer mszMachineList ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenummachinesw
+External_Function PdhEnumMachinesW "PdhEnumMachinesW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	Pointer mszMachineList ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectitemsa
+External_Function PdhEnumObjectItemsA "PdhEnumObjectItemsA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	String szMachineName ;	// PSTR
+	String szObjectName ;	// PSTR
+	Pointer mszCounterList ;	// PSTR
+	Pointer pcchCounterListLength ;	// UInteger*
+	Pointer mszInstanceList ;	// PSTR
+	Pointer pcchInstanceListLength ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectitemsha
+External_Function PdhEnumObjectItemsHA "PdhEnumObjectItemsHA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	String szMachineName ;	// PSTR
+	String szObjectName ;	// PSTR
+	Pointer mszCounterList ;	// PSTR
+	Pointer pcchCounterListLength ;	// UInteger*
+	Pointer mszInstanceList ;	// PSTR
+	Pointer pcchInstanceListLength ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectitemshw
+External_Function PdhEnumObjectItemsHW "PdhEnumObjectItemsHW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	WString szMachineName ;	// PWSTR
+	WString szObjectName ;	// PWSTR
+	Pointer mszCounterList ;	// PWSTR
+	Pointer pcchCounterListLength ;	// UInteger*
+	Pointer mszInstanceList ;	// PWSTR
+	Pointer pcchInstanceListLength ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectitemsw
+External_Function PdhEnumObjectItemsW "PdhEnumObjectItemsW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	WString szMachineName ;	// PWSTR
+	WString szObjectName ;	// PWSTR
+	Pointer mszCounterList ;	// PWSTR
+	Pointer pcchCounterListLength ;	// UInteger*
+	Pointer mszInstanceList ;	// PWSTR
+	Pointer pcchInstanceListLength ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectsa
+External_Function PdhEnumObjectsA "PdhEnumObjectsA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	String szMachineName ;	// PSTR
+	Pointer mszObjectList ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	Integer bRefresh ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectsha
+External_Function PdhEnumObjectsHA "PdhEnumObjectsHA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	String szMachineName ;	// PSTR
+	Pointer mszObjectList ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	Integer bRefresh ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectshw
+External_Function PdhEnumObjectsHW "PdhEnumObjectsHW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	WString szMachineName ;	// PWSTR
+	Pointer mszObjectList ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	Integer bRefresh ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhenumobjectsw
+External_Function PdhEnumObjectsW "PdhEnumObjectsW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	WString szMachineName ;	// PWSTR
+	Pointer mszObjectList ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	UInteger dwDetailLevel ;	// PERF_DETAIL
+	Integer bRefresh ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhexpandcounterpatha
+External_Function PdhExpandCounterPathA "PdhExpandCounterPathA" pdh.dll ;
+	String szWildCardPath ;	// PSTR
+	Pointer mszExpandedPathList ;	// PSTR
+	Pointer pcchPathListLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhexpandcounterpathw
+External_Function PdhExpandCounterPathW "PdhExpandCounterPathW" pdh.dll ;
+	WString szWildCardPath ;	// PWSTR
+	Pointer mszExpandedPathList ;	// PWSTR
+	Pointer pcchPathListLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhexpandwildcardpatha
+External_Function PdhExpandWildCardPathA "PdhExpandWildCardPathA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	String szWildCardPath ;	// PSTR
+	Pointer mszExpandedPathList ;	// PSTR
+	Pointer pcchPathListLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhexpandwildcardpathha
+External_Function PdhExpandWildCardPathHA "PdhExpandWildCardPathHA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	String szWildCardPath ;	// PSTR
+	Pointer mszExpandedPathList ;	// PSTR
+	Pointer pcchPathListLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhexpandwildcardpathhw
+External_Function PdhExpandWildCardPathHW "PdhExpandWildCardPathHW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	WString szWildCardPath ;	// PWSTR
+	Pointer mszExpandedPathList ;	// PWSTR
+	Pointer pcchPathListLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhexpandwildcardpathw
+External_Function PdhExpandWildCardPathW "PdhExpandWildCardPathW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	WString szWildCardPath ;	// PWSTR
+	Pointer mszExpandedPathList ;	// PWSTR
+	Pointer pcchPathListLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhformatfromrawvalue
+External_Function PdhFormatFromRawValue "PdhFormatFromRawValue" pdh.dll ;
+	UInteger dwCounterType ;
+	UInteger dwFormat ;	// PDH_FMT
+	Pointer pTimeBase ;	// Bigint*
+	Pointer pRawValue1 ;	// PDH_RAW_COUNTER*
+	Pointer pRawValue2 ;	// PDH_RAW_COUNTER*
+	Pointer pFmtValue ;	// PDH_FMT_COUNTERVALUE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetcounterinfoa
+External_Function PdhGetCounterInfoA "PdhGetCounterInfoA" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UChar bRetrieveExplainText ;	// BOOLEAN
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer lpBuffer ;	// PDH_COUNTER_INFO_A*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetcounterinfow
+External_Function PdhGetCounterInfoW "PdhGetCounterInfoW" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UChar bRetrieveExplainText ;	// BOOLEAN
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer lpBuffer ;	// PDH_COUNTER_INFO_W*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetcountertimebase
+External_Function PdhGetCounterTimeBase "PdhGetCounterTimeBase" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	Pointer pTimeBase ;	// Bigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdatasourcetimerangea
+External_Function PdhGetDataSourceTimeRangeA "PdhGetDataSourceTimeRangeA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	Pointer pdwNumEntries ;	// UInteger*
+	Pointer pInfo ;	// PDH_TIME_INFO*
+	Pointer pdwBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdatasourcetimerangeh
+External_Function PdhGetDataSourceTimeRangeH "PdhGetDataSourceTimeRangeH" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	Pointer pdwNumEntries ;	// UInteger*
+	Pointer pInfo ;	// PDH_TIME_INFO*
+	Pointer pdwBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdatasourcetimerangew
+External_Function PdhGetDataSourceTimeRangeW "PdhGetDataSourceTimeRangeW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	Pointer pdwNumEntries ;	// UInteger*
+	Pointer pInfo ;	// PDH_TIME_INFO*
+	Pointer pdwBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfcountera
+External_Function PdhGetDefaultPerfCounterA "PdhGetDefaultPerfCounterA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	String szMachineName ;	// PSTR
+	String szObjectName ;	// PSTR
+	Pointer szDefaultCounterName ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfcounterha
+External_Function PdhGetDefaultPerfCounterHA "PdhGetDefaultPerfCounterHA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	String szMachineName ;	// PSTR
+	String szObjectName ;	// PSTR
+	Pointer szDefaultCounterName ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfcounterhw
+External_Function PdhGetDefaultPerfCounterHW "PdhGetDefaultPerfCounterHW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	WString szMachineName ;	// PWSTR
+	WString szObjectName ;	// PWSTR
+	Pointer szDefaultCounterName ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfcounterw
+External_Function PdhGetDefaultPerfCounterW "PdhGetDefaultPerfCounterW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	WString szMachineName ;	// PWSTR
+	WString szObjectName ;	// PWSTR
+	Pointer szDefaultCounterName ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfobjecta
+External_Function PdhGetDefaultPerfObjectA "PdhGetDefaultPerfObjectA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	String szMachineName ;	// PSTR
+	Pointer szDefaultObjectName ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfobjectha
+External_Function PdhGetDefaultPerfObjectHA "PdhGetDefaultPerfObjectHA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	String szMachineName ;	// PSTR
+	Pointer szDefaultObjectName ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfobjecthw
+External_Function PdhGetDefaultPerfObjectHW "PdhGetDefaultPerfObjectHW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	WString szMachineName ;	// PWSTR
+	Pointer szDefaultObjectName ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdefaultperfobjectw
+External_Function PdhGetDefaultPerfObjectW "PdhGetDefaultPerfObjectW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	WString szMachineName ;	// PWSTR
+	Pointer szDefaultObjectName ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetdllversion
+External_Function PdhGetDllVersion "PdhGetDllVersion" pdh.dll ;
+	Pointer lpdwVersion ;	// PDH_DLL_VERSION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetformattedcounterarraya
+External_Function PdhGetFormattedCounterArrayA "PdhGetFormattedCounterArrayA" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UInteger dwFormat ;	// PDH_FMT
+	Pointer lpdwBufferSize ;	// UInteger*
+	Pointer lpdwItemCount ;	// UInteger*
+	Pointer ItemBuffer ;	// PDH_FMT_COUNTERVALUE_ITEM_A*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetformattedcounterarrayw
+External_Function PdhGetFormattedCounterArrayW "PdhGetFormattedCounterArrayW" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UInteger dwFormat ;	// PDH_FMT
+	Pointer lpdwBufferSize ;	// UInteger*
+	Pointer lpdwItemCount ;	// UInteger*
+	Pointer ItemBuffer ;	// PDH_FMT_COUNTERVALUE_ITEM_W*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetformattedcountervalue
+External_Function PdhGetFormattedCounterValue "PdhGetFormattedCounterValue" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	UInteger dwFormat ;	// PDH_FMT
+	Pointer lpdwType ;	// UInteger*
+	Pointer pValue ;	// PDH_FMT_COUNTERVALUE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetlogfilesize
+External_Function PdhGetLogFileSize "PdhGetLogFileSize" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	Pointer llSize ;	// Bigint*
+	Returns UInteger
+
+External_Function PdhGetLogSetGUID "PdhGetLogSetGUID" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	Pointer pGuid ;	// Guid*
+	Pointer pRunId ;	// Integer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetrawcounterarraya
+External_Function PdhGetRawCounterArrayA "PdhGetRawCounterArrayA" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	Pointer lpdwBufferSize ;	// UInteger*
+	Pointer lpdwItemCount ;	// UInteger*
+	Pointer ItemBuffer ;	// PDH_RAW_COUNTER_ITEM_A*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetrawcounterarrayw
+External_Function PdhGetRawCounterArrayW "PdhGetRawCounterArrayW" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	Pointer lpdwBufferSize ;	// UInteger*
+	Pointer lpdwItemCount ;	// UInteger*
+	Pointer ItemBuffer ;	// PDH_RAW_COUNTER_ITEM_W*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhgetrawcountervalue
+External_Function PdhGetRawCounterValue "PdhGetRawCounterValue" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	Pointer lpdwType ;	// UInteger*
+	Pointer pValue ;	// PDH_RAW_COUNTER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhisrealtimequery
+External_Function PdhIsRealTimeQuery "PdhIsRealTimeQuery" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhlookupperfindexbynamea
+External_Function PdhLookupPerfIndexByNameA "PdhLookupPerfIndexByNameA" pdh.dll ;
+	String szMachineName ;	// PSTR
+	String szNameBuffer ;	// PSTR
+	Pointer pdwIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhlookupperfindexbynamew
+External_Function PdhLookupPerfIndexByNameW "PdhLookupPerfIndexByNameW" pdh.dll ;
+	WString szMachineName ;	// PWSTR
+	WString szNameBuffer ;	// PWSTR
+	Pointer pdwIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhlookupperfnamebyindexa
+External_Function PdhLookupPerfNameByIndexA "PdhLookupPerfNameByIndexA" pdh.dll ;
+	String szMachineName ;	// PSTR
+	UInteger dwNameIndex ;
+	Pointer szNameBuffer ;	// PSTR
+	Pointer pcchNameBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhlookupperfnamebyindexw
+External_Function PdhLookupPerfNameByIndexW "PdhLookupPerfNameByIndexW" pdh.dll ;
+	WString szMachineName ;	// PWSTR
+	UInteger dwNameIndex ;
+	Pointer szNameBuffer ;	// PWSTR
+	Pointer pcchNameBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhmakecounterpatha
+External_Function PdhMakeCounterPathA "PdhMakeCounterPathA" pdh.dll ;
+	Pointer pCounterPathElements ;	// PDH_COUNTER_PATH_ELEMENTS_A*
+	Pointer szFullPathBuffer ;	// PSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	UInteger dwFlags ;	// PDH_PATH_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhmakecounterpathw
+External_Function PdhMakeCounterPathW "PdhMakeCounterPathW" pdh.dll ;
+	Pointer pCounterPathElements ;	// PDH_COUNTER_PATH_ELEMENTS_W*
+	Pointer szFullPathBuffer ;	// PWSTR
+	Pointer pcchBufferSize ;	// UInteger*
+	UInteger dwFlags ;	// PDH_PATH_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhopenloga
+External_Function PdhOpenLogA "PdhOpenLogA" pdh.dll ;
+	String szLogFileName ;	// PSTR
+	UInteger dwAccessFlags ;	// PDH_LOG
+	Pointer lpdwLogType ;	// PDH_LOG_TYPE*
+	Pointer hQuery ;	// PDH_HQUERY
+	UInteger dwMaxSize ;
+	String szUserCaption ;	// PSTR
+	Pointer phLog ;	// PDH_HLOG*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhopenlogw
+External_Function PdhOpenLogW "PdhOpenLogW" pdh.dll ;
+	WString szLogFileName ;	// PWSTR
+	UInteger dwAccessFlags ;	// PDH_LOG
+	Pointer lpdwLogType ;	// PDH_LOG_TYPE*
+	Pointer hQuery ;	// PDH_HQUERY
+	UInteger dwMaxSize ;
+	WString szUserCaption ;	// PWSTR
+	Pointer phLog ;	// PDH_HLOG*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhopenquerya
+External_Function PdhOpenQueryA "PdhOpenQueryA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	ULongPtr dwUserData ;
+	Pointer phQuery ;	// PDH_HQUERY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhopenqueryh
+External_Function PdhOpenQueryH "PdhOpenQueryH" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	ULongPtr dwUserData ;
+	Pointer phQuery ;	// PDH_HQUERY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhopenqueryw
+External_Function PdhOpenQueryW "PdhOpenQueryW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	ULongPtr dwUserData ;
+	Pointer phQuery ;	// PDH_HQUERY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhparsecounterpatha
+External_Function PdhParseCounterPathA "PdhParseCounterPathA" pdh.dll ;
+	String szFullPathBuffer ;	// PSTR
+	Pointer pCounterPathElements ;	// PDH_COUNTER_PATH_ELEMENTS_A*
+	Pointer pdwBufferSize ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhparsecounterpathw
+External_Function PdhParseCounterPathW "PdhParseCounterPathW" pdh.dll ;
+	WString szFullPathBuffer ;	// PWSTR
+	Pointer pCounterPathElements ;	// PDH_COUNTER_PATH_ELEMENTS_W*
+	Pointer pdwBufferSize ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhparseinstancenamea
+External_Function PdhParseInstanceNameA "PdhParseInstanceNameA" pdh.dll ;
+	String szInstanceString ;	// PSTR
+	Pointer szInstanceName ;	// PSTR
+	Pointer pcchInstanceNameLength ;	// UInteger*
+	Pointer szParentName ;	// PSTR
+	Pointer pcchParentNameLength ;	// UInteger*
+	Pointer lpIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhparseinstancenamew
+External_Function PdhParseInstanceNameW "PdhParseInstanceNameW" pdh.dll ;
+	WString szInstanceString ;	// PWSTR
+	Pointer szInstanceName ;	// PWSTR
+	Pointer pcchInstanceNameLength ;	// UInteger*
+	Pointer szParentName ;	// PWSTR
+	Pointer pcchParentNameLength ;	// UInteger*
+	Pointer lpIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhreadrawlogrecord
+External_Function PdhReadRawLogRecord "PdhReadRawLogRecord" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	FILETIME ftRecord ;
+	Pointer pRawLogRecord ;	// PDH_RAW_LOG_RECORD*
+	Pointer pdwBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhremovecounter
+External_Function PdhRemoveCounter "PdhRemoveCounter" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhselectdatasourcea
+External_Function PdhSelectDataSourceA "PdhSelectDataSourceA" pdh.dll ;
+	Pointer hWndOwner ;	// HWND
+	UInteger dwFlags ;	// PDH_SELECT_DATA_SOURCE_FLAGS
+	Pointer szDataSource ;	// PSTR
+	Pointer pcchBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhselectdatasourcew
+External_Function PdhSelectDataSourceW "PdhSelectDataSourceW" pdh.dll ;
+	Pointer hWndOwner ;	// HWND
+	UInteger dwFlags ;	// PDH_SELECT_DATA_SOURCE_FLAGS
+	Pointer szDataSource ;	// PWSTR
+	Pointer pcchBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhsetcounterscalefactor
+External_Function PdhSetCounterScaleFactor "PdhSetCounterScaleFactor" pdh.dll ;
+	Pointer hCounter ;	// PDH_HCOUNTER
+	Integer lFactor ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhsetdefaultrealtimedatasource
+External_Function PdhSetDefaultRealTimeDataSource "PdhSetDefaultRealTimeDataSource" pdh.dll ;
+	UInteger dwDataSourceId ;	// REAL_TIME_DATA_SOURCE_ID_FLAGS
+	Returns UInteger
+
+External_Function PdhSetLogSetRunID "PdhSetLogSetRunID" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	Integer RunId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhsetquerytimerange
+External_Function PdhSetQueryTimeRange "PdhSetQueryTimeRange" pdh.dll ;
+	Pointer hQuery ;	// PDH_HQUERY
+	Pointer pInfo ;	// PDH_TIME_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhupdateloga
+External_Function PdhUpdateLogA "PdhUpdateLogA" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	String szUserString ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhupdatelogfilecatalog
+External_Function PdhUpdateLogFileCatalog "PdhUpdateLogFileCatalog" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhupdatelogw
+External_Function PdhUpdateLogW "PdhUpdateLogW" pdh.dll ;
+	Pointer hLog ;	// PDH_HLOG
+	WString szUserString ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhvalidatepatha
+External_Function PdhValidatePathA "PdhValidatePathA" pdh.dll ;
+	String szFullPathBuffer ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhvalidatepathexa
+External_Function PdhValidatePathExA "PdhValidatePathExA" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	String szFullPathBuffer ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhvalidatepathexw
+External_Function PdhValidatePathExW "PdhValidatePathExW" pdh.dll ;
+	Pointer hDataSource ;	// PDH_HLOG
+	WString szFullPathBuffer ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/pdh/nf-pdh-pdhvalidatepathw
+External_Function PdhValidatePathW "PdhValidatePathW" pdh.dll ;
+	WString szFullPathBuffer ;	// PWSTR
+	Returns UInteger
+
+External_Function PdhVerifySQLDBA "PdhVerifySQLDBA" pdh.dll ;
+	String szDataSource ;	// PSTR
+	Returns UInteger
+
+External_Function PdhVerifySQLDBW "PdhVerifySQLDBW" pdh.dll ;
+	WString szDataSource ;	// PWSTR
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

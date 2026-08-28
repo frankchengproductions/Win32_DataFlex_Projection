@@ -1,0 +1,110 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-character_range
+Struct CHARACTER_RANGE
+	UShort wcLow
+	UShort cChars
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-packet_description
+Struct PACKET_DESCRIPTION
+	UInteger cbPacketSize
+	UInteger cPacketProperties
+	Pointer pPacketProperties								// PACKET_PROPERTY*
+	UInteger cButtons
+	Integer iMissingAlignment1
+	Pointer pguidButtons									// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-packet_property
+Struct PACKET_PROPERTY
+	Guid guid
+	PROPERTY_METRICS PropertyMetrics
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-property_metrics
+Struct PROPERTY_METRICS
+	Integer nLogicalMin
+	Integer nLogicalMax
+	Integer Units											// PROPERTY_UNITS
+	Float fResolution
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_attrs
+Struct RECO_ATTRS
+	UInteger dwRecoCapabilityFlags
+	UShort[32] awcVendorName
+	UShort[64] awcFriendlyName
+	UShort[64] awLanguageId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_guide
+Struct RECO_GUIDE
+	Integer xOrigin
+	Integer yOrigin
+	Integer cxBox
+	Integer cyBox
+	Integer cxBase
+	Integer cyBase
+	Integer cHorzBox
+	Integer cVertBox
+	Integer cyMid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice
+Struct RECO_LATTICE
+	UInteger ulColumnCount
+	Integer iMissingAlignment1
+	Pointer pLatticeColumns									// RECO_LATTICE_COLUMN*
+	UInteger ulPropertyCount
+	Integer iMissingAlignment2
+	Pointer pGuidProperties									// Guid*
+	UInteger ulBestResultColumnCount
+	Integer iMissingAlignment3
+	Pointer pulBestResultColumns							// UInteger*
+	Pointer pulBestResultIndexes							// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_column
+Struct RECO_LATTICE_COLUMN
+	UInteger key
+	Integer iMissingAlignment1
+	RECO_LATTICE_PROPERTIES cpProp
+	UInteger cStrokes
+	Integer iMissingAlignment2
+	Pointer pStrokes										// UInteger*
+	UInteger cLatticeElements
+	Integer iMissingAlignment3
+	Pointer pLatticeElements								// RECO_LATTICE_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_element
+Struct RECO_LATTICE_ELEMENT
+	Integer score
+	UShort type
+	Short iMissingAlignment1
+	Pointer pData											// UChar*
+	UInteger ulNextColumn
+	UInteger ulStrokeNumber
+	RECO_LATTICE_PROPERTIES epProp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_properties
+Struct RECO_LATTICE_PROPERTIES
+	UInteger cProperties
+	Integer iMissingAlignment1
+	Pointer apProps											// RECO_LATTICE_PROPERTY**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_property
+Struct RECO_LATTICE_PROPERTY
+	Guid guidProperty
+	UShort cbPropertyValue
+	UChar[6] cMissingAlignment1
+	Pointer pPropertyValue									// UChar*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

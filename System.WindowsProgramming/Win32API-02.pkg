@@ -1,0 +1,189 @@
+Use UI
+
+External_Function UserInstStubWrapperA "UserInstStubWrapperA" ADVPACK.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hInstance ;	// HINSTANCE
+	String pszParms ;	// PSTR
+	Integer nShow ;
+	Returns Integer	// HRESULT
+
+External_Function UserInstStubWrapperW "UserInstStubWrapperW" ADVPACK.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hInstance ;	// HINSTANCE
+	WString pszParms ;	// PWSTR
+	Integer nShow ;
+	Returns Integer	// HRESULT
+
+External_Function UserUnInstStubWrapperA "UserUnInstStubWrapperA" ADVPACK.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hInstance ;	// HINSTANCE
+	String pszParms ;	// PSTR
+	Integer nShow ;
+	Returns Integer	// HRESULT
+
+External_Function UserUnInstStubWrapperW "UserUnInstStubWrapperW" ADVPACK.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hInstance ;	// HINSTANCE
+	WString pszParms ;	// PWSTR
+	Integer nShow ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appcompatapi/nf-appcompatapi-apphelpcheckshellobject
+External_Function ApphelpCheckShellObject "ApphelpCheckShellObject" APPHELP.dll ;
+	Pointer ObjectCLSID ;	// Guid*
+	Integer bShimIfNecessary ;	// BOOL
+	Pointer pullFlags ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpcanexecutebuffer
+External_Function WldpCanExecuteBuffer "WldpCanExecuteBuffer" Wldp.dll ;
+	Pointer host ;	// Guid*
+	Integer options ;	// WLDP_EXECUTION_EVALUATION_OPTIONS
+	Pointer buffer ;	// UChar*
+	UInteger bufferSize ;
+	WString auditInfo ;	// PWSTR
+	Pointer result ;	// WLDP_EXECUTION_POLICY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpcanexecutefile
+External_Function WldpCanExecuteFile "WldpCanExecuteFile" Wldp.dll ;
+	Pointer host ;	// Guid*
+	Integer options ;	// WLDP_EXECUTION_EVALUATION_OPTIONS
+	Pointer fileHandle ;	// HANDLE
+	WString auditInfo ;	// PWSTR
+	Pointer result ;	// WLDP_EXECUTION_POLICY*
+	Returns Integer	// HRESULT
+
+External_Function WldpCanExecuteFileFromDetachedSignature "WldpCanExecuteFileFromDetachedSignature" Wldp.dll ;
+	Pointer host ;	// Guid*
+	Integer options ;	// WLDP_EXECUTION_EVALUATION_OPTIONS
+	Pointer contentFileHandle ;	// HANDLE
+	Pointer signatureFileHandle ;	// HANDLE
+	WString auditInfo ;	// PWSTR
+	Pointer result ;	// WLDP_EXECUTION_POLICY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpcanexecutestream
+External_Function WldpCanExecuteStream "WldpCanExecuteStream" Wldp.dll ;
+	Pointer host ;	// Guid*
+	Integer options ;	// WLDP_EXECUTION_EVALUATION_OPTIONS
+	Pointer stream ;	// IStream
+	WString auditInfo ;	// PWSTR
+	Pointer result ;	// WLDP_EXECUTION_POLICY*
+	Returns Integer	// HRESULT
+
+External_Function WldpGetApplicationSettingBoolean "WldpGetApplicationSettingBoolean" Wldp.dll ;
+	WString id ;	// PWSTR
+	WString setting ;	// PWSTR
+	Pointer result ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WldpGetApplicationSettingStringList "WldpGetApplicationSettingStringList" Wldp.dll ;
+	WString id ;	// PWSTR
+	WString setting ;	// PWSTR
+	ULongPtr dataCount ;
+	Pointer requiredCount ;	// ULongPtr*
+	Pointer result ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function WldpGetApplicationSettingStringSet "WldpGetApplicationSettingStringSet" Wldp.dll ;
+	WString id ;	// PWSTR
+	WString setting ;	// PWSTR
+	ULongPtr dataCount ;
+	Pointer requiredCount ;	// ULongPtr*
+	Pointer result ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpgetlockdownpolicy
+External_Function WldpGetLockdownPolicy "WldpGetLockdownPolicy" Wldp.dll ;
+	Pointer hostInformation ;	// WLDP_HOST_INFORMATION*
+	Pointer lockdownState ;	// UInteger*
+	UInteger lockdownFlags ;
+	Returns Integer	// HRESULT
+
+External_Function WldpIsAppApprovedByPolicy "WldpIsAppApprovedByPolicy" Wldp.dll ;
+	WString PackageFamilyName ;	// PWSTR
+	UBigint PackageVersion ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpisclassinapprovedlist
+External_Function WldpIsClassInApprovedList "WldpIsClassInApprovedList" Wldp.dll ;
+	Pointer classID ;	// Guid*
+	Pointer hostInformation ;	// WLDP_HOST_INFORMATION*
+	Pointer isApproved ;	// BOOL*
+	UInteger optionalFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpisdynamiccodepolicyenabled
+External_Function WldpIsDynamicCodePolicyEnabled "WldpIsDynamicCodePolicyEnabled" Wldp.dll ;
+	Pointer isEnabled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WldpIsProductionConfiguration "WldpIsProductionConfiguration" Wldp.dll ;
+	Pointer IsProductionConfiguration ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WldpIsWcosProductionConfiguration "WldpIsWcosProductionConfiguration" Wldp.dll ;
+	Pointer IsProductionConfiguration ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WldpQueryDeviceSecurityInformation "WldpQueryDeviceSecurityInformation" Wldp.dll ;
+	Pointer information ;	// WLDP_DEVICE_SECURITY_INFORMATION*
+	UInteger informationLength ;
+	Pointer returnLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpquerydynamiccodetrust
+External_Function WldpQueryDynamicCodeTrust "WldpQueryDynamicCodeTrust" Wldp.dll ;
+	Pointer fileHandle ;	// HANDLE
+	Pointer baseImage ;	// Pointer*
+	UInteger imageSize ;
+	Returns Integer	// HRESULT
+
+External_Function WldpQueryPolicySettingEnabled "WldpQueryPolicySettingEnabled" Wldp.dll ;
+	Integer Setting ;	// WLDP_POLICY_SETTING
+	Pointer Enabled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WldpQueryPolicySettingEnabled2 "WldpQueryPolicySettingEnabled2" Wldp.dll ;
+	WString SettingString ;	// PWSTR
+	Pointer Enabled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WldpQuerySecurityPolicy "WldpQuerySecurityPolicy" Wldp.dll ;
+	Pointer providerName ;	// UNICODE_STRING*
+	Pointer keyName ;	// UNICODE_STRING*
+	Pointer valueName ;	// UNICODE_STRING*
+	Pointer valueType ;	// WLDP_SECURE_SETTING_VALUE_TYPE*
+	Pointer valueAddress ;	// Pointer*
+	Pointer valueSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpquerywindowslockdownmode
+External_Function WldpQueryWindowsLockdownMode "WldpQueryWindowsLockdownMode" Wldp.dll ;
+	Pointer lockdownMode ;	// WLDP_WINDOWS_LOCKDOWN_MODE*
+	Returns Integer	// HRESULT
+
+External_Function WldpQueryWindowsLockdownRestriction "WldpQueryWindowsLockdownRestriction" Wldp.dll ;
+	Pointer LockdownRestriction ;	// WLDP_WINDOWS_LOCKDOWN_RESTRICTION*
+	Returns Integer	// HRESULT
+
+External_Function WldpResetProductionConfiguration "WldpResetProductionConfiguration" Wldp.dll ;
+	Returns Integer	// HRESULT
+
+External_Function WldpResetWcosProductionConfiguration "WldpResetWcosProductionConfiguration" Wldp.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wldp/nf-wldp-wldpsetdynamiccodetrust
+External_Function WldpSetDynamicCodeTrust "WldpSetDynamicCodeTrust" Wldp.dll ;
+	Pointer fileHandle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WldpSetWindowsLockdownRestriction "WldpSetWindowsLockdownRestriction" Wldp.dll ;
+	Integer LockdownRestriction ;	// WLDP_WINDOWS_LOCKDOWN_RESTRICTION
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,532 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/olectl/ns-olectl-fontdesc
+Struct FONTDESC
+	UInteger cbSizeofstruct
+	Integer iMissingAlignment1
+	Pointer lpstrName										// PWSTR
+	CY cySize
+	Short sWeight
+	Short sCharset
+	Integer fItalic											// BOOL
+	Integer fUnderline										// BOOL
+	Integer fStrikethrough									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/ns-oleauto-interfacedata
+Struct INTERFACEDATA
+	Pointer pmethdata										// METHODDATA*
+	UInteger cMembers
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/ns-oleauto-methoddata
+Struct METHODDATA
+	Pointer szName											// PWSTR
+	Pointer ppdata											// PARAMDATA*
+	Integer dispid
+	UInteger iMeth
+	Integer cc												// CALLCONV
+	UInteger cArgs
+	UShort wFlags
+	UShort vtReturn											// VARENUM
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/ns-oleauto-numparse
+Struct NUMPARSE
+	Integer cDig
+	UInteger dwInFlags										// NUMPARSE_FLAGS
+	UInteger dwOutFlags										// NUMPARSE_FLAGS
+	Integer cchUsed
+	Integer nBaseShift
+	Integer nPwr10
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/olectl/ns-olectl-ocpfiparams
+Struct OCPFIPARAMS
+	UInteger cbStructSize
+	Integer iMissingAlignment1
+	Pointer hWndOwner										// HWND
+	Integer x
+	Integer y
+	Pointer lpszCaption										// PWSTR
+	UInteger cObjects
+	Integer iMissingAlignment2
+	Pointer lplpUnk											// IUnknown*
+	UInteger cPages
+	Integer iMissingAlignment3
+	Pointer lpPages											// Guid*
+	UInteger lcid
+	Integer dispidInitialProperty
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oleidl/ns-oleidl-oleinplaceframeinfo
+Struct OLEINPLACEFRAMEINFO
+	UInteger cb
+	Integer fMDIApp											// BOOL
+	Pointer hwndFrame										// HWND
+	Pointer haccel											// HACCEL
+	UInteger cAccelEntries
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oleidl/ns-oleidl-olemenugroupwidths
+Struct OLEMENUGROUPWIDTHS
+	Integer[6] width
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuibusya
+Struct OLEUIBUSYA
+	UInteger cbStruct
+	UInteger dwFlags										// BUSY_DIALOG_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Pointer hTask											// HTASK
+	Pointer lphWndDialog									// HWND*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuibusyw
+Struct OLEUIBUSYW
+	UInteger cbStruct
+	UInteger dwFlags										// BUSY_DIALOG_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Pointer hTask											// HTASK
+	Pointer lphWndDialog									// HWND*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuichangeicona
+Struct OLEUICHANGEICONA
+	UInteger cbStruct
+	UInteger dwFlags										// CHANGE_ICON_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Pointer hMetaPict										// HGLOBAL
+	Guid clsid
+	Char[260] szIconExe										// CHAR
+	Integer cchIconExe
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuichangeiconw
+Struct OLEUICHANGEICONW
+	UInteger cbStruct
+	UInteger dwFlags										// CHANGE_ICON_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Pointer hMetaPict										// HGLOBAL
+	Guid clsid
+	UShort[260] szIconExe
+	Integer cchIconExe
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuichangesourcea
+Struct OLEUICHANGESOURCEA
+	UInteger cbStruct
+	UInteger dwFlags										// CHANGE_SOURCE_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Pointer lpOFN											// OPENFILENAMEA*
+	UInteger[4] dwReserved1
+	Pointer lpOleUILinkContainer							// IOleUILinkContainerA
+	UInteger dwLink
+	Integer iMissingAlignment1
+	Pointer lpszDisplayName									// PSTR
+	UInteger nFileLength
+	Integer iMissingAlignment2
+	Pointer lpszFrom										// PSTR
+	Pointer lpszTo											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuichangesourcew
+Struct OLEUICHANGESOURCEW
+	UInteger cbStruct
+	UInteger dwFlags										// CHANGE_SOURCE_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Pointer lpOFN											// OPENFILENAMEW*
+	UInteger[4] dwReserved1
+	Pointer lpOleUILinkContainer							// IOleUILinkContainerW
+	UInteger dwLink
+	Integer iMissingAlignment1
+	Pointer lpszDisplayName									// PWSTR
+	UInteger nFileLength
+	Integer iMissingAlignment2
+	Pointer lpszFrom										// PWSTR
+	Pointer lpszTo											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiconverta
+Struct OLEUICONVERTA
+	UInteger cbStruct
+	UInteger dwFlags										// UI_CONVERT_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Guid clsid
+	Guid clsidConvertDefault
+	Guid clsidActivateDefault
+	Guid clsidNew
+	UInteger dvAspect
+	UShort wFormat
+	Short iMissingAlignment1
+	Integer fIsLinkedObject									// BOOL
+	Integer iMissingAlignment2
+	Pointer hMetaPict										// HGLOBAL
+	Pointer lpszUserType									// PSTR
+	Integer fObjectsIconChanged								// BOOL
+	Integer iMissingAlignment3
+	Pointer lpszDefLabel									// PSTR
+	UInteger cClsidExclude
+	Integer iMissingAlignment4
+	Pointer lpClsidExclude									// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiconvertw
+Struct OLEUICONVERTW
+	UInteger cbStruct
+	UInteger dwFlags										// UI_CONVERT_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Guid clsid
+	Guid clsidConvertDefault
+	Guid clsidActivateDefault
+	Guid clsidNew
+	UInteger dvAspect
+	UShort wFormat
+	Short iMissingAlignment1
+	Integer fIsLinkedObject									// BOOL
+	Integer iMissingAlignment2
+	Pointer hMetaPict										// HGLOBAL
+	Pointer lpszUserType									// PWSTR
+	Integer fObjectsIconChanged								// BOOL
+	Integer iMissingAlignment3
+	Pointer lpszDefLabel									// PWSTR
+	UInteger cClsidExclude
+	Integer iMissingAlignment4
+	Pointer lpClsidExclude									// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuieditlinksa
+Struct OLEUIEDITLINKSA
+	UInteger cbStruct
+	UInteger dwFlags										// EDIT_LINKS_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Pointer lpOleUILinkContainer							// IOleUILinkContainerA
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuieditlinksw
+Struct OLEUIEDITLINKSW
+	UInteger cbStruct
+	UInteger dwFlags										// EDIT_LINKS_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Pointer lpOleUILinkContainer							// IOleUILinkContainerW
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuignrlpropsa
+Struct OLEUIGNRLPROPSA
+	UInteger cbStruct
+	UInteger dwFlags
+	UInteger[2] dwReserved1
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	UInteger[3] dwReserved2
+	Integer iMissingAlignment1
+	Pointer lpOP											// OLEUIOBJECTPROPSA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuignrlpropsw
+Struct OLEUIGNRLPROPSW
+	UInteger cbStruct
+	UInteger dwFlags
+	UInteger[2] dwReserved1
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	UInteger[3] dwReserved2
+	Integer iMissingAlignment1
+	Pointer lpOP											// OLEUIOBJECTPROPSW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiinsertobjecta
+Struct OLEUIINSERTOBJECTA
+	UInteger cbStruct
+	UInteger dwFlags										// INSERT_OBJECT_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Guid clsid
+	Pointer lpszFile										// PSTR
+	UInteger cchFile
+	UInteger cClsidExclude
+	Pointer lpClsidExclude									// Guid*
+	Guid iid
+	UInteger oleRender
+	Integer iMissingAlignment1
+	Pointer lpFormatEtc										// FORMATETC*
+	Pointer lpIOleClientSite								// IOleClientSite
+	Pointer lpIStorage										// IStorage
+	Pointer ppvObj											// Pointer**
+	Integer sc
+	Integer iMissingAlignment2
+	Pointer hMetaPict										// HGLOBAL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiinsertobjectw
+Struct OLEUIINSERTOBJECTW
+	UInteger cbStruct
+	UInteger dwFlags										// INSERT_OBJECT_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Guid clsid
+	Pointer lpszFile										// PWSTR
+	UInteger cchFile
+	UInteger cClsidExclude
+	Pointer lpClsidExclude									// Guid*
+	Guid iid
+	UInteger oleRender
+	Integer iMissingAlignment1
+	Pointer lpFormatEtc										// FORMATETC*
+	Pointer lpIOleClientSite								// IOleClientSite
+	Pointer lpIStorage										// IStorage
+	Pointer ppvObj											// Pointer**
+	Integer sc
+	Integer iMissingAlignment2
+	Pointer hMetaPict										// HGLOBAL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuilinkpropsa
+Struct OLEUILINKPROPSA
+	UInteger cbStruct
+	UInteger dwFlags
+	UInteger[2] dwReserved1
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	UInteger[3] dwReserved2
+	Integer iMissingAlignment1
+	Pointer lpOP											// OLEUIOBJECTPROPSA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuilinkpropsw
+Struct OLEUILINKPROPSW
+	UInteger cbStruct
+	UInteger dwFlags
+	UInteger[2] dwReserved1
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	UInteger[3] dwReserved2
+	Integer iMissingAlignment1
+	Pointer lpOP											// OLEUIOBJECTPROPSW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiobjectpropsa
+Struct OLEUIOBJECTPROPSA
+	UInteger cbStruct
+	UInteger dwFlags										// OBJECT_PROPERTIES_FLAGS
+	Pointer lpPS											// PROPSHEETHEADERA_V2*
+	UInteger dwObject
+	Integer iMissingAlignment1
+	Pointer lpObjInfo										// IOleUIObjInfoA
+	UInteger dwLink
+	Integer iMissingAlignment2
+	Pointer lpLinkInfo										// IOleUILinkInfoA
+	Pointer lpGP											// OLEUIGNRLPROPSA*
+	Pointer lpVP											// OLEUIVIEWPROPSA*
+	Pointer lpLP											// OLEUILINKPROPSA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiobjectpropsw
+Struct OLEUIOBJECTPROPSW
+	UInteger cbStruct
+	UInteger dwFlags										// OBJECT_PROPERTIES_FLAGS
+	Pointer lpPS											// PROPSHEETHEADERW_V2*
+	UInteger dwObject
+	Integer iMissingAlignment1
+	Pointer lpObjInfo										// IOleUIObjInfoW
+	UInteger dwLink
+	Integer iMissingAlignment2
+	Pointer lpLinkInfo										// IOleUILinkInfoW
+	Pointer lpGP											// OLEUIGNRLPROPSW*
+	Pointer lpVP											// OLEUIVIEWPROPSW*
+	Pointer lpLP											// OLEUILINKPROPSW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuipasteentrya
+Struct OLEUIPASTEENTRYA
+	FORMATETC fmtetc
+	Pointer lpstrFormatName									// PSTR
+	Pointer lpstrResultText									// PSTR
+	UInteger dwFlags
+	UInteger dwScratchSpace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuipasteentryw
+Struct OLEUIPASTEENTRYW
+	FORMATETC fmtetc
+	Pointer lpstrFormatName									// PWSTR
+	Pointer lpstrResultText									// PWSTR
+	UInteger dwFlags
+	UInteger dwScratchSpace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuipastespeciala
+Struct OLEUIPASTESPECIALA
+	UInteger cbStruct
+	UInteger dwFlags										// PASTE_SPECIAL_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PSTR
+	Pointer hResource										// HRSRC
+	Pointer lpSrcDataObj									// IDataObject
+	Pointer arrPasteEntries									// OLEUIPASTEENTRYA*
+	Integer cPasteEntries
+	Integer iMissingAlignment1
+	Pointer arrLinkTypes									// UInteger*
+	Integer cLinkTypes
+	UInteger cClsidExclude
+	Pointer lpClsidExclude									// Guid*
+	Integer nSelectedIndex
+	Integer fLink											// BOOL
+	Pointer hMetaPict										// HGLOBAL
+	SIZE sizel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuipastespecialw
+Struct OLEUIPASTESPECIALW
+	UInteger cbStruct
+	UInteger dwFlags										// PASTE_SPECIAL_FLAGS
+	Pointer hWndOwner										// HWND
+	Pointer lpszCaption										// PWSTR
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszTemplate									// PWSTR
+	Pointer hResource										// HRSRC
+	Pointer lpSrcDataObj									// IDataObject
+	Pointer arrPasteEntries									// OLEUIPASTEENTRYW*
+	Integer cPasteEntries
+	Integer iMissingAlignment1
+	Pointer arrLinkTypes									// UInteger*
+	Integer cLinkTypes
+	UInteger cClsidExclude
+	Pointer lpClsidExclude									// Guid*
+	Integer nSelectedIndex
+	Integer fLink											// BOOL
+	Pointer hMetaPict										// HGLOBAL
+	SIZE sizel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiviewpropsa
+Struct OLEUIVIEWPROPSA
+	UInteger cbStruct
+	UInteger dwFlags										// VIEW_OBJECT_PROPERTIES_FLAGS
+	UInteger[2] dwReserved1
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	UInteger[3] dwReserved2
+	Integer iMissingAlignment1
+	Pointer lpOP											// OLEUIOBJECTPROPSA*
+	Integer nScaleMin
+	Integer nScaleMax
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledlg/ns-oledlg-oleuiviewpropsw
+Struct OLEUIVIEWPROPSW
+	UInteger cbStruct
+	UInteger dwFlags										// VIEW_OBJECT_PROPERTIES_FLAGS
+	UInteger[2] dwReserved1
+	Pointer lpfnHook										// LPFNOLEUIHOOK
+	LongPtr lCustData										// LPARAM
+	UInteger[3] dwReserved2
+	Integer iMissingAlignment1
+	Pointer lpOP											// OLEUIOBJECTPROPSW*
+	Integer nScaleMin
+	Integer nScaleMax
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/ns-oleauto-paramdata
+Struct PARAMDATA
+	Pointer szName											// PWSTR
+	UShort vt												// VARENUM
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/olectl/ns-olectl-pictdesc
+Struct PICTDESC
+	UInteger cbSizeofstruct
+	UInteger picType
+	UChar[8] UnionName1
+End_Struct
+
+Struct UDATE
+	SYSTEMTIME st
+	UShort wDayOfYear
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

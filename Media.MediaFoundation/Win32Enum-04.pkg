@@ -1,0 +1,872 @@
+Use UI
+
+// Define DXVA2_ProcAmp For Integer
+Enum_List
+	Define DXVA2_ProcAmp_None								For 0
+	Define DXVA2_ProcAmp_Brightness							For 1
+	Define DXVA2_ProcAmp_Contrast							For 2
+	Define DXVA2_ProcAmp_Hue								For 4
+	Define DXVA2_ProcAmp_Saturation							For 8
+	Define DXVA2_ProcAmp_Mask								For 15
+End_Enum_List
+
+// Define DXVA2_VideoProcess For Integer
+Enum_List
+	Define DXVA2_VideoProcess_None							For 0
+	Define DXVA2_VideoProcess_YUV2RGB						For 1
+	Define DXVA2_VideoProcess_StretchX						For 2
+	Define DXVA2_VideoProcess_StretchY						For 4
+	Define DXVA2_VideoProcess_AlphaBlend					For 8
+	Define DXVA2_VideoProcess_SubRects						For 16
+	Define DXVA2_VideoProcess_SubStreams					For 32
+	Define DXVA2_VideoProcess_SubStreamsExtended			For 64
+	Define DXVA2_VideoProcess_YUV2RGBExtended				For 128
+	Define DXVA2_VideoProcess_AlphaBlendExtended			For 256
+	Define DXVA2_VideoProcess_Constriction					For 512
+	Define DXVA2_VideoProcess_NoiseFilter					For 1024
+	Define DXVA2_VideoProcess_DetailFilter					For 2048
+	Define DXVA2_VideoProcess_PlanarAlpha					For 4096
+	Define DXVA2_VideoProcess_LinearScaling					For 8192
+	Define DXVA2_VideoProcess_GammaCompensated				For 16384
+	Define DXVA2_VideoProcess_MaintainsOriginalFieldData	For 32768
+	Define DXVA2_VideoProcess_Mask							For 65535
+End_Enum_List
+
+// Define DXVA2_VPDev For Integer
+Enum_List
+	Define DXVA2_VPDev_HardwareDevice						For 1
+	Define DXVA2_VPDev_EmulatedDXVA1						For 2
+	Define DXVA2_VPDev_SoftwareDevice						For 4
+	Define DXVA2_VPDev_Mask									For 7
+End_Enum_List
+
+// Define DXVA2_SampleData For Integer
+Enum_List
+	Define DXVA2_SampleData_RFF								For 1
+	Define DXVA2_SampleData_TFF								For 2
+	Define DXVA2_SampleData_RFF_TFF_Present					For 4
+	Define DXVA2_SampleData_Mask							For 65535
+End_Enum_List
+
+// Define DXVA2_DestData For Integer
+Enum_List
+	Define DXVA2_DestData_RFF								For 1
+	Define DXVA2_DestData_TFF								For 2
+	Define DXVA2_DestData_RFF_TFF_Present					For 4
+	Define DXVA2_DestData_Mask								For 65535
+End_Enum_List
+
+// Define DXVA2_BufferfType For Integer
+Enum_List
+	Define DXVA2_PictureParametersBufferType				For 0
+	Define DXVA2_MacroBlockControlBufferType				For 1
+	Define DXVA2_ResidualDifferenceBufferType				For 2
+	Define DXVA2_DeblockingControlBufferType				For 3
+	Define DXVA2_InverseQuantizationMatrixBufferType		For 4
+	Define DXVA2_SliceControlBufferType						For 5
+	Define DXVA2_BitStreamDateBufferType					For 6
+	Define DXVA2_MotionVectorBuffer							For 7
+	Define DXVA2_FilmGrainBuffer							For 8
+End_Enum_List
+
+// Define DXVA2_VideoRenderTargetType For Integer
+Enum_List
+	Define DXVA2_VideoDecoderRenderTarget					For 0
+	Define DXVA2_VideoProcessorRenderTarget					For 1
+	Define DXVA2_VideoSoftwareRenderTarget					For 2
+End_Enum_List
+
+// Define DXVA2_SurfaceType For Integer
+Enum_List
+	Define DXVA2_SurfaceType_DecoderRenderTarget			For 0
+	Define DXVA2_SurfaceType_ProcessorRenderTarget			For 1
+	Define DXVA2_SurfaceType_D3DRenderTargetTexture			For 2
+End_Enum_List
+
+// Define OPM_TYPE For Integer
+Enum_List
+	Define OPM_OMAC_SIZE									For 16
+	Define OPM_128_BIT_RANDOM_NUMBER_SIZE					For 16
+	Define OPM_ENCRYPTED_INITIALIZATION_PARAMETERS_SIZE		For 256
+	Define OPM_CONFIGURE_SETTING_DATA_SIZE					For 4056
+	Define OPM_GET_INFORMATION_PARAMETERS_SIZE				For 4056
+	Define OPM_REQUESTED_INFORMATION_SIZE					For 4076
+	Define OPM_HDCP_KEY_SELECTION_VECTOR_SIZE				For 5
+	Define OPM_PROTECTION_TYPE_SIZE							For 4
+	Define OPM_BUS_TYPE_MASK								For 65535
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_MASK				For 32767
+End_Enum_List
+
+// Define OPM_HDCP_FLAGS For Integer
+Enum_List
+	Define OPM_HDCP_FLAG_NONE								For 0
+	Define OPM_HDCP_FLAG_REPEATER							For 1
+End_Enum_List
+
+// Define OPM_STATUS For Integer
+Enum_List
+	Define OPM_STATUS_NORMAL								For 0
+	Define OPM_STATUS_LINK_LOST								For 1
+	Define OPM_STATUS_RENEGOTIATION_REQUIRED				For 2
+	Define OPM_STATUS_TAMPERING_DETECTED					For 4
+	Define OPM_STATUS_REVOKED_HDCP_DEVICE_ATTACHED			For 8
+End_Enum_List
+
+// Define OPM_CONNECTOR_TYPE For Integer
+Enum_List
+	Define OPM_CONNECTOR_TYPE_OTHER							For -1
+	Define OPM_CONNECTOR_TYPE_VGA							For 0
+	Define OPM_CONNECTOR_TYPE_SVIDEO						For 1
+	Define OPM_CONNECTOR_TYPE_COMPOSITE_VIDEO				For 2
+	Define OPM_CONNECTOR_TYPE_COMPONENT_VIDEO				For 3
+	Define OPM_CONNECTOR_TYPE_DVI							For 4
+	Define OPM_CONNECTOR_TYPE_HDMI							For 5
+	Define OPM_CONNECTOR_TYPE_LVDS							For 6
+	Define OPM_CONNECTOR_TYPE_D_JPN							For 8
+	Define OPM_CONNECTOR_TYPE_SDI							For 9
+	Define OPM_CONNECTOR_TYPE_DISPLAYPORT_EXTERNAL			For 10
+	Define OPM_CONNECTOR_TYPE_DISPLAYPORT_EMBEDDED			For 11
+	Define OPM_CONNECTOR_TYPE_UDI_EXTERNAL					For 12
+	Define OPM_CONNECTOR_TYPE_UDI_EMBEDDED					For 13
+	Define OPM_CONNECTOR_TYPE_RESERVED						For 14
+	Define OPM_CONNECTOR_TYPE_MIRACAST						For 15
+	Define OPM_CONNECTOR_TYPE_TRANSPORT_AGNOSTIC_DIGITAL_MODE_A	For 16
+	Define OPM_CONNECTOR_TYPE_TRANSPORT_AGNOSTIC_DIGITAL_MODE_B	For 17
+	Define OPM_COPP_COMPATIBLE_CONNECTOR_TYPE_INTERNAL		For -2147483648
+End_Enum_List
+
+// Define OPM_DVI_CHARACTERISTIC For Integer
+Enum_List
+	Define OPM_DVI_CHARACTERISTIC_1_0						For 1
+	Define OPM_DVI_CHARACTERISTIC_1_1_OR_ABOVE				For 2
+End_Enum_List
+
+// Define OPM_OUTPUT_HARDWARE_PROTECTION For Integer
+Enum_List
+	Define OPM_OUTPUT_HARDWARE_PROTECTION_NOT_SUPPORTED		For 0
+	Define OPM_OUTPUT_HARDWARE_PROTECTION_SUPPORTED			For 1
+End_Enum_List
+
+// Define OPM_BUS_TYPE For Integer
+Enum_List
+	Define OPM_BUS_TYPE_OTHER								For 0
+	Define OPM_BUS_TYPE_PCI									For 1
+	Define OPM_BUS_TYPE_PCIX								For 2
+	Define OPM_BUS_TYPE_PCIEXPRESS							For 3
+	Define OPM_BUS_TYPE_AGP									For 4
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_INSIDE_OF_CHIPSET	For 65536
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP	For 131072
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET	For 196608
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_DAUGHTER_BOARD_CONNECTOR	For 262144
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE	For 327680
+	Define OPM_BUS_IMPLEMENTATION_MODIFIER_NON_STANDARD		For -2147483648
+	Define OPM_COPP_COMPATIBLE_BUS_TYPE_INTEGRATED			For -2147483648
+End_Enum_List
+
+// Define OPM_DPCP_PROTECTION_LEVEL For Integer
+Enum_List
+	Define OPM_DPCP_OFF										For 0
+	Define OPM_DPCP_ON										For 1
+End_Enum_List
+
+// Define OPM_HDCP_PROTECTION_LEVEL For Integer
+Enum_List
+	Define OPM_HDCP_OFF										For 0
+	Define OPM_HDCP_ON										For 1
+End_Enum_List
+
+// Define OPM_TYPE_ENFORCEMENT_HDCP_PROTECTION_LEVEL For Integer
+Enum_List
+	Define OPM_TYPE_ENFORCEMENT_HDCP_OFF					For 0
+	Define OPM_TYPE_ENFORCEMENT_HDCP_ON_WITH_NO_TYPE_RESTRICTION	For 1
+	Define OPM_TYPE_ENFORCEMENT_HDCP_ON_WITH_TYPE1_RESTRICTION	For 2
+End_Enum_List
+
+// Define OPM_CGMSA For Integer
+Enum_List
+	Define OPM_CGMSA_OFF									For 0
+	Define OPM_CGMSA_COPY_FREELY							For 1
+	Define OPM_CGMSA_COPY_NO_MORE							For 2
+	Define OPM_CGMSA_COPY_ONE_GENERATION					For 3
+	Define OPM_CGMSA_COPY_NEVER								For 4
+	Define OPM_CGMSA_REDISTRIBUTION_CONTROL_REQUIRED		For 8
+End_Enum_List
+
+// Define OPM_ACP_PROTECTION_LEVEL For Integer
+Enum_List
+	Define OPM_ACP_OFF										For 0
+	Define OPM_ACP_LEVEL_ONE								For 1
+	Define OPM_ACP_LEVEL_TWO								For 2
+	Define OPM_ACP_LEVEL_THREE								For 3
+End_Enum_List
+
+// Define OPM_PROTECTION_TYPE For Integer
+Enum_List
+	Define OPM_PROTECTION_TYPE_OTHER						For -2147483648
+	Define OPM_PROTECTION_TYPE_NONE							For 0
+	Define OPM_PROTECTION_TYPE_COPP_COMPATIBLE_HDCP			For 1
+	Define OPM_PROTECTION_TYPE_ACP							For 2
+	Define OPM_PROTECTION_TYPE_CGMSA						For 4
+	Define OPM_PROTECTION_TYPE_HDCP							For 8
+	Define OPM_PROTECTION_TYPE_DPCP							For 16
+	Define OPM_PROTECTION_TYPE_TYPE_ENFORCEMENT_HDCP		For 32
+End_Enum_List
+
+// Define OPM_PROTECTION_STANDARD_TYPE For UInteger
+Enum_List
+	Define OPM_PROTECTION_STANDARD_OTHER					For 2147483648
+	Define OPM_PROTECTION_STANDARD_NONE						For 0
+	Define OPM_PROTECTION_STANDARD_IEC61880_525I			For 1
+	Define OPM_PROTECTION_STANDARD_IEC61880_2_525I			For 2
+	Define OPM_PROTECTION_STANDARD_IEC62375_625P			For 4
+	Define OPM_PROTECTION_STANDARD_EIA608B_525				For 8
+	Define OPM_PROTECTION_STANDARD_EN300294_625I			For 16
+	Define OPM_PROTECTION_STANDARD_CEA805A_TYPEA_525P		For 32
+	Define OPM_PROTECTION_STANDARD_CEA805A_TYPEA_750P		For 64
+	Define OPM_PROTECTION_STANDARD_CEA805A_TYPEA_1125I		For 128
+	Define OPM_PROTECTION_STANDARD_CEA805A_TYPEB_525P		For 256
+	Define OPM_PROTECTION_STANDARD_CEA805A_TYPEB_750P		For 512
+	Define OPM_PROTECTION_STANDARD_CEA805A_TYPEB_1125I		For 1024
+	Define OPM_PROTECTION_STANDARD_ARIBTRB15_525I			For 2048
+	Define OPM_PROTECTION_STANDARD_ARIBTRB15_525P			For 4096
+	Define OPM_PROTECTION_STANDARD_ARIBTRB15_750P			For 8192
+	Define OPM_PROTECTION_STANDARD_ARIBTRB15_1125I			For 16384
+End_Enum_List
+
+// Define OPM_IMAGE_ASPECT_RATIO_EN300294 For Integer
+Enum_List
+	Define OPM_ASPECT_RATIO_EN300294_FULL_FORMAT_4_BY_3		For 0
+	Define OPM_ASPECT_RATIO_EN300294_BOX_14_BY_9_CENTER		For 1
+	Define OPM_ASPECT_RATIO_EN300294_BOX_14_BY_9_TOP		For 2
+	Define OPM_ASPECT_RATIO_EN300294_BOX_16_BY_9_CENTER		For 3
+	Define OPM_ASPECT_RATIO_EN300294_BOX_16_BY_9_TOP		For 4
+	Define OPM_ASPECT_RATIO_EN300294_BOX_GT_16_BY_9_CENTER	For 5
+	Define OPM_ASPECT_RATIO_EN300294_FULL_FORMAT_4_BY_3_PROTECTED_CENTER	For 6
+	Define OPM_ASPECT_RATIO_EN300294_FULL_FORMAT_16_BY_9_ANAMORPHIC	For 7
+End_Enum_List
+
+// Define KSMETHOD_OPMVIDEOOUTPUT For Integer
+Enum_List
+	Define KSMETHOD_OPMVIDEOOUTPUT_STARTINITIALIZATION		For 0
+	Define KSMETHOD_OPMVIDEOOUTPUT_FINISHINITIALIZATION		For 1
+	Define KSMETHOD_OPMVIDEOOUTPUT_GETINFORMATION			For 2
+End_Enum_List
+
+// Define MF_ATTRIBUTE_TYPE For Integer
+Enum_List
+	Define MF_ATTRIBUTE_UINT32								For 19
+	Define MF_ATTRIBUTE_UINT64								For 21
+	Define MF_ATTRIBUTE_DOUBLE								For 5
+	Define MF_ATTRIBUTE_GUID								For 72
+	Define MF_ATTRIBUTE_STRING								For 31
+	Define MF_ATTRIBUTE_BLOB								For 4113
+	Define MF_ATTRIBUTE_IUNKNOWN							For 13
+End_Enum_List
+
+// Define MF_ATTRIBUTES_MATCH_TYPE For Integer
+Enum_List
+	Define MF_ATTRIBUTES_MATCH_OUR_ITEMS					For 0
+	Define MF_ATTRIBUTES_MATCH_THEIR_ITEMS					For 1
+	Define MF_ATTRIBUTES_MATCH_ALL_ITEMS					For 2
+	Define MF_ATTRIBUTES_MATCH_INTERSECTION					For 3
+	Define MF_ATTRIBUTES_MATCH_SMALLER						For 4
+End_Enum_List
+
+// Define MF_ATTRIBUTE_SERIALIZE_OPTIONS For Integer
+Enum_List
+	Define MF_ATTRIBUTE_SERIALIZE_UNKNOWN_BYREF				For 1
+End_Enum_List
+
+// Define MF2DBuffer_LockFlags For Integer
+Enum_List
+	Define MF2DBuffer_LockFlags_LockTypeMask				For 3
+	Define MF2DBuffer_LockFlags_Read						For 1
+	Define MF2DBuffer_LockFlags_Write						For 2
+	Define MF2DBuffer_LockFlags_ReadWrite					For 3
+	Define MF2DBuffer_LockFlags_ForceDWORD					For 2147483647
+End_Enum_List
+
+// Define MFVideoFlags For Integer
+Enum_List
+	Define MFVideoFlag_PAD_TO_Mask							For 3
+	Define MFVideoFlag_PAD_TO_None							For 0
+	Define MFVideoFlag_PAD_TO_4x3							For 1
+	Define MFVideoFlag_PAD_TO_16x9							For 2
+	Define MFVideoFlag_SrcContentHintMask					For 28
+	Define MFVideoFlag_SrcContentHintNone					For 0
+	Define MFVideoFlag_SrcContentHint16x9					For 4
+	Define MFVideoFlag_SrcContentHint235_1					For 8
+	Define MFVideoFlag_AnalogProtected						For 32
+	Define MFVideoFlag_DigitallyProtected					For 64
+	Define MFVideoFlag_ProgressiveContent					For 128
+	Define MFVideoFlag_FieldRepeatCountMask					For 1792
+	Define MFVideoFlag_FieldRepeatCountShift				For 8
+	Define MFVideoFlag_ProgressiveSeqReset					For 2048
+	Define MFVideoFlag_PanScanEnabled						For 131072
+	Define MFVideoFlag_LowerFieldFirst						For 262144
+	Define MFVideoFlag_BottomUpLinearRep					For 524288
+	Define MFVideoFlags_DXVASurface							For 1048576
+	Define MFVideoFlags_RenderTargetSurface					For 4194304
+	Define MFVideoFlags_ForceQWORD							For 2147483647
+End_Enum_List
+
+// Define __MIDL___MIDL_itf_mfobjects_0000_0013_0001 For Integer
+Enum_List
+	Define MEUnknown										For 0
+	Define MEError											For 1
+	Define MEExtendedType									For 2
+	Define MENonFatalError									For 3
+	Define MEGenericV1Anchor								For 3
+	Define MESessionUnknown									For 100
+	Define MESessionTopologySet								For 101
+	Define MESessionTopologiesCleared						For 102
+	Define MESessionStarted									For 103
+	Define MESessionPaused									For 104
+	Define MESessionStopped									For 105
+	Define MESessionClosed									For 106
+	Define MESessionEnded									For 107
+	Define MESessionRateChanged								For 108
+	Define MESessionScrubSampleComplete						For 109
+	Define MESessionCapabilitiesChanged						For 110
+	Define MESessionTopologyStatus							For 111
+	Define MESessionNotifyPresentationTime					For 112
+	Define MENewPresentation								For 113
+	Define MELicenseAcquisitionStart						For 114
+	Define MELicenseAcquisitionCompleted					For 115
+	Define MEIndividualizationStart							For 116
+	Define MEIndividualizationCompleted						For 117
+	Define MEEnablerProgress								For 118
+	Define MEEnablerCompleted								For 119
+	Define MEPolicyError									For 120
+	Define MEPolicyReport									For 121
+	Define MEBufferingStarted								For 122
+	Define MEBufferingStopped								For 123
+	Define MEConnectStart									For 124
+	Define MEConnectEnd										For 125
+	Define MEReconnectStart									For 126
+	Define MEReconnectEnd									For 127
+	Define MERendererEvent									For 128
+	Define MESessionStreamSinkFormatChanged					For 129
+	Define MESessionV1Anchor								For 129
+	Define MESourceUnknown									For 200
+	Define MESourceStarted									For 201
+	Define MEStreamStarted									For 202
+	Define MESourceSeeked									For 203
+	Define MEStreamSeeked									For 204
+	Define MENewStream										For 205
+	Define MEUpdatedStream									For 206
+	Define MESourceStopped									For 207
+	Define MEStreamStopped									For 208
+	Define MESourcePaused									For 209
+	Define MEStreamPaused									For 210
+	Define MEEndOfPresentation								For 211
+	Define MEEndOfStream									For 212
+	Define MEMediaSample									For 213
+	Define MEStreamTick										For 214
+	Define MEStreamThinMode									For 215
+	Define MEStreamFormatChanged							For 216
+	Define MESourceRateChanged								For 217
+	Define MEEndOfPresentationSegment						For 218
+	Define MESourceCharacteristicsChanged					For 219
+	Define MESourceRateChangeRequested						For 220
+	Define MESourceMetadataChanged							For 221
+	Define MESequencerSourceTopologyUpdated					For 222
+	Define MESourceV1Anchor									For 222
+	Define MESinkUnknown									For 300
+	Define MEStreamSinkStarted								For 301
+	Define MEStreamSinkStopped								For 302
+	Define MEStreamSinkPaused								For 303
+	Define MEStreamSinkRateChanged							For 304
+	Define MEStreamSinkRequestSample						For 305
+	Define MEStreamSinkMarker								For 306
+	Define MEStreamSinkPrerolled							For 307
+	Define MEStreamSinkScrubSampleComplete					For 308
+	Define MEStreamSinkFormatChanged						For 309
+	Define MEStreamSinkDeviceChanged						For 310
+	Define MEQualityNotify									For 311
+	Define MESinkInvalidated								For 312
+	Define MEAudioSessionNameChanged						For 313
+	Define MEAudioSessionVolumeChanged						For 314
+	Define MEAudioSessionDeviceRemoved						For 315
+	Define MEAudioSessionServerShutdown						For 316
+	Define MEAudioSessionGroupingParamChanged				For 317
+	Define MEAudioSessionIconChanged						For 318
+	Define MEAudioSessionFormatChanged						For 319
+	Define MEAudioSessionDisconnected						For 320
+	Define MEAudioSessionExclusiveModeOverride				For 321
+	Define MESinkV1Anchor									For 321
+	Define MECaptureAudioSessionVolumeChanged				For 322
+	Define MECaptureAudioSessionDeviceRemoved				For 323
+	Define MECaptureAudioSessionFormatChanged				For 324
+	Define MECaptureAudioSessionDisconnected				For 325
+	Define MECaptureAudioSessionExclusiveModeOverride		For 326
+	Define MECaptureAudioSessionServerShutdown				For 327
+	Define MESinkV2Anchor									For 327
+	Define METrustUnknown									For 400
+	Define MEPolicyChanged									For 401
+	Define MEContentProtectionMessage						For 402
+	Define MEPolicySet										For 403
+	Define METrustV1Anchor									For 403
+	Define MEWMDRMLicenseBackupCompleted					For 500
+	Define MEWMDRMLicenseBackupProgress						For 501
+	Define MEWMDRMLicenseRestoreCompleted					For 502
+	Define MEWMDRMLicenseRestoreProgress					For 503
+	Define MEWMDRMLicenseAcquisitionCompleted				For 506
+	Define MEWMDRMIndividualizationCompleted				For 508
+	Define MEWMDRMIndividualizationProgress					For 513
+	Define MEWMDRMProximityCompleted						For 514
+	Define MEWMDRMLicenseStoreCleaned						For 515
+	Define MEWMDRMRevocationDownloadCompleted				For 516
+	Define MEWMDRMV1Anchor									For 516
+	Define METransformUnknown								For 600
+	Define METransformNeedInput								For 601
+	Define METransformHaveOutput							For 602
+	Define METransformDrainComplete							For 603
+	Define METransformMarker								For 604
+	Define METransformInputStreamStateChanged				For 605
+	Define MEByteStreamCharacteristicsChanged				For 700
+	Define MEVideoCaptureDeviceRemoved						For 800
+	Define MEVideoCaptureDevicePreempted					For 801
+	Define MEStreamSinkFormatInvalidated					For 802
+	Define MEEncodingParameters								For 803
+	Define MEContentProtectionMetadata						For 900
+	Define MEDeviceThermalStateChanged						For 950
+	Define MEReservedMax									For 10000
+End_Enum_List
+
+// Define MFBYTESTREAM_SEEK_ORIGIN For Integer
+Enum_List
+	Define msoBegin											For 0
+	Define msoCurrent										For 1
+End_Enum_List
+
+// Define MF_PLUGIN_CONTROL_POLICY For Integer
+Enum_List
+	Define MF_PLUGIN_CONTROL_POLICY_USE_ALL_PLUGINS			For 0
+	Define MF_PLUGIN_CONTROL_POLICY_USE_APPROVED_PLUGINS	For 1
+	Define MF_PLUGIN_CONTROL_POLICY_USE_WEB_PLUGINS			For 2
+	Define MF_PLUGIN_CONTROL_POLICY_USE_WEB_PLUGINS_EDGEMODE	For 3
+End_Enum_List
+
+// Define MF_STREAM_STATE For Integer
+Enum_List
+	Define MF_STREAM_STATE_STOPPED							For 0
+	Define MF_STREAM_STATE_PAUSED							For 1
+	Define MF_STREAM_STATE_RUNNING							For 2
+End_Enum_List
+
+// Define _MFT_INPUT_DATA_BUFFER_FLAGS For Integer
+Enum_List
+	Define MFT_INPUT_DATA_BUFFER_PLACEHOLDER				For -1
+End_Enum_List
+
+// Define _MFT_OUTPUT_DATA_BUFFER_FLAGS For Integer
+Enum_List
+	Define MFT_OUTPUT_DATA_BUFFER_INCOMPLETE				For 16777216
+	Define MFT_OUTPUT_DATA_BUFFER_FORMAT_CHANGE				For 256
+	Define MFT_OUTPUT_DATA_BUFFER_STREAM_END				For 512
+	Define MFT_OUTPUT_DATA_BUFFER_NO_SAMPLE					For 768
+End_Enum_List
+
+// Define _MFT_INPUT_STATUS_FLAGS For Integer
+Enum_List
+	Define MFT_INPUT_STATUS_ACCEPT_DATA						For 1
+End_Enum_List
+
+// Define _MFT_OUTPUT_STATUS_FLAGS For Integer
+Enum_List
+	Define MFT_OUTPUT_STATUS_SAMPLE_READY					For 1
+End_Enum_List
+
+// Define _MFT_INPUT_STREAM_INFO_FLAGS For Integer
+Enum_List
+	Define MFT_INPUT_STREAM_WHOLE_SAMPLES					For 1
+	Define MFT_INPUT_STREAM_SINGLE_SAMPLE_PER_BUFFER		For 2
+	Define MFT_INPUT_STREAM_FIXED_SAMPLE_SIZE				For 4
+	Define MFT_INPUT_STREAM_HOLDS_BUFFERS					For 8
+	Define MFT_INPUT_STREAM_DOES_NOT_ADDREF					For 256
+	Define MFT_INPUT_STREAM_REMOVABLE						For 512
+	Define MFT_INPUT_STREAM_OPTIONAL						For 1024
+	Define MFT_INPUT_STREAM_PROCESSES_IN_PLACE				For 2048
+End_Enum_List
+
+// Define _MFT_OUTPUT_STREAM_INFO_FLAGS For Integer
+Enum_List
+	Define MFT_OUTPUT_STREAM_WHOLE_SAMPLES					For 1
+	Define MFT_OUTPUT_STREAM_SINGLE_SAMPLE_PER_BUFFER		For 2
+	Define MFT_OUTPUT_STREAM_FIXED_SAMPLE_SIZE				For 4
+	Define MFT_OUTPUT_STREAM_DISCARDABLE					For 8
+	Define MFT_OUTPUT_STREAM_OPTIONAL						For 16
+	Define MFT_OUTPUT_STREAM_PROVIDES_SAMPLES				For 256
+	Define MFT_OUTPUT_STREAM_CAN_PROVIDE_SAMPLES			For 512
+	Define MFT_OUTPUT_STREAM_LAZY_READ						For 1024
+	Define MFT_OUTPUT_STREAM_REMOVABLE						For 2048
+End_Enum_List
+
+// Define _MFT_SET_TYPE_FLAGS For Integer
+Enum_List
+	Define MFT_SET_TYPE_TEST_ONLY							For 1
+End_Enum_List
+
+// Define _MFT_PROCESS_OUTPUT_FLAGS For Integer
+Enum_List
+	Define MFT_PROCESS_OUTPUT_DISCARD_WHEN_NO_BUFFER		For 1
+	Define MFT_PROCESS_OUTPUT_REGENERATE_LAST_OUTPUT		For 2
+End_Enum_List
+
+// Define _MFT_PROCESS_OUTPUT_STATUS For Integer
+Enum_List
+	Define MFT_PROCESS_OUTPUT_STATUS_NEW_STREAMS			For 256
+End_Enum_List
+
+// Define MFT_DRAIN_TYPE For Integer
+Enum_List
+	Define MFT_DRAIN_PRODUCE_TAILS							For 0
+	Define MFT_DRAIN_NO_TAILS								For 1
+End_Enum_List
+
+// Define MFT_MESSAGE_TYPE For Integer
+Enum_List
+	Define MFT_MESSAGE_COMMAND_FLUSH						For 0
+	Define MFT_MESSAGE_COMMAND_DRAIN						For 1
+	Define MFT_MESSAGE_SET_D3D_MANAGER						For 2
+	Define MFT_MESSAGE_DROP_SAMPLES							For 3
+	Define MFT_MESSAGE_COMMAND_TICK							For 4
+	Define MFT_MESSAGE_NOTIFY_BEGIN_STREAMING				For 268435456
+	Define MFT_MESSAGE_NOTIFY_END_STREAMING					For 268435457
+	Define MFT_MESSAGE_NOTIFY_END_OF_STREAM					For 268435458
+	Define MFT_MESSAGE_NOTIFY_START_OF_STREAM				For 268435459
+	Define MFT_MESSAGE_NOTIFY_RELEASE_RESOURCES				For 268435460
+	Define MFT_MESSAGE_NOTIFY_REACQUIRE_RESOURCES			For 268435461
+	Define MFT_MESSAGE_NOTIFY_EVENT							For 268435462
+	Define MFT_MESSAGE_COMMAND_SET_OUTPUT_STREAM_STATE		For 268435463
+	Define MFT_MESSAGE_COMMAND_FLUSH_OUTPUT_STREAM			For 268435464
+	Define MFT_MESSAGE_COMMAND_MARKER						For 536870912
+End_Enum_List
+
+// Define DeviceStreamState For Integer
+Enum_List
+	Define DeviceStreamState_Stop							For 0
+	Define DeviceStreamState_Pause							For 1
+	Define DeviceStreamState_Run							For 2
+	Define DeviceStreamState_Disabled						For 3
+End_Enum_List
+
+// Define MF3DVideoOutputType For Integer
+Enum_List
+	Define MF3DVideoOutputType_BaseView						For 0
+	Define MF3DVideoOutputType_Stereo						For 1
+End_Enum_List
+
+// Define MFT_AUDIO_DECODER_DEGRADATION_REASON For Integer
+Enum_List
+	Define MFT_AUDIO_DECODER_DEGRADATION_REASON_NONE		For 0
+	Define MFT_AUDIO_DECODER_DEGRADATION_REASON_LICENSING_REQUIREMENT	For 1
+End_Enum_List
+
+// Define MFT_AUDIO_DECODER_DEGRADATION_TYPE For Integer
+Enum_List
+	Define MFT_AUDIO_DECODER_DEGRADATION_TYPE_NONE			For 0
+	Define MFT_AUDIO_DECODER_DEGRADATION_TYPE_DOWNMIX2CHANNEL	For 1
+	Define MFT_AUDIO_DECODER_DEGRADATION_TYPE_DOWNMIX6CHANNEL	For 2
+	Define MFT_AUDIO_DECODER_DEGRADATION_TYPE_DOWNMIX8CHANNEL	For 3
+End_Enum_List
+
+// Define MFSESSION_SETTOPOLOGY_FLAGS For Integer
+Enum_List
+	Define MFSESSION_SETTOPOLOGY_IMMEDIATE					For 1
+	Define MFSESSION_SETTOPOLOGY_NORESOLUTION				For 2
+	Define MFSESSION_SETTOPOLOGY_CLEAR_CURRENT				For 4
+End_Enum_List
+
+// Define MFSESSION_GETFULLTOPOLOGY_FLAGS For Integer
+Enum_List
+	Define MFSESSION_GETFULLTOPOLOGY_CURRENT				For 1
+End_Enum_List
+
+// Define MFPMPSESSION_CREATION_FLAGS For Integer
+Enum_List
+	Define MFPMPSESSION_UNPROTECTED_PROCESS					For 1
+	Define MFPMPSESSION_IN_PROCESS							For 2
+End_Enum_List
+
+// Define MF_OBJECT_TYPE For Integer
+Enum_List
+	Define MF_OBJECT_MEDIASOURCE							For 0
+	Define MF_OBJECT_BYTESTREAM								For 1
+	Define MF_OBJECT_INVALID								For 2
+End_Enum_List
+
+// Define MF_RESOLUTION_FLAGS For Integer
+Enum_List
+	Define MF_RESOLUTION_MEDIASOURCE						For 1
+	Define MF_RESOLUTION_BYTESTREAM							For 2
+	Define MF_RESOLUTION_CONTENT_DOES_NOT_HAVE_TO_MATCH_EXTENSION_OR_MIME_TYPE	For 16
+	Define MF_RESOLUTION_KEEP_BYTE_STREAM_ALIVE_ON_FAIL		For 32
+	Define MF_RESOLUTION_DISABLE_LOCAL_PLUGINS				For 64
+	Define MF_RESOLUTION_PLUGIN_CONTROL_POLICY_APPROVED_ONLY	For 128
+	Define MF_RESOLUTION_PLUGIN_CONTROL_POLICY_WEB_ONLY		For 256
+	Define MF_RESOLUTION_PLUGIN_CONTROL_POLICY_WEB_ONLY_EDGEMODE	For 512
+	Define MF_RESOLUTION_ENABLE_STORE_PLUGINS				For 1024
+	Define MF_RESOLUTION_READ								For 65536
+	Define MF_RESOLUTION_WRITE								For 131072
+End_Enum_List
+
+// Define MF_CONNECT_METHOD For Integer
+Enum_List
+	Define MF_CONNECT_DIRECT								For 0
+	Define MF_CONNECT_ALLOW_CONVERTER						For 1
+	Define MF_CONNECT_ALLOW_DECODER							For 3
+	Define MF_CONNECT_RESOLVE_INDEPENDENT_OUTPUTTYPES		For 4
+	Define MF_CONNECT_AS_OPTIONAL							For 65536
+	Define MF_CONNECT_AS_OPTIONAL_BRANCH					For 131072
+End_Enum_List
+
+// Define MF_TOPOLOGY_RESOLUTION_STATUS_FLAGS For Integer
+Enum_List
+	Define MF_TOPOLOGY_RESOLUTION_SUCCEEDED					For 0
+	Define MF_OPTIONAL_NODE_REJECTED_MEDIA_TYPE				For 1
+	Define MF_OPTIONAL_NODE_REJECTED_PROTECTED_PROCESS		For 2
+End_Enum_List
+
+// Define MFMEDIASOURCE_CHARACTERISTICS For Integer
+Enum_List
+	Define MFMEDIASOURCE_IS_LIVE							For 1
+	Define MFMEDIASOURCE_CAN_SEEK							For 2
+	Define MFMEDIASOURCE_CAN_PAUSE							For 4
+	Define MFMEDIASOURCE_HAS_SLOW_SEEK						For 8
+	Define MFMEDIASOURCE_HAS_MULTIPLE_PRESENTATIONS			For 16
+	Define MFMEDIASOURCE_CAN_SKIPFORWARD					For 32
+	Define MFMEDIASOURCE_CAN_SKIPBACKWARD					For 64
+	Define MFMEDIASOURCE_DOES_NOT_USE_NETWORK				For 128
+End_Enum_List
+
+// Define MFSTREAMSINK_MARKER_TYPE For Integer
+Enum_List
+	Define MFSTREAMSINK_MARKER_DEFAULT						For 0
+	Define MFSTREAMSINK_MARKER_ENDOFSEGMENT					For 1
+	Define MFSTREAMSINK_MARKER_TICK							For 2
+	Define MFSTREAMSINK_MARKER_EVENT						For 3
+End_Enum_List
+
+// Define MF_VIDEO_PROCESSOR_ROTATION For Integer
+Enum_List
+	Define ROTATION_NONE									For 0
+	Define ROTATION_NORMAL									For 1
+End_Enum_List
+
+// Define MF_VIDEO_PROCESSOR_MIRROR For Integer
+Enum_List
+	Define MIRROR_NONE										For 0
+	Define MIRROR_HORIZONTAL								For 1
+	Define MIRROR_VERTICAL									For 2
+End_Enum_List
+
+// Define MFVideoSphericalFormat For Integer
+Enum_List
+	Define MFVideoSphericalFormat_Unsupported				For 0
+	Define MFVideoSphericalFormat_Equirectangular			For 1
+	Define MFVideoSphericalFormat_CubeMap					For 2
+	Define MFVideoSphericalFormat_3DMesh					For 3
+End_Enum_List
+
+// Define MFVideoSphericalProjectionMode For Integer
+Enum_List
+	Define MFVideoSphericalProjectionMode_Spherical			For 0
+	Define MFVideoSphericalProjectionMode_Flat				For 1
+End_Enum_List
+
+// Define MFTOPOLOGY_DXVA_MODE For Integer
+Enum_List
+	Define MFTOPOLOGY_DXVA_DEFAULT							For 0
+	Define MFTOPOLOGY_DXVA_NONE								For 1
+	Define MFTOPOLOGY_DXVA_FULL								For 2
+End_Enum_List
+
+// Define MFTOPOLOGY_HARDWARE_MODE For Integer
+Enum_List
+	Define MFTOPOLOGY_HWMODE_SOFTWARE_ONLY					For 0
+	Define MFTOPOLOGY_HWMODE_USE_HARDWARE					For 1
+	Define MFTOPOLOGY_HWMODE_USE_ONLY_HARDWARE				For 2
+End_Enum_List
+
+// Define MF_TOPONODE_FLUSH_MODE For Integer
+Enum_List
+	Define MF_TOPONODE_FLUSH_ALWAYS							For 0
+	Define MF_TOPONODE_FLUSH_SEEK							For 1
+	Define MF_TOPONODE_FLUSH_NEVER							For 2
+End_Enum_List
+
+// Define MF_TOPONODE_DRAIN_MODE For Integer
+Enum_List
+	Define MF_TOPONODE_DRAIN_DEFAULT						For 0
+	Define MF_TOPONODE_DRAIN_ALWAYS							For 1
+	Define MF_TOPONODE_DRAIN_NEVER							For 2
+End_Enum_List
+
+// Define MFCLOCK_CHARACTERISTICS_FLAGS For Integer
+Enum_List
+	Define MFCLOCK_CHARACTERISTICS_FLAG_FREQUENCY_10MHZ		For 2
+	Define MFCLOCK_CHARACTERISTICS_FLAG_ALWAYS_RUNNING		For 4
+	Define MFCLOCK_CHARACTERISTICS_FLAG_IS_SYSTEM_CLOCK		For 8
+End_Enum_List
+
+// Define MFCLOCK_STATE For Integer
+Enum_List
+	Define MFCLOCK_STATE_INVALID							For 0
+	Define MFCLOCK_STATE_RUNNING							For 1
+	Define MFCLOCK_STATE_STOPPED							For 2
+	Define MFCLOCK_STATE_PAUSED								For 3
+End_Enum_List
+
+// Define MFCLOCK_RELATIONAL_FLAGS For Integer
+Enum_List
+	Define MFCLOCK_RELATIONAL_FLAG_JITTER_NEVER_AHEAD		For 1
+End_Enum_List
+
+// Define MFTIMER_FLAGS For Integer
+Enum_List
+	Define MFTIMER_RELATIVE									For 1
+End_Enum_List
+
+// Define MF_ACTIVATE_CUSTOM_MIXER For Integer
+Enum_List
+	Define MF_ACTIVATE_CUSTOM_MIXER_ALLOWFAIL				For 1
+End_Enum_List
+
+// Define MF_ACTIVATE_CUSTOM_PRESENTER For Integer
+Enum_List
+	Define MF_ACTIVATE_CUSTOM_PRESENTER_ALLOWFAIL			For 1
+End_Enum_List
+
+// Define MFSHUTDOWN_STATUS For Integer
+Enum_List
+	Define MFSHUTDOWN_INITIATED								For 0
+	Define MFSHUTDOWN_COMPLETED								For 1
+End_Enum_List
+
+// Define MF_URL_TRUST_STATUS For Integer
+Enum_List
+	Define MF_LICENSE_URL_UNTRUSTED							For 0
+	Define MF_LICENSE_URL_TRUSTED							For 1
+	Define MF_LICENSE_URL_TAMPERED							For 2
+End_Enum_List
+
+// Define MFRATE_DIRECTION For Integer
+Enum_List
+	Define MFRATE_FORWARD									For 0
+	Define MFRATE_REVERSE									For 1
+End_Enum_List
+
+// Define MF_QUALITY_DROP_MODE For Integer
+Enum_List
+	Define MF_DROP_MODE_NONE								For 0
+	Define MF_DROP_MODE_1									For 1
+	Define MF_DROP_MODE_2									For 2
+	Define MF_DROP_MODE_3									For 3
+	Define MF_DROP_MODE_4									For 4
+	Define MF_DROP_MODE_5									For 5
+	Define MF_NUM_DROP_MODES								For 6
+End_Enum_List
+
+// Define MF_QUALITY_LEVEL For Integer
+Enum_List
+	Define MF_QUALITY_NORMAL								For 0
+	Define MF_QUALITY_NORMAL_MINUS_1						For 1
+	Define MF_QUALITY_NORMAL_MINUS_2						For 2
+	Define MF_QUALITY_NORMAL_MINUS_3						For 3
+	Define MF_QUALITY_NORMAL_MINUS_4						For 4
+	Define MF_QUALITY_NORMAL_MINUS_5						For 5
+	Define MF_NUM_QUALITY_LEVELS							For 6
+End_Enum_List
+
+// Define MF_QUALITY_ADVISE_FLAGS For Integer
+Enum_List
+	Define MF_QUALITY_CANNOT_KEEP_UP						For 1
+End_Enum_List
+
+// Define MFSequencerTopologyFlags For Integer
+Enum_List
+	Define SequencerTopologyFlags_Last						For 1
+End_Enum_List
+
+// Define MFNetCredentialRequirements For Integer
+Enum_List
+	Define REQUIRE_PROMPT									For 1
+	Define REQUIRE_SAVE_SELECTED							For 2
+End_Enum_List
+
+// Define MFNetCredentialOptions For Integer
+Enum_List
+	Define MFNET_CREDENTIAL_SAVE							For 1
+	Define MFNET_CREDENTIAL_DONT_CACHE						For 2
+	Define MFNET_CREDENTIAL_ALLOW_CLEAR_TEXT				For 4
+End_Enum_List
+
+// Define MFNetAuthenticationFlags For Integer
+Enum_List
+	Define MFNET_AUTHENTICATION_PROXY						For 1
+	Define MFNET_AUTHENTICATION_CLEAR_TEXT					For 2
+	Define MFNET_AUTHENTICATION_LOGGED_ON_USER				For 4
+End_Enum_List
+
+// Define MFNETSOURCE_PROTOCOL_TYPE For Integer
+Enum_List
+	Define MFNETSOURCE_UNDEFINED							For 0
+	Define MFNETSOURCE_HTTP									For 1
+	Define MFNETSOURCE_RTSP									For 2
+	Define MFNETSOURCE_FILE									For 3
+	Define MFNETSOURCE_MULTICAST							For 4
+End_Enum_List
+
+// Define MFNETSOURCE_TRANSPORT_TYPE For Integer
+Enum_List
+	Define MFNETSOURCE_UDP									For 0
+	Define MFNETSOURCE_TCP									For 1
+End_Enum_List
+
+// Define MFNETSOURCE_CACHE_STATE For Integer
+Enum_List
+	Define MFNETSOURCE_CACHE_UNAVAILABLE					For 0
+	Define MFNETSOURCE_CACHE_ACTIVE_WRITING					For 1
+	Define MFNETSOURCE_CACHE_ACTIVE_COMPLETE				For 2
+End_Enum_List
+
+// Define MFNETSOURCE_STATISTICS_IDS For Integer
+Enum_List
+	Define MFNETSOURCE_RECVPACKETS_ID						For 0
+	Define MFNETSOURCE_LOSTPACKETS_ID						For 1
+	Define MFNETSOURCE_RESENDSREQUESTED_ID					For 2
+	Define MFNETSOURCE_RESENDSRECEIVED_ID					For 3
+	Define MFNETSOURCE_RECOVEREDBYECCPACKETS_ID				For 4
+	Define MFNETSOURCE_RECOVEREDBYRTXPACKETS_ID				For 5
+	Define MFNETSOURCE_OUTPACKETS_ID						For 6
+	Define MFNETSOURCE_RECVRATE_ID							For 7
+	Define MFNETSOURCE_AVGBANDWIDTHBPS_ID					For 8
+	Define MFNETSOURCE_BYTESRECEIVED_ID						For 9
+	Define MFNETSOURCE_PROTOCOL_ID							For 10
+	Define MFNETSOURCE_TRANSPORT_ID							For 11
+	Define MFNETSOURCE_CACHE_STATE_ID						For 12
+	Define MFNETSOURCE_LINKBANDWIDTH_ID						For 13
+	Define MFNETSOURCE_CONTENTBITRATE_ID					For 14
+	Define MFNETSOURCE_SPEEDFACTOR_ID						For 15
+	Define MFNETSOURCE_BUFFERSIZE_ID						For 16
+	Define MFNETSOURCE_BUFFERPROGRESS_ID					For 17
+	Define MFNETSOURCE_LASTBWSWITCHTS_ID					For 18
+	Define MFNETSOURCE_SEEKRANGESTART_ID					For 19
+	Define MFNETSOURCE_SEEKRANGEEND_ID						For 20
+	Define MFNETSOURCE_BUFFERINGCOUNT_ID					For 21
+	Define MFNETSOURCE_INCORRECTLYSIGNEDPACKETS_ID			For 22
+	Define MFNETSOURCE_SIGNEDSESSION_ID						For 23
+	Define MFNETSOURCE_MAXBITRATE_ID						For 24
+	Define MFNETSOURCE_RECEPTION_QUALITY_ID					For 25
+	Define MFNETSOURCE_RECOVEREDPACKETS_ID					For 26
+	Define MFNETSOURCE_VBR_ID								For 27
+	Define MFNETSOURCE_DOWNLOADPROGRESS_ID					For 28
+	Define MFNETSOURCE_UNPREDEFINEDPROTOCOLNAME_ID			For 29
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure
+

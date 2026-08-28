@@ -1,0 +1,1444 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-createoleadviseholder
+External_Function CreateOleAdviseHolder "CreateOleAdviseHolder" OLE32.dll ;
+	Pointer ppOAHolder ;	// IOleAdviseHolder*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-dodragdrop
+External_Function DoDragDrop "DoDragDrop" OLE32.dll ;
+	Pointer pDataObj ;	// IDataObject
+	Pointer pDropSource ;	// IDropSource
+	UInteger dwOKEffects ;	// DROPEFFECT
+	Pointer pdwEffect ;	// DROPEFFECT*
+	Returns Integer	// HRESULT
+
+External_Function HRGN_UserFree "HRGN_UserFree" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// HRGN*
+	Returns Pointer
+
+External_Function HRGN_UserMarshal "HRGN_UserMarshal" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HRGN*
+	Returns Pointer	// UChar*
+
+External_Function HRGN_UserSize "HRGN_UserSize" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// HRGN*
+	Returns UInteger
+
+External_Function HRGN_UserUnmarshal "HRGN_UserUnmarshal" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HRGN*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-isaccelerator
+External_Function IsAccelerator "IsAccelerator" OLE32.dll ;
+	Pointer hAccel ;	// HACCEL
+	Integer cAccelEntries ;
+	Pointer lpMsg ;	// MSG*
+	Pointer lpwCmd ;	// UShort*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreate
+External_Function OleCreate "OleCreate" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	UInteger renderopt ;
+	Pointer pFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreateembeddinghelper
+External_Function OleCreateEmbeddingHelper "OleCreateEmbeddingHelper" OLE32.dll ;
+	Pointer clsid ;	// Guid*
+	Pointer pUnkOuter ;	// IUnknown
+	UInteger flags ;	// EMBDHLP_FLAGS
+	Pointer pCF ;	// IClassFactory
+	Pointer riid ;	// Guid*
+	Pointer lplpObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatefromdata
+External_Function OleCreateFromData "OleCreateFromData" OLE32.dll ;
+	Pointer pSrcDataObj ;	// IDataObject
+	Pointer riid ;	// Guid*
+	UInteger renderopt ;
+	Pointer pFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatefromfile
+External_Function OleCreateFromFile "OleCreateFromFile" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	WString lpszFileName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	UInteger renderopt ;
+	Pointer lpFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatelinkfromdata
+External_Function OleCreateLinkFromData "OleCreateLinkFromData" OLE32.dll ;
+	Pointer pSrcDataObj ;	// IDataObject
+	Pointer riid ;	// Guid*
+	UInteger renderopt ;
+	Pointer pFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatelinktofile
+External_Function OleCreateLinkToFile "OleCreateLinkToFile" OLE32.dll ;
+	WString lpszFileName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	UInteger renderopt ;
+	Pointer lpFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatemenudescriptor
+External_Function OleCreateMenuDescriptor "OleCreateMenuDescriptor" OLE32.dll ;
+	Pointer hmenuCombined ;	// HMENU
+	Pointer lpMenuWidths ;	// OLEMENUGROUPWIDTHS*
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatestaticfromdata
+External_Function OleCreateStaticFromData "OleCreateStaticFromData" OLE32.dll ;
+	Pointer pSrcDataObj ;	// IDataObject
+	Pointer iid ;	// Guid*
+	UInteger renderopt ;
+	Pointer pFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oledestroymenudescriptor
+External_Function OleDestroyMenuDescriptor "OleDestroyMenuDescriptor" OLE32.dll ;
+	LongPtr holemenu ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oledraw
+External_Function OleDraw "OleDraw" OLE32.dll ;
+	Pointer pUnknown ;	// IUnknown
+	UInteger dwAspect ;
+	Pointer hdcDraw ;	// HDC
+	Pointer lprcBounds ;	// RECT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleduplicatedata
+External_Function OleDuplicateData "OleDuplicateData" OLE32.dll ;
+	Pointer hSrc ;	// HANDLE
+	UShort cfFormat ;	// CLIPBOARD_FORMAT
+	UInteger uiFlags ;	// GLOBAL_ALLOC_FLAGS
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleflushclipboard
+External_Function OleFlushClipboard "OleFlushClipboard" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olegetautoconvert
+External_Function OleGetAutoConvert "OleGetAutoConvert" OLE32.dll ;
+	Pointer clsidOld ;	// Guid*
+	Pointer pClsidNew ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olegetclipboard
+External_Function OleGetClipboard "OleGetClipboard" OLE32.dll ;
+	Pointer ppDataObj ;	// IDataObject*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olegeticonofclass
+External_Function OleGetIconOfClass "OleGetIconOfClass" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	WString lpszLabel ;	// PWSTR
+	Integer fUseTypeAsLabel ;	// BOOL
+	Returns Pointer	// HGLOBAL
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleinitialize
+External_Function OleInitialize "OleInitialize" OLE32.dll ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleiscurrentclipboard
+External_Function OleIsCurrentClipboard "OleIsCurrentClipboard" OLE32.dll ;
+	Pointer pDataObj ;	// IDataObject
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleisrunning
+External_Function OleIsRunning "OleIsRunning" OLE32.dll ;
+	Pointer pObject ;	// IOleObject
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleload
+External_Function OleLoad "OleLoad" OLE32.dll ;
+	Pointer pStg ;	// IStorage
+	Pointer riid ;	// Guid*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleloadfromstream
+External_Function OleLoadFromStream "OleLoadFromStream" OLE32.dll ;
+	Pointer pStm ;	// IStream
+	Pointer iidInterface ;	// Guid*
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olelockrunning
+External_Function OleLockRunning "OleLockRunning" OLE32.dll ;
+	Pointer pUnknown ;	// IUnknown
+	Integer fLock ;	// BOOL
+	Integer fLastUnlockCloses ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olequerycreatefromdata
+External_Function OleQueryCreateFromData "OleQueryCreateFromData" OLE32.dll ;
+	Pointer pSrcDataObject ;	// IDataObject
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olequerylinkfromdata
+External_Function OleQueryLinkFromData "OleQueryLinkFromData" OLE32.dll ;
+	Pointer pSrcDataObject ;	// IDataObject
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleregenumverbs
+External_Function OleRegEnumVerbs "OleRegEnumVerbs" OLE32.dll ;
+	Pointer clsid ;	// Guid*
+	Pointer ppenum ;	// IEnumOLEVERB*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olereggetmiscstatus
+External_Function OleRegGetMiscStatus "OleRegGetMiscStatus" OLE32.dll ;
+	Pointer clsid ;	// Guid*
+	UInteger dwAspect ;
+	Pointer pdwStatus ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olereggetusertype
+External_Function OleRegGetUserType "OleRegGetUserType" OLE32.dll ;
+	Pointer clsid ;	// Guid*
+	UInteger dwFormOfType ;
+	Pointer pszUserType ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olerun
+External_Function OleRun "OleRun" OLE32.dll ;
+	Pointer pUnknown ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesave
+External_Function OleSave "OleSave" OLE32.dll ;
+	Pointer pPS ;	// IPersistStorage
+	Pointer pStg ;	// IStorage
+	Integer fSameAsLoad ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesavetostream
+External_Function OleSaveToStream "OleSaveToStream" OLE32.dll ;
+	Pointer pPStm ;	// IPersistStream
+	Pointer pStm ;	// IStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesetclipboard
+External_Function OleSetClipboard "OleSetClipboard" OLE32.dll ;
+	Pointer pDataObj ;	// IDataObject
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesetcontainedobject
+External_Function OleSetContainedObject "OleSetContainedObject" OLE32.dll ;
+	Pointer pUnknown ;	// IUnknown
+	Integer fContained ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesetmenudescriptor
+External_Function OleSetMenuDescriptor "OleSetMenuDescriptor" OLE32.dll ;
+	LongPtr holemenu ;
+	Pointer hwndFrame ;	// HWND
+	Pointer hwndActiveObject ;	// HWND
+	Pointer lpFrame ;	// IOleInPlaceFrame
+	Pointer lpActiveObj ;	// IOleInPlaceActiveObject
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oletranslateaccelerator
+External_Function OleTranslateAccelerator "OleTranslateAccelerator" OLE32.dll ;
+	Pointer lpFrame ;	// IOleInPlaceFrame
+	Pointer lpFrameInfo ;	// OLEINPLACEFRAMEINFO*
+	Pointer lpmsg ;	// MSG*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleuninitialize
+External_Function OleUninitialize "OleUninitialize" OLE32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-registerdragdrop
+External_Function RegisterDragDrop "RegisterDragDrop" OLE32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pDropTarget ;	// IDropTarget
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-releasestgmedium
+External_Function ReleaseStgMedium "ReleaseStgMedium" OLE32.dll ;
+	Pointer param0 ;	// STGMEDIUM*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-revokedragdrop
+External_Function RevokeDragDrop "RevokeDragDrop" OLE32.dll ;
+	Pointer hwnd ;	// HWND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olebuildversion
+External_Function OleBuildVersion "OleBuildVersion" ole32.dll ;
+	Returns UInteger
+
+External_Function OleConvertOLESTREAMToIStorage2 "OleConvertOLESTREAMToIStorage2" ole32.dll ;
+	Pointer lpolestream ;	// OLESTREAM*
+	Pointer pstg ;	// IStorage
+	Pointer ptd ;	// DVTARGETDEVICE*
+	UInteger opt ;
+	Pointer pvCallbackContext ;	// Pointer*
+	Pointer pQueryConvertOLELinkCallback ;	// OLESTREAMQUERYCONVERTOLELINKCALLBACK
+	Returns Integer	// HRESULT
+
+External_Function OleConvertOLESTREAMToIStorageEx2 "OleConvertOLESTREAMToIStorageEx2" ole32.dll ;
+	Pointer polestm ;	// OLESTREAM*
+	Pointer pstg ;	// IStorage
+	Pointer pcfFormat ;	// UShort*
+	Pointer plwWidth ;	// Integer*
+	Pointer plHeight ;	// Integer*
+	Pointer pdwSize ;	// UInteger*
+	Pointer pmedium ;	// STGMEDIUM*
+	UInteger opt ;
+	Pointer pvCallbackContext ;	// Pointer*
+	Pointer pQueryConvertOLELinkCallback ;	// OLESTREAMQUERYCONVERTOLELINKCALLBACK
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatedefaulthandler
+External_Function OleCreateDefaultHandler "OleCreateDefaultHandler" ole32.dll ;
+	Pointer clsid ;	// Guid*
+	Pointer pUnkOuter ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer lplpObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreateex
+External_Function OleCreateEx "OleCreateEx" ole32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	UInteger dwFlags ;	// OLECREATE
+	UInteger renderopt ;
+	UInteger cFormats ;
+	Pointer rgAdvf ;	// UInteger*
+	Pointer rgFormatEtc ;	// FORMATETC*
+	Pointer lpAdviseSink ;	// IAdviseSink
+	Pointer rgdwConnection ;	// UInteger*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatefromdataex
+External_Function OleCreateFromDataEx "OleCreateFromDataEx" ole32.dll ;
+	Pointer pSrcDataObj ;	// IDataObject
+	Pointer riid ;	// Guid*
+	UInteger dwFlags ;	// OLECREATE
+	UInteger renderopt ;
+	UInteger cFormats ;
+	Pointer rgAdvf ;	// UInteger*
+	Pointer rgFormatEtc ;	// FORMATETC*
+	Pointer lpAdviseSink ;	// IAdviseSink
+	Pointer rgdwConnection ;	// UInteger*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatefromfileex
+External_Function OleCreateFromFileEx "OleCreateFromFileEx" ole32.dll ;
+	Pointer rclsid ;	// Guid*
+	WString lpszFileName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	UInteger dwFlags ;	// OLECREATE
+	UInteger renderopt ;
+	UInteger cFormats ;
+	Pointer rgAdvf ;	// UInteger*
+	Pointer rgFormatEtc ;	// FORMATETC*
+	Pointer lpAdviseSink ;	// IAdviseSink
+	Pointer rgdwConnection ;	// UInteger*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatelink
+External_Function OleCreateLink "OleCreateLink" ole32.dll ;
+	Pointer pmkLinkSrc ;	// IMoniker
+	Pointer riid ;	// Guid*
+	UInteger renderopt ;
+	Pointer lpFormatEtc ;	// FORMATETC*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatelinkex
+External_Function OleCreateLinkEx "OleCreateLinkEx" ole32.dll ;
+	Pointer pmkLinkSrc ;	// IMoniker
+	Pointer riid ;	// Guid*
+	UInteger dwFlags ;	// OLECREATE
+	UInteger renderopt ;
+	UInteger cFormats ;
+	Pointer rgAdvf ;	// UInteger*
+	Pointer rgFormatEtc ;	// FORMATETC*
+	Pointer lpAdviseSink ;	// IAdviseSink
+	Pointer rgdwConnection ;	// UInteger*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatelinkfromdataex
+External_Function OleCreateLinkFromDataEx "OleCreateLinkFromDataEx" ole32.dll ;
+	Pointer pSrcDataObj ;	// IDataObject
+	Pointer riid ;	// Guid*
+	UInteger dwFlags ;	// OLECREATE
+	UInteger renderopt ;
+	UInteger cFormats ;
+	Pointer rgAdvf ;	// UInteger*
+	Pointer rgFormatEtc ;	// FORMATETC*
+	Pointer lpAdviseSink ;	// IAdviseSink
+	Pointer rgdwConnection ;	// UInteger*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olecreatelinktofileex
+External_Function OleCreateLinkToFileEx "OleCreateLinkToFileEx" ole32.dll ;
+	WString lpszFileName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	UInteger dwFlags ;	// OLECREATE
+	UInteger renderopt ;
+	UInteger cFormats ;
+	Pointer rgAdvf ;	// UInteger*
+	Pointer rgFormatEtc ;	// FORMATETC*
+	Pointer lpAdviseSink ;	// IAdviseSink
+	Pointer rgdwConnection ;	// UInteger*
+	Pointer pClientSite ;	// IOleClientSite
+	Pointer pStg ;	// IStorage
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oledoautoconvert
+External_Function OleDoAutoConvert "OleDoAutoConvert" ole32.dll ;
+	Pointer pStg ;	// IStorage
+	Pointer pClsidNew ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olegetclipboardwithenterpriseinfo
+External_Function OleGetClipboardWithEnterpriseInfo "OleGetClipboardWithEnterpriseInfo" ole32.dll ;
+	Pointer dataObject ;	// IDataObject*
+	Pointer dataEnterpriseId ;	// PWSTR*
+	Pointer sourceDescription ;	// PWSTR*
+	Pointer targetDescription ;	// PWSTR*
+	Pointer dataDescription ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olegeticonoffile
+External_Function OleGetIconOfFile "OleGetIconOfFile" ole32.dll ;
+	WString lpszPath ;	// PWSTR
+	Integer fUseFileAsLabel ;	// BOOL
+	Returns Pointer	// HGLOBAL
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olemetafilepictfromiconandlabel
+External_Function OleMetafilePictFromIconAndLabel "OleMetafilePictFromIconAndLabel" ole32.dll ;
+	Pointer hIcon ;	// HICON
+	WString lpszLabel ;	// PWSTR
+	WString lpszSourceFile ;	// PWSTR
+	UInteger iIconIndex ;
+	Returns Pointer	// HGLOBAL
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olenoteobjectvisible
+External_Function OleNoteObjectVisible "OleNoteObjectVisible" ole32.dll ;
+	Pointer pUnknown ;	// IUnknown
+	Integer fVisible ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleregenumformatetc
+External_Function OleRegEnumFormatEtc "OleRegEnumFormatEtc" ole32.dll ;
+	Pointer clsid ;	// Guid*
+	UInteger dwDirection ;
+	Pointer ppenum ;	// IEnumFORMATETC*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-olesetautoconvert
+External_Function OleSetAutoConvert "OleSetAutoConvert" ole32.dll ;
+	Pointer clsidOld ;	// Guid*
+	Pointer clsidNew ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-bstrfromvector
+External_Function BstrFromVector "BstrFromVector" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer pbstr ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-clearcustdata
+External_Function ClearCustData "ClearCustData" OLEAUT32.dll ;
+	Pointer pCustData ;	// CUSTDATA*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-createdisptypeinfo
+External_Function CreateDispTypeInfo "CreateDispTypeInfo" OLEAUT32.dll ;
+	Pointer pidata ;	// INTERFACEDATA*
+	UInteger lcid ;
+	Pointer pptinfo ;	// ITypeInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-createerrorinfo
+External_Function CreateErrorInfo "CreateErrorInfo" OLEAUT32.dll ;
+	Pointer pperrinfo ;	// ICreateErrorInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-createstddispatch
+External_Function CreateStdDispatch "CreateStdDispatch" OLEAUT32.dll ;
+	Pointer punkOuter ;	// IUnknown
+	Pointer pvThis ;	// Pointer*
+	Pointer ptinfo ;	// ITypeInfo
+	Pointer ppunkStdDisp ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-createtypelib
+External_Function CreateTypeLib "CreateTypeLib" OLEAUT32.dll ;
+	Integer syskind ;	// SYSKIND
+	WString szFile ;	// PWSTR
+	Pointer ppctlib ;	// ICreateTypeLib*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-createtypelib2
+External_Function CreateTypeLib2 "CreateTypeLib2" OLEAUT32.dll ;
+	Integer syskind ;	// SYSKIND
+	WString szFile ;	// PWSTR
+	Pointer ppctlib ;	// ICreateTypeLib2*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-dispcallfunc
+External_Function DispCallFunc "DispCallFunc" OLEAUT32.dll ;
+	Pointer pvInstance ;	// Pointer*
+	ULongPtr oVft ;
+	Integer cc ;	// CALLCONV
+	UShort vtReturn ;	// VARENUM
+	UInteger cActuals ;
+	Pointer prgvt ;	// UShort*
+	Pointer prgpvarg ;	// VARIANT**
+	Pointer pvargResult ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-dispgetidsofnames
+External_Function DispGetIDsOfNames "DispGetIDsOfNames" OLEAUT32.dll ;
+	Pointer ptinfo ;	// ITypeInfo
+	Pointer rgszNames ;	// PWSTR*
+	UInteger cNames ;
+	Pointer rgdispid ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-dispgetparam
+External_Function DispGetParam "DispGetParam" OLEAUT32.dll ;
+	Pointer pdispparams ;	// DISPPARAMS*
+	UInteger position ;
+	UShort vtTarg ;	// VARENUM
+	Pointer pvarResult ;	// VARIANT*
+	Pointer puArgErr ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-dispinvoke
+External_Function DispInvoke "DispInvoke" OLEAUT32.dll ;
+	Pointer _this ;	// Pointer*
+	Pointer ptinfo ;	// ITypeInfo
+	Integer dispidMember ;
+	UShort wFlags ;
+	Pointer pparams ;	// DISPPARAMS*
+	Pointer pvarResult ;	// VARIANT*
+	Pointer pexcepinfo ;	// EXCEPINFO*
+	Pointer puArgErr ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-getactiveobject
+External_Function GetActiveObject "GetActiveObject" OLEAUT32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pvReserved ;	// Pointer*
+	Pointer ppunk ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-getaltmonthnames
+External_Function GetAltMonthNames "GetAltMonthNames" OLEAUT32.dll ;
+	UInteger lcid ;
+	Pointer prgp ;	// PWSTR**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-getrecordinfofromguids
+External_Function GetRecordInfoFromGuids "GetRecordInfoFromGuids" OLEAUT32.dll ;
+	Pointer rGuidTypeLib ;	// Guid*
+	UInteger uVerMajor ;
+	UInteger uVerMinor ;
+	UInteger lcid ;
+	Pointer rGuidTypeInfo ;	// Guid*
+	Pointer ppRecInfo ;	// IRecordInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-getrecordinfofromtypeinfo
+External_Function GetRecordInfoFromTypeInfo "GetRecordInfoFromTypeInfo" OLEAUT32.dll ;
+	Pointer pTypeInfo ;	// ITypeInfo
+	Pointer ppRecInfo ;	// IRecordInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-lhashvalofnamesys
+External_Function LHashValOfNameSys "LHashValOfNameSys" OLEAUT32.dll ;
+	Integer syskind ;	// SYSKIND
+	UInteger lcid ;
+	WString szName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-lhashvalofnamesysa
+External_Function LHashValOfNameSysA "LHashValOfNameSysA" OLEAUT32.dll ;
+	Integer syskind ;	// SYSKIND
+	UInteger lcid ;
+	String szName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-loadregtypelib
+External_Function LoadRegTypeLib "LoadRegTypeLib" OLEAUT32.dll ;
+	Pointer rguid ;	// Guid*
+	UShort wVerMajor ;
+	UShort wVerMinor ;
+	UInteger lcid ;
+	Pointer pptlib ;	// ITypeLib*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-loadtypelib
+External_Function LoadTypeLib "LoadTypeLib" OLEAUT32.dll ;
+	WString szFile ;	// PWSTR
+	Pointer pptlib ;	// ITypeLib*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-loadtypelibex
+External_Function LoadTypeLibEx "LoadTypeLibEx" OLEAUT32.dll ;
+	WString szFile ;	// PWSTR
+	Integer regkind ;	// REGKIND
+	Pointer pptlib ;	// ITypeLib*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-oabuildversion
+External_Function OaBuildVersion "OaBuildVersion" OLEAUT32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-oaenableperusertlibregistration
+External_Function OaEnablePerUserTLibRegistration "OaEnablePerUserTLibRegistration" OLEAUT32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatefontindirect
+External_Function OleCreateFontIndirect "OleCreateFontIndirect" OLEAUT32.dll ;
+	Pointer lpFontDesc ;	// FONTDESC*
+	Pointer riid ;	// Guid*
+	Pointer lplpvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatepictureindirect
+External_Function OleCreatePictureIndirect "OleCreatePictureIndirect" OLEAUT32.dll ;
+	Pointer lpPictDesc ;	// PICTDESC*
+	Pointer riid ;	// Guid*
+	Integer fOwn ;	// BOOL
+	Pointer lplpvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatepropertyframe
+External_Function OleCreatePropertyFrame "OleCreatePropertyFrame" OLEAUT32.dll ;
+	Pointer hwndOwner ;	// HWND
+	UInteger x ;
+	UInteger y ;
+	WString lpszCaption ;	// PWSTR
+	UInteger cObjects ;
+	Pointer ppUnk ;	// IUnknown*
+	UInteger cPages ;
+	Pointer pPageClsID ;	// Guid*
+	UInteger lcid ;
+	UInteger dwReserved ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olecreatepropertyframeindirect
+External_Function OleCreatePropertyFrameIndirect "OleCreatePropertyFrameIndirect" OLEAUT32.dll ;
+	Pointer lpParams ;	// OCPFIPARAMS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleicontocursor
+External_Function OleIconToCursor "OleIconToCursor" OLEAUT32.dll ;
+	Pointer hinstExe ;	// HINSTANCE
+	Pointer hIcon ;	// HICON
+	Returns Pointer	// HCURSOR
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleloadpicture
+External_Function OleLoadPicture "OleLoadPicture" OLEAUT32.dll ;
+	Pointer lpstream ;	// IStream
+	Integer lSize ;
+	Integer fRunmode ;	// BOOL
+	Pointer riid ;	// Guid*
+	Pointer lplpvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleloadpictureex
+External_Function OleLoadPictureEx "OleLoadPictureEx" OLEAUT32.dll ;
+	Pointer lpstream ;	// IStream
+	Integer lSize ;
+	Integer fRunmode ;	// BOOL
+	Pointer riid ;	// Guid*
+	UInteger xSizeDesired ;
+	UInteger ySizeDesired ;
+	UInteger dwFlags ;	// LOAD_PICTURE_FLAGS
+	Pointer lplpvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleloadpicturefile
+External_Function OleLoadPictureFile "OleLoadPictureFile" OLEAUT32.dll ;
+	VARIANT varFileName ;
+	Pointer lplpdispPicture ;	// IDispatch*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleloadpicturefileex
+External_Function OleLoadPictureFileEx "OleLoadPictureFileEx" OLEAUT32.dll ;
+	VARIANT varFileName ;
+	UInteger xSizeDesired ;
+	UInteger ySizeDesired ;
+	UInteger dwFlags ;	// LOAD_PICTURE_FLAGS
+	Pointer lplpdispPicture ;	// IDispatch*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oleloadpicturepath
+External_Function OleLoadPicturePath "OleLoadPicturePath" OLEAUT32.dll ;
+	WString szURLorPath ;	// PWSTR
+	Pointer punkCaller ;	// IUnknown
+	UInteger dwReserved ;
+	UInteger clrReserved ;
+	Pointer riid ;	// Guid*
+	Pointer ppvRet ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-olesavepicturefile
+External_Function OleSavePictureFile "OleSavePictureFile" OLEAUT32.dll ;
+	Pointer lpdispPicture ;	// IDispatch
+	Pointer bstrFileName ;	// BSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/olectl/nf-olectl-oletranslatecolor
+External_Function OleTranslateColor "OleTranslateColor" OLEAUT32.dll ;
+	UInteger clr ;
+	Pointer hpal ;	// HPALETTE
+	Pointer lpcolorref ;	// COLORREF*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-querypathofregtypelib
+External_Function QueryPathOfRegTypeLib "QueryPathOfRegTypeLib" OLEAUT32.dll ;
+	Pointer guid ;	// Guid*
+	UShort wMaj ;
+	UShort wMin ;
+	UInteger lcid ;
+	Pointer lpbstrPathName ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-registeractiveobject
+External_Function RegisterActiveObject "RegisterActiveObject" OLEAUT32.dll ;
+	Pointer punk ;	// IUnknown
+	Pointer rclsid ;	// Guid*
+	UInteger dwFlags ;	// ACTIVEOBJECT_FLAGS
+	Pointer pdwRegister ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-registertypelib
+External_Function RegisterTypeLib "RegisterTypeLib" OLEAUT32.dll ;
+	Pointer ptlib ;	// ITypeLib
+	WString szFullPath ;	// PWSTR
+	WString szHelpDir ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-registertypelibforuser
+External_Function RegisterTypeLibForUser "RegisterTypeLibForUser" OLEAUT32.dll ;
+	Pointer ptlib ;	// ITypeLib
+	WString szFullPath ;	// PWSTR
+	WString szHelpDir ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-revokeactiveobject
+External_Function RevokeActiveObject "RevokeActiveObject" OLEAUT32.dll ;
+	UInteger dwRegister ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayaccessdata
+External_Function SafeArrayAccessData "SafeArrayAccessData" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer ppvData ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayaddref
+External_Function SafeArrayAddRef "SafeArrayAddRef" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer ppDataToRelease ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayallocdata
+External_Function SafeArrayAllocData "SafeArrayAllocData" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayallocdescriptor
+External_Function SafeArrayAllocDescriptor "SafeArrayAllocDescriptor" OLEAUT32.dll ;
+	UInteger cDims ;
+	Pointer ppsaOut ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayallocdescriptorex
+External_Function SafeArrayAllocDescriptorEx "SafeArrayAllocDescriptorEx" OLEAUT32.dll ;
+	UShort vt ;	// VARENUM
+	UInteger cDims ;
+	Pointer ppsaOut ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraycopy
+External_Function SafeArrayCopy "SafeArrayCopy" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer ppsaOut ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraycopydata
+External_Function SafeArrayCopyData "SafeArrayCopyData" OLEAUT32.dll ;
+	Pointer psaSource ;	// SAFEARRAY*
+	Pointer psaTarget ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraycreate
+External_Function SafeArrayCreate "SafeArrayCreate" OLEAUT32.dll ;
+	UShort vt ;	// VARENUM
+	UInteger cDims ;
+	Pointer rgsabound ;	// SAFEARRAYBOUND*
+	Returns Pointer	// SAFEARRAY*
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraycreateex
+External_Function SafeArrayCreateEx "SafeArrayCreateEx" OLEAUT32.dll ;
+	UShort vt ;	// VARENUM
+	UInteger cDims ;
+	Pointer rgsabound ;	// SAFEARRAYBOUND*
+	Pointer pvExtra ;	// Pointer*
+	Returns Pointer	// SAFEARRAY*
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraycreatevector
+External_Function SafeArrayCreateVector "SafeArrayCreateVector" OLEAUT32.dll ;
+	UShort vt ;	// VARENUM
+	Integer lLbound ;
+	UInteger cElements ;
+	Returns Pointer	// SAFEARRAY*
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraycreatevectorex
+External_Function SafeArrayCreateVectorEx "SafeArrayCreateVectorEx" OLEAUT32.dll ;
+	UShort vt ;	// VARENUM
+	Integer lLbound ;
+	UInteger cElements ;
+	Pointer pvExtra ;	// Pointer*
+	Returns Pointer	// SAFEARRAY*
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraydestroy
+External_Function SafeArrayDestroy "SafeArrayDestroy" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraydestroydata
+External_Function SafeArrayDestroyData "SafeArrayDestroyData" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraydestroydescriptor
+External_Function SafeArrayDestroyDescriptor "SafeArrayDestroyDescriptor" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetdim
+External_Function SafeArrayGetDim "SafeArrayGetDim" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetelement
+External_Function SafeArrayGetElement "SafeArrayGetElement" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer rgIndices ;	// Integer*
+	Pointer pv ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetelemsize
+External_Function SafeArrayGetElemsize "SafeArrayGetElemsize" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetiid
+External_Function SafeArrayGetIID "SafeArrayGetIID" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer pguid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetlbound
+External_Function SafeArrayGetLBound "SafeArrayGetLBound" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	UInteger nDim ;
+	Pointer plLbound ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetrecordinfo
+External_Function SafeArrayGetRecordInfo "SafeArrayGetRecordInfo" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer prinfo ;	// IRecordInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetubound
+External_Function SafeArrayGetUBound "SafeArrayGetUBound" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	UInteger nDim ;
+	Pointer plUbound ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraygetvartype
+External_Function SafeArrayGetVartype "SafeArrayGetVartype" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer pvt ;	// VARENUM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraylock
+External_Function SafeArrayLock "SafeArrayLock" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayptrofindex
+External_Function SafeArrayPtrOfIndex "SafeArrayPtrOfIndex" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer rgIndices ;	// Integer*
+	Pointer ppvData ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayputelement
+External_Function SafeArrayPutElement "SafeArrayPutElement" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer rgIndices ;	// Integer*
+	Pointer pv ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayredim
+External_Function SafeArrayRedim "SafeArrayRedim" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer psaboundNew ;	// SAFEARRAYBOUND*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayreleasedata
+External_Function SafeArrayReleaseData "SafeArrayReleaseData" OLEAUT32.dll ;
+	Pointer pData ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayreleasedescriptor
+External_Function SafeArrayReleaseDescriptor "SafeArrayReleaseDescriptor" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraysetiid
+External_Function SafeArraySetIID "SafeArraySetIID" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer guid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearraysetrecordinfo
+External_Function SafeArraySetRecordInfo "SafeArraySetRecordInfo" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Pointer prinfo ;	// IRecordInfo
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayunaccessdata
+External_Function SafeArrayUnaccessData "SafeArrayUnaccessData" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-safearrayunlock
+External_Function SafeArrayUnlock "SafeArrayUnlock" OLEAUT32.dll ;
+	Pointer psa ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-unregistertypelib
+External_Function UnRegisterTypeLib "UnRegisterTypeLib" OLEAUT32.dll ;
+	Pointer libID ;	// Guid*
+	UShort wVerMajor ;
+	UShort wVerMinor ;
+	UInteger lcid ;
+	Integer syskind ;	// SYSKIND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-unregistertypelibforuser
+External_Function UnRegisterTypeLibForUser "UnRegisterTypeLibForUser" OLEAUT32.dll ;
+	Pointer libID ;	// Guid*
+	UShort wMajorVerNum ;
+	UShort wMinorVerNum ;
+	UInteger lcid ;
+	Integer syskind ;	// SYSKIND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varabs
+External_Function VarAbs "VarAbs" OLEAUT32.dll ;
+	Pointer pvarIn ;	// VARIANT*
+	Pointer pvarResult ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varadd
+External_Function VarAdd "VarAdd" OLEAUT32.dll ;
+	Pointer pvarLeft ;	// VARIANT*
+	Pointer pvarRight ;	// VARIANT*
+	Pointer pvarResult ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varand
+External_Function VarAnd "VarAnd" OLEAUT32.dll ;
+	Pointer pvarLeft ;	// VARIANT*
+	Pointer pvarRight ;	// VARIANT*
+	Pointer pvarResult ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromcy
+External_Function VarBoolFromCy "VarBoolFromCy" OLEAUT32.dll ;
+	CY cyIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromdate
+External_Function VarBoolFromDate "VarBoolFromDate" OLEAUT32.dll ;
+	Real dateIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromdec
+External_Function VarBoolFromDec "VarBoolFromDec" OLEAUT32.dll ;
+	Pointer pdecIn ;	// DECIMAL*
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromdisp
+External_Function VarBoolFromDisp "VarBoolFromDisp" OLEAUT32.dll ;
+	Pointer pdispIn ;	// IDispatch
+	UInteger lcid ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromi1
+External_Function VarBoolFromI1 "VarBoolFromI1" OLEAUT32.dll ;
+	Char cIn ;	// CHAR
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromi2
+External_Function VarBoolFromI2 "VarBoolFromI2" OLEAUT32.dll ;
+	Short sIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromi4
+External_Function VarBoolFromI4 "VarBoolFromI4" OLEAUT32.dll ;
+	Integer lIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromi8
+External_Function VarBoolFromI8 "VarBoolFromI8" OLEAUT32.dll ;
+	Bigint i64In ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromr4
+External_Function VarBoolFromR4 "VarBoolFromR4" OLEAUT32.dll ;
+	Float fltIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromr8
+External_Function VarBoolFromR8 "VarBoolFromR8" OLEAUT32.dll ;
+	Real dblIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromstr
+External_Function VarBoolFromStr "VarBoolFromStr" OLEAUT32.dll ;
+	WString strIn ;	// PWSTR
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromui1
+External_Function VarBoolFromUI1 "VarBoolFromUI1" OLEAUT32.dll ;
+	UChar bIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromui2
+External_Function VarBoolFromUI2 "VarBoolFromUI2" OLEAUT32.dll ;
+	UShort uiIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromui4
+External_Function VarBoolFromUI4 "VarBoolFromUI4" OLEAUT32.dll ;
+	UInteger ulIn ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varboolfromui8
+External_Function VarBoolFromUI8 "VarBoolFromUI8" OLEAUT32.dll ;
+	UBigint i64In ;
+	Pointer pboolOut ;	// VARIANT_BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrcat
+External_Function VarBstrCat "VarBstrCat" OLEAUT32.dll ;
+	Pointer bstrLeft ;	// BSTR
+	Pointer bstrRight ;	// BSTR
+	Pointer pbstrResult ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrcmp
+External_Function VarBstrCmp "VarBstrCmp" OLEAUT32.dll ;
+	Pointer bstrLeft ;	// BSTR
+	Pointer bstrRight ;	// BSTR
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfrombool
+External_Function VarBstrFromBool "VarBstrFromBool" OLEAUT32.dll ;
+	Short boolIn ;	// VARIANT_BOOL
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromcy
+External_Function VarBstrFromCy "VarBstrFromCy" OLEAUT32.dll ;
+	CY cyIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromdate
+External_Function VarBstrFromDate "VarBstrFromDate" OLEAUT32.dll ;
+	Real dateIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromdec
+External_Function VarBstrFromDec "VarBstrFromDec" OLEAUT32.dll ;
+	Pointer pdecIn ;	// DECIMAL*
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromdisp
+External_Function VarBstrFromDisp "VarBstrFromDisp" OLEAUT32.dll ;
+	Pointer pdispIn ;	// IDispatch
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromi1
+External_Function VarBstrFromI1 "VarBstrFromI1" OLEAUT32.dll ;
+	Char cIn ;	// CHAR
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromi2
+External_Function VarBstrFromI2 "VarBstrFromI2" OLEAUT32.dll ;
+	Short iVal ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromi4
+External_Function VarBstrFromI4 "VarBstrFromI4" OLEAUT32.dll ;
+	Integer lIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromi8
+External_Function VarBstrFromI8 "VarBstrFromI8" OLEAUT32.dll ;
+	Bigint i64In ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromr4
+External_Function VarBstrFromR4 "VarBstrFromR4" OLEAUT32.dll ;
+	Float fltIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromr8
+External_Function VarBstrFromR8 "VarBstrFromR8" OLEAUT32.dll ;
+	Real dblIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromui1
+External_Function VarBstrFromUI1 "VarBstrFromUI1" OLEAUT32.dll ;
+	UChar bVal ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromui2
+External_Function VarBstrFromUI2 "VarBstrFromUI2" OLEAUT32.dll ;
+	UShort uiIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromui4
+External_Function VarBstrFromUI4 "VarBstrFromUI4" OLEAUT32.dll ;
+	UInteger ulIn ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varbstrfromui8
+External_Function VarBstrFromUI8 "VarBstrFromUI8" OLEAUT32.dll ;
+	UBigint ui64In ;
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcat
+External_Function VarCat "VarCat" OLEAUT32.dll ;
+	Pointer pvarLeft ;	// VARIANT*
+	Pointer pvarRight ;	// VARIANT*
+	Pointer pvarResult ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcmp
+External_Function VarCmp "VarCmp" OLEAUT32.dll ;
+	Pointer pvarLeft ;	// VARIANT*
+	Pointer pvarRight ;	// VARIANT*
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Returns UInteger	// VARCMP
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyabs
+External_Function VarCyAbs "VarCyAbs" OLEAUT32.dll ;
+	CY cyIn ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyadd
+External_Function VarCyAdd "VarCyAdd" OLEAUT32.dll ;
+	CY cyLeft ;
+	CY cyRight ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcycmp
+External_Function VarCyCmp "VarCyCmp" OLEAUT32.dll ;
+	CY cyLeft ;
+	CY cyRight ;
+	Returns UInteger	// VARCMP
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcycmpr8
+External_Function VarCyCmpR8 "VarCyCmpR8" OLEAUT32.dll ;
+	CY cyLeft ;
+	Real dblRight ;
+	Returns UInteger	// VARCMP
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfix
+External_Function VarCyFix "VarCyFix" OLEAUT32.dll ;
+	CY cyIn ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfrombool
+External_Function VarCyFromBool "VarCyFromBool" OLEAUT32.dll ;
+	Short boolIn ;	// VARIANT_BOOL
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromdate
+External_Function VarCyFromDate "VarCyFromDate" OLEAUT32.dll ;
+	Real dateIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromdec
+External_Function VarCyFromDec "VarCyFromDec" OLEAUT32.dll ;
+	Pointer pdecIn ;	// DECIMAL*
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromdisp
+External_Function VarCyFromDisp "VarCyFromDisp" OLEAUT32.dll ;
+	Pointer pdispIn ;	// IDispatch
+	UInteger lcid ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromi1
+External_Function VarCyFromI1 "VarCyFromI1" OLEAUT32.dll ;
+	Char cIn ;	// CHAR
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromi2
+External_Function VarCyFromI2 "VarCyFromI2" OLEAUT32.dll ;
+	Short sIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromi4
+External_Function VarCyFromI4 "VarCyFromI4" OLEAUT32.dll ;
+	Integer lIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromi8
+External_Function VarCyFromI8 "VarCyFromI8" OLEAUT32.dll ;
+	Bigint i64In ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromr4
+External_Function VarCyFromR4 "VarCyFromR4" OLEAUT32.dll ;
+	Float fltIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromr8
+External_Function VarCyFromR8 "VarCyFromR8" OLEAUT32.dll ;
+	Real dblIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromstr
+External_Function VarCyFromStr "VarCyFromStr" OLEAUT32.dll ;
+	WString strIn ;	// PWSTR
+	UInteger lcid ;
+	UInteger dwFlags ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromui1
+External_Function VarCyFromUI1 "VarCyFromUI1" OLEAUT32.dll ;
+	UChar bIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromui2
+External_Function VarCyFromUI2 "VarCyFromUI2" OLEAUT32.dll ;
+	UShort uiIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromui4
+External_Function VarCyFromUI4 "VarCyFromUI4" OLEAUT32.dll ;
+	UInteger ulIn ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyfromui8
+External_Function VarCyFromUI8 "VarCyFromUI8" OLEAUT32.dll ;
+	UBigint ui64In ;
+	Pointer pcyOut ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyint
+External_Function VarCyInt "VarCyInt" OLEAUT32.dll ;
+	CY cyIn ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcymul
+External_Function VarCyMul "VarCyMul" OLEAUT32.dll ;
+	CY cyLeft ;
+	CY cyRight ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcymuli4
+External_Function VarCyMulI4 "VarCyMulI4" OLEAUT32.dll ;
+	CY cyLeft ;
+	Integer lRight ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcymuli8
+External_Function VarCyMulI8 "VarCyMulI8" OLEAUT32.dll ;
+	CY cyLeft ;
+	Bigint lRight ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyneg
+External_Function VarCyNeg "VarCyNeg" OLEAUT32.dll ;
+	CY cyIn ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcyround
+External_Function VarCyRound "VarCyRound" OLEAUT32.dll ;
+	CY cyIn ;
+	Integer cDecimals ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varcysub
+External_Function VarCySub "VarCySub" OLEAUT32.dll ;
+	CY cyLeft ;
+	CY cyRight ;
+	Pointer pcyResult ;	// CY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-vardatefrombool
+External_Function VarDateFromBool "VarDateFromBool" OLEAUT32.dll ;
+	Short boolIn ;	// VARIANT_BOOL
+	Pointer pdateOut ;	// Real*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

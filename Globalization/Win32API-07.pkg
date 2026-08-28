@@ -1,0 +1,303 @@
+Use UI
+
+External_Function uspoof_check "uspoof_check" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer id ;	// UShort*
+	Integer length ;
+	Pointer position ;	// Integer*
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_check2 "uspoof_check2" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer id ;	// UShort*
+	Integer length ;
+	Pointer checkResult ;	// USpoofCheckResult*
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_check2UTF8 "uspoof_check2UTF8" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	String id ;	// PSTR
+	Integer length ;
+	Pointer checkResult ;	// USpoofCheckResult*
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_checkUTF8 "uspoof_checkUTF8" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	String id ;	// PSTR
+	Integer length ;
+	Pointer position ;	// Integer*
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_clone "uspoof_clone" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USpoofChecker*
+
+External_Function uspoof_close "uspoof_close" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Returns Pointer
+
+External_Function uspoof_closeCheckResult "uspoof_closeCheckResult" icuin.dll ;
+	Pointer checkResult ;	// USpoofCheckResult*
+	Returns Pointer
+
+External_Function uspoof_getAllowedChars "uspoof_getAllowedChars" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USet*
+
+External_Function uspoof_getAllowedLocales "uspoof_getAllowedLocales" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// PSTR
+
+External_Function uspoof_getCheckResultChecks "uspoof_getCheckResultChecks" icuin.dll ;
+	Pointer checkResult ;	// USpoofCheckResult*
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_getCheckResultNumerics "uspoof_getCheckResultNumerics" icuin.dll ;
+	Pointer checkResult ;	// USpoofCheckResult*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USet*
+
+External_Function uspoof_getCheckResultRestrictionLevel "uspoof_getCheckResultRestrictionLevel" icuin.dll ;
+	Pointer checkResult ;	// USpoofCheckResult*
+	Pointer status ;	// UErrorCode*
+	Returns Integer	// URestrictionLevel
+
+External_Function uspoof_getChecks "uspoof_getChecks" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_getInclusionSet "uspoof_getInclusionSet" icuin.dll ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USet*
+
+External_Function uspoof_getRecommendedSet "uspoof_getRecommendedSet" icuin.dll ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USet*
+
+External_Function uspoof_getRestrictionLevel "uspoof_getRestrictionLevel" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Returns Integer	// URestrictionLevel
+
+External_Function uspoof_getSkeleton "uspoof_getSkeleton" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	UInteger type ;
+	Pointer id ;	// UShort*
+	Integer length ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_getSkeletonUTF8 "uspoof_getSkeletonUTF8" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	UInteger type ;
+	String id ;	// PSTR
+	Integer length ;
+	String dest ;	// PSTR
+	Integer destCapacity ;
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_open "uspoof_open" icuin.dll ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USpoofChecker*
+
+External_Function uspoof_openCheckResult "uspoof_openCheckResult" icuin.dll ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USpoofCheckResult*
+
+External_Function uspoof_openFromSerialized "uspoof_openFromSerialized" icuin.dll ;
+	Pointer data ;	// Pointer*
+	Integer length ;
+	Pointer pActualLength ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// USpoofChecker*
+
+External_Function uspoof_openFromSource "uspoof_openFromSource" icuin.dll ;
+	String confusables ;	// PSTR
+	Integer confusablesLen ;
+	String confusablesWholeScript ;	// PSTR
+	Integer confusablesWholeScriptLen ;
+	Pointer errType ;	// Integer*
+	Pointer pe ;	// UParseError*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USpoofChecker*
+
+External_Function uspoof_serialize "uspoof_serialize" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer data ;	// Pointer*
+	Integer capacity ;
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function uspoof_setAllowedChars "uspoof_setAllowedChars" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Pointer chars ;	// USet*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function uspoof_setAllowedLocales "uspoof_setAllowedLocales" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	String localesList ;	// PSTR
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function uspoof_setChecks "uspoof_setChecks" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Integer checks ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function uspoof_setRestrictionLevel "uspoof_setRestrictionLevel" icuin.dll ;
+	Pointer sc ;	// USpoofChecker*
+	Integer restrictionLevel ;	// URestrictionLevel
+	Returns Pointer
+
+External_Function utmscale_fromInt64 "utmscale_fromInt64" icuin.dll ;
+	Bigint otherTime ;
+	Integer timeScale ;	// UDateTimeScale
+	Pointer status ;	// UErrorCode*
+	Returns Bigint
+
+External_Function utmscale_getTimeScaleValue "utmscale_getTimeScaleValue" icuin.dll ;
+	Integer timeScale ;	// UDateTimeScale
+	Integer value ;	// UTimeScaleValue
+	Pointer status ;	// UErrorCode*
+	Returns Bigint
+
+External_Function utmscale_toInt64 "utmscale_toInt64" icuin.dll ;
+	Bigint universalTime ;
+	Integer timeScale ;	// UDateTimeScale
+	Pointer status ;	// UErrorCode*
+	Returns Bigint
+
+External_Function utrans_clone "utrans_clone" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// Pointer**
+
+External_Function utrans_close "utrans_close" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Returns Pointer
+
+External_Function utrans_countAvailableIDs "utrans_countAvailableIDs" icuin.dll ;
+	Returns Integer
+
+External_Function utrans_getSourceSet "utrans_getSourceSet" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Char ignoreFilter ;
+	Pointer fillIn ;	// USet*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// USet*
+
+External_Function utrans_getUnicodeID "utrans_getUnicodeID" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer resultLength ;	// Integer*
+	Returns Pointer	// UShort*
+
+External_Function utrans_openIDs "utrans_openIDs" icuin.dll ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UEnumeration*
+
+External_Function utrans_openInverse "utrans_openInverse" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// Pointer**
+
+External_Function utrans_openU "utrans_openU" icuin.dll ;
+	Pointer id ;	// UShort*
+	Integer idLength ;
+	Integer dir ;	// UTransDirection
+	Pointer rules ;	// UShort*
+	Integer rulesLength ;
+	Pointer parseError ;	// UParseError*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// Pointer**
+
+External_Function utrans_register "utrans_register" icuin.dll ;
+	Pointer adoptedTrans ;	// Pointer**
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function utrans_setFilter "utrans_setFilter" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer filterPattern ;	// UShort*
+	Integer filterPatternLen ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function utrans_toRules "utrans_toRules" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Char escapeUnprintable ;
+	Pointer result ;	// UShort*
+	Integer resultLength ;
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function utrans_trans "utrans_trans" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer rep ;	// Pointer**
+	Pointer repFunc ;	// UReplaceableCallbacks*
+	Integer start ;
+	Pointer limit ;	// Integer*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function utrans_transIncremental "utrans_transIncremental" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer rep ;	// Pointer**
+	Pointer repFunc ;	// UReplaceableCallbacks*
+	Pointer pos ;	// UTransPosition*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function utrans_transIncrementalUChars "utrans_transIncrementalUChars" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer text ;	// UShort*
+	Pointer textLength ;	// Integer*
+	Integer textCapacity ;
+	Pointer pos ;	// UTransPosition*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function utrans_transUChars "utrans_transUChars" icuin.dll ;
+	Pointer trans ;	// Pointer**
+	Pointer text ;	// UShort*
+	Pointer textLength ;	// Integer*
+	Integer textCapacity ;
+	Integer start ;
+	Pointer limit ;	// Integer*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function utrans_unregisterID "utrans_unregisterID" icuin.dll ;
+	Pointer id ;	// UShort*
+	Integer idLength ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/bcp47mrm/nf-bcp47mrm-getdistanceofclosestlanguageinlist
+External_Function GetDistanceOfClosestLanguageInList "GetDistanceOfClosestLanguageInList" bcp47mrm.dll ;
+	WString pszLanguage ;	// PWSTR
+	WString pszLanguagesList ;	// PWSTR
+	UShort wchListDelimiter ;
+	Pointer pClosestDistance ;	// Real*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bcp47mrm/nf-bcp47mrm-iswellformedtag
+External_Function IsWellFormedTag "IsWellFormedTag" bcp47mrm.dll ;
+	WString pszTag ;	// PWSTR
+	Returns UChar
+
+
+Procedure DataFlex_Init
+End_Procedure
+

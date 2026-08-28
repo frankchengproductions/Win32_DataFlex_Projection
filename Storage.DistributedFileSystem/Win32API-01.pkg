@@ -1,0 +1,184 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsadd
+External_Function NetDfsAdd "NetDfsAdd" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString ShareName ;	// PWSTR
+	WString Comment ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsaddftroot
+External_Function NetDfsAddFtRoot "NetDfsAddFtRoot" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString RootShare ;	// PWSTR
+	WString FtDfsName ;	// PWSTR
+	WString Comment ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsaddroottarget
+External_Function NetDfsAddRootTarget "NetDfsAddRootTarget" NETAPI32.dll ;
+	WString pDfsPath ;	// PWSTR
+	WString pTargetPath ;	// PWSTR
+	UInteger MajorVersion ;
+	WString pComment ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsaddstdroot
+External_Function NetDfsAddStdRoot "NetDfsAddStdRoot" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString RootShare ;	// PWSTR
+	WString Comment ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsenum
+External_Function NetDfsEnum "NetDfsEnum" NETAPI32.dll ;
+	WString DfsName ;	// PWSTR
+	UInteger Level ;
+	UInteger PrefMaxLen ;
+	Pointer Buffer ;	// UChar**
+	Pointer EntriesRead ;	// UInteger*
+	Pointer ResumeHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsgetclientinfo
+External_Function NetDfsGetClientInfo "NetDfsGetClientInfo" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString ShareName ;	// PWSTR
+	UInteger Level ;
+	Pointer Buffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsgetftcontainersecurity
+External_Function NetDfsGetFtContainerSecurity "NetDfsGetFtContainerSecurity" NETAPI32.dll ;
+	WString DomainName ;	// PWSTR
+	UInteger SecurityInformation ;
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer lpcbSecurityDescriptor ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsgetinfo
+External_Function NetDfsGetInfo "NetDfsGetInfo" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString ShareName ;	// PWSTR
+	UInteger Level ;
+	Pointer Buffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsgetsecurity
+External_Function NetDfsGetSecurity "NetDfsGetSecurity" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	UInteger SecurityInformation ;
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer lpcbSecurityDescriptor ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsgetstdcontainersecurity
+External_Function NetDfsGetStdContainerSecurity "NetDfsGetStdContainerSecurity" NETAPI32.dll ;
+	WString MachineName ;	// PWSTR
+	UInteger SecurityInformation ;
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer lpcbSecurityDescriptor ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsgetsupportednamespaceversion
+External_Function NetDfsGetSupportedNamespaceVersion "NetDfsGetSupportedNamespaceVersion" NETAPI32.dll ;
+	Integer Origin ;	// DFS_NAMESPACE_VERSION_ORIGIN
+	WString pName ;	// PWSTR
+	Pointer ppVersionInfo ;	// DFS_SUPPORTED_NAMESPACE_VERSION_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsmove
+External_Function NetDfsMove "NetDfsMove" NETAPI32.dll ;
+	WString OldDfsEntryPath ;	// PWSTR
+	WString NewDfsEntryPath ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsremove
+External_Function NetDfsRemove "NetDfsRemove" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString ShareName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsremoveftroot
+External_Function NetDfsRemoveFtRoot "NetDfsRemoveFtRoot" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString RootShare ;	// PWSTR
+	WString FtDfsName ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsremoveftrootforced
+External_Function NetDfsRemoveFtRootForced "NetDfsRemoveFtRootForced" NETAPI32.dll ;
+	WString DomainName ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString RootShare ;	// PWSTR
+	WString FtDfsName ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsremoveroottarget
+External_Function NetDfsRemoveRootTarget "NetDfsRemoveRootTarget" NETAPI32.dll ;
+	WString pDfsPath ;	// PWSTR
+	WString pTargetPath ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfsremovestdroot
+External_Function NetDfsRemoveStdRoot "NetDfsRemoveStdRoot" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString RootShare ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfssetclientinfo
+External_Function NetDfsSetClientInfo "NetDfsSetClientInfo" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString ShareName ;	// PWSTR
+	UInteger Level ;
+	Pointer Buffer ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfssetftcontainersecurity
+External_Function NetDfsSetFtContainerSecurity "NetDfsSetFtContainerSecurity" NETAPI32.dll ;
+	WString DomainName ;	// PWSTR
+	UInteger SecurityInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfssetinfo
+External_Function NetDfsSetInfo "NetDfsSetInfo" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	WString ServerName ;	// PWSTR
+	WString ShareName ;	// PWSTR
+	UInteger Level ;
+	Pointer Buffer ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfssetsecurity
+External_Function NetDfsSetSecurity "NetDfsSetSecurity" NETAPI32.dll ;
+	WString DfsEntryPath ;	// PWSTR
+	UInteger SecurityInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmdfs/nf-lmdfs-netdfssetstdcontainersecurity
+External_Function NetDfsSetStdContainerSecurity "NetDfsSetStdContainerSecurity" NETAPI32.dll ;
+	WString MachineName ;	// PWSTR
+	UInteger SecurityInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

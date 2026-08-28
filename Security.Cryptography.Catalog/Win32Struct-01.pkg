@@ -1,0 +1,76 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mscat/ns-mscat-catalog_info
+Struct CATALOG_INFO
+	UInteger cbStruct
+	UShort[260] wszCatalogFile
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mscat/ns-mscat-cryptcatattribute
+Struct CRYPTCATATTRIBUTE
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pwszReferenceTag								// PWSTR
+	UInteger dwAttrTypeAndAction							// CRYPTCATATTRIBUTE_FLAGS
+	UInteger cbValue
+	Pointer pbValue											// UChar*
+	UInteger dwReserved
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mscat/ns-mscat-cryptcatcdf
+Struct CRYPTCATCDF
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer hFile											// HANDLE
+	UInteger dwCurFilePos
+	UInteger dwLastMemberOffset
+	Integer fEOF											// BOOL
+	Integer iMissingAlignment2
+	Pointer pwszResultDir									// PWSTR
+	Pointer hCATStore										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mscat/ns-mscat-cryptcatmember
+Struct CRYPTCATMEMBER
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pwszReferenceTag								// PWSTR
+	Pointer pwszFileName									// PWSTR
+	Guid gSubjectType
+	UInteger fdwMemberFlags
+	Integer iMissingAlignment2
+	Pointer pIndirectData									// SIP_INDIRECT_DATA*
+	UInteger dwCertVersion
+	UInteger dwReserved
+	Pointer hReserved										// HANDLE
+	CRYPT_INTEGER_BLOB sEncodedIndirectData
+	CRYPT_INTEGER_BLOB sEncodedMemberInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mscat/ns-mscat-cryptcatstore
+Struct CRYPTCATSTORE
+	UInteger cbStruct
+	UInteger dwPublicVersion
+	Pointer pwszP7File										// PWSTR
+	ULongPtr hProv
+	UInteger dwEncodingType
+	UInteger fdwStoreFlags									// CRYPTCAT_OPEN_FLAGS
+	Pointer hReserved										// HANDLE
+	Pointer hAttrs											// HANDLE
+	Pointer hCryptMsg										// Pointer*
+	Pointer hSorted											// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-ms_addinfo_catalogmember
+Struct MS_ADDINFO_CATALOGMEMBER
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pStore											// CRYPTCATSTORE*
+	Pointer pMember											// CRYPTCATMEMBER*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

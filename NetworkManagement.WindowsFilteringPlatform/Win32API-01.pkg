@@ -1,0 +1,1487 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutadd0
+External_Function FwpmCalloutAdd0 "FwpmCalloutAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer callout ;	// FWPM_CALLOUT0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Pointer id ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutcreateenumhandle0
+External_Function FwpmCalloutCreateEnumHandle0 "FwpmCalloutCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_CALLOUT_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_CALLOUT_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutdeletebyid0
+External_Function FwpmCalloutDeleteById0 "FwpmCalloutDeleteById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger id ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutdeletebykey0
+External_Function FwpmCalloutDeleteByKey0 "FwpmCalloutDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutdestroyenumhandle0
+External_Function FwpmCalloutDestroyEnumHandle0 "FwpmCalloutDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_CALLOUT_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutenum0
+External_Function FwpmCalloutEnum0 "FwpmCalloutEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_CALLOUT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_CALLOUT0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutgetbyid0
+External_Function FwpmCalloutGetById0 "FwpmCalloutGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger id ;
+	Pointer callout ;	// FWPM_CALLOUT0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutgetbykey0
+External_Function FwpmCalloutGetByKey0 "FwpmCalloutGetByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer callout ;	// FWPM_CALLOUT0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutgetsecurityinfobykey0
+External_Function FwpmCalloutGetSecurityInfoByKey0 "FwpmCalloutGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutsetsecurityinfobykey0
+External_Function FwpmCalloutSetSecurityInfoByKey0 "FwpmCalloutSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutsubscribechanges0
+External_Function FwpmCalloutSubscribeChanges0 "FwpmCalloutSubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_CALLOUT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_CALLOUT_CHANGE_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer changeHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutsubscriptionsget0
+External_Function FwpmCalloutSubscriptionsGet0 "FwpmCalloutSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// FWPM_CALLOUT_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmcalloutunsubscribechanges0
+External_Function FwpmCalloutUnsubscribeChanges0 "FwpmCalloutUnsubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer changeHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectioncreateenumhandle0
+External_Function FwpmConnectionCreateEnumHandle0 "FwpmConnectionCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_CONNECTION_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_CONNECTION_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectiondestroyenumhandle0
+External_Function FwpmConnectionDestroyEnumHandle0 "FwpmConnectionDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_CONNECTION_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectionenum0
+External_Function FwpmConnectionEnum0 "FwpmConnectionEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_CONNECTION_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_CONNECTION0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectiongetbyid0
+External_Function FwpmConnectionGetById0 "FwpmConnectionGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer connection ;	// FWPM_CONNECTION0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectiongetsecurityinfo0
+External_Function FwpmConnectionGetSecurityInfo0 "FwpmConnectionGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+External_Function FwpmConnectionPolicyAdd0 "FwpmConnectionPolicyAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer connectionPolicy ;	// FWPM_PROVIDER_CONTEXT3*
+	Integer ipVersion ;	// FWP_IP_VERSION
+	UBigint weight ;
+	UInteger numFilterConditions ;
+	Pointer filterConditions ;	// FWPM_FILTER_CONDITION0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+External_Function FwpmConnectionPolicyDeleteByKey0 "FwpmConnectionPolicyDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectionsetsecurityinfo0
+External_Function FwpmConnectionSetSecurityInfo0 "FwpmConnectionSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectionsubscribe0
+External_Function FwpmConnectionSubscribe0 "FwpmConnectionSubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_CONNECTION_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_CONNECTION_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmconnectionunsubscribe0
+External_Function FwpmConnectionUnsubscribe0 "FwpmConnectionUnsubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer eventsHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmdynamickeywordsubscribe0
+External_Function FwpmDynamicKeywordSubscribe0 "FwpmDynamicKeywordSubscribe0" fwpuclnt.dll ;
+	UInteger flags ;
+	Pointer callback ;	// FWPM_DYNAMIC_KEYWORD_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer subscriptionHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmdynamickeywordunsubscribe0
+External_Function FwpmDynamicKeywordUnsubscribe0 "FwpmDynamicKeywordUnsubscribe0" fwpuclnt.dll ;
+	Pointer subscriptionHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmengineclose0
+External_Function FwpmEngineClose0 "FwpmEngineClose0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmenginegetoption0
+External_Function FwpmEngineGetOption0 "FwpmEngineGetOption0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Integer option ;	// FWPM_ENGINE_OPTION
+	Pointer value ;	// FWP_VALUE0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmenginegetsecurityinfo0
+External_Function FwpmEngineGetSecurityInfo0 "FwpmEngineGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmengineopen0
+External_Function FwpmEngineOpen0 "FwpmEngineOpen0" fwpuclnt.dll ;
+	WString serverName ;	// PWSTR
+	UInteger authnService ;
+	Pointer authIdentity ;	// SEC_WINNT_AUTH_IDENTITY_W*
+	Pointer session ;	// FWPM_SESSION0*
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmenginesetoption0
+External_Function FwpmEngineSetOption0 "FwpmEngineSetOption0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Integer option ;	// FWPM_ENGINE_OPTION
+	Pointer newValue ;	// FWP_VALUE0*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmenginesetsecurityinfo0
+External_Function FwpmEngineSetSecurityInfo0 "FwpmEngineSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilteradd0
+External_Function FwpmFilterAdd0 "FwpmFilterAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer filter ;	// FWPM_FILTER0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltercreateenumhandle0
+External_Function FwpmFilterCreateEnumHandle0 "FwpmFilterCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_FILTER_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_FILTER_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilterdeletebyid0
+External_Function FwpmFilterDeleteById0 "FwpmFilterDeleteById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilterdeletebykey0
+External_Function FwpmFilterDeleteByKey0 "FwpmFilterDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilterdestroyenumhandle0
+External_Function FwpmFilterDestroyEnumHandle0 "FwpmFilterDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_FILTER_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilterenum0
+External_Function FwpmFilterEnum0 "FwpmFilterEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_FILTER_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_FILTER0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltergetbyid0
+External_Function FwpmFilterGetById0 "FwpmFilterGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer filter ;	// FWPM_FILTER0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltergetbykey0
+External_Function FwpmFilterGetByKey0 "FwpmFilterGetByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer filter ;	// FWPM_FILTER0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltergetsecurityinfobykey0
+External_Function FwpmFilterGetSecurityInfoByKey0 "FwpmFilterGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltersetsecurityinfobykey0
+External_Function FwpmFilterSetSecurityInfoByKey0 "FwpmFilterSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltersubscribechanges0
+External_Function FwpmFilterSubscribeChanges0 "FwpmFilterSubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_FILTER_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_FILTER_CHANGE_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer changeHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfiltersubscriptionsget0
+External_Function FwpmFilterSubscriptionsGet0 "FwpmFilterSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// FWPM_FILTER_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfilterunsubscribechanges0
+External_Function FwpmFilterUnsubscribeChanges0 "FwpmFilterUnsubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer changeHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmfreememory0
+External_Function FwpmFreeMemory0 "FwpmFreeMemory0" fwpuclnt.dll ;
+	Pointer p ;	// Pointer**
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmgetappidfromfilename0
+External_Function FwpmGetAppIdFromFileName0 "FwpmGetAppIdFromFileName0" fwpuclnt.dll ;
+	WString fileName ;	// PWSTR
+	Pointer appId ;	// FWP_BYTE_BLOB**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmipsectunneladd0
+External_Function FwpmIPsecTunnelAdd0 "FwpmIPsecTunnelAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger flags ;
+	Pointer mainModePolicy ;	// FWPM_PROVIDER_CONTEXT0*
+	Pointer tunnelPolicy ;	// FWPM_PROVIDER_CONTEXT0*
+	UInteger numFilterConditions ;
+	Pointer filterConditions ;	// FWPM_FILTER_CONDITION0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmipsectunneladd1
+External_Function FwpmIPsecTunnelAdd1 "FwpmIPsecTunnelAdd1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger flags ;
+	Pointer mainModePolicy ;	// FWPM_PROVIDER_CONTEXT1*
+	Pointer tunnelPolicy ;	// FWPM_PROVIDER_CONTEXT1*
+	UInteger numFilterConditions ;
+	Pointer filterConditions ;	// FWPM_FILTER_CONDITION0*
+	Pointer keyModKey ;	// Guid*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmipsectunneladd2
+External_Function FwpmIPsecTunnelAdd2 "FwpmIPsecTunnelAdd2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger flags ;
+	Pointer mainModePolicy ;	// FWPM_PROVIDER_CONTEXT2*
+	Pointer tunnelPolicy ;	// FWPM_PROVIDER_CONTEXT2*
+	UInteger numFilterConditions ;
+	Pointer filterConditions ;	// FWPM_FILTER_CONDITION0*
+	Pointer keyModKey ;	// Guid*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+External_Function FwpmIPsecTunnelAdd3 "FwpmIPsecTunnelAdd3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger flags ;
+	Pointer mainModePolicy ;	// FWPM_PROVIDER_CONTEXT3*
+	Pointer tunnelPolicy ;	// FWPM_PROVIDER_CONTEXT3*
+	UInteger numFilterConditions ;
+	Pointer filterConditions ;	// FWPM_FILTER_CONDITION0*
+	Pointer keyModKey ;	// Guid*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmipsectunneldeletebykey0
+External_Function FwpmIPsecTunnelDeleteByKey0 "FwpmIPsecTunnelDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayercreateenumhandle0
+External_Function FwpmLayerCreateEnumHandle0 "FwpmLayerCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_LAYER_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_LAYER_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayerdestroyenumhandle0
+External_Function FwpmLayerDestroyEnumHandle0 "FwpmLayerDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_LAYER_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayerenum0
+External_Function FwpmLayerEnum0 "FwpmLayerEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_LAYER_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_LAYER0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayergetbyid0
+External_Function FwpmLayerGetById0 "FwpmLayerGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UShort id ;
+	Pointer layer ;	// FWPM_LAYER0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayergetbykey0
+External_Function FwpmLayerGetByKey0 "FwpmLayerGetByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer layer ;	// FWPM_LAYER0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayergetsecurityinfobykey0
+External_Function FwpmLayerGetSecurityInfoByKey0 "FwpmLayerGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmlayersetsecurityinfobykey0
+External_Function FwpmLayerSetSecurityInfoByKey0 "FwpmLayerSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventcreateenumhandle0
+External_Function FwpmNetEventCreateEnumHandle0 "FwpmNetEventCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_NET_EVENT_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventdestroyenumhandle0
+External_Function FwpmNetEventDestroyEnumHandle0 "FwpmNetEventDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventenum0
+External_Function FwpmNetEventEnum0 "FwpmNetEventEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_NET_EVENT0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventenum1
+External_Function FwpmNetEventEnum1 "FwpmNetEventEnum1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_NET_EVENT1***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventenum2
+External_Function FwpmNetEventEnum2 "FwpmNetEventEnum2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_NET_EVENT2***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventenum3
+External_Function FwpmNetEventEnum3 "FwpmNetEventEnum3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_NET_EVENT3***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function FwpmNetEventEnum4 "FwpmNetEventEnum4" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_NET_EVENT4***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function FwpmNetEventEnum5 "FwpmNetEventEnum5" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_NET_EVENT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_NET_EVENT5***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventsubscribe0
+External_Function FwpmNetEventSubscribe0 "FwpmNetEventSubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_NET_EVENT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_NET_EVENT_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventsubscribe1
+External_Function FwpmNetEventSubscribe1 "FwpmNetEventSubscribe1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_NET_EVENT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_NET_EVENT_CALLBACK1
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventsubscribe2
+External_Function FwpmNetEventSubscribe2 "FwpmNetEventSubscribe2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_NET_EVENT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_NET_EVENT_CALLBACK2
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+External_Function FwpmNetEventSubscribe3 "FwpmNetEventSubscribe3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_NET_EVENT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_NET_EVENT_CALLBACK3
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+External_Function FwpmNetEventSubscribe4 "FwpmNetEventSubscribe4" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_NET_EVENT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_NET_EVENT_CALLBACK4
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventsubscriptionsget0
+External_Function FwpmNetEventSubscriptionsGet0 "FwpmNetEventSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// FWPM_NET_EVENT_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventunsubscribe0
+External_Function FwpmNetEventUnsubscribe0 "FwpmNetEventUnsubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer eventsHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventsgetsecurityinfo0
+External_Function FwpmNetEventsGetSecurityInfo0 "FwpmNetEventsGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmneteventssetsecurityinfo0
+External_Function FwpmNetEventsSetSecurityInfo0 "FwpmNetEventsSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovideradd0
+External_Function FwpmProviderAdd0 "FwpmProviderAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer provider ;	// FWPM_PROVIDER0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextadd0
+External_Function FwpmProviderContextAdd0 "FwpmProviderContextAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextadd1
+External_Function FwpmProviderContextAdd1 "FwpmProviderContextAdd1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT1*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextadd2
+External_Function FwpmProviderContextAdd2 "FwpmProviderContextAdd2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT2*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+External_Function FwpmProviderContextAdd3 "FwpmProviderContextAdd3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT3*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextcreateenumhandle0
+External_Function FwpmProviderContextCreateEnumHandle0 "FwpmProviderContextCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_PROVIDER_CONTEXT_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_PROVIDER_CONTEXT_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextdeletebyid0
+External_Function FwpmProviderContextDeleteById0 "FwpmProviderContextDeleteById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextdeletebykey0
+External_Function FwpmProviderContextDeleteByKey0 "FwpmProviderContextDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextdestroyenumhandle0
+External_Function FwpmProviderContextDestroyEnumHandle0 "FwpmProviderContextDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_CONTEXT_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextenum0
+External_Function FwpmProviderContextEnum0 "FwpmProviderContextEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_CONTEXT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_PROVIDER_CONTEXT0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextenum1
+External_Function FwpmProviderContextEnum1 "FwpmProviderContextEnum1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_CONTEXT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_PROVIDER_CONTEXT1***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextenum2
+External_Function FwpmProviderContextEnum2 "FwpmProviderContextEnum2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_CONTEXT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_PROVIDER_CONTEXT2***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function FwpmProviderContextEnum3 "FwpmProviderContextEnum3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_CONTEXT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_PROVIDER_CONTEXT3***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetbyid0
+External_Function FwpmProviderContextGetById0 "FwpmProviderContextGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetbyid1
+External_Function FwpmProviderContextGetById1 "FwpmProviderContextGetById1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT1**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetbyid2
+External_Function FwpmProviderContextGetById2 "FwpmProviderContextGetById2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT2**
+	Returns UInteger
+
+External_Function FwpmProviderContextGetById3 "FwpmProviderContextGetById3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT3**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetbykey0
+External_Function FwpmProviderContextGetByKey0 "FwpmProviderContextGetByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetbykey1
+External_Function FwpmProviderContextGetByKey1 "FwpmProviderContextGetByKey1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT1**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetbykey2
+External_Function FwpmProviderContextGetByKey2 "FwpmProviderContextGetByKey2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT2**
+	Returns UInteger
+
+External_Function FwpmProviderContextGetByKey3 "FwpmProviderContextGetByKey3" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer providerContext ;	// FWPM_PROVIDER_CONTEXT3**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextgetsecurityinfobykey0
+External_Function FwpmProviderContextGetSecurityInfoByKey0 "FwpmProviderContextGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextsetsecurityinfobykey0
+External_Function FwpmProviderContextSetSecurityInfoByKey0 "FwpmProviderContextSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextsubscribechanges0
+External_Function FwpmProviderContextSubscribeChanges0 "FwpmProviderContextSubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_PROVIDER_CONTEXT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_PROVIDER_CONTEXT_CHANGE_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer changeHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextsubscriptionsget0
+External_Function FwpmProviderContextSubscriptionsGet0 "FwpmProviderContextSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// FWPM_PROVIDER_CONTEXT_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercontextunsubscribechanges0
+External_Function FwpmProviderContextUnsubscribeChanges0 "FwpmProviderContextUnsubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer changeHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidercreateenumhandle0
+External_Function FwpmProviderCreateEnumHandle0 "FwpmProviderCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_PROVIDER_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_PROVIDER_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmproviderdeletebykey0
+External_Function FwpmProviderDeleteByKey0 "FwpmProviderDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmproviderdestroyenumhandle0
+External_Function FwpmProviderDestroyEnumHandle0 "FwpmProviderDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmproviderenum0
+External_Function FwpmProviderEnum0 "FwpmProviderEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_PROVIDER_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_PROVIDER0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidergetbykey0
+External_Function FwpmProviderGetByKey0 "FwpmProviderGetByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer provider ;	// FWPM_PROVIDER0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidergetsecurityinfobykey0
+External_Function FwpmProviderGetSecurityInfoByKey0 "FwpmProviderGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidersetsecurityinfobykey0
+External_Function FwpmProviderSetSecurityInfoByKey0 "FwpmProviderSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidersubscribechanges0
+External_Function FwpmProviderSubscribeChanges0 "FwpmProviderSubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_PROVIDER_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_PROVIDER_CHANGE_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer changeHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmprovidersubscriptionsget0
+External_Function FwpmProviderSubscriptionsGet0 "FwpmProviderSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// FWPM_PROVIDER_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmproviderunsubscribechanges0
+External_Function FwpmProviderUnsubscribeChanges0 "FwpmProviderUnsubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer changeHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsessioncreateenumhandle0
+External_Function FwpmSessionCreateEnumHandle0 "FwpmSessionCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_SESSION_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_SESSION_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsessiondestroyenumhandle0
+External_Function FwpmSessionDestroyEnumHandle0 "FwpmSessionDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_SESSION_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsessionenum0
+External_Function FwpmSessionEnum0 "FwpmSessionEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_SESSION_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_SESSION0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayeradd0
+External_Function FwpmSubLayerAdd0 "FwpmSubLayerAdd0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subLayer ;	// FWPM_SUBLAYER0*
+	Pointer sd ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayercreateenumhandle0
+External_Function FwpmSubLayerCreateEnumHandle0 "FwpmSubLayerCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// FWPM_SUBLAYER_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// FWPM_SUBLAYER_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayerdeletebykey0
+External_Function FwpmSubLayerDeleteByKey0 "FwpmSubLayerDeleteByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayerdestroyenumhandle0
+External_Function FwpmSubLayerDestroyEnumHandle0 "FwpmSubLayerDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_SUBLAYER_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayerenum0
+External_Function FwpmSubLayerEnum0 "FwpmSubLayerEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// FWPM_SUBLAYER_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// FWPM_SUBLAYER0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayergetbykey0
+External_Function FwpmSubLayerGetByKey0 "FwpmSubLayerGetByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	Pointer subLayer ;	// FWPM_SUBLAYER0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayergetsecurityinfobykey0
+External_Function FwpmSubLayerGetSecurityInfoByKey0 "FwpmSubLayerGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayersetsecurityinfobykey0
+External_Function FwpmSubLayerSetSecurityInfoByKey0 "FwpmSubLayerSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer key ;	// Guid*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayersubscribechanges0
+External_Function FwpmSubLayerSubscribeChanges0 "FwpmSubLayerSubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_SUBLAYER_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_SUBLAYER_CHANGE_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer changeHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayersubscriptionsget0
+External_Function FwpmSubLayerSubscriptionsGet0 "FwpmSubLayerSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// FWPM_SUBLAYER_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsublayerunsubscribechanges0
+External_Function FwpmSubLayerUnsubscribeChanges0 "FwpmSubLayerUnsubscribeChanges0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer changeHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsystemportsget0
+External_Function FwpmSystemPortsGet0 "FwpmSystemPortsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer sysPorts ;	// FWPM_SYSTEM_PORTS0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsystemportssubscribe0
+External_Function FwpmSystemPortsSubscribe0 "FwpmSystemPortsSubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer reserved ;	// Pointer*
+	Pointer callback ;	// FWPM_SYSTEM_PORTS_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer sysPortsHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmsystemportsunsubscribe0
+External_Function FwpmSystemPortsUnsubscribe0 "FwpmSystemPortsUnsubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer sysPortsHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmtransactionabort0
+External_Function FwpmTransactionAbort0 "FwpmTransactionAbort0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmtransactionbegin0
+External_Function FwpmTransactionBegin0 "FwpmTransactionBegin0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmtransactioncommit0
+External_Function FwpmTransactionCommit0 "FwpmTransactionCommit0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmvswitcheventsubscribe0
+External_Function FwpmvSwitchEventSubscribe0 "FwpmvSwitchEventSubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// FWPM_VSWITCH_EVENT_SUBSCRIPTION0*
+	Pointer callback ;	// FWPM_VSWITCH_EVENT_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer subscriptionHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmvswitcheventunsubscribe0
+External_Function FwpmvSwitchEventUnsubscribe0 "FwpmvSwitchEventUnsubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscriptionHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmvswitcheventsgetsecurityinfo0
+External_Function FwpmvSwitchEventsGetSecurityInfo0 "FwpmvSwitchEventsGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-fwpmvswitcheventssetsecurityinfo0
+External_Function FwpmvSwitchEventsSetSecurityInfo0 "FwpmvSwitchEventsSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecdospgetsecurityinfo0
+External_Function IPsecDospGetSecurityInfo0 "IPsecDospGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecdospgetstatistics0
+External_Function IPsecDospGetStatistics0 "IPsecDospGetStatistics0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer idpStatistics ;	// IPSEC_DOSP_STATISTICS0*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecdospsetsecurityinfo0
+External_Function IPsecDospSetSecurityInfo0 "IPsecDospSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecdospstatecreateenumhandle0
+External_Function IPsecDospStateCreateEnumHandle0 "IPsecDospStateCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// IPSEC_DOSP_STATE_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// IPSEC_DOSP_STATE_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecdospstatedestroyenumhandle0
+External_Function IPsecDospStateDestroyEnumHandle0 "IPsecDospStateDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_DOSP_STATE_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecdospstateenum0
+External_Function IPsecDospStateEnum0 "IPsecDospStateEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_DOSP_STATE_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IPSEC_DOSP_STATE0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecgetstatistics0
+External_Function IPsecGetStatistics0 "IPsecGetStatistics0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer ipsecStatistics ;	// IPSEC_STATISTICS0*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecgetstatistics1
+External_Function IPsecGetStatistics1 "IPsecGetStatistics1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer ipsecStatistics ;	// IPSEC_STATISTICS1*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipseckeymanageraddandregister0
+External_Function IPsecKeyManagerAddAndRegister0 "IPsecKeyManagerAddAndRegister0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer keyManager ;	// IPSEC_KEY_MANAGER0*
+	Pointer keyManagerCallbacks ;	// IPSEC_KEY_MANAGER_CALLBACKS0*
+	Pointer keyMgmtHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipseckeymanagergetsecurityinfobykey0
+External_Function IPsecKeyManagerGetSecurityInfoByKey0 "IPsecKeyManagerGetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer reserved ;	// Pointer*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipseckeymanagersetsecurityinfobykey0
+External_Function IPsecKeyManagerSetSecurityInfoByKey0 "IPsecKeyManagerSetSecurityInfoByKey0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer reserved ;	// Pointer*
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipseckeymanagerunregisteranddelete0
+External_Function IPsecKeyManagerUnregisterAndDelete0 "IPsecKeyManagerUnregisterAndDelete0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer keyMgmtHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipseckeymanagersget0
+External_Function IPsecKeyManagersGet0 "IPsecKeyManagersGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// IPSEC_KEY_MANAGER0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextaddinbound0
+External_Function IPsecSaContextAddInbound0 "IPsecSaContextAddInbound0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer inboundBundle ;	// IPSEC_SA_BUNDLE0*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextaddinbound1
+External_Function IPsecSaContextAddInbound1 "IPsecSaContextAddInbound1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer inboundBundle ;	// IPSEC_SA_BUNDLE1*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextaddoutbound0
+External_Function IPsecSaContextAddOutbound0 "IPsecSaContextAddOutbound0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer outboundBundle ;	// IPSEC_SA_BUNDLE0*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextaddoutbound1
+External_Function IPsecSaContextAddOutbound1 "IPsecSaContextAddOutbound1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer outboundBundle ;	// IPSEC_SA_BUNDLE1*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextcreate0
+External_Function IPsecSaContextCreate0 "IPsecSaContextCreate0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer outboundTraffic ;	// IPSEC_TRAFFIC0*
+	Pointer inboundFilterId ;	// UBigint*
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextcreate1
+External_Function IPsecSaContextCreate1 "IPsecSaContextCreate1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer outboundTraffic ;	// IPSEC_TRAFFIC1*
+	Pointer virtualIfTunnelInfo ;	// IPSEC_VIRTUAL_IF_TUNNEL_INFO0*
+	Pointer inboundFilterId ;	// UBigint*
+	Pointer id ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextcreateenumhandle0
+External_Function IPsecSaContextCreateEnumHandle0 "IPsecSaContextCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// IPSEC_SA_CONTEXT_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// IPSEC_SA_CONTEXT_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextdeletebyid0
+External_Function IPsecSaContextDeleteById0 "IPsecSaContextDeleteById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextdestroyenumhandle0
+External_Function IPsecSaContextDestroyEnumHandle0 "IPsecSaContextDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_SA_CONTEXT_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextenum0
+External_Function IPsecSaContextEnum0 "IPsecSaContextEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_SA_CONTEXT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IPSEC_SA_CONTEXT0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextenum1
+External_Function IPsecSaContextEnum1 "IPsecSaContextEnum1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_SA_CONTEXT_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IPSEC_SA_CONTEXT1***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextexpire0
+External_Function IPsecSaContextExpire0 "IPsecSaContextExpire0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextgetbyid0
+External_Function IPsecSaContextGetById0 "IPsecSaContextGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer saContext ;	// IPSEC_SA_CONTEXT0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextgetbyid1
+External_Function IPsecSaContextGetById1 "IPsecSaContextGetById1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer saContext ;	// IPSEC_SA_CONTEXT1**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextgetspi0
+External_Function IPsecSaContextGetSpi0 "IPsecSaContextGetSpi0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer getSpi ;	// IPSEC_GETSPI0*
+	Pointer inboundSpi ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextgetspi1
+External_Function IPsecSaContextGetSpi1 "IPsecSaContextGetSpi1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer getSpi ;	// IPSEC_GETSPI1*
+	Pointer inboundSpi ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextsetspi0
+External_Function IPsecSaContextSetSpi0 "IPsecSaContextSetSpi0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer getSpi ;	// IPSEC_GETSPI1*
+	UInteger inboundSpi ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextsubscribe0
+External_Function IPsecSaContextSubscribe0 "IPsecSaContextSubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer subscription ;	// IPSEC_SA_CONTEXT_SUBSCRIPTION0*
+	Pointer callback ;	// IPSEC_SA_CONTEXT_CALLBACK0
+	Pointer context ;	// Pointer*
+	Pointer eventsHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextsubscriptionsget0
+External_Function IPsecSaContextSubscriptionsGet0 "IPsecSaContextSubscriptionsGet0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer entries ;	// IPSEC_SA_CONTEXT_SUBSCRIPTION0***
+	Pointer numEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextunsubscribe0
+External_Function IPsecSaContextUnsubscribe0 "IPsecSaContextUnsubscribe0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer eventsHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacontextupdate0
+External_Function IPsecSaContextUpdate0 "IPsecSaContextUpdate0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint flags ;
+	Pointer newValues ;	// IPSEC_SA_CONTEXT1*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsacreateenumhandle0
+External_Function IPsecSaCreateEnumHandle0 "IPsecSaCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// IPSEC_SA_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// IPSEC_SA_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsadbgetsecurityinfo0
+External_Function IPsecSaDbGetSecurityInfo0 "IPsecSaDbGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsadbsetsecurityinfo0
+External_Function IPsecSaDbSetSecurityInfo0 "IPsecSaDbSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsadestroyenumhandle0
+External_Function IPsecSaDestroyEnumHandle0 "IPsecSaDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_SA_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsaenum0
+External_Function IPsecSaEnum0 "IPsecSaEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_SA_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IPSEC_SA_DETAILS0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ipsecsaenum1
+External_Function IPsecSaEnum1 "IPsecSaEnum1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IPSEC_SA_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IPSEC_SA_DETAILS1***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextgetstatistics0
+External_Function IkeextGetStatistics0 "IkeextGetStatistics0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer ikeextStatistics ;	// IKEEXT_STATISTICS0*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextgetstatistics1
+External_Function IkeextGetStatistics1 "IkeextGetStatistics1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer ikeextStatistics ;	// IKEEXT_STATISTICS1*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsacreateenumhandle0
+External_Function IkeextSaCreateEnumHandle0 "IkeextSaCreateEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumTemplate ;	// IKEEXT_SA_ENUM_TEMPLATE0*
+	Pointer enumHandle ;	// IKEEXT_SA_ENUM_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsadbgetsecurityinfo0
+External_Function IkeextSaDbGetSecurityInfo0 "IkeextSaDbGetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// PSID*
+	Pointer sidGroup ;	// PSID*
+	Pointer dacl ;	// ACL**
+	Pointer sacl ;	// ACL**
+	Pointer securityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsadbsetsecurityinfo0
+External_Function IkeextSaDbSetSecurityInfo0 "IkeextSaDbSetSecurityInfo0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UInteger securityInfo ;
+	Pointer sidOwner ;	// SID*
+	Pointer sidGroup ;	// SID*
+	Pointer dacl ;	// ACL*
+	Pointer sacl ;	// ACL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsadeletebyid0
+External_Function IkeextSaDeleteById0 "IkeextSaDeleteById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsadestroyenumhandle0
+External_Function IkeextSaDestroyEnumHandle0 "IkeextSaDestroyEnumHandle0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IKEEXT_SA_ENUM_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsaenum0
+External_Function IkeextSaEnum0 "IkeextSaEnum0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IKEEXT_SA_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IKEEXT_SA_DETAILS0***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsaenum1
+External_Function IkeextSaEnum1 "IkeextSaEnum1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IKEEXT_SA_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IKEEXT_SA_DETAILS1***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsaenum2
+External_Function IkeextSaEnum2 "IkeextSaEnum2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	Pointer enumHandle ;	// IKEEXT_SA_ENUM_HANDLE
+	UInteger numEntriesRequested ;
+	Pointer entries ;	// IKEEXT_SA_DETAILS2***
+	Pointer numEntriesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsagetbyid0
+External_Function IkeextSaGetById0 "IkeextSaGetById0" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer sa ;	// IKEEXT_SA_DETAILS0**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsagetbyid1
+External_Function IkeextSaGetById1 "IkeextSaGetById1" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer saLookupContext ;	// Guid*
+	Pointer sa ;	// IKEEXT_SA_DETAILS1**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fwpmu/nf-fwpmu-ikeextsagetbyid2
+External_Function IkeextSaGetById2 "IkeextSaGetById2" fwpuclnt.dll ;
+	Pointer engineHandle ;	// FWPM_ENGINE_HANDLE
+	UBigint id ;
+	Pointer saLookupContext ;	// Guid*
+	Pointer sa ;	// IKEEXT_SA_DETAILS2**
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

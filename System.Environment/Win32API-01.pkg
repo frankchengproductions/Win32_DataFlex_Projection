@@ -1,0 +1,279 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-createenclave
+External_Function CreateEnclave "CreateEnclave" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	ULongPtr dwInitialCommitment ;
+	UInteger flEnclaveType ;
+	Pointer lpEnclaveInformation ;	// Pointer*
+	UInteger dwInfoLength ;
+	Pointer lpEnclaveError ;	// UInteger*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-expandenvironmentstringsa
+External_Function ExpandEnvironmentStringsA "ExpandEnvironmentStringsA" KERNEL32.dll ;
+	String lpSrc ;	// PSTR
+	Pointer lpDst ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-expandenvironmentstringsw
+External_Function ExpandEnvironmentStringsW "ExpandEnvironmentStringsW" KERNEL32.dll ;
+	WString lpSrc ;	// PWSTR
+	Pointer lpDst ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-freeenvironmentstringsa
+External_Function FreeEnvironmentStringsA "FreeEnvironmentStringsA" KERNEL32.dll ;
+	String penv ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-freeenvironmentstringsw
+External_Function FreeEnvironmentStringsW "FreeEnvironmentStringsW" KERNEL32.dll ;
+	WString penv ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-getcommandlinea
+External_Function GetCommandLineA "GetCommandLineA" KERNEL32.dll ;
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-getcommandlinew
+External_Function GetCommandLineW "GetCommandLineW" KERNEL32.dll ;
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getcurrentdirectory
+External_Function GetCurrentDirectoryA "GetCurrentDirectoryA" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getcurrentdirectory
+External_Function GetCurrentDirectoryW "GetCurrentDirectoryW" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-getenvironmentstrings
+External_Function GetEnvironmentStrings "GetEnvironmentStrings" KERNEL32.dll ;
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-getenvironmentstringsw
+External_Function GetEnvironmentStringsW "GetEnvironmentStringsW" KERNEL32.dll ;
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-getenvironmentvariablea
+External_Function GetEnvironmentVariableA "GetEnvironmentVariableA" KERNEL32.dll ;
+	String lpName ;	// PSTR
+	Pointer lpBuffer ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-getenvironmentvariablew
+External_Function GetEnvironmentVariableW "GetEnvironmentVariableW" KERNEL32.dll ;
+	WString lpName ;	// PWSTR
+	Pointer lpBuffer ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-initializeenclave
+External_Function InitializeEnclave "InitializeEnclave" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	Pointer lpEnclaveInformation ;	// Pointer*
+	UInteger dwInfoLength ;
+	Pointer lpEnclaveError ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-isenclavetypesupported
+External_Function IsEnclaveTypeSupported "IsEnclaveTypeSupported" KERNEL32.dll ;
+	UInteger flEnclaveType ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-loadenclavedata
+External_Function LoadEnclaveData "LoadEnclaveData" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	ULongPtr nSize ;
+	UInteger flProtect ;
+	Pointer lpPageInformation ;	// Pointer*
+	UInteger dwInfoLength ;
+	Pointer lpNumberOfBytesWritten ;	// ULongPtr*
+	Pointer lpEnclaveError ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-needcurrentdirectoryforexepatha
+External_Function NeedCurrentDirectoryForExePathA "NeedCurrentDirectoryForExePathA" KERNEL32.dll ;
+	String ExeName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-needcurrentdirectoryforexepathw
+External_Function NeedCurrentDirectoryForExePathW "NeedCurrentDirectoryForExePathW" KERNEL32.dll ;
+	WString ExeName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setcurrentdirectory
+External_Function SetCurrentDirectoryA "SetCurrentDirectoryA" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setcurrentdirectory
+External_Function SetCurrentDirectoryW "SetCurrentDirectoryW" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-setenvironmentstringsw
+External_Function SetEnvironmentStringsW "SetEnvironmentStringsW" KERNEL32.dll ;
+	WString NewEnvironment ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-setenvironmentvariablea
+External_Function SetEnvironmentVariableA "SetEnvironmentVariableA" KERNEL32.dll ;
+	String lpName ;	// PSTR
+	String lpValue ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-setenvironmentvariablew
+External_Function SetEnvironmentVariableW "SetEnvironmentVariableW" KERNEL32.dll ;
+	WString lpName ;	// PWSTR
+	WString lpValue ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-createenvironmentblock
+External_Function CreateEnvironmentBlock "CreateEnvironmentBlock" USERENV.dll ;
+	Pointer lpEnvironment ;	// Pointer**
+	Pointer hToken ;	// HANDLE
+	Integer bInherit ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-destroyenvironmentblock
+External_Function DestroyEnvironmentBlock "DestroyEnvironmentBlock" USERENV.dll ;
+	Pointer lpEnvironment ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-expandenvironmentstringsforusera
+External_Function ExpandEnvironmentStringsForUserA "ExpandEnvironmentStringsForUserA" USERENV.dll ;
+	Pointer hToken ;	// HANDLE
+	String lpSrc ;	// PSTR
+	Pointer lpDest ;	// PSTR
+	UInteger dwSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-expandenvironmentstringsforuserw
+External_Function ExpandEnvironmentStringsForUserW "ExpandEnvironmentStringsForUserW" USERENV.dll ;
+	Pointer hToken ;	// HANDLE
+	WString lpSrc ;	// PWSTR
+	Pointer lpDest ;	// PWSTR
+	UInteger dwSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-deleteenclave
+External_Function DeleteEnclave "DeleteEnclave" api-ms-win-core-enclave-l1-1-1.dll ;
+	Pointer lpAddress ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-loadenclaveimagea
+External_Function LoadEnclaveImageA "LoadEnclaveImageA" api-ms-win-core-enclave-l1-1-1.dll ;
+	Pointer lpEnclaveAddress ;	// Pointer*
+	String lpImageName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-loadenclaveimagew
+External_Function LoadEnclaveImageW "LoadEnclaveImageW" api-ms-win-core-enclave-l1-1-1.dll ;
+	Pointer lpEnclaveAddress ;	// Pointer*
+	WString lpImageName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-callenclave
+External_Function CallEnclave "CallEnclave" vertdll.dll ;
+	LongPtr lpRoutine ;
+	Pointer lpParameter ;	// Pointer*
+	Integer fWaitForThread ;	// BOOL
+	Pointer lpReturnValue ;	// Pointer**
+	Returns Integer	// BOOL
+
+External_Function EnclaveCopyIntoEnclave "EnclaveCopyIntoEnclave" vertdll.dll ;
+	Pointer EnclaveAddress ;	// Pointer*
+	Pointer UnsecureAddress ;	// Pointer*
+	ULongPtr NumberOfBytes ;
+	Returns Integer	// HRESULT
+
+External_Function EnclaveCopyOutOfEnclave "EnclaveCopyOutOfEnclave" vertdll.dll ;
+	Pointer UnsecureAddress ;	// Pointer*
+	Pointer EnclaveAddress ;	// Pointer*
+	ULongPtr NumberOfBytes ;
+	Returns Integer	// HRESULT
+
+External_Function EnclaveEncryptDataForTrustlet "EnclaveEncryptDataForTrustlet" vertdll.dll ;
+	Pointer DataToEncrypt ;	// Pointer*
+	UInteger DataToEncryptSize ;
+	Pointer TrustletBindingData ;	// TRUSTLET_BINDING_DATA*
+	Pointer EncryptedData ;	// Pointer*
+	UInteger BufferSize ;
+	Pointer EncryptedDataSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winenclaveapi/nf-winenclaveapi-enclavegetattestationreport
+External_Function EnclaveGetAttestationReport "EnclaveGetAttestationReport" vertdll.dll ;
+	Pointer EnclaveData ;	// UChar*
+	Pointer Report ;	// Pointer*
+	UInteger BufferSize ;
+	Pointer OutputSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winenclaveapi/nf-winenclaveapi-enclavegetenclaveinformation
+External_Function EnclaveGetEnclaveInformation "EnclaveGetEnclaveInformation" vertdll.dll ;
+	UInteger InformationSize ;
+	Pointer EnclaveInformation ;	// ENCLAVE_INFORMATION*
+	Returns Integer	// HRESULT
+
+External_Function EnclaveRestrictContainingProcessAccess "EnclaveRestrictContainingProcessAccess" vertdll.dll ;
+	Integer RestrictAccess ;	// BOOL
+	Pointer PreviouslyRestricted ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winenclaveapi/nf-winenclaveapi-enclavesealdata
+External_Function EnclaveSealData "EnclaveSealData" vertdll.dll ;
+	Pointer DataToEncrypt ;	// Pointer*
+	UInteger DataToEncryptSize ;
+	Integer IdentityPolicy ;	// ENCLAVE_SEALING_IDENTITY_POLICY
+	UInteger RuntimePolicy ;
+	Pointer ProtectedBlob ;	// Pointer*
+	UInteger BufferSize ;
+	Pointer ProtectedBlobSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winenclaveapi/nf-winenclaveapi-enclaveunsealdata
+External_Function EnclaveUnsealData "EnclaveUnsealData" vertdll.dll ;
+	Pointer ProtectedBlob ;	// Pointer*
+	UInteger ProtectedBlobSize ;
+	Pointer DecryptedData ;	// Pointer*
+	UInteger BufferSize ;
+	Pointer DecryptedDataSize ;	// UInteger*
+	Pointer SealingIdentity ;	// ENCLAVE_IDENTITY*
+	Pointer UnsealingFlags ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function EnclaveUsesAttestedKeys "EnclaveUsesAttestedKeys" vertdll.dll ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winenclaveapi/nf-winenclaveapi-enclaveverifyattestationreport
+External_Function EnclaveVerifyAttestationReport "EnclaveVerifyAttestationReport" vertdll.dll ;
+	UInteger EnclaveType ;
+	Pointer Report ;	// Pointer*
+	UInteger ReportSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/enclaveapi/nf-enclaveapi-terminateenclave
+External_Function TerminateEnclave "TerminateEnclave" vertdll.dll ;
+	Pointer lpAddress ;	// Pointer*
+	Integer fWait ;	// BOOL
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

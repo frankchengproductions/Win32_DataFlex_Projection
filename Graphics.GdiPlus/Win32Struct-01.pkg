@@ -1,0 +1,180 @@
+Use UI
+
+Struct BitmapData
+	UInteger Width
+	UInteger Height
+	Integer Stride
+	Integer PixelFormat
+	Pointer Scan0											// Pointer*
+	ULongPtr Reserved
+End_Struct
+
+Struct CharacterRange
+	Integer First
+	Integer Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/WMP/color-element
+Struct Color
+	UInteger Argb
+End_Struct
+
+Struct ColorMap
+	Color oldColor
+	Color newColor
+End_Struct
+
+Struct ColorMatrix
+	Float[25] m
+End_Struct
+
+Struct ColorPalette
+	UInteger Flags
+	UInteger Count
+	UInteger[1] Entries
+End_Struct
+
+Struct ENHMETAHEADER3
+	UInteger iType
+	UInteger nSize
+	RECTL rclBounds
+	RECTL rclFrame
+	UInteger dSignature
+	UInteger nVersion
+	UInteger nBytes
+	UInteger nRecords
+	UShort nHandles
+	UShort sReserved
+	UInteger nDescription
+	UInteger offDescription
+	UInteger nPalEntries
+	SIZE szlDevice
+	SIZE szlMillimeters
+End_Struct
+
+Struct EncoderParameter
+	Guid Guid
+	UInteger NumberOfValues
+	UInteger Type
+	Pointer Value											// Pointer*
+End_Struct
+
+Struct EncoderParameters
+	UInteger Count
+	Integer iMissingAlignment1
+	EncoderParameter[1] Parameter
+End_Struct
+
+Struct GdiplusStartupInput
+	UInteger GdiplusVersion
+	Integer iMissingAlignment1
+	LongPtr DebugEventCallback
+	Integer SuppressBackgroundThread						// BOOL
+	Integer SuppressExternalCodecs							// BOOL
+End_Struct
+
+Struct GdiplusStartupOutput
+	LongPtr NotificationHook
+	LongPtr NotificationUnhook
+End_Struct
+
+Struct ImageCodecInfo
+	Guid Clsid
+	Guid FormatID
+	Pointer CodecName										// PWSTR
+	Pointer DllName											// PWSTR
+	Pointer FormatDescription								// PWSTR
+	Pointer FilenameExtension								// PWSTR
+	Pointer MimeType										// PWSTR
+	UInteger Flags
+	UInteger Version
+	UInteger SigCount
+	UInteger SigSize
+	Pointer SigPattern										// UChar*
+	Pointer SigMask											// UChar*
+End_Struct
+
+Struct ImageItemData
+	UInteger Size
+	UInteger Position
+	Pointer Desc											// Pointer*
+	UInteger DescSize
+	Integer iMissingAlignment1
+	Pointer Data											// Pointer*
+	UInteger DataSize
+	UInteger Cookie
+End_Struct
+
+Struct MetafileHeader
+	Integer Type											// MetafileType
+	UInteger Size
+	UInteger Version
+	UInteger EmfPlusFlags
+	Float DpiX
+	Float DpiY
+	Integer X
+	Integer Y
+	Integer Width
+	Integer Height
+	UChar[88] UnionName1
+	Integer EmfPlusHeaderSize
+	Integer LogicalDpiX
+	Integer LogicalDpiY
+End_Struct
+
+Struct PWMFRect16
+	Short Left
+	Short Top
+	Short Right
+	Short Bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windows.foundation/ns-windows-foundation-point
+Struct Point
+	Integer X
+	Integer Y
+End_Struct
+
+Struct PointF
+	Float X
+	Float Y
+End_Struct
+
+Struct PropertyItem
+	UInteger id
+	UInteger length
+	UShort type
+	UChar[6] cMissingAlignment1
+	Pointer value											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windows.foundation/ns-windows-foundation-rect
+Struct Rect
+	Integer X
+	Integer Y
+	Integer Width
+	Integer Height
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d2d1helper/nf-d2d1helper-rectf
+Struct RectF
+	Float X
+	Float Y
+	Float Width
+	Float Height
+End_Struct
+
+Struct WmfPlaceableFileHeader
+	UInteger Key
+	Short Hmf
+	PWMFRect16 BoundingBox
+	Short Inch
+	UInteger Reserved
+	Short Checksum
+	Short iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

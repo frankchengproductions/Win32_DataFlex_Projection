@@ -1,0 +1,201 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_application
+Struct MI_Application
+	UBigint reserved1
+	LongPtr reserved2
+	Pointer ft												// MI_ApplicationFT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_applicationft
+Struct MI_ApplicationFT
+	LongPtr Close
+	LongPtr NewSession
+	LongPtr NewHostedProvider
+	LongPtr NewInstance
+	LongPtr NewDestinationOptions
+	LongPtr NewOperationOptions
+	LongPtr NewSubscriptionDeliveryOptions
+	LongPtr NewSerializer
+	LongPtr NewDeserializer
+	LongPtr NewInstanceFromClass
+	LongPtr NewClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_class
+Struct MI_Class
+	Pointer ft												// MI_ClassFT*
+	Pointer classDecl										// MI_ClassDecl*
+	Pointer namespaceName									// UShort*
+	Pointer serverName										// UShort*
+	LongPtr[4] reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_classdecl
+Struct MI_ClassDecl
+	UInteger flags
+	UInteger code
+	Pointer name											// UShort*
+	Pointer qualifiers										// MI_Qualifier**
+	UInteger numQualifiers
+	Integer iMissingAlignment1
+	Pointer properties										// MI_PropertyDecl**
+	UInteger numProperties
+	UInteger size
+	Pointer superClass										// UShort*
+	Pointer superClassDecl									// MI_ClassDecl*
+	Pointer methods											// MI_MethodDecl**
+	UInteger numMethods
+	Integer iMissingAlignment2
+	Pointer schema											// MI_SchemaDecl*
+	Pointer providerFT										// MI_ProviderFT*
+	Pointer owningClass										// MI_Class*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_classft
+Struct MI_ClassFT
+	LongPtr GetClassNameA
+	LongPtr GetNameSpace
+	LongPtr GetServerName
+	LongPtr GetElementCount
+	LongPtr GetElement
+	LongPtr GetElementAt
+	LongPtr GetClassQualifierSet
+	LongPtr GetMethodCount
+	LongPtr GetMethodAt
+	LongPtr GetMethod
+	LongPtr GetParentClassName
+	LongPtr GetParentClass
+	LongPtr Delete
+	LongPtr Clone
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_instance
+Struct MI_Instance
+	Pointer ft												// MI_InstanceFT*
+	Pointer classDecl										// MI_ClassDecl*
+	Pointer serverName										// UShort*
+	Pointer nameSpace										// UShort*
+	LongPtr[4] reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_instanceft
+Struct MI_InstanceFT
+	LongPtr Clone
+	LongPtr Destruct
+	LongPtr Delete
+	LongPtr IsA
+	LongPtr GetClassNameA
+	LongPtr SetNameSpace
+	LongPtr GetNameSpace
+	LongPtr GetElementCount
+	LongPtr AddElement
+	LongPtr SetElement
+	LongPtr SetElementAt
+	LongPtr GetElement
+	LongPtr GetElementAt
+	LongPtr ClearElement
+	LongPtr ClearElementAt
+	LongPtr GetServerName
+	LongPtr SetServerName
+	LongPtr GetClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_methoddecl
+Struct MI_MethodDecl
+	UInteger flags
+	UInteger code
+	Pointer name											// UShort*
+	Pointer qualifiers										// MI_Qualifier**
+	UInteger numQualifiers
+	Integer iMissingAlignment1
+	Pointer parameters										// MI_ParameterDecl**
+	UInteger numParameters
+	UInteger size
+	UInteger returnType
+	Integer iMissingAlignment2
+	Pointer origin											// UShort*
+	Pointer propagator										// UShort*
+	Pointer schema											// MI_SchemaDecl*
+	Pointer function										// MI_MethodDecl_Invoke
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_parameterdecl
+Struct MI_ParameterDecl
+	UInteger flags
+	UInteger code
+	Pointer name											// UShort*
+	Pointer qualifiers										// MI_Qualifier**
+	UInteger numQualifiers
+	UInteger type
+	Pointer className										// UShort*
+	UInteger subscript
+	UInteger offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_propertydecl
+Struct MI_PropertyDecl
+	UInteger flags
+	UInteger code
+	Pointer name											// UShort*
+	Pointer qualifiers										// MI_Qualifier**
+	UInteger numQualifiers
+	UInteger type
+	Pointer className										// UShort*
+	UInteger subscript
+	UInteger offset
+	Pointer origin											// UShort*
+	Pointer propagator										// UShort*
+	Pointer value											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_providerft
+Struct MI_ProviderFT
+	Pointer Load											// MI_ProviderFT_Load
+	Pointer Unload											// MI_ProviderFT_Unload
+	Pointer GetInstance										// MI_ProviderFT_GetInstance
+	Pointer EnumerateInstances								// MI_ProviderFT_EnumerateInstances
+	Pointer CreateInstance									// MI_ProviderFT_CreateInstance
+	Pointer ModifyInstance									// MI_ProviderFT_ModifyInstance
+	Pointer DeleteInstance									// MI_ProviderFT_DeleteInstance
+	Pointer AssociatorInstances								// MI_ProviderFT_AssociatorInstances
+	Pointer ReferenceInstances								// MI_ProviderFT_ReferenceInstances
+	Pointer EnableIndications								// MI_ProviderFT_EnableIndications
+	Pointer DisableIndications								// MI_ProviderFT_DisableIndications
+	Pointer Subscribe										// MI_ProviderFT_Subscribe
+	Pointer Unsubscribe										// MI_ProviderFT_Unsubscribe
+	Pointer Invoke											// MI_ProviderFT_Invoke
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_qualifier
+Struct MI_Qualifier
+	Pointer name											// UShort*
+	UInteger type
+	UInteger flavor
+	Pointer value											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_qualifierdecl
+Struct MI_QualifierDecl
+	Pointer name											// UShort*
+	UInteger type
+	UInteger scope
+	UInteger flavor
+	UInteger subscript
+	Pointer value											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_schemadecl
+Struct MI_SchemaDecl
+	Pointer qualifierDecls									// MI_QualifierDecl**
+	UInteger numQualifierDecls
+	Integer iMissingAlignment1
+	Pointer classDecls										// MI_ClassDecl**
+	UInteger numClassDecls
+	Integer iMissingAlignment2
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,70 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-input_message_source
+Struct INPUT_MESSAGE_SOURCE
+	Integer deviceType										// INPUT_MESSAGE_DEVICE_TYPE
+	Integer originId										// INPUT_MESSAGE_ORIGIN_ID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawhid
+Struct RAWHID
+	UInteger dwSizeHid
+	UInteger dwCount
+	UChar[1] bRawData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawinput
+Struct RAWINPUT
+	RAWINPUTHEADER header
+	UChar[24] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawinputdevice
+Struct RAWINPUTDEVICE
+	UShort usUsagePage
+	UShort usUsage
+	UInteger dwFlags										// RAWINPUTDEVICE_FLAGS
+	Pointer hwndTarget										// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawinputdevicelist
+Struct RAWINPUTDEVICELIST
+	Pointer hDevice											// HANDLE
+	UInteger dwType											// RID_DEVICE_INFO_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawinputheader
+Struct RAWINPUTHEADER
+	UInteger dwType
+	UInteger dwSize
+	Pointer hDevice											// HANDLE
+	ULongPtr wParam											// WPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawkeyboard
+Struct RAWKEYBOARD
+	UShort MakeCode
+	UShort Flags
+	UShort Reserved
+	UShort VKey
+	UInteger Message
+	UInteger ExtraInformation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawmouse
+Struct RAWMOUSE
+	UShort usFlags											// MOUSE_STATE
+	Short iMissingAlignment1
+	UChar[4] UnionName1
+	UInteger ulRawButtons
+	Integer lLastX
+	Integer lLastY
+	UInteger ulExtraInformation
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

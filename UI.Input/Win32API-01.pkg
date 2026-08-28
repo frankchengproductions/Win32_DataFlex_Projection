@@ -1,0 +1,76 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-defrawinputproc
+External_Function DefRawInputProc "DefRawInputProc" USER32.dll ;
+	Pointer paRawInput ;	// RAWINPUT**
+	Integer nInput ;
+	UInteger cbSizeHeader ;
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcimssm
+External_Function GetCIMSSM "GetCIMSSM" USER32.dll ;
+	Pointer inputMessageSource ;	// INPUT_MESSAGE_SOURCE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getcurrentinputmessagesource
+External_Function GetCurrentInputMessageSource "GetCurrentInputMessageSource" USER32.dll ;
+	Pointer inputMessageSource ;	// INPUT_MESSAGE_SOURCE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getrawinputbuffer
+External_Function GetRawInputBuffer "GetRawInputBuffer" USER32.dll ;
+	Pointer pData ;	// RAWINPUT*
+	Pointer pcbSize ;	// UInteger*
+	UInteger cbSizeHeader ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getrawinputdata
+External_Function GetRawInputData "GetRawInputData" USER32.dll ;
+	Pointer hRawInput ;	// HRAWINPUT
+	UInteger uiCommand ;	// RAW_INPUT_DATA_COMMAND_FLAGS
+	Pointer pData ;	// Pointer*
+	Pointer pcbSize ;	// UInteger*
+	UInteger cbSizeHeader ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getrawinputdeviceinfoa
+External_Function GetRawInputDeviceInfoA "GetRawInputDeviceInfoA" USER32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger uiCommand ;	// RAW_INPUT_DEVICE_INFO_COMMAND
+	Pointer pData ;	// Pointer*
+	Pointer pcbSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getrawinputdeviceinfow
+External_Function GetRawInputDeviceInfoW "GetRawInputDeviceInfoW" USER32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger uiCommand ;	// RAW_INPUT_DEVICE_INFO_COMMAND
+	Pointer pData ;	// Pointer*
+	Pointer pcbSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getrawinputdevicelist
+External_Function GetRawInputDeviceList "GetRawInputDeviceList" USER32.dll ;
+	Pointer pRawInputDeviceList ;	// RAWINPUTDEVICELIST*
+	Pointer puiNumDevices ;	// UInteger*
+	UInteger cbSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getregisteredrawinputdevices
+External_Function GetRegisteredRawInputDevices "GetRegisteredRawInputDevices" USER32.dll ;
+	Pointer pRawInputDevices ;	// RAWINPUTDEVICE*
+	Pointer puiNumDevices ;	// UInteger*
+	UInteger cbSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerrawinputdevices
+External_Function RegisterRawInputDevices "RegisterRawInputDevices" USER32.dll ;
+	Pointer pRawInputDevices ;	// RAWINPUTDEVICE*
+	UInteger uiNumDevices ;
+	UInteger cbSize ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

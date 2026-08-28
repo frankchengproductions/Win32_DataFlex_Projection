@@ -1,0 +1,186 @@
+Use UI
+
+Struct ATTRIBUTE_INFO_3
+	UInteger dwJobNumberOfPagesPerSide
+	UInteger dwDrvNumberOfPagesPerSide
+	UInteger dwNupBorderFlags
+	UInteger dwJobPageOrderFlags
+	UInteger dwDrvPageOrderFlags
+	UInteger dwJobNumberOfCopies
+	UInteger dwDrvNumberOfCopies
+	UInteger dwColorOptimization
+	Short dmPrintQuality
+	Short dmYResolution
+End_Struct
+
+Struct BIDI_DATA
+	UInteger dwBidiType
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+Struct BIDI_RESPONSE_CONTAINER
+	UInteger Version
+	UInteger Flags
+	UInteger Count
+	Integer iMissingAlignment1
+	BIDI_RESPONSE_DATA[1] aData
+End_Struct
+
+Struct BIDI_RESPONSE_DATA
+	UInteger dwResult
+	UInteger dwReqNumber
+	Pointer pSchema											// PWSTR
+	BIDI_DATA data
+End_Struct
+
+Struct BINARY_CONTAINER
+	UInteger cbBuf
+	Integer iMissingAlignment1
+	Pointer pData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/core-printer-driver
+Struct CORE_PRINTER_DRIVERA
+	Guid CoreDriverGUID
+	FILETIME ftDriverDate
+	UBigint dwlDriverVersion
+	Char[260] szPackageID									// CHAR
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/core-printer-driver
+Struct CORE_PRINTER_DRIVERW
+	Guid CoreDriverGUID
+	FILETIME ftDriverDate
+	UBigint dwlDriverVersion
+	UShort[260] szPackageID
+End_Struct
+
+Struct DEVQUERYPRINT_INFO
+	UShort cbSize
+	UShort Level
+	Integer iMissingAlignment1
+	Pointer hPrinter										// HANDLE
+	Pointer pDevMode										// DEVMODEA*
+	Pointer pszErrorStr										// PWSTR
+	UInteger cchErrorStr
+	UInteger cchNeeded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/doc-info-1
+Struct DOC_INFO_1A
+	Pointer pDocName										// PSTR
+	Pointer pOutputFile										// PSTR
+	Pointer pDatatype										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/doc-info-1
+Struct DOC_INFO_1W
+	Pointer pDocName										// PWSTR
+	Pointer pOutputFile										// PWSTR
+	Pointer pDatatype										// PWSTR
+End_Struct
+
+Struct MESSAGEBOX_PARAMS
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pTitle											// PWSTR
+	Pointer pMessage										// PWSTR
+	UInteger Style
+	UInteger dwTimeout
+	Integer bWait											// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-defaults
+Struct PRINTER_DEFAULTSA
+	Pointer pDatatype										// PSTR
+	Pointer pDevMode										// DEVMODEA*
+	UInteger DesiredAccess									// PRINTER_ACCESS_RIGHTS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-defaults
+Struct PRINTER_DEFAULTSW
+	Pointer pDatatype										// PWSTR
+	Pointer pDevMode										// DEVMODEW*
+	UInteger DesiredAccess									// PRINTER_ACCESS_RIGHTS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-info
+Struct PRINTER_NOTIFY_INFO
+	UInteger Version
+	UInteger Flags
+	UInteger Count
+	Integer iMissingAlignment1
+	PRINTER_NOTIFY_INFO_DATA[1] aData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-info-data
+Struct PRINTER_NOTIFY_INFO_DATA
+	UShort Type
+	UShort Field
+	UInteger Reserved
+	UInteger Id
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-options
+Struct PRINTER_NOTIFY_OPTIONS
+	UInteger Version
+	UInteger Flags
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer pTypes											// PRINTER_NOTIFY_OPTIONS_TYPE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-options-type
+Struct PRINTER_NOTIFY_OPTIONS_TYPE
+	UShort Type
+	UShort Reserved0
+	UInteger Reserved1
+	UInteger Reserved2
+	UInteger Count
+	Pointer pFields											// UShort*
+End_Struct
+
+Struct PRINTER_OPTIONSA
+	UInteger cbSize
+	UInteger dwFlags
+End_Struct
+
+Struct PRINTER_OPTIONSW
+	UInteger cbSize
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/print-execution-data
+Struct PRINT_EXECUTION_DATA
+	Integer context											// PRINT_EXECUTION_CONTEXT
+	UInteger clientAppPID
+End_Struct
+
+Struct PrintNamedProperty
+	Pointer propertyName									// PWSTR
+	PrintPropertyValue propertyValue
+End_Struct
+
+Struct PrintPropertyValue
+	Integer ePropertyType									// EPrintPropertyType
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+Struct SHOWUIPARAMS
+	Integer UIType											// UI_TYPE
+	Integer iMissingAlignment1
+	MESSAGEBOX_PARAMS MessageBoxParams
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,45 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/vsbackup/nf-vsbackup-createvssbackupcomponentsinternal
+External_Function CreateVssBackupComponentsInternal "CreateVssBackupComponentsInternal" VSSAPI.dll ;
+	Pointer ppBackup ;	// IVssBackupComponents*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vsbackup/nf-vsbackup-createvssexaminewritermetadatainternal
+External_Function CreateVssExamineWriterMetadataInternal "CreateVssExamineWriterMetadataInternal" VSSAPI.dll ;
+	Pointer bstrXML ;	// BSTR
+	Pointer ppMetadata ;	// IVssExamineWriterMetadata*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vswriter/nf-vswriter-createvssexpresswriterinternal
+External_Function CreateVssExpressWriterInternal "CreateVssExpressWriterInternal" VSSAPI.dll ;
+	Pointer ppWriter ;	// IVssExpressWriter*
+	Returns Integer	// HRESULT
+
+External_Function GetProviderMgmtInterfaceInternal "GetProviderMgmtInterfaceInternal" VSSAPI.dll ;
+	Guid ProviderId ;
+	Guid InterfaceId ;
+	Pointer ppItf ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vsbackup/nf-vsbackup-isvolumesnapshottedinternal
+External_Function IsVolumeSnapshottedInternal "IsVolumeSnapshottedInternal" VSSAPI.dll ;
+	Pointer pwszVolumeName ;	// UShort*
+	Pointer pbSnapshotsPresent ;	// BOOL*
+	Pointer plSnapshotCapability ;	// Integer*
+	Returns Integer	// HRESULT
+
+External_Function ShouldBlockRevertInternal "ShouldBlockRevertInternal" VSSAPI.dll ;
+	WString wszVolumeName ;	// PWSTR
+	Pointer pbBlock ;	// unknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vsbackup/nf-vsbackup-vssfreesnapshotpropertiesinternal
+External_Function VssFreeSnapshotPropertiesInternal "VssFreeSnapshotPropertiesInternal" VSSAPI.dll ;
+	Pointer pProp ;	// VSS_SNAPSHOT_PROP*
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

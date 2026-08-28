@@ -1,0 +1,105 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot
+External_Function CreateToolhelp32Snapshot "CreateToolhelp32Snapshot" KERNEL32.dll ;
+	UInteger dwFlags ;	// CREATE_TOOLHELP_SNAPSHOT_FLAGS
+	UInteger th32ProcessID ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-heap32first
+External_Function Heap32First "Heap32First" KERNEL32.dll ;
+	Pointer lphe ;	// HEAPENTRY32*
+	UInteger th32ProcessID ;
+	ULongPtr th32HeapID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-heap32listfirst
+External_Function Heap32ListFirst "Heap32ListFirst" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lphl ;	// HEAPLIST32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-heap32listnext
+External_Function Heap32ListNext "Heap32ListNext" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lphl ;	// HEAPLIST32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-heap32next
+External_Function Heap32Next "Heap32Next" KERNEL32.dll ;
+	Pointer lphe ;	// HEAPENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-module32first
+External_Function Module32First "Module32First" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lpme ;	// MODULEENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-module32firstw
+External_Function Module32FirstW "Module32FirstW" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lpme ;	// MODULEENTRY32W*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-module32next
+External_Function Module32Next "Module32Next" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lpme ;	// MODULEENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-module32nextw
+External_Function Module32NextW "Module32NextW" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lpme ;	// MODULEENTRY32W*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32first
+External_Function Process32First "Process32First" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lppe ;	// PROCESSENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32firstw
+External_Function Process32FirstW "Process32FirstW" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lppe ;	// PROCESSENTRY32W*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32next
+External_Function Process32Next "Process32Next" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lppe ;	// PROCESSENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-process32nextw
+External_Function Process32NextW "Process32NextW" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lppe ;	// PROCESSENTRY32W*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-thread32first
+External_Function Thread32First "Thread32First" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lpte ;	// THREADENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-thread32next
+External_Function Thread32Next "Thread32Next" KERNEL32.dll ;
+	Pointer hSnapshot ;	// HANDLE
+	Pointer lpte ;	// THREADENTRY32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/nf-tlhelp32-toolhelp32readprocessmemory
+External_Function Toolhelp32ReadProcessMemory "Toolhelp32ReadProcessMemory" KERNEL32.dll ;
+	UInteger th32ProcessID ;
+	Pointer lpBaseAddress ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	ULongPtr cbRead ;
+	Pointer lpNumberOfBytesRead ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,435 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpaddrequestheaders
+External_Function WinHttpAddRequestHeaders "WinHttpAddRequestHeaders" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	WString lpszHeaders ;	// PWSTR
+	UInteger dwHeadersLength ;
+	UInteger dwModifiers ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpaddrequestheadersex
+External_Function WinHttpAddRequestHeadersEx "WinHttpAddRequestHeadersEx" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	UInteger dwModifiers ;
+	UBigint ullFlags ;
+	UBigint ullExtra ;
+	UInteger cHeaders ;
+	Pointer pHeaders ;	// WINHTTP_EXTENDED_HEADER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpcheckplatform
+External_Function WinHttpCheckPlatform "WinHttpCheckPlatform" WINHTTP.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpclosehandle
+External_Function WinHttpCloseHandle "WinHttpCloseHandle" WINHTTP.dll ;
+	Pointer hInternet ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpconnect
+External_Function WinHttpConnect "WinHttpConnect" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	WString pswzServerName ;	// PWSTR
+	UShort nServerPort ;
+	UInteger dwReserved ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpcrackurl
+External_Function WinHttpCrackUrl "WinHttpCrackUrl" WINHTTP.dll ;
+	WString pwszUrl ;	// PWSTR
+	UInteger dwUrlLength ;
+	UInteger dwFlags ;
+	Pointer lpUrlComponents ;	// URL_COMPONENTS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpcreateproxyresolver
+External_Function WinHttpCreateProxyResolver "WinHttpCreateProxyResolver" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	Pointer phResolver ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpcreateurl
+External_Function WinHttpCreateUrl "WinHttpCreateUrl" WINHTTP.dll ;
+	Pointer lpUrlComponents ;	// URL_COMPONENTS*
+	UInteger dwFlags ;	// WIN_HTTP_CREATE_URL_FLAGS
+	Pointer pwszUrl ;	// PWSTR
+	Pointer pdwUrlLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpdetectautoproxyconfigurl
+External_Function WinHttpDetectAutoProxyConfigUrl "WinHttpDetectAutoProxyConfigUrl" WINHTTP.dll ;
+	UInteger dwAutoDetectFlags ;
+	Pointer ppwstrAutoConfigUrl ;	// PWSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpfreeproxyresult
+External_Function WinHttpFreeProxyResult "WinHttpFreeProxyResult" WINHTTP.dll ;
+	Pointer pProxyResult ;	// WINHTTP_PROXY_RESULT*
+	Returns Pointer
+
+External_Function WinHttpFreeProxyResultEx "WinHttpFreeProxyResultEx" WINHTTP.dll ;
+	Pointer pProxyResultEx ;	// WINHTTP_PROXY_RESULT_EX*
+	Returns Pointer
+
+External_Function WinHttpFreeProxySettings "WinHttpFreeProxySettings" WINHTTP.dll ;
+	Pointer pWinHttpProxySettings ;	// WINHTTP_PROXY_SETTINGS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpfreeproxysettingsex
+External_Function WinHttpFreeProxySettingsEx "WinHttpFreeProxySettingsEx" WINHTTP.dll ;
+	Integer ProxySettingsType ;	// WINHTTP_PROXY_SETTINGS_TYPE
+	Pointer pProxySettingsEx ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpfreequeryconnectiongroupresult
+External_Function WinHttpFreeQueryConnectionGroupResult "WinHttpFreeQueryConnectionGroupResult" WINHTTP.dll ;
+	Pointer pResult ;	// WINHTTP_QUERY_CONNECTION_GROUP_RESULT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetdefaultproxyconfiguration
+External_Function WinHttpGetDefaultProxyConfiguration "WinHttpGetDefaultProxyConfiguration" WINHTTP.dll ;
+	Pointer pProxyInfo ;	// WINHTTP_PROXY_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetieproxyconfigforcurrentuser
+External_Function WinHttpGetIEProxyConfigForCurrentUser "WinHttpGetIEProxyConfigForCurrentUser" WINHTTP.dll ;
+	Pointer pProxyConfig ;	// WINHTTP_CURRENT_USER_IE_PROXY_CONFIG*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetproxyforurl
+External_Function WinHttpGetProxyForUrl "WinHttpGetProxyForUrl" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	WString lpcwszUrl ;	// PWSTR
+	Pointer pAutoProxyOptions ;	// WINHTTP_AUTOPROXY_OPTIONS*
+	Pointer pProxyInfo ;	// WINHTTP_PROXY_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetproxyforurlex
+External_Function WinHttpGetProxyForUrlEx "WinHttpGetProxyForUrlEx" WINHTTP.dll ;
+	Pointer hResolver ;	// Pointer*
+	WString pcwszUrl ;	// PWSTR
+	Pointer pAutoProxyOptions ;	// WINHTTP_AUTOPROXY_OPTIONS*
+	ULongPtr pContext ;
+	Returns UInteger
+
+External_Function WinHttpGetProxyForUrlEx2 "WinHttpGetProxyForUrlEx2" WINHTTP.dll ;
+	Pointer hResolver ;	// Pointer*
+	WString pcwszUrl ;	// PWSTR
+	Pointer pAutoProxyOptions ;	// WINHTTP_AUTOPROXY_OPTIONS*
+	UInteger cbInterfaceSelectionContext ;
+	Pointer pInterfaceSelectionContext ;	// UChar*
+	ULongPtr pContext ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetproxyresult
+External_Function WinHttpGetProxyResult "WinHttpGetProxyResult" WINHTTP.dll ;
+	Pointer hResolver ;	// Pointer*
+	Pointer pProxyResult ;	// WINHTTP_PROXY_RESULT*
+	Returns UInteger
+
+External_Function WinHttpGetProxyResultEx "WinHttpGetProxyResultEx" WINHTTP.dll ;
+	Pointer hResolver ;	// Pointer*
+	Pointer pProxyResultEx ;	// WINHTTP_PROXY_RESULT_EX*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetproxysettingsex
+External_Function WinHttpGetProxySettingsEx "WinHttpGetProxySettingsEx" WINHTTP.dll ;
+	Pointer hResolver ;	// Pointer*
+	Integer ProxySettingsType ;	// WINHTTP_PROXY_SETTINGS_TYPE
+	Pointer pProxySettingsParam ;	// WINHTTP_PROXY_SETTINGS_PARAM*
+	ULongPtr pContext ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpgetproxysettingsresultex
+External_Function WinHttpGetProxySettingsResultEx "WinHttpGetProxySettingsResultEx" WINHTTP.dll ;
+	Pointer hResolver ;	// Pointer*
+	Pointer pProxySettingsEx ;	// Pointer*
+	Returns UInteger
+
+External_Function WinHttpGetProxySettingsVersion "WinHttpGetProxySettingsVersion" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	Pointer pdwProxySettingsVersion ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpopen
+External_Function WinHttpOpen "WinHttpOpen" WINHTTP.dll ;
+	WString pszAgentW ;	// PWSTR
+	UInteger dwAccessType ;	// WINHTTP_ACCESS_TYPE
+	WString pszProxyW ;	// PWSTR
+	WString pszProxyBypassW ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpopenrequest
+External_Function WinHttpOpenRequest "WinHttpOpenRequest" WINHTTP.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString pwszVerb ;	// PWSTR
+	WString pwszObjectName ;	// PWSTR
+	WString pwszVersion ;	// PWSTR
+	WString pwszReferrer ;	// PWSTR
+	Pointer ppwszAcceptTypes ;	// PWSTR*
+	UInteger dwFlags ;	// WINHTTP_OPEN_REQUEST_FLAGS
+	Returns Pointer	// Pointer*
+
+External_Function WinHttpProtocolCompleteUpgrade "WinHttpProtocolCompleteUpgrade" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+External_Function WinHttpProtocolReceive "WinHttpProtocolReceive" WINHTTP.dll ;
+	Pointer ProtocolHandle ;	// Pointer*
+	UBigint Flags ;
+	Pointer pvBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Pointer pdwBytesRead ;	// UInteger*
+	Returns UInteger
+
+External_Function WinHttpProtocolSend "WinHttpProtocolSend" WINHTTP.dll ;
+	Pointer ProtocolHandle ;	// Pointer*
+	UBigint Flags ;
+	Pointer pvBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpqueryauthschemes
+External_Function WinHttpQueryAuthSchemes "WinHttpQueryAuthSchemes" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpdwSupportedSchemes ;	// UInteger*
+	Pointer lpdwFirstScheme ;	// UInteger*
+	Pointer pdwAuthTarget ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpqueryconnectiongroup
+External_Function WinHttpQueryConnectionGroup "WinHttpQueryConnectionGroup" WINHTTP.dll ;
+	Pointer hInternet ;	// Pointer*
+	Pointer pGuidConnection ;	// Guid*
+	UBigint ullFlags ;
+	Pointer ppResult ;	// WINHTTP_QUERY_CONNECTION_GROUP_RESULT**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpquerydataavailable
+External_Function WinHttpQueryDataAvailable "WinHttpQueryDataAvailable" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpdwNumberOfBytesAvailable ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpqueryheaders
+External_Function WinHttpQueryHeaders "WinHttpQueryHeaders" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	UInteger dwInfoLevel ;
+	WString pwszName ;	// PWSTR
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpdwBufferLength ;	// UInteger*
+	Pointer lpdwIndex ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpqueryheadersex
+External_Function WinHttpQueryHeadersEx "WinHttpQueryHeadersEx" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	UInteger dwInfoLevel ;
+	UBigint ullFlags ;
+	UInteger uiCodePage ;
+	Pointer pdwIndex ;	// UInteger*
+	Pointer pHeaderName ;	// WINHTTP_HEADER_NAME*
+	Pointer pBuffer ;	// Pointer*
+	Pointer pdwBufferLength ;	// UInteger*
+	Pointer ppHeaders ;	// WINHTTP_EXTENDED_HEADER**
+	Pointer pdwHeadersCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpqueryoption
+External_Function WinHttpQueryOption "WinHttpQueryOption" WINHTTP.dll ;
+	Pointer hInternet ;	// Pointer*
+	UInteger dwOption ;
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpdwBufferLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpreaddata
+External_Function WinHttpReadData "WinHttpReadData" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwNumberOfBytesToRead ;
+	Pointer lpdwNumberOfBytesRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpreaddataex
+External_Function WinHttpReadDataEx "WinHttpReadDataEx" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwNumberOfBytesToRead ;
+	Pointer lpdwNumberOfBytesRead ;	// UInteger*
+	UBigint ullFlags ;
+	UInteger cbProperty ;
+	Pointer pvProperty ;	// Pointer*
+	Returns UInteger
+
+External_Function WinHttpReadProxySettings "WinHttpReadProxySettings" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	WString pcwszConnectionName ;	// PWSTR
+	Integer fFallBackToDefaultSettings ;	// BOOL
+	Integer fSetAutoDiscoverForDefaultSettings ;	// BOOL
+	Pointer pdwSettingsVersion ;	// UInteger*
+	Pointer pfDefaultSettingsAreReturned ;	// BOOL*
+	Pointer pWinHttpProxySettings ;	// WINHTTP_PROXY_SETTINGS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpreceiveresponse
+External_Function WinHttpReceiveResponse "WinHttpReceiveResponse" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpregisterproxychangenotification
+External_Function WinHttpRegisterProxyChangeNotification "WinHttpRegisterProxyChangeNotification" WINHTTP.dll ;
+	UBigint ullFlags ;
+	Pointer pfnCallback ;	// WINHTTP_PROXY_CHANGE_CALLBACK
+	Pointer pvContext ;	// Pointer*
+	Pointer hRegistration ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpresetautoproxy
+External_Function WinHttpResetAutoProxy "WinHttpResetAutoProxy" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpsendrequest
+External_Function WinHttpSendRequest "WinHttpSendRequest" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	WString lpszHeaders ;	// PWSTR
+	UInteger dwHeadersLength ;
+	Pointer lpOptional ;	// Pointer*
+	UInteger dwOptionalLength ;
+	UInteger dwTotalLength ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpsetcredentials
+External_Function WinHttpSetCredentials "WinHttpSetCredentials" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	UInteger AuthTargets ;
+	UInteger AuthScheme ;
+	WString pwszUserName ;	// PWSTR
+	WString pwszPassword ;	// PWSTR
+	Pointer pAuthParams ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpsetdefaultproxyconfiguration
+External_Function WinHttpSetDefaultProxyConfiguration "WinHttpSetDefaultProxyConfiguration" WINHTTP.dll ;
+	Pointer pProxyInfo ;	// WINHTTP_PROXY_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpsetoption
+External_Function WinHttpSetOption "WinHttpSetOption" WINHTTP.dll ;
+	Pointer hInternet ;	// Pointer*
+	UInteger dwOption ;
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Returns Integer	// BOOL
+
+External_Function WinHttpSetProxySettingsPerUser "WinHttpSetProxySettingsPerUser" WINHTTP.dll ;
+	Integer fProxySettingsPerUser ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpsetstatuscallback
+External_Function WinHttpSetStatusCallback "WinHttpSetStatusCallback" WINHTTP.dll ;
+	Pointer hInternet ;	// Pointer*
+	Pointer lpfnInternetCallback ;	// WINHTTP_STATUS_CALLBACK
+	UInteger dwNotificationFlags ;
+	ULongPtr dwReserved ;
+	Returns Pointer	// WINHTTP_STATUS_CALLBACK
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpsettimeouts
+External_Function WinHttpSetTimeouts "WinHttpSetTimeouts" WINHTTP.dll ;
+	Pointer hInternet ;	// Pointer*
+	Integer nResolveTimeout ;
+	Integer nConnectTimeout ;
+	Integer nSendTimeout ;
+	Integer nReceiveTimeout ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttptimefromsystemtime
+External_Function WinHttpTimeFromSystemTime "WinHttpTimeFromSystemTime" WINHTTP.dll ;
+	Pointer pst ;	// SYSTEMTIME*
+	Pointer pwszTime ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttptimetosystemtime
+External_Function WinHttpTimeToSystemTime "WinHttpTimeToSystemTime" WINHTTP.dll ;
+	WString pwszTime ;	// PWSTR
+	Pointer pst ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpunregisterproxychangenotification
+External_Function WinHttpUnregisterProxyChangeNotification "WinHttpUnregisterProxyChangeNotification" WINHTTP.dll ;
+	Pointer hRegistration ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwebsocketclose
+External_Function WinHttpWebSocketClose "WinHttpWebSocketClose" WINHTTP.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	UShort usStatus ;
+	Pointer pvReason ;	// Pointer*
+	UInteger dwReasonLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwebsocketcompleteupgrade
+External_Function WinHttpWebSocketCompleteUpgrade "WinHttpWebSocketCompleteUpgrade" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	ULongPtr pContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwebsocketqueryclosestatus
+External_Function WinHttpWebSocketQueryCloseStatus "WinHttpWebSocketQueryCloseStatus" WINHTTP.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	Pointer pusStatus ;	// UShort*
+	Pointer pvReason ;	// Pointer*
+	UInteger dwReasonLength ;
+	Pointer pdwReasonLengthConsumed ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwebsocketreceive
+External_Function WinHttpWebSocketReceive "WinHttpWebSocketReceive" WINHTTP.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	Pointer pvBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Pointer pdwBytesRead ;	// UInteger*
+	Pointer peBufferType ;	// WINHTTP_WEB_SOCKET_BUFFER_TYPE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwebsocketsend
+External_Function WinHttpWebSocketSend "WinHttpWebSocketSend" WINHTTP.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	Integer eBufferType ;	// WINHTTP_WEB_SOCKET_BUFFER_TYPE
+	Pointer pvBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwebsocketshutdown
+External_Function WinHttpWebSocketShutdown "WinHttpWebSocketShutdown" WINHTTP.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	UShort usStatus ;
+	Pointer pvReason ;	// Pointer*
+	UInteger dwReasonLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/nf-winhttp-winhttpwritedata
+External_Function WinHttpWriteData "WinHttpWriteData" WINHTTP.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwNumberOfBytesToWrite ;
+	Pointer lpdwNumberOfBytesWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function WinHttpWriteProxySettings "WinHttpWriteProxySettings" WINHTTP.dll ;
+	Pointer hSession ;	// Pointer*
+	Integer fForceUpdate ;	// BOOL
+	Pointer pWinHttpProxySettings ;	// WINHTTP_PROXY_SETTINGS*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

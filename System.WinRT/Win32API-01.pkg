@@ -1,0 +1,433 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-codecodeproxy
+External_Function CoDecodeProxy "CoDecodeProxy" OLE32.dll ;
+	UInteger dwClientPid ;
+	UBigint ui64ProxyAddress ;
+	Pointer pServerInformation ;	// ServerInformation*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-rogetagilereference
+External_Function RoGetAgileReference "RoGetAgileReference" OLE32.dll ;
+	Integer options ;	// AgileReferenceOptions
+	Pointer riid ;	// Guid*
+	Pointer pUnk ;	// IUnknown
+	Pointer ppAgileReference ;	// IAgileReference*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_userfree
+External_Function HSTRING_UserFree "HSTRING_UserFree" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// HSTRING*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_userfree64
+External_Function HSTRING_UserFree64 "HSTRING_UserFree64" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// HSTRING*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_usermarshal
+External_Function HSTRING_UserMarshal "HSTRING_UserMarshal" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HSTRING*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_usermarshal64
+External_Function HSTRING_UserMarshal64 "HSTRING_UserMarshal64" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HSTRING*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_usersize
+External_Function HSTRING_UserSize "HSTRING_UserSize" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// HSTRING*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_usersize64
+External_Function HSTRING_UserSize64 "HSTRING_UserSize64" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// HSTRING*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_userunmarshal
+External_Function HSTRING_UserUnmarshal "HSTRING_UserUnmarshal" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HSTRING*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/remotesystemadditionalinfo/nf-remotesystemadditionalinfo-hstring_userunmarshal64
+External_Function HSTRING_UserUnmarshal64 "HSTRING_UserUnmarshal64" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HSTRING*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowscomparestringordinal
+External_Function WindowsCompareStringOrdinal "WindowsCompareStringOrdinal" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string1 ;	// HSTRING
+	Pointer string2 ;	// HSTRING
+	Pointer result ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsconcatstring
+External_Function WindowsConcatString "WindowsConcatString" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string1 ;	// HSTRING
+	Pointer string2 ;	// HSTRING
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowscreatestring
+External_Function WindowsCreateString "WindowsCreateString" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	WString sourceString ;	// PWSTR
+	UInteger length ;
+	Pointer string ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowscreatestringreference
+External_Function WindowsCreateStringReference "WindowsCreateStringReference" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	WString sourceString ;	// PWSTR
+	UInteger length ;
+	Pointer hstringHeader ;	// HSTRING_HEADER*
+	Pointer string ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsdeletestring
+External_Function WindowsDeleteString "WindowsDeleteString" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsdeletestringbuffer
+External_Function WindowsDeleteStringBuffer "WindowsDeleteStringBuffer" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer bufferHandle ;	// HSTRING_BUFFER
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsduplicatestring
+External_Function WindowsDuplicateString "WindowsDuplicateString" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsgetstringlen
+External_Function WindowsGetStringLen "WindowsGetStringLen" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsgetstringrawbuffer
+External_Function WindowsGetStringRawBuffer "WindowsGetStringRawBuffer" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Pointer length ;	// UInteger*
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsinspectstring
+External_Function WindowsInspectString "WindowsInspectString" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	ULongPtr targetHString ;
+	UShort machine ;
+	Pointer callback ;	// PINSPECT_HSTRING_CALLBACK
+	Pointer context ;	// Pointer*
+	Pointer length ;	// UInteger*
+	Pointer targetStringAddress ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsisstringempty
+External_Function WindowsIsStringEmpty "WindowsIsStringEmpty" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowspreallocatestringbuffer
+External_Function WindowsPreallocateStringBuffer "WindowsPreallocateStringBuffer" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	UInteger length ;
+	Pointer charBuffer ;	// UShort**
+	Pointer bufferHandle ;	// HSTRING_BUFFER*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowspromotestringbuffer
+External_Function WindowsPromoteStringBuffer "WindowsPromoteStringBuffer" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer bufferHandle ;	// HSTRING_BUFFER
+	Pointer string ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsreplacestring
+External_Function WindowsReplaceString "WindowsReplaceString" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Pointer stringReplaced ;	// HSTRING
+	Pointer stringReplaceWith ;	// HSTRING
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsstringhasembeddednull
+External_Function WindowsStringHasEmbeddedNull "WindowsStringHasEmbeddedNull" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Pointer hasEmbedNull ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowssubstring
+External_Function WindowsSubstring "WindowsSubstring" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	UInteger startIndex ;
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowssubstringwithspecifiedlength
+External_Function WindowsSubstringWithSpecifiedLength "WindowsSubstringWithSpecifiedLength" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	UInteger startIndex ;
+	UInteger length ;
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowstrimstringend
+External_Function WindowsTrimStringEnd "WindowsTrimStringEnd" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Pointer trimString ;	// HSTRING
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowstrimstringstart
+External_Function WindowsTrimStringStart "WindowsTrimStringStart" api-ms-win-core-winrt-string-l1-1-0.dll ;
+	Pointer string ;	// HSTRING
+	Pointer trimString ;	// HSTRING
+	Pointer newString ;	// HSTRING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winstring/nf-winstring-windowsinspectstring2
+External_Function WindowsInspectString2 "WindowsInspectString2" api-ms-win-core-winrt-string-l1-1-1.dll ;
+	UBigint targetHString ;
+	UShort machine ;
+	Pointer callback ;	// PINSPECT_HSTRING_CALLBACK2
+	Pointer context ;	// Pointer*
+	Pointer length ;	// UInteger*
+	Pointer targetStringAddress ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dispatcherqueue/nf-dispatcherqueue-createdispatcherqueuecontroller
+External_Function CreateDispatcherQueueController "CreateDispatcherQueueController" CoreMessaging.dll ;
+	DispatcherQueueOptions options ;
+	Pointer dispatcherQueueController ;	// unknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-roactivateinstance
+External_Function RoActivateInstance "RoActivateInstance" api-ms-win-core-winrt-l1-1-0.dll ;
+	Pointer activatableClassId ;	// HSTRING
+	Pointer instance ;	// IInspectable*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-rogetactivationfactory
+External_Function RoGetActivationFactory "RoGetActivationFactory" api-ms-win-core-winrt-l1-1-0.dll ;
+	Pointer activatableClassId ;	// HSTRING
+	Pointer iid ;	// Guid*
+	Pointer factory ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-rogetapartmentidentifier
+External_Function RoGetApartmentIdentifier "RoGetApartmentIdentifier" api-ms-win-core-winrt-l1-1-0.dll ;
+	Pointer apartmentIdentifier ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-roinitialize
+External_Function RoInitialize "RoInitialize" api-ms-win-core-winrt-l1-1-0.dll ;
+	Integer initType ;	// RO_INIT_TYPE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-roregisteractivationfactories
+External_Function RoRegisterActivationFactories "RoRegisterActivationFactories" api-ms-win-core-winrt-l1-1-0.dll ;
+	Pointer activatableClassIds ;	// HSTRING*
+	Pointer activationFactoryCallbacks ;	// PFNGETACTIVATIONFACTORY*
+	UInteger count ;
+	Pointer cookie ;	// RO_REGISTRATION_COOKIE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-roregisterforapartmentshutdown
+External_Function RoRegisterForApartmentShutdown "RoRegisterForApartmentShutdown" api-ms-win-core-winrt-l1-1-0.dll ;
+	Pointer callbackObject ;	// IApartmentShutdown
+	Pointer apartmentIdentifier ;	// UBigint*
+	Pointer regCookie ;	// APARTMENT_SHUTDOWN_REGISTRATION_COOKIE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-rorevokeactivationfactories
+External_Function RoRevokeActivationFactories "RoRevokeActivationFactories" api-ms-win-core-winrt-l1-1-0.dll ;
+	LongPtr cookie ;	// RO_REGISTRATION_COOKIE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-rouninitialize
+External_Function RoUninitialize "RoUninitialize" api-ms-win-core-winrt-l1-1-0.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/roapi/nf-roapi-rounregisterforapartmentshutdown
+External_Function RoUnregisterForApartmentShutdown "RoUnregisterForApartmentShutdown" api-ms-win-core-winrt-l1-1-0.dll ;
+	Pointer regCookie ;	// APARTMENT_SHUTDOWN_REGISTRATION_COOKIE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/robuffer/nf-robuffer-rogetbuffermarshaler
+External_Function RoGetBufferMarshaler "RoGetBufferMarshaler" api-ms-win-core-winrt-robuffer-l1-1-0.dll ;
+	Pointer bufferMarshaler ;	// IMarshal*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-getrestrictederrorinfo
+External_Function GetRestrictedErrorInfo "GetRestrictedErrorInfo" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Pointer ppRestrictedErrorInfo ;	// IRestrictedErrorInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rocaptureerrorcontext
+External_Function RoCaptureErrorContext "RoCaptureErrorContext" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Integer hr ;	// HRESULT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rofailfastwitherrorcontext
+External_Function RoFailFastWithErrorContext "RoFailFastWithErrorContext" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Integer hrError ;	// HRESULT
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rogeterrorreportingflags
+External_Function RoGetErrorReportingFlags "RoGetErrorReportingFlags" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Pointer pflags ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rooriginateerror
+External_Function RoOriginateError "RoOriginateError" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Integer error ;	// HRESULT
+	Pointer message ;	// HSTRING
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rooriginateerrorw
+External_Function RoOriginateErrorW "RoOriginateErrorW" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Integer error ;	// HRESULT
+	UInteger cchMax ;
+	WString message ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roresolverestrictederrorinforeference
+External_Function RoResolveRestrictedErrorInfoReference "RoResolveRestrictedErrorInfoReference" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	WString reference ;	// PWSTR
+	Pointer ppRestrictedErrorInfo ;	// IRestrictedErrorInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roseterrorreportingflags
+External_Function RoSetErrorReportingFlags "RoSetErrorReportingFlags" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	UInteger flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rotransformerror
+External_Function RoTransformError "RoTransformError" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Integer oldError ;	// HRESULT
+	Integer newError ;	// HRESULT
+	Pointer message ;	// HSTRING
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rotransformerrorw
+External_Function RoTransformErrorW "RoTransformErrorW" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Integer oldError ;	// HRESULT
+	Integer newError ;	// HRESULT
+	UInteger cchMax ;
+	WString message ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-setrestrictederrorinfo
+External_Function SetRestrictedErrorInfo "SetRestrictedErrorInfo" api-ms-win-core-winrt-error-l1-1-0.dll ;
+	Pointer pRestrictedErrorInfo ;	// IRestrictedErrorInfo
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-iserrorpropagationenabled
+External_Function IsErrorPropagationEnabled "IsErrorPropagationEnabled" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roclearerror
+External_Function RoClearError "RoClearError" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rogetmatchingrestrictederrorinfo
+External_Function RoGetMatchingRestrictedErrorInfo "RoGetMatchingRestrictedErrorInfo" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	Integer hrIn ;	// HRESULT
+	Pointer ppRestrictedErrorInfo ;	// IRestrictedErrorInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roinspectcapturedstackbacktrace
+External_Function RoInspectCapturedStackBackTrace "RoInspectCapturedStackBackTrace" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	ULongPtr targetErrorInfoAddress ;
+	UShort machine ;
+	Pointer readMemoryCallback ;	// PINSPECT_MEMORY_CALLBACK
+	Pointer context ;	// Pointer*
+	Pointer frameCount ;	// UInteger*
+	Pointer targetBackTraceAddress ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roinspectthreaderrorinfo
+External_Function RoInspectThreadErrorInfo "RoInspectThreadErrorInfo" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	ULongPtr targetTebAddress ;
+	UShort machine ;
+	Pointer readMemoryCallback ;	// PINSPECT_MEMORY_CALLBACK
+	Pointer context ;	// Pointer*
+	Pointer targetErrorInfoAddress ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-rooriginatelanguageexception
+External_Function RoOriginateLanguageException "RoOriginateLanguageException" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	Integer error ;	// HRESULT
+	Pointer message ;	// HSTRING
+	Pointer languageException ;	// IUnknown
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roreportfaileddelegate
+External_Function RoReportFailedDelegate "RoReportFailedDelegate" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	Pointer punkDelegate ;	// IUnknown
+	Pointer pRestrictedErrorInfo ;	// IRestrictedErrorInfo
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roerrorapi/nf-roerrorapi-roreportunhandlederror
+External_Function RoReportUnhandledError "RoReportUnhandledError" api-ms-win-core-winrt-error-l1-1-1.dll ;
+	Pointer pRestrictedErrorInfo ;	// IRestrictedErrorInfo
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roregistrationapi/nf-roregistrationapi-rogetserveractivatableclasses
+External_Function RoGetServerActivatableClasses "RoGetServerActivatableClasses" api-ms-win-core-winrt-registration-l1-1-0.dll ;
+	Pointer serverName ;	// HSTRING
+	Pointer activatableClassIds ;	// HSTRING**
+	Pointer count ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shcore/nf-shcore-createrandomaccessstreamonfile
+External_Function CreateRandomAccessStreamOnFile "CreateRandomAccessStreamOnFile" api-ms-win-shcore-stream-winrt-l1-1-0.dll ;
+	WString filePath ;	// PWSTR
+	UInteger accessMode ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shcore/nf-shcore-createrandomaccessstreamoverstream
+External_Function CreateRandomAccessStreamOverStream "CreateRandomAccessStreamOverStream" api-ms-win-shcore-stream-winrt-l1-1-0.dll ;
+	Pointer stream ;	// IStream
+	Integer options ;	// BSOS_OPTIONS
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shcore/nf-shcore-createstreamoverrandomaccessstream
+External_Function CreateStreamOverRandomAccessStream "CreateStreamOverRandomAccessStream" api-ms-win-shcore-stream-winrt-l1-1-0.dll ;
+	Pointer randomAccessStream ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/corewindow/nf-corewindow-createcontrolinput
+External_Function CreateControlInput "CreateControlInput" Windows.UI.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/corewindow/nf-corewindow-createcontrolinputex
+External_Function CreateControlInputEx "CreateControlInputEx" Windows.UI.dll ;
+	Pointer pCoreWindow ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

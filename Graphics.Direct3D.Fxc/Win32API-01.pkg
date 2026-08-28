@@ -1,0 +1,231 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile
+External_Function D3DCompile "D3DCompile" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	String pSourceName ;	// PSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	String pEntrypoint ;	// PSTR
+	String pTarget ;	// PSTR
+	UInteger Flags1 ;
+	UInteger Flags2 ;
+	Pointer ppCode ;	// ID3DBlob*
+	Pointer ppErrorMsgs ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile2
+External_Function D3DCompile2 "D3DCompile2" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	String pSourceName ;	// PSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	String pEntrypoint ;	// PSTR
+	String pTarget ;	// PSTR
+	UInteger Flags1 ;
+	UInteger Flags2 ;
+	UInteger SecondaryDataFlags ;
+	Pointer pSecondaryData ;	// Pointer*
+	ULongPtr SecondaryDataSize ;
+	Pointer ppCode ;	// ID3DBlob*
+	Pointer ppErrorMsgs ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompilefromfile
+External_Function D3DCompileFromFile "D3DCompileFromFile" D3DCOMPILER_47.dll ;
+	WString pFileName ;	// PWSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	String pEntrypoint ;	// PSTR
+	String pTarget ;	// PSTR
+	UInteger Flags1 ;
+	UInteger Flags2 ;
+	Pointer ppCode ;	// ID3DBlob*
+	Pointer ppErrorMsgs ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompressshaders
+External_Function D3DCompressShaders "D3DCompressShaders" D3DCOMPILER_47.dll ;
+	UInteger uNumShaders ;
+	Pointer pShaderData ;	// D3D_SHADER_DATA*
+	UInteger uFlags ;
+	Pointer ppCompressedData ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcreateblob
+External_Function D3DCreateBlob "D3DCreateBlob" D3DCOMPILER_47.dll ;
+	ULongPtr Size ;
+	Pointer ppBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcreatefunctionlinkinggraph
+External_Function D3DCreateFunctionLinkingGraph "D3DCreateFunctionLinkingGraph" D3DCOMPILER_47.dll ;
+	UInteger uFlags ;
+	Pointer ppFunctionLinkingGraph ;	// ID3D11FunctionLinkingGraph*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcreatelinker
+External_Function D3DCreateLinker "D3DCreateLinker" D3DCOMPILER_47.dll ;
+	Pointer ppLinker ;	// ID3D11Linker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddecompressshaders
+External_Function D3DDecompressShaders "D3DDecompressShaders" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	UInteger uNumShaders ;
+	UInteger uStartIndex ;
+	Pointer pIndices ;	// UInteger*
+	UInteger uFlags ;
+	Pointer ppShaders ;	// ID3DBlob*
+	Pointer pTotalShaders ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassemble
+External_Function D3DDisassemble "D3DDisassemble" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	UInteger Flags ;
+	String szComments ;	// PSTR
+	Pointer ppDisassembly ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassemble10effect
+External_Function D3DDisassemble10Effect "D3DDisassemble10Effect" D3DCOMPILER_47.dll ;
+	Pointer pEffect ;	// ID3D10Effect
+	UInteger Flags ;
+	Pointer ppDisassembly ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3ddisassembleregion
+External_Function D3DDisassembleRegion "D3DDisassembleRegion" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	UInteger Flags ;
+	String szComments ;	// PSTR
+	ULongPtr StartByteOffset ;
+	ULongPtr NumInsts ;
+	Pointer pFinishByteOffset ;	// ULongPtr*
+	Pointer ppDisassembly ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetblobpart
+External_Function D3DGetBlobPart "D3DGetBlobPart" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Integer Part ;	// D3D_BLOB_PART
+	UInteger Flags ;
+	Pointer ppPart ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetdebuginfo
+External_Function D3DGetDebugInfo "D3DGetDebugInfo" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Pointer ppDebugInfo ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetinputandoutputsignatureblob
+External_Function D3DGetInputAndOutputSignatureBlob "D3DGetInputAndOutputSignatureBlob" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Pointer ppSignatureBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetinputsignatureblob
+External_Function D3DGetInputSignatureBlob "D3DGetInputSignatureBlob" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Pointer ppSignatureBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgetoutputsignatureblob
+External_Function D3DGetOutputSignatureBlob "D3DGetOutputSignatureBlob" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Pointer ppSignatureBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dgettraceinstructionoffsets
+External_Function D3DGetTraceInstructionOffsets "D3DGetTraceInstructionOffsets" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	UInteger Flags ;
+	ULongPtr StartInstIndex ;
+	ULongPtr NumInsts ;
+	Pointer pOffsets ;	// ULongPtr*
+	Pointer pTotalInsts ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dloadmodule
+External_Function D3DLoadModule "D3DLoadModule" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr cbSrcDataSize ;
+	Pointer ppModule ;	// ID3D11Module*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dpreprocess
+External_Function D3DPreprocess "D3DPreprocess" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	String pSourceName ;	// PSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	Pointer ppCodeText ;	// ID3DBlob*
+	Pointer ppErrorMsgs ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreadfiletoblob
+External_Function D3DReadFileToBlob "D3DReadFileToBlob" D3DCOMPILER_47.dll ;
+	WString pFileName ;	// PWSTR
+	Pointer ppContents ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreflect
+External_Function D3DReflect "D3DReflect" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Pointer pInterface ;	// Guid*
+	Pointer ppReflector ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dreflectlibrary
+External_Function D3DReflectLibrary "D3DReflectLibrary" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Pointer riid ;	// Guid*
+	Pointer ppReflector ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dsetblobpart
+External_Function D3DSetBlobPart "D3DSetBlobPart" D3DCOMPILER_47.dll ;
+	Pointer pSrcData ;	// Pointer*
+	ULongPtr SrcDataSize ;
+	Integer Part ;	// D3D_BLOB_PART
+	UInteger Flags ;
+	Pointer pPart ;	// Pointer*
+	ULongPtr PartSize ;
+	Pointer ppNewShader ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dstripshader
+External_Function D3DStripShader "D3DStripShader" D3DCOMPILER_47.dll ;
+	Pointer pShaderBytecode ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	UInteger uStripFlags ;
+	Pointer ppStrippedBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dwriteblobtofile
+External_Function D3DWriteBlobToFile "D3DWriteBlobToFile" D3DCOMPILER_47.dll ;
+	Pointer pBlob ;	// ID3DBlob
+	WString pFileName ;	// PWSTR
+	Integer bOverwrite ;	// BOOL
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

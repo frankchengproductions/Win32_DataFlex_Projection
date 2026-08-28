@@ -1,0 +1,764 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-addsecurememorycachecallback
+External_Function AddSecureMemoryCacheCallback "AddSecureMemoryCacheCallback" KERNEL32.dll ;
+	Pointer pfnCallBack ;	// PSECURE_MEMORY_CACHE_CALLBACK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-allocateuserphysicalpages
+External_Function AllocateUserPhysicalPages "AllocateUserPhysicalPages" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer NumberOfPages ;	// ULongPtr*
+	Pointer PageArray ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-allocateuserphysicalpagesnuma
+External_Function AllocateUserPhysicalPagesNuma "AllocateUserPhysicalPagesNuma" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer NumberOfPages ;	// ULongPtr*
+	Pointer PageArray ;	// ULongPtr*
+	UInteger nndPreferred ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createfilemappinga
+External_Function CreateFileMappingA "CreateFileMappingA" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileMappingAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger flProtect ;	// PAGE_PROTECTION_FLAGS
+	UInteger dwMaximumSizeHigh ;
+	UInteger dwMaximumSizeLow ;
+	String lpName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-createfilemappingfromapp
+External_Function CreateFileMappingFromApp "CreateFileMappingFromApp" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer SecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger PageProtection ;	// PAGE_PROTECTION_FLAGS
+	UBigint MaximumSize ;
+	WString Name ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createfilemappingnumaa
+External_Function CreateFileMappingNumaA "CreateFileMappingNumaA" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileMappingAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger flProtect ;	// PAGE_PROTECTION_FLAGS
+	UInteger dwMaximumSizeHigh ;
+	UInteger dwMaximumSizeLow ;
+	String lpName ;	// PSTR
+	UInteger nndPreferred ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-createfilemappingnumaw
+External_Function CreateFileMappingNumaW "CreateFileMappingNumaW" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileMappingAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger flProtect ;	// PAGE_PROTECTION_FLAGS
+	UInteger dwMaximumSizeHigh ;
+	UInteger dwMaximumSizeLow ;
+	WString lpName ;	// PWSTR
+	UInteger nndPreferred ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-createfilemappingw
+External_Function CreateFileMappingW "CreateFileMappingW" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileMappingAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger flProtect ;	// PAGE_PROTECTION_FLAGS
+	UInteger dwMaximumSizeHigh ;
+	UInteger dwMaximumSizeLow ;
+	WString lpName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-creatememoryresourcenotification
+External_Function CreateMemoryResourceNotification "CreateMemoryResourceNotification" KERNEL32.dll ;
+	Integer NotificationType ;	// MEMORY_RESOURCE_NOTIFICATION_TYPE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-discardvirtualmemory
+External_Function DiscardVirtualMemory "DiscardVirtualMemory" KERNEL32.dll ;
+	Pointer VirtualAddress ;	// Pointer*
+	ULongPtr Size ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-flushviewoffile
+External_Function FlushViewOfFile "FlushViewOfFile" KERNEL32.dll ;
+	Pointer lpBaseAddress ;	// Pointer*
+	ULongPtr dwNumberOfBytesToFlush ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-freeuserphysicalpages
+External_Function FreeUserPhysicalPages "FreeUserPhysicalPages" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer NumberOfPages ;	// ULongPtr*
+	Pointer PageArray ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-getlargepageminimum
+External_Function GetLargePageMinimum "GetLargePageMinimum" KERNEL32.dll ;
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-getmemoryerrorhandlingcapabilities
+External_Function GetMemoryErrorHandlingCapabilities "GetMemoryErrorHandlingCapabilities" KERNEL32.dll ;
+	Pointer Capabilities ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-getprocessheap
+External_Function GetProcessHeap "GetProcessHeap" KERNEL32.dll ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-getprocessheaps
+External_Function GetProcessHeaps "GetProcessHeaps" KERNEL32.dll ;
+	UInteger NumberOfHeaps ;
+	Pointer ProcessHeaps ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-getprocessworkingsetsizeex
+External_Function GetProcessWorkingSetSizeEx "GetProcessWorkingSetSizeEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpMinimumWorkingSetSize ;	// ULongPtr*
+	Pointer lpMaximumWorkingSetSize ;	// ULongPtr*
+	Pointer Flags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-getsystemfilecachesize
+External_Function GetSystemFileCacheSize "GetSystemFileCacheSize" KERNEL32.dll ;
+	Pointer lpMinimumFileCacheSize ;	// ULongPtr*
+	Pointer lpMaximumFileCacheSize ;	// ULongPtr*
+	Pointer lpFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-getwritewatch
+External_Function GetWriteWatch "GetWriteWatch" KERNEL32.dll ;
+	UInteger dwFlags ;
+	Pointer lpBaseAddress ;	// Pointer*
+	ULongPtr dwRegionSize ;
+	Pointer lpAddresses ;	// Pointer**
+	Pointer lpdwCount ;	// ULongPtr*
+	Pointer lpdwGranularity ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalalloc
+External_Function GlobalAlloc "GlobalAlloc" KERNEL32.dll ;
+	UInteger uFlags ;	// GLOBAL_ALLOC_FLAGS
+	ULongPtr dwBytes ;
+	Returns Pointer	// HGLOBAL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalflags
+External_Function GlobalFlags "GlobalFlags" KERNEL32.dll ;
+	Pointer hMem ;	// HGLOBAL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalhandle
+External_Function GlobalHandle "GlobalHandle" KERNEL32.dll ;
+	Pointer pMem ;	// Pointer*
+	Returns Pointer	// HGLOBAL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globallock
+External_Function GlobalLock "GlobalLock" KERNEL32.dll ;
+	Pointer hMem ;	// HGLOBAL
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalrealloc
+External_Function GlobalReAlloc "GlobalReAlloc" KERNEL32.dll ;
+	Pointer hMem ;	// HGLOBAL
+	ULongPtr dwBytes ;
+	UInteger uFlags ;
+	Returns Pointer	// HGLOBAL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalsize
+External_Function GlobalSize "GlobalSize" KERNEL32.dll ;
+	Pointer hMem ;	// HGLOBAL
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalunlock
+External_Function GlobalUnlock "GlobalUnlock" KERNEL32.dll ;
+	Pointer hMem ;	// HGLOBAL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapalloc
+External_Function HeapAlloc "HeapAlloc" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;	// HEAP_FLAGS
+	ULongPtr dwBytes ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapcompact
+External_Function HeapCompact "HeapCompact" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;	// HEAP_FLAGS
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapcreate
+External_Function HeapCreate "HeapCreate" KERNEL32.dll ;
+	UInteger flOptions ;	// HEAP_FLAGS
+	ULongPtr dwInitialSize ;
+	ULongPtr dwMaximumSize ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapdestroy
+External_Function HeapDestroy "HeapDestroy" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapfree
+External_Function HeapFree "HeapFree" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;	// HEAP_FLAGS
+	Pointer lpMem ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heaplock
+External_Function HeapLock "HeapLock" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapqueryinformation
+External_Function HeapQueryInformation "HeapQueryInformation" KERNEL32.dll ;
+	Pointer HeapHandle ;	// HANDLE
+	Integer HeapInformationClass ;	// HEAP_INFORMATION_CLASS
+	Pointer HeapInformation ;	// Pointer*
+	ULongPtr HeapInformationLength ;
+	Pointer ReturnLength ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heaprealloc
+External_Function HeapReAlloc "HeapReAlloc" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;	// HEAP_FLAGS
+	Pointer lpMem ;	// Pointer*
+	ULongPtr dwBytes ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapsetinformation
+External_Function HeapSetInformation "HeapSetInformation" KERNEL32.dll ;
+	Pointer HeapHandle ;	// HANDLE
+	Integer HeapInformationClass ;	// HEAP_INFORMATION_CLASS
+	Pointer HeapInformation ;	// Pointer*
+	ULongPtr HeapInformationLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapsize
+External_Function HeapSize "HeapSize" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;	// HEAP_FLAGS
+	Pointer lpMem ;	// Pointer*
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapsummary
+External_Function HeapSummary "HeapSummary" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;
+	Pointer lpSummary ;	// HEAP_SUMMARY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapunlock
+External_Function HeapUnlock "HeapUnlock" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapvalidate
+External_Function HeapValidate "HeapValidate" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;	// HEAP_FLAGS
+	Pointer lpMem ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/nf-heapapi-heapwalk
+External_Function HeapWalk "HeapWalk" KERNEL32.dll ;
+	Pointer hHeap ;	// HANDLE
+	Pointer lpEntry ;	// PROCESS_HEAP_ENTRY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-isbadcodeptr
+External_Function IsBadCodePtr "IsBadCodePtr" KERNEL32.dll ;
+	Pointer lpfn ;	// FARPROC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-isbadreadptr
+External_Function IsBadReadPtr "IsBadReadPtr" KERNEL32.dll ;
+	Pointer lp ;	// Pointer*
+	ULongPtr ucb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-isbadstringptra
+External_Function IsBadStringPtrA "IsBadStringPtrA" KERNEL32.dll ;
+	String lpsz ;	// PSTR
+	ULongPtr ucchMax ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-isbadstringptrw
+External_Function IsBadStringPtrW "IsBadStringPtrW" KERNEL32.dll ;
+	WString lpsz ;	// PWSTR
+	ULongPtr ucchMax ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-isbadwriteptr
+External_Function IsBadWritePtr "IsBadWritePtr" KERNEL32.dll ;
+	Pointer lp ;	// Pointer*
+	ULongPtr ucb ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-localalloc
+External_Function LocalAlloc "LocalAlloc" KERNEL32.dll ;
+	UInteger uFlags ;	// LOCAL_ALLOC_FLAGS
+	ULongPtr uBytes ;
+	Returns Pointer	// HLOCAL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-localflags
+External_Function LocalFlags "LocalFlags" KERNEL32.dll ;
+	Pointer hMem ;	// HLOCAL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-localhandle
+External_Function LocalHandle "LocalHandle" KERNEL32.dll ;
+	Pointer pMem ;	// Pointer*
+	Returns Pointer	// HLOCAL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-locallock
+External_Function LocalLock "LocalLock" KERNEL32.dll ;
+	Pointer hMem ;	// HLOCAL
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-localrealloc
+External_Function LocalReAlloc "LocalReAlloc" KERNEL32.dll ;
+	Pointer hMem ;	// HLOCAL
+	ULongPtr uBytes ;
+	UInteger uFlags ;
+	Returns Pointer	// HLOCAL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-localsize
+External_Function LocalSize "LocalSize" KERNEL32.dll ;
+	Pointer hMem ;	// HLOCAL
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-localunlock
+External_Function LocalUnlock "LocalUnlock" KERNEL32.dll ;
+	Pointer hMem ;	// HLOCAL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapuserphysicalpages
+External_Function MapUserPhysicalPages "MapUserPhysicalPages" KERNEL32.dll ;
+	Pointer VirtualAddress ;	// Pointer*
+	ULongPtr NumberOfPages ;
+	Pointer PageArray ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-mapuserphysicalpagesscatter
+External_Function MapUserPhysicalPagesScatter "MapUserPhysicalPagesScatter" KERNEL32.dll ;
+	Pointer VirtualAddresses ;	// Pointer**
+	ULongPtr NumberOfPages ;
+	Pointer PageArray ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapviewoffile
+External_Function MapViewOfFile "MapViewOfFile" KERNEL32.dll ;
+	Pointer hFileMappingObject ;	// HANDLE
+	UInteger dwDesiredAccess ;	// FILE_MAP
+	UInteger dwFileOffsetHigh ;
+	UInteger dwFileOffsetLow ;
+	ULongPtr dwNumberOfBytesToMap ;
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapviewoffileex
+External_Function MapViewOfFileEx "MapViewOfFileEx" KERNEL32.dll ;
+	Pointer hFileMappingObject ;	// HANDLE
+	UInteger dwDesiredAccess ;	// FILE_MAP
+	UInteger dwFileOffsetHigh ;
+	UInteger dwFileOffsetLow ;
+	ULongPtr dwNumberOfBytesToMap ;
+	Pointer lpBaseAddress ;	// Pointer*
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-mapviewoffileexnuma
+External_Function MapViewOfFileExNuma "MapViewOfFileExNuma" KERNEL32.dll ;
+	Pointer hFileMappingObject ;	// HANDLE
+	UInteger dwDesiredAccess ;	// FILE_MAP
+	UInteger dwFileOffsetHigh ;
+	UInteger dwFileOffsetLow ;
+	ULongPtr dwNumberOfBytesToMap ;
+	Pointer lpBaseAddress ;	// Pointer*
+	UInteger nndPreferred ;
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapviewoffilefromapp
+External_Function MapViewOfFileFromApp "MapViewOfFileFromApp" KERNEL32.dll ;
+	Pointer hFileMappingObject ;	// HANDLE
+	UInteger DesiredAccess ;	// FILE_MAP
+	UBigint FileOffset ;
+	ULongPtr NumberOfBytesToMap ;
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-offervirtualmemory
+External_Function OfferVirtualMemory "OfferVirtualMemory" KERNEL32.dll ;
+	Pointer VirtualAddress ;	// Pointer*
+	ULongPtr Size ;
+	Integer Priority ;	// OFFER_PRIORITY
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openfilemappinga
+External_Function OpenFileMappingA "OpenFileMappingA" KERNEL32.dll ;
+	UInteger dwDesiredAccess ;
+	Integer bInheritHandle ;	// BOOL
+	String lpName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-openfilemappingw
+External_Function OpenFileMappingW "OpenFileMappingW" KERNEL32.dll ;
+	UInteger dwDesiredAccess ;
+	Integer bInheritHandle ;	// BOOL
+	WString lpName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-prefetchvirtualmemory
+External_Function PrefetchVirtualMemory "PrefetchVirtualMemory" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	ULongPtr NumberOfEntries ;
+	Pointer VirtualAddresses ;	// WIN32_MEMORY_RANGE_ENTRY*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-querymemoryresourcenotification
+External_Function QueryMemoryResourceNotification "QueryMemoryResourceNotification" KERNEL32.dll ;
+	Pointer ResourceNotificationHandle ;	// HANDLE
+	Pointer ResourceState ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-reclaimvirtualmemory
+External_Function ReclaimVirtualMemory "ReclaimVirtualMemory" KERNEL32.dll ;
+	Pointer VirtualAddress ;	// Pointer*
+	ULongPtr Size ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-registerbadmemorynotification
+External_Function RegisterBadMemoryNotification "RegisterBadMemoryNotification" KERNEL32.dll ;
+	Pointer Callback ;	// PBAD_MEMORY_CALLBACK_ROUTINE
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-removesecurememorycachecallback
+External_Function RemoveSecureMemoryCacheCallback "RemoveSecureMemoryCacheCallback" KERNEL32.dll ;
+	Pointer pfnCallBack ;	// PSECURE_MEMORY_CACHE_CALLBACK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-resetwritewatch
+External_Function ResetWriteWatch "ResetWriteWatch" KERNEL32.dll ;
+	Pointer lpBaseAddress ;	// Pointer*
+	ULongPtr dwRegionSize ;
+	Returns UInteger
+
+External_Function RtlCompareMemory "RtlCompareMemory" KERNEL32.dll ;
+	Pointer Source1 ;	// Pointer*
+	Pointer Source2 ;	// Pointer*
+	ULongPtr Length ;
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-setprocessworkingsetsizeex
+External_Function SetProcessWorkingSetSizeEx "SetProcessWorkingSetSizeEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	ULongPtr dwMinimumWorkingSetSize ;
+	ULongPtr dwMaximumWorkingSetSize ;
+	UInteger Flags ;	// SETPROCESSWORKINGSETSIZEEX_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-setsystemfilecachesize
+External_Function SetSystemFileCacheSize "SetSystemFileCacheSize" KERNEL32.dll ;
+	ULongPtr MinimumFileCacheSize ;
+	ULongPtr MaximumFileCacheSize ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-unmapviewoffile
+External_Function UnmapViewOfFile "UnmapViewOfFile" KERNEL32.dll ;
+	Pointer lpBaseAddress ;	// MEMORY_MAPPED_VIEW_ADDRESS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-unmapviewoffileex
+External_Function UnmapViewOfFileEx "UnmapViewOfFileEx" KERNEL32.dll ;
+	Pointer BaseAddress ;	// MEMORY_MAPPED_VIEW_ADDRESS
+	UInteger UnmapFlags ;	// UNMAP_VIEW_OF_FILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-unregisterbadmemorynotification
+External_Function UnregisterBadMemoryNotification "UnregisterBadMemoryNotification" KERNEL32.dll ;
+	Pointer RegistrationHandle ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc
+External_Function VirtualAlloc "VirtualAlloc" KERNEL32.dll ;
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger flAllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger flProtect ;	// PAGE_PROTECTION_FLAGS
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex
+External_Function VirtualAllocEx "VirtualAllocEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger flAllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger flProtect ;	// PAGE_PROTECTION_FLAGS
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualallocexnuma
+External_Function VirtualAllocExNuma "VirtualAllocExNuma" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger flAllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger flProtect ;
+	UInteger nndPreferred ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualfree
+External_Function VirtualFree "VirtualFree" KERNEL32.dll ;
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger dwFreeType ;	// VIRTUAL_FREE_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualfreeex
+External_Function VirtualFreeEx "VirtualFreeEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger dwFreeType ;	// VIRTUAL_FREE_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtuallock
+External_Function VirtualLock "VirtualLock" KERNEL32.dll ;
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect
+External_Function VirtualProtect "VirtualProtect" KERNEL32.dll ;
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger flNewProtect ;	// PAGE_PROTECTION_FLAGS
+	Pointer lpflOldProtect ;	// PAGE_PROTECTION_FLAGS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualprotectex
+External_Function VirtualProtectEx "VirtualProtectEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	UInteger flNewProtect ;	// PAGE_PROTECTION_FLAGS
+	Pointer lpflOldProtect ;	// PAGE_PROTECTION_FLAGS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualquery
+External_Function VirtualQuery "VirtualQuery" KERNEL32.dll ;
+	Pointer lpAddress ;	// Pointer*
+	Pointer lpBuffer ;	// MEMORY_BASIC_INFORMATION*
+	ULongPtr dwLength ;
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualqueryex
+External_Function VirtualQueryEx "VirtualQueryEx" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpAddress ;	// Pointer*
+	Pointer lpBuffer ;	// MEMORY_BASIC_INFORMATION*
+	ULongPtr dwLength ;
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualunlock
+External_Function VirtualUnlock "VirtualUnlock" KERNEL32.dll ;
+	Pointer lpAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	Returns Integer	// BOOL
+
+External_Function RtlCrc32 "RtlCrc32" ntdll.dll ;
+	Pointer Buffer ;	// Pointer*
+	ULongPtr Size ;
+	UInteger InitialCrc ;
+	Returns UInteger
+
+External_Function RtlCrc64 "RtlCrc64" ntdll.dll ;
+	Pointer Buffer ;	// Pointer*
+	ULongPtr Size ;
+	UBigint InitialCrc ;
+	Returns UBigint
+
+External_Function RtlIsZeroMemory "RtlIsZeroMemory" ntdll.dll ;
+	Pointer Buffer ;	// Pointer*
+	ULongPtr Length ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-openfilemappingfromapp
+External_Function OpenFileMappingFromApp "OpenFileMappingFromApp" api-ms-win-core-memory-l1-1-3.dll ;
+	UInteger DesiredAccess ;
+	Integer InheritHandle ;	// BOOL
+	WString Name ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-setprocessvalidcalltargets
+External_Function SetProcessValidCallTargets "SetProcessValidCallTargets" api-ms-win-core-memory-l1-1-3.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer VirtualAddress ;	// Pointer*
+	ULongPtr RegionSize ;
+	UInteger NumberOfOffsets ;
+	Pointer OffsetInformation ;	// CFG_CALL_TARGET_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualallocfromapp
+External_Function VirtualAllocFromApp "VirtualAllocFromApp" api-ms-win-core-memory-l1-1-3.dll ;
+	Pointer BaseAddress ;	// Pointer*
+	ULongPtr Size ;
+	UInteger AllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger Protection ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualprotectfromapp
+External_Function VirtualProtectFromApp "VirtualProtectFromApp" api-ms-win-core-memory-l1-1-3.dll ;
+	Pointer Address ;	// Pointer*
+	ULongPtr Size ;
+	UInteger NewProtection ;
+	Pointer OldProtection ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-createfilemapping2
+External_Function CreateFileMapping2 "CreateFileMapping2" api-ms-win-core-memory-l1-1-7.dll ;
+	Pointer File ;	// HANDLE
+	Pointer SecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger DesiredAccess ;
+	UInteger PageProtection ;	// PAGE_PROTECTION_FLAGS
+	UInteger AllocationAttributes ;
+	UBigint MaximumSize ;
+	WString Name ;	// PWSTR
+	Pointer ExtendedParameters ;	// MEM_EXTENDED_PARAMETER*
+	UInteger ParameterCount ;
+	Returns Pointer	// HANDLE
+
+External_Function SetProcessValidCallTargetsForMappedView "SetProcessValidCallTargetsForMappedView" api-ms-win-core-memory-l1-1-7.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer VirtualAddress ;	// Pointer*
+	ULongPtr RegionSize ;
+	UInteger NumberOfOffsets ;
+	Pointer OffsetInformation ;	// CFG_CALL_TARGET_INFO*
+	Pointer Section ;	// HANDLE
+	UBigint ExpectedFileOffset ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-queryvirtualmemoryinformation
+External_Function QueryVirtualMemoryInformation "QueryVirtualMemoryInformation" api-ms-win-core-memory-l1-1-4.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer VirtualAddress ;	// Pointer*
+	Integer MemoryInformationClass ;	// WIN32_MEMORY_INFORMATION_CLASS
+	Pointer MemoryInformation ;	// Pointer*
+	ULongPtr MemoryInformationSize ;
+	Pointer ReturnSize ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapviewoffilenuma2
+External_Function MapViewOfFileNuma2 "MapViewOfFileNuma2" api-ms-win-core-memory-l1-1-5.dll ;
+	Pointer FileMappingHandle ;	// HANDLE
+	Pointer ProcessHandle ;	// HANDLE
+	UBigint Offset ;
+	Pointer BaseAddress ;	// Pointer*
+	ULongPtr ViewSize ;
+	UInteger AllocationType ;
+	UInteger PageProtection ;
+	UInteger PreferredNode ;
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-unmapviewoffile2
+External_Function UnmapViewOfFile2 "UnmapViewOfFile2" api-ms-win-core-memory-l1-1-5.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer BaseAddress ;	// MEMORY_MAPPED_VIEW_ADDRESS
+	UInteger UnmapFlags ;	// UNMAP_VIEW_OF_FILE_FLAGS
+	Returns Integer	// BOOL
+
+External_Function VirtualUnlockEx "VirtualUnlockEx" api-ms-win-core-memory-l1-1-5.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer Address ;	// Pointer*
+	ULongPtr Size ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapviewoffile3
+External_Function MapViewOfFile3 "MapViewOfFile3" api-ms-win-core-memory-l1-1-6.dll ;
+	Pointer FileMapping ;	// HANDLE
+	Pointer Process ;	// HANDLE
+	Pointer BaseAddress ;	// Pointer*
+	UBigint Offset ;
+	ULongPtr ViewSize ;
+	UInteger AllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger PageProtection ;
+	Pointer ExtendedParameters ;	// MEM_EXTENDED_PARAMETER*
+	UInteger ParameterCount ;
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-mapviewoffile3fromapp
+External_Function MapViewOfFile3FromApp "MapViewOfFile3FromApp" api-ms-win-core-memory-l1-1-6.dll ;
+	Pointer FileMapping ;	// HANDLE
+	Pointer Process ;	// HANDLE
+	Pointer BaseAddress ;	// Pointer*
+	UBigint Offset ;
+	ULongPtr ViewSize ;
+	UInteger AllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger PageProtection ;
+	Pointer ExtendedParameters ;	// MEM_EXTENDED_PARAMETER*
+	UInteger ParameterCount ;
+	Returns Pointer	// MEMORY_MAPPED_VIEW_ADDRESS
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc2
+External_Function VirtualAlloc2 "VirtualAlloc2" api-ms-win-core-memory-l1-1-6.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer BaseAddress ;	// Pointer*
+	ULongPtr Size ;
+	UInteger AllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger PageProtection ;
+	Pointer ExtendedParameters ;	// MEM_EXTENDED_PARAMETER*
+	UInteger ParameterCount ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc2fromapp
+External_Function VirtualAlloc2FromApp "VirtualAlloc2FromApp" api-ms-win-core-memory-l1-1-6.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer BaseAddress ;	// Pointer*
+	ULongPtr Size ;
+	UInteger AllocationType ;	// VIRTUAL_ALLOCATION_TYPE
+	UInteger PageProtection ;
+	Pointer ExtendedParameters ;	// MEM_EXTENDED_PARAMETER*
+	UInteger ParameterCount ;
+	Returns Pointer	// Pointer*
+
+External_Function AllocateUserPhysicalPages2 "AllocateUserPhysicalPages2" api-ms-win-core-memory-l1-1-8.dll ;
+	Pointer ObjectHandle ;	// HANDLE
+	Pointer NumberOfPages ;	// ULongPtr*
+	Pointer PageArray ;	// ULongPtr*
+	Pointer ExtendedParameters ;	// MEM_EXTENDED_PARAMETER*
+	UInteger ExtendedParameterCount ;
+	Returns Integer	// BOOL
+
+External_Function OpenDedicatedMemoryPartition "OpenDedicatedMemoryPartition" api-ms-win-core-memory-l1-1-8.dll ;
+	Pointer Partition ;	// HANDLE
+	UBigint DedicatedMemoryTypeId ;
+	UInteger DesiredAccess ;
+	Integer InheritHandle ;	// BOOL
+	Returns Pointer	// HANDLE
+
+External_Function QueryPartitionInformation "QueryPartitionInformation" api-ms-win-core-memory-l1-1-8.dll ;
+	Pointer Partition ;	// HANDLE
+	Integer PartitionInformationClass ;	// WIN32_MEMORY_PARTITION_INFORMATION_CLASS
+	Pointer PartitionInformation ;	// Pointer*
+	UInteger PartitionInformationLength ;
+	Returns Integer	// BOOL
+
+External_Function GetMemoryNumaClosestInitiatorNode "GetMemoryNumaClosestInitiatorNode" api-ms-win-core-memory-l1-1-9.dll ;
+	UInteger TargetNodeNumber ;
+	Pointer InitiatorNodeNumber ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function GetMemoryNumaPerformanceInformation "GetMemoryNumaPerformanceInformation" api-ms-win-core-memory-l1-1-9.dll ;
+	UInteger NodeNumber ;
+	UChar DataType ;
+	Pointer PerfInfo ;	// WIN32_MEMORY_NUMA_PERFORMANCE_INFORMATION_OUTPUT**
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

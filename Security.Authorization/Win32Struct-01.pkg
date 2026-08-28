@@ -1,0 +1,222 @@
+Use UI
+
+Struct AUDIT_IP_ADDRESS
+	UChar[128] pIpAddress
+End_Struct
+
+Struct AUDIT_OBJECT_TYPE
+	Guid ObjectType
+	UShort Flags
+	UShort Level
+	UInteger AccessMask
+End_Struct
+
+Struct AUDIT_OBJECT_TYPES
+	UShort Count
+	UShort Flags
+	Integer iMissingAlignment1
+	Pointer pObjectTypes									// AUDIT_OBJECT_TYPE*
+End_Struct
+
+Struct AUDIT_PARAM
+	Integer Type											// AUDIT_PARAM_TYPE
+	UInteger Length
+	UInteger Flags
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+End_Struct
+
+Struct AUDIT_PARAMS
+	UInteger Length
+	UInteger Flags
+	UShort Count
+	UChar[6] cMissingAlignment1
+	Pointer Parameters										// AUDIT_PARAM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_access_reply
+Struct AUTHZ_ACCESS_REPLY
+	UInteger ResultListLength
+	Integer iMissingAlignment1
+	Pointer GrantedAccessMask								// UInteger*
+	Pointer SaclEvaluationResults							// AUTHZ_GENERATE_RESULTS*
+	Pointer Error											// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_access_request
+Struct AUTHZ_ACCESS_REQUEST
+	UInteger DesiredAccess
+	Integer iMissingAlignment1
+	Pointer PrincipalSelfSid								// PSID
+	Pointer ObjectTypeList									// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength
+	Integer iMissingAlignment2
+	Pointer OptionalArguments								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_init_info
+Struct AUTHZ_INIT_INFO
+	UShort version
+	UChar[6] cMissingAlignment1
+	Pointer szResourceManagerName							// PWSTR
+	Pointer pfnDynamicAccessCheck							// PFN_AUTHZ_DYNAMIC_ACCESS_CHECK
+	Pointer pfnComputeDynamicGroups							// PFN_AUTHZ_COMPUTE_DYNAMIC_GROUPS
+	Pointer pfnFreeDynamicGroups							// PFN_AUTHZ_FREE_DYNAMIC_GROUPS
+	Pointer pfnGetCentralAccessPolicy						// PFN_AUTHZ_GET_CENTRAL_ACCESS_POLICY
+	Pointer pfnFreeCentralAccessPolicy						// PFN_AUTHZ_FREE_CENTRAL_ACCESS_POLICY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_registration_object_type_name_offset
+Struct AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET
+	Pointer szObjectTypeName								// PWSTR
+	UInteger dwOffset
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_rpc_init_info_client
+Struct AUTHZ_RPC_INIT_INFO_CLIENT
+	UShort version
+	UChar[6] cMissingAlignment1
+	Pointer ObjectUuid										// PWSTR
+	Pointer ProtSeq											// PWSTR
+	Pointer NetworkAddr										// PWSTR
+	Pointer Endpoint										// PWSTR
+	Pointer Options											// PWSTR
+	Pointer ServerSpn										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_security_attributes_information
+Struct AUTHZ_SECURITY_ATTRIBUTES_INFORMATION
+	UShort Version
+	UShort Reserved
+	UInteger AttributeCount
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_security_attribute_fqbn_value
+Struct AUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUE
+	UBigint Version
+	Pointer pName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_security_attribute_octet_string_value
+Struct AUTHZ_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
+	Pointer pValue											// Pointer*
+	UInteger ValueLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_security_attribute_v1
+Struct AUTHZ_SECURITY_ATTRIBUTE_V1
+	Pointer pName											// PWSTR
+	UShort ValueType
+	UShort Reserved
+	UInteger Flags											// AUTHZ_SECURITY_ATTRIBUTE_FLAGS
+	UInteger ValueCount
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authz/ns-authz-authz_source_schema_registration
+Struct AUTHZ_SOURCE_SCHEMA_REGISTRATION
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer szEventSourceName								// PWSTR
+	Pointer szEventMessageFile								// PWSTR
+	Pointer szEventSourceXmlSchemaFile						// PWSTR
+	Pointer szEventAccessStringsFile						// PWSTR
+	Pointer szExecutableImagePath							// PWSTR
+	UChar[8] UnionName1
+	UInteger dwObjectTypeNameCount
+	Integer iMissingAlignment2
+	AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET[1] ObjectTypeNames
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-explicit_access_a
+Struct EXPLICIT_ACCESS_A
+	UInteger grfAccessPermissions
+	Integer grfAccessMode									// ACCESS_MODE
+	UInteger grfInheritance									// ACE_FLAGS
+	Integer iMissingAlignment1
+	TRUSTEE_A Trustee
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-explicit_access_w
+Struct EXPLICIT_ACCESS_W
+	UInteger grfAccessPermissions
+	Integer grfAccessMode									// ACCESS_MODE
+	UInteger grfInheritance									// ACE_FLAGS
+	Integer iMissingAlignment1
+	TRUSTEE_W Trustee
+End_Struct
+
+Struct FN_OBJECT_MGR_FUNCTS
+	UInteger Placeholder
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-inherited_froma
+Struct INHERITED_FROMA
+	Integer GenerationGap
+	Integer iMissingAlignment1
+	Pointer AncestorName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-inherited_fromw
+Struct INHERITED_FROMW
+	Integer GenerationGap
+	Integer iMissingAlignment1
+	Pointer AncestorName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-objects_and_name_a
+Struct OBJECTS_AND_NAME_A
+	UInteger ObjectsPresent									// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Integer ObjectType										// SE_OBJECT_TYPE
+	Pointer ObjectTypeName									// PSTR
+	Pointer InheritedObjectTypeName							// PSTR
+	Pointer ptstrName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-objects_and_name_w
+Struct OBJECTS_AND_NAME_W
+	UInteger ObjectsPresent									// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Integer ObjectType										// SE_OBJECT_TYPE
+	Pointer ObjectTypeName									// PWSTR
+	Pointer InheritedObjectTypeName							// PWSTR
+	Pointer ptstrName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-objects_and_sid
+Struct OBJECTS_AND_SID
+	UInteger ObjectsPresent									// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectTypeGuid
+	Guid InheritedObjectTypeGuid
+	Integer iMissingAlignment1
+	Pointer pSid											// SID*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-trustee_a
+Struct TRUSTEE_A
+	Pointer pMultipleTrustee								// TRUSTEE_A*
+	Integer MultipleTrusteeOperation						// MULTIPLE_TRUSTEE_OPERATION
+	Integer TrusteeForm										// TRUSTEE_FORM
+	Integer TrusteeType										// TRUSTEE_TYPE
+	Integer iMissingAlignment1
+	Pointer ptstrName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/accctrl/ns-accctrl-trustee_w
+Struct TRUSTEE_W
+	Pointer pMultipleTrustee								// TRUSTEE_W*
+	Integer MultipleTrusteeOperation						// MULTIPLE_TRUSTEE_OPERATION
+	Integer TrusteeForm										// TRUSTEE_FORM
+	Integer TrusteeType										// TRUSTEE_TYPE
+	Integer iMissingAlignment1
+	Pointer ptstrName										// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

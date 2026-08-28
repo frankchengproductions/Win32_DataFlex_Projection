@@ -1,0 +1,92 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-closecompressor
+External_Function CloseCompressor "CloseCompressor" Cabinet.dll ;
+	Pointer CompressorHandle ;	// COMPRESSOR_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-closedecompressor
+External_Function CloseDecompressor "CloseDecompressor" Cabinet.dll ;
+	Pointer DecompressorHandle ;	// DECOMPRESSOR_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-compress
+External_Function Compress "Compress" Cabinet.dll ;
+	Pointer CompressorHandle ;	// COMPRESSOR_HANDLE
+	Pointer UncompressedData ;	// Pointer*
+	ULongPtr UncompressedDataSize ;
+	Pointer CompressedBuffer ;	// Pointer*
+	ULongPtr CompressedBufferSize ;
+	Pointer CompressedDataSize ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-createcompressor
+External_Function CreateCompressor "CreateCompressor" Cabinet.dll ;
+	UInteger Algorithm ;	// COMPRESS_ALGORITHM
+	Pointer AllocationRoutines ;	// COMPRESS_ALLOCATION_ROUTINES*
+	Pointer CompressorHandle ;	// COMPRESSOR_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-createdecompressor
+External_Function CreateDecompressor "CreateDecompressor" Cabinet.dll ;
+	UInteger Algorithm ;	// COMPRESS_ALGORITHM
+	Pointer AllocationRoutines ;	// COMPRESS_ALLOCATION_ROUTINES*
+	Pointer DecompressorHandle ;	// DECOMPRESSOR_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-decompress
+External_Function Decompress "Decompress" Cabinet.dll ;
+	Pointer DecompressorHandle ;	// DECOMPRESSOR_HANDLE
+	Pointer CompressedData ;	// Pointer*
+	ULongPtr CompressedDataSize ;
+	Pointer UncompressedBuffer ;	// Pointer*
+	ULongPtr UncompressedBufferSize ;
+	Pointer UncompressedDataSize ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-querycompressorinformation
+External_Function QueryCompressorInformation "QueryCompressorInformation" Cabinet.dll ;
+	Pointer CompressorHandle ;	// COMPRESSOR_HANDLE
+	Integer CompressInformationClass ;	// COMPRESS_INFORMATION_CLASS
+	Pointer CompressInformation ;	// Pointer*
+	ULongPtr CompressInformationSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-querydecompressorinformation
+External_Function QueryDecompressorInformation "QueryDecompressorInformation" Cabinet.dll ;
+	Pointer DecompressorHandle ;	// DECOMPRESSOR_HANDLE
+	Integer CompressInformationClass ;	// COMPRESS_INFORMATION_CLASS
+	Pointer CompressInformation ;	// Pointer*
+	ULongPtr CompressInformationSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-resetcompressor
+External_Function ResetCompressor "ResetCompressor" Cabinet.dll ;
+	Pointer CompressorHandle ;	// COMPRESSOR_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-resetdecompressor
+External_Function ResetDecompressor "ResetDecompressor" Cabinet.dll ;
+	Pointer DecompressorHandle ;	// DECOMPRESSOR_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-setcompressorinformation
+External_Function SetCompressorInformation "SetCompressorInformation" Cabinet.dll ;
+	Pointer CompressorHandle ;	// COMPRESSOR_HANDLE
+	Integer CompressInformationClass ;	// COMPRESS_INFORMATION_CLASS
+	Pointer CompressInformation ;	// Pointer*
+	ULongPtr CompressInformationSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/compressapi/nf-compressapi-setdecompressorinformation
+External_Function SetDecompressorInformation "SetDecompressorInformation" Cabinet.dll ;
+	Pointer DecompressorHandle ;	// DECOMPRESSOR_HANDLE
+	Integer CompressInformationClass ;	// COMPRESS_INFORMATION_CLASS
+	Pointer CompressInformation ;	// Pointer*
+	ULongPtr CompressInformationSize ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,882 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cogetinstancefromfile
+External_Function CoGetInstanceFromFile "CoGetInstanceFromFile" OLE32.dll ;
+	Pointer pServerInfo ;	// COSERVERINFO*
+	Pointer pClsid ;	// Guid*
+	Pointer punkOuter ;	// IUnknown
+	UInteger dwClsCtx ;	// CLSCTX
+	UInteger grfMode ;
+	WString pwszName ;	// PWSTR
+	UInteger dwCount ;
+	Pointer pResults ;	// MULTI_QI*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cogetinstancefromistorage
+External_Function CoGetInstanceFromIStorage "CoGetInstanceFromIStorage" OLE32.dll ;
+	Pointer pServerInfo ;	// COSERVERINFO*
+	Pointer pClsid ;	// Guid*
+	Pointer punkOuter ;	// IUnknown
+	UInteger dwClsCtx ;	// CLSCTX
+	Pointer pstg ;	// IStorage
+	UInteger dwCount ;
+	Pointer pResults ;	// MULTI_QI*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetinterfaceandreleasestream
+External_Function CoGetInterfaceAndReleaseStream "CoGetInterfaceAndReleaseStream" OLE32.dll ;
+	Pointer pStm ;	// IStream
+	Pointer iid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-createilockbytesonhglobal
+External_Function CreateILockBytesOnHGlobal "CreateILockBytesOnHGlobal" OLE32.dll ;
+	Pointer hGlobal ;	// HGLOBAL
+	Integer fDeleteOnRelease ;	// BOOL
+	Pointer pplkbyt ;	// ILockBytes*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-createstreamonhglobal
+External_Function CreateStreamOnHGlobal "CreateStreamOnHGlobal" OLE32.dll ;
+	Pointer hGlobal ;	// HGLOBAL
+	Integer fDeleteOnRelease ;	// BOOL
+	Pointer ppstm ;	// IStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-fmtidtopropstgname
+External_Function FmtIdToPropStgName "FmtIdToPropStgName" OLE32.dll ;
+	Pointer pfmtid ;	// Guid*
+	Pointer oszName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-freepropvariantarray
+External_Function FreePropVariantArray "FreePropVariantArray" OLE32.dll ;
+	UInteger cVariants ;
+	Pointer rgvars ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-getconvertstg
+External_Function GetConvertStg "GetConvertStg" OLE32.dll ;
+	Pointer pStg ;	// IStorage
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-gethglobalfromilockbytes
+External_Function GetHGlobalFromILockBytes "GetHGlobalFromILockBytes" OLE32.dll ;
+	Pointer plkbyt ;	// ILockBytes
+	Pointer phglobal ;	// HGLOBAL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-gethglobalfromstream
+External_Function GetHGlobalFromStream "GetHGlobalFromStream" OLE32.dll ;
+	Pointer pstm ;	// IStream
+	Pointer phglobal ;	// HGLOBAL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-propstgnametofmtid
+External_Function PropStgNameToFmtId "PropStgNameToFmtId" OLE32.dll ;
+	WString oszName ;	// PWSTR
+	Pointer pfmtid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-propvariantclear
+External_Function PropVariantClear "PropVariantClear" OLE32.dll ;
+	Pointer pvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-propvariantcopy
+External_Function PropVariantCopy "PropVariantCopy" OLE32.dll ;
+	Pointer pvarDest ;	// PROPVARIANT*
+	Pointer pvarSrc ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-readclassstg
+External_Function ReadClassStg "ReadClassStg" OLE32.dll ;
+	Pointer pStg ;	// IStorage
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-readclassstm
+External_Function ReadClassStm "ReadClassStm" OLE32.dll ;
+	Pointer pStm ;	// IStream
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-readfmtusertypestg
+External_Function ReadFmtUserTypeStg "ReadFmtUserTypeStg" OLE32.dll ;
+	Pointer pstg ;	// IStorage
+	Pointer pcf ;	// UShort*
+	Pointer lplpszUserType ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-setconvertstg
+External_Function SetConvertStg "SetConvertStg" OLE32.dll ;
+	Pointer pStg ;	// IStorage
+	Integer fConvert ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgcreatedocfile
+External_Function StgCreateDocfile "StgCreateDocfile" OLE32.dll ;
+	WString pwcsName ;	// PWSTR
+	UInteger grfMode ;	// STGM
+	UInteger reserved ;
+	Pointer ppstgOpen ;	// IStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgcreatedocfileonilockbytes
+External_Function StgCreateDocfileOnILockBytes "StgCreateDocfileOnILockBytes" OLE32.dll ;
+	Pointer plkbyt ;	// ILockBytes
+	UInteger grfMode ;	// STGM
+	UInteger reserved ;
+	Pointer ppstgOpen ;	// IStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgcreatepropsetstg
+External_Function StgCreatePropSetStg "StgCreatePropSetStg" OLE32.dll ;
+	Pointer pStorage ;	// IStorage
+	UInteger dwReserved ;
+	Pointer ppPropSetStg ;	// IPropertySetStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgcreatepropstg
+External_Function StgCreatePropStg "StgCreatePropStg" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	Pointer fmtid ;	// Guid*
+	Pointer pclsid ;	// Guid*
+	UInteger grfFlags ;
+	UInteger dwReserved ;
+	Pointer ppPropStg ;	// IPropertyStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgcreatestorageex
+External_Function StgCreateStorageEx "StgCreateStorageEx" OLE32.dll ;
+	WString pwcsName ;	// PWSTR
+	UInteger grfMode ;	// STGM
+	UInteger stgfmt ;	// STGFMT
+	UInteger grfAttrs ;
+	Pointer pStgOptions ;	// STGOPTIONS*
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer riid ;	// Guid*
+	Pointer ppObjectOpen ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgisstoragefile
+External_Function StgIsStorageFile "StgIsStorageFile" OLE32.dll ;
+	WString pwcsName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgisstorageilockbytes
+External_Function StgIsStorageILockBytes "StgIsStorageILockBytes" OLE32.dll ;
+	Pointer plkbyt ;	// ILockBytes
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgopenpropstg
+External_Function StgOpenPropStg "StgOpenPropStg" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	Pointer fmtid ;	// Guid*
+	UInteger grfFlags ;
+	UInteger dwReserved ;
+	Pointer ppPropStg ;	// IPropertyStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgopenstorage
+External_Function StgOpenStorage "StgOpenStorage" OLE32.dll ;
+	WString pwcsName ;	// PWSTR
+	Pointer pstgPriority ;	// IStorage
+	UInteger grfMode ;	// STGM
+	Pointer snbExclude ;	// UShort**
+	UInteger reserved ;
+	Pointer ppstgOpen ;	// IStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgopenstorageex
+External_Function StgOpenStorageEx "StgOpenStorageEx" OLE32.dll ;
+	WString pwcsName ;	// PWSTR
+	UInteger grfMode ;	// STGM
+	UInteger stgfmt ;	// STGFMT
+	UInteger grfAttrs ;
+	Pointer pStgOptions ;	// STGOPTIONS*
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer riid ;	// Guid*
+	Pointer ppObjectOpen ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgopenstorageonilockbytes
+External_Function StgOpenStorageOnILockBytes "StgOpenStorageOnILockBytes" OLE32.dll ;
+	Pointer plkbyt ;	// ILockBytes
+	Pointer pstgPriority ;	// IStorage
+	UInteger grfMode ;	// STGM
+	Pointer snbExclude ;	// UShort**
+	UInteger reserved ;
+	Pointer ppstgOpen ;	// IStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-stgsettimes
+External_Function StgSetTimes "StgSetTimes" OLE32.dll ;
+	WString lpszName ;	// PWSTR
+	Pointer pctime ;	// FILETIME*
+	Pointer patime ;	// FILETIME*
+	Pointer pmtime ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-writeclassstg
+External_Function WriteClassStg "WriteClassStg" OLE32.dll ;
+	Pointer pStg ;	// IStorage
+	Pointer rclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/coml2api/nf-coml2api-writeclassstm
+External_Function WriteClassStm "WriteClassStm" OLE32.dll ;
+	Pointer pStm ;	// IStream
+	Pointer rclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-writefmtusertypestg
+External_Function WriteFmtUserTypeStg "WriteFmtUserTypeStg" OLE32.dll ;
+	Pointer pstg ;	// IStorage
+	UShort cf ;
+	WString lpszUserType ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleconvertistoragetoolestream
+External_Function OleConvertIStorageToOLESTREAM "OleConvertIStorageToOLESTREAM" ole32.dll ;
+	Pointer pstg ;	// IStorage
+	Pointer lpolestream ;	// OLESTREAM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleconvertistoragetoolestreamex
+External_Function OleConvertIStorageToOLESTREAMEx "OleConvertIStorageToOLESTREAMEx" ole32.dll ;
+	Pointer pstg ;	// IStorage
+	UShort cfFormat ;
+	Integer lWidth ;
+	Integer lHeight ;
+	UInteger dwSize ;
+	Pointer pmedium ;	// STGMEDIUM*
+	Pointer polestm ;	// OLESTREAM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleconvertolestreamtoistorage
+External_Function OleConvertOLESTREAMToIStorage "OleConvertOLESTREAMToIStorage" ole32.dll ;
+	Pointer lpolestream ;	// OLESTREAM*
+	Pointer pstg ;	// IStorage
+	Pointer ptd ;	// DVTARGETDEVICE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-oleconvertolestreamtoistorageex
+External_Function OleConvertOLESTREAMToIStorageEx "OleConvertOLESTREAMToIStorageEx" ole32.dll ;
+	Pointer polestm ;	// OLESTREAM*
+	Pointer pstg ;	// IStorage
+	Pointer pcfFormat ;	// UShort*
+	Pointer plwWidth ;	// Integer*
+	Pointer plHeight ;	// Integer*
+	Pointer pdwSize ;	// UInteger*
+	Pointer pmedium ;	// STGMEDIUM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propidl/nf-propidl-stgconvertpropertytovariant
+External_Function StgConvertPropertyToVariant "StgConvertPropertyToVariant" ole32.dll ;
+	Pointer pprop ;	// SERIALIZEDPROPERTYVALUE*
+	UShort CodePage ;
+	Pointer pvar ;	// PROPVARIANT*
+	Pointer pma ;	// IMemoryAllocator
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/propidl/nf-propidl-stgconvertvarianttoproperty
+External_Function StgConvertVariantToProperty "StgConvertVariantToProperty" ole32.dll ;
+	Pointer pvar ;	// PROPVARIANT*
+	UShort CodePage ;
+	Pointer pprop ;	// SERIALIZEDPROPERTYVALUE*
+	Pointer pcb ;	// UInteger*
+	UInteger pid ;
+	UChar fReserved ;	// BOOLEAN
+	Pointer pcIndirect ;	// UInteger*
+	Returns Pointer	// SERIALIZEDPROPERTYVALUE*
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-stggetifilllockbytesonfile
+External_Function StgGetIFillLockBytesOnFile "StgGetIFillLockBytesOnFile" ole32.dll ;
+	WString pwcsName ;	// PWSTR
+	Pointer ppflb ;	// IFillLockBytes*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-stggetifilllockbytesonilockbytes
+External_Function StgGetIFillLockBytesOnILockBytes "StgGetIFillLockBytesOnILockBytes" ole32.dll ;
+	Pointer pilb ;	// ILockBytes
+	Pointer ppflb ;	// IFillLockBytes*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-stgopenasyncdocfileonifilllockbytes
+External_Function StgOpenAsyncDocfileOnIFillLockBytes "StgOpenAsyncDocfileOnIFillLockBytes" ole32.dll ;
+	Pointer pflb ;	// IFillLockBytes
+	UInteger grfMode ;
+	UInteger asyncFlags ;
+	Pointer ppstgOpen ;	// IStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propapi/nf-propapi-stgpropertylengthasvariant
+External_Function StgPropertyLengthAsVariant "StgPropertyLengthAsVariant" ole32.dll ;
+	Pointer pProp ;	// SERIALIZEDPROPERTYVALUE*
+	UInteger cbProp ;
+	UShort CodePage ;
+	UChar bReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-clearpropvariantarray
+External_Function ClearPropVariantArray "ClearPropVariantArray" PROPSYS.dll ;
+	Pointer rgPropVar ;	// PROPVARIANT*
+	UInteger cVars ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfrombooleanvector
+External_Function InitPropVariantFromBooleanVector "InitPropVariantFromBooleanVector" PROPSYS.dll ;
+	Pointer prgf ;	// BOOL*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfrombuffer
+External_Function InitPropVariantFromBuffer "InitPropVariantFromBuffer" PROPSYS.dll ;
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromclsid
+External_Function InitPropVariantFromCLSID "InitPropVariantFromCLSID" PROPSYS.dll ;
+	Pointer clsid ;	// Guid*
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromdoublevector
+External_Function InitPropVariantFromDoubleVector "InitPropVariantFromDoubleVector" PROPSYS.dll ;
+	Pointer prgn ;	// Real*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromfiletime
+External_Function InitPropVariantFromFileTime "InitPropVariantFromFileTime" PROPSYS.dll ;
+	Pointer pftIn ;	// FILETIME*
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromfiletimevector
+External_Function InitPropVariantFromFileTimeVector "InitPropVariantFromFileTimeVector" PROPSYS.dll ;
+	Pointer prgft ;	// FILETIME*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromguidasstring
+External_Function InitPropVariantFromGUIDAsString "InitPropVariantFromGUIDAsString" PROPSYS.dll ;
+	Pointer guid ;	// Guid*
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromint16vector
+External_Function InitPropVariantFromInt16Vector "InitPropVariantFromInt16Vector" PROPSYS.dll ;
+	Pointer prgn ;	// Short*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromint32vector
+External_Function InitPropVariantFromInt32Vector "InitPropVariantFromInt32Vector" PROPSYS.dll ;
+	Pointer prgn ;	// Integer*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromint64vector
+External_Function InitPropVariantFromInt64Vector "InitPropVariantFromInt64Vector" PROPSYS.dll ;
+	Pointer prgn ;	// Bigint*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfrompropvariantvectorelem
+External_Function InitPropVariantFromPropVariantVectorElem "InitPropVariantFromPropVariantVectorElem" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromresource
+External_Function InitPropVariantFromResource "InitPropVariantFromResource" PROPSYS.dll ;
+	Pointer hinst ;	// HINSTANCE
+	UInteger id ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromstringasvector
+External_Function InitPropVariantFromStringAsVector "InitPropVariantFromStringAsVector" PROPSYS.dll ;
+	WString psz ;	// PWSTR
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromstringvector
+External_Function InitPropVariantFromStringVector "InitPropVariantFromStringVector" PROPSYS.dll ;
+	Pointer prgsz ;	// PWSTR*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromuint16vector
+External_Function InitPropVariantFromUInt16Vector "InitPropVariantFromUInt16Vector" PROPSYS.dll ;
+	Pointer prgn ;	// UShort*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromuint32vector
+External_Function InitPropVariantFromUInt32Vector "InitPropVariantFromUInt32Vector" PROPSYS.dll ;
+	Pointer prgn ;	// UInteger*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantfromuint64vector
+External_Function InitPropVariantFromUInt64Vector "InitPropVariantFromUInt64Vector" PROPSYS.dll ;
+	Pointer prgn ;	// UBigint*
+	UInteger cElems ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initpropvariantvectorfrompropvariant
+External_Function InitPropVariantVectorFromPropVariant "InitPropVariantVectorFromPropVariant" PROPSYS.dll ;
+	Pointer propvarSingle ;	// PROPVARIANT*
+	Pointer ppropvarVector ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantchangetype
+External_Function PropVariantChangeType "PropVariantChangeType" PROPSYS.dll ;
+	Pointer ppropvarDest ;	// PROPVARIANT*
+	Pointer propvarSrc ;	// PROPVARIANT*
+	Integer flags ;	// PROPVAR_CHANGE_FLAGS
+	UShort vt ;	// VARENUM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantcompareex
+External_Function PropVariantCompareEx "PropVariantCompareEx" PROPSYS.dll ;
+	Pointer propvar1 ;	// PROPVARIANT*
+	Pointer propvar2 ;	// PROPVARIANT*
+	Integer unit ;	// PROPVAR_COMPARE_UNIT
+	Integer flags ;	// PROPVAR_COMPARE_FLAGS
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetbooleanelem
+External_Function PropVariantGetBooleanElem "PropVariantGetBooleanElem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pfVal ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetdoubleelem
+External_Function PropVariantGetDoubleElem "PropVariantGetDoubleElem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Real*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetelementcount
+External_Function PropVariantGetElementCount "PropVariantGetElementCount" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetfiletimeelem
+External_Function PropVariantGetFileTimeElem "PropVariantGetFileTimeElem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pftVal ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetint16elem
+External_Function PropVariantGetInt16Elem "PropVariantGetInt16Elem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Short*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetint32elem
+External_Function PropVariantGetInt32Elem "PropVariantGetInt32Elem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetint64elem
+External_Function PropVariantGetInt64Elem "PropVariantGetInt64Elem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetstringelem
+External_Function PropVariantGetStringElem "PropVariantGetStringElem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer ppszVal ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetuint16elem
+External_Function PropVariantGetUInt16Elem "PropVariantGetUInt16Elem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// UShort*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetuint32elem
+External_Function PropVariantGetUInt32Elem "PropVariantGetUInt32Elem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvariantgetuint64elem
+External_Function PropVariantGetUInt64Elem "PropVariantGetUInt64Elem" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttobstr
+External_Function PropVariantToBSTR "PropVariantToBSTR" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pbstrOut ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoboolean
+External_Function PropVariantToBoolean "PropVariantToBoolean" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer pfRet ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttobooleanvector
+External_Function PropVariantToBooleanVector "PropVariantToBooleanVector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgf ;	// BOOL*
+	UInteger crgf ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttobooleanvectoralloc
+External_Function PropVariantToBooleanVectorAlloc "PropVariantToBooleanVectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgf ;	// BOOL**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttobooleanwithdefault
+External_Function PropVariantToBooleanWithDefault "PropVariantToBooleanWithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Integer fDefault ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttobuffer
+External_Function PropVariantToBuffer "PropVariantToBuffer" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttodouble
+External_Function PropVariantToDouble "PropVariantToDouble" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer pdblRet ;	// Real*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttodoublevector
+External_Function PropVariantToDoubleVector "PropVariantToDoubleVector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// Real*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttodoublevectoralloc
+External_Function PropVariantToDoubleVectorAlloc "PropVariantToDoubleVectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// Real**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttodoublewithdefault
+External_Function PropVariantToDoubleWithDefault "PropVariantToDoubleWithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Real dblDefault ;
+	Returns Real
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttofiletime
+External_Function PropVariantToFileTime "PropVariantToFileTime" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Integer pstfOut ;	// PSTIME_FLAGS
+	Pointer pftOut ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttofiletimevector
+External_Function PropVariantToFileTimeVector "PropVariantToFileTimeVector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgft ;	// FILETIME*
+	UInteger crgft ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttofiletimevectoralloc
+External_Function PropVariantToFileTimeVectorAlloc "PropVariantToFileTimeVectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgft ;	// FILETIME**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoguid
+External_Function PropVariantToGUID "PropVariantToGUID" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pguid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint16
+External_Function PropVariantToInt16 "PropVariantToInt16" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer piRet ;	// Short*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint16vector
+External_Function PropVariantToInt16Vector "PropVariantToInt16Vector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// Short*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint16vectoralloc
+External_Function PropVariantToInt16VectorAlloc "PropVariantToInt16VectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// Short**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint16withdefault
+External_Function PropVariantToInt16WithDefault "PropVariantToInt16WithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Short iDefault ;
+	Returns Short
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint32
+External_Function PropVariantToInt32 "PropVariantToInt32" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer plRet ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint32vector
+External_Function PropVariantToInt32Vector "PropVariantToInt32Vector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// Integer*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint32vectoralloc
+External_Function PropVariantToInt32VectorAlloc "PropVariantToInt32VectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// Integer**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint32withdefault
+External_Function PropVariantToInt32WithDefault "PropVariantToInt32WithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Integer lDefault ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint64
+External_Function PropVariantToInt64 "PropVariantToInt64" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer pllRet ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint64vector
+External_Function PropVariantToInt64Vector "PropVariantToInt64Vector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// Bigint*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint64vectoralloc
+External_Function PropVariantToInt64VectorAlloc "PropVariantToInt64VectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// Bigint**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttoint64withdefault
+External_Function PropVariantToInt64WithDefault "PropVariantToInt64WithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Bigint llDefault ;
+	Returns Bigint
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttostring
+External_Function PropVariantToString "PropVariantToString" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer psz ;	// PWSTR
+	UInteger cch ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttostringalloc
+External_Function PropVariantToStringAlloc "PropVariantToStringAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer ppszOut ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttostringvector
+External_Function PropVariantToStringVector "PropVariantToStringVector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgsz ;	// PWSTR*
+	UInteger crgsz ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttostringvectoralloc
+External_Function PropVariantToStringVectorAlloc "PropVariantToStringVectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgsz ;	// PWSTR**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttostringwithdefault
+External_Function PropVariantToStringWithDefault "PropVariantToStringWithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	WString pszDefault ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint16
+External_Function PropVariantToUInt16 "PropVariantToUInt16" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer puiRet ;	// UShort*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint16vector
+External_Function PropVariantToUInt16Vector "PropVariantToUInt16Vector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// UShort*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint16vectoralloc
+External_Function PropVariantToUInt16VectorAlloc "PropVariantToUInt16VectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// UShort**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint16withdefault
+External_Function PropVariantToUInt16WithDefault "PropVariantToUInt16WithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	UShort uiDefault ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint32
+External_Function PropVariantToUInt32 "PropVariantToUInt32" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer pulRet ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint32vector
+External_Function PropVariantToUInt32Vector "PropVariantToUInt32Vector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// UInteger*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint32vectoralloc
+External_Function PropVariantToUInt32VectorAlloc "PropVariantToUInt32VectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// UInteger**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint32withdefault
+External_Function PropVariantToUInt32WithDefault "PropVariantToUInt32WithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	UInteger ulDefault ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint64
+External_Function PropVariantToUInt64 "PropVariantToUInt64" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	Pointer pullRet ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint64vector
+External_Function PropVariantToUInt64Vector "PropVariantToUInt64Vector" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer prgn ;	// UBigint*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint64vectoralloc
+External_Function PropVariantToUInt64VectorAlloc "PropVariantToUInt64VectorAlloc" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer pprgn ;	// UBigint**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttouint64withdefault
+External_Function PropVariantToUInt64WithDefault "PropVariantToUInt64WithDefault" PROPSYS.dll ;
+	Pointer propvarIn ;	// PROPVARIANT*
+	UBigint ullDefault ;
+	Returns UBigint
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-propvarianttovariant
+External_Function PropVariantToVariant "PropVariantToVariant" PROPSYS.dll ;
+	Pointer pPropVar ;	// PROPVARIANT*
+	Pointer pVar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-propvarianttowinrtpropertyvalue
+External_Function PropVariantToWinRTPropertyValue "PropVariantToWinRTPropertyValue" PROPSYS.dll ;
+	Pointer propvar ;	// PROPVARIANT*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-stgdeserializepropvariant
+External_Function StgDeserializePropVariant "StgDeserializePropVariant" PROPSYS.dll ;
+	Pointer pprop ;	// SERIALIZEDPROPERTYVALUE*
+	UInteger cbMax ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-stgserializepropvariant
+External_Function StgSerializePropVariant "StgSerializePropVariant" PROPSYS.dll ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Pointer ppProp ;	// SERIALIZEDPROPERTYVALUE**
+	Pointer pcb ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttopropvariant
+External_Function VariantToPropVariant "VariantToPropVariant" PROPSYS.dll ;
+	Pointer pVar ;	// VARIANT*
+	Pointer pPropVar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propsys/nf-propsys-winrtpropertyvaluetopropvariant
+External_Function WinRTPropertyValueToPropVariant "WinRTPropertyValueToPropVariant" PROPSYS.dll ;
+	Pointer punkPropertyValue ;	// IUnknown
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-stgopenlayoutdocfile
+External_Function StgOpenLayoutDocfile "StgOpenLayoutDocfile" dflayout.dll ;
+	WString pwcsDfName ;	// PWSTR
+	UInteger grfMode ;
+	UInteger reserved ;
+	Pointer ppstgOpen ;	// IStorage*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

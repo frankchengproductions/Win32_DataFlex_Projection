@@ -1,0 +1,1194 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/nf-rpcdce-dceerrorinqtexta
+External_Function DceErrorInqTextA "DceErrorInqTextA" RPCRT4.dll ;
+	Integer RpcStatus ;	// RPC_STATUS
+	Pointer ErrorText ;	// PSTR
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/nf-rpcdce-dceerrorinqtextw
+External_Function DceErrorInqTextW "DceErrorInqTextW" RPCRT4.dll ;
+	Integer RpcStatus ;	// RPC_STATUS
+	Pointer ErrorText ;	// PWSTR
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/unknwnbase/nf-unknwnbase-iunknown_addref_proxy
+External_Function IUnknown_AddRef_Proxy "IUnknown_AddRef_Proxy" RPCRT4.dll ;
+	Pointer This ;	// IUnknown
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/unknwnbase/nf-unknwnbase-iunknown_queryinterface_proxy
+External_Function IUnknown_QueryInterface_Proxy "IUnknown_QueryInterface_Proxy" RPCRT4.dll ;
+	Pointer This ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/unknwnbase/nf-unknwnbase-iunknown_release_proxy
+External_Function IUnknown_Release_Proxy "IUnknown_Release_Proxy" RPCRT4.dll ;
+	Pointer This ;	// IUnknown
+	Returns UInteger
+
+External_Function I_RpcAllocate "I_RpcAllocate" RPCRT4.dll ;
+	UInteger Size ;
+	Returns Pointer	// Pointer*
+
+External_Function I_RpcAsyncAbortCall "I_RpcAsyncAbortCall" RPCRT4.dll ;
+	Pointer pAsync ;	// RPC_ASYNC_STATE*
+	UInteger ExceptionCode ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcAsyncSetHandle "I_RpcAsyncSetHandle" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Pointer pAsync ;	// RPC_ASYNC_STATE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingCopy "I_RpcBindingCopy" RPCRT4.dll ;
+	Pointer SourceBinding ;	// Pointer*
+	Pointer DestinationBinding ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingCreateNP "I_RpcBindingCreateNP" RPCRT4.dll ;
+	WString ServerName ;	// PWSTR
+	WString ServiceName ;	// PWSTR
+	WString NetworkOptions ;	// PWSTR
+	Pointer Binding ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingHandleToAsyncHandle "I_RpcBindingHandleToAsyncHandle" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer AsyncHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqClientTokenAttributes "I_RpcBindingInqClientTokenAttributes" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer TokenId ;	// LUID*
+	Pointer AuthenticationId ;	// LUID*
+	Pointer ModifiedId ;	// LUID*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqDynamicEndpointA "I_RpcBindingInqDynamicEndpointA" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer DynamicEndpoint ;	// PSTR*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqDynamicEndpointW "I_RpcBindingInqDynamicEndpointW" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer DynamicEndpoint ;	// PWSTR*
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/rpcdcep/nf-rpcdcep-i_rpcbindinginqlocalclientpid
+External_Function I_RpcBindingInqLocalClientPID "I_RpcBindingInqLocalClientPID" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer Pid ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqMarshalledTargetInfo "I_RpcBindingInqMarshalledTargetInfo" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer MarshalledTargetInfoSize ;	// UInteger*
+	Pointer MarshalledTargetInfo ;	// PSTR*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqSecurityContext "I_RpcBindingInqSecurityContext" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer SecurityContextHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqSecurityContextKeyInfo "I_RpcBindingInqSecurityContextKeyInfo" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer KeyInfo ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqTransportType "I_RpcBindingInqTransportType" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer Type ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingInqWireIdForSnego "I_RpcBindingInqWireIdForSnego" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer WireId ;	// UChar*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingIsClientLocal "I_RpcBindingIsClientLocal" RPCRT4.dll ;
+	Pointer BindingHandle ;	// Pointer*
+	Pointer ClientLocalFlag ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingIsServerLocal "I_RpcBindingIsServerLocal" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer ServerLocalFlag ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingSetPrivateOption "I_RpcBindingSetPrivateOption" RPCRT4.dll ;
+	Pointer hBinding ;	// Pointer*
+	UInteger option ;
+	ULongPtr optionValue ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcBindingToStaticStringBindingW "I_RpcBindingToStaticStringBindingW" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer StringBinding ;	// UShort**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcClearMutex "I_RpcClearMutex" RPCRT4.dll ;
+	Pointer Mutex ;	// Pointer*
+	Returns Pointer
+
+External_Function I_RpcDeleteMutex "I_RpcDeleteMutex" RPCRT4.dll ;
+	Pointer Mutex ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/nf-rpcasync-i_rpcexceptionfilter
+External_Function I_RpcExceptionFilter "I_RpcExceptionFilter" RPCRT4.dll ;
+	UInteger ExceptionCode ;
+	Returns Integer
+
+External_Function I_RpcFree "I_RpcFree" RPCRT4.dll ;
+	Pointer Object ;	// Pointer*
+	Returns Pointer
+
+External_Function I_RpcFreeBuffer "I_RpcFreeBuffer" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcFreePipeBuffer "I_RpcFreePipeBuffer" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcGetBuffer "I_RpcGetBuffer" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcGetBufferWithObject "I_RpcGetBufferWithObject" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Pointer ObjectUuid ;	// Guid*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcGetCurrentCallHandle "I_RpcGetCurrentCallHandle" RPCRT4.dll ;
+	Returns Pointer	// Pointer*
+
+External_Function I_RpcGetDefaultSD "I_RpcGetDefaultSD" RPCRT4.dll ;
+	Pointer ppSecurityDescriptor ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcGetExtendedError "I_RpcGetExtendedError" RPCRT4.dll ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcIfInqTransferSyntaxes "I_RpcIfInqTransferSyntaxes" RPCRT4.dll ;
+	Pointer RpcIfHandle ;	// Pointer*
+	Pointer TransferSyntaxes ;	// RPC_TRANSFER_SYNTAX*
+	UInteger TransferSyntaxSize ;
+	Pointer TransferSyntaxCount ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcMapWin32Status "I_RpcMapWin32Status" RPCRT4.dll ;
+	Integer Status ;	// RPC_STATUS
+	Returns Integer
+
+External_Function I_RpcMgmtEnableDedicatedThreadPool "I_RpcMgmtEnableDedicatedThreadPool" RPCRT4.dll ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcNegotiateTransferSyntax "I_RpcNegotiateTransferSyntax" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcNsBindingSetEntryNameA "I_RpcNsBindingSetEntryNameA" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	UInteger EntryNameSyntax ;
+	String EntryName ;	// PSTR
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcNsBindingSetEntryNameW "I_RpcNsBindingSetEntryNameW" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	UInteger EntryNameSyntax ;
+	WString EntryName ;	// PWSTR
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcNsInterfaceExported "I_RpcNsInterfaceExported" RPCRT4.dll ;
+	UInteger EntryNameSyntax ;
+	Pointer EntryName ;	// UShort*
+	Pointer RpcInterfaceInformation ;	// RPC_SERVER_INTERFACE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcNsInterfaceUnexported "I_RpcNsInterfaceUnexported" RPCRT4.dll ;
+	UInteger EntryNameSyntax ;
+	Pointer EntryName ;	// UShort*
+	Pointer RpcInterfaceInformation ;	// RPC_SERVER_INTERFACE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcOpenClientProcess "I_RpcOpenClientProcess" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	UInteger DesiredAccess ;
+	Pointer ClientProcess ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcPauseExecution "I_RpcPauseExecution" RPCRT4.dll ;
+	UInteger Milliseconds ;
+	Returns Pointer
+
+External_Function I_RpcReallocPipeBuffer "I_RpcReallocPipeBuffer" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	UInteger NewSize ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcReceive "I_RpcReceive" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	UInteger Size ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcRecordCalloutFailure "I_RpcRecordCalloutFailure" RPCRT4.dll ;
+	Integer RpcStatus ;	// RPC_STATUS
+	Pointer CallOutState ;	// RDR_CALLOUT_STATE*
+	Pointer DllName ;	// UShort*
+	Returns Pointer
+
+External_Function I_RpcRequestMutex "I_RpcRequestMutex" RPCRT4.dll ;
+	Pointer Mutex ;	// Pointer**
+	Returns Pointer
+
+External_Function I_RpcSend "I_RpcSend" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcSendReceive "I_RpcSendReceive" RPCRT4.dll ;
+	Pointer Message ;	// RPC_MESSAGE*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerCheckClientRestriction "I_RpcServerCheckClientRestriction" RPCRT4.dll ;
+	Pointer Context ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerDisableExceptionFilter "I_RpcServerDisableExceptionFilter" RPCRT4.dll ;
+	Returns Integer
+
+External_Function I_RpcServerGetAssociationID "I_RpcServerGetAssociationID" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer AssociationID ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerInqAddressChangeFn "I_RpcServerInqAddressChangeFn" RPCRT4.dll ;
+	Returns Pointer	// RPC_ADDRESS_CHANGE_FN*
+
+External_Function I_RpcServerInqLocalConnAddress "I_RpcServerInqLocalConnAddress" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer Buffer ;	// Pointer*
+	Pointer BufferSize ;	// UInteger*
+	Pointer AddressFormat ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerInqRemoteConnAddress "I_RpcServerInqRemoteConnAddress" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer Buffer ;	// Pointer*
+	Pointer BufferSize ;	// UInteger*
+	Pointer AddressFormat ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerInqTransportType "I_RpcServerInqTransportType" RPCRT4.dll ;
+	Pointer Type ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerRegisterForwardFunction "I_RpcServerRegisterForwardFunction" RPCRT4.dll ;
+	Pointer pForwardFunction ;	// RPC_FORWARD_FUNCTION*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerSetAddressChangeFn "I_RpcServerSetAddressChangeFn" RPCRT4.dll ;
+	Pointer pAddressChangeFn ;	// RPC_ADDRESS_CHANGE_FN*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerStartService "I_RpcServerStartService" RPCRT4.dll ;
+	WString Protseq ;	// PWSTR
+	WString Endpoint ;	// PWSTR
+	Pointer IfSpec ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerSubscribeForDisconnectNotification "I_RpcServerSubscribeForDisconnectNotification" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer hEvent ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerSubscribeForDisconnectNotification2 "I_RpcServerSubscribeForDisconnectNotification2" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Pointer hEvent ;	// Pointer*
+	Pointer SubscriptionId ;	// Guid*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerUnsubscribeForDisconnectNotification "I_RpcServerUnsubscribeForDisconnectNotification" RPCRT4.dll ;
+	Pointer Binding ;	// Pointer*
+	Guid SubscriptionId ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerUseProtseq2A "I_RpcServerUseProtseq2A" RPCRT4.dll ;
+	String NetworkAddress ;	// PSTR
+	String Protseq ;	// PSTR
+	UInteger MaxCalls ;
+	Pointer SecurityDescriptor ;	// Pointer*
+	Pointer Policy ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerUseProtseq2W "I_RpcServerUseProtseq2W" RPCRT4.dll ;
+	WString NetworkAddress ;	// PWSTR
+	WString Protseq ;	// PWSTR
+	UInteger MaxCalls ;
+	Pointer SecurityDescriptor ;	// Pointer*
+	Pointer Policy ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerUseProtseqEp2A "I_RpcServerUseProtseqEp2A" RPCRT4.dll ;
+	String NetworkAddress ;	// PSTR
+	String Protseq ;	// PSTR
+	UInteger MaxCalls ;
+	String Endpoint ;	// PSTR
+	Pointer SecurityDescriptor ;	// Pointer*
+	Pointer Policy ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcServerUseProtseqEp2W "I_RpcServerUseProtseqEp2W" RPCRT4.dll ;
+	WString NetworkAddress ;	// PWSTR
+	WString Protseq ;	// PWSTR
+	UInteger MaxCalls ;
+	WString Endpoint ;	// PWSTR
+	Pointer SecurityDescriptor ;	// Pointer*
+	Pointer Policy ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcSessionStrictContextHandle "I_RpcSessionStrictContextHandle" RPCRT4.dll ;
+	Returns Pointer
+
+External_Function I_RpcSsDontSerializeContext "I_RpcSsDontSerializeContext" RPCRT4.dll ;
+	Returns Pointer
+
+External_Function I_RpcSystemHandleTypeSpecificWork "I_RpcSystemHandleTypeSpecificWork" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	UChar ActualType ;
+	UChar IdlType ;
+	Integer MarshalDirection ;	// LRPC_SYSTEM_HANDLE_MARSHAL_DIRECTION
+	Returns Integer	// RPC_STATUS
+
+External_Function I_RpcTurnOnEEInfoPropagation "I_RpcTurnOnEEInfoPropagation" RPCRT4.dll ;
+	Returns Integer	// RPC_STATUS
+
+External_Function I_UuidCreate "I_UuidCreate" RPCRT4.dll ;
+	Pointer Uuid ;	// Guid*
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesbufferhandlereset
+External_Function MesBufferHandleReset "MesBufferHandleReset" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	UInteger HandleStyle ;
+	Integer Operation ;	// MIDL_ES_CODE
+	Pointer pBuffer ;	// Char**
+	UInteger BufferSize ;
+	Pointer pEncodedSize ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesdecodebufferhandlecreate
+External_Function MesDecodeBufferHandleCreate "MesDecodeBufferHandleCreate" RPCRT4.dll ;
+	String Buffer ;	// PSTR
+	UInteger BufferSize ;
+	Pointer pHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesdecodeincrementalhandlecreate
+External_Function MesDecodeIncrementalHandleCreate "MesDecodeIncrementalHandleCreate" RPCRT4.dll ;
+	Pointer UserState ;	// Pointer*
+	Pointer ReadFn ;	// MIDL_ES_READ
+	Pointer pHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesencodedynbufferhandlecreate
+External_Function MesEncodeDynBufferHandleCreate "MesEncodeDynBufferHandleCreate" RPCRT4.dll ;
+	Pointer pBuffer ;	// Char**
+	Pointer pEncodedSize ;	// UInteger*
+	Pointer pHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesencodefixedbufferhandlecreate
+External_Function MesEncodeFixedBufferHandleCreate "MesEncodeFixedBufferHandleCreate" RPCRT4.dll ;
+	Pointer pBuffer ;	// PSTR
+	UInteger BufferSize ;
+	Pointer pEncodedSize ;	// UInteger*
+	Pointer pHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesencodeincrementalhandlecreate
+External_Function MesEncodeIncrementalHandleCreate "MesEncodeIncrementalHandleCreate" RPCRT4.dll ;
+	Pointer UserState ;	// Pointer*
+	Pointer AllocFn ;	// MIDL_ES_ALLOC
+	Pointer WriteFn ;	// MIDL_ES_WRITE
+	Pointer pHandle ;	// Pointer**
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-meshandlefree
+External_Function MesHandleFree "MesHandleFree" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesincrementalhandlereset
+External_Function MesIncrementalHandleReset "MesIncrementalHandleReset" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer UserState ;	// Pointer*
+	Pointer AllocFn ;	// MIDL_ES_ALLOC
+	Pointer WriteFn ;	// MIDL_ES_WRITE
+	Pointer ReadFn ;	// MIDL_ES_READ
+	Integer Operation ;	// MIDL_ES_CODE
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-mesinqprocencodingid
+External_Function MesInqProcEncodingId "MesInqProcEncodingId" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pInterfaceId ;	// RPC_SYNTAX_IDENTIFIER*
+	Pointer pProcNum ;	// UInteger*
+	Returns Integer	// RPC_STATUS
+
+External_Function NDRCContextBinding "NDRCContextBinding" RPCRT4.dll ;
+	LongPtr CContext ;
+	Returns Pointer	// Pointer*
+
+External_Function NDRCContextMarshall "NDRCContextMarshall" RPCRT4.dll ;
+	LongPtr CContext ;
+	Pointer pBuff ;	// Pointer*
+	Returns Pointer
+
+External_Function NDRCContextUnmarshall "NDRCContextUnmarshall" RPCRT4.dll ;
+	Pointer pCContext ;	// LongPtr*
+	Pointer hBinding ;	// Pointer*
+	Pointer pBuff ;	// Pointer*
+	UInteger DataRepresentation ;
+	Returns Pointer
+
+External_Function NDRSContextMarshall "NDRSContextMarshall" RPCRT4.dll ;
+	Pointer CContext ;	// NDR_SCONTEXT*
+	Pointer pBuff ;	// Pointer*
+	Pointer userRunDownIn ;	// NDR_RUNDOWN
+	Returns Pointer
+
+External_Function NDRSContextMarshall2 "NDRSContextMarshall2" RPCRT4.dll ;
+	Pointer BindingHandle ;	// Pointer*
+	Pointer CContext ;	// NDR_SCONTEXT*
+	Pointer pBuff ;	// Pointer*
+	Pointer userRunDownIn ;	// NDR_RUNDOWN
+	Pointer CtxGuard ;	// Pointer*
+	UInteger Flags ;
+	Returns Pointer
+
+External_Function NDRSContextMarshallEx "NDRSContextMarshallEx" RPCRT4.dll ;
+	Pointer BindingHandle ;	// Pointer*
+	Pointer CContext ;	// NDR_SCONTEXT*
+	Pointer pBuff ;	// Pointer*
+	Pointer userRunDownIn ;	// NDR_RUNDOWN
+	Returns Pointer
+
+External_Function NDRSContextUnmarshall "NDRSContextUnmarshall" RPCRT4.dll ;
+	Pointer pBuff ;	// Pointer*
+	UInteger DataRepresentation ;
+	Returns Pointer	// NDR_SCONTEXT*
+
+External_Function NDRSContextUnmarshall2 "NDRSContextUnmarshall2" RPCRT4.dll ;
+	Pointer BindingHandle ;	// Pointer*
+	Pointer pBuff ;	// Pointer*
+	UInteger DataRepresentation ;
+	Pointer CtxGuard ;	// Pointer*
+	UInteger Flags ;
+	Returns Pointer	// NDR_SCONTEXT*
+
+External_Function NDRSContextUnmarshallEx "NDRSContextUnmarshallEx" RPCRT4.dll ;
+	Pointer BindingHandle ;	// Pointer*
+	Pointer pBuff ;	// Pointer*
+	UInteger DataRepresentation ;
+	Returns Pointer	// NDR_SCONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndr64asyncclientcall
+External_Function Ndr64AsyncClientCall "Ndr64AsyncClientCall" RPCRT4.dll ;
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	UInteger nProcNum ;
+	Pointer pReturnValue ;	// Pointer*
+	Returns CLIENT_CALL_RETURN
+
+External_Function Ndr64AsyncServerCall64 "Ndr64AsyncServerCall64" RPCRT4.dll ;
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndr64asyncservercallall
+External_Function Ndr64AsyncServerCallAll "Ndr64AsyncServerCallAll" RPCRT4.dll ;
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Returns Pointer
+
+External_Function Ndr64DcomAsyncClientCall "Ndr64DcomAsyncClientCall" RPCRT4.dll ;
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	UInteger nProcNum ;
+	Pointer pReturnValue ;	// Pointer*
+	Returns CLIENT_CALL_RETURN
+
+External_Function Ndr64DcomAsyncStubCall "Ndr64DcomAsyncStubCall" RPCRT4.dll ;
+	Pointer pThis ;	// IRpcStubBuffer
+	Pointer pChannel ;	// IRpcChannelBuffer
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Pointer pdwStubPhase ;	// UInteger*
+	Returns Integer
+
+External_Function NdrAllocate "NdrAllocate" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	ULongPtr Len ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrasyncclientcall
+External_Function NdrAsyncClientCall "NdrAsyncClientCall" RPCRT4.dll ;
+	Pointer pStubDescriptor ;	// MIDL_STUB_DESC*
+	Pointer pFormat ;	// UChar*
+	Returns CLIENT_CALL_RETURN
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrasyncservercall
+External_Function NdrAsyncServerCall "NdrAsyncServerCall" RPCRT4.dll ;
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Returns Pointer
+
+External_Function NdrByteCountPointerBufferSize "NdrByteCountPointerBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrByteCountPointerFree "NdrByteCountPointerFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrByteCountPointerMarshall "NdrByteCountPointerMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrByteCountPointerUnmarshall "NdrByteCountPointerUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrclearoutparameters
+External_Function NdrClearOutParameters "NdrClearOutParameters" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Pointer ArgAddr ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrclientcall2
+External_Function NdrClientCall2 "NdrClientCall2" RPCRT4.dll ;
+	Pointer pStubDescriptor ;	// MIDL_STUB_DESC*
+	Pointer pFormat ;	// UChar*
+	Returns CLIENT_CALL_RETURN
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrclientcall3
+External_Function NdrClientCall3 "NdrClientCall3" RPCRT4.dll ;
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	UInteger nProcNum ;
+	Pointer pReturnValue ;	// Pointer*
+	Returns CLIENT_CALL_RETURN
+
+External_Function NdrClientContextMarshall "NdrClientContextMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	LongPtr ContextHandle ;
+	Integer fCheck ;
+	Returns Pointer
+
+External_Function NdrClientContextUnmarshall "NdrClientContextUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pContextHandle ;	// LongPtr*
+	Pointer BindHandle ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrClientInitialize "NdrClientInitialize" RPCRT4.dll ;
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pStubDescriptor ;	// MIDL_STUB_DESC*
+	UInteger ProcNum ;
+	Returns Pointer
+
+External_Function NdrClientInitializeNew "NdrClientInitializeNew" RPCRT4.dll ;
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pStubDescriptor ;	// MIDL_STUB_DESC*
+	UInteger ProcNum ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcomplexarraybuffersize
+External_Function NdrComplexArrayBufferSize "NdrComplexArrayBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrComplexArrayFree "NdrComplexArrayFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcomplexarraymarshall
+External_Function NdrComplexArrayMarshall "NdrComplexArrayMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrComplexArrayMemorySize "NdrComplexArrayMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcomplexarrayunmarshall
+External_Function NdrComplexArrayUnmarshall "NdrComplexArrayUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcomplexstructbuffersize
+External_Function NdrComplexStructBufferSize "NdrComplexStructBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrComplexStructFree "NdrComplexStructFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcomplexstructmarshall
+External_Function NdrComplexStructMarshall "NdrComplexStructMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrComplexStructMemorySize "NdrComplexStructMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcomplexstructunmarshall
+External_Function NdrComplexStructUnmarshall "NdrComplexStructUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconformantarraybuffersize
+External_Function NdrConformantArrayBufferSize "NdrConformantArrayBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantArrayFree "NdrConformantArrayFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconformantarraymarshall
+External_Function NdrConformantArrayMarshall "NdrConformantArrayMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantArrayMemorySize "NdrConformantArrayMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconformantarrayunmarshall
+External_Function NdrConformantArrayUnmarshall "NdrConformantArrayUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconformantstringbuffersize
+External_Function NdrConformantStringBufferSize "NdrConformantStringBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconformantstringmarshall
+External_Function NdrConformantStringMarshall "NdrConformantStringMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantStringMemorySize "NdrConformantStringMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconformantstringunmarshall
+External_Function NdrConformantStringUnmarshall "NdrConformantStringUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantStructBufferSize "NdrConformantStructBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantStructFree "NdrConformantStructFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantStructMarshall "NdrConformantStructMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantStructMemorySize "NdrConformantStructMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+External_Function NdrConformantStructUnmarshall "NdrConformantStructUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantVaryingArrayBufferSize "NdrConformantVaryingArrayBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantVaryingArrayFree "NdrConformantVaryingArrayFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantVaryingArrayMarshall "NdrConformantVaryingArrayMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantVaryingArrayMemorySize "NdrConformantVaryingArrayMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+External_Function NdrConformantVaryingArrayUnmarshall "NdrConformantVaryingArrayUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantVaryingStructBufferSize "NdrConformantVaryingStructBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantVaryingStructFree "NdrConformantVaryingStructFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConformantVaryingStructMarshall "NdrConformantVaryingStructMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrConformantVaryingStructMemorySize "NdrConformantVaryingStructMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+External_Function NdrConformantVaryingStructUnmarshall "NdrConformantVaryingStructUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcontexthandleinitialize
+External_Function NdrContextHandleInitialize "NdrContextHandleInitialize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// NDR_SCONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrcontexthandlesize
+External_Function NdrContextHandleSize "NdrContextHandleSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrconvert
+External_Function NdrConvert "NdrConvert" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrConvert2 "NdrConvert2" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Integer NumberParams ;
+	Returns Pointer
+
+External_Function NdrCorrelationFree "NdrCorrelationFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Returns Pointer
+
+External_Function NdrCorrelationInitialize "NdrCorrelationInitialize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// Pointer*
+	UInteger CacheSize ;
+	UInteger flags ;
+	Returns Pointer
+
+External_Function NdrCorrelationPass "NdrCorrelationPass" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Returns Pointer
+
+External_Function NdrCreateServerInterfaceFromStub "NdrCreateServerInterfaceFromStub" RPCRT4.dll ;
+	Pointer pStub ;	// IRpcStubBuffer
+	Pointer pServerIf ;	// RPC_SERVER_INTERFACE*
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrdcomasyncclientcall
+External_Function NdrDcomAsyncClientCall "NdrDcomAsyncClientCall" RPCRT4.dll ;
+	Pointer pStubDescriptor ;	// MIDL_STUB_DESC*
+	Pointer pFormat ;	// UChar*
+	Returns CLIENT_CALL_RETURN
+
+External_Function NdrDcomAsyncStubCall "NdrDcomAsyncStubCall" RPCRT4.dll ;
+	Pointer pThis ;	// IRpcStubBuffer
+	Pointer pChannel ;	// IRpcChannelBuffer
+	Pointer pRpcMsg ;	// RPC_MESSAGE*
+	Pointer pdwStubPhase ;	// UInteger*
+	Returns Integer
+
+External_Function NdrEncapsulatedUnionBufferSize "NdrEncapsulatedUnionBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrEncapsulatedUnionFree "NdrEncapsulatedUnionFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrEncapsulatedUnionMarshall "NdrEncapsulatedUnionMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrEncapsulatedUnionMemorySize "NdrEncapsulatedUnionMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+External_Function NdrEncapsulatedUnionUnmarshall "NdrEncapsulatedUnionUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+External_Function NdrFixedArrayBufferSize "NdrFixedArrayBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrFixedArrayFree "NdrFixedArrayFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrFixedArrayMarshall "NdrFixedArrayMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrFixedArrayMemorySize "NdrFixedArrayMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+External_Function NdrFixedArrayUnmarshall "NdrFixedArrayUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+External_Function NdrFreeBuffer "NdrFreeBuffer" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Returns Pointer
+
+External_Function NdrFullPointerXlatFree "NdrFullPointerXlatFree" RPCRT4.dll ;
+	Pointer pXlatTables ;	// FULL_PTR_XLAT_TABLES*
+	Returns Pointer
+
+External_Function NdrFullPointerXlatInit "NdrFullPointerXlatInit" RPCRT4.dll ;
+	UInteger NumberOfPointers ;
+	Integer XlatSide ;	// XLAT_SIDE
+	Returns Pointer	// FULL_PTR_XLAT_TABLES*
+
+External_Function NdrGetBuffer "NdrGetBuffer" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	UInteger BufferLength ;
+	Pointer Handle ;	// Pointer*
+	Returns Pointer	// UChar*
+
+External_Function NdrGetDcomProtocolVersion "NdrGetDcomProtocolVersion" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pVersion ;	// RPC_VERSION*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrgetusermarshalinfo
+External_Function NdrGetUserMarshalInfo "NdrGetUserMarshalInfo" RPCRT4.dll ;
+	Pointer pFlags ;	// UInteger*
+	UInteger InformationLevel ;
+	Pointer pMarshalInfo ;	// NDR_USER_MARSHAL_INFO*
+	Returns Integer	// RPC_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrinterfacepointerbuffersize
+External_Function NdrInterfacePointerBufferSize "NdrInterfacePointerBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrinterfacepointerfree
+External_Function NdrInterfacePointerFree "NdrInterfacePointerFree" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrinterfacepointermarshall
+External_Function NdrInterfacePointerMarshall "NdrInterfacePointerMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrInterfacePointerMemorySize "NdrInterfacePointerMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/nf-rpcndr-ndrinterfacepointerunmarshall
+External_Function NdrInterfacePointerUnmarshall "NdrInterfacePointerUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+External_Function NdrMapCommAndFaultStatus "NdrMapCommAndFaultStatus" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pCommStatus ;	// UInteger*
+	Pointer pFaultStatus ;	// UInteger*
+	Integer Status ;	// RPC_STATUS
+	Returns Integer	// RPC_STATUS
+
+External_Function NdrMesProcEncodeDecode "NdrMesProcEncodeDecode" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/midles/nf-midles-ndrmesprocencodedecode2
+External_Function NdrMesProcEncodeDecode2 "NdrMesProcEncodeDecode2" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Returns CLIENT_CALL_RETURN
+
+External_Function NdrMesProcEncodeDecode3 "NdrMesProcEncodeDecode3" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	UInteger nProcNum ;
+	Pointer pReturnValue ;	// Pointer*
+	Returns CLIENT_CALL_RETURN
+
+External_Function NdrMesSimpleTypeAlignSize "NdrMesSimpleTypeAlignSize" RPCRT4.dll ;
+	Pointer param0 ;	// Pointer*
+	Returns ULongPtr
+
+External_Function NdrMesSimpleTypeAlignSizeAll "NdrMesSimpleTypeAlignSizeAll" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Returns ULongPtr
+
+External_Function NdrMesSimpleTypeDecode "NdrMesSimpleTypeDecode" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pObject ;	// Pointer*
+	Short Size ;
+	Returns Pointer
+
+External_Function NdrMesSimpleTypeDecodeAll "NdrMesSimpleTypeDecodeAll" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Pointer pObject ;	// Pointer*
+	Short Size ;
+	Returns Pointer
+
+External_Function NdrMesSimpleTypeEncode "NdrMesSimpleTypeEncode" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pObject ;	// Pointer*
+	Short Size ;
+	Returns Pointer
+
+External_Function NdrMesSimpleTypeEncodeAll "NdrMesSimpleTypeEncodeAll" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Pointer pObject ;	// Pointer*
+	Short Size ;
+	Returns Pointer
+
+External_Function NdrMesTypeAlignSize "NdrMesTypeAlignSize" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns ULongPtr
+
+External_Function NdrMesTypeAlignSize2 "NdrMesTypeAlignSize2" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns ULongPtr
+
+External_Function NdrMesTypeAlignSize3 "NdrMesTypeAlignSize3" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Pointer ArrTypeOffset ;	// UInteger**
+	UInteger nTypeIndex ;
+	Pointer pObject ;	// Pointer*
+	Returns ULongPtr
+
+External_Function NdrMesTypeDecode "NdrMesTypeDecode" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeDecode2 "NdrMesTypeDecode2" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeDecode3 "NdrMesTypeDecode3" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Pointer ArrTypeOffset ;	// UInteger**
+	UInteger nTypeIndex ;
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeEncode "NdrMesTypeEncode" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeEncode2 "NdrMesTypeEncode2" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeEncode3 "NdrMesTypeEncode3" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Pointer ArrTypeOffset ;	// UInteger**
+	UInteger nTypeIndex ;
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeFree2 "NdrMesTypeFree2" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pStubDesc ;	// MIDL_STUB_DESC*
+	Pointer pFormatString ;	// UChar*
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrMesTypeFree3 "NdrMesTypeFree3" RPCRT4.dll ;
+	Pointer Handle ;	// Pointer*
+	Pointer pPicklingInfo ;	// MIDL_TYPE_PICKLING_INFO*
+	Pointer pProxyInfo ;	// MIDL_STUBLESS_PROXY_INFO*
+	Pointer ArrTypeOffset ;	// UInteger**
+	UInteger nTypeIndex ;
+	Pointer pObject ;	// Pointer*
+	Returns Pointer
+
+External_Function NdrNonConformantStringBufferSize "NdrNonConformantStringBufferSize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer
+
+External_Function NdrNonConformantStringMarshall "NdrNonConformantStringMarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pMemory ;	// UChar*
+	Pointer pFormat ;	// UChar*
+	Returns Pointer	// UChar*
+
+External_Function NdrNonConformantStringMemorySize "NdrNonConformantStringMemorySize" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer pFormat ;	// UChar*
+	Returns UInteger
+
+External_Function NdrNonConformantStringUnmarshall "NdrNonConformantStringUnmarshall" RPCRT4.dll ;
+	Pointer pStubMsg ;	// MIDL_STUB_MESSAGE*
+	Pointer ppMemory ;	// UChar**
+	Pointer pFormat ;	// UChar*
+	UChar fMustAlloc ;
+	Returns Pointer	// UChar*
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,433 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-backupeventloga
+External_Function BackupEventLogA "BackupEventLogA" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	String lpBackupFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-backupeventlogw
+External_Function BackupEventLogW "BackupEventLogW" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	WString lpBackupFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-cleareventloga
+External_Function ClearEventLogA "ClearEventLogA" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	String lpBackupFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-cleareventlogw
+External_Function ClearEventLogW "ClearEventLogW" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	WString lpBackupFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-closeeventlog
+External_Function CloseEventLog "CloseEventLog" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-deregistereventsource
+External_Function DeregisterEventSource "DeregisterEventSource" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-geteventloginformation
+External_Function GetEventLogInformation "GetEventLogInformation" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	UInteger dwInfoLevel ;
+	Pointer lpBuffer ;	// Pointer*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnumberofeventlogrecords
+External_Function GetNumberOfEventLogRecords "GetNumberOfEventLogRecords" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	Pointer NumberOfRecords ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getoldesteventlogrecord
+External_Function GetOldestEventLogRecord "GetOldestEventLogRecord" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	Pointer OldestRecord ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-notifychangeeventlog
+External_Function NotifyChangeEventLog "NotifyChangeEventLog" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	Pointer hEvent ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openbackupeventloga
+External_Function OpenBackupEventLogA "OpenBackupEventLogA" ADVAPI32.dll ;
+	String lpUNCServerName ;	// PSTR
+	String lpFileName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openbackupeventlogw
+External_Function OpenBackupEventLogW "OpenBackupEventLogW" ADVAPI32.dll ;
+	WString lpUNCServerName ;	// PWSTR
+	WString lpFileName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openeventloga
+External_Function OpenEventLogA "OpenEventLogA" ADVAPI32.dll ;
+	String lpUNCServerName ;	// PSTR
+	String lpSourceName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openeventlogw
+External_Function OpenEventLogW "OpenEventLogW" ADVAPI32.dll ;
+	WString lpUNCServerName ;	// PWSTR
+	WString lpSourceName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-readeventloga
+External_Function ReadEventLogA "ReadEventLogA" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	UInteger dwReadFlags ;	// READ_EVENT_LOG_READ_FLAGS
+	UInteger dwRecordOffset ;
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nNumberOfBytesToRead ;
+	Pointer pnBytesRead ;	// UInteger*
+	Pointer pnMinNumberOfBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-readeventlogw
+External_Function ReadEventLogW "ReadEventLogW" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	UInteger dwReadFlags ;	// READ_EVENT_LOG_READ_FLAGS
+	UInteger dwRecordOffset ;
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nNumberOfBytesToRead ;
+	Pointer pnBytesRead ;	// UInteger*
+	Pointer pnMinNumberOfBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-registereventsourcea
+External_Function RegisterEventSourceA "RegisterEventSourceA" ADVAPI32.dll ;
+	String lpUNCServerName ;	// PSTR
+	String lpSourceName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-registereventsourcew
+External_Function RegisterEventSourceW "RegisterEventSourceW" ADVAPI32.dll ;
+	WString lpUNCServerName ;	// PWSTR
+	WString lpSourceName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-reporteventa
+External_Function ReportEventA "ReportEventA" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	UShort wType ;	// REPORT_EVENT_TYPE
+	UShort wCategory ;
+	UInteger dwEventID ;
+	Pointer lpUserSid ;	// PSID
+	UShort wNumStrings ;
+	UInteger dwDataSize ;
+	Pointer lpStrings ;	// PSTR*
+	Pointer lpRawData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-reporteventw
+External_Function ReportEventW "ReportEventW" ADVAPI32.dll ;
+	Pointer hEventLog ;	// HANDLE
+	UShort wType ;	// REPORT_EVENT_TYPE
+	UShort wCategory ;
+	UInteger dwEventID ;
+	Pointer lpUserSid ;	// PSID
+	UShort wNumStrings ;
+	UInteger dwDataSize ;
+	Pointer lpStrings ;	// PWSTR*
+	Pointer lpRawData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtarchiveexportedlog
+External_Function EvtArchiveExportedLog "EvtArchiveExportedLog" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString LogFilePath ;	// PWSTR
+	UInteger Locale ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtcancel
+External_Function EvtCancel "EvtCancel" wevtapi.dll ;
+	LongPtr Object ;	// EVT_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtclearlog
+External_Function EvtClearLog "EvtClearLog" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString ChannelPath ;	// PWSTR
+	WString TargetFilePath ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtclose
+External_Function EvtClose "EvtClose" wevtapi.dll ;
+	LongPtr Object ;	// EVT_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtcreatebookmark
+External_Function EvtCreateBookmark "EvtCreateBookmark" wevtapi.dll ;
+	WString BookmarkXml ;	// PWSTR
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtcreaterendercontext
+External_Function EvtCreateRenderContext "EvtCreateRenderContext" wevtapi.dll ;
+	UInteger ValuePathsCount ;
+	Pointer ValuePaths ;	// PWSTR*
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtexportlog
+External_Function EvtExportLog "EvtExportLog" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString Path ;	// PWSTR
+	WString Query ;	// PWSTR
+	WString TargetFilePath ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtformatmessage
+External_Function EvtFormatMessage "EvtFormatMessage" wevtapi.dll ;
+	LongPtr PublisherMetadata ;	// EVT_HANDLE
+	LongPtr Event ;	// EVT_HANDLE
+	UInteger MessageId ;
+	UInteger ValueCount ;
+	Pointer Values ;	// EVT_VARIANT*
+	UInteger Flags ;
+	UInteger BufferSize ;
+	Pointer Buffer ;	// PWSTR
+	Pointer BufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetchannelconfigproperty
+External_Function EvtGetChannelConfigProperty "EvtGetChannelConfigProperty" wevtapi.dll ;
+	LongPtr ChannelConfig ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_CHANNEL_CONFIG_PROPERTY_ID
+	UInteger Flags ;
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EVT_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgeteventinfo
+External_Function EvtGetEventInfo "EvtGetEventInfo" wevtapi.dll ;
+	LongPtr Event ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_EVENT_PROPERTY_ID
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EVT_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgeteventmetadataproperty
+External_Function EvtGetEventMetadataProperty "EvtGetEventMetadataProperty" wevtapi.dll ;
+	LongPtr EventMetadata ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_EVENT_METADATA_PROPERTY_ID
+	UInteger Flags ;
+	UInteger EventMetadataPropertyBufferSize ;
+	Pointer EventMetadataPropertyBuffer ;	// EVT_VARIANT*
+	Pointer EventMetadataPropertyBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetextendedstatus
+External_Function EvtGetExtendedStatus "EvtGetExtendedStatus" wevtapi.dll ;
+	UInteger BufferSize ;
+	Pointer Buffer ;	// PWSTR
+	Pointer BufferUsed ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetloginfo
+External_Function EvtGetLogInfo "EvtGetLogInfo" wevtapi.dll ;
+	LongPtr Log ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_LOG_PROPERTY_ID
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EVT_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetobjectarrayproperty
+External_Function EvtGetObjectArrayProperty "EvtGetObjectArrayProperty" wevtapi.dll ;
+	LongPtr ObjectArray ;
+	UInteger PropertyId ;
+	UInteger ArrayIndex ;
+	UInteger Flags ;
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EVT_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetobjectarraysize
+External_Function EvtGetObjectArraySize "EvtGetObjectArraySize" wevtapi.dll ;
+	LongPtr ObjectArray ;
+	Pointer ObjectArraySize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetpublishermetadataproperty
+External_Function EvtGetPublisherMetadataProperty "EvtGetPublisherMetadataProperty" wevtapi.dll ;
+	LongPtr PublisherMetadata ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_PUBLISHER_METADATA_PROPERTY_ID
+	UInteger Flags ;
+	UInteger PublisherMetadataPropertyBufferSize ;
+	Pointer PublisherMetadataPropertyBuffer ;	// EVT_VARIANT*
+	Pointer PublisherMetadataPropertyBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtgetqueryinfo
+External_Function EvtGetQueryInfo "EvtGetQueryInfo" wevtapi.dll ;
+	LongPtr QueryOrSubscription ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_QUERY_PROPERTY_ID
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EVT_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtnext
+External_Function EvtNext "EvtNext" wevtapi.dll ;
+	LongPtr ResultSet ;	// EVT_HANDLE
+	UInteger EventsSize ;
+	Pointer Events ;	// LongPtr*
+	UInteger Timeout ;
+	UInteger Flags ;
+	Pointer Returned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtnextchannelpath
+External_Function EvtNextChannelPath "EvtNextChannelPath" wevtapi.dll ;
+	LongPtr ChannelEnum ;	// EVT_HANDLE
+	UInteger ChannelPathBufferSize ;
+	Pointer ChannelPathBuffer ;	// PWSTR
+	Pointer ChannelPathBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtnexteventmetadata
+External_Function EvtNextEventMetadata "EvtNextEventMetadata" wevtapi.dll ;
+	LongPtr EventMetadataEnum ;	// EVT_HANDLE
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtnextpublisherid
+External_Function EvtNextPublisherId "EvtNextPublisherId" wevtapi.dll ;
+	LongPtr PublisherEnum ;	// EVT_HANDLE
+	UInteger PublisherIdBufferSize ;
+	Pointer PublisherIdBuffer ;	// PWSTR
+	Pointer PublisherIdBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopenchannelconfig
+External_Function EvtOpenChannelConfig "EvtOpenChannelConfig" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString ChannelPath ;	// PWSTR
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopenchannelenum
+External_Function EvtOpenChannelEnum "EvtOpenChannelEnum" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopeneventmetadataenum
+External_Function EvtOpenEventMetadataEnum "EvtOpenEventMetadataEnum" wevtapi.dll ;
+	LongPtr PublisherMetadata ;	// EVT_HANDLE
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopenlog
+External_Function EvtOpenLog "EvtOpenLog" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString Path ;	// PWSTR
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopenpublisherenum
+External_Function EvtOpenPublisherEnum "EvtOpenPublisherEnum" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopenpublishermetadata
+External_Function EvtOpenPublisherMetadata "EvtOpenPublisherMetadata" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString PublisherId ;	// PWSTR
+	WString LogFilePath ;	// PWSTR
+	UInteger Locale ;
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtopensession
+External_Function EvtOpenSession "EvtOpenSession" wevtapi.dll ;
+	Integer LoginClass ;	// EVT_LOGIN_CLASS
+	Pointer Login ;	// Pointer*
+	UInteger Timeout ;
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtquery
+External_Function EvtQuery "EvtQuery" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	WString Path ;	// PWSTR
+	WString Query ;	// PWSTR
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtrender
+External_Function EvtRender "EvtRender" wevtapi.dll ;
+	LongPtr Context ;	// EVT_HANDLE
+	LongPtr Fragment ;	// EVT_HANDLE
+	UInteger Flags ;
+	UInteger BufferSize ;
+	Pointer Buffer ;	// Pointer*
+	Pointer BufferUsed ;	// UInteger*
+	Pointer PropertyCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtsavechannelconfig
+External_Function EvtSaveChannelConfig "EvtSaveChannelConfig" wevtapi.dll ;
+	LongPtr ChannelConfig ;	// EVT_HANDLE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtseek
+External_Function EvtSeek "EvtSeek" wevtapi.dll ;
+	LongPtr ResultSet ;	// EVT_HANDLE
+	Bigint Position ;
+	LongPtr Bookmark ;	// EVT_HANDLE
+	UInteger Timeout ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtsetchannelconfigproperty
+External_Function EvtSetChannelConfigProperty "EvtSetChannelConfigProperty" wevtapi.dll ;
+	LongPtr ChannelConfig ;	// EVT_HANDLE
+	Integer PropertyId ;	// EVT_CHANNEL_CONFIG_PROPERTY_ID
+	UInteger Flags ;
+	Pointer PropertyValue ;	// EVT_VARIANT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtsubscribe
+External_Function EvtSubscribe "EvtSubscribe" wevtapi.dll ;
+	LongPtr Session ;	// EVT_HANDLE
+	Pointer SignalEvent ;	// HANDLE
+	WString ChannelPath ;	// PWSTR
+	WString Query ;	// PWSTR
+	LongPtr Bookmark ;	// EVT_HANDLE
+	Pointer Context ;	// Pointer*
+	Pointer Callback ;	// EVT_SUBSCRIBE_CALLBACK
+	UInteger Flags ;
+	Returns LongPtr	// EVT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winevt/nf-winevt-evtupdatebookmark
+External_Function EvtUpdateBookmark "EvtUpdateBookmark" wevtapi.dll ;
+	LongPtr Bookmark ;	// EVT_HANDLE
+	LongPtr Event ;	// EVT_HANDLE
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

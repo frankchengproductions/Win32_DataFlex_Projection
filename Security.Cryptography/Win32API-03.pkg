@@ -1,0 +1,617 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifycertificatesignatureex
+External_Function CryptVerifyCertificateSignatureEx "CryptVerifyCertificateSignatureEx" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwSubjectType ;
+	Pointer pvSubject ;	// Pointer*
+	UInteger dwIssuerType ;
+	Pointer pvIssuer ;	// Pointer*
+	UInteger dwFlags ;	// CRYPT_VERIFY_CERT_FLAGS
+	Pointer pvExtra ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifydetachedmessagehash
+External_Function CryptVerifyDetachedMessageHash "CryptVerifyDetachedMessageHash" CRYPT32.dll ;
+	Pointer pHashPara ;	// CRYPT_HASH_MESSAGE_PARA*
+	Pointer pbDetachedHashBlob ;	// UChar*
+	UInteger cbDetachedHashBlob ;
+	UInteger cToBeHashed ;
+	Pointer rgpbToBeHashed ;	// UChar**
+	Pointer rgcbToBeHashed ;	// UInteger*
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifydetachedmessagesignature
+External_Function CryptVerifyDetachedMessageSignature "CryptVerifyDetachedMessageSignature" CRYPT32.dll ;
+	Pointer pVerifyPara ;	// CRYPT_VERIFY_MESSAGE_PARA*
+	UInteger dwSignerIndex ;
+	Pointer pbDetachedSignBlob ;	// UChar*
+	UInteger cbDetachedSignBlob ;
+	UInteger cToBeSigned ;
+	Pointer rgpbToBeSigned ;	// UChar**
+	Pointer rgcbToBeSigned ;	// UInteger*
+	Pointer ppSignerCert ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifymessagehash
+External_Function CryptVerifyMessageHash "CryptVerifyMessageHash" CRYPT32.dll ;
+	Pointer pHashPara ;	// CRYPT_HASH_MESSAGE_PARA*
+	Pointer pbHashedBlob ;	// UChar*
+	UInteger cbHashedBlob ;
+	Pointer pbToBeHashed ;	// UChar*
+	Pointer pcbToBeHashed ;	// UInteger*
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifymessagesignature
+External_Function CryptVerifyMessageSignature "CryptVerifyMessageSignature" CRYPT32.dll ;
+	Pointer pVerifyPara ;	// CRYPT_VERIFY_MESSAGE_PARA*
+	UInteger dwSignerIndex ;
+	Pointer pbSignedBlob ;	// UChar*
+	UInteger cbSignedBlob ;
+	Pointer pbDecoded ;	// UChar*
+	Pointer pcbDecoded ;	// UInteger*
+	Pointer ppSignerCert ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifymessagesignaturewithkey
+External_Function CryptVerifyMessageSignatureWithKey "CryptVerifyMessageSignatureWithKey" CRYPT32.dll ;
+	Pointer pVerifyPara ;	// CRYPT_KEY_VERIFY_MESSAGE_PARA*
+	Pointer pPublicKeyInfo ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer pbSignedBlob ;	// UChar*
+	UInteger cbSignedBlob ;
+	Pointer pbDecoded ;	// UChar*
+	Pointer pcbDecoded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifytimestampsignature
+External_Function CryptVerifyTimeStampSignature "CryptVerifyTimeStampSignature" CRYPT32.dll ;
+	Pointer pbTSContentInfo ;	// UChar*
+	UInteger cbTSContentInfo ;
+	Pointer pbData ;	// UChar*
+	UInteger cbData ;
+	Pointer hAdditionalStore ;	// HCERTSTORE
+	Pointer ppTsContext ;	// CRYPT_TIMESTAMP_CONTEXT**
+	Pointer ppTsSigner ;	// CERT_CONTEXT**
+	Pointer phStore ;	// HCERTSTORE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-pfxexportcertstore
+External_Function PFXExportCertStore "PFXExportCertStore" CRYPT32.dll ;
+	Pointer hStore ;	// HCERTSTORE
+	Pointer pPFX ;	// CRYPT_INTEGER_BLOB*
+	WString szPassword ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-pfxexportcertstoreex
+External_Function PFXExportCertStoreEx "PFXExportCertStoreEx" CRYPT32.dll ;
+	Pointer hStore ;	// HCERTSTORE
+	Pointer pPFX ;	// CRYPT_INTEGER_BLOB*
+	WString szPassword ;	// PWSTR
+	Pointer pvPara ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-pfximportcertstore
+External_Function PFXImportCertStore "PFXImportCertStore" CRYPT32.dll ;
+	Pointer pPFX ;	// CRYPT_INTEGER_BLOB*
+	WString szPassword ;	// PWSTR
+	UInteger dwFlags ;	// CRYPT_KEY_FLAGS
+	Returns Pointer	// HCERTSTORE
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-pfxispfxblob
+External_Function PFXIsPFXBlob "PFXIsPFXBlob" CRYPT32.dll ;
+	Pointer pPFX ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-pfxverifypassword
+External_Function PFXVerifyPassword "PFXVerifyPassword" CRYPT32.dll ;
+	Pointer pPFX ;	// CRYPT_INTEGER_BLOB*
+	WString szPassword ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+External_Function FindCertsByIssuer "FindCertsByIssuer" WINTRUST.dll ;
+	Pointer pCertChains ;	// CERT_CHAIN*
+	Pointer pcbCertChains ;	// UInteger*
+	Pointer pcCertChains ;	// UInteger*
+	Pointer pbEncodedIssuerName ;	// UChar*
+	UInteger cbEncodedIssuerName ;
+	WString pwszPurpose ;	// PWSTR
+	UInteger dwKeySpec ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetobjecturl
+External_Function CryptGetObjectUrl "CryptGetObjectUrl" CRYPTNET.dll ;
+	String pszUrlOid ;	// PSTR
+	Pointer pvPara ;	// Pointer*
+	UInteger dwFlags ;	// CRYPT_GET_URL_FLAGS
+	Pointer pUrlArray ;	// CRYPT_URL_ARRAY*
+	Pointer pcbUrlArray ;	// UInteger*
+	Pointer pUrlInfo ;	// CRYPT_URL_INFO*
+	Pointer pcbUrlInfo ;	// UInteger*
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function CryptInstallCancelRetrieval "CryptInstallCancelRetrieval" CRYPTNET.dll ;
+	Pointer pfnCancel ;	// PFN_CRYPT_CANCEL_RETRIEVAL
+	Pointer pvArg ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptretrieveobjectbyurla
+External_Function CryptRetrieveObjectByUrlA "CryptRetrieveObjectByUrlA" CRYPTNET.dll ;
+	String pszUrl ;	// PSTR
+	String pszObjectOid ;	// PSTR
+	UInteger dwRetrievalFlags ;
+	UInteger dwTimeout ;
+	Pointer ppvObject ;	// Pointer**
+	LongPtr hAsyncRetrieve ;	// HCRYPTASYNC
+	Pointer pCredentials ;	// CRYPT_CREDENTIALS*
+	Pointer pvVerify ;	// Pointer*
+	Pointer pAuxInfo ;	// CRYPT_RETRIEVE_AUX_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptretrieveobjectbyurlw
+External_Function CryptRetrieveObjectByUrlW "CryptRetrieveObjectByUrlW" CRYPTNET.dll ;
+	WString pszUrl ;	// PWSTR
+	String pszObjectOid ;	// PSTR
+	UInteger dwRetrievalFlags ;
+	UInteger dwTimeout ;
+	Pointer ppvObject ;	// Pointer**
+	LongPtr hAsyncRetrieve ;	// HCRYPTASYNC
+	Pointer pCredentials ;	// CRYPT_CREDENTIALS*
+	Pointer pvVerify ;	// Pointer*
+	Pointer pAuxInfo ;	// CRYPT_RETRIEVE_AUX_INFO*
+	Returns Integer	// BOOL
+
+External_Function CryptUninstallCancelRetrieval "CryptUninstallCancelRetrieval" CRYPTNET.dll ;
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signerror
+External_Function SignError "SignError" Mssign32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signerfreesignercontext
+External_Function SignerFreeSignerContext "SignerFreeSignerContext" Mssign32.dll ;
+	Pointer pSignerContext ;	// SIGNER_CONTEXT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signersign
+External_Function SignerSign "SignerSign" Mssign32.dll ;
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	Pointer pSignerCert ;	// SIGNER_CERT*
+	Pointer pSignatureInfo ;	// SIGNER_SIGNATURE_INFO*
+	Pointer pProviderInfo ;	// SIGNER_PROVIDER_INFO*
+	WString pwszHttpTimeStamp ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signersignex
+External_Function SignerSignEx "SignerSignEx" Mssign32.dll ;
+	UInteger dwFlags ;	// SIGNER_SIGN_FLAGS
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	Pointer pSignerCert ;	// SIGNER_CERT*
+	Pointer pSignatureInfo ;	// SIGNER_SIGNATURE_INFO*
+	Pointer pProviderInfo ;	// SIGNER_PROVIDER_INFO*
+	WString pwszHttpTimeStamp ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Pointer ppSignerContext ;	// SIGNER_CONTEXT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signersignex2
+External_Function SignerSignEx2 "SignerSignEx2" Mssign32.dll ;
+	UInteger dwFlags ;	// SIGNER_SIGN_FLAGS
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	Pointer pSignerCert ;	// SIGNER_CERT*
+	Pointer pSignatureInfo ;	// SIGNER_SIGNATURE_INFO*
+	Pointer pProviderInfo ;	// SIGNER_PROVIDER_INFO*
+	UInteger dwTimestampFlags ;	// SIGNER_TIMESTAMP_FLAGS
+	String pszTimestampAlgorithmOid ;	// PSTR
+	WString pwszHttpTimeStamp ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Pointer ppSignerContext ;	// SIGNER_CONTEXT**
+	Pointer pCryptoPolicy ;	// CERT_STRONG_SIGN_PARA*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signersignex3
+External_Function SignerSignEx3 "SignerSignEx3" Mssign32.dll ;
+	UInteger dwFlags ;	// SIGNER_SIGN_FLAGS
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	Pointer pSignerCert ;	// SIGNER_CERT*
+	Pointer pSignatureInfo ;	// SIGNER_SIGNATURE_INFO*
+	Pointer pProviderInfo ;	// SIGNER_PROVIDER_INFO*
+	UInteger dwTimestampFlags ;	// SIGNER_TIMESTAMP_FLAGS
+	String pszTimestampAlgorithmOid ;	// PSTR
+	WString pwszHttpTimeStamp ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Pointer ppSignerContext ;	// SIGNER_CONTEXT**
+	Pointer pCryptoPolicy ;	// CERT_STRONG_SIGN_PARA*
+	Pointer pDigestSignInfo ;	// SIGNER_DIGEST_SIGN_INFO*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signertimestamp
+External_Function SignerTimeStamp "SignerTimeStamp" Mssign32.dll ;
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	WString pwszHttpTimeStamp ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signertimestampex
+External_Function SignerTimeStampEx "SignerTimeStampEx" Mssign32.dll ;
+	UInteger dwFlags ;
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	WString pwszHttpTimeStamp ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Pointer ppSignerContext ;	// SIGNER_CONTEXT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signertimestampex2
+External_Function SignerTimeStampEx2 "SignerTimeStampEx2" Mssign32.dll ;
+	UInteger dwFlags ;	// SIGNER_TIMESTAMP_FLAGS
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	WString pwszHttpTimeStamp ;	// PWSTR
+	UInteger dwAlgId ;	// ALG_ID
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Pointer ppSignerContext ;	// SIGNER_CONTEXT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/signertimestampex3
+External_Function SignerTimeStampEx3 "SignerTimeStampEx3" Mssign32.dll ;
+	UInteger dwFlags ;	// SIGNER_TIMESTAMP_FLAGS
+	UInteger dwIndex ;
+	Pointer pSubjectInfo ;	// SIGNER_SUBJECT_INFO*
+	WString pwszHttpTimeStamp ;	// PWSTR
+	WString pszAlgorithmOid ;	// PWSTR
+	Pointer psRequest ;	// CRYPT_ATTRIBUTES*
+	Pointer pSipData ;	// Pointer*
+	Pointer ppSignerContext ;	// SIGNER_CONTEXT**
+	Pointer pCryptoPolicy ;	// CERT_STRONG_SIGN_PARA*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmladdobject
+External_Function CryptXmlAddObject "CryptXmlAddObject" CRYPTXML.dll ;
+	Pointer hSignatureOrObject ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer rgProperty ;	// CRYPT_XML_PROPERTY*
+	UInteger cProperty ;
+	Pointer pEncoded ;	// CRYPT_XML_BLOB*
+	Pointer ppObject ;	// CRYPT_XML_OBJECT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlclose
+External_Function CryptXmlClose "CryptXmlClose" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlcreatereference
+External_Function CryptXmlCreateReference "CryptXmlCreateReference" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	UInteger dwFlags ;
+	WString wszId ;	// PWSTR
+	WString wszURI ;	// PWSTR
+	WString wszType ;	// PWSTR
+	Pointer pDigestMethod ;	// CRYPT_XML_ALGORITHM*
+	UInteger cTransform ;
+	Pointer rgTransform ;	// CRYPT_XML_ALGORITHM*
+	Pointer phReference ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmldigestreference
+External_Function CryptXmlDigestReference "CryptXmlDigestReference" CRYPTXML.dll ;
+	Pointer hReference ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pDataProviderIn ;	// CRYPT_XML_DATA_PROVIDER*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlencode
+External_Function CryptXmlEncode "CryptXmlEncode" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	Integer dwCharset ;	// CRYPT_XML_CHARSET
+	Pointer rgProperty ;	// CRYPT_XML_PROPERTY*
+	UInteger cProperty ;
+	Pointer pvCallbackState ;	// Pointer*
+	Pointer pfnWrite ;	// PFN_CRYPT_XML_WRITE_CALLBACK
+	Returns Integer	// HRESULT
+
+External_Function CryptXmlEnumAlgorithmInfo "CryptXmlEnumAlgorithmInfo" CRYPTXML.dll ;
+	UInteger dwGroupId ;
+	UInteger dwFlags ;
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnumAlgInfo ;	// PFN_CRYPT_XML_ENUM_ALG_INFO
+	Returns Integer	// HRESULT
+
+External_Function CryptXmlFindAlgorithmInfo "CryptXmlFindAlgorithmInfo" CRYPTXML.dll ;
+	UInteger dwFindByType ;
+	Pointer pvFindBy ;	// Pointer*
+	UInteger dwGroupId ;
+	UInteger dwFlags ;
+	Returns Pointer	// CRYPT_XML_ALGORITHM_INFO*
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlgetalgorithminfo
+External_Function CryptXmlGetAlgorithmInfo "CryptXmlGetAlgorithmInfo" CRYPTXML.dll ;
+	Pointer pXmlAlgorithm ;	// CRYPT_XML_ALGORITHM*
+	UInteger dwFlags ;	// CRYPT_XML_FLAGS
+	Pointer ppAlgInfo ;	// CRYPT_XML_ALGORITHM_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlgetdoccontext
+External_Function CryptXmlGetDocContext "CryptXmlGetDocContext" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	Pointer ppStruct ;	// CRYPT_XML_DOC_CTXT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlgetreference
+External_Function CryptXmlGetReference "CryptXmlGetReference" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	Pointer ppStruct ;	// CRYPT_XML_REFERENCE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlgetsignature
+External_Function CryptXmlGetSignature "CryptXmlGetSignature" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	Pointer ppStruct ;	// CRYPT_XML_SIGNATURE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlgetstatus
+External_Function CryptXmlGetStatus "CryptXmlGetStatus" CRYPTXML.dll ;
+	Pointer hCryptXml ;	// Pointer*
+	Pointer pStatus ;	// CRYPT_XML_STATUS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlgettransforms
+External_Function CryptXmlGetTransforms "CryptXmlGetTransforms" CRYPTXML.dll ;
+	Pointer ppConfig ;	// CRYPT_XML_TRANSFORM_CHAIN_CONFIG**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlimportpublickey
+External_Function CryptXmlImportPublicKey "CryptXmlImportPublicKey" CRYPTXML.dll ;
+	UInteger dwFlags ;	// CRYPT_XML_FLAGS
+	Pointer pKeyValue ;	// CRYPT_XML_KEY_VALUE*
+	Pointer phKey ;	// BCRYPT_KEY_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlopentodecode
+External_Function CryptXmlOpenToDecode "CryptXmlOpenToDecode" CRYPTXML.dll ;
+	Pointer pConfig ;	// CRYPT_XML_TRANSFORM_CHAIN_CONFIG*
+	UInteger dwFlags ;	// CRYPT_XML_FLAGS
+	Pointer rgProperty ;	// CRYPT_XML_PROPERTY*
+	UInteger cProperty ;
+	Pointer pEncoded ;	// CRYPT_XML_BLOB*
+	Pointer phCryptXml ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlopentoencode
+External_Function CryptXmlOpenToEncode "CryptXmlOpenToEncode" CRYPTXML.dll ;
+	Pointer pConfig ;	// CRYPT_XML_TRANSFORM_CHAIN_CONFIG*
+	UInteger dwFlags ;	// CRYPT_XML_FLAGS
+	WString wszId ;	// PWSTR
+	Pointer rgProperty ;	// CRYPT_XML_PROPERTY*
+	UInteger cProperty ;
+	Pointer pEncoded ;	// CRYPT_XML_BLOB*
+	Pointer phSignature ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlsethmacsecret
+External_Function CryptXmlSetHMACSecret "CryptXmlSetHMACSecret" CRYPTXML.dll ;
+	Pointer hSignature ;	// Pointer*
+	Pointer pbSecret ;	// UChar*
+	UInteger cbSecret ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlsign
+External_Function CryptXmlSign "CryptXmlSign" CRYPTXML.dll ;
+	Pointer hSignature ;	// Pointer*
+	ULongPtr hKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE
+	UInteger dwKeySpec ;	// CERT_KEY_SPEC
+	UInteger dwFlags ;	// CRYPT_XML_FLAGS
+	Integer dwKeyInfoSpec ;	// CRYPT_XML_KEYINFO_SPEC
+	Pointer pvKeyInfoSpec ;	// Pointer*
+	Pointer pSignatureMethod ;	// CRYPT_XML_ALGORITHM*
+	Pointer pCanonicalization ;	// CRYPT_XML_ALGORITHM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/nf-cryptxml-cryptxmlverifysignature
+External_Function CryptXmlVerifySignature "CryptXmlVerifySignature" CRYPTXML.dll ;
+	Pointer hSignature ;	// Pointer*
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	UInteger dwFlags ;	// CRYPT_XML_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function CloseCryptoHandle "CloseCryptoHandle" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecProv/decrypt-win32-encryptablevolume
+External_Function Decrypt "Decrypt" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	Integer fOAEP ;	// BOOL
+	UInteger cbInData ;
+	Pointer pInData ;	// UChar*
+	Pointer pcbOutData ;	// UInteger*
+	Pointer ppOutData ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecProv/encrypt-win32-encryptablevolume
+External_Function Encrypt "Encrypt" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	Integer fOAEP ;	// BOOL
+	UInteger cbInData ;
+	Pointer pInData ;	// UChar*
+	Pointer pcbOutData ;	// UInteger*
+	Pointer ppOutData ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function FreeToken "FreeToken" infocardapi.dll ;
+	Pointer pAllocMemory ;	// GENERIC_XML_TOKEN*
+	Returns Integer	// BOOL
+
+External_Function GenerateDerivedKey "GenerateDerivedKey" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbLabel ;
+	Pointer pLabel ;	// UChar*
+	UInteger cbNonce ;
+	Pointer pNonce ;	// UChar*
+	UInteger derivedKeyLength ;
+	UInteger offset ;
+	WString algId ;	// PWSTR
+	Pointer pcbKey ;	// UInteger*
+	Pointer ppKey ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function GetBrowserToken "GetBrowserToken" infocardapi.dll ;
+	UInteger dwParamType ;
+	Pointer pParam ;	// Pointer*
+	Pointer pcbToken ;	// UInteger*
+	Pointer ppToken ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function GetCryptoTransform "GetCryptoTransform" infocardapi.dll ;
+	Pointer hSymmetricCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger mode ;
+	Integer padding ;	// PaddingMode
+	UInteger feedbackSize ;
+	Integer direction ;	// Direction
+	UInteger cbIV ;
+	Pointer pIV ;	// UChar*
+	Pointer pphTransform ;	// INFORMATIONCARD_CRYPTO_HANDLE**
+	Returns Integer	// HRESULT
+
+External_Function GetKeyedHash "GetKeyedHash" infocardapi.dll ;
+	Pointer hSymmetricCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	Pointer pphHash ;	// INFORMATIONCARD_CRYPTO_HANDLE**
+	Returns Integer	// HRESULT
+
+External_Function GetToken "GetToken" infocardapi.dll ;
+	UInteger cPolicyChain ;
+	Pointer pPolicyChain ;	// POLICY_ELEMENT*
+	Pointer securityToken ;	// GENERIC_XML_TOKEN**
+	Pointer phProofTokenCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE**
+	Returns Integer	// HRESULT
+
+External_Function HashCore "HashCore" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbInData ;
+	Pointer pInData ;	// UChar*
+	Returns Integer	// HRESULT
+
+External_Function HashFinal "HashFinal" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbInData ;
+	Pointer pInData ;	// UChar*
+	Pointer pcbOutData ;	// UInteger*
+	Pointer ppOutData ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function ImportInformationCard "ImportInformationCard" infocardapi.dll ;
+	WString fileName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function ManageCardSpace "ManageCardSpace" infocardapi.dll ;
+	Returns Integer	// HRESULT
+
+External_Function SignHash "SignHash" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbHash ;
+	Pointer pHash ;	// UChar*
+	WString hashAlgOid ;	// PWSTR
+	Pointer pcbSig ;	// UInteger*
+	Pointer ppSig ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function TransformBlock "TransformBlock" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbInData ;
+	Pointer pInData ;	// UChar*
+	Pointer pcbOutData ;	// UInteger*
+	Pointer ppOutData ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function TransformFinalBlock "TransformFinalBlock" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbInData ;
+	Pointer pInData ;	// UChar*
+	Pointer pcbOutData ;	// UInteger*
+	Pointer ppOutData ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function VerifyHash "VerifyHash" infocardapi.dll ;
+	Pointer hCrypto ;	// INFORMATIONCARD_CRYPTO_HANDLE*
+	UInteger cbHash ;
+	Pointer pHash ;	// UChar*
+	WString hashAlgOid ;	// PWSTR
+	UInteger cbSig ;
+	Pointer pSig ;	// UChar*
+	Pointer pfVerified ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function GetAsymmetricEncryptionInterface "GetAsymmetricEncryptionInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszAlgId ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_ASYMMETRIC_ENCRYPTION_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetCipherInterface "GetCipherInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszAlgId ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_CIPHER_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetHashInterface "GetHashInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszAlgId ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_HASH_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetKeyDerivationInterface "GetKeyDerivationInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszAlgId ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_KEY_DERIVATION_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetRngInterface "GetRngInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_RNG_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetSecretAgreementInterface "GetSecretAgreementInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszAlgId ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_SECRET_AGREEMENT_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetSignatureInterface "GetSignatureInterface" bcryptprimitives.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszAlgId ;	// PWSTR
+	Pointer ppFunctionTable ;	// BCRYPT_SIGNATURE_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+
+Procedure DataFlex_Init
+End_Procedure
+

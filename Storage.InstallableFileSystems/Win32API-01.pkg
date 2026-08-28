@@ -1,0 +1,220 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterattach
+External_Function FilterAttach "FilterAttach" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	WString lpVolumeName ;	// PWSTR
+	WString lpInstanceName ;	// PWSTR
+	UInteger dwCreatedInstanceNameLength ;
+	Pointer lpCreatedInstanceName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterattachataltitude
+External_Function FilterAttachAtAltitude "FilterAttachAtAltitude" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	WString lpVolumeName ;	// PWSTR
+	WString lpAltitude ;	// PWSTR
+	WString lpInstanceName ;	// PWSTR
+	UInteger dwCreatedInstanceNameLength ;
+	Pointer lpCreatedInstanceName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterclose
+External_Function FilterClose "FilterClose" FLTLIB.dll ;
+	LongPtr hFilter ;	// HFILTER
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterconnectcommunicationport
+External_Function FilterConnectCommunicationPort "FilterConnectCommunicationPort" FLTLIB.dll ;
+	WString lpPortName ;	// PWSTR
+	UInteger dwOptions ;
+	Pointer lpContext ;	// Pointer*
+	UShort wSizeOfContext ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer hPort ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtercreate
+External_Function FilterCreate "FilterCreate" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	Pointer hFilter ;	// HFILTER*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterdetach
+External_Function FilterDetach "FilterDetach" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	WString lpVolumeName ;	// PWSTR
+	WString lpInstanceName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterfindclose
+External_Function FilterFindClose "FilterFindClose" FLTLIB.dll ;
+	Pointer hFilterFind ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterfindfirst
+External_Function FilterFindFirst "FilterFindFirst" FLTLIB.dll ;
+	Integer dwInformationClass ;	// FILTER_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpFilterFind ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterfindnext
+External_Function FilterFindNext "FilterFindNext" FLTLIB.dll ;
+	Pointer hFilterFind ;	// HANDLE
+	Integer dwInformationClass ;	// FILTER_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtergetdosname
+External_Function FilterGetDosName "FilterGetDosName" FLTLIB.dll ;
+	WString lpVolumeName ;	// PWSTR
+	Pointer lpDosName ;	// PWSTR
+	UInteger dwDosNameBufferSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtergetinformation
+External_Function FilterGetInformation "FilterGetInformation" FLTLIB.dll ;
+	LongPtr hFilter ;	// HFILTER
+	Integer dwInformationClass ;	// FILTER_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtergetmessage
+External_Function FilterGetMessage "FilterGetMessage" FLTLIB.dll ;
+	Pointer hPort ;	// HANDLE
+	Pointer lpMessageBuffer ;	// FILTER_MESSAGE_HEADER*
+	UInteger dwMessageBufferSize ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterinstanceclose
+External_Function FilterInstanceClose "FilterInstanceClose" FLTLIB.dll ;
+	LongPtr hInstance ;	// HFILTER_INSTANCE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterinstancecreate
+External_Function FilterInstanceCreate "FilterInstanceCreate" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	WString lpVolumeName ;	// PWSTR
+	WString lpInstanceName ;	// PWSTR
+	Pointer hInstance ;	// HFILTER_INSTANCE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterinstancefindclose
+External_Function FilterInstanceFindClose "FilterInstanceFindClose" FLTLIB.dll ;
+	Pointer hFilterInstanceFind ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterinstancefindfirst
+External_Function FilterInstanceFindFirst "FilterInstanceFindFirst" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	Integer dwInformationClass ;	// INSTANCE_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpFilterInstanceFind ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterinstancefindnext
+External_Function FilterInstanceFindNext "FilterInstanceFindNext" FLTLIB.dll ;
+	Pointer hFilterInstanceFind ;	// HANDLE
+	Integer dwInformationClass ;	// INSTANCE_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterinstancegetinformation
+External_Function FilterInstanceGetInformation "FilterInstanceGetInformation" FLTLIB.dll ;
+	LongPtr hInstance ;	// HFILTER_INSTANCE
+	Integer dwInformationClass ;	// INSTANCE_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterload
+External_Function FilterLoad "FilterLoad" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterreplymessage
+External_Function FilterReplyMessage "FilterReplyMessage" FLTLIB.dll ;
+	Pointer hPort ;	// HANDLE
+	Pointer lpReplyBuffer ;	// FILTER_REPLY_HEADER*
+	UInteger dwReplyBufferSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtersendmessage
+External_Function FilterSendMessage "FilterSendMessage" FLTLIB.dll ;
+	Pointer hPort ;	// HANDLE
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger dwInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger dwOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filterunload
+External_Function FilterUnload "FilterUnload" FLTLIB.dll ;
+	WString lpFilterName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtervolumefindclose
+External_Function FilterVolumeFindClose "FilterVolumeFindClose" FLTLIB.dll ;
+	Pointer hVolumeFind ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtervolumefindfirst
+External_Function FilterVolumeFindFirst "FilterVolumeFindFirst" FLTLIB.dll ;
+	Integer dwInformationClass ;	// FILTER_VOLUME_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpVolumeFind ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtervolumefindnext
+External_Function FilterVolumeFindNext "FilterVolumeFindNext" FLTLIB.dll ;
+	Pointer hVolumeFind ;	// HANDLE
+	Integer dwInformationClass ;	// FILTER_VOLUME_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtervolumeinstancefindclose
+External_Function FilterVolumeInstanceFindClose "FilterVolumeInstanceFindClose" FLTLIB.dll ;
+	Pointer hVolumeInstanceFind ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtervolumeinstancefindfirst
+External_Function FilterVolumeInstanceFindFirst "FilterVolumeInstanceFindFirst" FLTLIB.dll ;
+	WString lpVolumeName ;	// PWSTR
+	Integer dwInformationClass ;	// INSTANCE_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpVolumeInstanceFind ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fltuser/nf-fltuser-filtervolumeinstancefindnext
+External_Function FilterVolumeInstanceFindNext "FilterVolumeInstanceFindNext" FLTLIB.dll ;
+	Pointer hVolumeInstanceFind ;	// HANDLE
+	Integer dwInformationClass ;	// INSTANCE_INFORMATION_CLASS
+	Pointer lpBuffer ;	// Pointer*
+	UInteger dwBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

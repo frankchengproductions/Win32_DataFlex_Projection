@@ -1,0 +1,77 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-commconfig
+Struct COMMCONFIG
+	UInteger dwSize
+	UShort wVersion
+	UShort wReserved
+	DCB dcb
+	UInteger dwProviderSubType
+	UInteger dwProviderOffset
+	UInteger dwProviderSize
+	UShort[1] wcProviderData
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-commprop
+Struct COMMPROP
+	UShort wPacketLength
+	UShort wPacketVersion
+	UInteger dwServiceMask
+	UInteger dwReserved1
+	UInteger dwMaxTxQueue
+	UInteger dwMaxRxQueue
+	UInteger dwMaxBaud
+	UInteger dwProvSubType
+	UInteger dwProvCapabilities
+	UInteger dwSettableParams
+	UInteger dwSettableBaud
+	UShort wSettableData
+	UShort wSettableStopParity								// COMMPROP_STOP_PARITY
+	UInteger dwCurrentTxQueue
+	UInteger dwCurrentRxQueue
+	UInteger dwProvSpec1
+	UInteger dwProvSpec2
+	UShort[1] wcProvChar
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-commtimeouts
+Struct COMMTIMEOUTS
+	UInteger ReadIntervalTimeout
+	UInteger ReadTotalTimeoutMultiplier
+	UInteger ReadTotalTimeoutConstant
+	UInteger WriteTotalTimeoutMultiplier
+	UInteger WriteTotalTimeoutConstant
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-comstat
+Struct COMSTAT
+	UInteger _bitfield
+	UInteger cbInQue
+	UInteger cbOutQue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-dcb
+Struct DCB
+	UInteger DCBlength
+	UInteger BaudRate
+	UInteger _bitfield
+	UShort wReserved
+	UShort XonLim
+	UShort XoffLim
+	UChar ByteSize
+	UChar Parity											// DCB_PARITY
+	UChar StopBits											// DCB_STOP_BITS
+	Char XonChar											// CHAR
+	Char XoffChar											// CHAR
+	Char ErrorChar											// CHAR
+	Char EofChar											// CHAR
+	Char EvtChar											// CHAR
+	UShort wReserved1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

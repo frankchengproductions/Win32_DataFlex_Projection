@@ -1,0 +1,547 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-processidtosessionid
+External_Function ProcessIdToSessionId "ProcessIdToSessionId" KERNEL32.dll ;
+	UInteger dwProcessId ;
+	Pointer pSessionId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-wtsgetactiveconsolesessionid
+External_Function WTSGetActiveConsoleSessionId "WTSGetActiveConsoleSessionId" KERNEL32.dll ;
+	Returns UInteger
+
+External_Function WTSActiveSessionExists "WTSActiveSessionExists" WTSAPI32.dll ;
+	Pointer pbActiveSessionExists ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtscloseserver
+External_Function WTSCloseServer "WTSCloseServer" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Returns Pointer
+
+External_Function WTSCloudAuthClose "WTSCloudAuthClose" WTSAPI32.dll ;
+	Pointer cloudAuthHandle ;	// WTS_CLOUD_AUTH_HANDLE
+	Returns Pointer
+
+External_Function WTSCloudAuthConvertAssertionToSerializedUserCredential "WTSCloudAuthConvertAssertionToSerializedUserCredential" WTSAPI32.dll ;
+	Pointer cloudAuthHandle ;	// WTS_CLOUD_AUTH_HANDLE
+	String assertion ;	// PSTR
+	UInteger assertionLength ;
+	WString resourceId ;	// PWSTR
+	Pointer userCredential ;	// WTS_SERIALIZED_USER_CREDENTIAL**
+	Returns Integer	// BOOL
+
+External_Function WTSCloudAuthDuplicateSerializedUserCredential "WTSCloudAuthDuplicateSerializedUserCredential" WTSAPI32.dll ;
+	Pointer userCredential ;	// WTS_SERIALIZED_USER_CREDENTIAL*
+	Pointer duplicatedUserCredential ;	// WTS_SERIALIZED_USER_CREDENTIAL**
+	Returns Integer	// BOOL
+
+External_Function WTSCloudAuthGetServerNonce "WTSCloudAuthGetServerNonce" WTSAPI32.dll ;
+	Pointer cloudAuthHandle ;	// WTS_CLOUD_AUTH_HANDLE
+	Pointer serverNonce ;	// PWSTR*
+	Returns Integer	// BOOL
+
+External_Function WTSCloudAuthNetworkLogonWithSerializedCredential "WTSCloudAuthNetworkLogonWithSerializedCredential" WTSAPI32.dll ;
+	Pointer cloudAuthHandle ;	// WTS_CLOUD_AUTH_HANDLE
+	Pointer userCredential ;	// WTS_SERIALIZED_USER_CREDENTIAL*
+	Pointer token ;	// HANDLE*
+	Returns Integer	// BOOL
+
+External_Function WTSCloudAuthOpen "WTSCloudAuthOpen" WTSAPI32.dll ;
+	Pointer activityId ;	// Guid*
+	Returns Pointer	// WTS_CLOUD_AUTH_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsconnectsessiona
+External_Function WTSConnectSessionA "WTSConnectSessionA" WTSAPI32.dll ;
+	UInteger LogonId ;
+	UInteger TargetLogonId ;
+	String pPassword ;	// PSTR
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsconnectsessionw
+External_Function WTSConnectSessionW "WTSConnectSessionW" WTSAPI32.dll ;
+	UInteger LogonId ;
+	UInteger TargetLogonId ;
+	WString pPassword ;	// PWSTR
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtscreatelistenera
+External_Function WTSCreateListenerA "WTSCreateListenerA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	String pListenerName ;	// PSTR
+	Pointer pBuffer ;	// WTSLISTENERCONFIGA*
+	UInteger flag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtscreatelistenerw
+External_Function WTSCreateListenerW "WTSCreateListenerW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	WString pListenerName ;	// PWSTR
+	Pointer pBuffer ;	// WTSLISTENERCONFIGW*
+	UInteger flag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsdisconnectsession
+External_Function WTSDisconnectSession "WTSDisconnectSession" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenablechildsessions
+External_Function WTSEnableChildSessions "WTSEnableChildSessions" WTSAPI32.dll ;
+	Integer bEnable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumeratelistenersa
+External_Function WTSEnumerateListenersA "WTSEnumerateListenersA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	Pointer pListeners ;	// Char**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumeratelistenersw
+External_Function WTSEnumerateListenersW "WTSEnumerateListenersW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	Pointer pListeners ;	// UShort**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumerateprocessesa
+External_Function WTSEnumerateProcessesA "WTSEnumerateProcessesA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger Reserved ;
+	UInteger Version ;
+	Pointer ppProcessInfo ;	// WTS_PROCESS_INFOA**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumerateprocessesexa
+External_Function WTSEnumerateProcessesExA "WTSEnumerateProcessesExA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pLevel ;	// UInteger*
+	UInteger SessionId ;
+	Pointer ppProcessInfo ;	// PSTR*
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumerateprocessesexw
+External_Function WTSEnumerateProcessesExW "WTSEnumerateProcessesExW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pLevel ;	// UInteger*
+	UInteger SessionId ;
+	Pointer ppProcessInfo ;	// PWSTR*
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumerateprocessesw
+External_Function WTSEnumerateProcessesW "WTSEnumerateProcessesW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger Reserved ;
+	UInteger Version ;
+	Pointer ppProcessInfo ;	// WTS_PROCESS_INFOW**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumerateserversa
+External_Function WTSEnumerateServersA "WTSEnumerateServersA" WTSAPI32.dll ;
+	String pDomainName ;	// PSTR
+	UInteger Reserved ;
+	UInteger Version ;
+	Pointer ppServerInfo ;	// WTS_SERVER_INFOA**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumerateserversw
+External_Function WTSEnumerateServersW "WTSEnumerateServersW" WTSAPI32.dll ;
+	WString pDomainName ;	// PWSTR
+	UInteger Reserved ;
+	UInteger Version ;
+	Pointer ppServerInfo ;	// WTS_SERVER_INFOW**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumeratesessionsa
+External_Function WTSEnumerateSessionsA "WTSEnumerateSessionsA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger Reserved ;
+	UInteger Version ;
+	Pointer ppSessionInfo ;	// WTS_SESSION_INFOA**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumeratesessionsexa
+External_Function WTSEnumerateSessionsExA "WTSEnumerateSessionsExA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pLevel ;	// UInteger*
+	UInteger Filter ;
+	Pointer ppSessionInfo ;	// WTS_SESSION_INFO_1A**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumeratesessionsexw
+External_Function WTSEnumerateSessionsExW "WTSEnumerateSessionsExW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pLevel ;	// UInteger*
+	UInteger Filter ;
+	Pointer ppSessionInfo ;	// WTS_SESSION_INFO_1W**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsenumeratesessionsw
+External_Function WTSEnumerateSessionsW "WTSEnumerateSessionsW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger Reserved ;
+	UInteger Version ;
+	Pointer ppSessionInfo ;	// WTS_SESSION_INFOW**
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsfreememory
+External_Function WTSFreeMemory "WTSFreeMemory" WTSAPI32.dll ;
+	Pointer pMemory ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsfreememoryexa
+External_Function WTSFreeMemoryExA "WTSFreeMemoryExA" WTSAPI32.dll ;
+	Integer WTSTypeClass ;	// WTS_TYPE_CLASS
+	Pointer pMemory ;	// Pointer*
+	UInteger NumberOfEntries ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsfreememoryexw
+External_Function WTSFreeMemoryExW "WTSFreeMemoryExW" WTSAPI32.dll ;
+	Integer WTSTypeClass ;	// WTS_TYPE_CLASS
+	Pointer pMemory ;	// Pointer*
+	UInteger NumberOfEntries ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsgetchildsessionid
+External_Function WTSGetChildSessionId "WTSGetChildSessionId" WTSAPI32.dll ;
+	Pointer pSessionId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsgetlistenersecuritya
+External_Function WTSGetListenerSecurityA "WTSGetListenerSecurityA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	String pListenerName ;	// PSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsgetlistenersecurityw
+External_Function WTSGetListenerSecurityW "WTSGetListenerSecurityW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	WString pListenerName ;	// PWSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsischildsessionsenabled
+External_Function WTSIsChildSessionsEnabled "WTSIsChildSessionsEnabled" WTSAPI32.dll ;
+	Pointer pbEnabled ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtslogoffsession
+External_Function WTSLogoffSession "WTSLogoffSession" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsopenservera
+External_Function WTSOpenServerA "WTSOpenServerA" WTSAPI32.dll ;
+	String pServerName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsopenserverexa
+External_Function WTSOpenServerExA "WTSOpenServerExA" WTSAPI32.dll ;
+	String pServerName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsopenserverexw
+External_Function WTSOpenServerExW "WTSOpenServerExW" WTSAPI32.dll ;
+	WString pServerName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsopenserverw
+External_Function WTSOpenServerW "WTSOpenServerW" WTSAPI32.dll ;
+	WString pServerName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsquerylistenerconfiga
+External_Function WTSQueryListenerConfigA "WTSQueryListenerConfigA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	String pListenerName ;	// PSTR
+	Pointer pBuffer ;	// WTSLISTENERCONFIGA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsquerylistenerconfigw
+External_Function WTSQueryListenerConfigW "WTSQueryListenerConfigW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	WString pListenerName ;	// PWSTR
+	Pointer pBuffer ;	// WTSLISTENERCONFIGW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsquerysessioninformationa
+External_Function WTSQuerySessionInformationA "WTSQuerySessionInformationA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	Integer WTSInfoClass ;	// WTS_INFO_CLASS
+	Pointer ppBuffer ;	// PSTR*
+	Pointer pBytesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsquerysessioninformationw
+External_Function WTSQuerySessionInformationW "WTSQuerySessionInformationW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	Integer WTSInfoClass ;	// WTS_INFO_CLASS
+	Pointer ppBuffer ;	// PWSTR*
+	Pointer pBytesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsqueryuserconfiga
+External_Function WTSQueryUserConfigA "WTSQueryUserConfigA" WTSAPI32.dll ;
+	String pServerName ;	// PSTR
+	String pUserName ;	// PSTR
+	Integer WTSConfigClass ;	// WTS_CONFIG_CLASS
+	Pointer ppBuffer ;	// PSTR*
+	Pointer pBytesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsqueryuserconfigw
+External_Function WTSQueryUserConfigW "WTSQueryUserConfigW" WTSAPI32.dll ;
+	WString pServerName ;	// PWSTR
+	WString pUserName ;	// PWSTR
+	Integer WTSConfigClass ;	// WTS_CONFIG_CLASS
+	Pointer ppBuffer ;	// PWSTR*
+	Pointer pBytesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsqueryusertoken
+External_Function WTSQueryUserToken "WTSQueryUserToken" WTSAPI32.dll ;
+	UInteger SessionId ;
+	Pointer phToken ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsregistersessionnotification
+External_Function WTSRegisterSessionNotification "WTSRegisterSessionNotification" WTSAPI32.dll ;
+	Pointer hWnd ;	// HWND
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsregistersessionnotificationex
+External_Function WTSRegisterSessionNotificationEx "WTSRegisterSessionNotificationEx" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer hWnd ;	// HWND
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtssendmessagea
+External_Function WTSSendMessageA "WTSSendMessageA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	String pTitle ;	// PSTR
+	UInteger TitleLength ;
+	String pMessage ;	// PSTR
+	UInteger MessageLength ;
+	UInteger Style ;	// MESSAGEBOX_STYLE
+	UInteger Timeout ;
+	Pointer pResponse ;	// MESSAGEBOX_RESULT*
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtssendmessagew
+External_Function WTSSendMessageW "WTSSendMessageW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	WString pTitle ;	// PWSTR
+	UInteger TitleLength ;
+	WString pMessage ;	// PWSTR
+	UInteger MessageLength ;
+	UInteger Style ;	// MESSAGEBOX_STYLE
+	UInteger Timeout ;
+	Pointer pResponse ;	// MESSAGEBOX_RESULT*
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtssetlistenersecuritya
+External_Function WTSSetListenerSecurityA "WTSSetListenerSecurityA" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	String pListenerName ;	// PSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtssetlistenersecurityw
+External_Function WTSSetListenerSecurityW "WTSSetListenerSecurityW" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer pReserved ;	// Pointer*
+	UInteger Reserved ;
+	WString pListenerName ;	// PWSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtshintapi/nf-wtshintapi-wtssetrenderhint
+External_Function WTSSetRenderHint "WTSSetRenderHint" WTSAPI32.dll ;
+	Pointer pRenderHintID ;	// UBigint*
+	Pointer hwndOwner ;	// HWND
+	UInteger renderHintType ;
+	UInteger cbHintDataLength ;
+	Pointer pHintData ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtssetuserconfiga
+External_Function WTSSetUserConfigA "WTSSetUserConfigA" WTSAPI32.dll ;
+	String pServerName ;	// PSTR
+	String pUserName ;	// PSTR
+	Integer WTSConfigClass ;	// WTS_CONFIG_CLASS
+	String pBuffer ;	// PSTR
+	UInteger DataLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtssetuserconfigw
+External_Function WTSSetUserConfigW "WTSSetUserConfigW" WTSAPI32.dll ;
+	WString pServerName ;	// PWSTR
+	WString pUserName ;	// PWSTR
+	Integer WTSConfigClass ;	// WTS_CONFIG_CLASS
+	WString pBuffer ;	// PWSTR
+	UInteger DataLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsshutdownsystem
+External_Function WTSShutdownSystem "WTSShutdownSystem" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger ShutdownFlag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsstartremotecontrolsessiona
+External_Function WTSStartRemoteControlSessionA "WTSStartRemoteControlSessionA" WTSAPI32.dll ;
+	String pTargetServerName ;	// PSTR
+	UInteger TargetLogonId ;
+	UChar HotkeyVk ;
+	UShort HotkeyModifiers ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsstartremotecontrolsessionw
+External_Function WTSStartRemoteControlSessionW "WTSStartRemoteControlSessionW" WTSAPI32.dll ;
+	WString pTargetServerName ;	// PWSTR
+	UInteger TargetLogonId ;
+	UChar HotkeyVk ;
+	UShort HotkeyModifiers ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsstopremotecontrolsession
+External_Function WTSStopRemoteControlSession "WTSStopRemoteControlSession" WTSAPI32.dll ;
+	UInteger LogonId ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsterminateprocess
+External_Function WTSTerminateProcess "WTSTerminateProcess" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger ProcessId ;
+	UInteger ExitCode ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsunregistersessionnotification
+External_Function WTSUnRegisterSessionNotification "WTSUnRegisterSessionNotification" WTSAPI32.dll ;
+	Pointer hWnd ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsunregistersessionnotificationex
+External_Function WTSUnRegisterSessionNotificationEx "WTSUnRegisterSessionNotificationEx" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	Pointer hWnd ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelclose
+External_Function WTSVirtualChannelClose "WTSVirtualChannelClose" WTSAPI32.dll ;
+	Pointer hChannelHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelopen
+External_Function WTSVirtualChannelOpen "WTSVirtualChannelOpen" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger SessionId ;
+	String pVirtualName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelopenex
+External_Function WTSVirtualChannelOpenEx "WTSVirtualChannelOpenEx" WTSAPI32.dll ;
+	UInteger SessionId ;
+	String pVirtualName ;	// PSTR
+	UInteger flags ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelpurgeinput
+External_Function WTSVirtualChannelPurgeInput "WTSVirtualChannelPurgeInput" WTSAPI32.dll ;
+	Pointer hChannelHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelpurgeoutput
+External_Function WTSVirtualChannelPurgeOutput "WTSVirtualChannelPurgeOutput" WTSAPI32.dll ;
+	Pointer hChannelHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelquery
+External_Function WTSVirtualChannelQuery "WTSVirtualChannelQuery" WTSAPI32.dll ;
+	Pointer hChannelHandle ;	// HANDLE
+	Integer param1 ;	// WTS_VIRTUAL_CLASS
+	Pointer ppBuffer ;	// Pointer**
+	Pointer pBytesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelread
+External_Function WTSVirtualChannelRead "WTSVirtualChannelRead" WTSAPI32.dll ;
+	Pointer hChannelHandle ;	// HANDLE
+	UInteger TimeOut ;
+	Pointer Buffer ;	// PSTR
+	UInteger BufferSize ;
+	Pointer pBytesRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtsvirtualchannelwrite
+External_Function WTSVirtualChannelWrite "WTSVirtualChannelWrite" WTSAPI32.dll ;
+	Pointer hChannelHandle ;	// HANDLE
+	String Buffer ;	// PSTR
+	UInteger Length ;
+	Pointer pBytesWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/nf-wtsapi32-wtswaitsystemevent
+External_Function WTSWaitSystemEvent "WTSWaitSystemEvent" WTSAPI32.dll ;
+	Pointer hServer ;	// HANDLE
+	UInteger EventMask ;
+	Pointer pEventFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

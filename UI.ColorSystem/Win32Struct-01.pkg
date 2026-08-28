@@ -1,0 +1,250 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-cmykcolor
+Struct CMYKCOLOR
+	UShort cyan
+	UShort magenta
+	UShort yellow
+	UShort black
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-color
+Struct COLOR
+	GRAYCOLOR gray
+	RGBCOLOR rgb
+	CMYKCOLOR cmyk
+	XYZCOLOR XYZ
+	YxyCOLOR Yxy
+	LabCOLOR Lab
+	GENERIC3CHANNEL gen3ch
+	NAMEDCOLOR named
+	HiFiCOLOR hifi
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-colormatchsetupa
+Struct COLORMATCHSETUPA
+	UInteger dwSize
+	UInteger dwVersion
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	Pointer pSourceName										// PSTR
+	Pointer pDisplayName									// PSTR
+	Pointer pPrinterName									// PSTR
+	UInteger dwRenderIntent
+	UInteger dwProofingIntent
+	Pointer pMonitorProfile									// PSTR
+	UInteger ccMonitorProfile
+	Integer iMissingAlignment2
+	Pointer pPrinterProfile									// PSTR
+	UInteger ccPrinterProfile
+	Integer iMissingAlignment3
+	Pointer pTargetProfile									// PSTR
+	UInteger ccTargetProfile
+	Integer iMissingAlignment4
+	Pointer lpfnHook										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer lpfnApplyCallback								// PCMSCALLBACKA
+	LongPtr lParamApplyCallback								// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-colormatchsetupw
+Struct COLORMATCHSETUPW
+	UInteger dwSize
+	UInteger dwVersion
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	Pointer pSourceName										// PWSTR
+	Pointer pDisplayName									// PWSTR
+	Pointer pPrinterName									// PWSTR
+	UInteger dwRenderIntent
+	UInteger dwProofingIntent
+	Pointer pMonitorProfile									// PWSTR
+	UInteger ccMonitorProfile
+	Integer iMissingAlignment2
+	Pointer pPrinterProfile									// PWSTR
+	UInteger ccPrinterProfile
+	Integer iMissingAlignment3
+	Pointer pTargetProfile									// PWSTR
+	UInteger ccTargetProfile
+	Integer iMissingAlignment4
+	Pointer lpfnHook										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer lpfnApplyCallback								// PCMSCALLBACKW
+	LongPtr lParamApplyCallback								// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-enumtypea
+Struct ENUMTYPEA
+	UInteger dwSize
+	UInteger dwVersion
+	UInteger dwFields
+	Integer iMissingAlignment1
+	Pointer pDeviceName										// PSTR
+	UInteger dwMediaType
+	UInteger dwDitheringMode
+	UInteger[2] dwResolution
+	UInteger dwCMMType
+	UInteger dwClass
+	UInteger dwDataColorSpace
+	UInteger dwConnectionSpace
+	UInteger dwSignature
+	UInteger dwPlatform
+	UInteger dwProfileFlags
+	UInteger dwManufacturer
+	UInteger dwModel
+	UInteger[2] dwAttributes
+	UInteger dwRenderingIntent
+	UInteger dwCreator
+	UInteger dwDeviceClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-enumtypew
+Struct ENUMTYPEW
+	UInteger dwSize
+	UInteger dwVersion
+	UInteger dwFields
+	Integer iMissingAlignment1
+	Pointer pDeviceName										// PWSTR
+	UInteger dwMediaType
+	UInteger dwDitheringMode
+	UInteger[2] dwResolution
+	UInteger dwCMMType
+	UInteger dwClass
+	UInteger dwDataColorSpace
+	UInteger dwConnectionSpace
+	UInteger dwSignature
+	UInteger dwPlatform
+	UInteger dwProfileFlags
+	UInteger dwManufacturer
+	UInteger dwModel
+	UInteger[2] dwAttributes
+	UInteger dwRenderingIntent
+	UInteger dwCreator
+	UInteger dwDeviceClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-generic3channel
+Struct GENERIC3CHANNEL
+	UShort ch1
+	UShort ch2
+	UShort ch3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-graycolor
+Struct GRAYCOLOR
+	UShort gray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-hificolor
+Struct HiFiCOLOR
+	UChar[8] channel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-logcolorspacea
+Struct LOGCOLORSPACEA
+	UInteger lcsSignature
+	UInteger lcsVersion
+	UInteger lcsSize
+	Integer lcsCSType										// LCSCSTYPE
+	Integer lcsIntent
+	CIEXYZTRIPLE lcsEndpoints
+	UInteger lcsGammaRed
+	UInteger lcsGammaGreen
+	UInteger lcsGammaBlue
+	Char[260] lcsFilename									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-logcolorspacew
+Struct LOGCOLORSPACEW
+	UInteger lcsSignature
+	UInteger lcsVersion
+	UInteger lcsSize
+	Integer lcsCSType										// LCSCSTYPE
+	Integer lcsIntent
+	CIEXYZTRIPLE lcsEndpoints
+	UInteger lcsGammaRed
+	UInteger lcsGammaGreen
+	UInteger lcsGammaBlue
+	UShort[260] lcsFilename
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-labcolor
+Struct LabCOLOR
+	UShort L
+	UShort a
+	UShort b
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-namedcolor
+Struct NAMEDCOLOR
+	UInteger dwIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-named_profile_info
+Struct NAMED_PROFILE_INFO
+	UInteger dwFlags
+	UInteger dwCount
+	UInteger dwCountDevCoordinates
+	Char[32] szPrefix
+	Char[32] szSuffix
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-profile
+Struct PROFILE
+	UInteger dwType
+	Integer iMissingAlignment1
+	Pointer pProfileData									// Pointer*
+	UInteger cbDataSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-profileheader
+Struct PROFILEHEADER
+	UInteger phSize
+	UInteger phCMMType
+	UInteger phVersion
+	UInteger phClass
+	UInteger phDataColorSpace
+	UInteger phConnectionSpace
+	UInteger[3] phDateTime
+	UInteger phSignature
+	UInteger phPlatform
+	UInteger phProfileFlags
+	UInteger phManufacturer
+	UInteger phModel
+	UInteger[2] phAttributes
+	UInteger phRenderingIntent
+	CIEXYZ phIlluminant
+	UInteger phCreator
+	UChar[44] phReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-rgbcolor
+Struct RGBCOLOR
+	UShort red
+	UShort green
+	UShort blue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-xyzcolor
+Struct XYZCOLOR
+	UShort X
+	UShort Y
+	UShort Z
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/icm/ns-icm-yxycolor
+Struct YxyCOLOR
+	UShort Y
+	UShort x
+	UShort y
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

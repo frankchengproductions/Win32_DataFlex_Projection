@@ -1,0 +1,1433 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterresourcestate
+External_Function GetClusterResourceState "GetClusterResourceState" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Pointer lpszNodeName ;	// PWSTR
+	Pointer lpcchNodeName ;	// UInteger*
+	Pointer lpszGroupName ;	// PWSTR
+	Pointer lpcchGroupName ;	// UInteger*
+	Returns Integer	// CLUSTER_RESOURCE_STATE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterresourcetypekey
+External_Function GetClusterResourceTypeKey "GetClusterResourceTypeKey" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszTypeName ;	// PWSTR
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+External_Function GetNodeCloudTypeDW "GetNodeCloudTypeDW" CLUSAPI.dll ;
+	WString ppszNodeName ;	// PWSTR
+	Pointer NodeCloudType ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getnodeclusterstate
+External_Function GetNodeClusterState "GetNodeClusterState" CLUSAPI.dll ;
+	WString lpszNodeName ;	// PWSTR
+	Pointer pdwClusterState ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getnotifyeventhandle
+External_Function GetNotifyEventHandle "GetNotifyEventHandle" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	Pointer lphTargetEvent ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-isfileonclustersharedvolume
+External_Function IsFileOnClusterSharedVolume "IsFileOnClusterSharedVolume" CLUSAPI.dll ;
+	WString lpszPathName ;	// PWSTR
+	Pointer pbFileIsOnSharedVolume ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-moveclustergroup
+External_Function MoveClusterGroup "MoveClusterGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDestinationNode ;	// HNODE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-moveclustergroupex
+External_Function MoveClusterGroupEx "MoveClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDestinationNode ;	// HNODE
+	UInteger dwMoveFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	Returns UInteger
+
+External_Function MoveClusterGroupEx2 "MoveClusterGroupEx2" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDestinationNode ;	// HNODE
+	UInteger dwMoveFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-offlineclustergroup
+External_Function OfflineClusterGroup "OfflineClusterGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-offlineclustergroupex
+External_Function OfflineClusterGroupEx "OfflineClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger dwOfflineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	Returns UInteger
+
+External_Function OfflineClusterGroupEx2 "OfflineClusterGroupEx2" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger dwOfflineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-offlineclusterresource
+External_Function OfflineClusterResource "OfflineClusterResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-offlineclusterresourceex
+External_Function OfflineClusterResourceEx "OfflineClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwOfflineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	Returns UInteger
+
+External_Function OfflineClusterResourceEx2 "OfflineClusterResourceEx2" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwOfflineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-onlineclustergroup
+External_Function OnlineClusterGroup "OnlineClusterGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDestinationNode ;	// HNODE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-onlineclustergroupex
+External_Function OnlineClusterGroupEx "OnlineClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDestinationNode ;	// HNODE
+	UInteger dwOnlineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	Returns UInteger
+
+External_Function OnlineClusterGroupEx2 "OnlineClusterGroupEx2" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDestinationNode ;	// HNODE
+	UInteger dwOnlineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-onlineclusterresource
+External_Function OnlineClusterResource "OnlineClusterResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-onlineclusterresourceex
+External_Function OnlineClusterResourceEx "OnlineClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwOnlineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	Returns UInteger
+
+External_Function OnlineClusterResourceEx2 "OnlineClusterResourceEx2" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwOnlineFlags ;
+	Pointer lpInBuffer ;	// UChar*
+	UInteger cbInBufferSize ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-opencluster
+External_Function OpenCluster "OpenCluster" CLUSAPI.dll ;
+	WString lpszClusterName ;	// PWSTR
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusterex
+External_Function OpenClusterEx "OpenClusterEx" CLUSAPI.dll ;
+	WString lpszClusterName ;	// PWSTR
+	UInteger DesiredAccess ;
+	Pointer GrantedAccess ;	// UInteger*
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclustergroup
+External_Function OpenClusterGroup "OpenClusterGroup" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszGroupName ;	// PWSTR
+	Returns LongPtr	// HGROUP
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclustergroupex
+External_Function OpenClusterGroupEx "OpenClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszGroupName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Pointer lpdwGrantedAccess ;	// UInteger*
+	Returns LongPtr	// HGROUP
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclustergroupset
+External_Function OpenClusterGroupSet "OpenClusterGroupSet" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszGroupSetName ;	// PWSTR
+	Returns LongPtr	// HGROUPSET
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusternetinterface
+External_Function OpenClusterNetInterface "OpenClusterNetInterface" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszInterfaceName ;	// PWSTR
+	Returns LongPtr	// HNETINTERFACE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusternetinterfaceex
+External_Function OpenClusterNetInterfaceEx "OpenClusterNetInterfaceEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszInterfaceName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Pointer lpdwGrantedAccess ;	// UInteger*
+	Returns LongPtr	// HNETINTERFACE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusternetwork
+External_Function OpenClusterNetwork "OpenClusterNetwork" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNetworkName ;	// PWSTR
+	Returns LongPtr	// HNETWORK
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusternetworkex
+External_Function OpenClusterNetworkEx "OpenClusterNetworkEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNetworkName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Pointer lpdwGrantedAccess ;	// UInteger*
+	Returns LongPtr	// HNETWORK
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusternode
+External_Function OpenClusterNode "OpenClusterNode" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	Returns LongPtr	// HNODE
+
+External_Function OpenClusterNodeById "OpenClusterNodeById" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger nodeId ;
+	Returns LongPtr	// HNODE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusternodeex
+External_Function OpenClusterNodeEx "OpenClusterNodeEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Pointer lpdwGrantedAccess ;	// UInteger*
+	Returns LongPtr	// HNODE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusterresource
+External_Function OpenClusterResource "OpenClusterResource" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceName ;	// PWSTR
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-openclusterresourceex
+External_Function OpenClusterResourceEx "OpenClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Pointer lpdwGrantedAccess ;	// UInteger*
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-pauseclusternode
+External_Function PauseClusterNode "PauseClusterNode" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Returns UInteger
+
+External_Function PauseClusterNodeEx "PauseClusterNodeEx" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Integer bDrainNode ;	// BOOL
+	UInteger dwPauseFlags ;
+	LongPtr hNodeDrainTarget ;	// HNODE
+	Returns UInteger
+
+External_Function PauseClusterNodeEx2 "PauseClusterNodeEx2" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Integer bDrainNode ;	// BOOL
+	UInteger dwPauseFlags ;
+	LongPtr hNodeDrainTarget ;	// HNODE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-registerclusternotify
+External_Function RegisterClusterNotify "RegisterClusterNotify" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	UInteger dwFilterType ;
+	Pointer hObject ;	// HANDLE
+	ULongPtr dwNotifyKey ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-registerclusternotifyv2
+External_Function RegisterClusterNotifyV2 "RegisterClusterNotifyV2" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	NOTIFY_FILTER_AND_TYPE Filter ;
+	Pointer hObject ;	// HANDLE
+	ULongPtr dwNotifyKey ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-registerclusterresourcetypenotifyv2
+External_Function RegisterClusterResourceTypeNotifyV2 "RegisterClusterResourceTypeNotifyV2" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	LongPtr hCluster ;	// HCLUSTER
+	Bigint Flags ;
+	WString resTypeName ;	// PWSTR
+	ULongPtr dwNotifyKey ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-removeclustergroupdependency
+External_Function RemoveClusterGroupDependency "RemoveClusterGroupDependency" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDependsOn ;	// HGROUP
+	Returns UInteger
+
+External_Function RemoveClusterGroupDependencyEx "RemoveClusterGroupDependencyEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDependsOn ;	// HGROUP
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-removeclustergroupsetdependency
+External_Function RemoveClusterGroupSetDependency "RemoveClusterGroupSetDependency" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hDependsOn ;	// HGROUPSET
+	Returns UInteger
+
+External_Function RemoveClusterGroupSetDependencyEx "RemoveClusterGroupSetDependencyEx" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hDependsOn ;	// HGROUPSET
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-removeclustergrouptogroupsetdependency
+External_Function RemoveClusterGroupToGroupSetDependency "RemoveClusterGroupToGroupSetDependency" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDependsOn ;	// HGROUPSET
+	Returns UInteger
+
+External_Function RemoveClusterGroupToGroupSetDependencyEx "RemoveClusterGroupToGroupSetDependencyEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hDependsOn ;	// HGROUPSET
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function RemoveClusterNameAccount "RemoveClusterNameAccount" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Integer bDeleteComputerObjects ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-removeclusterresourcedependency
+External_Function RemoveClusterResourceDependency "RemoveClusterResourceDependency" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hDependsOn ;	// HRESOURCE
+	Returns UInteger
+
+External_Function RemoveClusterResourceDependencyEx "RemoveClusterResourceDependencyEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hDependsOn ;	// HRESOURCE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-removeclusterresourcenode
+External_Function RemoveClusterResourceNode "RemoveClusterResourceNode" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hNode ;	// HNODE
+	Returns UInteger
+
+External_Function RemoveClusterResourceNodeEx "RemoveClusterResourceNodeEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hNode ;	// HNODE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function RemoveClusterStorageNode "RemoveClusterStorageNode" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszClusterStorageEnclosureName ;	// PWSTR
+	UInteger dwTimeout ;
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function RemoveCrossClusterGroupSetDependency "RemoveCrossClusterGroupSetDependency" CLUSAPI.dll ;
+	LongPtr hDependentGroupSet ;	// HGROUPSET
+	WString lpRemoteClusterName ;	// PWSTR
+	WString lpRemoteGroupSetName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-removeresourcefromclustersharedvolumes
+External_Function RemoveResourceFromClusterSharedVolumes "RemoveResourceFromClusterSharedVolumes" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns UInteger
+
+External_Function RepairClusterNameAccount "RepairClusterNameAccount" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer pConfig ;	// REPAIR_CLUSTER_NAME_ACCOUNT_CONFIG*
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Returns UInteger
+
+External_Function RestartClusterResource "RestartClusterResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function RestartClusterResourceEx "RestartClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwFlags ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-restoreclusterdatabase
+External_Function RestoreClusterDatabase "RestoreClusterDatabase" CLUSAPI.dll ;
+	WString lpszPathName ;	// PWSTR
+	Integer bForce ;	// BOOL
+	WString lpszQuorumDriveLetter ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-resumeclusternode
+External_Function ResumeClusterNode "ResumeClusterNode" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-resumeclusternodeex
+External_Function ResumeClusterNodeEx "ResumeClusterNodeEx" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Integer eResumeFailbackType ;	// CLUSTER_NODE_RESUME_FAILBACK_TYPE
+	UInteger dwResumeFlagsReserved ;
+	Returns UInteger
+
+External_Function ResumeClusterNodeEx2 "ResumeClusterNodeEx2" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Integer eResumeFailbackType ;	// CLUSTER_NODE_RESUME_FAILBACK_TYPE
+	UInteger dwResumeFlagsReserved ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclustergroupname
+External_Function SetClusterGroupName "SetClusterGroupName" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszGroupName ;	// PWSTR
+	Returns UInteger
+
+External_Function SetClusterGroupNameEx "SetClusterGroupNameEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszGroupName ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclustergroupnodelist
+External_Function SetClusterGroupNodeList "SetClusterGroupNodeList" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger NodeCount ;
+	Pointer NodeList ;	// HNODE*
+	Returns UInteger
+
+External_Function SetClusterGroupNodeListEx "SetClusterGroupNodeListEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger NodeCount ;
+	Pointer NodeList ;	// HNODE*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclustergroupsetdependencyexpression
+External_Function SetClusterGroupSetDependencyExpression "SetClusterGroupSetDependencyExpression" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	WString lpszDependencyExprssion ;	// PWSTR
+	Returns UInteger
+
+External_Function SetClusterGroupSetDependencyExpressionEx "SetClusterGroupSetDependencyExpressionEx" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	WString lpszDependencyExpression ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclustername
+External_Function SetClusterName "SetClusterName" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNewClusterName ;	// PWSTR
+	Returns UInteger
+
+External_Function SetClusterNameEx "SetClusterNameEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNewClusterName ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclusternetworkname
+External_Function SetClusterNetworkName "SetClusterNetworkName" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	WString lpszName ;	// PWSTR
+	Returns UInteger
+
+External_Function SetClusterNetworkNameEx "SetClusterNetworkNameEx" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	WString lpszName ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclusternetworkpriorityorder
+External_Function SetClusterNetworkPriorityOrder "SetClusterNetworkPriorityOrder" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger NetworkCount ;
+	Pointer NetworkList ;	// HNETWORK*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclusterquorumresource
+External_Function SetClusterQuorumResource "SetClusterQuorumResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszDeviceName ;	// PWSTR
+	UInteger dwMaxQuoLogSize ;
+	Returns UInteger
+
+External_Function SetClusterQuorumResourceEx "SetClusterQuorumResourceEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszDeviceName ;	// PWSTR
+	UInteger dwMaxQuorumLogSize ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclusterresourcedependencyexpression
+External_Function SetClusterResourceDependencyExpression "SetClusterResourceDependencyExpression" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszDependencyExpression ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclusterresourcename
+External_Function SetClusterResourceName "SetClusterResourceName" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszResourceName ;	// PWSTR
+	Returns UInteger
+
+External_Function SetClusterResourceNameEx "SetClusterResourceNameEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszResourceName ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setclusterserviceaccountpassword
+External_Function SetClusterServiceAccountPassword "SetClusterServiceAccountPassword" CLUSAPI.dll ;
+	WString lpszClusterName ;	// PWSTR
+	WString lpszNewPassword ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer lpReturnStatusBuffer ;	// CLUSTER_SET_PASSWORD_STATUS*
+	Pointer lpcbReturnStatusBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-setgroupdependencyexpression
+External_Function SetGroupDependencyExpression "SetGroupDependencyExpression" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszDependencyExpression ;	// PWSTR
+	Returns UInteger
+
+External_Function SetGroupDependencyExpressionEx "SetGroupDependencyExpressionEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszDependencyExpression ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-closeclustercryptprovider
+External_Function CloseClusterCryptProvider "CloseClusterCryptProvider" RESUTILS.dll ;
+	LongPtr hClusCryptProvider ;	// HCLUSCRYPTPROVIDER
+	Returns UInteger
+
+External_Function ClusAddClusterHealthFault "ClusAddClusterHealthFault" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer failure ;	// CLUSTER_HEALTH_FAULT*
+	UInteger param2 ;
+	Returns UInteger
+
+External_Function ClusGetClusterHealthFaults "ClusGetClusterHealthFaults" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer objects ;	// CLUSTER_HEALTH_FAULT_ARRAY*
+	UInteger flags ;
+	Returns UInteger
+
+External_Function ClusRemoveClusterHealthFault "ClusRemoveClusterHealthFault" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString id ;	// PWSTR
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusworkercheckterminate
+External_Function ClusWorkerCheckTerminate "ClusWorkerCheckTerminate" RESUTILS.dll ;
+	Pointer lpWorker ;	// CLUS_WORKER*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusworkercreate
+External_Function ClusWorkerCreate "ClusWorkerCreate" RESUTILS.dll ;
+	Pointer lpWorker ;	// CLUS_WORKER*
+	Pointer lpStartAddress ;	// PWORKER_START_ROUTINE
+	Pointer lpParameter ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusworkerterminate
+External_Function ClusWorkerTerminate "ClusWorkerTerminate" RESUTILS.dll ;
+	Pointer lpWorker ;	// CLUS_WORKER*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusworkerterminateex
+External_Function ClusWorkerTerminateEx "ClusWorkerTerminateEx" RESUTILS.dll ;
+	Pointer ClusWorker ;	// CLUS_WORKER*
+	UInteger TimeoutInMilliseconds ;
+	Integer WaitOnly ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusworkersterminate
+External_Function ClusWorkersTerminate "ClusWorkersTerminate" RESUTILS.dll ;
+	Pointer ClusWorkers ;	// CLUS_WORKER**
+	ULongPtr ClusWorkersCount ;
+	UInteger TimeoutInMilliseconds ;
+	Integer WaitOnly ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusterclearbackupstateforsharedvolume
+External_Function ClusterClearBackupStateForSharedVolume "ClusterClearBackupStateForSharedVolume" RESUTILS.dll ;
+	WString lpszVolumePathName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusterdecrypt
+External_Function ClusterDecrypt "ClusterDecrypt" RESUTILS.dll ;
+	LongPtr hClusCryptProvider ;	// HCLUSCRYPTPROVIDER
+	Pointer pCryptInput ;	// UChar*
+	UInteger cbCryptInput ;
+	Pointer ppCryptOutput ;	// UChar**
+	Pointer pcbCryptOutput ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusterencrypt
+External_Function ClusterEncrypt "ClusterEncrypt" RESUTILS.dll ;
+	LongPtr hClusCryptProvider ;	// HCLUSCRYPTPROVIDER
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Pointer ppData ;	// UChar**
+	Pointer pcbData ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clustergetvolumenameforvolumemountpoint
+External_Function ClusterGetVolumeNameForVolumeMountPoint "ClusterGetVolumeNameForVolumeMountPoint" RESUTILS.dll ;
+	WString lpszVolumeMountPoint ;	// PWSTR
+	Pointer lpszVolumeName ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clustergetvolumepathname
+External_Function ClusterGetVolumePathName "ClusterGetVolumePathName" RESUTILS.dll ;
+	WString lpszFileName ;	// PWSTR
+	Pointer lpszVolumePathName ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusterispathonsharedvolume
+External_Function ClusterIsPathOnSharedVolume "ClusterIsPathOnSharedVolume" RESUTILS.dll ;
+	WString lpszPathName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-clusterpreparesharedvolumeforbackup
+External_Function ClusterPrepareSharedVolumeForBackup "ClusterPrepareSharedVolumeForBackup" RESUTILS.dll ;
+	WString lpszFileName ;	// PWSTR
+	Pointer lpszVolumePathName ;	// PWSTR
+	Pointer lpcchVolumePathName ;	// UInteger*
+	Pointer lpszVolumeName ;	// PWSTR
+	Pointer lpcchVolumeName ;	// UInteger*
+	Returns UInteger
+
+External_Function FreeClusterCrypt "FreeClusterCrypt" RESUTILS.dll ;
+	Pointer pCryptInfo ;	// Pointer*
+	Returns UInteger
+
+External_Function FreeClusterHealthFault "FreeClusterHealthFault" RESUTILS.dll ;
+	Pointer clusterHealthFault ;	// CLUSTER_HEALTH_FAULT*
+	Returns UInteger
+
+External_Function FreeClusterHealthFaultArray "FreeClusterHealthFaultArray" RESUTILS.dll ;
+	Pointer clusterHealthFaultArray ;	// CLUSTER_HEALTH_FAULT_ARRAY*
+	Returns UInteger
+
+External_Function InitializeClusterHealthFault "InitializeClusterHealthFault" RESUTILS.dll ;
+	Pointer clusterHealthFault ;	// CLUSTER_HEALTH_FAULT*
+	Returns UInteger
+
+External_Function InitializeClusterHealthFaultArray "InitializeClusterHealthFaultArray" RESUTILS.dll ;
+	Pointer clusterHealthFaultArray ;	// CLUSTER_HEALTH_FAULT_ARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-openclustercryptprovider
+External_Function OpenClusterCryptProvider "OpenClusterCryptProvider" RESUTILS.dll ;
+	WString lpszResource ;	// PWSTR
+	Pointer lpszProvider ;	// Char*
+	UInteger dwType ;
+	UInteger dwFlags ;
+	Returns LongPtr	// HCLUSCRYPTPROVIDER
+
+External_Function OpenClusterCryptProviderEx "OpenClusterCryptProviderEx" RESUTILS.dll ;
+	WString lpszResource ;	// PWSTR
+	WString lpszKeyname ;	// PWSTR
+	Pointer lpszProvider ;	// Char*
+	UInteger dwType ;
+	UInteger dwFlags ;
+	Returns LongPtr	// HCLUSCRYPTPROVIDER
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutiladdunknownproperties
+External_Function ResUtilAddUnknownProperties "ResUtilAddUnknownProperties" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutPropertyList ;	// Pointer*
+	UInteger pcbOutPropertyListSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilcreatedirectorytree
+External_Function ResUtilCreateDirectoryTree "ResUtilCreateDirectoryTree" RESUTILS.dll ;
+	WString pszPath ;	// PWSTR
+	Returns UInteger
+
+External_Function ResUtilDupGroup "ResUtilDupGroup" RESUTILS.dll ;
+	LongPtr group ;	// HGROUP
+	Pointer copy ;	// HGROUP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutildupparameterblock
+External_Function ResUtilDupParameterBlock "ResUtilDupParameterBlock" RESUTILS.dll ;
+	Pointer pOutParams ;	// UChar*
+	Pointer pInParams ;	// UChar*
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Returns UInteger
+
+External_Function ResUtilDupResource "ResUtilDupResource" RESUTILS.dll ;
+	LongPtr group ;	// HRESOURCE
+	Pointer copy ;	// HRESOURCE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutildupstring
+External_Function ResUtilDupString "ResUtilDupString" RESUTILS.dll ;
+	WString pszInString ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+External_Function ResUtilEnumGroups "ResUtilEnumGroups" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hSelf ;	// HGROUP
+	Pointer pResCallBack ;	// LPGROUP_CALLBACK_EX
+	Pointer pParameter ;	// Pointer*
+	Returns UInteger
+
+External_Function ResUtilEnumGroupsEx "ResUtilEnumGroupsEx" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hSelf ;	// HGROUP
+	Integer groupType ;	// CLUSGROUP_TYPE
+	Pointer pResCallBack ;	// LPGROUP_CALLBACK_EX
+	Pointer pParameter ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilenumprivateproperties
+External_Function ResUtilEnumPrivateProperties "ResUtilEnumPrivateProperties" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pszOutProperties ;	// PWSTR
+	UInteger cbOutPropertiesSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilenumproperties
+External_Function ResUtilEnumProperties "ResUtilEnumProperties" RESUTILS.dll ;
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pszOutProperties ;	// PWSTR
+	UInteger cbOutPropertiesSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilenumresources
+External_Function ResUtilEnumResources "ResUtilEnumResources" RESUTILS.dll ;
+	LongPtr hSelf ;	// HRESOURCE
+	WString lpszResTypeName ;	// PWSTR
+	Pointer pResCallBack ;	// LPRESOURCE_CALLBACK
+	Pointer pParameter ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilenumresourcesex
+External_Function ResUtilEnumResourcesEx "ResUtilEnumResourcesEx" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hSelf ;	// HRESOURCE
+	WString lpszResTypeName ;	// PWSTR
+	Pointer pResCallBack ;	// LPRESOURCE_CALLBACK_EX
+	Pointer pParameter ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilenumresourcesex2
+External_Function ResUtilEnumResourcesEx2 "ResUtilEnumResourcesEx2" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hSelf ;	// HRESOURCE
+	WString lpszResTypeName ;	// PWSTR
+	Pointer pResCallBack ;	// LPRESOURCE_CALLBACK_EX
+	Pointer pParameter ;	// Pointer*
+	UInteger dwDesiredAccess ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilexpandenvironmentstrings
+External_Function ResUtilExpandEnvironmentStrings "ResUtilExpandEnvironmentStrings" RESUTILS.dll ;
+	WString pszSrc ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindbinaryproperty
+External_Function ResUtilFindBinaryProperty "ResUtilFindBinaryProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pbPropertyValue ;	// UChar**
+	Pointer pcbPropertyValueSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfinddependentdiskresourcedriveletter
+External_Function ResUtilFindDependentDiskResourceDriveLetter "ResUtilFindDependentDiskResourceDriveLetter" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hResource ;	// HRESOURCE
+	Pointer pszDriveLetter ;	// PWSTR
+	Pointer pcchDriveLetter ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfinddwordproperty
+External_Function ResUtilFindDwordProperty "ResUtilFindDwordProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pdwPropertyValue ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindexpandszproperty
+External_Function ResUtilFindExpandSzProperty "ResUtilFindExpandSzProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pszPropertyValue ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindexpandedszproperty
+External_Function ResUtilFindExpandedSzProperty "ResUtilFindExpandedSzProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pszPropertyValue ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindfiletimeproperty
+External_Function ResUtilFindFileTimeProperty "ResUtilFindFileTimeProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pftPropertyValue ;	// FILETIME*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindlongproperty
+External_Function ResUtilFindLongProperty "ResUtilFindLongProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer plPropertyValue ;	// Integer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindmultiszproperty
+External_Function ResUtilFindMultiSzProperty "ResUtilFindMultiSzProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pszPropertyValue ;	// PWSTR*
+	Pointer pcbPropertyValueSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindszproperty
+External_Function ResUtilFindSzProperty "ResUtilFindSzProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer pszPropertyValue ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfindulargeintegerproperty
+External_Function ResUtilFindULargeIntegerProperty "ResUtilFindULargeIntegerProperty" RESUTILS.dll ;
+	Pointer pPropertyList ;	// Pointer*
+	UInteger cbPropertyListSize ;
+	WString pszPropertyName ;	// PWSTR
+	Pointer plPropertyValue ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfreeenvironment
+External_Function ResUtilFreeEnvironment "ResUtilFreeEnvironment" RESUTILS.dll ;
+	Pointer lpEnvironment ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilfreeparameterblock
+External_Function ResUtilFreeParameterBlock "ResUtilFreeParameterBlock" RESUTILS.dll ;
+	Pointer pOutParams ;	// UChar*
+	Pointer pInParams ;	// UChar*
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetallproperties
+External_Function ResUtilGetAllProperties "ResUtilGetAllProperties" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutPropertyList ;	// Pointer*
+	UInteger cbOutPropertyListSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetbinaryproperty
+External_Function ResUtilGetBinaryProperty "ResUtilGetBinaryProperty" RESUTILS.dll ;
+	Pointer ppbOutValue ;	// UChar**
+	Pointer pcbOutValueSize ;	// UInteger*
+	Pointer pValueStruct ;	// CLUSPROP_BINARY*
+	Pointer pbOldValue ;	// UChar*
+	UInteger cbOldValueSize ;
+	Pointer ppPropertyList ;	// UChar**
+	Pointer pcbPropertyListSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetbinaryvalue
+External_Function ResUtilGetBinaryValue "ResUtilGetBinaryValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	Pointer ppbOutValue ;	// UChar**
+	Pointer pcbOutValueSize ;	// UInteger*
+	Returns UInteger
+
+External_Function ResUtilGetClusterGroupType "ResUtilGetClusterGroupType" RESUTILS.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Pointer groupType ;	// CLUSGROUP_TYPE*
+	Returns UInteger
+
+External_Function ResUtilGetClusterId "ResUtilGetClusterId" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer guid ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetclusterrolestate
+External_Function ResUtilGetClusterRoleState "ResUtilGetClusterRoleState" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Integer eClusterRole ;	// CLUSTER_ROLE
+	Returns Integer	// CLUSTER_ROLE_STATE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetcoreclusterresources
+External_Function ResUtilGetCoreClusterResources "ResUtilGetCoreClusterResources" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer phClusterNameResource ;	// HRESOURCE*
+	Pointer phClusterIPAddressResource ;	// HRESOURCE*
+	Pointer phClusterQuorumResource ;	// HRESOURCE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetcoreclusterresourcesex
+External_Function ResUtilGetCoreClusterResourcesEx "ResUtilGetCoreClusterResourcesEx" RESUTILS.dll ;
+	LongPtr hClusterIn ;	// HCLUSTER
+	Pointer phClusterNameResourceOut ;	// HRESOURCE*
+	Pointer phClusterQuorumResourceOut ;	// HRESOURCE*
+	UInteger dwDesiredAccess ;
+	Returns UInteger
+
+External_Function ResUtilGetCoreGroup "ResUtilGetCoreGroup" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Returns LongPtr	// HGROUP
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetdwordproperty
+External_Function ResUtilGetDwordProperty "ResUtilGetDwordProperty" RESUTILS.dll ;
+	Pointer pdwOutValue ;	// UInteger*
+	Pointer pValueStruct ;	// CLUSPROP_DWORD*
+	UInteger dwOldValue ;
+	UInteger dwMinimum ;
+	UInteger dwMaximum ;
+	Pointer ppPropertyList ;	// UChar**
+	Pointer pcbPropertyListSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetdwordvalue
+External_Function ResUtilGetDwordValue "ResUtilGetDwordValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	Pointer pdwOutValue ;	// UInteger*
+	UInteger dwDefaultValue ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetenvironmentwithnetname
+External_Function ResUtilGetEnvironmentWithNetName "ResUtilGetEnvironmentWithNetName" RESUTILS.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetfiletimeproperty
+External_Function ResUtilGetFileTimeProperty "ResUtilGetFileTimeProperty" RESUTILS.dll ;
+	Pointer pftOutValue ;	// FILETIME*
+	Pointer pValueStruct ;	// CLUSPROP_FILETIME*
+	FILETIME ftOldValue ;
+	FILETIME ftMinimum ;
+	FILETIME ftMaximum ;
+	Pointer ppPropertyList ;	// UChar**
+	Pointer pcbPropertyListSize ;	// UInteger*
+	Returns UInteger
+
+External_Function ResUtilGetLongProperty "ResUtilGetLongProperty" RESUTILS.dll ;
+	Pointer plOutValue ;	// Integer*
+	Pointer pValueStruct ;	// CLUSPROP_LONG*
+	Integer lOldValue ;
+	Integer lMinimum ;
+	Integer lMaximum ;
+	Pointer ppPropertyList ;	// UChar**
+	Pointer pcbPropertyListSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetmultiszproperty
+External_Function ResUtilGetMultiSzProperty "ResUtilGetMultiSzProperty" RESUTILS.dll ;
+	Pointer ppszOutValue ;	// PWSTR*
+	Pointer pcbOutValueSize ;	// UInteger*
+	Pointer pValueStruct ;	// CLUSPROP_SZ*
+	WString pszOldValue ;	// PWSTR
+	UInteger cbOldValueSize ;
+	Pointer ppPropertyList ;	// UChar**
+	Pointer pcbPropertyListSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetprivateproperties
+External_Function ResUtilGetPrivateProperties "ResUtilGetPrivateProperties" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pOutPropertyList ;	// Pointer*
+	UInteger cbOutPropertyListSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetproperties
+External_Function ResUtilGetProperties "ResUtilGetProperties" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutPropertyList ;	// Pointer*
+	UInteger cbOutPropertyListSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetpropertiestoparameterblock
+External_Function ResUtilGetPropertiesToParameterBlock "ResUtilGetPropertiesToParameterBlock" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutParams ;	// UChar*
+	Integer bCheckForRequiredProperties ;	// BOOL
+	Pointer pszNameOfPropInError ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetproperty
+External_Function ResUtilGetProperty "ResUtilGetProperty" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTableItem ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutPropertyItem ;	// Pointer**
+	Pointer pcbOutPropertyItemSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetpropertyformats
+External_Function ResUtilGetPropertyFormats "ResUtilGetPropertyFormats" RESUTILS.dll ;
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutPropertyFormatList ;	// Pointer*
+	UInteger cbPropertyFormatListSize ;
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetpropertysize
+External_Function ResUtilGetPropertySize "ResUtilGetPropertySize" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTableItem ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pcbOutPropertyListSize ;	// UInteger*
+	Pointer pnPropertyCount ;	// UInteger*
+	Returns UInteger
+
+External_Function ResUtilGetQwordValue "ResUtilGetQwordValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	Pointer pqwOutValue ;	// UBigint*
+	UBigint qwDefaultValue ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependency
+External_Function ResUtilGetResourceDependency "ResUtilGetResourceDependency" RESUTILS.dll ;
+	Pointer hSelf ;	// HANDLE
+	WString lpszResourceType ;	// PWSTR
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependencybyclass
+External_Function ResUtilGetResourceDependencyByClass "ResUtilGetResourceDependencyByClass" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer hSelf ;	// HANDLE
+	Pointer prci ;	// CLUS_RESOURCE_CLASS_INFO*
+	Integer bRecurse ;	// BOOL
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependencybyclassex
+External_Function ResUtilGetResourceDependencyByClassEx "ResUtilGetResourceDependencyByClassEx" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer hSelf ;	// HANDLE
+	Pointer prci ;	// CLUS_RESOURCE_CLASS_INFO*
+	Integer bRecurse ;	// BOOL
+	UInteger dwDesiredAccess ;
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependencybyname
+External_Function ResUtilGetResourceDependencyByName "ResUtilGetResourceDependencyByName" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer hSelf ;	// HANDLE
+	WString lpszResourceType ;	// PWSTR
+	Integer bRecurse ;	// BOOL
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependencybynameex
+External_Function ResUtilGetResourceDependencyByNameEx "ResUtilGetResourceDependencyByNameEx" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer hSelf ;	// HANDLE
+	WString lpszResourceType ;	// PWSTR
+	Integer bRecurse ;	// BOOL
+	UInteger dwDesiredAccess ;
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependencyex
+External_Function ResUtilGetResourceDependencyEx "ResUtilGetResourceDependencyEx" RESUTILS.dll ;
+	Pointer hSelf ;	// HANDLE
+	WString lpszResourceType ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcedependentipaddressprops
+External_Function ResUtilGetResourceDependentIPAddressProps "ResUtilGetResourceDependentIPAddressProps" RESUTILS.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Pointer pszAddress ;	// PWSTR
+	Pointer pcchAddress ;	// UInteger*
+	Pointer pszSubnetMask ;	// PWSTR
+	Pointer pcchSubnetMask ;	// UInteger*
+	Pointer pszNetwork ;	// PWSTR
+	Pointer pcchNetwork ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcename
+External_Function ResUtilGetResourceName "ResUtilGetResourceName" RESUTILS.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Pointer pszResourceName ;	// PWSTR
+	Pointer pcchResourceNameInOut ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcenamedependency
+External_Function ResUtilGetResourceNameDependency "ResUtilGetResourceNameDependency" RESUTILS.dll ;
+	WString lpszResourceName ;	// PWSTR
+	WString lpszResourceType ;	// PWSTR
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetresourcenamedependencyex
+External_Function ResUtilGetResourceNameDependencyEx "ResUtilGetResourceNameDependencyEx" RESUTILS.dll ;
+	WString lpszResourceName ;	// PWSTR
+	WString lpszResourceType ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetszproperty
+External_Function ResUtilGetSzProperty "ResUtilGetSzProperty" RESUTILS.dll ;
+	Pointer ppszOutValue ;	// PWSTR*
+	Pointer pValueStruct ;	// CLUSPROP_SZ*
+	WString pszOldValue ;	// PWSTR
+	Pointer ppPropertyList ;	// UChar**
+	Pointer pcbPropertyListSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilgetszvalue
+External_Function ResUtilGetSzValue "ResUtilGetSzValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+External_Function ResUtilGroupsEqual "ResUtilGroupsEqual" RESUTILS.dll ;
+	LongPtr hSelf ;	// HGROUP
+	LongPtr hGroup ;	// HGROUP
+	Pointer pEqual ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilispathvalid
+External_Function ResUtilIsPathValid "ResUtilIsPathValid" RESUTILS.dll ;
+	WString pszPath ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilisresourceclassequal
+External_Function ResUtilIsResourceClassEqual "ResUtilIsResourceClassEqual" RESUTILS.dll ;
+	Pointer prci ;	// CLUS_RESOURCE_CLASS_INFO*
+	LongPtr hResource ;	// HRESOURCE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilleftpaxosislessthanright
+External_Function ResUtilLeftPaxosIsLessThanRight "ResUtilLeftPaxosIsLessThanRight" RESUTILS.dll ;
+	Pointer left ;	// PaxosTagCStruct*
+	Pointer right ;	// PaxosTagCStruct*
+	Returns Integer	// BOOL
+
+External_Function ResUtilNodeEnum "ResUtilNodeEnum" RESUTILS.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer pNodeCallBack ;	// LPNODE_CALLBACK
+	Pointer pParameter ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilpaxoscomparer
+External_Function ResUtilPaxosComparer "ResUtilPaxosComparer" RESUTILS.dll ;
+	Pointer left ;	// PaxosTagCStruct*
+	Pointer right ;	// PaxosTagCStruct*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilpropertylistfromparameterblock
+External_Function ResUtilPropertyListFromParameterBlock "ResUtilPropertyListFromParameterBlock" RESUTILS.dll ;
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pOutPropertyList ;	// Pointer*
+	Pointer pcbOutPropertyListSize ;	// UInteger*
+	Pointer pInParams ;	// UChar*
+	Pointer pcbBytesReturned ;	// UInteger*
+	Pointer pcbRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilremoveresourceserviceenvironment
+External_Function ResUtilRemoveResourceServiceEnvironment "ResUtilRemoveResourceServiceEnvironment" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	Pointer pfnLogEvent ;	// PLOG_EVENT_ROUTINE
+	LongPtr hResourceHandle ;
+	Returns UInteger
+
+External_Function ResUtilResourceDepEnum "ResUtilResourceDepEnum" RESUTILS.dll ;
+	LongPtr hSelf ;	// HRESOURCE
+	UInteger enumType ;
+	Pointer pResCallBack ;	// LPRESOURCE_CALLBACK_EX
+	Pointer pParameter ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilresourcetypesequal
+External_Function ResUtilResourceTypesEqual "ResUtilResourceTypesEqual" RESUTILS.dll ;
+	WString lpszResourceTypeName ;	// PWSTR
+	LongPtr hResource ;	// HRESOURCE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilresourcesequal
+External_Function ResUtilResourcesEqual "ResUtilResourcesEqual" RESUTILS.dll ;
+	LongPtr hSelf ;	// HRESOURCE
+	LongPtr hResource ;	// HRESOURCE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetbinaryvalue
+External_Function ResUtilSetBinaryValue "ResUtilSetBinaryValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	Pointer pbNewValue ;	// UChar*
+	UInteger cbNewValueSize ;
+	Pointer ppbOutValue ;	// UChar**
+	Pointer pcbOutValueSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetdwordvalue
+External_Function ResUtilSetDwordValue "ResUtilSetDwordValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	UInteger dwNewValue ;
+	Pointer pdwOutValue ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetexpandszvalue
+External_Function ResUtilSetExpandSzValue "ResUtilSetExpandSzValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	WString pszNewValue ;	// PWSTR
+	Pointer ppszOutString ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetmultiszvalue
+External_Function ResUtilSetMultiSzValue "ResUtilSetMultiSzValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	WString pszNewValue ;	// PWSTR
+	UInteger cbNewValueSize ;
+	Pointer ppszOutValue ;	// PWSTR*
+	Pointer pcbOutValueSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetprivatepropertylist
+External_Function ResUtilSetPrivatePropertyList "ResUtilSetPrivatePropertyList" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetpropertyparameterblock
+External_Function ResUtilSetPropertyParameterBlock "ResUtilSetPropertyParameterBlock" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer Reserved ;	// Pointer*
+	Pointer pInParams ;	// UChar*
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Pointer pOutParams ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetpropertyparameterblockex
+External_Function ResUtilSetPropertyParameterBlockEx "ResUtilSetPropertyParameterBlockEx" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer Reserved ;	// Pointer*
+	Pointer pInParams ;	// UChar*
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Integer bForceWrite ;	// BOOL
+	Pointer pOutParams ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetpropertytable
+External_Function ResUtilSetPropertyTable "ResUtilSetPropertyTable" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer Reserved ;	// Pointer*
+	Integer bAllowUnknownProperties ;	// BOOL
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Pointer pOutParams ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetpropertytableex
+External_Function ResUtilSetPropertyTableEx "ResUtilSetPropertyTableEx" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer Reserved ;	// Pointer*
+	Integer bAllowUnknownProperties ;	// BOOL
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Integer bForceWrite ;	// BOOL
+	Pointer pOutParams ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetqwordvalue
+External_Function ResUtilSetQwordValue "ResUtilSetQwordValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	UBigint qwNewValue ;
+	Pointer pqwOutValue ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetresourceserviceenvironment
+External_Function ResUtilSetResourceServiceEnvironment "ResUtilSetResourceServiceEnvironment" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	LongPtr hResource ;	// HRESOURCE
+	Pointer pfnLogEvent ;	// PLOG_EVENT_ROUTINE
+	LongPtr hResourceHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetresourceservicestartparameters
+External_Function ResUtilSetResourceServiceStartParameters "ResUtilSetResourceServiceStartParameters" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	Pointer schSCMHandle ;	// SC_HANDLE
+	Pointer phService ;	// SC_HANDLE*
+	Pointer pfnLogEvent ;	// PLOG_EVENT_ROUTINE
+	LongPtr hResourceHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetresourceservicestartparametersex
+External_Function ResUtilSetResourceServiceStartParametersEx "ResUtilSetResourceServiceStartParametersEx" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	Pointer schSCMHandle ;	// SC_HANDLE
+	Pointer phService ;	// SC_HANDLE*
+	UInteger dwDesiredAccess ;
+	Pointer pfnLogEvent ;	// PLOG_EVENT_ROUTINE
+	LongPtr hResourceHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetszvalue
+External_Function ResUtilSetSzValue "ResUtilSetSzValue" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString pszValueName ;	// PWSTR
+	WString pszNewValue ;	// PWSTR
+	Pointer ppszOutString ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetunknownproperties
+External_Function ResUtilSetUnknownProperties "ResUtilSetUnknownProperties" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilsetvalueex
+External_Function ResUtilSetValueEx "ResUtilSetValueEx" RESUTILS.dll ;
+	Pointer hkeyClusterKey ;	// HKEY
+	WString valueName ;	// PWSTR
+	UInteger valueType ;
+	Pointer valueData ;	// UChar*
+	UInteger valueSize ;
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilstartresourceservice
+External_Function ResUtilStartResourceService "ResUtilStartResourceService" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	Pointer phServiceHandle ;	// SC_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilstopresourceservice
+External_Function ResUtilStopResourceService "ResUtilStopResourceService" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilstopservice
+External_Function ResUtilStopService "ResUtilStopService" RESUTILS.dll ;
+	Pointer hServiceHandle ;	// SC_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilterminateserviceprocessfromresdll
+External_Function ResUtilTerminateServiceProcessFromResDll "ResUtilTerminateServiceProcessFromResDll" RESUTILS.dll ;
+	UInteger dwServicePid ;
+	Integer bOffline ;	// BOOL
+	Pointer pdwResourceState ;	// UInteger*
+	Pointer pfnLogEvent ;	// PLOG_EVENT_ROUTINE
+	LongPtr hResourceHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilverifyprivatepropertylist
+External_Function ResUtilVerifyPrivatePropertyList "ResUtilVerifyPrivatePropertyList" RESUTILS.dll ;
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilverifypropertytable
+External_Function ResUtilVerifyPropertyTable "ResUtilVerifyPropertyTable" RESUTILS.dll ;
+	Pointer pPropertyTable ;	// RESUTIL_PROPERTY_ITEM*
+	Pointer Reserved ;	// Pointer*
+	Integer bAllowUnknownProperties ;	// BOOL
+	Pointer pInPropertyList ;	// Pointer*
+	UInteger cbInPropertyListSize ;
+	Pointer pOutParams ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilverifyresourceservice
+External_Function ResUtilVerifyResourceService "ResUtilVerifyResourceService" RESUTILS.dll ;
+	WString pszServiceName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/resapi/nf-resapi-resutilverifyservice
+External_Function ResUtilVerifyService "ResUtilVerifyService" RESUTILS.dll ;
+	Pointer hServiceHandle ;	// SC_HANDLE
+	Returns UInteger
+
+External_Function ResUtilVerifyShutdownSafe "ResUtilVerifyShutdownSafe" RESUTILS.dll ;
+	UInteger flags ;
+	UInteger reason ;
+	Pointer pResult ;	// UInteger*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

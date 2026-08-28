@@ -1,0 +1,155 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetserviceinformation
+External_Function SLGetServiceInformation "SLGetServiceInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetwindowsinformation
+External_Function SLGetWindowsInformation "SLGetWindowsInformation" SLC.dll ;
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetwindowsinformationdword
+External_Function SLGetWindowsInformationDWORD "SLGetWindowsInformationDWORD" SLC.dll ;
+	WString pwszValueName ;	// PWSTR
+	Pointer pdwValue ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slinstalllicense
+External_Function SLInstallLicense "SLInstallLicense" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	UInteger cbLicenseBlob ;
+	Pointer pbLicenseBlob ;	// UChar*
+	Pointer pLicenseFileId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slinstallproofofpurchase
+External_Function SLInstallProofOfPurchase "SLInstallProofOfPurchase" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszPKeyAlgorithm ;	// PWSTR
+	WString pwszPKeyString ;	// PWSTR
+	UInteger cbPKeySpecificData ;
+	Pointer pbPKeySpecificData ;	// UChar*
+	Pointer pPkeyId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slopen
+External_Function SLOpen "SLOpen" SLC.dll ;
+	Pointer phSLC ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slregisterevent
+External_Function SLRegisterEvent "SLRegisterEvent" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszEventId ;	// PWSTR
+	Pointer pApplicationId ;	// Guid*
+	Pointer hEvent ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slsetcurrentproductkey
+External_Function SLSetCurrentProductKey "SLSetCurrentProductKey" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	Pointer pProductKeyId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slsetgenuineinformation
+External_Function SLSetGenuineInformation "SLSetGenuineInformation" SLC.dll ;
+	Pointer pQueryId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	UInteger eDataType ;	// SLDATATYPE
+	UInteger cbValue ;
+	Pointer pbValue ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-sluninstalllicense
+External_Function SLUninstallLicense "SLUninstallLicense" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pLicenseFileId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-sluninstallproofofpurchase
+External_Function SLUninstallProofOfPurchase "SLUninstallProofOfPurchase" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pPKeyId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slunregisterevent
+External_Function SLUnregisterEvent "SLUnregisterEvent" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszEventId ;	// PWSTR
+	Pointer pApplicationId ;	// Guid*
+	Pointer hEvent ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slacquiregenuineticket
+External_Function SLAcquireGenuineTicket "SLAcquireGenuineTicket" slcext.dll ;
+	Pointer ppTicketBlob ;	// Pointer**
+	Pointer pcbTicketBlob ;	// UInteger*
+	WString pwszTemplateId ;	// PWSTR
+	WString pwszServerUrl ;	// PWSTR
+	WString pwszClientToken ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slactivateproduct
+External_Function SLActivateProduct "SLActivateProduct" slcext.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	UInteger cbAppSpecificData ;
+	Pointer pvAppSpecificData ;	// Pointer*
+	Pointer pActivationInfo ;	// SL_ACTIVATION_INFO_HEADER*
+	WString pwszProxyServer ;	// PWSTR
+	UShort wProxyPort ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetreferralinformation
+External_Function SLGetReferralInformation "SLGetReferralInformation" slcext.dll ;
+	Pointer hSLC ;	// Pointer*
+	Integer eReferralType ;	// SLREFERRALTYPE
+	Pointer pSkuOrAppId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetserverstatus
+External_Function SLGetServerStatus "SLGetServerStatus" slcext.dll ;
+	WString pwszServerURL ;	// PWSTR
+	WString pwszAcquisitionType ;	// PWSTR
+	WString pwszProxyServer ;	// PWSTR
+	UShort wProxyPort ;
+	Pointer phrStatus ;	// HRESULT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slisgenuinelocal
+External_Function SLIsGenuineLocal "SLIsGenuineLocal" SLWGA.dll ;
+	Pointer pAppId ;	// Guid*
+	Pointer pGenuineState ;	// SL_GENUINE_STATE*
+	Pointer pUIOptions ;	// SL_NONGENUINE_UI_OPTIONS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slquerylicensevaluefromapp
+External_Function SLQueryLicenseValueFromApp "SLQueryLicenseValueFromApp" api-ms-win-core-slapi-l1-1-0.dll ;
+	WString valueName ;	// PWSTR
+	Pointer valueType ;	// UInteger*
+	Pointer dataBuffer ;	// Pointer*
+	UInteger dataSize ;
+	Pointer resultDataSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sas/nf-sas-sendsas
+External_Function SendSAS "SendSAS" SAS.dll ;
+	Integer AsUser ;	// BOOL
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

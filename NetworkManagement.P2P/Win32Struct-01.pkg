@@ -1,0 +1,527 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_address
+Struct DRT_ADDRESS
+	SOCKADDR_STORAGE socketAddress
+	UInteger flags
+	Integer nearness
+	UInteger latency
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_address_list
+Struct DRT_ADDRESS_LIST
+	UInteger AddressCount
+	Integer iMissingAlignment1
+	DRT_ADDRESS[1] AddressList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_bootstrap_provider
+Struct DRT_BOOTSTRAP_PROVIDER
+	Pointer pvContext										// Pointer*
+	LongPtr Attach
+	LongPtr Detach
+	LongPtr InitResolve
+	LongPtr IssueResolve
+	LongPtr EndResolve
+	LongPtr Register
+	LongPtr Unregister
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_data
+Struct DRT_DATA
+	UInteger cb
+	Integer iMissingAlignment1
+	Pointer pb												// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_event_data
+Struct DRT_EVENT_DATA
+	Integer type											// DRT_EVENT_TYPE
+	Integer hr												// HRESULT
+	Pointer pvContext										// Pointer*
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_registration
+Struct DRT_REGISTRATION
+	DRT_DATA key
+	DRT_DATA appData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_search_info
+Struct DRT_SEARCH_INFO
+	UInteger dwSize
+	Integer fIterative										// BOOL
+	Integer fAllowCurrentInstanceMatch						// BOOL
+	Integer fAnyMatchInRange								// BOOL
+	UInteger cMaxEndpoints
+	Integer iMissingAlignment1
+	Pointer pMaximumKey										// DRT_DATA*
+	Pointer pMinimumKey										// DRT_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_search_result
+Struct DRT_SEARCH_RESULT
+	UInteger dwSize
+	Integer type											// DRT_MATCH_TYPE
+	Pointer pvContext										// Pointer*
+	DRT_REGISTRATION registration
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_security_provider
+Struct DRT_SECURITY_PROVIDER
+	Pointer pvContext										// Pointer*
+	LongPtr Attach
+	LongPtr Detach
+	LongPtr RegisterKey
+	LongPtr UnregisterKey
+	LongPtr ValidateAndUnpackPayload
+	LongPtr SecureAndPackPayload
+	LongPtr FreeData
+	LongPtr EncryptData
+	LongPtr DecryptData
+	LongPtr GetSerializedCredential
+	LongPtr ValidateRemoteCredential
+	LongPtr SignData
+	LongPtr VerifyData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/drt/ns-drt-drt_settings
+Struct DRT_SETTINGS
+	UInteger dwSize
+	UInteger cbKey
+	UChar bProtocolMajorVersion
+	UChar bProtocolMinorVersion
+	Short iMissingAlignment1
+	UInteger ulMaxRoutingAddresses
+	Pointer pwzDrtInstancePrefix							// PWSTR
+	Pointer hTransport										// Pointer*
+	Pointer pSecurityProvider								// DRT_SECURITY_PROVIDER*
+	Pointer pBootstrapProvider								// DRT_BOOTSTRAP_PROVIDER*
+	Integer eSecurityMode									// DRT_SECURITY_MODE
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/ns-peerdist-peerdist_content_tag
+Struct PEERDIST_CONTENT_TAG
+	UChar[16] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/ns-peerdist-peerdist_publication_options
+Struct PEERDIST_PUBLICATION_OPTIONS
+	UInteger dwVersion
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/ns-peerdist-peerdist_retrieval_options
+Struct PEERDIST_RETRIEVAL_OPTIONS
+	UInteger cbSize
+	UInteger dwContentInfoMinVersion
+	UInteger dwContentInfoMaxVersion
+	UInteger dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/ns-peerdist-peerdist_status_info
+Struct PEERDIST_STATUS_INFO
+	UInteger cbSize
+	Integer status											// PEERDIST_STATUS
+	UInteger dwMinVer										// PEERDIST_RETRIEVAL_OPTIONS_CONTENTINFO_VERSION_VALUE
+	UInteger dwMaxVer										// PEERDIST_RETRIEVAL_OPTIONS_CONTENTINFO_VERSION_VALUE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_address
+Struct PEER_ADDRESS
+	UInteger dwSize
+	SOCKADDR_IN6 sin6
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_application
+Struct PEER_APPLICATION
+	Guid id
+	PEER_DATA data
+	Pointer pwzDescription									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_application_registration_info
+Struct PEER_APPLICATION_REGISTRATION_INFO
+	PEER_APPLICATION application
+	Pointer pwzApplicationToLaunch							// PWSTR
+	Pointer pwzApplicationArguments							// PWSTR
+	UInteger dwPublicationScope
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_app_launch_info
+Struct PEER_APP_LAUNCH_INFO
+	Pointer pContact										// PEER_CONTACT*
+	Pointer pEndpoint										// PEER_ENDPOINT*
+	Pointer pInvitation										// PEER_INVITATION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_collab_event_data~r1
+Struct PEER_COLLAB_EVENT_DATA
+	Integer eventType										// PEER_COLLAB_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[32] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_collab_event_registration
+Struct PEER_COLLAB_EVENT_REGISTRATION
+	Integer eventType										// PEER_COLLAB_EVENT_TYPE
+	Integer iMissingAlignment1
+	Pointer pInstance										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_contact
+Struct PEER_CONTACT
+	Pointer pwzPeerName										// PWSTR
+	Pointer pwzNickName										// PWSTR
+	Pointer pwzDisplayName									// PWSTR
+	Pointer pwzEmailAddress									// PWSTR
+	Integer fWatch											// BOOL
+	Integer WatcherPermissions								// PEER_WATCH_PERMISSION
+	PEER_DATA credentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_credential_info
+Struct PEER_CREDENTIAL_INFO
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer pwzFriendlyName									// PWSTR
+	Pointer pPublicKey										// CERT_PUBLIC_KEY_INFO*
+	Pointer pwzIssuerPeerName								// PWSTR
+	Pointer pwzIssuerFriendlyName							// PWSTR
+	FILETIME ftValidityStart
+	FILETIME ftValidityEnd
+	UInteger cRoles
+	Integer iMissingAlignment1
+	Pointer pRoles											// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_data
+Struct PEER_DATA
+	UInteger cbData
+	Integer iMissingAlignment1
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_endpoint
+Struct PEER_ENDPOINT
+	PEER_ADDRESS address
+	Pointer pwzEndpointName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_application_changed_data
+Struct PEER_EVENT_APPLICATION_CHANGED_DATA
+	Pointer pContact										// PEER_CONTACT*
+	Pointer pEndpoint										// PEER_ENDPOINT*
+	Integer changeType										// PEER_CHANGE_TYPE
+	Integer iMissingAlignment1
+	Pointer pApplication									// PEER_APPLICATION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_connection_change_data
+Struct PEER_EVENT_CONNECTION_CHANGE_DATA
+	UInteger dwSize
+	Integer status											// PEER_CONNECTION_STATUS
+	UBigint ullConnectionId
+	UBigint ullNodeId
+	UBigint ullNextConnectionId
+	Integer hrConnectionFailedReason						// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_endpoint_changed_data
+Struct PEER_EVENT_ENDPOINT_CHANGED_DATA
+	Pointer pContact										// PEER_CONTACT*
+	Pointer pEndpoint										// PEER_ENDPOINT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_incoming_data
+Struct PEER_EVENT_INCOMING_DATA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	UBigint ullConnectionId
+	Guid type
+	PEER_DATA data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_member_change_data
+Struct PEER_EVENT_MEMBER_CHANGE_DATA
+	UInteger dwSize
+	Integer changeType										// PEER_MEMBER_CHANGE_TYPE
+	Pointer pwzIdentity										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_node_change_data
+Struct PEER_EVENT_NODE_CHANGE_DATA
+	UInteger dwSize
+	Integer changeType										// PEER_NODE_CHANGE_TYPE
+	UBigint ullNodeId
+	Pointer pwzPeerId										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_object_changed_data
+Struct PEER_EVENT_OBJECT_CHANGED_DATA
+	Pointer pContact										// PEER_CONTACT*
+	Pointer pEndpoint										// PEER_ENDPOINT*
+	Integer changeType										// PEER_CHANGE_TYPE
+	Integer iMissingAlignment1
+	Pointer pObject											// PEER_OBJECT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_people_near_me_changed_data
+Struct PEER_EVENT_PEOPLE_NEAR_ME_CHANGED_DATA
+	Integer changeType										// PEER_CHANGE_TYPE
+	Integer iMissingAlignment1
+	Pointer pPeopleNearMe									// PEER_PEOPLE_NEAR_ME*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_presence_changed_data
+Struct PEER_EVENT_PRESENCE_CHANGED_DATA
+	Pointer pContact										// PEER_CONTACT*
+	Pointer pEndpoint										// PEER_ENDPOINT*
+	Integer changeType										// PEER_CHANGE_TYPE
+	Integer iMissingAlignment1
+	Pointer pPresenceInfo									// PEER_PRESENCE_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_record_change_data
+Struct PEER_EVENT_RECORD_CHANGE_DATA
+	UInteger dwSize
+	Integer changeType										// PEER_RECORD_CHANGE_TYPE
+	Guid recordId
+	Guid recordType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_request_status_changed_data
+Struct PEER_EVENT_REQUEST_STATUS_CHANGED_DATA
+	Pointer pEndpoint										// PEER_ENDPOINT*
+	Integer hrChange										// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_synchronized_data
+Struct PEER_EVENT_SYNCHRONIZED_DATA
+	UInteger dwSize
+	Guid recordType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_event_watchlist_changed_data
+Struct PEER_EVENT_WATCHLIST_CHANGED_DATA
+	Pointer pContact										// PEER_CONTACT*
+	Integer changeType										// PEER_CHANGE_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_graph_event_data
+Struct PEER_GRAPH_EVENT_DATA
+	Integer eventType										// PEER_GRAPH_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[48] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_graph_event_registration
+Struct PEER_GRAPH_EVENT_REGISTRATION
+	Integer eventType										// PEER_GRAPH_EVENT_TYPE
+	Integer iMissingAlignment1
+	Pointer pType											// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_graph_properties
+Struct PEER_GRAPH_PROPERTIES
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwScope
+	UInteger dwMaxRecordSize
+	Pointer pwzGraphId										// PWSTR
+	Pointer pwzCreatorId									// PWSTR
+	Pointer pwzFriendlyName									// PWSTR
+	Pointer pwzComment										// PWSTR
+	UInteger ulPresenceLifetime
+	UInteger cPresenceMax
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_group_event_data~r1
+Struct PEER_GROUP_EVENT_DATA
+	Integer eventType										// PEER_GROUP_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[48] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_group_event_registration
+Struct PEER_GROUP_EVENT_REGISTRATION
+	Integer eventType										// PEER_GROUP_EVENT_TYPE
+	Integer iMissingAlignment1
+	Pointer pType											// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_group_properties
+Struct PEER_GROUP_PROPERTIES
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer pwzCloud										// PWSTR
+	Pointer pwzClassifier									// PWSTR
+	Pointer pwzGroupPeerName								// PWSTR
+	Pointer pwzCreatorPeerName								// PWSTR
+	Pointer pwzFriendlyName									// PWSTR
+	Pointer pwzComment										// PWSTR
+	UInteger ulMemberDataLifetime
+	UInteger ulPresenceLifetime
+	UInteger dwAuthenticationSchemes
+	Integer iMissingAlignment1
+	Pointer pwzGroupPassword								// PWSTR
+	Guid groupPasswordRole
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_invitation
+Struct PEER_INVITATION
+	Guid applicationId
+	PEER_DATA applicationData
+	Pointer pwzMessage										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_invitation_info
+Struct PEER_INVITATION_INFO
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer pwzCloudName									// PWSTR
+	UInteger dwScope
+	UInteger dwCloudFlags
+	Pointer pwzGroupPeerName								// PWSTR
+	Pointer pwzIssuerPeerName								// PWSTR
+	Pointer pwzSubjectPeerName								// PWSTR
+	Pointer pwzGroupFriendlyName							// PWSTR
+	Pointer pwzIssuerFriendlyName							// PWSTR
+	Pointer pwzSubjectFriendlyName							// PWSTR
+	FILETIME ftValidityStart
+	FILETIME ftValidityEnd
+	UInteger cRoles
+	Integer iMissingAlignment1
+	Pointer pRoles											// Guid*
+	UInteger cClassifiers
+	Integer iMissingAlignment2
+	Pointer ppwzClassifiers									// PWSTR*
+	Pointer pSubjectPublicKey								// CERT_PUBLIC_KEY_INFO*
+	Integer authScheme										// PEER_GROUP_AUTHENTICATION_SCHEME
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_invitation_response
+Struct PEER_INVITATION_RESPONSE
+	Integer action											// PEER_INVITATION_RESPONSE_TYPE
+	Integer iMissingAlignment1
+	Pointer pwzMessage										// PWSTR
+	Integer hrExtendedInfo									// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_node_info
+Struct PEER_NODE_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	UBigint ullNodeId
+	Pointer pwzPeerId										// PWSTR
+	UInteger cAddresses
+	Integer iMissingAlignment2
+	Pointer pAddresses										// PEER_ADDRESS*
+	Pointer pwzAttributes									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_object
+Struct PEER_OBJECT
+	Guid id
+	PEER_DATA data
+	UInteger dwPublicationScope
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_people_near_me
+Struct PEER_PEOPLE_NEAR_ME
+	Pointer pwzNickName										// PWSTR
+	PEER_ENDPOINT endpoint
+	Guid id
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_pnrp_cloud_info
+Struct PEER_PNRP_CLOUD_INFO
+	Pointer pwzCloudName									// PWSTR
+	Integer dwScope											// PNRP_SCOPE
+	UInteger dwScopeId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_pnrp_endpoint_info
+Struct PEER_PNRP_ENDPOINT_INFO
+	Pointer pwzPeerName										// PWSTR
+	UInteger cAddresses
+	Integer iMissingAlignment1
+	Pointer ppAddresses										// SOCKADDR**
+	Pointer pwzComment										// PWSTR
+	PEER_DATA payload
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_pnrp_registration_info
+Struct PEER_PNRP_REGISTRATION_INFO
+	Pointer pwzCloudName									// PWSTR
+	Pointer pwzPublishingIdentity							// PWSTR
+	UInteger cAddresses
+	Integer iMissingAlignment1
+	Pointer ppAddresses										// SOCKADDR**
+	UShort wPort
+	UChar[6] cMissingAlignment2
+	Pointer pwzComment										// PWSTR
+	PEER_DATA payload
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_presence_info
+Struct PEER_PRESENCE_INFO
+	Integer status											// PEER_PRESENCE_STATUS
+	Integer iMissingAlignment1
+	Pointer pwzDescriptiveText								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_record
+Struct PEER_RECORD
+	UInteger dwSize
+	Guid type
+	Guid id
+	UInteger dwVersion
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pwzCreatorId									// PWSTR
+	Pointer pwzModifiedById									// PWSTR
+	Pointer pwzAttributes									// PWSTR
+	FILETIME ftCreation
+	FILETIME ftExpiration
+	FILETIME ftLastModified
+	PEER_DATA securityData
+	PEER_DATA data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_security_interface
+Struct PEER_SECURITY_INTERFACE
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pwzSspFilename									// PWSTR
+	Pointer pwzPackageName									// PWSTR
+	UInteger cbSecurityInfo
+	Integer iMissingAlignment2
+	Pointer pbSecurityInfo									// UChar*
+	Pointer pvContext										// Pointer*
+	Pointer pfnValidateRecord								// PFNPEER_VALIDATE_RECORD
+	Pointer pfnSecureRecord									// PFNPEER_SECURE_RECORD
+	Pointer pfnFreeSecurityData								// PFNPEER_FREE_SECURITY_DATA
+	Pointer pfnAuthFailed									// PFNPEER_ON_PASSWORD_AUTH_FAILED
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/p2p/ns-p2p-peer_version_data
+Struct PEER_VERSION_DATA
+	UShort wVersion
+	UShort wHighestVersion
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

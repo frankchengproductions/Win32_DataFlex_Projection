@@ -1,0 +1,88 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipaddprovider
+External_Function CryptSIPAddProvider "CryptSIPAddProvider" CRYPT32.dll ;
+	Pointer psNewProv ;	// SIP_ADD_NEWPROVIDER*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipload
+External_Function CryptSIPLoad "CryptSIPLoad" CRYPT32.dll ;
+	Pointer pgSubject ;	// Guid*
+	UInteger dwFlags ;
+	Pointer pSipDispatch ;	// SIP_DISPATCH_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipremoveprovider
+External_Function CryptSIPRemoveProvider "CryptSIPRemoveProvider" CRYPT32.dll ;
+	Pointer pgProv ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipretrievesubjectguid
+External_Function CryptSIPRetrieveSubjectGuid "CryptSIPRetrieveSubjectGuid" CRYPT32.dll ;
+	WString FileName ;	// PWSTR
+	Pointer hFileIn ;	// HANDLE
+	Pointer pgSubject ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipretrievesubjectguidforcatalogfile
+External_Function CryptSIPRetrieveSubjectGuidForCatalogFile "CryptSIPRetrieveSubjectGuidForCatalogFile" CRYPT32.dll ;
+	WString FileName ;	// PWSTR
+	Pointer hFileIn ;	// HANDLE
+	Pointer pgSubject ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipcreateindirectdata
+External_Function CryptSIPCreateIndirectData "CryptSIPCreateIndirectData" WINTRUST.dll ;
+	Pointer pSubjectInfo ;	// SIP_SUBJECTINFO*
+	Pointer pcbIndirectData ;	// UInteger*
+	Pointer pIndirectData ;	// SIP_INDIRECT_DATA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipgetcaps
+External_Function CryptSIPGetCaps "CryptSIPGetCaps" WINTRUST.dll ;
+	Pointer pSubjInfo ;	// SIP_SUBJECTINFO*
+	Pointer pCaps ;	// SIP_CAP_SET_V3*
+	Returns Integer	// BOOL
+
+External_Function CryptSIPGetSealedDigest "CryptSIPGetSealedDigest" WINTRUST.dll ;
+	Pointer pSubjectInfo ;	// SIP_SUBJECTINFO*
+	Pointer pSig ;	// UChar*
+	UInteger dwSig ;
+	Pointer pbDigest ;	// UChar*
+	Pointer pcbDigest ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipgetsigneddatamsg
+External_Function CryptSIPGetSignedDataMsg "CryptSIPGetSignedDataMsg" WINTRUST.dll ;
+	Pointer pSubjectInfo ;	// SIP_SUBJECTINFO*
+	Pointer pdwEncodingType ;	// CERT_QUERY_ENCODING_TYPE*
+	UInteger dwIndex ;
+	Pointer pcbSignedDataMsg ;	// UInteger*
+	Pointer pbSignedDataMsg ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipputsigneddatamsg
+External_Function CryptSIPPutSignedDataMsg "CryptSIPPutSignedDataMsg" WINTRUST.dll ;
+	Pointer pSubjectInfo ;	// SIP_SUBJECTINFO*
+	UInteger dwEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pdwIndex ;	// UInteger*
+	UInteger cbSignedDataMsg ;
+	Pointer pbSignedDataMsg ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipremovesigneddatamsg
+External_Function CryptSIPRemoveSignedDataMsg "CryptSIPRemoveSignedDataMsg" WINTRUST.dll ;
+	Pointer pSubjectInfo ;	// SIP_SUBJECTINFO*
+	UInteger dwIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mssip/nf-mssip-cryptsipverifyindirectdata
+External_Function CryptSIPVerifyIndirectData "CryptSIPVerifyIndirectData" WINTRUST.dll ;
+	Pointer pSubjectInfo ;	// SIP_SUBJECTINFO*
+	Pointer pIndirectData ;	// SIP_INDIRECT_DATA*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

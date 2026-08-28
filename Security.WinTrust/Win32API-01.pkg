@@ -1,0 +1,114 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-openpersonaltrustdbdialog
+External_Function OpenPersonalTrustDBDialog "OpenPersonalTrustDBDialog" WINTRUST.dll ;
+	Pointer hwndParent ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-openpersonaltrustdbdialogex
+External_Function OpenPersonalTrustDBDialogEx "OpenPersonalTrustDBDialogEx" WINTRUST.dll ;
+	Pointer hwndParent ;	// HWND
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wthelpercertcheckvalidsignature
+External_Function WTHelperCertCheckValidSignature "WTHelperCertCheckValidSignature" WINTRUST.dll ;
+	Pointer pProvData ;	// CRYPT_PROVIDER_DATA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wthelpercertisselfsigned
+External_Function WTHelperCertIsSelfSigned "WTHelperCertIsSelfSigned" WINTRUST.dll ;
+	UInteger dwEncoding ;
+	Pointer pCert ;	// CERT_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wthelpergetprovcertfromchain
+External_Function WTHelperGetProvCertFromChain "WTHelperGetProvCertFromChain" WINTRUST.dll ;
+	Pointer pSgnr ;	// CRYPT_PROVIDER_SGNR*
+	UInteger idxCert ;
+	Returns Pointer	// CRYPT_PROVIDER_CERT*
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wthelpergetprovprivatedatafromchain
+External_Function WTHelperGetProvPrivateDataFromChain "WTHelperGetProvPrivateDataFromChain" WINTRUST.dll ;
+	Pointer pProvData ;	// CRYPT_PROVIDER_DATA*
+	Pointer pgProviderID ;	// Guid*
+	Returns Pointer	// CRYPT_PROVIDER_PRIVDATA*
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wthelpergetprovsignerfromchain
+External_Function WTHelperGetProvSignerFromChain "WTHelperGetProvSignerFromChain" WINTRUST.dll ;
+	Pointer pProvData ;	// CRYPT_PROVIDER_DATA*
+	UInteger idxSigner ;
+	Integer fCounterSigner ;	// BOOL
+	UInteger idxCounterSigner ;
+	Returns Pointer	// CRYPT_PROVIDER_SGNR*
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wthelperprovdatafromstatedata
+External_Function WTHelperProvDataFromStateData "WTHelperProvDataFromStateData" WINTRUST.dll ;
+	Pointer hStateData ;	// HANDLE
+	Returns Pointer	// CRYPT_PROVIDER_DATA*
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-winverifytrust
+External_Function WinVerifyTrust "WinVerifyTrust" WINTRUST.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pgActionID ;	// Guid*
+	Pointer pWVTData ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-winverifytrustex
+External_Function WinVerifyTrustEx "WinVerifyTrustEx" WINTRUST.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pgActionID ;	// Guid*
+	Pointer pWinTrustData ;	// WINTRUST_DATA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustaddactionid
+External_Function WintrustAddActionID "WintrustAddActionID" WINTRUST.dll ;
+	Pointer pgActionID ;	// Guid*
+	UInteger fdwFlags ;
+	Pointer psProvInfo ;	// CRYPT_REGISTER_ACTIONID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustadddefaultforusage
+External_Function WintrustAddDefaultForUsage "WintrustAddDefaultForUsage" WINTRUST.dll ;
+	String pszUsageOID ;	// PSTR
+	Pointer psDefUsage ;	// CRYPT_PROVIDER_REGDEFUSAGE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustgetdefaultforusage
+External_Function WintrustGetDefaultForUsage "WintrustGetDefaultForUsage" WINTRUST.dll ;
+	UInteger dwAction ;	// WINTRUST_GET_DEFAULT_FOR_USAGE_ACTION
+	String pszUsageOID ;	// PSTR
+	Pointer psUsage ;	// CRYPT_PROVIDER_DEFUSAGE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustgetregpolicyflags
+External_Function WintrustGetRegPolicyFlags "WintrustGetRegPolicyFlags" WINTRUST.dll ;
+	Pointer pdwPolicyFlags ;	// WINTRUST_POLICY_FLAGS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustloadfunctionpointers
+External_Function WintrustLoadFunctionPointers "WintrustLoadFunctionPointers" WINTRUST.dll ;
+	Pointer pgActionID ;	// Guid*
+	Pointer pPfns ;	// CRYPT_PROVIDER_FUNCTIONS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustremoveactionid
+External_Function WintrustRemoveActionID "WintrustRemoveActionID" WINTRUST.dll ;
+	Pointer pgActionID ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustsetdefaultincludepepagehashes
+External_Function WintrustSetDefaultIncludePEPageHashes "WintrustSetDefaultIncludePEPageHashes" WINTRUST.dll ;
+	Integer fIncludePEPageHashes ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/nf-wintrust-wintrustsetregpolicyflags
+External_Function WintrustSetRegPolicyFlags "WintrustSetRegPolicyFlags" WINTRUST.dll ;
+	UInteger dwPolicyFlags ;	// WINTRUST_POLICY_FLAGS
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

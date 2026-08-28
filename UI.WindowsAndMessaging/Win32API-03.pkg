@@ -1,0 +1,198 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/resourceindexer/nf-resourceindexer-indexfilepath
+External_Function IndexFilePath "IndexFilePath" MrmSupport.dll ;
+	Pointer resourceIndexer ;	// Pointer*
+	WString filePath ;	// PWSTR
+	Pointer ppResourceUri ;	// PWSTR*
+	Pointer pQualifierCount ;	// UInteger*
+	Pointer ppQualifiers ;	// IndexedResourceQualifier**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateconfig
+External_Function MrmCreateConfig "MrmCreateConfig" MrmSupport.dll ;
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	WString outputXmlFile ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateconfiginmemory
+External_Function MrmCreateConfigInMemory "MrmCreateConfigInMemory" MrmSupport.dll ;
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	Pointer outputXmlData ;	// UChar**
+	Pointer outputXmlSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourcefile
+External_Function MrmCreateResourceFile "MrmCreateResourceFile" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	Integer packagingMode ;	// MrmPackagingMode
+	Integer packagingOptions ;	// MrmPackagingOptions
+	WString outputDirectory ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourcefileinmemory
+External_Function MrmCreateResourceFileInMemory "MrmCreateResourceFileInMemory" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	Integer packagingMode ;	// MrmPackagingMode
+	Integer packagingOptions ;	// MrmPackagingOptions
+	Pointer outputPriData ;	// UChar**
+	Pointer outputPriSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MrmCreateResourceFileWithChecksum "MrmCreateResourceFileWithChecksum" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	Integer packagingMode ;	// MrmPackagingMode
+	Integer packagingOptions ;	// MrmPackagingOptions
+	UInteger checksum ;
+	WString outputDirectory ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourceindexer
+External_Function MrmCreateResourceIndexer "MrmCreateResourceIndexer" MrmSupport.dll ;
+	WString packageFamilyName ;	// PWSTR
+	WString projectRoot ;	// PWSTR
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	Pointer indexer ;	// MrmResourceIndexerHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourceindexerfrompreviouspridata-
+External_Function MrmCreateResourceIndexerFromPreviousPriData "MrmCreateResourceIndexerFromPreviousPriData" MrmSupport.dll ;
+	WString projectRoot ;	// PWSTR
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	Pointer priData ;	// UChar*
+	UInteger priSize ;
+	Pointer indexer ;	// MrmResourceIndexerHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourceindexerfrompreviousprifile
+External_Function MrmCreateResourceIndexerFromPreviousPriFile "MrmCreateResourceIndexerFromPreviousPriFile" MrmSupport.dll ;
+	WString projectRoot ;	// PWSTR
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	WString priFile ;	// PWSTR
+	Pointer indexer ;	// MrmResourceIndexerHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourceindexerfrompreviousschemadata
+External_Function MrmCreateResourceIndexerFromPreviousSchemaData "MrmCreateResourceIndexerFromPreviousSchemaData" MrmSupport.dll ;
+	WString projectRoot ;	// PWSTR
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	Pointer schemaXmlData ;	// UChar*
+	UInteger schemaXmlSize ;
+	Pointer indexer ;	// MrmResourceIndexerHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmcreateresourceindexerfrompreviousschemafile
+External_Function MrmCreateResourceIndexerFromPreviousSchemaFile "MrmCreateResourceIndexerFromPreviousSchemaFile" MrmSupport.dll ;
+	WString projectRoot ;	// PWSTR
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	WString schemaFile ;	// PWSTR
+	Pointer indexer ;	// MrmResourceIndexerHandle*
+	Returns Integer	// HRESULT
+
+External_Function MrmCreateResourceIndexerWithFlags "MrmCreateResourceIndexerWithFlags" MrmSupport.dll ;
+	WString packageFamilyName ;	// PWSTR
+	WString projectRoot ;	// PWSTR
+	Integer platformVersion ;	// MrmPlatformVersion
+	WString defaultQualifiers ;	// PWSTR
+	Integer flags ;	// MrmIndexerFlags
+	Pointer indexer ;	// MrmResourceIndexerHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmdestroyindexerandmessages
+External_Function MrmDestroyIndexerAndMessages "MrmDestroyIndexerAndMessages" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmdumppridatainmemory
+External_Function MrmDumpPriDataInMemory "MrmDumpPriDataInMemory" MrmSupport.dll ;
+	Pointer inputPriData ;	// UChar*
+	UInteger inputPriSize ;
+	Pointer schemaPriData ;	// UChar*
+	UInteger schemaPriSize ;
+	Integer dumpType ;	// MrmDumpType
+	Pointer outputXmlData ;	// UChar**
+	Pointer outputXmlSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmdumpprifile
+External_Function MrmDumpPriFile "MrmDumpPriFile" MrmSupport.dll ;
+	WString indexFileName ;	// PWSTR
+	WString schemaPriFile ;	// PWSTR
+	Integer dumpType ;	// MrmDumpType
+	WString outputXmlFile ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmdumpprifileinmemory
+External_Function MrmDumpPriFileInMemory "MrmDumpPriFileInMemory" MrmSupport.dll ;
+	WString indexFileName ;	// PWSTR
+	WString schemaPriFile ;	// PWSTR
+	Integer dumpType ;	// MrmDumpType
+	Pointer outputXmlData ;	// UChar**
+	Pointer outputXmlSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmfreememory
+External_Function MrmFreeMemory "MrmFreeMemory" MrmSupport.dll ;
+	Pointer data ;	// UChar*
+	Returns Integer	// HRESULT
+
+External_Function MrmGetPriFileContentChecksum "MrmGetPriFileContentChecksum" MrmSupport.dll ;
+	WString priFile ;	// PWSTR
+	Pointer checksum ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmindexembeddeddata
+External_Function MrmIndexEmbeddedData "MrmIndexEmbeddedData" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	WString resourceUri ;	// PWSTR
+	Pointer embeddedData ;	// UChar*
+	UInteger embeddedDataSize ;
+	WString qualifiers ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmindexfile
+External_Function MrmIndexFile "MrmIndexFile" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	WString resourceUri ;	// PWSTR
+	WString filePath ;	// PWSTR
+	WString qualifiers ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmindexfileautoqualifiers
+External_Function MrmIndexFileAutoQualifiers "MrmIndexFileAutoQualifiers" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	WString filePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmindexresourcecontainerautoqualifiers
+External_Function MrmIndexResourceContainerAutoQualifiers "MrmIndexResourceContainerAutoQualifiers" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	WString containerPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmindexstring
+External_Function MrmIndexString "MrmIndexString" MrmSupport.dll ;
+	MrmResourceIndexerHandle indexer ;
+	WString resourceUri ;	// PWSTR
+	WString resourceString ;	// PWSTR
+	WString qualifiers ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmpeekresourceindexermessages
+External_Function MrmPeekResourceIndexerMessages "MrmPeekResourceIndexerMessages" MrmSupport.dll ;
+	MrmResourceIndexerHandle handle ;
+	Pointer messages ;	// MrmResourceIndexerMessage**
+	Pointer numMsgs ;	// UInteger*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

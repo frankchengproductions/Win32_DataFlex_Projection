@@ -1,0 +1,200 @@
+Use UI
+
+Struct BLUETOOTH_ADDRESS
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_authenticate_response
+Struct BLUETOOTH_AUTHENTICATE_RESPONSE
+	BLUETOOTH_ADDRESS bthAddressRemote
+	Integer authMethod										// BLUETOOTH_AUTHENTICATION_METHOD
+	UChar[32] UnionName1
+	UChar negativeResponse
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_cod_pairs
+Struct BLUETOOTH_COD_PAIRS
+	UInteger ulCODMask
+	Integer iMissingAlignment1
+	Pointer pcszDescription									// PWSTR
+End_Struct
+
+Struct BLUETOOTH_DEVICE_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	BLUETOOTH_ADDRESS Address
+	UInteger ulClassofDevice
+	Integer fConnected										// BOOL
+	Integer fRemembered										// BOOL
+	Integer fAuthenticated									// BOOL
+	SYSTEMTIME stLastSeen
+	SYSTEMTIME stLastUsed
+	UShort[248] szName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_device_search_params
+Struct BLUETOOTH_DEVICE_SEARCH_PARAMS
+	UInteger dwSize
+	Integer fReturnAuthenticated							// BOOL
+	Integer fReturnRemembered								// BOOL
+	Integer fReturnUnknown									// BOOL
+	Integer fReturnConnected								// BOOL
+	Integer fIssueInquiry									// BOOL
+	UChar cTimeoutMultiplier
+	UChar[7] cMissingAlignment1
+	Pointer hRadio											// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_find_radio_params
+Struct BLUETOOTH_FIND_RADIO_PARAMS
+	UInteger dwSize
+End_Struct
+
+Struct BLUETOOTH_LOCAL_SERVICE_INFO
+	Integer Enabled											// BOOL
+	Integer iMissingAlignment1
+	BLUETOOTH_ADDRESS btAddr
+	UShort[256] szName
+	UShort[256] szDeviceString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_numeric_comparison_info
+Struct BLUETOOTH_NUMERIC_COMPARISON_INFO
+	UInteger NumericValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_oob_data_info
+Struct BLUETOOTH_OOB_DATA_INFO
+	UChar[16] C
+	UChar[16] R
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_passkey_info
+Struct BLUETOOTH_PASSKEY_INFO
+	UInteger passkey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_pin_info
+Struct BLUETOOTH_PIN_INFO
+	UChar[16] pin
+	UChar pinLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_radio_info
+Struct BLUETOOTH_RADIO_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	BLUETOOTH_ADDRESS address
+	UShort[248] szName
+	UInteger ulClassofDevice
+	UShort lmpSubversion
+	UShort manufacturer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_select_device_params
+Struct BLUETOOTH_SELECT_DEVICE_PARAMS
+	UInteger dwSize
+	UInteger cNumOfClasses
+	Pointer prgClassOfDevices								// BLUETOOTH_COD_PAIRS*
+	Pointer pszInfo											// PWSTR
+	Pointer hwndParent										// HWND
+	Integer fForceAuthentication							// BOOL
+	Integer fShowAuthenticated								// BOOL
+	Integer fShowRemembered									// BOOL
+	Integer fShowUnknown									// BOOL
+	Integer fAddNewDeviceWizard								// BOOL
+	Integer fSkipServicesPage								// BOOL
+	Pointer pfnDeviceCallback								// PFN_DEVICE_CALLBACK
+	Pointer pvParam											// Pointer*
+	UInteger cNumDevices
+	Integer iMissingAlignment1
+	Pointer pDevices										// BLUETOOTH_DEVICE_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_characteristic
+Struct BTH_LE_GATT_CHARACTERISTIC
+	UShort ServiceHandle
+	Short iMissingAlignment1
+	BTH_LE_UUID CharacteristicUuid
+	UShort AttributeHandle
+	UShort CharacteristicValueHandle
+	UChar IsBroadcastable									// BOOLEAN
+	UChar IsReadable										// BOOLEAN
+	UChar IsWritable										// BOOLEAN
+	UChar IsWritableWithoutResponse							// BOOLEAN
+	UChar IsSignedWritable									// BOOLEAN
+	UChar IsNotifiable										// BOOLEAN
+	UChar IsIndicatable										// BOOLEAN
+	UChar HasExtendedProperties								// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_characteristic_value
+Struct BTH_LE_GATT_CHARACTERISTIC_VALUE
+	UInteger DataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_descriptor
+Struct BTH_LE_GATT_DESCRIPTOR
+	UShort ServiceHandle
+	UShort CharacteristicHandle
+	Integer DescriptorType									// BTH_LE_GATT_DESCRIPTOR_TYPE
+	BTH_LE_UUID DescriptorUuid
+	UShort AttributeHandle
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_descriptor_value
+Struct BTH_LE_GATT_DESCRIPTOR_VALUE
+	Integer DescriptorType									// BTH_LE_GATT_DESCRIPTOR_TYPE
+	BTH_LE_UUID DescriptorUuid
+	UChar[20] UnionName1
+	UInteger DataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_service
+Struct BTH_LE_GATT_SERVICE
+	BTH_LE_UUID ServiceUuid
+	UShort AttributeHandle
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_uuid
+Struct BTH_LE_UUID
+	UChar IsShortUuid										// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-sdp_element_data
+Struct SDP_ELEMENT_DATA
+	Integer type											// SDP_TYPE
+	Integer specificType									// SDP_SPECIFICTYPE
+	UChar[16] UnionName1
+End_Struct
+
+Struct SDP_LARGE_INTEGER_16
+	UBigint LowPart
+	Bigint HighPart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-sdp_string_type_data
+Struct SDP_STRING_TYPE_DATA
+	UShort encoding
+	UShort mibeNum
+	UShort attributeId
+End_Struct
+
+Struct SDP_ULARGE_INTEGER_16
+	UBigint LowPart
+	UBigint HighPart
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

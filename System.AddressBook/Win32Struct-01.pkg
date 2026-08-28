@@ -1,0 +1,491 @@
+Use UI
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/adrentry
+Struct ADRENTRY
+	UInteger ulReserved1
+	UInteger cValues
+	Pointer rgPropVals										// SPropValue*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/adrlist
+Struct ADRLIST
+	UInteger cEntries
+	Integer iMissingAlignment1
+	ADRENTRY[1] aEntries
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblbutton
+Struct DTBLBUTTON
+	UInteger ulbLpszLabel
+	UInteger ulFlags
+	UInteger ulPRControl
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblcheckbox
+Struct DTBLCHECKBOX
+	UInteger ulbLpszLabel
+	UInteger ulFlags
+	UInteger ulPRPropertyName
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblcombobox
+Struct DTBLCOMBOBOX
+	UInteger ulbLpszCharsAllowed
+	UInteger ulFlags
+	UInteger ulNumCharsAllowed
+	UInteger ulPRPropertyName
+	UInteger ulPRTableName
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblddlbx
+Struct DTBLDDLBX
+	UInteger ulFlags
+	UInteger ulPRDisplayProperty
+	UInteger ulPRSetProperty
+	UInteger ulPRTableName
+End_Struct
+
+Struct DTBLEDIT
+	UInteger ulbLpszCharsAllowed
+	UInteger ulFlags
+	UInteger ulNumCharsAllowed
+	UInteger ulPropTag
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblgroupbox
+Struct DTBLGROUPBOX
+	UInteger ulbLpszLabel
+	UInteger ulFlags
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtbllabel
+Struct DTBLLABEL
+	UInteger ulbLpszLabelName
+	UInteger ulFlags
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtbllbx
+Struct DTBLLBX
+	UInteger ulFlags
+	UInteger ulPRSetProperty
+	UInteger ulPRTableName
+End_Struct
+
+Struct DTBLMVDDLBX
+	UInteger ulFlags
+	UInteger ulMVPropTag
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblmvlistbox
+Struct DTBLMVLISTBOX
+	UInteger ulFlags
+	UInteger ulMVPropTag
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblpage
+Struct DTBLPAGE
+	UInteger ulbLpszLabel
+	UInteger ulFlags
+	UInteger ulbLpszComponent
+	UInteger ulContext
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtblradiobutton
+Struct DTBLRADIOBUTTON
+	UInteger ulbLpszLabel
+	UInteger ulFlags
+	UInteger ulcButtons
+	UInteger ulPropTag
+	Integer lReturnValue
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtctl
+Struct DTCTL
+	UInteger ulCtlType
+	UInteger ulCtlFlags
+	Pointer lpbNotif										// UChar*
+	UInteger cbNotif
+	Integer iMissingAlignment1
+	Pointer lpszFilter										// Char*
+	UInteger ulItemID
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/dtpage
+Struct DTPAGE
+	UInteger cctl
+	Integer iMissingAlignment1
+	Pointer lpszResourceName								// Char*
+	UChar[8] UnionName1
+	Pointer lpctl											// DTCTL*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/entryid
+Struct ENTRYID
+	UChar[4] abFlags
+	UChar[1] ab
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/error_notification
+Struct ERROR_NOTIFICATION
+	UInteger cbEntryID
+	Integer iMissingAlignment1
+	Pointer lpEntryID										// ENTRYID*
+	Integer scode
+	UInteger ulFlags
+	Pointer lpMAPIError										// MAPIERROR*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/extended_notification
+Struct EXTENDED_NOTIFICATION
+	UInteger ulEvent
+	UInteger cb
+	Pointer pbEventParameters								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/mapierror
+Struct MAPIERROR
+	UInteger ulVersion
+	Integer iMissingAlignment1
+	Pointer lpszError										// Char*
+	Pointer lpszComponent									// Char*
+	UInteger ulLowLevelError
+	UInteger ulContext
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/mapinameid
+Struct MAPINAMEID
+	Pointer lpguid											// Guid*
+	UInteger ulKind
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/newmail_notification
+Struct NEWMAIL_NOTIFICATION
+	UInteger cbEntryID
+	Integer iMissingAlignment1
+	Pointer lpEntryID										// ENTRYID*
+	UInteger cbParentID
+	Integer iMissingAlignment2
+	Pointer lpParentID										// ENTRYID*
+	UInteger ulFlags
+	Integer iMissingAlignment3
+	Pointer lpszMessageClass								// Char*
+	UInteger ulMessageFlags
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/notification
+Struct NOTIFICATION
+	UInteger ulEventType
+	UInteger ulAlignPad
+	UChar[672] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/object_notification
+Struct OBJECT_NOTIFICATION
+	UInteger cbEntryID
+	Integer iMissingAlignment1
+	Pointer lpEntryID										// ENTRYID*
+	UInteger ulObjType
+	UInteger cbParentID
+	Pointer lpParentID										// ENTRYID*
+	UInteger cbOldID
+	Integer iMissingAlignment2
+	Pointer lpOldID											// ENTRYID*
+	UInteger cbOldParentID
+	Integer iMissingAlignment3
+	Pointer lpOldParentID									// ENTRYID*
+	Pointer lpPropTagArray									// SPropTagArray*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sandrestriction
+Struct SAndRestriction
+	UInteger cRes
+	Integer iMissingAlignment1
+	Pointer lpRes											// SRestriction*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sapptimearray
+Struct SAppTimeArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpat											// Real*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sbinary
+Struct SBinary
+	UInteger cb
+	Integer iMissingAlignment1
+	Pointer lpb												// UChar*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sbinaryarray
+Struct SBinaryArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpbin											// SBinary*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sbitmaskrestriction
+Struct SBitMaskRestriction
+	UInteger relBMR
+	UInteger ulPropTag
+	UInteger ulMask
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scommentrestriction
+Struct SCommentRestriction
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpRes											// SRestriction*
+	Pointer lpProp											// SPropValue*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scomparepropsrestriction
+Struct SComparePropsRestriction
+	UInteger relop
+	UInteger ulPropTag1
+	UInteger ulPropTag2
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scontentrestriction
+Struct SContentRestriction
+	UInteger ulFuzzyLevel
+	UInteger ulPropTag
+	Pointer lpProp											// SPropValue*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scurrencyarray
+Struct SCurrencyArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpcur											// CY*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sdatetimearray
+Struct SDateTimeArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpft											// FILETIME*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sdoublearray
+Struct SDoubleArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpdbl											// Real*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sexistrestriction
+Struct SExistRestriction
+	UInteger ulReserved1
+	UInteger ulPropTag
+	UInteger ulReserved2
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sguidarray
+Struct SGuidArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpguid											// Guid*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/slpstrarray
+Struct SLPSTRArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lppszA											// PSTR*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/slargeintegerarray
+Struct SLargeIntegerArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpli											// Bigint*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/slongarray
+Struct SLongArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpl												// Integer*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/snotrestriction
+Struct SNotRestriction
+	UInteger ulReserved
+	Integer iMissingAlignment1
+	Pointer lpRes											// SRestriction*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sorrestriction
+Struct SOrRestriction
+	UInteger cRes
+	Integer iMissingAlignment1
+	Pointer lpRes											// SRestriction*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/spropproblem
+Struct SPropProblem
+	UInteger ulIndex
+	UInteger ulPropTag
+	Integer scode
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/spropproblemarray
+Struct SPropProblemArray
+	UInteger cProblem
+	SPropProblem[1] aProblem
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sproptagarray
+Struct SPropTagArray
+	UInteger cValues
+	UInteger[1] aulPropTag
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/spropvalue
+Struct SPropValue
+	UInteger ulPropTag
+	UInteger dwAlignPad
+	__UPV Value
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/spropertyrestriction
+Struct SPropertyRestriction
+	UInteger relop
+	UInteger ulPropTag
+	Pointer lpProp											// SPropValue*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/srealarray
+Struct SRealArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpflt											// Float*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/srestriction
+Struct SRestriction
+	UInteger rt
+	Integer iMissingAlignment1
+	UChar[24] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/srow
+Struct SRow
+	UInteger ulAdrEntryPad
+	UInteger cValues
+	Pointer lpProps											// SPropValue*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/srowset
+Struct SRowSet
+	UInteger cRows
+	Integer iMissingAlignment1
+	SRow[1] aRow
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sshortarray
+Struct SShortArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lpi												// Short*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ssizerestriction
+Struct SSizeRestriction
+	UInteger relop
+	UInteger ulPropTag
+	UInteger cb
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ssortorder
+Struct SSortOrder
+	UInteger ulPropTag
+	UInteger ulOrder
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ssortorderset
+Struct SSortOrderSet
+	UInteger cSorts
+	UInteger cCategories
+	UInteger cExpanded
+	SSortOrder[1] aSort
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ssubrestriction
+Struct SSubRestriction
+	UInteger ulSubObject
+	Integer iMissingAlignment1
+	Pointer lpRes											// SRestriction*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/status_object_notification
+Struct STATUS_OBJECT_NOTIFICATION
+	UInteger cbEntryID
+	Integer iMissingAlignment1
+	Pointer lpEntryID										// ENTRYID*
+	UInteger cValues
+	Integer iMissingAlignment2
+	Pointer lpPropVals										// SPropValue*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/swstringarray
+Struct SWStringArray
+	UInteger cValues
+	Integer iMissingAlignment1
+	Pointer lppszW											// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/table_notification
+Struct TABLE_NOTIFICATION
+	UInteger ulTableEvent
+	Integer hResult											// HRESULT
+	SPropValue propIndex
+	SPropValue propPrior
+	SRow row
+	UInteger ulPad
+	Integer iMissingAlignment1
+End_Struct
+
+Struct __UPV
+	Short i
+	Short iMissingAlignment1
+	Integer l
+	UInteger ul
+	Float flt
+	Real dbl
+	UShort b
+	UChar[6] cMissingAlignment2
+	CY cur
+	Real at
+	FILETIME ft
+	Pointer lpszA											// PSTR
+	SBinary bin
+	Pointer lpszW											// PWSTR
+	Pointer lpguid											// Guid*
+	Bigint li
+	SShortArray MVi
+	SLongArray MVl
+	SRealArray MVflt
+	SDoubleArray MVdbl
+	SCurrencyArray MVcur
+	SAppTimeArray MVat
+	SDateTimeArray MVft
+	SBinaryArray MVbin
+	SLPSTRArray MVszA
+	SWStringArray MVszW
+	SGuidArray MVguid
+	SLargeIntegerArray MVli
+	Integer err
+	Integer x
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

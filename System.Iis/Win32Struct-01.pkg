@@ -1,0 +1,54 @@
+Use UI
+
+Struct EXTENSION_CONTROL_BLOCK
+	UInteger cbSize
+	UInteger dwVersion
+	Pointer ConnID											// HCONN
+	UInteger dwHttpStatusCode
+	Char[80] lpszLogData									// CHAR
+	Integer iMissingAlignment1
+	Pointer lpszMethod										// PSTR
+	Pointer lpszQueryString									// PSTR
+	Pointer lpszPathInfo									// PSTR
+	Pointer lpszPathTranslated								// PSTR
+	UInteger cbTotalBytes
+	UInteger cbAvailable
+	Pointer lpbData											// UChar*
+	Pointer lpszContentType									// PSTR
+	Pointer GetServerVariable								// PFN_IIS_GETSERVERVARIABLE
+	Pointer WriteClient										// PFN_IIS_WRITECLIENT
+	Pointer ReadClient										// PFN_IIS_READCLIENT
+	Pointer ServerSupportFunction							// PFN_IIS_SERVERSUPPORTFUNCTION
+End_Struct
+
+Struct HSE_VERSION_INFO
+	UInteger dwExtensionVersion
+	Char[256] lpszExtensionDesc								// CHAR
+End_Struct
+
+Struct HTTP_FILTER_CONTEXT
+	UInteger cbSize
+	UInteger Revision
+	Pointer ServerContext									// Pointer*
+	UInteger ulReserved
+	Integer fIsSecurePort									// BOOL
+	Pointer pFilterContext									// Pointer*
+	LongPtr GetServerVariable
+	LongPtr AddResponseHeaders
+	LongPtr WriteClient
+	LongPtr AllocMem
+	LongPtr ServerSupportFunction
+End_Struct
+
+Struct HTTP_FILTER_VERSION
+	UInteger dwServerFilterVersion
+	UInteger dwFilterVersion
+	Char[257] lpszFilterDesc								// CHAR
+	UChar[3] cMissingAlignment1
+	UInteger dwFlags
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,400 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioacquirefocus
+External_Function WinBioAcquireFocus "WinBioAcquireFocus" winbio.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioasyncenumbiometricunits
+External_Function WinBioAsyncEnumBiometricUnits "WinBioAsyncEnumBiometricUnits" winbio.dll ;
+	UInteger FrameworkHandle ;
+	UInteger Factor ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioasyncenumdatabases
+External_Function WinBioAsyncEnumDatabases "WinBioAsyncEnumDatabases" winbio.dll ;
+	UInteger FrameworkHandle ;
+	UInteger Factor ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioasyncenumserviceproviders
+External_Function WinBioAsyncEnumServiceProviders "WinBioAsyncEnumServiceProviders" winbio.dll ;
+	UInteger FrameworkHandle ;
+	UInteger Factor ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioasyncmonitorframeworkchanges
+External_Function WinBioAsyncMonitorFrameworkChanges "WinBioAsyncMonitorFrameworkChanges" winbio.dll ;
+	UInteger FrameworkHandle ;
+	UInteger ChangeTypes ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioasyncopenframework
+External_Function WinBioAsyncOpenFramework "WinBioAsyncOpenFramework" winbio.dll ;
+	Integer NotificationMethod ;	// WINBIO_ASYNC_NOTIFICATION_METHOD
+	Pointer TargetWindow ;	// HWND
+	UInteger MessageCode ;
+	Pointer CallbackRoutine ;	// PWINBIO_ASYNC_COMPLETION_CALLBACK
+	Pointer UserData ;	// Pointer*
+	Integer AsynchronousOpen ;	// BOOL
+	Pointer FrameworkHandle ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioasyncopensession
+External_Function WinBioAsyncOpenSession "WinBioAsyncOpenSession" winbio.dll ;
+	UInteger Factor ;
+	UInteger PoolType ;	// WINBIO_POOL
+	UInteger Flags ;
+	Pointer UnitArray ;	// UInteger*
+	ULongPtr UnitCount ;
+	Pointer DatabaseId ;	// Guid*
+	Integer NotificationMethod ;	// WINBIO_ASYNC_NOTIFICATION_METHOD
+	Pointer TargetWindow ;	// HWND
+	UInteger MessageCode ;
+	Pointer CallbackRoutine ;	// PWINBIO_ASYNC_COMPLETION_CALLBACK
+	Pointer UserData ;	// Pointer*
+	Integer AsynchronousOpen ;	// BOOL
+	Pointer SessionHandle ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiocancel
+External_Function WinBioCancel "WinBioCancel" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiocapturesample
+External_Function WinBioCaptureSample "WinBioCaptureSample" winbio.dll ;
+	UInteger SessionHandle ;
+	UChar Purpose ;
+	UChar Flags ;
+	Pointer UnitId ;	// UInteger*
+	Pointer Sample ;	// WINBIO_BIR**
+	Pointer SampleSize ;	// ULongPtr*
+	Pointer RejectDetail ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiocapturesamplewithcallback
+External_Function WinBioCaptureSampleWithCallback "WinBioCaptureSampleWithCallback" winbio.dll ;
+	UInteger SessionHandle ;
+	UChar Purpose ;
+	UChar Flags ;
+	Pointer CaptureCallback ;	// PWINBIO_CAPTURE_CALLBACK
+	Pointer CaptureCallbackContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiocloseframework
+External_Function WinBioCloseFramework "WinBioCloseFramework" winbio.dll ;
+	UInteger FrameworkHandle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioclosesession
+External_Function WinBioCloseSession "WinBioCloseSession" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiocontrolunit
+External_Function WinBioControlUnit "WinBioControlUnit" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	UInteger Component ;	// WINBIO_COMPONENT
+	UInteger ControlCode ;
+	Pointer SendBuffer ;	// UChar*
+	ULongPtr SendBufferSize ;
+	Pointer ReceiveBuffer ;	// UChar*
+	ULongPtr ReceiveBufferSize ;
+	Pointer ReceiveDataSize ;	// ULongPtr*
+	Pointer OperationStatus ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiocontrolunitprivileged
+External_Function WinBioControlUnitPrivileged "WinBioControlUnitPrivileged" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	UInteger Component ;	// WINBIO_COMPONENT
+	UInteger ControlCode ;
+	Pointer SendBuffer ;	// UChar*
+	ULongPtr SendBufferSize ;
+	Pointer ReceiveBuffer ;	// UChar*
+	ULongPtr ReceiveBufferSize ;
+	Pointer ReceiveDataSize ;	// ULongPtr*
+	Pointer OperationStatus ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiodeletetemplate
+External_Function WinBioDeleteTemplate "WinBioDeleteTemplate" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	UChar SubFactor ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenrollbegin
+External_Function WinBioEnrollBegin "WinBioEnrollBegin" winbio.dll ;
+	UInteger SessionHandle ;
+	UChar SubFactor ;
+	UInteger UnitId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenrollcapture
+External_Function WinBioEnrollCapture "WinBioEnrollCapture" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer RejectDetail ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenrollcapturewithcallback
+External_Function WinBioEnrollCaptureWithCallback "WinBioEnrollCaptureWithCallback" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer EnrollCallback ;	// PWINBIO_ENROLL_CAPTURE_CALLBACK
+	Pointer EnrollCallbackContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenrollcommit
+External_Function WinBioEnrollCommit "WinBioEnrollCommit" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	Pointer IsNewTemplate ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenrolldiscard
+External_Function WinBioEnrollDiscard "WinBioEnrollDiscard" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenrollselect
+External_Function WinBioEnrollSelect "WinBioEnrollSelect" winbio.dll ;
+	UInteger SessionHandle ;
+	UBigint SelectorValue ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenumbiometricunits
+External_Function WinBioEnumBiometricUnits "WinBioEnumBiometricUnits" winbio.dll ;
+	UInteger Factor ;
+	Pointer UnitSchemaArray ;	// WINBIO_UNIT_SCHEMA**
+	Pointer UnitCount ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenumdatabases
+External_Function WinBioEnumDatabases "WinBioEnumDatabases" winbio.dll ;
+	UInteger Factor ;
+	Pointer StorageSchemaArray ;	// WINBIO_STORAGE_SCHEMA**
+	Pointer StorageCount ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenumenrollments
+External_Function WinBioEnumEnrollments "WinBioEnumEnrollments" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	Pointer SubFactorArray ;	// UChar**
+	Pointer SubFactorCount ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioenumserviceproviders
+External_Function WinBioEnumServiceProviders "WinBioEnumServiceProviders" winbio.dll ;
+	UInteger Factor ;
+	Pointer BspSchemaArray ;	// WINBIO_BSP_SCHEMA**
+	Pointer BspCount ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiofree
+External_Function WinBioFree "WinBioFree" winbio.dll ;
+	Pointer Address ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiogetcredentialstate
+External_Function WinBioGetCredentialState "WinBioGetCredentialState" winbio.dll ;
+	WINBIO_IDENTITY Identity ;
+	Integer Type ;	// WINBIO_CREDENTIAL_TYPE
+	Pointer CredentialState ;	// WINBIO_CREDENTIAL_STATE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiogetdomainlogonsetting
+External_Function WinBioGetDomainLogonSetting "WinBioGetDomainLogonSetting" winbio.dll ;
+	Pointer Value ;	// UChar*
+	Pointer Source ;	// WINBIO_SETTING_SOURCE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiogetenabledsetting
+External_Function WinBioGetEnabledSetting "WinBioGetEnabledSetting" winbio.dll ;
+	Pointer Value ;	// UChar*
+	Pointer Source ;	// WINBIO_SETTING_SOURCE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiogetenrolledfactors
+External_Function WinBioGetEnrolledFactors "WinBioGetEnrolledFactors" winbio.dll ;
+	Pointer AccountOwner ;	// WINBIO_IDENTITY*
+	Pointer EnrolledFactors ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiogetlogonsetting
+External_Function WinBioGetLogonSetting "WinBioGetLogonSetting" winbio.dll ;
+	Pointer Value ;	// UChar*
+	Pointer Source ;	// WINBIO_SETTING_SOURCE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiogetproperty
+External_Function WinBioGetProperty "WinBioGetProperty" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger PropertyType ;
+	UInteger PropertyId ;
+	UInteger UnitId ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	UChar SubFactor ;
+	Pointer PropertyBuffer ;	// Pointer**
+	Pointer PropertyBufferSize ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioidentify
+External_Function WinBioIdentify "WinBioIdentify" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer UnitId ;	// UInteger*
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	Pointer SubFactor ;	// UChar*
+	Pointer RejectDetail ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioidentifywithcallback
+External_Function WinBioIdentifyWithCallback "WinBioIdentifyWithCallback" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer IdentifyCallback ;	// PWINBIO_IDENTIFY_CALLBACK
+	Pointer IdentifyCallbackContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WinBioImproveBegin "WinBioImproveBegin" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	Returns Integer	// HRESULT
+
+External_Function WinBioImproveEnd "WinBioImproveEnd" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+External_Function WinBioIsESSCapable "WinBioIsESSCapable" winbio.dll ;
+	Pointer Value ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiolocatesensor
+External_Function WinBioLocateSensor "WinBioLocateSensor" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer UnitId ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiolocatesensorwithcallback
+External_Function WinBioLocateSensorWithCallback "WinBioLocateSensorWithCallback" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer LocateCallback ;	// PWINBIO_LOCATE_SENSOR_CALLBACK
+	Pointer LocateCallbackContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiolockunit
+External_Function WinBioLockUnit "WinBioLockUnit" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiologonidentifieduser
+External_Function WinBioLogonIdentifiedUser "WinBioLogonIdentifiedUser" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiomonitorpresence
+External_Function WinBioMonitorPresence "WinBioMonitorPresence" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioopensession
+External_Function WinBioOpenSession "WinBioOpenSession" winbio.dll ;
+	UInteger Factor ;
+	UInteger PoolType ;	// WINBIO_POOL
+	UInteger Flags ;
+	Pointer UnitArray ;	// UInteger*
+	ULongPtr UnitCount ;
+	Pointer DatabaseId ;	// Guid*
+	Pointer SessionHandle ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioregistereventmonitor
+External_Function WinBioRegisterEventMonitor "WinBioRegisterEventMonitor" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger EventMask ;
+	Pointer EventCallback ;	// PWINBIO_EVENT_CALLBACK
+	Pointer EventCallbackContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioreleasefocus
+External_Function WinBioReleaseFocus "WinBioReleaseFocus" winbio.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioremoveallcredentials
+External_Function WinBioRemoveAllCredentials "WinBioRemoveAllCredentials" winbio.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioremovealldomaincredentials
+External_Function WinBioRemoveAllDomainCredentials "WinBioRemoveAllDomainCredentials" winbio.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioremovecredential
+External_Function WinBioRemoveCredential "WinBioRemoveCredential" winbio.dll ;
+	WINBIO_IDENTITY Identity ;
+	Integer Type ;	// WINBIO_CREDENTIAL_TYPE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiosetcredential
+External_Function WinBioSetCredential "WinBioSetCredential" winbio.dll ;
+	Integer Type ;	// WINBIO_CREDENTIAL_TYPE
+	Pointer Credential ;	// UChar*
+	ULongPtr CredentialSize ;
+	Integer Format ;	// WINBIO_CREDENTIAL_FORMAT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiosetproperty
+External_Function WinBioSetProperty "WinBioSetProperty" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger PropertyType ;
+	UInteger PropertyId ;
+	UInteger UnitId ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	UChar SubFactor ;
+	Pointer PropertyBuffer ;	// Pointer*
+	ULongPtr PropertyBufferSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiounlockunit
+External_Function WinBioUnlockUnit "WinBioUnlockUnit" winbio.dll ;
+	UInteger SessionHandle ;
+	UInteger UnitId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiounregistereventmonitor
+External_Function WinBioUnregisterEventMonitor "WinBioUnregisterEventMonitor" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioverify
+External_Function WinBioVerify "WinBioVerify" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	UChar SubFactor ;
+	Pointer UnitId ;	// UInteger*
+	Pointer Match ;	// UChar*
+	Pointer RejectDetail ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbioverifywithcallback
+External_Function WinBioVerifyWithCallback "WinBioVerifyWithCallback" winbio.dll ;
+	UInteger SessionHandle ;
+	Pointer Identity ;	// WINBIO_IDENTITY*
+	UChar SubFactor ;
+	Pointer VerifyCallback ;	// PWINBIO_VERIFY_CALLBACK
+	Pointer VerifyCallbackContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbio/nf-winbio-winbiowait
+External_Function WinBioWait "WinBioWait" winbio.dll ;
+	UInteger SessionHandle ;
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

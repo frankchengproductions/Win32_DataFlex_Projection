@@ -1,0 +1,393 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-accel
+Struct ACCEL
+	UChar fVirt												// ACCEL_VIRT_FLAGS
+	UChar[1] cMissingAlignment1
+	UShort key
+	UShort cmd
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-alttabinfo
+Struct ALTTABINFO
+	UInteger cbSize
+	Integer cItems
+	Integer cColumns
+	Integer cRows
+	Integer iColFocus
+	Integer iRowFocus
+	Integer cxItem
+	Integer cyItem
+	POINT ptStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-changefilterstruct
+Struct CHANGEFILTERSTRUCT
+	UInteger cbSize
+	UInteger ExtStatus										// MSGFLTINFO_STATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-cursorinfo
+Struct CURSORINFO
+	UInteger cbSize
+	UInteger flags											// CURSORINFO_FLAGS
+	Pointer hCursor											// HCURSOR
+	POINT ptScreenPos
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-dlgtemplate
+Struct DLGTEMPLATE
+	UInteger style
+	UInteger dwExtendedStyle
+	UShort cdit
+	Short x
+	Short y
+	Short cx
+	Short cy
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-flashwinfo
+Struct FLASHWINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwnd											// HWND
+	UInteger dwFlags										// FLASHWINFO_FLAGS
+	UInteger uCount
+	UInteger dwTimeout
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-guithreadinfo
+Struct GUITHREADINFO
+	UInteger cbSize
+	UInteger flags											// GUITHREADINFO_FLAGS
+	Pointer hwndActive										// HWND
+	Pointer hwndFocus										// HWND
+	Pointer hwndCapture										// HWND
+	Pointer hwndMenuOwner									// HWND
+	Pointer hwndMoveSize									// HWND
+	Pointer hwndCaret										// HWND
+	RECT rcCaret
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-iconinfo
+Struct ICONINFO
+	Integer fIcon											// BOOL
+	UInteger xHotspot
+	UInteger yHotspot
+	Integer iMissingAlignment1
+	Pointer hbmMask											// HBITMAP
+	Pointer hbmColor										// HBITMAP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-iconinfoexa
+Struct ICONINFOEXA
+	UInteger cbSize
+	Integer fIcon											// BOOL
+	UInteger xHotspot
+	UInteger yHotspot
+	Pointer hbmMask											// HBITMAP
+	Pointer hbmColor										// HBITMAP
+	UShort wResID
+	Char[260] szModName										// CHAR
+	Char[260] szResName										// CHAR
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-iconinfoexw
+Struct ICONINFOEXW
+	UInteger cbSize
+	Integer fIcon											// BOOL
+	UInteger xHotspot
+	UInteger yHotspot
+	Pointer hbmMask											// HBITMAP
+	Pointer hbmColor										// HBITMAP
+	UShort wResID
+	UShort[260] szModName
+	UShort[260] szResName
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resourceindexer/ns-resourceindexer-indexedresourcequalifier
+Struct IndexedResourceQualifier
+	Pointer name											// PWSTR
+	Pointer value											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-menubarinfo
+Struct MENUBARINFO
+	UInteger cbSize
+	RECT rcBar
+	Integer iMissingAlignment1
+	Pointer hMenu											// HMENU
+	Pointer hwndMenu										// HWND
+	Integer _bitfield
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-menuinfo
+Struct MENUINFO
+	UInteger cbSize
+	UInteger fMask											// MENUINFO_MASK
+	UInteger dwStyle										// MENUINFO_STYLE
+	UInteger cyMax
+	Pointer hbrBack											// HBRUSH
+	UInteger dwContextHelpID
+	Integer iMissingAlignment1
+	ULongPtr dwMenuData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-menuiteminfoa
+Struct MENUITEMINFOA
+	UInteger cbSize
+	UInteger fMask											// MENU_ITEM_MASK
+	UInteger fType											// MENU_ITEM_TYPE
+	UInteger fState											// MENU_ITEM_STATE
+	UInteger wID
+	Integer iMissingAlignment1
+	Pointer hSubMenu										// HMENU
+	Pointer hbmpChecked										// HBITMAP
+	Pointer hbmpUnchecked									// HBITMAP
+	ULongPtr dwItemData
+	Pointer dwTypeData										// PSTR
+	UInteger cch
+	Integer iMissingAlignment2
+	Pointer hbmpItem										// HBITMAP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-menuiteminfow
+Struct MENUITEMINFOW
+	UInteger cbSize
+	UInteger fMask											// MENU_ITEM_MASK
+	UInteger fType											// MENU_ITEM_TYPE
+	UInteger fState											// MENU_ITEM_STATE
+	UInteger wID
+	Integer iMissingAlignment1
+	Pointer hSubMenu										// HMENU
+	Pointer hbmpChecked										// HBITMAP
+	Pointer hbmpUnchecked									// HBITMAP
+	ULongPtr dwItemData
+	Pointer dwTypeData										// PWSTR
+	UInteger cch
+	Integer iMissingAlignment2
+	Pointer hbmpItem										// HBITMAP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-msg
+Struct MSG
+	Pointer hwnd											// HWND
+	UInteger message
+	Integer iMissingAlignment1
+	ULongPtr wParam											// WPARAM
+	LongPtr lParam											// LPARAM
+	UInteger time
+	POINT pt
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-msgboxparamsa
+Struct MSGBOXPARAMSA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszText										// PSTR
+	Pointer lpszCaption										// PSTR
+	UInteger dwStyle										// MESSAGEBOX_STYLE
+	Integer iMissingAlignment2
+	Pointer lpszIcon										// PSTR
+	ULongPtr dwContextHelpId
+	Pointer lpfnMsgBoxCallback								// MSGBOXCALLBACK
+	UInteger dwLanguageId
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-msgboxparamsw
+Struct MSGBOXPARAMSW
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	Pointer hInstance										// HINSTANCE
+	Pointer lpszText										// PWSTR
+	Pointer lpszCaption										// PWSTR
+	UInteger dwStyle										// MESSAGEBOX_STYLE
+	Integer iMissingAlignment2
+	Pointer lpszIcon										// PWSTR
+	ULongPtr dwContextHelpId
+	Pointer lpfnMsgBoxCallback								// MSGBOXCALLBACK
+	UInteger dwLanguageId
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmresourceindexerhandle
+Struct MrmResourceIndexerHandle
+	Pointer handle											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/menurc/mrmresourceindexermessage
+Struct MrmResourceIndexerMessage
+	Integer severity										// MrmResourceIndexerMessageSeverity
+	UInteger id
+	Pointer text											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-scrollbarinfo
+Struct SCROLLBARINFO
+	UInteger cbSize
+	RECT rcScrollBar
+	Integer dxyLineButton
+	Integer xyThumbTop
+	Integer xyThumbBottom
+	Integer reserved
+	UInteger[6] rgstate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-scrollinfo
+Struct SCROLLINFO
+	UInteger cbSize
+	UInteger fMask											// SCROLLINFO_MASK
+	Integer nMin
+	Integer nMax
+	UInteger nPage
+	Integer nPos
+	Integer nTrackPos
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-titlebarinfo
+Struct TITLEBARINFO
+	UInteger cbSize
+	RECT rcTitleBar
+	UInteger[6] rgstate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-tpmparams
+Struct TPMPARAMS
+	UInteger cbSize
+	RECT rcExclude
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-updatelayeredwindowinfo
+Struct UPDATELAYEREDWINDOWINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hdcDst											// HDC
+	Pointer pptDst											// POINT*
+	Pointer psize											// SIZE*
+	Pointer hdcSrc											// HDC
+	Pointer pptSrc											// POINT*
+	UInteger crKey											// COLORREF
+	Integer iMissingAlignment2
+	Pointer pblend											// BLENDFUNCTION*
+	UInteger dwFlags										// UPDATE_LAYERED_WINDOW_FLAGS
+	Integer iMissingAlignment3
+	Pointer prcDirty										// RECT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowinfo
+Struct WINDOWINFO
+	UInteger cbSize
+	RECT rcWindow
+	RECT rcClient
+	UInteger dwStyle										// WINDOW_STYLE
+	UInteger dwExStyle										// WINDOW_EX_STYLE
+	UInteger dwWindowStatus
+	UInteger cxWindowBorders
+	UInteger cyWindowBorders
+	UShort atomWindowType
+	UShort wCreatorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowplacement
+Struct WINDOWPLACEMENT
+	UInteger length
+	UInteger flags											// WINDOWPLACEMENT_FLAGS
+	UInteger showCmd
+	POINT ptMinPosition
+	POINT ptMaxPosition
+	RECT rcNormalPosition
+End_Struct
+
+Struct WINDOW_ACTION
+	Integer kinds											// WINDOW_ACTION_KINDS
+	Integer modifiers										// WINDOW_ACTION_MODIFIERS
+	Integer visible											// BOOL
+	POINT position
+	SIZE size
+	Integer iMissingAlignment1
+	Pointer insertAfter										// HWND
+	Integer placementState									// WINDOW_PLACEMENT_STATE
+	RECT normalRect
+	RECT workArea
+	UInteger dpi
+	POINT pointOnMonitor
+	UInteger monitorTopologyId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-wndclassa
+Struct WNDCLASSA
+	UInteger style											// WNDCLASS_STYLES
+	Integer iMissingAlignment1
+	Pointer lpfnWndProc										// WNDPROC
+	Integer cbClsExtra
+	Integer cbWndExtra
+	Pointer hInstance										// HINSTANCE
+	Pointer hIcon											// HICON
+	Pointer hCursor											// HCURSOR
+	Pointer hbrBackground									// HBRUSH
+	Pointer lpszMenuName									// PSTR
+	Pointer lpszClassName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-wndclassexa
+Struct WNDCLASSEXA
+	UInteger cbSize
+	UInteger style											// WNDCLASS_STYLES
+	Pointer lpfnWndProc										// WNDPROC
+	Integer cbClsExtra
+	Integer cbWndExtra
+	Pointer hInstance										// HINSTANCE
+	Pointer hIcon											// HICON
+	Pointer hCursor											// HCURSOR
+	Pointer hbrBackground									// HBRUSH
+	Pointer lpszMenuName									// PSTR
+	Pointer lpszClassName									// PSTR
+	Pointer hIconSm											// HICON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-wndclassexw
+Struct WNDCLASSEXW
+	UInteger cbSize
+	UInteger style											// WNDCLASS_STYLES
+	Pointer lpfnWndProc										// WNDPROC
+	Integer cbClsExtra
+	Integer cbWndExtra
+	Pointer hInstance										// HINSTANCE
+	Pointer hIcon											// HICON
+	Pointer hCursor											// HCURSOR
+	Pointer hbrBackground									// HBRUSH
+	Pointer lpszMenuName									// PWSTR
+	Pointer lpszClassName									// PWSTR
+	Pointer hIconSm											// HICON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-wndclassw
+Struct WNDCLASSW
+	UInteger style											// WNDCLASS_STYLES
+	Integer iMissingAlignment1
+	Pointer lpfnWndProc										// WNDPROC
+	Integer cbClsExtra
+	Integer cbWndExtra
+	Pointer hInstance										// HINSTANCE
+	Pointer hIcon											// HICON
+	Pointer hCursor											// HCURSOR
+	Pointer hbrBackground									// HBRUSH
+	Pointer lpszMenuName									// PWSTR
+	Pointer lpszClassName									// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

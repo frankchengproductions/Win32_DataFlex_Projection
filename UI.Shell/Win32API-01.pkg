@@ -1,0 +1,1375 @@
+Use UI
+
+External_Function HMONITOR_UserFree "HMONITOR_UserFree" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// HMONITOR*
+	Returns Pointer
+
+External_Function HMONITOR_UserFree64 "HMONITOR_UserFree64" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// HMONITOR*
+	Returns Pointer
+
+External_Function HMONITOR_UserMarshal "HMONITOR_UserMarshal" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HMONITOR*
+	Returns Pointer	// UChar*
+
+External_Function HMONITOR_UserMarshal64 "HMONITOR_UserMarshal64" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HMONITOR*
+	Returns Pointer	// UChar*
+
+External_Function HMONITOR_UserSize "HMONITOR_UserSize" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// HMONITOR*
+	Returns UInteger
+
+External_Function HMONITOR_UserSize64 "HMONITOR_UserSize64" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// HMONITOR*
+	Returns UInteger
+
+External_Function HMONITOR_UserUnmarshal "HMONITOR_UserUnmarshal" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HMONITOR*
+	Returns Pointer	// UChar*
+
+External_Function HMONITOR_UserUnmarshal64 "HMONITOR_UserUnmarshal64" OLE32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// HMONITOR*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-defsubclassproc
+External_Function DefSubclassProc "DefSubclassProc" COMCTL32.dll ;
+	Pointer hWnd ;	// HWND
+	UInteger uMsg ;
+	ULongPtr wParam ;	// WPARAM
+	LongPtr lParam ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-getwindowsubclass
+External_Function GetWindowSubclass "GetWindowSubclass" COMCTL32.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer pfnSubclass ;	// SUBCLASSPROC
+	ULongPtr uIdSubclass ;
+	Pointer pdwRefData ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-removewindowsubclass
+External_Function RemoveWindowSubclass "RemoveWindowSubclass" COMCTL32.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer pfnSubclass ;	// SUBCLASSPROC
+	ULongPtr uIdSubclass ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/nf-commctrl-setwindowsubclass
+External_Function SetWindowSubclass "SetWindowSubclass" COMCTL32.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer pfnSubclass ;	// SUBCLASSPROC
+	ULongPtr uIdSubclass ;
+	ULongPtr dwRefData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getmenucontexthelpid
+External_Function GetMenuContextHelpId "GetMenuContextHelpId" USER32.dll ;
+	Pointer param0 ;	// HMENU
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowcontexthelpid
+External_Function GetWindowContextHelpId "GetWindowContextHelpId" USER32.dll ;
+	Pointer param0 ;	// HWND
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setmenucontexthelpid
+External_Function SetMenuContextHelpId "SetMenuContextHelpId" USER32.dll ;
+	Pointer param0 ;	// HMENU
+	UInteger param1 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowcontexthelpid
+External_Function SetWindowContextHelpId "SetWindowContextHelpId" USER32.dll ;
+	Pointer param0 ;	// HWND
+	UInteger param1 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-winhelpa
+External_Function WinHelpA "WinHelpA" USER32.dll ;
+	Pointer hWndMain ;	// HWND
+	String lpszHelp ;	// PSTR
+	UInteger uCommand ;
+	ULongPtr dwData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-winhelpw
+External_Function WinHelpW "WinHelpW" USER32.dll ;
+	Pointer hWndMain ;	// HWND
+	WString lpszHelp ;	// PWSTR
+	UInteger uCommand ;
+	ULongPtr dwData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellscalingapi/nf-shellscalingapi-getscalefactorformonitor
+External_Function GetScaleFactorForMonitor "GetScaleFactorForMonitor" api-ms-win-shcore-scaling-l1-1-1.dll ;
+	Pointer hMon ;	// HMONITOR
+	Pointer pScale ;	// DEVICE_SCALE_FACTOR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellscalingapi/nf-shellscalingapi-registerscalechangeevent
+External_Function RegisterScaleChangeEvent "RegisterScaleChangeEvent" api-ms-win-shcore-scaling-l1-1-1.dll ;
+	Pointer hEvent ;	// HANDLE
+	Pointer pdwCookie ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellscalingapi/nf-shellscalingapi-unregisterscalechangeevent
+External_Function UnregisterScaleChangeEvent "UnregisterScaleChangeEvent" api-ms-win-shcore-scaling-l1-1-1.dll ;
+	ULongPtr dwCookie ;
+	Returns Integer	// HRESULT
+
+External_Function ImportPrivacySettings "ImportPrivacySettings" SHDOCVW.dll ;
+	WString pszFilename ;	// PWSTR
+	Pointer pfParsePrivacyPreferences ;	// BOOL*
+	Pointer pfParsePerSiteRules ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-softwareupdatemessagebox
+External_Function SoftwareUpdateMessageBox "SoftwareUpdateMessageBox" SHDOCVW.dll ;
+	Pointer hWnd ;	// HWND
+	WString pszDistUnit ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer psdi ;	// SOFTDISTINFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/shell/fileiconinit
+External_Function #660 "#660" SHELL32.dll ;
+	Integer fRestoreCache ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-assoccreateforclasses
+External_Function AssocCreateForClasses "AssocCreateForClasses" SHELL32.dll ;
+	Pointer rgClasses ;	// ASSOCIATIONELEMENT*
+	UInteger cClasses ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-assocgetdetailsofpropkey
+External_Function AssocGetDetailsOfPropKey "AssocGetDetailsOfPropKey" SHELL32.dll ;
+	Pointer psf ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer pkey ;	// PROPERTYKEY*
+	Pointer pv ;	// VARIANT*
+	Pointer pfFoundPropKey ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-cdeffoldermenu_create2
+External_Function CDefFolderMenu_Create2 "CDefFolderMenu_Create2" SHELL32.dll ;
+	Pointer pidlFolder ;	// ITEMIDLIST*
+	Pointer hwnd ;	// HWND
+	UInteger cidl ;
+	Pointer apidl ;	// ITEMIDLIST**
+	Pointer psf ;	// IShellFolder
+	Pointer pfn ;	// LPFNDFMCALLBACK
+	UInteger nKeys ;
+	Pointer ahkeys ;	// HKEY*
+	Pointer ppcm ;	// IContextMenu*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-cidldata_createfromidarray
+External_Function CIDLData_CreateFromIDArray "CIDLData_CreateFromIDArray" SHELL32.dll ;
+	Pointer pidlFolder ;	// ITEMIDLIST*
+	UInteger cidl ;
+	Pointer apidl ;	// ITEMIDLIST**
+	Pointer ppdtobj ;	// IDataObject*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw
+External_Function CommandLineToArgvW "CommandLineToArgvW" SHELL32.dll ;
+	WString lpCmdLine ;	// PWSTR
+	Pointer pNumArgs ;	// Integer*
+	Returns Pointer	// PWSTR*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_autoscroll
+External_Function DAD_AutoScroll "DAD_AutoScroll" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pad ;	// AUTO_SCROLL_DATA*
+	Pointer pptNow ;	// POINT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_dragenterex
+External_Function DAD_DragEnterEx "DAD_DragEnterEx" SHELL32.dll ;
+	Pointer hwndTarget ;	// HWND
+	POINT ptStart ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_dragenterex2
+External_Function DAD_DragEnterEx2 "DAD_DragEnterEx2" SHELL32.dll ;
+	Pointer hwndTarget ;	// HWND
+	POINT ptStart ;
+	Pointer pdtObject ;	// IDataObject
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_dragleave
+External_Function DAD_DragLeave "DAD_DragLeave" SHELL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_dragmove
+External_Function DAD_DragMove "DAD_DragMove" SHELL32.dll ;
+	POINT pt ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_setdragimage
+External_Function DAD_SetDragImage "DAD_SetDragImage" SHELL32.dll ;
+	LongPtr him ;	// HIMAGELIST
+	Pointer pptOffset ;	// POINT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-dad_showdragimage
+External_Function DAD_ShowDragImage "DAD_ShowDragImage" SHELL32.dll ;
+	Integer fShow ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-doenvironmentsubsta
+External_Function DoEnvironmentSubstA "DoEnvironmentSubstA" SHELL32.dll ;
+	Pointer pszSrc ;	// PSTR
+	UInteger cchSrc ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-doenvironmentsubstw
+External_Function DoEnvironmentSubstW "DoEnvironmentSubstW" SHELL32.dll ;
+	Pointer pszSrc ;	// PWSTR
+	UInteger cchSrc ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragacceptfiles
+External_Function DragAcceptFiles "DragAcceptFiles" SHELL32.dll ;
+	Pointer hWnd ;	// HWND
+	Integer fAccept ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragfinish
+External_Function DragFinish "DragFinish" SHELL32.dll ;
+	Pointer hDrop ;	// HDROP
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragqueryfilea
+External_Function DragQueryFileA "DragQueryFileA" SHELL32.dll ;
+	Pointer hDrop ;	// HDROP
+	UInteger iFile ;
+	Pointer lpszFile ;	// PSTR
+	UInteger cch ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragqueryfilew
+External_Function DragQueryFileW "DragQueryFileW" SHELL32.dll ;
+	Pointer hDrop ;	// HDROP
+	UInteger iFile ;
+	Pointer lpszFile ;	// PWSTR
+	UInteger cch ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-dragquerypoint
+External_Function DragQueryPoint "DragQueryPoint" SHELL32.dll ;
+	Pointer hDrop ;	// HDROP
+	Pointer ppt ;	// POINT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-drivetype
+External_Function DriveType "DriveType" SHELL32.dll ;
+	Integer iDrive ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-duplicateicon
+External_Function DuplicateIcon "DuplicateIcon" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	Pointer hIcon ;	// HICON
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extractassociatedicona
+External_Function ExtractAssociatedIconA "ExtractAssociatedIconA" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	Pointer pszIconPath ;	// PSTR
+	Pointer piIcon ;	// UShort*
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extractassociatediconexa
+External_Function ExtractAssociatedIconExA "ExtractAssociatedIconExA" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	Pointer pszIconPath ;	// PSTR
+	Pointer piIconIndex ;	// UShort*
+	Pointer piIconId ;	// UShort*
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extractassociatediconexw
+External_Function ExtractAssociatedIconExW "ExtractAssociatedIconExW" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	Pointer pszIconPath ;	// PWSTR
+	Pointer piIconIndex ;	// UShort*
+	Pointer piIconId ;	// UShort*
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extractassociatediconw
+External_Function ExtractAssociatedIconW "ExtractAssociatedIconW" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	Pointer pszIconPath ;	// PWSTR
+	Pointer piIcon ;	// UShort*
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extracticona
+External_Function ExtractIconA "ExtractIconA" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	String pszExeFileName ;	// PSTR
+	UInteger nIconIndex ;
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extracticonexa
+External_Function ExtractIconExA "ExtractIconExA" SHELL32.dll ;
+	String lpszFile ;	// PSTR
+	Integer nIconIndex ;
+	Pointer phiconLarge ;	// HICON*
+	Pointer phiconSmall ;	// HICON*
+	UInteger nIcons ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extracticonexw
+External_Function ExtractIconExW "ExtractIconExW" SHELL32.dll ;
+	WString lpszFile ;	// PWSTR
+	Integer nIconIndex ;
+	Pointer phiconLarge ;	// HICON*
+	Pointer phiconSmall ;	// HICON*
+	UInteger nIcons ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-extracticonw
+External_Function ExtractIconW "ExtractIconW" SHELL32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	WString pszExeFileName ;	// PWSTR
+	UInteger nIconIndex ;
+	Returns Pointer	// HICON
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-findexecutablea
+External_Function FindExecutableA "FindExecutableA" SHELL32.dll ;
+	String lpFile ;	// PSTR
+	String lpDirectory ;	// PSTR
+	Pointer lpResult ;	// PSTR
+	Returns Pointer	// HINSTANCE
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-findexecutablew
+External_Function FindExecutableW "FindExecutableW" SHELL32.dll ;
+	WString lpFile ;	// PWSTR
+	WString lpDirectory ;	// PWSTR
+	Pointer lpResult ;	// PWSTR
+	Returns Pointer	// HINSTANCE
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-getcurrentprocessexplicitappusermodelid
+External_Function GetCurrentProcessExplicitAppUserModelID "GetCurrentProcessExplicitAppUserModelID" SHELL32.dll ;
+	Pointer AppID ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-getfilenamefrombrowse
+External_Function GetFileNameFromBrowse "GetFileNameFromBrowse" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pszFilePath ;	// PWSTR
+	UInteger cchFilePath ;
+	WString pszWorkingDir ;	// PWSTR
+	WString pszDefExt ;	// PWSTR
+	WString pszFilters ;	// PWSTR
+	WString pszTitle ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilappendid
+External_Function ILAppendID "ILAppendID" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer pmkid ;	// SHITEMID*
+	Integer fAppend ;	// BOOL
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilclone
+External_Function ILClone "ILClone" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilclonefirst
+External_Function ILCloneFirst "ILCloneFirst" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilcombine
+External_Function ILCombine "ILCombine" SHELL32.dll ;
+	Pointer pidl1 ;	// ITEMIDLIST*
+	Pointer pidl2 ;	// ITEMIDLIST*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilcreatefrompatha
+External_Function ILCreateFromPathA "ILCreateFromPathA" SHELL32.dll ;
+	String pszPath ;	// PSTR
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilcreatefrompathw
+External_Function ILCreateFromPathW "ILCreateFromPathW" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilfindchild
+External_Function ILFindChild "ILFindChild" SHELL32.dll ;
+	Pointer pidlParent ;	// ITEMIDLIST*
+	Pointer pidlChild ;	// ITEMIDLIST*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilfindlastid
+External_Function ILFindLastID "ILFindLastID" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilfree
+External_Function ILFree "ILFree" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilgetnext
+External_Function ILGetNext "ILGetNext" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilgetsize
+External_Function ILGetSize "ILGetSize" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilisequal
+External_Function ILIsEqual "ILIsEqual" SHELL32.dll ;
+	Pointer pidl1 ;	// ITEMIDLIST*
+	Pointer pidl2 ;	// ITEMIDLIST*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilisparent
+External_Function ILIsParent "ILIsParent" SHELL32.dll ;
+	Pointer pidl1 ;	// ITEMIDLIST*
+	Pointer pidl2 ;	// ITEMIDLIST*
+	Integer fImmediate ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-illoadfromstreamex
+External_Function ILLoadFromStreamEx "ILLoadFromStreamEx" SHELL32.dll ;
+	Pointer pstm ;	// IStream
+	Pointer pidl ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilremovelastid
+External_Function ILRemoveLastID "ILRemoveLastID" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-ilsavetostream
+External_Function ILSaveToStream "ILSaveToStream" SHELL32.dll ;
+	Pointer pstm ;	// IStream
+	Pointer pidl ;	// ITEMIDLIST*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-initnetworkaddresscontrol
+External_Function InitNetworkAddressControl "InitNetworkAddressControl" SHELL32.dll ;
+	Returns Integer	// BOOL
+
+External_Function IsLFNDriveA "IsLFNDriveA" SHELL32.dll ;
+	String pszPath ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function IsLFNDriveW "IsLFNDriveW" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-isnetdrive
+External_Function IsNetDrive "IsNetDrive" SHELL32.dll ;
+	Integer iDrive ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-isuseranadmin
+External_Function IsUserAnAdmin "IsUserAnAdmin" SHELL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-openregstream
+External_Function OpenRegStream "OpenRegStream" SHELL32.dll ;
+	Pointer hkey ;	// HKEY
+	WString pszSubkey ;	// PWSTR
+	WString pszValue ;	// PWSTR
+	UInteger grfMode ;
+	Returns Pointer	// IStream
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pathcleanupspec
+External_Function PathCleanupSpec "PathCleanupSpec" SHELL32.dll ;
+	WString pszDir ;	// PWSTR
+	Pointer pszSpec ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pathgetshortpath
+External_Function PathGetShortPath "PathGetShortPath" SHELL32.dll ;
+	Pointer pszLongPath ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pathisexe
+External_Function PathIsExe "PathIsExe" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-pathisslowa
+External_Function PathIsSlowA "PathIsSlowA" SHELL32.dll ;
+	String pszFile ;	// PSTR
+	UInteger dwAttr ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-pathissloww
+External_Function PathIsSlowW "PathIsSlowW" SHELL32.dll ;
+	WString pszFile ;	// PWSTR
+	UInteger dwAttr ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pathmakeuniquename
+External_Function PathMakeUniqueName "PathMakeUniqueName" SHELL32.dll ;
+	Pointer pszUniqueName ;	// PWSTR
+	UInteger cchMax ;
+	WString pszTemplate ;	// PWSTR
+	WString pszLongPlate ;	// PWSTR
+	WString pszDir ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function PathQualify "PathQualify" SHELL32.dll ;
+	Pointer psz ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pathresolve
+External_Function PathResolve "PathResolve" SHELL32.dll ;
+	Pointer pszPath ;	// PWSTR
+	Pointer dirs ;	// UShort**
+	UInteger fFlags ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pathyetanothermakeuniquename
+External_Function PathYetAnotherMakeUniqueName "PathYetAnotherMakeUniqueName" SHELL32.dll ;
+	Pointer pszUniqueName ;	// PWSTR
+	WString pszPath ;	// PWSTR
+	WString pszShort ;	// PWSTR
+	WString pszFileSpec ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-pickicondlg
+External_Function PickIconDlg "PickIconDlg" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pszIconPath ;	// PWSTR
+	UInteger cchIconPath ;
+	Pointer piIconIndex ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-readcabinetstate
+External_Function ReadCabinetState "ReadCabinetState" SHELL32.dll ;
+	Pointer pcs ;	// CABINETSTATE*
+	Integer cLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-realdrivetype
+External_Function RealDriveType "RealDriveType" SHELL32.dll ;
+	Integer iDrive ;
+	Integer fOKToHitNet ;	// BOOL
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-restartdialog
+External_Function RestartDialog "RestartDialog" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	WString pszPrompt ;	// PWSTR
+	UInteger dwReturn ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-restartdialogex
+External_Function RestartDialogEx "RestartDialogEx" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	WString pszPrompt ;	// PWSTR
+	UInteger dwReturn ;
+	UInteger dwReasonCode ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shaddfrompropsheetextarray
+External_Function SHAddFromPropSheetExtArray "SHAddFromPropSheetExtArray" SHELL32.dll ;
+	Pointer hpsxa ;	// HPSXA
+	Pointer lpfnAddPage ;	// LPFNSVADDPROPSHEETPAGE
+	LongPtr lParam ;	// LPARAM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shaddtorecentdocs
+External_Function SHAddToRecentDocs "SHAddToRecentDocs" SHELL32.dll ;
+	UInteger uFlags ;
+	Pointer pv ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shalloc
+External_Function SHAlloc "SHAlloc" SHELL32.dll ;
+	ULongPtr cb ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shappbarmessage
+External_Function SHAppBarMessage "SHAppBarMessage" SHELL32.dll ;
+	UInteger dwMessage ;
+	Pointer pData ;	// APPBARDATA*
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shassocenumhandlers
+External_Function SHAssocEnumHandlers "SHAssocEnumHandlers" SHELL32.dll ;
+	WString pszExtra ;	// PWSTR
+	Integer afFilter ;	// ASSOC_FILTER
+	Pointer ppEnumHandler ;	// IEnumAssocHandlers*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shassocenumhandlersforprotocolbyapplication
+External_Function SHAssocEnumHandlersForProtocolByApplication "SHAssocEnumHandlersForProtocolByApplication" SHELL32.dll ;
+	WString protocol ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer enumHandlers ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shbindtofolderidlistparent
+External_Function SHBindToFolderIDListParent "SHBindToFolderIDListParent" SHELL32.dll ;
+	Pointer psfRoot ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Pointer ppidlLast ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shbindtofolderidlistparentex
+External_Function SHBindToFolderIDListParentEx "SHBindToFolderIDListParentEx" SHELL32.dll ;
+	Pointer psfRoot ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer ppbc ;	// IBindCtx
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Pointer ppidlLast ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shbindtoobject
+External_Function SHBindToObject "SHBindToObject" SHELL32.dll ;
+	Pointer psf ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer pbc ;	// IBindCtx
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shbindtoparent
+External_Function SHBindToParent "SHBindToParent" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Pointer ppidlLast ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shbrowseforfoldera
+External_Function SHBrowseForFolderA "SHBrowseForFolderA" SHELL32.dll ;
+	Pointer lpbi ;	// BROWSEINFOA*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shbrowseforfolderw
+External_Function SHBrowseForFolderW "SHBrowseForFolderW" SHELL32.dll ;
+	Pointer lpbi ;	// BROWSEINFOW*
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shclsidfromstring
+External_Function SHCLSIDFromString "SHCLSIDFromString" SHELL32.dll ;
+	WString psz ;	// PWSTR
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shchangenotification_lock
+External_Function SHChangeNotification_Lock "SHChangeNotification_Lock" SHELL32.dll ;
+	Pointer hChange ;	// HANDLE
+	UInteger dwProcId ;
+	Pointer pppidl ;	// ITEMIDLIST***
+	Pointer plEvent ;	// Integer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shchangenotification_unlock
+External_Function SHChangeNotification_Unlock "SHChangeNotification_Unlock" SHELL32.dll ;
+	Pointer hLock ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shchangenotify
+External_Function SHChangeNotify "SHChangeNotify" SHELL32.dll ;
+	Integer wEventId ;
+	UInteger uFlags ;	// SHCNF_FLAGS
+	Pointer dwItem1 ;	// Pointer*
+	Pointer dwItem2 ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shchangenotifyderegister
+External_Function SHChangeNotifyDeregister "SHChangeNotifyDeregister" SHELL32.dll ;
+	UInteger ulID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shchangenotifyregister
+External_Function SHChangeNotifyRegister "SHChangeNotifyRegister" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer fSources ;	// SHCNRF_SOURCE
+	Integer fEvents ;
+	UInteger wMsg ;
+	Integer cEntries ;
+	Pointer pshcne ;	// SHChangeNotifyEntry*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-shchangenotifyregisterthread
+External_Function SHChangeNotifyRegisterThread "SHChangeNotifyRegisterThread" SHELL32.dll ;
+	Integer status ;	// SCNRT_STATUS
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shclonespecialidlist
+External_Function SHCloneSpecialIDList "SHCloneSpecialIDList" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Integer fCreate ;	// BOOL
+	Returns Pointer	// ITEMIDLIST*
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcocreateinstance
+External_Function SHCoCreateInstance "SHCoCreateInstance" SHELL32.dll ;
+	WString pszCLSID ;	// PWSTR
+	Pointer pclsid ;	// Guid*
+	Pointer pUnkOuter ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateassociationregistration
+External_Function SHCreateAssociationRegistration "SHCreateAssociationRegistration" SHELL32.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedataobject
+External_Function SHCreateDataObject "SHCreateDataObject" SHELL32.dll ;
+	Pointer pidlFolder ;	// ITEMIDLIST*
+	UInteger cidl ;
+	Pointer apidl ;	// ITEMIDLIST**
+	Pointer pdtInner ;	// IDataObject
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedefaultcontextmenu
+External_Function SHCreateDefaultContextMenu "SHCreateDefaultContextMenu" SHELL32.dll ;
+	Pointer pdcm ;	// DEFCONTEXTMENU*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreatedefaultextracticon
+External_Function SHCreateDefaultExtractIcon "SHCreateDefaultExtractIcon" SHELL32.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl/nf-shobjidl-shcreatedefaultpropertiesop
+External_Function SHCreateDefaultPropertiesOp "SHCreateDefaultPropertiesOp" SHELL32.dll ;
+	Pointer psi ;	// IShellItem
+	Pointer ppFileOp ;	// IFileOperation*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedirectory
+External_Function SHCreateDirectory "SHCreateDirectory" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	WString pszPath ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedirectoryexa
+External_Function SHCreateDirectoryExA "SHCreateDirectoryExA" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	String pszPath ;	// PSTR
+	Pointer psa ;	// SECURITY_ATTRIBUTES*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatedirectoryexw
+External_Function SHCreateDirectoryExW "SHCreateDirectoryExW" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	WString pszPath ;	// PWSTR
+	Pointer psa ;	// SECURITY_ATTRIBUTES*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatefileextracticonw
+External_Function SHCreateFileExtractIconW "SHCreateFileExtractIconW" SHELL32.dll ;
+	WString pszFile ;	// PWSTR
+	UInteger dwFileAttributes ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateitemfromidlist
+External_Function SHCreateItemFromIDList "SHCreateItemFromIDList" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateitemfromparsingname
+External_Function SHCreateItemFromParsingName "SHCreateItemFromParsingName" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Pointer pbc ;	// IBindCtx
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateitemfromrelativename
+External_Function SHCreateItemFromRelativeName "SHCreateItemFromRelativeName" SHELL32.dll ;
+	Pointer psiParent ;	// IShellItem
+	WString pszName ;	// PWSTR
+	Pointer pbc ;	// IBindCtx
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateiteminknownfolder
+External_Function SHCreateItemInKnownFolder "SHCreateItemInKnownFolder" SHELL32.dll ;
+	Pointer kfid ;	// Guid*
+	UInteger dwKFFlags ;
+	WString pszItem ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateitemwithparent
+External_Function SHCreateItemWithParent "SHCreateItemWithParent" SHELL32.dll ;
+	Pointer pidlParent ;	// ITEMIDLIST*
+	Pointer psfParent ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer riid ;	// Guid*
+	Pointer ppvItem ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shcreateprocessasuserw
+External_Function SHCreateProcessAsUserW "SHCreateProcessAsUserW" SHELL32.dll ;
+	Pointer pscpi ;	// SHCREATEPROCESSINFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-shcreatepropsheetextarray
+External_Function SHCreatePropSheetExtArray "SHCreatePropSheetExtArray" SHELL32.dll ;
+	Pointer hKey ;	// HKEY
+	WString pszSubKey ;	// PWSTR
+	UInteger max_iface ;
+	Returns Pointer	// HPSXA
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/nf-shlobj-shcreatequerycancelautoplaymoniker
+External_Function SHCreateQueryCancelAutoPlayMoniker "SHCreateQueryCancelAutoPlayMoniker" SHELL32.dll ;
+	Pointer ppmoniker ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreateshellfolderview
+External_Function SHCreateShellFolderView "SHCreateShellFolderView" SHELL32.dll ;
+	Pointer pcsfv ;	// SFV_CREATE*
+	Pointer ppsv ;	// IShellView*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreateshellfolderviewex
+External_Function SHCreateShellFolderViewEx "SHCreateShellFolderViewEx" SHELL32.dll ;
+	Pointer pcsfv ;	// CSFV*
+	Pointer ppsv ;	// IShellView*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreateshellitem
+External_Function SHCreateShellItem "SHCreateShellItem" SHELL32.dll ;
+	Pointer pidlParent ;	// ITEMIDLIST*
+	Pointer psfParent ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer ppsi ;	// IShellItem*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateshellitemarray
+External_Function SHCreateShellItemArray "SHCreateShellItemArray" SHELL32.dll ;
+	Pointer pidlParent ;	// ITEMIDLIST*
+	Pointer psf ;	// IShellFolder
+	UInteger cidl ;
+	Pointer ppidl ;	// ITEMIDLIST**
+	Pointer ppsiItemArray ;	// IShellItemArray*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateshellitemarrayfromdataobject
+External_Function SHCreateShellItemArrayFromDataObject "SHCreateShellItemArrayFromDataObject" SHELL32.dll ;
+	Pointer pdo ;	// IDataObject
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateshellitemarrayfromidlists
+External_Function SHCreateShellItemArrayFromIDLists "SHCreateShellItemArrayFromIDLists" SHELL32.dll ;
+	UInteger cidl ;
+	Pointer rgpidl ;	// ITEMIDLIST**
+	Pointer ppsiItemArray ;	// IShellItemArray*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shcreateshellitemarrayfromshellitem
+External_Function SHCreateShellItemArrayFromShellItem "SHCreateShellItemArrayFromShellItem" SHELL32.dll ;
+	Pointer psi ;	// IShellItem
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shcreatestdenumfmtetc
+External_Function SHCreateStdEnumFmtEtc "SHCreateStdEnumFmtEtc" SHELL32.dll ;
+	UInteger cfmt ;
+	Pointer afmt ;	// FORMATETC*
+	Pointer ppenumFormatEtc ;	// IEnumFORMATETC*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdefextracticona
+External_Function SHDefExtractIconA "SHDefExtractIconA" SHELL32.dll ;
+	String pszIconFile ;	// PSTR
+	Integer iIndex ;
+	UInteger uFlags ;
+	Pointer phiconLarge ;	// HICON*
+	Pointer phiconSmall ;	// HICON*
+	UInteger nIconSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdefextracticonw
+External_Function SHDefExtractIconW "SHDefExtractIconW" SHELL32.dll ;
+	WString pszIconFile ;	// PWSTR
+	Integer iIndex ;
+	UInteger uFlags ;
+	Pointer phiconLarge ;	// HICON*
+	Pointer phiconSmall ;	// HICON*
+	UInteger nIconSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdestroypropsheetextarray
+External_Function SHDestroyPropSheetExtArray "SHDestroyPropSheetExtArray" SHELL32.dll ;
+	Pointer hpsxa ;	// HPSXA
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shdodragdrop
+External_Function SHDoDragDrop "SHDoDragDrop" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pdata ;	// IDataObject
+	Pointer pdsrc ;	// IDropSource
+	UInteger dwEffect ;	// DROPEFFECT
+	Pointer pdwEffect ;	// DROPEFFECT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shemptyrecyclebina
+External_Function SHEmptyRecycleBinA "SHEmptyRecycleBinA" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	String pszRootPath ;	// PSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shemptyrecyclebinw
+External_Function SHEmptyRecycleBinW "SHEmptyRecycleBinW" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	WString pszRootPath ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shenumerateunreadmailaccountsw
+External_Function SHEnumerateUnreadMailAccountsW "SHEnumerateUnreadMailAccountsW" SHELL32.dll ;
+	Pointer hKeyUser ;	// HKEY
+	UInteger dwIndex ;
+	Pointer pszMailAddress ;	// PWSTR
+	Integer cchMailAddress ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shevaluatesystemcommandtemplate
+External_Function SHEvaluateSystemCommandTemplate "SHEvaluateSystemCommandTemplate" SHELL32.dll ;
+	WString pszCmdTemplate ;	// PWSTR
+	Pointer ppszApplication ;	// PWSTR*
+	Pointer ppszCommandLine ;	// PWSTR*
+	Pointer ppszParameters ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shfileoperationa
+External_Function SHFileOperationA "SHFileOperationA" SHELL32.dll ;
+	Pointer lpFileOp ;	// SHFILEOPSTRUCTA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shfileoperationw
+External_Function SHFileOperationW "SHFileOperationW" SHELL32.dll ;
+	Pointer lpFileOp ;	// SHFILEOPSTRUCTW*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shfindfiles
+External_Function SHFindFiles "SHFindFiles" SHELL32.dll ;
+	Pointer pidlFolder ;	// ITEMIDLIST*
+	Pointer pidlSaveFile ;	// ITEMIDLIST*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shfind_initmenupopup
+External_Function SHFind_InitMenuPopup "SHFind_InitMenuPopup" SHELL32.dll ;
+	Pointer hmenu ;	// HMENU
+	Pointer hwndOwner ;	// HWND
+	UInteger idCmdFirst ;
+	UInteger idCmdLast ;
+	Returns Pointer	// IContextMenu
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shflushsfcache
+External_Function SHFlushSFCache "SHFlushSFCache" SHELL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shformatdrive
+External_Function SHFormatDrive "SHFormatDrive" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger drive ;
+	UInteger fmtID ;	// SHFMT_ID
+	UInteger options ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shfree
+External_Function SHFree "SHFree" SHELL32.dll ;
+	Pointer pv ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shfreenamemappings
+External_Function SHFreeNameMappings "SHFreeNameMappings" SHELL32.dll ;
+	Pointer hNameMappings ;	// HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetattributesfromdataobject
+External_Function SHGetAttributesFromDataObject "SHGetAttributesFromDataObject" SHELL32.dll ;
+	Pointer pdo ;	// IDataObject
+	UInteger dwAttributeMask ;
+	Pointer pdwAttributes ;	// UInteger*
+	Pointer pcItems ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetdatafromidlista
+External_Function SHGetDataFromIDListA "SHGetDataFromIDListA" SHELL32.dll ;
+	Pointer psf ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Integer nFormat ;	// SHGDFIL_FORMAT
+	Pointer pv ;	// Pointer*
+	Integer cb ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetdatafromidlistw
+External_Function SHGetDataFromIDListW "SHGetDataFromIDListW" SHELL32.dll ;
+	Pointer psf ;	// IShellFolder
+	Pointer pidl ;	// ITEMIDLIST*
+	Integer nFormat ;	// SHGDFIL_FORMAT
+	Pointer pv ;	// Pointer*
+	Integer cb ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetdesktopfolder
+External_Function SHGetDesktopFolder "SHGetDesktopFolder" SHELL32.dll ;
+	Pointer ppshf ;	// IShellFolder*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetdiskfreespaceexa
+External_Function SHGetDiskFreeSpaceExA "SHGetDiskFreeSpaceExA" SHELL32.dll ;
+	String pszDirectoryName ;	// PSTR
+	Pointer pulFreeBytesAvailableToCaller ;	// UBigint*
+	Pointer pulTotalNumberOfBytes ;	// UBigint*
+	Pointer pulTotalNumberOfFreeBytes ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetdiskfreespaceexw
+External_Function SHGetDiskFreeSpaceExW "SHGetDiskFreeSpaceExW" SHELL32.dll ;
+	WString pszDirectoryName ;	// PWSTR
+	Pointer pulFreeBytesAvailableToCaller ;	// UBigint*
+	Pointer pulTotalNumberOfBytes ;	// UBigint*
+	Pointer pulTotalNumberOfFreeBytes ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetdrivemedia
+External_Function SHGetDriveMedia "SHGetDriveMedia" SHELL32.dll ;
+	WString pszDrive ;	// PWSTR
+	Pointer pdwMediaContent ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetfileinfoa
+External_Function SHGetFileInfoA "SHGetFileInfoA" SHELL32.dll ;
+	String pszPath ;	// PSTR
+	UInteger dwFileAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Pointer psfi ;	// SHFILEINFOA*
+	UInteger cbFileInfo ;
+	UInteger uFlags ;	// SHGFI_FLAGS
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetfileinfow
+External_Function SHGetFileInfoW "SHGetFileInfoW" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	UInteger dwFileAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Pointer psfi ;	// SHFILEINFOW*
+	UInteger cbFileInfo ;
+	UInteger uFlags ;	// SHGFI_FLAGS
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetfolderlocation
+External_Function SHGetFolderLocation "SHGetFolderLocation" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Pointer hToken ;	// HANDLE
+	UInteger dwFlags ;
+	Pointer ppidl ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetfolderpatha
+External_Function SHGetFolderPathA "SHGetFolderPathA" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Pointer hToken ;	// HANDLE
+	UInteger dwFlags ;
+	Pointer pszPath ;	// PSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetfolderpathandsubdira
+External_Function SHGetFolderPathAndSubDirA "SHGetFolderPathAndSubDirA" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Pointer hToken ;	// HANDLE
+	UInteger dwFlags ;
+	String pszSubDir ;	// PSTR
+	Pointer pszPath ;	// PSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetfolderpathandsubdirw
+External_Function SHGetFolderPathAndSubDirW "SHGetFolderPathAndSubDirW" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Pointer hToken ;	// HANDLE
+	UInteger dwFlags ;
+	WString pszSubDir ;	// PWSTR
+	Pointer pszPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetfolderpathw
+External_Function SHGetFolderPathW "SHGetFolderPathW" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Pointer hToken ;	// HANDLE
+	UInteger dwFlags ;
+	Pointer pszPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgetidlistfromobject
+External_Function SHGetIDListFromObject "SHGetIDListFromObject" SHELL32.dll ;
+	Pointer punk ;	// IUnknown
+	Pointer ppidl ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgeticonoverlayindexa
+External_Function SHGetIconOverlayIndexA "SHGetIconOverlayIndexA" SHELL32.dll ;
+	String pszIconPath ;	// PSTR
+	Integer iIconIndex ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgeticonoverlayindexw
+External_Function SHGetIconOverlayIndexW "SHGetIconOverlayIndexW" SHELL32.dll ;
+	WString pszIconPath ;	// PWSTR
+	Integer iIconIndex ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetimagelist
+External_Function SHGetImageList "SHGetImageList" SHELL32.dll ;
+	Integer iImageList ;
+	Pointer riid ;	// Guid*
+	Pointer ppvObj ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetinstanceexplorer
+External_Function SHGetInstanceExplorer "SHGetInstanceExplorer" SHELL32.dll ;
+	Pointer ppunk ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgetitemfromdataobject
+External_Function SHGetItemFromDataObject "SHGetItemFromDataObject" SHELL32.dll ;
+	Pointer pdtobj ;	// IDataObject
+	Integer dwFlags ;	// DATAOBJ_GET_ITEM_FLAGS
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgetitemfromobject
+External_Function SHGetItemFromObject "SHGetItemFromObject" SHELL32.dll ;
+	Pointer punk ;	// IUnknown
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderidlist
+External_Function SHGetKnownFolderIDList "SHGetKnownFolderIDList" SHELL32.dll ;
+	Pointer rfid ;	// Guid*
+	UInteger dwFlags ;
+	Pointer hToken ;	// HANDLE
+	Pointer ppidl ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderitem
+External_Function SHGetKnownFolderItem "SHGetKnownFolderItem" SHELL32.dll ;
+	Pointer rfid ;	// Guid*
+	Integer flags ;	// KNOWN_FOLDER_FLAG
+	Pointer hToken ;	// HANDLE
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath
+External_Function SHGetKnownFolderPath "SHGetKnownFolderPath" SHELL32.dll ;
+	Pointer rfid ;	// Guid*
+	UInteger dwFlags ;
+	Pointer hToken ;	// HANDLE
+	Pointer ppszPath ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetlocalizedname
+External_Function SHGetLocalizedName "SHGetLocalizedName" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Pointer pszResModule ;	// PWSTR
+	UInteger cch ;
+	Pointer pidsRes ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetmalloc
+External_Function SHGetMalloc "SHGetMalloc" SHELL32.dll ;
+	Pointer ppMalloc ;	// IMalloc*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgetnamefromidlist
+External_Function SHGetNameFromIDList "SHGetNameFromIDList" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Integer sigdnName ;	// SIGDN
+	Pointer ppszName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetnewlinkinfoa
+External_Function SHGetNewLinkInfoA "SHGetNewLinkInfoA" SHELL32.dll ;
+	String pszLinkTo ;	// PSTR
+	String pszDir ;	// PSTR
+	Pointer pszName ;	// PSTR
+	Pointer pfMustCopy ;	// BOOL*
+	UInteger uFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetnewlinkinfow
+External_Function SHGetNewLinkInfoW "SHGetNewLinkInfoW" SHELL32.dll ;
+	WString pszLinkTo ;	// PWSTR
+	WString pszDir ;	// PWSTR
+	Pointer pszName ;	// PWSTR
+	Pointer pfMustCopy ;	// BOOL*
+	UInteger uFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetpathfromidlista
+External_Function SHGetPathFromIDListA "SHGetPathFromIDListA" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer pszPath ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetpathfromidlistex
+External_Function SHGetPathFromIDListEx "SHGetPathFromIDListEx" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer pszPath ;	// PWSTR
+	UInteger cchPath ;
+	UInteger uOpts ;	// GPFIDL_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetpathfromidlistw
+External_Function SHGetPathFromIDListW "SHGetPathFromIDListW" SHELL32.dll ;
+	Pointer pidl ;	// ITEMIDLIST*
+	Pointer pszPath ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetrealidl
+External_Function SHGetRealIDL "SHGetRealIDL" SHELL32.dll ;
+	Pointer psf ;	// IShellFolder
+	Pointer pidlSimple ;	// ITEMIDLIST*
+	Pointer ppidlReal ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetsetfoldercustomsettings
+External_Function SHGetSetFolderCustomSettings "SHGetSetFolderCustomSettings" SHELL32.dll ;
+	Pointer pfcs ;	// SHFOLDERCUSTOMSETTINGS*
+	WString pszPath ;	// PWSTR
+	UInteger dwReadWrite ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetsetsettings
+External_Function SHGetSetSettings "SHGetSetSettings" SHELL32.dll ;
+	Pointer lpss ;	// SHELLSTATEA*
+	UInteger dwMask ;	// SSF_MASK
+	Integer bSet ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetsettings
+External_Function SHGetSettings "SHGetSettings" SHELL32.dll ;
+	Pointer psfs ;	// SHELLFLAGSTATE*
+	UInteger dwMask ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetspecialfolderlocation
+External_Function SHGetSpecialFolderLocation "SHGetSpecialFolderLocation" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer csidl ;
+	Pointer ppidl ;	// ITEMIDLIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetspecialfolderpatha
+External_Function SHGetSpecialFolderPathA "SHGetSpecialFolderPathA" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pszPath ;	// PSTR
+	Integer csidl ;
+	Integer fCreate ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shgetspecialfolderpathw
+External_Function SHGetSpecialFolderPathW "SHGetSpecialFolderPathW" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pszPath ;	// PWSTR
+	Integer csidl ;
+	Integer fCreate ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetstockiconinfo
+External_Function SHGetStockIconInfo "SHGetStockIconInfo" SHELL32.dll ;
+	Integer siid ;	// SHSTOCKICONID
+	UInteger uFlags ;	// SHGSI_FLAGS
+	Pointer psii ;	// SHSTOCKICONINFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/nf-shobjidl_core-shgettemporarypropertyforitem
+External_Function SHGetTemporaryPropertyForItem "SHGetTemporaryPropertyForItem" SHELL32.dll ;
+	Pointer psi ;	// IShellItem
+	Pointer propkey ;	// PROPERTYKEY*
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shgetunreadmailcountw
+External_Function SHGetUnreadMailCountW "SHGetUnreadMailCountW" SHELL32.dll ;
+	Pointer hKeyUser ;	// HKEY
+	WString pszMailAddress ;	// PWSTR
+	Pointer pdwCount ;	// UInteger*
+	Pointer pFileTime ;	// FILETIME*
+	Pointer pszShellExecuteCommand ;	// PWSTR
+	Integer cchShellExecuteCommand ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shhandleupdateimage
+External_Function SHHandleUpdateImage "SHHandleUpdateImage" SHELL32.dll ;
+	Pointer pidlExtra ;	// ITEMIDLIST*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/nf-shlobj_core-shilcreatefrompath
+External_Function SHILCreateFromPath "SHILCreateFromPath" SHELL32.dll ;
+	WString pszPath ;	// PWSTR
+	Pointer ppidl ;	// ITEMIDLIST**
+	Pointer rgfInOut ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/nf-shellapi-shinvokeprintercommanda
+External_Function SHInvokePrinterCommandA "SHInvokePrinterCommandA" SHELL32.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger uAction ;
+	String lpBuf1 ;	// PSTR
+	String lpBuf2 ;	// PSTR
+	Integer fModal ;	// BOOL
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

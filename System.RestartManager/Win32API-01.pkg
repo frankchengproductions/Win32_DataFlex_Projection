@@ -1,0 +1,88 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmendsession
+External_Function RmEndSession "RmEndSession" rstrtmgr.dll ;
+	UInteger dwSessionHandle ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmgetlist
+External_Function RmGetList "RmGetList" rstrtmgr.dll ;
+	UInteger dwSessionHandle ;
+	Pointer pnProcInfoNeeded ;	// UInteger*
+	Pointer pnProcInfo ;	// UInteger*
+	Pointer rgAffectedApps ;	// RM_PROCESS_INFO*
+	Pointer lpdwRebootReasons ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmregisterresources
+External_Function RmRegisterResources "RmRegisterResources" rstrtmgr.dll ;
+	UInteger dwSessionHandle ;
+	UInteger nFiles ;
+	Pointer rgsFileNames ;	// PWSTR*
+	UInteger nApplications ;
+	Pointer rgApplications ;	// RM_UNIQUE_PROCESS*
+	UInteger nServices ;
+	Pointer rgsServiceNames ;	// PWSTR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmrestart
+External_Function RmRestart "RmRestart" rstrtmgr.dll ;
+	UInteger dwSessionHandle ;
+	UInteger dwRestartFlags ;
+	Pointer fnStatus ;	// RM_WRITE_STATUS_CALLBACK
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmshutdown
+External_Function RmShutdown "RmShutdown" rstrtmgr.dll ;
+	UInteger dwSessionHandle ;
+	UInteger lActionFlags ;
+	Pointer fnStatus ;	// RM_WRITE_STATUS_CALLBACK
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmstartsession
+External_Function RmStartSession "RmStartSession" rstrtmgr.dll ;
+	Pointer pSessionHandle ;	// UInteger*
+	UInteger dwSessionFlags ;
+	Pointer strSessionKey ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmaddfilter
+External_Function RmAddFilter "RmAddFilter" RstrtMgr.dll ;
+	UInteger dwSessionHandle ;
+	WString strModuleName ;	// PWSTR
+	Pointer pProcess ;	// RM_UNIQUE_PROCESS*
+	WString strServiceShortName ;	// PWSTR
+	Integer FilterAction ;	// RM_FILTER_ACTION
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmcancelcurrenttask
+External_Function RmCancelCurrentTask "RmCancelCurrentTask" RstrtMgr.dll ;
+	UInteger dwSessionHandle ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmgetfilterlist
+External_Function RmGetFilterList "RmGetFilterList" RstrtMgr.dll ;
+	UInteger dwSessionHandle ;
+	Pointer pbFilterBuf ;	// UChar*
+	UInteger cbFilterBuf ;
+	Pointer cbFilterBufNeeded ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmjoinsession
+External_Function RmJoinSession "RmJoinSession" RstrtMgr.dll ;
+	Pointer pSessionHandle ;	// UInteger*
+	WString strSessionKey ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/nf-restartmanager-rmremovefilter
+External_Function RmRemoveFilter "RmRemoveFilter" RstrtMgr.dll ;
+	UInteger dwSessionHandle ;
+	WString strModuleName ;	// PWSTR
+	Pointer pProcess ;	// RM_UNIQUE_PROCESS*
+	WString strServiceShortName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+
+Procedure DataFlex_Init
+End_Procedure
+

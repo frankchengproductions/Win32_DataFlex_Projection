@@ -1,0 +1,227 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-addvirtualdiskparent
+External_Function AddVirtualDiskParent "AddVirtualDiskParent" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	WString ParentPath ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-applysnapshotvhdset
+External_Function ApplySnapshotVhdSet "ApplySnapshotVhdSet" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Parameters ;	// APPLY_SNAPSHOT_VHDSET_PARAMETERS*
+	Integer Flags ;	// APPLY_SNAPSHOT_VHDSET_FLAG
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-attachvirtualdisk
+External_Function AttachVirtualDisk "AttachVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Integer Flags ;	// ATTACH_VIRTUAL_DISK_FLAG
+	UInteger ProviderSpecificFlags ;
+	Pointer Parameters ;	// ATTACH_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-breakmirrorvirtualdisk
+External_Function BreakMirrorVirtualDisk "BreakMirrorVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-compactvirtualdisk
+External_Function CompactVirtualDisk "CompactVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// COMPACT_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// COMPACT_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function CompleteForkVirtualDisk "CompleteForkVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-createvirtualdisk
+External_Function CreateVirtualDisk "CreateVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualStorageType ;	// VIRTUAL_STORAGE_TYPE*
+	WString Path ;	// PWSTR
+	Integer VirtualDiskAccessMask ;	// VIRTUAL_DISK_ACCESS_MASK
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Integer Flags ;	// CREATE_VIRTUAL_DISK_FLAG
+	UInteger ProviderSpecificFlags ;
+	Pointer Parameters ;	// CREATE_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Pointer Handle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-deletesnapshotvhdset
+External_Function DeleteSnapshotVhdSet "DeleteSnapshotVhdSet" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Parameters ;	// DELETE_SNAPSHOT_VHDSET_PARAMETERS*
+	Integer Flags ;	// DELETE_SNAPSHOT_VHDSET_FLAG
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-deletevirtualdiskmetadata
+External_Function DeleteVirtualDiskMetadata "DeleteVirtualDiskMetadata" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Item ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-detachvirtualdisk
+External_Function DetachVirtualDisk "DetachVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// DETACH_VIRTUAL_DISK_FLAG
+	UInteger ProviderSpecificFlags ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-enumeratevirtualdiskmetadata
+External_Function EnumerateVirtualDiskMetadata "EnumerateVirtualDiskMetadata" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer NumberOfItems ;	// UInteger*
+	Pointer Items ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-expandvirtualdisk
+External_Function ExpandVirtualDisk "ExpandVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// EXPAND_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// EXPAND_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function ForkVirtualDisk "ForkVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// FORK_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// FORK_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function GetAllAttachedVirtualDiskPhysicalPaths "GetAllAttachedVirtualDiskPhysicalPaths" VirtDisk.dll ;
+	Pointer PathsBufferSizeInBytes ;	// UInteger*
+	Pointer PathsBuffer ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-getstoragedependencyinformation
+External_Function GetStorageDependencyInformation "GetStorageDependencyInformation" VirtDisk.dll ;
+	Pointer ObjectHandle ;	// HANDLE
+	Integer Flags ;	// GET_STORAGE_DEPENDENCY_FLAG
+	UInteger StorageDependencyInfoSize ;
+	Pointer StorageDependencyInfo ;	// STORAGE_DEPENDENCY_INFO*
+	Pointer SizeUsed ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-getvirtualdiskinformation
+External_Function GetVirtualDiskInformation "GetVirtualDiskInformation" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer VirtualDiskInfoSize ;	// UInteger*
+	Pointer VirtualDiskInfo ;	// GET_VIRTUAL_DISK_INFO*
+	Pointer SizeUsed ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-getvirtualdiskmetadata
+External_Function GetVirtualDiskMetadata "GetVirtualDiskMetadata" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Item ;	// Guid*
+	Pointer MetaDataSize ;	// UInteger*
+	Pointer MetaData ;	// Pointer*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-getvirtualdiskoperationprogress
+External_Function GetVirtualDiskOperationProgress "GetVirtualDiskOperationProgress" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Overlapped ;	// OVERLAPPED*
+	Pointer Progress ;	// VIRTUAL_DISK_PROGRESS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-getvirtualdiskphysicalpath
+External_Function GetVirtualDiskPhysicalPath "GetVirtualDiskPhysicalPath" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer DiskPathSizeInBytes ;	// UInteger*
+	Pointer DiskPath ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-mergevirtualdisk
+External_Function MergeVirtualDisk "MergeVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// MERGE_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// MERGE_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-mirrorvirtualdisk
+External_Function MirrorVirtualDisk "MirrorVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// MIRROR_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// MIRROR_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-modifyvhdset
+External_Function ModifyVhdSet "ModifyVhdSet" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Parameters ;	// MODIFY_VHDSET_PARAMETERS*
+	Integer Flags ;	// MODIFY_VHDSET_FLAG
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-openvirtualdisk
+External_Function OpenVirtualDisk "OpenVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualStorageType ;	// VIRTUAL_STORAGE_TYPE*
+	WString Path ;	// PWSTR
+	Integer VirtualDiskAccessMask ;	// VIRTUAL_DISK_ACCESS_MASK
+	Integer Flags ;	// OPEN_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// OPEN_VIRTUAL_DISK_PARAMETERS*
+	Pointer Handle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-querychangesvirtualdisk
+External_Function QueryChangesVirtualDisk "QueryChangesVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	WString ChangeTrackingId ;	// PWSTR
+	UBigint ByteOffset ;
+	UBigint ByteLength ;
+	Integer Flags ;	// QUERY_CHANGES_VIRTUAL_DISK_FLAG
+	Pointer Ranges ;	// QUERY_CHANGES_VIRTUAL_DISK_RANGE*
+	Pointer RangeCount ;	// UInteger*
+	Pointer ProcessedLength ;	// UBigint*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-rawscsivirtualdisk
+External_Function RawSCSIVirtualDisk "RawSCSIVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Parameters ;	// RAW_SCSI_VIRTUAL_DISK_PARAMETERS*
+	Integer Flags ;	// RAW_SCSI_VIRTUAL_DISK_FLAG
+	Pointer Response ;	// RAW_SCSI_VIRTUAL_DISK_RESPONSE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-resizevirtualdisk
+External_Function ResizeVirtualDisk "ResizeVirtualDisk" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Integer Flags ;	// RESIZE_VIRTUAL_DISK_FLAG
+	Pointer Parameters ;	// RESIZE_VIRTUAL_DISK_PARAMETERS*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-setvirtualdiskinformation
+External_Function SetVirtualDiskInformation "SetVirtualDiskInformation" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer VirtualDiskInfo ;	// SET_VIRTUAL_DISK_INFO*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-setvirtualdiskmetadata
+External_Function SetVirtualDiskMetadata "SetVirtualDiskMetadata" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Item ;	// Guid*
+	UInteger MetaDataSize ;
+	Pointer MetaData ;	// Pointer*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/virtdisk/nf-virtdisk-takesnapshotvhdset
+External_Function TakeSnapshotVhdSet "TakeSnapshotVhdSet" VirtDisk.dll ;
+	Pointer VirtualDiskHandle ;	// HANDLE
+	Pointer Parameters ;	// TAKE_SNAPSHOT_VHDSET_PARAMETERS*
+	Integer Flags ;	// TAKE_SNAPSHOT_VHDSET_FLAG
+	Returns UInteger	// WIN32_ERROR
+
+
+Procedure DataFlex_Init
+End_Procedure
+

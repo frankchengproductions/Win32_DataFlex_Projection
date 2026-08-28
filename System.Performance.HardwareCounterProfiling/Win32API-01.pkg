@@ -1,0 +1,32 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-disablethreadprofiling
+External_Function DisableThreadProfiling "DisableThreadProfiling" KERNEL32.dll ;
+	Pointer PerformanceDataHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-enablethreadprofiling
+External_Function EnableThreadProfiling "EnableThreadProfiling" KERNEL32.dll ;
+	Pointer ThreadHandle ;	// HANDLE
+	UInteger Flags ;
+	UBigint HardwareCounters ;
+	Pointer PerformanceDataHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-querythreadprofiling
+External_Function QueryThreadProfiling "QueryThreadProfiling" KERNEL32.dll ;
+	Pointer ThreadHandle ;	// HANDLE
+	Pointer Enabled ;	// BOOLEAN*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-readthreadprofilingdata
+External_Function ReadThreadProfilingData "ReadThreadProfilingData" KERNEL32.dll ;
+	Pointer PerformanceDataHandle ;	// HANDLE
+	UInteger Flags ;
+	Pointer PerformanceData ;	// PERFORMANCE_DATA*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

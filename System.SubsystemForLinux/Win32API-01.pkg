@@ -1,0 +1,58 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wslconfiguredistribution
+External_Function WslConfigureDistribution "WslConfigureDistribution" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	UInteger defaultUID ;
+	Integer wslDistributionFlags ;	// WSL_DISTRIBUTION_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wslgetdistributionconfiguration
+External_Function WslGetDistributionConfiguration "WslGetDistributionConfiguration" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	Pointer distributionVersion ;	// UInteger*
+	Pointer defaultUID ;	// UInteger*
+	Pointer wslDistributionFlags ;	// WSL_DISTRIBUTION_FLAGS*
+	Pointer defaultEnvironmentVariables ;	// PSTR**
+	Pointer defaultEnvironmentVariableCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wslisdistributionregistered
+External_Function WslIsDistributionRegistered "WslIsDistributionRegistered" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wsllaunch
+External_Function WslLaunch "WslLaunch" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	WString command ;	// PWSTR
+	Integer useCurrentWorkingDirectory ;	// BOOL
+	Pointer stdIn ;	// HANDLE
+	Pointer stdOut ;	// HANDLE
+	Pointer stdErr ;	// HANDLE
+	Pointer process ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wsllaunchinteractive
+External_Function WslLaunchInteractive "WslLaunchInteractive" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	WString command ;	// PWSTR
+	Integer useCurrentWorkingDirectory ;	// BOOL
+	Pointer exitCode ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wslregisterdistribution
+External_Function WslRegisterDistribution "WslRegisterDistribution" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	WString tarGzFilename ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wslapi/nf-wslapi-wslunregisterdistribution
+External_Function WslUnregisterDistribution "WslUnregisterDistribution" Api-ms-win-wsl-api-l1-1-0.dll ;
+	WString distributionName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

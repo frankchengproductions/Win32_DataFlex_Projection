@@ -1,0 +1,498 @@
+Use UI
+
+External_Function NPAddConnection4 "NPAddConnection4" NTLANMAN.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lpAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	UInteger dwFlags ;
+	Pointer lpUseOptions ;	// UChar*
+	UInteger cbUseOptions ;
+	Returns UInteger
+
+External_Function NPCancelConnection2 "NPCancelConnection2" NTLANMAN.dll ;
+	WString lpName ;	// PWSTR
+	Integer fForce ;	// BOOL
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetconnection3
+External_Function NPGetConnection3 "NPGetConnection3" NTLANMAN.dll ;
+	WString lpLocalName ;	// PWSTR
+	UInteger dwLevel ;
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetconnectionperformance
+External_Function NPGetConnectionPerformance "NPGetConnectionPerformance" NTLANMAN.dll ;
+	WString lpRemoteName ;	// PWSTR
+	Pointer lpNetConnectInfo ;	// NETCONNECTINFOSTRUCT*
+	Returns UInteger
+
+External_Function NPGetPersistentUseOptionsForConnection "NPGetPersistentUseOptionsForConnection" NTLANMAN.dll ;
+	WString lpRemotePath ;	// PWSTR
+	Pointer lpReadUseOptions ;	// UChar*
+	UInteger cbReadUseOptions ;
+	Pointer lpWriteUseOptions ;	// UChar*
+	Pointer lpSizeWriteUseOptions ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npaddconnection
+External_Function NPAddConnection "NPAddConnection" davclnt.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	WString lpPassword ;	// PWSTR
+	WString lpUserName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npaddconnection3
+External_Function NPAddConnection3 "NPAddConnection3" davclnt.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	WString lpPassword ;	// PWSTR
+	WString lpUserName ;	// PWSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npcancelconnection
+External_Function NPCancelConnection "NPCancelConnection" davclnt.dll ;
+	WString lpName ;	// PWSTR
+	Integer fForce ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npcloseenum
+External_Function NPCloseEnum "NPCloseEnum" davclnt.dll ;
+	Pointer hEnum ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npenumresource
+External_Function NPEnumResource "NPEnumResource" davclnt.dll ;
+	Pointer hEnum ;	// HANDLE
+	Pointer lpcCount ;	// UInteger*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npformatnetworkname
+External_Function NPFormatNetworkName "NPFormatNetworkName" davclnt.dll ;
+	WString lpRemoteName ;	// PWSTR
+	Pointer lpFormattedName ;	// PWSTR
+	Pointer lpnLength ;	// UInteger*
+	UInteger dwFlags ;	// NETWORK_NAME_FORMAT_FLAGS
+	UInteger dwAveCharPerLine ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetcaps
+External_Function NPGetCaps "NPGetCaps" davclnt.dll ;
+	UInteger ndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetconnection
+External_Function NPGetConnection "NPGetConnection" davclnt.dll ;
+	WString lpLocalName ;	// PWSTR
+	Pointer lpRemoteName ;	// PWSTR
+	Pointer lpnBufferLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetresourceinformation
+External_Function NPGetResourceInformation "NPGetResourceInformation" davclnt.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Pointer lplpSystem ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetresourceparent
+External_Function NPGetResourceParent "NPGetResourceParent" davclnt.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetuniversalname
+External_Function NPGetUniversalName "NPGetUniversalName" davclnt.dll ;
+	WString lpLocalPath ;	// PWSTR
+	UInteger dwInfoLevel ;	// UNC_INFO_LEVEL
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npgetuser
+External_Function NPGetUser "NPGetUser" davclnt.dll ;
+	WString lpName ;	// PWSTR
+	Pointer lpUserName ;	// PWSTR
+	Pointer lpnBufferLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-npopenenum
+External_Function NPOpenEnum "NPOpenEnum" davclnt.dll ;
+	UInteger dwScope ;
+	UInteger dwType ;
+	UInteger dwUsage ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lphEnum ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-multinetgetconnectionperformancea
+External_Function MultinetGetConnectionPerformanceA "MultinetGetConnectionPerformanceA" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	Pointer lpNetConnectInfoStruct ;	// NETCONNECTINFOSTRUCT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-multinetgetconnectionperformancew
+External_Function MultinetGetConnectionPerformanceW "MultinetGetConnectionPerformanceW" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lpNetConnectInfoStruct ;	// NETCONNECTINFOSTRUCT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetaddconnection2a
+External_Function WNetAddConnection2A "WNetAddConnection2A" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	String lpPassword ;	// PSTR
+	String lpUserName ;	// PSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetaddconnection2w
+External_Function WNetAddConnection2W "WNetAddConnection2W" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	WString lpPassword ;	// PWSTR
+	WString lpUserName ;	// PWSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetaddconnection3a
+External_Function WNetAddConnection3A "WNetAddConnection3A" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	String lpPassword ;	// PSTR
+	String lpUserName ;	// PSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetaddconnection3w
+External_Function WNetAddConnection3W "WNetAddConnection3W" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	WString lpPassword ;	// PWSTR
+	WString lpUserName ;	// PWSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+External_Function WNetAddConnection4A "WNetAddConnection4A" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	Pointer pAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Pointer lpUseOptions ;	// UChar*
+	UInteger cbUseOptions ;
+	Returns UInteger	// WIN32_ERROR
+
+External_Function WNetAddConnection4W "WNetAddConnection4W" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer pAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Pointer lpUseOptions ;	// UChar*
+	UInteger cbUseOptions ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetaddconnectiona
+External_Function WNetAddConnectionA "WNetAddConnectionA" MPR.dll ;
+	String lpRemoteName ;	// PSTR
+	String lpPassword ;	// PSTR
+	String lpLocalName ;	// PSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetaddconnectionw
+External_Function WNetAddConnectionW "WNetAddConnectionW" MPR.dll ;
+	WString lpRemoteName ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	WString lpLocalName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetcancelconnection2a
+External_Function WNetCancelConnection2A "WNetCancelConnection2A" MPR.dll ;
+	String lpName ;	// PSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Integer fForce ;	// BOOL
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetcancelconnection2w
+External_Function WNetCancelConnection2W "WNetCancelConnection2W" MPR.dll ;
+	WString lpName ;	// PWSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Integer fForce ;	// BOOL
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetcancelconnectiona
+External_Function WNetCancelConnectionA "WNetCancelConnectionA" MPR.dll ;
+	String lpName ;	// PSTR
+	Integer fForce ;	// BOOL
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetcancelconnectionw
+External_Function WNetCancelConnectionW "WNetCancelConnectionW" MPR.dll ;
+	WString lpName ;	// PWSTR
+	Integer fForce ;	// BOOL
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetcloseenum
+External_Function WNetCloseEnum "WNetCloseEnum" MPR.dll ;
+	Pointer hEnum ;	// HANDLE
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetconnectiondialog
+External_Function WNetConnectionDialog "WNetConnectionDialog" MPR.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger dwType ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetconnectiondialog1a
+External_Function WNetConnectionDialog1A "WNetConnectionDialog1A" MPR.dll ;
+	Pointer lpConnDlgStruct ;	// CONNECTDLGSTRUCTA*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetconnectiondialog1w
+External_Function WNetConnectionDialog1W "WNetConnectionDialog1W" MPR.dll ;
+	Pointer lpConnDlgStruct ;	// CONNECTDLGSTRUCTW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetdisconnectdialog
+External_Function WNetDisconnectDialog "WNetDisconnectDialog" MPR.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger dwType ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetdisconnectdialog1a
+External_Function WNetDisconnectDialog1A "WNetDisconnectDialog1A" MPR.dll ;
+	Pointer lpConnDlgStruct ;	// DISCDLGSTRUCTA*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetdisconnectdialog1w
+External_Function WNetDisconnectDialog1W "WNetDisconnectDialog1W" MPR.dll ;
+	Pointer lpConnDlgStruct ;	// DISCDLGSTRUCTW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetenumresourcea
+External_Function WNetEnumResourceA "WNetEnumResourceA" MPR.dll ;
+	Pointer hEnum ;	// HANDLE
+	Pointer lpcCount ;	// UInteger*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetenumresourcew
+External_Function WNetEnumResourceW "WNetEnumResourceW" MPR.dll ;
+	Pointer hEnum ;	// HANDLE
+	Pointer lpcCount ;	// UInteger*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetconnectiona
+External_Function WNetGetConnectionA "WNetGetConnectionA" MPR.dll ;
+	String lpLocalName ;	// PSTR
+	Pointer lpRemoteName ;	// PSTR
+	Pointer lpnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetconnectionw
+External_Function WNetGetConnectionW "WNetGetConnectionW" MPR.dll ;
+	WString lpLocalName ;	// PWSTR
+	Pointer lpRemoteName ;	// PWSTR
+	Pointer lpnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetlasterrora
+External_Function WNetGetLastErrorA "WNetGetLastErrorA" MPR.dll ;
+	Pointer lpError ;	// UInteger*
+	Pointer lpErrorBuf ;	// PSTR
+	UInteger nErrorBufSize ;
+	Pointer lpNameBuf ;	// PSTR
+	UInteger nNameBufSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetlasterrorw
+External_Function WNetGetLastErrorW "WNetGetLastErrorW" MPR.dll ;
+	Pointer lpError ;	// UInteger*
+	Pointer lpErrorBuf ;	// PWSTR
+	UInteger nErrorBufSize ;
+	Pointer lpNameBuf ;	// PWSTR
+	UInteger nNameBufSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetnetworkinformationa
+External_Function WNetGetNetworkInformationA "WNetGetNetworkInformationA" MPR.dll ;
+	String lpProvider ;	// PSTR
+	Pointer lpNetInfoStruct ;	// NETINFOSTRUCT*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetnetworkinformationw
+External_Function WNetGetNetworkInformationW "WNetGetNetworkInformationW" MPR.dll ;
+	WString lpProvider ;	// PWSTR
+	Pointer lpNetInfoStruct ;	// NETINFOSTRUCT*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetprovidernamea
+External_Function WNetGetProviderNameA "WNetGetProviderNameA" MPR.dll ;
+	UInteger dwNetType ;
+	Pointer lpProviderName ;	// PSTR
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetprovidernamew
+External_Function WNetGetProviderNameW "WNetGetProviderNameW" MPR.dll ;
+	UInteger dwNetType ;
+	Pointer lpProviderName ;	// PWSTR
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetresourceinformationa
+External_Function WNetGetResourceInformationA "WNetGetResourceInformationA" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpcbBuffer ;	// UInteger*
+	Pointer lplpSystem ;	// PSTR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetresourceinformationw
+External_Function WNetGetResourceInformationW "WNetGetResourceInformationW" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpcbBuffer ;	// UInteger*
+	Pointer lplpSystem ;	// PWSTR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetresourceparenta
+External_Function WNetGetResourceParentA "WNetGetResourceParentA" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpcbBuffer ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetresourceparentw
+External_Function WNetGetResourceParentW "WNetGetResourceParentW" MPR.dll ;
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpcbBuffer ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetuniversalnamea
+External_Function WNetGetUniversalNameA "WNetGetUniversalNameA" MPR.dll ;
+	String lpLocalPath ;	// PSTR
+	UInteger dwInfoLevel ;	// UNC_INFO_LEVEL
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetuniversalnamew
+External_Function WNetGetUniversalNameW "WNetGetUniversalNameW" MPR.dll ;
+	WString lpLocalPath ;	// PWSTR
+	UInteger dwInfoLevel ;	// UNC_INFO_LEVEL
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpBufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetusera
+External_Function WNetGetUserA "WNetGetUserA" MPR.dll ;
+	String lpName ;	// PSTR
+	Pointer lpUserName ;	// PSTR
+	Pointer lpnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetgetuserw
+External_Function WNetGetUserW "WNetGetUserW" MPR.dll ;
+	WString lpName ;	// PWSTR
+	Pointer lpUserName ;	// PWSTR
+	Pointer lpnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetopenenuma
+External_Function WNetOpenEnumA "WNetOpenEnumA" MPR.dll ;
+	UInteger dwScope ;	// NET_RESOURCE_SCOPE
+	UInteger dwType ;	// NET_RESOURCE_TYPE
+	UInteger dwUsage ;	// WNET_OPEN_ENUM_USAGE
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	Pointer lphEnum ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetopenenumw
+External_Function WNetOpenEnumW "WNetOpenEnumW" MPR.dll ;
+	UInteger dwScope ;	// NET_RESOURCE_SCOPE
+	UInteger dwType ;	// NET_RESOURCE_TYPE
+	UInteger dwUsage ;	// WNET_OPEN_ENUM_USAGE
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer lphEnum ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-wnetsetlasterrora
+External_Function WNetSetLastErrorA "WNetSetLastErrorA" MPR.dll ;
+	UInteger err ;
+	String lpError ;	// PSTR
+	String lpProviders ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/npapi/nf-npapi-wnetsetlasterrorw
+External_Function WNetSetLastErrorW "WNetSetLastErrorW" MPR.dll ;
+	UInteger err ;
+	WString lpError ;	// PWSTR
+	WString lpProviders ;	// PWSTR
+	Returns Pointer
+
+External_Function WNetUseConnection4A "WNetUseConnection4A" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	Pointer pAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	UInteger dwFlags ;
+	Pointer lpUseOptions ;	// UChar*
+	UInteger cbUseOptions ;
+	Pointer lpAccessName ;	// PSTR
+	Pointer lpBufferSize ;	// UInteger*
+	Pointer lpResult ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function WNetUseConnection4W "WNetUseConnection4W" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	Pointer pAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	UInteger dwFlags ;
+	Pointer lpUseOptions ;	// UChar*
+	UInteger cbUseOptions ;
+	Pointer lpAccessName ;	// PWSTR
+	Pointer lpBufferSize ;	// UInteger*
+	Pointer lpResult ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetuseconnectiona
+External_Function WNetUseConnectionA "WNetUseConnectionA" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEA*
+	String lpPassword ;	// PSTR
+	String lpUserId ;	// PSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Pointer lpAccessName ;	// PSTR
+	Pointer lpBufferSize ;	// UInteger*
+	Pointer lpResult ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winnetwk/nf-winnetwk-wnetuseconnectionw
+External_Function WNetUseConnectionW "WNetUseConnectionW" MPR.dll ;
+	Pointer hwndOwner ;	// HWND
+	Pointer lpNetResource ;	// NETRESOURCEW*
+	WString lpPassword ;	// PWSTR
+	WString lpUserId ;	// PWSTR
+	UInteger dwFlags ;	// NET_CONNECT_FLAGS
+	Pointer lpAccessName ;	// PWSTR
+	Pointer lpBufferSize ;	// UInteger*
+	Pointer lpResult ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+
+Procedure DataFlex_Init
+End_Procedure
+

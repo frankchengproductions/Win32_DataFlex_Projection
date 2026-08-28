@@ -1,0 +1,150 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-acl
+Struct ACL
+	UChar AclRevision
+	UChar Sbz1
+	UShort AclSize
+	UShort AceCount
+	UShort Sbz2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attributes_information
+Struct CLAIM_SECURITY_ATTRIBUTES_INFORMATION
+	UShort Version
+	UShort Reserved
+	UInteger AttributeCount
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_fqbn_value
+Struct CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
+	UBigint Version
+	Pointer Name											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_octet_string_value
+Struct CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
+	Pointer pValue											// Pointer*
+	UInteger ValueLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_v1
+Struct CLAIM_SECURITY_ATTRIBUTE_V1
+	Pointer Name											// PWSTR
+	UShort ValueType										// CLAIM_SECURITY_ATTRIBUTE_VALUE_TYPE
+	UShort Reserved
+	UInteger Flags
+	UInteger ValueCount
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-generic_mapping
+Struct GENERIC_MAPPING
+	UInteger GenericRead
+	UInteger GenericWrite
+	UInteger GenericExecute
+	UInteger GenericAll
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-luid_and_attributes
+Struct LUID_AND_ATTRIBUTES
+	LUID Luid
+	UInteger Attributes										// TOKEN_PRIVILEGES_ATTRIBUTES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-object_type_list
+Struct OBJECT_TYPE_LIST
+	UShort Level
+	UShort Sbz
+	Integer iMissingAlignment1
+	Pointer ObjectType										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-privilege_set
+Struct PRIVILEGE_SET
+	UInteger PrivilegeCount
+	UInteger Control
+	LUID_AND_ATTRIBUTES[1] Privilege
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-quota_limits
+Struct QUOTA_LIMITS
+	ULongPtr PagedPoolLimit
+	ULongPtr NonPagedPoolLimit
+	ULongPtr MinimumWorkingSetSize
+	ULongPtr MaximumWorkingSetSize
+	ULongPtr PagefileLimit
+	Bigint TimeLimit
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypesbase/ns-wtypesbase-security_attributes
+Struct SECURITY_ATTRIBUTES
+	UInteger nLength
+	Integer iMissingAlignment1
+	Pointer lpSecurityDescriptor							// Pointer*
+	Integer bInheritHandle									// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-security_descriptor
+Struct SECURITY_DESCRIPTOR
+	UChar Revision
+	UChar Sbz1
+	UShort Control											// SECURITY_DESCRIPTOR_CONTROL
+	Integer iMissingAlignment1
+	Pointer Owner											// PSID
+	Pointer Group											// PSID
+	Pointer Sacl											// ACL*
+	Pointer Dacl											// ACL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-security_quality_of_service
+Struct SECURITY_QUALITY_OF_SERVICE
+	UInteger Length
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	UChar ContextTrackingMode
+	UChar EffectiveOnly										// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-sid
+Struct SID
+	UChar Revision
+	UChar SubAuthorityCount
+	UChar[6] IdentifierAuthority							// SID_IDENTIFIER_AUTHORITY
+	UInteger[1] SubAuthority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-sid_and_attributes
+Struct SID_AND_ATTRIBUTES
+	Pointer Sid												// PSID
+	UInteger Attributes
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_groups
+Struct TOKEN_GROUPS
+	UInteger GroupCount
+	Integer iMissingAlignment1
+	SID_AND_ATTRIBUTES[1] Groups
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_privileges
+Struct TOKEN_PRIVILEGES
+	UInteger PrivilegeCount
+	LUID_AND_ATTRIBUTES[1] Privileges
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_source
+Struct TOKEN_SOURCE
+	Char[8] SourceName										// CHAR
+	LUID SourceIdentifier
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

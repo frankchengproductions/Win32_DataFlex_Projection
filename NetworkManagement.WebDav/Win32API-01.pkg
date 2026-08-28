@@ -1,0 +1,77 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davaddconnection
+External_Function DavAddConnection "DavAddConnection" NETAPI32.dll ;
+	Pointer ConnectionHandle ;	// HANDLE*
+	WString RemoteName ;	// PWSTR
+	WString UserName ;	// PWSTR
+	WString Password ;	// PWSTR
+	Pointer ClientCert ;	// UChar*
+	UInteger CertSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davdeleteconnection
+External_Function DavDeleteConnection "DavDeleteConnection" NETAPI32.dll ;
+	Pointer ConnectionHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davflushfile
+External_Function DavFlushFile "DavFlushFile" NETAPI32.dll ;
+	Pointer hFile ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davgetextendederror
+External_Function DavGetExtendedError "DavGetExtendedError" NETAPI32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer ExtError ;	// UInteger*
+	Pointer ExtErrorString ;	// PWSTR
+	Pointer cChSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davgethttpfromuncpath
+External_Function DavGetHTTPFromUNCPath "DavGetHTTPFromUNCPath" NETAPI32.dll ;
+	WString UncPath ;	// PWSTR
+	Pointer Url ;	// PWSTR
+	Pointer lpSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davgetuncfromhttppath
+External_Function DavGetUNCFromHTTPPath "DavGetUNCFromHTTPPath" NETAPI32.dll ;
+	WString Url ;	// PWSTR
+	Pointer UncPath ;	// PWSTR
+	Pointer lpSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davcancelconnectionstoserver
+External_Function DavCancelConnectionsToServer "DavCancelConnectionsToServer" davclnt.dll ;
+	WString lpName ;	// PWSTR
+	Integer fForce ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davgetthelockownerofthefile
+External_Function DavGetTheLockOwnerOfTheFile "DavGetTheLockOwnerOfTheFile" davclnt.dll ;
+	WString FileName ;	// PWSTR
+	Pointer LockOwnerName ;	// PWSTR
+	Pointer LockOwnerNameLengthInBytes ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davinvalidatecache
+External_Function DavInvalidateCache "DavInvalidateCache" davclnt.dll ;
+	WString URLName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davregisterauthcallback
+External_Function DavRegisterAuthCallback "DavRegisterAuthCallback" davclnt.dll ;
+	Pointer CallBack ;	// PFNDAVAUTHCALLBACK
+	UInteger Version ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/nf-davclnt-davunregisterauthcallback
+External_Function DavUnregisterAuthCallback "DavUnregisterAuthCallback" davclnt.dll ;
+	UInteger hCallback ;
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

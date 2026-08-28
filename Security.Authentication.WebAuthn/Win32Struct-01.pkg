@@ -1,0 +1,508 @@
+Use UI
+
+Struct CTAPCBOR_HYBRID_STORAGE_LINKED_DATA
+	UInteger dwVersion
+	UInteger cbContactId
+	Pointer pbContactId										// UChar*
+	UInteger cbLinkId
+	Integer iMissingAlignment1
+	Pointer pbLinkId										// UChar*
+	UInteger cbLinkSecret
+	Integer iMissingAlignment2
+	Pointer pbLinkSecret									// UChar*
+	UInteger cbPublicKey
+	Integer iMissingAlignment3
+	Pointer pbPublicKey										// UChar*
+	Pointer pwszAuthenticatorName							// PWSTR
+	UShort wEncodedTunnelServerDomain
+	UChar[6] cMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_assertion
+Struct WEBAUTHN_ASSERTION
+	UInteger dwVersion
+	UInteger cbAuthenticatorData
+	Pointer pbAuthenticatorData								// UChar*
+	UInteger cbSignature
+	Integer iMissingAlignment1
+	Pointer pbSignature										// UChar*
+	WEBAUTHN_CREDENTIAL Credential
+	UInteger cbUserId
+	Integer iMissingAlignment2
+	Pointer pbUserId										// UChar*
+	WEBAUTHN_EXTENSIONS Extensions
+	UInteger cbCredLargeBlob
+	Integer iMissingAlignment3
+	Pointer pbCredLargeBlob									// UChar*
+	UInteger dwCredLargeBlobStatus
+	Integer iMissingAlignment4
+	Pointer pHmacSecret										// WEBAUTHN_HMAC_SECRET_SALT*
+	UInteger dwUsedTransport
+	UInteger cbUnsignedExtensionOutputs
+	Pointer pbUnsignedExtensionOutputs						// UChar*
+	UInteger cbClientDataJSON
+	Integer iMissingAlignment5
+	Pointer pbClientDataJSON								// UChar*
+	UInteger cbAuthenticationResponseJSON
+	Integer iMissingAlignment6
+	Pointer pbAuthenticationResponseJSON					// UChar*
+End_Struct
+
+Struct WEBAUTHN_AUTHENTICATOR_DETAILS
+	UInteger dwVersion
+	UInteger cbAuthenticatorId
+	Pointer pbAuthenticatorId								// UChar*
+	Pointer pwszAuthenticatorName							// PWSTR
+	UInteger cbAuthenticatorLogo
+	Integer iMissingAlignment1
+	Pointer pbAuthenticatorLogo								// UChar*
+	Integer bLocked											// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+Struct WEBAUTHN_AUTHENTICATOR_DETAILS_LIST
+	UInteger cAuthenticatorDetails
+	Integer iMissingAlignment1
+	Pointer ppAuthenticatorDetails							// WEBAUTHN_AUTHENTICATOR_DETAILS**
+End_Struct
+
+Struct WEBAUTHN_AUTHENTICATOR_DETAILS_OPTIONS
+	UInteger dwVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_authenticator_get_assertion_options
+Struct WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS
+	UInteger dwVersion
+	UInteger dwTimeoutMilliseconds
+	WEBAUTHN_CREDENTIALS CredentialList
+	WEBAUTHN_EXTENSIONS Extensions
+	UInteger dwAuthenticatorAttachment
+	UInteger dwUserVerificationRequirement
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pwszU2fAppId									// PWSTR
+	Pointer pbU2fAppId										// BOOL*
+	Pointer pCancellationId									// Guid*
+	Pointer pAllowCredentialList							// WEBAUTHN_CREDENTIAL_LIST*
+	UInteger dwCredLargeBlobOperation
+	UInteger cbCredLargeBlob
+	Pointer pbCredLargeBlob									// UChar*
+	Pointer pHmacSecretSaltValues							// WEBAUTHN_HMAC_SECRET_SALT_VALUES*
+	Integer bBrowserInPrivateMode							// BOOL
+	Integer iMissingAlignment2
+	Pointer pLinkedDevice									// CTAPCBOR_HYBRID_STORAGE_LINKED_DATA*
+	Integer bAutoFill										// BOOL
+	UInteger cbJsonExt
+	Pointer pbJsonExt										// UChar*
+	UInteger cCredentialHints
+	Integer iMissingAlignment3
+	Pointer ppwszCredentialHints							// PWSTR*
+	Pointer pwszRemoteWebOrigin								// PWSTR
+	UInteger cbPublicKeyCredentialRequestOptionsJSON
+	Integer iMissingAlignment4
+	Pointer pbPublicKeyCredentialRequestOptionsJSON			// UChar*
+	UInteger cbAuthenticatorId
+	Integer iMissingAlignment5
+	Pointer pbAuthenticatorId								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_authenticator_make_credential_options
+Struct WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS
+	UInteger dwVersion
+	UInteger dwTimeoutMilliseconds
+	WEBAUTHN_CREDENTIALS CredentialList
+	WEBAUTHN_EXTENSIONS Extensions
+	UInteger dwAuthenticatorAttachment
+	Integer bRequireResidentKey								// BOOL
+	UInteger dwUserVerificationRequirement
+	UInteger dwAttestationConveyancePreference
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pCancellationId									// Guid*
+	Pointer pExcludeCredentialList							// WEBAUTHN_CREDENTIAL_LIST*
+	UInteger dwEnterpriseAttestation
+	UInteger dwLargeBlobSupport
+	Integer bPreferResidentKey								// BOOL
+	Integer bBrowserInPrivateMode							// BOOL
+	Integer bEnablePrf										// BOOL
+	Integer iMissingAlignment2
+	Pointer pLinkedDevice									// CTAPCBOR_HYBRID_STORAGE_LINKED_DATA*
+	UInteger cbJsonExt
+	Integer iMissingAlignment3
+	Pointer pbJsonExt										// UChar*
+	Pointer pPRFGlobalEval									// WEBAUTHN_HMAC_SECRET_SALT*
+	UInteger cCredentialHints
+	Integer iMissingAlignment4
+	Pointer ppwszCredentialHints							// PWSTR*
+	Integer bThirdPartyPayment								// BOOL
+	Integer iMissingAlignment5
+	Pointer pwszRemoteWebOrigin								// PWSTR
+	UInteger cbPublicKeyCredentialCreationOptionsJSON
+	Integer iMissingAlignment6
+	Pointer pbPublicKeyCredentialCreationOptionsJSON		// UChar*
+	UInteger cbAuthenticatorId
+	Integer iMissingAlignment7
+	Pointer pbAuthenticatorId								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_client_data
+Struct WEBAUTHN_CLIENT_DATA
+	UInteger dwVersion
+	UInteger cbClientDataJSON
+	Pointer pbClientDataJSON								// UChar*
+	Pointer pwszHashAlgId									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_cose_credential_parameter
+Struct WEBAUTHN_COSE_CREDENTIAL_PARAMETER
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pwszCredentialType								// PWSTR
+	Integer lAlg
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_cose_credential_parameters
+Struct WEBAUTHN_COSE_CREDENTIAL_PARAMETERS
+	UInteger cCredentialParameters
+	Integer iMissingAlignment1
+	Pointer pCredentialParameters							// WEBAUTHN_COSE_CREDENTIAL_PARAMETER*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credential
+Struct WEBAUTHN_CREDENTIAL
+	UInteger dwVersion
+	UInteger cbId
+	Pointer pbId											// UChar*
+	Pointer pwszCredentialType								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credentials
+Struct WEBAUTHN_CREDENTIALS
+	UInteger cCredentials
+	Integer iMissingAlignment1
+	Pointer pCredentials									// WEBAUTHN_CREDENTIAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credential_attestation
+Struct WEBAUTHN_CREDENTIAL_ATTESTATION
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pwszFormatType									// PWSTR
+	UInteger cbAuthenticatorData
+	Integer iMissingAlignment2
+	Pointer pbAuthenticatorData								// UChar*
+	UInteger cbAttestation
+	Integer iMissingAlignment3
+	Pointer pbAttestation									// UChar*
+	UInteger dwAttestationDecodeType
+	Integer iMissingAlignment4
+	Pointer pvAttestationDecode								// Pointer*
+	UInteger cbAttestationObject
+	Integer iMissingAlignment5
+	Pointer pbAttestationObject								// UChar*
+	UInteger cbCredentialId
+	Integer iMissingAlignment6
+	Pointer pbCredentialId									// UChar*
+	WEBAUTHN_EXTENSIONS Extensions
+	UInteger dwUsedTransport
+	Integer bEpAtt											// BOOL
+	Integer bLargeBlobSupported								// BOOL
+	Integer bResidentKey									// BOOL
+	Integer bPrfEnabled										// BOOL
+	UInteger cbUnsignedExtensionOutputs
+	Pointer pbUnsignedExtensionOutputs						// UChar*
+	Pointer pHmacSecret										// WEBAUTHN_HMAC_SECRET_SALT*
+	Integer bThirdPartyPayment								// BOOL
+	UInteger dwTransports
+	UInteger cbClientDataJSON
+	Integer iMissingAlignment7
+	Pointer pbClientDataJSON								// UChar*
+	UInteger cbRegistrationResponseJSON
+	Integer iMissingAlignment8
+	Pointer pbRegistrationResponseJSON						// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credential_details
+Struct WEBAUTHN_CREDENTIAL_DETAILS
+	UInteger dwVersion
+	UInteger cbCredentialID
+	Pointer pbCredentialID									// UChar*
+	Pointer pRpInformation									// WEBAUTHN_RP_ENTITY_INFORMATION*
+	Pointer pUserInformation								// WEBAUTHN_USER_ENTITY_INFORMATION*
+	Integer bRemovable										// BOOL
+	Integer bBackedUp										// BOOL
+	Pointer pwszAuthenticatorName							// PWSTR
+	UInteger cbAuthenticatorLogo
+	Integer iMissingAlignment1
+	Pointer pbAuthenticatorLogo								// UChar*
+	Integer bThirdPartyPayment								// BOOL
+	UInteger dwTransports
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credential_details_list
+Struct WEBAUTHN_CREDENTIAL_DETAILS_LIST
+	UInteger cCredentialDetails
+	Integer iMissingAlignment1
+	Pointer ppCredentialDetails								// WEBAUTHN_CREDENTIAL_DETAILS**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credential_ex
+Struct WEBAUTHN_CREDENTIAL_EX
+	UInteger dwVersion
+	UInteger cbId
+	Pointer pbId											// UChar*
+	Pointer pwszCredentialType								// PWSTR
+	UInteger dwTransports
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_credential_list
+Struct WEBAUTHN_CREDENTIAL_LIST
+	UInteger cCredentials
+	Integer iMissingAlignment1
+	Pointer ppCredentials									// WEBAUTHN_CREDENTIAL_EX**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_cred_with_hmac_secret_salt
+Struct WEBAUTHN_CRED_WITH_HMAC_SECRET_SALT
+	UInteger cbCredID
+	Integer iMissingAlignment1
+	Pointer pbCredID										// UChar*
+	Pointer pHmacSecretSalt									// WEBAUTHN_HMAC_SECRET_SALT*
+End_Struct
+
+Struct WEBAUTHN_CTAPCBOR_AUTHENTICATOR_OPTIONS
+	UInteger dwVersion
+	Integer lUp
+	Integer lUv
+	Integer lRequireResidentKey
+End_Struct
+
+Struct WEBAUTHN_CTAPCBOR_ECC_PUBLIC_KEY
+	UInteger dwVersion
+	Integer lKty
+	Integer lAlg
+	Integer lCrv
+	UInteger cbX
+	Integer iMissingAlignment1
+	Pointer pbX												// UChar*
+	UInteger cbY
+	Integer iMissingAlignment2
+	Pointer pbY												// UChar*
+End_Struct
+
+Struct WEBAUTHN_CTAPCBOR_GET_ASSERTION_REQUEST
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pwszRpId										// PWSTR
+	UInteger cbRpId
+	Integer iMissingAlignment2
+	Pointer pbRpId											// UChar*
+	UInteger cbClientDataHash
+	Integer iMissingAlignment3
+	Pointer pbClientDataHash								// UChar*
+	WEBAUTHN_CREDENTIAL_LIST CredentialList
+	UInteger cbCborExtensionsMap
+	Integer iMissingAlignment4
+	Pointer pbCborExtensionsMap								// UChar*
+	Pointer pAuthenticatorOptions							// WEBAUTHN_CTAPCBOR_AUTHENTICATOR_OPTIONS*
+	Integer fEmptyPinAuth									// BOOL
+	UInteger cbPinAuth
+	Pointer pbPinAuth										// UChar*
+	Pointer pHmacSaltExtension								// WEBAUTHN_CTAPCBOR_HMAC_SALT_EXTENSION*
+	UInteger cbHmacSecretSaltValues
+	Integer iMissingAlignment5
+	Pointer pbHmacSecretSaltValues							// UChar*
+	UInteger dwPinProtocol
+	Integer lCredBlobExt
+	Integer lLargeBlobKeyExt
+	UInteger dwCredLargeBlobOperation
+	UInteger cbCredLargeBlobCompressed
+	Integer iMissingAlignment6
+	Pointer pbCredLargeBlobCompressed						// UChar*
+	UInteger dwCredLargeBlobOriginalSize
+	UInteger cbJsonExt
+	Pointer pbJsonExt										// UChar*
+End_Struct
+
+Struct WEBAUTHN_CTAPCBOR_GET_ASSERTION_RESPONSE
+	WEBAUTHN_ASSERTION WebAuthNAssertion
+	Pointer pUserInformation								// WEBAUTHN_USER_ENTITY_INFORMATION*
+	UInteger dwNumberOfCredentials
+	Integer lUserSelected
+	UInteger cbLargeBlobKey
+	Integer iMissingAlignment1
+	Pointer pbLargeBlobKey									// UChar*
+	UInteger cbUnsignedExtensionOutputs
+	Integer iMissingAlignment2
+	Pointer pbUnsignedExtensionOutputs						// UChar*
+End_Struct
+
+Struct WEBAUTHN_CTAPCBOR_HMAC_SALT_EXTENSION
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pKeyAgreement									// WEBAUTHN_CTAPCBOR_ECC_PUBLIC_KEY*
+	UInteger cbEncryptedSalt
+	Integer iMissingAlignment2
+	Pointer pbEncryptedSalt									// UChar*
+	UInteger cbSaltAuth
+	Integer iMissingAlignment3
+	Pointer pbSaltAuth										// UChar*
+End_Struct
+
+Struct WEBAUTHN_CTAPCBOR_MAKE_CREDENTIAL_REQUEST
+	UInteger dwVersion
+	UInteger cbRpId
+	Pointer pbRpId											// UChar*
+	UInteger cbClientDataHash
+	Integer iMissingAlignment1
+	Pointer pbClientDataHash								// UChar*
+	Pointer pRpInformation									// WEBAUTHN_RP_ENTITY_INFORMATION*
+	Pointer pUserInformation								// WEBAUTHN_USER_ENTITY_INFORMATION*
+	WEBAUTHN_COSE_CREDENTIAL_PARAMETERS WebAuthNCredentialParameters
+	WEBAUTHN_CREDENTIAL_LIST CredentialList
+	UInteger cbCborExtensionsMap
+	Integer iMissingAlignment2
+	Pointer pbCborExtensionsMap								// UChar*
+	Pointer pAuthenticatorOptions							// WEBAUTHN_CTAPCBOR_AUTHENTICATOR_OPTIONS*
+	Integer fEmptyPinAuth									// BOOL
+	UInteger cbPinAuth
+	Pointer pbPinAuth										// UChar*
+	Integer lHmacSecretExt
+	Integer iMissingAlignment3
+	Pointer pHmacSecretMcExtension							// WEBAUTHN_CTAPCBOR_HMAC_SALT_EXTENSION*
+	Integer lPrfExt
+	UInteger cbHmacSecretSaltValues
+	Pointer pbHmacSecretSaltValues							// UChar*
+	UInteger dwCredProtect
+	UInteger dwPinProtocol
+	UInteger dwEnterpriseAttestation
+	UInteger cbCredBlobExt
+	Pointer pbCredBlobExt									// UChar*
+	Integer lLargeBlobKeyExt
+	UInteger dwLargeBlobSupport
+	Integer lMinPinLengthExt
+	UInteger cbJsonExt
+	Pointer pbJsonExt										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_extension
+Struct WEBAUTHN_EXTENSION
+	Pointer pwszExtensionIdentifier							// PWSTR
+	UInteger cbExtension
+	Integer iMissingAlignment1
+	Pointer pvExtension										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_extensions
+Struct WEBAUTHN_EXTENSIONS
+	UInteger cExtensions
+	Integer iMissingAlignment1
+	Pointer pExtensions										// WEBAUTHN_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_get_credentials_options
+Struct WEBAUTHN_GET_CREDENTIALS_OPTIONS
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pwszRpId										// PWSTR
+	Integer bBrowserInPrivateMode							// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_hmac_secret_salt
+Struct WEBAUTHN_HMAC_SECRET_SALT
+	UInteger cbFirst
+	Integer iMissingAlignment1
+	Pointer pbFirst											// UChar*
+	UInteger cbSecond
+	Integer iMissingAlignment2
+	Pointer pbSecond										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_hmac_secret_salt_values
+Struct WEBAUTHN_HMAC_SECRET_SALT_VALUES
+	Pointer pGlobalHmacSalt									// WEBAUTHN_HMAC_SECRET_SALT*
+	UInteger cCredWithHmacSecretSaltList
+	Integer iMissingAlignment1
+	Pointer pCredWithHmacSecretSaltList						// WEBAUTHN_CRED_WITH_HMAC_SECRET_SALT*
+End_Struct
+
+Struct WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS
+	Pointer pwszAuthenticatorName							// PWSTR
+	Pointer rclsid											// Guid*
+	Pointer pwszPluginRpId									// PWSTR
+	Pointer pwszLightThemeLogoSvg							// PWSTR
+	Pointer pwszDarkThemeLogoSvg							// PWSTR
+	UInteger cbAuthenticatorInfo
+	Integer iMissingAlignment1
+	Pointer pbAuthenticatorInfo								// UChar*
+	UInteger cSupportedRpIds
+	Integer iMissingAlignment2
+	Pointer ppwszSupportedRpIds								// PWSTR*
+End_Struct
+
+Struct WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_RESPONSE
+	UInteger cbOpSignPubKey
+	Integer iMissingAlignment1
+	Pointer pbOpSignPubKey									// UChar*
+End_Struct
+
+Struct WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS
+	UInteger cbCredentialId
+	Integer iMissingAlignment1
+	Pointer pbCredentialId									// UChar*
+	Pointer pwszRpId										// PWSTR
+	Pointer pwszRpName										// PWSTR
+	UInteger cbUserId
+	Integer iMissingAlignment2
+	Pointer pbUserId										// UChar*
+	Pointer pwszUserName									// PWSTR
+	Pointer pwszUserDisplayName								// PWSTR
+End_Struct
+
+Struct WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS
+	Pointer pwszAuthenticatorName							// PWSTR
+	Pointer rclsid											// Guid*
+	Pointer rclsidNew										// Guid*
+	Pointer pwszLightThemeLogoSvg							// PWSTR
+	Pointer pwszDarkThemeLogoSvg							// PWSTR
+	UInteger cbAuthenticatorInfo
+	Integer iMissingAlignment1
+	Pointer pbAuthenticatorInfo								// UChar*
+	UInteger cSupportedRpIds
+	Integer iMissingAlignment2
+	Pointer ppwszSupportedRpIds								// PWSTR*
+End_Struct
+
+Struct WEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST
+	Pointer hwnd											// HWND
+	Pointer rguidTransactionId								// Guid*
+	Pointer pwszUsername									// PWSTR
+	Pointer pwszDisplayHint									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_rp_entity_information
+Struct WEBAUTHN_RP_ENTITY_INFORMATION
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pwszId											// PWSTR
+	Pointer pwszName										// PWSTR
+	Pointer pwszIcon										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/ns-webauthn-webauthn_user_entity_information
+Struct WEBAUTHN_USER_ENTITY_INFORMATION
+	UInteger dwVersion
+	UInteger cbId
+	Pointer pbId											// UChar*
+	Pointer pwszName										// PWSTR
+	Pointer pwszIcon										// PWSTR
+	Pointer pwszDisplayName									// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

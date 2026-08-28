@@ -1,0 +1,242 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-broadcastsystemmessagea
+External_Function BroadcastSystemMessageA "BroadcastSystemMessageA" USER32.dll ;
+	UInteger flags ;
+	Pointer lpInfo ;	// UInteger*
+	UInteger Msg ;
+	ULongPtr wParam ;	// WPARAM
+	LongPtr lParam ;	// LPARAM
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-broadcastsystemmessageexa
+External_Function BroadcastSystemMessageExA "BroadcastSystemMessageExA" USER32.dll ;
+	UInteger flags ;	// BROADCAST_SYSTEM_MESSAGE_FLAGS
+	Pointer lpInfo ;	// BROADCAST_SYSTEM_MESSAGE_INFO*
+	UInteger Msg ;
+	ULongPtr wParam ;	// WPARAM
+	LongPtr lParam ;	// LPARAM
+	Pointer pbsmInfo ;	// BSMINFO*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-broadcastsystemmessageexw
+External_Function BroadcastSystemMessageExW "BroadcastSystemMessageExW" USER32.dll ;
+	UInteger flags ;	// BROADCAST_SYSTEM_MESSAGE_FLAGS
+	Pointer lpInfo ;	// BROADCAST_SYSTEM_MESSAGE_INFO*
+	UInteger Msg ;
+	ULongPtr wParam ;	// WPARAM
+	LongPtr lParam ;	// LPARAM
+	Pointer pbsmInfo ;	// BSMINFO*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-broadcastsystemmessagew
+External_Function BroadcastSystemMessageW "BroadcastSystemMessageW" USER32.dll ;
+	UInteger flags ;	// BROADCAST_SYSTEM_MESSAGE_FLAGS
+	Pointer lpInfo ;	// BROADCAST_SYSTEM_MESSAGE_INFO*
+	UInteger Msg ;
+	ULongPtr wParam ;	// WPARAM
+	LongPtr lParam ;	// LPARAM
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-closedesktop
+External_Function CloseDesktop "CloseDesktop" USER32.dll ;
+	Pointer hDesktop ;	// HDESK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-closewindowstation
+External_Function CloseWindowStation "CloseWindowStation" USER32.dll ;
+	Pointer hWinSta ;	// HWINSTA
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createdesktopa
+External_Function CreateDesktopA "CreateDesktopA" USER32.dll ;
+	String lpszDesktop ;	// PSTR
+	String lpszDevice ;	// PSTR
+	Pointer pDevmode ;	// DEVMODEA*
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	UInteger dwDesiredAccess ;
+	Pointer lpsa ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createdesktopexa
+External_Function CreateDesktopExA "CreateDesktopExA" USER32.dll ;
+	String lpszDesktop ;	// PSTR
+	String lpszDevice ;	// PSTR
+	Pointer pDevmode ;	// DEVMODEA*
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	UInteger dwDesiredAccess ;
+	Pointer lpsa ;	// SECURITY_ATTRIBUTES*
+	UInteger ulHeapSize ;
+	Pointer pvoid ;	// Pointer*
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createdesktopexw
+External_Function CreateDesktopExW "CreateDesktopExW" USER32.dll ;
+	WString lpszDesktop ;	// PWSTR
+	WString lpszDevice ;	// PWSTR
+	Pointer pDevmode ;	// DEVMODEW*
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	UInteger dwDesiredAccess ;
+	Pointer lpsa ;	// SECURITY_ATTRIBUTES*
+	UInteger ulHeapSize ;
+	Pointer pvoid ;	// Pointer*
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createdesktopw
+External_Function CreateDesktopW "CreateDesktopW" USER32.dll ;
+	WString lpszDesktop ;	// PWSTR
+	WString lpszDevice ;	// PWSTR
+	Pointer pDevmode ;	// DEVMODEW*
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	UInteger dwDesiredAccess ;
+	Pointer lpsa ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createwindowstationa
+External_Function CreateWindowStationA "CreateWindowStationA" USER32.dll ;
+	String lpwinsta ;	// PSTR
+	UInteger dwFlags ;
+	UInteger dwDesiredAccess ;
+	Pointer lpsa ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HWINSTA
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-createwindowstationw
+External_Function CreateWindowStationW "CreateWindowStationW" USER32.dll ;
+	WString lpwinsta ;	// PWSTR
+	UInteger dwFlags ;
+	UInteger dwDesiredAccess ;
+	Pointer lpsa ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HWINSTA
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdesktopwindows
+External_Function EnumDesktopWindows "EnumDesktopWindows" USER32.dll ;
+	Pointer hDesktop ;	// HDESK
+	Pointer lpfn ;	// WNDENUMPROC
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdesktopsa
+External_Function EnumDesktopsA "EnumDesktopsA" USER32.dll ;
+	Pointer hwinsta ;	// HWINSTA
+	Pointer lpEnumFunc ;	// DESKTOPENUMPROCA
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumdesktopsw
+External_Function EnumDesktopsW "EnumDesktopsW" USER32.dll ;
+	Pointer hwinsta ;	// HWINSTA
+	Pointer lpEnumFunc ;	// DESKTOPENUMPROCW
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumwindowstationsa
+External_Function EnumWindowStationsA "EnumWindowStationsA" USER32.dll ;
+	Pointer lpEnumFunc ;	// WINSTAENUMPROCA
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumwindowstationsw
+External_Function EnumWindowStationsW "EnumWindowStationsW" USER32.dll ;
+	Pointer lpEnumFunc ;	// WINSTAENUMPROCW
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getprocesswindowstation
+External_Function GetProcessWindowStation "GetProcessWindowStation" USER32.dll ;
+	Returns Pointer	// HWINSTA
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getthreaddesktop
+External_Function GetThreadDesktop "GetThreadDesktop" USER32.dll ;
+	UInteger dwThreadId ;
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getuserobjectinformationa
+External_Function GetUserObjectInformationA "GetUserObjectInformationA" USER32.dll ;
+	Pointer hObj ;	// HANDLE
+	Integer nIndex ;	// USER_OBJECT_INFORMATION_INDEX
+	Pointer pvInfo ;	// Pointer*
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getuserobjectinformationw
+External_Function GetUserObjectInformationW "GetUserObjectInformationW" USER32.dll ;
+	Pointer hObj ;	// HANDLE
+	Integer nIndex ;	// USER_OBJECT_INFORMATION_INDEX
+	Pointer pvInfo ;	// Pointer*
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-opendesktopa
+External_Function OpenDesktopA "OpenDesktopA" USER32.dll ;
+	String lpszDesktop ;	// PSTR
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	Integer fInherit ;	// BOOL
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-opendesktopw
+External_Function OpenDesktopW "OpenDesktopW" USER32.dll ;
+	WString lpszDesktop ;	// PWSTR
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	Integer fInherit ;	// BOOL
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-openinputdesktop
+External_Function OpenInputDesktop "OpenInputDesktop" USER32.dll ;
+	UInteger dwFlags ;	// DESKTOP_CONTROL_FLAGS
+	Integer fInherit ;	// BOOL
+	UInteger dwDesiredAccess ;	// DESKTOP_ACCESS_FLAGS
+	Returns Pointer	// HDESK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-openwindowstationa
+External_Function OpenWindowStationA "OpenWindowStationA" USER32.dll ;
+	String lpszWinSta ;	// PSTR
+	Integer fInherit ;	// BOOL
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// HWINSTA
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-openwindowstationw
+External_Function OpenWindowStationW "OpenWindowStationW" USER32.dll ;
+	WString lpszWinSta ;	// PWSTR
+	Integer fInherit ;	// BOOL
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// HWINSTA
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setprocesswindowstation
+External_Function SetProcessWindowStation "SetProcessWindowStation" USER32.dll ;
+	Pointer hWinSta ;	// HWINSTA
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setthreaddesktop
+External_Function SetThreadDesktop "SetThreadDesktop" USER32.dll ;
+	Pointer hDesktop ;	// HDESK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setuserobjectinformationa
+External_Function SetUserObjectInformationA "SetUserObjectInformationA" USER32.dll ;
+	Pointer hObj ;	// HANDLE
+	Integer nIndex ;
+	Pointer pvInfo ;	// Pointer*
+	UInteger nLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setuserobjectinformationw
+External_Function SetUserObjectInformationW "SetUserObjectInformationW" USER32.dll ;
+	Pointer hObj ;	// HANDLE
+	Integer nIndex ;
+	Pointer pvInfo ;	// Pointer*
+	UInteger nLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-switchdesktop
+External_Function SwitchDesktop "SwitchDesktop" USER32.dll ;
+	Pointer hDesktop ;	// HDESK
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

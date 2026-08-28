@@ -1,0 +1,485 @@
+Use UI
+
+External_Function ActivatePackageVirtualizationContext "ActivatePackageVirtualizationContext" KERNEL32.dll ;
+	Pointer context ;	// PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE
+	Pointer cookie ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetclrcompat
+External_Function AppPolicyGetClrCompat "AppPolicyGetClrCompat" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyClrCompat*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetcreatefileaccess
+External_Function AppPolicyGetCreateFileAccess "AppPolicyGetCreateFileAccess" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyCreateFileAccess*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetlifecyclemanagement
+External_Function AppPolicyGetLifecycleManagement "AppPolicyGetLifecycleManagement" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyLifecycleManagement*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetmediafoundationcodecloading
+External_Function AppPolicyGetMediaFoundationCodecLoading "AppPolicyGetMediaFoundationCodecLoading" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyMediaFoundationCodecLoading*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetprocessterminationmethod
+External_Function AppPolicyGetProcessTerminationMethod "AppPolicyGetProcessTerminationMethod" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyProcessTerminationMethod*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetshowdeveloperdiagnostic
+External_Function AppPolicyGetShowDeveloperDiagnostic "AppPolicyGetShowDeveloperDiagnostic" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyShowDeveloperDiagnostic*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetthreadinitializationtype
+External_Function AppPolicyGetThreadInitializationType "AppPolicyGetThreadInitializationType" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyThreadInitializationType*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-apppolicygetwindowingmodel
+External_Function AppPolicyGetWindowingModel "AppPolicyGetWindowingModel" KERNEL32.dll ;
+	Pointer processToken ;	// HANDLE
+	Pointer policy ;	// AppPolicyWindowingModel*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function CheckIsMSIXPackage "CheckIsMSIXPackage" KERNEL32.dll ;
+	WString packageFullName ;	// PWSTR
+	Pointer isMSIXPackage ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-closepackageinfo
+External_Function ClosePackageInfo "ClosePackageInfo" KERNEL32.dll ;
+	Pointer packageInfoReference ;	// _PACKAGE_INFO_REFERENCE*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function CreatePackageVirtualizationContext "CreatePackageVirtualizationContext" KERNEL32.dll ;
+	WString packageFamilyName ;	// PWSTR
+	Pointer context ;	// PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function DeactivatePackageVirtualizationContext "DeactivatePackageVirtualizationContext" KERNEL32.dll ;
+	ULongPtr cookie ;
+	Returns Pointer
+
+External_Function DuplicatePackageVirtualizationContext "DuplicatePackageVirtualizationContext" KERNEL32.dll ;
+	Pointer sourceContext ;	// PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE
+	Pointer destContext ;	// PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-findpackagesbypackagefamily
+External_Function FindPackagesByPackageFamily "FindPackagesByPackageFamily" KERNEL32.dll ;
+	WString packageFamilyName ;	// PWSTR
+	UInteger packageFilters ;
+	Pointer count ;	// UInteger*
+	Pointer packageFullNames ;	// PWSTR*
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// PWSTR
+	Pointer packageProperties ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-formatapplicationusermodelid
+External_Function FormatApplicationUserModelId "FormatApplicationUserModelId" KERNEL32.dll ;
+	WString packageFamilyName ;	// PWSTR
+	WString packageRelativeApplicationId ;	// PWSTR
+	Pointer applicationUserModelIdLength ;	// UInteger*
+	Pointer applicationUserModelId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getapplicationusermodelid
+External_Function GetApplicationUserModelId "GetApplicationUserModelId" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer applicationUserModelIdLength ;	// UInteger*
+	Pointer applicationUserModelId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentapplicationusermodelid
+External_Function GetCurrentApplicationUserModelId "GetCurrentApplicationUserModelId" KERNEL32.dll ;
+	Pointer applicationUserModelIdLength ;	// UInteger*
+	Pointer applicationUserModelId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefamilyname
+External_Function GetCurrentPackageFamilyName "GetCurrentPackageFamilyName" KERNEL32.dll ;
+	Pointer packageFamilyNameLength ;	// UInteger*
+	Pointer packageFamilyName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagefullname
+External_Function GetCurrentPackageFullName "GetCurrentPackageFullName" KERNEL32.dll ;
+	Pointer packageFullNameLength ;	// UInteger*
+	Pointer packageFullName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackageid
+External_Function GetCurrentPackageId "GetCurrentPackageId" KERNEL32.dll ;
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackageinfo
+External_Function GetCurrentPackageInfo "GetCurrentPackageInfo" KERNEL32.dll ;
+	UInteger flags ;
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Pointer count ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/appxpkg/appmodel/nf-appmodel-getcurrentpackageinfo3
+External_Function GetCurrentPackageInfo3 "GetCurrentPackageInfo3" KERNEL32.dll ;
+	UInteger flags ;
+	Integer packageInfoType ;	// PackageInfo3Type
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// Pointer*
+	Pointer count ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagepath
+External_Function GetCurrentPackagePath "GetCurrentPackagePath" KERNEL32.dll ;
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+External_Function GetCurrentPackageVirtualizationContext "GetCurrentPackageVirtualizationContext" KERNEL32.dll ;
+	Returns Pointer	// PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackageapplicationids
+External_Function GetPackageApplicationIds "GetPackageApplicationIds" KERNEL32.dll ;
+	Pointer packageInfoReference ;	// _PACKAGE_INFO_REFERENCE*
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Pointer count ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagefamilyname
+External_Function GetPackageFamilyName "GetPackageFamilyName" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer packageFamilyNameLength ;	// UInteger*
+	Pointer packageFamilyName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagefullname
+External_Function GetPackageFullName "GetPackageFullName" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer packageFullNameLength ;	// UInteger*
+	Pointer packageFullName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackageid
+External_Function GetPackageId "GetPackageId" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackageinfo
+External_Function GetPackageInfo "GetPackageInfo" KERNEL32.dll ;
+	Pointer packageInfoReference ;	// _PACKAGE_INFO_REFERENCE*
+	UInteger flags ;
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Pointer count ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagepath
+External_Function GetPackagePath "GetPackagePath" KERNEL32.dll ;
+	Pointer packageId ;	// PACKAGE_ID*
+	UInteger reserved ;
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagepathbyfullname
+External_Function GetPackagePathByFullName "GetPackagePathByFullName" KERNEL32.dll ;
+	WString packageFullName ;	// PWSTR
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagesbypackagefamily
+External_Function GetPackagesByPackageFamily "GetPackagesByPackageFamily" KERNEL32.dll ;
+	WString packageFamilyName ;	// PWSTR
+	Pointer count ;	// UInteger*
+	Pointer packageFullNames ;	// PWSTR*
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+External_Function GetProcessesInVirtualizationContext "GetProcessesInVirtualizationContext" KERNEL32.dll ;
+	WString packageFamilyName ;	// PWSTR
+	Pointer count ;	// UInteger*
+	Pointer processes ;	// HANDLE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getstagedpackagepathbyfullname
+External_Function GetStagedPackagePathByFullName "GetStagedPackagePathByFullName" KERNEL32.dll ;
+	WString packageFullName ;	// PWSTR
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-openpackageinfobyfullname
+External_Function OpenPackageInfoByFullName "OpenPackageInfoByFullName" KERNEL32.dll ;
+	WString packageFullName ;	// PWSTR
+	UInteger reserved ;
+	Pointer packageInfoReference ;	// _PACKAGE_INFO_REFERENCE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-packagefamilynamefromfullname
+External_Function PackageFamilyNameFromFullName "PackageFamilyNameFromFullName" KERNEL32.dll ;
+	WString packageFullName ;	// PWSTR
+	Pointer packageFamilyNameLength ;	// UInteger*
+	Pointer packageFamilyName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-packagefamilynamefromid
+External_Function PackageFamilyNameFromId "PackageFamilyNameFromId" KERNEL32.dll ;
+	Pointer packageId ;	// PACKAGE_ID*
+	Pointer packageFamilyNameLength ;	// UInteger*
+	Pointer packageFamilyName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-packagefullnamefromid
+External_Function PackageFullNameFromId "PackageFullNameFromId" KERNEL32.dll ;
+	Pointer packageId ;	// PACKAGE_ID*
+	Pointer packageFullNameLength ;	// UInteger*
+	Pointer packageFullName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-packageidfromfullname
+External_Function PackageIdFromFullName "PackageIdFromFullName" KERNEL32.dll ;
+	WString packageFullName ;	// PWSTR
+	UInteger flags ;
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-packagenameandpublisheridfromfamilyname
+External_Function PackageNameAndPublisherIdFromFamilyName "PackageNameAndPublisherIdFromFamilyName" KERNEL32.dll ;
+	WString packageFamilyName ;	// PWSTR
+	Pointer packageNameLength ;	// UInteger*
+	Pointer packageName ;	// PWSTR
+	Pointer packagePublisherIdLength ;	// UInteger*
+	Pointer packagePublisherId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-parseapplicationusermodelid
+External_Function ParseApplicationUserModelId "ParseApplicationUserModelId" KERNEL32.dll ;
+	WString applicationUserModelId ;	// PWSTR
+	Pointer packageFamilyNameLength ;	// UInteger*
+	Pointer packageFamilyName ;	// PWSTR
+	Pointer packageRelativeApplicationIdLength ;	// UInteger*
+	Pointer packageRelativeApplicationId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+External_Function ReleasePackageVirtualizationContext "ReleasePackageVirtualizationContext" KERNEL32.dll ;
+	Pointer context ;	// PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getapplicationusermodelidfromtoken
+External_Function GetApplicationUserModelIdFromToken "GetApplicationUserModelIdFromToken" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	Pointer token ;	// HANDLE
+	Pointer applicationUserModelIdLength ;	// UInteger*
+	Pointer applicationUserModelId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagefamilynamefromtoken
+External_Function GetPackageFamilyNameFromToken "GetPackageFamilyNameFromToken" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	Pointer token ;	// HANDLE
+	Pointer packageFamilyNameLength ;	// UInteger*
+	Pointer packageFamilyName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagefullnamefromtoken
+External_Function GetPackageFullNameFromToken "GetPackageFullNameFromToken" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	Pointer token ;	// HANDLE
+	Pointer packageFullNameLength ;	// UInteger*
+	Pointer packageFullName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getstagedpackageorigin
+External_Function GetStagedPackageOrigin "GetStagedPackageOrigin" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	WString packageFullName ;	// PWSTR
+	Pointer origin ;	// PackageOrigin*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function OpenPackageInfoByFullNameForUser "OpenPackageInfoByFullNameForUser" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	Pointer userSid ;	// PSID
+	WString packageFullName ;	// PWSTR
+	UInteger reserved ;
+	Pointer packageInfoReference ;	// _PACKAGE_INFO_REFERENCE**
+	Returns UInteger	// WIN32_ERROR
+
+External_Function VerifyApplicationUserModelId "VerifyApplicationUserModelId" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	WString applicationUserModelId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+External_Function VerifyPackageFamilyName "VerifyPackageFamilyName" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	WString packageFamilyName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+External_Function VerifyPackageFullName "VerifyPackageFullName" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	WString packageFullName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+External_Function VerifyPackageId "VerifyPackageId" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	Pointer packageId ;	// PACKAGE_ID*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function VerifyPackageRelativeApplicationId "VerifyPackageRelativeApplicationId" api-ms-win-appmodel-runtime-l1-1-1.dll ;
+	WString packageRelativeApplicationId ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackageinfo2
+External_Function GetCurrentPackageInfo2 "GetCurrentPackageInfo2" api-ms-win-appmodel-runtime-l1-1-3.dll ;
+	UInteger flags ;
+	Integer packagePathType ;	// PackagePathType
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Pointer count ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getcurrentpackagepath2
+External_Function GetCurrentPackagePath2 "GetCurrentPackagePath2" api-ms-win-appmodel-runtime-l1-1-3.dll ;
+	Integer packagePathType ;	// PackagePathType
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackageinfo2
+External_Function GetPackageInfo2 "GetPackageInfo2" api-ms-win-appmodel-runtime-l1-1-3.dll ;
+	Pointer packageInfoReference ;	// _PACKAGE_INFO_REFERENCE*
+	UInteger flags ;
+	Integer packagePathType ;	// PackagePathType
+	Pointer bufferLength ;	// UInteger*
+	Pointer buffer ;	// UChar*
+	Pointer count ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getpackagepathbyfullname2
+External_Function GetPackagePathByFullName2 "GetPackagePathByFullName2" api-ms-win-appmodel-runtime-l1-1-3.dll ;
+	WString packageFullName ;	// PWSTR
+	Integer packagePathType ;	// PackagePathType
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getstagedpackagepathbyfullname2
+External_Function GetStagedPackagePathByFullName2 "GetStagedPackagePathByFullName2" api-ms-win-appmodel-runtime-l1-1-3.dll ;
+	WString packageFullName ;	// PWSTR
+	Integer packagePathType ;	// PackagePathType
+	Pointer pathLength ;	// UInteger*
+	Pointer path ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-addpackagedependency
+External_Function AddPackageDependency "AddPackageDependency" KERNELBASE.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Integer rank ;
+	Integer options ;	// AddPackageDependencyOptions
+	Pointer packageDependencyContext ;	// PACKAGEDEPENDENCY_CONTEXT*
+	Pointer packageFullName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-deletepackagedependency
+External_Function DeletePackageDependency "DeletePackageDependency" KERNELBASE.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getidforpackagedependencycontext
+External_Function GetIdForPackageDependencyContext "GetIdForPackageDependencyContext" KERNELBASE.dll ;
+	Pointer packageDependencyContext ;	// PACKAGEDEPENDENCY_CONTEXT
+	Pointer packageDependencyId ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-getresolvedpackagefullnameforpackagedependency
+External_Function GetResolvedPackageFullNameForPackageDependency "GetResolvedPackageFullNameForPackageDependency" KERNELBASE.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Pointer packageFullName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-removepackagedependency
+External_Function RemovePackageDependency "RemovePackageDependency" KERNELBASE.dll ;
+	Pointer packageDependencyContext ;	// PACKAGEDEPENDENCY_CONTEXT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/appmodel/nf-appmodel-trycreatepackagedependency
+External_Function TryCreatePackageDependency "TryCreatePackageDependency" KERNELBASE.dll ;
+	Pointer user ;	// PSID
+	WString packageFamilyName ;	// PWSTR
+	PACKAGE_VERSION minVersion ;
+	Integer packageDependencyProcessorArchitectures ;	// PackageDependencyProcessorArchitectures
+	Integer lifetimeKind ;	// PackageDependencyLifetimeKind
+	WString lifetimeArtifact ;	// PWSTR
+	Integer options ;	// CreatePackageDependencyOptions
+	Pointer packageDependencyId ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function AddPackageDependency2 "AddPackageDependency2" api-ms-win-appmodel-runtime-l1-1-7.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Integer rank ;
+	Integer options ;	// AddPackageDependencyOptions2
+	Pointer packageDependencyContext ;	// PACKAGEDEPENDENCY_CONTEXT*
+	Pointer packageFullName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function FindPackageDependency "FindPackageDependency" api-ms-win-appmodel-runtime-l1-1-7.dll ;
+	Pointer findPackageDependencyCriteria ;	// FindPackageDependencyCriteria*
+	Pointer packageDependencyIdsCount ;	// UInteger*
+	Pointer packageDependencyIds ;	// PWSTR**
+	Returns Integer	// HRESULT
+
+External_Function GetPackageDependencyInformation "GetPackageDependencyInformation" api-ms-win-appmodel-runtime-l1-1-7.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Pointer user ;	// PSID*
+	Pointer packageFamilyName ;	// PWSTR*
+	Pointer minVersion ;	// PACKAGE_VERSION*
+	Pointer packageDependencyProcessorArchitectures ;	// PackageDependencyProcessorArchitectures*
+	Pointer lifetimeKind ;	// PackageDependencyLifetimeKind*
+	Pointer lifetimeArtifact ;	// PWSTR*
+	Pointer options ;	// CreatePackageDependencyOptions*
+	Pointer lifetimeExpiration ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+External_Function GetProcessesUsingPackageDependency "GetProcessesUsingPackageDependency" api-ms-win-appmodel-runtime-l1-1-7.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Pointer user ;	// PSID
+	Integer scopeIsSystem ;	// BOOL
+	Pointer processIdsCount ;	// UInteger*
+	Pointer processIds ;	// UInteger**
+	Returns Integer	// HRESULT
+
+External_Function GetResolvedPackageFullNameForPackageDependency2 "GetResolvedPackageFullNameForPackageDependency2" api-ms-win-appmodel-runtime-l1-1-7.dll ;
+	WString packageDependencyId ;	// PWSTR
+	Pointer packageFullName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function TryCreatePackageDependency2 "TryCreatePackageDependency2" api-ms-win-appmodel-runtime-l1-1-7.dll ;
+	Pointer user ;	// PSID
+	WString packageFamilyName ;	// PWSTR
+	PACKAGE_VERSION minVersion ;
+	Integer packageDependencyProcessorArchitectures ;	// PackageDependencyProcessorArchitectures
+	Integer lifetimeKind ;	// PackageDependencyLifetimeKind
+	WString lifetimeArtifact ;	// PWSTR
+	Integer options ;	// CreatePackageDependencyOptions
+	Pointer lifetimeExpiration ;	// FILETIME*
+	Pointer packageDependencyId ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function GetPackageGraphRevisionId "GetPackageGraphRevisionId" api-ms-win-appmodel-runtime-l1-1-6.dll ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

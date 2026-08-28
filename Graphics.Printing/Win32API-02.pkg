@@ -1,0 +1,110 @@
+Use UI
+
+External_Function RouterAllocBidiResponseContainer "RouterAllocBidiResponseContainer" SPOOLSS.dll ;
+	UInteger Count ;
+	Returns Pointer	// BIDI_RESPONSE_CONTAINER*
+
+External_Function RouterAllocPrinterNotifyInfo "RouterAllocPrinterNotifyInfo" SPOOLSS.dll ;
+	UInteger cPrinterNotifyInfoData ;
+	Returns Pointer	// PRINTER_NOTIFY_INFO*
+
+External_Function RouterCreatePrintAsyncNotificationChannel "RouterCreatePrintAsyncNotificationChannel" SPOOLSS.dll ;
+	WString pName ;	// PWSTR
+	Pointer pNotificationType ;	// Guid*
+	Integer eNotifyFilter ;	// PrintAsyncNotifyUserFilter
+	Integer eConversationStyle ;	// PrintAsyncNotifyConversationStyle
+	Pointer pCallback ;	// IPrintAsyncNotifyCallback
+	Pointer ppIAsynchNotification ;	// IPrintAsyncNotifyChannel*
+	Returns Integer	// HRESULT
+
+External_Function RouterFreeBidiMem "RouterFreeBidiMem" SPOOLSS.dll ;
+	Pointer pMemPointer ;	// Pointer*
+	Returns Pointer
+
+External_Function RouterFreePrinterNotifyInfo "RouterFreePrinterNotifyInfo" SPOOLSS.dll ;
+	Pointer pInfo ;	// PRINTER_NOTIFY_INFO*
+	Returns Integer	// BOOL
+
+External_Function RouterGetPrintClassObject "RouterGetPrintClassObject" SPOOLSS.dll ;
+	WString pPrinter ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function RouterUnregisterForPrintAsyncNotifications "RouterUnregisterForPrintAsyncNotifications" SPOOLSS.dll ;
+	Pointer hNotify ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function SplIsSessionZero "SplIsSessionZero" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	Pointer pIsSessionZero ;	// BOOL*
+	Returns UInteger
+
+External_Function SplPromptUIInUsersSession "SplPromptUIInUsersSession" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger JobId ;
+	Pointer pUIParams ;	// SHOWUIPARAMS*
+	Pointer pResponse ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function SpoolerFindClosePrinterChangeNotification "SpoolerFindClosePrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Returns Integer	// BOOL
+
+External_Function SpoolerFindFirstPrinterChangeNotification "SpoolerFindFirstPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger fdwFilterFlags ;
+	UInteger fdwOptions ;
+	Pointer pPrinterNotifyOptions ;	// Pointer*
+	Pointer pvReserved ;	// Pointer*
+	Pointer pNotificationConfig ;	// Pointer*
+	Pointer phNotify ;	// HANDLE*
+	Pointer phEvent ;	// HANDLE*
+	Returns Integer	// BOOL
+
+External_Function SpoolerFindNextPrinterChangeNotification "SpoolerFindNextPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer pfdwChange ;	// UInteger*
+	Pointer pPrinterNotifyOptions ;	// Pointer*
+	Pointer ppPrinterNotifyInfo ;	// Pointer**
+	Returns Integer	// BOOL
+
+External_Function SpoolerFreePrinterNotifyInfo "SpoolerFreePrinterNotifyInfo" SPOOLSS.dll ;
+	Pointer pInfo ;	// PRINTER_NOTIFY_INFO*
+	Returns Pointer
+
+External_Function SpoolerRefreshPrinterChangeNotification "SpoolerRefreshPrinterChangeNotification" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	UInteger dwColor ;
+	Pointer pOptions ;	// PRINTER_NOTIFY_OPTIONS*
+	Pointer ppInfo ;	// PRINTER_NOTIFY_INFO**
+	Returns Integer	// BOOL
+
+External_Function UpdatePrintDeviceObject "UpdatePrintDeviceObject" SPOOLSS.dll ;
+	Pointer hPrinter ;	// PRINTER_HANDLE
+	Pointer hDeviceObject ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function GenerateCopyFilePaths "GenerateCopyFilePaths" mscms.dll ;
+	WString pszPrinterName ;	// PWSTR
+	WString pszDirectory ;	// PWSTR
+	Pointer pSplClientInfo ;	// UChar*
+	UInteger dwLevel ;
+	Pointer pszSourceDir ;	// PWSTR
+	Pointer pcchSourceDirSize ;	// UInteger*
+	Pointer pszTargetDir ;	// PWSTR
+	Pointer pcchTargetDirSize ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function SpoolerCopyFileEvent "SpoolerCopyFileEvent" mscms.dll ;
+	WString pszPrinterName ;	// PWSTR
+	WString pszKey ;	// PWSTR
+	UInteger dwCopyFileEvent ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

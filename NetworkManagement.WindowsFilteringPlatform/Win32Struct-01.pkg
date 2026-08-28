@@ -1,0 +1,980 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_action0
+Struct FWPM_ACTION0
+	UInteger type											// FWP_ACTION_TYPE
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_callout0
+Struct FWPM_CALLOUT0
+	Guid calloutKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	Guid applicableLayer
+	UInteger calloutId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_callout_enum_template0
+Struct FWPM_CALLOUT_ENUM_TEMPLATE0
+	Pointer providerKey										// Guid*
+	Guid layerKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_callout_subscription0
+Struct FWPM_CALLOUT_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_CALLOUT_ENUM_TEMPLATE0*
+	UInteger flags
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_classify_option0
+Struct FWPM_CLASSIFY_OPTION0
+	Integer type											// FWP_CLASSIFY_OPTION_TYPE
+	Integer iMissingAlignment1
+	FWP_VALUE0 value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_classify_options0
+Struct FWPM_CLASSIFY_OPTIONS0
+	UInteger numOptions
+	Integer iMissingAlignment1
+	Pointer options											// FWPM_CLASSIFY_OPTION0*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_connection0
+Struct FWPM_CONNECTION0
+	UBigint connectionId
+	Integer ipVersion										// FWP_IP_VERSION
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	Integer ipsecTrafficModeType							// IPSEC_TRAFFIC_TYPE
+	Integer keyModuleType									// IKEEXT_KEY_MODULE_TYPE
+	IKEEXT_PROPOSAL0 mmCrypto
+	Integer iMissingAlignment2
+	IKEEXT_CREDENTIAL2 mmPeer
+	IKEEXT_CREDENTIAL2 emPeer
+	UBigint bytesTransferredIn
+	UBigint bytesTransferredOut
+	UBigint bytesTransferredTotal
+	FILETIME startSysTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_connection_enum_template0
+Struct FWPM_CONNECTION_ENUM_TEMPLATE0
+	UBigint connectionId
+	UInteger flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_connection_subscription0
+Struct FWPM_CONNECTION_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_CONNECTION_ENUM_TEMPLATE0*
+	UInteger flags
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwpm_display_data0
+Struct FWPM_DISPLAY_DATA0
+	Pointer name											// PWSTR
+	Pointer description										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_field0
+Struct FWPM_FIELD0
+	Pointer fieldKey										// Guid*
+	Integer type											// FWPM_FIELD_TYPE
+	Integer dataType										// FWP_DATA_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_filter0
+Struct FWPM_FILTER0
+	Guid filterKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags											// FWPM_FILTER_FLAGS
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	Guid layerKey
+	Guid subLayerKey
+	FWP_VALUE0 weight
+	UInteger numFilterConditions
+	Integer iMissingAlignment2
+	Pointer filterCondition									// FWPM_FILTER_CONDITION0*
+	FWPM_ACTION0 action
+	Integer iMissingAlignment3
+	UChar[16] UnionName1
+	Pointer reserved										// Guid*
+	UBigint filterId
+	FWP_VALUE0 effectiveWeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_filter_condition0
+Struct FWPM_FILTER_CONDITION0
+	Guid fieldKey
+	Integer matchType										// FWP_MATCH_TYPE
+	Integer iMissingAlignment1
+	FWP_CONDITION_VALUE0 conditionValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_filter_enum_template0
+Struct FWPM_FILTER_ENUM_TEMPLATE0
+	Pointer providerKey										// Guid*
+	Guid layerKey
+	Integer enumType										// FWP_FILTER_ENUM_TYPE
+	UInteger flags
+	Pointer providerContextTemplate							// FWPM_PROVIDER_CONTEXT_ENUM_TEMPLATE0*
+	UInteger numFilterConditions
+	Integer iMissingAlignment1
+	Pointer filterCondition									// FWPM_FILTER_CONDITION0*
+	UInteger actionMask
+	Integer iMissingAlignment2
+	Pointer calloutKey										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_filter_subscription0
+Struct FWPM_FILTER_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_FILTER_ENUM_TEMPLATE0*
+	UInteger flags
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_layer0
+Struct FWPM_LAYER0
+	Guid layerKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	UInteger numFields
+	Pointer field											// FWPM_FIELD0*
+	Guid defaultSubLayerKey
+	UShort layerId
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_layer_enum_template0
+Struct FWPM_LAYER_ENUM_TEMPLATE0
+	UBigint reserved
+End_Struct
+
+Struct FWPM_NETWORK_CONNECTION_POLICY_SETTING0
+	Integer type											// FWP_NETWORK_CONNECTION_POLICY_SETTING_TYPE
+	Integer iMissingAlignment1
+	FWP_VALUE0 value
+End_Struct
+
+Struct FWPM_NETWORK_CONNECTION_POLICY_SETTINGS0
+	UInteger numSettings
+	Integer iMissingAlignment1
+	Pointer settings										// FWPM_NETWORK_CONNECTION_POLICY_SETTING0*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event0
+Struct FWPM_NET_EVENT0
+	FWPM_NET_EVENT_HEADER0 header
+	Integer type											// FWPM_NET_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event1
+Struct FWPM_NET_EVENT1
+	FWPM_NET_EVENT_HEADER1 header
+	Integer type											// FWPM_NET_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event2
+Struct FWPM_NET_EVENT2
+	FWPM_NET_EVENT_HEADER2 header
+	Integer type											// FWPM_NET_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event3
+Struct FWPM_NET_EVENT3
+	FWPM_NET_EVENT_HEADER3 header
+	Integer type											// FWPM_NET_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+Struct FWPM_NET_EVENT4
+	FWPM_NET_EVENT_HEADER3 header
+	Integer type											// FWPM_NET_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+Struct FWPM_NET_EVENT5
+	FWPM_NET_EVENT_HEADER3 header
+	Integer type											// FWPM_NET_EVENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_capability_allow0
+Struct FWPM_NET_EVENT_CAPABILITY_ALLOW0
+	Integer networkCapabilityId								// FWPM_APPC_NETWORK_CAPABILITY_TYPE
+	Integer iMissingAlignment1
+	UBigint filterId
+	Integer isLoopback										// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_capability_drop0
+Struct FWPM_NET_EVENT_CAPABILITY_DROP0
+	Integer networkCapabilityId								// FWPM_APPC_NETWORK_CAPABILITY_TYPE
+	Integer iMissingAlignment1
+	UBigint filterId
+	Integer isLoopback										// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_classify_allow0
+Struct FWPM_NET_EVENT_CLASSIFY_ALLOW0
+	UBigint filterId
+	UShort layerId
+	Short iMissingAlignment1
+	UInteger reauthReason
+	UInteger originalProfile
+	UInteger currentProfile
+	UInteger msFwpDirection
+	Integer isLoopback										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_classify_drop0
+Struct FWPM_NET_EVENT_CLASSIFY_DROP0
+	UBigint filterId
+	UShort layerId
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_classify_drop1
+Struct FWPM_NET_EVENT_CLASSIFY_DROP1
+	UBigint filterId
+	UShort layerId
+	Short iMissingAlignment1
+	UInteger reauthReason
+	UInteger originalProfile
+	UInteger currentProfile
+	UInteger msFwpDirection
+	Integer isLoopback										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_classify_drop2
+Struct FWPM_NET_EVENT_CLASSIFY_DROP2
+	UBigint filterId
+	UShort layerId
+	Short iMissingAlignment1
+	UInteger reauthReason
+	UInteger originalProfile
+	UInteger currentProfile
+	UInteger msFwpDirection
+	Integer isLoopback										// BOOL
+	FWP_BYTE_BLOB vSwitchId
+	UInteger vSwitchSourcePort
+	UInteger vSwitchDestinationPort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_classify_drop_mac0
+Struct FWPM_NET_EVENT_CLASSIFY_DROP_MAC0
+	FWP_BYTE_ARRAY6 localMacAddr
+	FWP_BYTE_ARRAY6 remoteMacAddr
+	UInteger mediaType
+	UInteger ifType
+	UShort etherType
+	Short iMissingAlignment1
+	UInteger ndisPortNumber
+	UInteger reserved
+	UShort vlanTag
+	UChar[6] cMissingAlignment2
+	UBigint ifLuid
+	UBigint filterId
+	UShort layerId
+	Short iMissingAlignment3
+	UInteger reauthReason
+	UInteger originalProfile
+	UInteger currentProfile
+	UInteger msFwpDirection
+	Integer isLoopback										// BOOL
+	FWP_BYTE_BLOB vSwitchId
+	UInteger vSwitchSourcePort
+	UInteger vSwitchDestinationPort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_enum_template0
+Struct FWPM_NET_EVENT_ENUM_TEMPLATE0
+	FILETIME startTime
+	FILETIME endTime
+	UInteger numFilterConditions
+	Integer iMissingAlignment1
+	Pointer filterCondition									// FWPM_FILTER_CONDITION0*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_header0
+Struct FWPM_NET_EVENT_HEADER0
+	FILETIME timeStamp
+	UInteger flags
+	Integer ipVersion										// FWP_IP_VERSION
+	UChar ipProtocol
+	UChar[3] cMissingAlignment1
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	UShort localPort
+	UShort remotePort
+	UInteger scopeId
+	Integer iMissingAlignment2
+	FWP_BYTE_BLOB appId
+	Pointer userId											// SID*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_header1
+Struct FWPM_NET_EVENT_HEADER1
+	FILETIME timeStamp
+	UInteger flags
+	Integer ipVersion										// FWP_IP_VERSION
+	UChar ipProtocol
+	UChar[3] cMissingAlignment1
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	UShort localPort
+	UShort remotePort
+	UInteger scopeId
+	Integer iMissingAlignment2
+	FWP_BYTE_BLOB appId
+	Pointer userId											// SID*
+	UChar[8] UnionName3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_header2
+Struct FWPM_NET_EVENT_HEADER2
+	FILETIME timeStamp
+	UInteger flags
+	Integer ipVersion										// FWP_IP_VERSION
+	UChar ipProtocol
+	UChar[3] cMissingAlignment1
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	UShort localPort
+	UShort remotePort
+	UInteger scopeId
+	Integer iMissingAlignment2
+	FWP_BYTE_BLOB appId
+	Pointer userId											// SID*
+	Integer addressFamily									// FWP_AF
+	Integer iMissingAlignment3
+	Pointer packageSid										// SID*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_header3
+Struct FWPM_NET_EVENT_HEADER3
+	FILETIME timeStamp
+	UInteger flags
+	Integer ipVersion										// FWP_IP_VERSION
+	UChar ipProtocol
+	UChar[3] cMissingAlignment1
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	UShort localPort
+	UShort remotePort
+	UInteger scopeId
+	Integer iMissingAlignment2
+	FWP_BYTE_BLOB appId
+	Pointer userId											// SID*
+	Integer addressFamily									// FWP_AF
+	Integer iMissingAlignment3
+	Pointer packageSid										// SID*
+	Pointer enterpriseId									// PWSTR
+	UBigint policyFlags
+	FWP_BYTE_BLOB effectiveName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ikeext_em_failure0
+Struct FWPM_NET_EVENT_IKEEXT_EM_FAILURE0
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	UInteger flags
+	Integer emState											// IKEEXT_EM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer emAuthMethod									// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	UChar[20] endCertHash
+	Integer iMissingAlignment1
+	UBigint mmId
+	UBigint qmFilterId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ikeext_em_failure1
+Struct FWPM_NET_EVENT_IKEEXT_EM_FAILURE1
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	UInteger flags
+	Integer emState											// IKEEXT_EM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer emAuthMethod									// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	UChar[20] endCertHash
+	Integer iMissingAlignment1
+	UBigint mmId
+	UBigint qmFilterId
+	Pointer localPrincipalNameForAuth						// PWSTR
+	Pointer remotePrincipalNameForAuth						// PWSTR
+	UInteger numLocalPrincipalGroupSids
+	Integer iMissingAlignment2
+	Pointer localPrincipalGroupSids							// PWSTR*
+	UInteger numRemotePrincipalGroupSids
+	Integer iMissingAlignment3
+	Pointer remotePrincipalGroupSids						// PWSTR*
+	Integer saTrafficType									// IPSEC_TRAFFIC_TYPE
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ikeext_mm_failure0
+Struct FWPM_NET_EVENT_IKEEXT_MM_FAILURE0
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	UInteger flags
+	Integer keyingModuleType								// IKEEXT_KEY_MODULE_TYPE
+	Integer mmState											// IKEEXT_MM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer mmAuthMethod									// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	UChar[20] endCertHash
+	UBigint mmId
+	UBigint mmFilterId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ikeext_mm_failure1
+Struct FWPM_NET_EVENT_IKEEXT_MM_FAILURE1
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	UInteger flags
+	Integer keyingModuleType								// IKEEXT_KEY_MODULE_TYPE
+	Integer mmState											// IKEEXT_MM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer mmAuthMethod									// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	UChar[20] endCertHash
+	UBigint mmId
+	UBigint mmFilterId
+	Pointer localPrincipalNameForAuth						// PWSTR
+	Pointer remotePrincipalNameForAuth						// PWSTR
+	UInteger numLocalPrincipalGroupSids
+	Integer iMissingAlignment1
+	Pointer localPrincipalGroupSids							// PWSTR*
+	UInteger numRemotePrincipalGroupSids
+	Integer iMissingAlignment2
+	Pointer remotePrincipalGroupSids						// PWSTR*
+End_Struct
+
+Struct FWPM_NET_EVENT_IKEEXT_MM_FAILURE2
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	UInteger flags
+	Integer keyingModuleType								// IKEEXT_KEY_MODULE_TYPE
+	Integer mmState											// IKEEXT_MM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer mmAuthMethod									// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	UChar[20] endCertHash
+	UBigint mmId
+	UBigint mmFilterId
+	Pointer localPrincipalNameForAuth						// PWSTR
+	Pointer remotePrincipalNameForAuth						// PWSTR
+	UInteger numLocalPrincipalGroupSids
+	Integer iMissingAlignment1
+	Pointer localPrincipalGroupSids							// PWSTR*
+	UInteger numRemotePrincipalGroupSids
+	Integer iMissingAlignment2
+	Pointer remotePrincipalGroupSids						// PWSTR*
+	Pointer providerContextKey								// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ikeext_qm_failure0
+Struct FWPM_NET_EVENT_IKEEXT_QM_FAILURE0
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	Integer keyingModuleType								// IKEEXT_KEY_MODULE_TYPE
+	Integer qmState											// IKEEXT_QM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer saTrafficType									// IPSEC_TRAFFIC_TYPE
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	UBigint qmFilterId
+End_Struct
+
+Struct FWPM_NET_EVENT_IKEEXT_QM_FAILURE1
+	UInteger failureErrorCode
+	Integer failurePoint									// IPSEC_FAILURE_POINT
+	Integer keyingModuleType								// IKEEXT_KEY_MODULE_TYPE
+	Integer qmState											// IKEEXT_QM_SA_STATE
+	Integer saRole											// IKEEXT_SA_ROLE
+	Integer saTrafficType									// IPSEC_TRAFFIC_TYPE
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	UBigint qmFilterId
+	UBigint mmSaLuid
+	Guid mmProviderContextKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ipsec_dosp_drop0
+Struct FWPM_NET_EVENT_IPSEC_DOSP_DROP0
+	Integer ipVersion										// FWP_IP_VERSION
+	UChar[16] UnionName1
+	UChar[16] UnionName2
+	Integer failureStatus
+	Integer direction										// FWP_DIRECTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_ipsec_kernel_drop0
+Struct FWPM_NET_EVENT_IPSEC_KERNEL_DROP0
+	Integer failureStatus
+	Integer direction										// FWP_DIRECTION
+	UInteger spi
+	Integer iMissingAlignment1
+	UBigint filterId
+	UShort layerId
+	UChar[6] cMissingAlignment2
+End_Struct
+
+Struct FWPM_NET_EVENT_LPM_PACKET_ARRIVAL0
+	UInteger spi
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_net_event_subscription0
+Struct FWPM_NET_EVENT_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_NET_EVENT_ENUM_TEMPLATE0*
+	UInteger flags
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider0
+Struct FWPM_PROVIDER0
+	Guid providerKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	FWP_BYTE_BLOB providerData
+	Pointer serviceName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_context0
+Struct FWPM_PROVIDER_CONTEXT0
+	Guid providerContextKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	Integer type											// FWPM_PROVIDER_CONTEXT_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	UBigint providerContextId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_context1
+Struct FWPM_PROVIDER_CONTEXT1
+	Guid providerContextKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	Integer type											// FWPM_PROVIDER_CONTEXT_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	UBigint providerContextId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_context2
+Struct FWPM_PROVIDER_CONTEXT2
+	Guid providerContextKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	Integer type											// FWPM_PROVIDER_CONTEXT_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	UBigint providerContextId
+End_Struct
+
+Struct FWPM_PROVIDER_CONTEXT3
+	Guid providerContextKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	Integer type											// FWPM_PROVIDER_CONTEXT_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	UBigint providerContextId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_context_enum_template0
+Struct FWPM_PROVIDER_CONTEXT_ENUM_TEMPLATE0
+	Pointer providerKey										// Guid*
+	Integer providerContextType								// FWPM_PROVIDER_CONTEXT_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_context_subscription0
+Struct FWPM_PROVIDER_CONTEXT_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_PROVIDER_CONTEXT_ENUM_TEMPLATE0*
+	UInteger flags											// FWPM_SUBSCRIPTION_FLAGS
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_enum_template0
+Struct FWPM_PROVIDER_ENUM_TEMPLATE0
+	UBigint reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_provider_subscription0
+Struct FWPM_PROVIDER_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_PROVIDER_ENUM_TEMPLATE0*
+	UInteger flags
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_session0
+Struct FWPM_SESSION0
+	Guid sessionKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	UInteger txnWaitTimeoutInMSec
+	UInteger processId
+	Integer iMissingAlignment1
+	Pointer sid												// SID*
+	Pointer username										// PWSTR
+	Integer kernelMode										// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_session_enum_template0
+Struct FWPM_SESSION_ENUM_TEMPLATE0
+	UBigint reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_sublayer0
+Struct FWPM_SUBLAYER0
+	Guid subLayerKey
+	FWPM_DISPLAY_DATA0 displayData
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer providerKey										// Guid*
+	FWP_BYTE_BLOB providerData
+	UShort weight
+	UChar[6] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_sublayer_enum_template0
+Struct FWPM_SUBLAYER_ENUM_TEMPLATE0
+	Pointer providerKey										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_sublayer_subscription0
+Struct FWPM_SUBLAYER_SUBSCRIPTION0
+	Pointer enumTemplate									// FWPM_SUBLAYER_ENUM_TEMPLATE0*
+	UInteger flags											// FWPM_SUBSCRIPTION_FLAGS
+	Guid sessionKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_system_ports0
+Struct FWPM_SYSTEM_PORTS0
+	UInteger numTypes
+	Integer iMissingAlignment1
+	Pointer types											// FWPM_SYSTEM_PORTS_BY_TYPE0*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_system_ports_by_type0
+Struct FWPM_SYSTEM_PORTS_BY_TYPE0
+	Integer type											// FWPM_SYSTEM_PORT_TYPE
+	UInteger numPorts
+	Pointer ports											// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwpmtypes/ns-fwpmtypes-fwpm_vswitch_event_subscription0
+Struct FWPM_VSWITCH_EVENT_SUBSCRIPTION0
+	UInteger flags
+	Guid sessionKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_byte_array16
+Struct FWP_BYTE_ARRAY16
+	UChar[16] byteArray16
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_byte_array6
+Struct FWP_BYTE_ARRAY6
+	UChar[6] byteArray6
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_byte_blob
+Struct FWP_BYTE_BLOB
+	UInteger size
+	Integer iMissingAlignment1
+	Pointer data											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_condition_value0
+Struct FWP_CONDITION_VALUE0
+	Integer type											// FWP_DATA_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_range0
+Struct FWP_RANGE0
+	FWP_VALUE0 valueLow
+	FWP_VALUE0 valueHigh
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_token_information
+Struct FWP_TOKEN_INFORMATION
+	UInteger sidCount
+	Integer iMissingAlignment1
+	Pointer sids											// SID_AND_ATTRIBUTES*
+	UInteger restrictedSidCount
+	Integer iMissingAlignment2
+	Pointer restrictedSids									// SID_AND_ATTRIBUTES*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_v4_addr_and_mask
+Struct FWP_V4_ADDR_AND_MASK
+	UInteger addr
+	UInteger mask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_v6_addr_and_mask
+Struct FWP_V6_ADDR_AND_MASK
+	UChar[16] addr
+	UChar prefixLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fwptypes/ns-fwptypes-fwp_value0
+Struct FWP_VALUE0
+	Integer type											// FWP_DATA_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_authentication_method0
+Struct IKEEXT_AUTHENTICATION_METHOD0
+	Integer authenticationMethodType						// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	Integer iMissingAlignment1
+	UChar[40] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_authentication_method1
+Struct IKEEXT_AUTHENTICATION_METHOD1
+	Integer authenticationMethodType						// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	Integer iMissingAlignment1
+	UChar[56] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_authentication_method2
+Struct IKEEXT_AUTHENTICATION_METHOD2
+	Integer authenticationMethodType						// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	Integer iMissingAlignment1
+	UChar[56] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_certificate_authentication0
+Struct IKEEXT_CERTIFICATE_AUTHENTICATION0
+	Integer inboundConfigType								// IKEEXT_CERT_CONFIG_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+	Integer outboundConfigType								// IKEEXT_CERT_CONFIG_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName2
+	UInteger flags											// IKEEXT_CERT_AUTH
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_certificate_authentication1
+Struct IKEEXT_CERTIFICATE_AUTHENTICATION1
+	Integer inboundConfigType								// IKEEXT_CERT_CONFIG_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+	Integer outboundConfigType								// IKEEXT_CERT_CONFIG_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName2
+	UInteger flags											// IKEEXT_CERT_AUTH
+	Integer iMissingAlignment3
+	FWP_BYTE_BLOB localCertLocationUrl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_certificate_authentication2
+Struct IKEEXT_CERTIFICATE_AUTHENTICATION2
+	Integer inboundConfigType								// IKEEXT_CERT_CONFIG_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+	Integer outboundConfigType								// IKEEXT_CERT_CONFIG_TYPE
+	Integer iMissingAlignment2
+	UChar[8] UnionName2
+	UInteger flags											// IKEEXT_CERT_AUTH
+	Integer iMissingAlignment3
+	FWP_BYTE_BLOB localCertLocationUrl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_certificate_credential0
+Struct IKEEXT_CERTIFICATE_CREDENTIAL0
+	FWP_BYTE_BLOB subjectName
+	FWP_BYTE_BLOB certHash
+	UInteger flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_certificate_credential1
+Struct IKEEXT_CERTIFICATE_CREDENTIAL1
+	FWP_BYTE_BLOB subjectName
+	FWP_BYTE_BLOB certHash
+	UInteger flags
+	Integer iMissingAlignment1
+	FWP_BYTE_BLOB certificate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_certificate_criteria0
+Struct IKEEXT_CERTIFICATE_CRITERIA0
+	FWP_BYTE_BLOB certData
+	FWP_BYTE_BLOB certHash
+	Pointer eku												// IKEEXT_CERT_EKUS0*
+	Pointer name											// IKEEXT_CERT_NAME0*
+	UInteger flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_cert_ekus0
+Struct IKEEXT_CERT_EKUS0
+	UInteger numEku
+	Integer iMissingAlignment1
+	Pointer eku												// PSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_cert_name0
+Struct IKEEXT_CERT_NAME0
+	Integer nameType										// IKEEXT_CERT_CRITERIA_NAME_TYPE
+	Integer iMissingAlignment1
+	Pointer certName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_cert_root_config0
+Struct IKEEXT_CERT_ROOT_CONFIG0
+	FWP_BYTE_BLOB certData
+	UInteger flags											// IKEEXT_CERT_FLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_cipher_algorithm0
+Struct IKEEXT_CIPHER_ALGORITHM0
+	Integer algoIdentifier									// IKEEXT_CIPHER_TYPE
+	UInteger keyLen
+	UInteger rounds
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_common_statistics0
+Struct IKEEXT_COMMON_STATISTICS0
+	IKEEXT_IP_VERSION_SPECIFIC_COMMON_STATISTICS0 v4Statistics
+	IKEEXT_IP_VERSION_SPECIFIC_COMMON_STATISTICS0 v6Statistics
+	UInteger totalPacketsReceived
+	UInteger totalInvalidPacketsReceived
+	UInteger currentQueuedWorkitems
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_common_statistics1
+Struct IKEEXT_COMMON_STATISTICS1
+	IKEEXT_IP_VERSION_SPECIFIC_COMMON_STATISTICS1 v4Statistics
+	IKEEXT_IP_VERSION_SPECIFIC_COMMON_STATISTICS1 v6Statistics
+	UInteger totalPacketsReceived
+	UInteger totalInvalidPacketsReceived
+	UInteger currentQueuedWorkitems
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_cookie_pair0
+Struct IKEEXT_COOKIE_PAIR0
+	UBigint initiator
+	UBigint responder
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credential0
+Struct IKEEXT_CREDENTIAL0
+	Integer authenticationMethodType						// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	Integer impersonationType								// IKEEXT_AUTHENTICATION_IMPERSONATION_TYPE
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credential1
+Struct IKEEXT_CREDENTIAL1
+	Integer authenticationMethodType						// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	Integer impersonationType								// IKEEXT_AUTHENTICATION_IMPERSONATION_TYPE
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credential2
+Struct IKEEXT_CREDENTIAL2
+	Integer authenticationMethodType						// IKEEXT_AUTHENTICATION_METHOD_TYPE
+	Integer impersonationType								// IKEEXT_AUTHENTICATION_IMPERSONATION_TYPE
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credentials0
+Struct IKEEXT_CREDENTIALS0
+	UInteger numCredentials
+	Integer iMissingAlignment1
+	Pointer credentials										// IKEEXT_CREDENTIAL_PAIR0*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credentials1
+Struct IKEEXT_CREDENTIALS1
+	UInteger numCredentials
+	Integer iMissingAlignment1
+	Pointer credentials										// IKEEXT_CREDENTIAL_PAIR1*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credentials2
+Struct IKEEXT_CREDENTIALS2
+	UInteger numCredentials
+	Integer iMissingAlignment1
+	Pointer credentials										// IKEEXT_CREDENTIAL_PAIR2*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credential_pair0
+Struct IKEEXT_CREDENTIAL_PAIR0
+	IKEEXT_CREDENTIAL0 localCredentials
+	IKEEXT_CREDENTIAL0 peerCredentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credential_pair1
+Struct IKEEXT_CREDENTIAL_PAIR1
+	IKEEXT_CREDENTIAL1 localCredentials
+	IKEEXT_CREDENTIAL1 peerCredentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_credential_pair2
+Struct IKEEXT_CREDENTIAL_PAIR2
+	IKEEXT_CREDENTIAL2 localCredentials
+	IKEEXT_CREDENTIAL2 peerCredentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iketypes/ns-iketypes-ikeext_eap_authentication0
+Struct IKEEXT_EAP_AUTHENTICATION0
+	UInteger flags											// IKEEXT_EAP_AUTHENTICATION_FLAGS
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

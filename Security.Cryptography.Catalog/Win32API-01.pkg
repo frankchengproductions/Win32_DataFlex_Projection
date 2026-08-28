@@ -1,0 +1,258 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminacquirecontext
+External_Function CryptCATAdminAcquireContext "CryptCATAdminAcquireContext" WINTRUST.dll ;
+	Pointer phCatAdmin ;	// LongPtr*
+	Pointer pgSubsystem ;	// Guid*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminacquirecontext2
+External_Function CryptCATAdminAcquireContext2 "CryptCATAdminAcquireContext2" WINTRUST.dll ;
+	Pointer phCatAdmin ;	// LongPtr*
+	Pointer pgSubsystem ;	// Guid*
+	WString pwszHashAlgorithm ;	// PWSTR
+	Pointer pStrongHashPolicy ;	// CERT_STRONG_SIGN_PARA*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminaddcatalog
+External_Function CryptCATAdminAddCatalog "CryptCATAdminAddCatalog" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	WString pwszCatalogFile ;	// PWSTR
+	WString pwszSelectBaseName ;	// PWSTR
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadmincalchashfromfilehandle
+External_Function CryptCATAdminCalcHashFromFileHandle "CryptCATAdminCalcHashFromFileHandle" WINTRUST.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer pcbHash ;	// UInteger*
+	Pointer pbHash ;	// UChar*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadmincalchashfromfilehandle2
+External_Function CryptCATAdminCalcHashFromFileHandle2 "CryptCATAdminCalcHashFromFileHandle2" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	Pointer hFile ;	// HANDLE
+	Pointer pcbHash ;	// UInteger*
+	Pointer pbHash ;	// UChar*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminenumcatalogfromhash
+External_Function CryptCATAdminEnumCatalogFromHash "CryptCATAdminEnumCatalogFromHash" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	Pointer pbHash ;	// UChar*
+	UInteger cbHash ;
+	UInteger dwFlags ;
+	Pointer phPrevCatInfo ;	// LongPtr*
+	Returns LongPtr
+
+External_Function CryptCATAdminPauseServiceForBackup "CryptCATAdminPauseServiceForBackup" WINTRUST.dll ;
+	UInteger dwFlags ;
+	Integer fResume ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminreleasecatalogcontext
+External_Function CryptCATAdminReleaseCatalogContext "CryptCATAdminReleaseCatalogContext" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	LongPtr hCatInfo ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminreleasecontext
+External_Function CryptCATAdminReleaseContext "CryptCATAdminReleaseContext" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminremovecatalog
+External_Function CryptCATAdminRemoveCatalog "CryptCATAdminRemoveCatalog" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	WString pwszCatalogFile ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatadminresolvecatalogpath
+External_Function CryptCATAdminResolveCatalogPath "CryptCATAdminResolveCatalogPath" WINTRUST.dll ;
+	LongPtr hCatAdmin ;
+	WString pwszCatalogFile ;	// PWSTR
+	Pointer psCatInfo ;	// CATALOG_INFO*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+External_Function CryptCATAllocSortedMemberInfo "CryptCATAllocSortedMemberInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	WString pwszReferenceTag ;	// PWSTR
+	Returns Pointer	// CRYPTCATMEMBER*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatcdfclose
+External_Function CryptCATCDFClose "CryptCATCDFClose" WINTRUST.dll ;
+	Pointer pCDF ;	// CRYPTCATCDF*
+	Returns Integer	// BOOL
+
+External_Function CryptCATCDFEnumAttributes "CryptCATCDFEnumAttributes" WINTRUST.dll ;
+	Pointer pCDF ;	// CRYPTCATCDF*
+	Pointer pMember ;	// CRYPTCATMEMBER*
+	Pointer pPrevAttr ;	// CRYPTCATATTRIBUTE*
+	Pointer pfnParseError ;	// PFN_CDF_PARSE_ERROR_CALLBACK
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/cryptcatcdfenumattributeswithcdftag
+External_Function CryptCATCDFEnumAttributesWithCDFTag "CryptCATCDFEnumAttributesWithCDFTag" WINTRUST.dll ;
+	Pointer pCDF ;	// CRYPTCATCDF*
+	WString pwszMemberTag ;	// PWSTR
+	Pointer pMember ;	// CRYPTCATMEMBER*
+	Pointer pPrevAttr ;	// CRYPTCATATTRIBUTE*
+	Pointer pfnParseError ;	// PFN_CDF_PARSE_ERROR_CALLBACK
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatcdfenumcatattributes
+External_Function CryptCATCDFEnumCatAttributes "CryptCATCDFEnumCatAttributes" WINTRUST.dll ;
+	Pointer pCDF ;	// CRYPTCATCDF*
+	Pointer pPrevAttr ;	// CRYPTCATATTRIBUTE*
+	Pointer pfnParseError ;	// PFN_CDF_PARSE_ERROR_CALLBACK
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+External_Function CryptCATCDFEnumMembers "CryptCATCDFEnumMembers" WINTRUST.dll ;
+	Pointer pCDF ;	// CRYPTCATCDF*
+	Pointer pPrevMember ;	// CRYPTCATMEMBER*
+	Pointer pfnParseError ;	// PFN_CDF_PARSE_ERROR_CALLBACK
+	Returns Pointer	// CRYPTCATMEMBER*
+
+// https://learn.microsoft.com/windows/win32/SecCrypto/cryptcatcdfenummembersbycdftagex
+External_Function CryptCATCDFEnumMembersByCDFTagEx "CryptCATCDFEnumMembersByCDFTagEx" WINTRUST.dll ;
+	Pointer pCDF ;	// CRYPTCATCDF*
+	Pointer pwszPrevCDFTag ;	// PWSTR
+	Pointer pfnParseError ;	// PFN_CDF_PARSE_ERROR_CALLBACK
+	Pointer ppMember ;	// CRYPTCATMEMBER**
+	Integer fContinueOnError ;	// BOOL
+	Pointer pvReserved ;	// Pointer*
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatcdfopen
+External_Function CryptCATCDFOpen "CryptCATCDFOpen" WINTRUST.dll ;
+	WString pwszFilePath ;	// PWSTR
+	Pointer pfnParseError ;	// PFN_CDF_PARSE_ERROR_CALLBACK
+	Returns Pointer	// CRYPTCATCDF*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatcataloginfofromcontext
+External_Function CryptCATCatalogInfoFromContext "CryptCATCatalogInfoFromContext" WINTRUST.dll ;
+	LongPtr hCatInfo ;
+	Pointer psCatInfo ;	// CATALOG_INFO*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatclose
+External_Function CryptCATClose "CryptCATClose" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatenumerateattr
+External_Function CryptCATEnumerateAttr "CryptCATEnumerateAttr" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Pointer pCatMember ;	// CRYPTCATMEMBER*
+	Pointer pPrevAttr ;	// CRYPTCATATTRIBUTE*
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatenumeratecatattr
+External_Function CryptCATEnumerateCatAttr "CryptCATEnumerateCatAttr" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Pointer pPrevAttr ;	// CRYPTCATATTRIBUTE*
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatenumeratemember
+External_Function CryptCATEnumerateMember "CryptCATEnumerateMember" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Pointer pPrevMember ;	// CRYPTCATMEMBER*
+	Returns Pointer	// CRYPTCATMEMBER*
+
+External_Function CryptCATFreeSortedMemberInfo "CryptCATFreeSortedMemberInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Pointer pCatMember ;	// CRYPTCATMEMBER*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatgetattrinfo
+External_Function CryptCATGetAttrInfo "CryptCATGetAttrInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Pointer pCatMember ;	// CRYPTCATMEMBER*
+	WString pwszReferenceTag ;	// PWSTR
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+External_Function CryptCATGetCatAttrInfo "CryptCATGetCatAttrInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	WString pwszReferenceTag ;	// PWSTR
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatgetmemberinfo
+External_Function CryptCATGetMemberInfo "CryptCATGetMemberInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	WString pwszReferenceTag ;	// PWSTR
+	Returns Pointer	// CRYPTCATMEMBER*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcathandlefromstore
+External_Function CryptCATHandleFromStore "CryptCATHandleFromStore" WINTRUST.dll ;
+	Pointer pCatStore ;	// CRYPTCATSTORE*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatopen
+External_Function CryptCATOpen "CryptCATOpen" WINTRUST.dll ;
+	WString pwszFileName ;	// PWSTR
+	UInteger fdwOpenFlags ;	// CRYPTCAT_OPEN_FLAGS
+	ULongPtr hProv ;
+	UInteger dwPublicVersion ;	// CRYPTCAT_VERSION
+	UInteger dwEncodingType ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatpersiststore
+External_Function CryptCATPersistStore "CryptCATPersistStore" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatputattrinfo
+External_Function CryptCATPutAttrInfo "CryptCATPutAttrInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Pointer pCatMember ;	// CRYPTCATMEMBER*
+	WString pwszReferenceTag ;	// PWSTR
+	UInteger dwAttrTypeAndAction ;
+	UInteger cbData ;
+	Pointer pbData ;	// UChar*
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatputcatattrinfo
+External_Function CryptCATPutCatAttrInfo "CryptCATPutCatAttrInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	WString pwszReferenceTag ;	// PWSTR
+	UInteger dwAttrTypeAndAction ;
+	UInteger cbData ;
+	Pointer pbData ;	// UChar*
+	Returns Pointer	// CRYPTCATATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatputmemberinfo
+External_Function CryptCATPutMemberInfo "CryptCATPutMemberInfo" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	WString pwszFileName ;	// PWSTR
+	WString pwszReferenceTag ;	// PWSTR
+	Pointer pgSubjectType ;	// Guid*
+	UInteger dwCertVersion ;
+	UInteger cbSIPIndirectData ;
+	Pointer pbSIPIndirectData ;	// UChar*
+	Returns Pointer	// CRYPTCATMEMBER*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-cryptcatstorefromhandle
+External_Function CryptCATStoreFromHandle "CryptCATStoreFromHandle" WINTRUST.dll ;
+	Pointer hCatalog ;	// HANDLE
+	Returns Pointer	// CRYPTCATSTORE*
+
+// https://learn.microsoft.com/windows/win32/api/mscat/nf-mscat-iscatalogfile
+External_Function IsCatalogFile "IsCatalogFile" WINTRUST.dll ;
+	Pointer hFile ;	// HANDLE
+	WString pwszFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

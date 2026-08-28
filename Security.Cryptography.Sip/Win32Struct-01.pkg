@@ -1,0 +1,100 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-ms_addinfo_blob
+Struct MS_ADDINFO_BLOB
+	UInteger cbStruct
+	UInteger cbMemObject
+	Pointer pbMemObject										// UChar*
+	UInteger cbMemSignedMsg
+	Integer iMissingAlignment1
+	Pointer pbMemSignedMsg									// UChar*
+End_Struct
+
+Struct MS_ADDINFO_DETACHEDSIG
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer hSignatureFile									// HANDLE
+	UInteger cbSignatureObject
+	Integer iMissingAlignment2
+	Pointer pbSignatureObject								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-ms_addinfo_flat
+Struct MS_ADDINFO_FLAT
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pIndirectData									// SIP_INDIRECT_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-sip_add_newprovider
+Struct SIP_ADD_NEWPROVIDER
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pgSubject										// Guid*
+	Pointer pwszDLLFileName									// PWSTR
+	Pointer pwszMagicNumber									// PWSTR
+	Pointer pwszIsFunctionName								// PWSTR
+	Pointer pwszGetFuncName									// PWSTR
+	Pointer pwszPutFuncName									// PWSTR
+	Pointer pwszCreateFuncName								// PWSTR
+	Pointer pwszVerifyFuncName								// PWSTR
+	Pointer pwszRemoveFuncName								// PWSTR
+	Pointer pwszIsFunctionNameFmt2							// PWSTR
+	Pointer pwszGetCapFuncName								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-sip_cap_set_v3
+Struct SIP_CAP_SET_V3
+	UInteger cbSize
+	UInteger dwVersion
+	Integer isMultiSign										// BOOL
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-sip_dispatch_info
+Struct SIP_DISPATCH_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hSIP											// HANDLE
+	Pointer pfGet											// pCryptSIPGetSignedDataMsg
+	Pointer pfPut											// pCryptSIPPutSignedDataMsg
+	Pointer pfCreate										// pCryptSIPCreateIndirectData
+	Pointer pfVerify										// pCryptSIPVerifyIndirectData
+	Pointer pfRemove										// pCryptSIPRemoveSignedDataMsg
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-sip_indirect_data
+Struct SIP_INDIRECT_DATA
+	CRYPT_ATTRIBUTE_TYPE_VALUE Data
+	CRYPT_ALGORITHM_IDENTIFIER DigestAlgorithm
+	CRYPT_INTEGER_BLOB Digest
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mssip/ns-mssip-sip_subjectinfo
+Struct SIP_SUBJECTINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pgSubjectType									// Guid*
+	Pointer hFile											// HANDLE
+	Pointer pwsFileName										// PWSTR
+	Pointer pwsDisplayName									// PWSTR
+	UInteger dwReserved1
+	UInteger dwIntVersion
+	ULongPtr hProv
+	CRYPT_ALGORITHM_IDENTIFIER DigestAlgorithm
+	UInteger dwFlags
+	UInteger dwEncodingType
+	UInteger dwReserved2
+	UInteger fdwCAPISettings
+	UInteger fdwSecuritySettings
+	UInteger dwIndex
+	UInteger dwUnionChoice
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	Pointer pClientData										// Pointer*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

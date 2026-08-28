@@ -1,0 +1,303 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-ike_authentication_information
+Struct IKE_AUTHENTICATION_INFORMATION
+	Integer AuthMethod										// IKE_AUTHENTICATION_METHOD
+	Integer iMissingAlignment1
+	UChar[40] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-ike_authentication_preshared_key
+Struct IKE_AUTHENTICATION_PRESHARED_KEY
+	UBigint SecurityFlags
+	UChar IdType
+	UChar[3] cMissingAlignment1
+	UInteger IdLengthInBytes
+	Pointer Id												// UChar*
+	UInteger KeyLengthInBytes
+	Integer iMissingAlignment2
+	Pointer Key												// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_connection_infoa
+Struct ISCSI_CONNECTION_INFOA
+	ISCSI_UNIQUE_SESSION_ID ConnectionId
+	Pointer InitiatorAddress								// PSTR
+	Pointer TargetAddress									// PSTR
+	UShort InitiatorSocket
+	UShort TargetSocket
+	UChar[2] CID
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_connection_infow
+Struct ISCSI_CONNECTION_INFOW
+	ISCSI_UNIQUE_SESSION_ID ConnectionId
+	Pointer InitiatorAddress								// PWSTR
+	Pointer TargetAddress									// PWSTR
+	UShort InitiatorSocket
+	UShort TargetSocket
+	UChar[2] CID
+	Short iMissingAlignment1
+End_Struct
+
+Struct ISCSI_CONNECTION_INFO_EX
+	ISCSI_UNIQUE_SESSION_ID ConnectionId
+	UChar State
+	UChar Protocol
+	UChar HeaderDigest
+	UChar DataDigest
+	UInteger MaxRecvDataSegmentLength
+	Integer AuthType										// ISCSI_AUTH_TYPES
+	Integer iMissingAlignment1
+	UBigint EstimatedThroughput
+	UInteger MaxDatagramSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_device_on_sessiona
+Struct ISCSI_DEVICE_ON_SESSIONA
+	Char[256] InitiatorName									// CHAR
+	Char[224] TargetName									// CHAR
+	SCSI_ADDRESS ScsiAddress
+	Guid DeviceInterfaceType
+	Char[260] DeviceInterfaceName							// CHAR
+	Char[260] LegacyName									// CHAR
+	STORAGE_DEVICE_NUMBER StorageDeviceNumber
+	UInteger DeviceInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_device_on_sessionw
+Struct ISCSI_DEVICE_ON_SESSIONW
+	UShort[256] InitiatorName
+	UShort[224] TargetName
+	SCSI_ADDRESS ScsiAddress
+	Guid DeviceInterfaceType
+	UShort[260] DeviceInterfaceName
+	UShort[260] LegacyName
+	STORAGE_DEVICE_NUMBER StorageDeviceNumber
+	UInteger DeviceInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_login_options
+Struct ISCSI_LOGIN_OPTIONS
+	UInteger Version
+	UInteger InformationSpecified
+	UInteger LoginFlags
+	Integer AuthType										// ISCSI_AUTH_TYPES
+	Integer HeaderDigest									// ISCSI_DIGEST_TYPES
+	Integer DataDigest										// ISCSI_DIGEST_TYPES
+	UInteger MaximumConnections
+	UInteger DefaultTime2Wait
+	UInteger DefaultTime2Retain
+	UInteger UsernameLength
+	UInteger PasswordLength
+	Integer iMissingAlignment1
+	Pointer Username										// UChar*
+	Pointer Password										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_session_infoa
+Struct ISCSI_SESSION_INFOA
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	Pointer InitiatorName									// PSTR
+	Pointer TargetNodeName									// PSTR
+	Pointer TargetName										// PSTR
+	UChar[6] ISID
+	UChar[2] TSID
+	UInteger ConnectionCount
+	Integer iMissingAlignment1
+	Pointer Connections										// ISCSI_CONNECTION_INFOA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_session_infow
+Struct ISCSI_SESSION_INFOW
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	Pointer InitiatorName									// PWSTR
+	Pointer TargetNodeName									// PWSTR
+	Pointer TargetName										// PWSTR
+	UChar[6] ISID
+	UChar[2] TSID
+	UInteger ConnectionCount
+	Integer iMissingAlignment1
+	Pointer Connections										// ISCSI_CONNECTION_INFOW*
+End_Struct
+
+Struct ISCSI_SESSION_INFO_EX
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	UChar InitialR2t										// BOOLEAN
+	UChar ImmediateData										// BOOLEAN
+	UChar Type
+	UChar DataSequenceInOrder								// BOOLEAN
+	UChar DataPduInOrder									// BOOLEAN
+	UChar ErrorRecoveryLevel
+	Short iMissingAlignment1
+	UInteger MaxOutstandingR2t
+	UInteger FirstBurstLength
+	UInteger MaxBurstLength
+	UInteger MaximumConnections
+	UInteger ConnectionCount
+	Integer iMissingAlignment2
+	Pointer Connections										// ISCSI_CONNECTION_INFO_EX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_mappinga
+Struct ISCSI_TARGET_MAPPINGA
+	Char[256] InitiatorName									// CHAR
+	Char[224] TargetName									// CHAR
+	Char[260] OSDeviceName									// CHAR
+	Integer iMissingAlignment1
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	UInteger OSBusNumber
+	UInteger OSTargetNumber
+	UInteger LUNCount
+	Integer iMissingAlignment2
+	Pointer LUNList											// SCSI_LUN_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_mappingw
+Struct ISCSI_TARGET_MAPPINGW
+	UShort[256] InitiatorName
+	UShort[224] TargetName
+	UShort[260] OSDeviceName
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	UInteger OSBusNumber
+	UInteger OSTargetNumber
+	UInteger LUNCount
+	Integer iMissingAlignment1
+	Pointer LUNList											// SCSI_LUN_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portala
+Struct ISCSI_TARGET_PORTALA
+	Char[256] SymbolicName									// CHAR
+	Char[256] Address										// CHAR
+	UShort Socket
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portalw
+Struct ISCSI_TARGET_PORTALW
+	UShort[256] SymbolicName
+	UShort[256] Address
+	UShort Socket
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_groupa
+Struct ISCSI_TARGET_PORTAL_GROUPA
+	UInteger Count
+	ISCSI_TARGET_PORTALA[1] Portals
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_groupw
+Struct ISCSI_TARGET_PORTAL_GROUPW
+	UInteger Count
+	ISCSI_TARGET_PORTALW[1] Portals
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_infoa
+Struct ISCSI_TARGET_PORTAL_INFOA
+	Char[256] InitiatorName									// CHAR
+	UInteger InitiatorPortNumber
+	Char[256] SymbolicName									// CHAR
+	Char[256] Address										// CHAR
+	UShort Socket
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_infow
+Struct ISCSI_TARGET_PORTAL_INFOW
+	UShort[256] InitiatorName
+	UInteger InitiatorPortNumber
+	UShort[256] SymbolicName
+	UShort[256] Address
+	UShort Socket
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_info_exa
+Struct ISCSI_TARGET_PORTAL_INFO_EXA
+	Char[256] InitiatorName									// CHAR
+	UInteger InitiatorPortNumber
+	Char[256] SymbolicName									// CHAR
+	Char[256] Address										// CHAR
+	UShort Socket
+	Short iMissingAlignment1
+	UBigint SecurityFlags
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_info_exw
+Struct ISCSI_TARGET_PORTAL_INFO_EXW
+	UShort[256] InitiatorName
+	UInteger InitiatorPortNumber
+	UShort[256] SymbolicName
+	UShort[256] Address
+	UShort Socket
+	Short iMissingAlignment1
+	UBigint SecurityFlags
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_unique_session_id
+Struct ISCSI_UNIQUE_SESSION_ID
+	UBigint AdapterUnique
+	UBigint AdapterSpecific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_version_info
+Struct ISCSI_VERSION_INFO
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UInteger BuildNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-persistent_iscsi_login_infoa
+Struct PERSISTENT_ISCSI_LOGIN_INFOA
+	Char[224] TargetName									// CHAR
+	UChar IsInformationalSession							// BOOLEAN
+	Char[256] InitiatorInstance								// CHAR
+	UChar[3] cMissingAlignment1
+	UInteger InitiatorPortNumber
+	ISCSI_TARGET_PORTALA TargetPortal
+	UChar[6] cMissingAlignment2
+	UBigint SecurityFlags
+	Pointer Mappings										// ISCSI_TARGET_MAPPINGA*
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-persistent_iscsi_login_infow
+Struct PERSISTENT_ISCSI_LOGIN_INFOW
+	UShort[224] TargetName
+	UChar IsInformationalSession							// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UShort[256] InitiatorInstance
+	Short iMissingAlignment2
+	UInteger InitiatorPortNumber
+	ISCSI_TARGET_PORTALW TargetPortal
+	UChar[6] cMissingAlignment3
+	UBigint SecurityFlags
+	Pointer Mappings										// ISCSI_TARGET_MAPPINGW*
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+Struct SCSI_ADDRESS
+	UInteger Length
+	UChar PortNumber
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-scsi_lun_list
+Struct SCSI_LUN_LIST
+	UInteger OSLUN
+	Integer iMissingAlignment1
+	UBigint TargetLUN
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

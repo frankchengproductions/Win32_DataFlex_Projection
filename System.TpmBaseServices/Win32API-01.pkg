@@ -1,0 +1,100 @@
+Use UI
+
+External_Function GetDeviceID "GetDeviceID" tbs.dll ;
+	Pointer pbWindowsAIK ;	// UChar*
+	UInteger cbWindowsAIK ;
+	Pointer pcbResult ;	// UInteger*
+	Pointer pfProtectedByTPM ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function GetDeviceIDString "GetDeviceIDString" tbs.dll ;
+	Pointer pszWindowsAIK ;	// PWSTR
+	UInteger cchWindowsAIK ;
+	Pointer pcchResult ;	// UInteger*
+	Pointer pfProtectedByTPM ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_context_create
+External_Function Tbsi_Context_Create "Tbsi_Context_Create" tbs.dll ;
+	Pointer pContextParams ;	// TBS_CONTEXT_PARAMS*
+	Pointer phContext ;	// Pointer**
+	Returns UInteger
+
+External_Function Tbsi_Create_Windows_Key "Tbsi_Create_Windows_Key" tbs.dll ;
+	UInteger keyHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_getdeviceinfo
+External_Function Tbsi_GetDeviceInfo "Tbsi_GetDeviceInfo" tbs.dll ;
+	UInteger Size ;
+	Pointer Info ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_get_ownerauth
+External_Function Tbsi_Get_OwnerAuth "Tbsi_Get_OwnerAuth" tbs.dll ;
+	Pointer hContext ;	// Pointer*
+	UInteger ownerauthType ;
+	Pointer pOutputBuf ;	// UChar*
+	Pointer pOutputBufLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_get_tcg_log
+External_Function Tbsi_Get_TCG_Log "Tbsi_Get_TCG_Log" tbs.dll ;
+	Pointer hContext ;	// Pointer*
+	Pointer pOutputBuf ;	// UChar*
+	Pointer pOutputBufLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_get_tcg_log_ex
+External_Function Tbsi_Get_TCG_Log_Ex "Tbsi_Get_TCG_Log_Ex" tbs.dll ;
+	UInteger logType ;
+	Pointer pbOutput ;	// UChar*
+	Pointer pcbOutput ;	// UInteger*
+	Returns UInteger
+
+External_Function Tbsi_Is_Tpm_Present "Tbsi_Is_Tpm_Present" tbs.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_physical_presence_command
+External_Function Tbsi_Physical_Presence_Command "Tbsi_Physical_Presence_Command" tbs.dll ;
+	Pointer hContext ;	// Pointer*
+	Pointer pabInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pabOutput ;	// UChar*
+	Pointer pcbOutput ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsi_revoke_attestation
+External_Function Tbsi_Revoke_Attestation "Tbsi_Revoke_Attestation" tbs.dll ;
+	Returns UInteger
+
+External_Function Tbsi_Tpm_Vendor_Maintenance_Mode "Tbsi_Tpm_Vendor_Maintenance_Mode" tbs.dll ;
+	Pointer pContextParams ;	// TBS_CONTEXT_PARAMS*
+	Pointer phContext ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsip_cancel_commands
+External_Function Tbsip_Cancel_Commands "Tbsip_Cancel_Commands" tbs.dll ;
+	Pointer hContext ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsip_context_close
+External_Function Tbsip_Context_Close "Tbsip_Context_Close" tbs.dll ;
+	Pointer hContext ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tbs/nf-tbs-tbsip_submit_command
+External_Function Tbsip_Submit_Command "Tbsip_Submit_Command" tbs.dll ;
+	Pointer hContext ;	// Pointer*
+	UInteger Locality ;	// TBS_COMMAND_LOCALITY
+	UInteger Priority ;	// TBS_COMMAND_PRIORITY
+	Pointer pabCommand ;	// UChar*
+	UInteger cbCommand ;
+	Pointer pabResult ;	// UChar*
+	Pointer pcbResult ;	// UInteger*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

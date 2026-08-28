@@ -1,0 +1,71 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-address_list_descriptor
+Struct ADDRESS_LIST_DESCRIPTOR
+	UInteger MediaType
+	NETWORK_ADDRESS_LIST AddressList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-enumeration_buffer
+Struct ENUMERATION_BUFFER
+	UInteger Length
+	UInteger OwnerProcessId
+	UShort FlowNameLength
+	UShort[256] FlowName
+	UChar[6] cMissingAlignment1
+	Pointer pFlow											// TC_GEN_FLOW*
+	UInteger NumberOfFilters
+	Integer iMissingAlignment2
+	TC_GEN_FILTER[1] GenericFilter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos/ns-qos-qos_object_hdr
+Struct QOS_OBJECT_HDR
+	UInteger ObjectType
+	UInteger ObjectLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos2/ns-qos2-qos_version
+Struct QOS_VERSION
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tci_client_func_list
+Struct TCI_CLIENT_FUNC_LIST
+	Pointer ClNotifyHandler									// TCI_NOTIFY_HANDLER
+	Pointer ClAddFlowCompleteHandler						// TCI_ADD_FLOW_COMPLETE_HANDLER
+	Pointer ClModifyFlowCompleteHandler						// TCI_MOD_FLOW_COMPLETE_HANDLER
+	Pointer ClDeleteFlowCompleteHandler						// TCI_DEL_FLOW_COMPLETE_HANDLER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tc_gen_filter
+Struct TC_GEN_FILTER
+	UShort AddressType
+	Short iMissingAlignment1
+	UInteger PatternSize
+	Pointer Pattern											// Pointer*
+	Pointer Mask											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tc_gen_flow
+Struct TC_GEN_FLOW
+	FLOWSPEC SendingFlowspec
+	FLOWSPEC ReceivingFlowspec
+	UInteger TcObjectsLength
+	QOS_OBJECT_HDR[1] TcObjects
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tc_ifc_descriptor
+Struct TC_IFC_DESCRIPTOR
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer pInterfaceName									// PWSTR
+	Pointer pInterfaceID									// PWSTR
+	ADDRESS_LIST_DESCRIPTOR AddressListDesc
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,111 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketaborthandle
+External_Function WebSocketAbortHandle "WebSocketAbortHandle" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketbeginclienthandshake
+External_Function WebSocketBeginClientHandshake "WebSocketBeginClientHandshake" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Pointer pszSubprotocols ;	// PSTR*
+	UInteger ulSubprotocolCount ;
+	Pointer pszExtensions ;	// PSTR*
+	UInteger ulExtensionCount ;
+	Pointer pInitialHeaders ;	// WEB_SOCKET_HTTP_HEADER*
+	UInteger ulInitialHeaderCount ;
+	Pointer pAdditionalHeaders ;	// WEB_SOCKET_HTTP_HEADER**
+	Pointer pulAdditionalHeaderCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketbeginserverhandshake
+External_Function WebSocketBeginServerHandshake "WebSocketBeginServerHandshake" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	String pszSubprotocolSelected ;	// PSTR
+	Pointer pszExtensionSelected ;	// PSTR*
+	UInteger ulExtensionSelectedCount ;
+	Pointer pRequestHeaders ;	// WEB_SOCKET_HTTP_HEADER*
+	UInteger ulRequestHeaderCount ;
+	Pointer pResponseHeaders ;	// WEB_SOCKET_HTTP_HEADER**
+	Pointer pulResponseHeaderCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketcompleteaction
+External_Function WebSocketCompleteAction "WebSocketCompleteAction" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Pointer pvActionContext ;	// Pointer*
+	UInteger ulBytesTransferred ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketcreateclienthandle
+External_Function WebSocketCreateClientHandle "WebSocketCreateClientHandle" websocket.dll ;
+	Pointer pProperties ;	// WEB_SOCKET_PROPERTY*
+	UInteger ulPropertyCount ;
+	Pointer phWebSocket ;	// WEB_SOCKET_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketcreateserverhandle
+External_Function WebSocketCreateServerHandle "WebSocketCreateServerHandle" websocket.dll ;
+	Pointer pProperties ;	// WEB_SOCKET_PROPERTY*
+	UInteger ulPropertyCount ;
+	Pointer phWebSocket ;	// WEB_SOCKET_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketdeletehandle
+External_Function WebSocketDeleteHandle "WebSocketDeleteHandle" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketendclienthandshake
+External_Function WebSocketEndClientHandshake "WebSocketEndClientHandshake" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Pointer pResponseHeaders ;	// WEB_SOCKET_HTTP_HEADER*
+	UInteger ulReponseHeaderCount ;
+	Pointer pulSelectedExtensions ;	// UInteger*
+	Pointer pulSelectedExtensionCount ;	// UInteger*
+	Pointer pulSelectedSubprotocol ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketendserverhandshake
+External_Function WebSocketEndServerHandshake "WebSocketEndServerHandshake" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketgetaction
+External_Function WebSocketGetAction "WebSocketGetAction" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Integer eActionQueue ;	// WEB_SOCKET_ACTION_QUEUE
+	Pointer pDataBuffers ;	// WEB_SOCKET_BUFFER*
+	Pointer pulDataBufferCount ;	// UInteger*
+	Pointer pAction ;	// WEB_SOCKET_ACTION*
+	Pointer pBufferType ;	// WEB_SOCKET_BUFFER_TYPE*
+	Pointer pvApplicationContext ;	// Pointer**
+	Pointer pvActionContext ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketgetglobalproperty
+External_Function WebSocketGetGlobalProperty "WebSocketGetGlobalProperty" websocket.dll ;
+	Integer eType ;	// WEB_SOCKET_PROPERTY_TYPE
+	Pointer pvValue ;	// Pointer*
+	Pointer ulSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketreceive
+External_Function WebSocketReceive "WebSocketReceive" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Pointer pBuffer ;	// WEB_SOCKET_BUFFER*
+	Pointer pvContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/websocket/nf-websocket-websocketsend
+External_Function WebSocketSend "WebSocketSend" websocket.dll ;
+	Pointer hWebSocket ;	// WEB_SOCKET_HANDLE
+	Integer BufferType ;	// WEB_SOCKET_BUFFER_TYPE
+	Pointer pBuffer ;	// WEB_SOCKET_BUFFER*
+	Pointer Context ;	// Pointer*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

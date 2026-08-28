@@ -1,0 +1,83 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-certselectiongetserializedblob
+External_Function CertSelectionGetSerializedBlob "CertSelectionGetSerializedBlob" CRYPTUI.dll ;
+	Pointer pcsi ;	// CERT_SELECTUI_INPUT*
+	Pointer ppOutBuffer ;	// Pointer**
+	Pointer pulOutBufferSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuidlgcertmgr
+External_Function CryptUIDlgCertMgr "CryptUIDlgCertMgr" CRYPTUI.dll ;
+	Pointer pCryptUICertMgr ;	// CRYPTUI_CERT_MGR_STRUCT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuidlgselectcertificatefromstore
+External_Function CryptUIDlgSelectCertificateFromStore "CryptUIDlgSelectCertificateFromStore" CRYPTUI.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer hwnd ;	// HWND
+	WString pwszTitle ;	// PWSTR
+	WString pwszDisplayString ;	// PWSTR
+	UInteger dwDontUseColumn ;
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuidlgviewcertificatea
+External_Function CryptUIDlgViewCertificateA "CryptUIDlgViewCertificateA" CRYPTUI.dll ;
+	Pointer pCertViewInfo ;	// CRYPTUI_VIEWCERTIFICATE_STRUCTA*
+	Pointer pfPropertiesChanged ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuidlgviewcertificatew
+External_Function CryptUIDlgViewCertificateW "CryptUIDlgViewCertificateW" CRYPTUI.dll ;
+	Pointer pCertViewInfo ;	// CRYPTUI_VIEWCERTIFICATE_STRUCTW*
+	Pointer pfPropertiesChanged ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuidlgviewcontext
+External_Function CryptUIDlgViewContext "CryptUIDlgViewContext" CRYPTUI.dll ;
+	UInteger dwContextType ;
+	Pointer pvContext ;	// Pointer*
+	Pointer hwnd ;	// HWND
+	WString pwszTitle ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuiwizdigitalsign
+External_Function CryptUIWizDigitalSign "CryptUIWizDigitalSign" CRYPTUI.dll ;
+	UInteger dwFlags ;
+	Pointer hwndParent ;	// HWND
+	WString pwszWizardTitle ;	// PWSTR
+	Pointer pDigitalSignInfo ;	// CRYPTUI_WIZ_DIGITAL_SIGN_INFO*
+	Pointer ppSignContext ;	// CRYPTUI_WIZ_DIGITAL_SIGN_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuiwizexport
+External_Function CryptUIWizExport "CryptUIWizExport" CRYPTUI.dll ;
+	UInteger dwFlags ;	// CRYPTUI_WIZ_FLAGS
+	Pointer hwndParent ;	// HWND
+	WString pwszWizardTitle ;	// PWSTR
+	Pointer pExportInfo ;	// CRYPTUI_WIZ_EXPORT_INFO*
+	Pointer pvoid ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuiwizfreedigitalsigncontext
+External_Function CryptUIWizFreeDigitalSignContext "CryptUIWizFreeDigitalSignContext" CRYPTUI.dll ;
+	Pointer pSignContext ;	// CRYPTUI_WIZ_DIGITAL_SIGN_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/nf-cryptuiapi-cryptuiwizimport
+External_Function CryptUIWizImport "CryptUIWizImport" CRYPTUI.dll ;
+	UInteger dwFlags ;	// CRYPTUI_WIZ_FLAGS
+	Pointer hwndParent ;	// HWND
+	WString pwszWizardTitle ;	// PWSTR
+	Pointer pImportSrc ;	// CRYPTUI_WIZ_IMPORT_SRC_INFO*
+	Pointer hDestCertStore ;	// HCERTSTORE
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,66 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bir
+Struct WINBIO_BIR
+	WINBIO_BIR_DATA HeaderBlock
+	WINBIO_BIR_DATA StandardDataBlock
+	WINBIO_BIR_DATA VendorDataBlock
+	WINBIO_BIR_DATA SignatureBlock
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bir-data
+Struct WINBIO_BIR_DATA
+	UInteger Size
+	UInteger Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bsp-schema
+Struct WINBIO_BSP_SCHEMA
+	UInteger BiometricFactor
+	Guid BspId
+	UShort[256] Description
+	UShort[256] Vendor
+	WINBIO_VERSION Version
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-identity
+Struct WINBIO_IDENTITY
+	UInteger Type
+	UChar[68] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-storage-schema
+Struct WINBIO_STORAGE_SCHEMA
+	UInteger BiometricFactor
+	Guid DatabaseId
+	Guid DataFormat
+	UInteger Attributes
+	UShort[256] FilePath
+	UShort[256] ConnectionString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-unit-schema
+Struct WINBIO_UNIT_SCHEMA
+	UInteger UnitId
+	UInteger PoolType
+	UInteger BiometricFactor
+	UInteger SensorSubType
+	UInteger Capabilities
+	UShort[256] DeviceInstanceId
+	UShort[256] Description
+	UShort[256] Manufacturer
+	UShort[256] Model
+	UShort[256] SerialNumber
+	WINBIO_VERSION FirmwareVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-version
+Struct WINBIO_VERSION
+	UInteger MajorVersion
+	UInteger MinorVersion
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

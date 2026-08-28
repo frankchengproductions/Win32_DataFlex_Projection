@@ -1,0 +1,182 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-cache_descriptor
+Struct CACHE_DESCRIPTOR
+	UChar Level
+	UChar Associativity
+	UShort LineSize
+	UInteger Size
+	Integer Type											// PROCESSOR_CACHE_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-cache_relationship
+Struct CACHE_RELATIONSHIP
+	UChar Level
+	UChar Associativity
+	UShort LineSize
+	UInteger CacheSize
+	Integer Type											// PROCESSOR_CACHE_TYPE
+	UChar[18] Reserved
+	UShort GroupCount
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-group_affinity
+Struct GROUP_AFFINITY
+	ULongPtr Mask
+	UShort Group
+	UShort[3] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-group_relationship
+Struct GROUP_RELATIONSHIP
+	UShort MaximumGroupCount
+	UShort ActiveGroupCount
+	UChar[20] Reserved
+	PROCESSOR_GROUP_INFO[1] GroupInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-memorystatus
+Struct MEMORYSTATUS
+	UInteger dwLength
+	UInteger dwMemoryLoad
+	ULongPtr dwTotalPhys
+	ULongPtr dwAvailPhys
+	ULongPtr dwTotalPageFile
+	ULongPtr dwAvailPageFile
+	ULongPtr dwTotalVirtual
+	ULongPtr dwAvailVirtual
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/ns-sysinfoapi-memorystatusex
+Struct MEMORYSTATUSEX
+	UInteger dwLength
+	UInteger dwMemoryLoad
+	UBigint ullTotalPhys
+	UBigint ullAvailPhys
+	UBigint ullTotalPageFile
+	UBigint ullAvailPageFile
+	UBigint ullTotalVirtual
+	UBigint ullAvailVirtual
+	UBigint ullAvailExtendedVirtual
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-numa_node_relationship
+Struct NUMA_NODE_RELATIONSHIP
+	UInteger NodeNumber
+	UChar[18] Reserved
+	UShort GroupCount
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-osversioninfoa
+Struct OSVERSIONINFOA
+	UInteger dwOSVersionInfoSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UInteger dwBuildNumber
+	UInteger dwPlatformId
+	Char[128] szCSDVersion									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-osversioninfoexa
+Struct OSVERSIONINFOEXA
+	UInteger dwOSVersionInfoSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UInteger dwBuildNumber
+	UInteger dwPlatformId
+	Char[128] szCSDVersion									// CHAR
+	UShort wServicePackMajor
+	UShort wServicePackMinor
+	UShort wSuiteMask
+	UChar wProductType
+	UChar wReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-osversioninfoexw
+Struct OSVERSIONINFOEXW
+	UInteger dwOSVersionInfoSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UInteger dwBuildNumber
+	UInteger dwPlatformId
+	UShort[128] szCSDVersion
+	UShort wServicePackMajor
+	UShort wServicePackMinor
+	UShort wSuiteMask
+	UChar wProductType
+	UChar wReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-osversioninfow
+Struct OSVERSIONINFOW
+	UInteger dwOSVersionInfoSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UInteger dwBuildNumber
+	UInteger dwPlatformId
+	UShort[128] szCSDVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-processor_group_info
+Struct PROCESSOR_GROUP_INFO
+	UChar MaximumProcessorCount
+	UChar ActiveProcessorCount
+	UChar[38] Reserved
+	ULongPtr ActiveProcessorMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-processor_relationship
+Struct PROCESSOR_RELATIONSHIP
+	UChar Flags
+	UChar EfficiencyClass
+	UChar[20] Reserved
+	UShort GroupCount
+	GROUP_AFFINITY[1] GroupMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_cpu_set_information
+Struct SYSTEM_CPU_SET_INFORMATION
+	UInteger Size
+	Integer Type											// CPU_SET_INFORMATION_TYPE
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/ns-sysinfoapi-system_info
+Struct SYSTEM_INFO
+	UChar[4] UnionName1
+	UInteger dwPageSize
+	Pointer lpMinimumApplicationAddress						// Pointer*
+	Pointer lpMaximumApplicationAddress						// Pointer*
+	ULongPtr dwActiveProcessorMask
+	UInteger dwNumberOfProcessors
+	UInteger dwProcessorType
+	UInteger dwAllocationGranularity
+	UShort wProcessorLevel
+	UShort wProcessorRevision
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_logical_processor_information
+Struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION
+	ULongPtr ProcessorMask
+	Integer Relationship									// LOGICAL_PROCESSOR_RELATIONSHIP
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_logical_processor_information_ex
+Struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX
+	Integer Relationship									// LOGICAL_PROCESSOR_RELATIONSHIP
+	UInteger Size
+	UChar[72] UnionName1
+End_Struct
+
+Struct SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION
+	UBigint CycleTime
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

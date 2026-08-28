@@ -1,0 +1,404 @@
+Use UI
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/builddisplaytable
+External_Function BuildDisplayTable "BuildDisplayTable" MAPI32.dll ;
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lpAllocateMore ;	// LPALLOCATEMORE
+	Pointer lpFreeBuffer ;	// LPFREEBUFFER
+	Pointer lpMalloc ;	// IMalloc
+	Pointer hInstance ;	// HINSTANCE
+	UInteger cPages ;
+	Pointer lpPage ;	// DTPAGE*
+	UInteger ulFlags ;
+	Pointer lppTable ;	// IMAPITable*
+	Pointer lppTblData ;	// ITableData*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/changeidleroutine
+External_Function ChangeIdleRoutine "ChangeIdleRoutine" MAPI32.dll ;
+	Pointer ftg ;	// Pointer*
+	Pointer lpfnIdle ;	// PFNIDLE
+	Pointer lpvIdleParam ;	// Pointer*
+	Short priIdle ;
+	UInteger csecIdle ;
+	UShort iroIdle ;
+	UShort ircIdle ;
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/createiprop
+External_Function CreateIProp "CreateIProp" MAPI32.dll ;
+	Pointer lpInterface ;	// Guid*
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lpAllocateMore ;	// LPALLOCATEMORE
+	Pointer lpFreeBuffer ;	// LPFREEBUFFER
+	Pointer lpvReserved ;	// Pointer*
+	Pointer lppPropData ;	// IPropData*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/deinitmapiutil
+External_Function DeinitMapiUtil "DeinitMapiUtil" MAPI32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/deregisteridleroutine
+External_Function DeregisterIdleRoutine "DeregisterIdleRoutine" MAPI32.dll ;
+	Pointer ftg ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/enableidleroutine
+External_Function EnableIdleRoutine "EnableIdleRoutine" MAPI32.dll ;
+	Pointer ftg ;	// Pointer*
+	Integer fEnable ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/fequalnames
+External_Function FEqualNames "FEqualNames" MAPI32.dll ;
+	Pointer lpName1 ;	// MAPINAMEID*
+	Pointer lpName2 ;	// MAPINAMEID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/fpropcompareprop
+External_Function FPropCompareProp "FPropCompareProp" MAPI32.dll ;
+	Pointer lpSPropValue1 ;	// SPropValue*
+	UInteger ulRelOp ;
+	Pointer lpSPropValue2 ;	// SPropValue*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/fpropcontainsprop
+External_Function FPropContainsProp "FPropContainsProp" MAPI32.dll ;
+	Pointer lpSPropValueDst ;	// SPropValue*
+	Pointer lpSPropValueSrc ;	// SPropValue*
+	UInteger ulFuzzyLevel ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/fpropexists
+External_Function FPropExists "FPropExists" MAPI32.dll ;
+	Pointer lpMapiProp ;	// IMAPIProp
+	UInteger ulPropTag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/freepadrlist
+External_Function FreePadrlist "FreePadrlist" MAPI32.dll ;
+	Pointer lpAdrlist ;	// ADRLIST*
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/freeprows
+External_Function FreeProws "FreeProws" MAPI32.dll ;
+	Pointer lpRows ;	// SRowSet*
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ftaddft
+External_Function FtAddFt "FtAddFt" MAPI32.dll ;
+	FILETIME ftAddend1 ;
+	FILETIME ftAddend2 ;
+	Returns FILETIME
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ftmuldw
+External_Function FtMulDw "FtMulDw" MAPI32.dll ;
+	UInteger ftMultiplier ;
+	FILETIME ftMultiplicand ;
+	Returns FILETIME
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ftmuldwdw
+External_Function FtMulDwDw "FtMulDwDw" MAPI32.dll ;
+	UInteger ftMultiplicand ;
+	UInteger ftMultiplier ;
+	Returns FILETIME
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ftnegft
+External_Function FtNegFt "FtNegFt" MAPI32.dll ;
+	FILETIME ft ;
+	Returns FILETIME
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ftsubft
+External_Function FtSubFt "FtSubFt" MAPI32.dll ;
+	FILETIME ftMinuend ;
+	FILETIME ftSubtrahend ;
+	Returns FILETIME
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ftgregisteridleroutine
+External_Function FtgRegisterIdleRoutine "FtgRegisterIdleRoutine" MAPI32.dll ;
+	Pointer lpfnIdle ;	// PFNIDLE
+	Pointer lpvIdleParam ;	// Pointer*
+	Short priIdle ;
+	UInteger csecIdle ;
+	UShort iroIdle ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hraddcolumns
+External_Function HrAddColumns "HrAddColumns" MAPI32.dll ;
+	Pointer lptbl ;	// IMAPITable
+	Pointer lpproptagColumnsNew ;	// SPropTagArray*
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lpFreeBuffer ;	// LPFREEBUFFER
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hraddcolumnsex
+External_Function HrAddColumnsEx "HrAddColumnsEx" MAPI32.dll ;
+	Pointer lptbl ;	// IMAPITable
+	Pointer lpproptagColumnsNew ;	// SPropTagArray*
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lpFreeBuffer ;	// LPFREEBUFFER
+	LongPtr lpfnFilterColumns ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hrallocadvisesink
+External_Function HrAllocAdviseSink "HrAllocAdviseSink" MAPI32.dll ;
+	Pointer lpfnCallback ;	// LPNOTIFCALLBACK
+	Pointer lpvContext ;	// Pointer*
+	Pointer lppAdviseSink ;	// IMAPIAdviseSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hrdispatchnotifications
+External_Function HrDispatchNotifications "HrDispatchNotifications" MAPI32.dll ;
+	UInteger ulFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hrgetoneprop
+External_Function HrGetOneProp "HrGetOneProp" MAPI32.dll ;
+	Pointer lpMapiProp ;	// IMAPIProp
+	UInteger ulPropTag ;
+	Pointer lppProp ;	// SPropValue**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hristoragefromstream
+External_Function HrIStorageFromStream "HrIStorageFromStream" MAPI32.dll ;
+	Pointer lpUnkIn ;	// IUnknown
+	Pointer lpInterface ;	// Guid*
+	UInteger ulFlags ;
+	Pointer lppStorageOut ;	// IStorage*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hrqueryallrows
+External_Function HrQueryAllRows "HrQueryAllRows" MAPI32.dll ;
+	Pointer lpTable ;	// IMAPITable
+	Pointer lpPropTags ;	// SPropTagArray*
+	Pointer lpRestriction ;	// SRestriction*
+	Pointer lpSortOrderSet ;	// SSortOrderSet*
+	Integer crowsMax ;
+	Pointer lppRows ;	// SRowSet**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hrsetoneprop
+External_Function HrSetOneProp "HrSetOneProp" MAPI32.dll ;
+	Pointer lpMapiProp ;	// IMAPIProp
+	Pointer lpProp ;	// SPropValue*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/hrthisthreadadvisesink
+External_Function HrThisThreadAdviseSink "HrThisThreadAdviseSink" MAPI32.dll ;
+	Pointer lpAdviseSink ;	// IMAPIAdviseSink
+	Pointer lppAdviseSink ;	// IMAPIAdviseSink*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/lpropcompareprop
+External_Function LPropCompareProp "LPropCompareProp" MAPI32.dll ;
+	Pointer lpSPropValueA ;	// SPropValue*
+	Pointer lpSPropValueB ;	// SPropValue*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/lpvalfindprop
+External_Function LpValFindProp "LpValFindProp" MAPI32.dll ;
+	UInteger ulPropTag ;
+	UInteger cValues ;
+	Pointer lpPropArray ;	// SPropValue*
+	Returns Pointer	// SPropValue*
+
+External_Function MAPIDeinitIdle "MAPIDeinitIdle" MAPI32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/mapigetdefaultmalloc
+External_Function MAPIGetDefaultMalloc "MAPIGetDefaultMalloc" MAPI32.dll ;
+	Returns Pointer	// IMalloc
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/mapiinitidle
+External_Function MAPIInitIdle "MAPIInitIdle" MAPI32.dll ;
+	Pointer lpvReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/openstreamonfile
+External_Function OpenStreamOnFile "OpenStreamOnFile" MAPI32.dll ;
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lpFreeBuffer ;	// LPFREEBUFFER
+	UInteger ulFlags ;
+	Pointer lpszFileName ;	// Char*
+	Pointer lpszPrefix ;	// Char*
+	Pointer lppStream ;	// IStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ppropfindprop
+External_Function PpropFindProp "PpropFindProp" MAPI32.dll ;
+	Pointer lpPropArray ;	// SPropValue*
+	UInteger cValues ;
+	UInteger ulPropTag ;
+	Returns Pointer	// SPropValue*
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/propcopymore
+External_Function PropCopyMore "PropCopyMore" MAPI32.dll ;
+	Pointer lpSPropValueDest ;	// SPropValue*
+	Pointer lpSPropValueSrc ;	// SPropValue*
+	Pointer lpfAllocMore ;	// LPALLOCATEMORE
+	Pointer lpvObject ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/rtfsync
+External_Function RTFSync "RTFSync" MAPI32.dll ;
+	Pointer lpMessage ;	// IMessage
+	UInteger ulFlags ;
+	Pointer lpfMessageUpdated ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sccopynotifications
+External_Function ScCopyNotifications "ScCopyNotifications" MAPI32.dll ;
+	Integer cNotification ;
+	Pointer lpNotifications ;	// NOTIFICATION*
+	Pointer lpvDst ;	// Pointer*
+	Pointer lpcb ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sccopyprops
+External_Function ScCopyProps "ScCopyProps" MAPI32.dll ;
+	Integer cValues ;
+	Pointer lpPropArray ;	// SPropValue*
+	Pointer lpvDst ;	// Pointer*
+	Pointer lpcb ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sccountnotifications
+External_Function ScCountNotifications "ScCountNotifications" MAPI32.dll ;
+	Integer cNotifications ;
+	Pointer lpNotifications ;	// NOTIFICATION*
+	Pointer lpcb ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sccountprops
+External_Function ScCountProps "ScCountProps" MAPI32.dll ;
+	Integer cValues ;
+	Pointer lpPropArray ;	// SPropValue*
+	Pointer lpcb ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sccreateconversationindex
+External_Function ScCreateConversationIndex "ScCreateConversationIndex" MAPI32.dll ;
+	UInteger cbParent ;
+	Pointer lpbParent ;	// UChar*
+	Pointer lpcbConvIndex ;	// UInteger*
+	Pointer lppbConvIndex ;	// UChar**
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scduppropset
+External_Function ScDupPropset "ScDupPropset" MAPI32.dll ;
+	Integer cValues ;
+	Pointer lpPropArray ;	// SPropValue*
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lppPropArray ;	// SPropValue**
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scinitmapiutil
+External_Function ScInitMapiUtil "ScInitMapiUtil" MAPI32.dll ;
+	UInteger ulFlags ;
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/sclocalpathfromunc
+External_Function ScLocalPathFromUNC "ScLocalPathFromUNC" MAPI32.dll ;
+	String lpszUNC ;	// PSTR
+	String lpszLocal ;	// PSTR
+	UInteger cchLocal ;
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/screlocnotifications
+External_Function ScRelocNotifications "ScRelocNotifications" MAPI32.dll ;
+	Integer cNotification ;
+	Pointer lpNotifications ;	// NOTIFICATION*
+	Pointer lpvBaseOld ;	// Pointer*
+	Pointer lpvBaseNew ;	// Pointer*
+	Pointer lpcb ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/screlocprops
+External_Function ScRelocProps "ScRelocProps" MAPI32.dll ;
+	Integer cValues ;
+	Pointer lpPropArray ;	// SPropValue*
+	Pointer lpvBaseOld ;	// Pointer*
+	Pointer lpvBaseNew ;	// Pointer*
+	Pointer lpcb ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/scuncfromlocalpath
+External_Function ScUNCFromLocalPath "ScUNCFromLocalPath" MAPI32.dll ;
+	String lpszLocal ;	// PSTR
+	String lpszUNC ;	// PSTR
+	UInteger cchUNC ;
+	Returns Integer
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/szfindch
+External_Function SzFindCh "SzFindCh" MAPI32.dll ;
+	Pointer lpsz ;	// Char*
+	UShort ch ;
+	Returns Pointer	// Char*
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/szfindlastch
+External_Function SzFindLastCh "SzFindLastCh" MAPI32.dll ;
+	Pointer lpsz ;	// Char*
+	UShort ch ;
+	Returns Pointer	// Char*
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/szfindsz
+External_Function SzFindSz "SzFindSz" MAPI32.dll ;
+	Pointer lpsz ;	// Char*
+	Pointer lpszKey ;	// Char*
+	Returns Pointer	// Char*
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ufromsz
+External_Function UFromSz "UFromSz" MAPI32.dll ;
+	Pointer lpsz ;	// Char*
+	Returns UInteger
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/uladdref
+External_Function UlAddRef "UlAddRef" MAPI32.dll ;
+	Pointer lpunk ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ulpropsize
+External_Function UlPropSize "UlPropSize" MAPI32.dll ;
+	Pointer lpSPropValue ;	// SPropValue*
+	Returns UInteger
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/ulrelease
+External_Function UlRelease "UlRelease" MAPI32.dll ;
+	Pointer lpunk ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/wrapcompressedrtfstream
+External_Function WrapCompressedRTFStream "WrapCompressedRTFStream" MAPI32.dll ;
+	Pointer lpCompressedRTFStream ;	// IStream
+	UInteger ulFlags ;
+	Pointer lpUncompressedRTFStream ;	// IStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/wrapstoreentryid
+External_Function WrapStoreEntryID "WrapStoreEntryID" MAPI32.dll ;
+	UInteger ulFlags ;
+	Pointer lpszDLLName ;	// Char*
+	UInteger cbOrigEntry ;
+	Pointer lpOrigEntry ;	// ENTRYID*
+	Pointer lpcbWrappedEntry ;	// UInteger*
+	Pointer lppWrappedEntry ;	// ENTRYID**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/office/client-developer/outlook/mapi/createtable
+External_Function CreateTable "CreateTable" rtm.dll ;
+	Pointer lpInterface ;	// Guid*
+	Pointer lpAllocateBuffer ;	// LPALLOCATEBUFFER
+	Pointer lpAllocateMore ;	// LPALLOCATEMORE
+	Pointer lpFreeBuffer ;	// LPFREEBUFFER
+	Pointer lpvReserved ;	// Pointer*
+	UInteger ulTableType ;
+	UInteger ulPropTagIndexColumn ;
+	Pointer lpSPropTagArrayColumns ;	// SPropTagArray*
+	Pointer lppTableData ;	// ITableData*
+	Returns Integer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

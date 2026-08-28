@@ -1,0 +1,473 @@
+Use UI
+
+External_Function HcsAddResourceToOperation "HcsAddResourceToOperation" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Integer type ;	// HCS_RESOURCE_TYPE
+	WString uri ;	// PWSTR
+	Pointer handle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCancelOperation
+External_Function HcsCancelOperation "HcsCancelOperation" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCloseComputeSystem
+External_Function HcsCloseComputeSystem "HcsCloseComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Returns Pointer
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCloseOperation
+External_Function HcsCloseOperation "HcsCloseOperation" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns Pointer
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCloseProcess
+External_Function HcsCloseProcess "HcsCloseProcess" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Returns Pointer
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCrashComputeSystem
+External_Function HcsCrashComputeSystem "HcsCrashComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/reference/HcsCreateComputeSystem
+External_Function HcsCreateComputeSystem "HcsCreateComputeSystem" computecore.dll ;
+	WString id ;	// PWSTR
+	WString configuration ;	// PWSTR
+	Pointer operation ;	// HCS_OPERATION
+	Pointer securityDescriptor ;	// SECURITY_DESCRIPTOR*
+	Pointer computeSystem ;	// HCS_SYSTEM*
+	Returns Integer	// HRESULT
+
+External_Function HcsCreateComputeSystemInNamespace "HcsCreateComputeSystemInNamespace" computecore.dll ;
+	WString idNamespace ;	// PWSTR
+	WString id ;	// PWSTR
+	WString configuration ;	// PWSTR
+	Pointer operation ;	// HCS_OPERATION
+	Pointer options ;	// HCS_CREATE_OPTIONS*
+	Pointer computeSystem ;	// HCS_SYSTEM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCreateEmptyGuestStateFile
+External_Function HcsCreateEmptyGuestStateFile "HcsCreateEmptyGuestStateFile" computecore.dll ;
+	WString guestStateFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HcsCreateEmptyRuntimeStateFile "HcsCreateEmptyRuntimeStateFile" computecore.dll ;
+	WString runtimeStateFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCreateOperation
+External_Function HcsCreateOperation "HcsCreateOperation" computecore.dll ;
+	Pointer context ;	// Pointer*
+	Pointer callback ;	// HCS_OPERATION_COMPLETION
+	Returns Pointer	// HCS_OPERATION
+
+External_Function HcsCreateOperationWithNotifications "HcsCreateOperationWithNotifications" computecore.dll ;
+	Integer eventTypes ;	// HCS_OPERATION_OPTIONS
+	Pointer context ;	// Pointer*
+	Pointer callback ;	// HCS_EVENT_CALLBACK
+	Returns Pointer	// HCS_OPERATION
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsCreateProcess
+External_Function HcsCreateProcess "HcsCreateProcess" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	WString processParameters ;	// PWSTR
+	Pointer operation ;	// HCS_OPERATION
+	Pointer securityDescriptor ;	// SECURITY_DESCRIPTOR*
+	Pointer process ;	// HCS_PROCESS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsEnumerateComputeSystems
+External_Function HcsEnumerateComputeSystems "HcsEnumerateComputeSystems" computecore.dll ;
+	WString query ;	// PWSTR
+	Pointer operation ;	// HCS_OPERATION
+	Returns Integer	// HRESULT
+
+External_Function HcsEnumerateComputeSystemsInNamespace "HcsEnumerateComputeSystemsInNamespace" computecore.dll ;
+	WString idNamespace ;	// PWSTR
+	WString query ;	// PWSTR
+	Pointer operation ;	// HCS_OPERATION
+	Returns Integer	// HRESULT
+
+External_Function HcsFinalizeLiveMigration "HcsFinalizeLiveMigration" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetComputeSystemFromOperation
+External_Function HcsGetComputeSystemFromOperation "HcsGetComputeSystemFromOperation" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns Pointer	// HCS_SYSTEM
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetComputeSystemProperties
+External_Function HcsGetComputeSystemProperties "HcsGetComputeSystemProperties" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString propertyQuery ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetOperationContext
+External_Function HcsGetOperationContext "HcsGetOperationContext" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetOperationId
+External_Function HcsGetOperationId "HcsGetOperationId" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns UBigint
+
+External_Function HcsGetOperationProperties "HcsGetOperationProperties" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Pointer resultDocument ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetOperationResult
+External_Function HcsGetOperationResult "HcsGetOperationResult" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Pointer resultDocument ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetOperationResultAndProcessInfo
+External_Function HcsGetOperationResultAndProcessInfo "HcsGetOperationResultAndProcessInfo" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Pointer processInformation ;	// HCS_PROCESS_INFORMATION*
+	Pointer resultDocument ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetOperationType
+External_Function HcsGetOperationType "HcsGetOperationType" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns Integer	// HCS_OPERATION_TYPE
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetProcessFromOperation
+External_Function HcsGetProcessFromOperation "HcsGetProcessFromOperation" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Returns Pointer	// HCS_PROCESS
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetProcessInfo
+External_Function HcsGetProcessInfo "HcsGetProcessInfo" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Pointer operation ;	// HCS_OPERATION
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetProcessProperties
+External_Function HcsGetProcessProperties "HcsGetProcessProperties" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Pointer operation ;	// HCS_OPERATION
+	WString propertyQuery ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetProcessorCompatibilityFromSavedState
+External_Function HcsGetProcessorCompatibilityFromSavedState "HcsGetProcessorCompatibilityFromSavedState" computecore.dll ;
+	WString RuntimeFileName ;	// PWSTR
+	Pointer ProcessorFeaturesString ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetServiceProperties
+External_Function HcsGetServiceProperties "HcsGetServiceProperties" computecore.dll ;
+	WString propertyQuery ;	// PWSTR
+	Pointer result ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGrantVmAccess
+External_Function HcsGrantVmAccess "HcsGrantVmAccess" computecore.dll ;
+	WString vmId ;	// PWSTR
+	WString filePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGrantVmGroupAccess
+External_Function HcsGrantVmGroupAccess "HcsGrantVmGroupAccess" computecore.dll ;
+	WString filePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HcsInitializeLiveMigrationOnSource "HcsInitializeLiveMigrationOnSource" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsModifyComputeSystem
+External_Function HcsModifyComputeSystem "HcsModifyComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString configuration ;	// PWSTR
+	Pointer identity ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsModifyProcess
+External_Function HcsModifyProcess "HcsModifyProcess" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Pointer operation ;	// HCS_OPERATION
+	WString settings ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsModifyServiceSettings
+External_Function HcsModifyServiceSettings "HcsModifyServiceSettings" computecore.dll ;
+	WString settings ;	// PWSTR
+	Pointer result ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/reference/HcsOpenComputeSystem
+External_Function HcsOpenComputeSystem "HcsOpenComputeSystem" computecore.dll ;
+	WString id ;	// PWSTR
+	UInteger requestedAccess ;
+	Pointer computeSystem ;	// HCS_SYSTEM*
+	Returns Integer	// HRESULT
+
+External_Function HcsOpenComputeSystemInNamespace "HcsOpenComputeSystemInNamespace" computecore.dll ;
+	WString idNamespace ;	// PWSTR
+	WString id ;	// PWSTR
+	UInteger requestedAccess ;
+	Pointer computeSystem ;	// HCS_SYSTEM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsOpenProcess
+External_Function HcsOpenProcess "HcsOpenProcess" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	UInteger processId ;
+	UInteger requestedAccess ;
+	Pointer process ;	// HCS_PROCESS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsPauseComputeSystem
+External_Function HcsPauseComputeSystem "HcsPauseComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsResumeComputeSystem
+External_Function HcsResumeComputeSystem "HcsResumeComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsRevokeVmAccess
+External_Function HcsRevokeVmAccess "HcsRevokeVmAccess" computecore.dll ;
+	WString vmId ;	// PWSTR
+	WString filePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsRevokeVmGroupAccess
+External_Function HcsRevokeVmGroupAccess "HcsRevokeVmGroupAccess" computecore.dll ;
+	WString filePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSaveComputeSystem
+External_Function HcsSaveComputeSystem "HcsSaveComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSetComputeSystemCallback
+External_Function HcsSetComputeSystemCallback "HcsSetComputeSystemCallback" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Integer callbackOptions ;	// HCS_EVENT_OPTIONS
+	Pointer context ;	// Pointer*
+	Pointer callback ;	// HCS_EVENT_CALLBACK
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSetOperationCallback
+External_Function HcsSetOperationCallback "HcsSetOperationCallback" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Pointer context ;	// Pointer*
+	Pointer callback ;	// HCS_OPERATION_COMPLETION
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSetOperationContext
+External_Function HcsSetOperationContext "HcsSetOperationContext" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	Pointer context ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSetProcessCallback
+External_Function HcsSetProcessCallback "HcsSetProcessCallback" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Integer callbackOptions ;	// HCS_EVENT_OPTIONS
+	Pointer context ;	// Pointer*
+	Pointer callback ;	// HCS_EVENT_CALLBACK
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsShutDownComputeSystem
+External_Function HcsShutDownComputeSystem "HcsShutDownComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSignalProcess
+External_Function HcsSignalProcess "HcsSignalProcess" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsStartComputeSystem
+External_Function HcsStartComputeSystem "HcsStartComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HcsStartLiveMigrationOnSource "HcsStartLiveMigrationOnSource" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HcsStartLiveMigrationTransfer "HcsStartLiveMigrationTransfer" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSubmitWerReport
+External_Function HcsSubmitWerReport "HcsSubmitWerReport" computecore.dll ;
+	WString settings ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsTerminateComputeSystem
+External_Function HcsTerminateComputeSystem "HcsTerminateComputeSystem" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsTerminateProcess
+External_Function HcsTerminateProcess "HcsTerminateProcess" computecore.dll ;
+	Pointer process ;	// HCS_PROCESS
+	Pointer operation ;	// HCS_OPERATION
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsWaitForComputeSystemExit
+External_Function HcsWaitForComputeSystemExit "HcsWaitForComputeSystemExit" computecore.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	UInteger timeoutMs ;
+	Pointer result ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsWaitForOperationResult
+External_Function HcsWaitForOperationResult "HcsWaitForOperationResult" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	UInteger timeoutMs ;
+	Pointer resultDocument ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsWaitForOperationResultAndProcessInfo
+External_Function HcsWaitForOperationResultAndProcessInfo "HcsWaitForOperationResultAndProcessInfo" computecore.dll ;
+	Pointer operation ;	// HCS_OPERATION
+	UInteger timeoutMs ;
+	Pointer processInformation ;	// HCS_PROCESS_INFORMATION*
+	Pointer resultDocument ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsWaitForProcessExit
+External_Function HcsWaitForProcessExit "HcsWaitForProcessExit" computecore.dll ;
+	Pointer computeSystem ;	// HCS_PROCESS
+	UInteger timeoutMs ;
+	Pointer result ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsAttachLayerStorageFilter
+External_Function HcsAttachLayerStorageFilter "HcsAttachLayerStorageFilter" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	WString layerData ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HcsAttachOverlayFilter "HcsAttachOverlayFilter" computestorage.dll ;
+	WString VolumeMountPoint ;	// PWSTR
+	WString LayerData ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsDestroyLayer
+External_Function HcsDestroyLayer "HcsDestroyLayer" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsDetachLayerStorageFilter
+External_Function HcsDetachLayerStorageFilter "HcsDetachLayerStorageFilter" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HcsDetachOverlayFilter "HcsDetachOverlayFilter" computestorage.dll ;
+	WString VolumeMountPoint ;	// PWSTR
+	WString LayerData ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsExportLayer
+External_Function HcsExportLayer "HcsExportLayer" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	WString exportFolderPath ;	// PWSTR
+	WString layerData ;	// PWSTR
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsExportLegacyWritableLayer
+External_Function HcsExportLegacyWritableLayer "HcsExportLegacyWritableLayer" computestorage.dll ;
+	WString writableLayerMountPath ;	// PWSTR
+	WString writableLayerFolderPath ;	// PWSTR
+	WString exportFolderPath ;	// PWSTR
+	WString layerData ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsFormatWritableLayerVhd
+External_Function HcsFormatWritableLayerVhd "HcsFormatWritableLayerVhd" computestorage.dll ;
+	Pointer vhdHandle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsGetLayerVhdMountPath
+External_Function HcsGetLayerVhdMountPath "HcsGetLayerVhdMountPath" computestorage.dll ;
+	Pointer vhdHandle ;	// HANDLE
+	Pointer mountPath ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsImportLayer
+External_Function HcsImportLayer "HcsImportLayer" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	WString sourceFolderPath ;	// PWSTR
+	WString layerData ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsInitializeLegacyWritableLayer
+External_Function HcsInitializeLegacyWritableLayer "HcsInitializeLegacyWritableLayer" computestorage.dll ;
+	WString writableLayerMountPath ;	// PWSTR
+	WString writableLayerFolderPath ;	// PWSTR
+	WString layerData ;	// PWSTR
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsInitializeWritableLayer
+External_Function HcsInitializeWritableLayer "HcsInitializeWritableLayer" computestorage.dll ;
+	WString writableLayerPath ;	// PWSTR
+	WString layerData ;	// PWSTR
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSetupBaseOSLayer
+External_Function HcsSetupBaseOSLayer "HcsSetupBaseOSLayer" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	Pointer vhdHandle ;	// HANDLE
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HcsSetupBaseOSVolume
+External_Function HcsSetupBaseOSVolume "HcsSetupBaseOSVolume" computestorage.dll ;
+	WString layerPath ;	// PWSTR
+	WString volumePath ;	// PWSTR
+	WString options ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

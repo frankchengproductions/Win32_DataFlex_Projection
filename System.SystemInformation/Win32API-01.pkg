@@ -1,0 +1,381 @@
+Use UI
+
+External_Function DnsHostnameToComputerNameExW "DnsHostnameToComputerNameExW" KERNEL32.dll ;
+	WString Hostname ;	// PWSTR
+	Pointer ComputerName ;	// PWSTR
+	Pointer nSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-enumsystemfirmwaretables
+External_Function EnumSystemFirmwareTables "EnumSystemFirmwareTables" KERNEL32.dll ;
+	UInteger FirmwareTableProviderSignature ;	// FIRMWARE_TABLE_PROVIDER
+	Pointer pFirmwareTableEnumBuffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getcomputernameexa
+External_Function GetComputerNameExA "GetComputerNameExA" KERNEL32.dll ;
+	Integer NameType ;	// COMPUTER_NAME_FORMAT
+	Pointer lpBuffer ;	// PSTR
+	Pointer nSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getcomputernameexw
+External_Function GetComputerNameExW "GetComputerNameExW" KERNEL32.dll ;
+	Integer NameType ;	// COMPUTER_NAME_FORMAT
+	Pointer lpBuffer ;	// PWSTR
+	Pointer nSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfirmwaretype
+External_Function GetFirmwareType "GetFirmwareType" KERNEL32.dll ;
+	Pointer FirmwareType ;	// FIRMWARE_TYPE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlocaltime
+External_Function GetLocalTime "GetLocalTime" KERNEL32.dll ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformation
+External_Function GetLogicalProcessorInformation "GetLogicalProcessorInformation" KERNEL32.dll ;
+	Pointer Buffer ;	// SYSTEM_LOGICAL_PROCESSOR_INFORMATION*
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformationex
+External_Function GetLogicalProcessorInformationEx "GetLogicalProcessorInformationEx" KERNEL32.dll ;
+	Integer RelationshipType ;	// LOGICAL_PROCESSOR_RELATIONSHIP
+	Pointer Buffer ;	// SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX*
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getnativesysteminfo
+External_Function GetNativeSystemInfo "GetNativeSystemInfo" KERNEL32.dll ;
+	Pointer lpSystemInfo ;	// SYSTEM_INFO*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getphysicallyinstalledsystemmemory
+External_Function GetPhysicallyInstalledSystemMemory "GetPhysicallyInstalledSystemMemory" KERNEL32.dll ;
+	Pointer TotalMemoryInKilobytes ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getprocessorsystemcycletime
+External_Function GetProcessorSystemCycleTime "GetProcessorSystemCycleTime" KERNEL32.dll ;
+	UShort Group ;
+	Pointer Buffer ;	// SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION*
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getproductinfo
+External_Function GetProductInfo "GetProductInfo" KERNEL32.dll ;
+	UInteger dwOSMajorVersion ;
+	UInteger dwOSMinorVersion ;
+	UInteger dwSpMajorVersion ;
+	UInteger dwSpMinorVersion ;
+	Pointer pdwReturnedProductType ;	// OS_PRODUCT_TYPE*
+	Returns Integer	// BOOL
+
+External_Function GetRuntimeAttestationReport "GetRuntimeAttestationReport" KERNEL32.dll ;
+	Pointer Nonce ;	// UChar*
+	UShort PackageVersion ;
+	UBigint ReportTypesBitmap ;
+	Pointer ReportBuffer ;	// Pointer*
+	Pointer ReportBufferSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/ProcThread/getsystemcpusetinformation
+External_Function GetSystemCpuSetInformation "GetSystemCpuSetInformation" KERNEL32.dll ;
+	Pointer Information ;	// SYSTEM_CPU_SET_INFORMATION*
+	UInteger BufferLength ;
+	Pointer ReturnedLength ;	// UInteger*
+	Pointer Process ;	// HANDLE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getsystemdeppolicy
+External_Function GetSystemDEPPolicy "GetSystemDEPPolicy" KERNEL32.dll ;
+	Returns Integer	// DEP_SYSTEM_POLICY_TYPE
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemdirectorya
+External_Function GetSystemDirectoryA "GetSystemDirectoryA" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemdirectoryw
+External_Function GetSystemDirectoryW "GetSystemDirectoryW" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PWSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemfirmwaretable
+External_Function GetSystemFirmwareTable "GetSystemFirmwareTable" KERNEL32.dll ;
+	UInteger FirmwareTableProviderSignature ;	// FIRMWARE_TABLE_PROVIDER
+	UInteger FirmwareTableID ;
+	Pointer pFirmwareTableBuffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsysteminfo
+External_Function GetSystemInfo "GetSystemInfo" KERNEL32.dll ;
+	Pointer lpSystemInfo ;	// SYSTEM_INFO*
+	Returns Pointer
+
+External_Function GetSystemLeapSecondInformation "GetSystemLeapSecondInformation" KERNEL32.dll ;
+	Pointer Enabled ;	// BOOL*
+	Pointer Flags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemtime
+External_Function GetSystemTime "GetSystemTime" KERNEL32.dll ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemtimeadjustment
+External_Function GetSystemTimeAdjustment "GetSystemTimeAdjustment" KERNEL32.dll ;
+	Pointer lpTimeAdjustment ;	// UInteger*
+	Pointer lpTimeIncrement ;	// UInteger*
+	Pointer lpTimeAdjustmentDisabled ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemtimeasfiletime
+External_Function GetSystemTimeAsFileTime "GetSystemTimeAsFileTime" KERNEL32.dll ;
+	Pointer lpSystemTimeAsFileTime ;	// FILETIME*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemtimepreciseasfiletime
+External_Function GetSystemTimePreciseAsFileTime "GetSystemTimePreciseAsFileTime" KERNEL32.dll ;
+	Pointer lpSystemTimeAsFileTime ;	// FILETIME*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemwindowsdirectorya
+External_Function GetSystemWindowsDirectoryA "GetSystemWindowsDirectoryA" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemwindowsdirectoryw
+External_Function GetSystemWindowsDirectoryW "GetSystemWindowsDirectoryW" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PWSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-getsystemwow64directorya
+External_Function GetSystemWow64DirectoryA "GetSystemWow64DirectoryA" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-getsystemwow64directoryw
+External_Function GetSystemWow64DirectoryW "GetSystemWow64DirectoryW" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PWSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount
+External_Function GetTickCount "GetTickCount" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount64
+External_Function GetTickCount64 "GetTickCount64" KERNEL32.dll ;
+	Returns UBigint
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getversion
+External_Function GetVersion "GetVersion" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getversionexa
+External_Function GetVersionExA "GetVersionExA" KERNEL32.dll ;
+	Pointer lpVersionInformation ;	// OSVERSIONINFOA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getversionexw
+External_Function GetVersionExW "GetVersionExW" KERNEL32.dll ;
+	Pointer lpVersionInformation ;	// OSVERSIONINFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getwindowsdirectorya
+External_Function GetWindowsDirectoryA "GetWindowsDirectoryA" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getwindowsdirectoryw
+External_Function GetWindowsDirectoryW "GetWindowsDirectoryW" KERNEL32.dll ;
+	Pointer lpBuffer ;	// PWSTR
+	UInteger uSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalmemorystatus
+External_Function GlobalMemoryStatus "GlobalMemoryStatus" KERNEL32.dll ;
+	Pointer lpBuffer ;	// MEMORYSTATUS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex
+External_Function GlobalMemoryStatusEx "GlobalMemoryStatusEx" KERNEL32.dll ;
+	Pointer lpBuffer ;	// MEMORYSTATUSEX*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-isusercetavailableinenvironment
+External_Function IsUserCetAvailableInEnvironment "IsUserCetAvailableInEnvironment" KERNEL32.dll ;
+	UInteger UserCetEnvironment ;	// USER_CET_ENVIRONMENT
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-iswow64guestmachinesupported
+External_Function IsWow64GuestMachineSupported "IsWow64GuestMachineSupported" KERNEL32.dll ;
+	UShort WowGuestMachine ;	// IMAGE_FILE_MACHINE
+	Pointer MachineIsSupported ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setcomputernamea
+External_Function SetComputerNameA "SetComputerNameA" KERNEL32.dll ;
+	String lpComputerName ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function SetComputerNameEx2W "SetComputerNameEx2W" KERNEL32.dll ;
+	Integer NameType ;	// COMPUTER_NAME_FORMAT
+	UInteger Flags ;
+	WString lpBuffer ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setcomputernameexa
+External_Function SetComputerNameExA "SetComputerNameExA" KERNEL32.dll ;
+	Integer NameType ;	// COMPUTER_NAME_FORMAT
+	String lpBuffer ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setcomputernameexw
+External_Function SetComputerNameExW "SetComputerNameExW" KERNEL32.dll ;
+	Integer NameType ;	// COMPUTER_NAME_FORMAT
+	WString lpBuffer ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setcomputernamew
+External_Function SetComputerNameW "SetComputerNameW" KERNEL32.dll ;
+	WString lpComputerName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setlocaltime
+External_Function SetLocalTime "SetLocalTime" KERNEL32.dll ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setsystemtime
+External_Function SetSystemTime "SetSystemTime" KERNEL32.dll ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setsystemtimeadjustment
+External_Function SetSystemTimeAdjustment "SetSystemTimeAdjustment" KERNEL32.dll ;
+	UInteger dwTimeAdjustment ;
+	Integer bTimeAdjustmentDisabled ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-versetconditionmask
+External_Function VerSetConditionMask "VerSetConditionMask" KERNEL32.dll ;
+	UBigint ConditionMask ;
+	UInteger TypeMask ;	// VER_FLAGS
+	UChar Condition ;
+	Returns UBigint
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-verifyversioninfoa
+External_Function VerifyVersionInfoA "VerifyVersionInfoA" KERNEL32.dll ;
+	Pointer lpVersionInformation ;	// OSVERSIONINFOEXA*
+	UInteger dwTypeMask ;	// VER_FLAGS
+	UBigint dwlConditionMask ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-verifyversioninfow
+External_Function VerifyVersionInfoW "VerifyVersionInfoW" KERNEL32.dll ;
+	Pointer lpVersionInformation ;	// OSVERSIONINFOEXW*
+	UInteger dwTypeMask ;	// VER_FLAGS
+	UBigint dwlConditionMask ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlconvertdevicefamilyinfotostring
+External_Function RtlConvertDeviceFamilyInfoToString "RtlConvertDeviceFamilyInfoToString" ntdll.dll ;
+	Pointer pulDeviceFamilyBufferSize ;	// UInteger*
+	Pointer pulDeviceFormBufferSize ;	// UInteger*
+	Pointer DeviceFamily ;	// PWSTR
+	Pointer DeviceForm ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/DevNotes/rtlgetdevicefamilyinfoenum
+External_Function RtlGetDeviceFamilyInfoEnum "RtlGetDeviceFamilyInfoEnum" ntdll.dll ;
+	Pointer pullUAPInfo ;	// UBigint*
+	Pointer pulDeviceFamily ;	// DEVICEFAMILYINFOENUM*
+	Pointer pulDeviceForm ;	// DEVICEFAMILYDEVICEFORM*
+	Returns Pointer
+
+External_Function RtlGetProductInfo "RtlGetProductInfo" ntdll.dll ;
+	UInteger OSMajorVersion ;
+	UInteger OSMinorVersion ;
+	UInteger SpMajorVersion ;
+	UInteger SpMinorVersion ;
+	Pointer ReturnedProductType ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+External_Function RtlOsDeploymentState "RtlOsDeploymentState" ntdll.dll ;
+	UInteger Flags ;
+	Returns Integer	// OS_DEPLOYEMENT_STATE_VALUES
+
+External_Function RtlSwitchedVVI "RtlSwitchedVVI" ntdll.dll ;
+	Pointer VersionInfo ;	// OSVERSIONINFOEXW*
+	UInteger TypeMask ;
+	UBigint ConditionMask ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsystemtimeadjustmentprecise
+External_Function GetSystemTimeAdjustmentPrecise "GetSystemTimeAdjustmentPrecise" api-ms-win-core-sysinfo-l1-2-4.dll ;
+	Pointer lpTimeAdjustment ;	// UBigint*
+	Pointer lpTimeIncrement ;	// UBigint*
+	Pointer lpTimeAdjustmentDisabled ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-setsystemtimeadjustmentprecise
+External_Function SetSystemTimeAdjustmentPrecise "SetSystemTimeAdjustmentPrecise" api-ms-win-core-sysinfo-l1-2-4.dll ;
+	UBigint dwTimeAdjustment ;
+	Integer bTimeAdjustmentDisabled ;	// BOOL
+	Returns Integer	// BOOL
+
+External_Function GetOsSafeBootMode "GetOsSafeBootMode" api-ms-win-core-sysinfo-l1-2-0.dll ;
+	Pointer Flags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sysinfoapi/nf-sysinfoapi-getintegrateddisplaysize
+External_Function GetIntegratedDisplaySize "GetIntegratedDisplaySize" api-ms-win-core-sysinfo-l1-2-3.dll ;
+	Pointer sizeInInches ;	// Real*
+	Returns Integer	// HRESULT
+
+External_Function GetOsManufacturingMode "GetOsManufacturingMode" api-ms-win-core-sysinfo-l1-2-3.dll ;
+	Pointer pbEnabled ;	// BOOL*
+	Returns Integer	// BOOL
+
+External_Function GetDeveloperDriveEnablementState "GetDeveloperDriveEnablementState" api-ms-win-core-sysinfo-l1-2-6.dll ;
+	Returns Integer	// DEVELOPER_DRIVE_ENABLEMENT_STATE
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-getsystemwow64directory2a
+External_Function GetSystemWow64Directory2A "GetSystemWow64Directory2A" api-ms-win-core-wow64-l1-1-1.dll ;
+	Pointer lpBuffer ;	// PSTR
+	UInteger uSize ;
+	UShort ImageFileMachineType ;	// IMAGE_FILE_MACHINE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-getsystemwow64directory2w
+External_Function GetSystemWow64Directory2W "GetSystemWow64Directory2W" api-ms-win-core-wow64-l1-1-1.dll ;
+	Pointer lpBuffer ;	// PWSTR
+	UInteger uSize ;
+	UShort ImageFileMachineType ;	// IMAGE_FILE_MACHINE
+	Returns UInteger
+
+External_Function RtlGetSystemGlobalData "RtlGetSystemGlobalData" ntdllk.dll ;
+	Integer DataId ;	// RTL_SYSTEM_GLOBAL_DATA_ID
+	Pointer Buffer ;	// Pointer*
+	UInteger Size ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

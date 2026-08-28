@@ -1,0 +1,103 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_attribute
+Struct WSDXML_ATTRIBUTE
+	Pointer Element											// WSDXML_ELEMENT*
+	Pointer Next											// WSDXML_ATTRIBUTE*
+	Pointer Name											// WSDXML_NAME*
+	Pointer Value											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_element
+Struct WSDXML_ELEMENT
+	WSDXML_NODE Node
+	Pointer Name											// WSDXML_NAME*
+	Pointer FirstAttribute									// WSDXML_ATTRIBUTE*
+	Pointer FirstChild										// WSDXML_NODE*
+	Pointer PrefixMappings									// WSDXML_PREFIX_MAPPING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_name
+Struct WSDXML_NAME
+	Pointer Space											// WSDXML_NAMESPACE*
+	Pointer LocalName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_namespace
+Struct WSDXML_NAMESPACE
+	Pointer Uri												// PWSTR
+	Pointer PreferredPrefix									// PWSTR
+	Pointer Names											// WSDXML_NAME*
+	UShort NamesCount
+	UShort Encoding
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_node
+Struct WSDXML_NODE
+	Integer Type
+	Integer iMissingAlignment1
+	Pointer Parent											// WSDXML_ELEMENT*
+	Pointer Next											// WSDXML_NODE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_prefix_mapping
+Struct WSDXML_PREFIX_MAPPING
+	UInteger Refs
+	Integer iMissingAlignment1
+	Pointer Next											// WSDXML_PREFIX_MAPPING*
+	Pointer Space											// WSDXML_NAMESPACE*
+	Pointer Prefix											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsd_config_param
+Struct WSD_CONFIG_PARAM
+	Integer configParamType									// WSD_CONFIG_PARAM_TYPE
+	Integer iMissingAlignment1
+	Pointer pConfigData										// Pointer*
+	UInteger dwConfigDataSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_localized_string
+Struct WSD_LOCALIZED_STRING
+	Pointer lang											// PWSTR
+	Pointer String											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_localized_string_list
+Struct WSD_LOCALIZED_STRING_LIST
+	Pointer Next											// WSD_LOCALIZED_STRING_LIST*
+	Pointer Element											// WSD_LOCALIZED_STRING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault
+Struct WSD_SOAP_FAULT
+	Pointer Code											// WSD_SOAP_FAULT_CODE*
+	Pointer Reason											// WSD_SOAP_FAULT_REASON*
+	Pointer Node											// PWSTR
+	Pointer Role											// PWSTR
+	Pointer Detail											// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault_code
+Struct WSD_SOAP_FAULT_CODE
+	Pointer Value											// WSDXML_NAME*
+	Pointer Subcode											// WSD_SOAP_FAULT_SUBCODE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault_reason
+Struct WSD_SOAP_FAULT_REASON
+	Pointer Text											// WSD_LOCALIZED_STRING_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault_subcode
+Struct WSD_SOAP_FAULT_SUBCODE
+	Pointer Value											// WSDXML_NAME*
+	Pointer Subcode											// WSD_SOAP_FAULT_SUBCODE*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

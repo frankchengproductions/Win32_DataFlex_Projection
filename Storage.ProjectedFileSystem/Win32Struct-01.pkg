@@ -1,0 +1,86 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_callbacks
+Struct PRJ_CALLBACKS
+	Pointer StartDirectoryEnumerationCallback				// PRJ_START_DIRECTORY_ENUMERATION_CB
+	Pointer EndDirectoryEnumerationCallback					// PRJ_END_DIRECTORY_ENUMERATION_CB
+	Pointer GetDirectoryEnumerationCallback					// PRJ_GET_DIRECTORY_ENUMERATION_CB
+	Pointer GetPlaceholderInfoCallback						// PRJ_GET_PLACEHOLDER_INFO_CB
+	Pointer GetFileDataCallback								// PRJ_GET_FILE_DATA_CB
+	Pointer QueryFileNameCallback							// PRJ_QUERY_FILE_NAME_CB
+	Pointer NotificationCallback							// PRJ_NOTIFICATION_CB
+	Pointer CancelCommandCallback							// PRJ_CANCEL_COMMAND_CB
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_complete_command_extended_parameters
+Struct PRJ_COMPLETE_COMMAND_EXTENDED_PARAMETERS
+	Integer CommandType										// PRJ_COMPLETE_COMMAND_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_extended_info
+Struct PRJ_EXTENDED_INFO
+	Integer InfoType										// PRJ_EXT_INFO_TYPE
+	UInteger NextInfoOffset
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_file_basic_info
+Struct PRJ_FILE_BASIC_INFO
+	UChar IsDirectory										// BOOLEAN
+	UChar[7] cMissingAlignment1
+	Bigint FileSize
+	Bigint CreationTime
+	Bigint LastAccessTime
+	Bigint LastWriteTime
+	Bigint ChangeTime
+	UInteger FileAttributes
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_notification_mapping
+Struct PRJ_NOTIFICATION_MAPPING
+	UInteger NotificationBitMask							// PRJ_NOTIFY_TYPES
+	Integer iMissingAlignment1
+	Pointer NotificationRoot								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_placeholder_info
+Struct PRJ_PLACEHOLDER_INFO
+	PRJ_FILE_BASIC_INFO FileBasicInfo
+	UChar[4] UnionName1
+	UChar[4] UnionName2
+	UChar[4] UnionName3
+	PRJ_PLACEHOLDER_VERSION_INFO VersionInfo
+	UChar[1] VariableData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_placeholder_version_info
+Struct PRJ_PLACEHOLDER_VERSION_INFO
+	UChar[128] ProviderID
+	UChar[128] ContentID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_startvirtualizing_options
+Struct PRJ_STARTVIRTUALIZING_OPTIONS
+	Integer Flags											// PRJ_STARTVIRTUALIZING_FLAGS
+	UInteger PoolThreadCount
+	UInteger ConcurrentThreadCount
+	Integer iMissingAlignment1
+	Pointer NotificationMappings							// PRJ_NOTIFICATION_MAPPING*
+	UInteger NotificationMappingsCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/ns-projectedfslib-prj_virtualization_instance_info
+Struct PRJ_VIRTUALIZATION_INSTANCE_INFO
+	Guid InstanceID
+	UInteger WriteAlignment
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

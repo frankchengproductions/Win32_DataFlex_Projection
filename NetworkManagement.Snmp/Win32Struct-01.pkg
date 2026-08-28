@@ -1,0 +1,76 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/snmp/ns-snmp-asnany
+Struct AsnAny
+	UChar asnType
+	UChar[7] cMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/snmp/ns-snmp-asnobjectidentifier
+Struct AsnObjectIdentifier
+	UInteger idLength
+	Integer iMissingAlignment1
+	Pointer ids												// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/snmp/ns-snmp-asnoctetstring
+Struct AsnOctetString
+	Pointer stream											// UChar*
+	UInteger length
+	Integer dynamic											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/snmp/ns-snmp-snmpvarbind
+Struct SnmpVarBind
+	AsnObjectIdentifier name
+	AsnAny value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/snmp/ns-snmp-snmpvarbindlist
+Struct SnmpVarBindList
+	Pointer list											// SnmpVarBind*
+	UInteger len
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsnmp/ns-winsnmp-smicntr64
+Struct smiCNTR64
+	UInteger hipart
+	UInteger lopart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsnmp/ns-winsnmp-smioctets
+Struct smiOCTETS
+	UInteger len
+	Integer iMissingAlignment1
+	Pointer ptr												// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsnmp/ns-winsnmp-smioid
+Struct smiOID
+	UInteger len
+	Integer iMissingAlignment1
+	Pointer ptr												// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsnmp/ns-winsnmp-smivalue
+Struct smiVALUE
+	UInteger syntax
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsnmp/ns-winsnmp-smivendorinfo
+Struct smiVENDORINFO
+	Char[64] vendorName										// CHAR
+	Char[64] vendorContact									// CHAR
+	Char[32] vendorVersionId								// CHAR
+	Char[32] vendorVersionDate								// CHAR
+	UInteger vendorEnterprise
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

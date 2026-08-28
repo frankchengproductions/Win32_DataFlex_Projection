@@ -1,0 +1,862 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-displayconfiggetdeviceinfo
+External_Function DisplayConfigGetDeviceInfo "DisplayConfigGetDeviceInfo" USER32.dll ;
+	Pointer requestPacket ;	// DISPLAYCONFIG_DEVICE_INFO_HEADER*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-displayconfigsetdeviceinfo
+External_Function DisplayConfigSetDeviceInfo "DisplayConfigSetDeviceInfo" USER32.dll ;
+	Pointer setPacket ;	// DISPLAYCONFIG_DEVICE_INFO_HEADER*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getautorotationstate
+External_Function GetAutoRotationState "GetAutoRotationState" USER32.dll ;
+	Pointer pState ;	// AR_STATE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getdisplayautorotationpreferences
+External_Function GetDisplayAutoRotationPreferences "GetDisplayAutoRotationPreferences" USER32.dll ;
+	Pointer pOrientation ;	// ORIENTATION_PREFERENCE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getdisplayconfigbuffersizes
+External_Function GetDisplayConfigBufferSizes "GetDisplayConfigBufferSizes" USER32.dll ;
+	UInteger flags ;	// QUERY_DISPLAY_CONFIG_FLAGS
+	Pointer numPathArrayElements ;	// UInteger*
+	Pointer numModeInfoArrayElements ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-querydisplayconfig
+External_Function QueryDisplayConfig "QueryDisplayConfig" USER32.dll ;
+	UInteger flags ;	// QUERY_DISPLAY_CONFIG_FLAGS
+	Pointer numPathArrayElements ;	// UInteger*
+	Pointer pathArray ;	// DISPLAYCONFIG_PATH_INFO*
+	Pointer numModeInfoArrayElements ;	// UInteger*
+	Pointer modeInfoArray ;	// DISPLAYCONFIG_MODE_INFO*
+	Pointer currentTopologyId ;	// DISPLAYCONFIG_TOPOLOGY_ID*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setdisplayautorotationpreferences
+External_Function SetDisplayAutoRotationPreferences "SetDisplayAutoRotationPreferences" USER32.dll ;
+	Integer orientation ;	// ORIENTATION_PREFERENCE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setdisplayconfig
+External_Function SetDisplayConfig "SetDisplayConfig" USER32.dll ;
+	UInteger numPathArrayElements ;
+	Pointer pathArray ;	// DISPLAYCONFIG_PATH_INFO*
+	UInteger numModeInfoArrayElements ;
+	Pointer modeInfoArray ;	// DISPLAYCONFIG_MODE_INFO*
+	UInteger flags ;	// SET_DISPLAY_CONFIG_FLAGS
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_hgetcolortransform
+External_Function BRUSHOBJ_hGetColorTransform "BRUSHOBJ_hGetColorTransform" GDI32.dll ;
+	Pointer pbo ;	// BRUSHOBJ*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_pvallocrbrush
+External_Function BRUSHOBJ_pvAllocRbrush "BRUSHOBJ_pvAllocRbrush" GDI32.dll ;
+	Pointer pbo ;	// BRUSHOBJ*
+	UInteger cj ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_pvgetrbrush
+External_Function BRUSHOBJ_pvGetRbrush "BRUSHOBJ_pvGetRbrush" GDI32.dll ;
+	Pointer pbo ;	// BRUSHOBJ*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-brushobj_ulgetbrushcolor
+External_Function BRUSHOBJ_ulGetBrushColor "BRUSHOBJ_ulGetBrushColor" GDI32.dll ;
+	Pointer pbo ;	// BRUSHOBJ*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-clipobj_benum
+External_Function CLIPOBJ_bEnum "CLIPOBJ_bEnum" GDI32.dll ;
+	Pointer pco ;	// CLIPOBJ*
+	UInteger cj ;
+	Pointer pul ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-clipobj_cenumstart
+External_Function CLIPOBJ_cEnumStart "CLIPOBJ_cEnumStart" GDI32.dll ;
+	Pointer pco ;	// CLIPOBJ*
+	Integer bAll ;	// BOOL
+	UInteger iType ;
+	UInteger iDirection ;
+	UInteger cLimit ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-clipobj_ppogetpath
+External_Function CLIPOBJ_ppoGetPath "CLIPOBJ_ppoGetPath" GDI32.dll ;
+	Pointer pco ;	// CLIPOBJ*
+	Returns Pointer	// PATHOBJ*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engacquiresemaphore
+External_Function EngAcquireSemaphore "EngAcquireSemaphore" GDI32.dll ;
+	Pointer hsem ;	// HSEMAPHORE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engalphablend
+External_Function EngAlphaBlend "EngAlphaBlend" GDI32.dll ;
+	Pointer psoDest ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer prclDest ;	// RECTL*
+	Pointer prclSrc ;	// RECTL*
+	Pointer pBlendObj ;	// BLENDOBJ*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engassociatesurface
+External_Function EngAssociateSurface "EngAssociateSurface" GDI32.dll ;
+	Pointer hsurf ;	// HSURF
+	Pointer hdev ;	// HDEV
+	UInteger flHooks ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engbitblt
+External_Function EngBitBlt "EngBitBlt" GDI32.dll ;
+	Pointer psoTrg ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer psoMask ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer prclTrg ;	// RECTL*
+	Pointer pptlSrc ;	// POINTL*
+	Pointer pptlMask ;	// POINTL*
+	Pointer pbo ;	// BRUSHOBJ*
+	Pointer pptlBrush ;	// POINTL*
+	UInteger rop4 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcheckabort
+External_Function EngCheckAbort "EngCheckAbort" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcomputeglyphset
+External_Function EngComputeGlyphSet "EngComputeGlyphSet" GDI32.dll ;
+	Integer nCodePage ;
+	Integer nFirstChar ;
+	Integer cChars ;
+	Returns Pointer	// FD_GLYPHSET*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcopybits
+External_Function EngCopyBits "EngCopyBits" GDI32.dll ;
+	Pointer psoDest ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer prclDest ;	// RECTL*
+	Pointer pptlSrc ;	// POINTL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatebitmap
+External_Function EngCreateBitmap "EngCreateBitmap" GDI32.dll ;
+	SIZE sizl ;
+	Integer lWidth ;
+	UInteger iFormat ;
+	UInteger fl ;
+	Pointer pvBits ;	// Pointer*
+	Returns Pointer	// HBITMAP
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreateclip
+External_Function EngCreateClip "EngCreateClip" GDI32.dll ;
+	Returns Pointer	// CLIPOBJ*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatedevicebitmap
+External_Function EngCreateDeviceBitmap "EngCreateDeviceBitmap" GDI32.dll ;
+	Pointer dhsurf ;	// DHSURF
+	SIZE sizl ;
+	UInteger iFormatCompat ;
+	Returns Pointer	// HBITMAP
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatedevicesurface
+External_Function EngCreateDeviceSurface "EngCreateDeviceSurface" GDI32.dll ;
+	Pointer dhsurf ;	// DHSURF
+	SIZE sizl ;
+	UInteger iFormatCompat ;
+	Returns Pointer	// HSURF
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatepalette
+External_Function EngCreatePalette "EngCreatePalette" GDI32.dll ;
+	UInteger iMode ;
+	UInteger cColors ;
+	Pointer pulColors ;	// UInteger*
+	UInteger flRed ;
+	UInteger flGreen ;
+	UInteger flBlue ;
+	Returns Pointer	// HPALETTE
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engcreatesemaphore
+External_Function EngCreateSemaphore "EngCreateSemaphore" GDI32.dll ;
+	Returns Pointer	// HSEMAPHORE
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engdeleteclip
+External_Function EngDeleteClip "EngDeleteClip" GDI32.dll ;
+	Pointer pco ;	// CLIPOBJ*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engdeletepalette
+External_Function EngDeletePalette "EngDeletePalette" GDI32.dll ;
+	Pointer hpal ;	// HPALETTE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engdeletepath
+External_Function EngDeletePath "EngDeletePath" GDI32.dll ;
+	Pointer ppo ;	// PATHOBJ*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engdeletesemaphore
+External_Function EngDeleteSemaphore "EngDeleteSemaphore" GDI32.dll ;
+	Pointer hsem ;	// HSEMAPHORE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engdeletesurface
+External_Function EngDeleteSurface "EngDeleteSurface" GDI32.dll ;
+	Pointer hsurf ;	// HSURF
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engerasesurface
+External_Function EngEraseSurface "EngEraseSurface" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer prcl ;	// RECTL*
+	UInteger iColor ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engfillpath
+External_Function EngFillPath "EngFillPath" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer ppo ;	// PATHOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pbo ;	// BRUSHOBJ*
+	Pointer pptlBrushOrg ;	// POINTL*
+	UInteger mix ;
+	UInteger flOptions ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engfindresource
+External_Function EngFindResource "EngFindResource" GDI32.dll ;
+	Pointer h ;	// HANDLE
+	Integer iName ;
+	Integer iType ;
+	Pointer pulSize ;	// UInteger*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engfreemodule
+External_Function EngFreeModule "EngFreeModule" GDI32.dll ;
+	Pointer h ;	// HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-enggetcurrentcodepage
+External_Function EngGetCurrentCodePage "EngGetCurrentCodePage" GDI32.dll ;
+	Pointer OemCodePage ;	// UShort*
+	Pointer AnsiCodePage ;	// UShort*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-enggetdrivername
+External_Function EngGetDriverName "EngGetDriverName" GDI32.dll ;
+	Pointer hdev ;	// HDEV
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-enggetprinterdatafilename
+External_Function EngGetPrinterDataFileName "EngGetPrinterDataFileName" GDI32.dll ;
+	Pointer hdev ;	// HDEV
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-enggradientfill
+External_Function EngGradientFill "EngGradientFill" GDI32.dll ;
+	Pointer psoDest ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer pVertex ;	// TRIVERTEX*
+	UInteger nVertex ;
+	Pointer pMesh ;	// Pointer*
+	UInteger nMesh ;
+	Pointer prclExtents ;	// RECTL*
+	Pointer pptlDitherOrg ;	// POINTL*
+	UInteger ulMode ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-englineto
+External_Function EngLineTo "EngLineTo" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pbo ;	// BRUSHOBJ*
+	Integer x1 ;
+	Integer y1 ;
+	Integer x2 ;
+	Integer y2 ;
+	Pointer prclBounds ;	// RECTL*
+	UInteger mix ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engloadmodule
+External_Function EngLoadModule "EngLoadModule" GDI32.dll ;
+	WString pwsz ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-englocksurface
+External_Function EngLockSurface "EngLockSurface" GDI32.dll ;
+	Pointer hsurf ;	// HSURF
+	Returns Pointer	// SURFOBJ*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engmarkbandingsurface
+External_Function EngMarkBandingSurface "EngMarkBandingSurface" GDI32.dll ;
+	Pointer hsurf ;	// HSURF
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engmultibytetounicoden
+External_Function EngMultiByteToUnicodeN "EngMultiByteToUnicodeN" GDI32.dll ;
+	Pointer UnicodeString ;	// PWSTR
+	UInteger MaxBytesInUnicodeString ;
+	Pointer BytesInUnicodeString ;	// UInteger*
+	String MultiByteString ;	// PSTR
+	UInteger BytesInMultiByteString ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engmultibytetowidechar
+External_Function EngMultiByteToWideChar "EngMultiByteToWideChar" GDI32.dll ;
+	UInteger CodePage ;
+	Pointer WideCharString ;	// PWSTR
+	Integer BytesInWideCharString ;
+	String MultiByteString ;	// PSTR
+	Integer BytesInMultiByteString ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engpaint
+External_Function EngPaint "EngPaint" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pbo ;	// BRUSHOBJ*
+	Pointer pptlBrushOrg ;	// POINTL*
+	UInteger mix ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engplgblt
+External_Function EngPlgBlt "EngPlgBlt" GDI32.dll ;
+	Pointer psoTrg ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer psoMsk ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer pca ;	// COLORADJUSTMENT*
+	Pointer pptlBrushOrg ;	// POINTL*
+	Pointer pptfx ;	// POINTFIX*
+	Pointer prcl ;	// RECTL*
+	Pointer pptl ;	// POINTL*
+	UInteger iMode ;
+	Returns Integer	// BOOL
+
+External_Function EngQueryEMFInfo "EngQueryEMFInfo" GDI32.dll ;
+	Pointer hdev ;	// HDEV
+	Pointer pEMFInfo ;	// EMFINFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engquerylocaltime
+External_Function EngQueryLocalTime "EngQueryLocalTime" GDI32.dll ;
+	Pointer param0 ;	// ENG_TIME_FIELDS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engreleasesemaphore
+External_Function EngReleaseSemaphore "EngReleaseSemaphore" GDI32.dll ;
+	Pointer hsem ;	// HSEMAPHORE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engstretchblt
+External_Function EngStretchBlt "EngStretchBlt" GDI32.dll ;
+	Pointer psoDest ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer psoMask ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer pca ;	// COLORADJUSTMENT*
+	Pointer pptlHTOrg ;	// POINTL*
+	Pointer prclDest ;	// RECTL*
+	Pointer prclSrc ;	// RECTL*
+	Pointer pptlMask ;	// POINTL*
+	UInteger iMode ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engstretchbltrop
+External_Function EngStretchBltROP "EngStretchBltROP" GDI32.dll ;
+	Pointer psoDest ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer psoMask ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer pca ;	// COLORADJUSTMENT*
+	Pointer pptlHTOrg ;	// POINTL*
+	Pointer prclDest ;	// RECTL*
+	Pointer prclSrc ;	// RECTL*
+	Pointer pptlMask ;	// POINTL*
+	UInteger iMode ;
+	Pointer pbo ;	// BRUSHOBJ*
+	UInteger rop4 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engstrokeandfillpath
+External_Function EngStrokeAndFillPath "EngStrokeAndFillPath" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer ppo ;	// PATHOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxo ;	// XFORMOBJ*
+	Pointer pboStroke ;	// BRUSHOBJ*
+	Pointer plineattrs ;	// LINEATTRS*
+	Pointer pboFill ;	// BRUSHOBJ*
+	Pointer pptlBrushOrg ;	// POINTL*
+	UInteger mixFill ;
+	UInteger flOptions ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engstrokepath
+External_Function EngStrokePath "EngStrokePath" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer ppo ;	// PATHOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxo ;	// XFORMOBJ*
+	Pointer pbo ;	// BRUSHOBJ*
+	Pointer pptlBrushOrg ;	// POINTL*
+	Pointer plineattrs ;	// LINEATTRS*
+	UInteger mix ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engtextout
+External_Function EngTextOut "EngTextOut" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Pointer pstro ;	// STROBJ*
+	Pointer pfo ;	// FONTOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer prclExtra ;	// RECTL*
+	Pointer prclOpaque ;	// RECTL*
+	Pointer pboFore ;	// BRUSHOBJ*
+	Pointer pboOpaque ;	// BRUSHOBJ*
+	Pointer pptlOrg ;	// POINTL*
+	UInteger mix ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engtransparentblt
+External_Function EngTransparentBlt "EngTransparentBlt" GDI32.dll ;
+	Pointer psoDst ;	// SURFOBJ*
+	Pointer psoSrc ;	// SURFOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pxlo ;	// XLATEOBJ*
+	Pointer prclDst ;	// RECTL*
+	Pointer prclSrc ;	// RECTL*
+	UInteger TransColor ;
+	UInteger bCalledFromBitBlt ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engunicodetomultibyten
+External_Function EngUnicodeToMultiByteN "EngUnicodeToMultiByteN" GDI32.dll ;
+	Pointer MultiByteString ;	// PSTR
+	UInteger MaxBytesInMultiByteString ;
+	Pointer BytesInMultiByteString ;	// UInteger*
+	WString UnicodeString ;	// PWSTR
+	UInteger BytesInUnicodeString ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engunlocksurface
+External_Function EngUnlockSurface "EngUnlockSurface" GDI32.dll ;
+	Pointer pso ;	// SURFOBJ*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-engwidechartomultibyte
+External_Function EngWideCharToMultiByte "EngWideCharToMultiByte" GDI32.dll ;
+	UInteger CodePage ;
+	WString WideCharString ;	// PWSTR
+	Integer BytesInWideCharString ;
+	Pointer MultiByteString ;	// PSTR
+	Integer BytesInMultiByteString ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_cgetallglyphhandles
+External_Function FONTOBJ_cGetAllGlyphHandles "FONTOBJ_cGetAllGlyphHandles" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	Pointer phg ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_cgetglyphs
+External_Function FONTOBJ_cGetGlyphs "FONTOBJ_cGetGlyphs" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	UInteger iMode ;
+	UInteger cGlyph ;
+	Pointer phg ;	// UInteger*
+	Pointer ppvGlyph ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_pqueryglyphattrs
+External_Function FONTOBJ_pQueryGlyphAttrs "FONTOBJ_pQueryGlyphAttrs" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	UInteger iMode ;
+	Returns Pointer	// FD_GLYPHATTR*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_pfdg
+External_Function FONTOBJ_pfdg "FONTOBJ_pfdg" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	Returns Pointer	// FD_GLYPHSET*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_pifi
+External_Function FONTOBJ_pifi "FONTOBJ_pifi" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	Returns Pointer	// IFIMETRICS*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_pvtruetypefontfile
+External_Function FONTOBJ_pvTrueTypeFontFile "FONTOBJ_pvTrueTypeFontFile" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	Pointer pcjFile ;	// UInteger*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_pxogetxform
+External_Function FONTOBJ_pxoGetXform "FONTOBJ_pxoGetXform" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	Returns Pointer	// XFORMOBJ*
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-fontobj_vgetinfo
+External_Function FONTOBJ_vGetInfo "FONTOBJ_vGetInfo" GDI32.dll ;
+	Pointer pfo ;	// FONTOBJ*
+	UInteger cjSize ;
+	Pointer pfi ;	// FONTINFO*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-ht_get8bppformatpalette
+External_Function HT_Get8BPPFormatPalette "HT_Get8BPPFormatPalette" GDI32.dll ;
+	Pointer pPaletteEntry ;	// PALETTEENTRY*
+	UShort RedGamma ;
+	UShort GreenGamma ;
+	UShort BlueGamma ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-ht_get8bppmaskpalette
+External_Function HT_Get8BPPMaskPalette "HT_Get8BPPMaskPalette" GDI32.dll ;
+	Pointer pPaletteEntry ;	// PALETTEENTRY*
+	Integer Use8BPPMaskPal ;	// BOOL
+	UChar CMYMask ;
+	UShort RedGamma ;
+	UShort GreenGamma ;
+	UShort BlueGamma ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-pathobj_benum
+External_Function PATHOBJ_bEnum "PATHOBJ_bEnum" GDI32.dll ;
+	Pointer ppo ;	// PATHOBJ*
+	Pointer ppd ;	// PATHDATA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-pathobj_benumcliplines
+External_Function PATHOBJ_bEnumClipLines "PATHOBJ_bEnumClipLines" GDI32.dll ;
+	Pointer ppo ;	// PATHOBJ*
+	UInteger cb ;
+	Pointer pcl ;	// CLIPLINE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-pathobj_venumstart
+External_Function PATHOBJ_vEnumStart "PATHOBJ_vEnumStart" GDI32.dll ;
+	Pointer ppo ;	// PATHOBJ*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-pathobj_venumstartcliplines
+External_Function PATHOBJ_vEnumStartClipLines "PATHOBJ_vEnumStartClipLines" GDI32.dll ;
+	Pointer ppo ;	// PATHOBJ*
+	Pointer pco ;	// CLIPOBJ*
+	Pointer pso ;	// SURFOBJ*
+	Pointer pla ;	// LINEATTRS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-pathobj_vgetbounds
+External_Function PATHOBJ_vGetBounds "PATHOBJ_vGetBounds" GDI32.dll ;
+	Pointer ppo ;	// PATHOBJ*
+	Pointer prectfx ;	// RECTFX*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-strobj_benum
+External_Function STROBJ_bEnum "STROBJ_bEnum" GDI32.dll ;
+	Pointer pstro ;	// STROBJ*
+	Pointer pc ;	// UInteger*
+	Pointer ppgpos ;	// GLYPHPOS**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-strobj_benumpositionsonly
+External_Function STROBJ_bEnumPositionsOnly "STROBJ_bEnumPositionsOnly" GDI32.dll ;
+	Pointer pstro ;	// STROBJ*
+	Pointer pc ;	// UInteger*
+	Pointer ppgpos ;	// GLYPHPOS**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-strobj_bgetadvancewidths
+External_Function STROBJ_bGetAdvanceWidths "STROBJ_bGetAdvanceWidths" GDI32.dll ;
+	Pointer pso ;	// STROBJ*
+	UInteger iFirst ;
+	UInteger c ;
+	Pointer pptqD ;	// POINTQF*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-strobj_dwgetcodepage
+External_Function STROBJ_dwGetCodePage "STROBJ_dwGetCodePage" GDI32.dll ;
+	Pointer pstro ;	// STROBJ*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-strobj_venumstart
+External_Function STROBJ_vEnumStart "STROBJ_vEnumStart" GDI32.dll ;
+	Pointer pstro ;	// STROBJ*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xformobj_bapplyxform
+External_Function XFORMOBJ_bApplyXform "XFORMOBJ_bApplyXform" GDI32.dll ;
+	Pointer pxo ;	// XFORMOBJ*
+	UInteger iMode ;
+	UInteger cPoints ;
+	Pointer pvIn ;	// Pointer*
+	Pointer pvOut ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xformobj_igetxform
+External_Function XFORMOBJ_iGetXform "XFORMOBJ_iGetXform" GDI32.dll ;
+	Pointer pxo ;	// XFORMOBJ*
+	Pointer pxform ;	// XFORML*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xlateobj_cgetpalette
+External_Function XLATEOBJ_cGetPalette "XLATEOBJ_cGetPalette" GDI32.dll ;
+	Pointer pxlo ;	// XLATEOBJ*
+	UInteger iPal ;
+	UInteger cPal ;
+	Pointer pPal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xlateobj_hgetcolortransform
+External_Function XLATEOBJ_hGetColorTransform "XLATEOBJ_hGetColorTransform" GDI32.dll ;
+	Pointer pxlo ;	// XLATEOBJ*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xlateobj_ixlate
+External_Function XLATEOBJ_iXlate "XLATEOBJ_iXlate" GDI32.dll ;
+	Pointer pxlo ;	// XLATEOBJ*
+	UInteger iColor ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winddi/nf-winddi-xlateobj_pivector
+External_Function XLATEOBJ_piVector "XLATEOBJ_piVector" GDI32.dll ;
+	Pointer pxlo ;	// XLATEOBJ*
+	Returns Pointer	// UInteger*
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-capabilitiesrequestandcapabilitiesreply
+External_Function CapabilitiesRequestAndCapabilitiesReply "CapabilitiesRequestAndCapabilitiesReply" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pszASCIICapabilitiesString ;	// PSTR
+	UInteger dwCapabilitiesStringLengthInCharacters ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-degaussmonitor
+External_Function DegaussMonitor "DegaussMonitor" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-destroyphysicalmonitor
+External_Function DestroyPhysicalMonitor "DestroyPhysicalMonitor" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-destroyphysicalmonitors
+External_Function DestroyPhysicalMonitors "DestroyPhysicalMonitors" dxva2.dll ;
+	UInteger dwPhysicalMonitorArraySize ;
+	Pointer pPhysicalMonitorArray ;	// PHYSICAL_MONITOR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-getcapabilitiesstringlength
+External_Function GetCapabilitiesStringLength "GetCapabilitiesStringLength" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pdwCapabilitiesStringLengthInCharacters ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorbrightness
+External_Function GetMonitorBrightness "GetMonitorBrightness" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pdwMinimumBrightness ;	// UInteger*
+	Pointer pdwCurrentBrightness ;	// UInteger*
+	Pointer pdwMaximumBrightness ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorcapabilities
+External_Function GetMonitorCapabilities "GetMonitorCapabilities" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pdwMonitorCapabilities ;	// UInteger*
+	Pointer pdwSupportedColorTemperatures ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorcolortemperature
+External_Function GetMonitorColorTemperature "GetMonitorColorTemperature" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pctCurrentColorTemperature ;	// MC_COLOR_TEMPERATURE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorcontrast
+External_Function GetMonitorContrast "GetMonitorContrast" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pdwMinimumContrast ;	// UInteger*
+	Pointer pdwCurrentContrast ;	// UInteger*
+	Pointer pdwMaximumContrast ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitordisplayareaposition
+External_Function GetMonitorDisplayAreaPosition "GetMonitorDisplayAreaPosition" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer ptPositionType ;	// MC_POSITION_TYPE
+	Pointer pdwMinimumPosition ;	// UInteger*
+	Pointer pdwCurrentPosition ;	// UInteger*
+	Pointer pdwMaximumPosition ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitordisplayareasize
+External_Function GetMonitorDisplayAreaSize "GetMonitorDisplayAreaSize" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer stSizeType ;	// MC_SIZE_TYPE
+	Pointer pdwMinimumWidthOrHeight ;	// UInteger*
+	Pointer pdwCurrentWidthOrHeight ;	// UInteger*
+	Pointer pdwMaximumWidthOrHeight ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorredgreenorbluedrive
+External_Function GetMonitorRedGreenOrBlueDrive "GetMonitorRedGreenOrBlueDrive" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer dtDriveType ;	// MC_DRIVE_TYPE
+	Pointer pdwMinimumDrive ;	// UInteger*
+	Pointer pdwCurrentDrive ;	// UInteger*
+	Pointer pdwMaximumDrive ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitorredgreenorbluegain
+External_Function GetMonitorRedGreenOrBlueGain "GetMonitorRedGreenOrBlueGain" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer gtGainType ;	// MC_GAIN_TYPE
+	Pointer pdwMinimumGain ;	// UInteger*
+	Pointer pdwCurrentGain ;	// UInteger*
+	Pointer pdwMaximumGain ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-getmonitortechnologytype
+External_Function GetMonitorTechnologyType "GetMonitorTechnologyType" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pdtyDisplayTechnologyType ;	// MC_DISPLAY_TECHNOLOGY_TYPE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getnumberofphysicalmonitorsfromhmonitor
+External_Function GetNumberOfPhysicalMonitorsFromHMONITOR "GetNumberOfPhysicalMonitorsFromHMONITOR" dxva2.dll ;
+	Pointer hMonitor ;	// HMONITOR
+	Pointer pdwNumberOfPhysicalMonitors ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getnumberofphysicalmonitorsfromidirect3ddevice9
+External_Function GetNumberOfPhysicalMonitorsFromIDirect3DDevice9 "GetNumberOfPhysicalMonitorsFromIDirect3DDevice9" dxva2.dll ;
+	Pointer pDirect3DDevice9 ;	// IDirect3DDevice9
+	Pointer pdwNumberOfPhysicalMonitors ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getphysicalmonitorsfromhmonitor
+External_Function GetPhysicalMonitorsFromHMONITOR "GetPhysicalMonitorsFromHMONITOR" dxva2.dll ;
+	Pointer hMonitor ;	// HMONITOR
+	UInteger dwPhysicalMonitorArraySize ;
+	Pointer pPhysicalMonitorArray ;	// PHYSICAL_MONITOR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/nf-physicalmonitorenumerationapi-getphysicalmonitorsfromidirect3ddevice9
+External_Function GetPhysicalMonitorsFromIDirect3DDevice9 "GetPhysicalMonitorsFromIDirect3DDevice9" dxva2.dll ;
+	Pointer pDirect3DDevice9 ;	// IDirect3DDevice9
+	UInteger dwPhysicalMonitorArraySize ;
+	Pointer pPhysicalMonitorArray ;	// PHYSICAL_MONITOR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-gettimingreport
+External_Function GetTimingReport "GetTimingReport" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Pointer pmtrMonitorTimingReport ;	// MC_TIMING_REPORT*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-getvcpfeatureandvcpfeaturereply
+External_Function GetVCPFeatureAndVCPFeatureReply "GetVCPFeatureAndVCPFeatureReply" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	UChar bVCPCode ;
+	Pointer pvct ;	// MC_VCP_CODE_TYPE*
+	Pointer pdwCurrentValue ;	// UInteger*
+	Pointer pdwMaximumValue ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-restoremonitorfactorycolordefaults
+External_Function RestoreMonitorFactoryColorDefaults "RestoreMonitorFactoryColorDefaults" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-restoremonitorfactorydefaults
+External_Function RestoreMonitorFactoryDefaults "RestoreMonitorFactoryDefaults" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-savecurrentmonitorsettings
+External_Function SaveCurrentMonitorSettings "SaveCurrentMonitorSettings" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-savecurrentsettings
+External_Function SaveCurrentSettings "SaveCurrentSettings" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitorbrightness
+External_Function SetMonitorBrightness "SetMonitorBrightness" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	UInteger dwNewBrightness ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitorcolortemperature
+External_Function SetMonitorColorTemperature "SetMonitorColorTemperature" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer ctCurrentColorTemperature ;	// MC_COLOR_TEMPERATURE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitorcontrast
+External_Function SetMonitorContrast "SetMonitorContrast" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	UInteger dwNewContrast ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitordisplayareaposition
+External_Function SetMonitorDisplayAreaPosition "SetMonitorDisplayAreaPosition" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer ptPositionType ;	// MC_POSITION_TYPE
+	UInteger dwNewPosition ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitordisplayareasize
+External_Function SetMonitorDisplayAreaSize "SetMonitorDisplayAreaSize" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer stSizeType ;	// MC_SIZE_TYPE
+	UInteger dwNewDisplayAreaWidthOrHeight ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitorredgreenorbluedrive
+External_Function SetMonitorRedGreenOrBlueDrive "SetMonitorRedGreenOrBlueDrive" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer dtDriveType ;	// MC_DRIVE_TYPE
+	UInteger dwNewDrive ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/highlevelmonitorconfigurationapi/nf-highlevelmonitorconfigurationapi-setmonitorredgreenorbluegain
+External_Function SetMonitorRedGreenOrBlueGain "SetMonitorRedGreenOrBlueGain" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	Integer gtGainType ;	// MC_GAIN_TYPE
+	UInteger dwNewGain ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/nf-lowlevelmonitorconfigurationapi-setvcpfeature
+External_Function SetVCPFeature "SetVCPFeature" dxva2.dll ;
+	Pointer hMonitor ;	// HANDLE
+	UChar bVCPCode ;
+	UInteger dwNewValue ;
+	Returns Integer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

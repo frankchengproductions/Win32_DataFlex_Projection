@@ -1,0 +1,84 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpclosethreadnetworkcontext
+External_Function SrpCloseThreadNetworkContext "SrpCloseThreadNetworkContext" srpapi.dll ;
+	Pointer threadNetworkContext ;	// HTHREAD_NETWORK_CONTEXT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpcreatethreadnetworkcontext
+External_Function SrpCreateThreadNetworkContext "SrpCreateThreadNetworkContext" srpapi.dll ;
+	WString enterpriseId ;	// PWSTR
+	Pointer threadNetworkContext ;	// HTHREAD_NETWORK_CONTEXT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpdisablepermissivemodefileencryption
+External_Function SrpDisablePermissiveModeFileEncryption "SrpDisablePermissiveModeFileEncryption" srpapi.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpdoespolicyallowappexecution
+External_Function SrpDoesPolicyAllowAppExecution "SrpDoesPolicyAllowAppExecution" srpapi.dll ;
+	Pointer packageId ;	// PACKAGE_ID*
+	Pointer isAllowed ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpenablepermissivemodefileencryption
+External_Function SrpEnablePermissiveModeFileEncryption "SrpEnablePermissiveModeFileEncryption" srpapi.dll ;
+	WString enterpriseId ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpgetenterpriseids
+External_Function SrpGetEnterpriseIds "SrpGetEnterpriseIds" srpapi.dll ;
+	Pointer tokenHandle ;	// HANDLE
+	Pointer numberOfBytes ;	// UInteger*
+	Pointer enterpriseIds ;	// PWSTR*
+	Pointer enterpriseIdCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpgetenterprisepolicy
+External_Function SrpGetEnterprisePolicy "SrpGetEnterprisePolicy" srpapi.dll ;
+	Pointer tokenHandle ;	// HANDLE
+	Pointer policyFlags ;	// ENTERPRISE_DATA_POLICIES*
+	Returns Integer	// HRESULT
+
+External_Function SrpHostingInitialize "SrpHostingInitialize" srpapi.dll ;
+	Integer Version ;	// SRPHOSTING_VERSION
+	Integer Type ;	// SRPHOSTING_TYPE
+	Pointer pvData ;	// Pointer*
+	UInteger cbData ;
+	Returns Integer	// HRESULT
+
+External_Function SrpHostingTerminate "SrpHostingTerminate" srpapi.dll ;
+	Integer Type ;	// SRPHOSTING_TYPE
+	Returns Pointer
+
+External_Function SrpIsAllowed "SrpIsAllowed" srpapi.dll ;
+	Pointer FileInfo ;	// _SRP_REQUEST*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpistokenservice
+External_Function SrpIsTokenService "SrpIsTokenService" srpapi.dll ;
+	Pointer TokenHandle ;	// HANDLE
+	Pointer IsTokenService ;	// UChar*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/srpapi/nf-srpapi-srpsettokenenterpriseid
+External_Function SrpSetTokenEnterpriseId "SrpSetTokenEnterpriseId" srpapi.dll ;
+	Pointer tokenHandle ;	// HANDLE
+	WString enterpriseId ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/edpwin32/nf-edpwin32-protectfiletoenterpriseidentity
+External_Function ProtectFileToEnterpriseIdentity "ProtectFileToEnterpriseIdentity" efswrt.dll ;
+	WString fileOrFolderPath ;	// PWSTR
+	WString identity ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function UnprotectFile "UnprotectFile" efswrt.dll ;
+	WString fileOrFolderPath ;	// PWSTR
+	Pointer options ;	// FILE_UNPROTECT_OPTIONS*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

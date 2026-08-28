@@ -1,0 +1,161 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_attribute
+Struct EAP_ATTRIBUTE
+	Integer eaType											// EAP_ATTRIBUTE_TYPE
+	UInteger dwLength
+	Pointer pValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_attributes
+Struct EAP_ATTRIBUTES
+	UInteger dwNumberOfAttributes
+	Integer iMissingAlignment1
+	Pointer pAttribs										// EAP_ATTRIBUTE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_config_input_field_array
+Struct EAP_CONFIG_INPUT_FIELD_ARRAY
+	UInteger dwVersion
+	UInteger dwNumberOfFields
+	Pointer pFields											// EAP_CONFIG_INPUT_FIELD_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_config_input_field_data
+Struct EAP_CONFIG_INPUT_FIELD_DATA
+	UInteger dwSize
+	Integer Type											// EAP_CONFIG_INPUT_FIELD_TYPE
+	UInteger dwFlagProps
+	Integer iMissingAlignment1
+	Pointer pwszLabel										// PWSTR
+	Pointer pwszData										// PWSTR
+	UInteger dwMinDataLength
+	UInteger dwMaxDataLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_cred_expiry_req
+Struct EAP_CRED_EXPIRY_REQ
+	EAP_CONFIG_INPUT_FIELD_ARRAY curCreds
+	EAP_CONFIG_INPUT_FIELD_ARRAY newCreds
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_error
+Struct EAP_ERROR
+	UInteger dwWinError
+	EAP_METHOD_TYPE type
+	UInteger dwReasonCode
+	Guid rootCauseGuid
+	Guid repairGuid
+	Guid helpLinkGuid
+	Pointer pRootCauseString								// PWSTR
+	Pointer pRepairString									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_interactive_ui_data
+Struct EAP_INTERACTIVE_UI_DATA
+	UInteger dwVersion
+	UInteger dwSize
+	Integer dwDataType										// EAP_INTERACTIVE_UI_DATA_TYPE
+	UInteger cbUiData
+	EAP_UI_DATA_FORMAT pbUiData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_info
+Struct EAP_METHOD_INFO
+	EAP_METHOD_TYPE eaptype
+	Pointer pwszAuthorName									// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	UInteger eapProperties
+	Integer iMissingAlignment1
+	Pointer pInnerMethodInfo								// EAP_METHOD_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_info_array
+Struct EAP_METHOD_INFO_ARRAY
+	UInteger dwNumberOfMethods
+	Integer iMissingAlignment1
+	Pointer pEapMethods										// EAP_METHOD_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property
+Struct EAP_METHOD_PROPERTY
+	Integer eapMethodPropertyType							// EAP_METHOD_PROPERTY_TYPE
+	Integer eapMethodPropertyValueType						// EAP_METHOD_PROPERTY_VALUE_TYPE
+	EAP_METHOD_PROPERTY_VALUE eapMethodPropertyValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_array
+Struct EAP_METHOD_PROPERTY_ARRAY
+	UInteger dwNumberOfProperties
+	Integer iMissingAlignment1
+	Pointer pMethodProperty									// EAP_METHOD_PROPERTY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value
+Struct EAP_METHOD_PROPERTY_VALUE
+	EAP_METHOD_PROPERTY_VALUE_BOOL empvBool
+	EAP_METHOD_PROPERTY_VALUE_DWORD empvDword
+	EAP_METHOD_PROPERTY_VALUE_STRING empvString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value_bool
+Struct EAP_METHOD_PROPERTY_VALUE_BOOL
+	UInteger length
+	Integer value											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value_dword
+Struct EAP_METHOD_PROPERTY_VALUE_DWORD
+	UInteger length
+	UInteger value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value_string
+Struct EAP_METHOD_PROPERTY_VALUE_STRING
+	UInteger length
+	Integer iMissingAlignment1
+	Pointer value											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_type
+Struct EAP_METHOD_TYPE
+	EAP_TYPE eapType
+	UInteger dwAuthorId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_type
+Struct EAP_TYPE
+	UChar type
+	UChar[3] cMissingAlignment1
+	UInteger dwVendorId
+	UInteger dwVendorType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_ui_data_format
+Struct EAP_UI_DATA_FORMAT
+	Pointer credData										// EAP_CONFIG_INPUT_FIELD_ARRAY*
+	Pointer credExpiryData									// EAP_CRED_EXPIRY_REQ*
+	Pointer credLogonData									// EAP_CONFIG_INPUT_FIELD_ARRAY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeertypes/ns-eaphostpeertypes-eaphostpeermethodresult
+Struct EapHostPeerMethodResult
+	Integer fIsSuccess										// BOOL
+	UInteger dwFailureReasonCode
+	Integer fSaveConnectionData								// BOOL
+	UInteger dwSizeofConnectionData
+	Pointer pConnectionData									// UChar*
+	Integer fSaveUserData									// BOOL
+	UInteger dwSizeofUserData
+	Pointer pUserData										// UChar*
+	Pointer pAttribArray									// EAP_ATTRIBUTES*
+	Integer isolationState									// ISOLATION_STATE
+	Integer iMissingAlignment1
+	Pointer pEapMethodInfo									// EAP_METHOD_INFO*
+	Pointer pEapError										// EAP_ERROR*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

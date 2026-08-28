@@ -1,0 +1,73 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdeviceclose
+External_Function SwDeviceClose "SwDeviceClose" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdevicecreate
+External_Function SwDeviceCreate "SwDeviceCreate" CFGMGR32.dll ;
+	WString pszEnumeratorName ;	// PWSTR
+	WString pszParentDeviceInstance ;	// PWSTR
+	Pointer pCreateInfo ;	// SW_DEVICE_CREATE_INFO*
+	UInteger cPropertyCount ;
+	Pointer pProperties ;	// DEVPROPERTY*
+	Pointer pCallback ;	// SW_DEVICE_CREATE_CALLBACK
+	Pointer pContext ;	// Pointer*
+	Pointer phSwDevice ;	// HSWDEVICE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdevicegetlifetime
+External_Function SwDeviceGetLifetime "SwDeviceGetLifetime" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	Pointer pLifetime ;	// SW_DEVICE_LIFETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdeviceinterfacepropertyset
+External_Function SwDeviceInterfacePropertySet "SwDeviceInterfacePropertySet" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	WString pszDeviceInterfaceId ;	// PWSTR
+	UInteger cPropertyCount ;
+	Pointer pProperties ;	// DEVPROPERTY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdeviceinterfaceregister
+External_Function SwDeviceInterfaceRegister "SwDeviceInterfaceRegister" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	Pointer pInterfaceClassGuid ;	// Guid*
+	WString pszReferenceString ;	// PWSTR
+	UInteger cPropertyCount ;
+	Pointer pProperties ;	// DEVPROPERTY*
+	Integer fEnabled ;	// BOOL
+	Pointer ppszDeviceInterfaceId ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdeviceinterfacesetstate
+External_Function SwDeviceInterfaceSetState "SwDeviceInterfaceSetState" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	WString pszDeviceInterfaceId ;	// PWSTR
+	Integer fEnabled ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdevicepropertyset
+External_Function SwDevicePropertySet "SwDevicePropertySet" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	UInteger cPropertyCount ;
+	Pointer pProperties ;	// DEVPROPERTY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swdevicesetlifetime
+External_Function SwDeviceSetLifetime "SwDeviceSetLifetime" CFGMGR32.dll ;
+	Pointer hSwDevice ;	// HSWDEVICE
+	Integer Lifetime ;	// SW_DEVICE_LIFETIME
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/swdevice/nf-swdevice-swmemfree
+External_Function SwMemFree "SwMemFree" CFGMGR32.dll ;
+	Pointer pMem ;	// Pointer*
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

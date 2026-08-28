@@ -1,0 +1,96 @@
+Use UI
+
+Struct USBD_ISO_PACKET_DESCRIPTOR
+	UInteger Offset
+	UInteger Length
+	Integer Status
+End_Struct
+
+Struct USB_COMMON_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+End_Struct
+
+Struct USB_CONFIGURATION_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort wTotalLength
+	UChar bNumInterfaces
+	UChar bConfigurationValue
+	UChar iConfiguration
+	UChar bmAttributes
+	UChar MaxPower
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct USB_FRAME_NUMBER_AND_QPC_FOR_TIME_SYNC_INFORMATION
+	Pointer TimeTrackingHandle								// HANDLE
+	UInteger InputFrameNumber
+	UInteger InputMicroFrameNumber
+	Bigint QueryPerformanceCounterAtInputFrameOrMicroFrame
+	Bigint QueryPerformanceCounterFrequency
+	UInteger PredictedAccuracyInMicroSeconds
+	UInteger CurrentGenerationID
+	Bigint CurrentQueryPerformanceCounter
+	UInteger CurrentHardwareFrameNumber
+	UInteger CurrentHardwareMicroFrameNumber
+	UInteger CurrentUSBFrameNumber
+	Integer iMissingAlignment1
+End_Struct
+
+Struct USB_INTERFACE_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bInterfaceNumber
+	UChar bAlternateSetting
+	UChar bNumEndpoints
+	UChar bInterfaceClass
+	UChar bInterfaceSubClass
+	UChar bInterfaceProtocol
+	UChar iInterface
+End_Struct
+
+Struct USB_START_TRACKING_FOR_TIME_SYNC_INFORMATION
+	Pointer TimeTrackingHandle								// HANDLE
+	UChar IsStartupDelayTolerable							// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct USB_STOP_TRACKING_FOR_TIME_SYNC_INFORMATION
+	Pointer TimeTrackingHandle								// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winusbio/ns-winusbio-winusb_pipe_information
+Struct WINUSB_PIPE_INFORMATION
+	Integer PipeType										// USBD_PIPE_TYPE
+	UChar PipeId
+	UChar[1] cMissingAlignment1
+	UShort MaximumPacketSize
+	UChar Interval
+	UChar[3] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winusbio/ns-winusbio-winusb_pipe_information_ex
+Struct WINUSB_PIPE_INFORMATION_EX
+	Integer PipeType										// USBD_PIPE_TYPE
+	UChar PipeId
+	UChar[1] cMissingAlignment1
+	UShort MaximumPacketSize
+	UChar Interval
+	UChar[3] cMissingAlignment2
+	UInteger MaximumBytesPerInterval
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winusb/ns-winusb-winusb_setup_packet
+Struct WINUSB_SETUP_PACKET
+	UChar RequestType
+	UChar Request
+	UShort Value
+	UShort Index
+	UShort Length
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

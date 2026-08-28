@@ -1,0 +1,93 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4setoptionvalue
+External_Function DhcpV4SetOptionValue "DhcpV4SetOptionValue" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionId ;
+	WString PolicyName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValue ;	// DHCP_OPTION_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4setoptionvalues
+External_Function DhcpV4SetOptionValues "DhcpV4SetOptionValues" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString PolicyName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValues ;	// DHCP_OPTION_VALUE_ARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4setpolicy
+External_Function DhcpV4SetPolicy "DhcpV4SetPolicy" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger FieldsModified ;
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Pointer Policy ;	// DHCP_POLICY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4setpolicyenforcement
+External_Function DhcpV4SetPolicyEnforcement "DhcpV4SetPolicyEnforcement" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	Integer Enable ;	// BOOL
+	Returns UInteger
+
+External_Function DhcpV4SetPolicyEx "DhcpV4SetPolicyEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger FieldsModified ;
+	Integer GlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Pointer Policy ;	// DHCP_POLICY_EX*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv6createclientinfo
+External_Function DhcpV6CreateClientInfo "DhcpV6CreateClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv6getfreeipaddress
+External_Function DhcpV6GetFreeIPAddress "DhcpV6GetFreeIPAddress" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS ScopeId ;
+	DHCP_IPV6_ADDRESS StartIP ;
+	DHCP_IPV6_ADDRESS EndIP ;
+	UInteger NumFreeAddrReq ;
+	Pointer IPAddrList ;	// DHCPV6_IP_ARRAY**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv6getstatelessstatistics
+External_Function DhcpV6GetStatelessStatistics "DhcpV6GetStatelessStatistics" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer StatelessStats ;	// DHCPV6_STATELESS_STATS**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv6getstatelessstoreparams
+External_Function DhcpV6GetStatelessStoreParams "DhcpV6GetStatelessStoreParams" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer fServerLevel ;	// BOOL
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer Params ;	// DHCPV6_STATELESS_PARAMS**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv6setstatelessstoreparams
+External_Function DhcpV6SetStatelessStoreParams "DhcpV6SetStatelessStoreParams" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer fServerLevel ;	// BOOL
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	UInteger FieldModified ;
+	Pointer Params ;	// DHCPV6_STATELESS_PARAMS*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

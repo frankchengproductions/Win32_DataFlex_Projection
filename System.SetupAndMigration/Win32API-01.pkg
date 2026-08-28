@@ -1,0 +1,23 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/oobenotification/nf-oobenotification-oobecomplete
+External_Function OOBEComplete "OOBEComplete" KERNEL32.dll ;
+	Pointer isOOBEComplete ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/oobenotification/nf-oobenotification-registerwaituntiloobecompleted
+External_Function RegisterWaitUntilOOBECompleted "RegisterWaitUntilOOBECompleted" KERNEL32.dll ;
+	Pointer OOBECompletedCallback ;	// OOBE_COMPLETED_CALLBACK
+	Pointer CallbackContext ;	// Pointer*
+	Pointer WaitHandle ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/oobenotification/nf-oobenotification-unregisterwaituntiloobecompleted
+External_Function UnregisterWaitUntilOOBECompleted "UnregisterWaitUntilOOBECompleted" KERNEL32.dll ;
+	Pointer WaitHandle ;	// Pointer*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

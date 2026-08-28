@@ -1,0 +1,214 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthnauthenticatorgetassertion
+External_Function WebAuthNAuthenticatorGetAssertion "WebAuthNAuthenticatorGetAssertion" webauthn.dll ;
+	Pointer hWnd ;	// HWND
+	WString pwszRpId ;	// PWSTR
+	Pointer pWebAuthNClientData ;	// WEBAUTHN_CLIENT_DATA*
+	Pointer pWebAuthNGetAssertionOptions ;	// WEBAUTHN_AUTHENTICATOR_GET_ASSERTION_OPTIONS*
+	Pointer ppWebAuthNAssertion ;	// WEBAUTHN_ASSERTION**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthnauthenticatormakecredential
+External_Function WebAuthNAuthenticatorMakeCredential "WebAuthNAuthenticatorMakeCredential" webauthn.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer pRpInformation ;	// WEBAUTHN_RP_ENTITY_INFORMATION*
+	Pointer pUserInformation ;	// WEBAUTHN_USER_ENTITY_INFORMATION*
+	Pointer pPubKeyCredParams ;	// WEBAUTHN_COSE_CREDENTIAL_PARAMETERS*
+	Pointer pWebAuthNClientData ;	// WEBAUTHN_CLIENT_DATA*
+	Pointer pWebAuthNMakeCredentialOptions ;	// WEBAUTHN_AUTHENTICATOR_MAKE_CREDENTIAL_OPTIONS*
+	Pointer ppWebAuthNCredentialAttestation ;	// WEBAUTHN_CREDENTIAL_ATTESTATION**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthncancelcurrentoperation
+External_Function WebAuthNCancelCurrentOperation "WebAuthNCancelCurrentOperation" webauthn.dll ;
+	Pointer pCancellationId ;	// Guid*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNDecodeGetAssertionRequest "WebAuthNDecodeGetAssertionRequest" webauthn.dll ;
+	UInteger cbEncoded ;
+	Pointer pbEncoded ;	// UChar*
+	Pointer ppGetAssertionRequest ;	// WEBAUTHN_CTAPCBOR_GET_ASSERTION_REQUEST**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNDecodeMakeCredentialRequest "WebAuthNDecodeMakeCredentialRequest" webauthn.dll ;
+	UInteger cbEncoded ;
+	Pointer pbEncoded ;	// UChar*
+	Pointer ppMakeCredentialRequest ;	// WEBAUTHN_CTAPCBOR_MAKE_CREDENTIAL_REQUEST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthndeleteplatformcredential
+External_Function WebAuthNDeletePlatformCredential "WebAuthNDeletePlatformCredential" webauthn.dll ;
+	UInteger cbCredentialId ;
+	Pointer pbCredentialId ;	// UChar*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNEncodeGetAssertionResponse "WebAuthNEncodeGetAssertionResponse" webauthn.dll ;
+	Pointer pGetAssertionResponse ;	// WEBAUTHN_CTAPCBOR_GET_ASSERTION_RESPONSE*
+	Pointer pcbResp ;	// UInteger*
+	Pointer ppbResp ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNEncodeMakeCredentialResponse "WebAuthNEncodeMakeCredentialResponse" webauthn.dll ;
+	Pointer pCredentialAttestation ;	// WEBAUTHN_CREDENTIAL_ATTESTATION*
+	Pointer pcbResp ;	// UInteger*
+	Pointer ppbResp ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthnfreeassertion
+External_Function WebAuthNFreeAssertion "WebAuthNFreeAssertion" webauthn.dll ;
+	Pointer pWebAuthNAssertion ;	// WEBAUTHN_ASSERTION*
+	Returns Pointer
+
+External_Function WebAuthNFreeAuthenticatorList "WebAuthNFreeAuthenticatorList" webauthn.dll ;
+	Pointer pAuthenticatorDetailsList ;	// WEBAUTHN_AUTHENTICATOR_DETAILS_LIST*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthnfreecredentialattestation
+External_Function WebAuthNFreeCredentialAttestation "WebAuthNFreeCredentialAttestation" webauthn.dll ;
+	Pointer pWebAuthNCredentialAttestation ;	// WEBAUTHN_CREDENTIAL_ATTESTATION*
+	Returns Pointer
+
+External_Function WebAuthNFreeDecodedGetAssertionRequest "WebAuthNFreeDecodedGetAssertionRequest" webauthn.dll ;
+	Pointer pGetAssertionRequest ;	// WEBAUTHN_CTAPCBOR_GET_ASSERTION_REQUEST*
+	Returns Pointer
+
+External_Function WebAuthNFreeDecodedMakeCredentialRequest "WebAuthNFreeDecodedMakeCredentialRequest" webauthn.dll ;
+	Pointer pMakeCredentialRequest ;	// WEBAUTHN_CTAPCBOR_MAKE_CREDENTIAL_REQUEST*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthnfreeplatformcredentiallist
+External_Function WebAuthNFreePlatformCredentialList "WebAuthNFreePlatformCredentialList" webauthn.dll ;
+	Pointer pCredentialDetailsList ;	// WEBAUTHN_CREDENTIAL_DETAILS_LIST*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthngetapiversionnumber
+External_Function WebAuthNGetApiVersionNumber "WebAuthNGetApiVersionNumber" webauthn.dll ;
+	Returns UInteger
+
+External_Function WebAuthNGetAuthenticatorList "WebAuthNGetAuthenticatorList" webauthn.dll ;
+	Pointer pWebAuthNGetAuthenticatorListOptions ;	// WEBAUTHN_AUTHENTICATOR_DETAILS_OPTIONS*
+	Pointer ppAuthenticatorDetailsList ;	// WEBAUTHN_AUTHENTICATOR_DETAILS_LIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthngetcancellationid
+External_Function WebAuthNGetCancellationId "WebAuthNGetCancellationId" webauthn.dll ;
+	Pointer pCancellationId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthngeterrorname
+External_Function WebAuthNGetErrorName "WebAuthNGetErrorName" webauthn.dll ;
+	Integer hr ;	// HRESULT
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthngetplatformcredentiallist
+External_Function WebAuthNGetPlatformCredentialList "WebAuthNGetPlatformCredentialList" webauthn.dll ;
+	Pointer pGetCredentialsOptions ;	// WEBAUTHN_GET_CREDENTIALS_OPTIONS*
+	Pointer ppCredentialDetailsList ;	// WEBAUTHN_CREDENTIAL_DETAILS_LIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthngetw3cexceptiondomerror
+External_Function WebAuthNGetW3CExceptionDOMError "WebAuthNGetW3CExceptionDOMError" webauthn.dll ;
+	Integer hr ;	// HRESULT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/webauthn/nf-webauthn-webauthnisuserverifyingplatformauthenticatoravailable
+External_Function WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable "WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable" webauthn.dll ;
+	Pointer pbIsUserVerifyingPlatformAuthenticatorAvailable ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginAddAuthenticator "WebAuthNPluginAddAuthenticator" webauthn.dll ;
+	Pointer pPluginAddAuthenticatorOptions ;	// WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_OPTIONS*
+	Pointer ppPluginAddAuthenticatorResponse ;	// WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_RESPONSE**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginAuthenticatorAddCredentials "WebAuthNPluginAuthenticatorAddCredentials" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	UInteger cCredentialDetails ;
+	Pointer pCredentialDetails ;	// WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginAuthenticatorFreeCredentialDetailsArray "WebAuthNPluginAuthenticatorFreeCredentialDetailsArray" webauthn.dll ;
+	UInteger cCredentialDetails ;
+	Pointer pCredentialDetailsArray ;	// WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS*
+	Returns Pointer
+
+External_Function WebAuthNPluginAuthenticatorGetAllCredentials "WebAuthNPluginAuthenticatorGetAllCredentials" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pcCredentialDetails ;	// UInteger*
+	Pointer ppCredentialDetailsArray ;	// WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginAuthenticatorRemoveAllCredentials "WebAuthNPluginAuthenticatorRemoveAllCredentials" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginAuthenticatorRemoveCredentials "WebAuthNPluginAuthenticatorRemoveCredentials" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	UInteger cCredentialDetails ;
+	Pointer pCredentialDetails ;	// WEBAUTHN_PLUGIN_CREDENTIAL_DETAILS*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginFreeAddAuthenticatorResponse "WebAuthNPluginFreeAddAuthenticatorResponse" webauthn.dll ;
+	Pointer pPluginAddAuthenticatorResponse ;	// WEBAUTHN_PLUGIN_ADD_AUTHENTICATOR_RESPONSE*
+	Returns Pointer
+
+External_Function WebAuthNPluginFreePublicKeyResponse "WebAuthNPluginFreePublicKeyResponse" webauthn.dll ;
+	Pointer pbOpSignPubKey ;	// UChar*
+	Returns Pointer
+
+External_Function WebAuthNPluginFreeUserVerificationResponse "WebAuthNPluginFreeUserVerificationResponse" webauthn.dll ;
+	Pointer ppbResponse ;	// UChar*
+	Returns Pointer
+
+External_Function WebAuthNPluginGetAuthenticatorState "WebAuthNPluginGetAuthenticatorState" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pluginAuthenticatorState ;	// AUTHENTICATOR_STATE*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginGetOperationSigningPublicKey "WebAuthNPluginGetOperationSigningPublicKey" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pcbOpSignPubKey ;	// UInteger*
+	Pointer ppbOpSignPubKey ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginGetUserVerificationCount "WebAuthNPluginGetUserVerificationCount" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pdwVerificationCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginGetUserVerificationPublicKey "WebAuthNPluginGetUserVerificationPublicKey" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pcbPublicKey ;	// UInteger*
+	Pointer ppbPublicKey ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginPerformUserVerification "WebAuthNPluginPerformUserVerification" webauthn.dll ;
+	Pointer pPluginUserVerification ;	// WEBAUTHN_PLUGIN_USER_VERIFICATION_REQUEST*
+	Pointer pcbResponse ;	// UInteger*
+	Pointer ppbResponse ;	// UChar**
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginRegisterStatusChangeCallback "WebAuthNPluginRegisterStatusChangeCallback" webauthn.dll ;
+	Pointer callback ;	// WEBAUTHN_PLUGIN_STATUS_CHANGE_CALLBACK
+	Pointer context ;	// Pointer*
+	Pointer rclsid ;	// Guid*
+	Pointer pdwRegister ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginRemoveAuthenticator "WebAuthNPluginRemoveAuthenticator" webauthn.dll ;
+	Pointer rclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginUnregisterStatusChangeCallback "WebAuthNPluginUnregisterStatusChangeCallback" webauthn.dll ;
+	Pointer pdwRegister ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WebAuthNPluginUpdateAuthenticatorDetails "WebAuthNPluginUpdateAuthenticatorDetails" webauthn.dll ;
+	Pointer pPluginUpdateAuthenticatorDetails ;	// WEBAUTHN_PLUGIN_UPDATE_AUTHENTICATOR_DETAILS*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

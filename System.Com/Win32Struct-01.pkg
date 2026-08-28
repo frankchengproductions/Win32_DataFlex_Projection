@@ -1,0 +1,205 @@
+Use UI
+
+Struct BINDINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer szExtraInfo										// PWSTR
+	STGMEDIUM stgmedData
+	UInteger grfBindInfoF
+	UInteger dwBindVerb
+	Pointer szCustomVerb									// PWSTR
+	UInteger cbstgmedData
+	UInteger dwOptions
+	UInteger dwOptionsFlags
+	UInteger dwCodePage
+	SECURITY_ATTRIBUTES securityAttributes
+	Guid iid
+	Pointer pUnk											// IUnknown
+	UInteger dwReserved
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objidl/ns-objidl-bind_opts
+Struct BIND_OPTS
+	UInteger cbStruct
+	UInteger grfFlags
+	UInteger grfMode
+	UInteger dwTickCountDeadline
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-blob
+Struct BLOB
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pBlobData										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypesbase/ns-wtypesbase-coauthidentity
+Struct COAUTHIDENTITY
+	Pointer User											// UShort*
+	UInteger UserLength
+	Integer iMissingAlignment1
+	Pointer Domain											// UShort*
+	UInteger DomainLength
+	Integer iMissingAlignment2
+	Pointer Password										// UShort*
+	UInteger PasswordLength
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypesbase/ns-wtypesbase-coauthinfo
+Struct COAUTHINFO
+	UInteger dwAuthnSvc
+	UInteger dwAuthzSvc
+	Pointer pwszServerPrincName								// PWSTR
+	UInteger dwAuthnLevel
+	UInteger dwImpersonationLevel
+	Pointer pAuthIdentityData								// COAUTHIDENTITY*
+	UInteger dwCapabilities
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objidlbase/ns-objidlbase-coserverinfo
+Struct COSERVERINFO
+	UInteger dwReserved1
+	Integer iMissingAlignment1
+	Pointer pwszName										// PWSTR
+	Pointer pAuthInfo										// COAUTHINFO*
+	UInteger dwReserved2
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypes/ns-wtypes-csplatform
+Struct CSPLATFORM
+	UInteger dwPlatformId
+	UInteger dwVersionHi
+	UInteger dwVersionLo
+	UInteger dwProcessorArch
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-custdata
+Struct CUSTDATA
+	UInteger cCustData
+	Integer iMissingAlignment1
+	Pointer prgCustData										// CUSTDATAITEM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-custdataitem
+Struct CUSTDATAITEM
+	Guid guid
+	VARIANT varValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypes/ns-wtypes-cy~r1
+Struct CY
+	UChar[4] UnionName1
+	Integer iMissingAlignment1
+	Bigint int64
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-dispparams
+Struct DISPPARAMS
+	Pointer rgvarg											// VARIANT*
+	Pointer rgdispidNamedArgs								// Integer*
+	UInteger cArgs
+	UInteger cNamedArgs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objidl/ns-objidl-dvtargetdevice
+Struct DVTARGETDEVICE
+	UInteger tdSize
+	UShort tdDriverNameOffset
+	UShort tdDeviceNameOffset
+	UShort tdPortNameOffset
+	UShort tdExtDevmodeOffset
+	UChar[1] tdData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-excepinfo
+Struct EXCEPINFO
+	UShort wCode
+	UShort wReserved
+	Integer iMissingAlignment1
+	Pointer bstrSource										// BSTR
+	Pointer bstrDescription									// BSTR
+	Pointer bstrHelpFile									// BSTR
+	UInteger dwHelpContext
+	Integer iMissingAlignment2
+	Pointer pvReserved										// Pointer*
+	Pointer pfnDeferredFillIn								// LPEXCEPFINO_DEFERRED_FILLIN
+	Integer scode
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objidl/ns-objidl-formatetc
+Struct FORMATETC
+	UShort cfFormat
+	UChar[6] cMissingAlignment1
+	Pointer ptd												// DVTARGETDEVICE*
+	UInteger dwAspect
+	Integer lindex
+	UInteger tymed
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objidlbase/ns-objidlbase-multi_qi
+Struct MULTI_QI
+	Pointer pIID											// Guid*
+	Pointer pItf											// IUnknown
+	Integer hr												// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypes/ns-wtypes-querycontext
+Struct QUERYCONTEXT
+	UInteger dwContext
+	CSPLATFORM Platform
+	UInteger Locale
+	UInteger dwVersionHi
+	UInteger dwVersionLo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-safearray
+Struct SAFEARRAY
+	UShort cDims
+	UShort fFeatures										// ADVANCED_FEATURE_FLAGS
+	UInteger cbElements
+	UInteger cLocks
+	Integer iMissingAlignment1
+	Pointer pvData											// Pointer*
+	SAFEARRAYBOUND[1] rgsabound
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/ns-oaidl-safearraybound
+Struct SAFEARRAYBOUND
+	UInteger cElements
+	Integer lLbound
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objidlbase/ns-objidlbase-sole_authentication_service
+Struct SOLE_AUTHENTICATION_SERVICE
+	UInteger dwAuthnSvc
+	UInteger dwAuthzSvc
+	Pointer pPrincipalName									// PWSTR
+	Integer hr												// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+Struct STGMEDIUM
+	UInteger tymed
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+	Pointer pUnkForRelease									// IUnknown
+End_Struct
+
+Struct uCLSSPEC
+	UInteger tyspec
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

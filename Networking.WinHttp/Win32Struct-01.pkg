@@ -1,0 +1,151 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-url_components
+Struct URL_COMPONENTS
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpszScheme										// PWSTR
+	UInteger dwSchemeLength
+	Integer nScheme											// WINHTTP_INTERNET_SCHEME
+	Pointer lpszHostName									// PWSTR
+	UInteger dwHostNameLength
+	UShort nPort
+	Short iMissingAlignment2
+	Pointer lpszUserName									// PWSTR
+	UInteger dwUserNameLength
+	Integer iMissingAlignment3
+	Pointer lpszPassword									// PWSTR
+	UInteger dwPasswordLength
+	Integer iMissingAlignment4
+	Pointer lpszUrlPath										// PWSTR
+	UInteger dwUrlPathLength
+	Integer iMissingAlignment5
+	Pointer lpszExtraInfo									// PWSTR
+	UInteger dwExtraInfoLength
+	Integer iMissingAlignment6
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_autoproxy_options
+Struct WINHTTP_AUTOPROXY_OPTIONS
+	UInteger dwFlags
+	UInteger dwAutoDetectFlags
+	Pointer lpszAutoConfigUrl								// PWSTR
+	Pointer lpvReserved										// Pointer*
+	UInteger dwReserved
+	Integer fAutoLogonIfChallenged							// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_connection_group
+Struct WINHTTP_CONNECTION_GROUP
+	UInteger cConnections
+	Guid guidGroup
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_current_user_ie_proxy_config
+Struct WINHTTP_CURRENT_USER_IE_PROXY_CONFIG
+	Integer fAutoDetect										// BOOL
+	Integer iMissingAlignment1
+	Pointer lpszAutoConfigUrl								// PWSTR
+	Pointer lpszProxy										// PWSTR
+	Pointer lpszProxyBypass									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_extended_header
+Struct WINHTTP_EXTENDED_HEADER
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_header_name
+Struct WINHTTP_HEADER_NAME
+	Pointer pwszName										// PWSTR
+	Pointer pszName											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_host_connection_group
+Struct WINHTTP_HOST_CONNECTION_GROUP
+	Pointer pwszHost										// PWSTR
+	UInteger cConnectionGroups
+	Integer iMissingAlignment1
+	Pointer pConnectionGroups								// WINHTTP_CONNECTION_GROUP*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_proxy_info
+Struct WINHTTP_PROXY_INFO
+	UInteger dwAccessType									// WINHTTP_ACCESS_TYPE
+	Integer iMissingAlignment1
+	Pointer lpszProxy										// PWSTR
+	Pointer lpszProxyBypass									// PWSTR
+End_Struct
+
+Struct WINHTTP_PROXY_NETWORKING_KEY
+	UChar[128] pbBuffer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_proxy_result
+Struct WINHTTP_PROXY_RESULT
+	UInteger cEntries
+	Integer iMissingAlignment1
+	Pointer pEntries										// WINHTTP_PROXY_RESULT_ENTRY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_proxy_result_entry
+Struct WINHTTP_PROXY_RESULT_ENTRY
+	Integer fProxy											// BOOL
+	Integer fBypass											// BOOL
+	Integer ProxyScheme										// WINHTTP_INTERNET_SCHEME
+	Integer iMissingAlignment1
+	Pointer pwszProxy										// PWSTR
+	UShort ProxyPort
+	UChar[6] cMissingAlignment2
+End_Struct
+
+Struct WINHTTP_PROXY_RESULT_EX
+	UInteger cEntries
+	Integer iMissingAlignment1
+	Pointer pEntries										// WINHTTP_PROXY_RESULT_ENTRY*
+	Pointer hProxyDetectionHandle							// HANDLE
+	UInteger dwProxyInterfaceAffinity
+	Integer iMissingAlignment2
+End_Struct
+
+Struct WINHTTP_PROXY_SETTINGS
+	UInteger dwStructSize
+	UInteger dwFlags
+	UInteger dwCurrentSettingsVersion
+	Integer iMissingAlignment1
+	Pointer pwszConnectionName								// PWSTR
+	Pointer pwszProxy										// PWSTR
+	Pointer pwszProxyBypass									// PWSTR
+	Pointer pwszAutoconfigUrl								// PWSTR
+	Pointer pwszAutoconfigSecondaryUrl						// PWSTR
+	UInteger dwAutoDiscoveryFlags
+	Integer iMissingAlignment2
+	Pointer pwszLastKnownGoodAutoConfigUrl					// PWSTR
+	UInteger dwAutoconfigReloadDelayMins
+	FILETIME ftLastKnownDetectTime
+	UInteger dwDetectedInterfaceIpCount
+	Pointer pdwDetectedInterfaceIp							// UInteger*
+	UInteger cNetworkKeys
+	Integer iMissingAlignment3
+	Pointer pNetworkKeys									// WINHTTP_PROXY_NETWORKING_KEY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_proxy_settings_param
+Struct WINHTTP_PROXY_SETTINGS_PARAM
+	UBigint ullFlags
+	Pointer pcwszConnectionName								// PWSTR
+	Pointer pcwszProbeHost									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winhttp/ns-winhttp-winhttp_query_connection_group_result
+Struct WINHTTP_QUERY_CONNECTION_GROUP_RESULT
+	UInteger cHosts
+	Integer iMissingAlignment1
+	Pointer pHostConnectionGroups							// WINHTTP_HOST_CONNECTION_GROUP*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,858 @@
+Use UI
+
+External_Function WHvAcceptPartitionMigration "WHvAcceptPartitionMigration" WinHvPlatform.dll ;
+	Pointer MigrationHandle ;	// HANDLE
+	Pointer Partition ;	// WHV_PARTITION_HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function WHvAdviseGpaRange "WHvAdviseGpaRange" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer GpaRanges ;	// WHV_MEMORY_RANGE_ENTRY*
+	UInteger GpaRangesCount ;
+	Integer Advice ;	// WHV_ADVISE_GPA_RANGE_CODE
+	Pointer AdviceBuffer ;	// Pointer*
+	UInteger AdviceBufferSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvAllocateVpciResource "WHvAllocateVpciResource" WinHvPlatform.dll ;
+	Pointer ProviderId ;	// Guid*
+	Integer Flags ;	// WHV_ALLOCATE_VPCI_RESOURCE_FLAGS
+	Pointer ResourceDescriptor ;	// Pointer*
+	UInteger ResourceDescriptorSizeInBytes ;
+	Pointer VpciResource ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function WHvCancelPartitionMigration "WHvCancelPartitionMigration" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvCancelRunVirtualProcessor "WHvCancelRunVirtualProcessor" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+External_Function WHvCompletePartitionMigration "WHvCompletePartitionMigration" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvCreateNotificationPort "WHvCreateNotificationPort" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer Parameters ;	// WHV_NOTIFICATION_PORT_PARAMETERS*
+	Pointer EventHandle ;	// HANDLE
+	Pointer PortHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function WHvCreatePartition "WHvCreatePartition" WinHvPlatform.dll ;
+	Pointer Partition ;	// WHV_PARTITION_HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function WHvCreateTrigger "WHvCreateTrigger" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer Parameters ;	// WHV_TRIGGER_PARAMETERS*
+	Pointer TriggerHandle ;	// Pointer**
+	Pointer EventHandle ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function WHvCreateVirtualProcessor "WHvCreateVirtualProcessor" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+External_Function WHvCreateVirtualProcessor2 "WHvCreateVirtualProcessor2" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer Properties ;	// WHV_VIRTUAL_PROCESSOR_PROPERTY*
+	UInteger PropertyCount ;
+	Returns Integer	// HRESULT
+
+External_Function WHvCreateVpciDevice "WHvCreateVpciDevice" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Pointer VpciResource ;	// HANDLE
+	Integer Flags ;	// WHV_CREATE_VPCI_DEVICE_FLAGS
+	Pointer NotificationEventHandle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvDeleteNotificationPort "WHvDeleteNotificationPort" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer PortHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WHvDeletePartition "WHvDeletePartition" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvDeleteTrigger "WHvDeleteTrigger" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer TriggerHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WHvDeleteVirtualProcessor "WHvDeleteVirtualProcessor" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Returns Integer	// HRESULT
+
+External_Function WHvDeleteVpciDevice "WHvDeleteVpciDevice" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Returns Integer	// HRESULT
+
+External_Function WHvGetCapability "WHvGetCapability" WinHvPlatform.dll ;
+	Integer CapabilityCode ;	// WHV_CAPABILITY_CODE
+	Pointer CapabilityBuffer ;	// Pointer*
+	UInteger CapabilityBufferSizeInBytes ;
+	Pointer WrittenSizeInBytes ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetInterruptTargetVpSet "WHvGetInterruptTargetVpSet" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint Destination ;
+	Integer DestinationMode ;	// WHV_INTERRUPT_DESTINATION_MODE
+	Pointer TargetVps ;	// UInteger*
+	UInteger VpCount ;
+	Pointer TargetVpCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetPartitionCounters "WHvGetPartitionCounters" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Integer CounterSet ;	// WHV_PARTITION_COUNTER_SET
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSizeInBytes ;
+	Pointer BytesWritten ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetPartitionProperty "WHvGetPartitionProperty" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Integer PropertyCode ;	// WHV_PARTITION_PROPERTY_CODE
+	Pointer PropertyBuffer ;	// Pointer*
+	UInteger PropertyBufferSizeInBytes ;
+	Pointer WrittenSizeInBytes ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorCounters "WHvGetVirtualProcessorCounters" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Integer CounterSet ;	// WHV_PROCESSOR_COUNTER_SET
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSizeInBytes ;
+	Pointer BytesWritten ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorCpuidOutput "WHvGetVirtualProcessorCpuidOutput" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UInteger Eax ;
+	UInteger Ecx ;
+	Pointer CpuidOutput ;	// WHV_CPUID_OUTPUT*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorInterruptControllerState "WHvGetVirtualProcessorInterruptControllerState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer State ;	// Pointer*
+	UInteger StateSize ;
+	Pointer WrittenSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorInterruptControllerState2 "WHvGetVirtualProcessorInterruptControllerState2" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer State ;	// Pointer*
+	UInteger StateSize ;
+	Pointer WrittenSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorRegisters "WHvGetVirtualProcessorRegisters" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer RegisterNames ;	// WHV_REGISTER_NAME*
+	UInteger RegisterCount ;
+	Pointer RegisterValues ;	// WHV_REGISTER_VALUE*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorState "WHvGetVirtualProcessorState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Integer StateType ;	// WHV_VIRTUAL_PROCESSOR_STATE_TYPE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSizeInBytes ;
+	Pointer BytesWritten ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVirtualProcessorXsaveState "WHvGetVirtualProcessorXsaveState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSizeInBytes ;
+	Pointer BytesWritten ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVpciDeviceInterruptTarget "WHvGetVpciDeviceInterruptTarget" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	UInteger Index ;
+	UInteger MultiMessageNumber ;
+	Pointer Target ;	// WHV_VPCI_INTERRUPT_TARGET*
+	UInteger TargetSizeInBytes ;
+	Pointer BytesWritten ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVpciDeviceNotification "WHvGetVpciDeviceNotification" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Pointer Notification ;	// WHV_VPCI_DEVICE_NOTIFICATION*
+	UInteger NotificationSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvGetVpciDeviceProperty "WHvGetVpciDeviceProperty" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Integer PropertyCode ;	// WHV_VPCI_DEVICE_PROPERTY_CODE
+	Pointer PropertyBuffer ;	// Pointer*
+	UInteger PropertyBufferSizeInBytes ;
+	Pointer WrittenSizeInBytes ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvMapGpaRange "WHvMapGpaRange" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer SourceAddress ;	// Pointer*
+	UBigint GuestAddress ;
+	UBigint SizeInBytes ;
+	Integer Flags ;	// WHV_MAP_GPA_RANGE_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function WHvMapGpaRange2 "WHvMapGpaRange2" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer Process ;	// HANDLE
+	Pointer SourceAddress ;	// Pointer*
+	UBigint GuestAddress ;
+	UBigint SizeInBytes ;
+	Integer Flags ;	// WHV_MAP_GPA_RANGE_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function WHvMapVpciDeviceInterrupt "WHvMapVpciDeviceInterrupt" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	UInteger Index ;
+	UInteger MessageCount ;
+	Pointer Target ;	// WHV_VPCI_INTERRUPT_TARGET*
+	Pointer MsiAddress ;	// UBigint*
+	Pointer MsiData ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function WHvMapVpciDeviceMmioRanges "WHvMapVpciDeviceMmioRanges" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Pointer MappingCount ;	// UInteger*
+	Pointer Mappings ;	// WHV_VPCI_MMIO_MAPPING**
+	Returns Integer	// HRESULT
+
+External_Function WHvPostVirtualProcessorSynicMessage "WHvPostVirtualProcessorSynicMessage" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UInteger SintIndex ;
+	Pointer Message ;	// Pointer*
+	UInteger MessageSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvQueryGpaRangeDirtyBitmap "WHvQueryGpaRangeDirtyBitmap" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint GuestAddress ;
+	UBigint RangeSizeInBytes ;
+	Pointer Bitmap ;	// UBigint*
+	UInteger BitmapSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvReadGpaRange "WHvReadGpaRange" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UBigint GuestAddress ;
+	WHV_ACCESS_GPA_CONTROLS Controls ;
+	Pointer Data ;	// Pointer*
+	UInteger DataSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvReadVpciDeviceRegister "WHvReadVpciDeviceRegister" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Pointer Register ;	// WHV_VPCI_DEVICE_REGISTER*
+	Pointer Data ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WHvRegisterPartitionDoorbellEvent "WHvRegisterPartitionDoorbellEvent" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer MatchData ;	// WHV_DOORBELL_MATCH_DATA*
+	Pointer EventHandle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvRequestInterrupt "WHvRequestInterrupt" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer Interrupt ;	// WHV_INTERRUPT_CONTROL*
+	UInteger InterruptControlSize ;
+	Returns Integer	// HRESULT
+
+External_Function WHvRequestVpciDeviceInterrupt "WHvRequestVpciDeviceInterrupt" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	UBigint MsiAddress ;
+	UInteger MsiData ;
+	Returns Integer	// HRESULT
+
+External_Function WHvResetPartition "WHvResetPartition" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvResumePartitionTime "WHvResumePartitionTime" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvRetargetVpciDeviceInterrupt "WHvRetargetVpciDeviceInterrupt" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	UBigint MsiAddress ;
+	UInteger MsiData ;
+	Pointer Target ;	// WHV_VPCI_INTERRUPT_TARGET*
+	Returns Integer	// HRESULT
+
+External_Function WHvRunVirtualProcessor "WHvRunVirtualProcessor" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer ExitContext ;	// Pointer*
+	UInteger ExitContextSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetNotificationPortProperty "WHvSetNotificationPortProperty" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer PortHandle ;	// Pointer*
+	Integer PropertyCode ;	// WHV_NOTIFICATION_PORT_PROPERTY_CODE
+	UBigint PropertyValue ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetPartitionProperty "WHvSetPartitionProperty" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Integer PropertyCode ;	// WHV_PARTITION_PROPERTY_CODE
+	Pointer PropertyBuffer ;	// Pointer*
+	UInteger PropertyBufferSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetVirtualProcessorInterruptControllerState "WHvSetVirtualProcessorInterruptControllerState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer State ;	// Pointer*
+	UInteger StateSize ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetVirtualProcessorInterruptControllerState2 "WHvSetVirtualProcessorInterruptControllerState2" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer State ;	// Pointer*
+	UInteger StateSize ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetVirtualProcessorRegisters "WHvSetVirtualProcessorRegisters" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer RegisterNames ;	// WHV_REGISTER_NAME*
+	UInteger RegisterCount ;
+	Pointer RegisterValues ;	// WHV_REGISTER_VALUE*
+	Returns Integer	// HRESULT
+
+External_Function WHvSetVirtualProcessorState "WHvSetVirtualProcessorState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Integer StateType ;	// WHV_VIRTUAL_PROCESSOR_STATE_TYPE
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetVirtualProcessorXsaveState "WHvSetVirtualProcessorXsaveState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvSetVpciDevicePowerState "WHvSetVpciDevicePowerState" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Integer PowerState ;	// DEVICE_POWER_STATE
+	Returns Integer	// HRESULT
+
+External_Function WHvSetupPartition "WHvSetupPartition" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvSignalVirtualProcessorSynicEvent "WHvSignalVirtualProcessorSynicEvent" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	WHV_SYNIC_EVENT_PARAMETERS SynicEvent ;
+	Pointer NewlySignaled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function WHvStartPartitionMigration "WHvStartPartitionMigration" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer MigrationHandle ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function WHvSuspendPartitionTime "WHvSuspendPartitionTime" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Returns Integer	// HRESULT
+
+External_Function WHvTranslateGva "WHvTranslateGva" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UBigint Gva ;
+	Integer TranslateFlags ;	// WHV_TRANSLATE_GVA_FLAGS
+	Pointer TranslationResult ;	// WHV_TRANSLATE_GVA_RESULT*
+	Pointer Gpa ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function WHvUnmapGpaRange "WHvUnmapGpaRange" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint GuestAddress ;
+	UBigint SizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvUnmapVpciDeviceInterrupt "WHvUnmapVpciDeviceInterrupt" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	UInteger Index ;
+	Returns Integer	// HRESULT
+
+External_Function WHvUnmapVpciDeviceMmioRanges "WHvUnmapVpciDeviceMmioRanges" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Returns Integer	// HRESULT
+
+External_Function WHvUnregisterPartitionDoorbellEvent "WHvUnregisterPartitionDoorbellEvent" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer MatchData ;	// WHV_DOORBELL_MATCH_DATA*
+	Returns Integer	// HRESULT
+
+External_Function WHvUpdateTriggerParameters "WHvUpdateTriggerParameters" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	Pointer Parameters ;	// WHV_TRIGGER_PARAMETERS*
+	Pointer TriggerHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WHvWriteGpaRange "WHvWriteGpaRange" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UInteger VpIndex ;
+	UBigint GuestAddress ;
+	WHV_ACCESS_GPA_CONTROLS Controls ;
+	Pointer Data ;	// Pointer*
+	UInteger DataSizeInBytes ;
+	Returns Integer	// HRESULT
+
+External_Function WHvWriteVpciDeviceRegister "WHvWriteVpciDeviceRegister" WinHvPlatform.dll ;
+	LongPtr Partition ;	// WHV_PARTITION_HANDLE
+	UBigint LogicalDeviceId ;
+	Pointer Register ;	// WHV_VPCI_DEVICE_REGISTER*
+	Pointer Data ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WHvEmulatorCreateEmulator "WHvEmulatorCreateEmulator" WinHvEmulation.dll ;
+	Pointer Callbacks ;	// WHV_EMULATOR_CALLBACKS*
+	Pointer Emulator ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function WHvEmulatorDestroyEmulator "WHvEmulatorDestroyEmulator" WinHvEmulation.dll ;
+	Pointer Emulator ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WHvEmulatorTryIoEmulation "WHvEmulatorTryIoEmulation" WinHvEmulation.dll ;
+	Pointer Emulator ;	// Pointer*
+	Pointer Context ;	// Pointer*
+	Pointer VpContext ;	// WHV_VP_EXIT_CONTEXT*
+	Pointer IoInstructionContext ;	// WHV_X64_IO_PORT_ACCESS_CONTEXT*
+	Pointer EmulatorReturnStatus ;	// WHV_EMULATOR_STATUS*
+	Returns Integer	// HRESULT
+
+External_Function WHvEmulatorTryMmioEmulation "WHvEmulatorTryMmioEmulation" WinHvEmulation.dll ;
+	Pointer Emulator ;	// Pointer*
+	Pointer Context ;	// Pointer*
+	Pointer VpContext ;	// WHV_VP_EXIT_CONTEXT*
+	Pointer MmioInstructionContext ;	// WHV_MEMORY_ACCESS_CONTEXT*
+	Pointer EmulatorReturnStatus ;	// WHV_EMULATOR_STATUS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvCreateDeviceInstance
+External_Function HdvCreateDeviceInstance "HdvCreateDeviceInstance" vmdevicehost.dll ;
+	Pointer deviceHostHandle ;	// Pointer*
+	Integer deviceType ;	// HDV_DEVICE_TYPE
+	Pointer deviceClassId ;	// Guid*
+	Pointer deviceInstanceId ;	// Guid*
+	Pointer deviceInterface ;	// Pointer*
+	Pointer deviceContext ;	// Pointer*
+	Pointer deviceHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvCreateGuestMemoryAperture
+External_Function HdvCreateGuestMemoryAperture "HdvCreateGuestMemoryAperture" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	UBigint guestPhysicalAddress ;
+	UInteger byteCount ;
+	Integer writeProtected ;	// BOOL
+	Pointer mappedAddress ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function HdvCreateSectionBackedMmioRange "HdvCreateSectionBackedMmioRange" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	Integer barIndex ;	// HDV_PCI_BAR_SELECTOR
+	UBigint offsetInPages ;
+	UBigint lengthInPages ;
+	Integer MappingFlags ;	// HDV_MMIO_MAPPING_FLAGS
+	Pointer sectionHandle ;	// HANDLE
+	UBigint sectionOffsetInPages ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvDeliverGuestInterrupt
+External_Function HdvDeliverGuestInterrupt "HdvDeliverGuestInterrupt" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	UBigint msiAddress ;
+	UInteger msiData ;
+	Returns Integer	// HRESULT
+
+External_Function HdvDestroyGuestMemoryAperture "HdvDestroyGuestMemoryAperture" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	Pointer mappedAddress ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function HdvDestroySectionBackedMmioRange "HdvDestroySectionBackedMmioRange" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	Integer barIndex ;	// HDV_PCI_BAR_SELECTOR
+	UBigint offsetInPages ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvInitializeDeviceHost
+External_Function HdvInitializeDeviceHost "HdvInitializeDeviceHost" vmdevicehost.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Pointer deviceHostHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function HdvInitializeDeviceHostEx "HdvInitializeDeviceHostEx" vmdevicehost.dll ;
+	Pointer computeSystem ;	// HCS_SYSTEM
+	Integer flags ;	// HDV_DEVICE_HOST_FLAGS
+	Pointer deviceHostHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvReadGuestMemory
+External_Function HdvReadGuestMemory "HdvReadGuestMemory" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	UBigint guestPhysicalAddress ;
+	UInteger byteCount ;
+	Pointer buffer ;	// UChar*
+	Returns Integer	// HRESULT
+
+External_Function HdvRegisterDoorbell "HdvRegisterDoorbell" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	Integer BarIndex ;	// HDV_PCI_BAR_SELECTOR
+	UBigint BarOffset ;
+	UBigint TriggerValue ;
+	UBigint Flags ;
+	Pointer DoorbellEvent ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvTeardownDeviceHost
+External_Function HdvTeardownDeviceHost "HdvTeardownDeviceHost" vmdevicehost.dll ;
+	Pointer deviceHostHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function HdvUnregisterDoorbell "HdvUnregisterDoorbell" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	Integer BarIndex ;	// HDV_PCI_BAR_SELECTOR
+	UBigint BarOffset ;
+	UBigint TriggerValue ;
+	UBigint Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/hdv/HdvWriteGuestMemory
+External_Function HdvWriteGuestMemory "HdvWriteGuestMemory" vmdevicehost.dll ;
+	Pointer requestor ;	// Pointer*
+	UBigint guestPhysicalAddress ;
+	UInteger byteCount ;
+	Pointer buffer ;	// UChar*
+	Returns Integer	// HRESULT
+
+External_Function ApplyGuestMemoryFix "ApplyGuestMemoryFix" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	UBigint virtualAddress ;
+	Pointer fixBuffer ;	// Pointer*
+	UInteger fixBufferSize ;
+	Returns Integer	// HRESULT
+
+External_Function ApplyPendingSavedStateFileReplayLog "ApplyPendingSavedStateFileReplayLog" VmSavedStateDumpProvider.dll ;
+	WString vmrsFile ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function CallStackUnwind "CallStackUnwind" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer imageInfo ;	// MODULE_INFO*
+	UInteger imageInfoCount ;
+	UInteger frameCount ;
+	Pointer callStack ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function FindSavedStateSymbolFieldInType "FindSavedStateSymbolFieldInType" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	String typeName ;	// PSTR
+	WString fieldName ;	// PWSTR
+	Pointer offset ;	// UInteger*
+	Pointer found ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function ForceActiveVirtualTrustLevel "ForceActiveVirtualTrustLevel" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	UChar virtualTrustLevel ;
+	Returns Integer	// HRESULT
+
+External_Function ForceArchitecture "ForceArchitecture" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Integer architecture ;	// VIRTUAL_PROCESSOR_ARCH
+	Returns Integer	// HRESULT
+
+External_Function ForceNestedHostMode "ForceNestedHostMode" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Integer hostMode ;	// BOOL
+	Pointer oldMode ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function ForcePagingMode "ForcePagingMode" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Integer pagingMode ;	// PAGING_MODE
+	Returns Integer	// HRESULT
+
+External_Function GetActiveVirtualTrustLevel "GetActiveVirtualTrustLevel" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer virtualTrustLevel ;	// UChar*
+	Returns Integer	// HRESULT
+
+External_Function GetArchitecture "GetArchitecture" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer architecture ;	// VIRTUAL_PROCESSOR_ARCH*
+	Returns Integer	// HRESULT
+
+External_Function GetEnabledVirtualTrustLevels "GetEnabledVirtualTrustLevels" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer virtualTrustLevels ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetGuestEnabledVirtualTrustLevels "GetGuestEnabledVirtualTrustLevels" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer virtualTrustLevels ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetGuestOsInfo "GetGuestOsInfo" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UChar virtualTrustLevel ;
+	Pointer guestOsInfo ;	// GUEST_OS_INFO*
+	Returns Integer	// HRESULT
+
+External_Function GetGuestPhysicalMemoryChunks "GetGuestPhysicalMemoryChunks" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer memoryChunkPageSize ;	// UBigint*
+	Pointer memoryChunks ;	// GPA_MEMORY_CHUNK*
+	Pointer memoryChunkCount ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function GetGuestRawSavedMemorySize "GetGuestRawSavedMemorySize" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer guestRawSavedMemorySize ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function GetMemoryBlockCacheLimit "GetMemoryBlockCacheLimit" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer memoryBlockCacheLimit ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function GetNestedVirtualizationMode "GetNestedVirtualizationMode" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer enabled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function GetPagingMode "GetPagingMode" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer pagingMode ;	// PAGING_MODE*
+	Returns Integer	// HRESULT
+
+External_Function GetRegisterValue "GetRegisterValue" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	UInteger registerId ;
+	Pointer registerValue ;	// VIRTUAL_PROCESSOR_REGISTER*
+	Returns Integer	// HRESULT
+
+External_Function GetSavedStateSymbolFieldInfo "GetSavedStateSymbolFieldInfo" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	String typeName ;	// PSTR
+	Pointer typeFieldInfoMap ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function GetSavedStateSymbolProviderHandle "GetSavedStateSymbolProviderHandle" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+External_Function GetSavedStateSymbolTypeSize "GetSavedStateSymbolTypeSize" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	String typeName ;	// PSTR
+	Pointer size ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetVpCount "GetVpCount" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer vpCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GuestPhysicalAddressToRawSavedMemoryOffset "GuestPhysicalAddressToRawSavedMemoryOffset" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UBigint physicalAddress ;
+	Pointer rawSavedMemoryOffset ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function GuestVirtualAddressToPhysicalAddress "GuestVirtualAddressToPhysicalAddress" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	UBigint virtualAddress ;
+	Pointer physicalAddress ;	// UBigint*
+	Pointer unmappedRegionSize ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function InKernelSpace "InKernelSpace" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer inKernelSpace ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function IsActiveVirtualTrustLevelEnabled "IsActiveVirtualTrustLevelEnabled" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	Pointer activeVirtualTrustLevelEnabled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function IsNestedVirtualizationEnabled "IsNestedVirtualizationEnabled" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer enabled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function LoadSavedStateFile "LoadSavedStateFile" VmSavedStateDumpProvider.dll ;
+	WString vmrsFile ;	// PWSTR
+	Pointer vmSavedStateDumpHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function LoadSavedStateFiles "LoadSavedStateFiles" VmSavedStateDumpProvider.dll ;
+	WString binFile ;	// PWSTR
+	WString vsvFile ;	// PWSTR
+	Pointer vmSavedStateDumpHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function LoadSavedStateModuleSymbols "LoadSavedStateModuleSymbols" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	String imageName ;	// PSTR
+	String moduleName ;	// PSTR
+	UBigint baseAddress ;
+	UInteger sizeOfBase ;
+	Returns Integer	// HRESULT
+
+External_Function LoadSavedStateModuleSymbolsEx "LoadSavedStateModuleSymbolsEx" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	String imageName ;	// PSTR
+	UInteger imageTimestamp ;
+	String moduleName ;	// PSTR
+	UBigint baseAddress ;
+	UInteger sizeOfBase ;
+	Returns Integer	// HRESULT
+
+External_Function LoadSavedStateSymbolProvider "LoadSavedStateSymbolProvider" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	WString userSymbols ;	// PWSTR
+	Integer force ;	// BOOL
+	Returns Integer	// HRESULT
+
+External_Function LocateSavedStateFiles "LocateSavedStateFiles" VmSavedStateDumpProvider.dll ;
+	WString vmName ;	// PWSTR
+	WString snapshotName ;	// PWSTR
+	Pointer binPath ;	// PWSTR*
+	Pointer vsvPath ;	// PWSTR*
+	Pointer vmrsPath ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function ReadGuestPhysicalAddress "ReadGuestPhysicalAddress" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UBigint physicalAddress ;
+	Pointer buffer ;	// Pointer*
+	UInteger bufferSize ;
+	Pointer bytesRead ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function ReadGuestRawSavedMemory "ReadGuestRawSavedMemory" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UBigint rawSavedMemoryOffset ;
+	Pointer buffer ;	// Pointer*
+	UInteger bufferSize ;
+	Pointer bytesRead ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function ReadSavedStateGlobalVariable "ReadSavedStateGlobalVariable" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	String globalName ;	// PSTR
+	Pointer buffer ;	// Pointer*
+	UInteger bufferSize ;
+	Returns Integer	// HRESULT
+
+External_Function ReleaseSavedStateFiles "ReleaseSavedStateFiles" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function ReleaseSavedStateSymbolProvider "ReleaseSavedStateSymbolProvider" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function ResolveSavedStateGlobalVariableAddress "ResolveSavedStateGlobalVariableAddress" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	String globalName ;	// PSTR
+	Pointer virtualAddress ;	// UBigint*
+	Pointer size ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function ScanMemoryForDosImages "ScanMemoryForDosImages" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UInteger vpId ;
+	UBigint startAddress ;
+	UBigint endAddress ;
+	Pointer callbackContext ;	// Pointer*
+	Pointer foundImageCallback ;	// FOUND_IMAGE_CALLBACK
+	Pointer standaloneAddress ;	// UBigint*
+	UInteger standaloneAddressCount ;
+	Returns Integer	// HRESULT
+
+External_Function SetMemoryBlockCacheLimit "SetMemoryBlockCacheLimit" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	UBigint memoryBlockCacheLimit ;
+	Returns Integer	// HRESULT
+
+External_Function SetSavedStateSymbolProviderDebugInfoCallback "SetSavedStateSymbolProviderDebugInfoCallback" VmSavedStateDumpProvider.dll ;
+	Pointer vmSavedStateDumpHandle ;	// Pointer*
+	Pointer Callback ;	// GUEST_SYMBOLS_PROVIDER_DEBUG_INFO_CALLBACK
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

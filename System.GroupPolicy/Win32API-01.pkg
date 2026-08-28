@@ -1,0 +1,227 @@
+Use UI
+
+External_Function CommandLineFromMsiDescriptor "CommandLineFromMsiDescriptor" ADVAPI32.dll ;
+	WString Descriptor ;	// PWSTR
+	Pointer CommandLine ;	// PWSTR
+	Pointer CommandLineLength ;	// UInteger*
+	Returns UInteger
+
+External_Function GetLocalManagedApplicationData "GetLocalManagedApplicationData" ADVAPI32.dll ;
+	WString ProductCode ;	// PWSTR
+	Pointer DisplayName ;	// PWSTR*
+	Pointer SupportUrl ;	// PWSTR*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/nf-appmgmt-getlocalmanagedapplications
+External_Function GetLocalManagedApplications "GetLocalManagedApplications" ADVAPI32.dll ;
+	Integer bUserApps ;	// BOOL
+	Pointer pdwApps ;	// UInteger*
+	Pointer prgLocalApps ;	// LOCALMANAGEDAPPLICATION**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/nf-appmgmt-getmanagedapplicationcategories
+External_Function GetManagedApplicationCategories "GetManagedApplicationCategories" ADVAPI32.dll ;
+	UInteger dwReserved ;
+	Pointer pAppCategory ;	// APPCATEGORYINFOLIST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/nf-appmgmt-getmanagedapplications
+External_Function GetManagedApplications "GetManagedApplications" ADVAPI32.dll ;
+	Pointer pCategory ;	// Guid*
+	UInteger dwQueryFlags ;
+	UInteger dwInfoLevel ;
+	Pointer pdwApps ;	// UInteger*
+	Pointer prgManagedApps ;	// MANAGEDAPPLICATION**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/nf-appmgmt-installapplication
+External_Function InstallApplication "InstallApplication" ADVAPI32.dll ;
+	Pointer pInstallInfo ;	// INSTALLDATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/nf-appmgmt-uninstallapplication
+External_Function UninstallApplication "UninstallApplication" ADVAPI32.dll ;
+	WString ProductCode ;	// PWSTR
+	UInteger dwStatus ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-entercriticalpolicysection
+External_Function EnterCriticalPolicySection "EnterCriticalPolicySection" USERENV.dll ;
+	Integer bMachine ;	// BOOL
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-freegpolista
+External_Function FreeGPOListA "FreeGPOListA" USERENV.dll ;
+	Pointer pGPOList ;	// GROUP_POLICY_OBJECTA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-freegpolistw
+External_Function FreeGPOListW "FreeGPOListW" USERENV.dll ;
+	Pointer pGPOList ;	// GROUP_POLICY_OBJECTW*
+	Returns Integer	// BOOL
+
+External_Function GenerateGPNotification "GenerateGPNotification" USERENV.dll ;
+	Integer bMachine ;	// BOOL
+	WString lpwszMgmtProduct ;	// PWSTR
+	UInteger dwMgmtProductOptions ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-getappliedgpolista
+External_Function GetAppliedGPOListA "GetAppliedGPOListA" USERENV.dll ;
+	UInteger dwFlags ;
+	String pMachineName ;	// PSTR
+	Pointer pSidUser ;	// PSID
+	Pointer pGuidExtension ;	// Guid*
+	Pointer ppGPOList ;	// GROUP_POLICY_OBJECTA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-getappliedgpolistw
+External_Function GetAppliedGPOListW "GetAppliedGPOListW" USERENV.dll ;
+	UInteger dwFlags ;
+	WString pMachineName ;	// PWSTR
+	Pointer pSidUser ;	// PSID
+	Pointer pGuidExtension ;	// Guid*
+	Pointer ppGPOList ;	// GROUP_POLICY_OBJECTW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-getgpolista
+External_Function GetGPOListA "GetGPOListA" USERENV.dll ;
+	Pointer hToken ;	// HANDLE
+	String lpName ;	// PSTR
+	String lpHostName ;	// PSTR
+	String lpComputerName ;	// PSTR
+	UInteger dwFlags ;
+	Pointer pGPOList ;	// GROUP_POLICY_OBJECTA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-getgpolistw
+External_Function GetGPOListW "GetGPOListW" USERENV.dll ;
+	Pointer hToken ;	// HANDLE
+	WString lpName ;	// PWSTR
+	WString lpHostName ;	// PWSTR
+	WString lpComputerName ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pGPOList ;	// GROUP_POLICY_OBJECTW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-leavecriticalpolicysection
+External_Function LeaveCriticalPolicySection "LeaveCriticalPolicySection" USERENV.dll ;
+	Pointer hSection ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-processgrouppolicycompleted
+External_Function ProcessGroupPolicyCompleted "ProcessGroupPolicyCompleted" USERENV.dll ;
+	Pointer extensionId ;	// Guid*
+	ULongPtr pAsyncHandle ;
+	UInteger dwStatus ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-processgrouppolicycompletedex
+External_Function ProcessGroupPolicyCompletedEx "ProcessGroupPolicyCompletedEx" USERENV.dll ;
+	Pointer extensionId ;	// Guid*
+	ULongPtr pAsyncHandle ;
+	UInteger dwStatus ;
+	Integer RsopStatus ;	// HRESULT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-refreshpolicy
+External_Function RefreshPolicy "RefreshPolicy" USERENV.dll ;
+	Integer bMachine ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-refreshpolicyex
+External_Function RefreshPolicyEx "RefreshPolicyEx" USERENV.dll ;
+	Integer bMachine ;	// BOOL
+	UInteger dwOptions ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-registergpnotification
+External_Function RegisterGPNotification "RegisterGPNotification" USERENV.dll ;
+	Pointer hEvent ;	// HANDLE
+	Integer bMachine ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-rsopaccesscheckbytype
+External_Function RsopAccessCheckByType "RsopAccessCheckByType" USERENV.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pPrincipalSelfSid ;	// PSID
+	Pointer pRsopToken ;	// Pointer*
+	UInteger dwDesiredAccessMask ;
+	Pointer pObjectTypeList ;	// OBJECT_TYPE_LIST*
+	UInteger ObjectTypeListLength ;
+	Pointer pGenericMapping ;	// GENERIC_MAPPING*
+	Pointer pPrivilegeSet ;	// PRIVILEGE_SET*
+	Pointer pdwPrivilegeSetLength ;	// UInteger*
+	Pointer pdwGrantedAccessMask ;	// UInteger*
+	Pointer pbAccessStatus ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-rsopfileaccesscheck
+External_Function RsopFileAccessCheck "RsopFileAccessCheck" USERENV.dll ;
+	WString pszFileName ;	// PWSTR
+	Pointer pRsopToken ;	// Pointer*
+	UInteger dwDesiredAccessMask ;
+	Pointer pdwGrantedAccessMask ;	// UInteger*
+	Pointer pbAccessStatus ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-rsopresetpolicysettingstatus
+External_Function RsopResetPolicySettingStatus "RsopResetPolicySettingStatus" USERENV.dll ;
+	UInteger dwFlags ;
+	Pointer pServices ;	// IWbemServices
+	Pointer pSettingInstance ;	// IWbemClassObject
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-rsopsetpolicysettingstatus
+External_Function RsopSetPolicySettingStatus "RsopSetPolicySettingStatus" USERENV.dll ;
+	UInteger dwFlags ;
+	Pointer pServices ;	// IWbemServices
+	Pointer pSettingInstance ;	// IWbemClassObject
+	UInteger nInfo ;
+	Pointer pStatus ;	// POLICYSETTINGSTATUSINFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-unregistergpnotification
+External_Function UnregisterGPNotification "UnregisterGPNotification" USERENV.dll ;
+	Pointer hEvent ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-browseforgpo
+External_Function BrowseForGPO "BrowseForGPO" GPEDIT.dll ;
+	Pointer lpBrowseInfo ;	// GPOBROWSEINFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-creategpolink
+External_Function CreateGPOLink "CreateGPOLink" GPEDIT.dll ;
+	WString lpGPO ;	// PWSTR
+	WString lpContainer ;	// PWSTR
+	Integer fHighPriority ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-deleteallgpolinks
+External_Function DeleteAllGPOLinks "DeleteAllGPOLinks" GPEDIT.dll ;
+	WString lpContainer ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-deletegpolink
+External_Function DeleteGPOLink "DeleteGPOLink" GPEDIT.dll ;
+	WString lpGPO ;	// PWSTR
+	WString lpContainer ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-exportrsopdata
+External_Function ExportRSoPData "ExportRSoPData" GPEDIT.dll ;
+	WString lpNameSpace ;	// PWSTR
+	WString lpFileName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/nf-gpedit-importrsopdata
+External_Function ImportRSoPData "ImportRSoPData" GPEDIT.dll ;
+	WString lpNameSpace ;	// PWSTR
+	WString lpFileName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,86 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safercloselevel
+External_Function SaferCloseLevel "SaferCloseLevel" ADVAPI32.dll ;
+	Pointer hLevelHandle ;	// SAFER_LEVEL_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safercomputetokenfromlevel
+External_Function SaferComputeTokenFromLevel "SaferComputeTokenFromLevel" ADVAPI32.dll ;
+	Pointer LevelHandle ;	// SAFER_LEVEL_HANDLE
+	Pointer InAccessToken ;	// HANDLE
+	Pointer OutAccessToken ;	// HANDLE*
+	UInteger dwFlags ;	// SAFER_COMPUTE_TOKEN_FROM_LEVEL_FLAGS
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safercreatelevel
+External_Function SaferCreateLevel "SaferCreateLevel" ADVAPI32.dll ;
+	UInteger dwScopeId ;
+	UInteger dwLevelId ;
+	UInteger OpenFlags ;
+	Pointer pLevelHandle ;	// SAFER_LEVEL_HANDLE*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safergetlevelinformation
+External_Function SaferGetLevelInformation "SaferGetLevelInformation" ADVAPI32.dll ;
+	Pointer LevelHandle ;	// SAFER_LEVEL_HANDLE
+	Integer dwInfoType ;	// SAFER_OBJECT_INFO_CLASS
+	Pointer lpQueryBuffer ;	// Pointer*
+	UInteger dwInBufferSize ;
+	Pointer lpdwOutBufferSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safergetpolicyinformation
+External_Function SaferGetPolicyInformation "SaferGetPolicyInformation" ADVAPI32.dll ;
+	UInteger dwScopeId ;
+	Integer SaferPolicyInfoClass ;	// SAFER_POLICY_INFO_CLASS
+	UInteger InfoBufferSize ;
+	Pointer InfoBuffer ;	// Pointer*
+	Pointer InfoBufferRetSize ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-saferidentifylevel
+External_Function SaferIdentifyLevel "SaferIdentifyLevel" ADVAPI32.dll ;
+	UInteger dwNumProperties ;
+	Pointer pCodeProperties ;	// SAFER_CODE_PROPERTIES_V2*
+	Pointer pLevelHandle ;	// SAFER_LEVEL_HANDLE*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-saferrecordeventlogentry
+External_Function SaferRecordEventLogEntry "SaferRecordEventLogEntry" ADVAPI32.dll ;
+	Pointer hLevel ;	// SAFER_LEVEL_HANDLE
+	WString szTargetPath ;	// PWSTR
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safersetlevelinformation
+External_Function SaferSetLevelInformation "SaferSetLevelInformation" ADVAPI32.dll ;
+	Pointer LevelHandle ;	// SAFER_LEVEL_HANDLE
+	Integer dwInfoType ;	// SAFER_OBJECT_INFO_CLASS
+	Pointer lpQueryBuffer ;	// Pointer*
+	UInteger dwInBufferSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-safersetpolicyinformation
+External_Function SaferSetPolicyInformation "SaferSetPolicyInformation" ADVAPI32.dll ;
+	UInteger dwScopeId ;
+	Integer SaferPolicyInfoClass ;	// SAFER_POLICY_INFO_CLASS
+	UInteger InfoBufferSize ;
+	Pointer InfoBuffer ;	// Pointer*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/nf-winsafer-saferiisexecutablefiletype
+External_Function SaferiIsExecutableFileType "SaferiIsExecutableFileType" ADVAPI32.dll ;
+	WString szFullPathname ;	// PWSTR
+	UChar bFromShellExecute ;	// BOOLEAN
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

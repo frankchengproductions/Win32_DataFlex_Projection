@@ -1,0 +1,304 @@
+Use UI
+
+Struct CLUSAPI_REASON_HANDLER
+	Pointer lpParameter										// Pointer*
+	Pointer pfnHandler										// PCLUSAPI_PFN_REASON_HANDLER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_binary
+Struct CLUSPROP_BINARY
+	CLUSPROP_VALUE Base
+	UChar[1] rgb
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_dword
+Struct CLUSPROP_DWORD
+	CLUSPROP_VALUE Base
+	UInteger dw
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_filetime
+Struct CLUSPROP_FILETIME
+	CLUSPROP_VALUE Base
+	FILETIME ft
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_long
+Struct CLUSPROP_LONG
+	CLUSPROP_VALUE Base
+	Integer l
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_syntax
+Struct CLUSPROP_SYNTAX
+	UInteger dw
+	UChar[2] UnionName1
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_sz
+Struct CLUSPROP_SZ
+	CLUSPROP_VALUE Base
+	UShort[1] sz
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusprop_value
+Struct CLUSPROP_VALUE
+	CLUSPROP_SYNTAX Syntax
+	UInteger cbLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clusterversioninfo
+Struct CLUSTERVERSIONINFO
+	UInteger dwVersionInfoSize
+	UShort MajorVersion
+	UShort MinorVersion
+	UShort BuildNumber
+	UShort[64] szVendorId
+	UShort[64] szCSDVersion
+	Short iMissingAlignment1
+	UInteger dwClusterHighestVersion
+	UInteger dwClusterLowestVersion
+	UInteger dwFlags
+	UInteger dwReserved
+End_Struct
+
+Struct CLUSTER_AVAILABILITY_SET_CONFIG
+	UInteger dwVersion
+	UInteger dwUpdateDomains
+	UInteger dwFaultDomains
+	Integer bReserveSpareNode								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-cluster_batch_command
+Struct CLUSTER_BATCH_COMMAND
+	Integer Command											// CLUSTER_REG_COMMAND
+	UInteger dwOptions
+	Pointer wzName											// PWSTR
+	Pointer lpData											// UChar*
+	UInteger cbData
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-cluster_create_group_info
+Struct CLUSTER_CREATE_GROUP_INFO
+	UInteger dwVersion
+	Integer groupType										// CLUSGROUP_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-cluster_enum_item
+Struct CLUSTER_ENUM_ITEM
+	UInteger dwVersion
+	UInteger dwType
+	UInteger cbId
+	Integer iMissingAlignment1
+	Pointer lpszId											// PWSTR
+	UInteger cbName
+	Integer iMissingAlignment2
+	Pointer lpszName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-cluster_group_enum_item
+Struct CLUSTER_GROUP_ENUM_ITEM
+	UInteger dwVersion
+	UInteger cbId
+	Pointer lpszId											// PWSTR
+	UInteger cbName
+	Integer iMissingAlignment1
+	Pointer lpszName										// PWSTR
+	Integer state											// CLUSTER_GROUP_STATE
+	UInteger cbOwnerNode
+	Pointer lpszOwnerNode									// PWSTR
+	UInteger dwFlags
+	UInteger cbProperties
+	Pointer pProperties										// Pointer*
+	UInteger cbRoProperties
+	Integer iMissingAlignment2
+	Pointer pRoProperties									// Pointer*
+End_Struct
+
+Struct CLUSTER_HEALTH_FAULT
+	Pointer Id												// PWSTR
+	UInteger ErrorType
+	UInteger ErrorCode
+	Pointer Description										// PWSTR
+	Pointer Provider										// PWSTR
+	UInteger Flags
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-cluster_health_fault_array
+Struct CLUSTER_HEALTH_FAULT_ARRAY
+	UInteger numFaults
+	Integer iMissingAlignment1
+	Pointer faults											// CLUSTER_HEALTH_FAULT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-cluster_ip_entry
+Struct CLUSTER_IP_ENTRY
+	Pointer lpszIpAddress									// PWSTR
+	UInteger dwPrefixLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-cluster_read_batch_command
+Struct CLUSTER_READ_BATCH_COMMAND
+	Integer Command											// CLUSTER_REG_COMMAND
+	UInteger dwOptions
+	Pointer wzSubkeyName									// PWSTR
+	Pointer wzValueName										// PWSTR
+	Pointer lpData											// UChar*
+	UInteger cbData
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-cluster_resource_enum_item
+Struct CLUSTER_RESOURCE_ENUM_ITEM
+	UInteger dwVersion
+	UInteger cbId
+	Pointer lpszId											// PWSTR
+	UInteger cbName
+	Integer iMissingAlignment1
+	Pointer lpszName										// PWSTR
+	UInteger cbOwnerGroupName
+	Integer iMissingAlignment2
+	Pointer lpszOwnerGroupName								// PWSTR
+	UInteger cbOwnerGroupId
+	Integer iMissingAlignment3
+	Pointer lpszOwnerGroupId								// PWSTR
+	UInteger cbProperties
+	Integer iMissingAlignment4
+	Pointer pProperties										// Pointer*
+	UInteger cbRoProperties
+	Integer iMissingAlignment5
+	Pointer pRoProperties									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-cluster_set_password_status
+Struct CLUSTER_SET_PASSWORD_STATUS
+	UInteger NodeId
+	UChar SetAttempted										// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger ReturnStatus
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-clus_resource_class_info
+Struct CLUS_RESOURCE_CLASS_INFO
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-clus_worker
+Struct CLUS_WORKER
+	Pointer hThread											// HANDLE
+	Integer Terminate										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-create_cluster_config
+Struct CREATE_CLUSTER_CONFIG
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpszClusterName									// PWSTR
+	UInteger cNodes
+	Integer iMissingAlignment2
+	Pointer ppszNodeNames									// PWSTR*
+	UInteger cIpEntries
+	Integer iMissingAlignment3
+	Pointer pIpEntries										// CLUSTER_IP_ENTRY*
+	UChar fEmptyCluster										// BOOLEAN
+	UChar[3] cMissingAlignment4
+	Integer managementPointType								// CLUSTER_MGMT_POINT_TYPE
+	Integer managementPointResType							// CLUSTER_MGMT_POINT_RESTYPE
+	Integer iMissingAlignment5
+	Pointer pszUserName										// PWSTR
+	Pointer pszPassword										// PWSTR
+	Pointer pszDomain										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-create_cluster_name_account
+Struct CREATE_CLUSTER_NAME_ACCOUNT
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpszClusterName									// PWSTR
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer pszUserName										// PWSTR
+	Pointer pszPassword										// PWSTR
+	Pointer pszDomain										// PWSTR
+	Integer managementPointType								// CLUSTER_MGMT_POINT_TYPE
+	Integer managementPointResType							// CLUSTER_MGMT_POINT_RESTYPE
+	UChar bUpgradeVCOs										// BOOLEAN
+	UChar[7] cMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-notify_filter_and_type
+Struct NOTIFY_FILTER_AND_TYPE
+	UInteger dwObjectType
+	Integer iMissingAlignment1
+	Bigint FilterFlags
+End_Struct
+
+Struct PaxosTagCStruct
+	UBigint __padding__PaxosTagVtable
+	UBigint __padding__NextEpochVtable
+	UBigint __padding__NextEpoch_DateTimeVtable
+	UBigint NextEpoch_DateTime_ticks
+	Integer NextEpoch_Value
+	UInteger __padding__BoundryNextEpoch
+	UBigint __padding__EpochVtable
+	UBigint __padding__Epoch_DateTimeVtable
+	UBigint Epoch_DateTime_ticks
+	Integer Epoch_Value
+	UInteger __padding__BoundryEpoch
+	Integer Sequence
+	UInteger __padding__BoundrySequence
+End_Struct
+
+Struct REPAIR_CLUSTER_NAME_ACCOUNT_CONFIG
+	UInteger dwVersion
+	UInteger dwFlags
+	Pointer pszUserName										// PWSTR
+	Pointer pszPassword										// PWSTR
+	Pointer pszDomain										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_filetime_data
+Struct RESUTIL_FILETIME_DATA
+	FILETIME Default
+	FILETIME Minimum
+	FILETIME Maximum
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_largeint_data
+Struct RESUTIL_LARGEINT_DATA
+	Bigint Default
+	Bigint Minimum
+	Bigint Maximum
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_property_item
+Struct RESUTIL_PROPERTY_ITEM
+	Pointer Name											// PWSTR
+	Pointer KeyName											// PWSTR
+	UInteger Format
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+	UInteger Minimum
+	UInteger Maximum
+	UInteger Flags
+	UInteger Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_ulargeint_data
+Struct RESUTIL_ULARGEINT_DATA
+	UBigint Default
+	UBigint Minimum
+	UBigint Maximum
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

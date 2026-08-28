@@ -1,0 +1,907 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setprocessaffinitymask
+External_Function SetProcessAffinityMask "SetProcessAffinityMask" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	ULongPtr dwProcessAffinityMask ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessaffinityupdatemode
+External_Function SetProcessAffinityUpdateMode "SetProcessAffinityUpdateMode" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger dwFlags ;	// PROCESS_AFFINITY_AUTO_UPDATE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setprocessdeppolicy
+External_Function SetProcessDEPPolicy "SetProcessDEPPolicy" KERNEL32.dll ;
+	UInteger dwFlags ;	// PROCESS_DEP_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessdefaultcpusetmasks
+External_Function SetProcessDefaultCpuSetMasks "SetProcessDefaultCpuSetMasks" KERNEL32.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer CpuSetMasks ;	// GROUP_AFFINITY*
+	UShort CpuSetMaskCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessdefaultcpusets
+External_Function SetProcessDefaultCpuSets "SetProcessDefaultCpuSets" KERNEL32.dll ;
+	Pointer Process ;	// HANDLE
+	Pointer CpuSetIds ;	// UInteger*
+	UInteger CpuSetIdCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessdynamicehcontinuationtargets
+External_Function SetProcessDynamicEHContinuationTargets "SetProcessDynamicEHContinuationTargets" KERNEL32.dll ;
+	Pointer Process ;	// HANDLE
+	UShort NumberOfTargets ;
+	Pointer Targets ;	// PROCESS_DYNAMIC_EH_CONTINUATION_TARGET*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessdynamicenforcedcetcompatibleranges
+External_Function SetProcessDynamicEnforcedCetCompatibleRanges "SetProcessDynamicEnforcedCetCompatibleRanges" KERNEL32.dll ;
+	Pointer Process ;	// HANDLE
+	UShort NumberOfRanges ;
+	Pointer Ranges ;	// PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessinformation
+External_Function SetProcessInformation "SetProcessInformation" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Integer ProcessInformationClass ;	// PROCESS_INFORMATION_CLASS
+	Pointer ProcessInformation ;	// Pointer*
+	UInteger ProcessInformationSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessmitigationpolicy
+External_Function SetProcessMitigationPolicy "SetProcessMitigationPolicy" KERNEL32.dll ;
+	Integer MitigationPolicy ;	// PROCESS_MITIGATION_POLICY
+	Pointer lpBuffer ;	// Pointer*
+	ULongPtr dwLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocesspriorityboost
+External_Function SetProcessPriorityBoost "SetProcessPriorityBoost" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Integer bDisablePriorityBoost ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprocessshutdownparameters
+External_Function SetProcessShutdownParameters "SetProcessShutdownParameters" KERNEL32.dll ;
+	UInteger dwLevel ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-setprocessworkingsetsize
+External_Function SetProcessWorkingSetSize "SetProcessWorkingSetSize" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	ULongPtr dwMinimumWorkingSetSize ;
+	ULongPtr dwMaximumWorkingSetSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setprotectedpolicy
+External_Function SetProtectedPolicy "SetProtectedPolicy" KERNEL32.dll ;
+	Pointer PolicyGuid ;	// Guid*
+	ULongPtr PolicyValue ;
+	Pointer OldPolicyValue ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setthreadaffinitymask
+External_Function SetThreadAffinityMask "SetThreadAffinityMask" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	ULongPtr dwThreadAffinityMask ;
+	Returns ULongPtr
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreaddescription
+External_Function SetThreadDescription "SetThreadDescription" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	WString lpThreadDescription ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/processtopologyapi/nf-processtopologyapi-setthreadgroupaffinity
+External_Function SetThreadGroupAffinity "SetThreadGroupAffinity" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Pointer GroupAffinity ;	// GROUP_AFFINITY*
+	Pointer PreviousGroupAffinity ;	// GROUP_AFFINITY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadidealprocessor
+External_Function SetThreadIdealProcessor "SetThreadIdealProcessor" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	UInteger dwIdealProcessor ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadidealprocessorex
+External_Function SetThreadIdealProcessorEx "SetThreadIdealProcessorEx" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Pointer lpIdealProcessor ;	// PROCESSOR_NUMBER*
+	Pointer lpPreviousIdealProcessor ;	// PROCESSOR_NUMBER*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadinformation
+External_Function SetThreadInformation "SetThreadInformation" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Integer ThreadInformationClass ;	// THREAD_INFORMATION_CLASS
+	Pointer ThreadInformation ;	// Pointer*
+	UInteger ThreadInformationSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadpriority
+External_Function SetThreadPriority "SetThreadPriority" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Integer nPriority ;	// THREAD_PRIORITY
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadpriorityboost
+External_Function SetThreadPriorityBoost "SetThreadPriorityBoost" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Integer bDisablePriorityBoost ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadselectedcpusetmasks
+External_Function SetThreadSelectedCpuSetMasks "SetThreadSelectedCpuSetMasks" KERNEL32.dll ;
+	Pointer Thread ;	// HANDLE
+	Pointer CpuSetMasks ;	// GROUP_AFFINITY*
+	UShort CpuSetMaskCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadselectedcpusets
+External_Function SetThreadSelectedCpuSets "SetThreadSelectedCpuSets" KERNEL32.dll ;
+	Pointer Thread ;	// HANDLE
+	Pointer CpuSetIds ;	// UInteger*
+	UInteger CpuSetIdCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadstackguarantee
+External_Function SetThreadStackGuarantee "SetThreadStackGuarantee" KERNEL32.dll ;
+	Pointer StackSizeInBytes ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpoolstackinformation
+External_Function SetThreadpoolStackInformation "SetThreadpoolStackInformation" KERNEL32.dll ;
+	LongPtr ptpp ;	// PTP_POOL
+	Pointer ptpsi ;	// TP_POOL_STACK_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpoolthreadmaximum
+External_Function SetThreadpoolThreadMaximum "SetThreadpoolThreadMaximum" KERNEL32.dll ;
+	LongPtr ptpp ;	// PTP_POOL
+	UInteger cthrdMost ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpoolthreadminimum
+External_Function SetThreadpoolThreadMinimum "SetThreadpoolThreadMinimum" KERNEL32.dll ;
+	LongPtr ptpp ;	// PTP_POOL
+	UInteger cthrdMic ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpooltimer
+External_Function SetThreadpoolTimer "SetThreadpoolTimer" KERNEL32.dll ;
+	LongPtr pti ;	// PTP_TIMER
+	Pointer pftDueTime ;	// FILETIME*
+	UInteger msPeriod ;
+	UInteger msWindowLength ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpooltimerex
+External_Function SetThreadpoolTimerEx "SetThreadpoolTimerEx" KERNEL32.dll ;
+	LongPtr pti ;	// PTP_TIMER
+	Pointer pftDueTime ;	// FILETIME*
+	UInteger msPeriod ;
+	UInteger msWindowLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpoolwait
+External_Function SetThreadpoolWait "SetThreadpoolWait" KERNEL32.dll ;
+	LongPtr pwa ;	// PTP_WAIT
+	Pointer h ;	// HANDLE
+	Pointer pftTimeout ;	// FILETIME*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-setthreadpoolwaitex
+External_Function SetThreadpoolWaitEx "SetThreadpoolWaitEx" KERNEL32.dll ;
+	LongPtr pwa ;	// PTP_WAIT
+	Pointer h ;	// HANDLE
+	Pointer pftTimeout ;	// FILETIME*
+	Pointer Reserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function SetTimerQueueTimer "SetTimerQueueTimer" KERNEL32.dll ;
+	Pointer TimerQueue ;	// HANDLE
+	Pointer Callback ;	// WAITORTIMERCALLBACK
+	Pointer Parameter ;	// Pointer*
+	UInteger DueTime ;
+	UInteger Period ;
+	Integer PreferIo ;	// BOOL
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setumsthreadinformation
+External_Function SetUmsThreadInformation "SetUmsThreadInformation" KERNEL32.dll ;
+	Pointer UmsThread ;	// Pointer*
+	Integer UmsThreadInfoClass ;	// UMS_THREAD_INFO_CLASS
+	Pointer UmsThreadInformation ;	// Pointer*
+	UInteger UmsThreadInformationLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-setwaitabletimer
+External_Function SetWaitableTimer "SetWaitableTimer" KERNEL32.dll ;
+	Pointer hTimer ;	// HANDLE
+	Pointer lpDueTime ;	// Bigint*
+	Integer lPeriod ;
+	Pointer pfnCompletionRoutine ;	// PTIMERAPCROUTINE
+	Pointer lpArgToCompletionRoutine ;	// Pointer*
+	Integer fResume ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-setwaitabletimerex
+External_Function SetWaitableTimerEx "SetWaitableTimerEx" KERNEL32.dll ;
+	Pointer hTimer ;	// HANDLE
+	Pointer lpDueTime ;	// Bigint*
+	Integer lPeriod ;
+	Pointer pfnCompletionRoutine ;	// PTIMERAPCROUTINE
+	Pointer lpArgToCompletionRoutine ;	// Pointer*
+	Pointer WakeContext ;	// REASON_CONTEXT*
+	UInteger TolerableDelay ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-signalobjectandwait
+External_Function SignalObjectAndWait "SignalObjectAndWait" KERNEL32.dll ;
+	Pointer hObjectToSignal ;	// HANDLE
+	Pointer hObjectToWaitOn ;	// HANDLE
+	UInteger dwMilliseconds ;
+	Integer bAlertable ;	// BOOL
+	Returns UInteger	// WAIT_EVENT
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-sleep
+External_Function Sleep "Sleep" KERNEL32.dll ;
+	UInteger dwMilliseconds ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-sleepconditionvariablecs
+External_Function SleepConditionVariableCS "SleepConditionVariableCS" KERNEL32.dll ;
+	Pointer ConditionVariable ;	// CONDITION_VARIABLE*
+	Pointer CriticalSection ;	// CRITICAL_SECTION*
+	UInteger dwMilliseconds ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-sleepconditionvariablesrw
+External_Function SleepConditionVariableSRW "SleepConditionVariableSRW" KERNEL32.dll ;
+	Pointer ConditionVariable ;	// CONDITION_VARIABLE*
+	Pointer SRWLock ;	// SRWLOCK*
+	UInteger dwMilliseconds ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-sleepex
+External_Function SleepEx "SleepEx" KERNEL32.dll ;
+	UInteger dwMilliseconds ;
+	Integer bAlertable ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-startthreadpoolio
+External_Function StartThreadpoolIo "StartThreadpoolIo" KERNEL32.dll ;
+	LongPtr pio ;	// PTP_IO
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-submitthreadpoolwork
+External_Function SubmitThreadpoolWork "SubmitThreadpoolWork" KERNEL32.dll ;
+	LongPtr pwk ;	// PTP_WORK
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-suspendthread
+External_Function SuspendThread "SuspendThread" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-switchtofiber
+External_Function SwitchToFiber "SwitchToFiber" KERNEL32.dll ;
+	Pointer lpFiber ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-switchtothread
+External_Function SwitchToThread "SwitchToThread" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-terminateprocess
+External_Function TerminateProcess "TerminateProcess" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger uExitCode ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-terminatethread
+External_Function TerminateThread "TerminateThread" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	UInteger dwExitCode ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-tlsalloc
+External_Function TlsAlloc "TlsAlloc" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-tlsfree
+External_Function TlsFree "TlsFree" KERNEL32.dll ;
+	UInteger dwTlsIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-tlsgetvalue
+External_Function TlsGetValue "TlsGetValue" KERNEL32.dll ;
+	UInteger dwTlsIndex ;
+	Returns Pointer	// Pointer*
+
+External_Function TlsGetValue2 "TlsGetValue2" KERNEL32.dll ;
+	UInteger dwTlsIndex ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-tlssetvalue
+External_Function TlsSetValue "TlsSetValue" KERNEL32.dll ;
+	UInteger dwTlsIndex ;
+	Pointer lpTlsValue ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-tryacquiresrwlockexclusive
+External_Function TryAcquireSRWLockExclusive "TryAcquireSRWLockExclusive" KERNEL32.dll ;
+	Pointer SRWLock ;	// SRWLOCK*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-tryacquiresrwlockshared
+External_Function TryAcquireSRWLockShared "TryAcquireSRWLockShared" KERNEL32.dll ;
+	Pointer SRWLock ;	// SRWLOCK*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-tryentercriticalsection
+External_Function TryEnterCriticalSection "TryEnterCriticalSection" KERNEL32.dll ;
+	Pointer lpCriticalSection ;	// CRITICAL_SECTION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-trysubmitthreadpoolcallback
+External_Function TrySubmitThreadpoolCallback "TrySubmitThreadpoolCallback" KERNEL32.dll ;
+	Pointer pfns ;	// PTP_SIMPLE_CALLBACK
+	Pointer pv ;	// Pointer*
+	Pointer pcbe ;	// TP_CALLBACK_ENVIRON_V3*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-umsthreadyield
+External_Function UmsThreadYield "UmsThreadYield" KERNEL32.dll ;
+	Pointer SchedulerParam ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-unregisterwait
+External_Function UnregisterWait "UnregisterWait" KERNEL32.dll ;
+	Pointer WaitHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/Sync/unregisterwaitex
+External_Function UnregisterWaitEx "UnregisterWaitEx" KERNEL32.dll ;
+	Pointer WaitHandle ;	// HANDLE
+	Pointer CompletionEvent ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute
+External_Function UpdateProcThreadAttribute "UpdateProcThreadAttribute" KERNEL32.dll ;
+	Pointer lpAttributeList ;	// LPPROC_THREAD_ATTRIBUTE_LIST
+	UInteger dwFlags ;
+	ULongPtr Attribute ;
+	Pointer lpValue ;	// Pointer*
+	ULongPtr cbSize ;
+	Pointer lpPreviousValue ;	// Pointer*
+	Pointer lpReturnSize ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjects
+External_Function WaitForMultipleObjects "WaitForMultipleObjects" KERNEL32.dll ;
+	UInteger nCount ;
+	Pointer lpHandles ;	// HANDLE*
+	Integer bWaitAll ;	// BOOL
+	UInteger dwMilliseconds ;
+	Returns UInteger	// WAIT_EVENT
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjectsex
+External_Function WaitForMultipleObjectsEx "WaitForMultipleObjectsEx" KERNEL32.dll ;
+	UInteger nCount ;
+	Pointer lpHandles ;	// HANDLE*
+	Integer bWaitAll ;	// BOOL
+	UInteger dwMilliseconds ;
+	Integer bAlertable ;	// BOOL
+	Returns UInteger	// WAIT_EVENT
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject
+External_Function WaitForSingleObject "WaitForSingleObject" KERNEL32.dll ;
+	Pointer hHandle ;	// HANDLE
+	UInteger dwMilliseconds ;
+	Returns UInteger	// WAIT_EVENT
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitforsingleobjectex
+External_Function WaitForSingleObjectEx "WaitForSingleObjectEx" KERNEL32.dll ;
+	Pointer hHandle ;	// HANDLE
+	UInteger dwMilliseconds ;
+	Integer bAlertable ;	// BOOL
+	Returns UInteger	// WAIT_EVENT
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-waitforthreadpooliocallbacks
+External_Function WaitForThreadpoolIoCallbacks "WaitForThreadpoolIoCallbacks" KERNEL32.dll ;
+	LongPtr pio ;	// PTP_IO
+	Integer fCancelPendingCallbacks ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-waitforthreadpooltimercallbacks
+External_Function WaitForThreadpoolTimerCallbacks "WaitForThreadpoolTimerCallbacks" KERNEL32.dll ;
+	LongPtr pti ;	// PTP_TIMER
+	Integer fCancelPendingCallbacks ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-waitforthreadpoolwaitcallbacks
+External_Function WaitForThreadpoolWaitCallbacks "WaitForThreadpoolWaitCallbacks" KERNEL32.dll ;
+	LongPtr pwa ;	// PTP_WAIT
+	Integer fCancelPendingCallbacks ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/threadpoolapiset/nf-threadpoolapiset-waitforthreadpoolworkcallbacks
+External_Function WaitForThreadpoolWorkCallbacks "WaitForThreadpoolWorkCallbacks" KERNEL32.dll ;
+	LongPtr pwk ;	// PTP_WORK
+	Integer fCancelPendingCallbacks ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-wakeallconditionvariable
+External_Function WakeAllConditionVariable "WakeAllConditionVariable" KERNEL32.dll ;
+	Pointer ConditionVariable ;	// CONDITION_VARIABLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-wakeconditionvariable
+External_Function WakeConditionVariable "WakeConditionVariable" KERNEL32.dll ;
+	Pointer ConditionVariable ;	// CONDITION_VARIABLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-winexec
+External_Function WinExec "WinExec" KERNEL32.dll ;
+	String lpCmdLine ;	// PSTR
+	UInteger uCmdShow ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-wow64suspendthread
+External_Function Wow64SuspendThread "Wow64SuspendThread" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-attachthreadinput
+External_Function AttachThreadInput "AttachThreadInput" USER32.dll ;
+	UInteger idAttach ;
+	UInteger idAttachTo ;
+	Integer fAttach ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getguiresources
+External_Function GetGuiResources "GetGuiResources" USER32.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger uiFlags ;	// GET_GUI_RESOURCES_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-isimmersiveprocess
+External_Function IsImmersiveProcess "IsImmersiveProcess" USER32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setprocessrestrictionexemption
+External_Function SetProcessRestrictionExemption "SetProcessRestrictionExemption" USER32.dll ;
+	Integer fEnableExemption ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-waitforinputidle
+External_Function WaitForInputIdle "WaitForInputIdle" USER32.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger dwMilliseconds ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessasusera
+External_Function CreateProcessAsUserA "CreateProcessAsUserA" ADVAPI32.dll ;
+	Pointer hToken ;	// HANDLE
+	String lpApplicationName ;	// PSTR
+	Pointer lpCommandLine ;	// PSTR
+	Pointer lpProcessAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer lpThreadAttributes ;	// SECURITY_ATTRIBUTES*
+	Integer bInheritHandles ;	// BOOL
+	UInteger dwCreationFlags ;	// PROCESS_CREATION_FLAGS
+	Pointer lpEnvironment ;	// Pointer*
+	String lpCurrentDirectory ;	// PSTR
+	Pointer lpStartupInfo ;	// STARTUPINFOA*
+	Pointer lpProcessInformation ;	// PROCESS_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessasuserw
+External_Function CreateProcessAsUserW "CreateProcessAsUserW" ADVAPI32.dll ;
+	Pointer hToken ;	// HANDLE
+	WString lpApplicationName ;	// PWSTR
+	Pointer lpCommandLine ;	// PWSTR
+	Pointer lpProcessAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer lpThreadAttributes ;	// SECURITY_ATTRIBUTES*
+	Integer bInheritHandles ;	// BOOL
+	UInteger dwCreationFlags ;	// PROCESS_CREATION_FLAGS
+	Pointer lpEnvironment ;	// Pointer*
+	WString lpCurrentDirectory ;	// PWSTR
+	Pointer lpStartupInfo ;	// STARTUPINFOW*
+	Pointer lpProcessInformation ;	// PROCESS_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createprocesswithlogonw
+External_Function CreateProcessWithLogonW "CreateProcessWithLogonW" ADVAPI32.dll ;
+	WString lpUsername ;	// PWSTR
+	WString lpDomain ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	UInteger dwLogonFlags ;	// CREATE_PROCESS_LOGON_FLAGS
+	WString lpApplicationName ;	// PWSTR
+	Pointer lpCommandLine ;	// PWSTR
+	UInteger dwCreationFlags ;	// PROCESS_CREATION_FLAGS
+	Pointer lpEnvironment ;	// Pointer*
+	WString lpCurrentDirectory ;	// PWSTR
+	Pointer lpStartupInfo ;	// STARTUPINFOW*
+	Pointer lpProcessInformation ;	// PROCESS_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createprocesswithtokenw
+External_Function CreateProcessWithTokenW "CreateProcessWithTokenW" ADVAPI32.dll ;
+	Pointer hToken ;	// HANDLE
+	UInteger dwLogonFlags ;	// CREATE_PROCESS_LOGON_FLAGS
+	WString lpApplicationName ;	// PWSTR
+	Pointer lpCommandLine ;	// PWSTR
+	UInteger dwCreationFlags ;	// PROCESS_CREATION_FLAGS
+	Pointer lpEnvironment ;	// Pointer*
+	WString lpCurrentDirectory ;	// PWSTR
+	Pointer lpStartupInfo ;	// STARTUPINFOW*
+	Pointer lpProcessInformation ;	// PROCESS_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocesstoken
+External_Function OpenProcessToken "OpenProcessToken" ADVAPI32.dll ;
+	Pointer ProcessHandle ;	// HANDLE
+	UInteger DesiredAccess ;	// TOKEN_ACCESS_MASK
+	Pointer TokenHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-openthreadtoken
+External_Function OpenThreadToken "OpenThreadToken" ADVAPI32.dll ;
+	Pointer ThreadHandle ;	// HANDLE
+	UInteger DesiredAccess ;	// TOKEN_ACCESS_MASK
+	Integer OpenAsSelf ;	// BOOL
+	Pointer TokenHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadtoken
+External_Function SetThreadToken "SetThreadToken" ADVAPI32.dll ;
+	Pointer Thread ;	// HANDLE*
+	Pointer Token ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-wow64setthreaddefaultguestmachine
+External_Function Wow64SetThreadDefaultGuestMachine "Wow64SetThreadDefaultGuestMachine" api-ms-win-core-wow64-l1-1-1.dll ;
+	UShort Machine ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentprocesstoken
+External_Function GetCurrentProcessToken "GetCurrentProcessToken" FORCEINLINE ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentthreadeffectivetoken
+External_Function GetCurrentThreadEffectiveToken "GetCurrentThreadEffectiveToken" FORCEINLINE ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getcurrentthreadtoken
+External_Function GetCurrentThreadToken "GetCurrentThreadToken" FORCEINLINE ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-waitonaddress
+External_Function WaitOnAddress "WaitOnAddress" api-ms-win-core-synch-l1-2-0.dll ;
+	Pointer Address ;	// Pointer*
+	Pointer CompareAddress ;	// Pointer*
+	ULongPtr AddressSize ;
+	UInteger dwMilliseconds ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-wakebyaddressall
+External_Function WakeByAddressAll "WakeByAddressAll" api-ms-win-core-synch-l1-2-0.dll ;
+	Pointer Address ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/synchapi/nf-synchapi-wakebyaddresssingle
+External_Function WakeByAddressSingle "WakeByAddressSingle" api-ms-win-core-synch-l1-2-0.dll ;
+	Pointer Address ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avquerysystemresponsiveness
+External_Function AvQuerySystemResponsiveness "AvQuerySystemResponsiveness" AVRT.dll ;
+	Pointer AvrtHandle ;	// AVRT_TASK_HANDLE
+	Pointer SystemResponsivenessValue ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrevertmmthreadcharacteristics
+External_Function AvRevertMmThreadCharacteristics "AvRevertMmThreadCharacteristics" AVRT.dll ;
+	Pointer AvrtHandle ;	// AVRT_TASK_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtcreatethreadorderinggroup
+External_Function AvRtCreateThreadOrderingGroup "AvRtCreateThreadOrderingGroup" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE*
+	Pointer Period ;	// Bigint*
+	Pointer ThreadOrderingGuid ;	// Guid*
+	Pointer Timeout ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtcreatethreadorderinggroupexa
+External_Function AvRtCreateThreadOrderingGroupExA "AvRtCreateThreadOrderingGroupExA" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE*
+	Pointer Period ;	// Bigint*
+	Pointer ThreadOrderingGuid ;	// Guid*
+	Pointer Timeout ;	// Bigint*
+	String TaskName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtcreatethreadorderinggroupexw
+External_Function AvRtCreateThreadOrderingGroupExW "AvRtCreateThreadOrderingGroupExW" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE*
+	Pointer Period ;	// Bigint*
+	Pointer ThreadOrderingGuid ;	// Guid*
+	Pointer Timeout ;	// Bigint*
+	WString TaskName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtdeletethreadorderinggroup
+External_Function AvRtDeleteThreadOrderingGroup "AvRtDeleteThreadOrderingGroup" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtjointhreadorderinggroup
+External_Function AvRtJoinThreadOrderingGroup "AvRtJoinThreadOrderingGroup" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE*
+	Pointer ThreadOrderingGuid ;	// Guid*
+	Integer Before ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtleavethreadorderinggroup
+External_Function AvRtLeaveThreadOrderingGroup "AvRtLeaveThreadOrderingGroup" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avrtwaitonthreadorderinggroup
+External_Function AvRtWaitOnThreadOrderingGroup "AvRtWaitOnThreadOrderingGroup" AVRT.dll ;
+	Pointer Context ;	// AVRT_THREAD_ORDERING_GROUP_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avsetmmmaxthreadcharacteristicsa
+External_Function AvSetMmMaxThreadCharacteristicsA "AvSetMmMaxThreadCharacteristicsA" AVRT.dll ;
+	String FirstTask ;	// PSTR
+	String SecondTask ;	// PSTR
+	Pointer TaskIndex ;	// UInteger*
+	Returns Pointer	// AVRT_TASK_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avsetmmmaxthreadcharacteristicsw
+External_Function AvSetMmMaxThreadCharacteristicsW "AvSetMmMaxThreadCharacteristicsW" AVRT.dll ;
+	WString FirstTask ;	// PWSTR
+	WString SecondTask ;	// PWSTR
+	Pointer TaskIndex ;	// UInteger*
+	Returns Pointer	// AVRT_TASK_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avsetmmthreadcharacteristicsa
+External_Function AvSetMmThreadCharacteristicsA "AvSetMmThreadCharacteristicsA" AVRT.dll ;
+	String TaskName ;	// PSTR
+	Pointer TaskIndex ;	// UInteger*
+	Returns Pointer	// AVRT_TASK_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avsetmmthreadcharacteristicsw
+External_Function AvSetMmThreadCharacteristicsW "AvSetMmThreadCharacteristicsW" AVRT.dll ;
+	WString TaskName ;	// PWSTR
+	Pointer TaskIndex ;	// UInteger*
+	Returns Pointer	// AVRT_TASK_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/avrt/nf-avrt-avsetmmthreadpriority
+External_Function AvSetMmThreadPriority "AvSetMmThreadPriority" AVRT.dll ;
+	Pointer AvrtHandle ;	// AVRT_TASK_HANDLE
+	Integer Priority ;	// AVRT_PRIORITY
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqaddperiodiccallback
+External_Function RtwqAddPeriodicCallback "RtwqAddPeriodicCallback" RTWorkQ.dll ;
+	Pointer Callback ;	// RTWQPERIODICCALLBACK
+	Pointer context ;	// IUnknown
+	Pointer key ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqallocateserialworkqueue
+External_Function RtwqAllocateSerialWorkQueue "RtwqAllocateSerialWorkQueue" RTWorkQ.dll ;
+	UInteger workQueueIdIn ;
+	Pointer workQueueIdOut ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqallocateworkqueue
+External_Function RtwqAllocateWorkQueue "RtwqAllocateWorkQueue" RTWorkQ.dll ;
+	Integer WorkQueueType ;	// RTWQ_WORKQUEUE_TYPE
+	Pointer workQueueId ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqbeginregisterworkqueuewithmmcss
+External_Function RtwqBeginRegisterWorkQueueWithMMCSS "RtwqBeginRegisterWorkQueueWithMMCSS" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	WString usageClass ;	// PWSTR
+	UInteger dwTaskId ;
+	Integer lPriority ;
+	Pointer doneCallback ;	// IRtwqAsyncCallback
+	Pointer doneState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqbeginunregisterworkqueuewithmmcss
+External_Function RtwqBeginUnregisterWorkQueueWithMMCSS "RtwqBeginUnregisterWorkQueueWithMMCSS" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Pointer doneCallback ;	// IRtwqAsyncCallback
+	Pointer doneState ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqcanceldeadline
+External_Function RtwqCancelDeadline "RtwqCancelDeadline" RTWorkQ.dll ;
+	Pointer pRequest ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqcancelworkitem
+External_Function RtwqCancelWorkItem "RtwqCancelWorkItem" RTWorkQ.dll ;
+	UBigint Key ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqcreateasyncresult
+External_Function RtwqCreateAsyncResult "RtwqCreateAsyncResult" RTWorkQ.dll ;
+	Pointer appObject ;	// IUnknown
+	Pointer callback ;	// IRtwqAsyncCallback
+	Pointer appState ;	// IUnknown
+	Pointer asyncResult ;	// IRtwqAsyncResult*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqendregisterworkqueuewithmmcss
+External_Function RtwqEndRegisterWorkQueueWithMMCSS "RtwqEndRegisterWorkQueueWithMMCSS" RTWorkQ.dll ;
+	Pointer result ;	// IRtwqAsyncResult
+	Pointer taskId ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqgetworkqueuemmcssclass
+External_Function RtwqGetWorkQueueMMCSSClass "RtwqGetWorkQueueMMCSSClass" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Pointer usageClass ;	// PWSTR
+	Pointer usageClassLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqgetworkqueuemmcsspriority
+External_Function RtwqGetWorkQueueMMCSSPriority "RtwqGetWorkQueueMMCSSPriority" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Pointer priority ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqgetworkqueuemmcsstaskid
+External_Function RtwqGetWorkQueueMMCSSTaskId "RtwqGetWorkQueueMMCSSTaskId" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Pointer taskId ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqinvokecallback
+External_Function RtwqInvokeCallback "RtwqInvokeCallback" RTWorkQ.dll ;
+	Pointer result ;	// IRtwqAsyncResult
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqjoinworkqueue
+External_Function RtwqJoinWorkQueue "RtwqJoinWorkQueue" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Pointer hFile ;	// HANDLE
+	Pointer out ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqlockplatform
+External_Function RtwqLockPlatform "RtwqLockPlatform" RTWorkQ.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqlocksharedworkqueue
+External_Function RtwqLockSharedWorkQueue "RtwqLockSharedWorkQueue" RTWorkQ.dll ;
+	WString usageClass ;	// PWSTR
+	Integer basePriority ;
+	Pointer taskId ;	// UInteger*
+	Pointer id ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqlockworkqueue
+External_Function RtwqLockWorkQueue "RtwqLockWorkQueue" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqputwaitingworkitem
+External_Function RtwqPutWaitingWorkItem "RtwqPutWaitingWorkItem" RTWorkQ.dll ;
+	Pointer hEvent ;	// HANDLE
+	Integer lPriority ;
+	Pointer result ;	// IRtwqAsyncResult
+	Pointer key ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqputworkitem
+External_Function RtwqPutWorkItem "RtwqPutWorkItem" RTWorkQ.dll ;
+	UInteger dwQueue ;
+	Integer lPriority ;
+	Pointer result ;	// IRtwqAsyncResult
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqregisterplatformevents
+External_Function RtwqRegisterPlatformEvents "RtwqRegisterPlatformEvents" RTWorkQ.dll ;
+	Pointer platformEvents ;	// IRtwqPlatformEvents
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqregisterplatformwithmmcss
+External_Function RtwqRegisterPlatformWithMMCSS "RtwqRegisterPlatformWithMMCSS" RTWorkQ.dll ;
+	WString usageClass ;	// PWSTR
+	Pointer taskId ;	// UInteger*
+	Integer lPriority ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqremoveperiodiccallback
+External_Function RtwqRemovePeriodicCallback "RtwqRemovePeriodicCallback" RTWorkQ.dll ;
+	UInteger dwKey ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqscheduleworkitem
+External_Function RtwqScheduleWorkItem "RtwqScheduleWorkItem" RTWorkQ.dll ;
+	Pointer result ;	// IRtwqAsyncResult
+	Bigint Timeout ;
+	Pointer key ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqsetdeadline
+External_Function RtwqSetDeadline "RtwqSetDeadline" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Bigint deadlineInHNS ;
+	Pointer pRequest ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqsetdeadline2
+External_Function RtwqSetDeadline2 "RtwqSetDeadline2" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Bigint deadlineInHNS ;
+	Bigint preDeadlineInHNS ;
+	Pointer pRequest ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqsetlongrunning
+External_Function RtwqSetLongRunning "RtwqSetLongRunning" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Integer enable ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqshutdown
+External_Function RtwqShutdown "RtwqShutdown" RTWorkQ.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqstartup
+External_Function RtwqStartup "RtwqStartup" RTWorkQ.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqunjoinworkqueue
+External_Function RtwqUnjoinWorkQueue "RtwqUnjoinWorkQueue" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Pointer hFile ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqunlockplatform
+External_Function RtwqUnlockPlatform "RtwqUnlockPlatform" RTWorkQ.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqunlockworkqueue
+External_Function RtwqUnlockWorkQueue "RtwqUnlockWorkQueue" RTWorkQ.dll ;
+	UInteger workQueueId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqunregisterplatformevents
+External_Function RtwqUnregisterPlatformEvents "RtwqUnregisterPlatformEvents" RTWorkQ.dll ;
+	Pointer platformEvents ;	// IRtwqPlatformEvents
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rtworkq/nf-rtworkq-rtwqunregisterplatformfrommmcss
+External_Function RtwqUnregisterPlatformFromMMCSS "RtwqUnregisterPlatformFromMMCSS" RTWorkQ.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/WinAuto/getprocesshandlefromhwnd
+External_Function GetProcessHandleFromHwnd "GetProcessHandleFromHwnd" OLEACC.dll ;
+	Pointer hwnd ;	// HWND
+	Returns Pointer	// HANDLE
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,93 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-bindiocompletioncallback
+External_Function BindIoCompletionCallback "BindIoCompletionCallback" KERNEL32.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer Function ;	// LPOVERLAPPED_COMPLETION_ROUTINE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-cancelio
+External_Function CancelIo "CancelIo" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-cancelioex
+External_Function CancelIoEx "CancelIoEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-cancelsynchronousio
+External_Function CancelSynchronousIo "CancelSynchronousIo" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-createiocompletionport
+External_Function CreateIoCompletionPort "CreateIoCompletionPort" KERNEL32.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer ExistingCompletionPort ;	// HANDLE
+	ULongPtr CompletionKey ;
+	UInteger NumberOfConcurrentThreads ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-deviceiocontrol
+External_Function DeviceIoControl "DeviceIoControl" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwIoControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-getoverlappedresult
+External_Function GetOverlappedResult "GetOverlappedResult" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpNumberOfBytesTransferred ;	// UInteger*
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-getoverlappedresultex
+External_Function GetOverlappedResultEx "GetOverlappedResultEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpNumberOfBytesTransferred ;	// UInteger*
+	UInteger dwMilliseconds ;
+	Integer bAlertable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-getqueuedcompletionstatus
+External_Function GetQueuedCompletionStatus "GetQueuedCompletionStatus" KERNEL32.dll ;
+	Pointer CompletionPort ;	// HANDLE
+	Pointer lpNumberOfBytesTransferred ;	// UInteger*
+	Pointer lpCompletionKey ;	// ULongPtr*
+	Pointer lpOverlapped ;	// OVERLAPPED**
+	UInteger dwMilliseconds ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-getqueuedcompletionstatusex
+External_Function GetQueuedCompletionStatusEx "GetQueuedCompletionStatusEx" KERNEL32.dll ;
+	Pointer CompletionPort ;	// HANDLE
+	Pointer lpCompletionPortEntries ;	// OVERLAPPED_ENTRY*
+	UInteger ulCount ;
+	Pointer ulNumEntriesRemoved ;	// UInteger*
+	UInteger dwMilliseconds ;
+	Integer fAlertable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioapiset/nf-ioapiset-postqueuedcompletionstatus
+External_Function PostQueuedCompletionStatus "PostQueuedCompletionStatus" KERNEL32.dll ;
+	Pointer CompletionPort ;	// HANDLE
+	UInteger dwNumberOfBytesTransferred ;
+	ULongPtr dwCompletionKey ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

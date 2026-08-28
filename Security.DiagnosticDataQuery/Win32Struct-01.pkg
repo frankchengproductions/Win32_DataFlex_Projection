@@ -1,0 +1,127 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_event_binary_stats
+Struct DIAGNOSTIC_DATA_EVENT_BINARY_STATS
+	Pointer moduleName										// PWSTR
+	Pointer friendlyModuleName								// PWSTR
+	UInteger eventCount
+	Integer iMissingAlignment1
+	UBigint uploadSizeBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_event_category_description
+Struct DIAGNOSTIC_DATA_EVENT_CATEGORY_DESCRIPTION
+	Integer id
+	Integer iMissingAlignment1
+	Pointer name											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_event_producer_description
+Struct DIAGNOSTIC_DATA_EVENT_PRODUCER_DESCRIPTION
+	Pointer name											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_event_tag_description
+Struct DIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTION
+	Integer privacyTag
+	Integer iMissingAlignment1
+	Pointer name											// PWSTR
+	Pointer description										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_event_tag_stats
+Struct DIAGNOSTIC_DATA_EVENT_TAG_STATS
+	Integer privacyTag
+	UInteger eventCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_event_transcript_configuration
+Struct DIAGNOSTIC_DATA_EVENT_TRANSCRIPT_CONFIGURATION
+	UInteger hoursOfHistoryToKeep
+	UInteger maxStoreMegabytes
+	UInteger requestedMaxStoreMegabytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_general_stats
+Struct DIAGNOSTIC_DATA_GENERAL_STATS
+	UInteger optInLevel
+	Integer iMissingAlignment1
+	UBigint transcriptSizeBytes
+	UBigint oldestEventTimestamp
+	UInteger totalEventCountLast24Hours
+	Float averageDailyEvents
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_record
+Struct DIAGNOSTIC_DATA_RECORD
+	Bigint rowId
+	UBigint timestamp
+	UBigint eventKeywords
+	Pointer fullEventName									// PWSTR
+	Pointer providerGroupGuid								// PWSTR
+	Pointer producerName									// PWSTR
+	Pointer privacyTags										// Integer*
+	UInteger privacyTagCount
+	Integer iMissingAlignment1
+	Pointer categoryIds										// Integer*
+	UInteger categoryIdCount
+	Integer isCoreData										// BOOL
+	Pointer extra1											// PWSTR
+	Pointer extra2											// PWSTR
+	Pointer extra3											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_data_search_criteria
+Struct DIAGNOSTIC_DATA_SEARCH_CRITERIA
+	Pointer producerNames									// PWSTR*
+	UInteger producerNameCount
+	Integer iMissingAlignment1
+	Pointer textToMatch										// PWSTR
+	Pointer categoryIds										// Integer*
+	UInteger categoryIdCount
+	Integer iMissingAlignment2
+	Pointer privacyTags										// Integer*
+	UInteger privacyTagCount
+	Integer coreDataOnly									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_report_data
+Struct DIAGNOSTIC_REPORT_DATA
+	DIAGNOSTIC_REPORT_SIGNATURE signature
+	Short iMissingAlignment1
+	Guid bucketId
+	Guid reportId
+	FILETIME creationTime
+	UBigint sizeInBytes
+	Pointer cabId											// PWSTR
+	UInteger reportStatus
+	Guid reportIntegratorId
+	Integer iMissingAlignment2
+	Pointer fileNames										// PWSTR*
+	UInteger fileCount
+	Integer iMissingAlignment3
+	Pointer friendlyEventName								// PWSTR
+	Pointer applicationName									// PWSTR
+	Pointer applicationPath									// PWSTR
+	Pointer description										// PWSTR
+	Pointer bucketIdString									// PWSTR
+	UBigint legacyBucketId
+	Pointer reportKey										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_report_parameter
+Struct DIAGNOSTIC_REPORT_PARAMETER
+	UShort[129] name
+	UShort[260] value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/diagnosticdataquerytypes/ns-diagnosticdataquerytypes-diagnostic_report_signature
+Struct DIAGNOSTIC_REPORT_SIGNATURE
+	UShort[65] eventName
+	DIAGNOSTIC_REPORT_PARAMETER[10] parameters
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

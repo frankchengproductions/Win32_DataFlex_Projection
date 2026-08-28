@@ -1,0 +1,805 @@
+Use UI
+
+// Define DISPID_SpeechCustomStream For Integer
+Enum_List
+	Define DISPID_SCSBaseStream								For 100
+End_Enum_List
+
+// Define DISPID_SpeechMemoryStream For Integer
+Enum_List
+	Define DISPID_SMSSetData								For 100
+	Define DISPID_SMSGetData								For 101
+End_Enum_List
+
+// Define DISPID_SpeechAudioStatus For Integer
+Enum_List
+	Define DISPID_SASFreeBufferSpace						For 1
+	Define DISPID_SASNonBlockingIO							For 2
+	Define DISPID_SASState									For 3
+	Define DISPID_SASCurrentSeekPosition					For 4
+	Define DISPID_SASCurrentDevicePosition					For 5
+End_Enum_List
+
+// Define DISPID_SpeechAudioBufferInfo For Integer
+Enum_List
+	Define DISPID_SABIMinNotification						For 1
+	Define DISPID_SABIBufferSize							For 2
+	Define DISPID_SABIEventBias								For 3
+End_Enum_List
+
+// Define DISPID_SpeechWaveFormatEx For Integer
+Enum_List
+	Define DISPID_SWFEFormatTag								For 1
+	Define DISPID_SWFEChannels								For 2
+	Define DISPID_SWFESamplesPerSec							For 3
+	Define DISPID_SWFEAvgBytesPerSec						For 4
+	Define DISPID_SWFEBlockAlign							For 5
+	Define DISPID_SWFEBitsPerSample							For 6
+	Define DISPID_SWFEExtraData								For 7
+End_Enum_List
+
+// Define DISPID_SpeechVoice For Integer
+Enum_List
+	Define DISPID_SVStatus									For 1
+	Define DISPID_SVVoice									For 2
+	Define DISPID_SVAudioOutput								For 3
+	Define DISPID_SVAudioOutputStream						For 4
+	Define DISPID_SVRate									For 5
+	Define DISPID_SVVolume									For 6
+	Define DISPID_SVAllowAudioOuputFormatChangesOnNextSet	For 7
+	Define DISPID_SVEventInterests							For 8
+	Define DISPID_SVPriority								For 9
+	Define DISPID_SVAlertBoundary							For 10
+	Define DISPID_SVSyncronousSpeakTimeout					For 11
+	Define DISPID_SVSpeak									For 12
+	Define DISPID_SVSpeakStream								For 13
+	Define DISPID_SVPause									For 14
+	Define DISPID_SVResume									For 15
+	Define DISPID_SVSkip									For 16
+	Define DISPID_SVGetVoices								For 17
+	Define DISPID_SVGetAudioOutputs							For 18
+	Define DISPID_SVWaitUntilDone							For 19
+	Define DISPID_SVSpeakCompleteEvent						For 20
+	Define DISPID_SVIsUISupported							For 21
+	Define DISPID_SVDisplayUI								For 22
+End_Enum_List
+
+// Define SpeechVoicePriority For Integer
+Enum_List
+	Define SVPNormal										For 0
+	Define SVPAlert											For 1
+	Define SVPOver											For 2
+End_Enum_List
+
+// Define SpeechVoiceSpeakFlags For Integer
+Enum_List
+	Define SVSFDefault										For 0
+	Define SVSFlagsAsync									For 1
+	Define SVSFPurgeBeforeSpeak								For 2
+	Define SVSFIsFilename									For 4
+	Define SVSFIsXML										For 8
+	Define SVSFIsNotXML										For 16
+	Define SVSFPersistXML									For 32
+	Define SVSFNLPSpeakPunc									For 64
+	Define SVSFParseSapi									For 128
+	Define SVSFParseSsml									For 256
+	Define SVSFParseAutodetect								For 0
+	Define SVSFNLPMask										For 64
+	Define SVSFParseMask									For 384
+	Define SVSFVoiceMask									For 511
+	Define SVSFUnusedFlags									For -512
+End_Enum_List
+
+// Define SpeechVoiceEvents For Integer
+Enum_List
+	Define SVEStartInputStream								For 2
+	Define SVEEndInputStream								For 4
+	Define SVEVoiceChange									For 8
+	Define SVEBookmark										For 16
+	Define SVEWordBoundary									For 32
+	Define SVEPhoneme										For 64
+	Define SVESentenceBoundary								For 128
+	Define SVEViseme										For 256
+	Define SVEAudioLevel									For 512
+	Define SVEPrivate										For 32768
+	Define SVEAllEvents										For 33790
+End_Enum_List
+
+// Define DISPID_SpeechVoiceStatus For Integer
+Enum_List
+	Define DISPID_SVSCurrentStreamNumber					For 1
+	Define DISPID_SVSLastStreamNumberQueued					For 2
+	Define DISPID_SVSLastResult								For 3
+	Define DISPID_SVSRunningState							For 4
+	Define DISPID_SVSInputWordPosition						For 5
+	Define DISPID_SVSInputWordLength						For 6
+	Define DISPID_SVSInputSentencePosition					For 7
+	Define DISPID_SVSInputSentenceLength					For 8
+	Define DISPID_SVSLastBookmark							For 9
+	Define DISPID_SVSLastBookmarkId							For 10
+	Define DISPID_SVSPhonemeId								For 11
+	Define DISPID_SVSVisemeId								For 12
+End_Enum_List
+
+// Define SpeechRunState For Integer
+Enum_List
+	Define SRSEDone											For 1
+	Define SRSEIsSpeaking									For 2
+End_Enum_List
+
+// Define SpeechVisemeType For Integer
+Enum_List
+	Define SVP_0											For 0
+	Define SVP_1											For 1
+	Define SVP_2											For 2
+	Define SVP_3											For 3
+	Define SVP_4											For 4
+	Define SVP_5											For 5
+	Define SVP_6											For 6
+	Define SVP_7											For 7
+	Define SVP_8											For 8
+	Define SVP_9											For 9
+	Define SVP_10											For 10
+	Define SVP_11											For 11
+	Define SVP_12											For 12
+	Define SVP_13											For 13
+	Define SVP_14											For 14
+	Define SVP_15											For 15
+	Define SVP_16											For 16
+	Define SVP_17											For 17
+	Define SVP_18											For 18
+	Define SVP_19											For 19
+	Define SVP_20											For 20
+	Define SVP_21											For 21
+End_Enum_List
+
+// Define SpeechVisemeFeature For Integer
+Enum_List
+	Define SVF_None											For 0
+	Define SVF_Stressed										For 1
+	Define SVF_Emphasis										For 2
+End_Enum_List
+
+// Define DISPID_SpeechVoiceEvent For Integer
+Enum_List
+	Define DISPID_SVEStreamStart							For 1
+	Define DISPID_SVEStreamEnd								For 2
+	Define DISPID_SVEVoiceChange							For 3
+	Define DISPID_SVEBookmark								For 4
+	Define DISPID_SVEWord									For 5
+	Define DISPID_SVEPhoneme								For 6
+	Define DISPID_SVESentenceBoundary						For 7
+	Define DISPID_SVEViseme									For 8
+	Define DISPID_SVEAudioLevel								For 9
+	Define DISPID_SVEEnginePrivate							For 10
+End_Enum_List
+
+// Define DISPID_SpeechRecognizer For Integer
+Enum_List
+	Define DISPID_SRRecognizer								For 1
+	Define DISPID_SRAllowAudioInputFormatChangesOnNextSet	For 2
+	Define DISPID_SRAudioInput								For 3
+	Define DISPID_SRAudioInputStream						For 4
+	Define DISPID_SRIsShared								For 5
+	Define DISPID_SRState									For 6
+	Define DISPID_SRStatus									For 7
+	Define DISPID_SRProfile									For 8
+	Define DISPID_SREmulateRecognition						For 9
+	Define DISPID_SRCreateRecoContext						For 10
+	Define DISPID_SRGetFormat								For 11
+	Define DISPID_SRSetPropertyNumber						For 12
+	Define DISPID_SRGetPropertyNumber						For 13
+	Define DISPID_SRSetPropertyString						For 14
+	Define DISPID_SRGetPropertyString						For 15
+	Define DISPID_SRIsUISupported							For 16
+	Define DISPID_SRDisplayUI								For 17
+	Define DISPID_SRGetRecognizers							For 18
+	Define DISPID_SVGetAudioInputs							For 19
+	Define DISPID_SVGetProfiles								For 20
+End_Enum_List
+
+// Define SpeechRecognizerState For Integer
+Enum_List
+	Define SRSInactive										For 0
+	Define SRSActive										For 1
+	Define SRSActiveAlways									For 2
+	Define SRSInactiveWithPurge								For 3
+End_Enum_List
+
+// Define SpeechDisplayAttributes For Integer
+Enum_List
+	Define SDA_No_Trailing_Space							For 0
+	Define SDA_One_Trailing_Space							For 2
+	Define SDA_Two_Trailing_Spaces							For 4
+	Define SDA_Consume_Leading_Spaces						For 8
+End_Enum_List
+
+// Define SpeechFormatType For Integer
+Enum_List
+	Define SFTInput											For 0
+	Define SFTSREngine										For 1
+End_Enum_List
+
+// Define SpeechEmulationCompareFlags For Integer
+Enum_List
+	Define SECFIgnoreCase									For 1
+	Define SECFIgnoreKanaType								For 65536
+	Define SECFIgnoreWidth									For 131072
+	Define SECFNoSpecialChars								For 536870912
+	Define SECFEmulateResult								For 1073741824
+	Define SECFDefault										For 196609
+End_Enum_List
+
+// Define DISPID_SpeechRecognizerStatus For Integer
+Enum_List
+	Define DISPID_SRSAudioStatus							For 1
+	Define DISPID_SRSCurrentStreamPosition					For 2
+	Define DISPID_SRSCurrentStreamNumber					For 3
+	Define DISPID_SRSNumberOfActiveRules					For 4
+	Define DISPID_SRSClsidEngine							For 5
+	Define DISPID_SRSSupportedLanguages						For 6
+End_Enum_List
+
+// Define DISPID_SpeechRecoContext For Integer
+Enum_List
+	Define DISPID_SRCRecognizer								For 1
+	Define DISPID_SRCAudioInInterferenceStatus				For 2
+	Define DISPID_SRCRequestedUIType						For 3
+	Define DISPID_SRCVoice									For 4
+	Define DISPID_SRAllowVoiceFormatMatchingOnNextSet		For 5
+	Define DISPID_SRCVoicePurgeEvent						For 6
+	Define DISPID_SRCEventInterests							For 7
+	Define DISPID_SRCCmdMaxAlternates						For 8
+	Define DISPID_SRCState									For 9
+	Define DISPID_SRCRetainedAudio							For 10
+	Define DISPID_SRCRetainedAudioFormat					For 11
+	Define DISPID_SRCPause									For 12
+	Define DISPID_SRCResume									For 13
+	Define DISPID_SRCCreateGrammar							For 14
+	Define DISPID_SRCCreateResultFromMemory					For 15
+	Define DISPID_SRCBookmark								For 16
+	Define DISPID_SRCSetAdaptationData						For 17
+End_Enum_List
+
+// Define SpeechRetainedAudioOptions For Integer
+Enum_List
+	Define SRAONone											For 0
+	Define SRAORetainAudio									For 1
+End_Enum_List
+
+// Define SpeechBookmarkOptions For Integer
+Enum_List
+	Define SBONone											For 0
+	Define SBOPause											For 1
+End_Enum_List
+
+// Define SpeechInterference For Integer
+Enum_List
+	Define SINone											For 0
+	Define SINoise											For 1
+	Define SINoSignal										For 2
+	Define SITooLoud										For 3
+	Define SITooQuiet										For 4
+	Define SITooFast										For 5
+	Define SITooSlow										For 6
+End_Enum_List
+
+// Define SpeechRecoEvents For Integer
+Enum_List
+	Define SREStreamEnd										For 1
+	Define SRESoundStart									For 2
+	Define SRESoundEnd										For 4
+	Define SREPhraseStart									For 8
+	Define SRERecognition									For 16
+	Define SREHypothesis									For 32
+	Define SREBookmark										For 64
+	Define SREPropertyNumChange								For 128
+	Define SREPropertyStringChange							For 256
+	Define SREFalseRecognition								For 512
+	Define SREInterference									For 1024
+	Define SRERequestUI										For 2048
+	Define SREStateChange									For 4096
+	Define SREAdaptation									For 8192
+	Define SREStreamStart									For 16384
+	Define SRERecoOtherContext								For 32768
+	Define SREAudioLevel									For 65536
+	Define SREPrivate										For 262144
+	Define SREAllEvents										For 393215
+End_Enum_List
+
+// Define SpeechRecoContextState For Integer
+Enum_List
+	Define SRCS_Disabled									For 0
+	Define SRCS_Enabled										For 1
+End_Enum_List
+
+// Define DISPIDSPRG For Integer
+Enum_List
+	Define DISPID_SRGId										For 1
+	Define DISPID_SRGRecoContext							For 2
+	Define DISPID_SRGState									For 3
+	Define DISPID_SRGRules									For 4
+	Define DISPID_SRGReset									For 5
+	Define DISPID_SRGCommit									For 6
+	Define DISPID_SRGCmdLoadFromFile						For 7
+	Define DISPID_SRGCmdLoadFromObject						For 8
+	Define DISPID_SRGCmdLoadFromResource					For 9
+	Define DISPID_SRGCmdLoadFromMemory						For 10
+	Define DISPID_SRGCmdLoadFromProprietaryGrammar			For 11
+	Define DISPID_SRGCmdSetRuleState						For 12
+	Define DISPID_SRGCmdSetRuleIdState						For 13
+	Define DISPID_SRGDictationLoad							For 14
+	Define DISPID_SRGDictationUnload						For 15
+	Define DISPID_SRGDictationSetState						For 16
+	Define DISPID_SRGSetWordSequenceData					For 17
+	Define DISPID_SRGSetTextSelection						For 18
+	Define DISPID_SRGIsPronounceable						For 19
+End_Enum_List
+
+// Define SpeechLoadOption For Integer
+Enum_List
+	Define SLOStatic										For 0
+	Define SLODynamic										For 1
+End_Enum_List
+
+// Define SpeechWordPronounceable For Integer
+Enum_List
+	Define SWPUnknownWordUnpronounceable					For 0
+	Define SWPUnknownWordPronounceable						For 1
+	Define SWPKnownWordPronounceable						For 2
+End_Enum_List
+
+// Define SpeechGrammarState For Integer
+Enum_List
+	Define SGSEnabled										For 1
+	Define SGSDisabled										For 0
+	Define SGSExclusive										For 3
+End_Enum_List
+
+// Define SpeechRuleState For Integer
+Enum_List
+	Define SGDSInactive										For 0
+	Define SGDSActive										For 1
+	Define SGDSActiveWithAutoPause							For 3
+	Define SGDSActiveUserDelimited							For 4
+End_Enum_List
+
+// Define SpeechRuleAttributes For Integer
+Enum_List
+	Define SRATopLevel										For 1
+	Define SRADefaultToActive								For 2
+	Define SRAExport										For 4
+	Define SRAImport										For 8
+	Define SRAInterpreter									For 16
+	Define SRADynamic										For 32
+	Define SRARoot											For 64
+End_Enum_List
+
+// Define SpeechGrammarWordType For Integer
+Enum_List
+	Define SGDisplay										For 0
+	Define SGLexical										For 1
+	Define SGPronounciation									For 2
+	Define SGLexicalNoSpecialChars							For 3
+End_Enum_List
+
+// Define DISPID_SpeechRecoContextEvents For Integer
+Enum_List
+	Define DISPID_SRCEStartStream							For 1
+	Define DISPID_SRCEEndStream								For 2
+	Define DISPID_SRCEBookmark								For 3
+	Define DISPID_SRCESoundStart							For 4
+	Define DISPID_SRCESoundEnd								For 5
+	Define DISPID_SRCEPhraseStart							For 6
+	Define DISPID_SRCERecognition							For 7
+	Define DISPID_SRCEHypothesis							For 8
+	Define DISPID_SRCEPropertyNumberChange					For 9
+	Define DISPID_SRCEPropertyStringChange					For 10
+	Define DISPID_SRCEFalseRecognition						For 11
+	Define DISPID_SRCEInterference							For 12
+	Define DISPID_SRCERequestUI								For 13
+	Define DISPID_SRCERecognizerStateChange					For 14
+	Define DISPID_SRCEAdaptation							For 15
+	Define DISPID_SRCERecognitionForOtherContext			For 16
+	Define DISPID_SRCEAudioLevel							For 17
+	Define DISPID_SRCEEnginePrivate							For 18
+End_Enum_List
+
+// Define SpeechRecognitionType For Integer
+Enum_List
+	Define SRTStandard										For 0
+	Define SRTAutopause										For 1
+	Define SRTEmulated										For 2
+	Define SRTSMLTimeout									For 4
+	Define SRTExtendableParse								For 8
+	Define SRTReSent										For 16
+End_Enum_List
+
+// Define DISPID_SpeechGrammarRule For Integer
+Enum_List
+	Define DISPID_SGRAttributes								For 1
+	Define DISPID_SGRInitialState							For 2
+	Define DISPID_SGRName									For 3
+	Define DISPID_SGRId										For 4
+	Define DISPID_SGRClear									For 5
+	Define DISPID_SGRAddResource							For 6
+	Define DISPID_SGRAddState								For 7
+End_Enum_List
+
+// Define DISPID_SpeechGrammarRules For Integer
+Enum_List
+	Define DISPID_SGRsCount									For 1
+	Define DISPID_SGRsDynamic								For 2
+	Define DISPID_SGRsAdd									For 3
+	Define DISPID_SGRsCommit								For 4
+	Define DISPID_SGRsCommitAndSave							For 5
+	Define DISPID_SGRsFindRule								For 6
+	Define DISPID_SGRsItem									For 0
+	Define DISPID_SGRs_NewEnum								For -4
+End_Enum_List
+
+// Define DISPID_SpeechGrammarRuleState For Integer
+Enum_List
+	Define DISPID_SGRSRule									For 1
+	Define DISPID_SGRSTransitions							For 2
+	Define DISPID_SGRSAddWordTransition						For 3
+	Define DISPID_SGRSAddRuleTransition						For 4
+	Define DISPID_SGRSAddSpecialTransition					For 5
+End_Enum_List
+
+// Define SpeechSpecialTransitionType For Integer
+Enum_List
+	Define SSTTWildcard										For 1
+	Define SSTTDictation									For 2
+	Define SSTTTextBuffer									For 3
+End_Enum_List
+
+// Define DISPID_SpeechGrammarRuleStateTransitions For Integer
+Enum_List
+	Define DISPID_SGRSTsCount								For 1
+	Define DISPID_SGRSTsItem								For 0
+	Define DISPID_SGRSTs_NewEnum							For -4
+End_Enum_List
+
+// Define DISPID_SpeechGrammarRuleStateTransition For Integer
+Enum_List
+	Define DISPID_SGRSTType									For 1
+	Define DISPID_SGRSTText									For 2
+	Define DISPID_SGRSTRule									For 3
+	Define DISPID_SGRSTWeight								For 4
+	Define DISPID_SGRSTPropertyName							For 5
+	Define DISPID_SGRSTPropertyId							For 6
+	Define DISPID_SGRSTPropertyValue						For 7
+	Define DISPID_SGRSTNextState							For 8
+End_Enum_List
+
+// Define SpeechGrammarRuleStateTransitionType For Integer
+Enum_List
+	Define SGRSTTEpsilon									For 0
+	Define SGRSTTWord										For 1
+	Define SGRSTTRule										For 2
+	Define SGRSTTDictation									For 3
+	Define SGRSTTWildcard									For 4
+	Define SGRSTTTextBuffer									For 5
+End_Enum_List
+
+// Define DISPIDSPTSI For Integer
+Enum_List
+	Define DISPIDSPTSI_ActiveOffset							For 1
+	Define DISPIDSPTSI_ActiveLength							For 2
+	Define DISPIDSPTSI_SelectionOffset						For 3
+	Define DISPIDSPTSI_SelectionLength						For 4
+End_Enum_List
+
+// Define DISPID_SpeechRecoResult For Integer
+Enum_List
+	Define DISPID_SRRRecoContext							For 1
+	Define DISPID_SRRTimes									For 2
+	Define DISPID_SRRAudioFormat							For 3
+	Define DISPID_SRRPhraseInfo								For 4
+	Define DISPID_SRRAlternates								For 5
+	Define DISPID_SRRAudio									For 6
+	Define DISPID_SRRSpeakAudio								For 7
+	Define DISPID_SRRSaveToMemory							For 8
+	Define DISPID_SRRDiscardResultInfo						For 9
+End_Enum_List
+
+// Define SpeechDiscardType For Integer
+Enum_List
+	Define SDTProperty										For 1
+	Define SDTReplacement									For 2
+	Define SDTRule											For 4
+	Define SDTDisplayText									For 8
+	Define SDTLexicalForm									For 16
+	Define SDTPronunciation									For 32
+	Define SDTAudio											For 64
+	Define SDTAlternates									For 128
+	Define SDTAll											For 255
+End_Enum_List
+
+// Define DISPID_SpeechXMLRecoResult For Integer
+Enum_List
+	Define DISPID_SRRGetXMLResult							For 10
+	Define DISPID_SRRGetXMLErrorInfo						For 11
+End_Enum_List
+
+// Define DISPID_SpeechRecoResult2 For Integer
+Enum_List
+	Define DISPID_SRRSetTextFeedback						For 12
+End_Enum_List
+
+// Define DISPID_SpeechPhraseBuilder For Integer
+Enum_List
+	Define DISPID_SPPBRestorePhraseFromMemory				For 1
+End_Enum_List
+
+// Define DISPID_SpeechRecoResultTimes For Integer
+Enum_List
+	Define DISPID_SRRTStreamTime							For 1
+	Define DISPID_SRRTLength								For 2
+	Define DISPID_SRRTTickCount								For 3
+	Define DISPID_SRRTOffsetFromStart						For 4
+End_Enum_List
+
+// Define DISPID_SpeechPhraseAlternate For Integer
+Enum_List
+	Define DISPID_SPARecoResult								For 1
+	Define DISPID_SPAStartElementInResult					For 2
+	Define DISPID_SPANumberOfElementsInResult				For 3
+	Define DISPID_SPAPhraseInfo								For 4
+	Define DISPID_SPACommit									For 5
+End_Enum_List
+
+// Define DISPID_SpeechPhraseAlternates For Integer
+Enum_List
+	Define DISPID_SPAsCount									For 1
+	Define DISPID_SPAsItem									For 0
+	Define DISPID_SPAs_NewEnum								For -4
+End_Enum_List
+
+// Define DISPID_SpeechPhraseInfo For Integer
+Enum_List
+	Define DISPID_SPILanguageId								For 1
+	Define DISPID_SPIGrammarId								For 2
+	Define DISPID_SPIStartTime								For 3
+	Define DISPID_SPIAudioStreamPosition					For 4
+	Define DISPID_SPIAudioSizeBytes							For 5
+	Define DISPID_SPIRetainedSizeBytes						For 6
+	Define DISPID_SPIAudioSizeTime							For 7
+	Define DISPID_SPIRule									For 8
+	Define DISPID_SPIProperties								For 9
+	Define DISPID_SPIElements								For 10
+	Define DISPID_SPIReplacements							For 11
+	Define DISPID_SPIEngineId								For 12
+	Define DISPID_SPIEnginePrivateData						For 13
+	Define DISPID_SPISaveToMemory							For 14
+	Define DISPID_SPIGetText								For 15
+	Define DISPID_SPIGetDisplayAttributes					For 16
+End_Enum_List
+
+// Define DISPID_SpeechPhraseElement For Integer
+Enum_List
+	Define DISPID_SPEAudioTimeOffset						For 1
+	Define DISPID_SPEAudioSizeTime							For 2
+	Define DISPID_SPEAudioStreamOffset						For 3
+	Define DISPID_SPEAudioSizeBytes							For 4
+	Define DISPID_SPERetainedStreamOffset					For 5
+	Define DISPID_SPERetainedSizeBytes						For 6
+	Define DISPID_SPEDisplayText							For 7
+	Define DISPID_SPELexicalForm							For 8
+	Define DISPID_SPEPronunciation							For 9
+	Define DISPID_SPEDisplayAttributes						For 10
+	Define DISPID_SPERequiredConfidence						For 11
+	Define DISPID_SPEActualConfidence						For 12
+	Define DISPID_SPEEngineConfidence						For 13
+End_Enum_List
+
+// Define SpeechEngineConfidence For Integer
+Enum_List
+	Define SECLowConfidence									For -1
+	Define SECNormalConfidence								For 0
+	Define SECHighConfidence								For 1
+End_Enum_List
+
+// Define DISPID_SpeechPhraseElements For Integer
+Enum_List
+	Define DISPID_SPEsCount									For 1
+	Define DISPID_SPEsItem									For 0
+	Define DISPID_SPEs_NewEnum								For -4
+End_Enum_List
+
+// Define DISPID_SpeechPhraseReplacement For Integer
+Enum_List
+	Define DISPID_SPRDisplayAttributes						For 1
+	Define DISPID_SPRText									For 2
+	Define DISPID_SPRFirstElement							For 3
+	Define DISPID_SPRNumberOfElements						For 4
+End_Enum_List
+
+// Define DISPID_SpeechPhraseReplacements For Integer
+Enum_List
+	Define DISPID_SPRsCount									For 1
+	Define DISPID_SPRsItem									For 0
+	Define DISPID_SPRs_NewEnum								For -4
+End_Enum_List
+
+// Define DISPID_SpeechPhraseProperty For Integer
+Enum_List
+	Define DISPID_SPPName									For 1
+	Define DISPID_SPPId										For 2
+	Define DISPID_SPPValue									For 3
+	Define DISPID_SPPFirstElement							For 4
+	Define DISPID_SPPNumberOfElements						For 5
+	Define DISPID_SPPEngineConfidence						For 6
+	Define DISPID_SPPConfidence								For 7
+	Define DISPID_SPPParent									For 8
+	Define DISPID_SPPChildren								For 9
+End_Enum_List
+
+// Define DISPID_SpeechPhraseProperties For Integer
+Enum_List
+	Define DISPID_SPPsCount									For 1
+	Define DISPID_SPPsItem									For 0
+	Define DISPID_SPPs_NewEnum								For -4
+End_Enum_List
+
+// Define DISPID_SpeechPhraseRule For Integer
+Enum_List
+	Define DISPID_SPRuleName								For 1
+	Define DISPID_SPRuleId									For 2
+	Define DISPID_SPRuleFirstElement						For 3
+	Define DISPID_SPRuleNumberOfElements					For 4
+	Define DISPID_SPRuleParent								For 5
+	Define DISPID_SPRuleChildren							For 6
+	Define DISPID_SPRuleConfidence							For 7
+	Define DISPID_SPRuleEngineConfidence					For 8
+End_Enum_List
+
+// Define DISPID_SpeechPhraseRules For Integer
+Enum_List
+	Define DISPID_SPRulesCount								For 1
+	Define DISPID_SPRulesItem								For 0
+	Define DISPID_SPRules_NewEnum							For -4
+End_Enum_List
+
+// Define DISPID_SpeechLexicon For Integer
+Enum_List
+	Define DISPID_SLGenerationId							For 1
+	Define DISPID_SLGetWords								For 2
+	Define DISPID_SLAddPronunciation						For 3
+	Define DISPID_SLAddPronunciationByPhoneIds				For 4
+	Define DISPID_SLRemovePronunciation						For 5
+	Define DISPID_SLRemovePronunciationByPhoneIds			For 6
+	Define DISPID_SLGetPronunciations						For 7
+	Define DISPID_SLGetGenerationChange						For 8
+End_Enum_List
+
+// Define SpeechLexiconType For Integer
+Enum_List
+	Define SLTUser											For 1
+	Define SLTApp											For 2
+End_Enum_List
+
+// Define SpeechPartOfSpeech For Integer
+Enum_List
+	Define SPSNotOverriden									For -1
+	Define SPSUnknown										For 0
+	Define SPSNoun											For 4096
+	Define SPSVerb											For 8192
+	Define SPSModifier										For 12288
+	Define SPSFunction										For 16384
+	Define SPSInterjection									For 20480
+	Define SPSLMA											For 28672
+	Define SPSSuppressWord									For 61440
+End_Enum_List
+
+// Define DISPID_SpeechLexiconWords For Integer
+Enum_List
+	Define DISPID_SLWsCount									For 1
+	Define DISPID_SLWsItem									For 0
+	Define DISPID_SLWs_NewEnum								For -4
+End_Enum_List
+
+// Define SpeechWordType For Integer
+Enum_List
+	Define SWTAdded											For 1
+	Define SWTDeleted										For 2
+End_Enum_List
+
+// Define DISPID_SpeechLexiconWord For Integer
+Enum_List
+	Define DISPID_SLWLangId									For 1
+	Define DISPID_SLWType									For 2
+	Define DISPID_SLWWord									For 3
+	Define DISPID_SLWPronunciations							For 4
+End_Enum_List
+
+// Define DISPID_SpeechLexiconProns For Integer
+Enum_List
+	Define DISPID_SLPsCount									For 1
+	Define DISPID_SLPsItem									For 0
+	Define DISPID_SLPs_NewEnum								For -4
+End_Enum_List
+
+// Define DISPID_SpeechLexiconPronunciation For Integer
+Enum_List
+	Define DISPID_SLPType									For 1
+	Define DISPID_SLPLangId									For 2
+	Define DISPID_SLPPartOfSpeech							For 3
+	Define DISPID_SLPPhoneIds								For 4
+	Define DISPID_SLPSymbolic								For 5
+End_Enum_List
+
+// Define DISPID_SpeechPhoneConverter For Integer
+Enum_List
+	Define DISPID_SPCLangId									For 1
+	Define DISPID_SPCPhoneToId								For 2
+	Define DISPID_SPCIdToPhone								For 3
+End_Enum_List
+
+// Define SPVSKIPTYPE For Integer
+Enum_List
+	Define SPVST_SENTENCE									For 1
+End_Enum_List
+
+// Define SPVESACTIONS For Integer
+Enum_List
+	Define SPVES_CONTINUE									For 0
+	Define SPVES_ABORT										For 1
+	Define SPVES_SKIP										For 2
+	Define SPVES_RATE										For 4
+	Define SPVES_VOLUME										For 8
+End_Enum_List
+
+// Define SPTRANSITIONTYPE For Integer
+Enum_List
+	Define SPTRANSEPSILON									For 0
+	Define SPTRANSWORD										For 1
+	Define SPTRANSRULE										For 2
+	Define SPTRANSTEXTBUF									For 3
+	Define SPTRANSWILDCARD									For 4
+	Define SPTRANSDICTATION									For 5
+End_Enum_List
+
+// Define SPCFGNOTIFY For Integer
+Enum_List
+	Define SPCFGN_ADD										For 0
+	Define SPCFGN_REMOVE									For 1
+	Define SPCFGN_INVALIDATE								For 2
+	Define SPCFGN_ACTIVATE									For 3
+	Define SPCFGN_DEACTIVATE								For 4
+End_Enum_List
+
+// Define SPRESULTTYPE For Integer
+Enum_List
+	Define SPRT_CFG											For 0
+	Define SPRT_SLM											For 1
+	Define SPRT_PROPRIETARY									For 2
+	Define SPRT_FALSE_RECOGNITION							For 4
+	Define SPRT_TYPE_MASK									For 3
+	Define SPRT_EMULATED									For 8
+	Define SPRT_EXTENDABLE_PARSE							For 16
+End_Enum_List
+
+// Define SPWORDINFOOPT For Integer
+Enum_List
+	Define SPWIO_NONE										For 0
+	Define SPWIO_WANT_TEXT									For 1
+End_Enum_List
+
+// Define SPRULEINFOOPT For Integer
+Enum_List
+	Define SPRIO_NONE										For 0
+End_Enum_List
+
+// Define SPPROPSRC For Integer
+Enum_List
+	Define SPPROPSRC_RECO_INST								For 0
+	Define SPPROPSRC_RECO_CTX								For 1
+	Define SPPROPSRC_RECO_GRAMMAR							For 2
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure
+

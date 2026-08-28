@@ -1,0 +1,75 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/Memory/-cfg-call-target-info
+Struct CFG_CALL_TARGET_INFO
+	ULongPtr Offset
+	ULongPtr Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/heapapi/ns-heapapi-heap_summary
+Struct HEAP_SUMMARY
+	UInteger cb
+	Integer iMissingAlignment1
+	ULongPtr cbAllocated
+	ULongPtr cbCommitted
+	ULongPtr cbReserved
+	ULongPtr cbMaxReserve
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-memory_basic_information
+Struct MEMORY_BASIC_INFORMATION
+	Pointer BaseAddress										// Pointer*
+	Pointer AllocationBase									// Pointer*
+	UInteger AllocationProtect								// PAGE_PROTECTION_FLAGS
+	UShort PartitionId
+	Short iMissingAlignment1
+	ULongPtr RegionSize
+	UInteger State											// VIRTUAL_ALLOCATION_TYPE
+	UInteger Protect										// PAGE_PROTECTION_FLAGS
+	UInteger Type											// PAGE_TYPE
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-mem_extended_parameter
+Struct MEM_EXTENDED_PARAMETER
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-process_heap_entry
+Struct PROCESS_HEAP_ENTRY
+	Pointer lpData											// Pointer*
+	UInteger cbData
+	UChar cbOverhead
+	UChar iRegionIndex
+	UShort wFlags
+	UChar[12] UnionName1
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WIN32_MEMORY_NUMA_PERFORMANCE_ENTRY
+	UInteger InitiatorNodeNumber
+	UInteger TargetNodeNumber
+	UChar DataType
+	UChar[1] UnionName1
+	UChar[6] cMissingAlignment1
+	UBigint MinTransferSizeInBytes
+	UBigint EntryValue
+End_Struct
+
+Struct WIN32_MEMORY_NUMA_PERFORMANCE_INFORMATION_OUTPUT
+	UInteger EntryCount
+	Integer iMissingAlignment1
+	WIN32_MEMORY_NUMA_PERFORMANCE_ENTRY[1] PerformanceEntries
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/ns-memoryapi-win32_memory_range_entry
+Struct WIN32_MEMORY_RANGE_ENTRY
+	Pointer VirtualAddress									// Pointer*
+	ULongPtr NumberOfBytes
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,99 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/werapi/ns-werapi-wer_dump_custom_options
+Struct WER_DUMP_CUSTOM_OPTIONS
+	UInteger dwSize
+	UInteger dwMask
+	UInteger dwDumpFlags
+	Integer bOnlyThisThread									// BOOL
+	UInteger dwExceptionThreadFlags
+	UInteger dwOtherThreadFlags
+	UInteger dwExceptionThreadExFlags
+	UInteger dwOtherThreadExFlags
+	UInteger dwPreferredModuleFlags
+	UInteger dwOtherModuleFlags
+	UShort[256] wzPreferredModuleList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/werapi/ns-werapi-wer_exception_information
+Struct WER_EXCEPTION_INFORMATION
+	Pointer pExceptionPointers								// EXCEPTION_POINTERS*
+	Integer bClientPointers									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/werapi/ns-werapi-wer_report_information
+Struct WER_REPORT_INFORMATION
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hProcess										// HANDLE
+	UShort[64] wzConsentKey
+	UShort[128] wzFriendlyEventName
+	UShort[128] wzApplicationName
+	UShort[260] wzApplicationPath
+	UShort[512] wzDescription
+	Pointer hwndParent										// HWND
+End_Struct
+
+Struct WER_REPORT_METADATA_V1
+	WER_REPORT_SIGNATURE Signature
+	Short iMissingAlignment1
+	Guid BucketId
+	Guid ReportId
+	FILETIME CreationTime
+	UBigint SizeInBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/werapi/ns-werapi-wer_report_metadata_v2
+Struct WER_REPORT_METADATA_V2
+	WER_REPORT_SIGNATURE Signature
+	Short iMissingAlignment1
+	Guid BucketId
+	Guid ReportId
+	FILETIME CreationTime
+	UBigint SizeInBytes
+	UShort[260] CabId
+	UInteger ReportStatus
+	Guid ReportIntegratorId
+	UInteger NumberOfFiles
+	UInteger SizeOfFileNames
+	Integer iMissingAlignment2
+	Pointer FileNames										// PWSTR
+End_Struct
+
+Struct WER_REPORT_METADATA_V3
+	WER_REPORT_SIGNATURE Signature
+	Short iMissingAlignment1
+	Guid BucketId
+	Guid ReportId
+	FILETIME CreationTime
+	UBigint SizeInBytes
+	UShort[260] CabId
+	UInteger ReportStatus
+	Guid ReportIntegratorId
+	UInteger NumberOfFiles
+	UInteger SizeOfFileNames
+	Integer iMissingAlignment2
+	Pointer FileNames										// PWSTR
+	UShort[128] FriendlyEventName
+	UShort[128] ApplicationName
+	UShort[260] ApplicationPath
+	UShort[512] Description
+	UShort[260] BucketIdString
+	UBigint LegacyBucketId
+End_Struct
+
+Struct WER_REPORT_PARAMETER
+	UShort[129] Name
+	UShort[260] Value
+End_Struct
+
+Struct WER_REPORT_SIGNATURE
+	UShort[65] EventName
+	WER_REPORT_PARAMETER[10] Parameters
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

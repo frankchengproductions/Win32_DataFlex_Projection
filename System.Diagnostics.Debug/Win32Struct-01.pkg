@@ -1,0 +1,853 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/NetMon2/address
+Struct ADDRESS
+	UInteger Offset
+	UShort Segment
+	Short iMissingAlignment1
+	Integer Mode											// ADDRESS_MODE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-address64
+Struct ADDRESS64
+	UBigint Offset
+	UShort Segment
+	Short iMissingAlignment1
+	Integer Mode											// ADDRESS_MODE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-api_version
+Struct API_VERSION
+	UShort MajorVersion
+	UShort MinorVersion
+	UShort Revision
+	UShort Reserved
+End_Struct
+
+Struct ARM64_NT_NEON128
+	UChar[8] UnionName1
+	Real[2] D
+	Float[4] S
+	UShort[8] H
+	UChar[16] B
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-context
+Struct CONTEXT
+	UInteger ContextFlags									// CONTEXT_FLAGS
+	UInteger Cpsr
+	UChar[248] UnionName1
+	UBigint Sp
+	UBigint Pc
+	ARM64_NT_NEON128[32] V
+	UInteger Fpcr
+	UInteger Fpsr
+	UInteger[8] Bcr
+	UBigint[8] Bvr
+	UInteger[2] Wcr
+	UBigint[2] Wvr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-create_process_debug_info
+Struct CREATE_PROCESS_DEBUG_INFO
+	Pointer hFile											// HANDLE
+	Pointer hProcess										// HANDLE
+	Pointer hThread											// HANDLE
+	Pointer lpBaseOfImage									// Pointer*
+	UInteger dwDebugInfoFileOffset
+	UInteger nDebugInfoSize
+	Pointer lpThreadLocalBase								// Pointer*
+	Pointer lpStartAddress									// LPTHREAD_START_ROUTINE
+	Pointer lpImageName										// Pointer*
+	UShort fUnicode
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-create_thread_debug_info
+Struct CREATE_THREAD_DEBUG_INFO
+	Pointer hThread											// HANDLE
+	Pointer lpThreadLocalBase								// Pointer*
+	Pointer lpStartAddress									// LPTHREAD_START_ROUTINE
+End_Struct
+
+Struct DBGHELP_DATA_REPORT_STRUCT
+	Pointer pBinPathNonExist								// PWSTR
+	Pointer pSymbolPathNonExist								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-debug_event
+Struct DEBUG_EVENT
+	UInteger dwDebugEventCode								// DEBUG_EVENT_CODE
+	UInteger dwProcessId
+	UInteger dwThreadId
+	Integer iMissingAlignment1
+	UChar[160] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-exception_debug_info
+Struct EXCEPTION_DEBUG_INFO
+	EXCEPTION_RECORD ExceptionRecord
+	UInteger dwFirstChance
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-exception_pointers
+Struct EXCEPTION_POINTERS
+	Pointer ExceptionRecord									// EXCEPTION_RECORD*
+	Pointer ContextRecord									// CONTEXT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-exception_record
+Struct EXCEPTION_RECORD
+	Integer ExceptionCode									// NTSTATUS
+	UInteger ExceptionFlags
+	Pointer ExceptionRecord									// EXCEPTION_RECORD*
+	Pointer ExceptionAddress								// Pointer*
+	UInteger NumberParameters
+	Integer iMissingAlignment1
+	ULongPtr[15] ExceptionInformation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-exit_process_debug_info
+Struct EXIT_PROCESS_DEBUG_INFO
+	UInteger dwExitCode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-exit_thread_debug_info
+Struct EXIT_THREAD_DEBUG_INFO
+	UInteger dwExitCode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_get_type_info_params
+Struct IMAGEHLP_GET_TYPE_INFO_PARAMS
+	UInteger SizeOfStruct
+	UInteger Flags											// IMAGEHLP_GET_TYPE_INFO_FLAGS
+	UInteger NumIds
+	Integer iMissingAlignment1
+	Pointer TypeIds											// UInteger*
+	UBigint TagFilter
+	UInteger NumReqs
+	Integer iMissingAlignment2
+	Pointer ReqKinds										// IMAGEHLP_SYMBOL_TYPE_INFO*
+	Pointer ReqOffsets										// ULongPtr*
+	Pointer ReqSizes										// UInteger*
+	ULongPtr ReqStride
+	ULongPtr BufferSize
+	Pointer Buffer											// Pointer*
+	UInteger EntriesMatched
+	UInteger EntriesFilled
+	UBigint TagsFound
+	UBigint AllReqsValid
+	UInteger NumReqsValid
+	Integer iMissingAlignment3
+	Pointer ReqsValid										// UBigint*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_line
+Struct IMAGEHLP_LINE
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer Key												// Pointer*
+	UInteger LineNumber
+	Integer iMissingAlignment2
+	Pointer FileName										// PSTR
+	UInteger Address
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_line64
+Struct IMAGEHLP_LINE64
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer Key												// Pointer*
+	UInteger LineNumber
+	Integer iMissingAlignment2
+	Pointer FileName										// PSTR
+	UBigint Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_linew64
+Struct IMAGEHLP_LINEW64
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer Key												// Pointer*
+	UInteger LineNumber
+	Integer iMissingAlignment2
+	Pointer FileName										// PWSTR
+	UBigint Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_module
+Struct IMAGEHLP_MODULE
+	UInteger SizeOfStruct
+	UInteger BaseOfImage
+	UInteger ImageSize
+	UInteger TimeDateStamp
+	UInteger CheckSum
+	UInteger NumSyms
+	Integer SymType											// SYM_TYPE
+	Char[32] ModuleName										// CHAR
+	Char[256] ImageName										// CHAR
+	Char[256] LoadedImageName								// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_module64
+Struct IMAGEHLP_MODULE64
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	UBigint BaseOfImage
+	UInteger ImageSize
+	UInteger TimeDateStamp
+	UInteger CheckSum
+	UInteger NumSyms
+	Integer SymType											// SYM_TYPE
+	Char[32] ModuleName										// CHAR
+	Char[256] ImageName										// CHAR
+	Char[256] LoadedImageName								// CHAR
+	Char[256] LoadedPdbName									// CHAR
+	UInteger CVSig
+	Char[780] CVData										// CHAR
+	UInteger PdbSig
+	Guid PdbSig70
+	UInteger PdbAge
+	Integer PdbUnmatched									// BOOL
+	Integer DbgUnmatched									// BOOL
+	Integer LineNumbers										// BOOL
+	Integer GlobalSymbols									// BOOL
+	Integer TypeInfo										// BOOL
+	Integer SourceIndexed									// BOOL
+	Integer Publics											// BOOL
+	UInteger MachineType
+	UInteger Reserved
+End_Struct
+
+Struct IMAGEHLP_MODULEW
+	UInteger SizeOfStruct
+	UInteger BaseOfImage
+	UInteger ImageSize
+	UInteger TimeDateStamp
+	UInteger CheckSum
+	UInteger NumSyms
+	Integer SymType											// SYM_TYPE
+	UShort[32] ModuleName
+	UShort[256] ImageName
+	UShort[256] LoadedImageName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_modulew64
+Struct IMAGEHLP_MODULEW64
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	UBigint BaseOfImage
+	UInteger ImageSize
+	UInteger TimeDateStamp
+	UInteger CheckSum
+	UInteger NumSyms
+	Integer SymType											// SYM_TYPE
+	UShort[32] ModuleName
+	UShort[256] ImageName
+	UShort[256] LoadedImageName
+	UShort[256] LoadedPdbName
+	UInteger CVSig
+	UShort[780] CVData
+	UInteger PdbSig
+	Guid PdbSig70
+	UInteger PdbAge
+	Integer PdbUnmatched									// BOOL
+	Integer DbgUnmatched									// BOOL
+	Integer LineNumbers										// BOOL
+	Integer GlobalSymbols									// BOOL
+	Integer TypeInfo										// BOOL
+	Integer SourceIndexed									// BOOL
+	Integer Publics											// BOOL
+	UInteger MachineType
+	UInteger Reserved
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_stack_frame
+Struct IMAGEHLP_STACK_FRAME
+	UBigint InstructionOffset
+	UBigint ReturnOffset
+	UBigint FrameOffset
+	UBigint StackOffset
+	UBigint BackingStoreOffset
+	UBigint FuncTableEntry
+	UBigint[4] Params
+	UBigint[5] Reserved
+	Integer Virtual											// BOOL
+	UInteger Reserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_symbol
+Struct IMAGEHLP_SYMBOL
+	UInteger SizeOfStruct
+	UInteger Address
+	UInteger Size
+	UInteger Flags
+	UInteger MaxNameLength
+	Char[1] Name											// CHAR
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-imagehlp_symbol64
+Struct IMAGEHLP_SYMBOL64
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	UBigint Address
+	UInteger Size
+	UInteger Flags
+	UInteger MaxNameLength
+	Char[1] Name											// CHAR
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY
+	UInteger BeginAddress
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_data_directory
+Struct IMAGE_DATA_DIRECTORY
+	UInteger VirtualAddress
+	UInteger Size
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_file_header
+Struct IMAGE_FILE_HEADER
+	UShort Machine											// IMAGE_FILE_MACHINE
+	UShort NumberOfSections
+	UInteger TimeDateStamp
+	UInteger PointerToSymbolTable
+	UInteger NumberOfSymbols
+	UShort SizeOfOptionalHeader
+	UShort Characteristics									// IMAGE_FILE_CHARACTERISTICS
+End_Struct
+
+Struct IMAGE_LOAD_CONFIG_CODE_INTEGRITY
+	UShort Flags
+	UShort Catalog
+	UInteger CatalogOffset
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_load_config_directory64
+Struct IMAGE_LOAD_CONFIG_DIRECTORY64
+	UInteger Size
+	UInteger TimeDateStamp
+	UShort MajorVersion
+	UShort MinorVersion
+	UInteger GlobalFlagsClear
+	UInteger GlobalFlagsSet
+	UInteger CriticalSectionDefaultTimeout
+	UBigint DeCommitFreeBlockThreshold
+	UBigint DeCommitTotalFreeThreshold
+	UBigint LockPrefixTable
+	UBigint MaximumAllocationSize
+	UBigint VirtualMemoryThreshold
+	UBigint ProcessAffinityMask
+	UInteger ProcessHeapFlags
+	UShort CSDVersion
+	UShort DependentLoadFlags
+	UBigint EditList
+	UBigint SecurityCookie
+	UBigint SEHandlerTable
+	UBigint SEHandlerCount
+	UBigint GuardCFCheckFunctionPointer
+	UBigint GuardCFDispatchFunctionPointer
+	UBigint GuardCFFunctionTable
+	UBigint GuardCFFunctionCount
+	UInteger GuardFlags
+	IMAGE_LOAD_CONFIG_CODE_INTEGRITY CodeIntegrity
+	UBigint GuardAddressTakenIatEntryTable
+	UBigint GuardAddressTakenIatEntryCount
+	UBigint GuardLongJumpTargetTable
+	UBigint GuardLongJumpTargetCount
+	UBigint DynamicValueRelocTable
+	UBigint CHPEMetadataPointer
+	UBigint GuardRFFailureRoutine
+	UBigint GuardRFFailureRoutineFunctionPointer
+	UInteger DynamicValueRelocTableOffset
+	UShort DynamicValueRelocTableSection
+	UShort Reserved2
+	UBigint GuardRFVerifyStackPointerFunctionPointer
+	UInteger HotPatchTableOffset
+	UInteger Reserved3
+	UBigint EnclaveConfigurationPointer
+	UBigint VolatileMetadataPointer
+	UBigint GuardEHContinuationTable
+	UBigint GuardEHContinuationCount
+	UBigint GuardXFGCheckFunctionPointer
+	UBigint GuardXFGDispatchFunctionPointer
+	UBigint GuardXFGTableDispatchFunctionPointer
+	UBigint CastGuardOsDeterminedFailureMode
+	UBigint GuardMemcpyFunctionPointer
+	UBigint UmaFunctionPointers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_nt_headers32
+Struct IMAGE_NT_HEADERS32
+	UInteger Signature
+	IMAGE_FILE_HEADER FileHeader
+	IMAGE_OPTIONAL_HEADER32 OptionalHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_nt_headers64
+Struct IMAGE_NT_HEADERS64
+	UInteger Signature
+	IMAGE_FILE_HEADER FileHeader
+	IMAGE_OPTIONAL_HEADER64 OptionalHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_optional_header32
+Struct IMAGE_OPTIONAL_HEADER32
+	UShort Magic											// IMAGE_OPTIONAL_HEADER_MAGIC
+	UChar MajorLinkerVersion
+	UChar MinorLinkerVersion
+	UInteger SizeOfCode
+	UInteger SizeOfInitializedData
+	UInteger SizeOfUninitializedData
+	UInteger AddressOfEntryPoint
+	UInteger BaseOfCode
+	UInteger BaseOfData
+	UInteger ImageBase
+	UInteger SectionAlignment
+	UInteger FileAlignment
+	UShort MajorOperatingSystemVersion
+	UShort MinorOperatingSystemVersion
+	UShort MajorImageVersion
+	UShort MinorImageVersion
+	UShort MajorSubsystemVersion
+	UShort MinorSubsystemVersion
+	UInteger Win32VersionValue
+	UInteger SizeOfImage
+	UInteger SizeOfHeaders
+	UInteger CheckSum
+	UShort Subsystem										// IMAGE_SUBSYSTEM
+	UShort DllCharacteristics								// IMAGE_DLL_CHARACTERISTICS
+	UInteger SizeOfStackReserve
+	UInteger SizeOfStackCommit
+	UInteger SizeOfHeapReserve
+	UInteger SizeOfHeapCommit
+	UInteger LoaderFlags
+	UInteger NumberOfRvaAndSizes
+	IMAGE_DATA_DIRECTORY[16] DataDirectory
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_optional_header64
+Struct IMAGE_OPTIONAL_HEADER64
+	UShort Magic											// IMAGE_OPTIONAL_HEADER_MAGIC
+	UChar MajorLinkerVersion
+	UChar MinorLinkerVersion
+	UInteger SizeOfCode
+	UInteger SizeOfInitializedData
+	UInteger SizeOfUninitializedData
+	UInteger AddressOfEntryPoint
+	UInteger BaseOfCode
+	UBigint ImageBase
+	UInteger SectionAlignment
+	UInteger FileAlignment
+	UShort MajorOperatingSystemVersion
+	UShort MinorOperatingSystemVersion
+	UShort MajorImageVersion
+	UShort MinorImageVersion
+	UShort MajorSubsystemVersion
+	UShort MinorSubsystemVersion
+	UInteger Win32VersionValue
+	UInteger SizeOfImage
+	UInteger SizeOfHeaders
+	UInteger CheckSum
+	UShort Subsystem										// IMAGE_SUBSYSTEM
+	UShort DllCharacteristics								// IMAGE_DLL_CHARACTERISTICS
+	UBigint SizeOfStackReserve
+	UBigint SizeOfStackCommit
+	UBigint SizeOfHeapReserve
+	UBigint SizeOfHeapCommit
+	UInteger LoaderFlags
+	UInteger NumberOfRvaAndSizes
+	IMAGE_DATA_DIRECTORY[16] DataDirectory
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-image_section_header
+Struct IMAGE_SECTION_HEADER
+	UChar[8] Name
+	UChar[4] UnionName1
+	UInteger VirtualAddress
+	UInteger SizeOfRawData
+	UInteger PointerToRawData
+	UInteger PointerToRelocations
+	UInteger PointerToLinenumbers
+	UShort NumberOfRelocations
+	UShort NumberOfLinenumbers
+	UInteger Characteristics								// IMAGE_SECTION_CHARACTERISTICS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-kdhelp
+Struct KDHELP
+	UInteger Thread
+	UInteger ThCallbackStack
+	UInteger NextCallback
+	UInteger FramePointer
+	UInteger KiCallUserMode
+	UInteger KeUserCallbackDispatcher
+	UInteger SystemRangeStart
+	UInteger ThCallbackBStore
+	UInteger KiUserExceptionDispatcher
+	UInteger StackBase
+	UInteger StackLimit
+	UInteger[5] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-kdhelp64
+Struct KDHELP64
+	UBigint Thread
+	UInteger ThCallbackStack
+	UInteger ThCallbackBStore
+	UInteger NextCallback
+	UInteger FramePointer
+	UBigint KiCallUserMode
+	UBigint KeUserCallbackDispatcher
+	UBigint SystemRangeStart
+	UBigint KiUserExceptionDispatcher
+	UBigint StackBase
+	UBigint StackLimit
+	UInteger BuildVersion
+	UInteger RetpolineStubFunctionTableSize
+	UBigint RetpolineStubFunctionTable
+	UInteger RetpolineStubOffset
+	UInteger RetpolineStubSize
+	UBigint[2] Reserved0
+End_Struct
+
+Struct KNONVOLATILE_CONTEXT_POINTERS
+	Pointer X19												// UBigint*
+	Pointer X20												// UBigint*
+	Pointer X21												// UBigint*
+	Pointer X22												// UBigint*
+	Pointer X23												// UBigint*
+	Pointer X24												// UBigint*
+	Pointer X25												// UBigint*
+	Pointer X26												// UBigint*
+	Pointer X27												// UBigint*
+	Pointer X28												// UBigint*
+	Pointer Fp												// UBigint*
+	Pointer Lr												// UBigint*
+	Pointer D8												// UBigint*
+	Pointer D9												// UBigint*
+	Pointer D10												// UBigint*
+	Pointer D11												// UBigint*
+	Pointer D12												// UBigint*
+	Pointer D13												// UBigint*
+	Pointer D14												// UBigint*
+	Pointer D15												// UBigint*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-ldt_entry
+Struct LDT_ENTRY
+	UShort LimitLow
+	UShort BaseLow
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-loaded_image
+Struct LOADED_IMAGE
+	Pointer ModuleName										// PSTR
+	Pointer hFile											// HANDLE
+	Pointer MappedAddress									// UChar*
+	Pointer FileHeader										// IMAGE_NT_HEADERS64*
+	Pointer LastRvaSection									// IMAGE_SECTION_HEADER*
+	UInteger NumberOfSections
+	Integer iMissingAlignment1
+	Pointer Sections										// IMAGE_SECTION_HEADER*
+	UInteger Characteristics								// IMAGE_FILE_CHARACTERISTICS2
+	UChar fSystemImage										// BOOLEAN
+	UChar fDOSImage											// BOOLEAN
+	UChar fReadOnly											// BOOLEAN
+	UChar Version
+	LIST_ENTRY Links
+	UInteger SizeOfImage
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-load_dll_debug_info
+Struct LOAD_DLL_DEBUG_INFO
+	Pointer hFile											// HANDLE
+	Pointer lpBaseOfDll										// Pointer*
+	UInteger dwDebugInfoFileOffset
+	UInteger nDebugInfoSize
+	Pointer lpImageName										// Pointer*
+	UShort fUnicode
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_callback_information
+Struct MINIDUMP_CALLBACK_INFORMATION
+	Pointer CallbackRoutine									// MINIDUMP_CALLBACK_ROUTINE
+	Pointer CallbackParam									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_directory
+Struct MINIDUMP_DIRECTORY
+	UInteger StreamType
+	MINIDUMP_LOCATION_DESCRIPTOR Location
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_exception_information
+Struct MINIDUMP_EXCEPTION_INFORMATION
+	UInteger ThreadId
+	Integer iMissingAlignment1
+	Pointer ExceptionPointers								// EXCEPTION_POINTERS*
+	Integer ClientPointers									// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_location_descriptor
+Struct MINIDUMP_LOCATION_DESCRIPTOR
+	UInteger DataSize
+	UInteger Rva
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_user_stream
+Struct MINIDUMP_USER_STREAM
+	UInteger Type
+	UInteger BufferSize
+	Pointer Buffer											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_user_stream_information
+Struct MINIDUMP_USER_STREAM_INFORMATION
+	UInteger UserStreamCount
+	Integer iMissingAlignment1
+	Pointer UserStreamArray									// MINIDUMP_USER_STREAM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-modload_data
+Struct MODLOAD_DATA
+	UInteger ssize
+	UInteger ssig											// MODLOAD_DATA_TYPE
+	Pointer data											// Pointer*
+	UInteger size
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-omap
+Struct OMAP
+	UInteger rva
+	UInteger rvaTo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-output_debug_string_info
+Struct OUTPUT_DEBUG_STRING_INFO
+	Pointer lpDebugStringData								// PSTR
+	UShort fUnicode
+	UShort nDebugStringLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-rip_info
+Struct RIP_INFO
+	UInteger dwError
+	UInteger dwType											// RIP_INFO_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-stackframe
+Struct STACKFRAME
+	ADDRESS AddrPC
+	ADDRESS AddrReturn
+	ADDRESS AddrFrame
+	ADDRESS AddrStack
+	Pointer FuncTableEntry									// Pointer*
+	UInteger[4] Params
+	Integer Far												// BOOL
+	Integer Virtual											// BOOL
+	UInteger[3] Reserved
+	KDHELP KdHelp
+	ADDRESS AddrBStore
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-stackframe64
+Struct STACKFRAME64
+	ADDRESS64 AddrPC
+	ADDRESS64 AddrReturn
+	ADDRESS64 AddrFrame
+	ADDRESS64 AddrStack
+	ADDRESS64 AddrBStore
+	Pointer FuncTableEntry									// Pointer*
+	UBigint[4] Params
+	Integer Far												// BOOL
+	Integer Virtual											// BOOL
+	UBigint[3] Reserved
+	KDHELP64 KdHelp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-stackframe_ex
+Struct STACKFRAME_EX
+	ADDRESS64 AddrPC
+	ADDRESS64 AddrReturn
+	ADDRESS64 AddrFrame
+	ADDRESS64 AddrStack
+	ADDRESS64 AddrBStore
+	Pointer FuncTableEntry									// Pointer*
+	UBigint[4] Params
+	Integer Far												// BOOL
+	Integer Virtual											// BOOL
+	UBigint[3] Reserved
+	KDHELP64 KdHelp
+	UInteger StackFrameSize
+	UInteger InlineFrameContext
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symbol_info
+Struct SYMBOL_INFO
+	UInteger SizeOfStruct
+	UInteger TypeIndex
+	UBigint[2] Reserved
+	UInteger Index
+	UInteger Size
+	UBigint ModBase
+	UInteger Flags											// SYMBOL_INFO_FLAGS
+	Integer iMissingAlignment1
+	UBigint Value
+	UBigint Address
+	UInteger Register
+	UInteger Scope
+	UInteger Tag
+	UInteger NameLen
+	UInteger MaxNameLen
+	Char[1] Name											// CHAR
+	UChar[3] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symbol_infow
+Struct SYMBOL_INFOW
+	UInteger SizeOfStruct
+	UInteger TypeIndex
+	UBigint[2] Reserved
+	UInteger Index
+	UInteger Size
+	UBigint ModBase
+	UInteger Flags											// SYMBOL_INFO_FLAGS
+	Integer iMissingAlignment1
+	UBigint Value
+	UBigint Address
+	UInteger Register
+	UInteger Scope
+	UInteger Tag
+	UInteger NameLen
+	UInteger MaxNameLen
+	UShort[1] Name
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symsrv_index_info
+Struct SYMSRV_INDEX_INFO
+	UInteger sizeofstruct
+	Char[261] file											// CHAR
+	UChar[3] cMissingAlignment1
+	Integer stripped										// BOOL
+	UInteger timestamp
+	UInteger size
+	Char[261] dbgfile										// CHAR
+	Char[261] pdbfile										// CHAR
+	Short iMissingAlignment2
+	Guid guid
+	UInteger sig
+	UInteger age
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symsrv_index_infow
+Struct SYMSRV_INDEX_INFOW
+	UInteger sizeofstruct
+	UShort[261] file
+	Short iMissingAlignment1
+	Integer stripped										// BOOL
+	UInteger timestamp
+	UInteger size
+	UShort[261] dbgfile
+	UShort[261] pdbfile
+	Guid guid
+	UInteger sig
+	UInteger age
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-unload_dll_debug_info
+Struct UNLOAD_DLL_DEBUG_INFO
+	Pointer lpBaseOfDll										// Pointer*
+End_Struct
+
+Struct UNWIND_HISTORY_TABLE
+	UInteger Count
+	UChar LocalHint
+	UChar GlobalHint
+	UChar Search
+	UChar Once
+	ULongPtr LowAddress
+	ULongPtr HighAddress
+	UNWIND_HISTORY_TABLE_ENTRY[12] Entry
+End_Struct
+
+Struct UNWIND_HISTORY_TABLE_ENTRY
+	ULongPtr ImageBase
+	Pointer FunctionEntry									// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wct/ns-wct-waitchain_node_info
+Struct WAITCHAIN_NODE_INFO
+	Integer ObjectType										// WCT_OBJECT_TYPE
+	Integer ObjectStatus									// WCT_OBJECT_STATUS
+	UChar[256] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-wow64_context
+Struct WOW64_CONTEXT
+	UInteger ContextFlags									// WOW64_CONTEXT_FLAGS
+	UInteger Dr0
+	UInteger Dr1
+	UInteger Dr2
+	UInteger Dr3
+	UInteger Dr6
+	UInteger Dr7
+	WOW64_FLOATING_SAVE_AREA FloatSave
+	UInteger SegGs
+	UInteger SegFs
+	UInteger SegEs
+	UInteger SegDs
+	UInteger Edi
+	UInteger Esi
+	UInteger Ebx
+	UInteger Edx
+	UInteger Ecx
+	UInteger Eax
+	UInteger Ebp
+	UInteger Eip
+	UInteger SegCs
+	UInteger EFlags
+	UInteger Esp
+	UInteger SegSs
+	UChar[512] ExtendedRegisters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-wow64_floating_save_area
+Struct WOW64_FLOATING_SAVE_AREA
+	UInteger ControlWord
+	UInteger StatusWord
+	UInteger TagWord
+	UInteger ErrorOffset
+	UInteger ErrorSelector
+	UInteger DataOffset
+	UInteger DataSelector
+	UChar[80] RegisterArea
+	UInteger Cr0NpxState
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-wow64_ldt_entry
+Struct WOW64_LDT_ENTRY
+	UShort LimitLow
+	UShort BaseLow
+	UChar[4] UnionName1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

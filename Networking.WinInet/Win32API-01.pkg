@@ -1,0 +1,1494 @@
+Use UI
+
+External_Function AppCacheCheckManifest "AppCacheCheckManifest" WININET.dll ;
+	WString pwszMasterUrl ;	// PWSTR
+	WString pwszManifestUrl ;	// PWSTR
+	Pointer pbManifestData ;	// UChar*
+	UInteger dwManifestDataSize ;
+	Pointer pbManifestResponseHeaders ;	// UChar*
+	UInteger dwManifestResponseHeadersSize ;
+	Pointer peState ;	// APP_CACHE_STATE*
+	Pointer phNewAppCache ;	// Pointer**
+	Returns UInteger
+
+External_Function AppCacheCloseHandle "AppCacheCloseHandle" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	Returns Pointer
+
+External_Function AppCacheCreateAndCommitFile "AppCacheCreateAndCommitFile" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	WString pwszSourceFilePath ;	// PWSTR
+	WString pwszUrl ;	// PWSTR
+	Pointer pbResponseHeaders ;	// UChar*
+	UInteger dwResponseHeadersSize ;
+	Returns UInteger
+
+External_Function AppCacheDeleteGroup "AppCacheDeleteGroup" WININET.dll ;
+	WString pwszManifestUrl ;	// PWSTR
+	Returns UInteger
+
+External_Function AppCacheDeleteIEGroup "AppCacheDeleteIEGroup" WININET.dll ;
+	WString pwszManifestUrl ;	// PWSTR
+	Returns UInteger
+
+External_Function AppCacheDuplicateHandle "AppCacheDuplicateHandle" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	Pointer phDuplicatedAppCache ;	// Pointer**
+	Returns UInteger
+
+External_Function AppCacheFinalize "AppCacheFinalize" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	Pointer pbManifestData ;	// UChar*
+	UInteger dwManifestDataSize ;
+	Pointer peState ;	// APP_CACHE_FINALIZE_STATE*
+	Returns UInteger
+
+External_Function AppCacheFreeDownloadList "AppCacheFreeDownloadList" WININET.dll ;
+	Pointer pDownloadList ;	// APP_CACHE_DOWNLOAD_LIST*
+	Returns Pointer
+
+External_Function AppCacheFreeGroupList "AppCacheFreeGroupList" WININET.dll ;
+	Pointer pAppCacheGroupList ;	// APP_CACHE_GROUP_LIST*
+	Returns Pointer
+
+External_Function AppCacheFreeIESpace "AppCacheFreeIESpace" WININET.dll ;
+	FILETIME ftCutOff ;
+	Returns UInteger
+
+External_Function AppCacheFreeSpace "AppCacheFreeSpace" WININET.dll ;
+	FILETIME ftCutOff ;
+	Returns UInteger
+
+External_Function AppCacheGetDownloadList "AppCacheGetDownloadList" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	Pointer pDownloadList ;	// APP_CACHE_DOWNLOAD_LIST*
+	Returns UInteger
+
+External_Function AppCacheGetFallbackUrl "AppCacheGetFallbackUrl" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	WString pwszUrl ;	// PWSTR
+	Pointer ppwszFallbackUrl ;	// PWSTR*
+	Returns UInteger
+
+External_Function AppCacheGetGroupList "AppCacheGetGroupList" WININET.dll ;
+	Pointer pAppCacheGroupList ;	// APP_CACHE_GROUP_LIST*
+	Returns UInteger
+
+External_Function AppCacheGetIEGroupList "AppCacheGetIEGroupList" WININET.dll ;
+	Pointer pAppCacheGroupList ;	// APP_CACHE_GROUP_LIST*
+	Returns UInteger
+
+External_Function AppCacheGetInfo "AppCacheGetInfo" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	Pointer pAppCacheInfo ;	// APP_CACHE_GROUP_INFO*
+	Returns UInteger
+
+External_Function AppCacheGetManifestUrl "AppCacheGetManifestUrl" WININET.dll ;
+	Pointer hAppCache ;	// Pointer*
+	Pointer ppwszManifestUrl ;	// PWSTR*
+	Returns UInteger
+
+External_Function AppCacheLookup "AppCacheLookup" WININET.dll ;
+	WString pwszUrl ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer phAppCache ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-commiturlcacheentrya
+External_Function CommitUrlCacheEntryA "CommitUrlCacheEntryA" WININET.dll ;
+	String lpszUrlName ;	// PSTR
+	String lpszLocalFileName ;	// PSTR
+	FILETIME ExpireTime ;
+	FILETIME LastModifiedTime ;
+	UInteger CacheEntryType ;
+	Pointer lpHeaderInfo ;	// UChar*
+	UInteger cchHeaderInfo ;
+	String lpszFileExtension ;	// PSTR
+	String lpszOriginalUrl ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function CommitUrlCacheEntryBinaryBlob "CommitUrlCacheEntryBinaryBlob" WININET.dll ;
+	WString pwszUrlName ;	// PWSTR
+	UInteger dwType ;
+	FILETIME ftExpireTime ;
+	FILETIME ftModifiedTime ;
+	Pointer pbBlob ;	// UChar*
+	UInteger cbBlob ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-commiturlcacheentryw
+External_Function CommitUrlCacheEntryW "CommitUrlCacheEntryW" WININET.dll ;
+	WString lpszUrlName ;	// PWSTR
+	WString lpszLocalFileName ;	// PWSTR
+	FILETIME ExpireTime ;
+	FILETIME LastModifiedTime ;
+	UInteger CacheEntryType ;
+	WString lpszHeaderInfo ;	// PWSTR
+	UInteger cchHeaderInfo ;
+	WString lpszFileExtension ;	// PWSTR
+	WString lpszOriginalUrl ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-createmd5ssohash
+External_Function CreateMD5SSOHash "CreateMD5SSOHash" WININET.dll ;
+	WString pszChallengeInfo ;	// PWSTR
+	WString pwszRealm ;	// PWSTR
+	WString pwszTarget ;	// PWSTR
+	Pointer pbHexHash ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-createurlcachecontainera
+External_Function CreateUrlCacheContainerA "CreateUrlCacheContainerA" WININET.dll ;
+	String Name ;	// PSTR
+	String lpCachePrefix ;	// PSTR
+	String lpszCachePath ;	// PSTR
+	UInteger KBCacheLimit ;
+	UInteger dwContainerType ;
+	UInteger dwOptions ;
+	Pointer pvBuffer ;	// Pointer*
+	Pointer cbBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-createurlcachecontainerw
+External_Function CreateUrlCacheContainerW "CreateUrlCacheContainerW" WININET.dll ;
+	WString Name ;	// PWSTR
+	WString lpCachePrefix ;	// PWSTR
+	WString lpszCachePath ;	// PWSTR
+	UInteger KBCacheLimit ;
+	UInteger dwContainerType ;
+	UInteger dwOptions ;
+	Pointer pvBuffer ;	// Pointer*
+	Pointer cbBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-createurlcacheentrya
+External_Function CreateUrlCacheEntryA "CreateUrlCacheEntryA" WININET.dll ;
+	String lpszUrlName ;	// PSTR
+	UInteger dwExpectedFileSize ;
+	String lpszFileExtension ;	// PSTR
+	Pointer lpszFileName ;	// PSTR
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+External_Function CreateUrlCacheEntryExW "CreateUrlCacheEntryExW" WININET.dll ;
+	WString lpszUrlName ;	// PWSTR
+	UInteger dwExpectedFileSize ;
+	WString lpszFileExtension ;	// PWSTR
+	Pointer lpszFileName ;	// PWSTR
+	UInteger dwReserved ;
+	Integer fPreserveIncomingFileName ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-createurlcacheentryw
+External_Function CreateUrlCacheEntryW "CreateUrlCacheEntryW" WININET.dll ;
+	WString lpszUrlName ;	// PWSTR
+	UInteger dwExpectedFileSize ;
+	WString lpszFileExtension ;	// PWSTR
+	Pointer lpszFileName ;	// PWSTR
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-createurlcachegroup
+External_Function CreateUrlCacheGroup "CreateUrlCacheGroup" WININET.dll ;
+	UInteger dwFlags ;
+	Pointer lpReserved ;	// Pointer*
+	Returns Bigint
+
+External_Function DeleteIE3Cache "DeleteIE3Cache" WININET.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hinst ;	// HINSTANCE
+	String lpszCmd ;	// PSTR
+	Integer nCmdShow ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-deleteurlcachecontainera
+External_Function DeleteUrlCacheContainerA "DeleteUrlCacheContainerA" WININET.dll ;
+	String Name ;	// PSTR
+	UInteger dwOptions ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-deleteurlcachecontainerw
+External_Function DeleteUrlCacheContainerW "DeleteUrlCacheContainerW" WININET.dll ;
+	WString Name ;	// PWSTR
+	UInteger dwOptions ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-deleteurlcacheentry
+External_Function DeleteUrlCacheEntry "DeleteUrlCacheEntry" WININET.dll ;
+	String lpszUrlName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-deleteurlcacheentrya
+External_Function DeleteUrlCacheEntryA "DeleteUrlCacheEntryA" WININET.dll ;
+	String lpszUrlName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-deleteurlcacheentryw
+External_Function DeleteUrlCacheEntryW "DeleteUrlCacheEntryW" WININET.dll ;
+	WString lpszUrlName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-deleteurlcachegroup
+External_Function DeleteUrlCacheGroup "DeleteUrlCacheGroup" WININET.dll ;
+	Bigint GroupId ;
+	UInteger dwFlags ;
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function DeleteWpadCacheForNetworks "DeleteWpadCacheForNetworks" WININET.dll ;
+	Integer param0 ;	// WPAD_CACHE_DELETE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-detectautoproxyurl
+External_Function DetectAutoProxyUrl "DetectAutoProxyUrl" WININET.dll ;
+	Pointer pszAutoProxyUrl ;	// PSTR
+	UInteger cchAutoProxyUrl ;
+	UInteger dwDetectFlags ;	// PROXY_AUTO_DETECT_TYPE
+	Returns Integer	// BOOL
+
+External_Function DoConnectoidsExist "DoConnectoidsExist" WININET.dll ;
+	Returns Integer	// BOOL
+
+External_Function ExportCookieFileA "ExportCookieFileA" WININET.dll ;
+	String szFilename ;	// PSTR
+	Integer fAppend ;	// BOOL
+	Returns Integer	// BOOL
+
+External_Function ExportCookieFileW "ExportCookieFileW" WININET.dll ;
+	WString szFilename ;	// PWSTR
+	Integer fAppend ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findcloseurlcache
+External_Function FindCloseUrlCache "FindCloseUrlCache" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+External_Function FindFirstUrlCacheContainerA "FindFirstUrlCacheContainerA" WININET.dll ;
+	Pointer pdwModified ;	// UInteger*
+	Pointer lpContainerInfo ;	// INTERNET_CACHE_CONTAINER_INFOA*
+	Pointer lpcbContainerInfo ;	// UInteger*
+	UInteger dwOptions ;
+	Returns Pointer	// HANDLE
+
+External_Function FindFirstUrlCacheContainerW "FindFirstUrlCacheContainerW" WININET.dll ;
+	Pointer pdwModified ;	// UInteger*
+	Pointer lpContainerInfo ;	// INTERNET_CACHE_CONTAINER_INFOW*
+	Pointer lpcbContainerInfo ;	// UInteger*
+	UInteger dwOptions ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findfirsturlcacheentrya
+External_Function FindFirstUrlCacheEntryA "FindFirstUrlCacheEntryA" WININET.dll ;
+	String lpszUrlSearchPattern ;	// PSTR
+	Pointer lpFirstCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOA*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findfirsturlcacheentryexa
+External_Function FindFirstUrlCacheEntryExA "FindFirstUrlCacheEntryExA" WININET.dll ;
+	String lpszUrlSearchPattern ;	// PSTR
+	UInteger dwFlags ;
+	UInteger dwFilter ;
+	Bigint GroupId ;
+	Pointer lpFirstCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOA*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Pointer lpGroupAttributes ;	// Pointer*
+	Pointer lpcbGroupAttributes ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findfirsturlcacheentryexw
+External_Function FindFirstUrlCacheEntryExW "FindFirstUrlCacheEntryExW" WININET.dll ;
+	WString lpszUrlSearchPattern ;	// PWSTR
+	UInteger dwFlags ;
+	UInteger dwFilter ;
+	Bigint GroupId ;
+	Pointer lpFirstCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOW*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Pointer lpGroupAttributes ;	// Pointer*
+	Pointer lpcbGroupAttributes ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findfirsturlcacheentryw
+External_Function FindFirstUrlCacheEntryW "FindFirstUrlCacheEntryW" WININET.dll ;
+	WString lpszUrlSearchPattern ;	// PWSTR
+	Pointer lpFirstCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOW*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findfirsturlcachegroup
+External_Function FindFirstUrlCacheGroup "FindFirstUrlCacheGroup" WININET.dll ;
+	UInteger dwFlags ;
+	UInteger dwFilter ;
+	Pointer lpSearchCondition ;	// Pointer*
+	UInteger dwSearchCondition ;
+	Pointer lpGroupId ;	// Bigint*
+	Pointer lpReserved ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+External_Function FindNextUrlCacheContainerA "FindNextUrlCacheContainerA" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer lpContainerInfo ;	// INTERNET_CACHE_CONTAINER_INFOA*
+	Pointer lpcbContainerInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function FindNextUrlCacheContainerW "FindNextUrlCacheContainerW" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer lpContainerInfo ;	// INTERNET_CACHE_CONTAINER_INFOW*
+	Pointer lpcbContainerInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findnexturlcacheentrya
+External_Function FindNextUrlCacheEntryA "FindNextUrlCacheEntryA" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer lpNextCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOA*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findnexturlcacheentryexa
+External_Function FindNextUrlCacheEntryExA "FindNextUrlCacheEntryExA" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer lpNextCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOA*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Pointer lpGroupAttributes ;	// Pointer*
+	Pointer lpcbGroupAttributes ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findnexturlcacheentryexw
+External_Function FindNextUrlCacheEntryExW "FindNextUrlCacheEntryExW" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer lpNextCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOW*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Pointer lpGroupAttributes ;	// Pointer*
+	Pointer lpcbGroupAttributes ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findnexturlcacheentryw
+External_Function FindNextUrlCacheEntryW "FindNextUrlCacheEntryW" WININET.dll ;
+	Pointer hEnumHandle ;	// HANDLE
+	Pointer lpNextCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOW*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-findnexturlcachegroup
+External_Function FindNextUrlCacheGroup "FindNextUrlCacheGroup" WININET.dll ;
+	Pointer hFind ;	// HANDLE
+	Pointer lpGroupId ;	// Bigint*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function FindP3PPolicySymbol "FindP3PPolicySymbol" WININET.dll ;
+	String pszSymbol ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-freeurlcachespacea
+External_Function FreeUrlCacheSpaceA "FreeUrlCacheSpaceA" WININET.dll ;
+	String lpszCachePath ;	// PSTR
+	UInteger dwSize ;
+	UInteger dwFilter ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-freeurlcachespacew
+External_Function FreeUrlCacheSpaceW "FreeUrlCacheSpaceW" WININET.dll ;
+	WString lpszCachePath ;	// PWSTR
+	UInteger dwSize ;
+	UInteger dwFilter ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpcommanda
+External_Function FtpCommandA "FtpCommandA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	Integer fExpectResponse ;	// BOOL
+	UInteger dwFlags ;	// FTP_FLAGS
+	String lpszCommand ;	// PSTR
+	ULongPtr dwContext ;
+	Pointer phFtpCommand ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpcommandw
+External_Function FtpCommandW "FtpCommandW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	Integer fExpectResponse ;	// BOOL
+	UInteger dwFlags ;	// FTP_FLAGS
+	WString lpszCommand ;	// PWSTR
+	ULongPtr dwContext ;
+	Pointer phFtpCommand ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpcreatedirectorya
+External_Function FtpCreateDirectoryA "FtpCreateDirectoryA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszDirectory ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpcreatedirectoryw
+External_Function FtpCreateDirectoryW "FtpCreateDirectoryW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszDirectory ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpdeletefilea
+External_Function FtpDeleteFileA "FtpDeleteFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpdeletefilew
+External_Function FtpDeleteFileW "FtpDeleteFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpfindfirstfilea
+External_Function FtpFindFirstFileA "FtpFindFirstFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszSearchFile ;	// PSTR
+	Pointer lpFindFileData ;	// WIN32_FIND_DATAA*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpfindfirstfilew
+External_Function FtpFindFirstFileW "FtpFindFirstFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszSearchFile ;	// PWSTR
+	Pointer lpFindFileData ;	// WIN32_FIND_DATAW*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpgetcurrentdirectorya
+External_Function FtpGetCurrentDirectoryA "FtpGetCurrentDirectoryA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	Pointer lpszCurrentDirectory ;	// PSTR
+	Pointer lpdwCurrentDirectory ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpgetcurrentdirectoryw
+External_Function FtpGetCurrentDirectoryW "FtpGetCurrentDirectoryW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	Pointer lpszCurrentDirectory ;	// PWSTR
+	Pointer lpdwCurrentDirectory ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpgetfilea
+External_Function FtpGetFileA "FtpGetFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszRemoteFile ;	// PSTR
+	String lpszNewFile ;	// PSTR
+	Integer fFailIfExists ;	// BOOL
+	UInteger dwFlagsAndAttributes ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+External_Function FtpGetFileEx "FtpGetFileEx" WININET.dll ;
+	Pointer hFtpSession ;	// Pointer*
+	String lpszRemoteFile ;	// PSTR
+	WString lpszNewFile ;	// PWSTR
+	Integer fFailIfExists ;	// BOOL
+	UInteger dwFlagsAndAttributes ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpgetfilesize
+External_Function FtpGetFileSize "FtpGetFileSize" WININET.dll ;
+	Pointer hFile ;	// Pointer*
+	Pointer lpdwFileSizeHigh ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpgetfilew
+External_Function FtpGetFileW "FtpGetFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszRemoteFile ;	// PWSTR
+	WString lpszNewFile ;	// PWSTR
+	Integer fFailIfExists ;	// BOOL
+	UInteger dwFlagsAndAttributes ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpopenfilea
+External_Function FtpOpenFileA "FtpOpenFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszFileName ;	// PSTR
+	UInteger dwAccess ;
+	UInteger dwFlags ;	// FTP_FLAGS
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpopenfilew
+External_Function FtpOpenFileW "FtpOpenFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszFileName ;	// PWSTR
+	UInteger dwAccess ;
+	UInteger dwFlags ;	// FTP_FLAGS
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpputfilea
+External_Function FtpPutFileA "FtpPutFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszLocalFile ;	// PSTR
+	String lpszNewRemoteFile ;	// PSTR
+	UInteger dwFlags ;	// FTP_FLAGS
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+External_Function FtpPutFileEx "FtpPutFileEx" WININET.dll ;
+	Pointer hFtpSession ;	// Pointer*
+	WString lpszLocalFile ;	// PWSTR
+	String lpszNewRemoteFile ;	// PSTR
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpputfilew
+External_Function FtpPutFileW "FtpPutFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszLocalFile ;	// PWSTR
+	WString lpszNewRemoteFile ;	// PWSTR
+	UInteger dwFlags ;	// FTP_FLAGS
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpremovedirectorya
+External_Function FtpRemoveDirectoryA "FtpRemoveDirectoryA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszDirectory ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpremovedirectoryw
+External_Function FtpRemoveDirectoryW "FtpRemoveDirectoryW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszDirectory ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftprenamefilea
+External_Function FtpRenameFileA "FtpRenameFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszExisting ;	// PSTR
+	String lpszNew ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftprenamefilew
+External_Function FtpRenameFileW "FtpRenameFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszExisting ;	// PWSTR
+	WString lpszNew ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpsetcurrentdirectorya
+External_Function FtpSetCurrentDirectoryA "FtpSetCurrentDirectoryA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszDirectory ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-ftpsetcurrentdirectoryw
+External_Function FtpSetCurrentDirectoryW "FtpSetCurrentDirectoryW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszDirectory ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function GetDiskInfoA "GetDiskInfoA" WININET.dll ;
+	String pszPath ;	// PSTR
+	Pointer pdwClusterSize ;	// UInteger*
+	Pointer pdlAvail ;	// UBigint*
+	Pointer pdlTotal ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-geturlcacheconfiginfoa
+External_Function GetUrlCacheConfigInfoA "GetUrlCacheConfigInfoA" WININET.dll ;
+	Pointer lpCacheConfigInfo ;	// INTERNET_CACHE_CONFIG_INFOA*
+	Pointer lpcbCacheConfigInfo ;	// UInteger*
+	UInteger dwFieldControl ;	// CACHE_CONFIG
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winineti/nf-winineti-geturlcacheconfiginfow
+External_Function GetUrlCacheConfigInfoW "GetUrlCacheConfigInfoW" WININET.dll ;
+	Pointer lpCacheConfigInfo ;	// INTERNET_CACHE_CONFIG_INFOW*
+	Pointer lpcbCacheConfigInfo ;	// UInteger*
+	UInteger dwFieldControl ;	// CACHE_CONFIG
+	Returns Integer	// BOOL
+
+External_Function GetUrlCacheEntryBinaryBlob "GetUrlCacheEntryBinaryBlob" WININET.dll ;
+	WString pwszUrlName ;	// PWSTR
+	Pointer dwType ;	// UInteger*
+	Pointer pftExpireTime ;	// FILETIME*
+	Pointer pftAccessTime ;	// FILETIME*
+	Pointer pftModifiedTime ;	// FILETIME*
+	Pointer ppbBlob ;	// UChar**
+	Pointer pcbBlob ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-geturlcacheentryinfoa
+External_Function GetUrlCacheEntryInfoA "GetUrlCacheEntryInfoA" WININET.dll ;
+	String lpszUrlName ;	// PSTR
+	Pointer lpCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOA*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-geturlcacheentryinfoexa
+External_Function GetUrlCacheEntryInfoExA "GetUrlCacheEntryInfoExA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	Pointer lpCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOA*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	String lpszRedirectUrl ;	// PSTR
+	Pointer lpcbRedirectUrl ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-geturlcacheentryinfoexw
+External_Function GetUrlCacheEntryInfoExW "GetUrlCacheEntryInfoExW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	Pointer lpCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOW*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	WString lpszRedirectUrl ;	// PWSTR
+	Pointer lpcbRedirectUrl ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-geturlcacheentryinfow
+External_Function GetUrlCacheEntryInfoW "GetUrlCacheEntryInfoW" WININET.dll ;
+	WString lpszUrlName ;	// PWSTR
+	Pointer lpCacheEntryInfo ;	// INTERNET_CACHE_ENTRY_INFOW*
+	Pointer lpcbCacheEntryInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-geturlcachegroupattributea
+External_Function GetUrlCacheGroupAttributeA "GetUrlCacheGroupAttributeA" WININET.dll ;
+	Bigint gid ;
+	UInteger dwFlags ;
+	UInteger dwAttributes ;
+	Pointer lpGroupInfo ;	// INTERNET_CACHE_GROUP_INFOA*
+	Pointer lpcbGroupInfo ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-geturlcachegroupattributew
+External_Function GetUrlCacheGroupAttributeW "GetUrlCacheGroupAttributeW" WININET.dll ;
+	Bigint gid ;
+	UInteger dwFlags ;
+	UInteger dwAttributes ;
+	Pointer lpGroupInfo ;	// INTERNET_CACHE_GROUP_INFOW*
+	Pointer lpcbGroupInfo ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function GetUrlCacheHeaderData "GetUrlCacheHeaderData" WININET.dll ;
+	UInteger nIdx ;
+	Pointer lpdwData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gophercreatelocatora
+External_Function GopherCreateLocatorA "GopherCreateLocatorA" WININET.dll ;
+	String lpszHost ;	// PSTR
+	UShort nServerPort ;
+	String lpszDisplayString ;	// PSTR
+	String lpszSelectorString ;	// PSTR
+	UInteger dwGopherType ;
+	Pointer lpszLocator ;	// PSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gophercreatelocatorw
+External_Function GopherCreateLocatorW "GopherCreateLocatorW" WININET.dll ;
+	WString lpszHost ;	// PWSTR
+	UShort nServerPort ;
+	WString lpszDisplayString ;	// PWSTR
+	WString lpszSelectorString ;	// PWSTR
+	UInteger dwGopherType ;
+	Pointer lpszLocator ;	// PWSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gopherfindfirstfilea
+External_Function GopherFindFirstFileA "GopherFindFirstFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszLocator ;	// PSTR
+	String lpszSearchString ;	// PSTR
+	Pointer lpFindData ;	// GOPHER_FIND_DATAA*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gopherfindfirstfilew
+External_Function GopherFindFirstFileW "GopherFindFirstFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszLocator ;	// PWSTR
+	WString lpszSearchString ;	// PWSTR
+	Pointer lpFindData ;	// GOPHER_FIND_DATAW*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gophergetattributea
+External_Function GopherGetAttributeA "GopherGetAttributeA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszLocator ;	// PSTR
+	String lpszAttributeName ;	// PSTR
+	Pointer lpBuffer ;	// UChar*
+	UInteger dwBufferLength ;
+	Pointer lpdwCharactersReturned ;	// UInteger*
+	Pointer lpfnEnumerator ;	// GOPHER_ATTRIBUTE_ENUMERATOR
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gophergetattributew
+External_Function GopherGetAttributeW "GopherGetAttributeW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszLocator ;	// PWSTR
+	WString lpszAttributeName ;	// PWSTR
+	Pointer lpBuffer ;	// UChar*
+	UInteger dwBufferLength ;
+	Pointer lpdwCharactersReturned ;	// UInteger*
+	Pointer lpfnEnumerator ;	// GOPHER_ATTRIBUTE_ENUMERATOR
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gophergetlocatortypea
+External_Function GopherGetLocatorTypeA "GopherGetLocatorTypeA" WININET.dll ;
+	String lpszLocator ;	// PSTR
+	Pointer lpdwGopherType ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gophergetlocatortypew
+External_Function GopherGetLocatorTypeW "GopherGetLocatorTypeW" WININET.dll ;
+	WString lpszLocator ;	// PWSTR
+	Pointer lpdwGopherType ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gopheropenfilea
+External_Function GopherOpenFileA "GopherOpenFileA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszLocator ;	// PSTR
+	String lpszView ;	// PSTR
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-gopheropenfilew
+External_Function GopherOpenFileW "GopherOpenFileW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszLocator ;	// PWSTR
+	WString lpszView ;	// PWSTR
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpaddrequestheadersa
+External_Function HttpAddRequestHeadersA "HttpAddRequestHeadersA" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	String lpszHeaders ;	// PSTR
+	UInteger dwHeadersLength ;
+	UInteger dwModifiers ;	// HTTP_ADDREQ_FLAG
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpaddrequestheadersw
+External_Function HttpAddRequestHeadersW "HttpAddRequestHeadersW" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	WString lpszHeaders ;	// PWSTR
+	UInteger dwHeadersLength ;
+	UInteger dwModifiers ;	// HTTP_ADDREQ_FLAG
+	Returns Integer	// BOOL
+
+External_Function HttpCheckDavComplianceA "HttpCheckDavComplianceA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	String lpszComplianceToken ;	// PSTR
+	Pointer lpfFound ;	// BOOL*
+	Pointer hWnd ;	// HWND
+	Pointer lpvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function HttpCheckDavComplianceW "HttpCheckDavComplianceW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	WString lpszComplianceToken ;	// PWSTR
+	Pointer lpfFound ;	// BOOL*
+	Pointer hWnd ;	// HWND
+	Pointer lpvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function HttpCloseDependencyHandle "HttpCloseDependencyHandle" WININET.dll ;
+	Pointer hDependencyHandle ;	// Pointer*
+	Returns Pointer
+
+External_Function HttpDuplicateDependencyHandle "HttpDuplicateDependencyHandle" WININET.dll ;
+	Pointer hDependencyHandle ;	// Pointer*
+	Pointer phDuplicatedDependencyHandle ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpendrequesta
+External_Function HttpEndRequestA "HttpEndRequestA" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffersOut ;	// INTERNET_BUFFERSA*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpendrequestw
+External_Function HttpEndRequestW "HttpEndRequestW" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffersOut ;	// INTERNET_BUFFERSW*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+External_Function HttpGetServerCredentials "HttpGetServerCredentials" WININET.dll ;
+	WString pwszUrl ;	// PWSTR
+	Pointer ppwszUserName ;	// PWSTR*
+	Pointer ppwszPassword ;	// PWSTR*
+	Returns UInteger
+
+External_Function HttpIndicatePageLoadComplete "HttpIndicatePageLoadComplete" WININET.dll ;
+	Pointer hDependencyHandle ;	// Pointer*
+	Returns UInteger
+
+External_Function HttpIsHostHstsEnabled "HttpIsHostHstsEnabled" WININET.dll ;
+	WString pcwszUrl ;	// PWSTR
+	Pointer pfIsHsts ;	// BOOL*
+	Returns UInteger
+
+External_Function HttpOpenDependencyHandle "HttpOpenDependencyHandle" WININET.dll ;
+	Pointer hRequestHandle ;	// Pointer*
+	Integer fBackground ;	// BOOL
+	Pointer phDependencyHandle ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpopenrequesta
+External_Function HttpOpenRequestA "HttpOpenRequestA" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	String lpszVerb ;	// PSTR
+	String lpszObjectName ;	// PSTR
+	String lpszVersion ;	// PSTR
+	String lpszReferrer ;	// PSTR
+	Pointer lplpszAcceptTypes ;	// PSTR*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpopenrequestw
+External_Function HttpOpenRequestW "HttpOpenRequestW" WININET.dll ;
+	Pointer hConnect ;	// Pointer*
+	WString lpszVerb ;	// PWSTR
+	WString lpszObjectName ;	// PWSTR
+	WString lpszVersion ;	// PWSTR
+	WString lpszReferrer ;	// PWSTR
+	Pointer lplpszAcceptTypes ;	// PWSTR*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+External_Function HttpPushClose "HttpPushClose" WININET.dll ;
+	Pointer hWait ;	// HTTP_PUSH_WAIT_HANDLE
+	Returns Pointer
+
+External_Function HttpPushEnable "HttpPushEnable" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer pTransportSetting ;	// HTTP_PUSH_TRANSPORT_SETTING*
+	Pointer phWait ;	// HTTP_PUSH_WAIT_HANDLE*
+	Returns UInteger
+
+External_Function HttpPushWait "HttpPushWait" WININET.dll ;
+	Pointer hWait ;	// HTTP_PUSH_WAIT_HANDLE
+	Integer eType ;	// HTTP_PUSH_WAIT_TYPE
+	Pointer pNotificationStatus ;	// HTTP_PUSH_NOTIFICATION_STATUS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpqueryinfoa
+External_Function HttpQueryInfoA "HttpQueryInfoA" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	UInteger dwInfoLevel ;
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpdwBufferLength ;	// UInteger*
+	Pointer lpdwIndex ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpqueryinfow
+External_Function HttpQueryInfoW "HttpQueryInfoW" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	UInteger dwInfoLevel ;
+	Pointer lpBuffer ;	// Pointer*
+	Pointer lpdwBufferLength ;	// UInteger*
+	Pointer lpdwIndex ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpsendrequesta
+External_Function HttpSendRequestA "HttpSendRequestA" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	String lpszHeaders ;	// PSTR
+	UInteger dwHeadersLength ;
+	Pointer lpOptional ;	// Pointer*
+	UInteger dwOptionalLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpsendrequestexa
+External_Function HttpSendRequestExA "HttpSendRequestExA" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffersIn ;	// INTERNET_BUFFERSA*
+	Pointer lpBuffersOut ;	// INTERNET_BUFFERSA*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpsendrequestexw
+External_Function HttpSendRequestExW "HttpSendRequestExW" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	Pointer lpBuffersIn ;	// INTERNET_BUFFERSW*
+	Pointer lpBuffersOut ;	// INTERNET_BUFFERSW*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-httpsendrequestw
+External_Function HttpSendRequestW "HttpSendRequestW" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	WString lpszHeaders ;	// PWSTR
+	UInteger dwHeadersLength ;
+	Pointer lpOptional ;	// Pointer*
+	UInteger dwOptionalLength ;
+	Returns Integer	// BOOL
+
+External_Function HttpWebSocketClose "HttpWebSocketClose" WININET.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	UShort usStatus ;
+	Pointer pvReason ;	// Pointer*
+	UInteger dwReasonLength ;
+	Returns Integer	// BOOL
+
+External_Function HttpWebSocketCompleteUpgrade "HttpWebSocketCompleteUpgrade" WININET.dll ;
+	Pointer hRequest ;	// Pointer*
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+External_Function HttpWebSocketQueryCloseStatus "HttpWebSocketQueryCloseStatus" WININET.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	Pointer pusStatus ;	// UShort*
+	Pointer pvReason ;	// Pointer*
+	UInteger dwReasonLength ;
+	Pointer pdwReasonLengthConsumed ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function HttpWebSocketReceive "HttpWebSocketReceive" WININET.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	Pointer pvBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Pointer pdwBytesRead ;	// UInteger*
+	Pointer pBufferType ;	// HTTP_WEB_SOCKET_BUFFER_TYPE*
+	Returns Integer	// BOOL
+
+External_Function HttpWebSocketSend "HttpWebSocketSend" WININET.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	Integer BufferType ;	// HTTP_WEB_SOCKET_BUFFER_TYPE
+	Pointer pvBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Returns Integer	// BOOL
+
+External_Function HttpWebSocketShutdown "HttpWebSocketShutdown" WININET.dll ;
+	Pointer hWebSocket ;	// Pointer*
+	UShort usStatus ;
+	Pointer pvReason ;	// Pointer*
+	UInteger dwReasonLength ;
+	Returns Integer	// BOOL
+
+External_Function ImportCookieFileA "ImportCookieFileA" WININET.dll ;
+	String szFilename ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function ImportCookieFileW "ImportCookieFileW" WININET.dll ;
+	WString szFilename ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function IncrementUrlCacheHeaderData "IncrementUrlCacheHeaderData" WININET.dll ;
+	UInteger nIdx ;
+	Pointer lpdwData ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function InternalInternetGetCookie "InternalInternetGetCookie" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	Pointer lpszCookieData ;	// PSTR
+	Pointer lpdwDataSize ;	// UInteger*
+	Returns UInteger
+
+External_Function InternetAlgIdToStringA "InternetAlgIdToStringA" WININET.dll ;
+	UInteger ai ;	// ALG_ID
+	Pointer lpstr ;	// PSTR
+	Pointer lpdwstrLength ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+External_Function InternetAlgIdToStringW "InternetAlgIdToStringW" WININET.dll ;
+	UInteger ai ;	// ALG_ID
+	Pointer lpstr ;	// PWSTR
+	Pointer lpdwstrLength ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetattemptconnect
+External_Function InternetAttemptConnect "InternetAttemptConnect" WININET.dll ;
+	UInteger dwReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetautodial
+External_Function InternetAutodial "InternetAutodial" WININET.dll ;
+	UInteger dwFlags ;	// INTERNET_AUTODIAL
+	Pointer hwndParent ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetautodialhangup
+External_Function InternetAutodialHangup "InternetAutodialHangup" WININET.dll ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcanonicalizeurla
+External_Function InternetCanonicalizeUrlA "InternetCanonicalizeUrlA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	Pointer lpszBuffer ;	// PSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcanonicalizeurlw
+External_Function InternetCanonicalizeUrlW "InternetCanonicalizeUrlW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	Pointer lpszBuffer ;	// PWSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcheckconnectiona
+External_Function InternetCheckConnectionA "InternetCheckConnectionA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	UInteger dwFlags ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcheckconnectionw
+External_Function InternetCheckConnectionW "InternetCheckConnectionW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	UInteger dwFlags ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetclearallpersitecookiedecisions
+External_Function InternetClearAllPerSiteCookieDecisions "InternetClearAllPerSiteCookieDecisions" WININET.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetclosehandle
+External_Function InternetCloseHandle "InternetCloseHandle" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcombineurla
+External_Function InternetCombineUrlA "InternetCombineUrlA" WININET.dll ;
+	String lpszBaseUrl ;	// PSTR
+	String lpszRelativeUrl ;	// PSTR
+	Pointer lpszBuffer ;	// PSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcombineurlw
+External_Function InternetCombineUrlW "InternetCombineUrlW" WININET.dll ;
+	WString lpszBaseUrl ;	// PWSTR
+	WString lpszRelativeUrl ;	// PWSTR
+	Pointer lpszBuffer ;	// PWSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetconfirmzonecrossing
+External_Function InternetConfirmZoneCrossing "InternetConfirmZoneCrossing" WININET.dll ;
+	Pointer hWnd ;	// HWND
+	String szUrlPrev ;	// PSTR
+	String szUrlNew ;	// PSTR
+	Integer bPost ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetconfirmzonecrossinga
+External_Function InternetConfirmZoneCrossingA "InternetConfirmZoneCrossingA" WININET.dll ;
+	Pointer hWnd ;	// HWND
+	String szUrlPrev ;	// PSTR
+	String szUrlNew ;	// PSTR
+	Integer bPost ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetconfirmzonecrossingw
+External_Function InternetConfirmZoneCrossingW "InternetConfirmZoneCrossingW" WININET.dll ;
+	Pointer hWnd ;	// HWND
+	WString szUrlPrev ;	// PWSTR
+	WString szUrlNew ;	// PWSTR
+	Integer bPost ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetconnecta
+External_Function InternetConnectA "InternetConnectA" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	String lpszServerName ;	// PSTR
+	UShort nServerPort ;
+	String lpszUserName ;	// PSTR
+	String lpszPassword ;	// PSTR
+	UInteger dwService ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetconnectw
+External_Function InternetConnectW "InternetConnectW" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	WString lpszServerName ;	// PWSTR
+	UShort nServerPort ;
+	WString lpszUserName ;	// PWSTR
+	WString lpszPassword ;	// PWSTR
+	UInteger dwService ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+External_Function InternetConvertUrlFromWireToWideChar "InternetConvertUrlFromWireToWideChar" WININET.dll ;
+	String pcszUrl ;	// PSTR
+	UInteger cchUrl ;
+	WString pcwszBaseUrl ;	// PWSTR
+	UInteger dwCodePageHost ;
+	UInteger dwCodePagePath ;
+	Integer fEncodePathExtra ;	// BOOL
+	UInteger dwCodePageExtra ;
+	Pointer ppwszConvertedUrl ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcrackurla
+External_Function InternetCrackUrlA "InternetCrackUrlA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	UInteger dwUrlLength ;
+	UInteger dwFlags ;	// WIN_HTTP_CREATE_URL_FLAGS
+	Pointer lpUrlComponents ;	// URL_COMPONENTSA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcrackurlw
+External_Function InternetCrackUrlW "InternetCrackUrlW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	UInteger dwUrlLength ;
+	UInteger dwFlags ;	// WIN_HTTP_CREATE_URL_FLAGS
+	Pointer lpUrlComponents ;	// URL_COMPONENTSW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcreateurla
+External_Function InternetCreateUrlA "InternetCreateUrlA" WININET.dll ;
+	Pointer lpUrlComponents ;	// URL_COMPONENTSA*
+	UInteger dwFlags ;
+	Pointer lpszUrl ;	// PSTR
+	Pointer lpdwUrlLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetcreateurlw
+External_Function InternetCreateUrlW "InternetCreateUrlW" WININET.dll ;
+	Pointer lpUrlComponents ;	// URL_COMPONENTSW*
+	UInteger dwFlags ;
+	Pointer lpszUrl ;	// PWSTR
+	Pointer lpdwUrlLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetdial
+External_Function InternetDial "InternetDial" WININET.dll ;
+	Pointer hwndParent ;	// HWND
+	String lpszConnectoid ;	// PSTR
+	UInteger dwFlags ;
+	Pointer lpdwConnection ;	// UInteger*
+	UInteger dwReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetdiala
+External_Function InternetDialA "InternetDialA" WININET.dll ;
+	Pointer hwndParent ;	// HWND
+	String lpszConnectoid ;	// PSTR
+	UInteger dwFlags ;
+	Pointer lpdwConnection ;	// ULongPtr*
+	UInteger dwReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetdialw
+External_Function InternetDialW "InternetDialW" WININET.dll ;
+	Pointer hwndParent ;	// HWND
+	WString lpszConnectoid ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer lpdwConnection ;	// ULongPtr*
+	UInteger dwReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetenumpersitecookiedecisiona
+External_Function InternetEnumPerSiteCookieDecisionA "InternetEnumPerSiteCookieDecisionA" WININET.dll ;
+	Pointer pszSiteName ;	// PSTR
+	Pointer pcSiteNameSize ;	// UInteger*
+	Pointer pdwDecision ;	// UInteger*
+	UInteger dwIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetenumpersitecookiedecisionw
+External_Function InternetEnumPerSiteCookieDecisionW "InternetEnumPerSiteCookieDecisionW" WININET.dll ;
+	Pointer pszSiteName ;	// PWSTR
+	Pointer pcSiteNameSize ;	// UInteger*
+	Pointer pdwDecision ;	// UInteger*
+	UInteger dwIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-interneterrordlg
+External_Function InternetErrorDlg "InternetErrorDlg" WININET.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer hRequest ;	// Pointer*
+	UInteger dwError ;
+	UInteger dwFlags ;
+	Pointer lppvData ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetfindnextfilea
+External_Function InternetFindNextFileA "InternetFindNextFileA" WININET.dll ;
+	Pointer hFind ;	// Pointer*
+	Pointer lpvFindData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetfindnextfilew
+External_Function InternetFindNextFileW "InternetFindNextFileW" WININET.dll ;
+	Pointer hFind ;	// Pointer*
+	Pointer lpvFindData ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function InternetFortezzaCommand "InternetFortezzaCommand" WININET.dll ;
+	UInteger dwCommand ;
+	Pointer hwnd ;	// HWND
+	ULongPtr dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetfreecookies
+External_Function InternetFreeCookies "InternetFreeCookies" WININET.dll ;
+	Pointer pCookies ;	// INTERNET_COOKIE2*
+	UInteger dwCookieCount ;
+	Returns Pointer
+
+External_Function InternetFreeProxyInfoList "InternetFreeProxyInfoList" WININET.dll ;
+	Pointer pProxyInfoList ;	// WININET_PROXY_INFO_LIST*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetconnectedstate
+External_Function InternetGetConnectedState "InternetGetConnectedState" WININET.dll ;
+	Pointer lpdwFlags ;	// INTERNET_CONNECTION*
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetconnectedstateex
+External_Function InternetGetConnectedStateEx "InternetGetConnectedStateEx" WININET.dll ;
+	Pointer lpdwFlags ;	// INTERNET_CONNECTION*
+	Pointer lpszConnectionName ;	// PSTR
+	UInteger dwNameLen ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetconnectedstateexa
+External_Function InternetGetConnectedStateExA "InternetGetConnectedStateExA" WININET.dll ;
+	Pointer lpdwFlags ;	// INTERNET_CONNECTION*
+	Pointer lpszConnectionName ;	// PSTR
+	UInteger cchNameLen ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetconnectedstateexw
+External_Function InternetGetConnectedStateExW "InternetGetConnectedStateExW" WININET.dll ;
+	Pointer lpdwFlags ;	// INTERNET_CONNECTION*
+	Pointer lpszConnectionName ;	// PWSTR
+	UInteger cchNameLen ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetcookiea
+External_Function InternetGetCookieA "InternetGetCookieA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	String lpszCookieName ;	// PSTR
+	Pointer lpszCookieData ;	// PSTR
+	Pointer lpdwSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetcookieex2
+External_Function InternetGetCookieEx2 "InternetGetCookieEx2" WININET.dll ;
+	WString pcwszUrl ;	// PWSTR
+	WString pcwszCookieName ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer ppCookies ;	// INTERNET_COOKIE2**
+	Pointer pdwCookieCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetcookieexa
+External_Function InternetGetCookieExA "InternetGetCookieExA" WININET.dll ;
+	String lpszUrl ;	// PSTR
+	String lpszCookieName ;	// PSTR
+	String lpszCookieData ;	// PSTR
+	Pointer lpdwSize ;	// UInteger*
+	UInteger dwFlags ;	// INTERNET_COOKIE_FLAGS
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetcookieexw
+External_Function InternetGetCookieExW "InternetGetCookieExW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	WString lpszCookieName ;	// PWSTR
+	WString lpszCookieData ;	// PWSTR
+	Pointer lpdwSize ;	// UInteger*
+	UInteger dwFlags ;	// INTERNET_COOKIE_FLAGS
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetcookiew
+External_Function InternetGetCookieW "InternetGetCookieW" WININET.dll ;
+	WString lpszUrl ;	// PWSTR
+	WString lpszCookieName ;	// PWSTR
+	Pointer lpszCookieData ;	// PWSTR
+	Pointer lpdwSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetlastresponseinfoa
+External_Function InternetGetLastResponseInfoA "InternetGetLastResponseInfoA" WININET.dll ;
+	Pointer lpdwError ;	// UInteger*
+	Pointer lpszBuffer ;	// PSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetlastresponseinfow
+External_Function InternetGetLastResponseInfoW "InternetGetLastResponseInfoW" WININET.dll ;
+	Pointer lpdwError ;	// UInteger*
+	Pointer lpszBuffer ;	// PWSTR
+	Pointer lpdwBufferLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetpersitecookiedecisiona
+External_Function InternetGetPerSiteCookieDecisionA "InternetGetPerSiteCookieDecisionA" WININET.dll ;
+	String pchHostName ;	// PSTR
+	Pointer pResult ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgetpersitecookiedecisionw
+External_Function InternetGetPerSiteCookieDecisionW "InternetGetPerSiteCookieDecisionW" WININET.dll ;
+	WString pchHostName ;	// PWSTR
+	Pointer pResult ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function InternetGetProxyForUrl "InternetGetProxyForUrl" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	WString pcwszUrl ;	// PWSTR
+	Pointer pProxyInfoList ;	// WININET_PROXY_INFO_LIST*
+	Returns UInteger
+
+External_Function InternetGetSecurityInfoByURL "InternetGetSecurityInfoByURL" WININET.dll ;
+	String lpszURL ;	// PSTR
+	Pointer ppCertChain ;	// CERT_CHAIN_CONTEXT**
+	Pointer pdwSecureFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function InternetGetSecurityInfoByURLA "InternetGetSecurityInfoByURLA" WININET.dll ;
+	String lpszURL ;	// PSTR
+	Pointer ppCertChain ;	// CERT_CHAIN_CONTEXT**
+	Pointer pdwSecureFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function InternetGetSecurityInfoByURLW "InternetGetSecurityInfoByURLW" WININET.dll ;
+	WString lpszURL ;	// PWSTR
+	Pointer ppCertChain ;	// CERT_CHAIN_CONTEXT**
+	Pointer pdwSecureFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgoonline
+External_Function InternetGoOnline "InternetGoOnline" WININET.dll ;
+	String lpszURL ;	// PSTR
+	Pointer hwndParent ;	// HWND
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgoonlinea
+External_Function InternetGoOnlineA "InternetGoOnlineA" WININET.dll ;
+	String lpszURL ;	// PSTR
+	Pointer hwndParent ;	// HWND
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetgoonlinew
+External_Function InternetGoOnlineW "InternetGoOnlineW" WININET.dll ;
+	WString lpszURL ;	// PWSTR
+	Pointer hwndParent ;	// HWND
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internethangup
+External_Function InternetHangUp "InternetHangUp" WININET.dll ;
+	ULongPtr dwConnection ;
+	UInteger dwReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetinitializeautoproxydll
+External_Function InternetInitializeAutoProxyDll "InternetInitializeAutoProxyDll" WININET.dll ;
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetlockrequestfile
+External_Function InternetLockRequestFile "InternetLockRequestFile" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	Pointer lphLockRequestInfo ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetopena
+External_Function InternetOpenA "InternetOpenA" WININET.dll ;
+	String lpszAgent ;	// PSTR
+	UInteger dwAccessType ;
+	String lpszProxy ;	// PSTR
+	String lpszProxyBypass ;	// PSTR
+	UInteger dwFlags ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetopenurla
+External_Function InternetOpenUrlA "InternetOpenUrlA" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	String lpszUrl ;	// PSTR
+	String lpszHeaders ;	// PSTR
+	UInteger dwHeadersLength ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetopenurlw
+External_Function InternetOpenUrlW "InternetOpenUrlW" WININET.dll ;
+	Pointer hInternet ;	// Pointer*
+	WString lpszUrl ;	// PWSTR
+	WString lpszHeaders ;	// PWSTR
+	UInteger dwHeadersLength ;
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetopenw
+External_Function InternetOpenW "InternetOpenW" WININET.dll ;
+	WString lpszAgent ;	// PWSTR
+	UInteger dwAccessType ;
+	WString lpszProxy ;	// PWSTR
+	WString lpszProxyBypass ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wininet/nf-wininet-internetquerydataavailable
+External_Function InternetQueryDataAvailable "InternetQueryDataAvailable" WININET.dll ;
+	Pointer hFile ;	// Pointer*
+	Pointer lpdwNumberOfBytesAvailable ;	// UInteger*
+	UInteger dwFlags ;
+	ULongPtr dwContext ;
+	Returns Integer	// BOOL
+
+External_Function InternetQueryFortezzaStatus "InternetQueryFortezzaStatus" WININET.dll ;
+	Pointer pdwStatus ;	// UInteger*
+	ULongPtr dwReserved ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

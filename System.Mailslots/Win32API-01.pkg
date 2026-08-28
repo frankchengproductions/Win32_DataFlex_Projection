@@ -1,0 +1,37 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createmailslota
+External_Function CreateMailslotA "CreateMailslotA" KERNEL32.dll ;
+	String lpName ;	// PSTR
+	UInteger nMaxMessageSize ;
+	UInteger lReadTimeout ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createmailslotw
+External_Function CreateMailslotW "CreateMailslotW" KERNEL32.dll ;
+	WString lpName ;	// PWSTR
+	UInteger nMaxMessageSize ;
+	UInteger lReadTimeout ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getmailslotinfo
+External_Function GetMailslotInfo "GetMailslotInfo" KERNEL32.dll ;
+	Pointer hMailslot ;	// HANDLE
+	Pointer lpMaxMessageSize ;	// UInteger*
+	Pointer lpNextSize ;	// UInteger*
+	Pointer lpMessageCount ;	// UInteger*
+	Pointer lpReadTimeout ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setmailslotinfo
+External_Function SetMailslotInfo "SetMailslotInfo" KERNEL32.dll ;
+	Pointer hMailslot ;	// HANDLE
+	UInteger lReadTimeout ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

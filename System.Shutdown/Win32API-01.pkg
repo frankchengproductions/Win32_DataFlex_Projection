@@ -1,0 +1,105 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-exitwindowsex
+External_Function ExitWindowsEx "ExitWindowsEx" USER32.dll ;
+	UInteger uFlags ;	// EXIT_WINDOWS_FLAGS
+	UInteger dwReason ;	// SHUTDOWN_REASON
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-lockworkstation
+External_Function LockWorkStation "LockWorkStation" USER32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-shutdownblockreasoncreate
+External_Function ShutdownBlockReasonCreate "ShutdownBlockReasonCreate" USER32.dll ;
+	Pointer hWnd ;	// HWND
+	WString pwszReason ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-shutdownblockreasondestroy
+External_Function ShutdownBlockReasonDestroy "ShutdownBlockReasonDestroy" USER32.dll ;
+	Pointer hWnd ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-shutdownblockreasonquery
+External_Function ShutdownBlockReasonQuery "ShutdownBlockReasonQuery" USER32.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer pwszBuff ;	// PWSTR
+	Pointer pcchBuff ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-abortsystemshutdowna
+External_Function AbortSystemShutdownA "AbortSystemShutdownA" ADVAPI32.dll ;
+	String lpMachineName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-abortsystemshutdownw
+External_Function AbortSystemShutdownW "AbortSystemShutdownW" ADVAPI32.dll ;
+	WString lpMachineName ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function CheckForHiberboot "CheckForHiberboot" ADVAPI32.dll ;
+	Pointer pHiberboot ;	// BOOLEAN*
+	UChar bClearFlag ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-initiateshutdowna
+External_Function InitiateShutdownA "InitiateShutdownA" ADVAPI32.dll ;
+	String lpMachineName ;	// PSTR
+	String lpMessage ;	// PSTR
+	UInteger dwGracePeriod ;
+	UInteger dwShutdownFlags ;	// SHUTDOWN_FLAGS
+	UInteger dwReason ;	// SHUTDOWN_REASON
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-initiateshutdownw
+External_Function InitiateShutdownW "InitiateShutdownW" ADVAPI32.dll ;
+	WString lpMachineName ;	// PWSTR
+	WString lpMessage ;	// PWSTR
+	UInteger dwGracePeriod ;
+	UInteger dwShutdownFlags ;	// SHUTDOWN_FLAGS
+	UInteger dwReason ;	// SHUTDOWN_REASON
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-initiatesystemshutdowna
+External_Function InitiateSystemShutdownA "InitiateSystemShutdownA" ADVAPI32.dll ;
+	String lpMachineName ;	// PSTR
+	String lpMessage ;	// PSTR
+	UInteger dwTimeout ;
+	Integer bForceAppsClosed ;	// BOOL
+	Integer bRebootAfterShutdown ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-initiatesystemshutdownexa
+External_Function InitiateSystemShutdownExA "InitiateSystemShutdownExA" ADVAPI32.dll ;
+	String lpMachineName ;	// PSTR
+	String lpMessage ;	// PSTR
+	UInteger dwTimeout ;
+	Integer bForceAppsClosed ;	// BOOL
+	Integer bRebootAfterShutdown ;	// BOOL
+	UInteger dwReason ;	// SHUTDOWN_REASON
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-initiatesystemshutdownexw
+External_Function InitiateSystemShutdownExW "InitiateSystemShutdownExW" ADVAPI32.dll ;
+	WString lpMachineName ;	// PWSTR
+	WString lpMessage ;	// PWSTR
+	UInteger dwTimeout ;
+	Integer bForceAppsClosed ;	// BOOL
+	Integer bRebootAfterShutdown ;	// BOOL
+	UInteger dwReason ;	// SHUTDOWN_REASON
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winreg/nf-winreg-initiatesystemshutdownw
+External_Function InitiateSystemShutdownW "InitiateSystemShutdownW" ADVAPI32.dll ;
+	WString lpMachineName ;	// PWSTR
+	WString lpMessage ;	// PWSTR
+	UInteger dwTimeout ;
+	Integer bForceAppsClosed ;	// BOOL
+	Integer bRebootAfterShutdown ;	// BOOL
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

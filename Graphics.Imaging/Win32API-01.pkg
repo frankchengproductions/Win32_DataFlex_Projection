@@ -1,0 +1,82 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wicconvertbitmapsource
+External_Function WICConvertBitmapSource "WICConvertBitmapSource" WindowsCodecs.dll ;
+	Pointer dstFormat ;	// Guid*
+	Pointer pISrc ;	// IWICBitmapSource
+	Pointer ppIDst ;	// IWICBitmapSource*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wiccreatebitmapfromsection
+External_Function WICCreateBitmapFromSection "WICCreateBitmapFromSection" WindowsCodecs.dll ;
+	UInteger width ;
+	UInteger height ;
+	Pointer pixelFormat ;	// Guid*
+	Pointer hSection ;	// HANDLE
+	UInteger stride ;
+	UInteger offset ;
+	Pointer ppIBitmap ;	// IWICBitmap*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wiccreatebitmapfromsectionex
+External_Function WICCreateBitmapFromSectionEx "WICCreateBitmapFromSectionEx" WindowsCodecs.dll ;
+	UInteger width ;
+	UInteger height ;
+	Pointer pixelFormat ;	// Guid*
+	Pointer hSection ;	// HANDLE
+	UInteger stride ;
+	UInteger offset ;
+	Integer desiredAccessLevel ;	// WICSectionAccessLevel
+	Pointer ppIBitmap ;	// IWICBitmap*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-wicgetmetadatacontentsize
+External_Function WICGetMetadataContentSize "WICGetMetadataContentSize" WindowsCodecs.dll ;
+	Pointer guidContainerFormat ;	// Guid*
+	Pointer pIWriter ;	// IWICMetadataWriter
+	Pointer pcbSize ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wicmapguidtoshortname
+External_Function WICMapGuidToShortName "WICMapGuidToShortName" WindowsCodecs.dll ;
+	Pointer guid ;	// Guid*
+	UInteger cchName ;
+	Pointer wzName ;	// PWSTR
+	Pointer pcchActual ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wicmapschematoname
+External_Function WICMapSchemaToName "WICMapSchemaToName" WindowsCodecs.dll ;
+	Pointer guidMetadataFormat ;	// Guid*
+	WString pwzSchema ;	// PWSTR
+	UInteger cchName ;
+	Pointer wzName ;	// PWSTR
+	Pointer pcchActual ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/nf-wincodec-wicmapshortnametoguid
+External_Function WICMapShortNameToGuid "WICMapShortNameToGuid" WindowsCodecs.dll ;
+	WString wzName ;	// PWSTR
+	Pointer pguid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-wicmatchmetadatacontent
+External_Function WICMatchMetadataContent "WICMatchMetadataContent" WindowsCodecs.dll ;
+	Pointer guidContainerFormat ;	// Guid*
+	Pointer pguidVendor ;	// Guid*
+	Pointer pIStream ;	// IStream
+	Pointer pguidMetadataFormat ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincodecsdk/nf-wincodecsdk-wicserializemetadatacontent
+External_Function WICSerializeMetadataContent "WICSerializeMetadataContent" WindowsCodecs.dll ;
+	Pointer guidContainerFormat ;	// Guid*
+	Pointer pIWriter ;	// IWICMetadataWriter
+	UInteger dwPersistOptions ;
+	Pointer pIStream ;	// IStream
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

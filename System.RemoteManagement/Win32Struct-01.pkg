@@ -1,0 +1,191 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_authentication_credentials
+Struct WSMAN_AUTHENTICATION_CREDENTIALS
+	UInteger authenticationMechanism
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_authz_quota
+Struct WSMAN_AUTHZ_QUOTA
+	UInteger maxAllowedConcurrentShells
+	UInteger maxAllowedConcurrentOperations
+	UInteger timeslotSize
+	UInteger maxAllowedOperationsPerTimeslot
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_certificate_details
+Struct WSMAN_CERTIFICATE_DETAILS
+	Pointer subject											// PWSTR
+	Pointer issuerName										// PWSTR
+	Pointer issuerThumbprint								// PWSTR
+	Pointer subjectName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_command_arg_set
+Struct WSMAN_COMMAND_ARG_SET
+	UInteger argsCount
+	Integer iMissingAlignment1
+	Pointer args											// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_data
+Struct WSMAN_DATA
+	Integer type											// WSManDataType
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_data_binary
+Struct WSMAN_DATA_BINARY
+	UInteger dataLength
+	Integer iMissingAlignment1
+	Pointer data											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_data_text
+Struct WSMAN_DATA_TEXT
+	UInteger bufferLength
+	Integer iMissingAlignment1
+	Pointer buffer											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_environment_variable
+Struct WSMAN_ENVIRONMENT_VARIABLE
+	Pointer name											// PWSTR
+	Pointer value											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_environment_variable_set
+Struct WSMAN_ENVIRONMENT_VARIABLE_SET
+	UInteger varsCount
+	Integer iMissingAlignment1
+	Pointer vars											// WSMAN_ENVIRONMENT_VARIABLE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_filter
+Struct WSMAN_FILTER
+	Pointer filter											// PWSTR
+	Pointer dialect											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_fragment
+Struct WSMAN_FRAGMENT
+	Pointer path											// PWSTR
+	Pointer dialect											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_key
+Struct WSMAN_KEY
+	Pointer key												// PWSTR
+	Pointer value											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_operation_info
+Struct WSMAN_OPERATION_INFO
+	WSMAN_FRAGMENT fragment
+	WSMAN_FILTER filter
+	WSMAN_SELECTOR_SET selectorSet
+	WSMAN_OPTION_SET optionSet
+	Pointer reserved										// Pointer*
+	UInteger version
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_option
+Struct WSMAN_OPTION
+	Pointer name											// PWSTR
+	Pointer value											// PWSTR
+	Integer mustComply										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_option_set
+Struct WSMAN_OPTION_SET
+	UInteger optionsCount
+	Integer iMissingAlignment1
+	Pointer options											// WSMAN_OPTION*
+	Integer optionsMustUnderstand							// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_plugin_request
+Struct WSMAN_PLUGIN_REQUEST
+	Pointer senderDetails									// WSMAN_SENDER_DETAILS*
+	Pointer locale											// PWSTR
+	Pointer resourceUri										// PWSTR
+	Pointer operationInfo									// WSMAN_OPERATION_INFO*
+	Integer shutdownNotification							// BOOL
+	Integer iMissingAlignment1
+	Pointer shutdownNotificationHandle						// HANDLE
+	Pointer dataLocale										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_proxy_info
+Struct WSMAN_PROXY_INFO
+	UInteger accessType
+	Integer iMissingAlignment1
+	WSMAN_AUTHENTICATION_CREDENTIALS authenticationCredentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_selector_set
+Struct WSMAN_SELECTOR_SET
+	UInteger numberKeys
+	Integer iMissingAlignment1
+	Pointer keys											// WSMAN_KEY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_sender_details
+Struct WSMAN_SENDER_DETAILS
+	Pointer senderName										// PWSTR
+	Pointer authenticationMechanism							// PWSTR
+	Pointer certificateDetails								// WSMAN_CERTIFICATE_DETAILS*
+	Pointer clientToken										// HANDLE
+	Pointer httpURL											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_shell_async
+Struct WSMAN_SHELL_ASYNC
+	Pointer operationContext								// Pointer*
+	Pointer completionFunction								// WSMAN_SHELL_COMPLETION_FUNCTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_shell_disconnect_info
+Struct WSMAN_SHELL_DISCONNECT_INFO
+	UInteger idleTimeoutMs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_shell_startup_info_v10
+Struct WSMAN_SHELL_STARTUP_INFO_V10
+	Pointer inputStreamSet									// WSMAN_STREAM_ID_SET*
+	Pointer outputStreamSet									// WSMAN_STREAM_ID_SET*
+	UInteger idleTimeoutMs
+	Integer iMissingAlignment1
+	Pointer workingDirectory								// PWSTR
+	Pointer variableSet										// WSMAN_ENVIRONMENT_VARIABLE_SET*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_shell_startup_info_v11
+Struct WSMAN_SHELL_STARTUP_INFO_V11
+	WSMAN_SHELL_STARTUP_INFO_V10 Base
+	Pointer name											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_stream_id_set
+Struct WSMAN_STREAM_ID_SET
+	UInteger streamIDsCount
+	Integer iMissingAlignment1
+	Pointer streamIDs										// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsman/ns-wsman-wsman_username_password_creds
+Struct WSMAN_USERNAME_PASSWORD_CREDS
+	Pointer username										// PWSTR
+	Pointer password										// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

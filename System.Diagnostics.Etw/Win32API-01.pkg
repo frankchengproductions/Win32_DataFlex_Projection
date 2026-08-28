@@ -1,0 +1,663 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-closetrace
+External_Function CloseTrace "CloseTrace" ADVAPI32.dll ;
+	UBigint TraceHandle ;	// PROCESSTRACE_HANDLE
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-controltracea
+External_Function ControlTraceA "ControlTraceA" ADVAPI32.dll ;
+	UBigint TraceId ;
+	String InstanceName ;	// PSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	UInteger ControlCode ;	// EVENT_TRACE_CONTROL
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-controltracew
+External_Function ControlTraceW "ControlTraceW" ADVAPI32.dll ;
+	UBigint TraceId ;
+	WString InstanceName ;	// PWSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	UInteger ControlCode ;	// EVENT_TRACE_CONTROL
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-createtraceinstanceid
+External_Function CreateTraceInstanceId "CreateTraceInstanceId" ADVAPI32.dll ;
+	Pointer RegHandle ;	// HANDLE
+	Pointer InstInfo ;	// EVENT_INSTANCE_INFO*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/securitybaseapi/nf-securitybaseapi-cveeventwrite
+External_Function CveEventWrite "CveEventWrite" ADVAPI32.dll ;
+	WString CveId ;	// PWSTR
+	WString AdditionalDetails ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-enabletrace
+External_Function EnableTrace "EnableTrace" ADVAPI32.dll ;
+	UInteger Enable ;
+	UInteger EnableFlag ;
+	UInteger EnableLevel ;
+	Pointer ControlGuid ;	// Guid*
+	UBigint TraceId ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-enabletraceex
+External_Function EnableTraceEx "EnableTraceEx" ADVAPI32.dll ;
+	Pointer ProviderId ;	// Guid*
+	Pointer SourceId ;	// Guid*
+	UBigint TraceId ;
+	UInteger IsEnabled ;
+	UChar Level ;
+	UBigint MatchAnyKeyword ;
+	UBigint MatchAllKeyword ;
+	UInteger EnableProperty ;
+	Pointer EnableFilterDesc ;	// EVENT_FILTER_DESCRIPTOR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-enabletraceex2
+External_Function EnableTraceEx2 "EnableTraceEx2" ADVAPI32.dll ;
+	UBigint TraceId ;
+	Pointer ProviderId ;	// Guid*
+	UInteger ControlCode ;
+	UChar Level ;
+	UBigint MatchAnyKeyword ;
+	UBigint MatchAllKeyword ;
+	UInteger Timeout ;
+	Pointer EnableParameters ;	// ENABLE_TRACE_PARAMETERS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-enumeratetraceguids
+External_Function EnumerateTraceGuids "EnumerateTraceGuids" ADVAPI32.dll ;
+	Pointer GuidPropertiesArray ;	// TRACE_GUID_PROPERTIES**
+	UInteger PropertyArrayCount ;
+	Pointer GuidCount ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-enumeratetraceguidsex
+External_Function EnumerateTraceGuidsEx "EnumerateTraceGuidsEx" ADVAPI32.dll ;
+	Integer TraceQueryInfoClass ;	// TRACE_QUERY_INFO_CLASS
+	Pointer InBuffer ;	// Pointer*
+	UInteger InBufferSize ;
+	Pointer OutBuffer ;	// Pointer*
+	UInteger OutBufferSize ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntcons/nf-evntcons-eventaccesscontrol
+External_Function EventAccessControl "EventAccessControl" ADVAPI32.dll ;
+	Pointer Guid ;	// Guid*
+	UInteger Operation ;
+	Pointer Sid ;	// PSID
+	UInteger Rights ;
+	UChar AllowOrDeny ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntcons/nf-evntcons-eventaccessquery
+External_Function EventAccessQuery "EventAccessQuery" ADVAPI32.dll ;
+	Pointer Guid ;	// Guid*
+	Pointer Buffer ;	// PSECURITY_DESCRIPTOR
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntcons/nf-evntcons-eventaccessremove
+External_Function EventAccessRemove "EventAccessRemove" ADVAPI32.dll ;
+	Pointer Guid ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventactivityidcontrol
+External_Function EventActivityIdControl "EventActivityIdControl" ADVAPI32.dll ;
+	UInteger ControlCode ;
+	Pointer ActivityId ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventenabled
+External_Function EventEnabled "EventEnabled" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	Pointer EventDescriptor ;	// EVENT_DESCRIPTOR*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventproviderenabled
+External_Function EventProviderEnabled "EventProviderEnabled" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	UChar Level ;
+	UBigint Keyword ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventregister
+External_Function EventRegister "EventRegister" ADVAPI32.dll ;
+	Pointer ProviderId ;	// Guid*
+	Pointer EnableCallback ;	// PENABLECALLBACK
+	Pointer CallbackContext ;	// Pointer*
+	Pointer RegHandle ;	// REGHANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventsetinformation
+External_Function EventSetInformation "EventSetInformation" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	Integer InformationClass ;	// EVENT_INFO_CLASS
+	Pointer EventInformation ;	// Pointer*
+	UInteger InformationLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventunregister
+External_Function EventUnregister "EventUnregister" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventwrite
+External_Function EventWrite "EventWrite" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	Pointer EventDescriptor ;	// EVENT_DESCRIPTOR*
+	UInteger UserDataCount ;
+	Pointer UserData ;	// EVENT_DATA_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventwriteex
+External_Function EventWriteEx "EventWriteEx" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	Pointer EventDescriptor ;	// EVENT_DESCRIPTOR*
+	UBigint Filter ;
+	UInteger Flags ;
+	Pointer ActivityId ;	// Guid*
+	Pointer RelatedActivityId ;	// Guid*
+	UInteger UserDataCount ;
+	Pointer UserData ;	// EVENT_DATA_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventwritestring
+External_Function EventWriteString "EventWriteString" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	UChar Level ;
+	UBigint Keyword ;
+	WString String ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/nf-evntprov-eventwritetransfer
+External_Function EventWriteTransfer "EventWriteTransfer" ADVAPI32.dll ;
+	Bigint RegHandle ;	// REGHANDLE
+	Pointer EventDescriptor ;	// EVENT_DESCRIPTOR*
+	Pointer ActivityId ;	// Guid*
+	Pointer RelatedActivityId ;	// Guid*
+	UInteger UserDataCount ;
+	Pointer UserData ;	// EVENT_DATA_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-flushtracea
+External_Function FlushTraceA "FlushTraceA" ADVAPI32.dll ;
+	UBigint TraceId ;
+	String InstanceName ;	// PSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-flushtracew
+External_Function FlushTraceW "FlushTraceW" ADVAPI32.dll ;
+	UBigint TraceId ;
+	WString InstanceName ;	// PWSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-gettraceenableflags
+External_Function GetTraceEnableFlags "GetTraceEnableFlags" ADVAPI32.dll ;
+	UBigint TraceHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-gettraceenablelevel
+External_Function GetTraceEnableLevel "GetTraceEnableLevel" ADVAPI32.dll ;
+	UBigint TraceHandle ;
+	Returns UChar
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-gettraceloggerhandle
+External_Function GetTraceLoggerHandle "GetTraceLoggerHandle" ADVAPI32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns UBigint
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-opentracea
+External_Function OpenTraceA "OpenTraceA" ADVAPI32.dll ;
+	Pointer Logfile ;	// EVENT_TRACE_LOGFILEA*
+	Returns UBigint	// PROCESSTRACE_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-opentracefrombufferstream
+External_Function OpenTraceFromBufferStream "OpenTraceFromBufferStream" ADVAPI32.dll ;
+	Pointer Options ;	// ETW_OPEN_TRACE_OPTIONS*
+	Pointer BufferCompletionCallback ;	// PETW_BUFFER_COMPLETION_CALLBACK
+	Pointer BufferCompletionContext ;	// Pointer*
+	Returns UBigint	// PROCESSTRACE_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-opentracefromfile
+External_Function OpenTraceFromFile "OpenTraceFromFile" ADVAPI32.dll ;
+	WString LogFileName ;	// PWSTR
+	Pointer Options ;	// ETW_OPEN_TRACE_OPTIONS*
+	Pointer LogFileHeader ;	// TRACE_LOGFILE_HEADER*
+	Returns UBigint	// PROCESSTRACE_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-opentracefromrealtimelogger
+External_Function OpenTraceFromRealTimeLogger "OpenTraceFromRealTimeLogger" ADVAPI32.dll ;
+	WString LoggerName ;	// PWSTR
+	Pointer Options ;	// ETW_OPEN_TRACE_OPTIONS*
+	Pointer LogFileHeader ;	// TRACE_LOGFILE_HEADER*
+	Returns UBigint	// PROCESSTRACE_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-opentracefromrealtimeloggerwithallocationoptions
+External_Function OpenTraceFromRealTimeLoggerWithAllocationOptions "OpenTraceFromRealTimeLoggerWithAllocationOptions" ADVAPI32.dll ;
+	WString LoggerName ;	// PWSTR
+	Pointer Options ;	// ETW_OPEN_TRACE_OPTIONS*
+	ULongPtr AllocationSize ;
+	Pointer MemoryPartitionHandle ;	// HANDLE
+	Pointer LogFileHeader ;	// TRACE_LOGFILE_HEADER*
+	Returns UBigint	// PROCESSTRACE_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-opentracew
+External_Function OpenTraceW "OpenTraceW" ADVAPI32.dll ;
+	Pointer Logfile ;	// EVENT_TRACE_LOGFILEW*
+	Returns UBigint	// PROCESSTRACE_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-processtrace
+External_Function ProcessTrace "ProcessTrace" ADVAPI32.dll ;
+	Pointer HandleArray ;	// PROCESSTRACE_HANDLE*
+	UInteger HandleCount ;
+	Pointer StartTime ;	// FILETIME*
+	Pointer EndTime ;	// FILETIME*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-processtraceaddbuffertobufferstream
+External_Function ProcessTraceAddBufferToBufferStream "ProcessTraceAddBufferToBufferStream" ADVAPI32.dll ;
+	UBigint TraceHandle ;	// PROCESSTRACE_HANDLE
+	Pointer Buffer ;	// ETW_BUFFER_HEADER*
+	UInteger BufferSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-processtracebufferdecrementreference
+External_Function ProcessTraceBufferDecrementReference "ProcessTraceBufferDecrementReference" ADVAPI32.dll ;
+	Pointer Buffer ;	// ETW_BUFFER_HEADER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-processtracebufferincrementreference
+External_Function ProcessTraceBufferIncrementReference "ProcessTraceBufferIncrementReference" ADVAPI32.dll ;
+	UBigint TraceHandle ;	// PROCESSTRACE_HANDLE
+	Pointer Buffer ;	// ETW_BUFFER_HEADER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-queryalltracesa
+External_Function QueryAllTracesA "QueryAllTracesA" ADVAPI32.dll ;
+	Pointer PropertyArray ;	// EVENT_TRACE_PROPERTIES**
+	UInteger PropertyArrayCount ;
+	Pointer LoggerCount ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-queryalltracesw
+External_Function QueryAllTracesW "QueryAllTracesW" ADVAPI32.dll ;
+	Pointer PropertyArray ;	// EVENT_TRACE_PROPERTIES**
+	UInteger PropertyArrayCount ;
+	Pointer LoggerCount ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-querytracea
+External_Function QueryTraceA "QueryTraceA" ADVAPI32.dll ;
+	UBigint TraceId ;
+	String InstanceName ;	// PSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-querytraceprocessinghandle
+External_Function QueryTraceProcessingHandle "QueryTraceProcessingHandle" ADVAPI32.dll ;
+	UBigint ProcessingHandle ;	// PROCESSTRACE_HANDLE
+	Integer InformationClass ;	// ETW_PROCESS_HANDLE_INFO_TYPE
+	Pointer InBuffer ;	// Pointer*
+	UInteger InBufferSize ;
+	Pointer OutBuffer ;	// Pointer*
+	UInteger OutBufferSize ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-querytracew
+External_Function QueryTraceW "QueryTraceW" ADVAPI32.dll ;
+	UBigint TraceId ;
+	WString InstanceName ;	// PWSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-registertraceguidsa
+External_Function RegisterTraceGuidsA "RegisterTraceGuidsA" ADVAPI32.dll ;
+	Pointer RequestAddress ;	// WMIDPREQUEST
+	Pointer RequestContext ;	// Pointer*
+	Pointer ControlGuid ;	// Guid*
+	UInteger GuidCount ;
+	Pointer TraceGuidReg ;	// TRACE_GUID_REGISTRATION*
+	String MofImagePath ;	// PSTR
+	String MofResourceName ;	// PSTR
+	Pointer RegistrationHandle ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-registertraceguidsw
+External_Function RegisterTraceGuidsW "RegisterTraceGuidsW" ADVAPI32.dll ;
+	Pointer RequestAddress ;	// WMIDPREQUEST
+	Pointer RequestContext ;	// Pointer*
+	Pointer ControlGuid ;	// Guid*
+	UInteger GuidCount ;
+	Pointer TraceGuidReg ;	// TRACE_GUID_REGISTRATION*
+	WString MofImagePath ;	// PWSTR
+	WString MofResourceName ;	// PWSTR
+	Pointer RegistrationHandle ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-removetracecallback
+External_Function RemoveTraceCallback "RemoveTraceCallback" ADVAPI32.dll ;
+	Pointer pGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-settracecallback
+External_Function SetTraceCallback "SetTraceCallback" ADVAPI32.dll ;
+	Pointer pGuid ;	// Guid*
+	Pointer EventCallback ;	// PEVENT_CALLBACK
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-starttracea
+External_Function StartTraceA "StartTraceA" ADVAPI32.dll ;
+	Pointer TraceId ;	// UBigint*
+	String InstanceName ;	// PSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-starttracew
+External_Function StartTraceW "StartTraceW" ADVAPI32.dll ;
+	Pointer TraceId ;	// UBigint*
+	WString InstanceName ;	// PWSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-stoptracea
+External_Function StopTraceA "StopTraceA" ADVAPI32.dll ;
+	UBigint TraceId ;
+	String InstanceName ;	// PSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-stoptracew
+External_Function StopTraceW "StopTraceW" ADVAPI32.dll ;
+	UBigint TraceId ;
+	WString InstanceName ;	// PWSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function TraceConfigureLastBranchRecord "TraceConfigureLastBranchRecord" ADVAPI32.dll ;
+	UBigint TraceId ;
+	Integer LbrConfiguration ;	// TRACE_LBR_CONFIGURATION
+	Pointer Events ;	// CLASSIC_EVENT_ID*
+	UInteger EventCount ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-traceevent
+External_Function TraceEvent "TraceEvent" ADVAPI32.dll ;
+	UBigint TraceHandle ;
+	Pointer EventTrace ;	// EVENT_TRACE_HEADER*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-traceeventinstance
+External_Function TraceEventInstance "TraceEventInstance" ADVAPI32.dll ;
+	UBigint TraceHandle ;
+	Pointer EventTrace ;	// EVENT_INSTANCE_HEADER*
+	Pointer InstInfo ;	// EVENT_INSTANCE_INFO*
+	Pointer ParentInstInfo ;	// EVENT_INSTANCE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-tracemessage
+External_Function TraceMessage "TraceMessage" ADVAPI32.dll ;
+	UBigint LoggerHandle ;
+	UInteger MessageFlags ;	// TRACE_MESSAGE_FLAGS
+	Pointer MessageGuid ;	// Guid*
+	UShort MessageNumber ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-tracemessageva
+External_Function TraceMessageVa "TraceMessageVa" ADVAPI32.dll ;
+	UBigint LoggerHandle ;
+	UInteger MessageFlags ;	// TRACE_MESSAGE_FLAGS
+	Pointer MessageGuid ;	// Guid*
+	UShort MessageNumber ;
+	Pointer MessageArgList ;	// Char*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-tracequeryinformation
+External_Function TraceQueryInformation "TraceQueryInformation" ADVAPI32.dll ;
+	UBigint TraceId ;
+	Integer InformationClass ;	// TRACE_QUERY_INFO_CLASS
+	Pointer TraceInformation ;	// Pointer*
+	UInteger InformationLength ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-tracesetinformation
+External_Function TraceSetInformation "TraceSetInformation" ADVAPI32.dll ;
+	UBigint TraceId ;
+	Integer InformationClass ;	// TRACE_QUERY_INFO_CLASS
+	Pointer TraceInformation ;	// Pointer*
+	UInteger InformationLength ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-unregistertraceguids
+External_Function UnregisterTraceGuids "UnregisterTraceGuids" ADVAPI32.dll ;
+	UBigint RegistrationHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-updatetracea
+External_Function UpdateTraceA "UpdateTraceA" ADVAPI32.dll ;
+	UBigint TraceId ;
+	String InstanceName ;	// PSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/nf-evntrace-updatetracew
+External_Function UpdateTraceW "UpdateTraceW" ADVAPI32.dll ;
+	UBigint TraceId ;
+	WString InstanceName ;	// PWSTR
+	Pointer Properties ;	// EVENT_TRACE_PROPERTIES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhaggregatepayloadfilters
+External_Function TdhAggregatePayloadFilters "TdhAggregatePayloadFilters" tdh.dll ;
+	UInteger PayloadFilterCount ;
+	Pointer PayloadFilterPtrs ;	// Pointer**
+	Pointer EventMatchALLFlags ;	// BOOLEAN*
+	Pointer EventFilterDescriptor ;	// EVENT_FILTER_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhcleanuppayloadeventfilterdescriptor
+External_Function TdhCleanupPayloadEventFilterDescriptor "TdhCleanupPayloadEventFilterDescriptor" tdh.dll ;
+	Pointer EventFilterDescriptor ;	// EVENT_FILTER_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhclosedecodinghandle
+External_Function TdhCloseDecodingHandle "TdhCloseDecodingHandle" tdh.dll ;
+	LongPtr Handle ;	// TDH_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhcreatepayloadfilter
+External_Function TdhCreatePayloadFilter "TdhCreatePayloadFilter" tdh.dll ;
+	Pointer ProviderGuid ;	// Guid*
+	Pointer EventDescriptor ;	// EVENT_DESCRIPTOR*
+	UChar EventMatchANY ;	// BOOLEAN
+	UInteger PayloadPredicateCount ;
+	Pointer PayloadPredicates ;	// PAYLOAD_FILTER_PREDICATE*
+	Pointer PayloadFilter ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhdeletepayloadfilter
+External_Function TdhDeletePayloadFilter "TdhDeletePayloadFilter" tdh.dll ;
+	Pointer PayloadFilter ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhenumerateproviderfilters
+External_Function TdhEnumerateProviderFilters "TdhEnumerateProviderFilters" tdh.dll ;
+	Pointer Guid ;	// Guid*
+	UInteger TdhContextCount ;
+	Pointer TdhContext ;	// TDH_CONTEXT*
+	Pointer FilterCount ;	// UInteger*
+	Pointer Buffer ;	// PROVIDER_FILTER_INFO**
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhenumerateprovidersfordecodingsource
+External_Function TdhEnumerateProvidersForDecodingSource "TdhEnumerateProvidersForDecodingSource" tdh.dll ;
+	Integer filter ;	// DECODING_SOURCE
+	Pointer buffer ;	// PROVIDER_ENUMERATION_INFO*
+	UInteger bufferSize ;
+	Pointer bufferRequired ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgetdecodingparameter
+External_Function TdhGetDecodingParameter "TdhGetDecodingParameter" tdh.dll ;
+	LongPtr Handle ;	// TDH_HANDLE
+	Pointer TdhContext ;	// TDH_CONTEXT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgetwppmessage
+External_Function TdhGetWppMessage "TdhGetWppMessage" tdh.dll ;
+	LongPtr Handle ;	// TDH_HANDLE
+	Pointer EventRecord ;	// EVENT_RECORD*
+	Pointer BufferSize ;	// UInteger*
+	Pointer Buffer ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgetwppproperty
+External_Function TdhGetWppProperty "TdhGetWppProperty" tdh.dll ;
+	LongPtr Handle ;	// TDH_HANDLE
+	Pointer EventRecord ;	// EVENT_RECORD*
+	WString PropertyName ;	// PWSTR
+	Pointer BufferSize ;	// UInteger*
+	Pointer Buffer ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhloadmanifestfrombinary
+External_Function TdhLoadManifestFromBinary "TdhLoadManifestFromBinary" tdh.dll ;
+	WString BinaryPath ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhopendecodinghandle
+External_Function TdhOpenDecodingHandle "TdhOpenDecodingHandle" tdh.dll ;
+	Pointer Handle ;	// TDH_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhsetdecodingparameter
+External_Function TdhSetDecodingParameter "TdhSetDecodingParameter" tdh.dll ;
+	LongPtr Handle ;	// TDH_HANDLE
+	Pointer TdhContext ;	// TDH_CONTEXT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhenumeratemanifestproviderevents
+External_Function TdhEnumerateManifestProviderEvents "TdhEnumerateManifestProviderEvents" TDH.dll ;
+	Pointer ProviderGuid ;	// Guid*
+	Pointer Buffer ;	// PROVIDER_EVENT_INFO*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhenumerateproviderfieldinformation
+External_Function TdhEnumerateProviderFieldInformation "TdhEnumerateProviderFieldInformation" TDH.dll ;
+	Pointer pGuid ;	// Guid*
+	Integer EventFieldType ;	// EVENT_FIELD_TYPE
+	Pointer pBuffer ;	// PROVIDER_FIELD_INFOARRAY*
+	Pointer pBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhenumerateproviders
+External_Function TdhEnumerateProviders "TdhEnumerateProviders" TDH.dll ;
+	Pointer pBuffer ;	// PROVIDER_ENUMERATION_INFO*
+	Pointer pBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhformatproperty
+External_Function TdhFormatProperty "TdhFormatProperty" TDH.dll ;
+	Pointer EventInfo ;	// TRACE_EVENT_INFO*
+	Pointer MapInfo ;	// EVENT_MAP_INFO*
+	UInteger PointerSize ;
+	UShort PropertyInType ;
+	UShort PropertyOutType ;
+	UShort PropertyLength ;
+	UShort UserDataLength ;
+	Pointer UserData ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Pointer Buffer ;	// PWSTR
+	Pointer UserDataConsumed ;	// UShort*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgeteventinformation
+External_Function TdhGetEventInformation "TdhGetEventInformation" TDH.dll ;
+	Pointer Event ;	// EVENT_RECORD*
+	UInteger TdhContextCount ;
+	Pointer TdhContext ;	// TDH_CONTEXT*
+	Pointer Buffer ;	// TRACE_EVENT_INFO*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgeteventmapinformation
+External_Function TdhGetEventMapInformation "TdhGetEventMapInformation" TDH.dll ;
+	Pointer pEvent ;	// EVENT_RECORD*
+	WString pMapName ;	// PWSTR
+	Pointer pBuffer ;	// EVENT_MAP_INFO*
+	Pointer pBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgetmanifesteventinformation
+External_Function TdhGetManifestEventInformation "TdhGetManifestEventInformation" TDH.dll ;
+	Pointer ProviderGuid ;	// Guid*
+	Pointer EventDescriptor ;	// EVENT_DESCRIPTOR*
+	Pointer Buffer ;	// TRACE_EVENT_INFO*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgetproperty
+External_Function TdhGetProperty "TdhGetProperty" TDH.dll ;
+	Pointer pEvent ;	// EVENT_RECORD*
+	UInteger TdhContextCount ;
+	Pointer pTdhContext ;	// TDH_CONTEXT*
+	UInteger PropertyDataCount ;
+	Pointer pPropertyData ;	// PROPERTY_DATA_DESCRIPTOR*
+	UInteger BufferSize ;
+	Pointer pBuffer ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhgetpropertysize
+External_Function TdhGetPropertySize "TdhGetPropertySize" TDH.dll ;
+	Pointer pEvent ;	// EVENT_RECORD*
+	UInteger TdhContextCount ;
+	Pointer pTdhContext ;	// TDH_CONTEXT*
+	UInteger PropertyDataCount ;
+	Pointer pPropertyData ;	// PROPERTY_DATA_DESCRIPTOR*
+	Pointer pPropertySize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhloadmanifest
+External_Function TdhLoadManifest "TdhLoadManifest" TDH.dll ;
+	WString Manifest ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhloadmanifestfrommemory
+External_Function TdhLoadManifestFromMemory "TdhLoadManifestFromMemory" TDH.dll ;
+	Pointer pData ;	// Pointer*
+	UInteger cbData ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhqueryproviderfieldinformation
+External_Function TdhQueryProviderFieldInformation "TdhQueryProviderFieldInformation" TDH.dll ;
+	Pointer pGuid ;	// Guid*
+	UBigint EventFieldValue ;
+	Integer EventFieldType ;	// EVENT_FIELD_TYPE
+	Pointer pBuffer ;	// PROVIDER_FIELD_INFOARRAY*
+	Pointer pBufferSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhunloadmanifest
+External_Function TdhUnloadManifest "TdhUnloadManifest" TDH.dll ;
+	WString Manifest ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/tdh/nf-tdh-tdhunloadmanifestfrommemory
+External_Function TdhUnloadManifestFromMemory "TdhUnloadManifestFromMemory" TDH.dll ;
+	Pointer pData ;	// Pointer*
+	UInteger cbData ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

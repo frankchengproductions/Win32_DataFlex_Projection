@@ -1,0 +1,240 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosaddsockettoflow
+External_Function QOSAddSocketToFlow "QOSAddSocketToFlow" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	ULongPtr Socket ;	// SOCKET
+	Pointer DestAddr ;	// SOCKADDR*
+	Integer TrafficType ;	// QOS_TRAFFIC_TYPE
+	UInteger Flags ;
+	Pointer FlowId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qoscancel
+External_Function QOSCancel "QOSCancel" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosclosehandle
+External_Function QOSCloseHandle "QOSCloseHandle" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qoscreatehandle
+External_Function QOSCreateHandle "QOSCreateHandle" qwave.dll ;
+	Pointer Version ;	// QOS_VERSION*
+	Pointer QOSHandle ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosenumerateflows
+External_Function QOSEnumerateFlows "QOSEnumerateFlows" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	Pointer Size ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosnotifyflow
+External_Function QOSNotifyFlow "QOSNotifyFlow" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	UInteger FlowId ;
+	Integer Operation ;	// QOS_NOTIFY_FLOW
+	Pointer Size ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	UInteger Flags ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosqueryflow
+External_Function QOSQueryFlow "QOSQueryFlow" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	UInteger FlowId ;
+	Integer Operation ;	// QOS_QUERY_FLOW
+	Pointer Size ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	UInteger Flags ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosremovesocketfromflow
+External_Function QOSRemoveSocketFromFlow "QOSRemoveSocketFromFlow" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	ULongPtr Socket ;	// SOCKET
+	UInteger FlowId ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qossetflow
+External_Function QOSSetFlow "QOSSetFlow" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	UInteger FlowId ;
+	Integer Operation ;	// QOS_SET_FLOW
+	UInteger Size ;
+	Pointer Buffer ;	// Pointer*
+	UInteger Flags ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosstarttrackingclient
+External_Function QOSStartTrackingClient "QOSStartTrackingClient" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	Pointer DestAddr ;	// SOCKADDR*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/qos2/nf-qos2-qosstoptrackingclient
+External_Function QOSStopTrackingClient "QOSStopTrackingClient" qwave.dll ;
+	Pointer QOSHandle ;	// HANDLE
+	Pointer DestAddr ;	// SOCKADDR*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcaddfilter
+External_Function TcAddFilter "TcAddFilter" TRAFFIC.dll ;
+	Pointer FlowHandle ;	// HANDLE
+	Pointer pGenericFilter ;	// TC_GEN_FILTER*
+	Pointer pFilterHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcaddflow
+External_Function TcAddFlow "TcAddFlow" TRAFFIC.dll ;
+	Pointer IfcHandle ;	// HANDLE
+	Pointer ClFlowCtx ;	// HANDLE
+	UInteger Flags ;
+	Pointer pGenericFlow ;	// TC_GEN_FLOW*
+	Pointer pFlowHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tccloseinterface
+External_Function TcCloseInterface "TcCloseInterface" TRAFFIC.dll ;
+	Pointer IfcHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcdeletefilter
+External_Function TcDeleteFilter "TcDeleteFilter" TRAFFIC.dll ;
+	Pointer FilterHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcdeleteflow
+External_Function TcDeleteFlow "TcDeleteFlow" TRAFFIC.dll ;
+	Pointer FlowHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcderegisterclient
+External_Function TcDeregisterClient "TcDeregisterClient" TRAFFIC.dll ;
+	Pointer ClientHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcenumerateflows
+External_Function TcEnumerateFlows "TcEnumerateFlows" TRAFFIC.dll ;
+	Pointer IfcHandle ;	// HANDLE
+	Pointer pEnumHandle ;	// HANDLE*
+	Pointer pFlowCount ;	// UInteger*
+	Pointer pBufSize ;	// UInteger*
+	Pointer Buffer ;	// ENUMERATION_BUFFER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcenumerateinterfaces
+External_Function TcEnumerateInterfaces "TcEnumerateInterfaces" TRAFFIC.dll ;
+	Pointer ClientHandle ;	// HANDLE
+	Pointer pBufferSize ;	// UInteger*
+	Pointer InterfaceBuffer ;	// TC_IFC_DESCRIPTOR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcgetflownamea
+External_Function TcGetFlowNameA "TcGetFlowNameA" TRAFFIC.dll ;
+	Pointer FlowHandle ;	// HANDLE
+	UInteger StrSize ;
+	Pointer pFlowName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcgetflownamew
+External_Function TcGetFlowNameW "TcGetFlowNameW" TRAFFIC.dll ;
+	Pointer FlowHandle ;	// HANDLE
+	UInteger StrSize ;
+	Pointer pFlowName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcmodifyflow
+External_Function TcModifyFlow "TcModifyFlow" TRAFFIC.dll ;
+	Pointer FlowHandle ;	// HANDLE
+	Pointer pGenericFlow ;	// TC_GEN_FLOW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcopeninterfacea
+External_Function TcOpenInterfaceA "TcOpenInterfaceA" TRAFFIC.dll ;
+	String pInterfaceName ;	// PSTR
+	Pointer ClientHandle ;	// HANDLE
+	Pointer ClIfcCtx ;	// HANDLE
+	Pointer pIfcHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcopeninterfacew
+External_Function TcOpenInterfaceW "TcOpenInterfaceW" TRAFFIC.dll ;
+	WString pInterfaceName ;	// PWSTR
+	Pointer ClientHandle ;	// HANDLE
+	Pointer ClIfcCtx ;	// HANDLE
+	Pointer pIfcHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcqueryflowa
+External_Function TcQueryFlowA "TcQueryFlowA" TRAFFIC.dll ;
+	String pFlowName ;	// PSTR
+	Pointer pGuidParam ;	// Guid*
+	Pointer pBufferSize ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcqueryfloww
+External_Function TcQueryFlowW "TcQueryFlowW" TRAFFIC.dll ;
+	WString pFlowName ;	// PWSTR
+	Pointer pGuidParam ;	// Guid*
+	Pointer pBufferSize ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcqueryinterface
+External_Function TcQueryInterface "TcQueryInterface" TRAFFIC.dll ;
+	Pointer IfcHandle ;	// HANDLE
+	Pointer pGuidParam ;	// Guid*
+	UChar NotifyChange ;	// BOOLEAN
+	Pointer pBufferSize ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcregisterclient
+External_Function TcRegisterClient "TcRegisterClient" TRAFFIC.dll ;
+	UInteger TciVersion ;
+	Pointer ClRegCtx ;	// HANDLE
+	Pointer ClientHandlerList ;	// TCI_CLIENT_FUNC_LIST*
+	Pointer pClientHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcsetflowa
+External_Function TcSetFlowA "TcSetFlowA" TRAFFIC.dll ;
+	String pFlowName ;	// PSTR
+	Pointer pGuidParam ;	// Guid*
+	UInteger BufferSize ;
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcsetfloww
+External_Function TcSetFlowW "TcSetFlowW" TRAFFIC.dll ;
+	WString pFlowName ;	// PWSTR
+	Pointer pGuidParam ;	// Guid*
+	UInteger BufferSize ;
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/traffic/nf-traffic-tcsetinterface
+External_Function TcSetInterface "TcSetInterface" TRAFFIC.dll ;
+	Pointer IfcHandle ;	// HANDLE
+	Pointer pGuidParam ;	// Guid*
+	UInteger BufferSize ;
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

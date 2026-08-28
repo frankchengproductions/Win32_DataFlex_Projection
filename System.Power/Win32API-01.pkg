@@ -1,0 +1,695 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getdevicepowerstate
+External_Function GetDevicePowerState "GetDevicePowerState" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer pfOn ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getsystempowerstatus
+External_Function GetSystemPowerStatus "GetSystemPowerStatus" KERNEL32.dll ;
+	Pointer lpSystemPowerStatus ;	// SYSTEM_POWER_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-issystemresumeautomatic
+External_Function IsSystemResumeAutomatic "IsSystemResumeAutomatic" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-powerclearrequest
+External_Function PowerClearRequest "PowerClearRequest" KERNEL32.dll ;
+	Pointer PowerRequest ;	// HANDLE
+	Integer RequestType ;	// POWER_REQUEST_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-powercreaterequest
+External_Function PowerCreateRequest "PowerCreateRequest" KERNEL32.dll ;
+	Pointer Context ;	// REASON_CONTEXT*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-powersetrequest
+External_Function PowerSetRequest "PowerSetRequest" KERNEL32.dll ;
+	Pointer PowerRequest ;	// HANDLE
+	Integer RequestType ;	// POWER_REQUEST_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-requestwakeuplatency
+External_Function RequestWakeupLatency "RequestWakeupLatency" KERNEL32.dll ;
+	Integer latency ;	// LATENCY_TIME
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setsystempowerstate
+External_Function SetSystemPowerState "SetSystemPowerState" KERNEL32.dll ;
+	Integer fSuspend ;	// BOOL
+	Integer fForce ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate
+External_Function SetThreadExecutionState "SetThreadExecutionState" KERNEL32.dll ;
+	UInteger esFlags ;	// EXECUTION_STATE
+	Returns UInteger	// EXECUTION_STATE
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerpowersettingnotification
+External_Function RegisterPowerSettingNotification "RegisterPowerSettingNotification" USER32.dll ;
+	Pointer hRecipient ;	// HANDLE
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger Flags ;	// REGISTER_NOTIFICATION_FLAGS
+	Returns LongPtr	// HPOWERNOTIFY
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registersuspendresumenotification
+External_Function RegisterSuspendResumeNotification "RegisterSuspendResumeNotification" USER32.dll ;
+	Pointer hRecipient ;	// HANDLE
+	UInteger Flags ;	// REGISTER_NOTIFICATION_FLAGS
+	Returns LongPtr	// HPOWERNOTIFY
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unregisterpowersettingnotification
+External_Function UnregisterPowerSettingNotification "UnregisterPowerSettingNotification" USER32.dll ;
+	LongPtr Handle ;	// HPOWERNOTIFY
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unregistersuspendresumenotification
+External_Function UnregisterSuspendResumeNotification "UnregisterSuspendResumeNotification" USER32.dll ;
+	LongPtr Handle ;	// HPOWERNOTIFY
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/powerbase/nf-powerbase-callntpowerinformation
+External_Function CallNtPowerInformation "CallNtPowerInformation" POWRPROF.dll ;
+	Integer InformationLevel ;	// POWER_INFORMATION_LEVEL
+	Pointer InputBuffer ;	// Pointer*
+	UInteger InputBufferLength ;
+	Pointer OutputBuffer ;	// Pointer*
+	UInteger OutputBufferLength ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-canuserwritepwrscheme
+External_Function CanUserWritePwrScheme "CanUserWritePwrScheme" POWRPROF.dll ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-deletepwrscheme
+External_Function DeletePwrScheme "DeletePwrScheme" POWRPROF.dll ;
+	UInteger uiID ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-devicepowerclose
+External_Function DevicePowerClose "DevicePowerClose" POWRPROF.dll ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-devicepowerenumdevices
+External_Function DevicePowerEnumDevices "DevicePowerEnumDevices" POWRPROF.dll ;
+	UInteger QueryIndex ;
+	UInteger QueryInterpretationFlags ;
+	UInteger QueryFlags ;
+	Pointer pReturnBuffer ;	// UChar*
+	Pointer pBufferSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-devicepoweropen
+External_Function DevicePowerOpen "DevicePowerOpen" POWRPROF.dll ;
+	UInteger DebugMask ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-devicepowersetdevicestate
+External_Function DevicePowerSetDeviceState "DevicePowerSetDeviceState" POWRPROF.dll ;
+	WString DeviceDescription ;	// PWSTR
+	UInteger SetFlags ;
+	Pointer SetData ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-enumpwrschemes
+External_Function EnumPwrSchemes "EnumPwrSchemes" POWRPROF.dll ;
+	Pointer lpfn ;	// PWRSCHEMESENUMPROC
+	LongPtr lParam ;	// LPARAM
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-getactivepwrscheme
+External_Function GetActivePwrScheme "GetActivePwrScheme" POWRPROF.dll ;
+	Pointer puiID ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-getcurrentpowerpolicies
+External_Function GetCurrentPowerPolicies "GetCurrentPowerPolicies" POWRPROF.dll ;
+	Pointer pGlobalPowerPolicy ;	// GLOBAL_POWER_POLICY*
+	Pointer pPowerPolicy ;	// POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powerbase/nf-powerbase-getpwrcapabilities
+External_Function GetPwrCapabilities "GetPwrCapabilities" POWRPROF.dll ;
+	Pointer lpspc ;	// SYSTEM_POWER_CAPABILITIES*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-getpwrdiskspindownrange
+External_Function GetPwrDiskSpindownRange "GetPwrDiskSpindownRange" POWRPROF.dll ;
+	Pointer puiMax ;	// UInteger*
+	Pointer puiMin ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+External_Function IsAdminOverrideActive "IsAdminOverrideActive" POWRPROF.dll ;
+	Pointer papp ;	// ADMINISTRATOR_POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-ispwrhibernateallowed
+External_Function IsPwrHibernateAllowed "IsPwrHibernateAllowed" POWRPROF.dll ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-ispwrshutdownallowed
+External_Function IsPwrShutdownAllowed "IsPwrShutdownAllowed" POWRPROF.dll ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-ispwrsuspendallowed
+External_Function IsPwrSuspendAllowed "IsPwrSuspendAllowed" POWRPROF.dll ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powercanrestoreindividualdefaultpowerscheme
+External_Function PowerCanRestoreIndividualDefaultPowerScheme "PowerCanRestoreIndividualDefaultPowerScheme" POWRPROF.dll ;
+	Pointer SchemeGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powercreatepossiblesetting
+External_Function PowerCreatePossibleSetting "PowerCreatePossibleSetting" POWRPROF.dll ;
+	Pointer RootSystemPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger PossibleSettingIndex ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powercreatesetting
+External_Function PowerCreateSetting "PowerCreateSetting" POWRPROF.dll ;
+	Pointer RootSystemPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerdeletescheme
+External_Function PowerDeleteScheme "PowerDeleteScheme" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerdetermineplatformrole
+External_Function PowerDeterminePlatformRole "PowerDeterminePlatformRole" POWRPROF.dll ;
+	Returns Integer	// POWER_PLATFORM_ROLE
+
+// https://learn.microsoft.com/windows/win32/api/powerbase/nf-powerbase-powerdetermineplatformroleex
+External_Function PowerDeterminePlatformRoleEx "PowerDeterminePlatformRoleEx" POWRPROF.dll ;
+	UInteger Version ;	// POWER_PLATFORM_ROLE_VERSION
+	Returns Integer	// POWER_PLATFORM_ROLE
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerduplicatescheme
+External_Function PowerDuplicateScheme "PowerDuplicateScheme" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SourceSchemeGuid ;	// Guid*
+	Pointer DestinationSchemeGuid ;	// Guid**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerenumerate
+External_Function PowerEnumerate "PowerEnumerate" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Integer AccessFlags ;	// POWER_DATA_ACCESSOR
+	UInteger Index ;
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powergetactivescheme
+External_Function PowerGetActiveScheme "PowerGetActiveScheme" POWRPROF.dll ;
+	Pointer UserRootPowerKey ;	// HKEY
+	Pointer ActivePolicyGuid ;	// Guid**
+	Returns UInteger	// WIN32_ERROR
+
+External_Function PowerGetUserConfiguredACPowerMode "PowerGetUserConfiguredACPowerMode" POWRPROF.dll ;
+	Pointer PowerModeGuid ;	// Guid*
+	Returns UInteger
+
+External_Function PowerGetUserConfiguredDCPowerMode "PowerGetUserConfiguredDCPowerMode" POWRPROF.dll ;
+	Pointer PowerModeGuid ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerimportpowerscheme
+External_Function PowerImportPowerScheme "PowerImportPowerScheme" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	WString ImportFileNamePath ;	// PWSTR
+	Pointer DestinationSchemeGuid ;	// Guid**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerissettingrangedefined
+External_Function PowerIsSettingRangeDefined "PowerIsSettingRangeDefined" POWRPROF.dll ;
+	Pointer SubKeyGuid ;	// Guid*
+	Pointer SettingGuid ;	// Guid*
+	Returns UChar	// BOOLEAN
+
+External_Function PowerOpenSystemPowerKey "PowerOpenSystemPowerKey" POWRPROF.dll ;
+	Pointer phSystemPowerKey ;	// HKEY*
+	UInteger Access ;
+	Integer OpenExisting ;	// BOOL
+	Returns UInteger
+
+External_Function PowerOpenUserPowerKey "PowerOpenUserPowerKey" POWRPROF.dll ;
+	Pointer phUserPowerKey ;	// HKEY*
+	UInteger Access ;
+	Integer OpenExisting ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadacdefaultindex
+External_Function PowerReadACDefaultIndex "PowerReadACDefaultIndex" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemePersonalityGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer AcDefaultIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powerreadacvalue
+External_Function PowerReadACValue "PowerReadACValue" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Type ;	// UInteger*
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadacvalueindex
+External_Function PowerReadACValueIndex "PowerReadACValueIndex" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer AcValueIndex ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreaddcdefaultindex
+External_Function PowerReadDCDefaultIndex "PowerReadDCDefaultIndex" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemePersonalityGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer DcDefaultIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powerreaddcvalue
+External_Function PowerReadDCValue "PowerReadDCValue" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Type ;	// UInteger*
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreaddcvalueindex
+External_Function PowerReadDCValueIndex "PowerReadDCValueIndex" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer DcValueIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreaddescription
+External_Function PowerReadDescription "PowerReadDescription" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadfriendlyname
+External_Function PowerReadFriendlyName "PowerReadFriendlyName" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadiconresourcespecifier
+External_Function PowerReadIconResourceSpecifier "PowerReadIconResourceSpecifier" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadpossibledescription
+External_Function PowerReadPossibleDescription "PowerReadPossibleDescription" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger PossibleSettingIndex ;
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadpossiblefriendlyname
+External_Function PowerReadPossibleFriendlyName "PowerReadPossibleFriendlyName" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger PossibleSettingIndex ;
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadpossiblevalue
+External_Function PowerReadPossibleValue "PowerReadPossibleValue" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Type ;	// UInteger*
+	UInteger PossibleSettingIndex ;
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadsettingattributes
+External_Function PowerReadSettingAttributes "PowerReadSettingAttributes" POWRPROF.dll ;
+	Pointer SubGroupGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadvalueincrement
+External_Function PowerReadValueIncrement "PowerReadValueIncrement" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer ValueIncrement ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadvaluemax
+External_Function PowerReadValueMax "PowerReadValueMax" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer ValueMaximum ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadvaluemin
+External_Function PowerReadValueMin "PowerReadValueMin" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer ValueMinimum ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreadvalueunitsspecifier
+External_Function PowerReadValueUnitsSpecifier "PowerReadValueUnitsSpecifier" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	Pointer BufferSize ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powerregisterforeffectivepowermodenotifications
+External_Function PowerRegisterForEffectivePowerModeNotifications "PowerRegisterForEffectivePowerModeNotifications" POWRPROF.dll ;
+	UInteger Version ;
+	Pointer Callback ;	// EFFECTIVE_POWER_MODE_CALLBACK
+	Pointer Context ;	// Pointer*
+	Pointer RegistrationHandle ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/powerbase/nf-powerbase-powerregistersuspendresumenotification
+External_Function PowerRegisterSuspendResumeNotification "PowerRegisterSuspendResumeNotification" POWRPROF.dll ;
+	UInteger Flags ;	// REGISTER_NOTIFICATION_FLAGS
+	Pointer Recipient ;	// HANDLE
+	Pointer RegistrationHandle ;	// Pointer**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerremovepowersetting
+External_Function PowerRemovePowerSetting "PowerRemovePowerSetting" POWRPROF.dll ;
+	Pointer PowerSettingSubKeyGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreplacedefaultpowerschemes
+External_Function PowerReplaceDefaultPowerSchemes "PowerReplaceDefaultPowerSchemes" POWRPROF.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerreportthermalevent
+External_Function PowerReportThermalEvent "PowerReportThermalEvent" POWRPROF.dll ;
+	Pointer Event ;	// THERMAL_EVENT*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerrestoredefaultpowerschemes
+External_Function PowerRestoreDefaultPowerSchemes "PowerRestoreDefaultPowerSchemes" POWRPROF.dll ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerrestoreindividualdefaultpowerscheme
+External_Function PowerRestoreIndividualDefaultPowerScheme "PowerRestoreIndividualDefaultPowerScheme" POWRPROF.dll ;
+	Pointer SchemeGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powersetactivescheme
+External_Function PowerSetActiveScheme "PowerSetActiveScheme" POWRPROF.dll ;
+	Pointer UserRootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function PowerSetUserConfiguredACPowerMode "PowerSetUserConfiguredACPowerMode" POWRPROF.dll ;
+	Pointer PowerModeGuid ;	// Guid*
+	Returns UInteger
+
+External_Function PowerSetUserConfiguredDCPowerMode "PowerSetUserConfiguredDCPowerMode" POWRPROF.dll ;
+	Pointer PowerModeGuid ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powersettingaccesscheck
+External_Function PowerSettingAccessCheck "PowerSettingAccessCheck" POWRPROF.dll ;
+	Integer AccessFlags ;	// POWER_DATA_ACCESSOR
+	Pointer PowerGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powersettingaccesscheckex
+External_Function PowerSettingAccessCheckEx "PowerSettingAccessCheckEx" POWRPROF.dll ;
+	Integer AccessFlags ;	// POWER_DATA_ACCESSOR
+	Pointer PowerGuid ;	// Guid*
+	UInteger AccessType ;	// REG_SAM_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powersettingregisternotification
+External_Function PowerSettingRegisterNotification "PowerSettingRegisterNotification" POWRPROF.dll ;
+	Pointer SettingGuid ;	// Guid*
+	UInteger Flags ;	// REGISTER_NOTIFICATION_FLAGS
+	Pointer Recipient ;	// HANDLE
+	Pointer RegistrationHandle ;	// Pointer**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powersettingunregisternotification
+External_Function PowerSettingUnregisterNotification "PowerSettingUnregisterNotification" POWRPROF.dll ;
+	LongPtr RegistrationHandle ;	// HPOWERNOTIFY
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powerunregisterfromeffectivepowermodenotifications
+External_Function PowerUnregisterFromEffectivePowerModeNotifications "PowerUnregisterFromEffectivePowerModeNotifications" POWRPROF.dll ;
+	Pointer RegistrationHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/powerbase/nf-powerbase-powerunregistersuspendresumenotification
+External_Function PowerUnregisterSuspendResumeNotification "PowerUnregisterSuspendResumeNotification" POWRPROF.dll ;
+	LongPtr RegistrationHandle ;	// HPOWERNOTIFY
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwriteacdefaultindex
+External_Function PowerWriteACDefaultIndex "PowerWriteACDefaultIndex" POWRPROF.dll ;
+	Pointer RootSystemPowerKey ;	// HKEY
+	Pointer SchemePersonalityGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger DefaultAcIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powerwriteacvalueindex
+External_Function PowerWriteACValueIndex "PowerWriteACValueIndex" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger AcValueIndex ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritedcdefaultindex
+External_Function PowerWriteDCDefaultIndex "PowerWriteDCDefaultIndex" POWRPROF.dll ;
+	Pointer RootSystemPowerKey ;	// HKEY
+	Pointer SchemePersonalityGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger DefaultDcIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powersetting/nf-powersetting-powerwritedcvalueindex
+External_Function PowerWriteDCValueIndex "PowerWriteDCValueIndex" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger DcValueIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritedescription
+External_Function PowerWriteDescription "PowerWriteDescription" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritefriendlyname
+External_Function PowerWriteFriendlyName "PowerWriteFriendlyName" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwriteiconresourcespecifier
+External_Function PowerWriteIconResourceSpecifier "PowerWriteIconResourceSpecifier" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SchemeGuid ;	// Guid*
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritepossibledescription
+External_Function PowerWritePossibleDescription "PowerWritePossibleDescription" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger PossibleSettingIndex ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritepossiblefriendlyname
+External_Function PowerWritePossibleFriendlyName "PowerWritePossibleFriendlyName" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger PossibleSettingIndex ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritepossiblevalue
+External_Function PowerWritePossibleValue "PowerWritePossibleValue" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger Type ;
+	UInteger PossibleSettingIndex ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritesettingattributes
+External_Function PowerWriteSettingAttributes "PowerWriteSettingAttributes" POWRPROF.dll ;
+	Pointer SubGroupGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger Attributes ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritevalueincrement
+External_Function PowerWriteValueIncrement "PowerWriteValueIncrement" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger ValueIncrement ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritevaluemax
+External_Function PowerWriteValueMax "PowerWriteValueMax" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger ValueMaximum ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritevaluemin
+External_Function PowerWriteValueMin "PowerWriteValueMin" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	UInteger ValueMinimum ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-powerwritevalueunitsspecifier
+External_Function PowerWriteValueUnitsSpecifier "PowerWriteValueUnitsSpecifier" POWRPROF.dll ;
+	Pointer RootPowerKey ;	// HKEY
+	Pointer SubGroupOfPowerSettingsGuid ;	// Guid*
+	Pointer PowerSettingGuid ;	// Guid*
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-readglobalpwrpolicy
+External_Function ReadGlobalPwrPolicy "ReadGlobalPwrPolicy" POWRPROF.dll ;
+	Pointer pGlobalPowerPolicy ;	// GLOBAL_POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-readprocessorpwrscheme
+External_Function ReadProcessorPwrScheme "ReadProcessorPwrScheme" POWRPROF.dll ;
+	UInteger uiID ;
+	Pointer pMachineProcessorPowerPolicy ;	// MACHINE_PROCESSOR_POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-readpwrscheme
+External_Function ReadPwrScheme "ReadPwrScheme" POWRPROF.dll ;
+	UInteger uiID ;
+	Pointer pPowerPolicy ;	// POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-setactivepwrscheme
+External_Function SetActivePwrScheme "SetActivePwrScheme" POWRPROF.dll ;
+	UInteger uiID ;
+	Pointer pGlobalPowerPolicy ;	// GLOBAL_POWER_POLICY*
+	Pointer pPowerPolicy ;	// POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-setsuspendstate
+External_Function SetSuspendState "SetSuspendState" POWRPROF.dll ;
+	UChar bHibernate ;	// BOOLEAN
+	UChar bForce ;	// BOOLEAN
+	UChar bWakeupEventsDisabled ;	// BOOLEAN
+	Returns UChar	// BOOLEAN
+
+External_Function ValidatePowerPolicies "ValidatePowerPolicies" POWRPROF.dll ;
+	Pointer pGlobalPowerPolicy ;	// GLOBAL_POWER_POLICY*
+	Pointer pPowerPolicy ;	// POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-writeglobalpwrpolicy
+External_Function WriteGlobalPwrPolicy "WriteGlobalPwrPolicy" POWRPROF.dll ;
+	Pointer pGlobalPowerPolicy ;	// GLOBAL_POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-writeprocessorpwrscheme
+External_Function WriteProcessorPwrScheme "WriteProcessorPwrScheme" POWRPROF.dll ;
+	UInteger uiID ;
+	Pointer pMachineProcessorPowerPolicy ;	// MACHINE_PROCESSOR_POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/nf-powrprof-writepwrscheme
+External_Function WritePwrScheme "WritePwrScheme" POWRPROF.dll ;
+	Pointer puiID ;	// UInteger*
+	WString lpszSchemeName ;	// PWSTR
+	WString lpszDescription ;	// PWSTR
+	Pointer lpScheme ;	// POWER_POLICY*
+	Returns UChar	// BOOLEAN
+
+
+Procedure DataFlex_Init
+End_Procedure
+

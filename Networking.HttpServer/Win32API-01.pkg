@@ -1,0 +1,376 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpaddfragmenttocache
+External_Function HttpAddFragmentToCache "HttpAddFragmentToCache" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	WString UrlPrefix ;	// PWSTR
+	Pointer DataChunk ;	// HTTP_DATA_CHUNK*
+	Pointer CachePolicy ;	// HTTP_CACHE_POLICY*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpaddurl
+External_Function HttpAddUrl "HttpAddUrl" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	WString FullyQualifiedUrl ;	// PWSTR
+	Pointer Reserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpaddurltourlgroup
+External_Function HttpAddUrlToUrlGroup "HttpAddUrlToUrlGroup" HTTPAPI.dll ;
+	UBigint UrlGroupId ;
+	WString pFullyQualifiedUrl ;	// PWSTR
+	UBigint UrlContext ;
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcancelhttprequest
+External_Function HttpCancelHttpRequest "HttpCancelHttpRequest" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcloserequestqueue
+External_Function HttpCloseRequestQueue "HttpCloseRequestQueue" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HTTP_REQUEST_QUEUE_HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcloseserversession
+External_Function HttpCloseServerSession "HttpCloseServerSession" HTTPAPI.dll ;
+	UBigint ServerSessionId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcloseurlgroup
+External_Function HttpCloseUrlGroup "HttpCloseUrlGroup" HTTPAPI.dll ;
+	UBigint UrlGroupId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcreatehttphandle
+External_Function HttpCreateHttpHandle "HttpCreateHttpHandle" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE*
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcreaterequestqueue
+External_Function HttpCreateRequestQueue "HttpCreateRequestQueue" HTTPAPI.dll ;
+	HTTPAPI_VERSION Version ;
+	WString Name ;	// PWSTR
+	Pointer SecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger Flags ;
+	Pointer RequestQueueHandle ;	// HTTP_REQUEST_QUEUE_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcreateserversession
+External_Function HttpCreateServerSession "HttpCreateServerSession" HTTPAPI.dll ;
+	HTTPAPI_VERSION Version ;
+	Pointer ServerSessionId ;	// UBigint*
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpcreateurlgroup
+External_Function HttpCreateUrlGroup "HttpCreateUrlGroup" HTTPAPI.dll ;
+	UBigint ServerSessionId ;
+	Pointer pUrlGroupId ;	// UBigint*
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpdeclarepush
+External_Function HttpDeclarePush "HttpDeclarePush" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	Integer Verb ;	// HTTP_VERB
+	WString Path ;	// PWSTR
+	String Query ;	// PSTR
+	Pointer Headers ;	// HTTP_REQUEST_HEADERS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpdelegaterequestex
+External_Function HttpDelegateRequestEx "HttpDelegateRequestEx" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	Pointer DelegateQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	UBigint DelegateUrlGroupId ;
+	UInteger PropertyInfoSetSize ;
+	Pointer PropertyInfoSet ;	// HTTP_DELEGATE_REQUEST_PROPERTY_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpdeleteserviceconfiguration
+External_Function HttpDeleteServiceConfiguration "HttpDeleteServiceConfiguration" HTTPAPI.dll ;
+	Pointer ServiceHandle ;	// HANDLE
+	Integer ConfigId ;	// HTTP_SERVICE_CONFIG_ID
+	Pointer pConfigInformation ;	// Pointer*
+	UInteger ConfigInformationLength ;
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpfindurlgroupid
+External_Function HttpFindUrlGroupId "HttpFindUrlGroupId" HTTPAPI.dll ;
+	WString FullyQualifiedUrl ;	// PWSTR
+	Pointer RequestQueueHandle ;	// HANDLE
+	Pointer UrlGroupId ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpflushresponsecache
+External_Function HttpFlushResponseCache "HttpFlushResponseCache" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	WString UrlPrefix ;	// PWSTR
+	UInteger Flags ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+External_Function HttpGetExtension "HttpGetExtension" HTTPAPI.dll ;
+	HTTPAPI_VERSION Version ;
+	UInteger Extension ;
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpinitialize
+External_Function HttpInitialize "HttpInitialize" HTTPAPI.dll ;
+	HTTPAPI_VERSION Version ;
+	UInteger Flags ;	// HTTP_INITIALIZE
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpisfeaturesupported
+External_Function HttpIsFeatureSupported "HttpIsFeatureSupported" HTTPAPI.dll ;
+	Integer FeatureId ;	// HTTP_FEATURE_ID
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpprepareurl
+External_Function HttpPrepareUrl "HttpPrepareUrl" HTTPAPI.dll ;
+	Pointer Reserved ;	// Pointer*
+	UInteger Flags ;
+	WString Url ;	// PWSTR
+	Pointer PreparedUrl ;	// PWSTR*
+	Returns UInteger
+
+External_Function HttpQueryRequestProperty "HttpQueryRequestProperty" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint Id ;
+	Integer PropertyId ;	// HTTP_REQUEST_PROPERTY
+	Pointer Qualifier ;	// Pointer*
+	UInteger QualifierSize ;
+	Pointer Output ;	// Pointer*
+	UInteger OutputBufferSize ;
+	Pointer BytesReturned ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpqueryrequestqueueproperty
+External_Function HttpQueryRequestQueueProperty "HttpQueryRequestQueueProperty" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	Integer Property ;	// HTTP_SERVER_PROPERTY
+	Pointer PropertyInformation ;	// Pointer*
+	UInteger PropertyInformationLength ;
+	UInteger Reserved1 ;
+	Pointer ReturnLength ;	// UInteger*
+	Pointer Reserved2 ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpqueryserversessionproperty
+External_Function HttpQueryServerSessionProperty "HttpQueryServerSessionProperty" HTTPAPI.dll ;
+	UBigint ServerSessionId ;
+	Integer Property ;	// HTTP_SERVER_PROPERTY
+	Pointer PropertyInformation ;	// Pointer*
+	UInteger PropertyInformationLength ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpqueryserviceconfiguration
+External_Function HttpQueryServiceConfiguration "HttpQueryServiceConfiguration" HTTPAPI.dll ;
+	Pointer ServiceHandle ;	// HANDLE
+	Integer ConfigId ;	// HTTP_SERVICE_CONFIG_ID
+	Pointer pInput ;	// Pointer*
+	UInteger InputLength ;
+	Pointer pOutput ;	// Pointer*
+	UInteger OutputLength ;
+	Pointer pReturnLength ;	// UInteger*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpqueryurlgroupproperty
+External_Function HttpQueryUrlGroupProperty "HttpQueryUrlGroupProperty" HTTPAPI.dll ;
+	UBigint UrlGroupId ;
+	Integer Property ;	// HTTP_SERVER_PROPERTY
+	Pointer PropertyInformation ;	// Pointer*
+	UInteger PropertyInformationLength ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpreadfragmentfromcache
+External_Function HttpReadFragmentFromCache "HttpReadFragmentFromCache" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	WString UrlPrefix ;	// PWSTR
+	Pointer ByteRange ;	// HTTP_BYTE_RANGE*
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Pointer BytesRead ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpreceiveclientcertificate
+External_Function HttpReceiveClientCertificate "HttpReceiveClientCertificate" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint ConnectionId ;
+	UInteger Flags ;
+	Pointer SslClientCertInfo ;	// HTTP_SSL_CLIENT_CERT_INFO*
+	UInteger SslClientCertInfoSize ;
+	Pointer BytesReceived ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpreceivehttprequest
+External_Function HttpReceiveHttpRequest "HttpReceiveHttpRequest" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	UInteger Flags ;	// HTTP_RECEIVE_HTTP_REQUEST_FLAGS
+	Pointer RequestBuffer ;	// HTTP_REQUEST_V2*
+	UInteger RequestBufferLength ;
+	Pointer BytesReturned ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpreceiverequestentitybody
+External_Function HttpReceiveRequestEntityBody "HttpReceiveRequestEntityBody" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	UInteger Flags ;
+	Pointer EntityBuffer ;	// Pointer*
+	UInteger EntityBufferLength ;
+	Pointer BytesReturned ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpremoveurl
+External_Function HttpRemoveUrl "HttpRemoveUrl" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	WString FullyQualifiedUrl ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpremoveurlfromurlgroup
+External_Function HttpRemoveUrlFromUrlGroup "HttpRemoveUrlFromUrlGroup" HTTPAPI.dll ;
+	UBigint UrlGroupId ;
+	WString pFullyQualifiedUrl ;	// PWSTR
+	UInteger Flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpsendhttpresponse
+External_Function HttpSendHttpResponse "HttpSendHttpResponse" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	UInteger Flags ;
+	Pointer HttpResponse ;	// HTTP_RESPONSE_V2*
+	Pointer CachePolicy ;	// HTTP_CACHE_POLICY*
+	Pointer BytesSent ;	// UInteger*
+	Pointer Reserved1 ;	// Pointer*
+	UInteger Reserved2 ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Pointer LogData ;	// HTTP_LOG_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpsendresponseentitybody
+External_Function HttpSendResponseEntityBody "HttpSendResponseEntityBody" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint RequestId ;
+	UInteger Flags ;
+	UShort EntityChunkCount ;
+	Pointer EntityChunks ;	// HTTP_DATA_CHUNK*
+	Pointer BytesSent ;	// UInteger*
+	Pointer Reserved1 ;	// Pointer*
+	UInteger Reserved2 ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Pointer LogData ;	// HTTP_LOG_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpsetrequestproperty
+External_Function HttpSetRequestProperty "HttpSetRequestProperty" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint Id ;
+	Integer PropertyId ;	// HTTP_REQUEST_PROPERTY
+	Pointer Input ;	// Pointer*
+	UInteger InputPropertySize ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpsetrequestqueueproperty
+External_Function HttpSetRequestQueueProperty "HttpSetRequestQueueProperty" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	Integer Property ;	// HTTP_SERVER_PROPERTY
+	Pointer PropertyInformation ;	// Pointer*
+	UInteger PropertyInformationLength ;
+	UInteger Reserved1 ;
+	Pointer Reserved2 ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpsetserversessionproperty
+External_Function HttpSetServerSessionProperty "HttpSetServerSessionProperty" HTTPAPI.dll ;
+	UBigint ServerSessionId ;
+	Integer Property ;	// HTTP_SERVER_PROPERTY
+	Pointer PropertyInformation ;	// Pointer*
+	UInteger PropertyInformationLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpsetserviceconfiguration
+External_Function HttpSetServiceConfiguration "HttpSetServiceConfiguration" HTTPAPI.dll ;
+	Pointer ServiceHandle ;	// HANDLE
+	Integer ConfigId ;	// HTTP_SERVICE_CONFIG_ID
+	Pointer pConfigInformation ;	// Pointer*
+	UInteger ConfigInformationLength ;
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpseturlgroupproperty
+External_Function HttpSetUrlGroupProperty "HttpSetUrlGroupProperty" HTTPAPI.dll ;
+	UBigint UrlGroupId ;
+	Integer Property ;	// HTTP_SERVER_PROPERTY
+	Pointer PropertyInformation ;	// Pointer*
+	UInteger PropertyInformationLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpshutdownrequestqueue
+External_Function HttpShutdownRequestQueue "HttpShutdownRequestQueue" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpterminate
+External_Function HttpTerminate "HttpTerminate" HTTPAPI.dll ;
+	UInteger Flags ;	// HTTP_INITIALIZE
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpupdateserviceconfiguration
+External_Function HttpUpdateServiceConfiguration "HttpUpdateServiceConfiguration" HTTPAPI.dll ;
+	Pointer Handle ;	// HANDLE
+	Integer ConfigId ;	// HTTP_SERVICE_CONFIG_ID
+	Pointer ConfigInfo ;	// Pointer*
+	UInteger ConfigInfoLength ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpwaitfordemandstart
+External_Function HttpWaitForDemandStart "HttpWaitForDemandStart" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpwaitfordisconnect
+External_Function HttpWaitForDisconnect "HttpWaitForDisconnect" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint ConnectionId ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/http/nf-http-httpwaitfordisconnectex
+External_Function HttpWaitForDisconnectEx "HttpWaitForDisconnectEx" HTTPAPI.dll ;
+	Pointer RequestQueueHandle ;	// HANDLE
+	UBigint ConnectionId ;
+	UInteger Reserved ;
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

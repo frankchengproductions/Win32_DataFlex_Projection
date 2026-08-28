@@ -1,0 +1,90 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/netcon/nf-netcon-ncfreenetconproperties
+External_Function NcFreeNetconProperties "NcFreeNetconProperties" Netshell.dll ;
+	Pointer pProps ;	// NETCON_PROPERTIES*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netcon/nf-netcon-ncisvalidconnectionname
+External_Function NcIsValidConnectionName "NcIsValidConnectionName" Netshell.dll ;
+	WString pszwName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationdiagnoseconnectfailureandgetinfo
+External_Function NetworkIsolationDiagnoseConnectFailureAndGetInfo "NetworkIsolationDiagnoseConnectFailureAndGetInfo" api-ms-win-net-isolation-l1-1-0.dll ;
+	WString wszServerName ;	// PWSTR
+	Pointer netIsoError ;	// NETISO_ERROR_TYPE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationenumappcontainers
+External_Function NetworkIsolationEnumAppContainers "NetworkIsolationEnumAppContainers" api-ms-win-net-isolation-l1-1-0.dll ;
+	UInteger Flags ;
+	Pointer pdwNumPublicAppCs ;	// UInteger*
+	Pointer ppPublicAppCs ;	// INET_FIREWALL_APP_CONTAINER**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationfreeappcontainers
+External_Function NetworkIsolationFreeAppContainers "NetworkIsolationFreeAppContainers" api-ms-win-net-isolation-l1-1-0.dll ;
+	Pointer pPublicAppCs ;	// INET_FIREWALL_APP_CONTAINER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationgetappcontainerconfig
+External_Function NetworkIsolationGetAppContainerConfig "NetworkIsolationGetAppContainerConfig" api-ms-win-net-isolation-l1-1-0.dll ;
+	Pointer pdwNumPublicAppCs ;	// UInteger*
+	Pointer appContainerSids ;	// SID_AND_ATTRIBUTES**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationregisterforappcontainerchanges
+External_Function NetworkIsolationRegisterForAppContainerChanges "NetworkIsolationRegisterForAppContainerChanges" api-ms-win-net-isolation-l1-1-0.dll ;
+	UInteger flags ;
+	Pointer callback ;	// PAC_CHANGES_CALLBACK_FN
+	Pointer context ;	// Pointer*
+	Pointer registrationObject ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationsetappcontainerconfig
+External_Function NetworkIsolationSetAppContainerConfig "NetworkIsolationSetAppContainerConfig" api-ms-win-net-isolation-l1-1-0.dll ;
+	UInteger dwNumPublicAppCs ;
+	Pointer appContainerSids ;	// SID_AND_ATTRIBUTES*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationsetupappcontainerbinaries
+External_Function NetworkIsolationSetupAppContainerBinaries "NetworkIsolationSetupAppContainerBinaries" api-ms-win-net-isolation-l1-1-0.dll ;
+	Pointer applicationContainerSid ;	// PSID
+	WString packageFullName ;	// PWSTR
+	WString packageFolder ;	// PWSTR
+	WString displayName ;	// PWSTR
+	Integer bBinariesFullyComputed ;	// BOOL
+	Pointer binaries ;	// PWSTR*
+	UInteger binariesCount ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationunregisterforappcontainerchanges
+External_Function NetworkIsolationUnregisterForAppContainerChanges "NetworkIsolationUnregisterForAppContainerChanges" api-ms-win-net-isolation-l1-1-0.dll ;
+	Pointer registrationObject ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationenumerateappcontainerrules
+External_Function NetworkIsolationEnumerateAppContainerRules "NetworkIsolationEnumerateAppContainerRules" Firewallapi.dll ;
+	Pointer newEnum ;	// IEnumVARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationgetenterpriseidasync
+External_Function NetworkIsolationGetEnterpriseIdAsync "NetworkIsolationGetEnterpriseIdAsync" Firewallapi.dll ;
+	WString wszServerName ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer context ;	// Pointer*
+	Pointer callback ;	// PNETISO_EDP_ID_CALLBACK_FN
+	Pointer hOperation ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netfw/nf-netfw-networkisolationgetenterpriseidclose
+External_Function NetworkIsolationGetEnterpriseIdClose "NetworkIsolationGetEnterpriseIdClose" Firewallapi.dll ;
+	Pointer hOperation ;	// HANDLE
+	Integer bWaitForOperation ;	// BOOL
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

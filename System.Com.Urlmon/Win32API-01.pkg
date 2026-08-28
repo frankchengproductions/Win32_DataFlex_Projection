@@ -1,0 +1,503 @@
+Use UI
+
+External_Function CoGetClassObjectFromURL "CoGetClassObjectFromURL" urlmon.dll ;
+	Pointer rCLASSID ;	// Guid*
+	WString szCODE ;	// PWSTR
+	UInteger dwFileVersionMS ;
+	UInteger dwFileVersionLS ;
+	WString szTYPE ;	// PWSTR
+	Pointer pBindCtx ;	// IBindCtx
+	UInteger dwClsContext ;	// CLSCTX
+	Pointer pvReserved ;	// Pointer*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CoInternetCombineIUri "CoInternetCombineIUri" urlmon.dll ;
+	Pointer pBaseUri ;	// IUri
+	Pointer pRelativeUri ;	// IUri
+	UInteger dwCombineFlags ;
+	Pointer ppCombinedUri ;	// IUri*
+	ULongPtr dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetCombineUrl "CoInternetCombineUrl" urlmon.dll ;
+	WString pwzBaseUrl ;	// PWSTR
+	WString pwzRelativeUrl ;	// PWSTR
+	UInteger dwCombineFlags ;
+	Pointer pszResult ;	// PWSTR
+	UInteger cchResult ;
+	Pointer pcchResult ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetCombineUrlEx "CoInternetCombineUrlEx" urlmon.dll ;
+	Pointer pBaseUri ;	// IUri
+	WString pwzRelativeUrl ;	// PWSTR
+	UInteger dwCombineFlags ;
+	Pointer ppCombinedUri ;	// IUri*
+	ULongPtr dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetCompareUrl "CoInternetCompareUrl" urlmon.dll ;
+	WString pwzUrl1 ;	// PWSTR
+	WString pwzUrl2 ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetCreateSecurityManager "CoInternetCreateSecurityManager" urlmon.dll ;
+	Pointer pSP ;	// IServiceProvider
+	Pointer ppSM ;	// IInternetSecurityManager*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetCreateZoneManager "CoInternetCreateZoneManager" urlmon.dll ;
+	Pointer pSP ;	// IServiceProvider
+	Pointer ppZM ;	// IInternetZoneManager*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetGetProtocolFlags "CoInternetGetProtocolFlags" urlmon.dll ;
+	WString pwzUrl ;	// PWSTR
+	Pointer pdwFlags ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetGetSecurityUrl "CoInternetGetSecurityUrl" urlmon.dll ;
+	WString pwszUrl ;	// PWSTR
+	Pointer ppwszSecUrl ;	// PWSTR*
+	Integer psuAction ;	// PSUACTION
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetGetSecurityUrlEx "CoInternetGetSecurityUrlEx" urlmon.dll ;
+	Pointer pUri ;	// IUri
+	Pointer ppSecUri ;	// IUri*
+	Integer psuAction ;	// PSUACTION
+	ULongPtr dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetGetSession "CoInternetGetSession" urlmon.dll ;
+	UInteger dwSessionMode ;
+	Pointer ppIInternetSession ;	// IInternetSession*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetIsFeatureEnabled "CoInternetIsFeatureEnabled" urlmon.dll ;
+	Integer FeatureEntry ;	// INTERNETFEATURELIST
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetIsFeatureEnabledForIUri "CoInternetIsFeatureEnabledForIUri" urlmon.dll ;
+	Integer FeatureEntry ;	// INTERNETFEATURELIST
+	UInteger dwFlags ;
+	Pointer pIUri ;	// IUri
+	Pointer pSecMgr ;	// IInternetSecurityManagerEx2
+	Returns Integer	// HRESULT
+
+External_Function CoInternetIsFeatureEnabledForUrl "CoInternetIsFeatureEnabledForUrl" urlmon.dll ;
+	Integer FeatureEntry ;	// INTERNETFEATURELIST
+	UInteger dwFlags ;
+	WString szURL ;	// PWSTR
+	Pointer pSecMgr ;	// IInternetSecurityManager
+	Returns Integer	// HRESULT
+
+External_Function CoInternetIsFeatureZoneElevationEnabled "CoInternetIsFeatureZoneElevationEnabled" urlmon.dll ;
+	WString szFromURL ;	// PWSTR
+	WString szToURL ;	// PWSTR
+	Pointer pSecMgr ;	// IInternetSecurityManager
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetParseIUri "CoInternetParseIUri" urlmon.dll ;
+	Pointer pIUri ;	// IUri
+	Integer ParseAction ;	// PARSEACTION
+	UInteger dwFlags ;
+	Pointer pwzResult ;	// PWSTR
+	UInteger cchResult ;
+	Pointer pcchResult ;	// UInteger*
+	ULongPtr dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetParseUrl "CoInternetParseUrl" urlmon.dll ;
+	WString pwzUrl ;	// PWSTR
+	Integer ParseAction ;	// PARSEACTION
+	UInteger dwFlags ;
+	Pointer pszResult ;	// PWSTR
+	UInteger cchResult ;
+	Pointer pcchResult ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetQueryInfo "CoInternetQueryInfo" urlmon.dll ;
+	WString pwzUrl ;	// PWSTR
+	Integer QueryOptions ;	// QUERYOPTION
+	UInteger dwQueryFlags ;
+	Pointer pvBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Pointer pcbBuffer ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CoInternetSetFeatureEnabled "CoInternetSetFeatureEnabled" urlmon.dll ;
+	Integer FeatureEntry ;	// INTERNETFEATURELIST
+	UInteger dwFlags ;
+	Integer fEnable ;	// BOOL
+	Returns Integer	// HRESULT
+
+External_Function CompareSecurityIds "CompareSecurityIds" urlmon.dll ;
+	Pointer pbSecurityId1 ;	// UChar*
+	UInteger dwLen1 ;
+	Pointer pbSecurityId2 ;	// UChar*
+	UInteger dwLen2 ;
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function CompatFlagsFromClsid "CompatFlagsFromClsid" urlmon.dll ;
+	Pointer pclsid ;	// Guid*
+	Pointer pdwCompatFlags ;	// UInteger*
+	Pointer pdwMiscStatusFlags ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function CopyBindInfo "CopyBindInfo" urlmon.dll ;
+	Pointer pcbiSrc ;	// BINDINFO*
+	Pointer pbiDest ;	// BINDINFO*
+	Returns Integer	// HRESULT
+
+External_Function CopyStgMedium "CopyStgMedium" urlmon.dll ;
+	Pointer pcstgmedSrc ;	// STGMEDIUM*
+	Pointer pstgmedDest ;	// STGMEDIUM*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/urlmon/nf-urlmon-createasyncbindctx
+External_Function CreateAsyncBindCtx "CreateAsyncBindCtx" urlmon.dll ;
+	UInteger reserved ;
+	Pointer pBSCb ;	// IBindStatusCallback
+	Pointer pEFetc ;	// IEnumFORMATETC
+	Pointer ppBC ;	// IBindCtx*
+	Returns Integer	// HRESULT
+
+External_Function CreateAsyncBindCtxEx "CreateAsyncBindCtxEx" urlmon.dll ;
+	Pointer pbc ;	// IBindCtx
+	UInteger dwOptions ;
+	Pointer pBSCb ;	// IBindStatusCallback
+	Pointer pEnum ;	// IEnumFORMATETC
+	Pointer ppBC ;	// IBindCtx*
+	UInteger reserved ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/urlmon/nf-urlmon-createformatenumerator
+External_Function CreateFormatEnumerator "CreateFormatEnumerator" urlmon.dll ;
+	UInteger cfmtetc ;
+	Pointer rgfmtetc ;	// FORMATETC*
+	Pointer ppenumfmtetc ;	// IEnumFORMATETC*
+	Returns Integer	// HRESULT
+
+External_Function CreateURLMoniker "CreateURLMoniker" urlmon.dll ;
+	Pointer pMkCtx ;	// IMoniker
+	WString szURL ;	// PWSTR
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+External_Function CreateURLMonikerEx "CreateURLMonikerEx" urlmon.dll ;
+	Pointer pMkCtx ;	// IMoniker
+	WString szURL ;	// PWSTR
+	Pointer ppmk ;	// IMoniker*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function CreateURLMonikerEx2 "CreateURLMonikerEx2" urlmon.dll ;
+	Pointer pMkCtx ;	// IMoniker
+	Pointer pUri ;	// IUri
+	Pointer ppmk ;	// IMoniker*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function FaultInIEFeature "FaultInIEFeature" urlmon.dll ;
+	Pointer hWnd ;	// HWND
+	Pointer pClassSpec ;	// uCLSSPEC*
+	Pointer pQuery ;	// QUERYCONTEXT*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function FindMediaType "FindMediaType" urlmon.dll ;
+	String rgszTypes ;	// PSTR
+	Pointer rgcfTypes ;	// UShort*
+	Returns Integer	// HRESULT
+
+External_Function FindMediaTypeClass "FindMediaTypeClass" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	String szType ;	// PSTR
+	Pointer pclsID ;	// Guid*
+	UInteger reserved ;
+	Returns Integer	// HRESULT
+
+External_Function FindMimeFromData "FindMimeFromData" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	WString pwzUrl ;	// PWSTR
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbSize ;
+	WString pwzMimeProposed ;	// PWSTR
+	UInteger dwMimeFlags ;
+	Pointer ppwzMimeOut ;	// PWSTR*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function GetClassFileOrMime "GetClassFileOrMime" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	WString szFilename ;	// PWSTR
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbSize ;
+	WString szMime ;	// PWSTR
+	UInteger dwReserved ;
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+External_Function GetClassURL "GetClassURL" urlmon.dll ;
+	WString szURL ;	// PWSTR
+	Pointer pClsID ;	// Guid*
+	Returns Integer	// HRESULT
+
+External_Function GetComponentIDFromCLSSPEC "GetComponentIDFromCLSSPEC" urlmon.dll ;
+	Pointer pClassspec ;	// uCLSSPEC*
+	Pointer ppszComponentID ;	// PSTR*
+	Returns Integer	// HRESULT
+
+External_Function GetSoftwareUpdateInfo "GetSoftwareUpdateInfo" urlmon.dll ;
+	WString szDistUnit ;	// PWSTR
+	Pointer psdi ;	// SOFTDISTINFO*
+	Returns Integer	// HRESULT
+
+External_Function HlinkGoBack "HlinkGoBack" urlmon.dll ;
+	Pointer pUnk ;	// IUnknown
+	Returns Integer	// HRESULT
+
+External_Function HlinkGoForward "HlinkGoForward" urlmon.dll ;
+	Pointer pUnk ;	// IUnknown
+	Returns Integer	// HRESULT
+
+External_Function HlinkNavigateMoniker "HlinkNavigateMoniker" urlmon.dll ;
+	Pointer pUnk ;	// IUnknown
+	Pointer pmkTarget ;	// IMoniker
+	Returns Integer	// HRESULT
+
+External_Function HlinkNavigateString "HlinkNavigateString" urlmon.dll ;
+	Pointer pUnk ;	// IUnknown
+	WString szTarget ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function HlinkSimpleNavigateToMoniker "HlinkSimpleNavigateToMoniker" urlmon.dll ;
+	Pointer pmkTarget ;	// IMoniker
+	WString szLocation ;	// PWSTR
+	WString szTargetFrameName ;	// PWSTR
+	Pointer pUnk ;	// IUnknown
+	Pointer pbc ;	// IBindCtx
+	Pointer param5 ;	// IBindStatusCallback
+	UInteger grfHLNF ;
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function HlinkSimpleNavigateToString "HlinkSimpleNavigateToString" urlmon.dll ;
+	WString szTarget ;	// PWSTR
+	WString szLocation ;	// PWSTR
+	WString szTargetFrameName ;	// PWSTR
+	Pointer pUnk ;	// IUnknown
+	Pointer pbc ;	// IBindCtx
+	Pointer param5 ;	// IBindStatusCallback
+	UInteger grfHLNF ;
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function IEGetUserPrivateNamespaceName "IEGetUserPrivateNamespaceName" urlmon.dll ;
+	Returns Pointer	// PWSTR
+
+External_Function IEInstallScope "IEInstallScope" urlmon.dll ;
+	Pointer pdwScope ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function IsAsyncMoniker "IsAsyncMoniker" urlmon.dll ;
+	Pointer pmk ;	// IMoniker
+	Returns Integer	// HRESULT
+
+External_Function IsLoggingEnabledA "IsLoggingEnabledA" urlmon.dll ;
+	String pszUrl ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function IsLoggingEnabledW "IsLoggingEnabledW" urlmon.dll ;
+	WString pwszUrl ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function IsValidURL "IsValidURL" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	WString szURL ;	// PWSTR
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function MkParseDisplayNameEx "MkParseDisplayNameEx" urlmon.dll ;
+	Pointer pbc ;	// IBindCtx
+	WString szDisplayName ;	// PWSTR
+	Pointer pchEaten ;	// UInteger*
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+External_Function ObtainUserAgentString "ObtainUserAgentString" urlmon.dll ;
+	UInteger dwOption ;
+	Pointer pszUAOut ;	// PSTR
+	Pointer cbSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function RegisterBindStatusCallback "RegisterBindStatusCallback" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	Pointer pBSCb ;	// IBindStatusCallback
+	Pointer ppBSCBPrev ;	// IBindStatusCallback*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function RegisterFormatEnumerator "RegisterFormatEnumerator" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	Pointer pEFetc ;	// IEnumFORMATETC
+	UInteger reserved ;
+	Returns Integer	// HRESULT
+
+External_Function RegisterMediaTypeClass "RegisterMediaTypeClass" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	UInteger ctypes ;
+	Pointer rgszTypes ;	// PSTR*
+	Pointer rgclsID ;	// Guid*
+	UInteger reserved ;
+	Returns Integer	// HRESULT
+
+External_Function RegisterMediaTypes "RegisterMediaTypes" urlmon.dll ;
+	UInteger ctypes ;
+	Pointer rgszTypes ;	// PSTR*
+	Pointer rgcfTypes ;	// UShort*
+	Returns Integer	// HRESULT
+
+External_Function ReleaseBindInfo "ReleaseBindInfo" urlmon.dll ;
+	Pointer pbindinfo ;	// BINDINFO*
+	Returns Pointer
+
+External_Function RevokeBindStatusCallback "RevokeBindStatusCallback" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	Pointer pBSCb ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function RevokeFormatEnumerator "RevokeFormatEnumerator" urlmon.dll ;
+	Pointer pBC ;	// IBindCtx
+	Pointer pEFetc ;	// IEnumFORMATETC
+	Returns Integer	// HRESULT
+
+External_Function SetAccessForIEAppContainer "SetAccessForIEAppContainer" urlmon.dll ;
+	Pointer hObject ;	// HANDLE
+	Integer ieObjectType ;	// IEObjectType
+	UInteger dwAccessMask ;
+	Returns Integer	// HRESULT
+
+External_Function SetSoftwareUpdateAdvertisementState "SetSoftwareUpdateAdvertisementState" urlmon.dll ;
+	WString szDistUnit ;	// PWSTR
+	UInteger dwAdState ;
+	UInteger dwAdvertisedVersionMS ;
+	UInteger dwAdvertisedVersionLS ;
+	Returns Integer	// HRESULT
+
+External_Function URLDownloadToCacheFileA "URLDownloadToCacheFileA" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	String param1 ;	// PSTR
+	Pointer param2 ;	// PSTR
+	UInteger cchFileName ;
+	UInteger param4 ;
+	Pointer param5 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLDownloadToCacheFileW "URLDownloadToCacheFileW" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	WString param1 ;	// PWSTR
+	Pointer param2 ;	// PWSTR
+	UInteger cchFileName ;
+	UInteger param4 ;
+	Pointer param5 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLDownloadToFileA "URLDownloadToFileA" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	String param1 ;	// PSTR
+	String param2 ;	// PSTR
+	UInteger param3 ;
+	Pointer param4 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLDownloadToFileW "URLDownloadToFileW" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	WString param1 ;	// PWSTR
+	WString param2 ;	// PWSTR
+	UInteger param3 ;
+	Pointer param4 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLOpenBlockingStreamA "URLOpenBlockingStreamA" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	String param1 ;	// PSTR
+	Pointer param2 ;	// IStream*
+	UInteger param3 ;
+	Pointer param4 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLOpenBlockingStreamW "URLOpenBlockingStreamW" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	WString param1 ;	// PWSTR
+	Pointer param2 ;	// IStream*
+	UInteger param3 ;
+	Pointer param4 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLOpenPullStreamA "URLOpenPullStreamA" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	String param1 ;	// PSTR
+	UInteger param2 ;
+	Pointer param3 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLOpenPullStreamW "URLOpenPullStreamW" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	WString param1 ;	// PWSTR
+	UInteger param2 ;
+	Pointer param3 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLOpenStreamA "URLOpenStreamA" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	String param1 ;	// PSTR
+	UInteger param2 ;
+	Pointer param3 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function URLOpenStreamW "URLOpenStreamW" urlmon.dll ;
+	Pointer param0 ;	// IUnknown
+	WString param1 ;	// PWSTR
+	UInteger param2 ;
+	Pointer param3 ;	// IBindStatusCallback
+	Returns Integer	// HRESULT
+
+External_Function UrlMkGetSessionOption "UrlMkGetSessionOption" urlmon.dll ;
+	UInteger dwOption ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	Pointer pdwBufferLengthOut ;	// UInteger*
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function UrlMkSetSessionOption "UrlMkSetSessionOption" urlmon.dll ;
+	UInteger dwOption ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger dwBufferLength ;
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+External_Function WriteHitLogging "WriteHitLogging" urlmon.dll ;
+	Pointer lpLogginginfo ;	// HIT_LOGGING_INFO*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

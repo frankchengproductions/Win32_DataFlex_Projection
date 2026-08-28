@@ -1,0 +1,151 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_server_specific_strings
+Struct DHCP_SERVER_SPECIFIC_STRINGS
+	Pointer DefaultVendorClassName							// PWSTR
+	Pointer DefaultUserClassName							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_data
+Struct DHCP_SUBNET_ELEMENT_DATA
+	Integer ElementType										// DHCP_SUBNET_ELEMENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_data_v4
+Struct DHCP_SUBNET_ELEMENT_DATA_V4
+	Integer ElementType										// DHCP_SUBNET_ELEMENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_data_v5
+Struct DHCP_SUBNET_ELEMENT_DATA_V5
+	Integer ElementType										// DHCP_SUBNET_ELEMENT_TYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_data_v6
+Struct DHCP_SUBNET_ELEMENT_DATA_V6
+	Integer ElementType										// DHCP_SUBNET_ELEMENT_TYPE_V6
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_info_array
+Struct DHCP_SUBNET_ELEMENT_INFO_ARRAY
+	UInteger NumElements
+	Integer iMissingAlignment1
+	Pointer Elements										// DHCP_SUBNET_ELEMENT_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_info_array_v4
+Struct DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4
+	UInteger NumElements
+	Integer iMissingAlignment1
+	Pointer Elements										// DHCP_SUBNET_ELEMENT_DATA_V4*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_info_array_v5
+Struct DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5
+	UInteger NumElements
+	Integer iMissingAlignment1
+	Pointer Elements										// DHCP_SUBNET_ELEMENT_DATA_V5*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_element_info_array_v6
+Struct DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6
+	UInteger NumElements
+	Integer iMissingAlignment1
+	Pointer Elements										// DHCP_SUBNET_ELEMENT_DATA_V6*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_info
+Struct DHCP_SUBNET_INFO
+	UInteger SubnetAddress
+	UInteger SubnetMask
+	Pointer SubnetName										// PWSTR
+	Pointer SubnetComment									// PWSTR
+	DHCP_HOST_INFO PrimaryHost
+	Integer SubnetState										// DHCP_SUBNET_STATE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_info_v6
+Struct DHCP_SUBNET_INFO_V6
+	DHCP_IPV6_ADDRESS SubnetAddress
+	UInteger Prefix
+	UShort Preference
+	Short iMissingAlignment1
+	Pointer SubnetName										// PWSTR
+	Pointer SubnetComment									// PWSTR
+	UInteger State
+	UInteger ScopeId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_subnet_info_vq
+Struct DHCP_SUBNET_INFO_VQ
+	UInteger SubnetAddress
+	UInteger SubnetMask
+	Pointer SubnetName										// PWSTR
+	Pointer SubnetComment									// PWSTR
+	DHCP_HOST_INFO PrimaryHost
+	Integer SubnetState										// DHCP_SUBNET_STATE
+	UInteger QuarantineOn
+	UInteger Reserved1
+	UInteger Reserved2
+	Bigint Reserved3
+	Bigint Reserved4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_super_scope_table
+Struct DHCP_SUPER_SCOPE_TABLE
+	UInteger cEntries
+	Integer iMissingAlignment1
+	Pointer pEntries										// DHCP_SUPER_SCOPE_TABLE_ENTRY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dhcp_super_scope_table_entry
+Struct DHCP_SUPER_SCOPE_TABLE_ENTRY
+	UInteger SubnetAddress
+	UInteger SuperScopeNumber
+	UInteger NextInSuperScope
+	Integer iMissingAlignment1
+	Pointer SuperScopeName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-dword_dword
+Struct DWORD_DWORD
+	UInteger DWord1
+	UInteger DWord2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-scope_mib_info
+Struct SCOPE_MIB_INFO
+	UInteger Subnet
+	UInteger NumAddressesInuse
+	UInteger NumAddressesFree
+	UInteger NumPendingOffers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/ns-dhcpsapi-scope_mib_info_v5
+Struct SCOPE_MIB_INFO_V5
+	UInteger Subnet
+	UInteger NumAddressesInuse
+	UInteger NumAddressesFree
+	UInteger NumPendingOffers
+End_Struct
+
+Struct SCOPE_MIB_INFO_V6
+	DHCP_IPV6_ADDRESS Subnet
+	UBigint NumAddressesInuse
+	UBigint NumAddressesFree
+	UBigint NumPendingAdvertises
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,98 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
+External_Function FileTimeToSystemTime "FileTimeToSystemTime" KERNEL32.dll ;
+	Pointer lpFileTime ;	// FILETIME*
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-getdynamictimezoneinformation
+External_Function GetDynamicTimeZoneInformation "GetDynamicTimeZoneInformation" KERNEL32.dll ;
+	Pointer pTimeZoneInformation ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-gettimezoneinformation
+External_Function GetTimeZoneInformation "GetTimeZoneInformation" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// TIME_ZONE_INFORMATION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-gettimezoneinformationforyear
+External_Function GetTimeZoneInformationForYear "GetTimeZoneInformationForYear" KERNEL32.dll ;
+	UShort wYear ;
+	Pointer pdtzi ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Pointer ptzi ;	// TIME_ZONE_INFORMATION*
+	Returns Integer	// BOOL
+
+External_Function LocalFileTimeToLocalSystemTime "LocalFileTimeToLocalSystemTime" KERNEL32.dll ;
+	Pointer timeZoneInformation ;	// TIME_ZONE_INFORMATION*
+	Pointer localFileTime ;	// FILETIME*
+	Pointer localSystemTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+External_Function LocalSystemTimeToLocalFileTime "LocalSystemTimeToLocalFileTime" KERNEL32.dll ;
+	Pointer timeZoneInformation ;	// TIME_ZONE_INFORMATION*
+	Pointer localSystemTime ;	// SYSTEMTIME*
+	Pointer localFileTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-setdynamictimezoneinformation
+External_Function SetDynamicTimeZoneInformation "SetDynamicTimeZoneInformation" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-settimezoneinformation
+External_Function SetTimeZoneInformation "SetTimeZoneInformation" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// TIME_ZONE_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-systemtimetofiletime
+External_Function SystemTimeToFileTime "SystemTimeToFileTime" KERNEL32.dll ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Pointer lpFileTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-systemtimetotzspecificlocaltime
+External_Function SystemTimeToTzSpecificLocalTime "SystemTimeToTzSpecificLocalTime" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// TIME_ZONE_INFORMATION*
+	Pointer lpUniversalTime ;	// SYSTEMTIME*
+	Pointer lpLocalTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-systemtimetotzspecificlocaltimeex
+External_Function SystemTimeToTzSpecificLocalTimeEx "SystemTimeToTzSpecificLocalTimeEx" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Pointer lpUniversalTime ;	// SYSTEMTIME*
+	Pointer lpLocalTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-tzspecificlocaltimetosystemtime
+External_Function TzSpecificLocalTimeToSystemTime "TzSpecificLocalTimeToSystemTime" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// TIME_ZONE_INFORMATION*
+	Pointer lpLocalTime ;	// SYSTEMTIME*
+	Pointer lpUniversalTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-tzspecificlocaltimetosystemtimeex
+External_Function TzSpecificLocalTimeToSystemTimeEx "TzSpecificLocalTimeToSystemTimeEx" KERNEL32.dll ;
+	Pointer lpTimeZoneInformation ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Pointer lpLocalTime ;	// SYSTEMTIME*
+	Pointer lpUniversalTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-enumdynamictimezoneinformation
+External_Function EnumDynamicTimeZoneInformation "EnumDynamicTimeZoneInformation" ADVAPI32.dll ;
+	UInteger dwIndex ;
+	Pointer lpTimeZoneInformation ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/timezoneapi/nf-timezoneapi-getdynamictimezoneinformationeffectiveyears
+External_Function GetDynamicTimeZoneInformationEffectiveYears "GetDynamicTimeZoneInformationEffectiveYears" ADVAPI32.dll ;
+	Pointer lpTimeZoneInformation ;	// DYNAMIC_TIME_ZONE_INFORMATION*
+	Pointer FirstYear ;	// UInteger*
+	Pointer LastYear ;	// UInteger*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

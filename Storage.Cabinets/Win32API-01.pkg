@@ -1,0 +1,98 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fci/nf-fci-fciaddfile
+External_Function FCIAddFile "FCIAddFile" Cabinet.dll ;
+	Pointer hfci ;	// Pointer*
+	String pszSourceFile ;	// PSTR
+	String pszFileName ;	// PSTR
+	Integer fExecute ;	// BOOL
+	Pointer pfnfcignc ;	// PFNFCIGETNEXTCABINET
+	Pointer pfnfcis ;	// PFNFCISTATUS
+	Pointer pfnfcigoi ;	// PFNFCIGETOPENINFO
+	UShort typeCompress ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fci/nf-fci-fcicreate
+External_Function FCICreate "FCICreate" Cabinet.dll ;
+	Pointer perf ;	// ERF*
+	Pointer pfnfcifp ;	// PFNFCIFILEPLACED
+	Pointer pfna ;	// PFNFCIALLOC
+	Pointer pfnf ;	// PFNFCIFREE
+	Pointer pfnopen ;	// PFNFCIOPEN
+	Pointer pfnread ;	// PFNFCIREAD
+	Pointer pfnwrite ;	// PFNFCIWRITE
+	Pointer pfnclose ;	// PFNFCICLOSE
+	Pointer pfnseek ;	// PFNFCISEEK
+	Pointer pfndelete ;	// PFNFCIDELETE
+	Pointer pfnfcigtf ;	// PFNFCIGETTEMPFILE
+	Pointer pccab ;	// CCAB*
+	Pointer pv ;	// Pointer*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/fci/nf-fci-fcidestroy
+External_Function FCIDestroy "FCIDestroy" Cabinet.dll ;
+	Pointer hfci ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fci/nf-fci-fciflushcabinet
+External_Function FCIFlushCabinet "FCIFlushCabinet" Cabinet.dll ;
+	Pointer hfci ;	// Pointer*
+	Integer fGetNextCab ;	// BOOL
+	Pointer pfnfcignc ;	// PFNFCIGETNEXTCABINET
+	Pointer pfnfcis ;	// PFNFCISTATUS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fci/nf-fci-fciflushfolder
+External_Function FCIFlushFolder "FCIFlushFolder" Cabinet.dll ;
+	Pointer hfci ;	// Pointer*
+	Pointer pfnfcignc ;	// PFNFCIGETNEXTCABINET
+	Pointer pfnfcis ;	// PFNFCISTATUS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fdi/nf-fdi-fdicopy
+External_Function FDICopy "FDICopy" Cabinet.dll ;
+	Pointer hfdi ;	// Pointer*
+	String pszCabinet ;	// PSTR
+	String pszCabPath ;	// PSTR
+	Integer flags ;
+	Pointer pfnfdin ;	// PFNFDINOTIFY
+	Pointer pfnfdid ;	// PFNFDIDECRYPT
+	Pointer pvUser ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fdi/nf-fdi-fdicreate
+External_Function FDICreate "FDICreate" Cabinet.dll ;
+	Pointer pfnalloc ;	// PFNALLOC
+	Pointer pfnfree ;	// PFNFREE
+	Pointer pfnopen ;	// PFNOPEN
+	Pointer pfnread ;	// PFNREAD
+	Pointer pfnwrite ;	// PFNWRITE
+	Pointer pfnclose ;	// PFNCLOSE
+	Pointer pfnseek ;	// PFNSEEK
+	Integer cpuType ;	// FDICREATE_CPU_TYPE
+	Pointer perf ;	// ERF*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/fdi/nf-fdi-fdidestroy
+External_Function FDIDestroy "FDIDestroy" Cabinet.dll ;
+	Pointer hfdi ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fdi/nf-fdi-fdiiscabinet
+External_Function FDIIsCabinet "FDIIsCabinet" Cabinet.dll ;
+	Pointer hfdi ;	// Pointer*
+	LongPtr hf ;
+	Pointer pfdici ;	// FDICABINETINFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fdi/nf-fdi-fditruncatecabinet
+External_Function FDITruncateCabinet "FDITruncateCabinet" Cabinet.dll ;
+	Pointer hfdi ;	// Pointer*
+	String pszCabinetName ;	// PSTR
+	UShort iFolderToDelete ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

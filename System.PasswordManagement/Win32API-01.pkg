@@ -1,0 +1,28 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mschapp/nf-mschapp-mschapsrvchangepassword
+External_Function MSChapSrvChangePassword "MSChapSrvChangePassword" ADVAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString UserName ;	// PWSTR
+	UChar LmOldPresent ;	// BOOLEAN
+	Pointer LmOldOwfPassword ;	// LM_OWF_PASSWORD*
+	Pointer LmNewOwfPassword ;	// LM_OWF_PASSWORD*
+	Pointer NtOldOwfPassword ;	// LM_OWF_PASSWORD*
+	Pointer NtNewOwfPassword ;	// LM_OWF_PASSWORD*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mschapp/nf-mschapp-mschapsrvchangepassword2
+External_Function MSChapSrvChangePassword2 "MSChapSrvChangePassword2" ADVAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString UserName ;	// PWSTR
+	Pointer NewPasswordEncryptedWithOldNt ;	// SAMPR_ENCRYPTED_USER_PASSWORD*
+	Pointer OldNtOwfPasswordEncryptedWithNewNt ;	// ENCRYPTED_LM_OWF_PASSWORD*
+	UChar LmPresent ;	// BOOLEAN
+	Pointer NewPasswordEncryptedWithOldLm ;	// SAMPR_ENCRYPTED_USER_PASSWORD*
+	Pointer OldLmOwfPasswordEncryptedWithNewLmOrNt ;	// ENCRYPTED_LM_OWF_PASSWORD*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

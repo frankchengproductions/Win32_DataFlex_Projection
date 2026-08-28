@@ -1,0 +1,757 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildexplicitaccesswithnamea
+External_Function BuildExplicitAccessWithNameA "BuildExplicitAccessWithNameA" ADVAPI32.dll ;
+	Pointer pExplicitAccess ;	// EXPLICIT_ACCESS_A*
+	String pTrusteeName ;	// PSTR
+	UInteger AccessPermissions ;
+	Integer AccessMode ;	// ACCESS_MODE
+	UInteger Inheritance ;	// ACE_FLAGS
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildexplicitaccesswithnamew
+External_Function BuildExplicitAccessWithNameW "BuildExplicitAccessWithNameW" ADVAPI32.dll ;
+	Pointer pExplicitAccess ;	// EXPLICIT_ACCESS_W*
+	WString pTrusteeName ;	// PWSTR
+	UInteger AccessPermissions ;
+	Integer AccessMode ;	// ACCESS_MODE
+	UInteger Inheritance ;	// ACE_FLAGS
+	Returns Pointer
+
+External_Function BuildImpersonateExplicitAccessWithNameA "BuildImpersonateExplicitAccessWithNameA" ADVAPI32.dll ;
+	Pointer pExplicitAccess ;	// EXPLICIT_ACCESS_A*
+	String pTrusteeName ;	// PSTR
+	Pointer pTrustee ;	// TRUSTEE_A*
+	UInteger AccessPermissions ;
+	Integer AccessMode ;	// ACCESS_MODE
+	UInteger Inheritance ;
+	Returns Pointer
+
+External_Function BuildImpersonateExplicitAccessWithNameW "BuildImpersonateExplicitAccessWithNameW" ADVAPI32.dll ;
+	Pointer pExplicitAccess ;	// EXPLICIT_ACCESS_W*
+	WString pTrusteeName ;	// PWSTR
+	Pointer pTrustee ;	// TRUSTEE_W*
+	UInteger AccessPermissions ;
+	Integer AccessMode ;	// ACCESS_MODE
+	UInteger Inheritance ;
+	Returns Pointer
+
+External_Function BuildImpersonateTrusteeA "BuildImpersonateTrusteeA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Pointer pImpersonateTrustee ;	// TRUSTEE_A*
+	Returns Pointer
+
+External_Function BuildImpersonateTrusteeW "BuildImpersonateTrusteeW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Pointer pImpersonateTrustee ;	// TRUSTEE_W*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildsecuritydescriptora
+External_Function BuildSecurityDescriptorA "BuildSecurityDescriptorA" ADVAPI32.dll ;
+	Pointer pOwner ;	// TRUSTEE_A*
+	Pointer pGroup ;	// TRUSTEE_A*
+	UInteger cCountOfAccessEntries ;
+	Pointer pListOfAccessEntries ;	// EXPLICIT_ACCESS_A*
+	UInteger cCountOfAuditEntries ;
+	Pointer pListOfAuditEntries ;	// EXPLICIT_ACCESS_A*
+	Pointer pOldSD ;	// PSECURITY_DESCRIPTOR
+	Pointer pSizeNewSD ;	// UInteger*
+	Pointer pNewSD ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildsecuritydescriptorw
+External_Function BuildSecurityDescriptorW "BuildSecurityDescriptorW" ADVAPI32.dll ;
+	Pointer pOwner ;	// TRUSTEE_W*
+	Pointer pGroup ;	// TRUSTEE_W*
+	UInteger cCountOfAccessEntries ;
+	Pointer pListOfAccessEntries ;	// EXPLICIT_ACCESS_W*
+	UInteger cCountOfAuditEntries ;
+	Pointer pListOfAuditEntries ;	// EXPLICIT_ACCESS_W*
+	Pointer pOldSD ;	// PSECURITY_DESCRIPTOR
+	Pointer pSizeNewSD ;	// UInteger*
+	Pointer pNewSD ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithnamea
+External_Function BuildTrusteeWithNameA "BuildTrusteeWithNameA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	String pName ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithnamew
+External_Function BuildTrusteeWithNameW "BuildTrusteeWithNameW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	WString pName ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithobjectsandnamea
+External_Function BuildTrusteeWithObjectsAndNameA "BuildTrusteeWithObjectsAndNameA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Pointer pObjName ;	// OBJECTS_AND_NAME_A*
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	String ObjectTypeName ;	// PSTR
+	String InheritedObjectTypeName ;	// PSTR
+	String Name ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithobjectsandnamew
+External_Function BuildTrusteeWithObjectsAndNameW "BuildTrusteeWithObjectsAndNameW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Pointer pObjName ;	// OBJECTS_AND_NAME_W*
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	WString ObjectTypeName ;	// PWSTR
+	WString InheritedObjectTypeName ;	// PWSTR
+	WString Name ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithobjectsandsida
+External_Function BuildTrusteeWithObjectsAndSidA "BuildTrusteeWithObjectsAndSidA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Pointer pObjSid ;	// OBJECTS_AND_SID*
+	Pointer pObjectGuid ;	// Guid*
+	Pointer pInheritedObjectGuid ;	// Guid*
+	Pointer pSid ;	// PSID
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithobjectsandsidw
+External_Function BuildTrusteeWithObjectsAndSidW "BuildTrusteeWithObjectsAndSidW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Pointer pObjSid ;	// OBJECTS_AND_SID*
+	Pointer pObjectGuid ;	// Guid*
+	Pointer pInheritedObjectGuid ;	// Guid*
+	Pointer pSid ;	// PSID
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithsida
+External_Function BuildTrusteeWithSidA "BuildTrusteeWithSidA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Pointer pSid ;	// PSID
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-buildtrusteewithsidw
+External_Function BuildTrusteeWithSidW "BuildTrusteeWithSidW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Pointer pSid ;	// PSID
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertsecuritydescriptortostringsecuritydescriptora
+External_Function ConvertSecurityDescriptorToStringSecurityDescriptorA "ConvertSecurityDescriptorToStringSecurityDescriptorA" ADVAPI32.dll ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger RequestedStringSDRevision ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer StringSecurityDescriptor ;	// PSTR*
+	Pointer StringSecurityDescriptorLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertsecuritydescriptortostringsecuritydescriptorw
+External_Function ConvertSecurityDescriptorToStringSecurityDescriptorW "ConvertSecurityDescriptorToStringSecurityDescriptorW" ADVAPI32.dll ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger RequestedStringSDRevision ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer StringSecurityDescriptor ;	// PWSTR*
+	Pointer StringSecurityDescriptorLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertsidtostringsida
+External_Function ConvertSidToStringSidA "ConvertSidToStringSidA" ADVAPI32.dll ;
+	Pointer Sid ;	// PSID
+	Pointer StringSid ;	// PSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertsidtostringsidw
+External_Function ConvertSidToStringSidW "ConvertSidToStringSidW" ADVAPI32.dll ;
+	Pointer Sid ;	// PSID
+	Pointer StringSid ;	// PWSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertstringsecuritydescriptortosecuritydescriptora
+External_Function ConvertStringSecurityDescriptorToSecurityDescriptorA "ConvertStringSecurityDescriptorToSecurityDescriptorA" ADVAPI32.dll ;
+	String StringSecurityDescriptor ;	// PSTR
+	UInteger StringSDRevision ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer SecurityDescriptorSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertstringsecuritydescriptortosecuritydescriptorw
+External_Function ConvertStringSecurityDescriptorToSecurityDescriptorW "ConvertStringSecurityDescriptorToSecurityDescriptorW" ADVAPI32.dll ;
+	WString StringSecurityDescriptor ;	// PWSTR
+	UInteger StringSDRevision ;
+	Pointer SecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Pointer SecurityDescriptorSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertstringsidtosida
+External_Function ConvertStringSidToSidA "ConvertStringSidToSidA" ADVAPI32.dll ;
+	String StringSid ;	// PSTR
+	Pointer Sid ;	// PSID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/sddl/nf-sddl-convertstringsidtosidw
+External_Function ConvertStringSidToSidW "ConvertStringSidToSidW" ADVAPI32.dll ;
+	WString StringSid ;	// PWSTR
+	Pointer Sid ;	// PSID*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-freeinheritedfromarray
+External_Function FreeInheritedFromArray "FreeInheritedFromArray" ADVAPI32.dll ;
+	Pointer pInheritArray ;	// INHERITED_FROMW*
+	UShort AceCnt ;
+	Pointer pfnArray ;	// FN_OBJECT_MGR_FUNCTS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getauditedpermissionsfromacla
+External_Function GetAuditedPermissionsFromAclA "GetAuditedPermissionsFromAclA" ADVAPI32.dll ;
+	Pointer pacl ;	// ACL*
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Pointer pSuccessfulAuditedRights ;	// UInteger*
+	Pointer pFailedAuditRights ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getauditedpermissionsfromaclw
+External_Function GetAuditedPermissionsFromAclW "GetAuditedPermissionsFromAclW" ADVAPI32.dll ;
+	Pointer pacl ;	// ACL*
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Pointer pSuccessfulAuditedRights ;	// UInteger*
+	Pointer pFailedAuditRights ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-geteffectiverightsfromacla
+External_Function GetEffectiveRightsFromAclA "GetEffectiveRightsFromAclA" ADVAPI32.dll ;
+	Pointer pacl ;	// ACL*
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Pointer pAccessRights ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-geteffectiverightsfromaclw
+External_Function GetEffectiveRightsFromAclW "GetEffectiveRightsFromAclW" ADVAPI32.dll ;
+	Pointer pacl ;	// ACL*
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Pointer pAccessRights ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getexplicitentriesfromacla
+External_Function GetExplicitEntriesFromAclA "GetExplicitEntriesFromAclA" ADVAPI32.dll ;
+	Pointer pacl ;	// ACL*
+	Pointer pcCountOfExplicitEntries ;	// UInteger*
+	Pointer pListOfExplicitEntries ;	// EXPLICIT_ACCESS_A**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getexplicitentriesfromaclw
+External_Function GetExplicitEntriesFromAclW "GetExplicitEntriesFromAclW" ADVAPI32.dll ;
+	Pointer pacl ;	// ACL*
+	Pointer pcCountOfExplicitEntries ;	// UInteger*
+	Pointer pListOfExplicitEntries ;	// EXPLICIT_ACCESS_W**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getinheritancesourcea
+External_Function GetInheritanceSourceA "GetInheritanceSourceA" ADVAPI32.dll ;
+	String pObjectName ;	// PSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Integer Container ;	// BOOL
+	Pointer pObjectClassGuids ;	// Guid**
+	UInteger GuidCount ;
+	Pointer pAcl ;	// ACL*
+	Pointer pfnArray ;	// FN_OBJECT_MGR_FUNCTS*
+	Pointer pGenericMapping ;	// GENERIC_MAPPING*
+	Pointer pInheritArray ;	// INHERITED_FROMA*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getinheritancesourcew
+External_Function GetInheritanceSourceW "GetInheritanceSourceW" ADVAPI32.dll ;
+	WString pObjectName ;	// PWSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Integer Container ;	// BOOL
+	Pointer pObjectClassGuids ;	// Guid**
+	UInteger GuidCount ;
+	Pointer pAcl ;	// ACL*
+	Pointer pfnArray ;	// FN_OBJECT_MGR_FUNCTS*
+	Pointer pGenericMapping ;	// GENERIC_MAPPING*
+	Pointer pInheritArray ;	// INHERITED_FROMW*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function GetMultipleTrusteeA "GetMultipleTrusteeA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Returns Pointer	// TRUSTEE_A*
+
+External_Function GetMultipleTrusteeOperationA "GetMultipleTrusteeOperationA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Returns Integer	// MULTIPLE_TRUSTEE_OPERATION
+
+External_Function GetMultipleTrusteeOperationW "GetMultipleTrusteeOperationW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Returns Integer	// MULTIPLE_TRUSTEE_OPERATION
+
+External_Function GetMultipleTrusteeW "GetMultipleTrusteeW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Returns Pointer	// TRUSTEE_W*
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getnamedsecurityinfoa
+External_Function GetNamedSecurityInfoA "GetNamedSecurityInfoA" ADVAPI32.dll ;
+	String pObjectName ;	// PSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ppsidOwner ;	// PSID*
+	Pointer ppsidGroup ;	// PSID*
+	Pointer ppDacl ;	// ACL**
+	Pointer ppSacl ;	// ACL**
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getnamedsecurityinfow
+External_Function GetNamedSecurityInfoW "GetNamedSecurityInfoW" ADVAPI32.dll ;
+	WString pObjectName ;	// PWSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ppsidOwner ;	// PSID*
+	Pointer ppsidGroup ;	// PSID*
+	Pointer ppDacl ;	// ACL**
+	Pointer ppSacl ;	// ACL**
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-getsecurityinfo
+External_Function GetSecurityInfo "GetSecurityInfo" ADVAPI32.dll ;
+	Pointer handle ;	// HANDLE
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ppsidOwner ;	// PSID*
+	Pointer ppsidGroup ;	// PSID*
+	Pointer ppDacl ;	// ACL**
+	Pointer ppSacl ;	// ACL**
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-gettrusteeforma
+External_Function GetTrusteeFormA "GetTrusteeFormA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Returns Integer	// TRUSTEE_FORM
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-gettrusteeformw
+External_Function GetTrusteeFormW "GetTrusteeFormW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Returns Integer	// TRUSTEE_FORM
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-gettrusteenamea
+External_Function GetTrusteeNameA "GetTrusteeNameA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-gettrusteenamew
+External_Function GetTrusteeNameW "GetTrusteeNameW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-gettrusteetypea
+External_Function GetTrusteeTypeA "GetTrusteeTypeA" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_A*
+	Returns Integer	// TRUSTEE_TYPE
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-gettrusteetypew
+External_Function GetTrusteeTypeW "GetTrusteeTypeW" ADVAPI32.dll ;
+	Pointer pTrustee ;	// TRUSTEE_W*
+	Returns Integer	// TRUSTEE_TYPE
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-lookupsecuritydescriptorpartsa
+External_Function LookupSecurityDescriptorPartsA "LookupSecurityDescriptorPartsA" ADVAPI32.dll ;
+	Pointer ppOwner ;	// TRUSTEE_A**
+	Pointer ppGroup ;	// TRUSTEE_A**
+	Pointer pcCountOfAccessEntries ;	// UInteger*
+	Pointer ppListOfAccessEntries ;	// EXPLICIT_ACCESS_A**
+	Pointer pcCountOfAuditEntries ;	// UInteger*
+	Pointer ppListOfAuditEntries ;	// EXPLICIT_ACCESS_A**
+	Pointer pSD ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-lookupsecuritydescriptorpartsw
+External_Function LookupSecurityDescriptorPartsW "LookupSecurityDescriptorPartsW" ADVAPI32.dll ;
+	Pointer ppOwner ;	// TRUSTEE_W**
+	Pointer ppGroup ;	// TRUSTEE_W**
+	Pointer pcCountOfAccessEntries ;	// UInteger*
+	Pointer ppListOfAccessEntries ;	// EXPLICIT_ACCESS_W**
+	Pointer pcCountOfAuditEntries ;	// UInteger*
+	Pointer ppListOfAuditEntries ;	// EXPLICIT_ACCESS_W**
+	Pointer pSD ;	// PSECURITY_DESCRIPTOR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-setentriesinacla
+External_Function SetEntriesInAclA "SetEntriesInAclA" ADVAPI32.dll ;
+	UInteger cCountOfExplicitEntries ;
+	Pointer pListOfExplicitEntries ;	// EXPLICIT_ACCESS_A*
+	Pointer OldAcl ;	// ACL*
+	Pointer NewAcl ;	// ACL**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-setentriesinaclw
+External_Function SetEntriesInAclW "SetEntriesInAclW" ADVAPI32.dll ;
+	UInteger cCountOfExplicitEntries ;
+	Pointer pListOfExplicitEntries ;	// EXPLICIT_ACCESS_W*
+	Pointer OldAcl ;	// ACL*
+	Pointer NewAcl ;	// ACL**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-setnamedsecurityinfoa
+External_Function SetNamedSecurityInfoA "SetNamedSecurityInfoA" ADVAPI32.dll ;
+	String pObjectName ;	// PSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer psidOwner ;	// PSID
+	Pointer psidGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-setnamedsecurityinfow
+External_Function SetNamedSecurityInfoW "SetNamedSecurityInfoW" ADVAPI32.dll ;
+	WString pObjectName ;	// PWSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer psidOwner ;	// PSID
+	Pointer psidGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-setsecurityinfo
+External_Function SetSecurityInfo "SetSecurityInfo" ADVAPI32.dll ;
+	Pointer handle ;	// HANDLE
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer psidOwner ;	// PSID
+	Pointer psidGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-treeresetnamedsecurityinfoa
+External_Function TreeResetNamedSecurityInfoA "TreeResetNamedSecurityInfoA" ADVAPI32.dll ;
+	String pObjectName ;	// PSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pOwner ;	// PSID
+	Pointer pGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	Integer KeepExplicit ;	// BOOL
+	Pointer fnProgress ;	// FN_PROGRESS
+	Integer ProgressInvokeSetting ;	// PROG_INVOKE_SETTING
+	Pointer Args ;	// Pointer*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-treeresetnamedsecurityinfow
+External_Function TreeResetNamedSecurityInfoW "TreeResetNamedSecurityInfoW" ADVAPI32.dll ;
+	WString pObjectName ;	// PWSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pOwner ;	// PSID
+	Pointer pGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	Integer KeepExplicit ;	// BOOL
+	Pointer fnProgress ;	// FN_PROGRESS
+	Integer ProgressInvokeSetting ;	// PROG_INVOKE_SETTING
+	Pointer Args ;	// Pointer*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-treesetnamedsecurityinfoa
+External_Function TreeSetNamedSecurityInfoA "TreeSetNamedSecurityInfoA" ADVAPI32.dll ;
+	String pObjectName ;	// PSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pOwner ;	// PSID
+	Pointer pGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	UInteger dwAction ;	// TREE_SEC_INFO
+	Pointer fnProgress ;	// FN_PROGRESS
+	Integer ProgressInvokeSetting ;	// PROG_INVOKE_SETTING
+	Pointer Args ;	// Pointer*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/aclapi/nf-aclapi-treesetnamedsecurityinfow
+External_Function TreeSetNamedSecurityInfoW "TreeSetNamedSecurityInfoW" ADVAPI32.dll ;
+	WString pObjectName ;	// PWSTR
+	Integer ObjectType ;	// SE_OBJECT_TYPE
+	UInteger SecurityInfo ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pOwner ;	// PSID
+	Pointer pGroup ;	// PSID
+	Pointer pDacl ;	// ACL*
+	Pointer pSacl ;	// ACL*
+	UInteger dwAction ;	// TREE_SEC_INFO
+	Pointer fnProgress ;	// FN_PROGRESS
+	Integer ProgressInvokeSetting ;	// PROG_INVOKE_SETTING
+	Pointer Args ;	// Pointer*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzaccesscheck
+External_Function AuthzAccessCheck "AuthzAccessCheck" AUTHZ.dll ;
+	UInteger Flags ;	// AUTHZ_ACCESS_CHECK_FLAGS
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer pRequest ;	// AUTHZ_ACCESS_REQUEST*
+	Pointer hAuditEvent ;	// AUTHZ_AUDIT_EVENT_HANDLE
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer OptionalSecurityDescriptorArray ;	// PSECURITY_DESCRIPTOR*
+	UInteger OptionalSecurityDescriptorCount ;
+	Pointer pReply ;	// AUTHZ_ACCESS_REPLY*
+	Pointer phAccessCheckResults ;	// AUTHZ_ACCESS_CHECK_RESULTS_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzaddsidstocontext
+External_Function AuthzAddSidsToContext "AuthzAddSidsToContext" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer Sids ;	// SID_AND_ATTRIBUTES*
+	UInteger SidCount ;
+	Pointer RestrictedSids ;	// SID_AND_ATTRIBUTES*
+	UInteger RestrictedSidCount ;
+	Pointer phNewAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzcachedaccesscheck
+External_Function AuthzCachedAccessCheck "AuthzCachedAccessCheck" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer hAccessCheckResults ;	// AUTHZ_ACCESS_CHECK_RESULTS_HANDLE
+	Pointer pRequest ;	// AUTHZ_ACCESS_REQUEST*
+	Pointer hAuditEvent ;	// AUTHZ_AUDIT_EVENT_HANDLE
+	Pointer pReply ;	// AUTHZ_ACCESS_REPLY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzenumeratesecurityeventsources
+External_Function AuthzEnumerateSecurityEventSources "AuthzEnumerateSecurityEventSources" AUTHZ.dll ;
+	UInteger dwFlags ;
+	Pointer Buffer ;	// AUTHZ_SOURCE_SCHEMA_REGISTRATION*
+	Pointer pdwCount ;	// UInteger*
+	Pointer pdwLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function AuthzEvaluateSacl "AuthzEvaluateSacl" AUTHZ.dll ;
+	Pointer AuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer pRequest ;	// AUTHZ_ACCESS_REQUEST*
+	Pointer Sacl ;	// ACL*
+	UInteger GrantedAccess ;
+	Integer AccessGranted ;	// BOOL
+	Pointer pbGenerateAudit ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzfreeauditevent
+External_Function AuthzFreeAuditEvent "AuthzFreeAuditEvent" AUTHZ.dll ;
+	Pointer hAuditEvent ;	// AUTHZ_AUDIT_EVENT_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzfreecentralaccesspolicycache
+External_Function AuthzFreeCentralAccessPolicyCache "AuthzFreeCentralAccessPolicyCache" AUTHZ.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzfreecontext
+External_Function AuthzFreeContext "AuthzFreeContext" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzfreehandle
+External_Function AuthzFreeHandle "AuthzFreeHandle" AUTHZ.dll ;
+	Pointer hAccessCheckResults ;	// AUTHZ_ACCESS_CHECK_RESULTS_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzfreeresourcemanager
+External_Function AuthzFreeResourceManager "AuthzFreeResourceManager" AUTHZ.dll ;
+	Pointer hAuthzResourceManager ;	// AUTHZ_RESOURCE_MANAGER_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzgetinformationfromcontext
+External_Function AuthzGetInformationFromContext "AuthzGetInformationFromContext" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Integer InfoClass ;	// AUTHZ_CONTEXT_INFORMATION_CLASS
+	UInteger BufferSize ;
+	Pointer pSizeRequired ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializecompoundcontext
+External_Function AuthzInitializeCompoundContext "AuthzInitializeCompoundContext" AUTHZ.dll ;
+	Pointer UserContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer DeviceContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer phCompoundContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializecontextfromauthzcontext
+External_Function AuthzInitializeContextFromAuthzContext "AuthzInitializeContextFromAuthzContext" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer pExpirationTime ;	// Bigint*
+	LUID Identifier ;
+	Pointer DynamicGroupArgs ;	// Pointer*
+	Pointer phNewAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializecontextfromsid
+External_Function AuthzInitializeContextFromSid "AuthzInitializeContextFromSid" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer UserSid ;	// PSID
+	Pointer hAuthzResourceManager ;	// AUTHZ_RESOURCE_MANAGER_HANDLE
+	Pointer pExpirationTime ;	// Bigint*
+	LUID Identifier ;
+	Pointer DynamicGroupArgs ;	// Pointer*
+	Pointer phAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializecontextfromtoken
+External_Function AuthzInitializeContextFromToken "AuthzInitializeContextFromToken" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer TokenHandle ;	// HANDLE
+	Pointer hAuthzResourceManager ;	// AUTHZ_RESOURCE_MANAGER_HANDLE
+	Pointer pExpirationTime ;	// Bigint*
+	LUID Identifier ;
+	Pointer DynamicGroupArgs ;	// Pointer*
+	Pointer phAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializeobjectaccessauditevent
+External_Function AuthzInitializeObjectAccessAuditEvent "AuthzInitializeObjectAccessAuditEvent" AUTHZ.dll ;
+	UInteger Flags ;	// AUTHZ_INITIALIZE_OBJECT_ACCESS_AUDIT_EVENT_FLAGS
+	Pointer hAuditEventType ;	// AUTHZ_AUDIT_EVENT_TYPE_HANDLE
+	WString szOperationType ;	// PWSTR
+	WString szObjectType ;	// PWSTR
+	WString szObjectName ;	// PWSTR
+	WString szAdditionalInfo ;	// PWSTR
+	Pointer phAuditEvent ;	// AUTHZ_AUDIT_EVENT_HANDLE*
+	UInteger dwAdditionalParameterCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializeobjectaccessauditevent2
+External_Function AuthzInitializeObjectAccessAuditEvent2 "AuthzInitializeObjectAccessAuditEvent2" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer hAuditEventType ;	// AUTHZ_AUDIT_EVENT_TYPE_HANDLE
+	WString szOperationType ;	// PWSTR
+	WString szObjectType ;	// PWSTR
+	WString szObjectName ;	// PWSTR
+	WString szAdditionalInfo ;	// PWSTR
+	WString szAdditionalInfo2 ;	// PWSTR
+	Pointer phAuditEvent ;	// AUTHZ_AUDIT_EVENT_HANDLE*
+	UInteger dwAdditionalParameterCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializeremoteresourcemanager
+External_Function AuthzInitializeRemoteResourceManager "AuthzInitializeRemoteResourceManager" AUTHZ.dll ;
+	Pointer pRpcInitInfo ;	// AUTHZ_RPC_INIT_INFO_CLIENT*
+	Pointer phAuthzResourceManager ;	// AUTHZ_RESOURCE_MANAGER_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializeresourcemanager
+External_Function AuthzInitializeResourceManager "AuthzInitializeResourceManager" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer pfnDynamicAccessCheck ;	// PFN_AUTHZ_DYNAMIC_ACCESS_CHECK
+	Pointer pfnComputeDynamicGroups ;	// PFN_AUTHZ_COMPUTE_DYNAMIC_GROUPS
+	Pointer pfnFreeDynamicGroups ;	// PFN_AUTHZ_FREE_DYNAMIC_GROUPS
+	WString szResourceManagerName ;	// PWSTR
+	Pointer phAuthzResourceManager ;	// AUTHZ_RESOURCE_MANAGER_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinitializeresourcemanagerex
+External_Function AuthzInitializeResourceManagerEx "AuthzInitializeResourceManagerEx" AUTHZ.dll ;
+	UInteger Flags ;	// AUTHZ_RESOURCE_MANAGER_FLAGS
+	Pointer pAuthzInitInfo ;	// AUTHZ_INIT_INFO*
+	Pointer phAuthzResourceManager ;	// AUTHZ_RESOURCE_MANAGER_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzinstallsecurityeventsource
+External_Function AuthzInstallSecurityEventSource "AuthzInstallSecurityEventSource" AUTHZ.dll ;
+	UInteger dwFlags ;
+	Pointer pRegistration ;	// AUTHZ_SOURCE_SCHEMA_REGISTRATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzmodifyclaims
+External_Function AuthzModifyClaims "AuthzModifyClaims" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Integer ClaimClass ;	// AUTHZ_CONTEXT_INFORMATION_CLASS
+	Pointer pClaimOperations ;	// AUTHZ_SECURITY_ATTRIBUTE_OPERATION*
+	Pointer pClaims ;	// AUTHZ_SECURITY_ATTRIBUTES_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzmodifysecurityattributes
+External_Function AuthzModifySecurityAttributes "AuthzModifySecurityAttributes" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer pOperations ;	// AUTHZ_SECURITY_ATTRIBUTE_OPERATION*
+	Pointer pAttributes ;	// AUTHZ_SECURITY_ATTRIBUTES_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzmodifysids
+External_Function AuthzModifySids "AuthzModifySids" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Integer SidClass ;	// AUTHZ_CONTEXT_INFORMATION_CLASS
+	Pointer pSidOperations ;	// AUTHZ_SID_OPERATION*
+	Pointer pSids ;	// TOKEN_GROUPS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzopenobjectaudit
+External_Function AuthzOpenObjectAudit "AuthzOpenObjectAudit" AUTHZ.dll ;
+	UInteger Flags ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer pRequest ;	// AUTHZ_ACCESS_REQUEST*
+	Pointer hAuditEvent ;	// AUTHZ_AUDIT_EVENT_HANDLE
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer OptionalSecurityDescriptorArray ;	// PSECURITY_DESCRIPTOR*
+	UInteger OptionalSecurityDescriptorCount ;
+	Pointer pReply ;	// AUTHZ_ACCESS_REPLY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzregistercapchangenotification
+External_Function AuthzRegisterCapChangeNotification "AuthzRegisterCapChangeNotification" AUTHZ.dll ;
+	Pointer phCapChangeSubscription ;	// AUTHZ_CAP_CHANGE_SUBSCRIPTION_HANDLE*
+	Pointer pfnCapChangeCallback ;	// LPTHREAD_START_ROUTINE
+	Pointer pCallbackContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzregistersecurityeventsource
+External_Function AuthzRegisterSecurityEventSource "AuthzRegisterSecurityEventSource" AUTHZ.dll ;
+	UInteger dwFlags ;
+	WString szEventSourceName ;	// PWSTR
+	Pointer phEventProvider ;	// AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzreportsecurityevent
+External_Function AuthzReportSecurityEvent "AuthzReportSecurityEvent" AUTHZ.dll ;
+	UInteger dwFlags ;
+	Pointer hEventProvider ;	// AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE
+	UInteger dwAuditId ;
+	Pointer pUserSid ;	// PSID
+	UInteger dwCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzreportsecurityeventfromparams
+External_Function AuthzReportSecurityEventFromParams "AuthzReportSecurityEventFromParams" AUTHZ.dll ;
+	UInteger dwFlags ;
+	Pointer hEventProvider ;	// AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE
+	UInteger dwAuditId ;
+	Pointer pUserSid ;	// PSID
+	Pointer pParams ;	// AUDIT_PARAMS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzsetappcontainerinformation
+External_Function AuthzSetAppContainerInformation "AuthzSetAppContainerInformation" AUTHZ.dll ;
+	Pointer hAuthzClientContext ;	// AUTHZ_CLIENT_CONTEXT_HANDLE
+	Pointer pAppContainerSid ;	// PSID
+	UInteger CapabilityCount ;
+	Pointer pCapabilitySids ;	// SID_AND_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzuninstallsecurityeventsource
+External_Function AuthzUninstallSecurityEventSource "AuthzUninstallSecurityEventSource" AUTHZ.dll ;
+	UInteger dwFlags ;
+	WString szEventSourceName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzunregistercapchangenotification
+External_Function AuthzUnregisterCapChangeNotification "AuthzUnregisterCapChangeNotification" AUTHZ.dll ;
+	Pointer hCapChangeSubscription ;	// AUTHZ_CAP_CHANGE_SUBSCRIPTION_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/authz/nf-authz-authzunregistersecurityeventsource
+External_Function AuthzUnregisterSecurityEventSource "AuthzUnregisterSecurityEventSource" AUTHZ.dll ;
+	UInteger dwFlags ;
+	Pointer phEventProvider ;	// AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

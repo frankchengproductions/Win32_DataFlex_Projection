@@ -1,0 +1,202 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-administrator_power_policy
+Struct ADMINISTRATOR_POWER_POLICY
+	Integer MinSleep										// SYSTEM_POWER_STATE
+	Integer MaxSleep										// SYSTEM_POWER_STATE
+	UInteger MinVideoTimeout
+	UInteger MaxVideoTimeout
+	UInteger MinSpindownTimeout
+	UInteger MaxSpindownTimeout
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-battery_reporting_scale
+Struct BATTERY_REPORTING_SCALE
+	UInteger Granularity
+	UInteger Capacity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-global_machine_power_policy
+Struct GLOBAL_MACHINE_POWER_POLICY
+	UInteger Revision
+	Integer LidOpenWakeAc									// SYSTEM_POWER_STATE
+	Integer LidOpenWakeDc									// SYSTEM_POWER_STATE
+	UInteger BroadcastCapacityResolution
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-global_power_policy
+Struct GLOBAL_POWER_POLICY
+	GLOBAL_USER_POWER_POLICY user
+	GLOBAL_MACHINE_POWER_POLICY mach
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-global_user_power_policy
+Struct GLOBAL_USER_POWER_POLICY
+	UInteger Revision
+	POWER_ACTION_POLICY PowerButtonAc
+	POWER_ACTION_POLICY PowerButtonDc
+	POWER_ACTION_POLICY SleepButtonAc
+	POWER_ACTION_POLICY SleepButtonDc
+	POWER_ACTION_POLICY LidCloseAc
+	POWER_ACTION_POLICY LidCloseDc
+	SYSTEM_POWER_LEVEL[4] DischargePolicy
+	UInteger GlobalFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-machine_power_policy
+Struct MACHINE_POWER_POLICY
+	UInteger Revision
+	Integer MinSleepAc										// SYSTEM_POWER_STATE
+	Integer MinSleepDc										// SYSTEM_POWER_STATE
+	Integer ReducedLatencySleepAc							// SYSTEM_POWER_STATE
+	Integer ReducedLatencySleepDc							// SYSTEM_POWER_STATE
+	UInteger DozeTimeoutAc
+	UInteger DozeTimeoutDc
+	UInteger DozeS4TimeoutAc
+	UInteger DozeS4TimeoutDc
+	UChar MinThrottleAc
+	UChar MinThrottleDc
+	UChar[2] pad1
+	POWER_ACTION_POLICY OverThrottledAc
+	POWER_ACTION_POLICY OverThrottledDc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-machine_processor_power_policy
+Struct MACHINE_PROCESSOR_POWER_POLICY
+	UInteger Revision
+	PROCESSOR_POWER_POLICY ProcessorPolicyAc
+	PROCESSOR_POWER_POLICY ProcessorPolicyDc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-power_action_policy
+Struct POWER_ACTION_POLICY
+	Integer Action											// POWER_ACTION
+	UInteger Flags
+	UInteger EventCode										// POWER_ACTION_POLICY_EVENT_CODE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-power_policy
+Struct POWER_POLICY
+	USER_POWER_POLICY user
+	MACHINE_POWER_POLICY mach
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-processor_power_policy
+Struct PROCESSOR_POWER_POLICY
+	UInteger Revision
+	UChar DynamicThrottle
+	UChar[3] Spare
+	UInteger _bitfield
+	UInteger PolicyCount
+	PROCESSOR_POWER_POLICY_INFO[3] Policy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-processor_power_policy_info
+Struct PROCESSOR_POWER_POLICY_INFO
+	UInteger TimeCheck
+	UInteger DemoteLimit
+	UInteger PromoteLimit
+	UChar DemotePercent
+	UChar PromotePercent
+	UChar[2] Spare
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_power_capabilities
+Struct SYSTEM_POWER_CAPABILITIES
+	UChar PowerButtonPresent								// BOOLEAN
+	UChar SleepButtonPresent								// BOOLEAN
+	UChar LidPresent										// BOOLEAN
+	UChar SystemS1											// BOOLEAN
+	UChar SystemS2											// BOOLEAN
+	UChar SystemS3											// BOOLEAN
+	UChar SystemS4											// BOOLEAN
+	UChar SystemS5											// BOOLEAN
+	UChar HiberFilePresent									// BOOLEAN
+	UChar FullWake											// BOOLEAN
+	UChar VideoDimPresent									// BOOLEAN
+	UChar ApmPresent										// BOOLEAN
+	UChar UpsPresent										// BOOLEAN
+	UChar ThermalControl									// BOOLEAN
+	UChar ProcessorThrottle									// BOOLEAN
+	UChar ProcessorMinThrottle
+	UChar ProcessorMaxThrottle
+	UChar FastSystemS4										// BOOLEAN
+	UChar Hiberboot											// BOOLEAN
+	UChar WakeAlarmPresent									// BOOLEAN
+	UChar AoAc												// BOOLEAN
+	UChar DiskSpinDown										// BOOLEAN
+	UChar HiberFileType
+	UChar AoAcConnectivitySupported							// BOOLEAN
+	UChar[6] spare3
+	UChar SystemBatteriesPresent							// BOOLEAN
+	UChar BatteriesAreShortTerm								// BOOLEAN
+	BATTERY_REPORTING_SCALE[3] BatteryScale
+	Integer AcOnLineWake									// SYSTEM_POWER_STATE
+	Integer SoftLidWake										// SYSTEM_POWER_STATE
+	Integer RtcWake											// SYSTEM_POWER_STATE
+	Integer MinDeviceWakeState								// SYSTEM_POWER_STATE
+	Integer DefaultLowLatencyWake							// SYSTEM_POWER_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_power_level
+Struct SYSTEM_POWER_LEVEL
+	UChar Enable											// BOOLEAN
+	UChar[3] Spare
+	UInteger BatteryLevel
+	POWER_ACTION_POLICY PowerPolicy
+	Integer MinSystemState									// SYSTEM_POWER_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-system_power_status
+Struct SYSTEM_POWER_STATUS
+	UChar ACLineStatus
+	UChar BatteryFlag
+	UChar BatteryLifePercent
+	UChar SystemStatusFlag
+	UInteger BatteryLifeTime
+	UInteger BatteryFullLifeTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-thermal_event
+Struct THERMAL_EVENT
+	UInteger Version
+	UInteger Size
+	UInteger Type
+	UInteger Temperature
+	UInteger TripPointTemperature
+	Integer iMissingAlignment1
+	Pointer Initiator										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-user_power_policy
+Struct USER_POWER_POLICY
+	UInteger Revision
+	POWER_ACTION_POLICY IdleAc
+	POWER_ACTION_POLICY IdleDc
+	UInteger IdleTimeoutAc
+	UInteger IdleTimeoutDc
+	UChar IdleSensitivityAc
+	UChar IdleSensitivityDc
+	UChar ThrottlePolicyAc
+	UChar ThrottlePolicyDc
+	Integer MaxSleepAc										// SYSTEM_POWER_STATE
+	Integer MaxSleepDc										// SYSTEM_POWER_STATE
+	UInteger[2] Reserved
+	UInteger VideoTimeoutAc
+	UInteger VideoTimeoutDc
+	UInteger SpindownTimeoutAc
+	UInteger SpindownTimeoutDc
+	UChar OptimizeForPowerAc								// BOOLEAN
+	UChar OptimizeForPowerDc								// BOOLEAN
+	UChar FanThrottleToleranceAc
+	UChar FanThrottleToleranceDc
+	UChar ForcedThrottleAc
+	UChar ForcedThrottleDc
+	Short iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

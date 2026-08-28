@@ -1,0 +1,290 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanclosecommand
+External_Function WSManCloseCommand "WSManCloseCommand" WsmSvc.dll ;
+	LongPtr commandHandle ;	// WSMAN_COMMAND_HANDLE
+	UInteger flags ;
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmancloseoperation
+External_Function WSManCloseOperation "WSManCloseOperation" WsmSvc.dll ;
+	LongPtr operationHandle ;	// WSMAN_OPERATION_HANDLE
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanclosesession
+External_Function WSManCloseSession "WSManCloseSession" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmancloseshell
+External_Function WSManCloseShell "WSManCloseShell" WsmSvc.dll ;
+	LongPtr shellHandle ;	// WSMAN_SHELL_HANDLE
+	UInteger flags ;
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanconnectshell
+External_Function WSManConnectShell "WSManConnectShell" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	UInteger flags ;
+	WString resourceUri ;	// PWSTR
+	WString shellID ;	// PWSTR
+	Pointer options ;	// WSMAN_OPTION_SET*
+	Pointer connectXml ;	// WSMAN_DATA*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer shell ;	// WSMAN_SHELL_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanconnectshellcommand
+External_Function WSManConnectShellCommand "WSManConnectShellCommand" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	UInteger flags ;
+	WString commandID ;	// PWSTR
+	Pointer options ;	// WSMAN_OPTION_SET*
+	Pointer connectXml ;	// WSMAN_DATA*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer command ;	// WSMAN_COMMAND_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmancreatesession
+External_Function WSManCreateSession "WSManCreateSession" WsmSvc.dll ;
+	LongPtr apiHandle ;	// WSMAN_API_HANDLE
+	WString connection ;	// PWSTR
+	UInteger flags ;
+	Pointer serverAuthenticationCredentials ;	// WSMAN_AUTHENTICATION_CREDENTIALS*
+	Pointer proxyInfo ;	// WSMAN_PROXY_INFO*
+	Pointer session ;	// WSMAN_SESSION_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmancreateshell
+External_Function WSManCreateShell "WSManCreateShell" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	UInteger flags ;
+	WString resourceUri ;	// PWSTR
+	Pointer startupInfo ;	// WSMAN_SHELL_STARTUP_INFO_V11*
+	Pointer options ;	// WSMAN_OPTION_SET*
+	Pointer createXml ;	// WSMAN_DATA*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer shell ;	// WSMAN_SHELL_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmancreateshellex
+External_Function WSManCreateShellEx "WSManCreateShellEx" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	UInteger flags ;
+	WString resourceUri ;	// PWSTR
+	WString shellId ;	// PWSTR
+	Pointer startupInfo ;	// WSMAN_SHELL_STARTUP_INFO_V11*
+	Pointer options ;	// WSMAN_OPTION_SET*
+	Pointer createXml ;	// WSMAN_DATA*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer shell ;	// WSMAN_SHELL_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmandeinitialize
+External_Function WSManDeinitialize "WSManDeinitialize" WsmSvc.dll ;
+	LongPtr apiHandle ;	// WSMAN_API_HANDLE
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmandisconnectshell
+External_Function WSManDisconnectShell "WSManDisconnectShell" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	UInteger flags ;
+	Pointer disconnectInfo ;	// WSMAN_SHELL_DISCONNECT_INFO*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmangeterrormessage
+External_Function WSManGetErrorMessage "WSManGetErrorMessage" WsmSvc.dll ;
+	LongPtr apiHandle ;	// WSMAN_API_HANDLE
+	UInteger flags ;
+	WString languageCode ;	// PWSTR
+	UInteger errorCode ;
+	UInteger messageLength ;
+	Pointer message ;	// PWSTR
+	Pointer messageLengthUsed ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmangetsessionoptionasdword
+External_Function WSManGetSessionOptionAsDword "WSManGetSessionOptionAsDword" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	Integer option ;	// WSManSessionOption
+	Pointer value ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmangetsessionoptionasstring
+External_Function WSManGetSessionOptionAsString "WSManGetSessionOptionAsString" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	Integer option ;	// WSManSessionOption
+	UInteger stringLength ;
+	Pointer string ;	// PWSTR
+	Pointer stringLengthUsed ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmaninitialize
+External_Function WSManInitialize "WSManInitialize" WsmSvc.dll ;
+	UInteger flags ;
+	Pointer apiHandle ;	// WSMAN_API_HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginauthzoperationcomplete
+External_Function WSManPluginAuthzOperationComplete "WSManPluginAuthzOperationComplete" WsmSvc.dll ;
+	Pointer senderDetails ;	// WSMAN_SENDER_DETAILS*
+	UInteger flags ;
+	Pointer userAuthorizationContext ;	// Pointer*
+	UInteger errorCode ;
+	WString extendedErrorInformation ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginauthzqueryquotacomplete
+External_Function WSManPluginAuthzQueryQuotaComplete "WSManPluginAuthzQueryQuotaComplete" WsmSvc.dll ;
+	Pointer senderDetails ;	// WSMAN_SENDER_DETAILS*
+	UInteger flags ;
+	Pointer quota ;	// WSMAN_AUTHZ_QUOTA*
+	UInteger errorCode ;
+	WString extendedErrorInformation ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginauthzusercomplete
+External_Function WSManPluginAuthzUserComplete "WSManPluginAuthzUserComplete" WsmSvc.dll ;
+	Pointer senderDetails ;	// WSMAN_SENDER_DETAILS*
+	UInteger flags ;
+	Pointer userAuthorizationContext ;	// Pointer*
+	Pointer impersonationToken ;	// HANDLE
+	Integer userIsAdministrator ;	// BOOL
+	UInteger errorCode ;
+	WString extendedErrorInformation ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginfreerequestdetails
+External_Function WSManPluginFreeRequestDetails "WSManPluginFreeRequestDetails" WsmSvc.dll ;
+	Pointer requestDetails ;	// WSMAN_PLUGIN_REQUEST*
+	Returns UInteger
+
+External_Function WSManPluginGetConfiguration "WSManPluginGetConfiguration" WsmSvc.dll ;
+	Pointer pluginContext ;	// Pointer*
+	UInteger flags ;
+	Pointer data ;	// WSMAN_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanplugingetoperationparameters
+External_Function WSManPluginGetOperationParameters "WSManPluginGetOperationParameters" WsmSvc.dll ;
+	Pointer requestDetails ;	// WSMAN_PLUGIN_REQUEST*
+	UInteger flags ;
+	Pointer data ;	// WSMAN_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginoperationcomplete
+External_Function WSManPluginOperationComplete "WSManPluginOperationComplete" WsmSvc.dll ;
+	Pointer requestDetails ;	// WSMAN_PLUGIN_REQUEST*
+	UInteger flags ;
+	UInteger errorCode ;
+	WString extendedInformation ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginreceiveresult
+External_Function WSManPluginReceiveResult "WSManPluginReceiveResult" WsmSvc.dll ;
+	Pointer requestDetails ;	// WSMAN_PLUGIN_REQUEST*
+	UInteger flags ;
+	WString stream ;	// PWSTR
+	Pointer streamResult ;	// WSMAN_DATA*
+	WString commandState ;	// PWSTR
+	UInteger exitCode ;
+	Returns UInteger
+
+External_Function WSManPluginReportCompletion "WSManPluginReportCompletion" WsmSvc.dll ;
+	Pointer pluginContext ;	// Pointer*
+	UInteger flags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanpluginreportcontext
+External_Function WSManPluginReportContext "WSManPluginReportContext" WsmSvc.dll ;
+	Pointer requestDetails ;	// WSMAN_PLUGIN_REQUEST*
+	UInteger flags ;
+	Pointer context ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanreceiveshelloutput
+External_Function WSManReceiveShellOutput "WSManReceiveShellOutput" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	LongPtr command ;	// WSMAN_COMMAND_HANDLE
+	UInteger flags ;
+	Pointer desiredStreamSet ;	// WSMAN_STREAM_ID_SET*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer receiveOperation ;	// WSMAN_OPERATION_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanreconnectshell
+External_Function WSManReconnectShell "WSManReconnectShell" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	UInteger flags ;
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanreconnectshellcommand
+External_Function WSManReconnectShellCommand "WSManReconnectShellCommand" WsmSvc.dll ;
+	LongPtr commandHandle ;	// WSMAN_COMMAND_HANDLE
+	UInteger flags ;
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanrunshellcommand
+External_Function WSManRunShellCommand "WSManRunShellCommand" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	UInteger flags ;
+	WString commandLine ;	// PWSTR
+	Pointer args ;	// WSMAN_COMMAND_ARG_SET*
+	Pointer options ;	// WSMAN_OPTION_SET*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer command ;	// WSMAN_COMMAND_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmanrunshellcommandex
+External_Function WSManRunShellCommandEx "WSManRunShellCommandEx" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	UInteger flags ;
+	WString commandId ;	// PWSTR
+	WString commandLine ;	// PWSTR
+	Pointer args ;	// WSMAN_COMMAND_ARG_SET*
+	Pointer options ;	// WSMAN_OPTION_SET*
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer command ;	// WSMAN_COMMAND_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmansendshellinput
+External_Function WSManSendShellInput "WSManSendShellInput" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	LongPtr command ;	// WSMAN_COMMAND_HANDLE
+	UInteger flags ;
+	WString streamId ;	// PWSTR
+	Pointer streamData ;	// WSMAN_DATA*
+	Integer endOfStream ;	// BOOL
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer sendOperation ;	// WSMAN_OPERATION_HANDLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmansetsessionoption
+External_Function WSManSetSessionOption "WSManSetSessionOption" WsmSvc.dll ;
+	LongPtr session ;	// WSMAN_SESSION_HANDLE
+	Integer option ;	// WSManSessionOption
+	Pointer data ;	// WSMAN_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wsman/nf-wsman-wsmansignalshell
+External_Function WSManSignalShell "WSManSignalShell" WsmSvc.dll ;
+	LongPtr shell ;	// WSMAN_SHELL_HANDLE
+	LongPtr command ;	// WSMAN_COMMAND_HANDLE
+	UInteger flags ;
+	WString code ;	// PWSTR
+	Pointer async ;	// WSMAN_SHELL_ASYNC*
+	Pointer signalOperation ;	// WSMAN_OPERATION_HANDLE*
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

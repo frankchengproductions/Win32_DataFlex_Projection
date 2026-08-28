@@ -1,0 +1,1681 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddrefserverocspresponse
+External_Function CertAddRefServerOcspResponse "CertAddRefServerOcspResponse" CRYPT32.dll ;
+	Pointer hServerOcspResponse ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddrefserverocspresponsecontext
+External_Function CertAddRefServerOcspResponseContext "CertAddRefServerOcspResponseContext" CRYPT32.dll ;
+	Pointer pServerOcspResponseContext ;	// CERT_SERVER_OCSP_RESPONSE_CONTEXT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddserializedelementtostore
+External_Function CertAddSerializedElementToStore "CertAddSerializedElementToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pbElement ;	// UChar*
+	UInteger cbElement ;
+	UInteger dwAddDisposition ;
+	UInteger dwFlags ;
+	UInteger dwContextTypeFlags ;
+	Pointer pdwContextType ;	// UInteger*
+	Pointer ppvContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddstoretocollection
+External_Function CertAddStoreToCollection "CertAddStoreToCollection" CRYPT32.dll ;
+	Pointer hCollectionStore ;	// HCERTSTORE
+	Pointer hSiblingStore ;	// HCERTSTORE
+	UInteger dwUpdateFlags ;
+	UInteger dwPriority ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certalgidtooid
+External_Function CertAlgIdToOID "CertAlgIdToOID" CRYPT32.dll ;
+	UInteger dwAlgId ;
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcloseserverocspresponse
+External_Function CertCloseServerOcspResponse "CertCloseServerOcspResponse" CRYPT32.dll ;
+	Pointer hServerOcspResponse ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certclosestore
+External_Function CertCloseStore "CertCloseStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcomparecertificate
+External_Function CertCompareCertificate "CertCompareCertificate" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pCertId1 ;	// CERT_INFO*
+	Pointer pCertId2 ;	// CERT_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcomparecertificatename
+External_Function CertCompareCertificateName "CertCompareCertificateName" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pCertName1 ;	// CRYPT_INTEGER_BLOB*
+	Pointer pCertName2 ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcompareintegerblob
+External_Function CertCompareIntegerBlob "CertCompareIntegerBlob" CRYPT32.dll ;
+	Pointer pInt1 ;	// CRYPT_INTEGER_BLOB*
+	Pointer pInt2 ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcomparepublickeyinfo
+External_Function CertComparePublicKeyInfo "CertComparePublicKeyInfo" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pPublicKey1 ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer pPublicKey2 ;	// CERT_PUBLIC_KEY_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcontrolstore
+External_Function CertControlStore "CertControlStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwFlags ;	// CERT_CONTROL_STORE_FLAGS
+	UInteger dwCtrlType ;
+	Pointer pvCtrlPara ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreatecrlcontext
+External_Function CertCreateCRLContext "CertCreateCRLContext" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbCrlEncoded ;	// UChar*
+	UInteger cbCrlEncoded ;
+	Returns Pointer	// CRL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreatectlcontext
+External_Function CertCreateCTLContext "CertCreateCTLContext" CRYPT32.dll ;
+	UInteger dwMsgAndCertEncodingType ;
+	Pointer pbCtlEncoded ;	// UChar*
+	UInteger cbCtlEncoded ;
+	Returns Pointer	// CTL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreatectlentryfromcertificatecontextproperties
+External_Function CertCreateCTLEntryFromCertificateContextProperties "CertCreateCTLEntryFromCertificateContextProperties" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger cOptAttr ;
+	Pointer rgOptAttr ;	// CRYPT_ATTRIBUTE*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer pCtlEntry ;	// CTL_ENTRY*
+	Pointer pcbCtlEntry ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreatecertificatechainengine
+External_Function CertCreateCertificateChainEngine "CertCreateCertificateChainEngine" CRYPT32.dll ;
+	Pointer pConfig ;	// CERT_CHAIN_ENGINE_CONFIG*
+	Pointer phChainEngine ;	// HCERTCHAINENGINE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreatecertificatecontext
+External_Function CertCreateCertificateContext "CertCreateCertificateContext" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbCertEncoded ;	// UChar*
+	UInteger cbCertEncoded ;
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreatecontext
+External_Function CertCreateContext "CertCreateContext" CRYPT32.dll ;
+	UInteger dwContextType ;
+	UInteger dwEncodingType ;
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	UInteger dwFlags ;
+	Pointer pCreatePara ;	// CERT_CREATE_CONTEXT_PARA*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certcreateselfsigncertificate
+External_Function CertCreateSelfSignCertificate "CertCreateSelfSignCertificate" CRYPT32.dll ;
+	ULongPtr hCryptProvOrNCryptKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE
+	Pointer pSubjectIssuerBlob ;	// CRYPT_INTEGER_BLOB*
+	UInteger dwFlags ;	// CERT_CREATE_SELFSIGN_FLAGS
+	Pointer pKeyProvInfo ;	// CRYPT_KEY_PROV_INFO*
+	Pointer pSignatureAlgorithm ;	// CRYPT_ALGORITHM_IDENTIFIER*
+	Pointer pStartTime ;	// SYSTEMTIME*
+	Pointer pEndTime ;	// SYSTEMTIME*
+	Pointer pExtensions ;	// CERT_EXTENSIONS*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certdeletecrlfromstore
+External_Function CertDeleteCRLFromStore "CertDeleteCRLFromStore" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certdeletectlfromstore
+External_Function CertDeleteCTLFromStore "CertDeleteCTLFromStore" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certdeletecertificatefromstore
+External_Function CertDeleteCertificateFromStore "CertDeleteCertificateFromStore" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certduplicatecrlcontext
+External_Function CertDuplicateCRLContext "CertDuplicateCRLContext" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	Returns Pointer	// CRL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certduplicatectlcontext
+External_Function CertDuplicateCTLContext "CertDuplicateCTLContext" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	Returns Pointer	// CTL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certduplicatecertificatechain
+External_Function CertDuplicateCertificateChain "CertDuplicateCertificateChain" CRYPT32.dll ;
+	Pointer pChainContext ;	// CERT_CHAIN_CONTEXT*
+	Returns Pointer	// CERT_CHAIN_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certduplicatecertificatecontext
+External_Function CertDuplicateCertificateContext "CertDuplicateCertificateContext" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certduplicatestore
+External_Function CertDuplicateStore "CertDuplicateStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Returns Pointer	// HCERTSTORE
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumcrlcontextproperties
+External_Function CertEnumCRLContextProperties "CertEnumCRLContextProperties" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwPropId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumcrlsinstore
+External_Function CertEnumCRLsInStore "CertEnumCRLsInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pPrevCrlContext ;	// CRL_CONTEXT*
+	Returns Pointer	// CRL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumctlcontextproperties
+External_Function CertEnumCTLContextProperties "CertEnumCTLContextProperties" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwPropId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumctlsinstore
+External_Function CertEnumCTLsInStore "CertEnumCTLsInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pPrevCtlContext ;	// CTL_CONTEXT*
+	Returns Pointer	// CTL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumcertificatecontextproperties
+External_Function CertEnumCertificateContextProperties "CertEnumCertificateContextProperties" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwPropId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumcertificatesinstore
+External_Function CertEnumCertificatesInStore "CertEnumCertificatesInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pPrevCertContext ;	// CERT_CONTEXT*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumphysicalstore
+External_Function CertEnumPhysicalStore "CertEnumPhysicalStore" CRYPT32.dll ;
+	Pointer pvSystemStore ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnum ;	// PFN_CERT_ENUM_PHYSICAL_STORE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumsubjectinsortedctl
+External_Function CertEnumSubjectInSortedCTL "CertEnumSubjectInSortedCTL" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	Pointer ppvNextSubject ;	// Pointer**
+	Pointer pSubjectIdentifier ;	// CRYPT_INTEGER_BLOB*
+	Pointer pEncodedAttributes ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumsystemstore
+External_Function CertEnumSystemStore "CertEnumSystemStore" CRYPT32.dll ;
+	UInteger dwFlags ;
+	Pointer pvSystemStoreLocationPara ;	// Pointer*
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnum ;	// PFN_CERT_ENUM_SYSTEM_STORE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certenumsystemstorelocation
+External_Function CertEnumSystemStoreLocation "CertEnumSystemStoreLocation" CRYPT32.dll ;
+	UInteger dwFlags ;
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnum ;	// PFN_CERT_ENUM_SYSTEM_STORE_LOCATION
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindattribute
+External_Function CertFindAttribute "CertFindAttribute" CRYPT32.dll ;
+	String pszObjId ;	// PSTR
+	UInteger cAttr ;
+	Pointer rgAttr ;	// CRYPT_ATTRIBUTE*
+	Returns Pointer	// CRYPT_ATTRIBUTE*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindcrlinstore
+External_Function CertFindCRLInStore "CertFindCRLInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwFindFlags ;
+	UInteger dwFindType ;
+	Pointer pvFindPara ;	// Pointer*
+	Pointer pPrevCrlContext ;	// CRL_CONTEXT*
+	Returns Pointer	// CRL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindctlinstore
+External_Function CertFindCTLInStore "CertFindCTLInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwMsgAndCertEncodingType ;
+	UInteger dwFindFlags ;
+	UInteger dwFindType ;	// CERT_FIND_TYPE
+	Pointer pvFindPara ;	// Pointer*
+	Pointer pPrevCtlContext ;	// CTL_CONTEXT*
+	Returns Pointer	// CTL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindcertificateincrl
+External_Function CertFindCertificateInCRL "CertFindCertificateInCRL" CRYPT32.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer ppCrlEntry ;	// CRL_ENTRY**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindcertificateinstore
+External_Function CertFindCertificateInStore "CertFindCertificateInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwFindFlags ;
+	UInteger dwFindType ;	// CERT_FIND_FLAGS
+	Pointer pvFindPara ;	// Pointer*
+	Pointer pPrevCertContext ;	// CERT_CONTEXT*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindchaininstore
+External_Function CertFindChainInStore "CertFindChainInStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwFindFlags ;	// CERT_FIND_CHAIN_IN_STORE_FLAGS
+	UInteger dwFindType ;
+	Pointer pvFindPara ;	// Pointer*
+	Pointer pPrevChainContext ;	// CERT_CHAIN_CONTEXT*
+	Returns Pointer	// CERT_CHAIN_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindextension
+External_Function CertFindExtension "CertFindExtension" CRYPT32.dll ;
+	String pszObjId ;	// PSTR
+	UInteger cExtensions ;
+	Pointer rgExtensions ;	// CERT_EXTENSION*
+	Returns Pointer	// CERT_EXTENSION*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindrdnattr
+External_Function CertFindRDNAttr "CertFindRDNAttr" CRYPT32.dll ;
+	String pszObjId ;	// PSTR
+	Pointer pName ;	// CERT_NAME_INFO*
+	Returns Pointer	// CERT_RDN_ATTR*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindsubjectinctl
+External_Function CertFindSubjectInCTL "CertFindSubjectInCTL" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	UInteger dwSubjectType ;
+	Pointer pvSubject ;	// Pointer*
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwFlags ;
+	Returns Pointer	// CTL_ENTRY*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfindsubjectinsortedctl
+External_Function CertFindSubjectInSortedCTL "CertFindSubjectInSortedCTL" CRYPT32.dll ;
+	Pointer pSubjectIdentifier ;	// CRYPT_INTEGER_BLOB*
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer pEncodedAttributes ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreecrlcontext
+External_Function CertFreeCRLContext "CertFreeCRLContext" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreectlcontext
+External_Function CertFreeCTLContext "CertFreeCTLContext" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreecertificatechain
+External_Function CertFreeCertificateChain "CertFreeCertificateChain" CRYPT32.dll ;
+	Pointer pChainContext ;	// CERT_CHAIN_CONTEXT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreecertificatechainengine
+External_Function CertFreeCertificateChainEngine "CertFreeCertificateChainEngine" CRYPT32.dll ;
+	Pointer hChainEngine ;	// HCERTCHAINENGINE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreecertificatechainlist
+External_Function CertFreeCertificateChainList "CertFreeCertificateChainList" CRYPT32.dll ;
+	Pointer prgpSelection ;	// CERT_CHAIN_CONTEXT**
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreecertificatecontext
+External_Function CertFreeCertificateContext "CertFreeCertificateContext" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certfreeserverocspresponsecontext
+External_Function CertFreeServerOcspResponseContext "CertFreeServerOcspResponseContext" CRYPT32.dll ;
+	Pointer pServerOcspResponseContext ;	// CERT_SERVER_OCSP_RESPONSE_CONTEXT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcrlcontextproperty
+External_Function CertGetCRLContextProperty "CertGetCRLContextProperty" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwPropId ;
+	Pointer pvData ;	// Pointer*
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcrlfromstore
+External_Function CertGetCRLFromStore "CertGetCRLFromStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pIssuerContext ;	// CERT_CONTEXT*
+	Pointer pPrevCrlContext ;	// CRL_CONTEXT*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Pointer	// CRL_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetctlcontextproperty
+External_Function CertGetCTLContextProperty "CertGetCTLContextProperty" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwPropId ;
+	Pointer pvData ;	// Pointer*
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain
+External_Function CertGetCertificateChain "CertGetCertificateChain" CRYPT32.dll ;
+	Pointer hChainEngine ;	// HCERTCHAINENGINE
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Pointer pTime ;	// FILETIME*
+	Pointer hAdditionalStore ;	// HCERTSTORE
+	Pointer pChainPara ;	// CERT_CHAIN_PARA*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer ppChainContext ;	// CERT_CHAIN_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatecontextproperty
+External_Function CertGetCertificateContextProperty "CertGetCertificateContextProperty" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwPropId ;
+	Pointer pvData ;	// Pointer*
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetenhancedkeyusage
+External_Function CertGetEnhancedKeyUsage "CertGetEnhancedKeyUsage" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pUsage ;	// CTL_USAGE*
+	Pointer pcbUsage ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetintendedkeyusage
+External_Function CertGetIntendedKeyUsage "CertGetIntendedKeyUsage" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pCertInfo ;	// CERT_INFO*
+	Pointer pbKeyUsage ;	// UChar*
+	UInteger cbKeyUsage ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetissuercertificatefromstore
+External_Function CertGetIssuerCertificateFromStore "CertGetIssuerCertificateFromStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pSubjectContext ;	// CERT_CONTEXT*
+	Pointer pPrevIssuerContext ;	// CERT_CONTEXT*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetnamestringa
+External_Function CertGetNameStringA "CertGetNameStringA" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwType ;
+	UInteger dwFlags ;
+	Pointer pvTypePara ;	// Pointer*
+	Pointer pszNameString ;	// PSTR
+	UInteger cchNameString ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetnamestringw
+External_Function CertGetNameStringW "CertGetNameStringW" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwType ;
+	UInteger dwFlags ;
+	Pointer pvTypePara ;	// Pointer*
+	Pointer pszNameString ;	// PWSTR
+	UInteger cchNameString ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetpublickeylength
+External_Function CertGetPublicKeyLength "CertGetPublicKeyLength" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pPublicKey ;	// CERT_PUBLIC_KEY_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetserverocspresponsecontext
+External_Function CertGetServerOcspResponseContext "CertGetServerOcspResponseContext" CRYPT32.dll ;
+	Pointer hServerOcspResponse ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Pointer	// CERT_SERVER_OCSP_RESPONSE_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetstoreproperty
+External_Function CertGetStoreProperty "CertGetStoreProperty" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwPropId ;
+	Pointer pvData ;	// Pointer*
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetsubjectcertificatefromstore
+External_Function CertGetSubjectCertificateFromStore "CertGetSubjectCertificateFromStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pCertId ;	// CERT_INFO*
+	Returns Pointer	// CERT_CONTEXT*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetvalidusages
+External_Function CertGetValidUsages "CertGetValidUsages" CRYPT32.dll ;
+	UInteger cCerts ;
+	Pointer rghCerts ;	// CERT_CONTEXT**
+	Pointer cNumOIDs ;	// Integer*
+	Pointer rghOIDs ;	// PSTR*
+	Pointer pcbOIDs ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certisrdnattrsincertificatename
+External_Function CertIsRDNAttrsInCertificateName "CertIsRDNAttrsInCertificateName" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwFlags ;
+	Pointer pCertName ;	// CRYPT_INTEGER_BLOB*
+	Pointer pRDN ;	// CERT_RDN*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certisstronghashtosign
+External_Function CertIsStrongHashToSign "CertIsStrongHashToSign" CRYPT32.dll ;
+	Pointer pStrongSignPara ;	// CERT_STRONG_SIGN_PARA*
+	WString pwszCNGHashAlgid ;	// PWSTR
+	Pointer pSigningCert ;	// CERT_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certisvalidcrlforcertificate
+External_Function CertIsValidCRLForCertificate "CertIsValidCRLForCertificate" CRYPT32.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	Pointer pCrl ;	// CRL_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function CertIsWeakHash "CertIsWeakHash" CRYPT32.dll ;
+	UInteger dwHashUseType ;
+	WString pwszCNGHashAlgid ;	// PWSTR
+	UInteger dwChainFlags ;
+	Pointer pSignerChainContext ;	// CERT_CHAIN_CONTEXT*
+	Pointer pTimeStamp ;	// FILETIME*
+	WString pwszFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certnametostra
+External_Function CertNameToStrA "CertNameToStrA" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pName ;	// CRYPT_INTEGER_BLOB*
+	UInteger dwStrType ;	// CERT_STRING_TYPE
+	Pointer psz ;	// PSTR
+	UInteger csz ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certnametostrw
+External_Function CertNameToStrW "CertNameToStrW" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pName ;	// CRYPT_INTEGER_BLOB*
+	UInteger dwStrType ;	// CERT_STRING_TYPE
+	Pointer psz ;	// PWSTR
+	UInteger csz ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certoidtoalgid
+External_Function CertOIDToAlgId "CertOIDToAlgId" CRYPT32.dll ;
+	String pszObjId ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certopenserverocspresponse
+External_Function CertOpenServerOcspResponse "CertOpenServerOcspResponse" CRYPT32.dll ;
+	Pointer pChainContext ;	// CERT_CHAIN_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pOpenPara ;	// CERT_SERVER_OCSP_RESPONSE_OPEN_PARA*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certopenstore
+External_Function CertOpenStore "CertOpenStore" CRYPT32.dll ;
+	String lpszStoreProvider ;	// PSTR
+	UInteger dwEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwFlags ;	// CERT_OPEN_STORE_FLAGS
+	Pointer pvPara ;	// Pointer*
+	Returns Pointer	// HCERTSTORE
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certopensystemstorea
+External_Function CertOpenSystemStoreA "CertOpenSystemStoreA" CRYPT32.dll ;
+	ULongPtr hProv ;	// HCRYPTPROV_LEGACY
+	String szSubsystemProtocol ;	// PSTR
+	Returns Pointer	// HCERTSTORE
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certopensystemstorew
+External_Function CertOpenSystemStoreW "CertOpenSystemStoreW" CRYPT32.dll ;
+	ULongPtr hProv ;	// HCRYPTPROV_LEGACY
+	WString szSubsystemProtocol ;	// PWSTR
+	Returns Pointer	// HCERTSTORE
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certrdnvaluetostra
+External_Function CertRDNValueToStrA "CertRDNValueToStrA" CRYPT32.dll ;
+	UInteger dwValueType ;
+	Pointer pValue ;	// CRYPT_INTEGER_BLOB*
+	Pointer psz ;	// PSTR
+	UInteger csz ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certrdnvaluetostrw
+External_Function CertRDNValueToStrW "CertRDNValueToStrW" CRYPT32.dll ;
+	UInteger dwValueType ;
+	Pointer pValue ;	// CRYPT_INTEGER_BLOB*
+	Pointer psz ;	// PWSTR
+	UInteger csz ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certregisterphysicalstore
+External_Function CertRegisterPhysicalStore "CertRegisterPhysicalStore" CRYPT32.dll ;
+	Pointer pvSystemStore ;	// Pointer*
+	UInteger dwFlags ;
+	WString pwszStoreName ;	// PWSTR
+	Pointer pStoreInfo ;	// CERT_PHYSICAL_STORE_INFO*
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certregistersystemstore
+External_Function CertRegisterSystemStore "CertRegisterSystemStore" CRYPT32.dll ;
+	Pointer pvSystemStore ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pStoreInfo ;	// CERT_SYSTEM_STORE_INFO*
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certremoveenhancedkeyusageidentifier
+External_Function CertRemoveEnhancedKeyUsageIdentifier "CertRemoveEnhancedKeyUsageIdentifier" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	String pszUsageIdentifier ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certremovestorefromcollection
+External_Function CertRemoveStoreFromCollection "CertRemoveStoreFromCollection" CRYPT32.dll ;
+	Pointer hCollectionStore ;	// HCERTSTORE
+	Pointer hSiblingStore ;	// HCERTSTORE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certresynccertificatechainengine
+External_Function CertResyncCertificateChainEngine "CertResyncCertificateChainEngine" CRYPT32.dll ;
+	Pointer hChainEngine ;	// HCERTCHAINENGINE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certretrievelogoorbiometricinfo
+External_Function CertRetrieveLogoOrBiometricInfo "CertRetrieveLogoOrBiometricInfo" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	String lpszLogoOrBiometricType ;	// PSTR
+	UInteger dwRetrievalFlags ;
+	UInteger dwTimeout ;
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer ppbData ;	// UChar**
+	Pointer pcbData ;	// UInteger*
+	Pointer ppwszMimeType ;	// PWSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsavestore
+External_Function CertSaveStore "CertSaveStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwSaveAs ;	// CERT_STORE_SAVE_AS
+	UInteger dwSaveTo ;	// CERT_STORE_SAVE_TO
+	Pointer pvSaveToPara ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certselectcertificatechains
+External_Function CertSelectCertificateChains "CertSelectCertificateChains" CRYPT32.dll ;
+	Pointer pSelectionContext ;	// Guid*
+	UInteger dwFlags ;
+	Pointer pChainParameters ;	// CERT_SELECT_CHAIN_PARA*
+	UInteger cCriteria ;
+	Pointer rgpCriteria ;	// CERT_SELECT_CRITERIA*
+	Pointer hStore ;	// HCERTSTORE
+	Pointer pcSelection ;	// UInteger*
+	Pointer pprgpSelection ;	// CERT_CHAIN_CONTEXT***
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certserializecrlstoreelement
+External_Function CertSerializeCRLStoreElement "CertSerializeCRLStoreElement" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pbElement ;	// UChar*
+	Pointer pcbElement ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certserializectlstoreelement
+External_Function CertSerializeCTLStoreElement "CertSerializeCTLStoreElement" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pbElement ;	// UChar*
+	Pointer pcbElement ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certserializecertificatestoreelement
+External_Function CertSerializeCertificateStoreElement "CertSerializeCertificateStoreElement" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwFlags ;
+	Pointer pbElement ;	// UChar*
+	Pointer pcbElement ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcrlcontextproperty
+External_Function CertSetCRLContextProperty "CertSetCRLContextProperty" CRYPT32.dll ;
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetctlcontextproperty
+External_Function CertSetCTLContextProperty "CertSetCTLContextProperty" CRYPT32.dll ;
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextpropertiesfromctlentry
+External_Function CertSetCertificateContextPropertiesFromCTLEntry "CertSetCertificateContextPropertiesFromCTLEntry" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Pointer pCtlEntry ;	// CTL_ENTRY*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty
+External_Function CertSetCertificateContextProperty "CertSetCertificateContextProperty" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetenhancedkeyusage
+External_Function CertSetEnhancedKeyUsage "CertSetEnhancedKeyUsage" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Pointer pUsage ;	// CTL_USAGE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetstoreproperty
+External_Function CertSetStoreProperty "CertSetStoreProperty" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certstrtonamea
+External_Function CertStrToNameA "CertStrToNameA" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String pszX500 ;	// PSTR
+	UInteger dwStrType ;	// CERT_STRING_TYPE
+	Pointer pvReserved ;	// Pointer*
+	Pointer pbEncoded ;	// UChar*
+	Pointer pcbEncoded ;	// UInteger*
+	Pointer ppszError ;	// PSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certstrtonamew
+External_Function CertStrToNameW "CertStrToNameW" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	WString pszX500 ;	// PWSTR
+	UInteger dwStrType ;	// CERT_STRING_TYPE
+	Pointer pvReserved ;	// Pointer*
+	Pointer pbEncoded ;	// UChar*
+	Pointer pcbEncoded ;	// UInteger*
+	Pointer ppszError ;	// PWSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certunregisterphysicalstore
+External_Function CertUnregisterPhysicalStore "CertUnregisterPhysicalStore" CRYPT32.dll ;
+	Pointer pvSystemStore ;	// Pointer*
+	UInteger dwFlags ;
+	WString pwszStoreName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certunregistersystemstore
+External_Function CertUnregisterSystemStore "CertUnregisterSystemStore" CRYPT32.dll ;
+	Pointer pvSystemStore ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifycrlrevocation
+External_Function CertVerifyCRLRevocation "CertVerifyCRLRevocation" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pCertId ;	// CERT_INFO*
+	UInteger cCrlInfo ;
+	Pointer rgpCrlInfo ;	// CRL_INFO**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifycrltimevalidity
+External_Function CertVerifyCRLTimeValidity "CertVerifyCRLTimeValidity" CRYPT32.dll ;
+	Pointer pTimeToVerify ;	// FILETIME*
+	Pointer pCrlInfo ;	// CRL_INFO*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifyctlusage
+External_Function CertVerifyCTLUsage "CertVerifyCTLUsage" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	UInteger dwSubjectType ;
+	Pointer pvSubject ;	// Pointer*
+	Pointer pSubjectUsage ;	// CTL_USAGE*
+	UInteger dwFlags ;
+	Pointer pVerifyUsagePara ;	// CTL_VERIFY_USAGE_PARA*
+	Pointer pVerifyUsageStatus ;	// CTL_VERIFY_USAGE_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifycertificatechainpolicy
+External_Function CertVerifyCertificateChainPolicy "CertVerifyCertificateChainPolicy" CRYPT32.dll ;
+	String pszPolicyOID ;	// PSTR
+	Pointer pChainContext ;	// CERT_CHAIN_CONTEXT*
+	Pointer pPolicyPara ;	// CERT_CHAIN_POLICY_PARA*
+	Pointer pPolicyStatus ;	// CERT_CHAIN_POLICY_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifyrevocation
+External_Function CertVerifyRevocation "CertVerifyRevocation" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	UInteger dwRevType ;
+	UInteger cContext ;
+	Pointer rgpvContext ;	// Pointer**
+	UInteger dwFlags ;
+	Pointer pRevPara ;	// CERT_REVOCATION_PARA*
+	Pointer pRevStatus ;	// CERT_REVOCATION_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifysubjectcertificatecontext
+External_Function CertVerifySubjectCertificateContext "CertVerifySubjectCertificateContext" CRYPT32.dll ;
+	Pointer pSubject ;	// CERT_CONTEXT*
+	Pointer pIssuer ;	// CERT_CONTEXT*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifytimevalidity
+External_Function CertVerifyTimeValidity "CertVerifyTimeValidity" CRYPT32.dll ;
+	Pointer pTimeToVerify ;	// FILETIME*
+	Pointer pCertInfo ;	// CERT_INFO*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certverifyvaliditynesting
+External_Function CertVerifyValidityNesting "CertVerifyValidityNesting" CRYPT32.dll ;
+	Pointer pSubjectInfo ;	// CERT_INFO*
+	Pointer pIssuerInfo ;	// CERT_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecertificateprivatekey
+External_Function CryptAcquireCertificatePrivateKey "CryptAcquireCertificatePrivateKey" CRYPT32.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	UInteger dwFlags ;	// CRYPT_ACQUIRE_FLAGS
+	Pointer pvParameters ;	// Pointer*
+	Pointer phCryptProvOrNCryptKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE*
+	Pointer pdwKeySpec ;	// CERT_KEY_SPEC*
+	Pointer pfCallerFreeProvOrNCryptKey ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptbinarytostringa
+External_Function CryptBinaryToStringA "CryptBinaryToStringA" CRYPT32.dll ;
+	Pointer pbBinary ;	// UChar*
+	UInteger cbBinary ;
+	UInteger dwFlags ;	// CRYPT_STRING
+	Pointer pszString ;	// PSTR
+	Pointer pcchString ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptbinarytostringw
+External_Function CryptBinaryToStringW "CryptBinaryToStringW" CRYPT32.dll ;
+	Pointer pbBinary ;	// UChar*
+	UInteger cbBinary ;
+	UInteger dwFlags ;	// CRYPT_STRING
+	Pointer pszString ;	// PWSTR
+	Pointer pcchString ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptcloseasynchandle
+External_Function CryptCloseAsyncHandle "CryptCloseAsyncHandle" CRYPT32.dll ;
+	LongPtr hAsync ;	// HCRYPTASYNC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptcreateasynchandle
+External_Function CryptCreateAsyncHandle "CryptCreateAsyncHandle" CRYPT32.dll ;
+	UInteger dwFlags ;
+	Pointer phAsync ;	// HCRYPTASYNC*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptcreatekeyidentifierfromcsp
+External_Function CryptCreateKeyIdentifierFromCSP "CryptCreateKeyIdentifierFromCSP" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String pszPubKeyOID ;	// PSTR
+	Pointer pPubKeyStruc ;	// PUBLICKEYSTRUC*
+	UInteger cbPubKeyStruc ;
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer pbHash ;	// UChar*
+	Pointer pcbHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdecodemessage
+External_Function CryptDecodeMessage "CryptDecodeMessage" CRYPT32.dll ;
+	UInteger dwMsgTypeFlags ;
+	Pointer pDecryptPara ;	// CRYPT_DECRYPT_MESSAGE_PARA*
+	Pointer pVerifyPara ;	// CRYPT_VERIFY_MESSAGE_PARA*
+	UInteger dwSignerIndex ;
+	Pointer pbEncodedBlob ;	// UChar*
+	UInteger cbEncodedBlob ;
+	UInteger dwPrevInnerContentType ;
+	Pointer pdwMsgType ;	// UInteger*
+	Pointer pdwInnerContentType ;	// UInteger*
+	Pointer pbDecoded ;	// UChar*
+	Pointer pcbDecoded ;	// UInteger*
+	Pointer ppXchgCert ;	// CERT_CONTEXT**
+	Pointer ppSignerCert ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdecodeobject
+External_Function CryptDecodeObject "CryptDecodeObject" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String lpszStructType ;	// PSTR
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	UInteger dwFlags ;
+	Pointer pvStructInfo ;	// Pointer*
+	Pointer pcbStructInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdecodeobjectex
+External_Function CryptDecodeObjectEx "CryptDecodeObjectEx" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String lpszStructType ;	// PSTR
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	UInteger dwFlags ;
+	Pointer pDecodePara ;	// CRYPT_DECODE_PARA*
+	Pointer pvStructInfo ;	// Pointer*
+	Pointer pcbStructInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdecryptandverifymessagesignature
+External_Function CryptDecryptAndVerifyMessageSignature "CryptDecryptAndVerifyMessageSignature" CRYPT32.dll ;
+	Pointer pDecryptPara ;	// CRYPT_DECRYPT_MESSAGE_PARA*
+	Pointer pVerifyPara ;	// CRYPT_VERIFY_MESSAGE_PARA*
+	UInteger dwSignerIndex ;
+	Pointer pbEncryptedBlob ;	// UChar*
+	UInteger cbEncryptedBlob ;
+	Pointer pbDecrypted ;	// UChar*
+	Pointer pcbDecrypted ;	// UInteger*
+	Pointer ppXchgCert ;	// CERT_CONTEXT**
+	Pointer ppSignerCert ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdecryptmessage
+External_Function CryptDecryptMessage "CryptDecryptMessage" CRYPT32.dll ;
+	Pointer pDecryptPara ;	// CRYPT_DECRYPT_MESSAGE_PARA*
+	Pointer pbEncryptedBlob ;	// UChar*
+	UInteger cbEncryptedBlob ;
+	Pointer pbDecrypted ;	// UChar*
+	Pointer pcbDecrypted ;	// UInteger*
+	Pointer ppXchgCert ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptencodeobject
+External_Function CryptEncodeObject "CryptEncodeObject" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String lpszStructType ;	// PSTR
+	Pointer pvStructInfo ;	// Pointer*
+	Pointer pbEncoded ;	// UChar*
+	Pointer pcbEncoded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptencodeobjectex
+External_Function CryptEncodeObjectEx "CryptEncodeObjectEx" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String lpszStructType ;	// PSTR
+	Pointer pvStructInfo ;	// Pointer*
+	UInteger dwFlags ;	// CRYPT_ENCODE_OBJECT_FLAGS
+	Pointer pEncodePara ;	// CRYPT_ENCODE_PARA*
+	Pointer pvEncoded ;	// Pointer*
+	Pointer pcbEncoded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptencryptmessage
+External_Function CryptEncryptMessage "CryptEncryptMessage" CRYPT32.dll ;
+	Pointer pEncryptPara ;	// CRYPT_ENCRYPT_MESSAGE_PARA*
+	UInteger cRecipientCert ;
+	Pointer rgpRecipientCert ;	// CERT_CONTEXT**
+	Pointer pbToBeEncrypted ;	// UChar*
+	UInteger cbToBeEncrypted ;
+	Pointer pbEncryptedBlob ;	// UChar*
+	Pointer pcbEncryptedBlob ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumkeyidentifierproperties
+External_Function CryptEnumKeyIdentifierProperties "CryptEnumKeyIdentifierProperties" CRYPT32.dll ;
+	Pointer pKeyIdentifier ;	// CRYPT_INTEGER_BLOB*
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	WString pwszComputerName ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnum ;	// PFN_CRYPT_ENUM_KEYID_PROP
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumoidfunction
+External_Function CryptEnumOIDFunction "CryptEnumOIDFunction" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	String pszOID ;	// PSTR
+	UInteger dwFlags ;
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnumOIDFunc ;	// PFN_CRYPT_ENUM_OID_FUNC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumoidinfo
+External_Function CryptEnumOIDInfo "CryptEnumOIDInfo" CRYPT32.dll ;
+	UInteger dwGroupId ;
+	UInteger dwFlags ;
+	Pointer pvArg ;	// Pointer*
+	Pointer pfnEnumOIDInfo ;	// PFN_CRYPT_ENUM_OID_INFO
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptexportpkcs8
+External_Function CryptExportPKCS8 "CryptExportPKCS8" CRYPT32.dll ;
+	ULongPtr hCryptProv ;
+	UInteger dwKeySpec ;
+	String pszPrivateKeyObjId ;	// PSTR
+	UInteger dwFlags ;
+	Pointer pvAuxInfo ;	// Pointer*
+	Pointer pbPrivateKeyBlob ;	// UChar*
+	Pointer pcbPrivateKeyBlob ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptexportpublickeyinfo
+External_Function CryptExportPublicKeyInfo "CryptExportPublicKeyInfo" CRYPT32.dll ;
+	ULongPtr hCryptProvOrNCryptKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE
+	UInteger dwKeySpec ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer pcbInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptexportpublickeyinfoex
+External_Function CryptExportPublicKeyInfoEx "CryptExportPublicKeyInfoEx" CRYPT32.dll ;
+	ULongPtr hCryptProvOrNCryptKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE
+	UInteger dwKeySpec ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String pszPublicKeyObjId ;	// PSTR
+	UInteger dwFlags ;
+	Pointer pvAuxInfo ;	// Pointer*
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer pcbInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptexportpublickeyinfofrombcryptkeyhandle
+External_Function CryptExportPublicKeyInfoFromBCryptKeyHandle "CryptExportPublicKeyInfoFromBCryptKeyHandle" CRYPT32.dll ;
+	Pointer hBCryptKey ;	// BCRYPT_KEY_HANDLE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String pszPublicKeyObjId ;	// PSTR
+	UInteger dwFlags ;
+	Pointer pvAuxInfo ;	// Pointer*
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer pcbInfo ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptfindcertificatekeyprovinfo
+External_Function CryptFindCertificateKeyProvInfo "CryptFindCertificateKeyProvInfo" CRYPT32.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	UInteger dwFlags ;	// CRYPT_FIND_FLAGS
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptfindlocalizedname
+External_Function CryptFindLocalizedName "CryptFindLocalizedName" CRYPT32.dll ;
+	WString pwszCryptName ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptfindoidinfo
+External_Function CryptFindOIDInfo "CryptFindOIDInfo" CRYPT32.dll ;
+	UInteger dwKeyType ;
+	Pointer pvKey ;	// Pointer*
+	UInteger dwGroupId ;
+	Returns Pointer	// CRYPT_OID_INFO*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptformatobject
+External_Function CryptFormatObject "CryptFormatObject" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	UInteger dwFormatType ;
+	UInteger dwFormatStrType ;
+	Pointer pFormatStruct ;	// Pointer*
+	String lpszStructType ;	// PSTR
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	Pointer pbFormat ;	// Pointer*
+	Pointer pcbFormat ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptfreeoidfunctionaddress
+External_Function CryptFreeOIDFunctionAddress "CryptFreeOIDFunctionAddress" CRYPT32.dll ;
+	Pointer hFuncAddr ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetasyncparam
+External_Function CryptGetAsyncParam "CryptGetAsyncParam" CRYPT32.dll ;
+	LongPtr hAsync ;	// HCRYPTASYNC
+	String pszParamOid ;	// PSTR
+	Pointer ppvParam ;	// Pointer**
+	Pointer ppfnFree ;	// PFN_CRYPT_ASYNC_PARAM_FREE_FUNC*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetdefaultoiddlllist
+External_Function CryptGetDefaultOIDDllList "CryptGetDefaultOIDDllList" CRYPT32.dll ;
+	Pointer hFuncSet ;	// Pointer*
+	UInteger dwEncodingType ;
+	Pointer pwszDllList ;	// PWSTR
+	Pointer pcchDllList ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetdefaultoidfunctionaddress
+External_Function CryptGetDefaultOIDFunctionAddress "CryptGetDefaultOIDFunctionAddress" CRYPT32.dll ;
+	Pointer hFuncSet ;	// Pointer*
+	UInteger dwEncodingType ;
+	WString pwszDll ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer ppvFuncAddr ;	// Pointer**
+	Pointer phFuncAddr ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetkeyidentifierproperty
+External_Function CryptGetKeyIdentifierProperty "CryptGetKeyIdentifierProperty" CRYPT32.dll ;
+	Pointer pKeyIdentifier ;	// CRYPT_INTEGER_BLOB*
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	WString pwszComputerName ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Pointer pvData ;	// Pointer*
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetmessagecertificates
+External_Function CryptGetMessageCertificates "CryptGetMessageCertificates" CRYPT32.dll ;
+	UInteger dwMsgAndCertEncodingType ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwFlags ;
+	Pointer pbSignedBlob ;	// UChar*
+	UInteger cbSignedBlob ;
+	Returns Pointer	// HCERTSTORE
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetmessagesignercount
+External_Function CryptGetMessageSignerCount "CryptGetMessageSignerCount" CRYPT32.dll ;
+	UInteger dwMsgEncodingType ;
+	Pointer pbSignedBlob ;	// UChar*
+	UInteger cbSignedBlob ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetoidfunctionaddress
+External_Function CryptGetOIDFunctionAddress "CryptGetOIDFunctionAddress" CRYPT32.dll ;
+	Pointer hFuncSet ;	// Pointer*
+	UInteger dwEncodingType ;
+	String pszOID ;	// PSTR
+	UInteger dwFlags ;
+	Pointer ppvFuncAddr ;	// Pointer**
+	Pointer phFuncAddr ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetoidfunctionvalue
+External_Function CryptGetOIDFunctionValue "CryptGetOIDFunctionValue" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	String pszOID ;	// PSTR
+	WString pwszValueName ;	// PWSTR
+	Pointer pdwValueType ;	// UInteger*
+	Pointer pbValueData ;	// UChar*
+	Pointer pcbValueData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashcertificate
+External_Function CryptHashCertificate "CryptHashCertificate" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger Algid ;	// ALG_ID
+	UInteger dwFlags ;
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashcertificate2
+External_Function CryptHashCertificate2 "CryptHashCertificate2" CRYPT32.dll ;
+	WString pwszCNGHashAlgid ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashmessage
+External_Function CryptHashMessage "CryptHashMessage" CRYPT32.dll ;
+	Pointer pHashPara ;	// CRYPT_HASH_MESSAGE_PARA*
+	Integer fDetachedHash ;	// BOOL
+	UInteger cToBeHashed ;
+	Pointer rgpbToBeHashed ;	// UChar**
+	Pointer rgcbToBeHashed ;	// UInteger*
+	Pointer pbHashedBlob ;	// UChar*
+	Pointer pcbHashedBlob ;	// UInteger*
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashpublickeyinfo
+External_Function CryptHashPublicKeyInfo "CryptHashPublicKeyInfo" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger Algid ;	// ALG_ID
+	UInteger dwFlags ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashtobesigned
+External_Function CryptHashToBeSigned "CryptHashToBeSigned" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	Pointer pbComputedHash ;	// UChar*
+	Pointer pcbComputedHash ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptimportpkcs8
+External_Function CryptImportPKCS8 "CryptImportPKCS8" CRYPT32.dll ;
+	CRYPT_PKCS8_IMPORT_PARAMS sPrivateKeyAndParams ;
+	UInteger dwFlags ;	// CRYPT_KEY_FLAGS
+	Pointer phCryptProv ;	// ULongPtr*
+	Pointer pvAuxInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptimportpublickeyinfo
+External_Function CryptImportPublicKeyInfo "CryptImportPublicKeyInfo" CRYPT32.dll ;
+	ULongPtr hCryptProv ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	Pointer phKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptimportpublickeyinfoex
+External_Function CryptImportPublicKeyInfoEx "CryptImportPublicKeyInfoEx" CRYPT32.dll ;
+	ULongPtr hCryptProv ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	UInteger aiKeyAlg ;	// ALG_ID
+	UInteger dwFlags ;
+	Pointer pvAuxInfo ;	// Pointer*
+	Pointer phKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptimportpublickeyinfoex2
+External_Function CryptImportPublicKeyInfoEx2 "CryptImportPublicKeyInfoEx2" CRYPT32.dll ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pInfo ;	// CERT_PUBLIC_KEY_INFO*
+	UInteger dwFlags ;	// CRYPT_IMPORT_PUBLIC_KEY_FLAGS
+	Pointer pvAuxInfo ;	// Pointer*
+	Pointer phKey ;	// BCRYPT_KEY_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptinitoidfunctionset
+External_Function CryptInitOIDFunctionSet "CryptInitOIDFunctionSet" CRYPT32.dll ;
+	String pszFuncName ;	// PSTR
+	UInteger dwFlags ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptinstalldefaultcontext
+External_Function CryptInstallDefaultContext "CryptInstallDefaultContext" CRYPT32.dll ;
+	ULongPtr hCryptProv ;
+	UInteger dwDefaultType ;	// CRYPT_DEFAULT_CONTEXT_TYPE
+	Pointer pvDefaultPara ;	// Pointer*
+	UInteger dwFlags ;	// CRYPT_DEFAULT_CONTEXT_FLAGS
+	Pointer pvReserved ;	// Pointer*
+	Pointer phDefaultContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptinstalloidfunctionaddress
+External_Function CryptInstallOIDFunctionAddress "CryptInstallOIDFunctionAddress" CRYPT32.dll ;
+	Pointer hModule ;	// HMODULE
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	UInteger cFuncEntry ;
+	Pointer rgFuncEntry ;	// CRYPT_OID_FUNC_ENTRY*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmemalloc
+External_Function CryptMemAlloc "CryptMemAlloc" CRYPT32.dll ;
+	UInteger cbSize ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmemfree
+External_Function CryptMemFree "CryptMemFree" CRYPT32.dll ;
+	Pointer pv ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmemrealloc
+External_Function CryptMemRealloc "CryptMemRealloc" CRYPT32.dll ;
+	Pointer pv ;	// Pointer*
+	UInteger cbSize ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgcalculateencodedlength
+External_Function CryptMsgCalculateEncodedLength "CryptMsgCalculateEncodedLength" CRYPT32.dll ;
+	UInteger dwMsgEncodingType ;
+	UInteger dwFlags ;
+	UInteger dwMsgType ;
+	Pointer pvMsgEncodeInfo ;	// Pointer*
+	String pszInnerContentObjID ;	// PSTR
+	UInteger cbData ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgclose
+External_Function CryptMsgClose "CryptMsgClose" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgcontrol
+External_Function CryptMsgControl "CryptMsgControl" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	UInteger dwFlags ;
+	UInteger dwCtrlType ;
+	Pointer pvCtrlPara ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgcountersign
+External_Function CryptMsgCountersign "CryptMsgCountersign" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	UInteger dwIndex ;
+	UInteger cCountersigners ;
+	Pointer rgCountersigners ;	// CMSG_SIGNER_ENCODE_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgcountersignencoded
+External_Function CryptMsgCountersignEncoded "CryptMsgCountersignEncoded" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	Pointer pbSignerInfo ;	// UChar*
+	UInteger cbSignerInfo ;
+	UInteger cCountersigners ;
+	Pointer rgCountersigners ;	// CMSG_SIGNER_ENCODE_INFO*
+	Pointer pbCountersignature ;	// UChar*
+	Pointer pcbCountersignature ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgduplicate
+External_Function CryptMsgDuplicate "CryptMsgDuplicate" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgencodeandsignctl
+External_Function CryptMsgEncodeAndSignCTL "CryptMsgEncodeAndSignCTL" CRYPT32.dll ;
+	UInteger dwMsgEncodingType ;
+	Pointer pCtlInfo ;	// CTL_INFO*
+	Pointer pSignInfo ;	// CMSG_SIGNED_ENCODE_INFO*
+	UInteger dwFlags ;
+	Pointer pbEncoded ;	// UChar*
+	Pointer pcbEncoded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsggetandverifysigner
+External_Function CryptMsgGetAndVerifySigner "CryptMsgGetAndVerifySigner" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	UInteger cSignerStore ;
+	Pointer rghSignerStore ;	// HCERTSTORE*
+	UInteger dwFlags ;
+	Pointer ppSigner ;	// CERT_CONTEXT**
+	Pointer pdwSignerIndex ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsggetparam
+External_Function CryptMsgGetParam "CryptMsgGetParam" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	UInteger dwParamType ;
+	UInteger dwIndex ;
+	Pointer pvData ;	// Pointer*
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgopentodecode
+External_Function CryptMsgOpenToDecode "CryptMsgOpenToDecode" CRYPT32.dll ;
+	UInteger dwMsgEncodingType ;
+	UInteger dwFlags ;
+	UInteger dwMsgType ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	Pointer pRecipientInfo ;	// CERT_INFO*
+	Pointer pStreamInfo ;	// CMSG_STREAM_INFO*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgopentoencode
+External_Function CryptMsgOpenToEncode "CryptMsgOpenToEncode" CRYPT32.dll ;
+	UInteger dwMsgEncodingType ;
+	UInteger dwFlags ;
+	UInteger dwMsgType ;	// CRYPT_MSG_TYPE
+	Pointer pvMsgEncodeInfo ;	// Pointer*
+	String pszInnerContentObjID ;	// PSTR
+	Pointer pStreamInfo ;	// CMSG_STREAM_INFO*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgsignctl
+External_Function CryptMsgSignCTL "CryptMsgSignCTL" CRYPT32.dll ;
+	UInteger dwMsgEncodingType ;
+	Pointer pbCtlContent ;	// UChar*
+	UInteger cbCtlContent ;
+	Pointer pSignInfo ;	// CMSG_SIGNED_ENCODE_INFO*
+	UInteger dwFlags ;
+	Pointer pbEncoded ;	// UChar*
+	Pointer pcbEncoded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgupdate
+External_Function CryptMsgUpdate "CryptMsgUpdate" CRYPT32.dll ;
+	Pointer hCryptMsg ;	// Pointer*
+	Pointer pbData ;	// UChar*
+	UInteger cbData ;
+	Integer fFinal ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgverifycountersignatureencoded
+External_Function CryptMsgVerifyCountersignatureEncoded "CryptMsgVerifyCountersignatureEncoded" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwEncodingType ;
+	Pointer pbSignerInfo ;	// UChar*
+	UInteger cbSignerInfo ;
+	Pointer pbSignerInfoCountersignature ;	// UChar*
+	UInteger cbSignerInfoCountersignature ;
+	Pointer pciCountersigner ;	// CERT_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptmsgverifycountersignatureencodedex
+External_Function CryptMsgVerifyCountersignatureEncodedEx "CryptMsgVerifyCountersignatureEncodedEx" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwEncodingType ;
+	Pointer pbSignerInfo ;	// UChar*
+	UInteger cbSignerInfo ;
+	Pointer pbSignerInfoCountersignature ;	// UChar*
+	UInteger cbSignerInfoCountersignature ;
+	UInteger dwSignerType ;
+	Pointer pvSigner ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pvExtra ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/nf-dpapi-cryptprotectdata
+External_Function CryptProtectData "CryptProtectData" CRYPT32.dll ;
+	Pointer pDataIn ;	// CRYPT_INTEGER_BLOB*
+	WString szDataDescr ;	// PWSTR
+	Pointer pOptionalEntropy ;	// CRYPT_INTEGER_BLOB*
+	Pointer pvReserved ;	// Pointer*
+	Pointer pPromptStruct ;	// CRYPTPROTECT_PROMPTSTRUCT*
+	UInteger dwFlags ;
+	Pointer pDataOut ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/nf-dpapi-cryptprotectmemory
+External_Function CryptProtectMemory "CryptProtectMemory" CRYPT32.dll ;
+	Pointer pDataIn ;	// Pointer*
+	UInteger cbDataIn ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptqueryobject
+External_Function CryptQueryObject "CryptQueryObject" CRYPT32.dll ;
+	UInteger dwObjectType ;	// CERT_QUERY_OBJECT_TYPE
+	Pointer pvObject ;	// Pointer*
+	UInteger dwExpectedContentTypeFlags ;	// CERT_QUERY_CONTENT_TYPE_FLAGS
+	UInteger dwExpectedFormatTypeFlags ;	// CERT_QUERY_FORMAT_TYPE_FLAGS
+	UInteger dwFlags ;
+	Pointer pdwMsgAndCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE*
+	Pointer pdwContentType ;	// CERT_QUERY_CONTENT_TYPE*
+	Pointer pdwFormatType ;	// CERT_QUERY_FORMAT_TYPE*
+	Pointer phCertStore ;	// HCERTSTORE*
+	Pointer phMsg ;	// Pointer**
+	Pointer ppvContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptregisterdefaultoidfunction
+External_Function CryptRegisterDefaultOIDFunction "CryptRegisterDefaultOIDFunction" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	UInteger dwIndex ;
+	WString pwszDll ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptregisteroidfunction
+External_Function CryptRegisterOIDFunction "CryptRegisterOIDFunction" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	String pszOID ;	// PSTR
+	WString pwszDll ;	// PWSTR
+	String pszOverrideFuncName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptregisteroidinfo
+External_Function CryptRegisterOIDInfo "CryptRegisterOIDInfo" CRYPT32.dll ;
+	Pointer pInfo ;	// CRYPT_OID_INFO*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptretrievetimestamp
+External_Function CryptRetrieveTimeStamp "CryptRetrieveTimeStamp" CRYPT32.dll ;
+	WString wszUrl ;	// PWSTR
+	UInteger dwRetrievalFlags ;
+	UInteger dwTimeout ;
+	String pszHashId ;	// PSTR
+	Pointer pPara ;	// CRYPT_TIMESTAMP_PARA*
+	Pointer pbData ;	// UChar*
+	UInteger cbData ;
+	Pointer ppTsContext ;	// CRYPT_TIMESTAMP_CONTEXT**
+	Pointer ppTsSigner ;	// CERT_CONTEXT**
+	Pointer phStore ;	// HCERTSTORE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetasyncparam
+External_Function CryptSetAsyncParam "CryptSetAsyncParam" CRYPT32.dll ;
+	LongPtr hAsync ;	// HCRYPTASYNC
+	String pszParamOid ;	// PSTR
+	Pointer pvParam ;	// Pointer*
+	Pointer pfnFree ;	// PFN_CRYPT_ASYNC_PARAM_FREE_FUNC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetkeyidentifierproperty
+External_Function CryptSetKeyIdentifierProperty "CryptSetKeyIdentifierProperty" CRYPT32.dll ;
+	Pointer pKeyIdentifier ;	// CRYPT_INTEGER_BLOB*
+	UInteger dwPropId ;
+	UInteger dwFlags ;
+	WString pwszComputerName ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetoidfunctionvalue
+External_Function CryptSetOIDFunctionValue "CryptSetOIDFunctionValue" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	String pszOID ;	// PSTR
+	WString pwszValueName ;	// PWSTR
+	UInteger dwValueType ;	// REG_VALUE_TYPE
+	Pointer pbValueData ;	// UChar*
+	UInteger cbValueData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsignandencodecertificate
+External_Function CryptSignAndEncodeCertificate "CryptSignAndEncodeCertificate" CRYPT32.dll ;
+	ULongPtr hCryptProvOrNCryptKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE
+	UInteger dwKeySpec ;	// CERT_KEY_SPEC
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	String lpszStructType ;	// PSTR
+	Pointer pvStructInfo ;	// Pointer*
+	Pointer pSignatureAlgorithm ;	// CRYPT_ALGORITHM_IDENTIFIER*
+	Pointer pvHashAuxInfo ;	// Pointer*
+	Pointer pbEncoded ;	// UChar*
+	Pointer pcbEncoded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsignandencryptmessage
+External_Function CryptSignAndEncryptMessage "CryptSignAndEncryptMessage" CRYPT32.dll ;
+	Pointer pSignPara ;	// CRYPT_SIGN_MESSAGE_PARA*
+	Pointer pEncryptPara ;	// CRYPT_ENCRYPT_MESSAGE_PARA*
+	UInteger cRecipientCert ;
+	Pointer rgpRecipientCert ;	// CERT_CONTEXT**
+	Pointer pbToBeSignedAndEncrypted ;	// UChar*
+	UInteger cbToBeSignedAndEncrypted ;
+	Pointer pbSignedAndEncryptedBlob ;	// UChar*
+	Pointer pcbSignedAndEncryptedBlob ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsigncertificate
+External_Function CryptSignCertificate "CryptSignCertificate" CRYPT32.dll ;
+	ULongPtr hCryptProvOrNCryptKey ;	// HCRYPTPROV_OR_NCRYPT_KEY_HANDLE
+	UInteger dwKeySpec ;
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbEncodedToBeSigned ;	// UChar*
+	UInteger cbEncodedToBeSigned ;
+	Pointer pSignatureAlgorithm ;	// CRYPT_ALGORITHM_IDENTIFIER*
+	Pointer pvHashAuxInfo ;	// Pointer*
+	Pointer pbSignature ;	// UChar*
+	Pointer pcbSignature ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsignmessage
+External_Function CryptSignMessage "CryptSignMessage" CRYPT32.dll ;
+	Pointer pSignPara ;	// CRYPT_SIGN_MESSAGE_PARA*
+	Integer fDetachedSignature ;	// BOOL
+	UInteger cToBeSigned ;
+	Pointer rgpbToBeSigned ;	// UChar**
+	Pointer rgcbToBeSigned ;	// UInteger*
+	Pointer pbSignedBlob ;	// UChar*
+	Pointer pcbSignedBlob ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsignmessagewithkey
+External_Function CryptSignMessageWithKey "CryptSignMessageWithKey" CRYPT32.dll ;
+	Pointer pSignPara ;	// CRYPT_KEY_SIGN_MESSAGE_PARA*
+	Pointer pbToBeSigned ;	// UChar*
+	UInteger cbToBeSigned ;
+	Pointer pbSignedBlob ;	// UChar*
+	Pointer pcbSignedBlob ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptstringtobinarya
+External_Function CryptStringToBinaryA "CryptStringToBinaryA" CRYPT32.dll ;
+	String pszString ;	// PSTR
+	UInteger cchString ;
+	UInteger dwFlags ;	// CRYPT_STRING
+	Pointer pbBinary ;	// UChar*
+	Pointer pcbBinary ;	// UInteger*
+	Pointer pdwSkip ;	// UInteger*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptstringtobinaryw
+External_Function CryptStringToBinaryW "CryptStringToBinaryW" CRYPT32.dll ;
+	WString pszString ;	// PWSTR
+	UInteger cchString ;
+	UInteger dwFlags ;	// CRYPT_STRING
+	Pointer pbBinary ;	// UChar*
+	Pointer pcbBinary ;	// UInteger*
+	Pointer pdwSkip ;	// UInteger*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptuninstalldefaultcontext
+External_Function CryptUninstallDefaultContext "CryptUninstallDefaultContext" CRYPT32.dll ;
+	Pointer hDefaultContext ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/nf-dpapi-cryptunprotectdata
+External_Function CryptUnprotectData "CryptUnprotectData" CRYPT32.dll ;
+	Pointer pDataIn ;	// CRYPT_INTEGER_BLOB*
+	Pointer ppszDataDescr ;	// PWSTR*
+	Pointer pOptionalEntropy ;	// CRYPT_INTEGER_BLOB*
+	Pointer pvReserved ;	// Pointer*
+	Pointer pPromptStruct ;	// CRYPTPROTECT_PROMPTSTRUCT*
+	UInteger dwFlags ;
+	Pointer pDataOut ;	// CRYPT_INTEGER_BLOB*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/nf-dpapi-cryptunprotectmemory
+External_Function CryptUnprotectMemory "CryptUnprotectMemory" CRYPT32.dll ;
+	Pointer pDataIn ;	// Pointer*
+	UInteger cbDataIn ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisterdefaultoidfunction
+External_Function CryptUnregisterDefaultOIDFunction "CryptUnregisterDefaultOIDFunction" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	WString pwszDll ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisteroidfunction
+External_Function CryptUnregisterOIDFunction "CryptUnregisterOIDFunction" CRYPT32.dll ;
+	UInteger dwEncodingType ;
+	String pszFuncName ;	// PSTR
+	String pszOID ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptunregisteroidinfo
+External_Function CryptUnregisterOIDInfo "CryptUnregisterOIDInfo" CRYPT32.dll ;
+	Pointer pInfo ;	// CRYPT_OID_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/nf-dpapi-cryptupdateprotectedstate
+External_Function CryptUpdateProtectedState "CryptUpdateProtectedState" CRYPT32.dll ;
+	Pointer pOldSid ;	// PSID
+	WString pwszOldPassword ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pdwSuccessCount ;	// UInteger*
+	Pointer pdwFailureCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifycertificatesignature
+External_Function CryptVerifyCertificateSignature "CryptVerifyCertificateSignature" CRYPT32.dll ;
+	ULongPtr hCryptProv ;	// HCRYPTPROV_LEGACY
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbEncoded ;	// UChar*
+	UInteger cbEncoded ;
+	Pointer pPublicKey ;	// CERT_PUBLIC_KEY_INFO*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

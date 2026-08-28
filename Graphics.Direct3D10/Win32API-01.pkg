@@ -1,0 +1,242 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10compileeffectfrommemory
+External_Function D3D10CompileEffectFromMemory "D3D10CompileEffectFromMemory" d3d10.dll ;
+	Pointer pData ;	// Pointer*
+	ULongPtr DataLength ;
+	String pSrcFileName ;	// PSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	UInteger HLSLFlags ;
+	UInteger FXFlags ;
+	Pointer ppCompiledEffect ;	// ID3DBlob*
+	Pointer ppErrors ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10compileshader
+External_Function D3D10CompileShader "D3D10CompileShader" d3d10.dll ;
+	String pSrcData ;	// PSTR
+	ULongPtr SrcDataSize ;
+	String pFileName ;	// PSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	String pFunctionName ;	// PSTR
+	String pProfile ;	// PSTR
+	UInteger Flags ;
+	Pointer ppShader ;	// ID3DBlob*
+	Pointer ppErrorMsgs ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createblob
+External_Function D3D10CreateBlob "D3D10CreateBlob" d3d10.dll ;
+	ULongPtr NumBytes ;
+	Pointer ppBuffer ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createdevice
+External_Function D3D10CreateDevice "D3D10CreateDevice" d3d10.dll ;
+	Pointer pAdapter ;	// IDXGIAdapter
+	Integer DriverType ;	// D3D10_DRIVER_TYPE
+	Pointer Software ;	// HMODULE
+	UInteger Flags ;
+	UInteger SDKVersion ;
+	Pointer ppDevice ;	// ID3D10Device*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10misc/nf-d3d10misc-d3d10createdeviceandswapchain
+External_Function D3D10CreateDeviceAndSwapChain "D3D10CreateDeviceAndSwapChain" d3d10.dll ;
+	Pointer pAdapter ;	// IDXGIAdapter
+	Integer DriverType ;	// D3D10_DRIVER_TYPE
+	Pointer Software ;	// HMODULE
+	UInteger Flags ;
+	UInteger SDKVersion ;
+	Pointer pSwapChainDesc ;	// DXGI_SWAP_CHAIN_DESC*
+	Pointer ppSwapChain ;	// IDXGISwapChain*
+	Pointer ppDevice ;	// ID3D10Device*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10createeffectfrommemory
+External_Function D3D10CreateEffectFromMemory "D3D10CreateEffectFromMemory" d3d10.dll ;
+	Pointer pData ;	// Pointer*
+	ULongPtr DataLength ;
+	UInteger FXFlags ;
+	Pointer pDevice ;	// ID3D10Device
+	Pointer pEffectPool ;	// ID3D10EffectPool
+	Pointer ppEffect ;	// ID3D10Effect*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10createeffectpoolfrommemory
+External_Function D3D10CreateEffectPoolFromMemory "D3D10CreateEffectPoolFromMemory" d3d10.dll ;
+	Pointer pData ;	// Pointer*
+	ULongPtr DataLength ;
+	UInteger FXFlags ;
+	Pointer pDevice ;	// ID3D10Device
+	Pointer ppEffectPool ;	// ID3D10EffectPool*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10createstateblock
+External_Function D3D10CreateStateBlock "D3D10CreateStateBlock" d3d10.dll ;
+	Pointer pDevice ;	// ID3D10Device
+	Pointer pStateBlockMask ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer ppStateBlock ;	// ID3D10StateBlock*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10disassembleeffect
+External_Function D3D10DisassembleEffect "D3D10DisassembleEffect" d3d10.dll ;
+	Pointer pEffect ;	// ID3D10Effect
+	Integer EnableColorCode ;	// BOOL
+	Pointer ppDisassembly ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10disassembleshader
+External_Function D3D10DisassembleShader "D3D10DisassembleShader" d3d10.dll ;
+	Pointer pShader ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	Integer EnableColorCode ;	// BOOL
+	String pComments ;	// PSTR
+	Pointer ppDisassembly ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getgeometryshaderprofile
+External_Function D3D10GetGeometryShaderProfile "D3D10GetGeometryShaderProfile" d3d10.dll ;
+	Pointer pDevice ;	// ID3D10Device
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getinputandoutputsignatureblob
+External_Function D3D10GetInputAndOutputSignatureBlob "D3D10GetInputAndOutputSignatureBlob" d3d10.dll ;
+	Pointer pShaderBytecode ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	Pointer ppSignatureBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getinputsignatureblob
+External_Function D3D10GetInputSignatureBlob "D3D10GetInputSignatureBlob" d3d10.dll ;
+	Pointer pShaderBytecode ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	Pointer ppSignatureBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getoutputsignatureblob
+External_Function D3D10GetOutputSignatureBlob "D3D10GetOutputSignatureBlob" d3d10.dll ;
+	Pointer pShaderBytecode ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	Pointer ppSignatureBlob ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getpixelshaderprofile
+External_Function D3D10GetPixelShaderProfile "D3D10GetPixelShaderProfile" d3d10.dll ;
+	Pointer pDevice ;	// ID3D10Device
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getshaderdebuginfo
+External_Function D3D10GetShaderDebugInfo "D3D10GetShaderDebugInfo" d3d10.dll ;
+	Pointer pShaderBytecode ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	Pointer ppDebugInfo ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10getvertexshaderprofile
+External_Function D3D10GetVertexShaderProfile "D3D10GetVertexShaderProfile" d3d10.dll ;
+	Pointer pDevice ;	// ID3D10Device
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10preprocessshader
+External_Function D3D10PreprocessShader "D3D10PreprocessShader" d3d10.dll ;
+	String pSrcData ;	// PSTR
+	ULongPtr SrcDataSize ;
+	String pFileName ;	// PSTR
+	Pointer pDefines ;	// D3D_SHADER_MACRO*
+	Pointer pInclude ;	// ID3DInclude
+	Pointer ppShaderText ;	// ID3DBlob*
+	Pointer ppErrorMsgs ;	// ID3DBlob*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10shader/nf-d3d10shader-d3d10reflectshader
+External_Function D3D10ReflectShader "D3D10ReflectShader" d3d10.dll ;
+	Pointer pShaderBytecode ;	// Pointer*
+	ULongPtr BytecodeLength ;
+	Pointer ppReflector ;	// ID3D10ShaderReflection*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskdifference
+External_Function D3D10StateBlockMaskDifference "D3D10StateBlockMaskDifference" d3d10.dll ;
+	Pointer pA ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer pB ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer pResult ;	// D3D10_STATE_BLOCK_MASK*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskdisableall
+External_Function D3D10StateBlockMaskDisableAll "D3D10StateBlockMaskDisableAll" d3d10.dll ;
+	Pointer pMask ;	// D3D10_STATE_BLOCK_MASK*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskdisablecapture
+External_Function D3D10StateBlockMaskDisableCapture "D3D10StateBlockMaskDisableCapture" d3d10.dll ;
+	Pointer pMask ;	// D3D10_STATE_BLOCK_MASK*
+	Integer StateType ;	// D3D10_DEVICE_STATE_TYPES
+	UInteger RangeStart ;
+	UInteger RangeLength ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskenableall
+External_Function D3D10StateBlockMaskEnableAll "D3D10StateBlockMaskEnableAll" d3d10.dll ;
+	Pointer pMask ;	// D3D10_STATE_BLOCK_MASK*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskenablecapture
+External_Function D3D10StateBlockMaskEnableCapture "D3D10StateBlockMaskEnableCapture" d3d10.dll ;
+	Pointer pMask ;	// D3D10_STATE_BLOCK_MASK*
+	Integer StateType ;	// D3D10_DEVICE_STATE_TYPES
+	UInteger RangeStart ;
+	UInteger RangeLength ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskgetsetting
+External_Function D3D10StateBlockMaskGetSetting "D3D10StateBlockMaskGetSetting" d3d10.dll ;
+	Pointer pMask ;	// D3D10_STATE_BLOCK_MASK*
+	Integer StateType ;	// D3D10_DEVICE_STATE_TYPES
+	UInteger Entry ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskintersect
+External_Function D3D10StateBlockMaskIntersect "D3D10StateBlockMaskIntersect" d3d10.dll ;
+	Pointer pA ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer pB ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer pResult ;	// D3D10_STATE_BLOCK_MASK*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10effect/nf-d3d10effect-d3d10stateblockmaskunion
+External_Function D3D10StateBlockMaskUnion "D3D10StateBlockMaskUnion" d3d10.dll ;
+	Pointer pA ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer pB ;	// D3D10_STATE_BLOCK_MASK*
+	Pointer pResult ;	// D3D10_STATE_BLOCK_MASK*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-d3d10createdevice1
+External_Function D3D10CreateDevice1 "D3D10CreateDevice1" d3d10_1.dll ;
+	Pointer pAdapter ;	// IDXGIAdapter
+	Integer DriverType ;	// D3D10_DRIVER_TYPE
+	Pointer Software ;	// HMODULE
+	UInteger Flags ;
+	Integer HardwareLevel ;	// D3D10_FEATURE_LEVEL1
+	UInteger SDKVersion ;
+	Pointer ppDevice ;	// ID3D10Device1*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/d3d10_1/nf-d3d10_1-d3d10createdeviceandswapchain1
+External_Function D3D10CreateDeviceAndSwapChain1 "D3D10CreateDeviceAndSwapChain1" d3d10_1.dll ;
+	Pointer pAdapter ;	// IDXGIAdapter
+	Integer DriverType ;	// D3D10_DRIVER_TYPE
+	Pointer Software ;	// HMODULE
+	UInteger Flags ;
+	Integer HardwareLevel ;	// D3D10_FEATURE_LEVEL1
+	UInteger SDKVersion ;
+	Pointer pSwapChainDesc ;	// DXGI_SWAP_CHAIN_DESC*
+	Pointer ppSwapChain ;	// IDXGISwapChain*
+	Pointer ppDevice ;	// ID3D10Device1*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,186 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netshareadd
+External_Function NetShareAdd "NetShareAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsharecheck
+External_Function NetShareCheck "NetShareCheck" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString device ;	// PWSTR
+	Pointer type ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsharedel
+External_Function NetShareDel "NetShareDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString netname ;	// PWSTR
+	UInteger reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsharedelex
+External_Function NetShareDelEx "NetShareDelEx" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Returns UInteger
+
+External_Function NetShareDelSticky "NetShareDelSticky" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString netname ;	// PWSTR
+	UInteger reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netshareenum
+External_Function NetShareEnum "NetShareEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+External_Function NetShareEnumSticky "NetShareEnumSticky" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsharegetinfo
+External_Function NetShareGetInfo "NetShareGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString netname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsharesetinfo
+External_Function NetShareSetInfo "NetShareSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString netname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmstats/nf-lmstats-netstatisticsget
+External_Function NetStatisticsGet "NetStatisticsGet" NETAPI32.dll ;
+	Pointer ServerName ;	// Char*
+	Pointer Service ;	// Char*
+	UInteger Level ;
+	UInteger Options ;
+	Pointer Buffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-buildioringcancelrequest
+External_Function BuildIoRingCancelRequest "BuildIoRingCancelRequest" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	IORING_HANDLE_REF file ;
+	ULongPtr opToCancel ;
+	ULongPtr userData ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-buildioringreadfile
+External_Function BuildIoRingReadFile "BuildIoRingReadFile" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	IORING_HANDLE_REF fileRef ;
+	IORING_BUFFER_REF dataRef ;
+	UInteger numberOfBytesToRead ;
+	UBigint fileOffset ;
+	ULongPtr userData ;
+	Integer sqeFlags ;	// IORING_SQE_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-buildioringregisterbuffers
+External_Function BuildIoRingRegisterBuffers "BuildIoRingRegisterBuffers" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	UInteger count ;
+	Pointer buffers ;	// IORING_BUFFER_INFO*
+	ULongPtr userData ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-buildioringregisterfilehandles
+External_Function BuildIoRingRegisterFileHandles "BuildIoRingRegisterFileHandles" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	UInteger count ;
+	Pointer handles ;	// HANDLE*
+	ULongPtr userData ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-closeioring
+External_Function CloseIoRing "CloseIoRing" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-createioring
+External_Function CreateIoRing "CreateIoRing" api-ms-win-core-ioring-l1-1-0.dll ;
+	Integer ioringVersion ;	// IORING_VERSION
+	IORING_CREATE_FLAGS flags ;
+	UInteger submissionQueueSize ;
+	UInteger completionQueueSize ;
+	Pointer h ;	// HIORING*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-getioringinfo
+External_Function GetIoRingInfo "GetIoRingInfo" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	Pointer info ;	// IORING_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-isioringopsupported
+External_Function IsIoRingOpSupported "IsIoRingOpSupported" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	Integer op ;	// IORING_OP_CODE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-popioringcompletion
+External_Function PopIoRingCompletion "PopIoRingCompletion" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	Pointer cqe ;	// IORING_CQE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-queryioringcapabilities
+External_Function QueryIoRingCapabilities "QueryIoRingCapabilities" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer capabilities ;	// IORING_CAPABILITIES*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-setioringcompletionevent
+External_Function SetIoRingCompletionEvent "SetIoRingCompletionEvent" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	Pointer hEvent ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/nf-ioringapi-submitioring
+External_Function SubmitIoRing "SubmitIoRing" api-ms-win-core-ioring-l1-1-0.dll ;
+	Pointer ioRing ;	// HIORING
+	UInteger waitOperations ;
+	UInteger milliseconds ;
+	Pointer submittedEntries ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function CreateBindLink "CreateBindLink" BINDFLTAPI.dll ;
+	WString virtualPath ;	// PWSTR
+	WString backingPath ;	// PWSTR
+	Integer createBindLinkFlags ;	// CREATE_BIND_LINK_FLAGS
+	UInteger exceptionCount ;
+	Pointer exceptionPaths ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function RemoveBindLink "RemoveBindLink" BINDFLTAPI.dll ;
+	WString virtualPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,102 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-discovermanagementservice
+External_Function DiscoverManagementService "DiscoverManagementService" MDMRegistration.dll ;
+	WString pszUPN ;	// PWSTR
+	Pointer ppMgmtInfo ;	// MANAGEMENT_SERVICE_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-discovermanagementserviceex
+External_Function DiscoverManagementServiceEx "DiscoverManagementServiceEx" MDMRegistration.dll ;
+	WString pszUPN ;	// PWSTR
+	WString pszDiscoveryServiceCandidate ;	// PWSTR
+	Pointer ppMgmtInfo ;	// MANAGEMENT_SERVICE_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-getdevicemanagementconfiginfo
+External_Function GetDeviceManagementConfigInfo "GetDeviceManagementConfigInfo" MDMRegistration.dll ;
+	WString providerID ;	// PWSTR
+	Pointer configStringBufferLength ;	// UInteger*
+	Pointer configString ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-getdeviceregistrationinfo
+External_Function GetDeviceRegistrationInfo "GetDeviceRegistrationInfo" MDMRegistration.dll ;
+	Integer DeviceInformationClass ;	// REGISTRATION_INFORMATION_CLASS
+	Pointer ppDeviceRegistrationInfo ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-getmanagementapphyperlink
+External_Function GetManagementAppHyperlink "GetManagementAppHyperlink" MDMRegistration.dll ;
+	UInteger cchHyperlink ;
+	Pointer pszHyperlink ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-isdeviceregisteredwithmanagement
+External_Function IsDeviceRegisteredWithManagement "IsDeviceRegisteredWithManagement" MDMRegistration.dll ;
+	Pointer pfIsDeviceRegisteredWithManagement ;	// BOOL*
+	UInteger cchUPN ;
+	Pointer pszUPN ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-ismanagementregistrationallowed
+External_Function IsManagementRegistrationAllowed "IsManagementRegistrationAllowed" MDMRegistration.dll ;
+	Pointer pfIsManagementRegistrationAllowed ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function IsMdmUxWithoutAadAllowed "IsMdmUxWithoutAadAllowed" MDMRegistration.dll ;
+	Pointer isEnrollmentAllowed ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-registerdevicewithmanagement
+External_Function RegisterDeviceWithManagement "RegisterDeviceWithManagement" MDMRegistration.dll ;
+	WString pszUPN ;	// PWSTR
+	WString ppszMDMServiceUri ;	// PWSTR
+	WString ppzsAccessToken ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-registerdevicewithmanagementusingaadcredentials
+External_Function RegisterDeviceWithManagementUsingAADCredentials "RegisterDeviceWithManagementUsingAADCredentials" MDMRegistration.dll ;
+	Pointer UserToken ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-registerdevicewithmanagementusingaaddevicecredentials
+External_Function RegisterDeviceWithManagementUsingAADDeviceCredentials "RegisterDeviceWithManagementUsingAADDeviceCredentials" MDMRegistration.dll ;
+	Returns Integer	// HRESULT
+
+External_Function RegisterDeviceWithManagementUsingAADDeviceCredentials2 "RegisterDeviceWithManagementUsingAADDeviceCredentials2" MDMRegistration.dll ;
+	WString MDMApplicationID ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-setdevicemanagementconfiginfo
+External_Function SetDeviceManagementConfigInfo "SetDeviceManagementConfigInfo" MDMRegistration.dll ;
+	WString providerID ;	// PWSTR
+	WString configString ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-setmanagedexternally
+External_Function SetManagedExternally "SetManagedExternally" MDMRegistration.dll ;
+	Integer IsManagedExternally ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mdmregistration/nf-mdmregistration-unregisterdevicewithmanagement
+External_Function UnregisterDeviceWithManagement "UnregisterDeviceWithManagement" MDMRegistration.dll ;
+	WString enrollmentID ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function ApplyLocalManagementSyncML "ApplyLocalManagementSyncML" MDMLocalManagement.dll ;
+	WString syncMLRequest ;	// PWSTR
+	Pointer syncMLResult ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function RegisterDeviceWithLocalManagement "RegisterDeviceWithLocalManagement" MDMLocalManagement.dll ;
+	Pointer alreadyRegistered ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function UnregisterDeviceWithLocalManagement "UnregisterDeviceWithLocalManagement" MDMLocalManagement.dll ;
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

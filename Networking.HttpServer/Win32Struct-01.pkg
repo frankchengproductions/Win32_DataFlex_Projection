@@ -1,0 +1,202 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-httpapi_version
+Struct HTTPAPI_VERSION
+	UShort HttpApiMajorVersion
+	UShort HttpApiMinorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_byte_range
+Struct HTTP_BYTE_RANGE
+	UBigint StartingOffset
+	UBigint Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_cache_policy
+Struct HTTP_CACHE_POLICY
+	Integer Policy											// HTTP_CACHE_POLICY_TYPE
+	UInteger SecondsToLive
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_cooked_url
+Struct HTTP_COOKED_URL
+	UShort FullUrlLength
+	UShort HostLength
+	UShort AbsPathLength
+	UShort QueryStringLength
+	Pointer pFullUrl										// PWSTR
+	Pointer pHost											// PWSTR
+	Pointer pAbsPath										// PWSTR
+	Pointer pQueryString									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_data_chunk
+Struct HTTP_DATA_CHUNK
+	Integer DataChunkType									// HTTP_DATA_CHUNK_TYPE
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_delegate_request_property_info
+Struct HTTP_DELEGATE_REQUEST_PROPERTY_INFO
+	Integer PropertyId										// HTTP_DELEGATE_REQUEST_PROPERTY_ID
+	UInteger PropertyInfoLength
+	Pointer PropertyInfo									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_known_header
+Struct HTTP_KNOWN_HEADER
+	UShort RawValueLength
+	UChar[6] cMissingAlignment1
+	Pointer pRawValue										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_log_data
+Struct HTTP_LOG_DATA
+	Integer Type											// HTTP_LOG_DATA_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_request_headers
+Struct HTTP_REQUEST_HEADERS
+	UShort UnknownHeaderCount
+	UChar[6] cMissingAlignment1
+	Pointer pUnknownHeaders									// HTTP_UNKNOWN_HEADER*
+	UShort TrailerCount
+	UChar[6] cMissingAlignment2
+	Pointer pTrailers										// HTTP_UNKNOWN_HEADER*
+	HTTP_KNOWN_HEADER[41] KnownHeaders
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_request_info
+Struct HTTP_REQUEST_INFO
+	Integer InfoType										// HTTP_REQUEST_INFO_TYPE
+	UInteger InfoLength
+	Pointer pInfo											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_request_v1
+Struct HTTP_REQUEST_V1
+	UInteger Flags
+	Integer iMissingAlignment1
+	UBigint ConnectionId
+	UBigint RequestId
+	UBigint UrlContext
+	HTTP_VERSION Version
+	Integer Verb											// HTTP_VERB
+	UShort UnknownVerbLength
+	UShort RawUrlLength
+	Integer iMissingAlignment2
+	Pointer pUnknownVerb									// PSTR
+	Pointer pRawUrl											// PSTR
+	HTTP_COOKED_URL CookedUrl
+	HTTP_TRANSPORT_ADDRESS Address
+	HTTP_REQUEST_HEADERS Headers
+	UBigint BytesReceived
+	UShort EntityChunkCount
+	UChar[6] cMissingAlignment3
+	Pointer pEntityChunks									// HTTP_DATA_CHUNK*
+	UBigint RawConnectionId
+	Pointer pSslInfo										// HTTP_SSL_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_request_v2
+Struct HTTP_REQUEST_V2
+	HTTP_REQUEST_V1 Base
+	UShort RequestInfoCount
+	UChar[6] cMissingAlignment1
+	Pointer pRequestInfo									// HTTP_REQUEST_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_response_headers
+Struct HTTP_RESPONSE_HEADERS
+	UShort UnknownHeaderCount
+	UChar[6] cMissingAlignment1
+	Pointer pUnknownHeaders									// HTTP_UNKNOWN_HEADER*
+	UShort TrailerCount
+	UChar[6] cMissingAlignment2
+	Pointer pTrailers										// HTTP_UNKNOWN_HEADER*
+	HTTP_KNOWN_HEADER[30] KnownHeaders
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_response_info
+Struct HTTP_RESPONSE_INFO
+	Integer Type											// HTTP_RESPONSE_INFO_TYPE
+	UInteger Length
+	Pointer pInfo											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_response_v1
+Struct HTTP_RESPONSE_V1
+	UInteger Flags
+	HTTP_VERSION Version
+	UShort StatusCode
+	UShort ReasonLength
+	Integer iMissingAlignment1
+	Pointer pReason											// PSTR
+	HTTP_RESPONSE_HEADERS Headers
+	UShort EntityChunkCount
+	UChar[6] cMissingAlignment2
+	Pointer pEntityChunks									// HTTP_DATA_CHUNK*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_response_v2
+Struct HTTP_RESPONSE_V2
+	HTTP_RESPONSE_V1 Base
+	UShort ResponseInfoCount
+	UChar[6] cMissingAlignment1
+	Pointer pResponseInfo									// HTTP_RESPONSE_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_ssl_client_cert_info
+Struct HTTP_SSL_CLIENT_CERT_INFO
+	UInteger CertFlags
+	UInteger CertEncodedSize
+	Pointer pCertEncoded									// UChar*
+	Pointer Token											// HANDLE
+	UChar CertDeniedByMapper								// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_ssl_info
+Struct HTTP_SSL_INFO
+	UShort ServerCertKeySize
+	UShort ConnectionKeySize
+	UInteger ServerCertIssuerSize
+	UInteger ServerCertSubjectSize
+	Integer iMissingAlignment1
+	Pointer pServerCertIssuer								// PSTR
+	Pointer pServerCertSubject								// PSTR
+	Pointer pClientCertInfo									// HTTP_SSL_CLIENT_CERT_INFO*
+	UInteger SslClientCertNegotiated
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_transport_address
+Struct HTTP_TRANSPORT_ADDRESS
+	Pointer pRemoteAddress									// SOCKADDR*
+	Pointer pLocalAddress									// SOCKADDR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_unknown_header
+Struct HTTP_UNKNOWN_HEADER
+	UShort NameLength
+	UShort RawValueLength
+	Integer iMissingAlignment1
+	Pointer pName											// PSTR
+	Pointer pRawValue										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/http/ns-http-http_version
+Struct HTTP_VERSION
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+Struct HTTP_WINHTTP_FAST_FORWARDING_DATA
+	UChar[16] Reserved
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

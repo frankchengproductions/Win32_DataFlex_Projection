@@ -1,0 +1,658 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliauthorizesession
+External_Function WdsCliAuthorizeSession "WdsCliAuthorizeSession" WDSCLIENTAPI.dll ;
+	Pointer hSession ;	// HANDLE
+	Pointer pCred ;	// WDS_CLI_CRED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclicanceltransfer
+External_Function WdsCliCancelTransfer "WdsCliCancelTransfer" WDSCLIENTAPI.dll ;
+	Pointer hTransfer ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliclose
+External_Function WdsCliClose "WdsCliClose" WDSCLIENTAPI.dll ;
+	Pointer Handle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclicreatesession
+External_Function WdsCliCreateSession "WdsCliCreateSession" WDSCLIENTAPI.dll ;
+	WString pwszServer ;	// PWSTR
+	Pointer pCred ;	// WDS_CLI_CRED*
+	Pointer phSession ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclifindfirstimage
+External_Function WdsCliFindFirstImage "WdsCliFindFirstImage" WDSCLIENTAPI.dll ;
+	Pointer hSession ;	// HANDLE
+	Pointer phFindHandle ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclifindnextimage
+External_Function WdsCliFindNextImage "WdsCliFindNextImage" WDSCLIENTAPI.dll ;
+	Pointer Handle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclifreestringarray
+External_Function WdsCliFreeStringArray "WdsCliFreeStringArray" WDSCLIENTAPI.dll ;
+	Pointer ppwszArray ;	// PWSTR*
+	UInteger ulCount ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetdriverqueryxml
+External_Function WdsCliGetDriverQueryXml "WdsCliGetDriverQueryXml" WDSCLIENTAPI.dll ;
+	WString pwszWinDirPath ;	// PWSTR
+	Pointer ppwszDriverQuery ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetenumerationflags
+External_Function WdsCliGetEnumerationFlags "WdsCliGetEnumerationFlags" WDSCLIENTAPI.dll ;
+	Pointer Handle ;	// HANDLE
+	Pointer pdwFlags ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagearchitecture
+External_Function WdsCliGetImageArchitecture "WdsCliGetImageArchitecture" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pdwValue ;	// CPU_ARCHITECTURE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagedescription
+External_Function WdsCliGetImageDescription "WdsCliGetImageDescription" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function WdsCliGetImageFiles "WdsCliGetImageFiles" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pppwszFiles ;	// PWSTR**
+	Pointer pdwCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagegroup
+External_Function WdsCliGetImageGroup "WdsCliGetImageGroup" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagehalname
+External_Function WdsCliGetImageHalName "WdsCliGetImageHalName" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagehandlefromfindhandle
+External_Function WdsCliGetImageHandleFromFindHandle "WdsCliGetImageHandleFromFindHandle" WDSCLIENTAPI.dll ;
+	Pointer FindHandle ;	// HANDLE
+	Pointer phImageHandle ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagehandlefromtransferhandle
+External_Function WdsCliGetImageHandleFromTransferHandle "WdsCliGetImageHandleFromTransferHandle" WDSCLIENTAPI.dll ;
+	Pointer hTransfer ;	// HANDLE
+	Pointer phImageHandle ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimageindex
+External_Function WdsCliGetImageIndex "WdsCliGetImageIndex" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pdwValue ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagelanguage
+External_Function WdsCliGetImageLanguage "WdsCliGetImageLanguage" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagelanguages
+External_Function WdsCliGetImageLanguages "WdsCliGetImageLanguages" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pppszValues ;	// Char***
+	Pointer pdwNumValues ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagelastmodifiedtime
+External_Function WdsCliGetImageLastModifiedTime "WdsCliGetImageLastModifiedTime" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppSysTimeValue ;	// SYSTEMTIME**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagename
+External_Function WdsCliGetImageName "WdsCliGetImageName" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagenamespace
+External_Function WdsCliGetImageNamespace "WdsCliGetImageNamespace" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function WdsCliGetImageParameter "WdsCliGetImageParameter" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Integer ParamType ;	// WDS_CLI_IMAGE_PARAM_TYPE
+	Pointer pResponse ;	// Pointer*
+	UInteger uResponseLen ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagepath
+External_Function WdsCliGetImagePath "WdsCliGetImagePath" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimagesize
+External_Function WdsCliGetImageSize "WdsCliGetImageSize" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pullValue ;	// UBigint*
+	Returns Integer	// HRESULT
+
+External_Function WdsCliGetImageType "WdsCliGetImageType" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pImageType ;	// WDS_CLI_IMAGE_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligetimageversion
+External_Function WdsCliGetImageVersion "WdsCliGetImageVersion" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer ppwszValue ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscligettransfersize
+External_Function WdsCliGetTransferSize "WdsCliGetTransferSize" WDSCLIENTAPI.dll ;
+	Pointer hIfh ;	// HANDLE
+	Pointer pullValue ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliinitializelog
+External_Function WdsCliInitializeLog "WdsCliInitializeLog" WDSCLIENTAPI.dll ;
+	Pointer hSession ;	// HANDLE
+	UInteger ulClientArchitecture ;	// CPU_ARCHITECTURE
+	WString pwszClientId ;	// PWSTR
+	WString pwszClientAddress ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclilog
+External_Function WdsCliLog "WdsCliLog" WDSCLIENTAPI.dll ;
+	Pointer hSession ;	// HANDLE
+	UInteger ulLogLevel ;
+	UInteger ulMessageCode ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliobtaindriverpackages
+External_Function WdsCliObtainDriverPackages "WdsCliObtainDriverPackages" WDSCLIENTAPI.dll ;
+	Pointer hImage ;	// HANDLE
+	Pointer ppwszServerName ;	// PWSTR*
+	Pointer pppwszDriverPackages ;	// PWSTR**
+	Pointer pulCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliobtaindriverpackagesex
+External_Function WdsCliObtainDriverPackagesEx "WdsCliObtainDriverPackagesEx" WDSCLIENTAPI.dll ;
+	Pointer hSession ;	// HANDLE
+	WString pwszMachineInfo ;	// PWSTR
+	Pointer ppwszServerName ;	// PWSTR*
+	Pointer pppwszDriverPackages ;	// PWSTR**
+	Pointer pulCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliregistertrace
+External_Function WdsCliRegisterTrace "WdsCliRegisterTrace" WDSCLIENTAPI.dll ;
+	Pointer pfn ;	// PFN_WdsCliTraceFunction
+	Returns Integer	// HRESULT
+
+External_Function WdsCliSetTransferBufferSize "WdsCliSetTransferBufferSize" WDSCLIENTAPI.dll ;
+	UInteger ulSizeInBytes ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclitransferfile
+External_Function WdsCliTransferFile "WdsCliTransferFile" WDSCLIENTAPI.dll ;
+	WString pwszServer ;	// PWSTR
+	WString pwszNamespace ;	// PWSTR
+	WString pwszRemoteFilePath ;	// PWSTR
+	WString pwszLocalFilePath ;	// PWSTR
+	UInteger dwFlags ;
+	UInteger dwReserved ;
+	Pointer pfnWdsCliCallback ;	// PFN_WdsCliCallback
+	Pointer pvUserData ;	// Pointer*
+	Pointer phTransfer ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdsclitransferimage
+External_Function WdsCliTransferImage "WdsCliTransferImage" WDSCLIENTAPI.dll ;
+	Pointer hImage ;	// HANDLE
+	WString pwszLocalPath ;	// PWSTR
+	UInteger dwFlags ;
+	UInteger dwReserved ;
+	Pointer pfnWdsCliCallback ;	// PFN_WdsCliCallback
+	Pointer pvUserData ;	// Pointer*
+	Pointer phTransfer ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/nf-wdsclientapi-wdscliwaitfortransfer
+External_Function WdsCliWaitForTransfer "WdsCliWaitForTransfer" WDSCLIENTAPI.dll ;
+	Pointer hTransfer ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeasyncrecvdone
+External_Function PxeAsyncRecvDone "PxeAsyncRecvDone" WDSPXE.dll ;
+	Pointer hClientRequest ;	// HANDLE
+	UInteger Action ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpappendoption
+External_Function PxeDhcpAppendOption "PxeDhcpAppendOption" WDSPXE.dll ;
+	Pointer pReplyPacket ;	// Pointer*
+	UInteger uMaxReplyPacketLen ;
+	Pointer puReplyPacketLen ;	// UInteger*
+	UChar bOption ;
+	UChar bOptionLen ;
+	Pointer pValue ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpappendoptionraw
+External_Function PxeDhcpAppendOptionRaw "PxeDhcpAppendOptionRaw" WDSPXE.dll ;
+	Pointer pReplyPacket ;	// Pointer*
+	UInteger uMaxReplyPacketLen ;
+	Pointer puReplyPacketLen ;	// UInteger*
+	UShort uBufferLen ;
+	Pointer pBuffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpgetoptionvalue
+External_Function PxeDhcpGetOptionValue "PxeDhcpGetOptionValue" WDSPXE.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	UInteger uInstance ;
+	UChar bOption ;
+	Pointer pbOptionLen ;	// UChar*
+	Pointer ppOptionValue ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpgetvendoroptionvalue
+External_Function PxeDhcpGetVendorOptionValue "PxeDhcpGetVendorOptionValue" WDSPXE.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	UChar bOption ;
+	UInteger uInstance ;
+	Pointer pbOptionLen ;	// UChar*
+	Pointer ppOptionValue ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpinitialize
+External_Function PxeDhcpInitialize "PxeDhcpInitialize" WDSPXE.dll ;
+	Pointer pRecvPacket ;	// Pointer*
+	UInteger uRecvPacketLen ;
+	Pointer pReplyPacket ;	// Pointer*
+	UInteger uMaxReplyPacketLen ;
+	Pointer puReplyPacketLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpisvalid
+External_Function PxeDhcpIsValid "PxeDhcpIsValid" WDSPXE.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	Integer bRequestPacket ;	// BOOL
+	Pointer pbPxeOptionPresent ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6appendoption
+External_Function PxeDhcpv6AppendOption "PxeDhcpv6AppendOption" WDSPXE.dll ;
+	Pointer pReply ;	// Pointer*
+	UInteger cbReply ;
+	Pointer pcbReplyUsed ;	// UInteger*
+	UShort wOptionType ;
+	UShort cbOption ;
+	Pointer pOption ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6appendoptionraw
+External_Function PxeDhcpv6AppendOptionRaw "PxeDhcpv6AppendOptionRaw" WDSPXE.dll ;
+	Pointer pReply ;	// Pointer*
+	UInteger cbReply ;
+	Pointer pcbReplyUsed ;	// UInteger*
+	UShort cbBuffer ;
+	Pointer pBuffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6createrelayrepl
+External_Function PxeDhcpv6CreateRelayRepl "PxeDhcpv6CreateRelayRepl" WDSPXE.dll ;
+	Pointer pRelayMessages ;	// PXE_DHCPV6_NESTED_RELAY_MESSAGE*
+	UInteger nRelayMessages ;
+	Pointer pInnerPacket ;	// UChar*
+	UInteger cbInnerPacket ;
+	Pointer pReplyBuffer ;	// Pointer*
+	UInteger cbReplyBuffer ;
+	Pointer pcbReplyBuffer ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6getoptionvalue
+External_Function PxeDhcpv6GetOptionValue "PxeDhcpv6GetOptionValue" WDSPXE.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	UInteger uInstance ;
+	UShort wOption ;
+	Pointer pwOptionLen ;	// UShort*
+	Pointer ppOptionValue ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6getvendoroptionvalue
+External_Function PxeDhcpv6GetVendorOptionValue "PxeDhcpv6GetVendorOptionValue" WDSPXE.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	UInteger dwEnterpriseNumber ;
+	UShort wOption ;
+	UInteger uInstance ;
+	Pointer pwOptionLen ;	// UShort*
+	Pointer ppOptionValue ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6initialize
+External_Function PxeDhcpv6Initialize "PxeDhcpv6Initialize" WDSPXE.dll ;
+	Pointer pRequest ;	// Pointer*
+	UInteger cbRequest ;
+	Pointer pReply ;	// Pointer*
+	UInteger cbReply ;
+	Pointer pcbReplyUsed ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6isvalid
+External_Function PxeDhcpv6IsValid "PxeDhcpv6IsValid" WDSPXE.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	Integer bRequestPacket ;	// BOOL
+	Pointer pbPxeOptionPresent ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxedhcpv6parserelayforw
+External_Function PxeDhcpv6ParseRelayForw "PxeDhcpv6ParseRelayForw" WDSPXE.dll ;
+	Pointer pRelayForwPacket ;	// Pointer*
+	UInteger uRelayForwPacketLen ;
+	Pointer pRelayMessages ;	// PXE_DHCPV6_NESTED_RELAY_MESSAGE*
+	UInteger nRelayMessages ;
+	Pointer pnRelayMessages ;	// UInteger*
+	Pointer ppInnerPacket ;	// UChar**
+	Pointer pcbInnerPacket ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxegetserverinfo
+External_Function PxeGetServerInfo "PxeGetServerInfo" WDSPXE.dll ;
+	UInteger uInfoType ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger uBufferLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxegetserverinfoex
+External_Function PxeGetServerInfoEx "PxeGetServerInfoEx" WDSPXE.dll ;
+	UInteger uInfoType ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger uBufferLen ;
+	Pointer puBufferUsed ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxepacketallocate
+External_Function PxePacketAllocate "PxePacketAllocate" WDSPXE.dll ;
+	Pointer hProvider ;	// HANDLE
+	Pointer hClientRequest ;	// HANDLE
+	UInteger uSize ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxepacketfree
+External_Function PxePacketFree "PxePacketFree" WDSPXE.dll ;
+	Pointer hProvider ;	// HANDLE
+	Pointer hClientRequest ;	// HANDLE
+	Pointer pPacket ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderenumclose
+External_Function PxeProviderEnumClose "PxeProviderEnumClose" WDSPXE.dll ;
+	Pointer hEnum ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderenumfirst
+External_Function PxeProviderEnumFirst "PxeProviderEnumFirst" WDSPXE.dll ;
+	Pointer phEnum ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderenumnext
+External_Function PxeProviderEnumNext "PxeProviderEnumNext" WDSPXE.dll ;
+	Pointer hEnum ;	// HANDLE
+	Pointer ppProvider ;	// PXE_PROVIDER**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderfreeinfo
+External_Function PxeProviderFreeInfo "PxeProviderFreeInfo" WDSPXE.dll ;
+	Pointer pProvider ;	// PXE_PROVIDER*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderqueryindex
+External_Function PxeProviderQueryIndex "PxeProviderQueryIndex" WDSPXE.dll ;
+	WString pszProviderName ;	// PWSTR
+	Pointer puIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderregister
+External_Function PxeProviderRegister "PxeProviderRegister" WDSPXE.dll ;
+	WString pszProviderName ;	// PWSTR
+	WString pszModulePath ;	// PWSTR
+	UInteger Index ;
+	Integer bIsCritical ;	// BOOL
+	Pointer phProviderKey ;	// HKEY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeprovidersetattribute
+External_Function PxeProviderSetAttribute "PxeProviderSetAttribute" WDSPXE.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger Attribute ;
+	Pointer pParameterBuffer ;	// Pointer*
+	UInteger uParamLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeproviderunregister
+External_Function PxeProviderUnRegister "PxeProviderUnRegister" WDSPXE.dll ;
+	WString pszProviderName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxeregistercallback
+External_Function PxeRegisterCallback "PxeRegisterCallback" WDSPXE.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger CallbackType ;
+	Pointer pCallbackFunction ;	// Pointer*
+	Pointer pContext ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxesendreply
+External_Function PxeSendReply "PxeSendReply" WDSPXE.dll ;
+	Pointer hClientRequest ;	// HANDLE
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	Pointer pAddress ;	// PXE_ADDRESS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/nf-wdspxe-pxetrace
+External_Function PxeTrace "PxeTrace" WDSPXE.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger Severity ;
+	WString pszFormat ;	// PWSTR
+	Returns UInteger
+
+External_Function PxeTraceV "PxeTraceV" WDSPXE.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger Severity ;
+	WString pszFormat ;	// PWSTR
+	Pointer Params ;	// Char*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstpdi/nf-wdstpdi-wdstransportserverallocatebuffer
+External_Function WdsTransportServerAllocateBuffer "WdsTransportServerAllocateBuffer" WDSMC.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger ulBufferSize ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wdstpdi/nf-wdstpdi-wdstransportservercompleteread
+External_Function WdsTransportServerCompleteRead "WdsTransportServerCompleteRead" WDSMC.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger ulBytesRead ;
+	Pointer pvUserData ;	// Pointer*
+	Integer hReadResult ;	// HRESULT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdstpdi/nf-wdstpdi-wdstransportserverfreebuffer
+External_Function WdsTransportServerFreeBuffer "WdsTransportServerFreeBuffer" WDSMC.dll ;
+	Pointer hProvider ;	// HANDLE
+	Pointer pvBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdstpdi/nf-wdstpdi-wdstransportserverregistercallback
+External_Function WdsTransportServerRegisterCallback "WdsTransportServerRegisterCallback" WDSMC.dll ;
+	Pointer hProvider ;	// HANDLE
+	Integer CallbackId ;	// TRANSPORTPROVIDER_CALLBACK_ID
+	Pointer pfnCallback ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdstpdi/nf-wdstpdi-wdstransportservertrace
+External_Function WdsTransportServerTrace "WdsTransportServerTrace" WDSMC.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger Severity ;
+	WString pwszFormat ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdstpdi/nf-wdstpdi-wdstransportservertracev
+External_Function WdsTransportServerTraceV "WdsTransportServerTraceV" WDSMC.dll ;
+	Pointer hProvider ;	// HANDLE
+	UInteger Severity ;
+	WString pwszFormat ;	// PWSTR
+	Pointer Params ;	// Char*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientaddrefbuffer
+External_Function WdsTransportClientAddRefBuffer "WdsTransportClientAddRefBuffer" WDSTPTC.dll ;
+	Pointer pvBuffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientcancelsession
+External_Function WdsTransportClientCancelSession "WdsTransportClientCancelSession" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	Returns UInteger
+
+External_Function WdsTransportClientCancelSessionEx "WdsTransportClientCancelSessionEx" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	UInteger dwErrorCode ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientclosesession
+External_Function WdsTransportClientCloseSession "WdsTransportClientCloseSession" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientcompletereceive
+External_Function WdsTransportClientCompleteReceive "WdsTransportClientCompleteReceive" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	UInteger ulSize ;
+	Pointer pullOffset ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientinitialize
+External_Function WdsTransportClientInitialize "WdsTransportClientInitialize" WDSTPTC.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientinitializesession
+External_Function WdsTransportClientInitializeSession "WdsTransportClientInitializeSession" WDSTPTC.dll ;
+	Pointer pSessionRequest ;	// WDS_TRANSPORTCLIENT_REQUEST*
+	Pointer pCallerData ;	// Pointer*
+	Pointer hSessionKey ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientquerystatus
+External_Function WdsTransportClientQueryStatus "WdsTransportClientQueryStatus" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	Pointer puStatus ;	// UInteger*
+	Pointer puErrorCode ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientregistercallback
+External_Function WdsTransportClientRegisterCallback "WdsTransportClientRegisterCallback" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	Integer CallbackId ;	// TRANSPORTCLIENT_CALLBACK_ID
+	Pointer pfnCallback ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientreleasebuffer
+External_Function WdsTransportClientReleaseBuffer "WdsTransportClientReleaseBuffer" WDSTPTC.dll ;
+	Pointer pvBuffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientshutdown
+External_Function WdsTransportClientShutdown "WdsTransportClientShutdown" WDSTPTC.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientstartsession
+External_Function WdsTransportClientStartSession "WdsTransportClientStartSession" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/nf-wdstci-wdstransportclientwaitforcompletion
+External_Function WdsTransportClientWaitForCompletion "WdsTransportClientWaitForCompletion" WDSTPTC.dll ;
+	Pointer hSessionKey ;	// HANDLE
+	UInteger uTimeout ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpaddoption
+External_Function WdsBpAddOption "WdsBpAddOption" WDSBP.dll ;
+	Pointer hHandle ;	// HANDLE
+	UInteger uOption ;
+	UInteger uValueLen ;
+	Pointer pValue ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpclosehandle
+External_Function WdsBpCloseHandle "WdsBpCloseHandle" WDSBP.dll ;
+	Pointer hHandle ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpgetoptionbuffer
+External_Function WdsBpGetOptionBuffer "WdsBpGetOptionBuffer" WDSBP.dll ;
+	Pointer hHandle ;	// HANDLE
+	UInteger uBufferLen ;
+	Pointer pBuffer ;	// Pointer*
+	Pointer puBytes ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpinitialize
+External_Function WdsBpInitialize "WdsBpInitialize" WDSBP.dll ;
+	UChar bPacketType ;
+	Pointer phHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpparseinitialize
+External_Function WdsBpParseInitialize "WdsBpParseInitialize" WDSBP.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	Pointer pbPacketType ;	// UChar*
+	Pointer phHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpparseinitializev6
+External_Function WdsBpParseInitializev6 "WdsBpParseInitializev6" WDSBP.dll ;
+	Pointer pPacket ;	// Pointer*
+	UInteger uPacketLen ;
+	Pointer pbPacketType ;	// UChar*
+	Pointer phHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wdsbp/nf-wdsbp-wdsbpqueryoption
+External_Function WdsBpQueryOption "WdsBpQueryOption" WDSBP.dll ;
+	Pointer hHandle ;	// HANDLE
+	UInteger uOption ;
+	UInteger uValueLen ;
+	Pointer pValue ;	// Pointer*
+	Pointer puBytes ;	// UInteger*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

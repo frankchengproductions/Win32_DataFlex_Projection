@@ -1,0 +1,819 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iswineventhookinstalled
+External_Function IsWinEventHookInstalled "IsWinEventHookInstalled" USER32.dll ;
+	UInteger event ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-notifywinevent
+External_Function NotifyWinEvent "NotifyWinEvent" USER32.dll ;
+	UInteger event ;
+	Pointer hwnd ;	// HWND
+	Integer idObject ;
+	Integer idChild ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerpointerinputtarget
+External_Function RegisterPointerInputTarget "RegisterPointerInputTarget" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer pointerType ;	// POINTER_INPUT_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerpointerinputtargetex
+External_Function RegisterPointerInputTargetEx "RegisterPointerInputTargetEx" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer pointerType ;	// POINTER_INPUT_TYPE
+	Integer fObserve ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwineventhook
+External_Function SetWinEventHook "SetWinEventHook" USER32.dll ;
+	UInteger eventMin ;
+	UInteger eventMax ;
+	Pointer hmodWinEventProc ;	// HMODULE
+	Pointer pfnWinEventProc ;	// WINEVENTPROC
+	UInteger idProcess ;
+	UInteger idThread ;
+	UInteger dwFlags ;
+	Returns Pointer	// HWINEVENTHOOK
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unhookwinevent
+External_Function UnhookWinEvent "UnhookWinEvent" USER32.dll ;
+	Pointer hWinEventHook ;	// HWINEVENTHOOK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unregisterpointerinputtarget
+External_Function UnregisterPointerInputTarget "UnregisterPointerInputTarget" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer pointerType ;	// POINTER_INPUT_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-unregisterpointerinputtargetex
+External_Function UnregisterPointerInputTargetEx "UnregisterPointerInputTargetEx" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Integer pointerType ;	// POINTER_INPUT_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-accnotifytouchinteraction
+External_Function AccNotifyTouchInteraction "AccNotifyTouchInteraction" OLEACC.dll ;
+	Pointer hwndApp ;	// HWND
+	Pointer hwndTarget ;	// HWND
+	POINT ptTarget ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-accsetrunningutilitystate
+External_Function AccSetRunningUtilityState "AccSetRunningUtilityState" OLEACC.dll ;
+	Pointer hwndApp ;	// HWND
+	UInteger dwUtilityStateMask ;
+	UInteger dwUtilityState ;	// ACC_UTILITY_STATE_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-accessiblechildren
+External_Function AccessibleChildren "AccessibleChildren" OLEACC.dll ;
+	Pointer paccContainer ;	// IAccessible
+	Integer iChildStart ;
+	Integer cChildren ;
+	Pointer rgvarChildren ;	// VARIANT*
+	Pointer pcObtained ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-accessibleobjectfromevent
+External_Function AccessibleObjectFromEvent "AccessibleObjectFromEvent" OLEACC.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger dwId ;
+	UInteger dwChildId ;
+	Pointer ppacc ;	// IAccessible*
+	Pointer pvarChild ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-accessibleobjectfrompoint
+External_Function AccessibleObjectFromPoint "AccessibleObjectFromPoint" OLEACC.dll ;
+	POINT ptScreen ;
+	Pointer ppacc ;	// IAccessible*
+	Pointer pvarChild ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-accessibleobjectfromwindow
+External_Function AccessibleObjectFromWindow "AccessibleObjectFromWindow" OLEACC.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger dwId ;
+	Pointer riid ;	// Guid*
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-createstdaccessibleobject
+External_Function CreateStdAccessibleObject "CreateStdAccessibleObject" OLEACC.dll ;
+	Pointer hwnd ;	// HWND
+	Integer idObject ;
+	Pointer riid ;	// Guid*
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-createstdaccessibleproxya
+External_Function CreateStdAccessibleProxyA "CreateStdAccessibleProxyA" OLEACC.dll ;
+	Pointer hwnd ;	// HWND
+	String pClassName ;	// PSTR
+	Integer idObject ;
+	Pointer riid ;	// Guid*
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-createstdaccessibleproxyw
+External_Function CreateStdAccessibleProxyW "CreateStdAccessibleProxyW" OLEACC.dll ;
+	Pointer hwnd ;	// HWND
+	WString pClassName ;	// PWSTR
+	Integer idObject ;
+	Pointer riid ;	// Guid*
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-getoleaccversioninfo
+External_Function GetOleaccVersionInfo "GetOleaccVersionInfo" OLEACC.dll ;
+	Pointer pVer ;	// UInteger*
+	Pointer pBuild ;	// UInteger*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-getroletexta
+External_Function GetRoleTextA "GetRoleTextA" OLEACC.dll ;
+	UInteger lRole ;
+	Pointer lpszRole ;	// PSTR
+	UInteger cchRoleMax ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-getroletextw
+External_Function GetRoleTextW "GetRoleTextW" OLEACC.dll ;
+	UInteger lRole ;
+	Pointer lpszRole ;	// PWSTR
+	UInteger cchRoleMax ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-getstatetexta
+External_Function GetStateTextA "GetStateTextA" OLEACC.dll ;
+	UInteger lStateBit ;
+	Pointer lpszState ;	// PSTR
+	UInteger cchState ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-getstatetextw
+External_Function GetStateTextW "GetStateTextW" OLEACC.dll ;
+	UInteger lStateBit ;
+	Pointer lpszState ;	// PWSTR
+	UInteger cchState ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-lresultfromobject
+External_Function LresultFromObject "LresultFromObject" OLEACC.dll ;
+	Pointer riid ;	// Guid*
+	ULongPtr wParam ;	// WPARAM
+	Pointer punk ;	// IUnknown
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-objectfromlresult
+External_Function ObjectFromLresult "ObjectFromLresult" OLEACC.dll ;
+	LongPtr lResult ;	// LRESULT
+	Pointer riid ;	// Guid*
+	ULongPtr wParam ;	// WPARAM
+	Pointer ppvObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleacc/nf-oleacc-windowfromaccessibleobject
+External_Function WindowFromAccessibleObject "WindowFromAccessibleObject" OLEACC.dll ;
+	Pointer param0 ;	// IAccessible
+	Pointer phwnd ;	// HWND*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-dockpattern_setdockposition
+External_Function DockPattern_SetDockPosition "DockPattern_SetDockPosition" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer dockPosition ;	// DockPosition
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-expandcollapsepattern_collapse
+External_Function ExpandCollapsePattern_Collapse "ExpandCollapsePattern_Collapse" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-expandcollapsepattern_expand
+External_Function ExpandCollapsePattern_Expand "ExpandCollapsePattern_Expand" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-gridpattern_getitem
+External_Function GridPattern_GetItem "GridPattern_GetItem" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer row ;
+	Integer column ;
+	Pointer pResult ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-invokepattern_invoke
+External_Function InvokePattern_Invoke "InvokePattern_Invoke" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-itemcontainerpattern_finditembyproperty
+External_Function ItemContainerPattern_FindItemByProperty "ItemContainerPattern_FindItemByProperty" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer hnodeStartAfter ;	// HUIANODE
+	Integer propertyId ;
+	VARIANT value ;
+	Pointer pFound ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-legacyiaccessiblepattern_dodefaultaction
+External_Function LegacyIAccessiblePattern_DoDefaultAction "LegacyIAccessiblePattern_DoDefaultAction" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-legacyiaccessiblepattern_getiaccessible
+External_Function LegacyIAccessiblePattern_GetIAccessible "LegacyIAccessiblePattern_GetIAccessible" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer pAccessible ;	// IAccessible*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-legacyiaccessiblepattern_select
+External_Function LegacyIAccessiblePattern_Select "LegacyIAccessiblePattern_Select" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer flagsSelect ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-legacyiaccessiblepattern_setvalue
+External_Function LegacyIAccessiblePattern_SetValue "LegacyIAccessiblePattern_SetValue" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	WString szValue ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-multipleviewpattern_getviewname
+External_Function MultipleViewPattern_GetViewName "MultipleViewPattern_GetViewName" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer viewId ;
+	Pointer ppStr ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-multipleviewpattern_setcurrentview
+External_Function MultipleViewPattern_SetCurrentView "MultipleViewPattern_SetCurrentView" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer viewId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-rangevaluepattern_setvalue
+External_Function RangeValuePattern_SetValue "RangeValuePattern_SetValue" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Real val ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-scrollitempattern_scrollintoview
+External_Function ScrollItemPattern_ScrollIntoView "ScrollItemPattern_ScrollIntoView" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-scrollpattern_scroll
+External_Function ScrollPattern_Scroll "ScrollPattern_Scroll" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer horizontalAmount ;	// ScrollAmount
+	Integer verticalAmount ;	// ScrollAmount
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-scrollpattern_setscrollpercent
+External_Function ScrollPattern_SetScrollPercent "ScrollPattern_SetScrollPercent" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Real horizontalPercent ;
+	Real verticalPercent ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-selectionitempattern_addtoselection
+External_Function SelectionItemPattern_AddToSelection "SelectionItemPattern_AddToSelection" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-selectionitempattern_removefromselection
+External_Function SelectionItemPattern_RemoveFromSelection "SelectionItemPattern_RemoveFromSelection" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-selectionitempattern_select
+External_Function SelectionItemPattern_Select "SelectionItemPattern_Select" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-synchronizedinputpattern_cancel
+External_Function SynchronizedInputPattern_Cancel "SynchronizedInputPattern_Cancel" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-synchronizedinputpattern_startlistening
+External_Function SynchronizedInputPattern_StartListening "SynchronizedInputPattern_StartListening" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer inputType ;	// SynchronizedInputType
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textpattern_getselection
+External_Function TextPattern_GetSelection "TextPattern_GetSelection" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer pRetVal ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textpattern_getvisibleranges
+External_Function TextPattern_GetVisibleRanges "TextPattern_GetVisibleRanges" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer pRetVal ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textpattern_rangefromchild
+External_Function TextPattern_RangeFromChild "TextPattern_RangeFromChild" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer hnodeChild ;	// HUIANODE
+	Pointer pRetVal ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textpattern_rangefrompoint
+External_Function TextPattern_RangeFromPoint "TextPattern_RangeFromPoint" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	UiaPoint point ;
+	Pointer pRetVal ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textpattern_get_documentrange
+External_Function TextPattern_get_DocumentRange "TextPattern_get_DocumentRange" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer pRetVal ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textpattern_get_supportedtextselection
+External_Function TextPattern_get_SupportedTextSelection "TextPattern_get_SupportedTextSelection" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Pointer pRetVal ;	// SupportedTextSelection*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_addtoselection
+External_Function TextRange_AddToSelection "TextRange_AddToSelection" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_clone
+External_Function TextRange_Clone "TextRange_Clone" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Pointer pRetVal ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_compare
+External_Function TextRange_Compare "TextRange_Compare" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Pointer range ;	// HUIATEXTRANGE
+	Pointer pRetVal ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_compareendpoints
+External_Function TextRange_CompareEndpoints "TextRange_CompareEndpoints" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer endpoint ;	// TextPatternRangeEndpoint
+	Pointer targetRange ;	// HUIATEXTRANGE
+	Integer targetEndpoint ;	// TextPatternRangeEndpoint
+	Pointer pRetVal ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_expandtoenclosingunit
+External_Function TextRange_ExpandToEnclosingUnit "TextRange_ExpandToEnclosingUnit" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer unit ;	// TextUnit
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_findattribute
+External_Function TextRange_FindAttribute "TextRange_FindAttribute" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer attributeId ;
+	VARIANT val ;
+	Integer backward ;	// BOOL
+	Pointer pRetVal ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_findtext
+External_Function TextRange_FindText "TextRange_FindText" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Pointer text ;	// BSTR
+	Integer backward ;	// BOOL
+	Integer ignoreCase ;	// BOOL
+	Pointer pRetVal ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_getattributevalue
+External_Function TextRange_GetAttributeValue "TextRange_GetAttributeValue" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer attributeId ;
+	Pointer pRetVal ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_getboundingrectangles
+External_Function TextRange_GetBoundingRectangles "TextRange_GetBoundingRectangles" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Pointer pRetVal ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_getchildren
+External_Function TextRange_GetChildren "TextRange_GetChildren" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Pointer pRetVal ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_getenclosingelement
+External_Function TextRange_GetEnclosingElement "TextRange_GetEnclosingElement" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Pointer pRetVal ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_gettext
+External_Function TextRange_GetText "TextRange_GetText" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer maxLength ;
+	Pointer pRetVal ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_move
+External_Function TextRange_Move "TextRange_Move" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer unit ;	// TextUnit
+	Integer count ;
+	Pointer pRetVal ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_moveendpointbyrange
+External_Function TextRange_MoveEndpointByRange "TextRange_MoveEndpointByRange" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer endpoint ;	// TextPatternRangeEndpoint
+	Pointer targetRange ;	// HUIATEXTRANGE
+	Integer targetEndpoint ;	// TextPatternRangeEndpoint
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_moveendpointbyunit
+External_Function TextRange_MoveEndpointByUnit "TextRange_MoveEndpointByUnit" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer endpoint ;	// TextPatternRangeEndpoint
+	Integer unit ;	// TextUnit
+	Integer count ;
+	Pointer pRetVal ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_removefromselection
+External_Function TextRange_RemoveFromSelection "TextRange_RemoveFromSelection" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_scrollintoview
+External_Function TextRange_ScrollIntoView "TextRange_ScrollIntoView" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Integer alignToTop ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-textrange_select
+External_Function TextRange_Select "TextRange_Select" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-togglepattern_toggle
+External_Function TogglePattern_Toggle "TogglePattern_Toggle" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-transformpattern_move
+External_Function TransformPattern_Move "TransformPattern_Move" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Real x ;
+	Real y ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-transformpattern_resize
+External_Function TransformPattern_Resize "TransformPattern_Resize" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Real width ;
+	Real height ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-transformpattern_rotate
+External_Function TransformPattern_Rotate "TransformPattern_Rotate" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Real degrees ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaaddevent
+External_Function UiaAddEvent "UiaAddEvent" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Integer eventId ;
+	Pointer pCallback ;	// UiaEventCallback*
+	Integer scope ;	// TreeScope
+	Pointer pProperties ;	// Integer*
+	Integer cProperties ;
+	Pointer pRequest ;	// UiaCacheRequest*
+	Pointer phEvent ;	// HUIAEVENT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaclientsarelistening
+External_Function UiaClientsAreListening "UiaClientsAreListening" UIAutomationCore.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiadisconnectallproviders
+External_Function UiaDisconnectAllProviders "UiaDisconnectAllProviders" UIAutomationCore.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiadisconnectprovider
+External_Function UiaDisconnectProvider "UiaDisconnectProvider" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaeventaddwindow
+External_Function UiaEventAddWindow "UiaEventAddWindow" UIAutomationCore.dll ;
+	Pointer hEvent ;	// HUIAEVENT
+	Pointer hwnd ;	// HWND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaeventremovewindow
+External_Function UiaEventRemoveWindow "UiaEventRemoveWindow" UIAutomationCore.dll ;
+	Pointer hEvent ;	// HUIAEVENT
+	Pointer hwnd ;	// HWND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiafind
+External_Function UiaFind "UiaFind" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Pointer pParams ;	// UiaFindParams*
+	Pointer pRequest ;	// UiaCacheRequest*
+	Pointer ppRequestedData ;	// SAFEARRAY**
+	Pointer ppOffsets ;	// SAFEARRAY**
+	Pointer ppTreeStructures ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiageterrordescription
+External_Function UiaGetErrorDescription "UiaGetErrorDescription" UIAutomationCore.dll ;
+	Pointer pDescription ;	// BSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetpatternprovider
+External_Function UiaGetPatternProvider "UiaGetPatternProvider" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Integer patternId ;
+	Pointer phobj ;	// HUIAPATTERNOBJECT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetpropertyvalue
+External_Function UiaGetPropertyValue "UiaGetPropertyValue" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Integer propertyId ;
+	Pointer pValue ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetreservedmixedattributevalue
+External_Function UiaGetReservedMixedAttributeValue "UiaGetReservedMixedAttributeValue" UIAutomationCore.dll ;
+	Pointer punkMixedAttributeValue ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetreservednotsupportedvalue
+External_Function UiaGetReservedNotSupportedValue "UiaGetReservedNotSupportedValue" UIAutomationCore.dll ;
+	Pointer punkNotSupportedValue ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetrootnode
+External_Function UiaGetRootNode "UiaGetRootNode" UIAutomationCore.dll ;
+	Pointer phnode ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetruntimeid
+External_Function UiaGetRuntimeId "UiaGetRuntimeId" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Pointer pruntimeId ;	// SAFEARRAY**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiagetupdatedcache
+External_Function UiaGetUpdatedCache "UiaGetUpdatedCache" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Pointer pRequest ;	// UiaCacheRequest*
+	Integer normalizeState ;	// NormalizeState
+	Pointer pNormalizeCondition ;	// UiaCondition*
+	Pointer ppRequestedData ;	// SAFEARRAY**
+	Pointer ppTreeStructure ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiahpatternobjectfromvariant
+External_Function UiaHPatternObjectFromVariant "UiaHPatternObjectFromVariant" UIAutomationCore.dll ;
+	Pointer pvar ;	// VARIANT*
+	Pointer phobj ;	// HUIAPATTERNOBJECT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiahtextrangefromvariant
+External_Function UiaHTextRangeFromVariant "UiaHTextRangeFromVariant" UIAutomationCore.dll ;
+	Pointer pvar ;	// VARIANT*
+	Pointer phtextrange ;	// HUIATEXTRANGE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiahuianodefromvariant
+External_Function UiaHUiaNodeFromVariant "UiaHUiaNodeFromVariant" UIAutomationCore.dll ;
+	Pointer pvar ;	// VARIANT*
+	Pointer phnode ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiahasserversideprovider
+External_Function UiaHasServerSideProvider "UiaHasServerSideProvider" UIAutomationCore.dll ;
+	Pointer hwnd ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiahostproviderfromhwnd
+External_Function UiaHostProviderFromHwnd "UiaHostProviderFromHwnd" UIAutomationCore.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer ppProvider ;	// IRawElementProviderSimple*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaiaccessiblefromprovider
+External_Function UiaIAccessibleFromProvider "UiaIAccessibleFromProvider" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	UInteger dwFlags ;
+	Pointer ppAccessible ;	// IAccessible*
+	Pointer pvarChild ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uialookupid
+External_Function UiaLookupId "UiaLookupId" UIAutomationCore.dll ;
+	Integer type ;	// AutomationIdentifierType
+	Pointer pGuid ;	// Guid*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uianavigate
+External_Function UiaNavigate "UiaNavigate" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Integer direction ;	// NavigateDirection
+	Pointer pCondition ;	// UiaCondition*
+	Pointer pRequest ;	// UiaCacheRequest*
+	Pointer ppRequestedData ;	// SAFEARRAY**
+	Pointer ppTreeStructure ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uianodefromfocus
+External_Function UiaNodeFromFocus "UiaNodeFromFocus" UIAutomationCore.dll ;
+	Pointer pRequest ;	// UiaCacheRequest*
+	Pointer ppRequestedData ;	// SAFEARRAY**
+	Pointer ppTreeStructure ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uianodefromhandle
+External_Function UiaNodeFromHandle "UiaNodeFromHandle" UIAutomationCore.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer phnode ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uianodefrompoint
+External_Function UiaNodeFromPoint "UiaNodeFromPoint" UIAutomationCore.dll ;
+	Real x ;
+	Real y ;
+	Pointer pRequest ;	// UiaCacheRequest*
+	Pointer ppRequestedData ;	// SAFEARRAY**
+	Pointer ppTreeStructure ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uianodefromprovider
+External_Function UiaNodeFromProvider "UiaNodeFromProvider" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Pointer phnode ;	// HUIANODE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uianoderelease
+External_Function UiaNodeRelease "UiaNodeRelease" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiapatternrelease
+External_Function UiaPatternRelease "UiaPatternRelease" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaproviderfornonclient
+External_Function UiaProviderForNonClient "UiaProviderForNonClient" UIAutomationCore.dll ;
+	Pointer hwnd ;	// HWND
+	Integer idObject ;
+	Integer idChild ;
+	Pointer ppProvider ;	// IRawElementProviderSimple*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaproviderfromiaccessible
+External_Function UiaProviderFromIAccessible "UiaProviderFromIAccessible" UIAutomationCore.dll ;
+	Pointer pAccessible ;	// IAccessible
+	Integer idChild ;
+	UInteger dwFlags ;
+	Pointer ppProvider ;	// IRawElementProviderSimple*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraiseactivetextpositionchangedevent
+External_Function UiaRaiseActiveTextPositionChangedEvent "UiaRaiseActiveTextPositionChangedEvent" UIAutomationCore.dll ;
+	Pointer provider ;	// IRawElementProviderSimple
+	Pointer textRange ;	// ITextRangeProvider
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraiseasynccontentloadedevent
+External_Function UiaRaiseAsyncContentLoadedEvent "UiaRaiseAsyncContentLoadedEvent" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Integer asyncContentLoadedState ;	// AsyncContentLoadedState
+	Real percentComplete ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraiseautomationevent
+External_Function UiaRaiseAutomationEvent "UiaRaiseAutomationEvent" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Integer id ;	// UIA_EVENT_ID
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraiseautomationpropertychangedevent
+External_Function UiaRaiseAutomationPropertyChangedEvent "UiaRaiseAutomationPropertyChangedEvent" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Integer id ;	// UIA_PROPERTY_ID
+	VARIANT oldValue ;
+	VARIANT newValue ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraisechangesevent
+External_Function UiaRaiseChangesEvent "UiaRaiseChangesEvent" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Integer eventIdCount ;
+	Pointer pUiaChanges ;	// UiaChangeInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraisenotificationevent
+External_Function UiaRaiseNotificationEvent "UiaRaiseNotificationEvent" UIAutomationCore.dll ;
+	Pointer provider ;	// IRawElementProviderSimple
+	Integer notificationKind ;	// NotificationKind
+	Integer notificationProcessing ;	// NotificationProcessing
+	Pointer displayString ;	// BSTR
+	Pointer activityId ;	// BSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraisestructurechangedevent
+External_Function UiaRaiseStructureChangedEvent "UiaRaiseStructureChangedEvent" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Integer structureChangeType ;	// StructureChangeType
+	Pointer pRuntimeId ;	// Integer*
+	Integer cRuntimeIdLen ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaraisetextedittextchangedevent
+External_Function UiaRaiseTextEditTextChangedEvent "UiaRaiseTextEditTextChangedEvent" UIAutomationCore.dll ;
+	Pointer pProvider ;	// IRawElementProviderSimple
+	Integer textEditChangeType ;	// TextEditChangeType
+	Pointer pChangedData ;	// SAFEARRAY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaregisterprovidercallback
+External_Function UiaRegisterProviderCallback "UiaRegisterProviderCallback" UIAutomationCore.dll ;
+	Pointer pCallback ;	// UiaProviderCallback*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiaremoveevent
+External_Function UiaRemoveEvent "UiaRemoveEvent" UIAutomationCore.dll ;
+	Pointer hEvent ;	// HUIAEVENT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiareturnrawelementprovider
+External_Function UiaReturnRawElementProvider "UiaReturnRawElementProvider" UIAutomationCore.dll ;
+	Pointer hwnd ;	// HWND
+	ULongPtr wParam ;	// WPARAM
+	LongPtr lParam ;	// LPARAM
+	Pointer el ;	// IRawElementProviderSimple
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiasetfocus
+External_Function UiaSetFocus "UiaSetFocus" UIAutomationCore.dll ;
+	Pointer hnode ;	// HUIANODE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-uiatextrangerelease
+External_Function UiaTextRangeRelease "UiaTextRangeRelease" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIATEXTRANGE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-valuepattern_setvalue
+External_Function ValuePattern_SetValue "ValuePattern_SetValue" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	WString pVal ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-virtualizeditempattern_realize
+External_Function VirtualizedItemPattern_Realize "VirtualizedItemPattern_Realize" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-windowpattern_close
+External_Function WindowPattern_Close "WindowPattern_Close" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-windowpattern_setwindowvisualstate
+External_Function WindowPattern_SetWindowVisualState "WindowPattern_SetWindowVisualState" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer state ;	// WindowVisualState
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/uiautomationcoreapi/nf-uiautomationcoreapi-windowpattern_waitforinputidle
+External_Function WindowPattern_WaitForInputIdle "WindowPattern_WaitForInputIdle" UIAutomationCore.dll ;
+	Pointer hobj ;	// HUIAPATTERNOBJECT
+	Integer milliseconds ;
+	Pointer pResult ;	// BOOL*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

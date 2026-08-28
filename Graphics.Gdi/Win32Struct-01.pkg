@@ -1,0 +1,699 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-abc
+Struct ABC
+	Integer abcA
+	UInteger abcB
+	Integer abcC
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-abcfloat
+Struct ABCFLOAT
+	Float abcfA
+	Float abcfB
+	Float abcfC
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-bitmap
+Struct BITMAP
+	Integer bmType
+	Integer bmWidth
+	Integer bmHeight
+	Integer bmWidthBytes
+	UShort bmPlanes
+	UShort bmBitsPixel
+	Integer iMissingAlignment1
+	Pointer bmBits											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-bitmapinfo
+Struct BITMAPINFO
+	BITMAPINFOHEADER bmiHeader
+	RGBQUAD[1] bmiColors
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-bitmapinfoheader
+Struct BITMAPINFOHEADER
+	UInteger biSize
+	Integer biWidth
+	Integer biHeight
+	UShort biPlanes
+	UShort biBitCount
+	UInteger biCompression
+	UInteger biSizeImage
+	Integer biXPelsPerMeter
+	Integer biYPelsPerMeter
+	UInteger biClrUsed
+	UInteger biClrImportant
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-blendfunction
+Struct BLENDFUNCTION
+	UChar BlendOp
+	UChar BlendFlags
+	UChar SourceConstantAlpha
+	UChar AlphaFormat
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-ciexyz
+Struct CIEXYZ
+	Integer ciexyzX
+	Integer ciexyzY
+	Integer ciexyzZ
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-ciexyztriple
+Struct CIEXYZTRIPLE
+	CIEXYZ ciexyzRed
+	CIEXYZ ciexyzGreen
+	CIEXYZ ciexyzBlue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-coloradjustment
+Struct COLORADJUSTMENT
+	UShort caSize
+	UShort caFlags
+	UShort caIlluminantIndex
+	UShort caRedGamma
+	UShort caGreenGamma
+	UShort caBlueGamma
+	UShort caReferenceBlack
+	UShort caReferenceWhite
+	Short caContrast
+	Short caBrightness
+	Short caColorfulness
+	Short caRedGreenTint
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-designvector
+Struct DESIGNVECTOR
+	UInteger dvReserved
+	UInteger dvNumAxes
+	Integer[16] dvValues
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-devmodea
+Struct DEVMODEA
+	UChar[32] dmDeviceName
+	UShort dmSpecVersion
+	UShort dmDriverVersion
+	UShort dmSize
+	UShort dmDriverExtra
+	UInteger dmFields										// DEVMODE_FIELD_FLAGS
+	UChar[8] UnionName1
+	Short dmColor											// DEVMODE_COLOR
+	Short dmDuplex											// DEVMODE_DUPLEX
+	Short dmYResolution
+	Short dmTTOption										// DEVMODE_TRUETYPE_OPTION
+	Short dmCollate											// DEVMODE_COLLATE
+	UChar[32] dmFormName
+	UShort dmLogPixels
+	UInteger dmBitsPerPel
+	UInteger dmPelsWidth
+	UInteger dmPelsHeight
+	UChar[4] UnionName2
+	UInteger dmDisplayFrequency
+	UInteger dmICMMethod
+	UInteger dmICMIntent
+	UInteger dmMediaType
+	UInteger dmDitherType
+	UInteger dmReserved1
+	UInteger dmReserved2
+	UInteger dmPanningWidth
+	UInteger dmPanningHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-devmodew
+Struct DEVMODEW
+	UShort[32] dmDeviceName
+	UShort dmSpecVersion
+	UShort dmDriverVersion
+	UShort dmSize
+	UShort dmDriverExtra
+	UInteger dmFields										// DEVMODE_FIELD_FLAGS
+	UChar[8] UnionName1
+	Short dmColor											// DEVMODE_COLOR
+	Short dmDuplex											// DEVMODE_DUPLEX
+	Short dmYResolution
+	Short dmTTOption										// DEVMODE_TRUETYPE_OPTION
+	Short dmCollate											// DEVMODE_COLLATE
+	UShort[32] dmFormName
+	UShort dmLogPixels
+	UInteger dmBitsPerPel
+	UInteger dmPelsWidth
+	UInteger dmPelsHeight
+	UChar[4] UnionName2
+	UInteger dmDisplayFrequency
+	UInteger dmICMMethod
+	UInteger dmICMIntent
+	UInteger dmMediaType
+	UInteger dmDitherType
+	UInteger dmReserved1
+	UInteger dmReserved2
+	UInteger dmPanningWidth
+	UInteger dmPanningHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-display_devicea
+Struct DISPLAY_DEVICEA
+	UInteger cb
+	Char[32] DeviceName										// CHAR
+	Char[128] DeviceString									// CHAR
+	UInteger StateFlags										// DISPLAY_DEVICE_STATE_FLAGS
+	Char[128] DeviceID										// CHAR
+	Char[128] DeviceKey										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-display_devicew
+Struct DISPLAY_DEVICEW
+	UInteger cb
+	UShort[32] DeviceName
+	UShort[128] DeviceString
+	UInteger StateFlags										// DISPLAY_DEVICE_STATE_FLAGS
+	UShort[128] DeviceID
+	UShort[128] DeviceKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-drawtextparams
+Struct DRAWTEXTPARAMS
+	UInteger cbSize
+	Integer iTabLength
+	Integer iLeftMargin
+	Integer iRightMargin
+	UInteger uiLengthDrawn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-enhmetaheader
+Struct ENHMETAHEADER
+	UInteger iType
+	UInteger nSize
+	RECTL rclBounds
+	RECTL rclFrame
+	UInteger dSignature
+	UInteger nVersion
+	UInteger nBytes
+	UInteger nRecords
+	UShort nHandles
+	UShort sReserved
+	UInteger nDescription
+	UInteger offDescription
+	UInteger nPalEntries
+	SIZE szlDevice
+	SIZE szlMillimeters
+	UInteger cbPixelFormat
+	UInteger offPixelFormat
+	UInteger bOpenGL
+	SIZE szlMicrometers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-enhmetarecord
+Struct ENHMETARECORD
+	UInteger iType											// ENHANCED_METAFILE_RECORD_TYPE
+	UInteger nSize
+	UInteger[1] dParm
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-enumlogfontexa
+Struct ENUMLOGFONTEXA
+	LOGFONTA elfLogFont
+	UChar[64] elfFullName
+	UChar[32] elfStyle
+	UChar[32] elfScript
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-enumlogfontexdva
+Struct ENUMLOGFONTEXDVA
+	ENUMLOGFONTEXA elfEnumLogfontEx
+	DESIGNVECTOR elfDesignVector
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-enumlogfontexdvw
+Struct ENUMLOGFONTEXDVW
+	ENUMLOGFONTEXW elfEnumLogfontEx
+	DESIGNVECTOR elfDesignVector
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-enumlogfontexw
+Struct ENUMLOGFONTEXW
+	LOGFONTW elfLogFont
+	UShort[64] elfFullName
+	UShort[32] elfStyle
+	UShort[32] elfScript
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-fixed
+Struct FIXED
+	UShort fract
+	Short value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-gcp_resultsa
+Struct GCP_RESULTSA
+	UInteger lStructSize
+	Integer iMissingAlignment1
+	Pointer lpOutString										// PSTR
+	Pointer lpOrder											// UInteger*
+	Pointer lpDx											// Integer*
+	Pointer lpCaretPos										// Integer*
+	Pointer lpClass											// PSTR
+	Pointer lpGlyphs										// PWSTR
+	UInteger nGlyphs
+	Integer nMaxFit
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-gcp_resultsw
+Struct GCP_RESULTSW
+	UInteger lStructSize
+	Integer iMissingAlignment1
+	Pointer lpOutString										// PWSTR
+	Pointer lpOrder											// UInteger*
+	Pointer lpDx											// Integer*
+	Pointer lpCaretPos										// Integer*
+	Pointer lpClass											// PSTR
+	Pointer lpGlyphs										// PWSTR
+	UInteger nGlyphs
+	Integer nMaxFit
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-glyphmetrics
+Struct GLYPHMETRICS
+	UInteger gmBlackBoxX
+	UInteger gmBlackBoxY
+	POINT gmptGlyphOrigin
+	Short gmCellIncX
+	Short gmCellIncY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-glyphset
+Struct GLYPHSET
+	UInteger cbThis
+	UInteger flAccel
+	UInteger cGlyphsSupported
+	UInteger cRanges
+	WCRANGE[1] ranges
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-handletable
+Struct HANDLETABLE
+	Pointer[1] objectHandle									// HGDIOBJ
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-kerningpair
+Struct KERNINGPAIR
+	UShort wFirst
+	UShort wSecond
+	Integer iKernAmount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-logbrush
+Struct LOGBRUSH
+	UInteger lbStyle										// BRUSH_STYLE
+	UInteger lbColor										// COLORREF
+	ULongPtr lbHatch
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-logfonta
+Struct LOGFONTA
+	Integer lfHeight
+	Integer lfWidth
+	Integer lfEscapement
+	Integer lfOrientation
+	Integer lfWeight
+	UChar lfItalic
+	UChar lfUnderline
+	UChar lfStrikeOut
+	UChar lfCharSet											// FONT_CHARSET
+	UChar lfOutPrecision									// FONT_OUTPUT_PRECISION
+	UChar lfClipPrecision									// FONT_CLIP_PRECISION
+	UChar lfQuality											// FONT_QUALITY
+	UChar lfPitchAndFamily
+	Char[32] lfFaceName										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shtypes/ns-shtypes-logfontw
+Struct LOGFONTW
+	Integer lfHeight
+	Integer lfWidth
+	Integer lfEscapement
+	Integer lfOrientation
+	Integer lfWeight
+	UChar lfItalic
+	UChar lfUnderline
+	UChar lfStrikeOut
+	UChar lfCharSet											// FONT_CHARSET
+	UChar lfOutPrecision									// FONT_OUTPUT_PRECISION
+	UChar lfClipPrecision									// FONT_CLIP_PRECISION
+	UChar lfQuality											// FONT_QUALITY
+	UChar lfPitchAndFamily
+	UShort[32] lfFaceName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-logpalette
+Struct LOGPALETTE
+	UShort palVersion
+	UShort palNumEntries
+	PALETTEENTRY[1] palPalEntry
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-logpen
+Struct LOGPEN
+	UInteger lopnStyle
+	POINT lopnWidth
+	UInteger lopnColor										// COLORREF
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-mat2
+Struct MAT2
+	FIXED eM11
+	FIXED eM12
+	FIXED eM21
+	FIXED eM22
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-metaheader
+Struct METAHEADER
+	UShort mtType
+	UShort mtHeaderSize
+	UShort mtVersion
+	Short iMissingAlignment1
+	UInteger mtSize
+	UShort mtNoObjects
+	Short iMissingAlignment2
+	UInteger mtMaxRecord
+	UShort mtNoParameters
+	Short iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-metarecord
+Struct METARECORD
+	UInteger rdSize
+	UShort rdFunction
+	UShort[1] rdParm
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-monitorinfo
+Struct MONITORINFO
+	UInteger cbSize
+	RECT rcMonitor
+	RECT rcWork
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-outlinetextmetrica
+Struct OUTLINETEXTMETRICA
+	UInteger otmSize
+	TEXTMETRICA otmTextMetrics
+	UChar otmFiller
+	PANOSE otmPanoseNumber
+	UChar[1] cMissingAlignment1
+	UInteger otmfsSelection
+	UInteger otmfsType
+	Integer otmsCharSlopeRise
+	Integer otmsCharSlopeRun
+	Integer otmItalicAngle
+	UInteger otmEMSquare
+	Integer otmAscent
+	Integer otmDescent
+	UInteger otmLineGap
+	UInteger otmsCapEmHeight
+	UInteger otmsXHeight
+	RECT otmrcFontBox
+	Integer otmMacAscent
+	Integer otmMacDescent
+	UInteger otmMacLineGap
+	UInteger otmusMinimumPPEM
+	POINT otmptSubscriptSize
+	POINT otmptSubscriptOffset
+	POINT otmptSuperscriptSize
+	POINT otmptSuperscriptOffset
+	UInteger otmsStrikeoutSize
+	Integer otmsStrikeoutPosition
+	Integer otmsUnderscoreSize
+	Integer otmsUnderscorePosition
+	Integer iMissingAlignment2
+	Pointer otmpFamilyName									// PSTR
+	Pointer otmpFaceName									// PSTR
+	Pointer otmpStyleName									// PSTR
+	Pointer otmpFullName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-outlinetextmetricw
+Struct OUTLINETEXTMETRICW
+	UInteger otmSize
+	TEXTMETRICW otmTextMetrics
+	UChar otmFiller
+	PANOSE otmPanoseNumber
+	UChar[1] cMissingAlignment1
+	UInteger otmfsSelection
+	UInteger otmfsType
+	Integer otmsCharSlopeRise
+	Integer otmsCharSlopeRun
+	Integer otmItalicAngle
+	UInteger otmEMSquare
+	Integer otmAscent
+	Integer otmDescent
+	UInteger otmLineGap
+	UInteger otmsCapEmHeight
+	UInteger otmsXHeight
+	RECT otmrcFontBox
+	Integer otmMacAscent
+	Integer otmMacDescent
+	UInteger otmMacLineGap
+	UInteger otmusMinimumPPEM
+	POINT otmptSubscriptSize
+	POINT otmptSubscriptOffset
+	POINT otmptSuperscriptSize
+	POINT otmptSuperscriptOffset
+	UInteger otmsStrikeoutSize
+	Integer otmsStrikeoutPosition
+	Integer otmsUnderscoreSize
+	Integer otmsUnderscorePosition
+	Pointer otmpFamilyName									// PSTR
+	Pointer otmpFaceName									// PSTR
+	Pointer otmpStyleName									// PSTR
+	Pointer otmpFullName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-paintstruct
+Struct PAINTSTRUCT
+	Pointer hdc												// HDC
+	Integer fErase											// BOOL
+	RECT rcPaint
+	Integer fRestore										// BOOL
+	Integer fIncUpdate										// BOOL
+	UChar[32] rgbReserved
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-paletteentry
+Struct PALETTEENTRY
+	UChar peRed
+	UChar peGreen
+	UChar peBlue
+	UChar peFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-panose
+Struct PANOSE
+	UChar bFamilyType										// PAN_FAMILY_TYPE
+	UChar bSerifStyle										// PAN_SERIF_STYLE
+	UChar bWeight											// PAN_WEIGHT
+	UChar bProportion										// PAN_PROPORTION
+	UChar bContrast											// PAN_CONTRAST
+	UChar bStrokeVariation									// PAN_STROKE_VARIATION
+	UChar bArmStyle											// PAN_ARM_STYLE
+	UChar bLetterform										// PAN_LETT_FORM
+	UChar bMidline											// PAN_MIDLINE
+	UChar bXHeight											// PAN_XHEIGHT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-polytexta
+Struct POLYTEXTA
+	Integer x
+	Integer y
+	UInteger n
+	Integer iMissingAlignment1
+	Pointer lpstr											// PSTR
+	UInteger uiFlags
+	RECT rcl
+	Integer iMissingAlignment2
+	Pointer pdx												// Integer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-polytextw
+Struct POLYTEXTW
+	Integer x
+	Integer y
+	UInteger n
+	Integer iMissingAlignment1
+	Pointer lpstr											// PWSTR
+	UInteger uiFlags
+	RECT rcl
+	Integer iMissingAlignment2
+	Pointer pdx												// Integer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-rasterizer_status
+Struct RASTERIZER_STATUS
+	Short nSize
+	Short wFlags
+	Short nLanguageID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-rgbquad
+Struct RGBQUAD
+	UChar rgbBlue
+	UChar rgbGreen
+	UChar rgbRed
+	UChar rgbReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-rgbtriple
+Struct RGBTRIPLE
+	UChar rgbtBlue
+	UChar rgbtGreen
+	UChar rgbtRed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-rgndata
+Struct RGNDATA
+	RGNDATAHEADER rdh
+	Char[1] Buffer											// CHAR
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-rgndataheader
+Struct RGNDATAHEADER
+	UInteger dwSize
+	UInteger iType
+	UInteger nCount
+	UInteger nRgnSize
+	RECT rcBound
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-textmetrica
+Struct TEXTMETRICA
+	Integer tmHeight
+	Integer tmAscent
+	Integer tmDescent
+	Integer tmInternalLeading
+	Integer tmExternalLeading
+	Integer tmAveCharWidth
+	Integer tmMaxCharWidth
+	Integer tmWeight
+	Integer tmOverhang
+	Integer tmDigitizedAspectX
+	Integer tmDigitizedAspectY
+	UChar tmFirstChar
+	UChar tmLastChar
+	UChar tmDefaultChar
+	UChar tmBreakChar
+	UChar tmItalic
+	UChar tmUnderlined
+	UChar tmStruckOut
+	UChar tmPitchAndFamily									// TMPF_FLAGS
+	UChar tmCharSet
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-textmetricw
+Struct TEXTMETRICW
+	Integer tmHeight
+	Integer tmAscent
+	Integer tmDescent
+	Integer tmInternalLeading
+	Integer tmExternalLeading
+	Integer tmAveCharWidth
+	Integer tmMaxCharWidth
+	Integer tmWeight
+	Integer tmOverhang
+	Integer tmDigitizedAspectX
+	Integer tmDigitizedAspectY
+	UShort tmFirstChar
+	UShort tmLastChar
+	UShort tmDefaultChar
+	UShort tmBreakChar
+	UChar tmItalic
+	UChar tmUnderlined
+	UChar tmStruckOut
+	UChar tmPitchAndFamily									// TMPF_FLAGS
+	UChar tmCharSet
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-trivertex
+Struct TRIVERTEX
+	Integer x
+	Integer y
+	UShort Red
+	UShort Green
+	UShort Blue
+	UShort Alpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/t2embapi/ns-t2embapi-ttembedinfo
+Struct TTEMBEDINFO
+	UShort usStructSize
+	UShort usRootStrSize
+	Integer iMissingAlignment1
+	Pointer pusRootStr										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/t2embapi/ns-t2embapi-ttloadinfo
+Struct TTLOADINFO
+	UShort usStructSize
+	UShort usRefStrSize
+	Integer iMissingAlignment1
+	Pointer pusRefStr										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/t2embapi/ns-t2embapi-ttvalidationtestsparams
+Struct TTVALIDATIONTESTSPARAMS
+	UInteger ulStructSize
+	Integer lTestFromSize
+	Integer lTestToSize
+	UInteger ulCharSet
+	UShort usReserved1
+	UShort usCharCodeCount
+	Integer iMissingAlignment1
+	Pointer pusCharCodeSet									// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/t2embapi/ns-t2embapi-ttvalidationtestsparamsex
+Struct TTVALIDATIONTESTSPARAMSEX
+	UInteger ulStructSize
+	Integer lTestFromSize
+	Integer lTestToSize
+	UInteger ulCharSet
+	UShort usReserved1
+	UShort usCharCodeCount
+	Integer iMissingAlignment1
+	Pointer pulCharCodeSet									// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-wcrange
+Struct WCRANGE
+	UShort wcLow
+	UShort cGlyphs
+End_Struct
+
+Struct WGLSWAP
+	Pointer hdc												// HDC
+	UInteger uiFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-xform
+Struct XFORM
+	Float eM11
+	Float eM12
+	Float eM21
+	Float eM22
+	Float eDx
+	Float eDy
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

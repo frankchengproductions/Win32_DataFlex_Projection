@@ -1,0 +1,832 @@
+Use UI
+
+// Define WHV_CAPABILITY_CODE For Integer
+Enum_List
+	Define WHvCapabilityCodeHypervisorPresent				For 0
+	Define WHvCapabilityCodeFeatures						For 1
+	Define WHvCapabilityCodeExtendedVmExits					For 2
+	Define WHvCapabilityCodeExceptionExitBitmap				For 3
+	Define WHvCapabilityCodeX64MsrExitBitmap				For 4
+	Define WHvCapabilityCodeGpaRangePopulateFlags			For 5
+	Define WHvCapabilityCodeSchedulerFeatures				For 6
+	Define WHvCapabilityCodeProcessorVendor					For 4096
+	Define WHvCapabilityCodeProcessorFeatures				For 4097
+	Define WHvCapabilityCodeProcessorClFlushSize			For 4098
+	Define WHvCapabilityCodeProcessorXsaveFeatures			For 4099
+	Define WHvCapabilityCodeProcessorClockFrequency			For 4100
+	Define WHvCapabilityCodeInterruptClockFrequency			For 4101
+	Define WHvCapabilityCodeProcessorFeaturesBanks			For 4102
+	Define WHvCapabilityCodeProcessorFrequencyCap			For 4103
+	Define WHvCapabilityCodeSyntheticProcessorFeaturesBanks	For 4104
+	Define WHvCapabilityCodeProcessorPerfmonFeatures		For 4105
+End_Enum_List
+
+// Define WHV_PARTITION_PROPERTY_CODE For Integer
+Enum_List
+	Define WHvPartitionPropertyCodeExtendedVmExits			For 1
+	Define WHvPartitionPropertyCodeExceptionExitBitmap		For 2
+	Define WHvPartitionPropertyCodeSeparateSecurityDomain	For 3
+	Define WHvPartitionPropertyCodeNestedVirtualization		For 4
+	Define WHvPartitionPropertyCodeX64MsrExitBitmap			For 5
+	Define WHvPartitionPropertyCodePrimaryNumaNode			For 6
+	Define WHvPartitionPropertyCodeCpuReserve				For 7
+	Define WHvPartitionPropertyCodeCpuCap					For 8
+	Define WHvPartitionPropertyCodeCpuWeight				For 9
+	Define WHvPartitionPropertyCodeCpuGroupId				For 10
+	Define WHvPartitionPropertyCodeProcessorFrequencyCap	For 11
+	Define WHvPartitionPropertyCodeAllowDeviceAssignment	For 12
+	Define WHvPartitionPropertyCodeDisableSmt				For 13
+	Define WHvPartitionPropertyCodeProcessorFeatures		For 4097
+	Define WHvPartitionPropertyCodeProcessorClFlushSize		For 4098
+	Define WHvPartitionPropertyCodeCpuidExitList			For 4099
+	Define WHvPartitionPropertyCodeCpuidResultList			For 4100
+	Define WHvPartitionPropertyCodeLocalApicEmulationMode	For 4101
+	Define WHvPartitionPropertyCodeProcessorXsaveFeatures	For 4102
+	Define WHvPartitionPropertyCodeProcessorClockFrequency	For 4103
+	Define WHvPartitionPropertyCodeInterruptClockFrequency	For 4104
+	Define WHvPartitionPropertyCodeApicRemoteReadSupport	For 4105
+	Define WHvPartitionPropertyCodeProcessorFeaturesBanks	For 4106
+	Define WHvPartitionPropertyCodeReferenceTime			For 4107
+	Define WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks	For 4108
+	Define WHvPartitionPropertyCodeCpuidResultList2			For 4109
+	Define WHvPartitionPropertyCodeProcessorPerfmonFeatures	For 4110
+	Define WHvPartitionPropertyCodeMsrActionList			For 4111
+	Define WHvPartitionPropertyCodeUnimplementedMsrAction	For 4112
+	Define WHvPartitionPropertyCodeProcessorCount			For 8191
+End_Enum_List
+
+// Define WHV_MAP_GPA_RANGE_FLAGS For Integer
+Enum_List
+	Define WHvMapGpaRangeFlagNone							For 0
+	Define WHvMapGpaRangeFlagRead							For 1
+	Define WHvMapGpaRangeFlagWrite							For 2
+	Define WHvMapGpaRangeFlagExecute						For 4
+	Define WHvMapGpaRangeFlagTrackDirtyPages				For 8
+End_Enum_List
+
+// Define WHV_TRANSLATE_GVA_FLAGS For Integer
+Enum_List
+	Define WHvTranslateGvaFlagNone							For 0
+	Define WHvTranslateGvaFlagValidateRead					For 1
+	Define WHvTranslateGvaFlagValidateWrite					For 2
+	Define WHvTranslateGvaFlagValidateExecute				For 4
+	Define WHvTranslateGvaFlagPrivilegeExempt				For 8
+	Define WHvTranslateGvaFlagSetPageTableBits				For 16
+	Define WHvTranslateGvaFlagEnforceSmap					For 256
+	Define WHvTranslateGvaFlagOverrideSmap					For 512
+End_Enum_List
+
+// Define WHV_TRANSLATE_GVA_RESULT_CODE For Integer
+Enum_List
+	Define WHvTranslateGvaResultSuccess						For 0
+	Define WHvTranslateGvaResultPageNotPresent				For 1
+	Define WHvTranslateGvaResultPrivilegeViolation			For 2
+	Define WHvTranslateGvaResultInvalidPageTableFlags		For 3
+	Define WHvTranslateGvaResultGpaUnmapped					For 4
+	Define WHvTranslateGvaResultGpaNoReadAccess				For 5
+	Define WHvTranslateGvaResultGpaNoWriteAccess			For 6
+	Define WHvTranslateGvaResultGpaIllegalOverlayAccess		For 7
+	Define WHvTranslateGvaResultIntercept					For 8
+End_Enum_List
+
+// Define WHV_VIRTUAL_PROCESSOR_PROPERTY_CODE For Integer
+Enum_List
+	Define WHvVirtualProcessorPropertyCodeNumaNode			For 0
+End_Enum_List
+
+// Define WHV_REGISTER_NAME For Integer
+Enum_List
+	Define WHvX64RegisterRax								For 0
+	Define WHvX64RegisterRcx								For 1
+	Define WHvX64RegisterRdx								For 2
+	Define WHvX64RegisterRbx								For 3
+	Define WHvX64RegisterRsp								For 4
+	Define WHvX64RegisterRbp								For 5
+	Define WHvX64RegisterRsi								For 6
+	Define WHvX64RegisterRdi								For 7
+	Define WHvX64RegisterR8									For 8
+	Define WHvX64RegisterR9									For 9
+	Define WHvX64RegisterR10								For 10
+	Define WHvX64RegisterR11								For 11
+	Define WHvX64RegisterR12								For 12
+	Define WHvX64RegisterR13								For 13
+	Define WHvX64RegisterR14								For 14
+	Define WHvX64RegisterR15								For 15
+	Define WHvX64RegisterRip								For 16
+	Define WHvX64RegisterRflags								For 17
+	Define WHvX64RegisterEs									For 18
+	Define WHvX64RegisterCs									For 19
+	Define WHvX64RegisterSs									For 20
+	Define WHvX64RegisterDs									For 21
+	Define WHvX64RegisterFs									For 22
+	Define WHvX64RegisterGs									For 23
+	Define WHvX64RegisterLdtr								For 24
+	Define WHvX64RegisterTr									For 25
+	Define WHvX64RegisterIdtr								For 26
+	Define WHvX64RegisterGdtr								For 27
+	Define WHvX64RegisterCr0								For 28
+	Define WHvX64RegisterCr2								For 29
+	Define WHvX64RegisterCr3								For 30
+	Define WHvX64RegisterCr4								For 31
+	Define WHvX64RegisterCr8								For 32
+	Define WHvX64RegisterDr0								For 33
+	Define WHvX64RegisterDr1								For 34
+	Define WHvX64RegisterDr2								For 35
+	Define WHvX64RegisterDr3								For 36
+	Define WHvX64RegisterDr6								For 37
+	Define WHvX64RegisterDr7								For 38
+	Define WHvX64RegisterXCr0								For 39
+	Define WHvX64RegisterVirtualCr0							For 40
+	Define WHvX64RegisterVirtualCr3							For 41
+	Define WHvX64RegisterVirtualCr4							For 42
+	Define WHvX64RegisterVirtualCr8							For 43
+	Define WHvX64RegisterXmm0								For 4096
+	Define WHvX64RegisterXmm1								For 4097
+	Define WHvX64RegisterXmm2								For 4098
+	Define WHvX64RegisterXmm3								For 4099
+	Define WHvX64RegisterXmm4								For 4100
+	Define WHvX64RegisterXmm5								For 4101
+	Define WHvX64RegisterXmm6								For 4102
+	Define WHvX64RegisterXmm7								For 4103
+	Define WHvX64RegisterXmm8								For 4104
+	Define WHvX64RegisterXmm9								For 4105
+	Define WHvX64RegisterXmm10								For 4106
+	Define WHvX64RegisterXmm11								For 4107
+	Define WHvX64RegisterXmm12								For 4108
+	Define WHvX64RegisterXmm13								For 4109
+	Define WHvX64RegisterXmm14								For 4110
+	Define WHvX64RegisterXmm15								For 4111
+	Define WHvX64RegisterFpMmx0								For 4112
+	Define WHvX64RegisterFpMmx1								For 4113
+	Define WHvX64RegisterFpMmx2								For 4114
+	Define WHvX64RegisterFpMmx3								For 4115
+	Define WHvX64RegisterFpMmx4								For 4116
+	Define WHvX64RegisterFpMmx5								For 4117
+	Define WHvX64RegisterFpMmx6								For 4118
+	Define WHvX64RegisterFpMmx7								For 4119
+	Define WHvX64RegisterFpControlStatus					For 4120
+	Define WHvX64RegisterXmmControlStatus					For 4121
+	Define WHvX64RegisterTsc								For 8192
+	Define WHvX64RegisterEfer								For 8193
+	Define WHvX64RegisterKernelGsBase						For 8194
+	Define WHvX64RegisterApicBase							For 8195
+	Define WHvX64RegisterPat								For 8196
+	Define WHvX64RegisterSysenterCs							For 8197
+	Define WHvX64RegisterSysenterEip						For 8198
+	Define WHvX64RegisterSysenterEsp						For 8199
+	Define WHvX64RegisterStar								For 8200
+	Define WHvX64RegisterLstar								For 8201
+	Define WHvX64RegisterCstar								For 8202
+	Define WHvX64RegisterSfmask								For 8203
+	Define WHvX64RegisterInitialApicId						For 8204
+	Define WHvX64RegisterMsrMtrrCap							For 8205
+	Define WHvX64RegisterMsrMtrrDefType						For 8206
+	Define WHvX64RegisterMsrMtrrPhysBase0					For 8208
+	Define WHvX64RegisterMsrMtrrPhysBase1					For 8209
+	Define WHvX64RegisterMsrMtrrPhysBase2					For 8210
+	Define WHvX64RegisterMsrMtrrPhysBase3					For 8211
+	Define WHvX64RegisterMsrMtrrPhysBase4					For 8212
+	Define WHvX64RegisterMsrMtrrPhysBase5					For 8213
+	Define WHvX64RegisterMsrMtrrPhysBase6					For 8214
+	Define WHvX64RegisterMsrMtrrPhysBase7					For 8215
+	Define WHvX64RegisterMsrMtrrPhysBase8					For 8216
+	Define WHvX64RegisterMsrMtrrPhysBase9					For 8217
+	Define WHvX64RegisterMsrMtrrPhysBaseA					For 8218
+	Define WHvX64RegisterMsrMtrrPhysBaseB					For 8219
+	Define WHvX64RegisterMsrMtrrPhysBaseC					For 8220
+	Define WHvX64RegisterMsrMtrrPhysBaseD					For 8221
+	Define WHvX64RegisterMsrMtrrPhysBaseE					For 8222
+	Define WHvX64RegisterMsrMtrrPhysBaseF					For 8223
+	Define WHvX64RegisterMsrMtrrPhysMask0					For 8256
+	Define WHvX64RegisterMsrMtrrPhysMask1					For 8257
+	Define WHvX64RegisterMsrMtrrPhysMask2					For 8258
+	Define WHvX64RegisterMsrMtrrPhysMask3					For 8259
+	Define WHvX64RegisterMsrMtrrPhysMask4					For 8260
+	Define WHvX64RegisterMsrMtrrPhysMask5					For 8261
+	Define WHvX64RegisterMsrMtrrPhysMask6					For 8262
+	Define WHvX64RegisterMsrMtrrPhysMask7					For 8263
+	Define WHvX64RegisterMsrMtrrPhysMask8					For 8264
+	Define WHvX64RegisterMsrMtrrPhysMask9					For 8265
+	Define WHvX64RegisterMsrMtrrPhysMaskA					For 8266
+	Define WHvX64RegisterMsrMtrrPhysMaskB					For 8267
+	Define WHvX64RegisterMsrMtrrPhysMaskC					For 8268
+	Define WHvX64RegisterMsrMtrrPhysMaskD					For 8269
+	Define WHvX64RegisterMsrMtrrPhysMaskE					For 8270
+	Define WHvX64RegisterMsrMtrrPhysMaskF					For 8271
+	Define WHvX64RegisterMsrMtrrFix64k00000					For 8304
+	Define WHvX64RegisterMsrMtrrFix16k80000					For 8305
+	Define WHvX64RegisterMsrMtrrFix16kA0000					For 8306
+	Define WHvX64RegisterMsrMtrrFix4kC0000					For 8307
+	Define WHvX64RegisterMsrMtrrFix4kC8000					For 8308
+	Define WHvX64RegisterMsrMtrrFix4kD0000					For 8309
+	Define WHvX64RegisterMsrMtrrFix4kD8000					For 8310
+	Define WHvX64RegisterMsrMtrrFix4kE0000					For 8311
+	Define WHvX64RegisterMsrMtrrFix4kE8000					For 8312
+	Define WHvX64RegisterMsrMtrrFix4kF0000					For 8313
+	Define WHvX64RegisterMsrMtrrFix4kF8000					For 8314
+	Define WHvX64RegisterTscAux								For 8315
+	Define WHvX64RegisterBndcfgs							For 8316
+	Define WHvX64RegisterMCount								For 8318
+	Define WHvX64RegisterACount								For 8319
+	Define WHvX64RegisterSpecCtrl							For 8324
+	Define WHvX64RegisterPredCmd							For 8325
+	Define WHvX64RegisterTscVirtualOffset					For 8327
+	Define WHvX64RegisterTsxCtrl							For 8328
+	Define WHvX64RegisterXss								For 8331
+	Define WHvX64RegisterUCet								For 8332
+	Define WHvX64RegisterSCet								For 8333
+	Define WHvX64RegisterSsp								For 8334
+	Define WHvX64RegisterPl0Ssp								For 8335
+	Define WHvX64RegisterPl1Ssp								For 8336
+	Define WHvX64RegisterPl2Ssp								For 8337
+	Define WHvX64RegisterPl3Ssp								For 8338
+	Define WHvX64RegisterInterruptSspTableAddr				For 8339
+	Define WHvX64RegisterTscDeadline						For 8341
+	Define WHvX64RegisterTscAdjust							For 8342
+	Define WHvX64RegisterUmwaitControl						For 8344
+	Define WHvX64RegisterXfd								For 8345
+	Define WHvX64RegisterXfdErr								For 8346
+	Define WHvX64RegisterApicId								For 12290
+	Define WHvX64RegisterApicVersion						For 12291
+	Define WHvX64RegisterApicTpr							For 12296
+	Define WHvX64RegisterApicPpr							For 12298
+	Define WHvX64RegisterApicEoi							For 12299
+	Define WHvX64RegisterApicLdr							For 12301
+	Define WHvX64RegisterApicSpurious						For 12303
+	Define WHvX64RegisterApicIsr0							For 12304
+	Define WHvX64RegisterApicIsr1							For 12305
+	Define WHvX64RegisterApicIsr2							For 12306
+	Define WHvX64RegisterApicIsr3							For 12307
+	Define WHvX64RegisterApicIsr4							For 12308
+	Define WHvX64RegisterApicIsr5							For 12309
+	Define WHvX64RegisterApicIsr6							For 12310
+	Define WHvX64RegisterApicIsr7							For 12311
+	Define WHvX64RegisterApicTmr0							For 12312
+	Define WHvX64RegisterApicTmr1							For 12313
+	Define WHvX64RegisterApicTmr2							For 12314
+	Define WHvX64RegisterApicTmr3							For 12315
+	Define WHvX64RegisterApicTmr4							For 12316
+	Define WHvX64RegisterApicTmr5							For 12317
+	Define WHvX64RegisterApicTmr6							For 12318
+	Define WHvX64RegisterApicTmr7							For 12319
+	Define WHvX64RegisterApicIrr0							For 12320
+	Define WHvX64RegisterApicIrr1							For 12321
+	Define WHvX64RegisterApicIrr2							For 12322
+	Define WHvX64RegisterApicIrr3							For 12323
+	Define WHvX64RegisterApicIrr4							For 12324
+	Define WHvX64RegisterApicIrr5							For 12325
+	Define WHvX64RegisterApicIrr6							For 12326
+	Define WHvX64RegisterApicIrr7							For 12327
+	Define WHvX64RegisterApicEse							For 12328
+	Define WHvX64RegisterApicIcr							For 12336
+	Define WHvX64RegisterApicLvtTimer						For 12338
+	Define WHvX64RegisterApicLvtThermal						For 12339
+	Define WHvX64RegisterApicLvtPerfmon						For 12340
+	Define WHvX64RegisterApicLvtLint0						For 12341
+	Define WHvX64RegisterApicLvtLint1						For 12342
+	Define WHvX64RegisterApicLvtError						For 12343
+	Define WHvX64RegisterApicInitCount						For 12344
+	Define WHvX64RegisterApicCurrentCount					For 12345
+	Define WHvX64RegisterApicDivide							For 12350
+	Define WHvX64RegisterApicSelfIpi						For 12351
+	Define WHvRegisterSint0									For 16384
+	Define WHvRegisterSint1									For 16385
+	Define WHvRegisterSint2									For 16386
+	Define WHvRegisterSint3									For 16387
+	Define WHvRegisterSint4									For 16388
+	Define WHvRegisterSint5									For 16389
+	Define WHvRegisterSint6									For 16390
+	Define WHvRegisterSint7									For 16391
+	Define WHvRegisterSint8									For 16392
+	Define WHvRegisterSint9									For 16393
+	Define WHvRegisterSint10								For 16394
+	Define WHvRegisterSint11								For 16395
+	Define WHvRegisterSint12								For 16396
+	Define WHvRegisterSint13								For 16397
+	Define WHvRegisterSint14								For 16398
+	Define WHvRegisterSint15								For 16399
+	Define WHvRegisterScontrol								For 16400
+	Define WHvRegisterSversion								For 16401
+	Define WHvRegisterSiefp									For 16402
+	Define WHvRegisterSimp									For 16403
+	Define WHvRegisterEom									For 16404
+	Define WHvRegisterVpRuntime								For 20480
+	Define WHvX64RegisterHypercall							For 20481
+	Define WHvRegisterGuestOsId								For 20482
+	Define WHvRegisterVpAssistPage							For 20499
+	Define WHvRegisterReferenceTsc							For 20503
+	Define WHvRegisterReferenceTscSequence					For 20506
+	Define WHvRegisterPendingInterruption					For -2147483648
+	Define WHvRegisterInterruptState						For -2147483647
+	Define WHvRegisterPendingEvent							For -2147483646
+	Define WHvX64RegisterDeliverabilityNotifications		For -2147483644
+	Define WHvRegisterInternalActivityState					For -2147483643
+	Define WHvX64RegisterPendingDebugException				For -2147483642
+End_Enum_List
+
+// Define WHV_PARTITION_COUNTER_SET For Integer
+Enum_List
+	Define WHvPartitionCounterSetMemory						For 0
+End_Enum_List
+
+// Define WHV_PROCESSOR_COUNTER_SET For Integer
+Enum_List
+	Define WHvProcessorCounterSetRuntime					For 0
+	Define WHvProcessorCounterSetIntercepts					For 1
+	Define WHvProcessorCounterSetEvents						For 2
+	Define WHvProcessorCounterSetApic						For 3
+	Define WHvProcessorCounterSetSyntheticFeatures			For 4
+End_Enum_List
+
+// Define WHV_ADVISE_GPA_RANGE_CODE For Integer
+Enum_List
+	Define WHvAdviseGpaRangeCodePopulate					For 0
+	Define WHvAdviseGpaRangeCodePin							For 1
+	Define WHvAdviseGpaRangeCodeUnpin						For 2
+End_Enum_List
+
+// Define WHV_CACHE_TYPE For Integer
+Enum_List
+	Define WHvCacheTypeUncached								For 0
+	Define WHvCacheTypeWriteCombining						For 1
+	Define WHvCacheTypeWriteThrough							For 4
+	Define WHvCacheTypeWriteBack							For 6
+End_Enum_List
+
+// Define WHV_VIRTUAL_PROCESSOR_STATE_TYPE For Integer
+Enum_List
+	Define WHvVirtualProcessorStateTypeSynicMessagePage		For 0
+	Define WHvVirtualProcessorStateTypeSynicEventFlagPage	For 1
+	Define WHvVirtualProcessorStateTypeSynicTimerState		For 2
+	Define WHvVirtualProcessorStateTypeInterruptControllerState2	For 4096
+	Define WHvVirtualProcessorStateTypeXsaveState			For 4097
+End_Enum_List
+
+// Define WHV_ALLOCATE_VPCI_RESOURCE_FLAGS For Integer
+Enum_List
+	Define WHvAllocateVpciResourceFlagNone					For 0
+	Define WHvAllocateVpciResourceFlagAllowDirectP2P		For 1
+End_Enum_List
+
+// Define WHV_CREATE_VPCI_DEVICE_FLAGS For Integer
+Enum_List
+	Define WHvCreateVpciDeviceFlagNone						For 0
+	Define WHvCreateVpciDeviceFlagPhysicallyBacked			For 1
+	Define WHvCreateVpciDeviceFlagUseLogicalInterrupts		For 2
+End_Enum_List
+
+// Define WHV_VPCI_DEVICE_PROPERTY_CODE For Integer
+Enum_List
+	Define WHvVpciDevicePropertyCodeUndefined				For 0
+	Define WHvVpciDevicePropertyCodeHardwareIDs				For 1
+	Define WHvVpciDevicePropertyCodeProbedBARs				For 2
+End_Enum_List
+
+// Define WHV_VPCI_DEVICE_NOTIFICATION_TYPE For Integer
+Enum_List
+	Define WHvVpciDeviceNotificationUndefined				For 0
+	Define WHvVpciDeviceNotificationMmioRemapping			For 1
+	Define WHvVpciDeviceNotificationSurpriseRemoval			For 2
+End_Enum_List
+
+// Define WHV_VPCI_DEVICE_REGISTER_SPACE For Integer
+Enum_List
+	Define WHvVpciConfigSpace								For -1
+	Define WHvVpciBar0										For 0
+	Define WHvVpciBar1										For 1
+	Define WHvVpciBar2										For 2
+	Define WHvVpciBar3										For 3
+	Define WHvVpciBar4										For 4
+	Define WHvVpciBar5										For 5
+End_Enum_List
+
+// Define WHV_VPCI_MMIO_RANGE_FLAGS For Integer
+Enum_List
+	Define WHvVpciMmioRangeFlagReadAccess					For 1
+	Define WHvVpciMmioRangeFlagWriteAccess					For 2
+End_Enum_List
+
+// Define WHV_VPCI_INTERRUPT_TARGET_FLAGS For Integer
+Enum_List
+	Define WHvVpciInterruptTargetFlagNone					For 0
+	Define WHvVpciInterruptTargetFlagMulticast				For 1
+End_Enum_List
+
+// Define WHV_TRIGGER_TYPE For Integer
+Enum_List
+	Define WHvTriggerTypeInterrupt							For 0
+	Define WHvTriggerTypeSynicEvent							For 1
+	Define WHvTriggerTypeDeviceInterrupt					For 2
+End_Enum_List
+
+// Define WHV_NOTIFICATION_PORT_TYPE For Integer
+Enum_List
+	Define WHvNotificationPortTypeEvent						For 2
+	Define WHvNotificationPortTypeDoorbell					For 4
+End_Enum_List
+
+// Define WHV_NOTIFICATION_PORT_PROPERTY_CODE For Integer
+Enum_List
+	Define WHvNotificationPortPropertyPreferredTargetVp		For 1
+	Define WHvNotificationPortPropertyPreferredTargetDuration	For 5
+End_Enum_List
+
+// Define WHV_INTERRUPT_DESTINATION_MODE For Integer
+Enum_List
+	Define WHvX64InterruptDestinationModePhysical			For 0
+	Define WHvX64InterruptDestinationModeLogical			For 1
+End_Enum_List
+
+// Define HDV_DEVICE_HOST_FLAGS For Integer
+Enum_List
+	Define HdvDeviceHostFlagNone							For 0
+	Define HdvDeviceHostFlagInitializeComSecurity			For 1
+End_Enum_List
+
+// Define HDV_DEVICE_TYPE For Integer
+Enum_List
+	Define HdvDeviceTypeUndefined							For 0
+	Define HdvDeviceTypePCI									For 1
+End_Enum_List
+
+// Define HDV_PCI_BAR_SELECTOR For Integer
+Enum_List
+	Define HDV_PCI_BAR0										For 0
+	Define HDV_PCI_BAR1										For 1
+	Define HDV_PCI_BAR2										For 2
+	Define HDV_PCI_BAR3										For 3
+	Define HDV_PCI_BAR4										For 4
+	Define HDV_PCI_BAR5										For 5
+End_Enum_List
+
+// Define HDV_MMIO_MAPPING_FLAGS For Integer
+Enum_List
+	Define HdvMmioMappingFlagNone							For 0
+	Define HdvMmioMappingFlagWriteable						For 1
+	Define HdvMmioMappingFlagExecutable						For 2
+End_Enum_List
+
+// Define VIRTUAL_PROCESSOR_ARCH For Integer
+Enum_List
+	Define Arch_Unknown										For 0
+	Define Arch_x86											For 1
+	Define Arch_x64											For 2
+	Define Arch_Armv8										For 3
+End_Enum_List
+
+// Define PAGING_MODE For Integer
+Enum_List
+	Define Paging_Invalid									For 0
+	Define Paging_NonPaged									For 1
+	Define Paging_32Bit										For 2
+	Define Paging_Pae										For 3
+	Define Paging_Long										For 4
+	Define Paging_Armv8										For 5
+End_Enum_List
+
+// Define WHV_PROCESSOR_VENDOR For Integer
+Enum_List
+	Define WHvProcessorVendorAmd							For 0
+	Define WHvProcessorVendorIntel							For 1
+	Define WHvProcessorVendorHygon							For 2
+End_Enum_List
+
+// Define WHV_MEMORY_ACCESS_TYPE For Integer
+Enum_List
+	Define WHvMemoryAccessRead								For 0
+	Define WHvMemoryAccessWrite								For 1
+	Define WHvMemoryAccessExecute							For 2
+End_Enum_List
+
+// Define WHV_X64_CPUID_RESULT2_FLAGS For Integer
+Enum_List
+	Define WHvX64CpuidResult2FlagSubleafSpecific			For 1
+	Define WHvX64CpuidResult2FlagVpSpecific					For 2
+End_Enum_List
+
+// Define WHV_MSR_ACTION For Integer
+Enum_List
+	Define WHvMsrActionArchitectureDefault					For 0
+	Define WHvMsrActionIgnoreWriteReadZero					For 1
+	Define WHvMsrActionExit									For 2
+End_Enum_List
+
+// Define WHV_EXCEPTION_TYPE For Integer
+Enum_List
+	Define WHvX64ExceptionTypeDivideErrorFault				For 0
+	Define WHvX64ExceptionTypeDebugTrapOrFault				For 1
+	Define WHvX64ExceptionTypeBreakpointTrap				For 3
+	Define WHvX64ExceptionTypeOverflowTrap					For 4
+	Define WHvX64ExceptionTypeBoundRangeFault				For 5
+	Define WHvX64ExceptionTypeInvalidOpcodeFault			For 6
+	Define WHvX64ExceptionTypeDeviceNotAvailableFault		For 7
+	Define WHvX64ExceptionTypeDoubleFaultAbort				For 8
+	Define WHvX64ExceptionTypeInvalidTaskStateSegmentFault	For 10
+	Define WHvX64ExceptionTypeSegmentNotPresentFault		For 11
+	Define WHvX64ExceptionTypeStackFault					For 12
+	Define WHvX64ExceptionTypeGeneralProtectionFault		For 13
+	Define WHvX64ExceptionTypePageFault						For 14
+	Define WHvX64ExceptionTypeFloatingPointErrorFault		For 16
+	Define WHvX64ExceptionTypeAlignmentCheckFault			For 17
+	Define WHvX64ExceptionTypeMachineCheckAbort				For 18
+	Define WHvX64ExceptionTypeSimdFloatingPointFault		For 19
+End_Enum_List
+
+// Define WHV_X64_LOCAL_APIC_EMULATION_MODE For Integer
+Enum_List
+	Define WHvX64LocalApicEmulationModeNone					For 0
+	Define WHvX64LocalApicEmulationModeXApic				For 1
+	Define WHvX64LocalApicEmulationModeX2Apic				For 2
+End_Enum_List
+
+// Define WHV_X64_PENDING_EVENT_TYPE For Integer
+Enum_List
+	Define WHvX64PendingEventException						For 0
+	Define WHvX64PendingEventExtInt							For 5
+End_Enum_List
+
+// Define WHV_RUN_VP_EXIT_REASON For Integer
+Enum_List
+	Define WHvRunVpExitReasonNone							For 0
+	Define WHvRunVpExitReasonMemoryAccess					For 1
+	Define WHvRunVpExitReasonX64IoPortAccess				For 2
+	Define WHvRunVpExitReasonUnrecoverableException			For 4
+	Define WHvRunVpExitReasonInvalidVpRegisterValue			For 5
+	Define WHvRunVpExitReasonUnsupportedFeature				For 6
+	Define WHvRunVpExitReasonX64InterruptWindow				For 7
+	Define WHvRunVpExitReasonX64Halt						For 8
+	Define WHvRunVpExitReasonX64ApicEoi						For 9
+	Define WHvRunVpExitReasonSynicSintDeliverable			For 10
+	Define WHvRunVpExitReasonX64MsrAccess					For 4096
+	Define WHvRunVpExitReasonX64Cpuid						For 4097
+	Define WHvRunVpExitReasonException						For 4098
+	Define WHvRunVpExitReasonX64Rdtsc						For 4099
+	Define WHvRunVpExitReasonX64ApicSmiTrap					For 4100
+	Define WHvRunVpExitReasonHypercall						For 4101
+	Define WHvRunVpExitReasonX64ApicInitSipiTrap			For 4102
+	Define WHvRunVpExitReasonX64ApicWriteTrap				For 4103
+	Define WHvRunVpExitReasonCanceled						For 8193
+End_Enum_List
+
+// Define WHV_X64_UNSUPPORTED_FEATURE_CODE For Integer
+Enum_List
+	Define WHvUnsupportedFeatureIntercept					For 1
+	Define WHvUnsupportedFeatureTaskSwitchTss				For 2
+End_Enum_List
+
+// Define WHV_RUN_VP_CANCEL_REASON For Integer
+Enum_List
+	Define WHvRunVpCancelReasonUser							For 0
+End_Enum_List
+
+// Define WHV_X64_PENDING_INTERRUPTION_TYPE For Integer
+Enum_List
+	Define WHvX64PendingInterrupt							For 0
+	Define WHvX64PendingNmi									For 2
+	Define WHvX64PendingException							For 3
+End_Enum_List
+
+// Define WHV_X64_APIC_WRITE_TYPE For Integer
+Enum_List
+	Define WHvX64ApicWriteTypeLdr							For 208
+	Define WHvX64ApicWriteTypeDfr							For 224
+	Define WHvX64ApicWriteTypeSvr							For 240
+	Define WHvX64ApicWriteTypeLint0							For 848
+	Define WHvX64ApicWriteTypeLint1							For 864
+End_Enum_List
+
+// Define WHV_INTERRUPT_TYPE For Integer
+Enum_List
+	Define WHvX64InterruptTypeFixed							For 0
+	Define WHvX64InterruptTypeLowestPriority				For 1
+	Define WHvX64InterruptTypeNmi							For 4
+	Define WHvX64InterruptTypeInit							For 5
+	Define WHvX64InterruptTypeSipi							For 6
+	Define WHvX64InterruptTypeLocalInt1						For 9
+End_Enum_List
+
+// Define WHV_INTERRUPT_TRIGGER_MODE For Integer
+Enum_List
+	Define WHvX64InterruptTriggerModeEdge					For 0
+	Define WHvX64InterruptTriggerModeLevel					For 1
+End_Enum_List
+
+// Define HDV_DOORBELL_FLAGS For Integer
+Enum_List
+	Define HDV_DOORBELL_FLAG_TRIGGER_SIZE_ANY				For 0
+	Define HDV_DOORBELL_FLAG_TRIGGER_SIZE_BYTE				For 1
+	Define HDV_DOORBELL_FLAG_TRIGGER_SIZE_WORD				For 2
+	Define HDV_DOORBELL_FLAG_TRIGGER_SIZE_DWORD				For 3
+	Define HDV_DOORBELL_FLAG_TRIGGER_SIZE_QWORD				For 4
+	Define HDV_DOORBELL_FLAG_TRIGGER_ANY_VALUE				For -2147483648
+End_Enum_List
+
+// Define HDV_PCI_INTERFACE_VERSION For Integer
+Enum_List
+	Define HdvPciDeviceInterfaceVersionInvalid				For 0
+	Define HdvPciDeviceInterfaceVersion1					For 1
+End_Enum_List
+
+// Define VIRTUAL_PROCESSOR_VENDOR For Integer
+Enum_List
+	Define ProcessorVendor_Unknown							For 0
+	Define ProcessorVendor_Amd								For 1
+	Define ProcessorVendor_Intel							For 2
+	Define ProcessorVendor_Hygon							For 3
+	Define ProcessorVendor_Arm								For 4
+End_Enum_List
+
+// Define GUEST_OS_VENDOR For Integer
+Enum_List
+	Define GuestOsVendorUndefined							For 0
+	Define GuestOsVendorMicrosoft							For 1
+	Define GuestOsVendorHPE									For 2
+	Define GuestOsVendorLANCOM								For 512
+End_Enum_List
+
+// Define GUEST_OS_MICROSOFT_IDS For Integer
+Enum_List
+	Define GuestOsMicrosoftUndefined						For 0
+	Define GuestOsMicrosoftMSDOS							For 1
+	Define GuestOsMicrosoftWindows3x						For 2
+	Define GuestOsMicrosoftWindows9x						For 3
+	Define GuestOsMicrosoftWindowsNT						For 4
+	Define GuestOsMicrosoftWindowsCE						For 5
+End_Enum_List
+
+// Define GUEST_OS_OPENSOURCE_IDS For Integer
+Enum_List
+	Define GuestOsOpenSourceUndefined						For 0
+	Define GuestOsOpenSourceLinux							For 1
+	Define GuestOsOpenSourceFreeBSD							For 2
+	Define GuestOsOpenSourceXen								For 3
+	Define GuestOsOpenSourceIllumos							For 4
+End_Enum_List
+
+// Define REGISTER_ID For Integer
+Enum_List
+	Define X64_RegisterRax									For 0
+	Define X64_RegisterRcx									For 1
+	Define X64_RegisterRdx									For 2
+	Define X64_RegisterRbx									For 3
+	Define X64_RegisterRsp									For 4
+	Define X64_RegisterRbp									For 5
+	Define X64_RegisterRsi									For 6
+	Define X64_RegisterRdi									For 7
+	Define X64_RegisterR8									For 8
+	Define X64_RegisterR9									For 9
+	Define X64_RegisterR10									For 10
+	Define X64_RegisterR11									For 11
+	Define X64_RegisterR12									For 12
+	Define X64_RegisterR13									For 13
+	Define X64_RegisterR14									For 14
+	Define X64_RegisterR15									For 15
+	Define X64_RegisterRip									For 16
+	Define X64_RegisterRFlags								For 17
+	Define X64_RegisterXmm0									For 18
+	Define X64_RegisterXmm1									For 19
+	Define X64_RegisterXmm2									For 20
+	Define X64_RegisterXmm3									For 21
+	Define X64_RegisterXmm4									For 22
+	Define X64_RegisterXmm5									For 23
+	Define X64_RegisterXmm6									For 24
+	Define X64_RegisterXmm7									For 25
+	Define X64_RegisterXmm8									For 26
+	Define X64_RegisterXmm9									For 27
+	Define X64_RegisterXmm10								For 28
+	Define X64_RegisterXmm11								For 29
+	Define X64_RegisterXmm12								For 30
+	Define X64_RegisterXmm13								For 31
+	Define X64_RegisterXmm14								For 32
+	Define X64_RegisterXmm15								For 33
+	Define X64_RegisterFpMmx0								For 34
+	Define X64_RegisterFpMmx1								For 35
+	Define X64_RegisterFpMmx2								For 36
+	Define X64_RegisterFpMmx3								For 37
+	Define X64_RegisterFpMmx4								For 38
+	Define X64_RegisterFpMmx5								For 39
+	Define X64_RegisterFpMmx6								For 40
+	Define X64_RegisterFpMmx7								For 41
+	Define X64_RegisterFpControlStatus						For 42
+	Define X64_RegisterXmmControlStatus						For 43
+	Define X64_RegisterCr0									For 44
+	Define X64_RegisterCr2									For 45
+	Define X64_RegisterCr3									For 46
+	Define X64_RegisterCr4									For 47
+	Define X64_RegisterCr8									For 48
+	Define X64_RegisterEfer									For 49
+	Define X64_RegisterDr0									For 50
+	Define X64_RegisterDr1									For 51
+	Define X64_RegisterDr2									For 52
+	Define X64_RegisterDr3									For 53
+	Define X64_RegisterDr6									For 54
+	Define X64_RegisterDr7									For 55
+	Define X64_RegisterEs									For 56
+	Define X64_RegisterCs									For 57
+	Define X64_RegisterSs									For 58
+	Define X64_RegisterDs									For 59
+	Define X64_RegisterFs									For 60
+	Define X64_RegisterGs									For 61
+	Define X64_RegisterLdtr									For 62
+	Define X64_RegisterTr									For 63
+	Define X64_RegisterIdtr									For 64
+	Define X64_RegisterGdtr									For 65
+	Define X64_RegisterMax									For 66
+	Define ARM64_RegisterX0									For 67
+	Define ARM64_RegisterX1									For 68
+	Define ARM64_RegisterX2									For 69
+	Define ARM64_RegisterX3									For 70
+	Define ARM64_RegisterX4									For 71
+	Define ARM64_RegisterX5									For 72
+	Define ARM64_RegisterX6									For 73
+	Define ARM64_RegisterX7									For 74
+	Define ARM64_RegisterX8									For 75
+	Define ARM64_RegisterX9									For 76
+	Define ARM64_RegisterX10								For 77
+	Define ARM64_RegisterX11								For 78
+	Define ARM64_RegisterX12								For 79
+	Define ARM64_RegisterX13								For 80
+	Define ARM64_RegisterX14								For 81
+	Define ARM64_RegisterX15								For 82
+	Define ARM64_RegisterX16								For 83
+	Define ARM64_RegisterX17								For 84
+	Define ARM64_RegisterX18								For 85
+	Define ARM64_RegisterX19								For 86
+	Define ARM64_RegisterX20								For 87
+	Define ARM64_RegisterX21								For 88
+	Define ARM64_RegisterX22								For 89
+	Define ARM64_RegisterX23								For 90
+	Define ARM64_RegisterX24								For 91
+	Define ARM64_RegisterX25								For 92
+	Define ARM64_RegisterX26								For 93
+	Define ARM64_RegisterX27								For 94
+	Define ARM64_RegisterX28								For 95
+	Define ARM64_RegisterXFp								For 96
+	Define ARM64_RegisterXLr								For 97
+	Define ARM64_RegisterPc									For 98
+	Define ARM64_RegisterSpEl0								For 99
+	Define ARM64_RegisterSpEl1								For 100
+	Define ARM64_RegisterCpsr								For 101
+	Define ARM64_RegisterQ0									For 102
+	Define ARM64_RegisterQ1									For 103
+	Define ARM64_RegisterQ2									For 104
+	Define ARM64_RegisterQ3									For 105
+	Define ARM64_RegisterQ4									For 106
+	Define ARM64_RegisterQ5									For 107
+	Define ARM64_RegisterQ6									For 108
+	Define ARM64_RegisterQ7									For 109
+	Define ARM64_RegisterQ8									For 110
+	Define ARM64_RegisterQ9									For 111
+	Define ARM64_RegisterQ10								For 112
+	Define ARM64_RegisterQ11								For 113
+	Define ARM64_RegisterQ12								For 114
+	Define ARM64_RegisterQ13								For 115
+	Define ARM64_RegisterQ14								For 116
+	Define ARM64_RegisterQ15								For 117
+	Define ARM64_RegisterQ16								For 118
+	Define ARM64_RegisterQ17								For 119
+	Define ARM64_RegisterQ18								For 120
+	Define ARM64_RegisterQ19								For 121
+	Define ARM64_RegisterQ20								For 122
+	Define ARM64_RegisterQ21								For 123
+	Define ARM64_RegisterQ22								For 124
+	Define ARM64_RegisterQ23								For 125
+	Define ARM64_RegisterQ24								For 126
+	Define ARM64_RegisterQ25								For 127
+	Define ARM64_RegisterQ26								For 128
+	Define ARM64_RegisterQ27								For 129
+	Define ARM64_RegisterQ28								For 130
+	Define ARM64_RegisterQ29								For 131
+	Define ARM64_RegisterQ30								For 132
+	Define ARM64_RegisterQ31								For 133
+	Define ARM64_RegisterFpStatus							For 134
+	Define ARM64_RegisterFpControl							For 135
+	Define ARM64_RegisterEsrEl1								For 136
+	Define ARM64_RegisterSpsrEl1							For 137
+	Define ARM64_RegisterFarEl1								For 138
+	Define ARM64_RegisterParEl1								For 139
+	Define ARM64_RegisterElrEl1								For 140
+	Define ARM64_RegisterTtbr0El1							For 141
+	Define ARM64_RegisterTtbr1El1							For 142
+	Define ARM64_RegisterVbarEl1							For 143
+	Define ARM64_RegisterSctlrEl1							For 144
+	Define ARM64_RegisterActlrEl1							For 145
+	Define ARM64_RegisterTcrEl1								For 146
+	Define ARM64_RegisterMairEl1							For 147
+	Define ARM64_RegisterAmairEl1							For 148
+	Define ARM64_RegisterTpidrEl0							For 149
+	Define ARM64_RegisterTpidrroEl0							For 150
+	Define ARM64_RegisterTpidrEl1							For 151
+	Define ARM64_RegisterContextIdrEl1						For 152
+	Define ARM64_RegisterCpacrEl1							For 153
+	Define ARM64_RegisterCsselrEl1							For 154
+	Define ARM64_RegisterCntkctlEl1							For 155
+	Define ARM64_RegisterCntvCvalEl0						For 156
+	Define ARM64_RegisterCntvCtlEl0							For 157
+	Define ARM64_RegisterMax								For 158
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure
+

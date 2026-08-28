@@ -1,0 +1,85 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-diag_sockaddr
+Struct DIAG_SOCKADDR
+	UShort family
+	Char[126] data											// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-helper_attribute
+Struct HELPER_ATTRIBUTE
+	Pointer pwszName										// PWSTR
+	Integer type											// ATTRIBUTE_TYPE
+	Integer iMissingAlignment1
+	UChar[128] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-life_time
+Struct LIFE_TIME
+	FILETIME startTime
+	FILETIME endTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-octet_string
+Struct OCTET_STRING
+	UInteger dwLength
+	Integer iMissingAlignment1
+	Pointer lpValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-repairinfo
+Struct RepairInfo
+	Guid guid
+	Pointer pwszClassName									// PWSTR
+	Pointer pwszDescription									// PWSTR
+	UInteger sidType
+	Integer cost
+	UInteger flags
+	Integer scope											// REPAIR_SCOPE
+	Integer risk											// REPAIR_RISK
+	Integer iMissingAlignment1
+	UiInfo UiInfo
+	Integer rootCauseIndex
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-repairinfoex
+Struct RepairInfoEx
+	RepairInfo repair
+	UShort repairRank
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-rootcauseinfo
+Struct RootCauseInfo
+	Pointer pwszDescription									// PWSTR
+	Guid rootCauseID
+	UInteger rootCauseFlags
+	Guid networkInterfaceID
+	Integer iMissingAlignment1
+	Pointer pRepairs										// RepairInfoEx*
+	UShort repairCount
+	UChar[6] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-shellcommandinfo
+Struct ShellCommandInfo
+	Pointer pwszOperation									// PWSTR
+	Pointer pwszFile										// PWSTR
+	Pointer pwszParameters									// PWSTR
+	Pointer pwszDirectory									// PWSTR
+	UInteger nShowCmd
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ndattrib/ns-ndattrib-uiinfo
+Struct UiInfo
+	Integer type											// UI_INFO_TYPE
+	Integer iMissingAlignment1
+	UChar[40] UnionName1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

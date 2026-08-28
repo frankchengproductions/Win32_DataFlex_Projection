@@ -1,0 +1,75 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/ns-wdspxe-pxe_address
+Struct PXE_ADDRESS
+	UInteger uFlags
+	UChar[16] UnionName1
+	UInteger uAddrLen
+	UShort uPort
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/ns-wdspxe-pxe_dhcpv6_nested_relay_message
+Struct PXE_DHCPV6_NESTED_RELAY_MESSAGE
+	Pointer pRelayMessage									// PXE_DHCPV6_RELAY_MESSAGE*
+	UInteger cbRelayMessage
+	Integer iMissingAlignment1
+	Pointer pInterfaceIdOption								// Pointer*
+	UShort cbInterfaceIdOption
+	UChar[6] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/ns-wdspxe-pxe_dhcpv6_option
+Struct PXE_DHCPV6_OPTION
+	UShort OptionCode
+	UShort DataLength
+	UChar[1] Data
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/ns-wdspxe-pxe_dhcpv6_relay_message
+Struct PXE_DHCPV6_RELAY_MESSAGE
+	UChar MessageType
+	UChar HopCount
+	UChar[16] LinkAddress
+	UChar[16] PeerAddress
+	PXE_DHCPV6_OPTION[1] Options
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wdspxe/ns-wdspxe-pxe_provider
+Struct PXE_PROVIDER
+	UInteger uSizeOfStruct
+	Integer iMissingAlignment1
+	Pointer pwszName										// PWSTR
+	Pointer pwszFilePath									// PWSTR
+	Integer bIsCritical										// BOOL
+	UInteger uIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wdsclientapi/ns-wdsclientapi-wds_cli_cred
+Struct WDS_CLI_CRED
+	Pointer pwszUserName									// PWSTR
+	Pointer pwszDomain										// PWSTR
+	Pointer pwszPassword									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wdstci/ns-wdstci-wds_transportclient_request
+Struct WDS_TRANSPORTCLIENT_REQUEST
+	UInteger ulLength
+	UInteger ulApiVersion
+	UInteger ulAuthLevel									// WDS_TRANSPORTCLIENT_REQUEST_AUTH_LEVEL
+	Integer iMissingAlignment1
+	Pointer pwszServer										// PWSTR
+	Pointer pwszNamespace									// PWSTR
+	Pointer pwszObjectName									// PWSTR
+	UInteger ulCacheSize
+	UInteger ulProtocol
+	Pointer pvProtocolData									// Pointer*
+	UInteger ulProtocolDataLength
+	Integer iMissingAlignment2
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

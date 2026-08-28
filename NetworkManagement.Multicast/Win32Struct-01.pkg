@@ -1,0 +1,57 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/ns-madcapcl-ipng_address
+Struct IPNG_ADDRESS
+	UInteger IpAddrV4
+	UChar[16] IpAddrV6
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/ns-madcapcl-mcast_client_uid
+Struct MCAST_CLIENT_UID
+	Pointer ClientUID										// UChar*
+	UInteger ClientUIDLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/ns-madcapcl-mcast_lease_request
+Struct MCAST_LEASE_REQUEST
+	Integer LeaseStartTime
+	Integer MaxLeaseStartTime
+	UInteger LeaseDuration
+	UInteger MinLeaseDuration
+	IPNG_ADDRESS ServerAddress
+	UShort MinAddrCount
+	UShort AddrCount
+	Pointer pAddrBuf										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/ns-madcapcl-mcast_lease_response
+Struct MCAST_LEASE_RESPONSE
+	Integer LeaseStartTime
+	Integer LeaseEndTime
+	IPNG_ADDRESS ServerAddress
+	UShort AddrCount
+	Short iMissingAlignment1
+	Pointer pAddrBuf										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/ns-madcapcl-mcast_scope_ctx
+Struct MCAST_SCOPE_CTX
+	IPNG_ADDRESS ScopeID
+	IPNG_ADDRESS Interface
+	IPNG_ADDRESS ServerID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/ns-madcapcl-mcast_scope_entry
+Struct MCAST_SCOPE_ENTRY
+	MCAST_SCOPE_CTX ScopeCtx
+	IPNG_ADDRESS LastAddr
+	UInteger TTL
+	Integer iMissingAlignment1
+	UNICODE_STRING ScopeDesc
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

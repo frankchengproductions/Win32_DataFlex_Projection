@@ -1,0 +1,436 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsacquirecontexthandle_a
+External_Function DnsAcquireContextHandle_A "DnsAcquireContextHandle_A" DNSAPI.dll ;
+	UInteger CredentialFlags ;
+	Pointer Credentials ;	// Pointer*
+	Pointer pContext ;	// HANDLE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsacquirecontexthandle_w
+External_Function DnsAcquireContextHandle_W "DnsAcquireContextHandle_W" DNSAPI.dll ;
+	UInteger CredentialFlags ;
+	Pointer Credentials ;	// Pointer*
+	Pointer pContext ;	// HANDLE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnscancelquery
+External_Function DnsCancelQuery "DnsCancelQuery" DNSAPI.dll ;
+	Pointer pCancelHandle ;	// DNS_QUERY_CANCEL*
+	Returns Integer
+
+External_Function DnsCancelQueryRaw "DnsCancelQueryRaw" DNSAPI.dll ;
+	Pointer cancelHandle ;	// DNS_QUERY_RAW_CANCEL*
+	Returns Integer
+
+External_Function DnsConnectionDeletePolicyEntries "DnsConnectionDeletePolicyEntries" DNSAPI.dll ;
+	Integer PolicyEntryTag ;	// DNS_CONNECTION_POLICY_TAG
+	Returns UInteger
+
+External_Function DnsConnectionDeleteProxyInfo "DnsConnectionDeleteProxyInfo" DNSAPI.dll ;
+	WString pwszConnectionName ;	// PWSTR
+	Integer Type ;	// DNS_CONNECTION_PROXY_TYPE
+	Returns UInteger
+
+External_Function DnsConnectionFreeNameList "DnsConnectionFreeNameList" DNSAPI.dll ;
+	Pointer pNameList ;	// DNS_CONNECTION_NAME_LIST*
+	Returns Pointer
+
+External_Function DnsConnectionFreeProxyInfo "DnsConnectionFreeProxyInfo" DNSAPI.dll ;
+	Pointer pProxyInfo ;	// DNS_CONNECTION_PROXY_INFO*
+	Returns Pointer
+
+External_Function DnsConnectionFreeProxyInfoEx "DnsConnectionFreeProxyInfoEx" DNSAPI.dll ;
+	Pointer pProxyInfoEx ;	// DNS_CONNECTION_PROXY_INFO_EX*
+	Returns Pointer
+
+External_Function DnsConnectionFreeProxyList "DnsConnectionFreeProxyList" DNSAPI.dll ;
+	Pointer pProxyList ;	// DNS_CONNECTION_PROXY_LIST*
+	Returns Pointer
+
+External_Function DnsConnectionGetNameList "DnsConnectionGetNameList" DNSAPI.dll ;
+	Pointer pNameList ;	// DNS_CONNECTION_NAME_LIST*
+	Returns UInteger
+
+External_Function DnsConnectionGetProxyInfo "DnsConnectionGetProxyInfo" DNSAPI.dll ;
+	WString pwszConnectionName ;	// PWSTR
+	Integer Type ;	// DNS_CONNECTION_PROXY_TYPE
+	Pointer pProxyInfo ;	// DNS_CONNECTION_PROXY_INFO*
+	Returns UInteger
+
+External_Function DnsConnectionGetProxyInfoForHostUrl "DnsConnectionGetProxyInfoForHostUrl" DNSAPI.dll ;
+	WString pwszHostUrl ;	// PWSTR
+	Pointer pSelectionContext ;	// UChar*
+	UInteger dwSelectionContextLength ;
+	UInteger dwExplicitInterfaceIndex ;
+	Pointer pProxyInfoEx ;	// DNS_CONNECTION_PROXY_INFO_EX*
+	Returns UInteger
+
+External_Function DnsConnectionGetProxyInfoForHostUrlEx "DnsConnectionGetProxyInfoForHostUrlEx" DNSAPI.dll ;
+	WString pwszHostUrl ;	// PWSTR
+	Pointer pSelectionContext ;	// UChar*
+	UInteger dwSelectionContextLength ;
+	UInteger dwExplicitInterfaceIndex ;
+	WString pwszConnectionName ;	// PWSTR
+	Pointer pProxyInfoEx ;	// DNS_CONNECTION_PROXY_INFO_EX*
+	Returns UInteger
+
+External_Function DnsConnectionGetProxyList "DnsConnectionGetProxyList" DNSAPI.dll ;
+	WString pwszConnectionName ;	// PWSTR
+	Pointer pProxyList ;	// DNS_CONNECTION_PROXY_LIST*
+	Returns UInteger
+
+External_Function DnsConnectionSetPolicyEntries "DnsConnectionSetPolicyEntries" DNSAPI.dll ;
+	Integer PolicyEntryTag ;	// DNS_CONNECTION_POLICY_TAG
+	Pointer pPolicyEntryList ;	// DNS_CONNECTION_POLICY_ENTRY_LIST*
+	Returns UInteger
+
+External_Function DnsConnectionSetProxyInfo "DnsConnectionSetProxyInfo" DNSAPI.dll ;
+	WString pwszConnectionName ;	// PWSTR
+	Integer Type ;	// DNS_CONNECTION_PROXY_TYPE
+	Pointer pProxyInfo ;	// DNS_CONNECTION_PROXY_INFO*
+	Returns UInteger
+
+External_Function DnsConnectionUpdateIfIndexTable "DnsConnectionUpdateIfIndexTable" DNSAPI.dll ;
+	Pointer pConnectionIfIndexEntries ;	// DNS_CONNECTION_IFINDEX_LIST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsextractrecordsfrommessage_utf8
+External_Function DnsExtractRecordsFromMessage_UTF8 "DnsExtractRecordsFromMessage_UTF8" DNSAPI.dll ;
+	Pointer pDnsBuffer ;	// DNS_MESSAGE_BUFFER*
+	UShort wMessageLength ;
+	Pointer ppRecord ;	// DNS_RECORDA**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsextractrecordsfrommessage_w
+External_Function DnsExtractRecordsFromMessage_W "DnsExtractRecordsFromMessage_W" DNSAPI.dll ;
+	Pointer pDnsBuffer ;	// DNS_MESSAGE_BUFFER*
+	UShort wMessageLength ;
+	Pointer ppRecord ;	// DNS_RECORDA**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsfree
+External_Function DnsFree "DnsFree" DNSAPI.dll ;
+	Pointer pData ;	// Pointer*
+	Integer FreeType ;	// DNS_FREE_TYPE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsfreecustomservers
+External_Function DnsFreeCustomServers "DnsFreeCustomServers" DNSAPI.dll ;
+	Pointer pcServers ;	// UInteger*
+	Pointer ppServers ;	// DNS_CUSTOM_SERVER**
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsfreeproxyname
+External_Function DnsFreeProxyName "DnsFreeProxyName" DNSAPI.dll ;
+	WString proxyName ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsgetapplicationsettings
+External_Function DnsGetApplicationSettings "DnsGetApplicationSettings" DNSAPI.dll ;
+	Pointer pcServers ;	// UInteger*
+	Pointer ppDefaultServers ;	// DNS_CUSTOM_SERVER**
+	Pointer pSettings ;	// DNS_APPLICATION_SETTINGS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsgetproxyinformation
+External_Function DnsGetProxyInformation "DnsGetProxyInformation" DNSAPI.dll ;
+	WString hostName ;	// PWSTR
+	Pointer proxyInformation ;	// DNS_PROXY_INFORMATION*
+	Pointer defaultProxyInformation ;	// DNS_PROXY_INFORMATION*
+	Pointer completionRoutine ;	// DNS_PROXY_COMPLETION_ROUTINE
+	Pointer completionContext ;	// Pointer*
+	Returns UInteger
+
+External_Function DnsIsFlatRecord "DnsIsFlatRecord" DNSAPI.dll ;
+	Pointer pRecord ;	// DNS_RECORDA*
+	UBigint ullFlags ;
+	Pointer pfFlat ;	// BOOL*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsmodifyrecordsinset_a
+External_Function DnsModifyRecordsInSet_A "DnsModifyRecordsInSet_A" DNSAPI.dll ;
+	Pointer pAddRecords ;	// DNS_RECORDA*
+	Pointer pDeleteRecords ;	// DNS_RECORDA*
+	UInteger Options ;
+	Pointer hCredentials ;	// HANDLE
+	Pointer pExtraList ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsmodifyrecordsinset_utf8
+External_Function DnsModifyRecordsInSet_UTF8 "DnsModifyRecordsInSet_UTF8" DNSAPI.dll ;
+	Pointer pAddRecords ;	// DNS_RECORDA*
+	Pointer pDeleteRecords ;	// DNS_RECORDA*
+	UInteger Options ;
+	Pointer hCredentials ;	// HANDLE
+	Pointer pExtraList ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsmodifyrecordsinset_w
+External_Function DnsModifyRecordsInSet_W "DnsModifyRecordsInSet_W" DNSAPI.dll ;
+	Pointer pAddRecords ;	// DNS_RECORDA*
+	Pointer pDeleteRecords ;	// DNS_RECORDA*
+	UInteger Options ;
+	Pointer hCredentials ;	// HANDLE
+	Pointer pExtraList ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsnamecompare_a
+External_Function DnsNameCompare_A "DnsNameCompare_A" DNSAPI.dll ;
+	String pName1 ;	// PSTR
+	String pName2 ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsnamecompare_w
+External_Function DnsNameCompare_W "DnsNameCompare_W" DNSAPI.dll ;
+	WString pName1 ;	// PWSTR
+	WString pName2 ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsqueryconfig
+External_Function DnsQueryConfig "DnsQueryConfig" DNSAPI.dll ;
+	Integer Config ;	// DNS_CONFIG_TYPE
+	UInteger Flag ;
+	WString pwsAdapterName ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Pointer pBuffer ;	// Pointer*
+	Pointer pBufLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsqueryex
+External_Function DnsQueryEx "DnsQueryEx" DNSAPI.dll ;
+	Pointer pQueryRequest ;	// DNS_QUERY_REQUEST*
+	Pointer pQueryResults ;	// DNS_QUERY_RESULT*
+	Pointer pCancelHandle ;	// DNS_QUERY_CANCEL*
+	Returns Integer
+
+External_Function DnsQueryRaw "DnsQueryRaw" DNSAPI.dll ;
+	Pointer queryRequest ;	// DNS_QUERY_RAW_REQUEST*
+	Pointer cancelHandle ;	// DNS_QUERY_RAW_CANCEL*
+	Returns Integer
+
+External_Function DnsQueryRawResultFree "DnsQueryRawResultFree" DNSAPI.dll ;
+	Pointer queryResults ;	// DNS_QUERY_RAW_RESULT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsquery_a
+External_Function DnsQuery_A "DnsQuery_A" DNSAPI.dll ;
+	String pszName ;	// PSTR
+	UShort wType ;
+	UInteger Options ;	// DNS_QUERY_OPTIONS
+	Pointer pExtra ;	// Pointer*
+	Pointer ppQueryResults ;	// DNS_RECORDA**
+	Pointer pReserved ;	// Pointer**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsquery_utf8
+External_Function DnsQuery_UTF8 "DnsQuery_UTF8" DNSAPI.dll ;
+	String pszName ;	// PSTR
+	UShort wType ;
+	UInteger Options ;	// DNS_QUERY_OPTIONS
+	Pointer pExtra ;	// Pointer*
+	Pointer ppQueryResults ;	// DNS_RECORDA**
+	Pointer pReserved ;	// Pointer**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsquery_w
+External_Function DnsQuery_W "DnsQuery_W" DNSAPI.dll ;
+	WString pszName ;	// PWSTR
+	UShort wType ;
+	UInteger Options ;	// DNS_QUERY_OPTIONS
+	Pointer pExtra ;	// Pointer*
+	Pointer ppQueryResults ;	// DNS_RECORDA**
+	Pointer pReserved ;	// Pointer**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsrecordcompare
+External_Function DnsRecordCompare "DnsRecordCompare" DNSAPI.dll ;
+	Pointer pRecord1 ;	// DNS_RECORDA*
+	Pointer pRecord2 ;	// DNS_RECORDA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsrecordcopyex
+External_Function DnsRecordCopyEx "DnsRecordCopyEx" DNSAPI.dll ;
+	Pointer pRecord ;	// DNS_RECORDA*
+	Integer CharSetIn ;	// DNS_CHARSET
+	Integer CharSetOut ;	// DNS_CHARSET
+	Returns Pointer	// DNS_RECORDA*
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsrecordsetcompare
+External_Function DnsRecordSetCompare "DnsRecordSetCompare" DNSAPI.dll ;
+	Pointer pRR1 ;	// DNS_RECORDA*
+	Pointer pRR2 ;	// DNS_RECORDA*
+	Pointer ppDiff1 ;	// DNS_RECORDA**
+	Pointer ppDiff2 ;	// DNS_RECORDA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsrecordsetcopyex
+External_Function DnsRecordSetCopyEx "DnsRecordSetCopyEx" DNSAPI.dll ;
+	Pointer pRecordSet ;	// DNS_RECORDA*
+	Integer CharSetIn ;	// DNS_CHARSET
+	Integer CharSetOut ;	// DNS_CHARSET
+	Returns Pointer	// DNS_RECORDA*
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsrecordsetdetach
+External_Function DnsRecordSetDetach "DnsRecordSetDetach" DNSAPI.dll ;
+	Pointer pRecordList ;	// DNS_RECORDA*
+	Returns Pointer	// DNS_RECORDA*
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsreleasecontexthandle
+External_Function DnsReleaseContextHandle "DnsReleaseContextHandle" DNSAPI.dll ;
+	Pointer hContext ;	// HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsreplacerecordseta
+External_Function DnsReplaceRecordSetA "DnsReplaceRecordSetA" DNSAPI.dll ;
+	Pointer pReplaceSet ;	// DNS_RECORDA*
+	UInteger Options ;
+	Pointer hContext ;	// HANDLE
+	Pointer pExtraInfo ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsreplacerecordsetutf8
+External_Function DnsReplaceRecordSetUTF8 "DnsReplaceRecordSetUTF8" DNSAPI.dll ;
+	Pointer pReplaceSet ;	// DNS_RECORDA*
+	UInteger Options ;
+	Pointer hContext ;	// HANDLE
+	Pointer pExtraInfo ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsreplacerecordsetw
+External_Function DnsReplaceRecordSetW "DnsReplaceRecordSetW" DNSAPI.dll ;
+	Pointer pReplaceSet ;	// DNS_RECORDA*
+	UInteger Options ;
+	Pointer hContext ;	// HANDLE
+	Pointer pExtraInfo ;	// Pointer*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsservicebrowse
+External_Function DnsServiceBrowse "DnsServiceBrowse" DNSAPI.dll ;
+	Pointer pRequest ;	// DNS_SERVICE_BROWSE_REQUEST*
+	Pointer pCancel ;	// DNS_SERVICE_CANCEL*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsservicebrowsecancel
+External_Function DnsServiceBrowseCancel "DnsServiceBrowseCancel" DNSAPI.dll ;
+	Pointer pCancelHandle ;	// DNS_SERVICE_CANCEL*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsserviceconstructinstance
+External_Function DnsServiceConstructInstance "DnsServiceConstructInstance" DNSAPI.dll ;
+	WString pServiceName ;	// PWSTR
+	WString pHostName ;	// PWSTR
+	Pointer pIp4 ;	// UInteger*
+	Pointer pIp6 ;	// IP6_ADDRESS*
+	UShort wPort ;
+	UShort wPriority ;
+	UShort wWeight ;
+	UInteger dwPropertiesCount ;
+	Pointer keys ;	// PWSTR*
+	Pointer values ;	// PWSTR*
+	Returns Pointer	// DNS_SERVICE_INSTANCE*
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsservicecopyinstance
+External_Function DnsServiceCopyInstance "DnsServiceCopyInstance" DNSAPI.dll ;
+	Pointer pOrig ;	// DNS_SERVICE_INSTANCE*
+	Returns Pointer	// DNS_SERVICE_INSTANCE*
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsservicederegister
+External_Function DnsServiceDeRegister "DnsServiceDeRegister" DNSAPI.dll ;
+	Pointer pRequest ;	// DNS_SERVICE_REGISTER_REQUEST*
+	Pointer pCancel ;	// DNS_SERVICE_CANCEL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsservicefreeinstance
+External_Function DnsServiceFreeInstance "DnsServiceFreeInstance" DNSAPI.dll ;
+	Pointer pInstance ;	// DNS_SERVICE_INSTANCE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsserviceregister
+External_Function DnsServiceRegister "DnsServiceRegister" DNSAPI.dll ;
+	Pointer pRequest ;	// DNS_SERVICE_REGISTER_REQUEST*
+	Pointer pCancel ;	// DNS_SERVICE_CANCEL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsserviceregistercancel
+External_Function DnsServiceRegisterCancel "DnsServiceRegisterCancel" DNSAPI.dll ;
+	Pointer pCancelHandle ;	// DNS_SERVICE_CANCEL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsserviceresolve
+External_Function DnsServiceResolve "DnsServiceResolve" DNSAPI.dll ;
+	Pointer pRequest ;	// DNS_SERVICE_RESOLVE_REQUEST*
+	Pointer pCancel ;	// DNS_SERVICE_CANCEL*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsserviceresolvecancel
+External_Function DnsServiceResolveCancel "DnsServiceResolveCancel" DNSAPI.dll ;
+	Pointer pCancelHandle ;	// DNS_SERVICE_CANCEL*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnssetapplicationsettings
+External_Function DnsSetApplicationSettings "DnsSetApplicationSettings" DNSAPI.dll ;
+	UInteger cServers ;
+	Pointer pServers ;	// DNS_CUSTOM_SERVER*
+	Pointer pSettings ;	// DNS_APPLICATION_SETTINGS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsstartmulticastquery
+External_Function DnsStartMulticastQuery "DnsStartMulticastQuery" DNSAPI.dll ;
+	Pointer pQueryRequest ;	// MDNS_QUERY_REQUEST*
+	Pointer pHandle ;	// MDNS_QUERY_HANDLE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsstopmulticastquery
+External_Function DnsStopMulticastQuery "DnsStopMulticastQuery" DNSAPI.dll ;
+	Pointer pHandle ;	// MDNS_QUERY_HANDLE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsvalidatename_a
+External_Function DnsValidateName_A "DnsValidateName_A" DNSAPI.dll ;
+	String pszName ;	// PSTR
+	Integer Format ;	// DNS_NAME_FORMAT
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsvalidatename_utf8
+External_Function DnsValidateName_UTF8 "DnsValidateName_UTF8" DNSAPI.dll ;
+	String pszName ;	// PSTR
+	Integer Format ;	// DNS_NAME_FORMAT
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnsvalidatename_w
+External_Function DnsValidateName_W "DnsValidateName_W" DNSAPI.dll ;
+	WString pszName ;	// PWSTR
+	Integer Format ;	// DNS_NAME_FORMAT
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnswritequestiontobuffer_utf8
+External_Function DnsWriteQuestionToBuffer_UTF8 "DnsWriteQuestionToBuffer_UTF8" DNSAPI.dll ;
+	Pointer pDnsBuffer ;	// DNS_MESSAGE_BUFFER*
+	Pointer pdwBufferSize ;	// UInteger*
+	String pszName ;	// PSTR
+	UShort wType ;
+	UShort Xid ;
+	Integer fRecursionDesired ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/windns/nf-windns-dnswritequestiontobuffer_w
+External_Function DnsWriteQuestionToBuffer_W "DnsWriteQuestionToBuffer_W" DNSAPI.dll ;
+	Pointer pDnsBuffer ;	// DNS_MESSAGE_BUFFER*
+	Pointer pdwBufferSize ;	// UInteger*
+	WString pszName ;	// PWSTR
+	UShort wType ;
+	UShort Xid ;
+	Integer fRecursionDesired ;	// BOOL
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

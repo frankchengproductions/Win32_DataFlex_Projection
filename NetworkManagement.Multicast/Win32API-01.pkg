@@ -1,0 +1,53 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastapicleanup
+External_Function McastApiCleanup "McastApiCleanup" dhcpcsvc.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastapistartup
+External_Function McastApiStartup "McastApiStartup" dhcpcsvc.dll ;
+	Pointer Version ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastenumeratescopes
+External_Function McastEnumerateScopes "McastEnumerateScopes" dhcpcsvc.dll ;
+	UShort AddrFamily ;
+	Integer ReQuery ;	// BOOL
+	Pointer pScopeList ;	// MCAST_SCOPE_ENTRY*
+	Pointer pScopeLen ;	// UInteger*
+	Pointer pScopeCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastgenuid
+External_Function McastGenUID "McastGenUID" dhcpcsvc.dll ;
+	Pointer pRequestID ;	// MCAST_CLIENT_UID*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastreleaseaddress
+External_Function McastReleaseAddress "McastReleaseAddress" dhcpcsvc.dll ;
+	UShort AddrFamily ;
+	Pointer pRequestID ;	// MCAST_CLIENT_UID*
+	Pointer pReleaseRequest ;	// MCAST_LEASE_REQUEST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastrenewaddress
+External_Function McastRenewAddress "McastRenewAddress" dhcpcsvc.dll ;
+	UShort AddrFamily ;
+	Pointer pRequestID ;	// MCAST_CLIENT_UID*
+	Pointer pRenewRequest ;	// MCAST_LEASE_REQUEST*
+	Pointer pRenewResponse ;	// MCAST_LEASE_RESPONSE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/madcapcl/nf-madcapcl-mcastrequestaddress
+External_Function McastRequestAddress "McastRequestAddress" dhcpcsvc.dll ;
+	UShort AddrFamily ;
+	Pointer pRequestID ;	// MCAST_CLIENT_UID*
+	Pointer pScopeCtx ;	// MCAST_SCOPE_CTX*
+	Pointer pAddrRequest ;	// MCAST_LEASE_REQUEST*
+	Pointer pAddrResponse ;	// MCAST_LEASE_RESPONSE*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

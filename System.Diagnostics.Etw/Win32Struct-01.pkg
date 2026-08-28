@@ -1,0 +1,388 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-classic_event_id
+Struct CLASSIC_EVENT_ID
+	Guid EventGuid
+	UChar Type
+	UChar[7] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-enable_trace_parameters
+Struct ENABLE_TRACE_PARAMETERS
+	UInteger Version
+	UInteger EnableProperty
+	UInteger ControlFlags
+	Guid SourceId
+	Integer iMissingAlignment1
+	Pointer EnableFilterDesc								// EVENT_FILTER_DESCRIPTOR*
+	UInteger FilterDescCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-etw_buffer_context
+Struct ETW_BUFFER_CONTEXT
+	UChar[2] UnionName1
+	UShort LoggerId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-etw_buffer_header
+Struct ETW_BUFFER_HEADER
+	UInteger[4] Reserved1
+	Bigint TimeStamp
+	UInteger[4] Reserved2
+	ETW_BUFFER_CONTEXT ClientContext
+	UInteger Reserved3
+	UInteger FilledBytes
+	UInteger[5] Reserved4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-etw_open_trace_options
+Struct ETW_OPEN_TRACE_OPTIONS
+	Integer ProcessTraceModes								// ETW_PROCESS_TRACE_MODES
+	Integer iMissingAlignment1
+	Pointer EventCallback									// PEVENT_RECORD_CALLBACK
+	Pointer EventCallbackContext							// Pointer*
+	Pointer BufferCallback									// PETW_BUFFER_CALLBACK
+	Pointer BufferCallbackContext							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/ns-evntprov-event_data_descriptor
+Struct EVENT_DATA_DESCRIPTOR
+	UBigint Ptr
+	UInteger Size
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/ns-evntprov-event_descriptor
+Struct EVENT_DESCRIPTOR
+	UShort Id
+	UChar Version
+	UChar Channel
+	UChar Level
+	UChar Opcode
+	UShort Task
+	UBigint Keyword
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntprov/ns-evntprov-event_filter_descriptor
+Struct EVENT_FILTER_DESCRIPTOR
+	UBigint Ptr
+	UInteger Size
+	UInteger Type
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntcons/ns-evntcons-event_header
+Struct EVENT_HEADER
+	UShort Size
+	UShort HeaderType
+	UShort Flags
+	UShort EventProperty
+	UInteger ThreadId
+	UInteger ProcessId
+	Bigint TimeStamp
+	Guid ProviderId
+	EVENT_DESCRIPTOR EventDescriptor
+	UChar[8] UnionName1
+	Guid ActivityId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntcons/ns-evntcons-event_header_extended_data_item
+Struct EVENT_HEADER_EXTENDED_DATA_ITEM
+	UShort Reserved1
+	UShort ExtType
+	UChar[2] UnionName1
+	UShort DataSize
+	UBigint DataPtr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_instance_header
+Struct EVENT_INSTANCE_HEADER
+	UShort Size
+	UChar[2] UnionName1
+	UChar[4] UnionName2
+	UInteger ThreadId
+	UInteger ProcessId
+	Bigint TimeStamp
+	UBigint RegHandle
+	UInteger InstanceId
+	UInteger ParentInstanceId
+	UChar[8] UnionName3
+	UBigint ParentRegHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_instance_info
+Struct EVENT_INSTANCE_INFO
+	Pointer RegHandle										// HANDLE
+	UInteger InstanceId
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-event_map_entry
+Struct EVENT_MAP_ENTRY
+	UInteger OutputOffset
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-event_map_info
+Struct EVENT_MAP_INFO
+	UInteger NameOffset
+	Integer Flag											// MAP_FLAGS
+	UInteger EntryCount
+	UChar[4] UnionName1
+	EVENT_MAP_ENTRY[1] MapEntryArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-event_property_info
+Struct EVENT_PROPERTY_INFO
+	Integer Flags											// PROPERTY_FLAGS
+	UInteger NameOffset
+	UChar[4] UnionName1
+	UChar[2] UnionName2
+	UChar[2] UnionName3
+	UChar[4] UnionName4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntcons/ns-evntcons-event_record
+Struct EVENT_RECORD
+	EVENT_HEADER EventHeader
+	ETW_BUFFER_CONTEXT BufferContext
+	UShort ExtendedDataCount
+	UShort UserDataLength
+	Pointer ExtendedData									// EVENT_HEADER_EXTENDED_DATA_ITEM*
+	Pointer UserData										// Pointer*
+	Pointer UserContext										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_trace
+Struct EVENT_TRACE
+	EVENT_TRACE_HEADER Header
+	UInteger InstanceId
+	UInteger ParentInstanceId
+	Guid ParentGuid
+	Pointer MofData											// Pointer*
+	UInteger MofLength
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_trace_header
+Struct EVENT_TRACE_HEADER
+	UShort Size
+	UChar[2] UnionName1
+	UChar[4] UnionName2
+	UInteger ThreadId
+	UInteger ProcessId
+	Bigint TimeStamp
+	UChar[16] UnionName3
+	UChar[8] UnionName4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_trace_logfilea
+Struct EVENT_TRACE_LOGFILEA
+	Pointer LogFileName										// PSTR
+	Pointer LoggerName										// PSTR
+	Bigint CurrentTime
+	UInteger BuffersRead
+	UChar[4] UnionName1
+	EVENT_TRACE CurrentEvent
+	TRACE_LOGFILE_HEADER LogfileHeader
+	Pointer BufferCallback									// PEVENT_TRACE_BUFFER_CALLBACKA
+	UInteger BufferSize
+	UInteger Filled
+	UInteger EventsLost
+	Integer iMissingAlignment1
+	UChar[8] UnionName2
+	UInteger IsKernelTrace
+	Integer iMissingAlignment2
+	Pointer Context											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_trace_logfilew
+Struct EVENT_TRACE_LOGFILEW
+	Pointer LogFileName										// PWSTR
+	Pointer LoggerName										// PWSTR
+	Bigint CurrentTime
+	UInteger BuffersRead
+	UChar[4] UnionName1
+	EVENT_TRACE CurrentEvent
+	TRACE_LOGFILE_HEADER LogfileHeader
+	Pointer BufferCallback									// PEVENT_TRACE_BUFFER_CALLBACKW
+	UInteger BufferSize
+	UInteger Filled
+	UInteger EventsLost
+	Integer iMissingAlignment1
+	UChar[8] UnionName2
+	UInteger IsKernelTrace
+	Integer iMissingAlignment2
+	Pointer Context											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-event_trace_properties
+Struct EVENT_TRACE_PROPERTIES
+	WNODE_HEADER Wnode
+	UInteger BufferSize
+	UInteger MinimumBuffers
+	UInteger MaximumBuffers
+	UInteger MaximumFileSize
+	UInteger LogFileMode
+	UInteger FlushTimer
+	UInteger EnableFlags									// EVENT_TRACE_FLAG
+	UChar[4] UnionName1
+	UInteger NumberOfBuffers
+	UInteger FreeBuffers
+	UInteger EventsLost
+	UInteger BuffersWritten
+	UInteger LogBuffersLost
+	UInteger RealTimeBuffersLost
+	Pointer LoggerThreadId									// HANDLE
+	UInteger LogFileNameOffset
+	UInteger LoggerNameOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-payload_filter_predicate
+Struct PAYLOAD_FILTER_PREDICATE
+	Pointer FieldName										// PWSTR
+	UShort CompareOp
+	UChar[6] cMissingAlignment1
+	Pointer Value											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-property_data_descriptor
+Struct PROPERTY_DATA_DESCRIPTOR
+	UBigint PropertyName
+	UInteger ArrayIndex
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-provider_enumeration_info
+Struct PROVIDER_ENUMERATION_INFO
+	UInteger NumberOfProviders
+	UInteger Reserved
+	TRACE_PROVIDER_INFO[1] TraceProviderInfoArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-provider_event_info
+Struct PROVIDER_EVENT_INFO
+	UInteger NumberOfEvents
+	UInteger Reserved
+	EVENT_DESCRIPTOR[1] EventDescriptorsArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-provider_field_info
+Struct PROVIDER_FIELD_INFO
+	UInteger NameOffset
+	UInteger DescriptionOffset
+	UBigint Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-provider_field_infoarray
+Struct PROVIDER_FIELD_INFOARRAY
+	UInteger NumberOfElements
+	Integer FieldType										// EVENT_FIELD_TYPE
+	PROVIDER_FIELD_INFO[1] FieldInfoArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-provider_filter_info
+Struct PROVIDER_FILTER_INFO
+	UChar Id
+	UChar Version
+	Short iMissingAlignment1
+	UInteger MessageOffset
+	UInteger Reserved
+	UInteger PropertyCount
+	EVENT_PROPERTY_INFO[1] EventPropertyInfoArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-tdh_context
+Struct TDH_CONTEXT
+	UBigint ParameterValue
+	Integer ParameterType									// TDH_CONTEXT_TYPE
+	UInteger ParameterSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-trace_event_info
+Struct TRACE_EVENT_INFO
+	Guid ProviderGuid
+	Guid EventGuid
+	EVENT_DESCRIPTOR EventDescriptor
+	Integer DecodingSource									// DECODING_SOURCE
+	UInteger ProviderNameOffset
+	UInteger LevelNameOffset
+	UInteger ChannelNameOffset
+	UInteger KeywordsNameOffset
+	UInteger TaskNameOffset
+	UInteger OpcodeNameOffset
+	UInteger EventMessageOffset
+	UInteger ProviderMessageOffset
+	UInteger BinaryXMLOffset
+	UInteger BinaryXMLSize
+	UChar[4] UnionName1
+	UChar[4] UnionName2
+	UInteger PropertyCount
+	UInteger TopLevelPropertyCount
+	UChar[4] UnionName3
+	EVENT_PROPERTY_INFO[1] EventPropertyInfoArray
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_guid_properties
+Struct TRACE_GUID_PROPERTIES
+	Guid Guid
+	UInteger GuidType
+	UInteger LoggerId
+	UInteger EnableLevel
+	UInteger EnableFlags
+	UChar IsEnable											// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_guid_registration
+Struct TRACE_GUID_REGISTRATION
+	Pointer Guid											// Guid*
+	Pointer RegHandle										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_logfile_header
+Struct TRACE_LOGFILE_HEADER
+	UInteger BufferSize
+	UChar[4] UnionName1
+	UInteger ProviderVersion
+	UInteger NumberOfProcessors
+	Bigint EndTime
+	UInteger TimerResolution
+	UInteger MaximumFileSize
+	UInteger LogFileMode
+	UInteger BuffersWritten
+	UChar[16] UnionName2
+	Pointer LoggerName										// PWSTR
+	Pointer LogFileName										// PWSTR
+	TIME_ZONE_INFORMATION TimeZone
+	Integer iMissingAlignment1
+	Bigint BootTime
+	Bigint PerfFreq
+	Bigint StartTime
+	UInteger ReservedFlags
+	UInteger BuffersLost
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-trace_provider_info
+Struct TRACE_PROVIDER_INFO
+	Guid ProviderGuid
+	UInteger SchemaSource
+	UInteger ProviderNameOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/ETW/wnode-header
+Struct WNODE_HEADER
+	UInteger BufferSize
+	UInteger ProviderId
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+	Guid Guid
+	UInteger ClientContext
+	UInteger Flags
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

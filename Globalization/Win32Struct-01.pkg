@@ -1,0 +1,504 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/Intl/caldatetime
+Struct CALDATETIME
+	UInteger CalId
+	UInteger Era
+	UInteger Year
+	UInteger Month
+	UInteger Day
+	UInteger DayOfWeek
+	UInteger Hour
+	UInteger Minute
+	UInteger Second
+	UInteger Tick
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-charsetinfo
+Struct CHARSETINFO
+	UInteger ciCharset
+	UInteger ciACP
+	FONTSIGNATURE fs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-cpinfo
+Struct CPINFO
+	UInteger MaxCharSize
+	UChar[2] DefaultChar
+	UChar[12] LeadByte
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-cpinfoexa
+Struct CPINFOEXA
+	UInteger MaxCharSize
+	UChar[2] DefaultChar
+	UChar[12] LeadByte
+	UShort UnicodeDefaultChar
+	UInteger CodePage
+	Char[260] CodePageName									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-cpinfoexw
+Struct CPINFOEXW
+	UInteger MaxCharSize
+	UChar[2] DefaultChar
+	UChar[12] LeadByte
+	UShort UnicodeDefaultChar
+	UInteger CodePage
+	UShort[260] CodePageName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-currencyfmta
+Struct CURRENCYFMTA
+	UInteger NumDigits
+	UInteger LeadingZero
+	UInteger Grouping
+	Integer iMissingAlignment1
+	Pointer lpDecimalSep									// PSTR
+	Pointer lpThousandSep									// PSTR
+	UInteger NegativeOrder
+	UInteger PositiveOrder
+	Pointer lpCurrencySymbol								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-currencyfmtw
+Struct CURRENCYFMTW
+	UInteger NumDigits
+	UInteger LeadingZero
+	UInteger Grouping
+	Integer iMissingAlignment1
+	Pointer lpDecimalSep									// PWSTR
+	Pointer lpThousandSep									// PWSTR
+	UInteger NegativeOrder
+	UInteger PositiveOrder
+	Pointer lpCurrencySymbol								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-filemuiinfo
+Struct FILEMUIINFO
+	UInteger dwSize
+	UInteger dwVersion
+	UInteger dwFileType
+	UChar[16] pChecksum
+	UChar[16] pServiceChecksum
+	UInteger dwLanguageNameOffset
+	UInteger dwTypeIDMainSize
+	UInteger dwTypeIDMainOffset
+	UInteger dwTypeNameMainOffset
+	UInteger dwTypeIDMUISize
+	UInteger dwTypeIDMUIOffset
+	UInteger dwTypeNameMUIOffset
+	UChar[8] abBuffer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-fontsignature
+Struct FONTSIGNATURE
+	UInteger[4] fsUsb
+	UInteger[2] fsCsb
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-goffset
+Struct GOFFSET
+	Integer du
+	Integer dv
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/elscore/ns-elscore-mapping_data_range
+Struct MAPPING_DATA_RANGE
+	UInteger dwStartIndex
+	UInteger dwEndIndex
+	Pointer pszDescription									// PWSTR
+	UInteger dwDescriptionLength
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+	UInteger dwDataSize
+	Integer iMissingAlignment2
+	Pointer pszContentType									// PWSTR
+	Pointer prgActionIds									// PWSTR*
+	UInteger dwActionsCount
+	Integer iMissingAlignment3
+	Pointer prgActionDisplayNames							// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/elscore/ns-elscore-mapping_enum_options
+Struct MAPPING_ENUM_OPTIONS
+	ULongPtr Size
+	Pointer pszCategory										// PWSTR
+	Pointer pszInputLanguage								// PWSTR
+	Pointer pszOutputLanguage								// PWSTR
+	Pointer pszInputScript									// PWSTR
+	Pointer pszOutputScript									// PWSTR
+	Pointer pszInputContentType								// PWSTR
+	Pointer pszOutputContentType							// PWSTR
+	Pointer pGuid											// Guid*
+	UInteger _bitfield
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/elscore/ns-elscore-mapping_options
+Struct MAPPING_OPTIONS
+	ULongPtr Size
+	Pointer pszInputLanguage								// PWSTR
+	Pointer pszOutputLanguage								// PWSTR
+	Pointer pszInputScript									// PWSTR
+	Pointer pszOutputScript									// PWSTR
+	Pointer pszInputContentType								// PWSTR
+	Pointer pszOutputContentType							// PWSTR
+	Pointer pszUILanguage									// PWSTR
+	Pointer pfnRecognizeCallback							// PFN_MAPPINGCALLBACKPROC
+	Pointer pRecognizeCallerData							// Pointer*
+	UInteger dwRecognizeCallerDataSize
+	Integer iMissingAlignment1
+	Pointer pfnActionCallback								// PFN_MAPPINGCALLBACKPROC
+	Pointer pActionCallerData								// Pointer*
+	UInteger dwActionCallerDataSize
+	UInteger dwServiceFlag
+	UInteger _bitfield
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/elscore/ns-elscore-mapping_property_bag
+Struct MAPPING_PROPERTY_BAG
+	ULongPtr Size
+	Pointer prgResultRanges									// MAPPING_DATA_RANGE*
+	UInteger dwRangesCount
+	Integer iMissingAlignment1
+	Pointer pServiceData									// Pointer*
+	UInteger dwServiceDataSize
+	Integer iMissingAlignment2
+	Pointer pCallerData										// Pointer*
+	UInteger dwCallerDataSize
+	Integer iMissingAlignment3
+	Pointer pContext										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/elscore/ns-elscore-mapping_service_info
+Struct MAPPING_SERVICE_INFO
+	ULongPtr Size
+	Pointer pszCopyright									// PWSTR
+	UShort wMajorVersion
+	UShort wMinorVersion
+	UShort wBuildVersion
+	UShort wStepVersion
+	UInteger dwInputContentTypesCount
+	Integer iMissingAlignment1
+	Pointer prgInputContentTypes							// PWSTR*
+	UInteger dwOutputContentTypesCount
+	Integer iMissingAlignment2
+	Pointer prgOutputContentTypes							// PWSTR*
+	UInteger dwInputLanguagesCount
+	Integer iMissingAlignment3
+	Pointer prgInputLanguages								// PWSTR*
+	UInteger dwOutputLanguagesCount
+	Integer iMissingAlignment4
+	Pointer prgOutputLanguages								// PWSTR*
+	UInteger dwInputScriptsCount
+	Integer iMissingAlignment5
+	Pointer prgInputScripts									// PWSTR*
+	UInteger dwOutputScriptsCount
+	Integer iMissingAlignment6
+	Pointer prgOutputScripts								// PWSTR*
+	Guid guid
+	Pointer pszCategory										// PWSTR
+	Pointer pszDescription									// PWSTR
+	UInteger dwPrivateDataSize
+	Integer iMissingAlignment7
+	Pointer pPrivateData									// Pointer*
+	Pointer pContext										// Pointer*
+	UInteger _bitfield
+	Integer iMissingAlignment8
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-nlsversioninfo~r1
+Struct NLSVERSIONINFO
+	UInteger dwNLSVersionInfoSize
+	UInteger dwNLSVersion
+	UInteger dwDefinedVersion
+	UInteger dwEffectiveId
+	Guid guidCustomVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-nlsversioninfoex
+Struct NLSVERSIONINFOEX
+	UInteger dwNLSVersionInfoSize
+	UInteger dwNLSVersion
+	UInteger dwDefinedVersion
+	UInteger dwEffectiveId
+	Guid guidCustomVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-numberfmta
+Struct NUMBERFMTA
+	UInteger NumDigits
+	UInteger LeadingZero
+	UInteger Grouping
+	Integer iMissingAlignment1
+	Pointer lpDecimalSep									// PSTR
+	Pointer lpThousandSep									// PSTR
+	UInteger NegativeOrder
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnls/ns-winnls-numberfmtw
+Struct NUMBERFMTW
+	UInteger NumDigits
+	UInteger LeadingZero
+	UInteger Grouping
+	Integer iMissingAlignment1
+	Pointer lpDecimalSep									// PWSTR
+	Pointer lpThousandSep									// PWSTR
+	UInteger NegativeOrder
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-opentype_feature_record
+Struct OPENTYPE_FEATURE_RECORD
+	UInteger tagFeature
+	Integer lParameter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_analysis
+Struct SCRIPT_ANALYSIS
+	UShort _bitfield
+	SCRIPT_STATE s
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_charprop
+Struct SCRIPT_CHARPROP
+	UShort _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_control
+Struct SCRIPT_CONTROL
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_digitsubstitute
+Struct SCRIPT_DIGITSUBSTITUTE
+	UInteger _bitfield1
+	UInteger _bitfield2
+	UInteger dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_fontproperties
+Struct SCRIPT_FONTPROPERTIES
+	Integer cBytes
+	UShort wgBlank
+	UShort wgDefault
+	UShort wgInvalid
+	UShort wgKashida
+	Integer iKashidaWidth
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_glyphprop
+Struct SCRIPT_GLYPHPROP
+	SCRIPT_VISATTR sva
+	UShort reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_item
+Struct SCRIPT_ITEM
+	Integer iCharPos
+	SCRIPT_ANALYSIS a
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_logattr
+Struct SCRIPT_LOGATTR
+	UChar _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_properties
+Struct SCRIPT_PROPERTIES
+	UInteger _bitfield1
+	UInteger _bitfield2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_state
+Struct SCRIPT_STATE
+	UShort _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_tabdef
+Struct SCRIPT_TABDEF
+	Integer cTabStops
+	Integer iScale
+	Pointer pTabStops										// Integer*
+	Integer iTabOrigin
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-script_visattr
+Struct SCRIPT_VISATTR
+	UShort _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usp10/ns-usp10-textrange_properties
+Struct TEXTRANGE_PROPERTIES
+	Pointer potfRecords										// OPENTYPE_FEATURE_RECORD*
+	Integer cotfRecords
+	Integer iMissingAlignment1
+End_Struct
+
+Struct UCPTrie
+	Pointer index											// UShort*
+	UCPTrieData data
+	Integer indexLength
+	Integer dataLength
+	Integer highStart
+	UShort shifted12HighStart
+	Char type
+	Char valueWidth
+	UInteger reserved32
+	UShort reserved16
+	UShort index3NullOffset
+	Integer dataNullOffset
+	UInteger nullValue
+End_Struct
+
+Struct UCPTrieData
+	Pointer ptr0											// Pointer*
+	Pointer ptr16											// UShort*
+	Pointer ptr32											// UInteger*
+	Pointer ptr8											// UChar*
+End_Struct
+
+Struct UCharIterator
+	Pointer context											// Pointer*
+	Integer length
+	Integer start
+	Integer index
+	Integer limit
+	Integer reservedField
+	Integer iMissingAlignment1
+	Pointer getIndex										// UCharIteratorGetIndex
+	Pointer move											// UCharIteratorMove
+	Pointer hasNext											// UCharIteratorHasNext
+	Pointer hasPrevious										// UCharIteratorHasPrevious
+	Pointer current											// UCharIteratorCurrent
+	Pointer next											// UCharIteratorNext
+	Pointer previous										// UCharIteratorPrevious
+	Pointer reservedFn										// UCharIteratorReserved
+	Pointer getState										// UCharIteratorGetState
+	Pointer setState										// UCharIteratorSetState
+End_Struct
+
+Struct UConverterFromUnicodeArgs
+	UShort size
+	Char flush
+	UChar[5] cMissingAlignment1
+	Pointer converter										// UConverter*
+	Pointer source											// UShort*
+	Pointer sourceLimit										// UShort*
+	Pointer target											// PSTR
+	Pointer targetLimit										// PSTR
+	Pointer offsets											// Integer*
+End_Struct
+
+Struct UConverterToUnicodeArgs
+	UShort size
+	Char flush
+	UChar[5] cMissingAlignment1
+	Pointer converter										// UConverter*
+	Pointer source											// PSTR
+	Pointer sourceLimit										// PSTR
+	Pointer target											// UShort*
+	Pointer targetLimit										// UShort*
+	Pointer offsets											// Integer*
+End_Struct
+
+Struct UFieldPosition
+	Integer field
+	Integer beginIndex
+	Integer endIndex
+End_Struct
+
+Struct UIDNAInfo
+	Short size
+	Char isTransitionalDifferent
+	Char reservedB3
+	UInteger errors
+	Integer reservedI2
+	Integer reservedI3
+End_Struct
+
+Struct UParseError
+	Integer line
+	Integer offset
+	UShort[16] preContext
+	UShort[16] postContext
+End_Struct
+
+Struct UReplaceableCallbacks
+	LongPtr length
+	LongPtr charAt
+	LongPtr char32At
+	LongPtr replace
+	LongPtr extract
+	LongPtr copy
+End_Struct
+
+Struct USerializedSet
+	Pointer array											// UShort*
+	Integer bmpLength
+	Integer length
+	UShort[8] staticArray
+End_Struct
+
+Struct UText
+	UInteger magic
+	Integer flags
+	Integer providerProperties
+	Integer sizeOfStruct
+	Bigint chunkNativeLimit
+	Integer extraSize
+	Integer nativeIndexingLimit
+	Bigint chunkNativeStart
+	Integer chunkOffset
+	Integer chunkLength
+	Pointer chunkContents									// UShort*
+	Pointer pFuncs											// UTextFuncs*
+	Pointer pExtra											// Pointer*
+	Pointer context											// Pointer*
+	Pointer p												// Pointer*
+	Pointer q												// Pointer*
+	Pointer r												// Pointer*
+	Pointer privP											// Pointer*
+	Bigint a
+	Integer b
+	Integer c
+	Bigint privA
+	Integer privB
+	Integer privC
+End_Struct
+
+Struct UTextFuncs
+	Integer tableSize
+	Integer reserved1
+	Integer reserved2
+	Integer reserved3
+	Pointer clone											// UTextClone
+	Pointer nativeLength									// UTextNativeLength
+	Pointer access											// UTextAccess
+	Pointer extract											// UTextExtract
+	Pointer replace											// UTextReplace
+	Pointer copy											// UTextCopy
+	Pointer mapOffsetToNative								// UTextMapOffsetToNative
+	Pointer mapNativeIndexToUTF16							// UTextMapNativeIndexToUTF16
+	Pointer close											// UTextClose
+	Pointer spare1											// UTextClose
+	Pointer spare2											// UTextClose
+	Pointer spare3											// UTextClose
+End_Struct
+
+Struct UTransPosition
+	Integer contextStart
+	Integer contextLimit
+	Integer start
+	Integer limit
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

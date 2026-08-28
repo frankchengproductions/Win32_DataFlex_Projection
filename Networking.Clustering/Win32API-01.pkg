@@ -1,0 +1,1431 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addclustergroupdependency
+External_Function AddClusterGroupDependency "AddClusterGroupDependency" CLUSAPI.dll ;
+	LongPtr hDependentGroup ;	// HGROUP
+	LongPtr hProviderGroup ;	// HGROUP
+	Returns UInteger
+
+External_Function AddClusterGroupDependencyEx "AddClusterGroupDependencyEx" CLUSAPI.dll ;
+	LongPtr hDependentGroup ;	// HGROUP
+	LongPtr hProviderGroup ;	// HGROUP
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addclustergroupsetdependency
+External_Function AddClusterGroupSetDependency "AddClusterGroupSetDependency" CLUSAPI.dll ;
+	LongPtr hDependentGroupSet ;	// HGROUPSET
+	LongPtr hProviderGroupSet ;	// HGROUPSET
+	Returns UInteger
+
+External_Function AddClusterGroupSetDependencyEx "AddClusterGroupSetDependencyEx" CLUSAPI.dll ;
+	LongPtr hDependentGroupSet ;	// HGROUPSET
+	LongPtr hProviderGroupSet ;	// HGROUPSET
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addclustergrouptogroupsetdependency
+External_Function AddClusterGroupToGroupSetDependency "AddClusterGroupToGroupSetDependency" CLUSAPI.dll ;
+	LongPtr hDependentGroup ;	// HGROUP
+	LongPtr hProviderGroupSet ;	// HGROUPSET
+	Returns UInteger
+
+External_Function AddClusterGroupToGroupSetDependencyEx "AddClusterGroupToGroupSetDependencyEx" CLUSAPI.dll ;
+	LongPtr hDependentGroup ;	// HGROUP
+	LongPtr hProviderGroupSet ;	// HGROUPSET
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addclusternode
+External_Function AddClusterNode "AddClusterNode" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Returns LongPtr	// HNODE
+
+External_Function AddClusterNodeEx "AddClusterNodeEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Returns LongPtr	// HNODE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addclusterresourcedependency
+External_Function AddClusterResourceDependency "AddClusterResourceDependency" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hDependsOn ;	// HRESOURCE
+	Returns UInteger
+
+External_Function AddClusterResourceDependencyEx "AddClusterResourceDependencyEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hDependsOn ;	// HRESOURCE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addclusterresourcenode
+External_Function AddClusterResourceNode "AddClusterResourceNode" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hNode ;	// HNODE
+	Returns UInteger
+
+External_Function AddClusterResourceNodeEx "AddClusterResourceNodeEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hNode ;	// HNODE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function AddClusterStorageNode "AddClusterStorageNode" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	WString lpszClusterStorageNodeDescription ;	// PWSTR
+	WString lpszClusterStorageNodeLocation ;	// PWSTR
+	Returns UInteger
+
+External_Function AddCrossClusterGroupSetDependency "AddCrossClusterGroupSetDependency" CLUSAPI.dll ;
+	LongPtr hDependentGroupSet ;	// HGROUPSET
+	WString lpRemoteClusterName ;	// PWSTR
+	WString lpRemoteGroupSetName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-addresourcetoclustersharedvolumes
+External_Function AddResourceToClusterSharedVolumes "AddResourceToClusterSharedVolumes" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-backupclusterdatabase
+External_Function BackupClusterDatabase "BackupClusterDatabase" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszPathName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-canresourcebedependent
+External_Function CanResourceBeDependent "CanResourceBeDependent" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hResourceDependent ;	// HRESOURCE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-cancelclustergroupoperation
+External_Function CancelClusterGroupOperation "CancelClusterGroupOperation" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger dwCancelFlags_RESERVED ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-changeclusterresourcegroup
+External_Function ChangeClusterResourceGroup "ChangeClusterResourceGroup" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+External_Function ChangeClusterResourceGroupEx "ChangeClusterResourceGroupEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hGroup ;	// HGROUP
+	UBigint Flags ;
+	Returns UInteger
+
+External_Function ChangeClusterResourceGroupEx2 "ChangeClusterResourceGroupEx2" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hGroup ;	// HGROUP
+	UBigint Flags ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closecluster
+External_Function CloseCluster "CloseCluster" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclustergroup
+External_Function CloseClusterGroup "CloseClusterGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclustergroupset
+External_Function CloseClusterGroupSet "CloseClusterGroupSet" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclusternetinterface
+External_Function CloseClusterNetInterface "CloseClusterNetInterface" CLUSAPI.dll ;
+	LongPtr hNetInterface ;	// HNETINTERFACE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclusternetwork
+External_Function CloseClusterNetwork "CloseClusterNetwork" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclusternode
+External_Function CloseClusterNode "CloseClusterNode" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclusternotifyport
+External_Function CloseClusterNotifyPort "CloseClusterNotifyPort" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-closeclusterresource
+External_Function CloseClusterResource "CloseClusterResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns Integer	// BOOL
+
+External_Function ClusapiSetReasonHandler "ClusapiSetReasonHandler" CLUSAPI.dll ;
+	Pointer lpHandler ;	// CLUSAPI_REASON_HANDLER*
+	Returns Pointer	// CLUSAPI_REASON_HANDLER*
+
+External_Function ClusterAddGroupToAffinityRule "ClusterAddGroupToAffinityRule" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString ruleName ;	// PWSTR
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusteraddgrouptogroupset
+External_Function ClusterAddGroupToGroupSet "ClusterAddGroupToGroupSet" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+External_Function ClusterAddGroupToGroupSetWithDomains "ClusterAddGroupToGroupSetWithDomains" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hGroup ;	// HGROUP
+	UInteger faultDomain ;
+	UInteger updateDomain ;
+	Returns UInteger
+
+External_Function ClusterAddGroupToGroupSetWithDomainsEx "ClusterAddGroupToGroupSetWithDomainsEx" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hGroup ;	// HGROUP
+	UInteger faultDomain ;
+	UInteger updateDomain ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function ClusterAffinityRuleControl "ClusterAffinityRuleControl" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString affinityRuleName ;	// PWSTR
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustercloseenum
+External_Function ClusterCloseEnum "ClusterCloseEnum" CLUSAPI.dll ;
+	LongPtr hEnum ;	// HCLUSENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustercloseenumex
+External_Function ClusterCloseEnumEx "ClusterCloseEnumEx" CLUSAPI.dll ;
+	LongPtr hClusterEnum ;	// HCLUSENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustercontrol
+External_Function ClusterControl "ClusterControl" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterControlEx "ClusterControlEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function ClusterCreateAffinityRule "ClusterCreateAffinityRule" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString ruleName ;	// PWSTR
+	Integer ruleType ;	// CLUS_AFFINITY_RULE_TYPE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterenum
+External_Function ClusterEnum "ClusterEnum" CLUSAPI.dll ;
+	LongPtr hEnum ;	// HCLUSENUM
+	UInteger dwIndex ;
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterenumex
+External_Function ClusterEnumEx "ClusterEnumEx" CLUSAPI.dll ;
+	LongPtr hClusterEnum ;	// HCLUSENUMEX
+	UInteger dwIndex ;
+	Pointer pItem ;	// CLUSTER_ENUM_ITEM*
+	Pointer cbItem ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergetenumcount
+External_Function ClusterGetEnumCount "ClusterGetEnumCount" CLUSAPI.dll ;
+	LongPtr hEnum ;	// HCLUSENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergetenumcountex
+External_Function ClusterGetEnumCountEx "ClusterGetEnumCountEx" CLUSAPI.dll ;
+	LongPtr hClusterEnum ;	// HCLUSENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupcloseenum
+External_Function ClusterGroupCloseEnum "ClusterGroupCloseEnum" CLUSAPI.dll ;
+	LongPtr hGroupEnum ;	// HGROUPENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupcloseenumex
+External_Function ClusterGroupCloseEnumEx "ClusterGroupCloseEnumEx" CLUSAPI.dll ;
+	LongPtr hGroupEnumEx ;	// HGROUPENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupcontrol
+External_Function ClusterGroupControl "ClusterGroupControl" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterGroupControlEx "ClusterGroupControlEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupenum
+External_Function ClusterGroupEnum "ClusterGroupEnum" CLUSAPI.dll ;
+	LongPtr hGroupEnum ;	// HGROUPENUM
+	UInteger dwIndex ;
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpszResourceName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupenumex
+External_Function ClusterGroupEnumEx "ClusterGroupEnumEx" CLUSAPI.dll ;
+	LongPtr hGroupEnumEx ;	// HGROUPENUMEX
+	UInteger dwIndex ;
+	Pointer pItem ;	// CLUSTER_GROUP_ENUM_ITEM*
+	Pointer cbItem ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupgetenumcount
+External_Function ClusterGroupGetEnumCount "ClusterGroupGetEnumCount" CLUSAPI.dll ;
+	LongPtr hGroupEnum ;	// HGROUPENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupgetenumcountex
+External_Function ClusterGroupGetEnumCountEx "ClusterGroupGetEnumCountEx" CLUSAPI.dll ;
+	LongPtr hGroupEnumEx ;	// HGROUPENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupopenenum
+External_Function ClusterGroupOpenEnum "ClusterGroupOpenEnum" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger dwType ;
+	Returns LongPtr	// HGROUPENUM
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupopenenumex
+External_Function ClusterGroupOpenEnumEx "ClusterGroupOpenEnumEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszProperties ;	// PWSTR
+	UInteger cbProperties ;
+	WString lpszRoProperties ;	// PWSTR
+	UInteger cbRoProperties ;
+	UInteger dwFlags ;
+	Returns LongPtr	// HGROUPENUMEX
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupsetcloseenum
+External_Function ClusterGroupSetCloseEnum "ClusterGroupSetCloseEnum" CLUSAPI.dll ;
+	LongPtr hGroupSetEnum ;	// HGROUPSETENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupsetcontrol
+External_Function ClusterGroupSetControl "ClusterGroupSetControl" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterGroupSetControlEx "ClusterGroupSetControlEx" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupsetenum
+External_Function ClusterGroupSetEnum "ClusterGroupSetEnum" CLUSAPI.dll ;
+	LongPtr hGroupSetEnum ;	// HGROUPSETENUM
+	UInteger dwIndex ;
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupsetgetenumcount
+External_Function ClusterGroupSetGetEnumCount "ClusterGroupSetGetEnumCount" CLUSAPI.dll ;
+	LongPtr hGroupSetEnum ;	// HGROUPSETENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustergroupsetopenenum
+External_Function ClusterGroupSetOpenEnum "ClusterGroupSetOpenEnum" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Returns LongPtr	// HGROUPSETENUM
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetinterfacecloseenum
+External_Function ClusterNetInterfaceCloseEnum "ClusterNetInterfaceCloseEnum" CLUSAPI.dll ;
+	LongPtr hNetInterfaceEnum ;	// HNETINTERFACEENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetinterfacecontrol
+External_Function ClusterNetInterfaceControl "ClusterNetInterfaceControl" CLUSAPI.dll ;
+	LongPtr hNetInterface ;	// HNETINTERFACE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterNetInterfaceControlEx "ClusterNetInterfaceControlEx" CLUSAPI.dll ;
+	LongPtr hNetInterface ;	// HNETINTERFACE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetinterfaceenum
+External_Function ClusterNetInterfaceEnum "ClusterNetInterfaceEnum" CLUSAPI.dll ;
+	LongPtr hNetInterfaceEnum ;	// HNETINTERFACEENUM
+	UInteger dwIndex ;
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetinterfaceopenenum
+External_Function ClusterNetInterfaceOpenEnum "ClusterNetInterfaceOpenEnum" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	WString lpszNetworkName ;	// PWSTR
+	Returns LongPtr	// HNETINTERFACEENUM
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetworkcloseenum
+External_Function ClusterNetworkCloseEnum "ClusterNetworkCloseEnum" CLUSAPI.dll ;
+	LongPtr hNetworkEnum ;	// HNETWORKENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetworkcontrol
+External_Function ClusterNetworkControl "ClusterNetworkControl" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterNetworkControlEx "ClusterNetworkControlEx" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetworkenum
+External_Function ClusterNetworkEnum "ClusterNetworkEnum" CLUSAPI.dll ;
+	LongPtr hNetworkEnum ;	// HNETWORKENUM
+	UInteger dwIndex ;
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetworkgetenumcount
+External_Function ClusterNetworkGetEnumCount "ClusterNetworkGetEnumCount" CLUSAPI.dll ;
+	LongPtr hNetworkEnum ;	// HNETWORKENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternetworkopenenum
+External_Function ClusterNetworkOpenEnum "ClusterNetworkOpenEnum" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	UInteger dwType ;
+	Returns LongPtr	// HNETWORKENUM
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodecloseenum
+External_Function ClusterNodeCloseEnum "ClusterNodeCloseEnum" CLUSAPI.dll ;
+	LongPtr hNodeEnum ;	// HNODEENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodecloseenumex
+External_Function ClusterNodeCloseEnumEx "ClusterNodeCloseEnumEx" CLUSAPI.dll ;
+	LongPtr hNodeEnum ;	// HNODEENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodecontrol
+External_Function ClusterNodeControl "ClusterNodeControl" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterNodeControlEx "ClusterNodeControlEx" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodeenum
+External_Function ClusterNodeEnum "ClusterNodeEnum" CLUSAPI.dll ;
+	LongPtr hNodeEnum ;	// HNODEENUM
+	UInteger dwIndex ;
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodeenumex
+External_Function ClusterNodeEnumEx "ClusterNodeEnumEx" CLUSAPI.dll ;
+	LongPtr hNodeEnum ;	// HNODEENUMEX
+	UInteger dwIndex ;
+	Pointer pItem ;	// CLUSTER_ENUM_ITEM*
+	Pointer cbItem ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodegetenumcount
+External_Function ClusterNodeGetEnumCount "ClusterNodeGetEnumCount" CLUSAPI.dll ;
+	LongPtr hNodeEnum ;	// HNODEENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodegetenumcountex
+External_Function ClusterNodeGetEnumCountEx "ClusterNodeGetEnumCountEx" CLUSAPI.dll ;
+	LongPtr hNodeEnum ;	// HNODEENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusternodeopenenum
+External_Function ClusterNodeOpenEnum "ClusterNodeOpenEnum" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	UInteger dwType ;
+	Returns LongPtr	// HNODEENUM
+
+External_Function ClusterNodeOpenEnumEx "ClusterNodeOpenEnumEx" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	UInteger dwType ;
+	Pointer pOptions ;	// Pointer*
+	Returns LongPtr	// HNODEENUMEX
+
+External_Function ClusterNodeReplacement "ClusterNodeReplacement" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeNameCurrent ;	// PWSTR
+	WString lpszNodeNameNew ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusteropenenum
+External_Function ClusterOpenEnum "ClusterOpenEnum" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger dwType ;
+	Returns LongPtr	// HCLUSENUM
+
+External_Function ClusterOpenEnumEx "ClusterOpenEnumEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger dwType ;
+	Pointer pOptions ;	// Pointer*
+	Returns LongPtr	// HCLUSENUMEX
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregbatchaddcommand
+External_Function ClusterRegBatchAddCommand "ClusterRegBatchAddCommand" CLUSAPI.dll ;
+	LongPtr hRegBatch ;	// HREGBATCH
+	Integer dwCommand ;	// CLUSTER_REG_COMMAND
+	WString wzName ;	// PWSTR
+	UInteger dwOptions ;
+	Pointer lpData ;	// Pointer*
+	UInteger cbData ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregbatchclosenotification
+External_Function ClusterRegBatchCloseNotification "ClusterRegBatchCloseNotification" CLUSAPI.dll ;
+	LongPtr hBatchNotification ;	// HREGBATCHNOTIFICATION
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregbatchreadcommand
+External_Function ClusterRegBatchReadCommand "ClusterRegBatchReadCommand" CLUSAPI.dll ;
+	LongPtr hBatchNotification ;	// HREGBATCHNOTIFICATION
+	Pointer pBatchCommand ;	// CLUSTER_BATCH_COMMAND*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosebatch
+External_Function ClusterRegCloseBatch "ClusterRegCloseBatch" CLUSAPI.dll ;
+	LongPtr hRegBatch ;	// HREGBATCH
+	Integer bCommit ;	// BOOL
+	Pointer failedCommandNumber ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosebatchex
+External_Function ClusterRegCloseBatchEx "ClusterRegCloseBatchEx" CLUSAPI.dll ;
+	LongPtr hRegBatch ;	// HREGBATCH
+	UInteger flags ;
+	Pointer failedCommandNumber ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosebatchnotifyport
+External_Function ClusterRegCloseBatchNotifyPort "ClusterRegCloseBatchNotifyPort" CLUSAPI.dll ;
+	LongPtr hBatchNotifyPort ;	// HREGBATCHPORT
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosekey
+External_Function ClusterRegCloseKey "ClusterRegCloseKey" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosereadbatch
+External_Function ClusterRegCloseReadBatch "ClusterRegCloseReadBatch" CLUSAPI.dll ;
+	LongPtr hRegReadBatch ;	// HREGREADBATCH
+	Pointer phRegReadBatchReply ;	// HREGREADBATCHREPLY*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosereadbatchex
+External_Function ClusterRegCloseReadBatchEx "ClusterRegCloseReadBatchEx" CLUSAPI.dll ;
+	LongPtr hRegReadBatch ;	// HREGREADBATCH
+	UInteger flags ;
+	Pointer phRegReadBatchReply ;	// HREGREADBATCHREPLY*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregclosereadbatchreply
+External_Function ClusterRegCloseReadBatchReply "ClusterRegCloseReadBatchReply" CLUSAPI.dll ;
+	LongPtr hRegReadBatchReply ;	// HREGREADBATCHREPLY
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregcreatebatch
+External_Function ClusterRegCreateBatch "ClusterRegCreateBatch" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	Pointer pHREGBATCH ;	// HREGBATCH*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregcreatebatchnotifyport
+External_Function ClusterRegCreateBatchNotifyPort "ClusterRegCreateBatchNotifyPort" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	Pointer phBatchNotifyPort ;	// HREGBATCHPORT*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregcreatekey
+External_Function ClusterRegCreateKey "ClusterRegCreateKey" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszSubKey ;	// PWSTR
+	UInteger dwOptions ;
+	UInteger samDesired ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer phkResult ;	// HKEY*
+	Pointer lpdwDisposition ;	// UInteger*
+	Returns Integer
+
+External_Function ClusterRegCreateKeyEx "ClusterRegCreateKeyEx" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpSubKey ;	// PWSTR
+	UInteger dwOptions ;
+	UInteger samDesired ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer phkResult ;	// HKEY*
+	Pointer lpdwDisposition ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregcreatereadbatch
+External_Function ClusterRegCreateReadBatch "ClusterRegCreateReadBatch" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	Pointer phRegReadBatch ;	// HREGREADBATCH*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregdeletekey
+External_Function ClusterRegDeleteKey "ClusterRegDeleteKey" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszSubKey ;	// PWSTR
+	Returns Integer
+
+External_Function ClusterRegDeleteKeyEx "ClusterRegDeleteKeyEx" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpSubKey ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregdeletevalue
+External_Function ClusterRegDeleteValue "ClusterRegDeleteValue" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszValueName ;	// PWSTR
+	Returns UInteger
+
+External_Function ClusterRegDeleteValueEx "ClusterRegDeleteValueEx" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszValueName ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregenumkey
+External_Function ClusterRegEnumKey "ClusterRegEnumKey" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	UInteger dwIndex ;
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Pointer lpftLastWriteTime ;	// FILETIME*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregenumvalue
+External_Function ClusterRegEnumValue "ClusterRegEnumValue" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	UInteger dwIndex ;
+	Pointer lpszValueName ;	// PWSTR
+	Pointer lpcchValueName ;	// UInteger*
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpData ;	// UChar*
+	Pointer lpcbData ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterreggetbatchnotification
+External_Function ClusterRegGetBatchNotification "ClusterRegGetBatchNotification" CLUSAPI.dll ;
+	LongPtr hBatchNotify ;	// HREGBATCHPORT
+	Pointer phBatchNotification ;	// HREGBATCHNOTIFICATION*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterreggetkeysecurity
+External_Function ClusterRegGetKeySecurity "ClusterRegGetKeySecurity" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	UInteger RequestedInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer lpcbSecurityDescriptor ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregopenkey
+External_Function ClusterRegOpenKey "ClusterRegOpenKey" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszSubKey ;	// PWSTR
+	UInteger samDesired ;
+	Pointer phkResult ;	// HKEY*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregqueryinfokey
+External_Function ClusterRegQueryInfoKey "ClusterRegQueryInfoKey" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	Pointer lpcSubKeys ;	// UInteger*
+	Pointer lpcchMaxSubKeyLen ;	// UInteger*
+	Pointer lpcValues ;	// UInteger*
+	Pointer lpcchMaxValueNameLen ;	// UInteger*
+	Pointer lpcbMaxValueLen ;	// UInteger*
+	Pointer lpcbSecurityDescriptor ;	// UInteger*
+	Pointer lpftLastWriteTime ;	// FILETIME*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregqueryvalue
+External_Function ClusterRegQueryValue "ClusterRegQueryValue" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszValueName ;	// PWSTR
+	Pointer lpdwValueType ;	// UInteger*
+	Pointer lpData ;	// UChar*
+	Pointer lpcbData ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregreadbatchaddcommand
+External_Function ClusterRegReadBatchAddCommand "ClusterRegReadBatchAddCommand" CLUSAPI.dll ;
+	LongPtr hRegReadBatch ;	// HREGREADBATCH
+	WString wzSubkeyName ;	// PWSTR
+	WString wzValueName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregreadbatchreplynextcommand
+External_Function ClusterRegReadBatchReplyNextCommand "ClusterRegReadBatchReplyNextCommand" CLUSAPI.dll ;
+	LongPtr hRegReadBatchReply ;	// HREGREADBATCHREPLY
+	Pointer pBatchCommand ;	// CLUSTER_READ_BATCH_COMMAND*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregsetkeysecurity
+External_Function ClusterRegSetKeySecurity "ClusterRegSetKeySecurity" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	UInteger SecurityInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer
+
+External_Function ClusterRegSetKeySecurityEx "ClusterRegSetKeySecurityEx" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	WString lpszReason ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregsetvalue
+External_Function ClusterRegSetValue "ClusterRegSetValue" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszValueName ;	// PWSTR
+	UInteger dwType ;
+	Pointer lpData ;	// UChar*
+	UInteger cbData ;
+	Returns UInteger
+
+External_Function ClusterRegSetValueEx "ClusterRegSetValueEx" CLUSAPI.dll ;
+	Pointer hKey ;	// HKEY
+	WString lpszValueName ;	// PWSTR
+	UInteger dwType ;
+	Pointer lpData ;	// UChar*
+	UInteger cbData ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterregsyncdatabase
+External_Function ClusterRegSyncDatabase "ClusterRegSyncDatabase" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger flags ;
+	Returns Integer
+
+External_Function ClusterRemoveAffinityRule "ClusterRemoveAffinityRule" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString ruleName ;	// PWSTR
+	Returns UInteger
+
+External_Function ClusterRemoveGroupFromAffinityRule "ClusterRemoveGroupFromAffinityRule" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString ruleName ;	// PWSTR
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterremovegroupfromgroupset
+External_Function ClusterRemoveGroupFromGroupSet "ClusterRemoveGroupFromGroupSet" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+External_Function ClusterRemoveGroupFromGroupSetEx "ClusterRemoveGroupFromGroupSetEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcecloseenum
+External_Function ClusterResourceCloseEnum "ClusterResourceCloseEnum" CLUSAPI.dll ;
+	LongPtr hResEnum ;	// HRESENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcecloseenumex
+External_Function ClusterResourceCloseEnumEx "ClusterResourceCloseEnumEx" CLUSAPI.dll ;
+	LongPtr hResourceEnumEx ;	// HRESENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcecontrol
+External_Function ClusterResourceControl "ClusterResourceControl" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcecontrolasuser
+External_Function ClusterResourceControlAsUser "ClusterResourceControlAsUser" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterResourceControlAsUserEx "ClusterResourceControlAsUserEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function ClusterResourceControlEx "ClusterResourceControlEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourceenum
+External_Function ClusterResourceEnum "ClusterResourceEnum" CLUSAPI.dll ;
+	LongPtr hResEnum ;	// HRESENUM
+	UInteger dwIndex ;
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourceenumex
+External_Function ClusterResourceEnumEx "ClusterResourceEnumEx" CLUSAPI.dll ;
+	LongPtr hResourceEnumEx ;	// HRESENUMEX
+	UInteger dwIndex ;
+	Pointer pItem ;	// CLUSTER_RESOURCE_ENUM_ITEM*
+	Pointer cbItem ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcegetenumcount
+External_Function ClusterResourceGetEnumCount "ClusterResourceGetEnumCount" CLUSAPI.dll ;
+	LongPtr hResEnum ;	// HRESENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcegetenumcountex
+External_Function ClusterResourceGetEnumCountEx "ClusterResourceGetEnumCountEx" CLUSAPI.dll ;
+	LongPtr hResourceEnumEx ;	// HRESENUMEX
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourceopenenum
+External_Function ClusterResourceOpenEnum "ClusterResourceOpenEnum" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger dwType ;
+	Returns LongPtr	// HRESENUM
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourceopenenumex
+External_Function ClusterResourceOpenEnumEx "ClusterResourceOpenEnumEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszProperties ;	// PWSTR
+	UInteger cbProperties ;
+	WString lpszRoProperties ;	// PWSTR
+	UInteger cbRoProperties ;
+	UInteger dwFlags ;
+	Returns LongPtr	// HRESENUMEX
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcetypecloseenum
+External_Function ClusterResourceTypeCloseEnum "ClusterResourceTypeCloseEnum" CLUSAPI.dll ;
+	LongPtr hResTypeEnum ;	// HRESTYPEENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcetypecontrol
+External_Function ClusterResourceTypeControl "ClusterResourceTypeControl" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcetypecontrolasuser
+External_Function ClusterResourceTypeControlAsUser "ClusterResourceTypeControlAsUser" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns UInteger
+
+External_Function ClusterResourceTypeControlAsUserEx "ClusterResourceTypeControlAsUserEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function ClusterResourceTypeControlEx "ClusterResourceTypeControlEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	LongPtr hHostNode ;	// HNODE
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcetypeenum
+External_Function ClusterResourceTypeEnum "ClusterResourceTypeEnum" CLUSAPI.dll ;
+	LongPtr hResTypeEnum ;	// HRESTYPEENUM
+	UInteger dwIndex ;
+	Pointer lpdwType ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcetypegetenumcount
+External_Function ClusterResourceTypeGetEnumCount "ClusterResourceTypeGetEnumCount" CLUSAPI.dll ;
+	LongPtr hResTypeEnum ;	// HRESTYPEENUM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterresourcetypeopenenum
+External_Function ClusterResourceTypeOpenEnum "ClusterResourceTypeOpenEnum" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	UInteger dwType ;
+	Returns LongPtr	// HRESTYPEENUM
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustersetaccountaccess
+External_Function ClusterSetAccountAccess "ClusterSetAccountAccess" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString szAccountSID ;	// PWSTR
+	UInteger dwAccess ;
+	UInteger dwControlType ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clustersharedvolumesetsnapshotstate
+External_Function ClusterSharedVolumeSetSnapshotState "ClusterSharedVolumeSetSnapshotState" CLUSAPI.dll ;
+	Guid guidSnapshotSet ;
+	WString lpszVolumeName ;	// PWSTR
+	Integer state ;	// CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-clusterupgradefunctionallevel
+External_Function ClusterUpgradeFunctionalLevel "ClusterUpgradeFunctionalLevel" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Integer perform ;	// BOOL
+	Pointer pfnProgressCallback ;	// PCLUSTER_UPGRADE_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createcluster
+External_Function CreateCluster "CreateCluster" CLUSAPI.dll ;
+	Pointer pConfig ;	// CREATE_CLUSTER_CONFIG*
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Returns LongPtr	// HCLUSTER
+
+External_Function CreateClusterAvailabilitySet "CreateClusterAvailabilitySet" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpAvailabilitySetName ;	// PWSTR
+	Pointer pAvailabilitySetConfig ;	// CLUSTER_AVAILABILITY_SET_CONFIG*
+	Returns LongPtr	// HGROUPSET
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclustergroup
+External_Function CreateClusterGroup "CreateClusterGroup" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszGroupName ;	// PWSTR
+	Returns LongPtr	// HGROUP
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclustergroupex
+External_Function CreateClusterGroupEx "CreateClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszGroupName ;	// PWSTR
+	Pointer pGroupInfo ;	// CLUSTER_CREATE_GROUP_INFO*
+	Returns LongPtr	// HGROUP
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclustergroupset
+External_Function CreateClusterGroupSet "CreateClusterGroupSet" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString groupSetName ;	// PWSTR
+	Returns LongPtr	// HGROUPSET
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclusternameaccount
+External_Function CreateClusterNameAccount "CreateClusterNameAccount" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer pConfig ;	// CREATE_CLUSTER_NAME_ACCOUNT*
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclusternotifyport
+External_Function CreateClusterNotifyPort "CreateClusterNotifyPort" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger dwFilter ;
+	ULongPtr dwNotifyKey ;
+	Returns LongPtr	// HCHANGE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclusternotifyportv2
+External_Function CreateClusterNotifyPortV2 "CreateClusterNotifyPortV2" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer Filters ;	// NOTIFY_FILTER_AND_TYPE*
+	UInteger dwFilterCount ;
+	ULongPtr dwNotifyKey ;
+	Returns LongPtr	// HCHANGE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclusterresource
+External_Function CreateClusterResource "CreateClusterResource" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszResourceName ;	// PWSTR
+	WString lpszResourceType ;	// PWSTR
+	UInteger dwFlags ;
+	Returns LongPtr	// HRESOURCE
+
+External_Function CreateClusterResourceEx "CreateClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszResourceName ;	// PWSTR
+	WString lpszResourceType ;	// PWSTR
+	UInteger dwFlags ;
+	WString lpszReason ;	// PWSTR
+	Returns LongPtr	// HRESOURCE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-createclusterresourcetype
+External_Function CreateClusterResourceType "CreateClusterResourceType" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	WString lpszDisplayName ;	// PWSTR
+	WString lpszResourceTypeDll ;	// PWSTR
+	UInteger dwLooksAlivePollInterval ;
+	UInteger dwIsAlivePollInterval ;
+	Returns UInteger
+
+External_Function CreateClusterResourceTypeEx "CreateClusterResourceTypeEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	WString lpszDisplayName ;	// PWSTR
+	WString lpszResourceTypeDll ;	// PWSTR
+	UInteger dwLooksAlivePollInterval ;
+	UInteger dwIsAlivePollInterval ;
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-deleteclustergroup
+External_Function DeleteClusterGroup "DeleteClusterGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+External_Function DeleteClusterGroupEx "DeleteClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-deleteclustergroupset
+External_Function DeleteClusterGroupSet "DeleteClusterGroupSet" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	Returns UInteger
+
+External_Function DeleteClusterGroupSetEx "DeleteClusterGroupSetEx" CLUSAPI.dll ;
+	LongPtr hGroupSet ;	// HGROUPSET
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-deleteclusterresource
+External_Function DeleteClusterResource "DeleteClusterResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns UInteger
+
+External_Function DeleteClusterResourceEx "DeleteClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-deleteclusterresourcetype
+External_Function DeleteClusterResourceType "DeleteClusterResourceType" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszResourceTypeName ;	// PWSTR
+	Returns UInteger
+
+External_Function DeleteClusterResourceTypeEx "DeleteClusterResourceTypeEx" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszTypeName ;	// PWSTR
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-destroycluster
+External_Function DestroyCluster "DestroyCluster" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer pfnProgressCallback ;	// PCLUSTER_SETUP_PROGRESS_CALLBACK
+	Pointer pvCallbackArg ;	// Pointer*
+	Integer fdeleteVirtualComputerObjects ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-destroyclustergroup
+External_Function DestroyClusterGroup "DestroyClusterGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Returns UInteger
+
+External_Function DestroyClusterGroupEx "DestroyClusterGroupEx" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+External_Function DetermineCNOResTypeFromCluster "DetermineCNOResTypeFromCluster" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer pCNOResType ;	// CLUSTER_MGMT_POINT_RESTYPE*
+	Returns UInteger
+
+External_Function DetermineCNOResTypeFromNodelist "DetermineCNOResTypeFromNodelist" CLUSAPI.dll ;
+	UInteger cNodes ;
+	Pointer ppszNodeNames ;	// PWSTR*
+	Pointer pCNOResType ;	// CLUSTER_MGMT_POINT_RESTYPE*
+	Returns UInteger
+
+External_Function DetermineClusterCloudTypeFromCluster "DetermineClusterCloudTypeFromCluster" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer pCloudType ;	// CLUSTER_CLOUD_TYPE*
+	Returns UInteger
+
+External_Function DetermineClusterCloudTypeFromNodelist "DetermineClusterCloudTypeFromNodelist" CLUSAPI.dll ;
+	UInteger cNodes ;
+	Pointer ppszNodeNames ;	// PWSTR*
+	Pointer pCloudType ;	// CLUSTER_CLOUD_TYPE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-evictclusternode
+External_Function EvictClusterNode "EvictClusterNode" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-evictclusternodeex
+External_Function EvictClusterNodeEx "EvictClusterNodeEx" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	UInteger dwTimeOut ;
+	Pointer phrCleanupStatus ;	// HRESULT*
+	Returns UInteger
+
+External_Function EvictClusterNodeEx2 "EvictClusterNodeEx2" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	UInteger dwTimeout ;
+	Pointer phrCleanupStatus ;	// HRESULT*
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-failclusterresource
+External_Function FailClusterResource "FailClusterResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns UInteger
+
+External_Function FailClusterResourceEx "FailClusterResourceEx" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	WString lpszReason ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterfromgroup
+External_Function GetClusterFromGroup "GetClusterFromGroup" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterfromnetinterface
+External_Function GetClusterFromNetInterface "GetClusterFromNetInterface" CLUSAPI.dll ;
+	LongPtr hNetInterface ;	// HNETINTERFACE
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterfromnetwork
+External_Function GetClusterFromNetwork "GetClusterFromNetwork" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterfromnode
+External_Function GetClusterFromNode "GetClusterFromNode" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterfromresource
+External_Function GetClusterFromResource "GetClusterFromResource" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Returns LongPtr	// HCLUSTER
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclustergroupkey
+External_Function GetClusterGroupKey "GetClusterGroupKey" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclustergroupstate
+External_Function GetClusterGroupState "GetClusterGroupState" CLUSAPI.dll ;
+	LongPtr hGroup ;	// HGROUP
+	Pointer lpszNodeName ;	// PWSTR
+	Pointer lpcchNodeName ;	// UInteger*
+	Returns Integer	// CLUSTER_GROUP_STATE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterinformation
+External_Function GetClusterInformation "GetClusterInformation" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer lpszClusterName ;	// PWSTR
+	Pointer lpcchClusterName ;	// UInteger*
+	Pointer lpClusterInfo ;	// CLUSTERVERSIONINFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterkey
+External_Function GetClusterKey "GetClusterKey" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternetinterface
+External_Function GetClusterNetInterface "GetClusterNetInterface" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	WString lpszNodeName ;	// PWSTR
+	WString lpszNetworkName ;	// PWSTR
+	Pointer lpszInterfaceName ;	// PWSTR
+	Pointer lpcchInterfaceName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternetinterfacekey
+External_Function GetClusterNetInterfaceKey "GetClusterNetInterfaceKey" CLUSAPI.dll ;
+	LongPtr hNetInterface ;	// HNETINTERFACE
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternetinterfacestate
+External_Function GetClusterNetInterfaceState "GetClusterNetInterfaceState" CLUSAPI.dll ;
+	LongPtr hNetInterface ;	// HNETINTERFACE
+	Returns Integer	// CLUSTER_NETINTERFACE_STATE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternetworkid
+External_Function GetClusterNetworkId "GetClusterNetworkId" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	Pointer lpszNetworkId ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternetworkkey
+External_Function GetClusterNetworkKey "GetClusterNetworkKey" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternetworkstate
+External_Function GetClusterNetworkState "GetClusterNetworkState" CLUSAPI.dll ;
+	LongPtr hNetwork ;	// HNETWORK
+	Returns Integer	// CLUSTER_NETWORK_STATE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternodeid
+External_Function GetClusterNodeId "GetClusterNodeId" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Pointer lpszNodeId ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternodekey
+External_Function GetClusterNodeKey "GetClusterNodeKey" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternodestate
+External_Function GetClusterNodeState "GetClusterNodeState" CLUSAPI.dll ;
+	LongPtr hNode ;	// HNODE
+	Returns Integer	// CLUSTER_NODE_STATE
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternotify
+External_Function GetClusterNotify "GetClusterNotify" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	Pointer lpdwNotifyKey ;	// ULongPtr*
+	Pointer lpdwFilterType ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	UInteger dwMilliseconds ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusternotifyv2
+External_Function GetClusterNotifyV2 "GetClusterNotifyV2" CLUSAPI.dll ;
+	LongPtr hChange ;	// HCHANGE
+	Pointer lpdwNotifyKey ;	// ULongPtr*
+	Pointer pFilterAndType ;	// NOTIFY_FILTER_AND_TYPE*
+	Pointer buffer ;	// UChar*
+	Pointer lpbBufferSize ;	// UInteger*
+	Pointer lpszObjectId ;	// PWSTR
+	Pointer lpcchObjectId ;	// UInteger*
+	Pointer lpszParentId ;	// PWSTR
+	Pointer lpcchParentId ;	// UInteger*
+	Pointer lpszName ;	// PWSTR
+	Pointer lpcchName ;	// UInteger*
+	Pointer lpszType ;	// PWSTR
+	Pointer lpcchType ;	// UInteger*
+	UInteger dwMilliseconds ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterquorumresource
+External_Function GetClusterQuorumResource "GetClusterQuorumResource" CLUSAPI.dll ;
+	LongPtr hCluster ;	// HCLUSTER
+	Pointer lpszResourceName ;	// PWSTR
+	Pointer lpcchResourceName ;	// UInteger*
+	Pointer lpszDeviceName ;	// PWSTR
+	Pointer lpcchDeviceName ;	// UInteger*
+	Pointer lpdwMaxQuorumLogSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterresourcedependencyexpression
+External_Function GetClusterResourceDependencyExpression "GetClusterResourceDependencyExpression" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Pointer lpszDependencyExpression ;	// PWSTR
+	Pointer lpcchDependencyExpression ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterresourcekey
+External_Function GetClusterResourceKey "GetClusterResourceKey" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	UInteger samDesired ;
+	Returns Pointer	// HKEY
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/nf-clusapi-getclusterresourcenetworkname
+External_Function GetClusterResourceNetworkName "GetClusterResourceNetworkName" CLUSAPI.dll ;
+	LongPtr hResource ;	// HRESOURCE
+	Pointer lpBuffer ;	// PWSTR
+	Pointer nSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

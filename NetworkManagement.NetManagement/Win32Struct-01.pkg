@@ -1,0 +1,61 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/ns-lmjoin-dsreg_join_info
+Struct DSREG_JOIN_INFO
+	Integer joinType										// DSREG_JOIN_TYPE
+	Integer iMissingAlignment1
+	Pointer pJoinCertificate								// CERT_CONTEXT*
+	Pointer pszDeviceId										// PWSTR
+	Pointer pszIdpDomain									// PWSTR
+	Pointer pszTenantId										// PWSTR
+	Pointer pszJoinUserEmail								// PWSTR
+	Pointer pszTenantDisplayName							// PWSTR
+	Pointer pszMdmEnrollmentUrl								// PWSTR
+	Pointer pszMdmTermsOfUseUrl								// PWSTR
+	Pointer pszMdmComplianceUrl								// PWSTR
+	Pointer pszUserSettingSyncUrl							// PWSTR
+	Pointer pUserInfo										// DSREG_USER_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/ns-lmjoin-dsreg_user_info
+Struct DSREG_USER_INFO
+	Pointer pszUserEmail									// PWSTR
+	Pointer pszUserKeyId									// PWSTR
+	Pointer pszUserKeyName									// PWSTR
+End_Struct
+
+Struct HLOG
+	UInteger time
+	UInteger last_flags
+	UInteger offset
+	UInteger rec_offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/ns-lmjoin-netsetup_provisioning_params
+Struct NETSETUP_PROVISIONING_PARAMS
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpDomain										// PWSTR
+	Pointer lpHostName										// PWSTR
+	Pointer lpMachineAccountOU								// PWSTR
+	Pointer lpDcName										// PWSTR
+	UInteger dwProvisionOptions								// NETSETUP_PROVISION
+	Integer iMissingAlignment2
+	Pointer aCertTemplateNames								// PWSTR*
+	UInteger cCertTemplateNames
+	Integer iMissingAlignment3
+	Pointer aMachinePolicyNames								// PWSTR*
+	UInteger cMachinePolicyNames
+	Integer iMissingAlignment4
+	Pointer aMachinePolicyPaths								// PWSTR*
+	UInteger cMachinePolicyPaths
+	Integer iMissingAlignment5
+	Pointer lpNetbiosName									// PWSTR
+	Pointer lpSiteName										// PWSTR
+	Pointer lpPrimaryDNSDomain								// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

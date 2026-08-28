@@ -1,0 +1,285 @@
+Use UI
+
+Struct DOS_IMAGE_INFO
+	Pointer PdbName											// PSTR
+	UBigint ImageBaseAddress
+	UInteger ImageSize
+	UInteger Timestamp
+End_Struct
+
+Struct GPA_MEMORY_CHUNK
+	UBigint GuestPhysicalStartPageIndex
+	UBigint PageCount
+End_Struct
+
+Struct GUEST_OS_INFO
+	UBigint AsUINT64
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+End_Struct
+
+Struct MODULE_INFO
+	Pointer ProcessImageName								// PSTR
+	DOS_IMAGE_INFO Image
+End_Struct
+
+Struct VIRTUAL_PROCESSOR_REGISTER
+	UBigint Reg64
+	UInteger Reg32
+	UShort Reg16
+	UChar Reg8
+	UChar[1] cMissingAlignment1
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+End_Struct
+
+Struct WHV_ACCESS_GPA_CONTROLS
+	UBigint AsUINT64
+	UChar[4] UnionName1
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WHV_CPUID_OUTPUT
+	UInteger Eax
+	UInteger Ebx
+	UInteger Ecx
+	UInteger Edx
+End_Struct
+
+Struct WHV_DOORBELL_MATCH_DATA
+	UBigint GuestAddress
+	UBigint Value
+	UInteger Length
+	UInteger _bitfield
+End_Struct
+
+Struct WHV_EMULATOR_CALLBACKS
+	UInteger Size
+	UInteger Reserved
+	Pointer WHvEmulatorIoPortCallback						// WHV_EMULATOR_IO_PORT_CALLBACK
+	Pointer WHvEmulatorMemoryCallback						// WHV_EMULATOR_MEMORY_CALLBACK
+	Pointer WHvEmulatorGetVirtualProcessorRegisters			// WHV_EMULATOR_GET_VIRTUAL_PROCESSOR_REGISTERS_CALLBACK
+	Pointer WHvEmulatorSetVirtualProcessorRegisters			// WHV_EMULATOR_SET_VIRTUAL_PROCESSOR_REGISTERS_CALLBACK
+	Pointer WHvEmulatorTranslateGvaPage						// WHV_EMULATOR_TRANSLATE_GVA_PAGE_CALLBACK
+End_Struct
+
+Struct WHV_EMULATOR_STATUS
+	UChar[4] UnionName1
+	UInteger AsUINT32
+End_Struct
+
+Struct WHV_INTERNAL_ACTIVITY_REGISTER
+	UChar[8] UnionName1
+	UBigint AsUINT64
+End_Struct
+
+Struct WHV_INTERRUPT_CONTROL
+	UBigint _bitfield
+	UInteger Destination
+	UInteger Vector
+End_Struct
+
+Struct WHV_MEMORY_ACCESS_CONTEXT
+	UChar InstructionByteCount
+	UChar[3] Reserved
+	UChar[16] InstructionBytes
+	WHV_MEMORY_ACCESS_INFO AccessInfo
+	Integer iMissingAlignment1
+	UBigint Gpa
+	UBigint Gva
+End_Struct
+
+Struct WHV_MEMORY_ACCESS_INFO
+	UChar[4] UnionName1
+	UInteger AsUINT32
+End_Struct
+
+Struct WHV_MEMORY_RANGE_ENTRY
+	UBigint GuestAddress
+	UBigint SizeInBytes
+End_Struct
+
+Struct WHV_NOTIFICATION_PORT_PARAMETERS
+	Integer NotificationPortType							// WHV_NOTIFICATION_PORT_TYPE
+	UInteger Reserved
+	UChar[24] UnionName1
+End_Struct
+
+Struct WHV_REGISTER_VALUE
+	WHV_UINT128 Reg128
+	UBigint Reg64
+	UInteger Reg32
+	UShort Reg16
+	UChar Reg8
+	UChar[1] cMissingAlignment1
+	WHV_X64_FP_REGISTER Fp
+	WHV_X64_FP_CONTROL_STATUS_REGISTER FpControlStatus
+	WHV_X64_XMM_CONTROL_STATUS_REGISTER XmmControlStatus
+	WHV_X64_SEGMENT_REGISTER Segment
+	WHV_X64_TABLE_REGISTER Table
+	WHV_X64_INTERRUPT_STATE_REGISTER InterruptState
+	WHV_X64_PENDING_INTERRUPTION_REGISTER PendingInterruption
+	WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTER DeliverabilityNotifications
+	WHV_X64_PENDING_EXCEPTION_EVENT ExceptionEvent
+	WHV_X64_PENDING_EXT_INT_EVENT ExtIntEvent
+	WHV_INTERNAL_ACTIVITY_REGISTER InternalActivity
+	WHV_X64_PENDING_DEBUG_EXCEPTION PendingDebugException
+End_Struct
+
+Struct WHV_SYNIC_EVENT_PARAMETERS
+	UInteger VpIndex
+	UChar TargetSint
+	UChar Reserved
+	UShort FlagNumber
+End_Struct
+
+Struct WHV_TRANSLATE_GVA_RESULT
+	Integer ResultCode										// WHV_TRANSLATE_GVA_RESULT_CODE
+	UInteger Reserved
+End_Struct
+
+Struct WHV_TRIGGER_PARAMETERS
+	Integer TriggerType										// WHV_TRIGGER_TYPE
+	UInteger Reserved
+	UChar[16] UnionName1
+End_Struct
+
+Struct WHV_UINT128
+	UChar[8] UnionName1
+	UInteger[4] Dword
+End_Struct
+
+Struct WHV_VIRTUAL_PROCESSOR_PROPERTY
+	Integer PropertyCode									// WHV_VIRTUAL_PROCESSOR_PROPERTY_CODE
+	UInteger Reserved
+	UChar[8] UnionName1
+End_Struct
+
+Struct WHV_VPCI_DEVICE_NOTIFICATION
+	Integer NotificationType								// WHV_VPCI_DEVICE_NOTIFICATION_TYPE
+	UInteger Reserved1
+	UChar[8] UnionName1
+End_Struct
+
+Struct WHV_VPCI_DEVICE_REGISTER
+	Integer Location										// WHV_VPCI_DEVICE_REGISTER_SPACE
+	UInteger SizeInBytes
+	UBigint OffsetInBytes
+End_Struct
+
+Struct WHV_VPCI_INTERRUPT_TARGET
+	UInteger Vector
+	Integer Flags											// WHV_VPCI_INTERRUPT_TARGET_FLAGS
+	UInteger ProcessorCount
+	UInteger[1] Processors
+End_Struct
+
+Struct WHV_VPCI_MMIO_MAPPING
+	Integer Location										// WHV_VPCI_DEVICE_REGISTER_SPACE
+	Integer Flags											// WHV_VPCI_MMIO_RANGE_FLAGS
+	UBigint SizeInBytes
+	UBigint OffsetInBytes
+	Pointer VirtualAddress									// Pointer*
+End_Struct
+
+Struct WHV_VP_EXIT_CONTEXT
+	WHV_X64_VP_EXECUTION_STATE ExecutionState
+	UChar _bitfield
+	UChar Reserved
+	Short iMissingAlignment1
+	UInteger Reserved2
+	Integer iMissingAlignment2
+	WHV_X64_SEGMENT_REGISTER Cs
+	UBigint Rip
+	UBigint Rflags
+End_Struct
+
+Struct WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTER
+	UChar[8] UnionName1
+	UBigint AsUINT64
+End_Struct
+
+Struct WHV_X64_FP_CONTROL_STATUS_REGISTER
+	UChar[8] UnionName1
+	WHV_UINT128 AsUINT128
+End_Struct
+
+Struct WHV_X64_FP_REGISTER
+	UChar[8] UnionName1
+	WHV_UINT128 AsUINT128
+End_Struct
+
+Struct WHV_X64_INTERRUPT_STATE_REGISTER
+	UChar[8] UnionName1
+	UBigint AsUINT64
+End_Struct
+
+Struct WHV_X64_IO_PORT_ACCESS_CONTEXT
+	UChar InstructionByteCount
+	UChar[3] Reserved
+	UChar[16] InstructionBytes
+	WHV_X64_IO_PORT_ACCESS_INFO AccessInfo
+	UShort PortNumber
+	UShort[3] Reserved2
+	Integer iMissingAlignment1
+	UBigint Rax
+	UBigint Rcx
+	UBigint Rsi
+	UBigint Rdi
+	WHV_X64_SEGMENT_REGISTER Ds
+	WHV_X64_SEGMENT_REGISTER Es
+End_Struct
+
+Struct WHV_X64_IO_PORT_ACCESS_INFO
+	UChar[4] UnionName1
+	UInteger AsUINT32
+End_Struct
+
+Struct WHV_X64_PENDING_DEBUG_EXCEPTION
+	UBigint AsUINT64
+	UChar[8] UnionName1
+End_Struct
+
+Struct WHV_X64_PENDING_EXCEPTION_EVENT
+	UChar[8] UnionName1
+	WHV_UINT128 AsUINT128
+End_Struct
+
+Struct WHV_X64_PENDING_EXT_INT_EVENT
+	UChar[8] UnionName1
+	WHV_UINT128 AsUINT128
+End_Struct
+
+Struct WHV_X64_PENDING_INTERRUPTION_REGISTER
+	UChar[4] UnionName1
+	Integer iMissingAlignment1
+	UBigint AsUINT64
+End_Struct
+
+Struct WHV_X64_SEGMENT_REGISTER
+	UBigint Base
+	UInteger Limit
+	UShort Selector
+	UChar[2] UnionName1
+End_Struct
+
+Struct WHV_X64_TABLE_REGISTER
+	UShort[3] Pad
+	UShort Limit
+	UBigint Base
+End_Struct
+
+Struct WHV_X64_VP_EXECUTION_STATE
+	UChar[2] UnionName1
+	UShort AsUINT16
+End_Struct
+
+Struct WHV_X64_XMM_CONTROL_STATUS_REGISTER
+	UChar[8] UnionName1
+	WHV_UINT128 AsUINT128
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

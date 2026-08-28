@@ -1,0 +1,856 @@
+Use UI
+
+// https://learn.microsoft.com/windows/console/addconsolealias
+External_Function AddConsoleAliasA "AddConsoleAliasA" KERNEL32.dll ;
+	String Source ;	// PSTR
+	String Target ;	// PSTR
+	String ExeName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/addconsolealias
+External_Function AddConsoleAliasW "AddConsoleAliasW" KERNEL32.dll ;
+	WString Source ;	// PWSTR
+	WString Target ;	// PWSTR
+	WString ExeName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/allocconsole
+External_Function AllocConsole "AllocConsole" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+External_Function AllocConsoleWithOptions "AllocConsoleWithOptions" KERNEL32.dll ;
+	Pointer options ;	// ALLOC_CONSOLE_OPTIONS*
+	Pointer result ;	// ALLOC_CONSOLE_RESULT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/console/attachconsole
+External_Function AttachConsole "AttachConsole" KERNEL32.dll ;
+	UInteger dwProcessId ;
+	Returns Integer	// BOOL
+
+External_Function CloseConsoleHandle "CloseConsoleHandle" KERNEL32.dll ;
+	Pointer hConsole ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/closepseudoconsole
+External_Function ClosePseudoConsole "ClosePseudoConsole" KERNEL32.dll ;
+	LongPtr hPC ;	// HPCON
+	Returns Pointer
+
+External_Function ConsoleMenuControl "ConsoleMenuControl" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UInteger dwCommandIdLow ;
+	UInteger dwCommandIdHigh ;
+	Returns Pointer	// HMENU
+
+// https://learn.microsoft.com/windows/console/createconsolescreenbuffer
+External_Function CreateConsoleScreenBuffer "CreateConsoleScreenBuffer" KERNEL32.dll ;
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwFlags ;
+	Pointer lpScreenBufferData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/console/createpseudoconsole
+External_Function CreatePseudoConsole "CreatePseudoConsole" KERNEL32.dll ;
+	COORD size ;
+	Pointer hInput ;	// HANDLE
+	Pointer hOutput ;	// HANDLE
+	UInteger dwFlags ;
+	Pointer phPC ;	// HPCON*
+	Returns Integer	// HRESULT
+
+External_Function DuplicateConsoleHandle "DuplicateConsoleHandle" KERNEL32.dll ;
+	Pointer hSourceHandle ;	// HANDLE
+	UInteger dwDesiredAccess ;
+	Integer bInheritHandle ;	// BOOL
+	UInteger dwOptions ;
+	Returns Pointer	// HANDLE
+
+External_Function ExpungeConsoleCommandHistoryA "ExpungeConsoleCommandHistoryA" KERNEL32.dll ;
+	String ExeName ;	// PSTR
+	Returns Pointer
+
+External_Function ExpungeConsoleCommandHistoryW "ExpungeConsoleCommandHistoryW" KERNEL32.dll ;
+	WString ExeName ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/console/fillconsoleoutputattribute
+External_Function FillConsoleOutputAttribute "FillConsoleOutputAttribute" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UShort wAttribute ;
+	UInteger nLength ;
+	COORD dwWriteCoord ;
+	Pointer lpNumberOfAttrsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/fillconsoleoutputcharacter
+External_Function FillConsoleOutputCharacterA "FillConsoleOutputCharacterA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Char cCharacter ;	// CHAR
+	UInteger nLength ;
+	COORD dwWriteCoord ;
+	Pointer lpNumberOfCharsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/fillconsoleoutputcharacter
+External_Function FillConsoleOutputCharacterW "FillConsoleOutputCharacterW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UShort cCharacter ;
+	UInteger nLength ;
+	COORD dwWriteCoord ;
+	Pointer lpNumberOfCharsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/flushconsoleinputbuffer
+External_Function FlushConsoleInputBuffer "FlushConsoleInputBuffer" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/freeconsole
+External_Function FreeConsole "FreeConsole" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/generateconsolectrlevent
+External_Function GenerateConsoleCtrlEvent "GenerateConsoleCtrlEvent" KERNEL32.dll ;
+	UInteger dwCtrlEvent ;
+	UInteger dwProcessGroupId ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsolealias
+External_Function GetConsoleAliasA "GetConsoleAliasA" KERNEL32.dll ;
+	String Source ;	// PSTR
+	Pointer TargetBuffer ;	// PSTR
+	UInteger TargetBufferLength ;
+	String ExeName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiasexes
+External_Function GetConsoleAliasExesA "GetConsoleAliasExesA" KERNEL32.dll ;
+	Pointer ExeNameBuffer ;	// PSTR
+	UInteger ExeNameBufferLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiasexeslength
+External_Function GetConsoleAliasExesLengthA "GetConsoleAliasExesLengthA" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiasexeslength
+External_Function GetConsoleAliasExesLengthW "GetConsoleAliasExesLengthW" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiasexes
+External_Function GetConsoleAliasExesW "GetConsoleAliasExesW" KERNEL32.dll ;
+	Pointer ExeNameBuffer ;	// PWSTR
+	UInteger ExeNameBufferLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealias
+External_Function GetConsoleAliasW "GetConsoleAliasW" KERNEL32.dll ;
+	WString Source ;	// PWSTR
+	Pointer TargetBuffer ;	// PWSTR
+	UInteger TargetBufferLength ;
+	WString ExeName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiases
+External_Function GetConsoleAliasesA "GetConsoleAliasesA" KERNEL32.dll ;
+	Pointer AliasBuffer ;	// PSTR
+	UInteger AliasBufferLength ;
+	String ExeName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiaseslength
+External_Function GetConsoleAliasesLengthA "GetConsoleAliasesLengthA" KERNEL32.dll ;
+	String ExeName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiaseslength
+External_Function GetConsoleAliasesLengthW "GetConsoleAliasesLengthW" KERNEL32.dll ;
+	WString ExeName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolealiases
+External_Function GetConsoleAliasesW "GetConsoleAliasesW" KERNEL32.dll ;
+	Pointer AliasBuffer ;	// PWSTR
+	UInteger AliasBufferLength ;
+	WString ExeName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolecp
+External_Function GetConsoleCP "GetConsoleCP" KERNEL32.dll ;
+	Returns UInteger
+
+External_Function GetConsoleCharType "GetConsoleCharType" KERNEL32.dll ;
+	Pointer hConsole ;	// HANDLE
+	COORD coordCheck ;
+	Pointer pdwType ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function GetConsoleCommandHistoryA "GetConsoleCommandHistoryA" KERNEL32.dll ;
+	Pointer Commands ;	// PSTR
+	UInteger CommandBufferLength ;
+	String ExeName ;	// PSTR
+	Returns UInteger
+
+External_Function GetConsoleCommandHistoryLengthA "GetConsoleCommandHistoryLengthA" KERNEL32.dll ;
+	String ExeName ;	// PSTR
+	Returns UInteger
+
+External_Function GetConsoleCommandHistoryLengthW "GetConsoleCommandHistoryLengthW" KERNEL32.dll ;
+	WString ExeName ;	// PWSTR
+	Returns UInteger
+
+External_Function GetConsoleCommandHistoryW "GetConsoleCommandHistoryW" KERNEL32.dll ;
+	Pointer Commands ;	// PWSTR
+	UInteger CommandBufferLength ;
+	WString ExeName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolecursorinfo
+External_Function GetConsoleCursorInfo "GetConsoleCursorInfo" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpConsoleCursorInfo ;	// CONSOLE_CURSOR_INFO*
+	Returns Integer	// BOOL
+
+External_Function GetConsoleCursorMode "GetConsoleCursorMode" KERNEL32.dll ;
+	Pointer hConsoleHandle ;	// HANDLE
+	Pointer pbBlink ;	// BOOL*
+	Pointer pbDBEnable ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsoledisplaymode
+External_Function GetConsoleDisplayMode "GetConsoleDisplayMode" KERNEL32.dll ;
+	Pointer lpModeFlags ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function GetConsoleFontInfo "GetConsoleFontInfo" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Integer bMaximumWindow ;	// BOOL
+	UInteger nLength ;
+	Pointer lpConsoleFontInfo ;	// CONSOLE_FONT_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolefontsize
+External_Function GetConsoleFontSize "GetConsoleFontSize" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UInteger nFont ;
+	Returns COORD
+
+External_Function GetConsoleHardwareState "GetConsoleHardwareState" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpResolution ;	// COORD*
+	Pointer lpFontSize ;	// COORD*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsolehistoryinfo
+External_Function GetConsoleHistoryInfo "GetConsoleHistoryInfo" KERNEL32.dll ;
+	Pointer lpConsoleHistoryInfo ;	// CONSOLE_HISTORY_INFO*
+	Returns Integer	// BOOL
+
+External_Function GetConsoleInputExeNameA "GetConsoleInputExeNameA" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Returns UInteger
+
+External_Function GetConsoleInputExeNameW "GetConsoleInputExeNameW" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Returns UInteger
+
+External_Function GetConsoleInputWaitHandle "GetConsoleInputWaitHandle" KERNEL32.dll ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/console/getconsolemode
+External_Function GetConsoleMode "GetConsoleMode" KERNEL32.dll ;
+	Pointer hConsoleHandle ;	// HANDLE
+	Pointer lpMode ;	// CONSOLE_MODE*
+	Returns Integer	// BOOL
+
+External_Function GetConsoleNlsMode "GetConsoleNlsMode" KERNEL32.dll ;
+	Pointer hConsole ;	// HANDLE
+	Pointer lpdwNlsMode ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsoleoriginaltitle
+External_Function GetConsoleOriginalTitleA "GetConsoleOriginalTitleA" KERNEL32.dll ;
+	Pointer lpConsoleTitle ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsoleoriginaltitle
+External_Function GetConsoleOriginalTitleW "GetConsoleOriginalTitleW" KERNEL32.dll ;
+	Pointer lpConsoleTitle ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsoleoutputcp
+External_Function GetConsoleOutputCP "GetConsoleOutputCP" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsoleprocesslist
+External_Function GetConsoleProcessList "GetConsoleProcessList" KERNEL32.dll ;
+	Pointer lpdwProcessList ;	// UInteger*
+	UInteger dwProcessCount ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolescreenbufferinfo
+External_Function GetConsoleScreenBufferInfo "GetConsoleScreenBufferInfo" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpConsoleScreenBufferInfo ;	// CONSOLE_SCREEN_BUFFER_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsolescreenbufferinfoex
+External_Function GetConsoleScreenBufferInfoEx "GetConsoleScreenBufferInfoEx" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpConsoleScreenBufferInfoEx ;	// CONSOLE_SCREEN_BUFFER_INFOEX*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsoleselectioninfo
+External_Function GetConsoleSelectionInfo "GetConsoleSelectionInfo" KERNEL32.dll ;
+	Pointer lpConsoleSelectionInfo ;	// CONSOLE_SELECTION_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getconsoletitle
+External_Function GetConsoleTitleA "GetConsoleTitleA" KERNEL32.dll ;
+	Pointer lpConsoleTitle ;	// PSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsoletitle
+External_Function GetConsoleTitleW "GetConsoleTitleW" KERNEL32.dll ;
+	Pointer lpConsoleTitle ;	// PWSTR
+	UInteger nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getconsolewindow
+External_Function GetConsoleWindow "GetConsoleWindow" KERNEL32.dll ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/console/getcurrentconsolefont
+External_Function GetCurrentConsoleFont "GetCurrentConsoleFont" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Integer bMaximumWindow ;	// BOOL
+	Pointer lpConsoleCurrentFont ;	// CONSOLE_FONT_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getcurrentconsolefontex
+External_Function GetCurrentConsoleFontEx "GetCurrentConsoleFontEx" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Integer bMaximumWindow ;	// BOOL
+	Pointer lpConsoleCurrentFontEx ;	// CONSOLE_FONT_INFOEX*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getlargestconsolewindowsize
+External_Function GetLargestConsoleWindowSize "GetLargestConsoleWindowSize" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Returns COORD
+
+External_Function GetNumberOfConsoleFonts "GetNumberOfConsoleFonts" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/console/getnumberofconsoleinputevents
+External_Function GetNumberOfConsoleInputEvents "GetNumberOfConsoleInputEvents" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpNumberOfEvents ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getnumberofconsolemousebuttons
+External_Function GetNumberOfConsoleMouseButtons "GetNumberOfConsoleMouseButtons" KERNEL32.dll ;
+	Pointer lpNumberOfMouseButtons ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/getstdhandle
+External_Function GetStdHandle "GetStdHandle" KERNEL32.dll ;
+	UInteger nStdHandle ;	// STD_HANDLE
+	Returns Pointer	// HANDLE
+
+External_Function InvalidateConsoleDIBits "InvalidateConsoleDIBits" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpRect ;	// SMALL_RECT*
+	Returns Integer	// BOOL
+
+External_Function OpenConsoleW "OpenConsoleW" KERNEL32.dll ;
+	WString lpConsoleDevice ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Integer bInheritHandle ;	// BOOL
+	UInteger dwShareMode ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/console/peekconsoleinput
+External_Function PeekConsoleInputA "PeekConsoleInputA" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/peekconsoleinput
+External_Function PeekConsoleInputW "PeekConsoleInputW" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsole
+External_Function ReadConsoleA "ReadConsoleA" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nNumberOfCharsToRead ;
+	Pointer lpNumberOfCharsRead ;	// UInteger*
+	Pointer pInputControl ;	// CONSOLE_READCONSOLE_CONTROL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleinput
+External_Function ReadConsoleInputA "ReadConsoleInputA" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleinputex
+External_Function ReadConsoleInputExA "ReadConsoleInputExA" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsRead ;	// UInteger*
+	UShort wFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleinputex
+External_Function ReadConsoleInputExW "ReadConsoleInputExW" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsRead ;	// UInteger*
+	UShort wFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleinput
+External_Function ReadConsoleInputW "ReadConsoleInputW" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleoutput
+External_Function ReadConsoleOutputA "ReadConsoleOutputA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpBuffer ;	// CHAR_INFO*
+	COORD dwBufferSize ;
+	COORD dwBufferCoord ;
+	Pointer lpReadRegion ;	// SMALL_RECT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleoutputattribute
+External_Function ReadConsoleOutputAttribute "ReadConsoleOutputAttribute" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpAttribute ;	// UShort*
+	UInteger nLength ;
+	COORD dwReadCoord ;
+	Pointer lpNumberOfAttrsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleoutputcharacter
+External_Function ReadConsoleOutputCharacterA "ReadConsoleOutputCharacterA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpCharacter ;	// PSTR
+	UInteger nLength ;
+	COORD dwReadCoord ;
+	Pointer lpNumberOfCharsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleoutputcharacter
+External_Function ReadConsoleOutputCharacterW "ReadConsoleOutputCharacterW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpCharacter ;	// PWSTR
+	UInteger nLength ;
+	COORD dwReadCoord ;
+	Pointer lpNumberOfCharsRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsoleoutput
+External_Function ReadConsoleOutputW "ReadConsoleOutputW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpBuffer ;	// CHAR_INFO*
+	COORD dwBufferSize ;
+	COORD dwBufferCoord ;
+	Pointer lpReadRegion ;	// SMALL_RECT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/readconsole
+External_Function ReadConsoleW "ReadConsoleW" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nNumberOfCharsToRead ;
+	Pointer lpNumberOfCharsRead ;	// UInteger*
+	Pointer pInputControl ;	// CONSOLE_READCONSOLE_CONTROL*
+	Returns Integer	// BOOL
+
+External_Function RegisterConsoleIME "RegisterConsoleIME" KERNEL32.dll ;
+	Pointer hWndConsoleIME ;	// HWND
+	Pointer lpdwConsoleThreadId ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function RegisterConsoleOS2 "RegisterConsoleOS2" KERNEL32.dll ;
+	Integer fOs2Register ;	// BOOL
+	Returns Integer	// BOOL
+
+External_Function RegisterConsoleVDM "RegisterConsoleVDM" KERNEL32.dll ;
+	UInteger dwRegisterFlags ;
+	Pointer hStartHardwareEvent ;	// HANDLE
+	Pointer hEndHardwareEvent ;	// HANDLE
+	Pointer hErrorhardwareEvent ;	// HANDLE
+	UInteger Reserved ;
+	Pointer lpStateLength ;	// UInteger*
+	Pointer lpState ;	// Pointer**
+	COORD VDMBufferSize ;
+	Pointer lpVDMBuffer ;	// Pointer**
+	Returns Integer	// BOOL
+
+External_Function ReleasePseudoConsole "ReleasePseudoConsole" KERNEL32.dll ;
+	LongPtr hPC ;	// HPCON
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/console/resizepseudoconsole
+External_Function ResizePseudoConsole "ResizePseudoConsole" KERNEL32.dll ;
+	LongPtr hPC ;	// HPCON
+	COORD size ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/console/scrollconsolescreenbuffer
+External_Function ScrollConsoleScreenBufferA "ScrollConsoleScreenBufferA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpScrollRectangle ;	// SMALL_RECT*
+	Pointer lpClipRectangle ;	// SMALL_RECT*
+	COORD dwDestinationOrigin ;
+	Pointer lpFill ;	// CHAR_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/scrollconsolescreenbuffer
+External_Function ScrollConsoleScreenBufferW "ScrollConsoleScreenBufferW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpScrollRectangle ;	// SMALL_RECT*
+	Pointer lpClipRectangle ;	// SMALL_RECT*
+	COORD dwDestinationOrigin ;
+	Pointer lpFill ;	// CHAR_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsoleactivescreenbuffer
+External_Function SetConsoleActiveScreenBuffer "SetConsoleActiveScreenBuffer" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolecp
+External_Function SetConsoleCP "SetConsoleCP" KERNEL32.dll ;
+	UInteger wCodePageID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolectrlhandler
+External_Function SetConsoleCtrlHandler "SetConsoleCtrlHandler" KERNEL32.dll ;
+	Pointer HandlerRoutine ;	// PHANDLER_ROUTINE
+	Integer Add ;	// BOOL
+	Returns Integer	// BOOL
+
+External_Function SetConsoleCursor "SetConsoleCursor" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer hCursor ;	// HCURSOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolecursorinfo
+External_Function SetConsoleCursorInfo "SetConsoleCursorInfo" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpConsoleCursorInfo ;	// CONSOLE_CURSOR_INFO*
+	Returns Integer	// BOOL
+
+External_Function SetConsoleCursorMode "SetConsoleCursorMode" KERNEL32.dll ;
+	Pointer hConsoleHandle ;	// HANDLE
+	Integer Blink ;	// BOOL
+	Integer DBEnable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolecursorposition
+External_Function SetConsoleCursorPosition "SetConsoleCursorPosition" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	COORD dwCursorPosition ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsoledisplaymode
+External_Function SetConsoleDisplayMode "SetConsoleDisplayMode" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UInteger dwFlags ;
+	Pointer lpNewScreenBufferDimensions ;	// COORD*
+	Returns Integer	// BOOL
+
+External_Function SetConsoleFont "SetConsoleFont" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UInteger nFont ;
+	Returns Integer	// BOOL
+
+External_Function SetConsoleHardwareState "SetConsoleHardwareState" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	COORD dwResolution ;
+	COORD dwFontSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolehistoryinfo
+External_Function SetConsoleHistoryInfo "SetConsoleHistoryInfo" KERNEL32.dll ;
+	Pointer lpConsoleHistoryInfo ;	// CONSOLE_HISTORY_INFO*
+	Returns Integer	// BOOL
+
+External_Function SetConsoleIcon "SetConsoleIcon" KERNEL32.dll ;
+	Pointer hIcon ;	// HICON
+	Returns Integer	// BOOL
+
+External_Function SetConsoleInputExeNameA "SetConsoleInputExeNameA" KERNEL32.dll ;
+	String lpExeName ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function SetConsoleInputExeNameW "SetConsoleInputExeNameW" KERNEL32.dll ;
+	WString lpExeName ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function SetConsoleKeyShortcuts "SetConsoleKeyShortcuts" KERNEL32.dll ;
+	Integer bSet ;	// BOOL
+	UChar bReserveKeys ;
+	Pointer lpAppKeys ;	// APPKEY*
+	UInteger dwNumAppKeys ;
+	Returns Integer	// BOOL
+
+External_Function SetConsoleLocalEUDC "SetConsoleLocalEUDC" KERNEL32.dll ;
+	Pointer hConsoleHandle ;	// HANDLE
+	UShort wCodePoint ;
+	COORD cFontSize ;
+	String lpSB ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function SetConsoleMenuClose "SetConsoleMenuClose" KERNEL32.dll ;
+	Integer bEnable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolemode
+External_Function SetConsoleMode "SetConsoleMode" KERNEL32.dll ;
+	Pointer hConsoleHandle ;	// HANDLE
+	UInteger dwMode ;	// CONSOLE_MODE
+	Returns Integer	// BOOL
+
+External_Function SetConsoleNlsMode "SetConsoleNlsMode" KERNEL32.dll ;
+	Pointer hConsole ;	// HANDLE
+	UInteger fdwNlsMode ;
+	Returns Integer	// BOOL
+
+External_Function SetConsoleNumberOfCommandsA "SetConsoleNumberOfCommandsA" KERNEL32.dll ;
+	UInteger Number ;
+	String ExeName ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function SetConsoleNumberOfCommandsW "SetConsoleNumberOfCommandsW" KERNEL32.dll ;
+	UInteger Number ;
+	WString ExeName ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function SetConsoleOS2OemFormat "SetConsoleOS2OemFormat" KERNEL32.dll ;
+	Integer fOs2OemFormat ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsoleoutputcp
+External_Function SetConsoleOutputCP "SetConsoleOutputCP" KERNEL32.dll ;
+	UInteger wCodePageID ;
+	Returns Integer	// BOOL
+
+External_Function SetConsolePalette "SetConsolePalette" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer hPalette ;	// HPALETTE
+	UInteger dwUsage ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolescreenbufferinfoex
+External_Function SetConsoleScreenBufferInfoEx "SetConsoleScreenBufferInfoEx" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpConsoleScreenBufferInfoEx ;	// CONSOLE_SCREEN_BUFFER_INFOEX*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolescreenbuffersize
+External_Function SetConsoleScreenBufferSize "SetConsoleScreenBufferSize" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	COORD dwSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsoletextattribute
+External_Function SetConsoleTextAttribute "SetConsoleTextAttribute" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	UShort wAttributes ;	// CONSOLE_CHARACTER_ATTRIBUTES
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsoletitle
+External_Function SetConsoleTitleA "SetConsoleTitleA" KERNEL32.dll ;
+	String lpConsoleTitle ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsoletitle
+External_Function SetConsoleTitleW "SetConsoleTitleW" KERNEL32.dll ;
+	WString lpConsoleTitle ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setconsolewindowinfo
+External_Function SetConsoleWindowInfo "SetConsoleWindowInfo" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Integer bAbsolute ;	// BOOL
+	Pointer lpConsoleWindow ;	// SMALL_RECT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/setcurrentconsolefontex
+External_Function SetCurrentConsoleFontEx "SetCurrentConsoleFontEx" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Integer bMaximumWindow ;	// BOOL
+	Pointer lpConsoleCurrentFontEx ;	// CONSOLE_FONT_INFOEX*
+	Returns Integer	// BOOL
+
+External_Function SetLastConsoleEventActive "SetLastConsoleEventActive" KERNEL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/console/setstdhandle
+External_Function SetStdHandle "SetStdHandle" KERNEL32.dll ;
+	UInteger nStdHandle ;	// STD_HANDLE
+	Pointer hHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-setstdhandleex
+External_Function SetStdHandleEx "SetStdHandleEx" KERNEL32.dll ;
+	UInteger nStdHandle ;	// STD_HANDLE
+	Pointer hHandle ;	// HANDLE
+	Pointer phPrevValue ;	// HANDLE*
+	Returns Integer	// BOOL
+
+External_Function ShowConsoleCursor "ShowConsoleCursor" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Integer bShow ;	// BOOL
+	Returns Integer
+
+External_Function UnregisterConsoleIME "UnregisterConsoleIME" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+External_Function VDMConsoleOperation "VDMConsoleOperation" KERNEL32.dll ;
+	UInteger iFunction ;
+	Pointer lpData ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function VerifyConsoleIoHandle "VerifyConsoleIoHandle" KERNEL32.dll ;
+	Pointer hIoHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsole
+External_Function WriteConsoleA "WriteConsoleA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	String lpBuffer ;	// PSTR
+	UInteger nNumberOfCharsToWrite ;
+	Pointer lpNumberOfCharsWritten ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleinput
+External_Function WriteConsoleInputA "WriteConsoleInputA" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function WriteConsoleInputVDMA "WriteConsoleInputVDMA" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function WriteConsoleInputVDMW "WriteConsoleInputVDMW" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleinput
+External_Function WriteConsoleInputW "WriteConsoleInputW" KERNEL32.dll ;
+	Pointer hConsoleInput ;	// HANDLE
+	Pointer lpBuffer ;	// INPUT_RECORD*
+	UInteger nLength ;
+	Pointer lpNumberOfEventsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleoutput
+External_Function WriteConsoleOutputA "WriteConsoleOutputA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpBuffer ;	// CHAR_INFO*
+	COORD dwBufferSize ;
+	COORD dwBufferCoord ;
+	Pointer lpWriteRegion ;	// SMALL_RECT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleoutputattribute
+External_Function WriteConsoleOutputAttribute "WriteConsoleOutputAttribute" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpAttribute ;	// UShort*
+	UInteger nLength ;
+	COORD dwWriteCoord ;
+	Pointer lpNumberOfAttrsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleoutputcharacter
+External_Function WriteConsoleOutputCharacterA "WriteConsoleOutputCharacterA" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	String lpCharacter ;	// PSTR
+	UInteger nLength ;
+	COORD dwWriteCoord ;
+	Pointer lpNumberOfCharsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleoutputcharacter
+External_Function WriteConsoleOutputCharacterW "WriteConsoleOutputCharacterW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	WString lpCharacter ;	// PWSTR
+	UInteger nLength ;
+	COORD dwWriteCoord ;
+	Pointer lpNumberOfCharsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsoleoutput
+External_Function WriteConsoleOutputW "WriteConsoleOutputW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	Pointer lpBuffer ;	// CHAR_INFO*
+	COORD dwBufferSize ;
+	COORD dwBufferCoord ;
+	Pointer lpWriteRegion ;	// SMALL_RECT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/console/writeconsole
+External_Function WriteConsoleW "WriteConsoleW" KERNEL32.dll ;
+	Pointer hConsoleOutput ;	// HANDLE
+	WString lpBuffer ;	// PWSTR
+	UInteger nNumberOfCharsToWrite ;
+	Pointer lpNumberOfCharsWritten ;	// UInteger*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function ConsoleControl "ConsoleControl" USER32.dll ;
+	Integer Command ;	// CONSOLECONTROL
+	Pointer ConsoleInformation ;	// Pointer*
+	UInteger ConsoleInformationLength ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetConsoleKeyboardLayoutNameA "GetConsoleKeyboardLayoutNameA" user32.dll ;
+	Pointer pszLayout ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function GetConsoleKeyboardLayoutNameW "GetConsoleKeyboardLayoutNameW" user32.dll ;
+	Pointer pszLayout ;	// PWSTR
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

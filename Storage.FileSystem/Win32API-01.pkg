@@ -1,0 +1,1488 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-arefileapisansi
+External_Function AreFileApisANSI "AreFileApisANSI" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-areshortnamesenabled
+External_Function AreShortNamesEnabled "AreShortNamesEnabled" KERNEL32.dll ;
+	Pointer Handle ;	// HANDLE
+	Pointer Enabled ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-backupread
+External_Function BackupRead "BackupRead" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpBuffer ;	// UChar*
+	UInteger nNumberOfBytesToRead ;
+	Pointer lpNumberOfBytesRead ;	// UInteger*
+	Integer bAbort ;	// BOOL
+	Integer bProcessSecurity ;	// BOOL
+	Pointer lpContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-backupseek
+External_Function BackupSeek "BackupSeek" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	UInteger dwLowBytesToSeek ;
+	UInteger dwHighBytesToSeek ;
+	Pointer lpdwLowByteSeeked ;	// UInteger*
+	Pointer lpdwHighByteSeeked ;	// UInteger*
+	Pointer lpContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-backupwrite
+External_Function BackupWrite "BackupWrite" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpBuffer ;	// UChar*
+	UInteger nNumberOfBytesToWrite ;
+	Pointer lpNumberOfBytesWritten ;	// UInteger*
+	Integer bAbort ;	// BOOL
+	Integer bProcessSecurity ;	// BOOL
+	Pointer lpContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+External_Function BuildIoRingFlushFile "BuildIoRingFlushFile" KERNEL32.dll ;
+	Pointer ioRing ;	// HIORING
+	IORING_HANDLE_REF fileRef ;
+	Integer flushMode ;	// FILE_FLUSH_MODE
+	ULongPtr userData ;
+	Integer sqeFlags ;	// IORING_SQE_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function BuildIoRingReadFileScatter "BuildIoRingReadFileScatter" KERNEL32.dll ;
+	Pointer ioRing ;	// HIORING
+	IORING_HANDLE_REF fileRef ;
+	UInteger segmentCount ;
+	Pointer segmentArray ;	// FILE_SEGMENT_ELEMENT*
+	UInteger numberOfBytesToRead ;
+	UBigint fileOffset ;
+	ULongPtr userData ;
+	Integer sqeFlags ;	// IORING_SQE_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function BuildIoRingWriteFile "BuildIoRingWriteFile" KERNEL32.dll ;
+	Pointer ioRing ;	// HIORING
+	IORING_HANDLE_REF fileRef ;
+	IORING_BUFFER_REF bufferRef ;
+	UInteger numberOfBytesToWrite ;
+	UBigint fileOffset ;
+	Integer writeFlags ;	// FILE_WRITE_FLAGS
+	ULongPtr userData ;
+	Integer sqeFlags ;	// IORING_SQE_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function BuildIoRingWriteFileGather "BuildIoRingWriteFileGather" KERNEL32.dll ;
+	Pointer ioRing ;	// HIORING
+	IORING_HANDLE_REF fileRef ;
+	UInteger segmentCount ;
+	Pointer segmentArray ;	// FILE_SEGMENT_ELEMENT*
+	UInteger numberOfBytesToWrite ;
+	UBigint fileOffset ;
+	Integer writeFlags ;	// FILE_WRITE_FLAGS
+	ULongPtr userData ;
+	Integer sqeFlags ;	// IORING_SQE_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-checknamelegaldos8dot3a
+External_Function CheckNameLegalDOS8Dot3A "CheckNameLegalDOS8Dot3A" KERNEL32.dll ;
+	String lpName ;	// PSTR
+	Pointer lpOemName ;	// PSTR
+	UInteger OemNameSize ;
+	Pointer pbNameContainsSpaces ;	// BOOL*
+	Pointer pbNameLegal ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-checknamelegaldos8dot3w
+External_Function CheckNameLegalDOS8Dot3W "CheckNameLegalDOS8Dot3W" KERNEL32.dll ;
+	WString lpName ;	// PWSTR
+	Pointer lpOemName ;	// PSTR
+	UInteger OemNameSize ;
+	Pointer pbNameContainsSpaces ;	// BOOL*
+	Pointer pbNameLegal ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-comparefiletime
+External_Function CompareFileTime "CompareFileTime" KERNEL32.dll ;
+	Pointer lpFileTime1 ;	// FILETIME*
+	Pointer lpFileTime2 ;	// FILETIME*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfile2
+External_Function CopyFile2 "CopyFile2" KERNEL32.dll ;
+	WString pwszExistingFileName ;	// PWSTR
+	WString pwszNewFileName ;	// PWSTR
+	Pointer pExtendedParameters ;	// COPYFILE2_EXTENDED_PARAMETERS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfilea
+External_Function CopyFileA "CopyFileA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	Integer bFailIfExists ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfileexa
+External_Function CopyFileExA "CopyFileExA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	Pointer pbCancel ;	// BOOL*
+	UInteger dwCopyFlags ;	// COPYFILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfileexw
+External_Function CopyFileExW "CopyFileExW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	Pointer pbCancel ;	// BOOL*
+	UInteger dwCopyFlags ;	// COPYFILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfiletransacteda
+External_Function CopyFileTransactedA "CopyFileTransactedA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	Pointer pbCancel ;	// BOOL*
+	UInteger dwCopyFlags ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfiletransactedw
+External_Function CopyFileTransactedW "CopyFileTransactedW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	Pointer pbCancel ;	// BOOL*
+	UInteger dwCopyFlags ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copyfilew
+External_Function CopyFileW "CopyFileW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Integer bFailIfExists ;	// BOOL
+	Returns Integer	// BOOL
+
+External_Function CopyLZFile "CopyLZFile" KERNEL32.dll ;
+	Integer hfSource ;
+	Integer hfDest ;
+	Returns Integer
+
+External_Function CreateDirectory2A "CreateDirectory2A" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	Integer DirectoryFlags ;	// DIRECTORY_FLAGS
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HANDLE
+
+External_Function CreateDirectory2W "CreateDirectory2W" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	Integer DirectoryFlags ;	// DIRECTORY_FLAGS
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createdirectorya
+External_Function CreateDirectoryA "CreateDirectoryA" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createdirectoryexa
+External_Function CreateDirectoryExA "CreateDirectoryExA" KERNEL32.dll ;
+	String lpTemplateDirectory ;	// PSTR
+	String lpNewDirectory ;	// PSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createdirectoryexw
+External_Function CreateDirectoryExW "CreateDirectoryExW" KERNEL32.dll ;
+	WString lpTemplateDirectory ;	// PWSTR
+	WString lpNewDirectory ;	// PWSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createdirectorytransacteda
+External_Function CreateDirectoryTransactedA "CreateDirectoryTransactedA" KERNEL32.dll ;
+	String lpTemplateDirectory ;	// PSTR
+	String lpNewDirectory ;	// PSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createdirectorytransactedw
+External_Function CreateDirectoryTransactedW "CreateDirectoryTransactedW" KERNEL32.dll ;
+	WString lpTemplateDirectory ;	// PWSTR
+	WString lpNewDirectory ;	// PWSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createdirectoryw
+External_Function CreateDirectoryW "CreateDirectoryW" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfile2
+External_Function CreateFile2 "CreateFile2" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	UInteger dwCreationDisposition ;	// FILE_CREATION_DISPOSITION
+	Pointer pCreateExParams ;	// CREATEFILE2_EXTENDED_PARAMETERS*
+	Returns Pointer	// HANDLE
+
+External_Function CreateFile3 "CreateFile3" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	UInteger dwCreationDisposition ;
+	Pointer pCreateExParams ;	// CREATEFILE3_EXTENDED_PARAMETERS*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilea
+External_Function CreateFileA "CreateFileA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwCreationDisposition ;	// FILE_CREATION_DISPOSITION
+	UInteger dwFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Pointer hTemplateFile ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createfiletransacteda
+External_Function CreateFileTransactedA "CreateFileTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwCreationDisposition ;	// FILE_CREATION_DISPOSITION
+	UInteger dwFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Pointer hTemplateFile ;	// HANDLE
+	Pointer hTransaction ;	// HANDLE
+	Pointer pusMiniVersion ;	// TXFS_MINIVERSION*
+	Pointer lpExtendedParameter ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createfiletransactedw
+External_Function CreateFileTransactedW "CreateFileTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwCreationDisposition ;	// FILE_CREATION_DISPOSITION
+	UInteger dwFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Pointer hTemplateFile ;	// HANDLE
+	Pointer hTransaction ;	// HANDLE
+	Pointer pusMiniVersion ;	// TXFS_MINIVERSION*
+	Pointer lpExtendedParameter ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-createfilew
+External_Function CreateFileW "CreateFileW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwCreationDisposition ;	// FILE_CREATION_DISPOSITION
+	UInteger dwFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Pointer hTemplateFile ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createhardlinka
+External_Function CreateHardLinkA "CreateHardLinkA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	String lpExistingFileName ;	// PSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createhardlinktransacteda
+External_Function CreateHardLinkTransactedA "CreateHardLinkTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	String lpExistingFileName ;	// PSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createhardlinktransactedw
+External_Function CreateHardLinkTransactedW "CreateHardLinkTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	WString lpExistingFileName ;	// PWSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createhardlinkw
+External_Function CreateHardLinkW "CreateHardLinkW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	WString lpExistingFileName ;	// PWSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createsymboliclinka
+External_Function CreateSymbolicLinkA "CreateSymbolicLinkA" KERNEL32.dll ;
+	String lpSymlinkFileName ;	// PSTR
+	String lpTargetFileName ;	// PSTR
+	UInteger dwFlags ;	// SYMBOLIC_LINK_FLAGS
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createsymboliclinktransacteda
+External_Function CreateSymbolicLinkTransactedA "CreateSymbolicLinkTransactedA" KERNEL32.dll ;
+	String lpSymlinkFileName ;	// PSTR
+	String lpTargetFileName ;	// PSTR
+	UInteger dwFlags ;	// SYMBOLIC_LINK_FLAGS
+	Pointer hTransaction ;	// HANDLE
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createsymboliclinktransactedw
+External_Function CreateSymbolicLinkTransactedW "CreateSymbolicLinkTransactedW" KERNEL32.dll ;
+	WString lpSymlinkFileName ;	// PWSTR
+	WString lpTargetFileName ;	// PWSTR
+	UInteger dwFlags ;	// SYMBOLIC_LINK_FLAGS
+	Pointer hTransaction ;	// HANDLE
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createsymboliclinkw
+External_Function CreateSymbolicLinkW "CreateSymbolicLinkW" KERNEL32.dll ;
+	WString lpSymlinkFileName ;	// PWSTR
+	WString lpTargetFileName ;	// PWSTR
+	UInteger dwFlags ;	// SYMBOLIC_LINK_FLAGS
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createtapepartition
+External_Function CreateTapePartition "CreateTapePartition" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwPartitionMethod ;	// CREATE_TAPE_PARTITION_METHOD
+	UInteger dwCount ;
+	UInteger dwSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-definedosdevicea
+External_Function DefineDosDeviceA "DefineDosDeviceA" KERNEL32.dll ;
+	UInteger dwFlags ;	// DEFINE_DOS_DEVICE_FLAGS
+	String lpDeviceName ;	// PSTR
+	String lpTargetPath ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-definedosdevicew
+External_Function DefineDosDeviceW "DefineDosDeviceW" KERNEL32.dll ;
+	UInteger dwFlags ;	// DEFINE_DOS_DEVICE_FLAGS
+	WString lpDeviceName ;	// PWSTR
+	WString lpTargetPath ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function DeleteFile2A "DeleteFile2A" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+External_Function DeleteFile2W "DeleteFile2W" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-deletefilea
+External_Function DeleteFileA "DeleteFileA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-deletefiletransacteda
+External_Function DeleteFileTransactedA "DeleteFileTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-deletefiletransactedw
+External_Function DeleteFileTransactedW "DeleteFileTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-deletefilew
+External_Function DeleteFileW "DeleteFileW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-deletevolumemountpointa
+External_Function DeleteVolumeMountPointA "DeleteVolumeMountPointA" KERNEL32.dll ;
+	String lpszVolumeMountPoint ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-deletevolumemountpointw
+External_Function DeleteVolumeMountPointW "DeleteVolumeMountPointW" KERNEL32.dll ;
+	WString lpszVolumeMountPoint ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-erasetape
+External_Function EraseTape "EraseTape" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwEraseType ;	// ERASE_TAPE_TYPE
+	Integer bImmediate ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-filetimetolocalfiletime
+External_Function FileTimeToLocalFileTime "FileTimeToLocalFileTime" KERNEL32.dll ;
+	Pointer lpFileTime ;	// FILETIME*
+	Pointer lpLocalFileTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findclose
+External_Function FindClose "FindClose" KERNEL32.dll ;
+	Pointer hFindFile ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findclosechangenotification
+External_Function FindCloseChangeNotification "FindCloseChangeNotification" KERNEL32.dll ;
+	Pointer hChangeHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstchangenotificationa
+External_Function FindFirstChangeNotificationA "FindFirstChangeNotificationA" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	Integer bWatchSubtree ;	// BOOL
+	UInteger dwNotifyFilter ;	// FILE_NOTIFY_CHANGE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstchangenotificationw
+External_Function FindFirstChangeNotificationW "FindFirstChangeNotificationW" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	Integer bWatchSubtree ;	// BOOL
+	UInteger dwNotifyFilter ;	// FILE_NOTIFY_CHANGE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfilea
+External_Function FindFirstFileA "FindFirstFileA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer lpFindFileData ;	// WIN32_FIND_DATAA*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexa
+External_Function FindFirstFileExA "FindFirstFileExA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Integer fInfoLevelId ;	// FINDEX_INFO_LEVELS
+	Pointer lpFindFileData ;	// Pointer*
+	Integer fSearchOp ;	// FINDEX_SEARCH_OPS
+	Pointer lpSearchFilter ;	// Pointer*
+	UInteger dwAdditionalFlags ;	// FIND_FIRST_EX_FLAGS
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfileexw
+External_Function FindFirstFileExW "FindFirstFileExW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer fInfoLevelId ;	// FINDEX_INFO_LEVELS
+	Pointer lpFindFileData ;	// Pointer*
+	Integer fSearchOp ;	// FINDEX_SEARCH_OPS
+	Pointer lpSearchFilter ;	// Pointer*
+	UInteger dwAdditionalFlags ;	// FIND_FIRST_EX_FLAGS
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirstfilenametransactedw
+External_Function FindFirstFileNameTransactedW "FindFirstFileNameTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer StringLength ;	// UInteger*
+	Pointer LinkName ;	// PWSTR
+	Pointer hTransaction ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfilenamew
+External_Function FindFirstFileNameW "FindFirstFileNameW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer StringLength ;	// UInteger*
+	Pointer LinkName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirstfiletransacteda
+External_Function FindFirstFileTransactedA "FindFirstFileTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Integer fInfoLevelId ;	// FINDEX_INFO_LEVELS
+	Pointer lpFindFileData ;	// Pointer*
+	Integer fSearchOp ;	// FINDEX_SEARCH_OPS
+	Pointer lpSearchFilter ;	// Pointer*
+	UInteger dwAdditionalFlags ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirstfiletransactedw
+External_Function FindFirstFileTransactedW "FindFirstFileTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer fInfoLevelId ;	// FINDEX_INFO_LEVELS
+	Pointer lpFindFileData ;	// Pointer*
+	Integer fSearchOp ;	// FINDEX_SEARCH_OPS
+	Pointer lpSearchFilter ;	// Pointer*
+	UInteger dwAdditionalFlags ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstfilew
+External_Function FindFirstFileW "FindFirstFileW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer lpFindFileData ;	// WIN32_FIND_DATAW*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirststreamtransactedw
+External_Function FindFirstStreamTransactedW "FindFirstStreamTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer InfoLevel ;	// STREAM_INFO_LEVELS
+	Pointer lpFindStreamData ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirststreamw
+External_Function FindFirstStreamW "FindFirstStreamW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer InfoLevel ;	// STREAM_INFO_LEVELS
+	Pointer lpFindStreamData ;	// Pointer*
+	UInteger dwFlags ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirstvolumea
+External_Function FindFirstVolumeA "FindFirstVolumeA" KERNEL32.dll ;
+	Pointer lpszVolumeName ;	// PSTR
+	UInteger cchBufferLength ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirstvolumemountpointa
+External_Function FindFirstVolumeMountPointA "FindFirstVolumeMountPointA" KERNEL32.dll ;
+	String lpszRootPathName ;	// PSTR
+	Pointer lpszVolumeMountPoint ;	// PSTR
+	UInteger cchBufferLength ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findfirstvolumemountpointw
+External_Function FindFirstVolumeMountPointW "FindFirstVolumeMountPointW" KERNEL32.dll ;
+	WString lpszRootPathName ;	// PWSTR
+	Pointer lpszVolumeMountPoint ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findfirstvolumew
+External_Function FindFirstVolumeW "FindFirstVolumeW" KERNEL32.dll ;
+	Pointer lpszVolumeName ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findnextchangenotification
+External_Function FindNextChangeNotification "FindNextChangeNotification" KERNEL32.dll ;
+	Pointer hChangeHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findnextfilea
+External_Function FindNextFileA "FindNextFileA" KERNEL32.dll ;
+	Pointer hFindFile ;	// HANDLE
+	Pointer lpFindFileData ;	// WIN32_FIND_DATAA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findnextfilenamew
+External_Function FindNextFileNameW "FindNextFileNameW" KERNEL32.dll ;
+	Pointer hFindStream ;	// HANDLE
+	Pointer StringLength ;	// UInteger*
+	Pointer LinkName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findnextfilew
+External_Function FindNextFileW "FindNextFileW" KERNEL32.dll ;
+	Pointer hFindFile ;	// HANDLE
+	Pointer lpFindFileData ;	// WIN32_FIND_DATAW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findnextstreamw
+External_Function FindNextStreamW "FindNextStreamW" KERNEL32.dll ;
+	Pointer hFindStream ;	// HANDLE
+	Pointer lpFindStreamData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findnextvolumea
+External_Function FindNextVolumeA "FindNextVolumeA" KERNEL32.dll ;
+	Pointer hFindVolume ;	// HANDLE
+	Pointer lpszVolumeName ;	// PSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findnextvolumemountpointa
+External_Function FindNextVolumeMountPointA "FindNextVolumeMountPointA" KERNEL32.dll ;
+	Pointer hFindVolumeMountPoint ;	// HANDLE
+	Pointer lpszVolumeMountPoint ;	// PSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findnextvolumemountpointw
+External_Function FindNextVolumeMountPointW "FindNextVolumeMountPointW" KERNEL32.dll ;
+	Pointer hFindVolumeMountPoint ;	// HANDLE
+	Pointer lpszVolumeMountPoint ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findnextvolumew
+External_Function FindNextVolumeW "FindNextVolumeW" KERNEL32.dll ;
+	Pointer hFindVolume ;	// HANDLE
+	Pointer lpszVolumeName ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-findvolumeclose
+External_Function FindVolumeClose "FindVolumeClose" KERNEL32.dll ;
+	Pointer hFindVolume ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findvolumemountpointclose
+External_Function FindVolumeMountPointClose "FindVolumeMountPointClose" KERNEL32.dll ;
+	Pointer hFindVolumeMountPoint ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-flushfilebuffers
+External_Function FlushFileBuffers "FlushFileBuffers" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getbinarytypea
+External_Function GetBinaryTypeA "GetBinaryTypeA" KERNEL32.dll ;
+	String lpApplicationName ;	// PSTR
+	Pointer lpBinaryType ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getbinarytypew
+External_Function GetBinaryTypeW "GetBinaryTypeW" KERNEL32.dll ;
+	WString lpApplicationName ;	// PWSTR
+	Pointer lpBinaryType ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getcompressedfilesizea
+External_Function GetCompressedFileSizeA "GetCompressedFileSizeA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer lpFileSizeHigh ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getcompressedfilesizetransacteda
+External_Function GetCompressedFileSizeTransactedA "GetCompressedFileSizeTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer lpFileSizeHigh ;	// UInteger*
+	Pointer hTransaction ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getcompressedfilesizetransactedw
+External_Function GetCompressedFileSizeTransactedW "GetCompressedFileSizeTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer lpFileSizeHigh ;	// UInteger*
+	Pointer hTransaction ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getcompressedfilesizew
+External_Function GetCompressedFileSizeW "GetCompressedFileSizeW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer lpFileSizeHigh ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdiskfreespacea
+External_Function GetDiskFreeSpaceA "GetDiskFreeSpaceA" KERNEL32.dll ;
+	String lpRootPathName ;	// PSTR
+	Pointer lpSectorsPerCluster ;	// UInteger*
+	Pointer lpBytesPerSector ;	// UInteger*
+	Pointer lpNumberOfFreeClusters ;	// UInteger*
+	Pointer lpTotalNumberOfClusters ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdiskfreespaceexa
+External_Function GetDiskFreeSpaceExA "GetDiskFreeSpaceExA" KERNEL32.dll ;
+	String lpDirectoryName ;	// PSTR
+	Pointer lpFreeBytesAvailableToCaller ;	// UBigint*
+	Pointer lpTotalNumberOfBytes ;	// UBigint*
+	Pointer lpTotalNumberOfFreeBytes ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdiskfreespaceexw
+External_Function GetDiskFreeSpaceExW "GetDiskFreeSpaceExW" KERNEL32.dll ;
+	WString lpDirectoryName ;	// PWSTR
+	Pointer lpFreeBytesAvailableToCaller ;	// UBigint*
+	Pointer lpTotalNumberOfBytes ;	// UBigint*
+	Pointer lpTotalNumberOfFreeBytes ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdiskfreespacew
+External_Function GetDiskFreeSpaceW "GetDiskFreeSpaceW" KERNEL32.dll ;
+	WString lpRootPathName ;	// PWSTR
+	Pointer lpSectorsPerCluster ;	// UInteger*
+	Pointer lpBytesPerSector ;	// UInteger*
+	Pointer lpNumberOfFreeClusters ;	// UInteger*
+	Pointer lpTotalNumberOfClusters ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdiskspaceinformationa
+External_Function GetDiskSpaceInformationA "GetDiskSpaceInformationA" KERNEL32.dll ;
+	String rootPath ;	// PSTR
+	Pointer diskSpaceInfo ;	// DISK_SPACE_INFORMATION*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdiskspaceinformationw
+External_Function GetDiskSpaceInformationW "GetDiskSpaceInformationW" KERNEL32.dll ;
+	WString rootPath ;	// PWSTR
+	Pointer diskSpaceInfo ;	// DISK_SPACE_INFORMATION*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdrivetypea
+External_Function GetDriveTypeA "GetDriveTypeA" KERNEL32.dll ;
+	String lpRootPathName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getdrivetypew
+External_Function GetDriveTypeW "GetDriveTypeW" KERNEL32.dll ;
+	WString lpRootPathName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-getexpandednamea
+External_Function GetExpandedNameA "GetExpandedNameA" KERNEL32.dll ;
+	String lpszSource ;	// PSTR
+	Pointer lpszBuffer ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-getexpandednamew
+External_Function GetExpandedNameW "GetExpandedNameW" KERNEL32.dll ;
+	WString lpszSource ;	// PWSTR
+	Pointer lpszBuffer ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
+External_Function GetFileAttributesA "GetFileAttributesA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileattributesexa
+External_Function GetFileAttributesExA "GetFileAttributesExA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Integer fInfoLevelId ;	// GET_FILEEX_INFO_LEVELS
+	Pointer lpFileInformation ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileattributesexw
+External_Function GetFileAttributesExW "GetFileAttributesExW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer fInfoLevelId ;	// GET_FILEEX_INFO_LEVELS
+	Pointer lpFileInformation ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileattributestransacteda
+External_Function GetFileAttributesTransactedA "GetFileAttributesTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Integer fInfoLevelId ;	// GET_FILEEX_INFO_LEVELS
+	Pointer lpFileInformation ;	// Pointer*
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileattributestransactedw
+External_Function GetFileAttributesTransactedW "GetFileAttributesTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer fInfoLevelId ;	// GET_FILEEX_INFO_LEVELS
+	Pointer lpFileInformation ;	// Pointer*
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileattributesw
+External_Function GetFileAttributesW "GetFileAttributesW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfilebandwidthreservation
+External_Function GetFileBandwidthReservation "GetFileBandwidthReservation" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpPeriodMilliseconds ;	// UInteger*
+	Pointer lpBytesPerPeriod ;	// UInteger*
+	Pointer pDiscardable ;	// BOOL*
+	Pointer lpTransferSize ;	// UInteger*
+	Pointer lpNumOutstandingRequests ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfileinformationbyhandle
+External_Function GetFileInformationByHandle "GetFileInformationByHandle" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileInformation ;	// BY_HANDLE_FILE_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex
+External_Function GetFileInformationByHandleEx "GetFileInformationByHandleEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Integer FileInformationClass ;	// FILE_INFO_BY_HANDLE_CLASS
+	Pointer lpFileInformation ;	// Pointer*
+	UInteger dwBufferSize ;
+	Returns Integer	// BOOL
+
+External_Function GetFileInformationByName "GetFileInformationByName" KERNEL32.dll ;
+	WString FileName ;	// PWSTR
+	Integer FileInformationClass ;	// FILE_INFO_BY_NAME_CLASS
+	Pointer FileInfoBuffer ;	// Pointer*
+	UInteger FileInfoBufferSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfilesize
+External_Function GetFileSize "GetFileSize" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileSizeHigh ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfilesizeex
+External_Function GetFileSizeEx "GetFileSizeEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpFileSize ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfiletime
+External_Function GetFileTime "GetFileTime" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpCreationTime ;	// FILETIME*
+	Pointer lpLastAccessTime ;	// FILETIME*
+	Pointer lpLastWriteTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfiletype
+External_Function GetFileType "GetFileType" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Returns UInteger	// FILE_TYPE
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfinalpathnamebyhandlea
+External_Function GetFinalPathNameByHandleA "GetFinalPathNameByHandleA" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpszFilePath ;	// PSTR
+	UInteger cchFilePath ;
+	UInteger dwFlags ;	// GETFINALPATHNAMEBYHANDLE_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfinalpathnamebyhandlew
+External_Function GetFinalPathNameByHandleW "GetFinalPathNameByHandleW" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpszFilePath ;	// PWSTR
+	UInteger cchFilePath ;
+	UInteger dwFlags ;	// GETFINALPATHNAMEBYHANDLE_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfullpathnamea
+External_Function GetFullPathNameA "GetFullPathNameA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Pointer lpFilePart ;	// PSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfullpathnametransacteda
+External_Function GetFullPathNameTransactedA "GetFullPathNameTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Pointer lpFilePart ;	// PSTR*
+	Pointer hTransaction ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getfullpathnametransactedw
+External_Function GetFullPathNameTransactedW "GetFullPathNameTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Pointer lpFilePart ;	// PWSTR*
+	Pointer hTransaction ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getfullpathnamew
+External_Function GetFullPathNameW "GetFullPathNameW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Pointer lpFilePart ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getlogicaldrivestringsa
+External_Function GetLogicalDriveStringsA "GetLogicalDriveStringsA" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getlogicaldrivestringsw
+External_Function GetLogicalDriveStringsW "GetLogicalDriveStringsW" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getlogicaldrives
+External_Function GetLogicalDrives "GetLogicalDrives" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getlongpathnamea
+External_Function GetLongPathNameA "GetLongPathNameA" KERNEL32.dll ;
+	String lpszShortPath ;	// PSTR
+	Pointer lpszLongPath ;	// PSTR
+	UInteger cchBuffer ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getlongpathnametransacteda
+External_Function GetLongPathNameTransactedA "GetLongPathNameTransactedA" KERNEL32.dll ;
+	String lpszShortPath ;	// PSTR
+	Pointer lpszLongPath ;	// PSTR
+	UInteger cchBuffer ;
+	Pointer hTransaction ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getlongpathnametransactedw
+External_Function GetLongPathNameTransactedW "GetLongPathNameTransactedW" KERNEL32.dll ;
+	WString lpszShortPath ;	// PWSTR
+	Pointer lpszLongPath ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer hTransaction ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getlongpathnamew
+External_Function GetLongPathNameW "GetLongPathNameW" KERNEL32.dll ;
+	WString lpszShortPath ;	// PWSTR
+	Pointer lpszLongPath ;	// PWSTR
+	UInteger cchBuffer ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getshortpathnamea
+External_Function GetShortPathNameA "GetShortPathNameA" KERNEL32.dll ;
+	String lpszLongPath ;	// PSTR
+	Pointer lpszShortPath ;	// PSTR
+	UInteger cchBuffer ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getshortpathnamew
+External_Function GetShortPathNameW "GetShortPathNameW" KERNEL32.dll ;
+	WString lpszLongPath ;	// PWSTR
+	Pointer lpszShortPath ;	// PWSTR
+	UInteger cchBuffer ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-gettapeparameters
+External_Function GetTapeParameters "GetTapeParameters" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwOperation ;	// GET_TAPE_DRIVE_PARAMETERS_OPERATION
+	Pointer lpdwSize ;	// UInteger*
+	Pointer lpTapeInformation ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-gettapeposition
+External_Function GetTapePosition "GetTapePosition" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwPositionType ;	// TAPE_POSITION_TYPE
+	Pointer lpdwPartition ;	// UInteger*
+	Pointer lpdwOffsetLow ;	// UInteger*
+	Pointer lpdwOffsetHigh ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-gettapestatus
+External_Function GetTapeStatus "GetTapeStatus" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-gettempfilenamea
+External_Function GetTempFileNameA "GetTempFileNameA" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	String lpPrefixString ;	// PSTR
+	UInteger uUnique ;
+	Pointer lpTempFileName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-gettempfilenamew
+External_Function GetTempFileNameW "GetTempFileNameW" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	WString lpPrefixString ;	// PWSTR
+	UInteger uUnique ;
+	Pointer lpTempFileName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-gettemppath2a
+External_Function GetTempPath2A "GetTempPath2A" KERNEL32.dll ;
+	UInteger BufferLength ;
+	Pointer Buffer ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-gettemppath2w
+External_Function GetTempPath2W "GetTempPath2W" KERNEL32.dll ;
+	UInteger BufferLength ;
+	Pointer Buffer ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-gettemppatha
+External_Function GetTempPathA "GetTempPathA" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-gettemppathw
+External_Function GetTempPathW "GetTempPathW" KERNEL32.dll ;
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationa
+External_Function GetVolumeInformationA "GetVolumeInformationA" KERNEL32.dll ;
+	String lpRootPathName ;	// PSTR
+	Pointer lpVolumeNameBuffer ;	// PSTR
+	UInteger nVolumeNameSize ;
+	Pointer lpVolumeSerialNumber ;	// UInteger*
+	Pointer lpMaximumComponentLength ;	// UInteger*
+	Pointer lpFileSystemFlags ;	// UInteger*
+	Pointer lpFileSystemNameBuffer ;	// PSTR
+	UInteger nFileSystemNameSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationbyhandlew
+External_Function GetVolumeInformationByHandleW "GetVolumeInformationByHandleW" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpVolumeNameBuffer ;	// PWSTR
+	UInteger nVolumeNameSize ;
+	Pointer lpVolumeSerialNumber ;	// UInteger*
+	Pointer lpMaximumComponentLength ;	// UInteger*
+	Pointer lpFileSystemFlags ;	// UInteger*
+	Pointer lpFileSystemNameBuffer ;	// PWSTR
+	UInteger nFileSystemNameSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationw
+External_Function GetVolumeInformationW "GetVolumeInformationW" KERNEL32.dll ;
+	WString lpRootPathName ;	// PWSTR
+	Pointer lpVolumeNameBuffer ;	// PWSTR
+	UInteger nVolumeNameSize ;
+	Pointer lpVolumeSerialNumber ;	// UInteger*
+	Pointer lpMaximumComponentLength ;	// UInteger*
+	Pointer lpFileSystemFlags ;	// UInteger*
+	Pointer lpFileSystemNameBuffer ;	// PWSTR
+	UInteger nFileSystemNameSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getvolumenameforvolumemountpointa
+External_Function GetVolumeNameForVolumeMountPointA "GetVolumeNameForVolumeMountPointA" KERNEL32.dll ;
+	String lpszVolumeMountPoint ;	// PSTR
+	Pointer lpszVolumeName ;	// PSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getvolumenameforvolumemountpointw
+External_Function GetVolumeNameForVolumeMountPointW "GetVolumeNameForVolumeMountPointW" KERNEL32.dll ;
+	WString lpszVolumeMountPoint ;	// PWSTR
+	Pointer lpszVolumeName ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getvolumepathnamea
+External_Function GetVolumePathNameA "GetVolumePathNameA" KERNEL32.dll ;
+	String lpszFileName ;	// PSTR
+	Pointer lpszVolumePathName ;	// PSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getvolumepathnamew
+External_Function GetVolumePathNameW "GetVolumePathNameW" KERNEL32.dll ;
+	WString lpszFileName ;	// PWSTR
+	Pointer lpszVolumePathName ;	// PWSTR
+	UInteger cchBufferLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getvolumepathnamesforvolumenamea
+External_Function GetVolumePathNamesForVolumeNameA "GetVolumePathNamesForVolumeNameA" KERNEL32.dll ;
+	String lpszVolumeName ;	// PSTR
+	Pointer lpszVolumePathNames ;	// PSTR
+	UInteger cchBufferLength ;
+	Pointer lpcchReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-getvolumepathnamesforvolumenamew
+External_Function GetVolumePathNamesForVolumeNameW "GetVolumePathNamesForVolumeNameW" KERNEL32.dll ;
+	WString lpszVolumeName ;	// PWSTR
+	Pointer lpszVolumePathNames ;	// PWSTR
+	UInteger cchBufferLength ;
+	Pointer lpcchReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzclose
+External_Function LZClose "LZClose" KERNEL32.dll ;
+	Integer hFile ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzcopy
+External_Function LZCopy "LZCopy" KERNEL32.dll ;
+	Integer hfSource ;
+	Integer hfDest ;
+	Returns Integer
+
+External_Function LZDone "LZDone" KERNEL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzinit
+External_Function LZInit "LZInit" KERNEL32.dll ;
+	Integer hfSource ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzopenfilea
+External_Function LZOpenFileA "LZOpenFileA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer lpReOpenBuf ;	// OFSTRUCT*
+	UShort wStyle ;	// LZOPENFILE_STYLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzopenfilew
+External_Function LZOpenFileW "LZOpenFileW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer lpReOpenBuf ;	// OFSTRUCT*
+	UShort wStyle ;	// LZOPENFILE_STYLE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzread
+External_Function LZRead "LZRead" KERNEL32.dll ;
+	Integer hFile ;
+	Pointer lpBuffer ;	// PSTR
+	Integer cbRead ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/lzexpand/nf-lzexpand-lzseek
+External_Function LZSeek "LZSeek" KERNEL32.dll ;
+	Integer hFile ;
+	Integer lOffset ;
+	Integer iOrigin ;
+	Returns Integer
+
+External_Function LZStart "LZStart" KERNEL32.dll ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-localfiletimetofiletime
+External_Function LocalFileTimeToFileTime "LocalFileTimeToFileTime" KERNEL32.dll ;
+	Pointer lpLocalFileTime ;	// FILETIME*
+	Pointer lpFileTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-lockfile
+External_Function LockFile "LockFile" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	UInteger dwFileOffsetLow ;
+	UInteger dwFileOffsetHigh ;
+	UInteger nNumberOfBytesToLockLow ;
+	UInteger nNumberOfBytesToLockHigh ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-lockfileex
+External_Function LockFileEx "LockFileEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	UInteger dwFlags ;	// LOCK_FILE_FLAGS
+	UInteger dwReserved ;
+	UInteger nNumberOfBytesToLockLow ;
+	UInteger nNumberOfBytesToLockHigh ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefilea
+External_Function MoveFileA "MoveFileA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefileexa
+External_Function MoveFileExA "MoveFileExA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	UInteger dwFlags ;	// MOVE_FILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefileexw
+External_Function MoveFileExW "MoveFileExW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	UInteger dwFlags ;	// MOVE_FILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefiletransacteda
+External_Function MoveFileTransactedA "MoveFileTransactedA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	UInteger dwFlags ;	// MOVE_FILE_FLAGS
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefiletransactedw
+External_Function MoveFileTransactedW "MoveFileTransactedW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	UInteger dwFlags ;	// MOVE_FILE_FLAGS
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefilew
+External_Function MoveFileW "MoveFileW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefilewithprogressa
+External_Function MoveFileWithProgressA "MoveFileWithProgressA" KERNEL32.dll ;
+	String lpExistingFileName ;	// PSTR
+	String lpNewFileName ;	// PSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	UInteger dwFlags ;	// MOVE_FILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-movefilewithprogressw
+External_Function MoveFileWithProgressW "MoveFileWithProgressW" KERNEL32.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Pointer lpProgressRoutine ;	// LPPROGRESS_ROUTINE
+	Pointer lpData ;	// Pointer*
+	UInteger dwFlags ;	// MOVE_FILE_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openfile
+External_Function OpenFile "OpenFile" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer lpReOpenBuff ;	// OFSTRUCT*
+	UInteger uStyle ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openfilebyid
+External_Function OpenFileById "OpenFileById" KERNEL32.dll ;
+	Pointer hVolumeHint ;	// HANDLE
+	Pointer lpFileId ;	// FILE_ID_DESCRIPTOR*
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-preparetape
+External_Function PrepareTape "PrepareTape" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwOperation ;	// PREPARE_TAPE_OPERATION
+	Integer bImmediate ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-querydosdevicea
+External_Function QueryDosDeviceA "QueryDosDeviceA" KERNEL32.dll ;
+	String lpDeviceName ;	// PSTR
+	Pointer lpTargetPath ;	// PSTR
+	UInteger ucchMax ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-querydosdevicew
+External_Function QueryDosDeviceW "QueryDosDeviceW" KERNEL32.dll ;
+	WString lpDeviceName ;	// PWSTR
+	Pointer lpTargetPath ;	// PWSTR
+	UInteger ucchMax ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-reopenfile
+External_Function ReOpenFile "ReOpenFile" KERNEL32.dll ;
+	Pointer hOriginalFile ;	// HANDLE
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	UInteger dwFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesexw
+External_Function ReadDirectoryChangesExW "ReadDirectoryChangesExW" KERNEL32.dll ;
+	Pointer hDirectory ;	// HANDLE
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nBufferLength ;
+	Integer bWatchSubtree ;	// BOOL
+	UInteger dwNotifyFilter ;	// FILE_NOTIFY_CHANGE
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpCompletionRoutine ;	// LPOVERLAPPED_COMPLETION_ROUTINE
+	Integer ReadDirectoryNotifyInformationClass ;	// READ_DIRECTORY_NOTIFY_INFORMATION_CLASS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw
+External_Function ReadDirectoryChangesW "ReadDirectoryChangesW" KERNEL32.dll ;
+	Pointer hDirectory ;	// HANDLE
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nBufferLength ;
+	Integer bWatchSubtree ;	// BOOL
+	UInteger dwNotifyFilter ;	// FILE_NOTIFY_CHANGE
+	Pointer lpBytesReturned ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpCompletionRoutine ;	// LPOVERLAPPED_COMPLETION_ROUTINE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-readfile
+External_Function ReadFile "ReadFile" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpBuffer ;	// UChar*
+	UInteger nNumberOfBytesToRead ;
+	Pointer lpNumberOfBytesRead ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-readfileex
+External_Function ReadFileEx "ReadFileEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpBuffer ;	// UChar*
+	UInteger nNumberOfBytesToRead ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpCompletionRoutine ;	// LPOVERLAPPED_COMPLETION_ROUTINE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-readfilescatter
+External_Function ReadFileScatter "ReadFileScatter" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer aSegmentArray ;	// FILE_SEGMENT_ELEMENT*
+	UInteger nNumberOfBytesToRead ;
+	Pointer lpReserved ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+External_Function RemoveDirectory2A "RemoveDirectory2A" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	Integer DirectoryFlags ;	// DIRECTORY_FLAGS
+	Returns Integer	// BOOL
+
+External_Function RemoveDirectory2W "RemoveDirectory2W" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	Integer DirectoryFlags ;	// DIRECTORY_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-removedirectorya
+External_Function RemoveDirectoryA "RemoveDirectoryA" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-removedirectorytransacteda
+External_Function RemoveDirectoryTransactedA "RemoveDirectoryTransactedA" KERNEL32.dll ;
+	String lpPathName ;	// PSTR
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-removedirectorytransactedw
+External_Function RemoveDirectoryTransactedW "RemoveDirectoryTransactedW" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-removedirectoryw
+External_Function RemoveDirectoryW "RemoveDirectoryW" KERNEL32.dll ;
+	WString lpPathName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-replacefilea
+External_Function ReplaceFileA "ReplaceFileA" KERNEL32.dll ;
+	String lpReplacedFileName ;	// PSTR
+	String lpReplacementFileName ;	// PSTR
+	String lpBackupFileName ;	// PSTR
+	UInteger dwReplaceFlags ;	// REPLACE_FILE_FLAGS
+	Pointer lpExclude ;	// Pointer*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-replacefilew
+External_Function ReplaceFileW "ReplaceFileW" KERNEL32.dll ;
+	WString lpReplacedFileName ;	// PWSTR
+	WString lpReplacementFileName ;	// PWSTR
+	WString lpBackupFileName ;	// PWSTR
+	UInteger dwReplaceFlags ;	// REPLACE_FILE_FLAGS
+	Pointer lpExclude ;	// Pointer*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-searchpatha
+External_Function SearchPathA "SearchPathA" KERNEL32.dll ;
+	String lpPath ;	// PSTR
+	String lpFileName ;	// PSTR
+	String lpExtension ;	// PSTR
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PSTR
+	Pointer lpFilePart ;	// PSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processenv/nf-processenv-searchpathw
+External_Function SearchPathW "SearchPathW" KERNEL32.dll ;
+	WString lpPath ;	// PWSTR
+	WString lpFileName ;	// PWSTR
+	WString lpExtension ;	// PWSTR
+	UInteger nBufferLength ;
+	Pointer lpBuffer ;	// PWSTR
+	Pointer lpFilePart ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setendoffile
+External_Function SetEndOfFile "SetEndOfFile" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfileapistoansi
+External_Function SetFileApisToANSI "SetFileApisToANSI" KERNEL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfileapistooem
+External_Function SetFileApisToOEM "SetFileApisToOEM" KERNEL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfileattributesa
+External_Function SetFileAttributesA "SetFileAttributesA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger dwFileAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfileattributestransacteda
+External_Function SetFileAttributesTransactedA "SetFileAttributesTransactedA" KERNEL32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger dwFileAttributes ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfileattributestransactedw
+External_Function SetFileAttributesTransactedW "SetFileAttributesTransactedW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwFileAttributes ;
+	Pointer hTransaction ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfileattributesw
+External_Function SetFileAttributesW "SetFileAttributesW" KERNEL32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwFileAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfilebandwidthreservation
+External_Function SetFileBandwidthReservation "SetFileBandwidthReservation" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	UInteger nPeriodMilliseconds ;
+	UInteger nBytesPerPeriod ;
+	Integer bDiscardable ;	// BOOL
+	Pointer lpTransferSize ;	// UInteger*
+	Pointer lpNumOutstandingRequests ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfilecompletionnotificationmodes
+External_Function SetFileCompletionNotificationModes "SetFileCompletionNotificationModes" KERNEL32.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UChar Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfileinformationbyhandle
+External_Function SetFileInformationByHandle "SetFileInformationByHandle" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Integer FileInformationClass ;	// FILE_INFO_BY_HANDLE_CLASS
+	Pointer lpFileInformation ;	// Pointer*
+	UInteger dwBufferSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfileiooverlappedrange
+External_Function SetFileIoOverlappedRange "SetFileIoOverlappedRange" KERNEL32.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer OverlappedRangeStart ;	// UChar*
+	UInteger Length ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

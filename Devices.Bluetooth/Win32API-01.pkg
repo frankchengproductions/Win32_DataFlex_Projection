@@ -1,0 +1,345 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothenablediscovery
+External_Function BluetoothEnableDiscovery "BluetoothEnableDiscovery" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Integer fEnabled ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothenableincomingconnections
+External_Function BluetoothEnableIncomingConnections "BluetoothEnableIncomingConnections" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Integer fEnabled ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothenumerateinstalledservices
+External_Function BluetoothEnumerateInstalledServices "BluetoothEnumerateInstalledServices" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Pointer pcServiceInout ;	// UInteger*
+	Pointer pGuidServices ;	// Guid*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothfinddeviceclose
+External_Function BluetoothFindDeviceClose "BluetoothFindDeviceClose" BluetoothApis.dll ;
+	Pointer hFind ;	// HBLUETOOTH_DEVICE_FIND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothfindfirstdevice
+External_Function BluetoothFindFirstDevice "BluetoothFindFirstDevice" BluetoothApis.dll ;
+	Pointer pbtsp ;	// BLUETOOTH_DEVICE_SEARCH_PARAMS*
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Returns Pointer	// HBLUETOOTH_DEVICE_FIND
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothfindfirstradio
+External_Function BluetoothFindFirstRadio "BluetoothFindFirstRadio" BluetoothApis.dll ;
+	Pointer pbtfrp ;	// BLUETOOTH_FIND_RADIO_PARAMS*
+	Pointer phRadio ;	// HANDLE*
+	Returns Pointer	// HBLUETOOTH_RADIO_FIND
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothfindnextdevice
+External_Function BluetoothFindNextDevice "BluetoothFindNextDevice" BluetoothApis.dll ;
+	Pointer hFind ;	// HBLUETOOTH_DEVICE_FIND
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothfindnextradio
+External_Function BluetoothFindNextRadio "BluetoothFindNextRadio" BluetoothApis.dll ;
+	Pointer hFind ;	// HBLUETOOTH_RADIO_FIND
+	Pointer phRadio ;	// HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothfindradioclose
+External_Function BluetoothFindRadioClose "BluetoothFindRadioClose" BluetoothApis.dll ;
+	Pointer hFind ;	// HBLUETOOTH_RADIO_FIND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattabortreliablewrite
+External_Function BluetoothGATTAbortReliableWrite "BluetoothGATTAbortReliableWrite" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	UBigint ReliableWriteContext ;
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattbeginreliablewrite
+External_Function BluetoothGATTBeginReliableWrite "BluetoothGATTBeginReliableWrite" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer ReliableWriteContext ;	// UBigint*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattendreliablewrite
+External_Function BluetoothGATTEndReliableWrite "BluetoothGATTEndReliableWrite" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	UBigint ReliableWriteContext ;
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattgetcharacteristicvalue
+External_Function BluetoothGATTGetCharacteristicValue "BluetoothGATTGetCharacteristicValue" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer Characteristic ;	// BTH_LE_GATT_CHARACTERISTIC*
+	UInteger CharacteristicValueDataSize ;
+	Pointer CharacteristicValue ;	// BTH_LE_GATT_CHARACTERISTIC_VALUE*
+	Pointer CharacteristicValueSizeRequired ;	// UShort*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattgetcharacteristics
+External_Function BluetoothGATTGetCharacteristics "BluetoothGATTGetCharacteristics" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer Service ;	// BTH_LE_GATT_SERVICE*
+	UShort CharacteristicsBufferCount ;
+	Pointer CharacteristicsBuffer ;	// BTH_LE_GATT_CHARACTERISTIC*
+	Pointer CharacteristicsBufferActual ;	// UShort*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattgetdescriptorvalue
+External_Function BluetoothGATTGetDescriptorValue "BluetoothGATTGetDescriptorValue" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer Descriptor ;	// BTH_LE_GATT_DESCRIPTOR*
+	UInteger DescriptorValueDataSize ;
+	Pointer DescriptorValue ;	// BTH_LE_GATT_DESCRIPTOR_VALUE*
+	Pointer DescriptorValueSizeRequired ;	// UShort*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattgetdescriptors
+External_Function BluetoothGATTGetDescriptors "BluetoothGATTGetDescriptors" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer Characteristic ;	// BTH_LE_GATT_CHARACTERISTIC*
+	UShort DescriptorsBufferCount ;
+	Pointer DescriptorsBuffer ;	// BTH_LE_GATT_DESCRIPTOR*
+	Pointer DescriptorsBufferActual ;	// UShort*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattgetincludedservices
+External_Function BluetoothGATTGetIncludedServices "BluetoothGATTGetIncludedServices" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer ParentService ;	// BTH_LE_GATT_SERVICE*
+	UShort IncludedServicesBufferCount ;
+	Pointer IncludedServicesBuffer ;	// BTH_LE_GATT_SERVICE*
+	Pointer IncludedServicesBufferActual ;	// UShort*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattgetservices
+External_Function BluetoothGATTGetServices "BluetoothGATTGetServices" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	UShort ServicesBufferCount ;
+	Pointer ServicesBuffer ;	// BTH_LE_GATT_SERVICE*
+	Pointer ServicesBufferActual ;	// UShort*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattregisterevent
+External_Function BluetoothGATTRegisterEvent "BluetoothGATTRegisterEvent" BluetoothApis.dll ;
+	Pointer hService ;	// HANDLE
+	Integer EventType ;	// BTH_LE_GATT_EVENT_TYPE
+	Pointer EventParameterIn ;	// Pointer*
+	Pointer Callback ;	// PFNBLUETOOTH_GATT_EVENT_CALLBACK
+	Pointer CallbackContext ;	// Pointer*
+	Pointer pEventHandle ;	// LongPtr*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattsetcharacteristicvalue
+External_Function BluetoothGATTSetCharacteristicValue "BluetoothGATTSetCharacteristicValue" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer Characteristic ;	// BTH_LE_GATT_CHARACTERISTIC*
+	Pointer CharacteristicValue ;	// BTH_LE_GATT_CHARACTERISTIC_VALUE*
+	UBigint ReliableWriteContext ;
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattsetdescriptorvalue
+External_Function BluetoothGATTSetDescriptorValue "BluetoothGATTSetDescriptorValue" BluetoothApis.dll ;
+	Pointer hDevice ;	// HANDLE
+	Pointer Descriptor ;	// BTH_LE_GATT_DESCRIPTOR*
+	Pointer DescriptorValue ;	// BTH_LE_GATT_DESCRIPTOR_VALUE*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothleapis/nf-bluetoothleapis-bluetoothgattunregisterevent
+External_Function BluetoothGATTUnregisterEvent "BluetoothGATTUnregisterEvent" BluetoothApis.dll ;
+	LongPtr EventHandle ;
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothgetdeviceinfo
+External_Function BluetoothGetDeviceInfo "BluetoothGetDeviceInfo" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothgetradioinfo
+External_Function BluetoothGetRadioInfo "BluetoothGetRadioInfo" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Pointer pRadioInfo ;	// BLUETOOTH_RADIO_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothisconnectable
+External_Function BluetoothIsConnectable "BluetoothIsConnectable" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothisdiscoverable
+External_Function BluetoothIsDiscoverable "BluetoothIsDiscoverable" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothisversionavailable
+External_Function BluetoothIsVersionAvailable "BluetoothIsVersionAvailable" BluetoothApis.dll ;
+	UChar MajorVersion ;
+	UChar MinorVersion ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothregisterforauthentication
+External_Function BluetoothRegisterForAuthentication "BluetoothRegisterForAuthentication" BluetoothApis.dll ;
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Pointer phRegHandle ;	// LongPtr*
+	Pointer pfnCallback ;	// PFN_AUTHENTICATION_CALLBACK
+	Pointer pvParam ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothregisterforauthenticationex
+External_Function BluetoothRegisterForAuthenticationEx "BluetoothRegisterForAuthenticationEx" BluetoothApis.dll ;
+	Pointer pbtdiIn ;	// BLUETOOTH_DEVICE_INFO*
+	Pointer phRegHandleOut ;	// LongPtr*
+	Pointer pfnCallbackIn ;	// PFN_AUTHENTICATION_CALLBACK_EX
+	Pointer pvParam ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothremovedevice
+External_Function BluetoothRemoveDevice "BluetoothRemoveDevice" BluetoothApis.dll ;
+	Pointer pAddress ;	// BLUETOOTH_ADDRESS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsdpenumattributes
+External_Function BluetoothSdpEnumAttributes "BluetoothSdpEnumAttributes" BluetoothApis.dll ;
+	Pointer pSDPStream ;	// UChar*
+	UInteger cbStreamSize ;
+	Pointer pfnCallback ;	// PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK
+	Pointer pvParam ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsdpgetattributevalue
+External_Function BluetoothSdpGetAttributeValue "BluetoothSdpGetAttributeValue" BluetoothApis.dll ;
+	Pointer pRecordStream ;	// UChar*
+	UInteger cbRecordLength ;
+	UShort usAttributeId ;
+	Pointer pAttributeData ;	// SDP_ELEMENT_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsdpgetcontainerelementdata
+External_Function BluetoothSdpGetContainerElementData "BluetoothSdpGetContainerElementData" BluetoothApis.dll ;
+	Pointer pContainerStream ;	// UChar*
+	UInteger cbContainerLength ;
+	Pointer pElement ;	// LongPtr*
+	Pointer pData ;	// SDP_ELEMENT_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsdpgetelementdata
+External_Function BluetoothSdpGetElementData "BluetoothSdpGetElementData" BluetoothApis.dll ;
+	Pointer pSdpStream ;	// UChar*
+	UInteger cbSdpStreamLength ;
+	Pointer pData ;	// SDP_ELEMENT_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsdpgetstring
+External_Function BluetoothSdpGetString "BluetoothSdpGetString" BluetoothApis.dll ;
+	Pointer pRecordStream ;	// UChar*
+	UInteger cbRecordLength ;
+	Pointer pStringData ;	// SDP_STRING_TYPE_DATA*
+	UShort usStringOffset ;
+	Pointer pszString ;	// PWSTR
+	Pointer pcchStringLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsendauthenticationresponse
+External_Function BluetoothSendAuthenticationResponse "BluetoothSendAuthenticationResponse" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	WString pszPasskey ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsendauthenticationresponseex
+External_Function BluetoothSendAuthenticationResponseEx "BluetoothSendAuthenticationResponseEx" BluetoothApis.dll ;
+	Pointer hRadioIn ;	// HANDLE
+	Pointer pauthResponse ;	// BLUETOOTH_AUTHENTICATE_RESPONSE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsetlocalserviceinfo
+External_Function BluetoothSetLocalServiceInfo "BluetoothSetLocalServiceInfo" BluetoothApis.dll ;
+	Pointer hRadioIn ;	// HANDLE
+	Pointer pClassGuid ;	// Guid*
+	UInteger ulInstance ;
+	Pointer pServiceInfoIn ;	// BLUETOOTH_LOCAL_SERVICE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothsetservicestate
+External_Function BluetoothSetServiceState "BluetoothSetServiceState" BluetoothApis.dll ;
+	Pointer hRadio ;	// HANDLE
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Pointer pGuidService ;	// Guid*
+	UInteger dwServiceFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothunregisterauthentication
+External_Function BluetoothUnregisterAuthentication "BluetoothUnregisterAuthentication" BluetoothApis.dll ;
+	LongPtr hRegHandle ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothupdatedevicerecord
+External_Function BluetoothUpdateDeviceRecord "BluetoothUpdateDeviceRecord" BluetoothApis.dll ;
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothauthenticatedevice
+External_Function BluetoothAuthenticateDevice "BluetoothAuthenticateDevice" bthprops.cpl ;
+	Pointer hwndParent ;	// HWND
+	Pointer hRadio ;	// HANDLE
+	Pointer pbtbi ;	// BLUETOOTH_DEVICE_INFO*
+	WString pszPasskey ;	// PWSTR
+	UInteger ulPasskeyLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothauthenticatedeviceex
+External_Function BluetoothAuthenticateDeviceEx "BluetoothAuthenticateDeviceEx" bthprops.cpl ;
+	Pointer hwndParentIn ;	// HWND
+	Pointer hRadioIn ;	// HANDLE
+	Pointer pbtdiInout ;	// BLUETOOTH_DEVICE_INFO*
+	Pointer pbtOobData ;	// BLUETOOTH_OOB_DATA_INFO*
+	Integer authenticationRequirement ;	// AUTHENTICATION_REQUIREMENTS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothauthenticatemultipledevices
+External_Function BluetoothAuthenticateMultipleDevices "BluetoothAuthenticateMultipleDevices" bthprops.cpl ;
+	Pointer hwndParent ;	// HWND
+	Pointer hRadio ;	// HANDLE
+	UInteger cDevices ;
+	Pointer rgbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothdisplaydeviceproperties
+External_Function BluetoothDisplayDeviceProperties "BluetoothDisplayDeviceProperties" bthprops.cpl ;
+	Pointer hwndParent ;	// HWND
+	Pointer pbtdi ;	// BLUETOOTH_DEVICE_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothselectdevices
+External_Function BluetoothSelectDevices "BluetoothSelectDevices" bthprops.cpl ;
+	Pointer pbtsdp ;	// BLUETOOTH_SELECT_DEVICE_PARAMS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/nf-bluetoothapis-bluetoothselectdevicesfree
+External_Function BluetoothSelectDevicesFree "BluetoothSelectDevicesFree" bthprops.cpl ;
+	Pointer pbtsdp ;	// BLUETOOTH_SELECT_DEVICE_PARAMS*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

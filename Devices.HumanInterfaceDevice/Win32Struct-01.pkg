@@ -1,0 +1,132 @@
+Use UI
+
+Struct HIDD_ATTRIBUTES
+	UInteger Size
+	UShort VendorID
+	UShort ProductID
+	UShort VersionNumber
+	Short iMissingAlignment1
+End_Struct
+
+Struct HIDD_CONFIGURATION
+	Pointer cookie											// Pointer*
+	UInteger size
+	UInteger RingBufferSize
+End_Struct
+
+Struct HIDP_BUTTON_ARRAY_DATA
+	UShort ArrayIndex
+	UChar On												// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct HIDP_BUTTON_CAPS
+	UShort UsagePage
+	UChar ReportID
+	UChar IsAlias											// BOOLEAN
+	UShort BitField
+	UShort LinkCollection
+	UShort LinkUsage
+	UShort LinkUsagePage
+	UChar IsRange											// BOOLEAN
+	UChar IsStringRange										// BOOLEAN
+	UChar IsDesignatorRange									// BOOLEAN
+	UChar IsAbsolute										// BOOLEAN
+	UShort ReportCount
+	UShort Reserved2
+	UInteger[9] Reserved
+	UChar[2] UnionName1
+	Short iMissingAlignment1
+End_Struct
+
+Struct HIDP_CAPS
+	UShort Usage
+	UShort UsagePage
+	UShort InputReportByteLength
+	UShort OutputReportByteLength
+	UShort FeatureReportByteLength
+	UShort[17] Reserved
+	UShort NumberLinkCollectionNodes
+	UShort NumberInputButtonCaps
+	UShort NumberInputValueCaps
+	UShort NumberInputDataIndices
+	UShort NumberOutputButtonCaps
+	UShort NumberOutputValueCaps
+	UShort NumberOutputDataIndices
+	UShort NumberFeatureButtonCaps
+	UShort NumberFeatureValueCaps
+	UShort NumberFeatureDataIndices
+End_Struct
+
+Struct HIDP_DATA
+	UShort DataIndex
+	UShort Reserved
+	UChar[4] UnionName1
+End_Struct
+
+Struct HIDP_EXTENDED_ATTRIBUTES
+	UChar NumGlobalUnknowns
+	UChar[3] Reserved
+	Integer iMissingAlignment1
+	Pointer GlobalUnknowns									// HIDP_UNKNOWN_TOKEN*
+	UInteger[1] Data
+	Integer iMissingAlignment2
+End_Struct
+
+Struct HIDP_KEYBOARD_MODIFIER_STATE
+	UChar[4] UnionName1
+End_Struct
+
+Struct HIDP_LINK_COLLECTION_NODE
+	UShort LinkUsage
+	UShort LinkUsagePage
+	UShort Parent
+	UShort NumberOfChildren
+	UShort NextSibling
+	UShort FirstChild
+	UInteger _bitfield
+	Pointer UserContext										// Pointer*
+End_Struct
+
+Struct HIDP_UNKNOWN_TOKEN
+	UChar Token
+	UChar[3] Reserved
+	UInteger BitField
+End_Struct
+
+Struct HIDP_VALUE_CAPS
+	UShort UsagePage
+	UChar ReportID
+	UChar IsAlias											// BOOLEAN
+	UShort BitField
+	UShort LinkCollection
+	UShort LinkUsage
+	UShort LinkUsagePage
+	UChar IsRange											// BOOLEAN
+	UChar IsStringRange										// BOOLEAN
+	UChar IsDesignatorRange									// BOOLEAN
+	UChar IsAbsolute										// BOOLEAN
+	UChar HasNull											// BOOLEAN
+	UChar Reserved
+	UShort BitSize
+	UShort ReportCount
+	UShort[5] Reserved2
+	UInteger UnitsExp
+	UInteger Units
+	Integer LogicalMin
+	Integer LogicalMax
+	Integer PhysicalMin
+	Integer PhysicalMax
+	UChar[2] UnionName1
+	Short iMissingAlignment1
+End_Struct
+
+Struct USAGE_AND_PAGE
+	UShort Usage
+	UShort UsagePage
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

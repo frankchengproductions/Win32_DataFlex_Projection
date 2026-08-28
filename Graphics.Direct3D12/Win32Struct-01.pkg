@@ -1,0 +1,153 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_descriptor_range
+Struct D3D12_DESCRIPTOR_RANGE
+	Integer RangeType										// D3D12_DESCRIPTOR_RANGE_TYPE
+	UInteger NumDescriptors
+	UInteger BaseShaderRegister
+	UInteger RegisterSpace
+	UInteger OffsetInDescriptorsFromTableStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_descriptor_range1
+Struct D3D12_DESCRIPTOR_RANGE1
+	Integer RangeType										// D3D12_DESCRIPTOR_RANGE_TYPE
+	UInteger NumDescriptors
+	UInteger BaseShaderRegister
+	UInteger RegisterSpace
+	Integer Flags											// D3D12_DESCRIPTOR_RANGE_FLAGS
+	UInteger OffsetInDescriptorsFromTableStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_constants
+Struct D3D12_ROOT_CONSTANTS
+	UInteger ShaderRegister
+	UInteger RegisterSpace
+	UInteger Num32BitValues
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_descriptor
+Struct D3D12_ROOT_DESCRIPTOR
+	UInteger ShaderRegister
+	UInteger RegisterSpace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_descriptor1
+Struct D3D12_ROOT_DESCRIPTOR1
+	UInteger ShaderRegister
+	UInteger RegisterSpace
+	Integer Flags											// D3D12_ROOT_DESCRIPTOR_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_descriptor_table
+Struct D3D12_ROOT_DESCRIPTOR_TABLE
+	UInteger NumDescriptorRanges
+	Integer iMissingAlignment1
+	Pointer pDescriptorRanges								// D3D12_DESCRIPTOR_RANGE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_descriptor_table1
+Struct D3D12_ROOT_DESCRIPTOR_TABLE1
+	UInteger NumDescriptorRanges
+	Integer iMissingAlignment1
+	Pointer pDescriptorRanges								// D3D12_DESCRIPTOR_RANGE1*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_parameter
+Struct D3D12_ROOT_PARAMETER
+	Integer ParameterType									// D3D12_ROOT_PARAMETER_TYPE
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+	Integer ShaderVisibility								// D3D12_SHADER_VISIBILITY
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_parameter1
+Struct D3D12_ROOT_PARAMETER1
+	Integer ParameterType									// D3D12_ROOT_PARAMETER_TYPE
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+	Integer ShaderVisibility								// D3D12_SHADER_VISIBILITY
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_signature_desc
+Struct D3D12_ROOT_SIGNATURE_DESC
+	UInteger NumParameters
+	Integer iMissingAlignment1
+	Pointer pParameters										// D3D12_ROOT_PARAMETER*
+	UInteger NumStaticSamplers
+	Integer iMissingAlignment2
+	Pointer pStaticSamplers									// D3D12_STATIC_SAMPLER_DESC*
+	Integer Flags											// D3D12_ROOT_SIGNATURE_FLAGS
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_root_signature_desc1
+Struct D3D12_ROOT_SIGNATURE_DESC1
+	UInteger NumParameters
+	Integer iMissingAlignment1
+	Pointer pParameters										// D3D12_ROOT_PARAMETER1*
+	UInteger NumStaticSamplers
+	Integer iMissingAlignment2
+	Pointer pStaticSamplers									// D3D12_STATIC_SAMPLER_DESC*
+	Integer Flags											// D3D12_ROOT_SIGNATURE_FLAGS
+	Integer iMissingAlignment3
+End_Struct
+
+Struct D3D12_ROOT_SIGNATURE_DESC2
+	UInteger NumParameters
+	Integer iMissingAlignment1
+	Pointer pParameters										// D3D12_ROOT_PARAMETER1*
+	UInteger NumStaticSamplers
+	Integer iMissingAlignment2
+	Pointer pStaticSamplers									// D3D12_STATIC_SAMPLER_DESC1*
+	Integer Flags											// D3D12_ROOT_SIGNATURE_FLAGS
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_static_sampler_desc
+Struct D3D12_STATIC_SAMPLER_DESC
+	Integer Filter											// D3D12_FILTER
+	Integer AddressU										// D3D12_TEXTURE_ADDRESS_MODE
+	Integer AddressV										// D3D12_TEXTURE_ADDRESS_MODE
+	Integer AddressW										// D3D12_TEXTURE_ADDRESS_MODE
+	Float MipLODBias
+	UInteger MaxAnisotropy
+	Integer ComparisonFunc									// D3D12_COMPARISON_FUNC
+	Integer BorderColor										// D3D12_STATIC_BORDER_COLOR
+	Float MinLOD
+	Float MaxLOD
+	UInteger ShaderRegister
+	UInteger RegisterSpace
+	Integer ShaderVisibility								// D3D12_SHADER_VISIBILITY
+End_Struct
+
+Struct D3D12_STATIC_SAMPLER_DESC1
+	Integer Filter											// D3D12_FILTER
+	Integer AddressU										// D3D12_TEXTURE_ADDRESS_MODE
+	Integer AddressV										// D3D12_TEXTURE_ADDRESS_MODE
+	Integer AddressW										// D3D12_TEXTURE_ADDRESS_MODE
+	Float MipLODBias
+	UInteger MaxAnisotropy
+	Integer ComparisonFunc									// D3D12_COMPARISON_FUNC
+	Integer BorderColor										// D3D12_STATIC_BORDER_COLOR
+	Float MinLOD
+	Float MaxLOD
+	UInteger ShaderRegister
+	UInteger RegisterSpace
+	Integer ShaderVisibility								// D3D12_SHADER_VISIBILITY
+	Integer Flags											// D3D12_SAMPLER_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_versioned_root_signature_desc
+Struct D3D12_VERSIONED_ROOT_SIGNATURE_DESC
+	Integer Version											// D3D_ROOT_SIGNATURE_VERSION
+	Integer iMissingAlignment1
+	UChar[40] UnionName1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

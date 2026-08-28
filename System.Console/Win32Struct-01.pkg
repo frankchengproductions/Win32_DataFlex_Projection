@@ -1,0 +1,145 @@
+Use UI
+
+Struct ALLOC_CONSOLE_OPTIONS
+	Integer mode											// ALLOC_CONSOLE_MODE
+	Integer useShowWindow									// BOOL
+	UShort showWindow
+	Short iMissingAlignment1
+End_Struct
+
+Struct APPKEY
+	UShort Modifier
+	UShort ScanCode
+End_Struct
+
+// https://learn.microsoft.com/windows/console/char-info-str
+Struct CHAR_INFO
+	UChar[2] UnionName1
+	UShort Attributes
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-cursor-info-str
+Struct CONSOLE_CURSOR_INFO
+	UInteger dwSize
+	Integer bVisible										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-font-info-str
+Struct CONSOLE_FONT_INFO
+	UInteger nFont
+	COORD dwFontSize
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-font-infoex
+Struct CONSOLE_FONT_INFOEX
+	UInteger cbSize
+	UInteger nFont
+	COORD dwFontSize
+	UInteger FontFamily
+	UInteger FontWeight
+	UShort[32] FaceName
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-history-info
+Struct CONSOLE_HISTORY_INFO
+	UInteger cbSize
+	UInteger HistoryBufferSize
+	UInteger NumberOfHistoryBuffers
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-readconsole-control
+Struct CONSOLE_READCONSOLE_CONTROL
+	UInteger nLength
+	UInteger nInitialChars
+	UInteger dwCtrlWakeupMask
+	UInteger dwControlKeyState
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-screen-buffer-info-str
+Struct CONSOLE_SCREEN_BUFFER_INFO
+	COORD dwSize
+	COORD dwCursorPosition
+	UShort wAttributes										// CONSOLE_CHARACTER_ATTRIBUTES
+	SMALL_RECT srWindow
+	COORD dwMaximumWindowSize
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-screen-buffer-infoex
+Struct CONSOLE_SCREEN_BUFFER_INFOEX
+	UInteger cbSize
+	COORD dwSize
+	COORD dwCursorPosition
+	UShort wAttributes										// CONSOLE_CHARACTER_ATTRIBUTES
+	SMALL_RECT srWindow
+	COORD dwMaximumWindowSize
+	UShort wPopupAttributes
+	Integer bFullscreenSupported							// BOOL
+	UInteger[16] ColorTable									// COLORREF
+End_Struct
+
+// https://learn.microsoft.com/windows/console/console-selection-info-str
+Struct CONSOLE_SELECTION_INFO
+	UInteger dwFlags
+	COORD dwSelectionAnchor
+	SMALL_RECT srSelection
+End_Struct
+
+// https://learn.microsoft.com/windows/console/coord-str
+Struct COORD
+	Short X
+	Short Y
+End_Struct
+
+// https://learn.microsoft.com/windows/console/focus-event-record-str
+Struct FOCUS_EVENT_RECORD
+	Integer bSetFocus										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/console/input-record-str
+Struct INPUT_RECORD
+	UShort EventType
+	Short iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/console/key-event-record-str
+Struct KEY_EVENT_RECORD
+	Integer bKeyDown										// BOOL
+	UShort wRepeatCount
+	UShort wVirtualKeyCode
+	UShort wVirtualScanCode
+	UChar[2] UnionName1
+	UInteger dwControlKeyState
+End_Struct
+
+// https://learn.microsoft.com/windows/console/menu-event-record-str
+Struct MENU_EVENT_RECORD
+	UInteger dwCommandId
+End_Struct
+
+// https://learn.microsoft.com/windows/console/mouse-event-record-str
+Struct MOUSE_EVENT_RECORD
+	COORD dwMousePosition
+	UInteger dwButtonState
+	UInteger dwControlKeyState
+	UInteger dwEventFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/console/small-rect-str
+Struct SMALL_RECT
+	Short Left
+	Short Top
+	Short Right
+	Short Bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/console/window-buffer-size-record-str
+Struct WINDOW_BUFFER_SIZE_RECORD
+	COORD dwSize
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

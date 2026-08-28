@@ -1,0 +1,83 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/rometadata/nf-rometadata-metadatagetdispenser
+External_Function MetaDataGetDispenser "MetaDataGetDispenser" RoMetadata.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rometadataresolution/nf-rometadataresolution-rogetmetadatafile
+External_Function RoGetMetaDataFile "RoGetMetaDataFile" api-ms-win-ro-typeresolution-l1-1-0.dll ;
+	Pointer name ;	// HSTRING
+	Pointer metaDataDispenser ;	// IMetaDataDispenserEx
+	Pointer metaDataFilePath ;	// HSTRING*
+	Pointer metaDataImport ;	// IMetaDataImport2*
+	Pointer typeDefToken ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rometadataresolution/nf-rometadataresolution-roparsetypename
+External_Function RoParseTypeName "RoParseTypeName" api-ms-win-ro-typeresolution-l1-1-0.dll ;
+	Pointer typeName ;	// HSTRING
+	Pointer partsCount ;	// UInteger*
+	Pointer typeNameParts ;	// HSTRING**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rometadataresolution/nf-rometadataresolution-roresolvenamespace
+External_Function RoResolveNamespace "RoResolveNamespace" api-ms-win-ro-typeresolution-l1-1-0.dll ;
+	Pointer name ;	// HSTRING
+	Pointer windowsMetaDataDir ;	// HSTRING
+	UInteger packageGraphDirsCount ;
+	Pointer packageGraphDirs ;	// HSTRING*
+	Pointer metaDataFilePathsCount ;	// UInteger*
+	Pointer metaDataFilePaths ;	// HSTRING**
+	Pointer subNamespacesCount ;	// UInteger*
+	Pointer subNamespaces ;	// HSTRING**
+	Returns Integer	// HRESULT
+
+External_Function RoCreateNonAgilePropertySet "RoCreateNonAgilePropertySet" api-ms-win-ro-typeresolution-l1-1-1.dll ;
+	Pointer ppPropertySet ;	// unknown*
+	Returns Integer	// HRESULT
+
+External_Function RoCreatePropertySetSerializer "RoCreatePropertySetSerializer" api-ms-win-ro-typeresolution-l1-1-1.dll ;
+	Pointer ppPropertySetSerializer ;	// unknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rometadataresolution/nf-rometadataresolution-roisapicontractmajorversionpresent
+External_Function RoIsApiContractMajorVersionPresent "RoIsApiContractMajorVersionPresent" api-ms-win-ro-typeresolution-l1-1-1.dll ;
+	WString name ;	// PWSTR
+	UShort majorVersion ;
+	Pointer present ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/rometadataresolution/nf-rometadataresolution-roisapicontractpresent
+External_Function RoIsApiContractPresent "RoIsApiContractPresent" api-ms-win-ro-typeresolution-l1-1-1.dll ;
+	WString name ;	// PWSTR
+	UShort majorVersion ;
+	UShort minorVersion ;
+	Pointer present ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roparameterizediid/nf-roparameterizediid-rofreeparameterizedtypeextra
+External_Function RoFreeParameterizedTypeExtra "RoFreeParameterizedTypeExtra" api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll ;
+	Pointer extra ;	// ROPARAMIIDHANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/roparameterizediid/nf-roparameterizediid-rogetparameterizedtypeinstanceiid
+External_Function RoGetParameterizedTypeInstanceIID "RoGetParameterizedTypeInstanceIID" api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll ;
+	UInteger nameElementCount ;
+	Pointer nameElements ;	// PWSTR*
+	Pointer metaDataLocator ;	// IRoMetaDataLocator
+	Pointer iid ;	// Guid*
+	Pointer pExtra ;	// ROPARAMIIDHANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/roparameterizediid/nf-roparameterizediid-roparameterizedtypeextragettypesignature
+External_Function RoParameterizedTypeExtraGetTypeSignature "RoParameterizedTypeExtraGetTypeSignature" api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll ;
+	Pointer extra ;	// ROPARAMIIDHANDLE
+	Returns Pointer	// PSTR
+
+
+Procedure DataFlex_Init
+End_Procedure
+

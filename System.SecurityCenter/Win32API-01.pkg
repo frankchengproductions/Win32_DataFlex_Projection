@@ -1,0 +1,35 @@
+Use UI
+
+External_Function WscGetAntiMalwareUri "WscGetAntiMalwareUri" WSCAPI.dll ;
+	Pointer ppszUri ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wscapi/nf-wscapi-wscgetsecurityproviderhealth
+External_Function WscGetSecurityProviderHealth "WscGetSecurityProviderHealth" WSCAPI.dll ;
+	UInteger Providers ;
+	Pointer pHealth ;	// WSC_SECURITY_PROVIDER_HEALTH*
+	Returns Integer	// HRESULT
+
+External_Function WscQueryAntiMalwareUri "WscQueryAntiMalwareUri" WSCAPI.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wscapi/nf-wscapi-wscregisterforchanges
+External_Function WscRegisterForChanges "WscRegisterForChanges" WSCAPI.dll ;
+	Pointer Reserved ;	// Pointer*
+	Pointer phCallbackRegistration ;	// HANDLE*
+	Pointer lpCallbackAddress ;	// LPTHREAD_START_ROUTINE
+	Pointer pContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function WscRegisterForUserNotifications "WscRegisterForUserNotifications" WSCAPI.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wscapi/nf-wscapi-wscunregisterchanges
+External_Function WscUnRegisterChanges "WscUnRegisterChanges" WSCAPI.dll ;
+	Pointer hRegistrationHandle ;	// HANDLE
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

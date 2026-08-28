@@ -1,0 +1,341 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_cert
+Struct CRYPT_PROVIDER_CERT
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pCert											// CERT_CONTEXT*
+	Integer fCommercial										// BOOL
+	Integer fTrustedRoot									// BOOL
+	Integer fSelfSigned										// BOOL
+	Integer fTestCert										// BOOL
+	UInteger dwRevokedReason
+	UInteger dwConfidence
+	UInteger dwError
+	Integer iMissingAlignment2
+	Pointer pTrustListContext								// CTL_CONTEXT*
+	Integer fTrustListSignerCert							// BOOL
+	Integer iMissingAlignment3
+	Pointer pCtlContext										// CTL_CONTEXT*
+	UInteger dwCtlError
+	Integer fIsCyclic										// BOOL
+	Pointer pChainElement									// CERT_CHAIN_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_data
+Struct CRYPT_PROVIDER_DATA
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pWintrustData									// WINTRUST_DATA*
+	Integer fOpenedFile										// BOOL
+	Integer iMissingAlignment2
+	Pointer hWndParent										// HWND
+	Pointer pgActionID										// Guid*
+	ULongPtr hProv
+	UInteger dwError
+	UInteger dwRegSecuritySettings
+	UInteger dwRegPolicySettings
+	Integer iMissingAlignment3
+	Pointer psPfns											// CRYPT_PROVIDER_FUNCTIONS*
+	UInteger cdwTrustStepErrors
+	Integer iMissingAlignment4
+	Pointer padwTrustStepErrors								// UInteger*
+	UInteger chStores
+	Integer iMissingAlignment5
+	Pointer pahStores										// HCERTSTORE*
+	UInteger dwEncoding
+	Integer iMissingAlignment6
+	Pointer hMsg											// Pointer*
+	UInteger csSigners
+	Integer iMissingAlignment7
+	Pointer pasSigners										// CRYPT_PROVIDER_SGNR*
+	UInteger csProvPrivData
+	Integer iMissingAlignment8
+	Pointer pasProvPrivData									// CRYPT_PROVIDER_PRIVDATA*
+	UInteger dwSubjectChoice
+	Integer iMissingAlignment9
+	UChar[8] UnionName1
+	Pointer pszUsageOID										// PSTR
+	Integer fRecallWithState								// BOOL
+	FILETIME sftSystemTime
+	Integer iMissingAlignment10
+	Pointer pszCTLSignerUsageOID							// PSTR
+	UInteger dwProvFlags
+	UInteger dwFinalError
+	Pointer pRequestUsage									// CERT_USAGE_MATCH*
+	UInteger dwTrustPubSettings
+	UInteger dwUIStateFlags
+	Pointer pSigState										// CRYPT_PROVIDER_SIGSTATE*
+	Pointer pSigSettings									// WINTRUST_SIGNATURE_SETTINGS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_defusage
+Struct CRYPT_PROVIDER_DEFUSAGE
+	UInteger cbStruct
+	Guid gActionID
+	Integer iMissingAlignment1
+	Pointer pDefPolicyCallbackData							// Pointer*
+	Pointer pDefSIPClientData								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_functions
+Struct CRYPT_PROVIDER_FUNCTIONS
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pfnAlloc										// PFN_CPD_MEM_ALLOC
+	Pointer pfnFree											// PFN_CPD_MEM_FREE
+	Pointer pfnAddStore2Chain								// PFN_CPD_ADD_STORE
+	Pointer pfnAddSgnr2Chain								// PFN_CPD_ADD_SGNR
+	Pointer pfnAddCert2Chain								// PFN_CPD_ADD_CERT
+	Pointer pfnAddPrivData2Chain							// PFN_CPD_ADD_PRIVDATA
+	Pointer pfnInitialize									// PFN_PROVIDER_INIT_CALL
+	Pointer pfnObjectTrust									// PFN_PROVIDER_OBJTRUST_CALL
+	Pointer pfnSignatureTrust								// PFN_PROVIDER_SIGTRUST_CALL
+	Pointer pfnCertificateTrust								// PFN_PROVIDER_CERTTRUST_CALL
+	Pointer pfnFinalPolicy									// PFN_PROVIDER_FINALPOLICY_CALL
+	Pointer pfnCertCheckPolicy								// PFN_PROVIDER_CERTCHKPOLICY_CALL
+	Pointer pfnTestFinalPolicy								// PFN_PROVIDER_TESTFINALPOLICY_CALL
+	Pointer psUIpfns										// CRYPT_PROVUI_FUNCS*
+	Pointer pfnCleanupPolicy								// PFN_PROVIDER_CLEANUP_CALL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_privdata
+Struct CRYPT_PROVIDER_PRIVDATA
+	UInteger cbStruct
+	Guid gProviderID
+	UInteger cbProvData
+	Pointer pvProvData										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_regdefusage
+Struct CRYPT_PROVIDER_REGDEFUSAGE
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pgActionID										// Guid*
+	Pointer pwszDllName										// PWSTR
+	Pointer pwszLoadCallbackDataFunctionName				// PSTR
+	Pointer pwszFreeCallbackDataFunctionName				// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_sgnr
+Struct CRYPT_PROVIDER_SGNR
+	UInteger cbStruct
+	FILETIME sftVerifyAsOf
+	UInteger csCertChain
+	Pointer pasCertChain									// CRYPT_PROVIDER_CERT*
+	UInteger dwSignerType
+	Integer iMissingAlignment1
+	Pointer psSigner										// CMSG_SIGNER_INFO*
+	UInteger dwError
+	UInteger csCounterSigners
+	Pointer pasCounterSigners								// CRYPT_PROVIDER_SGNR*
+	Pointer pChainContext									// CERT_CHAIN_CONTEXT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provider_sigstate
+Struct CRYPT_PROVIDER_SIGSTATE
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer rhSecondarySigs									// Pointer**
+	Pointer hPrimarySig										// Pointer*
+	Integer fFirstAttemptMade								// BOOL
+	Integer fNoMoreSigs										// BOOL
+	UInteger cSecondarySigs
+	UInteger dwCurrentIndex
+	Integer fSupportMultiSig								// BOOL
+	UInteger dwCryptoPolicySupport
+	UInteger iAttemptCount
+	Integer fCheckedSealing									// BOOL
+	Pointer pSealingSignature								// SEALING_SIGNATURE_ATTRIBUTE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provui_data
+Struct CRYPT_PROVUI_DATA
+	UInteger cbStruct
+	UInteger dwFinalError
+	Pointer pYesButtonText									// PWSTR
+	Pointer pNoButtonText									// PWSTR
+	Pointer pMoreInfoButtonText								// PWSTR
+	Pointer pAdvancedLinkText								// PWSTR
+	Pointer pCopyActionText									// PWSTR
+	Pointer pCopyActionTextNoTS								// PWSTR
+	Pointer pCopyActionTextNotSigned						// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_provui_funcs
+Struct CRYPT_PROVUI_FUNCS
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer psUIData										// CRYPT_PROVUI_DATA*
+	Pointer pfnOnMoreInfoClick								// PFN_PROVUI_CALL
+	Pointer pfnOnMoreInfoClickDefault						// PFN_PROVUI_CALL
+	Pointer pfnOnAdvancedClick								// PFN_PROVUI_CALL
+	Pointer pfnOnAdvancedClickDefault						// PFN_PROVUI_CALL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_register_actionid
+Struct CRYPT_REGISTER_ACTIONID
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	CRYPT_TRUST_REG_ENTRY sInitProvider
+	CRYPT_TRUST_REG_ENTRY sObjectProvider
+	CRYPT_TRUST_REG_ENTRY sSignatureProvider
+	CRYPT_TRUST_REG_ENTRY sCertificateProvider
+	CRYPT_TRUST_REG_ENTRY sCertificatePolicyProvider
+	CRYPT_TRUST_REG_ENTRY sFinalPolicyProvider
+	CRYPT_TRUST_REG_ENTRY sTestPolicyProvider
+	CRYPT_TRUST_REG_ENTRY sCleanupProvider
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-crypt_trust_reg_entry
+Struct CRYPT_TRUST_REG_ENTRY
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pwszDLLName										// PWSTR
+	Pointer pwszFunctionName								// PWSTR
+End_Struct
+
+Struct PROVDATA_SIP
+	UInteger cbStruct
+	Guid gSubject
+	Integer iMissingAlignment1
+	Pointer pSip											// SIP_DISPATCH_INFO*
+	Pointer pCATSip											// SIP_DISPATCH_INFO*
+	Pointer psSipSubjectInfo								// SIP_SUBJECTINFO*
+	Pointer psSipCATSubjectInfo								// SIP_SUBJECTINFO*
+	Pointer psIndirectData									// SIP_INDIRECT_DATA*
+End_Struct
+
+Struct SEALING_SIGNATURE_ATTRIBUTE
+	UInteger version
+	UInteger signerIndex
+	CRYPT_ALGORITHM_IDENTIFIER signatureAlgorithm
+	CRYPT_INTEGER_BLOB encryptedDigest
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_blob_info
+Struct WINTRUST_BLOB_INFO
+	UInteger cbStruct
+	Guid gSubject
+	Integer iMissingAlignment1
+	Pointer pcwszDisplayName								// PWSTR
+	UInteger cbMemObject
+	Integer iMissingAlignment2
+	Pointer pbMemObject										// UChar*
+	UInteger cbMemSignedMsg
+	Integer iMissingAlignment3
+	Pointer pbMemSignedMsg									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_catalog_info
+Struct WINTRUST_CATALOG_INFO
+	UInteger cbStruct
+	UInteger dwCatalogVersion
+	Pointer pcwszCatalogFilePath							// PWSTR
+	Pointer pcwszMemberTag									// PWSTR
+	Pointer pcwszMemberFilePath								// PWSTR
+	Pointer hMemberFile										// HANDLE
+	Pointer pbCalculatedFileHash							// UChar*
+	UInteger cbCalculatedFileHash
+	Integer iMissingAlignment1
+	Pointer pcCatalogContext								// CTL_CONTEXT*
+	LongPtr hCatAdmin
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_cert_info
+Struct WINTRUST_CERT_INFO
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pcwszDisplayName								// PWSTR
+	Pointer psCertContext									// CERT_CONTEXT*
+	UInteger chStores
+	Integer iMissingAlignment2
+	Pointer pahStores										// HCERTSTORE*
+	UInteger dwFlags
+	Integer iMissingAlignment3
+	Pointer psftVerifyAsOf									// FILETIME*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_data
+Struct WINTRUST_DATA
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pPolicyCallbackData								// Pointer*
+	Pointer pSIPClientData									// Pointer*
+	UInteger dwUIChoice										// WINTRUST_DATA_UICHOICE
+	UInteger fdwRevocationChecks							// WINTRUST_DATA_REVOCATION_CHECKS
+	UInteger dwUnionChoice									// WINTRUST_DATA_UNION_CHOICE
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	UInteger dwStateAction									// WINTRUST_DATA_STATE_ACTION
+	Integer iMissingAlignment3
+	Pointer hWVTStateData									// HANDLE
+	Pointer pwszURLReference								// PWSTR
+	UInteger dwProvFlags									// WINTRUST_DATA_PROVIDER_FLAGS
+	UInteger dwUIContext									// WINTRUST_DATA_UICONTEXT
+	Pointer pSignatureSettings								// WINTRUST_SIGNATURE_SETTINGS*
+End_Struct
+
+Struct WINTRUST_DETACHED_SIG_BLOBS
+	Bigint cbContentObject
+	Pointer pbContentObject									// UChar*
+	UInteger cbSignatureObject
+	Integer iMissingAlignment1
+	Pointer pbSignatureObject								// UChar*
+End_Struct
+
+Struct WINTRUST_DETACHED_SIG_FILE_HANDLES
+	Pointer hContentFile									// HANDLE
+	Pointer hSignatureFile									// HANDLE
+End_Struct
+
+Struct WINTRUST_DETACHED_SIG_INFO
+	UInteger cbStruct
+	UInteger dwUnionChoice
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_file_info
+Struct WINTRUST_FILE_INFO
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pcwszFilePath									// PWSTR
+	Pointer hFile											// HANDLE
+	Pointer pgKnownSubject									// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_sgnr_info
+Struct WINTRUST_SGNR_INFO
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer pcwszDisplayName								// PWSTR
+	Pointer psSignerInfo									// CMSG_SIGNER_INFO*
+	UInteger chStores
+	Integer iMissingAlignment2
+	Pointer pahStores										// HCERTSTORE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-wintrust_signature_settings
+Struct WINTRUST_SIGNATURE_SETTINGS
+	UInteger cbStruct
+	UInteger dwIndex
+	UInteger dwFlags										// WINTRUST_SIGNATURE_SETTINGS_FLAGS
+	UInteger cSecondarySigs
+	UInteger dwVerifiedSigIndex
+	Integer iMissingAlignment1
+	Pointer pCryptoPolicy									// CERT_STRONG_SIGN_PARA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wintrust/ns-wintrust-win_certificate
+Struct WIN_CERTIFICATE
+	UInteger dwLength
+	UShort wRevision
+	UShort wCertificateType
+	UChar[1] bCertificate
+	UChar[3] cMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

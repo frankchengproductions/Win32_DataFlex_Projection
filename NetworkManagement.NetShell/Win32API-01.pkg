@@ -1,0 +1,62 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-matchenumtag
+External_Function MatchEnumTag "MatchEnumTag" NETSH.dll ;
+	Pointer hModule ;	// HANDLE
+	WString pwcArg ;	// PWSTR
+	UInteger dwNumArg ;
+	Pointer pEnumTable ;	// TOKEN_VALUE*
+	Pointer pdwValue ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-matchtoken
+External_Function MatchToken "MatchToken" NETSH.dll ;
+	WString pwszUserToken ;	// PWSTR
+	WString pwszCmdToken ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-preprocesscommand
+External_Function PreprocessCommand "PreprocessCommand" NETSH.dll ;
+	Pointer hModule ;	// HANDLE
+	Pointer ppwcArguments ;	// PWSTR*
+	UInteger dwCurrentIndex ;
+	UInteger dwArgCount ;
+	Pointer pttTags ;	// TAG_TYPE*
+	UInteger dwTagCount ;
+	UInteger dwMinArgs ;
+	UInteger dwMaxArgs ;
+	Pointer pdwTagType ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-printerror
+External_Function PrintError "PrintError" NETSH.dll ;
+	Pointer hModule ;	// HANDLE
+	UInteger dwErrId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-printmessage
+External_Function PrintMessage "PrintMessage" NETSH.dll ;
+	WString pwszFormat ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-printmessagefrommodule
+External_Function PrintMessageFromModule "PrintMessageFromModule" NETSH.dll ;
+	Pointer hModule ;	// HANDLE
+	UInteger dwMsgId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-registercontext
+External_Function RegisterContext "RegisterContext" NETSH.dll ;
+	Pointer pChildContext ;	// NS_CONTEXT_ATTRIBUTES*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netsh/nf-netsh-registerhelper
+External_Function RegisterHelper "RegisterHelper" NETSH.dll ;
+	Pointer pguidParentContext ;	// Guid*
+	Pointer pfnRegisterSubContext ;	// NS_HELPER_ATTRIBUTES*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

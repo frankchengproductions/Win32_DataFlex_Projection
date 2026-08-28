@@ -1,0 +1,585 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-dosdatetimetovarianttime
+External_Function DosDateTimeToVariantTime "DosDateTimeToVariantTime" OLEAUT32.dll ;
+	UShort wDosDate ;
+	UShort wDosTime ;
+	Pointer pvtime ;	// Real*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-systemtimetovarianttime
+External_Function SystemTimeToVariantTime "SystemTimeToVariantTime" OLEAUT32.dll ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Pointer pvtime ;	// Real*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_userfree
+External_Function VARIANT_UserFree "VARIANT_UserFree" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// VARIANT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_userfree64
+External_Function VARIANT_UserFree64 "VARIANT_UserFree64" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// VARIANT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_usermarshal
+External_Function VARIANT_UserMarshal "VARIANT_UserMarshal" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// VARIANT*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_usermarshal64
+External_Function VARIANT_UserMarshal64 "VARIANT_UserMarshal64" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// VARIANT*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_usersize
+External_Function VARIANT_UserSize "VARIANT_UserSize" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// VARIANT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_usersize64
+External_Function VARIANT_UserSize64 "VARIANT_UserSize64" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	UInteger param1 ;
+	Pointer param2 ;	// VARIANT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_userunmarshal
+External_Function VARIANT_UserUnmarshal "VARIANT_UserUnmarshal" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// VARIANT*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/oaidl/nf-oaidl-variant_userunmarshal64
+External_Function VARIANT_UserUnmarshal64 "VARIANT_UserUnmarshal64" OLEAUT32.dll ;
+	Pointer param0 ;	// UInteger*
+	Pointer param1 ;	// UChar*
+	Pointer param2 ;	// VARIANT*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantchangetype
+External_Function VariantChangeType "VariantChangeType" OLEAUT32.dll ;
+	Pointer pvargDest ;	// VARIANT*
+	Pointer pvarSrc ;	// VARIANT*
+	UShort wFlags ;	// VAR_CHANGE_FLAGS
+	UShort vt ;	// VARENUM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantchangetypeex
+External_Function VariantChangeTypeEx "VariantChangeTypeEx" OLEAUT32.dll ;
+	Pointer pvargDest ;	// VARIANT*
+	Pointer pvarSrc ;	// VARIANT*
+	UInteger lcid ;
+	UShort wFlags ;	// VAR_CHANGE_FLAGS
+	UShort vt ;	// VARENUM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantclear
+External_Function VariantClear "VariantClear" OLEAUT32.dll ;
+	Pointer pvarg ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantcopy
+External_Function VariantCopy "VariantCopy" OLEAUT32.dll ;
+	Pointer pvargDest ;	// VARIANT*
+	Pointer pvargSrc ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantcopyind
+External_Function VariantCopyInd "VariantCopyInd" OLEAUT32.dll ;
+	Pointer pvarDest ;	// VARIANT*
+	Pointer pvargSrc ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-variantinit
+External_Function VariantInit "VariantInit" OLEAUT32.dll ;
+	Pointer pvarg ;	// VARIANT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varianttimetodosdatetime
+External_Function VariantTimeToDosDateTime "VariantTimeToDosDateTime" OLEAUT32.dll ;
+	Real vtime ;
+	Pointer pwDosDate ;	// UShort*
+	Pointer pwDosTime ;	// UShort*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-varianttimetosystemtime
+External_Function VariantTimeToSystemTime "VariantTimeToSystemTime" OLEAUT32.dll ;
+	Real vtime ;
+	Pointer lpSystemTime ;	// SYSTEMTIME*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-clearvariantarray
+External_Function ClearVariantArray "ClearVariantArray" PROPSYS.dll ;
+	Pointer pvars ;	// VARIANT*
+	UInteger cvars ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfrombooleanarray
+External_Function InitVariantFromBooleanArray "InitVariantFromBooleanArray" PROPSYS.dll ;
+	Pointer prgf ;	// BOOL*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfrombuffer
+External_Function InitVariantFromBuffer "InitVariantFromBuffer" PROPSYS.dll ;
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromdoublearray
+External_Function InitVariantFromDoubleArray "InitVariantFromDoubleArray" PROPSYS.dll ;
+	Pointer prgn ;	// Real*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromfiletime
+External_Function InitVariantFromFileTime "InitVariantFromFileTime" PROPSYS.dll ;
+	Pointer pft ;	// FILETIME*
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromfiletimearray
+External_Function InitVariantFromFileTimeArray "InitVariantFromFileTimeArray" PROPSYS.dll ;
+	Pointer prgft ;	// FILETIME*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromguidasstring
+External_Function InitVariantFromGUIDAsString "InitVariantFromGUIDAsString" PROPSYS.dll ;
+	Pointer guid ;	// Guid*
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromint16array
+External_Function InitVariantFromInt16Array "InitVariantFromInt16Array" PROPSYS.dll ;
+	Pointer prgn ;	// Short*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromint32array
+External_Function InitVariantFromInt32Array "InitVariantFromInt32Array" PROPSYS.dll ;
+	Pointer prgn ;	// Integer*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromint64array
+External_Function InitVariantFromInt64Array "InitVariantFromInt64Array" PROPSYS.dll ;
+	Pointer prgn ;	// Bigint*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromresource
+External_Function InitVariantFromResource "InitVariantFromResource" PROPSYS.dll ;
+	Pointer hinst ;	// HINSTANCE
+	UInteger id ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromstringarray
+External_Function InitVariantFromStringArray "InitVariantFromStringArray" PROPSYS.dll ;
+	Pointer prgsz ;	// PWSTR*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromuint16array
+External_Function InitVariantFromUInt16Array "InitVariantFromUInt16Array" PROPSYS.dll ;
+	Pointer prgn ;	// UShort*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromuint32array
+External_Function InitVariantFromUInt32Array "InitVariantFromUInt32Array" PROPSYS.dll ;
+	Pointer prgn ;	// UInteger*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromuint64array
+External_Function InitVariantFromUInt64Array "InitVariantFromUInt64Array" PROPSYS.dll ;
+	Pointer prgn ;	// UBigint*
+	UInteger cElems ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-initvariantfromvariantarrayelem
+External_Function InitVariantFromVariantArrayElem "InitVariantFromVariantArrayElem" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pvar ;	// VARIANT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantcompare
+External_Function VariantCompare "VariantCompare" PROPSYS.dll ;
+	Pointer var1 ;	// VARIANT*
+	Pointer var2 ;	// VARIANT*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetbooleanelem
+External_Function VariantGetBooleanElem "VariantGetBooleanElem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pfVal ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetdoubleelem
+External_Function VariantGetDoubleElem "VariantGetDoubleElem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Real*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetelementcount
+External_Function VariantGetElementCount "VariantGetElementCount" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetint16elem
+External_Function VariantGetInt16Elem "VariantGetInt16Elem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Short*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetint32elem
+External_Function VariantGetInt32Elem "VariantGetInt32Elem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetint64elem
+External_Function VariantGetInt64Elem "VariantGetInt64Elem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetstringelem
+External_Function VariantGetStringElem "VariantGetStringElem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer ppszVal ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetuint16elem
+External_Function VariantGetUInt16Elem "VariantGetUInt16Elem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// UShort*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetuint32elem
+External_Function VariantGetUInt32Elem "VariantGetUInt32Elem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-variantgetuint64elem
+External_Function VariantGetUInt64Elem "VariantGetUInt64Elem" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	UInteger iElem ;
+	Pointer pnVal ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoboolean
+External_Function VariantToBoolean "VariantToBoolean" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pfRet ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttobooleanarray
+External_Function VariantToBooleanArray "VariantToBooleanArray" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgf ;	// BOOL*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttobooleanarrayalloc
+External_Function VariantToBooleanArrayAlloc "VariantToBooleanArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgf ;	// BOOL**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttobooleanwithdefault
+External_Function VariantToBooleanWithDefault "VariantToBooleanWithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Integer fDefault ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttobuffer
+External_Function VariantToBuffer "VariantToBuffer" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pv ;	// Pointer*
+	UInteger cb ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttodosdatetime
+External_Function VariantToDosDateTime "VariantToDosDateTime" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pwDate ;	// UShort*
+	Pointer pwTime ;	// UShort*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttodouble
+External_Function VariantToDouble "VariantToDouble" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pdblRet ;	// Real*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttodoublearray
+External_Function VariantToDoubleArray "VariantToDoubleArray" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// Real*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttodoublearrayalloc
+External_Function VariantToDoubleArrayAlloc "VariantToDoubleArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// Real**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttodoublewithdefault
+External_Function VariantToDoubleWithDefault "VariantToDoubleWithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Real dblDefault ;
+	Returns Real
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttofiletime
+External_Function VariantToFileTime "VariantToFileTime" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Integer stfOut ;	// PSTIME_FLAGS
+	Pointer pftOut ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoguid
+External_Function VariantToGUID "VariantToGUID" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pguid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint16
+External_Function VariantToInt16 "VariantToInt16" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer piRet ;	// Short*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint16array
+External_Function VariantToInt16Array "VariantToInt16Array" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// Short*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint16arrayalloc
+External_Function VariantToInt16ArrayAlloc "VariantToInt16ArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// Short**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint16withdefault
+External_Function VariantToInt16WithDefault "VariantToInt16WithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Short iDefault ;
+	Returns Short
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint32
+External_Function VariantToInt32 "VariantToInt32" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer plRet ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint32array
+External_Function VariantToInt32Array "VariantToInt32Array" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// Integer*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint32arrayalloc
+External_Function VariantToInt32ArrayAlloc "VariantToInt32ArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// Integer**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint32withdefault
+External_Function VariantToInt32WithDefault "VariantToInt32WithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Integer lDefault ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint64
+External_Function VariantToInt64 "VariantToInt64" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pllRet ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint64array
+External_Function VariantToInt64Array "VariantToInt64Array" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// Bigint*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint64arrayalloc
+External_Function VariantToInt64ArrayAlloc "VariantToInt64ArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// Bigint**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttoint64withdefault
+External_Function VariantToInt64WithDefault "VariantToInt64WithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Bigint llDefault ;
+	Returns Bigint
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttostring
+External_Function VariantToString "VariantToString" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pszBuf ;	// PWSTR
+	UInteger cchBuf ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttostringalloc
+External_Function VariantToStringAlloc "VariantToStringAlloc" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer ppszBuf ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttostringarray
+External_Function VariantToStringArray "VariantToStringArray" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgsz ;	// PWSTR*
+	UInteger crgsz ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttostringarrayalloc
+External_Function VariantToStringArrayAlloc "VariantToStringArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgsz ;	// PWSTR**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttostringwithdefault
+External_Function VariantToStringWithDefault "VariantToStringWithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	WString pszDefault ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint16
+External_Function VariantToUInt16 "VariantToUInt16" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer puiRet ;	// UShort*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint16array
+External_Function VariantToUInt16Array "VariantToUInt16Array" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// UShort*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint16arrayalloc
+External_Function VariantToUInt16ArrayAlloc "VariantToUInt16ArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// UShort**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint16withdefault
+External_Function VariantToUInt16WithDefault "VariantToUInt16WithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	UShort uiDefault ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint32
+External_Function VariantToUInt32 "VariantToUInt32" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pulRet ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint32array
+External_Function VariantToUInt32Array "VariantToUInt32Array" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// UInteger*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint32arrayalloc
+External_Function VariantToUInt32ArrayAlloc "VariantToUInt32ArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// UInteger**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint32withdefault
+External_Function VariantToUInt32WithDefault "VariantToUInt32WithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	UInteger ulDefault ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint64
+External_Function VariantToUInt64 "VariantToUInt64" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	Pointer pullRet ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint64array
+External_Function VariantToUInt64Array "VariantToUInt64Array" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer prgn ;	// UBigint*
+	UInteger crgn ;
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint64arrayalloc
+External_Function VariantToUInt64ArrayAlloc "VariantToUInt64ArrayAlloc" PROPSYS.dll ;
+	Pointer var ;	// VARIANT*
+	Pointer pprgn ;	// UBigint**
+	Pointer pcElem ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/propvarutil/nf-propvarutil-varianttouint64withdefault
+External_Function VariantToUInt64WithDefault "VariantToUInt64WithDefault" PROPSYS.dll ;
+	Pointer varIn ;	// VARIANT*
+	UBigint ullDefault ;
+	Returns UBigint
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,227 @@
+Use UI
+
+External_Function CollectionsListAllocateBufferAndSerialize "CollectionsListAllocateBufferAndSerialize" SensorsUtilsV2.dll ;
+	Pointer SourceCollection ;	// SENSOR_COLLECTION_LIST*
+	Pointer pTargetBufferSizeInBytes ;	// UInteger*
+	Pointer pTargetBuffer ;	// UChar**
+	Returns Integer	// NTSTATUS
+
+External_Function CollectionsListCopyAndMarshall "CollectionsListCopyAndMarshall" SensorsUtilsV2.dll ;
+	Pointer Target ;	// SENSOR_COLLECTION_LIST*
+	Pointer Source ;	// SENSOR_COLLECTION_LIST*
+	Returns Integer	// NTSTATUS
+
+External_Function CollectionsListDeserializeFromBuffer "CollectionsListDeserializeFromBuffer" SensorsUtilsV2.dll ;
+	UInteger SourceBufferSizeInBytes ;
+	Pointer SourceBuffer ;	// UChar*
+	Pointer TargetCollection ;	// SENSOR_COLLECTION_LIST*
+	Returns Integer	// NTSTATUS
+
+External_Function CollectionsListGetFillableCount "CollectionsListGetFillableCount" SensorsUtilsV2.dll ;
+	UInteger BufferSizeBytes ;
+	Returns UInteger
+
+External_Function CollectionsListGetMarshalledSize "CollectionsListGetMarshalledSize" SensorsUtilsV2.dll ;
+	Pointer Collection ;	// SENSOR_COLLECTION_LIST*
+	Returns UInteger
+
+External_Function CollectionsListGetMarshalledSizeWithoutSerialization "CollectionsListGetMarshalledSizeWithoutSerialization" SensorsUtilsV2.dll ;
+	Pointer Collection ;	// SENSOR_COLLECTION_LIST*
+	Returns UInteger
+
+External_Function CollectionsListGetSerializedSize "CollectionsListGetSerializedSize" SensorsUtilsV2.dll ;
+	Pointer Collection ;	// SENSOR_COLLECTION_LIST*
+	Returns UInteger
+
+External_Function CollectionsListMarshall "CollectionsListMarshall" SensorsUtilsV2.dll ;
+	Pointer Target ;	// SENSOR_COLLECTION_LIST*
+	Returns Integer	// NTSTATUS
+
+External_Function CollectionsListSerializeToBuffer "CollectionsListSerializeToBuffer" SensorsUtilsV2.dll ;
+	Pointer SourceCollection ;	// SENSOR_COLLECTION_LIST*
+	UInteger TargetBufferSizeInBytes ;
+	Pointer TargetBuffer ;	// UChar*
+	Returns Integer	// NTSTATUS
+
+External_Function CollectionsListSortSubscribedActivitiesByConfidence "CollectionsListSortSubscribedActivitiesByConfidence" SensorsUtilsV2.dll ;
+	Pointer thresholds ;	// SENSOR_COLLECTION_LIST*
+	Pointer pCollection ;	// SENSOR_COLLECTION_LIST*
+	Returns Integer	// NTSTATUS
+
+External_Function CollectionsListUpdateMarshalledPointer "CollectionsListUpdateMarshalledPointer" SensorsUtilsV2.dll ;
+	Pointer Collection ;	// SENSOR_COLLECTION_LIST*
+	Returns Integer	// NTSTATUS
+
+External_Function EvaluateActivityThresholds "EvaluateActivityThresholds" SensorsUtilsV2.dll ;
+	Pointer newSample ;	// SENSOR_COLLECTION_LIST*
+	Pointer oldSample ;	// SENSOR_COLLECTION_LIST*
+	Pointer thresholds ;	// SENSOR_COLLECTION_LIST*
+	Returns UChar	// BOOLEAN
+
+External_Function GetPerformanceTime "GetPerformanceTime" SensorsUtilsV2.dll ;
+	Pointer TimeMs ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+External_Function InitPropVariantFromCLSIDArray "InitPropVariantFromCLSIDArray" SensorsUtilsV2.dll ;
+	Pointer members ;	// Guid*
+	UInteger size ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+External_Function InitPropVariantFromFloat "InitPropVariantFromFloat" SensorsUtilsV2.dll ;
+	Float fltVal ;
+	Pointer ppropvar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+External_Function IsCollectionListSame "IsCollectionListSame" SensorsUtilsV2.dll ;
+	Pointer ListA ;	// SENSOR_COLLECTION_LIST*
+	Pointer ListB ;	// SENSOR_COLLECTION_LIST*
+	Returns UChar	// BOOLEAN
+
+External_Function IsGUIDPresentInList "IsGUIDPresentInList" SensorsUtilsV2.dll ;
+	Pointer guidArray ;	// Guid*
+	UInteger arrayLength ;
+	Pointer guidElem ;	// Guid*
+	Returns UChar	// BOOLEAN
+
+External_Function IsKeyPresentInCollectionList "IsKeyPresentInCollectionList" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Returns UChar	// BOOLEAN
+
+External_Function IsKeyPresentInPropertyList "IsKeyPresentInPropertyList" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_PROPERTY_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Returns UChar	// BOOLEAN
+
+External_Function IsSensorSubscribed "IsSensorSubscribed" SensorsUtilsV2.dll ;
+	Pointer subscriptionList ;	// SENSOR_COLLECTION_LIST*
+	Guid currentType ;
+	Returns UChar	// BOOLEAN
+
+External_Function PropKeyFindKeyGetBool "PropKeyFindKeyGetBool" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// BOOL*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetDouble "PropKeyFindKeyGetDouble" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// Real*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetFileTime "PropKeyFindKeyGetFileTime" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// FILETIME*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetFloat "PropKeyFindKeyGetFloat" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// Float*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetGuid "PropKeyFindKeyGetGuid" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// Guid*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetInt32 "PropKeyFindKeyGetInt32" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// Integer*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetInt64 "PropKeyFindKeyGetInt64" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// Bigint*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetNthInt64 "PropKeyFindKeyGetNthInt64" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	UInteger Occurrence ;
+	Pointer pRetValue ;	// Bigint*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetNthUlong "PropKeyFindKeyGetNthUlong" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	UInteger Occurrence ;
+	Pointer pRetValue ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetNthUshort "PropKeyFindKeyGetNthUshort" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	UInteger Occurrence ;
+	Pointer pRetValue ;	// UShort*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetPropVariant "PropKeyFindKeyGetPropVariant" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	UChar TypeCheck ;	// BOOLEAN
+	Pointer pValue ;	// PROPVARIANT*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetUlong "PropKeyFindKeyGetUlong" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeyGetUshort "PropKeyFindKeyGetUshort" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pRetValue ;	// UShort*
+	Returns Integer	// NTSTATUS
+
+External_Function PropKeyFindKeySetPropVariant "PropKeyFindKeySetPropVariant" SensorsUtilsV2.dll ;
+	Pointer pList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	UChar TypeCheck ;	// BOOLEAN
+	Pointer pValue ;	// PROPVARIANT*
+	Returns Integer	// NTSTATUS
+
+External_Function PropVariantGetInformation "PropVariantGetInformation" SensorsUtilsV2.dll ;
+	Pointer PropVariantValue ;	// PROPVARIANT*
+	Pointer PropVariantOffset ;	// UInteger*
+	Pointer PropVariantSize ;	// UInteger*
+	Pointer PropVariantPointer ;	// Pointer**
+	Pointer RemappedType ;	// DEVPROPTYPE*
+	Returns Integer	// NTSTATUS
+
+External_Function PropertiesListCopy "PropertiesListCopy" SensorsUtilsV2.dll ;
+	Pointer Target ;	// SENSOR_PROPERTY_LIST*
+	Pointer Source ;	// SENSOR_PROPERTY_LIST*
+	Returns Integer	// NTSTATUS
+
+External_Function PropertiesListGetFillableCount "PropertiesListGetFillableCount" SensorsUtilsV2.dll ;
+	UInteger BufferSizeBytes ;
+	Returns UInteger
+
+External_Function SensorCollectionGetAt "SensorCollectionGetAt" SensorsUtilsV2.dll ;
+	UInteger Index ;
+	Pointer pSensorsList ;	// SENSOR_COLLECTION_LIST*
+	Pointer pKey ;	// PROPERTYKEY*
+	Pointer pValue ;	// PROPVARIANT*
+	Returns Integer	// NTSTATUS
+
+External_Function SerializationBufferAllocate "SerializationBufferAllocate" SensorsUtilsV2.dll ;
+	UInteger SizeInBytes ;
+	Pointer pBuffer ;	// UChar**
+	Returns Integer	// NTSTATUS
+
+External_Function SerializationBufferFree "SerializationBufferFree" SensorsUtilsV2.dll ;
+	Pointer Buffer ;	// UChar*
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

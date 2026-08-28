@@ -1,0 +1,996 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creddeletea
+External_Function CredDeleteA "CredDeleteA" ADVAPI32.dll ;
+	String TargetName ;	// PSTR
+	UInteger Type ;	// CRED_TYPE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creddeletew
+External_Function CredDeleteW "CredDeleteW" ADVAPI32.dll ;
+	WString TargetName ;	// PWSTR
+	UInteger Type ;	// CRED_TYPE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credenumeratea
+External_Function CredEnumerateA "CredEnumerateA" ADVAPI32.dll ;
+	String Filter ;	// PSTR
+	UInteger Flags ;	// CRED_ENUMERATE_FLAGS
+	Pointer Count ;	// UInteger*
+	Pointer Credential ;	// CREDENTIALA***
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credenumeratew
+External_Function CredEnumerateW "CredEnumerateW" ADVAPI32.dll ;
+	WString Filter ;	// PWSTR
+	UInteger Flags ;	// CRED_ENUMERATE_FLAGS
+	Pointer Count ;	// UInteger*
+	Pointer Credential ;	// CREDENTIALW***
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credfindbestcredentiala
+External_Function CredFindBestCredentialA "CredFindBestCredentialA" ADVAPI32.dll ;
+	String TargetName ;	// PSTR
+	UInteger Type ;
+	UInteger Flags ;
+	Pointer Credential ;	// CREDENTIALA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credfindbestcredentialw
+External_Function CredFindBestCredentialW "CredFindBestCredentialW" ADVAPI32.dll ;
+	WString TargetName ;	// PWSTR
+	UInteger Type ;
+	UInteger Flags ;
+	Pointer Credential ;	// CREDENTIALW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credfree
+External_Function CredFree "CredFree" ADVAPI32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credgetsessiontypes
+External_Function CredGetSessionTypes "CredGetSessionTypes" ADVAPI32.dll ;
+	UInteger MaximumPersistCount ;
+	Pointer MaximumPersist ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credgettargetinfoa
+External_Function CredGetTargetInfoA "CredGetTargetInfoA" ADVAPI32.dll ;
+	String TargetName ;	// PSTR
+	UInteger Flags ;
+	Pointer TargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credgettargetinfow
+External_Function CredGetTargetInfoW "CredGetTargetInfoW" ADVAPI32.dll ;
+	WString TargetName ;	// PWSTR
+	UInteger Flags ;
+	Pointer TargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credismarshaledcredentiala
+External_Function CredIsMarshaledCredentialA "CredIsMarshaledCredentialA" ADVAPI32.dll ;
+	String MarshaledCredential ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credismarshaledcredentialw
+External_Function CredIsMarshaledCredentialW "CredIsMarshaledCredentialW" ADVAPI32.dll ;
+	WString MarshaledCredential ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credisprotecteda
+External_Function CredIsProtectedA "CredIsProtectedA" ADVAPI32.dll ;
+	String pszProtectedCredentials ;	// PSTR
+	Pointer pProtectionType ;	// CRED_PROTECTION_TYPE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credisprotectedw
+External_Function CredIsProtectedW "CredIsProtectedW" ADVAPI32.dll ;
+	WString pszProtectedCredentials ;	// PWSTR
+	Pointer pProtectionType ;	// CRED_PROTECTION_TYPE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credmarshalcredentiala
+External_Function CredMarshalCredentialA "CredMarshalCredentialA" ADVAPI32.dll ;
+	Integer CredType ;	// CRED_MARSHAL_TYPE
+	Pointer Credential ;	// Pointer*
+	Pointer MarshaledCredential ;	// PSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credmarshalcredentialw
+External_Function CredMarshalCredentialW "CredMarshalCredentialW" ADVAPI32.dll ;
+	Integer CredType ;	// CRED_MARSHAL_TYPE
+	Pointer Credential ;	// Pointer*
+	Pointer MarshaledCredential ;	// PWSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credprotecta
+External_Function CredProtectA "CredProtectA" ADVAPI32.dll ;
+	Integer fAsSelf ;	// BOOL
+	String pszCredentials ;	// PSTR
+	UInteger cchCredentials ;
+	Pointer pszProtectedCredentials ;	// PSTR
+	Pointer pcchMaxChars ;	// UInteger*
+	Pointer ProtectionType ;	// CRED_PROTECTION_TYPE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credprotectw
+External_Function CredProtectW "CredProtectW" ADVAPI32.dll ;
+	Integer fAsSelf ;	// BOOL
+	WString pszCredentials ;	// PWSTR
+	UInteger cchCredentials ;
+	Pointer pszProtectedCredentials ;	// PWSTR
+	Pointer pcchMaxChars ;	// UInteger*
+	Pointer ProtectionType ;	// CRED_PROTECTION_TYPE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credreada
+External_Function CredReadA "CredReadA" ADVAPI32.dll ;
+	String TargetName ;	// PSTR
+	UInteger Type ;	// CRED_TYPE
+	UInteger Flags ;
+	Pointer Credential ;	// CREDENTIALA**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credreaddomaincredentialsa
+External_Function CredReadDomainCredentialsA "CredReadDomainCredentialsA" ADVAPI32.dll ;
+	Pointer TargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONA*
+	UInteger Flags ;
+	Pointer Count ;	// UInteger*
+	Pointer Credential ;	// CREDENTIALA***
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credreaddomaincredentialsw
+External_Function CredReadDomainCredentialsW "CredReadDomainCredentialsW" ADVAPI32.dll ;
+	Pointer TargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONW*
+	UInteger Flags ;
+	Pointer Count ;	// UInteger*
+	Pointer Credential ;	// CREDENTIALW***
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credreadw
+External_Function CredReadW "CredReadW" ADVAPI32.dll ;
+	WString TargetName ;	// PWSTR
+	UInteger Type ;	// CRED_TYPE
+	UInteger Flags ;
+	Pointer Credential ;	// CREDENTIALW**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credrenamea
+External_Function CredRenameA "CredRenameA" ADVAPI32.dll ;
+	String OldTargetName ;	// PSTR
+	String NewTargetName ;	// PSTR
+	UInteger Type ;	// CRED_TYPE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credrenamew
+External_Function CredRenameW "CredRenameW" ADVAPI32.dll ;
+	WString OldTargetName ;	// PWSTR
+	WString NewTargetName ;	// PWSTR
+	UInteger Type ;	// CRED_TYPE
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credunmarshalcredentiala
+External_Function CredUnmarshalCredentialA "CredUnmarshalCredentialA" ADVAPI32.dll ;
+	String MarshaledCredential ;	// PSTR
+	Pointer CredType ;	// CRED_MARSHAL_TYPE*
+	Pointer Credential ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credunmarshalcredentialw
+External_Function CredUnmarshalCredentialW "CredUnmarshalCredentialW" ADVAPI32.dll ;
+	WString MarshaledCredential ;	// PWSTR
+	Pointer CredType ;	// CRED_MARSHAL_TYPE*
+	Pointer Credential ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credunprotecta
+External_Function CredUnprotectA "CredUnprotectA" ADVAPI32.dll ;
+	Integer fAsSelf ;	// BOOL
+	String pszProtectedCredentials ;	// PSTR
+	UInteger cchProtectedCredentials ;
+	Pointer pszCredentials ;	// PSTR
+	Pointer pcchMaxChars ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credunprotectw
+External_Function CredUnprotectW "CredUnprotectW" ADVAPI32.dll ;
+	Integer fAsSelf ;	// BOOL
+	WString pszProtectedCredentials ;	// PWSTR
+	UInteger cchProtectedCredentials ;
+	Pointer pszCredentials ;	// PWSTR
+	Pointer pcchMaxChars ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credwritea
+External_Function CredWriteA "CredWriteA" ADVAPI32.dll ;
+	Pointer Credential ;	// CREDENTIALA*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credwritedomaincredentialsa
+External_Function CredWriteDomainCredentialsA "CredWriteDomainCredentialsA" ADVAPI32.dll ;
+	Pointer TargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONA*
+	Pointer Credential ;	// CREDENTIALA*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credwritedomaincredentialsw
+External_Function CredWriteDomainCredentialsW "CredWriteDomainCredentialsW" ADVAPI32.dll ;
+	Pointer TargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONW*
+	Pointer Credential ;	// CREDENTIALW*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credwritew
+External_Function CredWriteW "CredWriteW" ADVAPI32.dll ;
+	Pointer Credential ;	// CREDENTIALW*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credpackauthenticationbuffera
+External_Function CredPackAuthenticationBufferA "CredPackAuthenticationBufferA" credui.dll ;
+	UInteger dwFlags ;	// CRED_PACK_FLAGS
+	String pszUserName ;	// PSTR
+	String pszPassword ;	// PSTR
+	Pointer pPackedCredentials ;	// UChar*
+	Pointer pcbPackedCredentials ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credpackauthenticationbufferw
+External_Function CredPackAuthenticationBufferW "CredPackAuthenticationBufferW" credui.dll ;
+	UInteger dwFlags ;	// CRED_PACK_FLAGS
+	WString pszUserName ;	// PWSTR
+	WString pszPassword ;	// PWSTR
+	Pointer pPackedCredentials ;	// UChar*
+	Pointer pcbPackedCredentials ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduicmdlinepromptforcredentialsa
+External_Function CredUICmdLinePromptForCredentialsA "CredUICmdLinePromptForCredentialsA" credui.dll ;
+	String pszTargetName ;	// PSTR
+	Pointer pContext ;	// SecHandle*
+	UInteger dwAuthError ;
+	Pointer UserName ;	// PSTR
+	UInteger ulUserBufferSize ;
+	Pointer pszPassword ;	// PSTR
+	UInteger ulPasswordBufferSize ;
+	Pointer pfSave ;	// BOOL*
+	UInteger dwFlags ;	// CREDUI_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduicmdlinepromptforcredentialsw
+External_Function CredUICmdLinePromptForCredentialsW "CredUICmdLinePromptForCredentialsW" credui.dll ;
+	WString pszTargetName ;	// PWSTR
+	Pointer pContext ;	// SecHandle*
+	UInteger dwAuthError ;
+	Pointer UserName ;	// PWSTR
+	UInteger ulUserBufferSize ;
+	Pointer pszPassword ;	// PWSTR
+	UInteger ulPasswordBufferSize ;
+	Pointer pfSave ;	// BOOL*
+	UInteger dwFlags ;	// CREDUI_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduiconfirmcredentialsa
+External_Function CredUIConfirmCredentialsA "CredUIConfirmCredentialsA" credui.dll ;
+	String pszTargetName ;	// PSTR
+	Integer bConfirm ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduiconfirmcredentialsw
+External_Function CredUIConfirmCredentialsW "CredUIConfirmCredentialsW" credui.dll ;
+	WString pszTargetName ;	// PWSTR
+	Integer bConfirm ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduiparseusernamea
+External_Function CredUIParseUserNameA "CredUIParseUserNameA" credui.dll ;
+	String userName ;	// PSTR
+	Pointer user ;	// PSTR
+	UInteger userBufferSize ;
+	Pointer domain ;	// PSTR
+	UInteger domainBufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduiparseusernamew
+External_Function CredUIParseUserNameW "CredUIParseUserNameW" credui.dll ;
+	WString UserName ;	// PWSTR
+	Pointer user ;	// PWSTR
+	UInteger userBufferSize ;
+	Pointer domain ;	// PWSTR
+	UInteger domainBufferSize ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduipromptforcredentialsa
+External_Function CredUIPromptForCredentialsA "CredUIPromptForCredentialsA" credui.dll ;
+	Pointer pUiInfo ;	// CREDUI_INFOA*
+	String pszTargetName ;	// PSTR
+	Pointer pContext ;	// SecHandle*
+	UInteger dwAuthError ;
+	Pointer pszUserName ;	// PSTR
+	UInteger ulUserNameBufferSize ;
+	Pointer pszPassword ;	// PSTR
+	UInteger ulPasswordBufferSize ;
+	Pointer save ;	// BOOL*
+	UInteger dwFlags ;	// CREDUI_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduipromptforcredentialsw
+External_Function CredUIPromptForCredentialsW "CredUIPromptForCredentialsW" credui.dll ;
+	Pointer pUiInfo ;	// CREDUI_INFOW*
+	WString pszTargetName ;	// PWSTR
+	Pointer pContext ;	// SecHandle*
+	UInteger dwAuthError ;
+	Pointer pszUserName ;	// PWSTR
+	UInteger ulUserNameBufferSize ;
+	Pointer pszPassword ;	// PWSTR
+	UInteger ulPasswordBufferSize ;
+	Pointer save ;	// BOOL*
+	UInteger dwFlags ;	// CREDUI_FLAGS
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduipromptforwindowscredentialsa
+External_Function CredUIPromptForWindowsCredentialsA "CredUIPromptForWindowsCredentialsA" credui.dll ;
+	Pointer pUiInfo ;	// CREDUI_INFOA*
+	UInteger dwAuthError ;
+	Pointer pulAuthPackage ;	// UInteger*
+	Pointer pvInAuthBuffer ;	// Pointer*
+	UInteger ulInAuthBufferSize ;
+	Pointer ppvOutAuthBuffer ;	// Pointer**
+	Pointer pulOutAuthBufferSize ;	// UInteger*
+	Pointer pfSave ;	// BOOL*
+	UInteger dwFlags ;	// CREDUIWIN_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduipromptforwindowscredentialsw
+External_Function CredUIPromptForWindowsCredentialsW "CredUIPromptForWindowsCredentialsW" credui.dll ;
+	Pointer pUiInfo ;	// CREDUI_INFOW*
+	UInteger dwAuthError ;
+	Pointer pulAuthPackage ;	// UInteger*
+	Pointer pvInAuthBuffer ;	// Pointer*
+	UInteger ulInAuthBufferSize ;
+	Pointer ppvOutAuthBuffer ;	// Pointer**
+	Pointer pulOutAuthBufferSize ;	// UInteger*
+	Pointer pfSave ;	// BOOL*
+	UInteger dwFlags ;	// CREDUIWIN_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduireadssocredw
+External_Function CredUIReadSSOCredW "CredUIReadSSOCredW" credui.dll ;
+	WString pszRealm ;	// PWSTR
+	Pointer ppszUsername ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-creduistoressocredw
+External_Function CredUIStoreSSOCredW "CredUIStoreSSOCredW" credui.dll ;
+	WString pszRealm ;	// PWSTR
+	WString pszUsername ;	// PWSTR
+	WString pszPassword ;	// PWSTR
+	Integer bPersist ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credunpackauthenticationbuffera
+External_Function CredUnPackAuthenticationBufferA "CredUnPackAuthenticationBufferA" credui.dll ;
+	UInteger dwFlags ;	// CRED_PACK_FLAGS
+	Pointer pAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	Pointer pszUserName ;	// PSTR
+	Pointer pcchlMaxUserName ;	// UInteger*
+	Pointer pszDomainName ;	// PSTR
+	Pointer pcchMaxDomainName ;	// UInteger*
+	Pointer pszPassword ;	// PSTR
+	Pointer pcchMaxPassword ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincred/nf-wincred-credunpackauthenticationbufferw
+External_Function CredUnPackAuthenticationBufferW "CredUnPackAuthenticationBufferW" credui.dll ;
+	UInteger dwFlags ;	// CRED_PACK_FLAGS
+	Pointer pAuthBuffer ;	// Pointer*
+	UInteger cbAuthBuffer ;
+	Pointer pszUserName ;	// PWSTR
+	Pointer pcchMaxUserName ;	// UInteger*
+	Pointer pszDomainName ;	// PWSTR
+	Pointer pcchMaxDomainName ;	// UInteger*
+	Pointer pszPassword ;	// PWSTR
+	Pointer pcchMaxPassword ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/keycredmgr/nf-keycredmgr-keycredentialmanagerfreeinformation
+External_Function KeyCredentialManagerFreeInformation "KeyCredentialManagerFreeInformation" KeyCredMgr.dll ;
+	Pointer keyCredentialManagerInfo ;	// KeyCredentialManagerInfo*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/keycredmgr/nf-keycredmgr-keycredentialmanagergetinformation
+External_Function KeyCredentialManagerGetInformation "KeyCredentialManagerGetInformation" KeyCredMgr.dll ;
+	Pointer keyCredentialManagerInfo ;	// KeyCredentialManagerInfo**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/keycredmgr/nf-keycredmgr-keycredentialmanagergetoperationerrorstates
+External_Function KeyCredentialManagerGetOperationErrorStates "KeyCredentialManagerGetOperationErrorStates" KeyCredMgr.dll ;
+	Integer keyCredentialManagerOperationType ;	// KeyCredentialManagerOperationType
+	Pointer isReady ;	// BOOL*
+	Pointer keyCredentialManagerOperationErrorStates ;	// KeyCredentialManagerOperationErrorStates*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/keycredmgr/nf-keycredmgr-keycredentialmanagershowuioperation
+External_Function KeyCredentialManagerShowUIOperation "KeyCredentialManagerShowUIOperation" KeyCredMgr.dll ;
+	Pointer hWndOwner ;	// HWND
+	Integer keyCredentialManagerOperationType ;	// KeyCredentialManagerOperationType
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardaccessstartedevent
+External_Function SCardAccessStartedEvent "SCardAccessStartedEvent" WinSCard.dll ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardaddreadertogroupa
+External_Function SCardAddReaderToGroupA "SCardAddReaderToGroupA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	String szGroupName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardaddreadertogroupw
+External_Function SCardAddReaderToGroupW "SCardAddReaderToGroupW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	WString szGroupName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardaudit
+External_Function SCardAudit "SCardAudit" WinSCard.dll ;
+	ULongPtr hContext ;
+	UInteger dwEvent ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardbegintransaction
+External_Function SCardBeginTransaction "SCardBeginTransaction" WinSCard.dll ;
+	ULongPtr hCard ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardcancel
+External_Function SCardCancel "SCardCancel" WinSCard.dll ;
+	ULongPtr hContext ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardconnecta
+External_Function SCardConnectA "SCardConnectA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReader ;	// PSTR
+	UInteger dwShareMode ;
+	UInteger dwPreferredProtocols ;
+	Pointer phCard ;	// ULongPtr*
+	Pointer pdwActiveProtocol ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardconnectw
+External_Function SCardConnectW "SCardConnectW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReader ;	// PWSTR
+	UInteger dwShareMode ;
+	UInteger dwPreferredProtocols ;
+	Pointer phCard ;	// ULongPtr*
+	Pointer pdwActiveProtocol ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardcontrol
+External_Function SCardControl "SCardControl" WinSCard.dll ;
+	ULongPtr hCard ;
+	UInteger dwControlCode ;
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger cbInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger cbOutBufferSize ;
+	Pointer lpBytesReturned ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scarddisconnect
+External_Function SCardDisconnect "SCardDisconnect" WinSCard.dll ;
+	ULongPtr hCard ;
+	UInteger dwDisposition ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardendtransaction
+External_Function SCardEndTransaction "SCardEndTransaction" WinSCard.dll ;
+	ULongPtr hCard ;
+	UInteger dwDisposition ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardestablishcontext
+External_Function SCardEstablishContext "SCardEstablishContext" WinSCard.dll ;
+	UInteger dwScope ;	// SCARD_SCOPE
+	Pointer pvReserved1 ;	// Pointer*
+	Pointer pvReserved2 ;	// Pointer*
+	Pointer phContext ;	// ULongPtr*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardforgetcardtypea
+External_Function SCardForgetCardTypeA "SCardForgetCardTypeA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szCardName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardforgetcardtypew
+External_Function SCardForgetCardTypeW "SCardForgetCardTypeW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szCardName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardforgetreadera
+External_Function SCardForgetReaderA "SCardForgetReaderA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardforgetreadergroupa
+External_Function SCardForgetReaderGroupA "SCardForgetReaderGroupA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szGroupName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardforgetreadergroupw
+External_Function SCardForgetReaderGroupW "SCardForgetReaderGroupW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szGroupName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardforgetreaderw
+External_Function SCardForgetReaderW "SCardForgetReaderW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardfreememory
+External_Function SCardFreeMemory "SCardFreeMemory" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer pvMem ;	// Pointer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetattrib
+External_Function SCardGetAttrib "SCardGetAttrib" WinSCard.dll ;
+	ULongPtr hCard ;
+	UInteger dwAttrId ;
+	Pointer pbAttr ;	// UChar*
+	Pointer pcbAttrLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetcardtypeprovidernamea
+External_Function SCardGetCardTypeProviderNameA "SCardGetCardTypeProviderNameA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szCardName ;	// PSTR
+	UInteger dwProviderId ;
+	Pointer szProvider ;	// PSTR
+	Pointer pcchProvider ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetcardtypeprovidernamew
+External_Function SCardGetCardTypeProviderNameW "SCardGetCardTypeProviderNameW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szCardName ;	// PWSTR
+	UInteger dwProviderId ;
+	Pointer szProvider ;	// PWSTR
+	Pointer pcchProvider ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetdevicetypeida
+External_Function SCardGetDeviceTypeIdA "SCardGetDeviceTypeIdA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	Pointer pdwDeviceTypeId ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetdevicetypeidw
+External_Function SCardGetDeviceTypeIdW "SCardGetDeviceTypeIdW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	Pointer pdwDeviceTypeId ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetproviderida
+External_Function SCardGetProviderIdA "SCardGetProviderIdA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szCard ;	// PSTR
+	Pointer pguidProviderId ;	// Guid*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetprovideridw
+External_Function SCardGetProviderIdW "SCardGetProviderIdW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szCard ;	// PWSTR
+	Pointer pguidProviderId ;	// Guid*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetreaderdeviceinstanceida
+External_Function SCardGetReaderDeviceInstanceIdA "SCardGetReaderDeviceInstanceIdA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	Pointer szDeviceInstanceId ;	// PSTR
+	Pointer pcchDeviceInstanceId ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetreaderdeviceinstanceidw
+External_Function SCardGetReaderDeviceInstanceIdW "SCardGetReaderDeviceInstanceIdW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	Pointer szDeviceInstanceId ;	// PWSTR
+	Pointer pcchDeviceInstanceId ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetreadericona
+External_Function SCardGetReaderIconA "SCardGetReaderIconA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	Pointer pbIcon ;	// UChar*
+	Pointer pcbIcon ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetreadericonw
+External_Function SCardGetReaderIconW "SCardGetReaderIconW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	Pointer pbIcon ;	// UChar*
+	Pointer pcbIcon ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea
+External_Function SCardGetStatusChangeA "SCardGetStatusChangeA" WinSCard.dll ;
+	ULongPtr hContext ;
+	UInteger dwTimeout ;
+	Pointer rgReaderStates ;	// SCARD_READERSTATEA*
+	UInteger cReaders ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgetstatuschangew
+External_Function SCardGetStatusChangeW "SCardGetStatusChangeW" WinSCard.dll ;
+	ULongPtr hContext ;
+	UInteger dwTimeout ;
+	Pointer rgReaderStates ;	// SCARD_READERSTATEW*
+	UInteger cReaders ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardgettransmitcount
+External_Function SCardGetTransmitCount "SCardGetTransmitCount" WinSCard.dll ;
+	ULongPtr hCard ;
+	Pointer pcTransmitCount ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardintroducecardtypea
+External_Function SCardIntroduceCardTypeA "SCardIntroduceCardTypeA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szCardName ;	// PSTR
+	Pointer pguidPrimaryProvider ;	// Guid*
+	Pointer rgguidInterfaces ;	// Guid*
+	UInteger dwInterfaceCount ;
+	Pointer pbAtr ;	// UChar*
+	Pointer pbAtrMask ;	// UChar*
+	UInteger cbAtrLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardintroducecardtypew
+External_Function SCardIntroduceCardTypeW "SCardIntroduceCardTypeW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szCardName ;	// PWSTR
+	Pointer pguidPrimaryProvider ;	// Guid*
+	Pointer rgguidInterfaces ;	// Guid*
+	UInteger dwInterfaceCount ;
+	Pointer pbAtr ;	// UChar*
+	Pointer pbAtrMask ;	// UChar*
+	UInteger cbAtrLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardintroducereadera
+External_Function SCardIntroduceReaderA "SCardIntroduceReaderA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	String szDeviceName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardintroducereadergroupa
+External_Function SCardIntroduceReaderGroupA "SCardIntroduceReaderGroupA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szGroupName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardintroducereadergroupw
+External_Function SCardIntroduceReaderGroupW "SCardIntroduceReaderGroupW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szGroupName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardintroducereaderw
+External_Function SCardIntroduceReaderW "SCardIntroduceReaderW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	WString szDeviceName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardisvalidcontext
+External_Function SCardIsValidContext "SCardIsValidContext" WinSCard.dll ;
+	ULongPtr hContext ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistcardsa
+External_Function SCardListCardsA "SCardListCardsA" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer pbAtr ;	// UChar*
+	Pointer rgquidInterfaces ;	// Guid*
+	UInteger cguidInterfaceCount ;
+	Pointer mszCards ;	// PSTR
+	Pointer pcchCards ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistcardsw
+External_Function SCardListCardsW "SCardListCardsW" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer pbAtr ;	// UChar*
+	Pointer rgquidInterfaces ;	// Guid*
+	UInteger cguidInterfaceCount ;
+	Pointer mszCards ;	// PWSTR
+	Pointer pcchCards ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistinterfacesa
+External_Function SCardListInterfacesA "SCardListInterfacesA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szCard ;	// PSTR
+	Pointer pguidInterfaces ;	// Guid*
+	Pointer pcguidInterfaces ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistinterfacesw
+External_Function SCardListInterfacesW "SCardListInterfacesW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szCard ;	// PWSTR
+	Pointer pguidInterfaces ;	// Guid*
+	Pointer pcguidInterfaces ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistreadergroupsa
+External_Function SCardListReaderGroupsA "SCardListReaderGroupsA" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer mszGroups ;	// PSTR
+	Pointer pcchGroups ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistreadergroupsw
+External_Function SCardListReaderGroupsW "SCardListReaderGroupsW" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer mszGroups ;	// PWSTR
+	Pointer pcchGroups ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistreadersa
+External_Function SCardListReadersA "SCardListReadersA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String mszGroups ;	// PSTR
+	Pointer mszReaders ;	// PSTR
+	Pointer pcchReaders ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistreadersw
+External_Function SCardListReadersW "SCardListReadersW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString mszGroups ;	// PWSTR
+	Pointer mszReaders ;	// PWSTR
+	Pointer pcchReaders ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistreaderswithdeviceinstanceida
+External_Function SCardListReadersWithDeviceInstanceIdA "SCardListReadersWithDeviceInstanceIdA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szDeviceInstanceId ;	// PSTR
+	Pointer mszReaders ;	// PSTR
+	Pointer pcchReaders ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlistreaderswithdeviceinstanceidw
+External_Function SCardListReadersWithDeviceInstanceIdW "SCardListReadersWithDeviceInstanceIdW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szDeviceInstanceId ;	// PWSTR
+	Pointer mszReaders ;	// PWSTR
+	Pointer pcchReaders ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlocatecardsa
+External_Function SCardLocateCardsA "SCardLocateCardsA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String mszCards ;	// PSTR
+	Pointer rgReaderStates ;	// SCARD_READERSTATEA*
+	UInteger cReaders ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlocatecardsbyatra
+External_Function SCardLocateCardsByATRA "SCardLocateCardsByATRA" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer rgAtrMasks ;	// SCARD_ATRMASK*
+	UInteger cAtrs ;
+	Pointer rgReaderStates ;	// SCARD_READERSTATEA*
+	UInteger cReaders ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlocatecardsbyatrw
+External_Function SCardLocateCardsByATRW "SCardLocateCardsByATRW" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer rgAtrMasks ;	// SCARD_ATRMASK*
+	UInteger cAtrs ;
+	Pointer rgReaderStates ;	// SCARD_READERSTATEW*
+	UInteger cReaders ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardlocatecardsw
+External_Function SCardLocateCardsW "SCardLocateCardsW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString mszCards ;	// PWSTR
+	Pointer rgReaderStates ;	// SCARD_READERSTATEW*
+	UInteger cReaders ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardreadcachea
+External_Function SCardReadCacheA "SCardReadCacheA" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer CardIdentifier ;	// Guid*
+	UInteger FreshnessCounter ;
+	String LookupName ;	// PSTR
+	Pointer Data ;	// UChar*
+	Pointer DataLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardreadcachew
+External_Function SCardReadCacheW "SCardReadCacheW" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer CardIdentifier ;	// Guid*
+	UInteger FreshnessCounter ;
+	WString LookupName ;	// PWSTR
+	Pointer Data ;	// UChar*
+	Pointer DataLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardreconnect
+External_Function SCardReconnect "SCardReconnect" WinSCard.dll ;
+	ULongPtr hCard ;
+	UInteger dwShareMode ;
+	UInteger dwPreferredProtocols ;
+	UInteger dwInitialization ;
+	Pointer pdwActiveProtocol ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardreleasecontext
+External_Function SCardReleaseContext "SCardReleaseContext" WinSCard.dll ;
+	ULongPtr hContext ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardreleasestartedevent
+External_Function SCardReleaseStartedEvent "SCardReleaseStartedEvent" WinSCard.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardremovereaderfromgroupa
+External_Function SCardRemoveReaderFromGroupA "SCardRemoveReaderFromGroupA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szReaderName ;	// PSTR
+	String szGroupName ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardremovereaderfromgroupw
+External_Function SCardRemoveReaderFromGroupW "SCardRemoveReaderFromGroupW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szReaderName ;	// PWSTR
+	WString szGroupName ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardsetattrib
+External_Function SCardSetAttrib "SCardSetAttrib" WinSCard.dll ;
+	ULongPtr hCard ;
+	UInteger dwAttrId ;
+	Pointer pbAttr ;	// UChar*
+	UInteger cbAttrLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardsetcardtypeprovidernamea
+External_Function SCardSetCardTypeProviderNameA "SCardSetCardTypeProviderNameA" WinSCard.dll ;
+	ULongPtr hContext ;
+	String szCardName ;	// PSTR
+	UInteger dwProviderId ;
+	String szProvider ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardsetcardtypeprovidernamew
+External_Function SCardSetCardTypeProviderNameW "SCardSetCardTypeProviderNameW" WinSCard.dll ;
+	ULongPtr hContext ;
+	WString szCardName ;	// PWSTR
+	UInteger dwProviderId ;
+	WString szProvider ;	// PWSTR
+	Returns Integer
+
+External_Function SCardState "SCardState" WinSCard.dll ;
+	ULongPtr hCard ;
+	Pointer pdwState ;	// UInteger*
+	Pointer pdwProtocol ;	// UInteger*
+	Pointer pbAtr ;	// UChar*
+	Pointer pcbAtrLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardstatusa
+External_Function SCardStatusA "SCardStatusA" WinSCard.dll ;
+	ULongPtr hCard ;
+	Pointer mszReaderNames ;	// PSTR
+	Pointer pcchReaderLen ;	// UInteger*
+	Pointer pdwState ;	// UInteger*
+	Pointer pdwProtocol ;	// UInteger*
+	Pointer pbAtr ;	// UChar*
+	Pointer pcbAtrLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardstatusw
+External_Function SCardStatusW "SCardStatusW" WinSCard.dll ;
+	ULongPtr hCard ;
+	Pointer mszReaderNames ;	// PWSTR
+	Pointer pcchReaderLen ;	// UInteger*
+	Pointer pdwState ;	// UInteger*
+	Pointer pdwProtocol ;	// UInteger*
+	Pointer pbAtr ;	// UChar*
+	Pointer pcbAtrLen ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardtransmit
+External_Function SCardTransmit "SCardTransmit" WinSCard.dll ;
+	ULongPtr hCard ;
+	Pointer pioSendPci ;	// SCARD_IO_REQUEST*
+	Pointer pbSendBuffer ;	// UChar*
+	UInteger cbSendLength ;
+	Pointer pioRecvPci ;	// SCARD_IO_REQUEST*
+	Pointer pbRecvBuffer ;	// UChar*
+	Pointer pcbRecvLength ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardwritecachea
+External_Function SCardWriteCacheA "SCardWriteCacheA" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer CardIdentifier ;	// Guid*
+	UInteger FreshnessCounter ;
+	String LookupName ;	// PSTR
+	Pointer Data ;	// UChar*
+	UInteger DataLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scardwritecachew
+External_Function SCardWriteCacheW "SCardWriteCacheW" WinSCard.dll ;
+	ULongPtr hContext ;
+	Pointer CardIdentifier ;	// Guid*
+	UInteger FreshnessCounter ;
+	WString LookupName ;	// PWSTR
+	Pointer Data ;	// UChar*
+	UInteger DataLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-getopencardnamea
+External_Function GetOpenCardNameA "GetOpenCardNameA" SCARDDLG.dll ;
+	Pointer param0 ;	// OPENCARDNAMEA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-getopencardnamew
+External_Function GetOpenCardNameW "GetOpenCardNameW" SCARDDLG.dll ;
+	Pointer param0 ;	// OPENCARDNAMEW*
+	Returns Integer
+
+External_Function SCardDlgExtendedError "SCardDlgExtendedError" SCARDDLG.dll ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scarduidlgselectcarda
+External_Function SCardUIDlgSelectCardA "SCardUIDlgSelectCardA" SCARDDLG.dll ;
+	Pointer param0 ;	// OPENCARDNAME_EXA*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winscard/nf-winscard-scarduidlgselectcardw
+External_Function SCardUIDlgSelectCardW "SCardUIDlgSelectCardW" SCARDDLG.dll ;
+	Pointer param0 ;	// OPENCARDNAME_EXW*
+	Returns Integer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

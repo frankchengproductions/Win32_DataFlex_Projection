@@ -1,0 +1,943 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-checkcolorsingamut
+External_Function CheckColorsInGamut "CheckColorsInGamut" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer lpRGBTriple ;	// RGBTRIPLE*
+	Pointer dlpBuffer ;	// Pointer*
+	UInteger nCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-colorcorrectpalette
+External_Function ColorCorrectPalette "ColorCorrectPalette" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer hPal ;	// HPALETTE
+	UInteger deFirst ;
+	UInteger num ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-colormatchtotarget
+External_Function ColorMatchToTarget "ColorMatchToTarget" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer hdcTarget ;	// HDC
+	UInteger action ;	// COLOR_MATCH_TO_TARGET_ACTION
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createcolorspacea
+External_Function CreateColorSpaceA "CreateColorSpaceA" GDI32.dll ;
+	Pointer lplcs ;	// LOGCOLORSPACEA*
+	Returns Pointer	// HCOLORSPACE
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-createcolorspacew
+External_Function CreateColorSpaceW "CreateColorSpaceW" GDI32.dll ;
+	Pointer lplcs ;	// LOGCOLORSPACEW*
+	Returns Pointer	// HCOLORSPACE
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-deletecolorspace
+External_Function DeleteColorSpace "DeleteColorSpace" GDI32.dll ;
+	Pointer hcs ;	// HCOLORSPACE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-enumicmprofilesa
+External_Function EnumICMProfilesA "EnumICMProfilesA" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer proc ;	// ICMENUMPROCA
+	LongPtr param2 ;	// LPARAM
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-enumicmprofilesw
+External_Function EnumICMProfilesW "EnumICMProfilesW" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer proc ;	// ICMENUMPROCW
+	LongPtr param2 ;	// LPARAM
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getcolorspace
+External_Function GetColorSpace "GetColorSpace" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Returns Pointer	// HCOLORSPACE
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getdevicegammaramp
+External_Function GetDeviceGammaRamp "GetDeviceGammaRamp" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer lpRamp ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-geticmprofilea
+External_Function GetICMProfileA "GetICMProfileA" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer pBufSize ;	// UInteger*
+	Pointer pszFilename ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-geticmprofilew
+External_Function GetICMProfileW "GetICMProfileW" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer pBufSize ;	// UInteger*
+	Pointer pszFilename ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getlogcolorspacea
+External_Function GetLogColorSpaceA "GetLogColorSpaceA" GDI32.dll ;
+	Pointer hColorSpace ;	// HCOLORSPACE
+	Pointer lpBuffer ;	// LOGCOLORSPACEA*
+	UInteger nSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-getlogcolorspacew
+External_Function GetLogColorSpaceW "GetLogColorSpaceW" GDI32.dll ;
+	Pointer hColorSpace ;	// HCOLORSPACE
+	Pointer lpBuffer ;	// LOGCOLORSPACEW*
+	UInteger nSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setcolorspace
+External_Function SetColorSpace "SetColorSpace" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer hcs ;	// HCOLORSPACE
+	Returns Pointer	// HCOLORSPACE
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setdevicegammaramp
+External_Function SetDeviceGammaRamp "SetDeviceGammaRamp" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Pointer lpRamp ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-seticmmode
+External_Function SetICMMode "SetICMMode" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	Integer mode ;	// ICM_MODE
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-seticmprofilea
+External_Function SetICMProfileA "SetICMProfileA" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	String lpFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-seticmprofilew
+External_Function SetICMProfileW "SetICMProfileW" GDI32.dll ;
+	Pointer hdc ;	// HDC
+	WString lpFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-updateicmregkeya
+External_Function UpdateICMRegKeyA "UpdateICMRegKeyA" GDI32.dll ;
+	UInteger reserved ;
+	String lpszCMID ;	// PSTR
+	String lpszFileName ;	// PSTR
+	UInteger command ;	// ICM_COMMAND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-updateicmregkeyw
+External_Function UpdateICMRegKeyW "UpdateICMRegKeyW" GDI32.dll ;
+	UInteger reserved ;
+	WString lpszCMID ;	// PWSTR
+	WString lpszFileName ;	// PWSTR
+	UInteger command ;	// ICM_COMMAND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-associatecolorprofilewithdevicea
+External_Function AssociateColorProfileWithDeviceA "AssociateColorProfileWithDeviceA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	String pProfileName ;	// PSTR
+	String pDeviceName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-associatecolorprofilewithdevicew
+External_Function AssociateColorProfileWithDeviceW "AssociateColorProfileWithDeviceW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	WString pProfileName ;	// PWSTR
+	WString pDeviceName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-checkbitmapbits
+External_Function CheckBitmapBits "CheckBitmapBits" mscms.dll ;
+	LongPtr hColorTransform ;
+	Pointer pSrcBits ;	// Pointer*
+	Integer bmInput ;	// BMFORMAT
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger dwStride ;
+	Pointer paResult ;	// UChar*
+	Pointer pfnCallback ;	// LPBMCALLBACKFN
+	LongPtr lpCallbackData ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-checkcolors
+External_Function CheckColors "CheckColors" mscms.dll ;
+	LongPtr hColorTransform ;
+	Pointer paInputColors ;	// COLOR*
+	UInteger nColors ;
+	Integer ctInput ;	// COLORTYPE
+	Pointer paResult ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-closecolorprofile
+External_Function CloseColorProfile "CloseColorProfile" mscms.dll ;
+	LongPtr hProfile ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofileadddisplayassociation
+External_Function ColorProfileAddDisplayAssociation "ColorProfileAddDisplayAssociation" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString profileName ;	// PWSTR
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Integer setAsDefault ;	// BOOL
+	Integer associateAsAdvancedColor ;	// BOOL
+	Returns Integer	// HRESULT
+
+External_Function ColorProfileGetDeviceCapabilities "ColorProfileGetDeviceCapabilities" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Integer capsType ;	// WCS_DEVICE_CAPABILITIES_TYPE
+	Pointer outputCapabilities ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofilegetdisplaydefault
+External_Function ColorProfileGetDisplayDefault "ColorProfileGetDisplayDefault" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Integer profileType ;	// COLORPROFILETYPE
+	Integer profileSubType ;	// COLORPROFILESUBTYPE
+	Pointer profileName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofilegetdisplaylist
+External_Function ColorProfileGetDisplayList "ColorProfileGetDisplayList" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Pointer profileList ;	// PWSTR**
+	Pointer profileCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofilegetdisplayuserscope
+External_Function ColorProfileGetDisplayUserScope "ColorProfileGetDisplayUserScope" mscms.dll ;
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Pointer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofileremovedisplayassociation
+External_Function ColorProfileRemoveDisplayAssociation "ColorProfileRemoveDisplayAssociation" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString profileName ;	// PWSTR
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Integer dissociateAdvancedColor ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-colorprofilesetdisplaydefaultassociation
+External_Function ColorProfileSetDisplayDefaultAssociation "ColorProfileSetDisplayDefaultAssociation" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString profileName ;	// PWSTR
+	Integer profileType ;	// COLORPROFILETYPE
+	Integer profileSubType ;	// COLORPROFILESUBTYPE
+	LUID targetAdapterID ;
+	UInteger sourceID ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-convertcolornametoindex
+External_Function ConvertColorNameToIndex "ConvertColorNameToIndex" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer paColorName ;	// Char**
+	Pointer paIndex ;	// UInteger*
+	UInteger dwCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-convertindextocolorname
+External_Function ConvertIndexToColorName "ConvertIndexToColorName" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer paIndex ;	// UInteger*
+	Pointer paColorName ;	// Char**
+	UInteger dwCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createcolortransforma
+External_Function CreateColorTransformA "CreateColorTransformA" mscms.dll ;
+	Pointer pLogColorSpace ;	// LOGCOLORSPACEA*
+	LongPtr hDestProfile ;
+	LongPtr hTargetProfile ;
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createcolortransformw
+External_Function CreateColorTransformW "CreateColorTransformW" mscms.dll ;
+	Pointer pLogColorSpace ;	// LOGCOLORSPACEW*
+	LongPtr hDestProfile ;
+	LongPtr hTargetProfile ;
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createdevicelinkprofile
+External_Function CreateDeviceLinkProfile "CreateDeviceLinkProfile" mscms.dll ;
+	Pointer hProfile ;	// LongPtr*
+	UInteger nProfiles ;
+	Pointer padwIntent ;	// UInteger*
+	UInteger nIntents ;
+	UInteger dwFlags ;
+	Pointer pProfileData ;	// UChar**
+	UInteger indexPreferredCMM ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createmultiprofiletransform
+External_Function CreateMultiProfileTransform "CreateMultiProfileTransform" mscms.dll ;
+	Pointer pahProfiles ;	// LongPtr*
+	UInteger nProfiles ;
+	Pointer padwIntent ;	// UInteger*
+	UInteger nIntents ;
+	UInteger dwFlags ;
+	UInteger indexPreferredCMM ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createprofilefromlogcolorspacea
+External_Function CreateProfileFromLogColorSpaceA "CreateProfileFromLogColorSpaceA" mscms.dll ;
+	Pointer pLogColorSpace ;	// LOGCOLORSPACEA*
+	Pointer pProfile ;	// UChar**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-createprofilefromlogcolorspacew
+External_Function CreateProfileFromLogColorSpaceW "CreateProfileFromLogColorSpaceW" mscms.dll ;
+	Pointer pLogColorSpace ;	// LOGCOLORSPACEW*
+	Pointer pProfile ;	// UChar**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-deletecolortransform
+External_Function DeleteColorTransform "DeleteColorTransform" mscms.dll ;
+	LongPtr hxform ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-disassociatecolorprofilefromdevicea
+External_Function DisassociateColorProfileFromDeviceA "DisassociateColorProfileFromDeviceA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	String pProfileName ;	// PSTR
+	String pDeviceName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-disassociatecolorprofilefromdevicew
+External_Function DisassociateColorProfileFromDeviceW "DisassociateColorProfileFromDeviceW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	WString pProfileName ;	// PWSTR
+	WString pDeviceName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-enumcolorprofilesa
+External_Function EnumColorProfilesA "EnumColorProfilesA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	Pointer pEnumRecord ;	// ENUMTYPEA*
+	Pointer pEnumerationBuffer ;	// UChar*
+	Pointer pdwSizeOfEnumerationBuffer ;	// UInteger*
+	Pointer pnProfiles ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-enumcolorprofilesw
+External_Function EnumColorProfilesW "EnumColorProfilesW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	Pointer pEnumRecord ;	// ENUMTYPEW*
+	Pointer pEnumerationBuffer ;	// UChar*
+	Pointer pdwSizeOfEnumerationBuffer ;	// UInteger*
+	Pointer pnProfiles ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcmminfo
+External_Function GetCMMInfo "GetCMMInfo" mscms.dll ;
+	LongPtr hColorTransform ;
+	UInteger param1 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolordirectorya
+External_Function GetColorDirectoryA "GetColorDirectoryA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	Pointer pBuffer ;	// PSTR
+	Pointer pdwSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolordirectoryw
+External_Function GetColorDirectoryW "GetColorDirectoryW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	Pointer pBuffer ;	// PWSTR
+	Pointer pdwSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofileelement
+External_Function GetColorProfileElement "GetColorProfileElement" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger tag ;
+	UInteger dwOffset ;
+	Pointer pcbElement ;	// UInteger*
+	Pointer pElement ;	// Pointer*
+	Pointer pbReference ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofileelementtag
+External_Function GetColorProfileElementTag "GetColorProfileElementTag" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger dwIndex ;
+	Pointer pTag ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofilefromhandle
+External_Function GetColorProfileFromHandle "GetColorProfileFromHandle" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer pProfile ;	// UChar*
+	Pointer pcbProfile ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcolorprofileheader
+External_Function GetColorProfileHeader "GetColorProfileHeader" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer pHeader ;	// PROFILEHEADER*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getcountcolorprofileelements
+External_Function GetCountColorProfileElements "GetCountColorProfileElements" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer pnElementCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getnamedprofileinfo
+External_Function GetNamedProfileInfo "GetNamedProfileInfo" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer pNamedProfileInfo ;	// NAMED_PROFILE_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getps2colorrenderingdictionary
+External_Function GetPS2ColorRenderingDictionary "GetPS2ColorRenderingDictionary" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger dwIntent ;
+	Pointer pPS2ColorRenderingDictionary ;	// UChar*
+	Pointer pcbPS2ColorRenderingDictionary ;	// UInteger*
+	Pointer pbBinary ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getps2colorrenderingintent
+External_Function GetPS2ColorRenderingIntent "GetPS2ColorRenderingIntent" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger dwIntent ;
+	Pointer pBuffer ;	// UChar*
+	Pointer pcbPS2ColorRenderingIntent ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getps2colorspacearray
+External_Function GetPS2ColorSpaceArray "GetPS2ColorSpaceArray" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger dwIntent ;
+	UInteger dwCSAType ;
+	Pointer pPS2ColorSpaceArray ;	// UChar*
+	Pointer pcbPS2ColorSpaceArray ;	// UInteger*
+	Pointer pbBinary ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getstandardcolorspaceprofilea
+External_Function GetStandardColorSpaceProfileA "GetStandardColorSpaceProfileA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	UInteger dwSCS ;
+	Pointer pBuffer ;	// PSTR
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-getstandardcolorspaceprofilew
+External_Function GetStandardColorSpaceProfileW "GetStandardColorSpaceProfileW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	UInteger dwSCS ;
+	Pointer pBuffer ;	// PWSTR
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-installcolorprofilea
+External_Function InstallColorProfileA "InstallColorProfileA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	String pProfileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-installcolorprofilew
+External_Function InstallColorProfileW "InstallColorProfileW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	WString pProfileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-iscolorprofiletagpresent
+External_Function IsColorProfileTagPresent "IsColorProfileTagPresent" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger tag ;
+	Pointer pbPresent ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-iscolorprofilevalid
+External_Function IsColorProfileValid "IsColorProfileValid" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer pbValid ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-opencolorprofilea
+External_Function OpenColorProfileA "OpenColorProfileA" mscms.dll ;
+	Pointer pProfile ;	// PROFILE*
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	UInteger dwCreationMode ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-opencolorprofilew
+External_Function OpenColorProfileW "OpenColorProfileW" mscms.dll ;
+	Pointer pProfile ;	// PROFILE*
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	UInteger dwCreationMode ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-registercmma
+External_Function RegisterCMMA "RegisterCMMA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	UInteger cmmID ;
+	String pCMMdll ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-registercmmw
+External_Function RegisterCMMW "RegisterCMMW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	UInteger cmmID ;
+	WString pCMMdll ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-selectcmm
+External_Function SelectCMM "SelectCMM" mscms.dll ;
+	UInteger dwCMMType ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setcolorprofileelement
+External_Function SetColorProfileElement "SetColorProfileElement" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger tag ;
+	UInteger dwOffset ;
+	Pointer pcbElement ;	// UInteger*
+	Pointer pElement ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setcolorprofileelementreference
+External_Function SetColorProfileElementReference "SetColorProfileElementReference" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger newTag ;
+	UInteger refTag ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setcolorprofileelementsize
+External_Function SetColorProfileElementSize "SetColorProfileElementSize" mscms.dll ;
+	LongPtr hProfile ;
+	UInteger tagType ;
+	UInteger pcbElement ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setcolorprofileheader
+External_Function SetColorProfileHeader "SetColorProfileHeader" mscms.dll ;
+	LongPtr hProfile ;
+	Pointer pHeader ;	// PROFILEHEADER*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setstandardcolorspaceprofilea
+External_Function SetStandardColorSpaceProfileA "SetStandardColorSpaceProfileA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	UInteger dwProfileID ;
+	String pProfilename ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setstandardcolorspaceprofilew
+External_Function SetStandardColorSpaceProfileW "SetStandardColorSpaceProfileW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	UInteger dwProfileID ;
+	WString pProfileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-translatebitmapbits
+External_Function TranslateBitmapBits "TranslateBitmapBits" mscms.dll ;
+	LongPtr hColorTransform ;
+	Pointer pSrcBits ;	// Pointer*
+	Integer bmInput ;	// BMFORMAT
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger dwInputStride ;
+	Pointer pDestBits ;	// Pointer*
+	Integer bmOutput ;	// BMFORMAT
+	UInteger dwOutputStride ;
+	Pointer pfnCallBack ;	// LPBMCALLBACKFN
+	LongPtr ulCallbackData ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-translatecolors
+External_Function TranslateColors "TranslateColors" mscms.dll ;
+	LongPtr hColorTransform ;
+	Pointer paInputColors ;	// COLOR*
+	UInteger nColors ;
+	Integer ctInput ;	// COLORTYPE
+	Pointer paOutputColors ;	// COLOR*
+	Integer ctOutput ;	// COLORTYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-uninstallcolorprofilea
+External_Function UninstallColorProfileA "UninstallColorProfileA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	String pProfileName ;	// PSTR
+	Integer bDelete ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-uninstallcolorprofilew
+External_Function UninstallColorProfileW "UninstallColorProfileW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	WString pProfileName ;	// PWSTR
+	Integer bDelete ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-unregistercmma
+External_Function UnregisterCMMA "UnregisterCMMA" mscms.dll ;
+	String pMachineName ;	// PSTR
+	UInteger cmmID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-unregistercmmw
+External_Function UnregisterCMMW "UnregisterCMMW" mscms.dll ;
+	WString pMachineName ;	// PWSTR
+	UInteger cmmID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsassociatecolorprofilewithdevice
+External_Function WcsAssociateColorProfileWithDevice "WcsAssociateColorProfileWithDevice" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString pProfileName ;	// PWSTR
+	WString pDeviceName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcscheckcolors
+External_Function WcsCheckColors "WcsCheckColors" mscms.dll ;
+	LongPtr hColorTransform ;
+	UInteger nColors ;
+	UInteger nInputChannels ;
+	Integer cdtInput ;	// COLORDATATYPE
+	UInteger cbInput ;
+	Pointer pInputData ;	// Pointer*
+	Pointer paResult ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcscreateiccprofile
+External_Function WcsCreateIccProfile "WcsCreateIccProfile" mscms.dll ;
+	LongPtr hWcsProfile ;
+	UInteger dwOptions ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsdisassociatecolorprofilefromdevice
+External_Function WcsDisassociateColorProfileFromDevice "WcsDisassociateColorProfileFromDevice" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString pProfileName ;	// PWSTR
+	WString pDeviceName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsenumcolorprofiles
+External_Function WcsEnumColorProfiles "WcsEnumColorProfiles" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	Pointer pEnumRecord ;	// ENUMTYPEW*
+	Pointer pBuffer ;	// UChar*
+	UInteger dwSize ;
+	Pointer pnProfiles ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsenumcolorprofilessize
+External_Function WcsEnumColorProfilesSize "WcsEnumColorProfilesSize" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	Pointer pEnumRecord ;	// ENUMTYPEW*
+	Pointer pdwSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetcalibrationmanagementstate
+External_Function WcsGetCalibrationManagementState "WcsGetCalibrationManagementState" mscms.dll ;
+	Pointer pbIsEnabled ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetdefaultcolorprofile
+External_Function WcsGetDefaultColorProfile "WcsGetDefaultColorProfile" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString pDeviceName ;	// PWSTR
+	Integer cptColorProfileType ;	// COLORPROFILETYPE
+	Integer cpstColorProfileSubType ;	// COLORPROFILESUBTYPE
+	UInteger dwProfileID ;
+	UInteger cbProfileName ;
+	Pointer pProfileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetdefaultcolorprofilesize
+External_Function WcsGetDefaultColorProfileSize "WcsGetDefaultColorProfileSize" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString pDeviceName ;	// PWSTR
+	Integer cptColorProfileType ;	// COLORPROFILETYPE
+	Integer cpstColorProfileSubType ;	// COLORPROFILESUBTYPE
+	UInteger dwProfileID ;
+	Pointer pcbProfileName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetdefaultrenderingintent
+External_Function WcsGetDefaultRenderingIntent "WcsGetDefaultRenderingIntent" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	Pointer pdwRenderingIntent ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsgetuseperuserprofiles
+External_Function WcsGetUsePerUserProfiles "WcsGetUsePerUserProfiles" mscms.dll ;
+	WString pDeviceName ;	// PWSTR
+	UInteger dwDeviceClass ;
+	Pointer pUsePerUserProfiles ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsopencolorprofilea
+External_Function WcsOpenColorProfileA "WcsOpenColorProfileA" mscms.dll ;
+	Pointer pCDMPProfile ;	// PROFILE*
+	Pointer pCAMPProfile ;	// PROFILE*
+	Pointer pGMMPProfile ;	// PROFILE*
+	UInteger dwDesireAccess ;
+	UInteger dwShareMode ;
+	UInteger dwCreationMode ;
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcsopencolorprofilew
+External_Function WcsOpenColorProfileW "WcsOpenColorProfileW" mscms.dll ;
+	Pointer pCDMPProfile ;	// PROFILE*
+	Pointer pCAMPProfile ;	// PROFILE*
+	Pointer pGMMPProfile ;	// PROFILE*
+	UInteger dwDesireAccess ;
+	UInteger dwShareMode ;
+	UInteger dwCreationMode ;
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcssetcalibrationmanagementstate
+External_Function WcsSetCalibrationManagementState "WcsSetCalibrationManagementState" mscms.dll ;
+	Integer bIsEnabled ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcssetdefaultcolorprofile
+External_Function WcsSetDefaultColorProfile "WcsSetDefaultColorProfile" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	WString pDeviceName ;	// PWSTR
+	Integer cptColorProfileType ;	// COLORPROFILETYPE
+	Integer cpstColorProfileSubType ;	// COLORPROFILESUBTYPE
+	UInteger dwProfileID ;
+	WString pProfileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcssetdefaultrenderingintent
+External_Function WcsSetDefaultRenderingIntent "WcsSetDefaultRenderingIntent" mscms.dll ;
+	Integer scope ;	// WCS_PROFILE_MANAGEMENT_SCOPE
+	UInteger dwRenderingIntent ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcssetuseperuserprofiles
+External_Function WcsSetUsePerUserProfiles "WcsSetUsePerUserProfiles" mscms.dll ;
+	WString pDeviceName ;	// PWSTR
+	UInteger dwDeviceClass ;
+	Integer usePerUserProfiles ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-wcstranslatecolors
+External_Function WcsTranslateColors "WcsTranslateColors" mscms.dll ;
+	LongPtr hColorTransform ;
+	UInteger nColors ;
+	UInteger nInputChannels ;
+	Integer cdtInput ;	// COLORDATATYPE
+	UInteger cbInput ;
+	Pointer pInputData ;	// Pointer*
+	UInteger nOutputChannels ;
+	Integer cdtOutput ;	// COLORDATATYPE
+	UInteger cbOutput ;
+	Pointer pOutputData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setupcolormatchinga
+External_Function SetupColorMatchingA "SetupColorMatchingA" ICMUI.dll ;
+	Pointer pcms ;	// COLORMATCHSETUPA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-setupcolormatchingw
+External_Function SetupColorMatchingW "SetupColorMatchingW" ICMUI.dll ;
+	Pointer pcms ;	// COLORMATCHSETUPW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcheckcolors
+External_Function CMCheckColors "CMCheckColors" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Pointer lpaInputColors ;	// COLOR*
+	UInteger nColors ;
+	Integer ctInput ;	// COLORTYPE
+	Pointer lpaResult ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcheckcolorsingamut
+External_Function CMCheckColorsInGamut "CMCheckColorsInGamut" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Pointer lpaRGBTriple ;	// RGBTRIPLE*
+	Pointer lpaResult ;	// UChar*
+	UInteger nCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcheckrgbs
+External_Function CMCheckRGBs "CMCheckRGBs" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Pointer lpSrcBits ;	// Pointer*
+	Integer bmInput ;	// BMFORMAT
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger dwStride ;
+	Pointer lpaResult ;	// UChar*
+	Pointer pfnCallback ;	// LPBMCALLBACKFN
+	LongPtr ulCallbackData ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmconvertcolornametoindex
+External_Function CMConvertColorNameToIndex "CMConvertColorNameToIndex" ICM32.dll ;
+	LongPtr hProfile ;
+	Pointer paColorName ;	// Char**
+	Pointer paIndex ;	// UInteger*
+	UInteger dwCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmconvertindextocolorname
+External_Function CMConvertIndexToColorName "CMConvertIndexToColorName" ICM32.dll ;
+	LongPtr hProfile ;
+	Pointer paIndex ;	// UInteger*
+	Pointer paColorName ;	// Char**
+	UInteger dwCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatedevicelinkprofile
+External_Function CMCreateDeviceLinkProfile "CMCreateDeviceLinkProfile" ICM32.dll ;
+	Pointer pahProfiles ;	// LongPtr*
+	UInteger nProfiles ;
+	Pointer padwIntents ;	// UInteger*
+	UInteger nIntents ;
+	UInteger dwFlags ;
+	Pointer lpProfileData ;	// UChar**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatemultiprofiletransform
+External_Function CMCreateMultiProfileTransform "CMCreateMultiProfileTransform" ICM32.dll ;
+	Pointer pahProfiles ;	// LongPtr*
+	UInteger nProfiles ;
+	Pointer padwIntents ;	// UInteger*
+	UInteger nIntents ;
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreateprofile
+External_Function CMCreateProfile "CMCreateProfile" ICM32.dll ;
+	Pointer lpColorSpace ;	// LOGCOLORSPACEA*
+	Pointer lpProfileData ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreateprofilew
+External_Function CMCreateProfileW "CMCreateProfileW" ICM32.dll ;
+	Pointer lpColorSpace ;	// LOGCOLORSPACEW*
+	Pointer lpProfileData ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatetransform
+External_Function CMCreateTransform "CMCreateTransform" ICM32.dll ;
+	Pointer lpColorSpace ;	// LOGCOLORSPACEA*
+	Pointer lpDevCharacter ;	// Pointer*
+	Pointer lpTargetDevCharacter ;	// Pointer*
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatetransformext
+External_Function CMCreateTransformExt "CMCreateTransformExt" ICM32.dll ;
+	Pointer lpColorSpace ;	// LOGCOLORSPACEA*
+	Pointer lpDevCharacter ;	// Pointer*
+	Pointer lpTargetDevCharacter ;	// Pointer*
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatetransformextw
+External_Function CMCreateTransformExtW "CMCreateTransformExtW" ICM32.dll ;
+	Pointer lpColorSpace ;	// LOGCOLORSPACEW*
+	Pointer lpDevCharacter ;	// Pointer*
+	Pointer lpTargetDevCharacter ;	// Pointer*
+	UInteger dwFlags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmcreatetransformw
+External_Function CMCreateTransformW "CMCreateTransformW" ICM32.dll ;
+	Pointer lpColorSpace ;	// LOGCOLORSPACEW*
+	Pointer lpDevCharacter ;	// Pointer*
+	Pointer lpTargetDevCharacter ;	// Pointer*
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmdeletetransform
+External_Function CMDeleteTransform "CMDeleteTransform" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmgetinfo
+External_Function CMGetInfo "CMGetInfo" ICM32.dll ;
+	UInteger dwInfo ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmgetnamedprofileinfo
+External_Function CMGetNamedProfileInfo "CMGetNamedProfileInfo" ICM32.dll ;
+	LongPtr hProfile ;
+	Pointer pNamedProfileInfo ;	// NAMED_PROFILE_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmisprofilevalid
+External_Function CMIsProfileValid "CMIsProfileValid" ICM32.dll ;
+	LongPtr hProfile ;
+	Pointer lpbValid ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmtranslatecolors
+External_Function CMTranslateColors "CMTranslateColors" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Pointer lpaInputColors ;	// COLOR*
+	UInteger nColors ;
+	Integer ctInput ;	// COLORTYPE
+	Pointer lpaOutputColors ;	// COLOR*
+	Integer ctOutput ;	// COLORTYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmtranslatergb
+External_Function CMTranslateRGB "CMTranslateRGB" ICM32.dll ;
+	LongPtr hcmTransform ;
+	UInteger ColorRef ;	// COLORREF
+	Pointer lpColorRef ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmtranslatergbs
+External_Function CMTranslateRGBs "CMTranslateRGBs" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Pointer lpSrcBits ;	// Pointer*
+	Integer bmInput ;	// BMFORMAT
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger dwStride ;
+	Pointer lpDestBits ;	// Pointer*
+	Integer bmOutput ;	// BMFORMAT
+	UInteger dwTranslateDirection ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icm/nf-icm-cmtranslatergbsext
+External_Function CMTranslateRGBsExt "CMTranslateRGBsExt" ICM32.dll ;
+	LongPtr hcmTransform ;
+	Pointer lpSrcBits ;	// Pointer*
+	Integer bmInput ;	// BMFORMAT
+	UInteger dwWidth ;
+	UInteger dwHeight ;
+	UInteger dwInputStride ;
+	Pointer lpDestBits ;	// Pointer*
+	Integer bmOutput ;	// BMFORMAT
+	UInteger dwOutputStride ;
+	Pointer lpfnCallback ;	// LPBMCALLBACKFN
+	LongPtr ulCallbackData ;	// LPARAM
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

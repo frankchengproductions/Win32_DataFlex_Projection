@@ -1,0 +1,1773 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/SecCNG/processprng
+External_Function ProcessPrng "ProcessPrng" BCryptPrimitives.dll ;
+	Pointer pbData ;	// UChar*
+	ULongPtr cbData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/SecCNG/systemprng
+External_Function SystemPrng "SystemPrng" BCryptPrimitives.dll ;
+	Pointer pbRandomData ;	// UChar*
+	ULongPtr cbRandomData ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontexta
+External_Function CryptAcquireContextA "CryptAcquireContextA" ADVAPI32.dll ;
+	Pointer phProv ;	// ULongPtr*
+	String szContainer ;	// PSTR
+	String szProvider ;	// PSTR
+	UInteger dwProvType ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontextw
+External_Function CryptAcquireContextW "CryptAcquireContextW" ADVAPI32.dll ;
+	Pointer phProv ;	// ULongPtr*
+	WString szContainer ;	// PWSTR
+	WString szProvider ;	// PWSTR
+	UInteger dwProvType ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptcontextaddref
+External_Function CryptContextAddRef "CryptContextAddRef" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptcreatehash
+External_Function CryptCreateHash "CryptCreateHash" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger Algid ;	// ALG_ID
+	ULongPtr hKey ;
+	UInteger dwFlags ;
+	Pointer phHash ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdecrypt
+External_Function CryptDecrypt "CryptDecrypt" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	ULongPtr hHash ;
+	Integer Final ;	// BOOL
+	UInteger dwFlags ;
+	Pointer pbData ;	// UChar*
+	Pointer pdwDataLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptderivekey
+External_Function CryptDeriveKey "CryptDeriveKey" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger Algid ;	// ALG_ID
+	ULongPtr hBaseData ;
+	UInteger dwFlags ;
+	Pointer phKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdestroyhash
+External_Function CryptDestroyHash "CryptDestroyHash" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptdestroykey
+External_Function CryptDestroyKey "CryptDestroyKey" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptduplicatehash
+External_Function CryptDuplicateHash "CryptDuplicateHash" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer phHash ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptduplicatekey
+External_Function CryptDuplicateKey "CryptDuplicateKey" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer phKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptencrypt
+External_Function CryptEncrypt "CryptEncrypt" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	ULongPtr hHash ;
+	Integer Final ;	// BOOL
+	UInteger dwFlags ;
+	Pointer pbData ;	// UChar*
+	Pointer pdwDataLen ;	// UInteger*
+	UInteger dwBufLen ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidertypesa
+External_Function CryptEnumProviderTypesA "CryptEnumProviderTypesA" ADVAPI32.dll ;
+	UInteger dwIndex ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer pdwProvType ;	// UInteger*
+	Pointer szTypeName ;	// PSTR
+	Pointer pcbTypeName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidertypesw
+External_Function CryptEnumProviderTypesW "CryptEnumProviderTypesW" ADVAPI32.dll ;
+	UInteger dwIndex ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer pdwProvType ;	// UInteger*
+	Pointer szTypeName ;	// PWSTR
+	Pointer pcbTypeName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidersa
+External_Function CryptEnumProvidersA "CryptEnumProvidersA" ADVAPI32.dll ;
+	UInteger dwIndex ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer pdwProvType ;	// UInteger*
+	Pointer szProvName ;	// PSTR
+	Pointer pcbProvName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptenumprovidersw
+External_Function CryptEnumProvidersW "CryptEnumProvidersW" ADVAPI32.dll ;
+	UInteger dwIndex ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer pdwProvType ;	// UInteger*
+	Pointer szProvName ;	// PWSTR
+	Pointer pcbProvName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptexportkey
+External_Function CryptExportKey "CryptExportKey" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	ULongPtr hExpKey ;
+	UInteger dwBlobType ;
+	UInteger dwFlags ;	// CRYPT_KEY_FLAGS
+	Pointer pbData ;	// UChar*
+	Pointer pdwDataLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgenkey
+External_Function CryptGenKey "CryptGenKey" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger Algid ;	// ALG_ID
+	UInteger dwFlags ;	// CRYPT_KEY_FLAGS
+	Pointer phKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgenrandom
+External_Function CryptGenRandom "CryptGenRandom" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger dwLen ;
+	Pointer pbBuffer ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetdefaultprovidera
+External_Function CryptGetDefaultProviderA "CryptGetDefaultProviderA" ADVAPI32.dll ;
+	UInteger dwProvType ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer pszProvName ;	// PSTR
+	Pointer pcbProvName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetdefaultproviderw
+External_Function CryptGetDefaultProviderW "CryptGetDefaultProviderW" ADVAPI32.dll ;
+	UInteger dwProvType ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Pointer pszProvName ;	// PWSTR
+	Pointer pcbProvName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgethashparam
+External_Function CryptGetHashParam "CryptGetHashParam" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	UInteger dwParam ;
+	Pointer pbData ;	// UChar*
+	Pointer pdwDataLen ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetkeyparam
+External_Function CryptGetKeyParam "CryptGetKeyParam" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	UInteger dwParam ;	// CRYPT_KEY_PARAM_ID
+	Pointer pbData ;	// UChar*
+	Pointer pdwDataLen ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetprovparam
+External_Function CryptGetProvParam "CryptGetProvParam" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger dwParam ;
+	Pointer pbData ;	// UChar*
+	Pointer pdwDataLen ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptgetuserkey
+External_Function CryptGetUserKey "CryptGetUserKey" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger dwKeySpec ;
+	Pointer phUserKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashdata
+External_Function CryptHashData "CryptHashData" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	Pointer pbData ;	// UChar*
+	UInteger dwDataLen ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-crypthashsessionkey
+External_Function CryptHashSessionKey "CryptHashSessionKey" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	ULongPtr hKey ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptimportkey
+External_Function CryptImportKey "CryptImportKey" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	Pointer pbData ;	// UChar*
+	UInteger dwDataLen ;
+	ULongPtr hPubKey ;
+	UInteger dwFlags ;	// CRYPT_KEY_FLAGS
+	Pointer phKey ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptreleasecontext
+External_Function CryptReleaseContext "CryptReleaseContext" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsethashparam
+External_Function CryptSetHashParam "CryptSetHashParam" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	UInteger dwParam ;	// CRYPT_SET_HASH_PARAM
+	Pointer pbData ;	// UChar*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetkeyparam
+External_Function CryptSetKeyParam "CryptSetKeyParam" ADVAPI32.dll ;
+	ULongPtr hKey ;
+	UInteger dwParam ;	// CRYPT_KEY_PARAM_ID
+	Pointer pbData ;	// UChar*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetprovparam
+External_Function CryptSetProvParam "CryptSetProvParam" ADVAPI32.dll ;
+	ULongPtr hProv ;
+	UInteger dwParam ;	// CRYPT_SET_PROV_PARAM_ID
+	Pointer pbData ;	// UChar*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetprovidera
+External_Function CryptSetProviderA "CryptSetProviderA" ADVAPI32.dll ;
+	String pszProvName ;	// PSTR
+	UInteger dwProvType ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetproviderexa
+External_Function CryptSetProviderExA "CryptSetProviderExA" ADVAPI32.dll ;
+	String pszProvName ;	// PSTR
+	UInteger dwProvType ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetproviderexw
+External_Function CryptSetProviderExW "CryptSetProviderExW" ADVAPI32.dll ;
+	WString pszProvName ;	// PWSTR
+	UInteger dwProvType ;
+	Pointer pdwReserved ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsetproviderw
+External_Function CryptSetProviderW "CryptSetProviderW" ADVAPI32.dll ;
+	WString pszProvName ;	// PWSTR
+	UInteger dwProvType ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsignhasha
+External_Function CryptSignHashA "CryptSignHashA" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	UInteger dwKeySpec ;
+	String szDescription ;	// PSTR
+	UInteger dwFlags ;
+	Pointer pbSignature ;	// UChar*
+	Pointer pdwSigLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptsignhashw
+External_Function CryptSignHashW "CryptSignHashW" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	UInteger dwKeySpec ;
+	WString szDescription ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pbSignature ;	// UChar*
+	Pointer pdwSigLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifysignaturea
+External_Function CryptVerifySignatureA "CryptVerifySignatureA" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	Pointer pbSignature ;	// UChar*
+	UInteger dwSigLen ;
+	ULongPtr hPubKey ;
+	String szDescription ;	// PSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-cryptverifysignaturew
+External_Function CryptVerifySignatureW "CryptVerifySignatureW" ADVAPI32.dll ;
+	ULongPtr hHash ;
+	Pointer pbSignature ;	// UChar*
+	UInteger dwSigLen ;
+	ULongPtr hPubKey ;
+	WString szDescription ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptaddcontextfunction
+External_Function BCryptAddContextFunction "BCryptAddContextFunction" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	UInteger dwPosition ;
+	Returns Integer	// NTSTATUS
+
+External_Function BCryptAddContextFunctionProvider "BCryptAddContextFunctionProvider" bcrypt.dll ;
+	UInteger dwTable ;
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;
+	WString pszFunction ;	// PWSTR
+	WString pszProvider ;	// PWSTR
+	UInteger dwPosition ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptclosealgorithmprovider
+External_Function BCryptCloseAlgorithmProvider "BCryptCloseAlgorithmProvider" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptconfigurecontext
+External_Function BCryptConfigureContext "BCryptConfigureContext" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	Pointer pConfig ;	// CRYPT_CONTEXT_CONFIG*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptconfigurecontextfunction
+External_Function BCryptConfigureContextFunction "BCryptConfigureContextFunction" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	Pointer pConfig ;	// CRYPT_CONTEXT_FUNCTION_CONFIG*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptcreatecontext
+External_Function BCryptCreateContext "BCryptCreateContext" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	Pointer pConfig ;	// CRYPT_CONTEXT_CONFIG*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptcreatehash
+External_Function BCryptCreateHash "BCryptCreateHash" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer phHash ;	// BCRYPT_HASH_HANDLE*
+	Pointer pbHashObject ;	// UChar*
+	UInteger cbHashObject ;
+	Pointer pbSecret ;	// UChar*
+	UInteger cbSecret ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptcreatemultihash
+External_Function BCryptCreateMultiHash "BCryptCreateMultiHash" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer phHash ;	// BCRYPT_HASH_HANDLE*
+	UInteger nHashes ;
+	Pointer pbHashObject ;	// UChar*
+	UInteger cbHashObject ;
+	Pointer pbSecret ;	// UChar*
+	UInteger cbSecret ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function BCryptDecapsulate "BCryptDecapsulate" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pbCipherText ;	// UChar*
+	UInteger cbCipherText ;
+	Pointer pbSecretKey ;	// UChar*
+	UInteger cbSecretKey ;
+	Pointer pcbSecretKey ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptdecrypt
+External_Function BCryptDecrypt "BCryptDecrypt" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbIV ;	// UChar*
+	UInteger cbIV ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// BCRYPT_FLAGS
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptdeletecontext
+External_Function BCryptDeleteContext "BCryptDeleteContext" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptderivekey
+External_Function BCryptDeriveKey "BCryptDeriveKey" bcrypt.dll ;
+	Pointer hSharedSecret ;	// BCRYPT_SECRET_HANDLE
+	WString pwszKDF ;	// PWSTR
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbDerivedKey ;	// UChar*
+	UInteger cbDerivedKey ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptderivekeycapi
+External_Function BCryptDeriveKeyCapi "BCryptDeriveKeyCapi" bcrypt.dll ;
+	Pointer hHash ;	// BCRYPT_HASH_HANDLE
+	Pointer hTargetAlg ;	// BCRYPT_ALG_HANDLE
+	Pointer pbDerivedKey ;	// UChar*
+	UInteger cbDerivedKey ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptderivekeypbkdf2
+External_Function BCryptDeriveKeyPBKDF2 "BCryptDeriveKeyPBKDF2" bcrypt.dll ;
+	Pointer hPrf ;	// BCRYPT_ALG_HANDLE
+	Pointer pbPassword ;	// UChar*
+	UInteger cbPassword ;
+	Pointer pbSalt ;	// UChar*
+	UInteger cbSalt ;
+	UBigint cIterations ;
+	Pointer pbDerivedKey ;	// UChar*
+	UInteger cbDerivedKey ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptdestroyhash
+External_Function BCryptDestroyHash "BCryptDestroyHash" bcrypt.dll ;
+	Pointer hHash ;	// BCRYPT_HASH_HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptdestroykey
+External_Function BCryptDestroyKey "BCryptDestroyKey" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptdestroysecret
+External_Function BCryptDestroySecret "BCryptDestroySecret" bcrypt.dll ;
+	Pointer hSecret ;	// BCRYPT_SECRET_HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptduplicatehash
+External_Function BCryptDuplicateHash "BCryptDuplicateHash" bcrypt.dll ;
+	Pointer hHash ;	// BCRYPT_HASH_HANDLE
+	Pointer phNewHash ;	// BCRYPT_HASH_HANDLE*
+	Pointer pbHashObject ;	// UChar*
+	UInteger cbHashObject ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptduplicatekey
+External_Function BCryptDuplicateKey "BCryptDuplicateKey" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer phNewKey ;	// BCRYPT_KEY_HANDLE*
+	Pointer pbKeyObject ;	// UChar*
+	UInteger cbKeyObject ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function BCryptEncapsulate "BCryptEncapsulate" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pbSecretKey ;	// UChar*
+	UInteger cbSecretKey ;
+	Pointer pcbSecretKey ;	// UInteger*
+	Pointer pbCipherText ;	// UChar*
+	UInteger cbCipherText ;
+	Pointer pcbCipherText ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptencrypt
+External_Function BCryptEncrypt "BCryptEncrypt" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbIV ;	// UChar*
+	UInteger cbIV ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// BCRYPT_FLAGS
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptenumalgorithms
+External_Function BCryptEnumAlgorithms "BCryptEnumAlgorithms" bcrypt.dll ;
+	UInteger dwAlgOperations ;	// BCRYPT_OPERATION
+	Pointer pAlgCount ;	// UInteger*
+	Pointer ppAlgList ;	// BCRYPT_ALGORITHM_IDENTIFIER**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptenumcontextfunctionproviders
+External_Function BCryptEnumContextFunctionProviders "BCryptEnumContextFunctionProviders" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_CONTEXT_FUNCTION_PROVIDERS**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptenumcontextfunctions
+External_Function BCryptEnumContextFunctions "BCryptEnumContextFunctions" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_CONTEXT_FUNCTIONS**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptenumcontexts
+External_Function BCryptEnumContexts "BCryptEnumContexts" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_CONTEXTS**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptenumproviders
+External_Function BCryptEnumProviders "BCryptEnumProviders" bcrypt.dll ;
+	WString pszAlgId ;	// PWSTR
+	Pointer pImplCount ;	// UInteger*
+	Pointer ppImplList ;	// BCRYPT_PROVIDER_NAME**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptenumregisteredproviders
+External_Function BCryptEnumRegisteredProviders "BCryptEnumRegisteredProviders" bcrypt.dll ;
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_PROVIDERS**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptexportkey
+External_Function BCryptExportKey "BCryptExportKey" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer hExportKey ;	// BCRYPT_KEY_HANDLE
+	WString pszBlobType ;	// PWSTR
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptfinalizekeypair
+External_Function BCryptFinalizeKeyPair "BCryptFinalizeKeyPair" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptfinishhash
+External_Function BCryptFinishHash "BCryptFinishHash" bcrypt.dll ;
+	Pointer hHash ;	// BCRYPT_HASH_HANDLE
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptfreebuffer
+External_Function BCryptFreeBuffer "BCryptFreeBuffer" bcrypt.dll ;
+	Pointer pvBuffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptgenrandom
+External_Function BCryptGenRandom "BCryptGenRandom" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer pbBuffer ;	// UChar*
+	UInteger cbBuffer ;
+	UInteger dwFlags ;	// BCRYPTGENRANDOM_FLAGS
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptgeneratekeypair
+External_Function BCryptGenerateKeyPair "BCryptGenerateKeyPair" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer phKey ;	// BCRYPT_KEY_HANDLE*
+	UInteger dwLength ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptgeneratesymmetrickey
+External_Function BCryptGenerateSymmetricKey "BCryptGenerateSymmetricKey" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer phKey ;	// BCRYPT_KEY_HANDLE*
+	Pointer pbKeyObject ;	// UChar*
+	UInteger cbKeyObject ;
+	Pointer pbSecret ;	// UChar*
+	UInteger cbSecret ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptgetfipsalgorithmmode
+External_Function BCryptGetFipsAlgorithmMode "BCryptGetFipsAlgorithmMode" bcrypt.dll ;
+	Pointer pfEnabled ;	// UChar*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptgetproperty
+External_Function BCryptGetProperty "BCryptGetProperty" bcrypt.dll ;
+	Pointer hObject ;	// BCRYPT_HANDLE
+	WString pszProperty ;	// PWSTR
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcrypthash
+External_Function BCryptHash "BCryptHash" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer pbSecret ;	// UChar*
+	UInteger cbSecret ;
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcrypthashdata
+External_Function BCryptHashData "BCryptHashData" bcrypt.dll ;
+	Pointer hHash ;	// BCRYPT_HASH_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptimportkey
+External_Function BCryptImportKey "BCryptImportKey" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer hImportKey ;	// BCRYPT_KEY_HANDLE
+	WString pszBlobType ;	// PWSTR
+	Pointer phKey ;	// BCRYPT_KEY_HANDLE*
+	Pointer pbKeyObject ;	// UChar*
+	UInteger cbKeyObject ;
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptimportkeypair
+External_Function BCryptImportKeyPair "BCryptImportKeyPair" bcrypt.dll ;
+	Pointer hAlgorithm ;	// BCRYPT_ALG_HANDLE
+	Pointer hImportKey ;	// BCRYPT_KEY_HANDLE
+	WString pszBlobType ;	// PWSTR
+	Pointer phKey ;	// BCRYPT_KEY_HANDLE*
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptkeyderivation
+External_Function BCryptKeyDerivation "BCryptKeyDerivation" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbDerivedKey ;	// UChar*
+	UInteger cbDerivedKey ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptopenalgorithmprovider
+External_Function BCryptOpenAlgorithmProvider "BCryptOpenAlgorithmProvider" bcrypt.dll ;
+	Pointer phAlgorithm ;	// BCRYPT_ALG_HANDLE*
+	WString pszAlgId ;	// PWSTR
+	WString pszImplementation ;	// PWSTR
+	UInteger dwFlags ;	// BCRYPT_OPEN_ALGORITHM_PROVIDER_FLAGS
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptprocessmultioperations
+External_Function BCryptProcessMultiOperations "BCryptProcessMultiOperations" bcrypt.dll ;
+	Pointer hObject ;	// BCRYPT_HANDLE
+	Integer operationType ;	// BCRYPT_MULTI_OPERATION_TYPE
+	Pointer pOperations ;	// Pointer*
+	UInteger cbOperations ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptquerycontextconfiguration
+External_Function BCryptQueryContextConfiguration "BCryptQueryContextConfiguration" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_CONTEXT_CONFIG**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptquerycontextfunctionconfiguration
+External_Function BCryptQueryContextFunctionConfiguration "BCryptQueryContextFunctionConfiguration" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_CONTEXT_FUNCTION_CONFIG**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptquerycontextfunctionproperty
+External_Function BCryptQueryContextFunctionProperty "BCryptQueryContextFunctionProperty" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	WString pszProperty ;	// PWSTR
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptqueryproviderregistration
+External_Function BCryptQueryProviderRegistration "BCryptQueryProviderRegistration" bcrypt.dll ;
+	WString pszProvider ;	// PWSTR
+	UInteger dwMode ;	// BCRYPT_QUERY_PROVIDER_MODE
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_PROVIDER_REG**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptregisterconfigchangenotify
+External_Function BCryptRegisterConfigChangeNotify "BCryptRegisterConfigChangeNotify" bcrypt.dll ;
+	Pointer phEvent ;	// HANDLE*
+	Returns Integer	// NTSTATUS
+
+External_Function BCryptRegisterProvider "BCryptRegisterProvider" bcrypt.dll ;
+	WString pszProvider ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer pReg ;	// CRYPT_PROVIDER_REG*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptremovecontextfunction
+External_Function BCryptRemoveContextFunction "BCryptRemoveContextFunction" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	Returns Integer	// NTSTATUS
+
+External_Function BCryptRemoveContextFunctionProvider "BCryptRemoveContextFunctionProvider" bcrypt.dll ;
+	UInteger dwTable ;
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;
+	WString pszFunction ;	// PWSTR
+	WString pszProvider ;	// PWSTR
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptresolveproviders
+External_Function BCryptResolveProviders "BCryptResolveProviders" bcrypt.dll ;
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;
+	WString pszFunction ;	// PWSTR
+	WString pszProvider ;	// PWSTR
+	UInteger dwMode ;	// BCRYPT_QUERY_PROVIDER_MODE
+	UInteger dwFlags ;	// BCRYPT_RESOLVE_PROVIDERS_FLAGS
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer ppBuffer ;	// CRYPT_PROVIDER_REFS**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptsecretagreement
+External_Function BCryptSecretAgreement "BCryptSecretAgreement" bcrypt.dll ;
+	Pointer hPrivKey ;	// BCRYPT_KEY_HANDLE
+	Pointer hPubKey ;	// BCRYPT_KEY_HANDLE
+	Pointer phAgreedSecret ;	// BCRYPT_SECRET_HANDLE*
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptsetcontextfunctionproperty
+External_Function BCryptSetContextFunctionProperty "BCryptSetContextFunctionProperty" bcrypt.dll ;
+	UInteger dwTable ;	// BCRYPT_TABLE
+	WString pszContext ;	// PWSTR
+	UInteger dwInterface ;	// BCRYPT_INTERFACE
+	WString pszFunction ;	// PWSTR
+	WString pszProperty ;	// PWSTR
+	UInteger cbValue ;
+	Pointer pbValue ;	// UChar*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptsetproperty
+External_Function BCryptSetProperty "BCryptSetProperty" bcrypt.dll ;
+	Pointer hObject ;	// BCRYPT_HANDLE
+	WString pszProperty ;	// PWSTR
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptsignhash
+External_Function BCryptSignHash "BCryptSignHash" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// BCRYPT_FLAGS
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptunregisterconfigchangenotify
+External_Function BCryptUnregisterConfigChangeNotify "BCryptUnregisterConfigChangeNotify" bcrypt.dll ;
+	Pointer hEvent ;	// HANDLE
+	Returns Integer	// NTSTATUS
+
+External_Function BCryptUnregisterProvider "BCryptUnregisterProvider" bcrypt.dll ;
+	WString pszProvider ;	// PWSTR
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/nf-bcrypt-bcryptverifysignature
+External_Function BCryptVerifySignature "BCryptVerifySignature" bcrypt.dll ;
+	Pointer hKey ;	// BCRYPT_KEY_HANDLE
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbHash ;	// UChar*
+	UInteger cbHash ;
+	Pointer pbSignature ;	// UChar*
+	UInteger cbSignature ;
+	UInteger dwFlags ;	// BCRYPT_FLAGS
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/SecCNG/ncrypt/nf-ncrypt-getkeystorageinterface
+External_Function GetKeyStorageInterface "GetKeyStorageInterface" ncrypt.dll ;
+	WString pszProviderName ;	// PWSTR
+	Pointer ppFunctionTable ;	// NCRYPT_KEY_STORAGE_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+External_Function GetSChannelInterface "GetSChannelInterface" ncrypt.dll ;
+	WString pszProviderName ;	// PWSTR
+	Pointer ppFunctionTable ;	// NCRYPT_SSL_FUNCTION_TABLE**
+	UInteger dwFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptcloseprotectiondescriptor
+External_Function NCryptCloseProtectionDescriptor "NCryptCloseProtectionDescriptor" ncrypt.dll ;
+	Pointer hDescriptor ;	// NCRYPT_DESCRIPTOR_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptcreateclaim
+External_Function NCryptCreateClaim "NCryptCreateClaim" ncrypt.dll ;
+	ULongPtr hSubjectKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hAuthorityKey ;	// NCRYPT_KEY_HANDLE
+	UInteger dwClaimType ;
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbClaimBlob ;	// UChar*
+	UInteger cbClaimBlob ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptcreatepersistedkey
+External_Function NCryptCreatePersistedKey "NCryptCreatePersistedKey" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phKey ;	// NCRYPT_KEY_HANDLE*
+	WString pszAlgId ;	// PWSTR
+	WString pszKeyName ;	// PWSTR
+	UInteger dwLegacyKeySpec ;	// CERT_KEY_SPEC
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptcreateprotectiondescriptor
+External_Function NCryptCreateProtectionDescriptor "NCryptCreateProtectionDescriptor" ncrypt.dll ;
+	WString pwszDescriptorString ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer phDescriptor ;	// NCRYPT_DESCRIPTOR_HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function NCryptDecapsulate "NCryptDecapsulate" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbCipherText ;	// UChar*
+	UInteger cbCipherText ;
+	Pointer pbSecretKey ;	// UChar*
+	UInteger cbSecretKey ;
+	Pointer pcbSecretKey ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptdecrypt
+External_Function NCryptDecrypt "NCryptDecrypt" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptdeletekey
+External_Function NCryptDeleteKey "NCryptDeleteKey" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptderivekey
+External_Function NCryptDeriveKey "NCryptDeriveKey" ncrypt.dll ;
+	ULongPtr hSharedSecret ;	// NCRYPT_SECRET_HANDLE
+	WString pwszKDF ;	// PWSTR
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbDerivedKey ;	// UChar*
+	UInteger cbDerivedKey ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function NCryptEncapsulate "NCryptEncapsulate" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbSecretKey ;	// UChar*
+	UInteger cbSecretKey ;
+	Pointer pcbSecretKey ;	// UInteger*
+	Pointer pbCipherText ;	// UChar*
+	UInteger cbCipherText ;
+	Pointer pcbCipherText ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptencrypt
+External_Function NCryptEncrypt "NCryptEncrypt" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptenumalgorithms
+External_Function NCryptEnumAlgorithms "NCryptEnumAlgorithms" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	UInteger dwAlgOperations ;	// NCRYPT_OPERATION
+	Pointer pdwAlgCount ;	// UInteger*
+	Pointer ppAlgList ;	// NCryptAlgorithmName**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptenumkeys
+External_Function NCryptEnumKeys "NCryptEnumKeys" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	WString pszScope ;	// PWSTR
+	Pointer ppKeyName ;	// NCryptKeyName**
+	Pointer ppEnumState ;	// Pointer**
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptenumstorageproviders
+External_Function NCryptEnumStorageProviders "NCryptEnumStorageProviders" ncrypt.dll ;
+	Pointer pdwProviderCount ;	// UInteger*
+	Pointer ppProviderList ;	// NCryptProviderName**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptexportkey
+External_Function NCryptExportKey "NCryptExportKey" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hExportKey ;	// NCRYPT_KEY_HANDLE
+	WString pszBlobType ;	// PWSTR
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptfinalizekey
+External_Function NCryptFinalizeKey "NCryptFinalizeKey" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptfreebuffer
+External_Function NCryptFreeBuffer "NCryptFreeBuffer" ncrypt.dll ;
+	Pointer pvInput ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptfreeobject
+External_Function NCryptFreeObject "NCryptFreeObject" ncrypt.dll ;
+	ULongPtr hObject ;	// NCRYPT_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptgetproperty
+External_Function NCryptGetProperty "NCryptGetProperty" ncrypt.dll ;
+	ULongPtr hObject ;	// NCRYPT_HANDLE
+	WString pszProperty ;	// PWSTR
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// OBJECT_SECURITY_INFORMATION
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptgetprotectiondescriptorinfo
+External_Function NCryptGetProtectionDescriptorInfo "NCryptGetProtectionDescriptorInfo" ncrypt.dll ;
+	Pointer hDescriptor ;	// NCRYPT_DESCRIPTOR_HANDLE
+	Pointer pMemPara ;	// NCRYPT_ALLOC_PARA*
+	UInteger dwInfoType ;
+	Pointer ppvInfo ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptimportkey
+External_Function NCryptImportKey "NCryptImportKey" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hImportKey ;	// NCRYPT_KEY_HANDLE
+	WString pszBlobType ;	// PWSTR
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer phKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pbData ;	// UChar*
+	UInteger cbData ;
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptisalgsupported
+External_Function NCryptIsAlgSupported "NCryptIsAlgSupported" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	WString pszAlgId ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptiskeyhandle
+External_Function NCryptIsKeyHandle "NCryptIsKeyHandle" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptkeyderivation
+External_Function NCryptKeyDerivation "NCryptKeyDerivation" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbDerivedKey ;	// UChar*
+	UInteger cbDerivedKey ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptnotifychangekey
+External_Function NCryptNotifyChangeKey "NCryptNotifyChangeKey" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phEvent ;	// HANDLE*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptopenkey
+External_Function NCryptOpenKey "NCryptOpenKey" ncrypt.dll ;
+	ULongPtr hProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phKey ;	// NCRYPT_KEY_HANDLE*
+	WString pszKeyName ;	// PWSTR
+	UInteger dwLegacyKeySpec ;	// CERT_KEY_SPEC
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptopenstorageprovider
+External_Function NCryptOpenStorageProvider "NCryptOpenStorageProvider" ncrypt.dll ;
+	Pointer phProvider ;	// NCRYPT_PROV_HANDLE*
+	WString pszProviderName ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptprotectsecret
+External_Function NCryptProtectSecret "NCryptProtectSecret" ncrypt.dll ;
+	Pointer hDescriptor ;	// NCRYPT_DESCRIPTOR_HANDLE
+	UInteger dwFlags ;
+	Pointer pbData ;	// UChar*
+	UInteger cbData ;
+	Pointer pMemPara ;	// NCRYPT_ALLOC_PARA*
+	Pointer hWnd ;	// HWND
+	Pointer ppbProtectedBlob ;	// UChar**
+	Pointer pcbProtectedBlob ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptqueryprotectiondescriptorname
+External_Function NCryptQueryProtectionDescriptorName "NCryptQueryProtectionDescriptorName" ncrypt.dll ;
+	WString pwszName ;	// PWSTR
+	Pointer pwszDescriptorString ;	// PWSTR
+	Pointer pcDescriptorString ;	// ULongPtr*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptregisterprotectiondescriptorname
+External_Function NCryptRegisterProtectionDescriptorName "NCryptRegisterProtectionDescriptorName" ncrypt.dll ;
+	WString pwszName ;	// PWSTR
+	WString pwszDescriptorString ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptsecretagreement
+External_Function NCryptSecretAgreement "NCryptSecretAgreement" ncrypt.dll ;
+	ULongPtr hPrivKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hPubKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phAgreedSecret ;	// NCRYPT_SECRET_HANDLE*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptsetproperty
+External_Function NCryptSetProperty "NCryptSetProperty" ncrypt.dll ;
+	ULongPtr hObject ;	// NCRYPT_HANDLE
+	WString pszProperty ;	// PWSTR
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptsignhash
+External_Function NCryptSignHash "NCryptSignHash" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbHashValue ;	// UChar*
+	UInteger cbHashValue ;
+	Pointer pbSignature ;	// UChar*
+	UInteger cbSignature ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptstreamclose
+External_Function NCryptStreamClose "NCryptStreamClose" ncrypt.dll ;
+	Pointer hStream ;	// NCRYPT_STREAM_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptstreamopentoprotect
+External_Function NCryptStreamOpenToProtect "NCryptStreamOpenToProtect" ncrypt.dll ;
+	Pointer hDescriptor ;	// NCRYPT_DESCRIPTOR_HANDLE
+	UInteger dwFlags ;
+	Pointer hWnd ;	// HWND
+	Pointer pStreamInfo ;	// NCRYPT_PROTECT_STREAM_INFO*
+	Pointer phStream ;	// NCRYPT_STREAM_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptstreamopentounprotect
+External_Function NCryptStreamOpenToUnprotect "NCryptStreamOpenToUnprotect" ncrypt.dll ;
+	Pointer pStreamInfo ;	// NCRYPT_PROTECT_STREAM_INFO*
+	UInteger dwFlags ;
+	Pointer hWnd ;	// HWND
+	Pointer phStream ;	// NCRYPT_STREAM_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptstreamopentounprotectex
+External_Function NCryptStreamOpenToUnprotectEx "NCryptStreamOpenToUnprotectEx" ncrypt.dll ;
+	Pointer pStreamInfo ;	// NCRYPT_PROTECT_STREAM_INFO_EX*
+	UInteger dwFlags ;
+	Pointer hWnd ;	// HWND
+	Pointer phStream ;	// NCRYPT_STREAM_HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptstreamupdate
+External_Function NCryptStreamUpdate "NCryptStreamUpdate" ncrypt.dll ;
+	Pointer hStream ;	// NCRYPT_STREAM_HANDLE
+	Pointer pbData ;	// UChar*
+	ULongPtr cbData ;
+	Integer fFinal ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncrypttranslatehandle
+External_Function NCryptTranslateHandle "NCryptTranslateHandle" ncrypt.dll ;
+	Pointer phProvider ;	// NCRYPT_PROV_HANDLE*
+	Pointer phKey ;	// NCRYPT_KEY_HANDLE*
+	ULongPtr hLegacyProv ;
+	ULongPtr hLegacyKey ;
+	UInteger dwLegacyKeySpec ;	// CERT_KEY_SPEC
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncryptprotect/nf-ncryptprotect-ncryptunprotectsecret
+External_Function NCryptUnprotectSecret "NCryptUnprotectSecret" ncrypt.dll ;
+	Pointer phDescriptor ;	// NCRYPT_DESCRIPTOR_HANDLE*
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Pointer pbProtectedBlob ;	// UChar*
+	UInteger cbProtectedBlob ;
+	Pointer pMemPara ;	// NCRYPT_ALLOC_PARA*
+	Pointer hWnd ;	// HWND
+	Pointer ppbData ;	// UChar**
+	Pointer pcbData ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptverifyclaim
+External_Function NCryptVerifyClaim "NCryptVerifyClaim" ncrypt.dll ;
+	ULongPtr hSubjectKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hAuthorityKey ;	// NCRYPT_KEY_HANDLE
+	UInteger dwClaimType ;
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbClaimBlob ;	// UChar*
+	UInteger cbClaimBlob ;
+	Pointer pOutput ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/nf-ncrypt-ncryptverifysignature
+External_Function NCryptVerifySignature "NCryptVerifySignature" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pPaddingInfo ;	// Pointer*
+	Pointer pbHashValue ;	// UChar*
+	UInteger cbHashValue ;
+	Pointer pbSignature ;	// UChar*
+	UInteger cbSignature ;
+	UInteger dwFlags ;	// NCRYPT_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslchangenotify
+External_Function SslChangeNotify "SslChangeNotify" ncrypt.dll ;
+	Pointer hEvent ;	// HANDLE
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslcomputeclientauthhash
+External_Function SslComputeClientAuthHash "SslComputeClientAuthHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hMasterKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hHandshakeHash ;	// NCRYPT_HASH_HANDLE
+	WString pszAlgId ;	// PWSTR
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslcomputeeapkeyblock
+External_Function SslComputeEapKeyBlock "SslComputeEapKeyBlock" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hMasterKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbRandoms ;	// UChar*
+	UInteger cbRandoms ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslcomputefinishedhash
+External_Function SslComputeFinishedHash "SslComputeFinishedHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hMasterKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hHandshakeHash ;	// NCRYPT_HASH_HANDLE
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslComputeSessionHash "SslComputeSessionHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hHandshakeHash ;	// NCRYPT_HASH_HANDLE
+	UInteger dwProtocol ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslcreateclientauthhash
+External_Function SslCreateClientAuthHash "SslCreateClientAuthHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phHandshakeHash ;	// NCRYPT_HASH_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	WString pszHashAlgId ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslcreateephemeralkey
+External_Function SslCreateEphemeralKey "SslCreateEphemeralKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phEphemeralKey ;	// NCRYPT_KEY_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	UInteger dwKeyType ;
+	UInteger dwKeyBitLen ;
+	Pointer pbParams ;	// UChar*
+	UInteger cbParams ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslcreatehandshakehash
+External_Function SslCreateHandshakeHash "SslCreateHandshakeHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phHandshakeHash ;	// NCRYPT_HASH_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/ssldecrementproviderreferencecount
+External_Function SslDecrementProviderReferenceCount "SslDecrementProviderReferenceCount" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/ssldecryptpacket
+External_Function SslDecryptPacket "SslDecryptPacket" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UBigint SequenceNumber ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslDuplicateTranscriptHash "SslDuplicateTranscriptHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hTranscriptHash ;	// NCRYPT_HASH_HANDLE
+	Pointer phTranscriptHash ;	// NCRYPT_HASH_HANDLE*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslencryptpacket
+External_Function SslEncryptPacket "SslEncryptPacket" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UBigint SequenceNumber ;
+	UInteger dwContentType ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslenumciphersuites
+External_Function SslEnumCipherSuites "SslEnumCipherSuites" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPrivateKey ;	// NCRYPT_KEY_HANDLE
+	Pointer ppCipherSuite ;	// NCRYPT_SSL_CIPHER_SUITE**
+	Pointer ppEnumState ;	// Pointer**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslEnumCipherSuitesEx "SslEnumCipherSuitesEx" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPrivateKey ;	// NCRYPT_KEY_HANDLE
+	Pointer ppCipherSuite ;	// NCRYPT_SSL_CIPHER_SUITE_EX**
+	Pointer ppEnumState ;	// Pointer**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslEnumEccCurves "SslEnumEccCurves" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer pEccCurveCount ;	// UInteger*
+	Pointer ppEccCurve ;	// NCRYPT_SSL_ECC_CURVE**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslenumprotocolproviders
+External_Function SslEnumProtocolProviders "SslEnumProtocolProviders" ncrypt.dll ;
+	Pointer pdwProviderCount ;	// UInteger*
+	Pointer ppProviderList ;	// NCryptProviderName**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExpandBinderKey "SslExpandBinderKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hEarlyKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phBinderKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExpandExporterMasterKey "SslExpandExporterMasterKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hBaseKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hHashValue ;	// NCRYPT_HASH_HANDLE
+	Pointer phExporterMasterKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExpandPreSharedKey "SslExpandPreSharedKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hResumptionMasterKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbTicketNonce ;	// UChar*
+	UInteger cbTicketNonce ;
+	Pointer phPreSharedKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExpandResumptionMasterKey "SslExpandResumptionMasterKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hMasterKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hHashValue ;	// NCRYPT_HASH_HANDLE
+	Pointer phResumptionMasterKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExpandTrafficKeys "SslExpandTrafficKeys" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hBaseKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hHashValue ;	// NCRYPT_HASH_HANDLE
+	Pointer phClientTrafficKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer phServerTrafficKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExpandWriteKey "SslExpandWriteKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hBaseTrafficKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phWriteKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslexportkey
+External_Function SslExportKey "SslExportKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	WString pszBlobType ;	// PWSTR
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslexportkeyingmaterial
+External_Function SslExportKeyingMaterial "SslExportKeyingMaterial" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hMasterKey ;	// NCRYPT_KEY_HANDLE
+	String sLabel ;	// PSTR
+	Pointer pbRandoms ;	// UChar*
+	UInteger cbRandoms ;
+	Pointer pbContextValue ;	// UChar*
+	UShort cbContextValue ;
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExtractEarlyKey "SslExtractEarlyKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPreSharedKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phEarlyKey ;	// NCRYPT_KEY_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExtractHandshakeKey "SslExtractHandshakeKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPrivateKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hPublicKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hEarlyKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phHandshakeKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslExtractMasterKey "SslExtractMasterKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hHandshakeKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phMasterKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslfreebuffer
+External_Function SslFreeBuffer "SslFreeBuffer" ncrypt.dll ;
+	Pointer pvInput ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslfreeobject
+External_Function SslFreeObject "SslFreeObject" ncrypt.dll ;
+	ULongPtr hObject ;	// NCRYPT_HANDLE
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslgeneratemasterkey
+External_Function SslGenerateMasterKey "SslGenerateMasterKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPrivateKey ;	// NCRYPT_KEY_HANDLE
+	ULongPtr hPublicKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phMasterKey ;	// NCRYPT_KEY_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+External_Function SslGeneratePreMasterKey "SslGeneratePreMasterKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPublicKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phPreMasterKey ;	// NCRYPT_KEY_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbOutput ;	// UChar*
+	UInteger cbOutput ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslgeneratesessionkeys
+External_Function SslGenerateSessionKeys "SslGenerateSessionKeys" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hMasterKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phReadKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer phWriteKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslgetciphersuiteprfhashalgorithm
+External_Function SslGetCipherSuitePRFHashAlgorithm "SslGetCipherSuitePRFHashAlgorithm" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	UInteger dwKeyType ;
+	Pointer szPRFHash ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslgetkeyproperty
+External_Function SslGetKeyProperty "SslGetKeyProperty" ncrypt.dll ;
+	ULongPtr hKey ;	// NCRYPT_KEY_HANDLE
+	WString pszProperty ;	// PWSTR
+	Pointer ppbOutput ;	// UChar**
+	Pointer pcbOutput ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslgetproviderproperty
+External_Function SslGetProviderProperty "SslGetProviderProperty" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	WString pszProperty ;	// PWSTR
+	Pointer ppbOutput ;	// UChar**
+	Pointer pcbOutput ;	// UInteger*
+	Pointer ppEnumState ;	// Pointer**
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslhashhandshake
+External_Function SslHashHandshake "SslHashHandshake" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hHandshakeHash ;	// NCRYPT_HASH_HANDLE
+	Pointer pbInput ;	// UChar*
+	UInteger cbInput ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslimportkey
+External_Function SslImportKey "SslImportKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phKey ;	// NCRYPT_KEY_HANDLE*
+	WString pszBlobType ;	// PWSTR
+	Pointer pbKeyBlob ;	// UChar*
+	UInteger cbKeyBlob ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslimportmasterkey
+External_Function SslImportMasterKey "SslImportMasterKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPrivateKey ;	// NCRYPT_KEY_HANDLE
+	Pointer phMasterKey ;	// NCRYPT_KEY_HANDLE*
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	Pointer pParameterList ;	// BCryptBufferDesc*
+	Pointer pbEncryptedKey ;	// UChar*
+	UInteger cbEncryptedKey ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslincrementproviderreferencecount
+External_Function SslIncrementProviderReferenceCount "SslIncrementProviderReferenceCount" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/ssllookupcipherlengths
+External_Function SslLookupCipherLengths "SslLookupCipherLengths" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	UInteger dwKeyType ;
+	Pointer pCipherLengths ;	// NCRYPT_SSL_CIPHER_LENGTHS*
+	UInteger cbCipherLengths ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/ssllookupciphersuiteinfo
+External_Function SslLookupCipherSuiteInfo "SslLookupCipherSuiteInfo" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	UInteger dwProtocol ;
+	UInteger dwCipherSuite ;
+	UInteger dwKeyType ;
+	Pointer pCipherSuite ;	// NCRYPT_SSL_CIPHER_SUITE*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslopenprivatekey
+External_Function SslOpenPrivateKey "SslOpenPrivateKey" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	Pointer phPrivateKey ;	// NCRYPT_KEY_HANDLE*
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslopenprovider
+External_Function SslOpenProvider "SslOpenProvider" ncrypt.dll ;
+	Pointer phSslProvider ;	// NCRYPT_PROV_HANDLE*
+	WString pszProviderName ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslsignhash
+External_Function SslSignHash "SslSignHash" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPrivateKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbHashValue ;	// UChar*
+	UInteger cbHashValue ;
+	Pointer pbSignature ;	// UChar*
+	UInteger cbSignature ;
+	Pointer pcbResult ;	// UInteger*
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/SecCNG/sslverifysignature
+External_Function SslVerifySignature "SslVerifySignature" ncrypt.dll ;
+	ULongPtr hSslProvider ;	// NCRYPT_PROV_HANDLE
+	ULongPtr hPublicKey ;	// NCRYPT_KEY_HANDLE
+	Pointer pbHashValue ;	// UChar*
+	UInteger cbHashValue ;
+	Pointer pbSignature ;	// UChar*
+	UInteger cbSignature ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddcrlcontexttostore
+External_Function CertAddCRLContextToStore "CertAddCRLContextToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwAddDisposition ;
+	Pointer ppStoreContext ;	// CRL_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddcrllinktostore
+External_Function CertAddCRLLinkToStore "CertAddCRLLinkToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pCrlContext ;	// CRL_CONTEXT*
+	UInteger dwAddDisposition ;
+	Pointer ppStoreContext ;	// CRL_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddctlcontexttostore
+External_Function CertAddCTLContextToStore "CertAddCTLContextToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwAddDisposition ;
+	Pointer ppStoreContext ;	// CTL_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddctllinktostore
+External_Function CertAddCTLLinkToStore "CertAddCTLLinkToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pCtlContext ;	// CTL_CONTEXT*
+	UInteger dwAddDisposition ;
+	Pointer ppStoreContext ;	// CTL_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddcertificatecontexttostore
+External_Function CertAddCertificateContextToStore "CertAddCertificateContextToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwAddDisposition ;
+	Pointer ppStoreContext ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddcertificatelinktostore
+External_Function CertAddCertificateLinkToStore "CertAddCertificateLinkToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	UInteger dwAddDisposition ;
+	Pointer ppStoreContext ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddencodedcrltostore
+External_Function CertAddEncodedCRLToStore "CertAddEncodedCRLToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbCrlEncoded ;	// UChar*
+	UInteger cbCrlEncoded ;
+	UInteger dwAddDisposition ;
+	Pointer ppCrlContext ;	// CRL_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddencodedctltostore
+External_Function CertAddEncodedCTLToStore "CertAddEncodedCTLToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwMsgAndCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbCtlEncoded ;	// UChar*
+	UInteger cbCtlEncoded ;
+	UInteger dwAddDisposition ;
+	Pointer ppCtlContext ;	// CTL_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddencodedcertificatetostore
+External_Function CertAddEncodedCertificateToStore "CertAddEncodedCertificateToStore" CRYPT32.dll ;
+	Pointer hCertStore ;	// HCERTSTORE
+	UInteger dwCertEncodingType ;	// CERT_QUERY_ENCODING_TYPE
+	Pointer pbCertEncoded ;	// UChar*
+	UInteger cbCertEncoded ;
+	UInteger dwAddDisposition ;
+	Pointer ppCertContext ;	// CERT_CONTEXT**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddencodedcertificatetosystemstorea
+External_Function CertAddEncodedCertificateToSystemStoreA "CertAddEncodedCertificateToSystemStoreA" CRYPT32.dll ;
+	String szCertStoreName ;	// PSTR
+	Pointer pbCertEncoded ;	// UChar*
+	UInteger cbCertEncoded ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddencodedcertificatetosystemstorew
+External_Function CertAddEncodedCertificateToSystemStoreW "CertAddEncodedCertificateToSystemStoreW" CRYPT32.dll ;
+	WString szCertStoreName ;	// PWSTR
+	Pointer pbCertEncoded ;	// UChar*
+	UInteger cbCertEncoded ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certaddenhancedkeyusageidentifier
+External_Function CertAddEnhancedKeyUsageIdentifier "CertAddEnhancedKeyUsageIdentifier" CRYPT32.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	String pszUsageIdentifier ;	// PSTR
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

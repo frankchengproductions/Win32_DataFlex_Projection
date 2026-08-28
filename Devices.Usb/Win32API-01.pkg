@@ -1,0 +1,270 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_abortpipe
+External_Function WinUsb_AbortPipe "WinUsb_AbortPipe" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_controltransfer
+External_Function WinUsb_ControlTransfer "WinUsb_ControlTransfer" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	WINUSB_SETUP_PACKET SetupPacket ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferLength ;
+	Pointer LengthTransferred ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_flushpipe
+External_Function WinUsb_FlushPipe "WinUsb_FlushPipe" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_free
+External_Function WinUsb_Free "WinUsb_Free" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getadjustedframenumber
+External_Function WinUsb_GetAdjustedFrameNumber "WinUsb_GetAdjustedFrameNumber" WINUSB.dll ;
+	Pointer CurrentFrameNumber ;	// UInteger*
+	Bigint TimeStamp ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getassociatedinterface
+External_Function WinUsb_GetAssociatedInterface "WinUsb_GetAssociatedInterface" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar AssociatedInterfaceIndex ;
+	Pointer AssociatedInterfaceHandle ;	// WINUSB_INTERFACE_HANDLE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getcurrentalternatesetting
+External_Function WinUsb_GetCurrentAlternateSetting "WinUsb_GetCurrentAlternateSetting" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Pointer SettingNumber ;	// UChar*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getcurrentframenumber
+External_Function WinUsb_GetCurrentFrameNumber "WinUsb_GetCurrentFrameNumber" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Pointer CurrentFrameNumber ;	// UInteger*
+	Pointer TimeStamp ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getcurrentframenumberandqpc
+External_Function WinUsb_GetCurrentFrameNumberAndQpc "WinUsb_GetCurrentFrameNumberAndQpc" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Pointer FrameQpcInfo ;	// USB_FRAME_NUMBER_AND_QPC_FOR_TIME_SYNC_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getdescriptor
+External_Function WinUsb_GetDescriptor "WinUsb_GetDescriptor" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar DescriptorType ;
+	UChar Index ;
+	UShort LanguageID ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferLength ;
+	Pointer LengthTransferred ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getoverlappedresult
+External_Function WinUsb_GetOverlappedResult "WinUsb_GetOverlappedResult" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpNumberOfBytesTransferred ;	// UInteger*
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getpipepolicy
+External_Function WinUsb_GetPipePolicy "WinUsb_GetPipePolicy" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	UInteger PolicyType ;	// WINUSB_PIPE_POLICY
+	Pointer ValueLength ;	// UInteger*
+	Pointer Value ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_getpowerpolicy
+External_Function WinUsb_GetPowerPolicy "WinUsb_GetPowerPolicy" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UInteger PolicyType ;	// WINUSB_POWER_POLICY
+	Pointer ValueLength ;	// UInteger*
+	Pointer Value ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_initialize
+External_Function WinUsb_Initialize "WinUsb_Initialize" WINUSB.dll ;
+	Pointer DeviceHandle ;	// HANDLE
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE*
+	Returns Integer	// BOOL
+
+External_Function WinUsb_ParseConfigurationDescriptor "WinUsb_ParseConfigurationDescriptor" WINUSB.dll ;
+	Pointer ConfigurationDescriptor ;	// USB_CONFIGURATION_DESCRIPTOR*
+	Pointer StartPosition ;	// Pointer*
+	Integer InterfaceNumber ;
+	Integer AlternateSetting ;
+	Integer InterfaceClass ;
+	Integer InterfaceSubClass ;
+	Integer InterfaceProtocol ;
+	Returns Pointer	// USB_INTERFACE_DESCRIPTOR*
+
+External_Function WinUsb_ParseDescriptors "WinUsb_ParseDescriptors" WINUSB.dll ;
+	Pointer DescriptorBuffer ;	// Pointer*
+	UInteger TotalLength ;
+	Pointer StartPosition ;	// Pointer*
+	Integer DescriptorType ;
+	Returns Pointer	// USB_COMMON_DESCRIPTOR*
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_querydeviceinformation
+External_Function WinUsb_QueryDeviceInformation "WinUsb_QueryDeviceInformation" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UInteger InformationType ;
+	Pointer BufferLength ;	// UInteger*
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_queryinterfacesettings
+External_Function WinUsb_QueryInterfaceSettings "WinUsb_QueryInterfaceSettings" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar AlternateInterfaceNumber ;
+	Pointer UsbAltInterfaceDescriptor ;	// USB_INTERFACE_DESCRIPTOR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_querypipe
+External_Function WinUsb_QueryPipe "WinUsb_QueryPipe" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar AlternateInterfaceNumber ;
+	UChar PipeIndex ;
+	Pointer PipeInformation ;	// WINUSB_PIPE_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_querypipeex
+External_Function WinUsb_QueryPipeEx "WinUsb_QueryPipeEx" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar AlternateSettingNumber ;
+	UChar PipeIndex ;
+	Pointer PipeInformationEx ;	// WINUSB_PIPE_INFORMATION_EX*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_readisochpipe
+External_Function WinUsb_ReadIsochPipe "WinUsb_ReadIsochPipe" WINUSB.dll ;
+	Pointer BufferHandle ;	// Pointer*
+	UInteger Offset ;
+	UInteger Length ;
+	Pointer FrameNumber ;	// UInteger*
+	UInteger NumberOfPackets ;
+	Pointer IsoPacketDescriptors ;	// USBD_ISO_PACKET_DESCRIPTOR*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_readisochpipeasap
+External_Function WinUsb_ReadIsochPipeAsap "WinUsb_ReadIsochPipeAsap" WINUSB.dll ;
+	Pointer BufferHandle ;	// Pointer*
+	UInteger Offset ;
+	UInteger Length ;
+	Integer ContinueStream ;	// BOOL
+	UInteger NumberOfPackets ;
+	Pointer IsoPacketDescriptors ;	// USBD_ISO_PACKET_DESCRIPTOR*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_readpipe
+External_Function WinUsb_ReadPipe "WinUsb_ReadPipe" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferLength ;
+	Pointer LengthTransferred ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_registerisochbuffer
+External_Function WinUsb_RegisterIsochBuffer "WinUsb_RegisterIsochBuffer" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferLength ;
+	Pointer IsochBufferHandle ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_resetpipe
+External_Function WinUsb_ResetPipe "WinUsb_ResetPipe" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_setcurrentalternatesetting
+External_Function WinUsb_SetCurrentAlternateSetting "WinUsb_SetCurrentAlternateSetting" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar SettingNumber ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_setpipepolicy
+External_Function WinUsb_SetPipePolicy "WinUsb_SetPipePolicy" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	UInteger PolicyType ;	// WINUSB_PIPE_POLICY
+	UInteger ValueLength ;
+	Pointer Value ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_setpowerpolicy
+External_Function WinUsb_SetPowerPolicy "WinUsb_SetPowerPolicy" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UInteger PolicyType ;	// WINUSB_POWER_POLICY
+	UInteger ValueLength ;
+	Pointer Value ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_starttrackingfortimesync
+External_Function WinUsb_StartTrackingForTimeSync "WinUsb_StartTrackingForTimeSync" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Pointer StartTrackingInfo ;	// USB_START_TRACKING_FOR_TIME_SYNC_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_stoptrackingfortimesync
+External_Function WinUsb_StopTrackingForTimeSync "WinUsb_StopTrackingForTimeSync" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	Pointer StopTrackingInfo ;	// USB_STOP_TRACKING_FOR_TIME_SYNC_INFORMATION*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_unregisterisochbuffer
+External_Function WinUsb_UnregisterIsochBuffer "WinUsb_UnregisterIsochBuffer" WINUSB.dll ;
+	Pointer IsochBufferHandle ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_writeisochpipe
+External_Function WinUsb_WriteIsochPipe "WinUsb_WriteIsochPipe" WINUSB.dll ;
+	Pointer BufferHandle ;	// Pointer*
+	UInteger Offset ;
+	UInteger Length ;
+	Pointer FrameNumber ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_writeisochpipeasap
+External_Function WinUsb_WriteIsochPipeAsap "WinUsb_WriteIsochPipeAsap" WINUSB.dll ;
+	Pointer BufferHandle ;	// Pointer*
+	UInteger Offset ;
+	UInteger Length ;
+	Integer ContinueStream ;	// BOOL
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winusb/nf-winusb-winusb_writepipe
+External_Function WinUsb_WritePipe "WinUsb_WritePipe" WINUSB.dll ;
+	Pointer InterfaceHandle ;	// WINUSB_INTERFACE_HANDLE
+	UChar PipeID ;
+	Pointer Buffer ;	// UChar*
+	UInteger BufferLength ;
+	Pointer LengthTransferred ;	// UInteger*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

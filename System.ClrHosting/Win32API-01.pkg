@@ -1,0 +1,202 @@
+Use UI
+
+External_Function CLRCreateInstance "CLRCreateInstance" MSCorEE.dll ;
+	Pointer clsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppInterface ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CallFunctionShim "CallFunctionShim" MSCorEE.dll ;
+	WString szDllName ;	// PWSTR
+	String szFunctionName ;	// PSTR
+	Pointer lpvArgument1 ;	// Pointer*
+	Pointer lpvArgument2 ;	// Pointer*
+	WString szVersion ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function ClrCreateManagedInstance "ClrCreateManagedInstance" MSCorEE.dll ;
+	WString pTypeName ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer ppObject ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CorBindToCurrentRuntime "CorBindToCurrentRuntime" MSCorEE.dll ;
+	WString pwszFileName ;	// PWSTR
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CorBindToRuntime "CorBindToRuntime" MSCorEE.dll ;
+	WString pwszVersion ;	// PWSTR
+	WString pwszBuildFlavor ;	// PWSTR
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CorBindToRuntimeByCfg "CorBindToRuntimeByCfg" MSCorEE.dll ;
+	Pointer pCfgStream ;	// IStream
+	UInteger reserved ;
+	UInteger startupFlags ;
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CorBindToRuntimeEx "CorBindToRuntimeEx" MSCorEE.dll ;
+	WString pwszVersion ;	// PWSTR
+	WString pwszBuildFlavor ;	// PWSTR
+	UInteger startupFlags ;
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CorBindToRuntimeHost "CorBindToRuntimeHost" MSCorEE.dll ;
+	WString pwszVersion ;	// PWSTR
+	WString pwszBuildFlavor ;	// PWSTR
+	WString pwszHostConfigFile ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	UInteger startupFlags ;
+	Pointer rclsid ;	// Guid*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function CorExitProcess "CorExitProcess" MSCorEE.dll ;
+	Integer exitCode ;
+	Returns Pointer
+
+External_Function CorLaunchApplication "CorLaunchApplication" MSCorEE.dll ;
+	Integer dwClickOnceHost ;	// HOST_TYPE
+	WString pwzAppFullName ;	// PWSTR
+	UInteger dwManifestPaths ;
+	Pointer ppwzManifestPaths ;	// PWSTR*
+	UInteger dwActivationData ;
+	Pointer ppwzActivationData ;	// PWSTR*
+	Pointer lpProcessInformation ;	// PROCESS_INFORMATION*
+	Returns Integer	// HRESULT
+
+External_Function CorMarkThreadInThreadPool "CorMarkThreadInThreadPool" MSCorEE.dll ;
+	Returns Pointer
+
+External_Function CreateDebuggingInterfaceFromVersion "CreateDebuggingInterfaceFromVersion" MSCorEE.dll ;
+	Integer iDebuggerVersion ;
+	WString szDebuggeeVersion ;	// PWSTR
+	Pointer ppCordb ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+External_Function GetCLRIdentityManager "GetCLRIdentityManager" MSCorEE.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppManager ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+External_Function GetCORRequiredVersion "GetCORRequiredVersion" MSCorEE.dll ;
+	Pointer pbuffer ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetCORSystemDirectory "GetCORSystemDirectory" MSCorEE.dll ;
+	Pointer pbuffer ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetCORVersion "GetCORVersion" MSCorEE.dll ;
+	Pointer pbBuffer ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetFileVersion "GetFileVersion" MSCorEE.dll ;
+	WString szFilename ;	// PWSTR
+	Pointer szBuffer ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetRealProcAddress "GetRealProcAddress" MSCorEE.dll ;
+	String pwszProcName ;	// PSTR
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function GetRequestedRuntimeInfo "GetRequestedRuntimeInfo" MSCorEE.dll ;
+	WString pExe ;	// PWSTR
+	WString pwszVersion ;	// PWSTR
+	WString pConfigurationFile ;	// PWSTR
+	UInteger startupFlags ;
+	UInteger runtimeInfoFlags ;
+	Pointer pDirectory ;	// PWSTR
+	UInteger dwDirectory ;
+	Pointer dwDirectoryLength ;	// UInteger*
+	Pointer pVersion ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwlength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetRequestedRuntimeVersion "GetRequestedRuntimeVersion" MSCorEE.dll ;
+	WString pExe ;	// PWSTR
+	Pointer pVersion ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function GetRequestedRuntimeVersionForCLSID "GetRequestedRuntimeVersionForCLSID" MSCorEE.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pVersion ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Integer dwResolutionFlags ;	// CLSID_RESOLUTION_FLAGS
+	Returns Integer	// HRESULT
+
+External_Function GetVersionFromProcess "GetVersionFromProcess" MSCorEE.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pVersion ;	// PWSTR
+	UInteger cchBuffer ;
+	Pointer dwLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/DevNotes/loadlibraryshim
+External_Function LoadLibraryShim "LoadLibraryShim" MSCorEE.dll ;
+	WString szDllName ;	// PWSTR
+	WString szVersion ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Pointer phModDll ;	// HMODULE*
+	Returns Integer	// HRESULT
+
+External_Function LoadStringRC "LoadStringRC" MSCorEE.dll ;
+	UInteger iResouceID ;
+	Pointer szBuffer ;	// PWSTR
+	Integer iMax ;
+	Integer bQuiet ;
+	Returns Integer	// HRESULT
+
+External_Function LoadStringRCEx "LoadStringRCEx" MSCorEE.dll ;
+	UInteger lcid ;
+	UInteger iResouceID ;
+	Pointer szBuffer ;	// PWSTR
+	Integer iMax ;
+	Integer bQuiet ;
+	Pointer pcwchUsed ;	// Integer*
+	Returns Integer	// HRESULT
+
+External_Function LockClrVersion "LockClrVersion" MSCorEE.dll ;
+	Pointer hostCallback ;	// FLockClrVersionCallback
+	Pointer pBeginHostSetup ;	// FLockClrVersionCallback*
+	Pointer pEndHostSetup ;	// FLockClrVersionCallback*
+	Returns Integer	// HRESULT
+
+External_Function RunDll32ShimW "RunDll32ShimW" MSCorEE.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer hinst ;	// HINSTANCE
+	WString lpszCmdLine ;	// PWSTR
+	Integer nCmdShow ;
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

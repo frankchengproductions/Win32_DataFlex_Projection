@@ -1,0 +1,186 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-callnamedpipea
+External_Function CallNamedPipeA "CallNamedPipeA" KERNEL32.dll ;
+	String lpNamedPipeName ;	// PSTR
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesRead ;	// UInteger*
+	UInteger nTimeOut ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-callnamedpipew
+External_Function CallNamedPipeW "CallNamedPipeW" KERNEL32.dll ;
+	WString lpNamedPipeName ;	// PWSTR
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesRead ;	// UInteger*
+	UInteger nTimeOut ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-connectnamedpipe
+External_Function ConnectNamedPipe "ConnectNamedPipe" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createnamedpipea
+External_Function CreateNamedPipeA "CreateNamedPipeA" KERNEL32.dll ;
+	String lpName ;	// PSTR
+	UInteger dwOpenMode ;	// FILE_FLAGS_AND_ATTRIBUTES
+	UInteger dwPipeMode ;	// NAMED_PIPE_MODE
+	UInteger nMaxInstances ;
+	UInteger nOutBufferSize ;
+	UInteger nInBufferSize ;
+	UInteger nDefaultTimeOut ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-createnamedpipew
+External_Function CreateNamedPipeW "CreateNamedPipeW" KERNEL32.dll ;
+	WString lpName ;	// PWSTR
+	UInteger dwOpenMode ;	// FILE_FLAGS_AND_ATTRIBUTES
+	UInteger dwPipeMode ;	// NAMED_PIPE_MODE
+	UInteger nMaxInstances ;
+	UInteger nOutBufferSize ;
+	UInteger nInBufferSize ;
+	UInteger nDefaultTimeOut ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-createpipe
+External_Function CreatePipe "CreatePipe" KERNEL32.dll ;
+	Pointer hReadPipe ;	// HANDLE*
+	Pointer hWritePipe ;	// HANDLE*
+	Pointer lpPipeAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger nSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-disconnectnamedpipe
+External_Function DisconnectNamedPipe "DisconnectNamedPipe" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnamedpipeclientcomputernamea
+External_Function GetNamedPipeClientComputerNameA "GetNamedPipeClientComputerNameA" KERNEL32.dll ;
+	Pointer Pipe ;	// HANDLE
+	Pointer ClientComputerName ;	// PSTR
+	UInteger ClientComputerNameLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-getnamedpipeclientcomputernamew
+External_Function GetNamedPipeClientComputerNameW "GetNamedPipeClientComputerNameW" KERNEL32.dll ;
+	Pointer Pipe ;	// HANDLE
+	Pointer ClientComputerName ;	// PWSTR
+	UInteger ClientComputerNameLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnamedpipeclientprocessid
+External_Function GetNamedPipeClientProcessId "GetNamedPipeClientProcessId" KERNEL32.dll ;
+	Pointer Pipe ;	// HANDLE
+	Pointer ClientProcessId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnamedpipeclientsessionid
+External_Function GetNamedPipeClientSessionId "GetNamedPipeClientSessionId" KERNEL32.dll ;
+	Pointer Pipe ;	// HANDLE
+	Pointer ClientSessionId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnamedpipehandlestatea
+External_Function GetNamedPipeHandleStateA "GetNamedPipeHandleStateA" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpState ;	// NAMED_PIPE_MODE*
+	Pointer lpCurInstances ;	// UInteger*
+	Pointer lpMaxCollectionCount ;	// UInteger*
+	Pointer lpCollectDataTimeout ;	// UInteger*
+	Pointer lpUserName ;	// PSTR
+	UInteger nMaxUserNameSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-getnamedpipehandlestatew
+External_Function GetNamedPipeHandleStateW "GetNamedPipeHandleStateW" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpState ;	// NAMED_PIPE_MODE*
+	Pointer lpCurInstances ;	// UInteger*
+	Pointer lpMaxCollectionCount ;	// UInteger*
+	Pointer lpCollectDataTimeout ;	// UInteger*
+	Pointer lpUserName ;	// PWSTR
+	UInteger nMaxUserNameSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-getnamedpipeinfo
+External_Function GetNamedPipeInfo "GetNamedPipeInfo" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpFlags ;	// NAMED_PIPE_MODE*
+	Pointer lpOutBufferSize ;	// UInteger*
+	Pointer lpInBufferSize ;	// UInteger*
+	Pointer lpMaxInstances ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnamedpipeserverprocessid
+External_Function GetNamedPipeServerProcessId "GetNamedPipeServerProcessId" KERNEL32.dll ;
+	Pointer Pipe ;	// HANDLE
+	Pointer ServerProcessId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getnamedpipeserversessionid
+External_Function GetNamedPipeServerSessionId "GetNamedPipeServerSessionId" KERNEL32.dll ;
+	Pointer Pipe ;	// HANDLE
+	Pointer ServerSessionId ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-peeknamedpipe
+External_Function PeekNamedPipe "PeekNamedPipe" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpBuffer ;	// Pointer*
+	UInteger nBufferSize ;
+	Pointer lpBytesRead ;	// UInteger*
+	Pointer lpTotalBytesAvail ;	// UInteger*
+	Pointer lpBytesLeftThisMessage ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-setnamedpipehandlestate
+External_Function SetNamedPipeHandleState "SetNamedPipeHandleState" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpMode ;	// NAMED_PIPE_MODE*
+	Pointer lpMaxCollectionCount ;	// UInteger*
+	Pointer lpCollectDataTimeout ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-transactnamedpipe
+External_Function TransactNamedPipe "TransactNamedPipe" KERNEL32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Pointer lpInBuffer ;	// Pointer*
+	UInteger nInBufferSize ;
+	Pointer lpOutBuffer ;	// Pointer*
+	UInteger nOutBufferSize ;
+	Pointer lpBytesRead ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-waitnamedpipea
+External_Function WaitNamedPipeA "WaitNamedPipeA" KERNEL32.dll ;
+	String lpNamedPipeName ;	// PSTR
+	UInteger nTimeOut ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-waitnamedpipew
+External_Function WaitNamedPipeW "WaitNamedPipeW" KERNEL32.dll ;
+	WString lpNamedPipeName ;	// PWSTR
+	UInteger nTimeOut ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/namedpipeapi/nf-namedpipeapi-impersonatenamedpipeclient
+External_Function ImpersonateNamedPipeClient "ImpersonateNamedPipeClient" ADVAPI32.dll ;
+	Pointer hNamedPipe ;	// HANDLE
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

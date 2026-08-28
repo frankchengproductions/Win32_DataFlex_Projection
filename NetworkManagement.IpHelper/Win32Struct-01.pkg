@@ -1,0 +1,1031 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-dns_interface_settings
+Struct DNS_INTERFACE_SETTINGS
+	UInteger Version
+	Integer iMissingAlignment1
+	UBigint Flags
+	Pointer Domain											// PWSTR
+	Pointer NameServer										// PWSTR
+	Pointer SearchList										// PWSTR
+	UInteger RegistrationEnabled
+	UInteger RegisterAdapterName
+	UInteger EnableLLMNR
+	UInteger QueryAdapterName
+	Pointer ProfileNameServer								// PWSTR
+End_Struct
+
+Struct DNS_SETTINGS
+	UInteger Version
+	Integer iMissingAlignment1
+	UBigint Flags
+	Pointer Hostname										// PWSTR
+	Pointer Domain											// PWSTR
+	Pointer SearchList										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-fixed_info_w2ksp1
+Struct FIXED_INFO_W2KSP1
+	Char[132] HostName										// CHAR
+	Char[132] DomainName									// CHAR
+	Pointer CurrentDnsServer								// IP_ADDR_STRING*
+	IP_ADDR_STRING DnsServerList
+	UInteger NodeType
+	Char[260] ScopeId										// CHAR
+	UInteger EnableRouting
+	UInteger EnableProxy
+	UInteger EnableDns
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/ns-iphlpapi-interface_hardware_crosstimestamp
+Struct INTERFACE_HARDWARE_CROSSTIMESTAMP
+	UBigint SystemTimestamp1
+	UBigint HardwareClockTimestamp
+	UBigint SystemTimestamp2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/ns-iphlpapi-interface_hardware_timestamp_capabilities
+Struct INTERFACE_HARDWARE_TIMESTAMP_CAPABILITIES
+	UChar PtpV2OverUdpIPv4EventMessageReceive				// BOOLEAN
+	UChar PtpV2OverUdpIPv4AllMessageReceive					// BOOLEAN
+	UChar PtpV2OverUdpIPv4EventMessageTransmit				// BOOLEAN
+	UChar PtpV2OverUdpIPv4AllMessageTransmit				// BOOLEAN
+	UChar PtpV2OverUdpIPv6EventMessageReceive				// BOOLEAN
+	UChar PtpV2OverUdpIPv6AllMessageReceive					// BOOLEAN
+	UChar PtpV2OverUdpIPv6EventMessageTransmit				// BOOLEAN
+	UChar PtpV2OverUdpIPv6AllMessageTransmit				// BOOLEAN
+	UChar AllReceive										// BOOLEAN
+	UChar AllTransmit										// BOOLEAN
+	UChar TaggedTransmit									// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/ns-iphlpapi-interface_software_timestamp_capabilities
+Struct INTERFACE_SOFTWARE_TIMESTAMP_CAPABILITIES
+	UChar AllReceive										// BOOLEAN
+	UChar AllTransmit										// BOOLEAN
+	UChar TaggedTransmit									// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/ns-iphlpapi-interface_timestamp_capabilities
+Struct INTERFACE_TIMESTAMP_CAPABILITIES
+	UBigint HardwareClockFrequencyHz
+	UChar SupportsCrossTimestamp							// BOOLEAN
+	INTERFACE_HARDWARE_TIMESTAMP_CAPABILITIES HardwareCapabilities
+	INTERFACE_SOFTWARE_TIMESTAMP_CAPABILITIES SoftwareCapabilities
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_addresses_lh
+Struct IP_ADAPTER_ADDRESSES_LH
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_ADDRESSES_LH*
+	Pointer AdapterName										// PSTR
+	Pointer FirstUnicastAddress								// IP_ADAPTER_UNICAST_ADDRESS_LH*
+	Pointer FirstAnycastAddress								// IP_ADAPTER_ANYCAST_ADDRESS_XP*
+	Pointer FirstMulticastAddress							// IP_ADAPTER_MULTICAST_ADDRESS_XP*
+	Pointer FirstDnsServerAddress							// IP_ADAPTER_DNS_SERVER_ADDRESS_XP*
+	Pointer DnsSuffix										// PWSTR
+	Pointer Description										// PWSTR
+	Pointer FriendlyName									// PWSTR
+	UChar[8] PhysicalAddress
+	UInteger PhysicalAddressLength
+	UChar[4] UnionName2
+	UInteger Mtu
+	UInteger IfType
+	Integer OperStatus										// IF_OPER_STATUS
+	UInteger Ipv6IfIndex
+	UInteger[16] ZoneIndices
+	Pointer FirstPrefix										// IP_ADAPTER_PREFIX_XP*
+	UBigint TransmitLinkSpeed
+	UBigint ReceiveLinkSpeed
+	Pointer FirstWinsServerAddress							// IP_ADAPTER_WINS_SERVER_ADDRESS_LH*
+	Pointer FirstGatewayAddress								// IP_ADAPTER_GATEWAY_ADDRESS_LH*
+	UInteger Ipv4Metric
+	UInteger Ipv6Metric
+	NET_LUID_LH Luid
+	SOCKET_ADDRESS Dhcpv4Server
+	UInteger CompartmentId									// NET_IF_COMPARTMENT_ID
+	Guid NetworkGuid
+	Integer ConnectionType									// NET_IF_CONNECTION_TYPE
+	Integer TunnelType										// TUNNEL_TYPE
+	Integer iMissingAlignment1
+	SOCKET_ADDRESS Dhcpv6Server
+	UChar[130] Dhcpv6ClientDuid
+	Short iMissingAlignment2
+	UInteger Dhcpv6ClientDuidLength
+	UInteger Dhcpv6Iaid
+	Integer iMissingAlignment3
+	Pointer FirstDnsSuffix									// IP_ADAPTER_DNS_SUFFIX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_anycast_address_xp
+Struct IP_ADAPTER_ANYCAST_ADDRESS_XP
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_ANYCAST_ADDRESS_XP*
+	SOCKET_ADDRESS Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_dns_server_address_xp
+Struct IP_ADAPTER_DNS_SERVER_ADDRESS_XP
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_DNS_SERVER_ADDRESS_XP*
+	SOCKET_ADDRESS Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_dns_suffix
+Struct IP_ADAPTER_DNS_SUFFIX
+	Pointer Next											// IP_ADAPTER_DNS_SUFFIX*
+	UShort[256] String
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_gateway_address_lh
+Struct IP_ADAPTER_GATEWAY_ADDRESS_LH
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_GATEWAY_ADDRESS_LH*
+	SOCKET_ADDRESS Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipexport/ns-ipexport-ip_adapter_index_map
+Struct IP_ADAPTER_INDEX_MAP
+	UInteger Index
+	UShort[128] Name
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_info
+Struct IP_ADAPTER_INFO
+	Pointer Next											// IP_ADAPTER_INFO*
+	UInteger ComboIndex
+	Char[260] AdapterName									// CHAR
+	Char[132] Description									// CHAR
+	UInteger AddressLength
+	UChar[8] Address
+	UInteger Index
+	UInteger Type
+	UInteger DhcpEnabled
+	Integer iMissingAlignment1
+	Pointer CurrentIpAddress								// IP_ADDR_STRING*
+	IP_ADDR_STRING IpAddressList
+	IP_ADDR_STRING GatewayList
+	IP_ADDR_STRING DhcpServer
+	Integer HaveWins										// BOOL
+	Integer iMissingAlignment2
+	IP_ADDR_STRING PrimaryWinsServer
+	IP_ADDR_STRING SecondaryWinsServer
+	Bigint LeaseObtained
+	Bigint LeaseExpires
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_multicast_address_xp
+Struct IP_ADAPTER_MULTICAST_ADDRESS_XP
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_MULTICAST_ADDRESS_XP*
+	SOCKET_ADDRESS Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipexport/ns-ipexport-ip_adapter_order_map
+Struct IP_ADAPTER_ORDER_MAP
+	UInteger NumAdapters
+	UInteger[1] AdapterOrder
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_prefix_xp
+Struct IP_ADAPTER_PREFIX_XP
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_PREFIX_XP*
+	SOCKET_ADDRESS Address
+	UInteger PrefixLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_unicast_address_lh
+Struct IP_ADAPTER_UNICAST_ADDRESS_LH
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_UNICAST_ADDRESS_LH*
+	SOCKET_ADDRESS Address
+	Integer PrefixOrigin									// NL_PREFIX_ORIGIN
+	Integer SuffixOrigin									// NL_SUFFIX_ORIGIN
+	Integer DadState										// NL_DAD_STATE
+	UInteger ValidLifetime
+	UInteger PreferredLifetime
+	UInteger LeaseLifetime
+	UChar OnLinkPrefixLength
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_adapter_wins_server_address_lh
+Struct IP_ADAPTER_WINS_SERVER_ADDRESS_LH
+	UChar[8] UnionName1
+	Pointer Next											// IP_ADAPTER_WINS_SERVER_ADDRESS_LH*
+	SOCKET_ADDRESS Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-ip_address_prefix
+Struct IP_ADDRESS_PREFIX
+	SOCKADDR_INET Prefix
+	UChar PrefixLength
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_address_string
+Struct IP_ADDRESS_STRING
+	Char[16] String											// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_addr_string
+Struct IP_ADDR_STRING
+	Pointer Next											// IP_ADDR_STRING*
+	IP_ADDRESS_STRING IpAddress
+	IP_ADDRESS_STRING IpMask
+	UInteger Context
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipexport/ns-ipexport-ip_interface_info
+Struct IP_INTERFACE_INFO
+	Integer NumAdapters
+	IP_ADAPTER_INDEX_MAP[1] Adapter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_interface_name_info_w2ksp1
+Struct IP_INTERFACE_NAME_INFO_W2KSP1
+	UInteger Index
+	UInteger MediaType
+	UChar ConnectionType
+	UChar AccessType
+	Short iMissingAlignment1
+	Guid DeviceGuid
+	Guid InterfaceGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipexport/ns-ipexport-ip_option_information
+Struct IP_OPTION_INFORMATION
+	UChar Ttl
+	UChar Tos
+	UChar Flags
+	UChar OptionsSize
+	Integer iMissingAlignment1
+	Pointer OptionsData										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iptypes/ns-iptypes-ip_per_adapter_info_w2ksp1
+Struct IP_PER_ADAPTER_INFO_W2KSP1
+	UInteger AutoconfigEnabled
+	UInteger AutoconfigActive
+	Pointer CurrentDnsServer								// IP_ADDR_STRING*
+	IP_ADDR_STRING DnsServerList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipexport/ns-ipexport-ip_unidirectional_adapter_address
+Struct IP_UNIDIRECTIONAL_ADAPTER_ADDRESS
+	UInteger NumAdapters
+	UInteger[1] Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mibicmpinfo
+Struct MIBICMPINFO
+	MIBICMPSTATS icmpInStats
+	MIBICMPSTATS icmpOutStats
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mibicmpstats
+Struct MIBICMPSTATS
+	UInteger dwMsgs
+	UInteger dwErrors
+	UInteger dwDestUnreachs
+	UInteger dwTimeExcds
+	UInteger dwParmProbs
+	UInteger dwSrcQuenchs
+	UInteger dwRedirects
+	UInteger dwEchos
+	UInteger dwEchoReps
+	UInteger dwTimestamps
+	UInteger dwTimestampReps
+	UInteger dwAddrMasks
+	UInteger dwAddrMaskReps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mibicmpstats_ex_xpsp1
+Struct MIBICMPSTATS_EX_XPSP1
+	UInteger dwMsgs
+	UInteger dwErrors
+	UInteger[256] rgdwTypeCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_anycastipaddress_row
+Struct MIB_ANYCASTIPADDRESS_ROW
+	SOCKADDR_INET Address
+	NET_LUID_LH InterfaceLuid
+	UInteger InterfaceIndex
+	SCOPE_ID ScopeId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_anycastipaddress_table
+Struct MIB_ANYCASTIPADDRESS_TABLE
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_ANYCASTIPADDRESS_ROW[1] Table
+End_Struct
+
+Struct MIB_FL_VIRTUAL_INTERFACE_ROW
+	UShort Family											// ADDRESS_FAMILY
+	UChar[6] cMissingAlignment1
+	NET_LUID_LH IfLuid
+	UInteger VirtualIfId
+	Guid CompartmentGuid
+	Integer IsolationMode									// NET_FL_ISOLATION_MODE
+	Integer Origin											// NET_FL_VIRTUAL_INTERFACE_ORIGIN
+	Integer iMissingAlignment2
+	NET_LUID_LH VirtualIfLuid
+	UInteger VirtualIfIndex
+	UChar AllowLocalNd										// BOOLEAN
+	UChar[3] cMissingAlignment3
+	UInteger AttachedFlsnpiClients
+	UInteger FlsnpiClientConfigErrors
+	UBigint FlsnpiClientInjectErrors
+	UBigint FlsnpiClientCloneErrors
+	UBigint InFlsnpiIndicatedPackets
+	UBigint InFlsnpiClientReturnedPackets
+	UBigint InFlsnpiClientSilentlyDroppedPackets
+	UBigint InFlsnpiClientDroppedPackets
+	UBigint InFlsnpiClientInjectedPackets
+	UBigint InFlsnpiClientClonedPackets
+	UBigint OutFlsnpiIndicatedPackets
+	UBigint OutFlsnpiClientReturnedPackets
+	UBigint OutFlsnpiClientDroppedPackets
+	UBigint OutFlsnpiClientSilentlyDroppedPackets
+	UBigint OutFlsnpiClientInjectedPackets
+	UBigint OutFlsnpiClientClonedPackets
+	UBigint OutFlsnpiClientClonedPacketsForNbSplit
+End_Struct
+
+Struct MIB_FL_VIRTUAL_INTERFACE_TABLE
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_FL_VIRTUAL_INTERFACE_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_icmp
+Struct MIB_ICMP
+	MIBICMPINFO stats
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_icmp_ex_xpsp1
+Struct MIB_ICMP_EX_XPSP1
+	MIBICMPSTATS_EX_XPSP1 icmpInStats
+	MIBICMPSTATS_EX_XPSP1 icmpOutStats
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ifmib/ns-ifmib-mib_ifrow
+Struct MIB_IFROW
+	UShort[256] wszName
+	UInteger dwIndex
+	UInteger dwType
+	UInteger dwMtu
+	UInteger dwSpeed
+	UInteger dwPhysAddrLen
+	UChar[8] bPhysAddr
+	UInteger dwAdminStatus
+	Integer dwOperStatus									// INTERNAL_IF_OPER_STATUS
+	UInteger dwLastChange
+	UInteger dwInOctets
+	UInteger dwInUcastPkts
+	UInteger dwInNUcastPkts
+	UInteger dwInDiscards
+	UInteger dwInErrors
+	UInteger dwInUnknownProtos
+	UInteger dwOutOctets
+	UInteger dwOutUcastPkts
+	UInteger dwOutNUcastPkts
+	UInteger dwOutDiscards
+	UInteger dwOutErrors
+	UInteger dwOutQLen
+	UInteger dwDescrLen
+	UChar[256] bDescr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ifstack_row
+Struct MIB_IFSTACK_ROW
+	UInteger HigherLayerInterfaceIndex
+	UInteger LowerLayerInterfaceIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ifstack_table
+Struct MIB_IFSTACK_TABLE
+	UInteger NumEntries
+	MIB_IFSTACK_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ifmib/ns-ifmib-mib_iftable
+Struct MIB_IFTABLE
+	UInteger dwNumEntries
+	MIB_IFROW[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_if_row2
+Struct MIB_IF_ROW2
+	NET_LUID_LH InterfaceLuid
+	UInteger InterfaceIndex
+	Guid InterfaceGuid
+	UShort[257] Alias
+	UShort[257] Description
+	UInteger PhysicalAddressLength
+	UChar[32] PhysicalAddress
+	UChar[32] PermanentPhysicalAddress
+	UInteger Mtu
+	UInteger Type
+	Integer TunnelType										// TUNNEL_TYPE
+	Integer MediaType										// NDIS_MEDIUM
+	Integer PhysicalMediumType								// NDIS_PHYSICAL_MEDIUM
+	Integer AccessType										// NET_IF_ACCESS_TYPE
+	Integer DirectionType									// NET_IF_DIRECTION_TYPE
+	UChar[1] UnionName1
+	UChar[3] cMissingAlignment1
+	Integer OperStatus										// IF_OPER_STATUS
+	Integer AdminStatus										// NET_IF_ADMIN_STATUS
+	Integer MediaConnectState								// NET_IF_MEDIA_CONNECT_STATE
+	Guid NetworkGuid
+	Integer ConnectionType									// NET_IF_CONNECTION_TYPE
+	Integer iMissingAlignment2
+	UBigint TransmitLinkSpeed
+	UBigint ReceiveLinkSpeed
+	UBigint InOctets
+	UBigint InUcastPkts
+	UBigint InNUcastPkts
+	UBigint InDiscards
+	UBigint InErrors
+	UBigint InUnknownProtos
+	UBigint InUcastOctets
+	UBigint InMulticastOctets
+	UBigint InBroadcastOctets
+	UBigint OutOctets
+	UBigint OutUcastPkts
+	UBigint OutNUcastPkts
+	UBigint OutDiscards
+	UBigint OutErrors
+	UBigint OutUcastOctets
+	UBigint OutMulticastOctets
+	UBigint OutBroadcastOctets
+	UBigint OutQLen
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_if_table2
+Struct MIB_IF_TABLE2
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_IF_ROW2[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_invertedifstack_row
+Struct MIB_INVERTEDIFSTACK_ROW
+	UInteger LowerLayerInterfaceIndex
+	UInteger HigherLayerInterfaceIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_invertedifstack_table
+Struct MIB_INVERTEDIFSTACK_TABLE
+	UInteger NumEntries
+	MIB_INVERTEDIFSTACK_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipaddrrow_xp
+Struct MIB_IPADDRROW_XP
+	UInteger dwAddr
+	UInteger dwIndex
+	UInteger dwMask
+	UInteger dwBCastAddr
+	UInteger dwReasmSize
+	UShort unused1
+	UShort wType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipaddrtable
+Struct MIB_IPADDRTABLE
+	UInteger dwNumEntries
+	MIB_IPADDRROW_XP[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipforwardrow
+Struct MIB_IPFORWARDROW
+	UInteger dwForwardDest
+	UInteger dwForwardMask
+	UInteger dwForwardPolicy
+	UInteger dwForwardNextHop
+	UInteger dwForwardIfIndex
+	UChar[4] UnionName1
+	UChar[4] UnionName2
+	UInteger dwForwardAge
+	UInteger dwForwardNextHopAS
+	UInteger dwForwardMetric1
+	UInteger dwForwardMetric2
+	UInteger dwForwardMetric3
+	UInteger dwForwardMetric4
+	UInteger dwForwardMetric5
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipforwardtable
+Struct MIB_IPFORWARDTABLE
+	UInteger dwNumEntries
+	MIB_IPFORWARDROW[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ipforward_row2
+Struct MIB_IPFORWARD_ROW2
+	NET_LUID_LH InterfaceLuid
+	UInteger InterfaceIndex
+	IP_ADDRESS_PREFIX DestinationPrefix
+	SOCKADDR_INET NextHop
+	UChar SitePrefixLength
+	UChar[3] cMissingAlignment1
+	UInteger ValidLifetime
+	UInteger PreferredLifetime
+	UInteger Metric
+	Integer Protocol										// NL_ROUTE_PROTOCOL
+	UChar Loopback											// BOOLEAN
+	UChar AutoconfigureAddress								// BOOLEAN
+	UChar Publish											// BOOLEAN
+	UChar Immortal											// BOOLEAN
+	UInteger Age
+	Integer Origin											// NL_ROUTE_ORIGIN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ipforward_table2
+Struct MIB_IPFORWARD_TABLE2
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_IPFORWARD_ROW2[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ipinterface_row
+Struct MIB_IPINTERFACE_ROW
+	UShort Family											// ADDRESS_FAMILY
+	UChar[6] cMissingAlignment1
+	NET_LUID_LH InterfaceLuid
+	UInteger InterfaceIndex
+	UInteger MaxReassemblySize
+	UBigint InterfaceIdentifier
+	UInteger MinRouterAdvertisementInterval
+	UInteger MaxRouterAdvertisementInterval
+	UChar AdvertisingEnabled								// BOOLEAN
+	UChar ForwardingEnabled									// BOOLEAN
+	UChar WeakHostSend										// BOOLEAN
+	UChar WeakHostReceive									// BOOLEAN
+	UChar UseAutomaticMetric								// BOOLEAN
+	UChar UseNeighborUnreachabilityDetection				// BOOLEAN
+	UChar ManagedAddressConfigurationSupported				// BOOLEAN
+	UChar OtherStatefulConfigurationSupported				// BOOLEAN
+	UChar AdvertiseDefaultRoute								// BOOLEAN
+	UChar[3] cMissingAlignment2
+	Integer RouterDiscoveryBehavior							// NL_ROUTER_DISCOVERY_BEHAVIOR
+	UInteger DadTransmits
+	UInteger BaseReachableTime
+	UInteger RetransmitTime
+	UInteger PathMtuDiscoveryTimeout
+	Integer LinkLocalAddressBehavior						// NL_LINK_LOCAL_ADDRESS_BEHAVIOR
+	UInteger LinkLocalAddressTimeout
+	UInteger[16] ZoneIndices
+	UInteger SitePrefixLength
+	UInteger Metric
+	UInteger NlMtu
+	UChar Connected											// BOOLEAN
+	UChar SupportsWakeUpPatterns							// BOOLEAN
+	UChar SupportsNeighborDiscovery							// BOOLEAN
+	UChar SupportsRouterDiscovery							// BOOLEAN
+	UInteger ReachableTime
+	NL_INTERFACE_OFFLOAD_ROD TransmitOffload
+	NL_INTERFACE_OFFLOAD_ROD ReceiveOffload
+	UChar DisableDefaultRoutes								// BOOLEAN
+	UChar[1] cMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ipinterface_table
+Struct MIB_IPINTERFACE_TABLE
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_IPINTERFACE_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipmcast_mfe
+Struct MIB_IPMCAST_MFE
+	UInteger dwGroup
+	UInteger dwSource
+	UInteger dwSrcMask
+	UInteger dwUpStrmNgbr
+	UInteger dwInIfIndex
+	UInteger dwInIfProtocol
+	UInteger dwRouteProtocol
+	UInteger dwRouteNetwork
+	UInteger dwRouteMask
+	UInteger ulUpTime
+	UInteger ulExpiryTime
+	UInteger ulTimeOut
+	UInteger ulNumOutIf
+	UInteger fFlags
+	UInteger dwReserved
+	MIB_IPMCAST_OIF_XP[1] rgmioOutInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipmcast_oif_xp
+Struct MIB_IPMCAST_OIF_XP
+	UInteger dwOutIfIndex
+	UInteger dwNextHopAddr
+	UInteger dwReserved
+	UInteger dwReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipnetrow_lh
+Struct MIB_IPNETROW_LH
+	UInteger dwIndex
+	UInteger dwPhysAddrLen
+	UChar[8] bPhysAddr
+	UInteger dwAddr
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipnettable
+Struct MIB_IPNETTABLE
+	UInteger dwNumEntries
+	MIB_IPNETROW_LH[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ipnet_row2
+Struct MIB_IPNET_ROW2
+	SOCKADDR_INET Address
+	UInteger InterfaceIndex
+	Integer iMissingAlignment1
+	NET_LUID_LH InterfaceLuid
+	UChar[32] PhysicalAddress
+	UInteger PhysicalAddressLength
+	Integer State											// NL_NEIGHBOR_STATE
+	UChar[1] UnionName1
+	UChar[3] cMissingAlignment2
+	UChar[4] UnionName2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ipnet_table2
+Struct MIB_IPNET_TABLE2
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_IPNET_ROW2[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ippath_row
+Struct MIB_IPPATH_ROW
+	SOCKADDR_INET Source
+	SOCKADDR_INET Destination
+	NET_LUID_LH InterfaceLuid
+	UInteger InterfaceIndex
+	SOCKADDR_INET CurrentNextHop
+	UInteger PathMtu
+	UInteger RttMean
+	UInteger RttDeviation
+	UChar[4] UnionName1
+	UChar IsReachable										// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UBigint LinkTransmitSpeed
+	UBigint LinkReceiveSpeed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ippath_table
+Struct MIB_IPPATH_TABLE
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_IPPATH_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ipmib/ns-ipmib-mib_ipstats_lh
+Struct MIB_IPSTATS_LH
+	UChar[4] UnionName1
+	UInteger dwDefaultTTL
+	UInteger dwInReceives
+	UInteger dwInHdrErrors
+	UInteger dwInAddrErrors
+	UInteger dwForwDatagrams
+	UInteger dwInUnknownProtos
+	UInteger dwInDiscards
+	UInteger dwInDelivers
+	UInteger dwOutRequests
+	UInteger dwRoutingDiscards
+	UInteger dwOutDiscards
+	UInteger dwOutNoRoutes
+	UInteger dwReasmTimeout
+	UInteger dwReasmReqds
+	UInteger dwReasmOks
+	UInteger dwReasmFails
+	UInteger dwFragOks
+	UInteger dwFragFails
+	UInteger dwFragCreates
+	UInteger dwNumIf
+	UInteger dwNumAddr
+	UInteger dwNumRoutes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_ip_network_connection_bandwidth_estimates
+Struct MIB_IP_NETWORK_CONNECTION_BANDWIDTH_ESTIMATES
+	NL_BANDWIDTH_INFORMATION InboundBandwidthInformation
+	NL_BANDWIDTH_INFORMATION OutboundBandwidthInformation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_multicastipaddress_row
+Struct MIB_MULTICASTIPADDRESS_ROW
+	SOCKADDR_INET Address
+	UInteger InterfaceIndex
+	Integer iMissingAlignment1
+	NET_LUID_LH InterfaceLuid
+	SCOPE_ID ScopeId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_multicastipaddress_table
+Struct MIB_MULTICASTIPADDRESS_TABLE
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_MULTICASTIPADDRESS_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcp6row
+Struct MIB_TCP6ROW
+	Integer State											// MIB_TCP_STATE
+	IN6_ADDR LocalAddr
+	UInteger dwLocalScopeId
+	UInteger dwLocalPort
+	IN6_ADDR RemoteAddr
+	UInteger dwRemoteScopeId
+	UInteger dwRemotePort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcp6row2
+Struct MIB_TCP6ROW2
+	IN6_ADDR LocalAddr
+	UInteger dwLocalScopeId
+	UInteger dwLocalPort
+	IN6_ADDR RemoteAddr
+	UInteger dwRemoteScopeId
+	UInteger dwRemotePort
+	Integer State											// MIB_TCP_STATE
+	UInteger dwOwningPid
+	Integer dwOffloadState									// TCP_CONNECTION_OFFLOAD_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcp6row_owner_module
+Struct MIB_TCP6ROW_OWNER_MODULE
+	UChar[16] ucLocalAddr
+	UInteger dwLocalScopeId
+	UInteger dwLocalPort
+	UChar[16] ucRemoteAddr
+	UInteger dwRemoteScopeId
+	UInteger dwRemotePort
+	UInteger dwState
+	UInteger dwOwningPid
+	Bigint liCreateTimestamp
+	UBigint[16] OwningModuleInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcp6table
+Struct MIB_TCP6TABLE
+	UInteger dwNumEntries
+	MIB_TCP6ROW[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcp6table2
+Struct MIB_TCP6TABLE2
+	UInteger dwNumEntries
+	MIB_TCP6ROW2[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcprow2
+Struct MIB_TCPROW2
+	UInteger dwState
+	UInteger dwLocalAddr
+	UInteger dwLocalPort
+	UInteger dwRemoteAddr
+	UInteger dwRemotePort
+	UInteger dwOwningPid
+	Integer dwOffloadState									// TCP_CONNECTION_OFFLOAD_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcprow_lh
+Struct MIB_TCPROW_LH
+	UChar[4] UnionName1
+	UInteger dwLocalAddr
+	UInteger dwLocalPort
+	UInteger dwRemoteAddr
+	UInteger dwRemotePort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcprow_owner_module
+Struct MIB_TCPROW_OWNER_MODULE
+	UInteger dwState
+	UInteger dwLocalAddr
+	UInteger dwLocalPort
+	UInteger dwRemoteAddr
+	UInteger dwRemotePort
+	UInteger dwOwningPid
+	Bigint liCreateTimestamp
+	UBigint[16] OwningModuleInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcpstats2
+Struct MIB_TCPSTATS2
+	Integer RtoAlgorithm									// TCP_RTO_ALGORITHM
+	UInteger dwRtoMin
+	UInteger dwRtoMax
+	UInteger dwMaxConn
+	UInteger dwActiveOpens
+	UInteger dwPassiveOpens
+	UInteger dwAttemptFails
+	UInteger dwEstabResets
+	UInteger dwCurrEstab
+	Integer iMissingAlignment1
+	UBigint dw64InSegs
+	UBigint dw64OutSegs
+	UInteger dwRetransSegs
+	UInteger dwInErrs
+	UInteger dwOutRsts
+	UInteger dwNumConns
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcpstats_lh
+Struct MIB_TCPSTATS_LH
+	UChar[4] UnionName1
+	UInteger dwRtoMin
+	UInteger dwRtoMax
+	UInteger dwMaxConn
+	UInteger dwActiveOpens
+	UInteger dwPassiveOpens
+	UInteger dwAttemptFails
+	UInteger dwEstabResets
+	UInteger dwCurrEstab
+	UInteger dwInSegs
+	UInteger dwOutSegs
+	UInteger dwRetransSegs
+	UInteger dwInErrs
+	UInteger dwOutRsts
+	UInteger dwNumConns
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcptable
+Struct MIB_TCPTABLE
+	UInteger dwNumEntries
+	MIB_TCPROW_LH[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tcpmib/ns-tcpmib-mib_tcptable2
+Struct MIB_TCPTABLE2
+	UInteger dwNumEntries
+	MIB_TCPROW2[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udp6row
+Struct MIB_UDP6ROW
+	IN6_ADDR dwLocalAddr
+	UInteger dwLocalScopeId
+	UInteger dwLocalPort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udp6row_owner_module
+Struct MIB_UDP6ROW_OWNER_MODULE
+	UChar[16] ucLocalAddr
+	UInteger dwLocalScopeId
+	UInteger dwLocalPort
+	UInteger dwOwningPid
+	Integer iMissingAlignment1
+	Bigint liCreateTimestamp
+	UChar[4] UnionName1
+	Integer iMissingAlignment2
+	UBigint[16] OwningModuleInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udp6table
+Struct MIB_UDP6TABLE
+	UInteger dwNumEntries
+	MIB_UDP6ROW[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udprow
+Struct MIB_UDPROW
+	UInteger dwLocalAddr
+	UInteger dwLocalPort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udprow_owner_module
+Struct MIB_UDPROW_OWNER_MODULE
+	UInteger dwLocalAddr
+	UInteger dwLocalPort
+	UInteger dwOwningPid
+	Integer iMissingAlignment1
+	Bigint liCreateTimestamp
+	UChar[4] UnionName1
+	Integer iMissingAlignment2
+	UBigint[16] OwningModuleInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udpstats
+Struct MIB_UDPSTATS
+	UInteger dwInDatagrams
+	UInteger dwNoPorts
+	UInteger dwInErrors
+	UInteger dwOutDatagrams
+	UInteger dwNumAddrs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udpstats2
+Struct MIB_UDPSTATS2
+	UBigint dw64InDatagrams
+	UInteger dwNoPorts
+	UInteger dwInErrors
+	UBigint dw64OutDatagrams
+	UInteger dwNumAddrs
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/udpmib/ns-udpmib-mib_udptable
+Struct MIB_UDPTABLE
+	UInteger dwNumEntries
+	MIB_UDPROW[1] table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_unicastipaddress_row
+Struct MIB_UNICASTIPADDRESS_ROW
+	SOCKADDR_INET Address
+	NET_LUID_LH InterfaceLuid
+	UInteger InterfaceIndex
+	Integer PrefixOrigin									// NL_PREFIX_ORIGIN
+	Integer SuffixOrigin									// NL_SUFFIX_ORIGIN
+	UInteger ValidLifetime
+	UInteger PreferredLifetime
+	UChar OnLinkPrefixLength
+	UChar SkipAsSource										// BOOLEAN
+	Short iMissingAlignment1
+	Integer DadState										// NL_DAD_STATE
+	SCOPE_ID ScopeId
+	Bigint CreationTimeStamp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/ns-netioapi-mib_unicastipaddress_table
+Struct MIB_UNICASTIPADDRESS_TABLE
+	UInteger NumEntries
+	Integer iMissingAlignment1
+	MIB_UNICASTIPADDRESS_ROW[1] Table
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/ns-iphlpapi-net_address_info
+Struct NET_ADDRESS_INFO
+	Integer Format											// NET_ADDRESS_FORMAT
+	UChar[512] UnionName1
+End_Struct
+
+Struct PF_FILTER_DESCRIPTOR
+	UInteger dwFilterFlags
+	UInteger dwRule
+	Integer pfatType										// PFADDRESSTYPE
+	Integer iMissingAlignment1
+	Pointer SrcAddr											// UChar*
+	Pointer SrcMask											// UChar*
+	Pointer DstAddr											// UChar*
+	Pointer DstMask											// UChar*
+	UInteger dwProtocol
+	UInteger fLateBound
+	UShort wSrcPort
+	UShort wDstPort
+	UShort wSrcPortHighRange
+	UShort wDstPortHighRange
+End_Struct
+
+Struct PF_FILTER_STATS
+	UInteger dwNumPacketsFiltered
+	Integer iMissingAlignment1
+	PF_FILTER_DESCRIPTOR info
+End_Struct
+
+Struct PF_INTERFACE_STATS
+	Pointer pvDriverContext									// Pointer*
+	UInteger dwFlags
+	UInteger dwInDrops
+	UInteger dwOutDrops
+	Integer eaInAction										// PFFORWARD_ACTION
+	Integer eaOutAction										// PFFORWARD_ACTION
+	UInteger dwNumInFilters
+	UInteger dwNumOutFilters
+	UInteger dwFrag
+	UInteger dwSpoof
+	UInteger dwReserved1
+	UInteger dwReserved2
+	Integer iMissingAlignment1
+	Bigint liSYN
+	Bigint liTotalLogged
+	UInteger dwLostLogEntries
+	Integer iMissingAlignment2
+	PF_FILTER_STATS[1] FilterInfo
+End_Struct
+
+Struct PF_LATEBIND_INFO
+	Pointer SrcAddr											// UChar*
+	Pointer DstAddr											// UChar*
+	Pointer Mask											// UChar*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

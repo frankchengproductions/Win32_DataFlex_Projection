@@ -1,0 +1,733 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmacquireadvisories
+External_Function DRMAcquireAdvisories "DRMAcquireAdvisories" msdrm.dll ;
+	UInteger hLicenseStorage ;
+	WString wszLicense ;	// PWSTR
+	WString wszURL ;	// PWSTR
+	Pointer pvContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmacquireissuancelicensetemplate
+External_Function DRMAcquireIssuanceLicenseTemplate "DRMAcquireIssuanceLicenseTemplate" msdrm.dll ;
+	UInteger hClient ;
+	UInteger uFlags ;
+	Pointer pvReserved ;	// Pointer*
+	UInteger cTemplates ;
+	Pointer pwszTemplateIds ;	// PWSTR*
+	WString wszUrl ;	// PWSTR
+	Pointer pvContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmacquirelicense
+External_Function DRMAcquireLicense "DRMAcquireLicense" msdrm.dll ;
+	UInteger hSession ;
+	UInteger uFlags ;
+	WString wszGroupIdentityCredential ;	// PWSTR
+	WString wszRequestedRights ;	// PWSTR
+	WString wszCustomData ;	// PWSTR
+	WString wszURL ;	// PWSTR
+	Pointer pvContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmactivate
+External_Function DRMActivate "DRMActivate" msdrm.dll ;
+	UInteger hClient ;
+	UInteger uFlags ;
+	UInteger uLangID ;
+	Pointer pActServInfo ;	// DRM_ACTSERV_INFO*
+	Pointer pvContext ;	// Pointer*
+	Pointer hParentWnd ;	// HWND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmaddlicense
+External_Function DRMAddLicense "DRMAddLicense" msdrm.dll ;
+	UInteger hLicenseStorage ;
+	UInteger uFlags ;
+	WString wszLicense ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmaddrightwithuser
+External_Function DRMAddRightWithUser "DRMAddRightWithUser" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger hRight ;
+	UInteger hUser ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmattest
+External_Function DRMAttest "DRMAttest" msdrm.dll ;
+	UInteger hEnablingPrincipal ;
+	WString wszData ;	// PWSTR
+	Integer eType ;	// DRMATTESTTYPE
+	Pointer pcAttestedBlob ;	// UInteger*
+	Pointer wszAttestedBlob ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmchecksecurity
+External_Function DRMCheckSecurity "DRMCheckSecurity" msdrm.dll ;
+	UInteger hEnv ;
+	UInteger cLevel ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmclearallrights
+External_Function DRMClearAllRights "DRMClearAllRights" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcloseenvironmenthandle
+External_Function DRMCloseEnvironmentHandle "DRMCloseEnvironmentHandle" msdrm.dll ;
+	UInteger hEnv ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmclosehandle
+External_Function DRMCloseHandle "DRMCloseHandle" msdrm.dll ;
+	UInteger handle ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmclosepubhandle
+External_Function DRMClosePubHandle "DRMClosePubHandle" msdrm.dll ;
+	UInteger hPub ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmclosequeryhandle
+External_Function DRMCloseQueryHandle "DRMCloseQueryHandle" msdrm.dll ;
+	UInteger hQuery ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmclosesession
+External_Function DRMCloseSession "DRMCloseSession" msdrm.dll ;
+	UInteger hSession ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmconstructcertificatechain
+External_Function DRMConstructCertificateChain "DRMConstructCertificateChain" msdrm.dll ;
+	UInteger cCertificates ;
+	Pointer rgwszCertificates ;	// PWSTR*
+	Pointer pcChain ;	// UInteger*
+	Pointer wszChain ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateboundlicense
+External_Function DRMCreateBoundLicense "DRMCreateBoundLicense" msdrm.dll ;
+	UInteger hEnv ;
+	Pointer pParams ;	// DRMBOUNDLICENSEPARAMS*
+	WString wszLicenseChain ;	// PWSTR
+	Pointer phBoundLicense ;	// UInteger*
+	Pointer phErrorLog ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateclientsession
+External_Function DRMCreateClientSession "DRMCreateClientSession" msdrm.dll ;
+	Pointer pfnCallback ;	// DRMCALLBACK
+	UInteger uCallbackVersion ;
+	WString wszGroupIDProviderType ;	// PWSTR
+	WString wszGroupID ;	// PWSTR
+	Pointer phClient ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateenablingbitsdecryptor
+External_Function DRMCreateEnablingBitsDecryptor "DRMCreateEnablingBitsDecryptor" msdrm.dll ;
+	UInteger hBoundLicense ;
+	WString wszRight ;	// PWSTR
+	UInteger hAuxLib ;
+	WString wszAuxPlug ;	// PWSTR
+	Pointer phDecryptor ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateenablingbitsencryptor
+External_Function DRMCreateEnablingBitsEncryptor "DRMCreateEnablingBitsEncryptor" msdrm.dll ;
+	UInteger hBoundLicense ;
+	WString wszRight ;	// PWSTR
+	UInteger hAuxLib ;
+	WString wszAuxPlug ;	// PWSTR
+	Pointer phEncryptor ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateenablingprincipal
+External_Function DRMCreateEnablingPrincipal "DRMCreateEnablingPrincipal" msdrm.dll ;
+	UInteger hEnv ;
+	UInteger hLibrary ;
+	WString wszObject ;	// PWSTR
+	Pointer pidPrincipal ;	// DRMID*
+	WString wszCredentials ;	// PWSTR
+	Pointer phEnablingPrincipal ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateissuancelicense
+External_Function DRMCreateIssuanceLicense "DRMCreateIssuanceLicense" msdrm.dll ;
+	Pointer pstTimeFrom ;	// SYSTEMTIME*
+	Pointer pstTimeUntil ;	// SYSTEMTIME*
+	WString wszReferralInfoName ;	// PWSTR
+	WString wszReferralInfoURL ;	// PWSTR
+	UInteger hOwner ;
+	WString wszIssuanceLicense ;	// PWSTR
+	UInteger hBoundLicense ;
+	Pointer phIssuanceLicense ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreatelicensestoragesession
+External_Function DRMCreateLicenseStorageSession "DRMCreateLicenseStorageSession" msdrm.dll ;
+	UInteger hEnv ;
+	UInteger hDefaultLibrary ;
+	UInteger hClient ;
+	UInteger uFlags ;
+	WString wszIssuanceLicense ;	// PWSTR
+	Pointer phLicenseStorage ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateright
+External_Function DRMCreateRight "DRMCreateRight" msdrm.dll ;
+	WString wszRightName ;	// PWSTR
+	Pointer pstFrom ;	// SYSTEMTIME*
+	Pointer pstUntil ;	// SYSTEMTIME*
+	UInteger cExtendedInfo ;
+	Pointer pwszExtendedInfoName ;	// PWSTR*
+	Pointer pwszExtendedInfoValue ;	// PWSTR*
+	Pointer phRight ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmcreateuser
+External_Function DRMCreateUser "DRMCreateUser" msdrm.dll ;
+	WString wszUserName ;	// PWSTR
+	WString wszUserId ;	// PWSTR
+	WString wszUserIdType ;	// PWSTR
+	Pointer phUser ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmdecode
+External_Function DRMDecode "DRMDecode" msdrm.dll ;
+	WString wszAlgID ;	// PWSTR
+	WString wszEncodedString ;	// PWSTR
+	Pointer puDecodedDataLen ;	// UInteger*
+	Pointer pbDecodedData ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmdeconstructcertificatechain
+External_Function DRMDeconstructCertificateChain "DRMDeconstructCertificateChain" msdrm.dll ;
+	WString wszChain ;	// PWSTR
+	UInteger iWhich ;
+	Pointer pcCert ;	// UInteger*
+	Pointer wszCert ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmdecrypt
+External_Function DRMDecrypt "DRMDecrypt" msdrm.dll ;
+	UInteger hCryptoProvider ;
+	UInteger iPosition ;
+	UInteger cNumInBytes ;
+	Pointer pbInData ;	// UChar*
+	Pointer pcNumOutBytes ;	// UInteger*
+	Pointer pbOutData ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmdeletelicense
+External_Function DRMDeleteLicense "DRMDeleteLicense" msdrm.dll ;
+	UInteger hSession ;
+	WString wszLicenseId ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmduplicateenvironmenthandle
+External_Function DRMDuplicateEnvironmentHandle "DRMDuplicateEnvironmentHandle" msdrm.dll ;
+	UInteger hToCopy ;
+	Pointer phCopy ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmduplicatehandle
+External_Function DRMDuplicateHandle "DRMDuplicateHandle" msdrm.dll ;
+	UInteger hToCopy ;
+	Pointer phCopy ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmduplicatepubhandle
+External_Function DRMDuplicatePubHandle "DRMDuplicatePubHandle" msdrm.dll ;
+	UInteger hPubIn ;
+	Pointer phPubOut ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmduplicatesession
+External_Function DRMDuplicateSession "DRMDuplicateSession" msdrm.dll ;
+	UInteger hSessionIn ;
+	Pointer phSessionOut ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmencode
+External_Function DRMEncode "DRMEncode" msdrm.dll ;
+	WString wszAlgID ;	// PWSTR
+	UInteger uDataLen ;
+	Pointer pbDecodedData ;	// UChar*
+	Pointer puEncodedStringLen ;	// UInteger*
+	Pointer wszEncodedString ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmencrypt
+External_Function DRMEncrypt "DRMEncrypt" msdrm.dll ;
+	UInteger hCryptoProvider ;
+	UInteger iPosition ;
+	UInteger cNumInBytes ;
+	Pointer pbInData ;	// UChar*
+	Pointer pcNumOutBytes ;	// UInteger*
+	Pointer pbOutData ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmenumeratelicense
+External_Function DRMEnumerateLicense "DRMEnumerateLicense" msdrm.dll ;
+	UInteger hSession ;
+	UInteger uFlags ;
+	UInteger uIndex ;
+	Pointer pfSharedFlag ;	// BOOL*
+	Pointer puCertificateDataLen ;	// UInteger*
+	Pointer wszCertificateData ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetapplicationspecificdata
+External_Function DRMGetApplicationSpecificData "DRMGetApplicationSpecificData" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger uIndex ;
+	Pointer puNameLength ;	// UInteger*
+	Pointer wszName ;	// PWSTR
+	Pointer puValueLength ;	// UInteger*
+	Pointer wszValue ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetboundlicenseattribute
+External_Function DRMGetBoundLicenseAttribute "DRMGetBoundLicenseAttribute" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszAttribute ;	// PWSTR
+	UInteger iWhich ;
+	Pointer peEncoding ;	// DRMENCODINGTYPE*
+	Pointer pcBuffer ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetboundlicenseattributecount
+External_Function DRMGetBoundLicenseAttributeCount "DRMGetBoundLicenseAttributeCount" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszAttribute ;	// PWSTR
+	Pointer pcAttributes ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetboundlicenseobject
+External_Function DRMGetBoundLicenseObject "DRMGetBoundLicenseObject" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszSubObjectType ;	// PWSTR
+	UInteger iWhich ;
+	Pointer phSubObject ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetboundlicenseobjectcount
+External_Function DRMGetBoundLicenseObjectCount "DRMGetBoundLicenseObjectCount" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszSubObjectType ;	// PWSTR
+	Pointer pcSubObjects ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetcertificatechaincount
+External_Function DRMGetCertificateChainCount "DRMGetCertificateChainCount" msdrm.dll ;
+	WString wszChain ;	// PWSTR
+	Pointer pcCertCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetclientversion
+External_Function DRMGetClientVersion "DRMGetClientVersion" msdrm.dll ;
+	Pointer pDRMClientVersionInfo ;	// DRM_CLIENT_VERSION_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetenvironmentinfo
+External_Function DRMGetEnvironmentInfo "DRMGetEnvironmentInfo" msdrm.dll ;
+	UInteger handle ;
+	WString wszAttribute ;	// PWSTR
+	Pointer peEncoding ;	// DRMENCODINGTYPE*
+	Pointer pcBuffer ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetinfo
+External_Function DRMGetInfo "DRMGetInfo" msdrm.dll ;
+	UInteger handle ;
+	WString wszAttribute ;	// PWSTR
+	Pointer peEncoding ;	// DRMENCODINGTYPE*
+	Pointer pcBuffer ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetintervaltime
+External_Function DRMGetIntervalTime "DRMGetIntervalTime" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Pointer pcDays ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetissuancelicenseinfo
+External_Function DRMGetIssuanceLicenseInfo "DRMGetIssuanceLicenseInfo" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Pointer pstTimeFrom ;	// SYSTEMTIME*
+	Pointer pstTimeUntil ;	// SYSTEMTIME*
+	UInteger uFlags ;
+	Pointer puDistributionPointNameLength ;	// UInteger*
+	Pointer wszDistributionPointName ;	// PWSTR
+	Pointer puDistributionPointURLLength ;	// UInteger*
+	Pointer wszDistributionPointURL ;	// PWSTR
+	Pointer phOwner ;	// UInteger*
+	Pointer pfOfficial ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetissuancelicensetemplate
+External_Function DRMGetIssuanceLicenseTemplate "DRMGetIssuanceLicenseTemplate" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Pointer puIssuanceLicenseTemplateLength ;	// UInteger*
+	Pointer wszIssuanceLicenseTemplate ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetmetadata
+External_Function DRMGetMetaData "DRMGetMetaData" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Pointer puContentIdLength ;	// UInteger*
+	Pointer wszContentId ;	// PWSTR
+	Pointer puContentIdTypeLength ;	// UInteger*
+	Pointer wszContentIdType ;	// PWSTR
+	Pointer puSKUIdLength ;	// UInteger*
+	Pointer wszSKUId ;	// PWSTR
+	Pointer puSKUIdTypeLength ;	// UInteger*
+	Pointer wszSKUIdType ;	// PWSTR
+	Pointer puContentTypeLength ;	// UInteger*
+	Pointer wszContentType ;	// PWSTR
+	Pointer puContentNameLength ;	// UInteger*
+	Pointer wszContentName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetnameanddescription
+External_Function DRMGetNameAndDescription "DRMGetNameAndDescription" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger uIndex ;
+	Pointer pulcid ;	// UInteger*
+	Pointer puNameLength ;	// UInteger*
+	Pointer wszName ;	// PWSTR
+	Pointer puDescriptionLength ;	// UInteger*
+	Pointer wszDescription ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetownerlicense
+External_Function DRMGetOwnerLicense "DRMGetOwnerLicense" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Pointer puOwnerLicenseLength ;	// UInteger*
+	Pointer wszOwnerLicense ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetprocaddress
+External_Function DRMGetProcAddress "DRMGetProcAddress" msdrm.dll ;
+	UInteger hLibrary ;
+	WString wszProcName ;	// PWSTR
+	Pointer ppfnProcAddress ;	// FARPROC*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetrevocationpoint
+External_Function DRMGetRevocationPoint "DRMGetRevocationPoint" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Pointer puIdLength ;	// UInteger*
+	Pointer wszId ;	// PWSTR
+	Pointer puIdTypeLength ;	// UInteger*
+	Pointer wszIdType ;	// PWSTR
+	Pointer puURLLength ;	// UInteger*
+	Pointer wszRL ;	// PWSTR
+	Pointer pstFrequency ;	// SYSTEMTIME*
+	Pointer puNameLength ;	// UInteger*
+	Pointer wszName ;	// PWSTR
+	Pointer puPublicKeyLength ;	// UInteger*
+	Pointer wszPublicKey ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetrightextendedinfo
+External_Function DRMGetRightExtendedInfo "DRMGetRightExtendedInfo" msdrm.dll ;
+	UInteger hRight ;
+	UInteger uIndex ;
+	Pointer puExtendedInfoNameLength ;	// UInteger*
+	Pointer wszExtendedInfoName ;	// PWSTR
+	Pointer puExtendedInfoValueLength ;	// UInteger*
+	Pointer wszExtendedInfoValue ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetrightinfo
+External_Function DRMGetRightInfo "DRMGetRightInfo" msdrm.dll ;
+	UInteger hRight ;
+	Pointer puRightNameLength ;	// UInteger*
+	Pointer wszRightName ;	// PWSTR
+	Pointer pstFrom ;	// SYSTEMTIME*
+	Pointer pstUntil ;	// SYSTEMTIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetsecurityprovider
+External_Function DRMGetSecurityProvider "DRMGetSecurityProvider" msdrm.dll ;
+	UInteger uFlags ;
+	Pointer puTypeLen ;	// UInteger*
+	Pointer wszType ;	// PWSTR
+	Pointer puPathLen ;	// UInteger*
+	Pointer wszPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetservicelocation
+External_Function DRMGetServiceLocation "DRMGetServiceLocation" msdrm.dll ;
+	UInteger hClient ;
+	UInteger uServiceType ;
+	UInteger uServiceLocation ;
+	WString wszIssuanceLicense ;	// PWSTR
+	Pointer puServiceURLLength ;	// UInteger*
+	Pointer wszServiceURL ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetsignedissuancelicense
+External_Function DRMGetSignedIssuanceLicense "DRMGetSignedIssuanceLicense" msdrm.dll ;
+	UInteger hEnv ;
+	UInteger hIssuanceLicense ;
+	UInteger uFlags ;
+	Pointer pbSymKey ;	// UChar*
+	UInteger cbSymKey ;
+	WString wszSymKeyType ;	// PWSTR
+	WString wszClientLicensorCertificate ;	// PWSTR
+	Pointer pfnCallback ;	// DRMCALLBACK
+	WString wszURL ;	// PWSTR
+	Pointer pvContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetsignedissuancelicenseex
+External_Function DRMGetSignedIssuanceLicenseEx "DRMGetSignedIssuanceLicenseEx" msdrm.dll ;
+	UInteger hEnv ;
+	UInteger hIssuanceLicense ;
+	UInteger uFlags ;
+	Pointer pbSymKey ;	// UChar*
+	UInteger cbSymKey ;
+	WString wszSymKeyType ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	UInteger hEnablingPrincipal ;
+	UInteger hBoundLicenseCLC ;
+	Pointer pfnCallback ;	// DRMCALLBACK
+	Pointer pvContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgettime
+External_Function DRMGetTime "DRMGetTime" msdrm.dll ;
+	UInteger hEnv ;
+	Integer eTimerIdType ;	// DRMTIMETYPE
+	Pointer poTimeObject ;	// SYSTEMTIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetunboundlicenseattribute
+External_Function DRMGetUnboundLicenseAttribute "DRMGetUnboundLicenseAttribute" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszAttributeType ;	// PWSTR
+	UInteger iWhich ;
+	Pointer peEncoding ;	// DRMENCODINGTYPE*
+	Pointer pcBuffer ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetunboundlicenseattributecount
+External_Function DRMGetUnboundLicenseAttributeCount "DRMGetUnboundLicenseAttributeCount" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszAttributeType ;	// PWSTR
+	Pointer pcAttributes ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetunboundlicenseobject
+External_Function DRMGetUnboundLicenseObject "DRMGetUnboundLicenseObject" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszSubObjectType ;	// PWSTR
+	UInteger iIndex ;
+	Pointer phSubQuery ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetunboundlicenseobjectcount
+External_Function DRMGetUnboundLicenseObjectCount "DRMGetUnboundLicenseObjectCount" msdrm.dll ;
+	UInteger hQueryRoot ;
+	WString wszSubObjectType ;	// PWSTR
+	Pointer pcSubObjects ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetusagepolicy
+External_Function DRMGetUsagePolicy "DRMGetUsagePolicy" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger uIndex ;
+	Pointer peUsagePolicyType ;	// DRM_USAGEPOLICY_TYPE*
+	Pointer pfExclusion ;	// BOOL*
+	Pointer puNameLength ;	// UInteger*
+	Pointer wszName ;	// PWSTR
+	Pointer puMinVersionLength ;	// UInteger*
+	Pointer wszMinVersion ;	// PWSTR
+	Pointer puMaxVersionLength ;	// UInteger*
+	Pointer wszMaxVersion ;	// PWSTR
+	Pointer puPublicKeyLength ;	// UInteger*
+	Pointer wszPublicKey ;	// PWSTR
+	Pointer puDigestAlgorithmLength ;	// UInteger*
+	Pointer wszDigestAlgorithm ;	// PWSTR
+	Pointer pcbDigest ;	// UInteger*
+	Pointer pbDigest ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetuserinfo
+External_Function DRMGetUserInfo "DRMGetUserInfo" msdrm.dll ;
+	UInteger hUser ;
+	Pointer puUserNameLength ;	// UInteger*
+	Pointer wszUserName ;	// PWSTR
+	Pointer puUserIdLength ;	// UInteger*
+	Pointer wszUserId ;	// PWSTR
+	Pointer puUserIdTypeLength ;	// UInteger*
+	Pointer wszUserIdType ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetuserrights
+External_Function DRMGetUserRights "DRMGetUserRights" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger hUser ;
+	UInteger uIndex ;
+	Pointer phRight ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmgetusers
+External_Function DRMGetUsers "DRMGetUsers" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger uIndex ;
+	Pointer phUser ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drminitenvironment
+External_Function DRMInitEnvironment "DRMInitEnvironment" msdrm.dll ;
+	Integer eSecurityProviderType ;	// DRMSECURITYPROVIDERTYPE
+	Integer eSpecification ;	// DRMSPECTYPE
+	WString wszSecurityProvider ;	// PWSTR
+	WString wszManifestCredentials ;	// PWSTR
+	WString wszMachineCredentials ;	// PWSTR
+	Pointer phEnv ;	// UInteger*
+	Pointer phDefaultLibrary ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmisactivated
+External_Function DRMIsActivated "DRMIsActivated" msdrm.dll ;
+	UInteger hClient ;
+	UInteger uFlags ;
+	Pointer pActServInfo ;	// DRM_ACTSERV_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmiswindowprotected
+External_Function DRMIsWindowProtected "DRMIsWindowProtected" msdrm.dll ;
+	Pointer hwnd ;	// HWND
+	Pointer pfProtected ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmloadlibrary
+External_Function DRMLoadLibrary "DRMLoadLibrary" msdrm.dll ;
+	UInteger hEnv ;
+	Integer eSpecification ;	// DRMSPECTYPE
+	WString wszLibraryProvider ;	// PWSTR
+	WString wszCredentials ;	// PWSTR
+	Pointer phLibrary ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmparseunboundlicense
+External_Function DRMParseUnboundLicense "DRMParseUnboundLicense" msdrm.dll ;
+	WString wszCertificate ;	// PWSTR
+	Pointer phQueryRoot ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmregistercontent
+External_Function DRMRegisterContent "DRMRegisterContent" msdrm.dll ;
+	Integer fRegister ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmregisterprotectedwindow
+External_Function DRMRegisterProtectedWindow "DRMRegisterProtectedWindow" msdrm.dll ;
+	UInteger hEnv ;
+	Pointer hwnd ;	// HWND
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmregisterrevocationlist
+External_Function DRMRegisterRevocationList "DRMRegisterRevocationList" msdrm.dll ;
+	UInteger hEnv ;
+	WString wszRevocationList ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmrepair
+External_Function DRMRepair "DRMRepair" msdrm.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetapplicationspecificdata
+External_Function DRMSetApplicationSpecificData "DRMSetApplicationSpecificData" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Integer fDelete ;	// BOOL
+	WString wszName ;	// PWSTR
+	WString wszValue ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetglobaloptions
+External_Function DRMSetGlobalOptions "DRMSetGlobalOptions" msdrm.dll ;
+	Integer eGlobalOptions ;	// DRMGLOBALOPTIONS
+	Pointer pvdata ;	// Pointer*
+	UInteger dwlen ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetintervaltime
+External_Function DRMSetIntervalTime "DRMSetIntervalTime" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	UInteger cDays ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetmetadata
+External_Function DRMSetMetaData "DRMSetMetaData" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	WString wszContentId ;	// PWSTR
+	WString wszContentIdType ;	// PWSTR
+	WString wszSKUId ;	// PWSTR
+	WString wszSKUIdType ;	// PWSTR
+	WString wszContentType ;	// PWSTR
+	WString wszContentName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetnameanddescription
+External_Function DRMSetNameAndDescription "DRMSetNameAndDescription" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Integer fDelete ;	// BOOL
+	UInteger lcid ;
+	WString wszName ;	// PWSTR
+	WString wszDescription ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetrevocationpoint
+External_Function DRMSetRevocationPoint "DRMSetRevocationPoint" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Integer fDelete ;	// BOOL
+	WString wszId ;	// PWSTR
+	WString wszIdType ;	// PWSTR
+	WString wszURL ;	// PWSTR
+	Pointer pstFrequency ;	// SYSTEMTIME*
+	WString wszName ;	// PWSTR
+	WString wszPublicKey ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmsetusagepolicy
+External_Function DRMSetUsagePolicy "DRMSetUsagePolicy" msdrm.dll ;
+	UInteger hIssuanceLicense ;
+	Integer eUsagePolicyType ;	// DRM_USAGEPOLICY_TYPE
+	Integer fDelete ;	// BOOL
+	Integer fExclusion ;	// BOOL
+	WString wszName ;	// PWSTR
+	WString wszMinVersion ;	// PWSTR
+	WString wszMaxVersion ;	// PWSTR
+	WString wszPublicKey ;	// PWSTR
+	WString wszDigestAlgorithm ;	// PWSTR
+	Pointer pbDigest ;	// UChar*
+	UInteger cbDigest ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msdrm/nf-msdrm-drmverify
+External_Function DRMVerify "DRMVerify" msdrm.dll ;
+	WString wszData ;	// PWSTR
+	Pointer pcAttestedData ;	// UInteger*
+	Pointer wszAttestedData ;	// PWSTR
+	Pointer peType ;	// DRMATTESTTYPE*
+	Pointer pcPrincipal ;	// UInteger*
+	Pointer wszPrincipal ;	// PWSTR
+	Pointer pcManifest ;	// UInteger*
+	Pointer wszManifest ;	// PWSTR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

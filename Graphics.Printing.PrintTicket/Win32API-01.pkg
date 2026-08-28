@@ -1,0 +1,93 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptcloseprovider
+External_Function PTCloseProvider "PTCloseProvider" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptconvertdevmodetoprintticket
+External_Function PTConvertDevModeToPrintTicket "PTConvertDevModeToPrintTicket" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	UInteger cbDevmode ;
+	Pointer pDevmode ;	// DEVMODEA*
+	Integer scope ;	// EPrintTicketScope
+	Pointer pPrintTicket ;	// IStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptconvertprinttickettodevmode
+External_Function PTConvertPrintTicketToDevMode "PTConvertPrintTicketToDevMode" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	Pointer pPrintTicket ;	// IStream
+	Integer baseDevmodeType ;	// EDefaultDevmodeType
+	Integer scope ;	// EPrintTicketScope
+	Pointer pcbDevmode ;	// UInteger*
+	Pointer ppDevmode ;	// DEVMODEA**
+	Pointer pbstrErrorMessage ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptgetprintcapabilities
+External_Function PTGetPrintCapabilities "PTGetPrintCapabilities" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	Pointer pPrintTicket ;	// IStream
+	Pointer pCapabilities ;	// IStream
+	Pointer pbstrErrorMessage ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptgetprintdevicecapabilities
+External_Function PTGetPrintDeviceCapabilities "PTGetPrintDeviceCapabilities" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	Pointer pPrintTicket ;	// IStream
+	Pointer pDeviceCapabilities ;	// IStream
+	Pointer pbstrErrorMessage ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptgetprintdeviceresources
+External_Function PTGetPrintDeviceResources "PTGetPrintDeviceResources" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	WString pszLocaleName ;	// PWSTR
+	Pointer pPrintTicket ;	// IStream
+	Pointer pDeviceResources ;	// IStream
+	Pointer pbstrErrorMessage ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptmergeandvalidateprintticket
+External_Function PTMergeAndValidatePrintTicket "PTMergeAndValidatePrintTicket" prntvpt.dll ;
+	Pointer hProvider ;	// HPTPROVIDER
+	Pointer pBaseTicket ;	// IStream
+	Pointer pDeltaTicket ;	// IStream
+	Integer scope ;	// EPrintTicketScope
+	Pointer pResultTicket ;	// IStream
+	Pointer pbstrErrorMessage ;	// BSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptopenprovider
+External_Function PTOpenProvider "PTOpenProvider" prntvpt.dll ;
+	WString pszPrinterName ;	// PWSTR
+	UInteger dwVersion ;
+	Pointer phProvider ;	// HPTPROVIDER*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptopenproviderex
+External_Function PTOpenProviderEx "PTOpenProviderEx" prntvpt.dll ;
+	WString pszPrinterName ;	// PWSTR
+	UInteger dwMaxVersion ;
+	UInteger dwPrefVersion ;
+	Pointer phProvider ;	// HPTPROVIDER*
+	Pointer pUsedVersion ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptqueryschemaversionsupport
+External_Function PTQuerySchemaVersionSupport "PTQuerySchemaVersionSupport" prntvpt.dll ;
+	WString pszPrinterName ;	// PWSTR
+	Pointer pMaxVersion ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/prntvpt/nf-prntvpt-ptreleasememory
+External_Function PTReleaseMemory "PTReleaseMemory" prntvpt.dll ;
+	Pointer pBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

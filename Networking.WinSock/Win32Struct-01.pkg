@@ -1,0 +1,603 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-addrinfoa
+Struct ADDRINFOA
+	Integer ai_flags
+	Integer ai_family
+	Integer ai_socktype
+	Integer ai_protocol
+	ULongPtr ai_addrlen
+	Pointer ai_canonname									// PSTR
+	Pointer ai_addr											// SOCKADDR*
+	Pointer ai_next											// ADDRINFOA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-addrinfoexa
+Struct ADDRINFOEXA
+	Integer ai_flags
+	Integer ai_family
+	Integer ai_socktype
+	Integer ai_protocol
+	ULongPtr ai_addrlen
+	Pointer ai_canonname									// PSTR
+	Pointer ai_addr											// SOCKADDR*
+	Pointer ai_blob											// Pointer*
+	ULongPtr ai_bloblen
+	Pointer ai_provider										// Guid*
+	Pointer ai_next											// ADDRINFOEXA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-addrinfoexw
+Struct ADDRINFOEXW
+	Integer ai_flags
+	Integer ai_family
+	Integer ai_socktype
+	Integer ai_protocol
+	ULongPtr ai_addrlen
+	Pointer ai_canonname									// PWSTR
+	Pointer ai_addr											// SOCKADDR*
+	Pointer ai_blob											// Pointer*
+	ULongPtr ai_bloblen
+	Pointer ai_provider										// Guid*
+	Pointer ai_next											// ADDRINFOEXW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-addrinfow
+Struct ADDRINFOW
+	Integer ai_flags
+	Integer ai_family
+	Integer ai_socktype
+	Integer ai_protocol
+	ULongPtr ai_addrlen
+	Pointer ai_canonname									// PWSTR
+	Pointer ai_addr											// SOCKADDR*
+	Pointer ai_next											// ADDRINFOW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-afprotocols
+Struct AFPROTOCOLS
+	Integer iAddressFamily
+	Integer iProtocol
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-csaddr_info
+Struct CSADDR_INFO
+	SOCKET_ADDRESS LocalAddr
+	SOCKET_ADDRESS RemoteAddr
+	Integer iSocketType
+	Integer iProtocol
+End_Struct
+
+Struct DL_EI48
+	UChar[3] Byte
+End_Struct
+
+Struct DL_EUI48
+	UChar[6] Byte
+	UChar[4] UnionName1
+End_Struct
+
+Struct DL_OUI
+	UChar[3] Byte
+	UChar[1] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/nf-winsock-fd_set
+Struct FD_SET
+	UInteger fd_count
+	Integer iMissingAlignment1
+	ULongPtr[64] fd_array									// SOCKET
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos/ns-qos-flowspec
+Struct FLOWSPEC
+	UInteger TokenRate
+	UInteger TokenBucketSize
+	UInteger PeakBandwidth
+	UInteger Latency
+	UInteger DelayVariation
+	UInteger ServiceType
+	UInteger MaxSduSize
+	UInteger MinimumPolicedSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-hostent
+Struct HOSTENT
+	Pointer h_name											// PSTR
+	Pointer h_aliases										// Char**
+	Short h_addrtype
+	Short h_length
+	Integer iMissingAlignment1
+	Pointer h_addr_list										// Char**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/in6addr/ns-in6addr-in6_addr
+Struct IN6_ADDR
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/inaddr/ns-inaddr-in_addr
+Struct IN_ADDR
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nldef/ns-nldef-nl_bandwidth_information
+Struct NL_BANDWIDTH_INFORMATION
+	UBigint Bandwidth
+	UBigint Instability
+	UChar BandwidthPeaked									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nldef/ns-nldef-nl_interface_offload_rod
+Struct NL_INTERFACE_OFFLOAD_ROD
+	UChar _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nldef/ns-nldef-nl_network_connectivity_hint
+Struct NL_NETWORK_CONNECTIVITY_HINT
+	Integer ConnectivityLevel								// NL_NETWORK_CONNECTIVITY_LEVEL_HINT
+	Integer ConnectivityCost								// NL_NETWORK_CONNECTIVITY_COST_HINT
+	UChar ApproachingDataLimit								// BOOLEAN
+	UChar OverDataLimit										// BOOLEAN
+	UChar Roaming											// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2spi/ns-ws2spi-nspv2_routine
+Struct NSPV2_ROUTINE
+	UInteger cbSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	Integer iMissingAlignment1
+	Pointer NSPv2Startup									// LPNSPV2STARTUP
+	Pointer NSPv2Cleanup									// LPNSPV2CLEANUP
+	Pointer NSPv2LookupServiceBegin							// LPNSPV2LOOKUPSERVICEBEGIN
+	Pointer NSPv2LookupServiceNextEx						// LPNSPV2LOOKUPSERVICENEXTEX
+	Pointer NSPv2LookupServiceEnd							// LPNSPV2LOOKUPSERVICEEND
+	Pointer NSPv2SetServiceEx								// LPNSPV2SETSERVICEEX
+	Pointer NSPv2ClientSessionRundown						// LPNSPV2CLIENTSESSIONRUNDOWN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-protoent
+Struct PROTOENT
+	Pointer p_name											// PSTR
+	Pointer p_aliases										// Char**
+	Short p_proto
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-qos
+Struct QOS
+	FLOWSPEC SendingFlowspec
+	FLOWSPEC ReceivingFlowspec
+	WSABUF ProviderSpecific
+End_Struct
+
+Struct SCOPE_ID
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-servent
+Struct SERVENT
+	Pointer s_name											// PSTR
+	Pointer s_aliases										// Char**
+	Pointer s_proto											// PSTR
+	Short s_port
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-service_address
+Struct SERVICE_ADDRESS
+	UInteger dwAddressType
+	UInteger dwAddressFlags
+	UInteger dwAddressLength
+	UInteger dwPrincipalLength
+	Pointer lpAddress										// UChar*
+	Pointer lpPrincipal										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-service_addresses
+Struct SERVICE_ADDRESSES
+	UInteger dwAddressCount
+	Integer iMissingAlignment1
+	SERVICE_ADDRESS[1] Addresses
+End_Struct
+
+Struct SERVICE_ASYNC_INFO
+	Pointer lpServiceCallbackProc							// LPSERVICE_CALLBACK_PROC
+	LongPtr lParam											// LPARAM
+	Pointer hAsyncTaskHandle								// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-service_infoa
+Struct SERVICE_INFOA
+	Pointer lpServiceType									// Guid*
+	Pointer lpServiceName									// PSTR
+	Pointer lpComment										// PSTR
+	Pointer lpLocale										// PSTR
+	UInteger dwDisplayHint									// RESOURCE_DISPLAY_TYPE
+	UInteger dwVersion
+	UInteger dwTime
+	Integer iMissingAlignment1
+	Pointer lpMachineName									// PSTR
+	Pointer lpServiceAddress								// SERVICE_ADDRESSES*
+	BLOB ServiceSpecificInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-service_infow
+Struct SERVICE_INFOW
+	Pointer lpServiceType									// Guid*
+	Pointer lpServiceName									// PWSTR
+	Pointer lpComment										// PWSTR
+	Pointer lpLocale										// PWSTR
+	UInteger dwDisplayHint									// RESOURCE_DISPLAY_TYPE
+	UInteger dwVersion
+	UInteger dwTime
+	Integer iMissingAlignment1
+	Pointer lpMachineName									// PWSTR
+	Pointer lpServiceAddress								// SERVICE_ADDRESSES*
+	BLOB ServiceSpecificInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-sockaddr
+Struct SOCKADDR
+	UShort sa_family										// ADDRESS_FAMILY
+	Char[14] sa_data										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-sockaddr_in
+Struct SOCKADDR_IN
+	UShort sin_family										// ADDRESS_FAMILY
+	UShort sin_port
+	IN_ADDR sin_addr
+	Char[8] sin_zero										// CHAR
+End_Struct
+
+Struct SOCKADDR_IN6
+	UShort sin6_family										// ADDRESS_FAMILY
+	UShort sin6_port
+	UInteger sin6_flowinfo
+	IN6_ADDR sin6_addr
+	UChar[4] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-sockaddr_in6_pair
+Struct SOCKADDR_IN6_PAIR
+	Pointer SourceAddress									// SOCKADDR_IN6*
+	Pointer DestinationAddress								// SOCKADDR_IN6*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-sockaddr_inet
+Struct SOCKADDR_INET
+	SOCKADDR_IN Ipv4
+	SOCKADDR_IN6 Ipv6
+	UShort si_family										// ADDRESS_FAMILY
+	Short iMissingAlignment1
+End_Struct
+
+Struct SOCKADDR_STORAGE
+	UShort ss_family										// ADDRESS_FAMILY
+	Char[6] __ss_pad1										// CHAR
+	Bigint __ss_align
+	Char[112] __ss_pad2										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-socket_address
+Struct SOCKET_ADDRESS
+	Pointer lpSockaddr										// SOCKADDR*
+	Integer iSockaddrLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-socket_address_list
+Struct SOCKET_ADDRESS_LIST
+	Integer iAddressCount
+	Integer iMissingAlignment1
+	SOCKET_ADDRESS[1] Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-socket_peer_target_name
+Struct SOCKET_PEER_TARGET_NAME
+	Integer SecurityProtocol								// SOCKET_SECURITY_PROTOCOL
+	Integer iMissingAlignment1
+	SOCKADDR_STORAGE PeerAddress
+	UInteger PeerTargetNameStringLen
+	UShort[1] AllStrings
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-socket_security_query_info
+Struct SOCKET_SECURITY_QUERY_INFO
+	Integer SecurityProtocol								// SOCKET_SECURITY_PROTOCOL
+	UInteger Flags
+	UBigint PeerApplicationAccessTokenHandle
+	UBigint PeerMachineAccessTokenHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-socket_security_query_template
+Struct SOCKET_SECURITY_QUERY_TEMPLATE
+	Integer SecurityProtocol								// SOCKET_SECURITY_PROTOCOL
+	Integer iMissingAlignment1
+	SOCKADDR_STORAGE PeerAddress
+	UInteger PeerTokenAccessMask
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-socket_security_settings
+Struct SOCKET_SECURITY_SETTINGS
+	Integer SecurityProtocol								// SOCKET_SECURITY_PROTOCOL
+	UInteger SecurityFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-sock_notify_registration
+Struct SOCK_NOTIFY_REGISTRATION
+	ULongPtr socket											// SOCKET
+	Pointer completionKey									// Pointer*
+	UShort eventFilter
+	UChar operation
+	UChar triggerFlags
+	UInteger registrationResult
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-timeval
+Struct TIMEVAL
+	Integer tv_sec
+	Integer tv_usec
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mswsock/ns-mswsock-transmit_file_buffers
+Struct TRANSMIT_FILE_BUFFERS
+	Pointer Head											// Pointer*
+	UInteger HeadLength
+	Integer iMissingAlignment1
+	Pointer Tail											// Pointer*
+	UInteger TailLength
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-wsabuf
+Struct WSABUF
+	UInteger len
+	Integer iMissingAlignment1
+	Pointer buf												// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsacompletion
+Struct WSACOMPLETION
+	Integer Type											// WSACOMPLETIONTYPE
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-wsadata
+Struct WSADATA
+	UShort wVersion
+	UShort wHighVersion
+	UShort iMaxSockets
+	UShort iMaxUdpDg
+	Pointer lpVendorInfo									// PSTR
+	Char[257] szDescription									// CHAR
+	Char[129] szSystemStatus								// CHAR
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2def/ns-ws2def-wsamsg
+Struct WSAMSG
+	Pointer name											// SOCKADDR*
+	Integer namelen
+	Integer iMissingAlignment1
+	Pointer lpBuffers										// WSABUF*
+	UInteger dwBufferCount
+	Integer iMissingAlignment2
+	WSABUF Control
+	UInteger dwFlags
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsanamespace_infoa
+Struct WSANAMESPACE_INFOA
+	Guid NSProviderId
+	UInteger dwNameSpace
+	Integer fActive											// BOOL
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpszIdentifier									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsanamespace_infoexa
+Struct WSANAMESPACE_INFOEXA
+	Guid NSProviderId
+	UInteger dwNameSpace
+	Integer fActive											// BOOL
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpszIdentifier									// PSTR
+	BLOB ProviderSpecific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsanamespace_infoexw
+Struct WSANAMESPACE_INFOEXW
+	Guid NSProviderId
+	UInteger dwNameSpace
+	Integer fActive											// BOOL
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpszIdentifier									// PWSTR
+	BLOB ProviderSpecific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsanamespace_infow
+Struct WSANAMESPACE_INFOW
+	Guid NSProviderId
+	UInteger dwNameSpace
+	Integer fActive											// BOOL
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer lpszIdentifier									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsanetworkevents
+Struct WSANETWORKEVENTS
+	Integer lNetworkEvents
+	Integer[10] iErrorCode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsansclassinfoa
+Struct WSANSCLASSINFOA
+	Pointer lpszName										// PSTR
+	UInteger dwNameSpace
+	UInteger dwValueType
+	UInteger dwValueSize
+	Integer iMissingAlignment1
+	Pointer lpValue											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsansclassinfow
+Struct WSANSCLASSINFOW
+	Pointer lpszName										// PWSTR
+	UInteger dwNameSpace
+	UInteger dwValueType
+	UInteger dwValueSize
+	Integer iMissingAlignment1
+	Pointer lpValue											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsapollfd
+Struct WSAPOLLFD
+	ULongPtr fd												// SOCKET
+	Short events											// WSAPOLL_EVENT_FLAGS
+	Short revents											// WSAPOLL_EVENT_FLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaprotocolchain
+Struct WSAPROTOCOLCHAIN
+	Integer ChainLen
+	UInteger[7] ChainEntries
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaprotocol_infoa
+Struct WSAPROTOCOL_INFOA
+	UInteger dwServiceFlags1
+	UInteger dwServiceFlags2
+	UInteger dwServiceFlags3
+	UInteger dwServiceFlags4
+	UInteger dwProviderFlags
+	Guid ProviderId
+	UInteger dwCatalogEntryId
+	WSAPROTOCOLCHAIN ProtocolChain
+	Integer iVersion
+	Integer iAddressFamily
+	Integer iMaxSockAddr
+	Integer iMinSockAddr
+	Integer iSocketType
+	Integer iProtocol
+	Integer iProtocolMaxOffset
+	Integer iNetworkByteOrder
+	Integer iSecurityScheme
+	UInteger dwMessageSize
+	UInteger dwProviderReserved
+	Char[256] szProtocol									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaprotocol_infow
+Struct WSAPROTOCOL_INFOW
+	UInteger dwServiceFlags1
+	UInteger dwServiceFlags2
+	UInteger dwServiceFlags3
+	UInteger dwServiceFlags4
+	UInteger dwProviderFlags
+	Guid ProviderId
+	UInteger dwCatalogEntryId
+	WSAPROTOCOLCHAIN ProtocolChain
+	Integer iVersion
+	Integer iAddressFamily
+	Integer iMaxSockAddr
+	Integer iMinSockAddr
+	Integer iSocketType
+	Integer iProtocol
+	Integer iProtocolMaxOffset
+	Integer iNetworkByteOrder
+	Integer iSecurityScheme
+	UInteger dwMessageSize
+	UInteger dwProviderReserved
+	UShort[256] szProtocol
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaqueryseta
+Struct WSAQUERYSETA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpszServiceInstanceName							// PSTR
+	Pointer lpServiceClassId								// Guid*
+	Pointer lpVersion										// WSAVERSION*
+	Pointer lpszComment										// PSTR
+	UInteger dwNameSpace
+	Integer iMissingAlignment2
+	Pointer lpNSProviderId									// Guid*
+	Pointer lpszContext										// PSTR
+	UInteger dwNumberOfProtocols
+	Integer iMissingAlignment3
+	Pointer lpafpProtocols									// AFPROTOCOLS*
+	Pointer lpszQueryString									// PSTR
+	UInteger dwNumberOfCsAddrs
+	Integer iMissingAlignment4
+	Pointer lpcsaBuffer										// CSADDR_INFO*
+	UInteger dwOutputFlags
+	Integer iMissingAlignment5
+	Pointer lpBlob											// BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaquerysetw
+Struct WSAQUERYSETW
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpszServiceInstanceName							// PWSTR
+	Pointer lpServiceClassId								// Guid*
+	Pointer lpVersion										// WSAVERSION*
+	Pointer lpszComment										// PWSTR
+	UInteger dwNameSpace
+	Integer iMissingAlignment2
+	Pointer lpNSProviderId									// Guid*
+	Pointer lpszContext										// PWSTR
+	UInteger dwNumberOfProtocols
+	Integer iMissingAlignment3
+	Pointer lpafpProtocols									// AFPROTOCOLS*
+	Pointer lpszQueryString									// PWSTR
+	UInteger dwNumberOfCsAddrs
+	Integer iMissingAlignment4
+	Pointer lpcsaBuffer										// CSADDR_INFO*
+	UInteger dwOutputFlags
+	Integer iMissingAlignment5
+	Pointer lpBlob											// BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaserviceclassinfoa
+Struct WSASERVICECLASSINFOA
+	Pointer lpServiceClassId								// Guid*
+	Pointer lpszServiceClassName							// PSTR
+	UInteger dwCount
+	Integer iMissingAlignment1
+	Pointer lpClassInfos									// WSANSCLASSINFOA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaserviceclassinfow
+Struct WSASERVICECLASSINFOW
+	Pointer lpServiceClassId								// Guid*
+	Pointer lpszServiceClassName							// PWSTR
+	UInteger dwCount
+	Integer iMissingAlignment1
+	Pointer lpClassInfos									// WSANSCLASSINFOW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-wsaversion
+Struct WSAVERSION
+	UInteger dwVersion
+	Integer ecHow											// WSAECOMPARATOR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

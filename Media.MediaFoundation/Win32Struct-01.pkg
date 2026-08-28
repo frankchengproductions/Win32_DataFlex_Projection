@@ -1,0 +1,176 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-am_media_type
+Struct AM_MEDIA_TYPE
+	Guid majortype
+	Guid subtype
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger lSampleSize
+	Guid formattype
+	Integer iMissingAlignment1
+	Pointer pUnk											// IUnknown
+	UInteger cbFormat
+	Integer iMissingAlignment2
+	Pointer pbFormat										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_content_desc
+Struct DXVAHD_CONTENT_DESC
+	Integer InputFrameFormat								// DXVAHD_FRAME_FORMAT
+	DXVAHD_RATIONAL InputFrameRate
+	UInteger InputWidth
+	UInteger InputHeight
+	DXVAHD_RATIONAL OutputFrameRate
+	UInteger OutputWidth
+	UInteger OutputHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_rational
+Struct DXVAHD_RATIONAL
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfargb
+Struct MFARGB
+	UChar rgbBlue
+	UChar rgbGreen
+	UChar rgbRed
+	UChar rgbAlpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfayuvsample
+Struct MFAYUVSample
+	UChar bCrValue
+	UChar bCbValue
+	UChar bYValue
+	UChar bSampleAlpha8
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfoffset
+Struct MFOffset
+	UShort fract
+	Short value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfpaletteentry
+Struct MFPaletteEntry
+	MFARGB ARGB
+	MFAYUVSample AYCbCr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfratio
+Struct MFRatio
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mft_register_type_info
+Struct MFT_REGISTER_TYPE_INFO
+	Guid guidMajorType
+	Guid guidSubtype
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideoformat
+Struct MFVIDEOFORMAT
+	UInteger dwSize
+	Integer iMissingAlignment1
+	MFVideoInfo videoInfo
+	Guid guidFormat
+	MFVideoCompressedInfo compressedInfo
+	MFVideoSurfaceInfo surfaceInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideoarea
+Struct MFVideoArea
+	MFOffset OffsetX
+	MFOffset OffsetY
+	SIZE Area
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideocompressedinfo
+Struct MFVideoCompressedInfo
+	Bigint AvgBitrate
+	Bigint AvgBitErrorRate
+	UInteger MaxKeyFrameSpacing
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideoinfo
+Struct MFVideoInfo
+	UInteger dwWidth
+	UInteger dwHeight
+	MFRatio PixelAspectRatio
+	Integer SourceChromaSubsampling							// MFVideoChromaSubsampling
+	Integer InterlaceMode									// MFVideoInterlaceMode
+	Integer TransferFunction								// MFVideoTransferFunction
+	Integer ColorPrimaries									// MFVideoPrimaries
+	Integer TransferMatrix									// MFVideoTransferMatrix
+	Integer SourceLighting									// MFVideoLighting
+	MFRatio FramesPerSecond
+	Integer NominalRange									// MFNominalRange
+	MFVideoArea GeometricAperture
+	MFVideoArea MinimumDisplayAperture
+	MFVideoArea PanScanAperture
+	Integer iMissingAlignment1
+	UBigint VideoFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideosurfaceinfo
+Struct MFVideoSurfaceInfo
+	UInteger Format
+	UInteger PaletteEntries
+	MFPaletteEntry[1] Palette
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/amvideo/ns-amvideo-mpeg1videoinfo
+Struct MPEG1VIDEOINFO
+	VIDEOINFOHEADER hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UChar[1] bSequenceHeader
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvdmedia/ns-dvdmedia-mpeg2videoinfo
+Struct MPEG2VIDEOINFO
+	VIDEOINFOHEADER2 hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UInteger dwProfile
+	UInteger dwLevel
+	UInteger dwFlags										// MPEG2VIDEOINFO_FLAGS
+	UInteger[1] dwSequenceHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/amvideo/ns-amvideo-videoinfoheader
+Struct VIDEOINFOHEADER
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	BITMAPINFOHEADER bmiHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvdmedia/ns-dvdmedia-videoinfoheader2
+Struct VIDEOINFOHEADER2
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	UInteger dwInterlaceFlags
+	UInteger dwCopyProtectFlags
+	UInteger dwPictAspectRatioX
+	UInteger dwPictAspectRatioY
+	UChar[4] UnionName1
+	UInteger dwReserved2
+	BITMAPINFOHEADER bmiHeader
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,1050 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coregistermessagefilter
+External_Function CoRegisterMessageFilter "CoRegisterMessageFilter" OLE32.dll ;
+	Pointer lpMessageFilter ;	// IMessageFilter
+	Pointer lplpMessageFilter ;	// IMessageFilter*
+	Returns Integer	// HRESULT
+
+External_Function PlaySoundA "PlaySoundA" WINMM.dll ;
+	String pszSound ;	// PSTR
+	Pointer hmod ;	// HMODULE
+	UInteger fdwSound ;	// SND_FLAGS
+	Returns Integer	// BOOL
+
+External_Function PlaySoundW "PlaySoundW" WINMM.dll ;
+	WString pszSound ;	// PWSTR
+	Pointer hmod ;	// HMODULE
+	UInteger fdwSound ;	// SND_FLAGS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetdevcapsa
+External_Function auxGetDevCapsA "auxGetDevCapsA" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pac ;	// AUXCAPSA*
+	UInteger cbac ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetdevcapsw
+External_Function auxGetDevCapsW "auxGetDevCapsW" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pac ;	// AUXCAPSW*
+	UInteger cbac ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetnumdevs
+External_Function auxGetNumDevs "auxGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxgetvolume
+External_Function auxGetVolume "auxGetVolume" WINMM.dll ;
+	UInteger uDeviceID ;
+	Pointer pdwVolume ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxoutmessage
+External_Function auxOutMessage "auxOutMessage" WINMM.dll ;
+	UInteger uDeviceID ;
+	UInteger uMsg ;
+	ULongPtr dw1 ;
+	ULongPtr dw2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-auxsetvolume
+External_Function auxSetVolume "auxSetVolume" WINMM.dll ;
+	UInteger uDeviceID ;
+	UInteger dwVolume ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiconnect
+External_Function midiConnect "midiConnect" WINMM.dll ;
+	Pointer hmi ;	// HMIDI
+	Pointer hmo ;	// HMIDIOUT
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mididisconnect
+External_Function midiDisconnect "midiDisconnect" WINMM.dll ;
+	Pointer hmi ;	// HMIDI
+	Pointer hmo ;	// HMIDIOUT
+	Pointer pReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinaddbuffer
+External_Function midiInAddBuffer "midiInAddBuffer" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinclose
+External_Function midiInClose "midiInClose" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingetdevcapsa
+External_Function midiInGetDevCapsA "midiInGetDevCapsA" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pmic ;	// MIDIINCAPSA*
+	UInteger cbmic ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingetdevcapsw
+External_Function midiInGetDevCapsW "midiInGetDevCapsW" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pmic ;	// MIDIINCAPSW*
+	UInteger cbmic ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingeterrortexta
+External_Function midiInGetErrorTextA "midiInGetErrorTextA" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PSTR
+	UInteger cchText ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingeterrortextw
+External_Function midiInGetErrorTextW "midiInGetErrorTextW" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PWSTR
+	UInteger cchText ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingetid
+External_Function midiInGetID "midiInGetID" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Pointer puDeviceID ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiingetnumdevs
+External_Function midiInGetNumDevs "midiInGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinmessage
+External_Function midiInMessage "midiInMessage" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	UInteger uMsg ;
+	ULongPtr dw1 ;
+	ULongPtr dw2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinopen
+External_Function midiInOpen "midiInOpen" WINMM.dll ;
+	Pointer phmi ;	// HMIDIIN*
+	UInteger uDeviceID ;
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;	// MIDI_WAVE_OPEN_TYPE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinprepareheader
+External_Function midiInPrepareHeader "midiInPrepareHeader" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinreset
+External_Function midiInReset "midiInReset" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinstart
+External_Function midiInStart "midiInStart" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinstop
+External_Function midiInStop "midiInStop" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midiinunprepareheader
+External_Function midiInUnprepareHeader "midiInUnprepareHeader" WINMM.dll ;
+	Pointer hmi ;	// HMIDIIN
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutcachedrumpatches
+External_Function midiOutCacheDrumPatches "midiOutCacheDrumPatches" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	UInteger uPatch ;
+	Pointer pwkya ;	// UShort*
+	UInteger fuCache ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutcachepatches
+External_Function midiOutCachePatches "midiOutCachePatches" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	UInteger uBank ;
+	Pointer pwpa ;	// UShort*
+	UInteger fuCache ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutclose
+External_Function midiOutClose "midiOutClose" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetdevcapsa
+External_Function midiOutGetDevCapsA "midiOutGetDevCapsA" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pmoc ;	// MIDIOUTCAPSA*
+	UInteger cbmoc ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetdevcapsw
+External_Function midiOutGetDevCapsW "midiOutGetDevCapsW" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pmoc ;	// MIDIOUTCAPSW*
+	UInteger cbmoc ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgeterrortexta
+External_Function midiOutGetErrorTextA "midiOutGetErrorTextA" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PSTR
+	UInteger cchText ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgeterrortextw
+External_Function midiOutGetErrorTextW "midiOutGetErrorTextW" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PWSTR
+	UInteger cchText ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetid
+External_Function midiOutGetID "midiOutGetID" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Pointer puDeviceID ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetnumdevs
+External_Function midiOutGetNumDevs "midiOutGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutgetvolume
+External_Function midiOutGetVolume "midiOutGetVolume" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Pointer pdwVolume ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutlongmsg
+External_Function midiOutLongMsg "midiOutLongMsg" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutmessage
+External_Function midiOutMessage "midiOutMessage" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	UInteger uMsg ;
+	ULongPtr dw1 ;
+	ULongPtr dw2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutopen
+External_Function midiOutOpen "midiOutOpen" WINMM.dll ;
+	Pointer phmo ;	// HMIDIOUT*
+	UInteger uDeviceID ;
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;	// MIDI_WAVE_OPEN_TYPE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutprepareheader
+External_Function midiOutPrepareHeader "midiOutPrepareHeader" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutreset
+External_Function midiOutReset "midiOutReset" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutsetvolume
+External_Function midiOutSetVolume "midiOutSetVolume" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	UInteger dwVolume ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutshortmsg
+External_Function midiOutShortMsg "midiOutShortMsg" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	UInteger dwMsg ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midioutunprepareheader
+External_Function midiOutUnprepareHeader "midiOutUnprepareHeader" WINMM.dll ;
+	Pointer hmo ;	// HMIDIOUT
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamclose
+External_Function midiStreamClose "midiStreamClose" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamopen
+External_Function midiStreamOpen "midiStreamOpen" WINMM.dll ;
+	Pointer phms ;	// HMIDISTRM*
+	Pointer puDeviceID ;	// UInteger*
+	UInteger cMidi ;
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamout
+External_Function midiStreamOut "midiStreamOut" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Pointer pmh ;	// MIDIHDR*
+	UInteger cbmh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreampause
+External_Function midiStreamPause "midiStreamPause" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamposition
+External_Function midiStreamPosition "midiStreamPosition" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Pointer lpmmt ;	// MMTIME*
+	UInteger cbmmt ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamproperty
+External_Function midiStreamProperty "midiStreamProperty" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Pointer lppropdata ;	// UChar*
+	UInteger dwProperty ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamrestart
+External_Function midiStreamRestart "midiStreamRestart" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-midistreamstop
+External_Function midiStreamStop "midiStreamStop" WINMM.dll ;
+	Pointer hms ;	// HMIDISTRM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixerclose
+External_Function mixerClose "mixerClose" WINMM.dll ;
+	Pointer hmx ;	// HMIXER
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetcontroldetailsa
+External_Function mixerGetControlDetailsA "mixerGetControlDetailsA" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxcd ;	// MIXERCONTROLDETAILS*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetcontroldetailsw
+External_Function mixerGetControlDetailsW "mixerGetControlDetailsW" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxcd ;	// MIXERCONTROLDETAILS*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetdevcapsa
+External_Function mixerGetDevCapsA "mixerGetDevCapsA" WINMM.dll ;
+	ULongPtr uMxId ;
+	Pointer pmxcaps ;	// MIXERCAPSA*
+	UInteger cbmxcaps ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetdevcapsw
+External_Function mixerGetDevCapsW "mixerGetDevCapsW" WINMM.dll ;
+	ULongPtr uMxId ;
+	Pointer pmxcaps ;	// MIXERCAPSW*
+	UInteger cbmxcaps ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetid
+External_Function mixerGetID "mixerGetID" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer puMxId ;	// UInteger*
+	UInteger fdwId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlinecontrolsa
+External_Function mixerGetLineControlsA "mixerGetLineControlsA" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxlc ;	// MIXERLINECONTROLSA*
+	UInteger fdwControls ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlinecontrolsw
+External_Function mixerGetLineControlsW "mixerGetLineControlsW" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxlc ;	// MIXERLINECONTROLSW*
+	UInteger fdwControls ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlineinfoa
+External_Function mixerGetLineInfoA "mixerGetLineInfoA" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxl ;	// MIXERLINEA*
+	UInteger fdwInfo ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetlineinfow
+External_Function mixerGetLineInfoW "mixerGetLineInfoW" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxl ;	// MIXERLINEW*
+	UInteger fdwInfo ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixergetnumdevs
+External_Function mixerGetNumDevs "mixerGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixermessage
+External_Function mixerMessage "mixerMessage" WINMM.dll ;
+	Pointer hmx ;	// HMIXER
+	UInteger uMsg ;
+	ULongPtr dwParam1 ;
+	ULongPtr dwParam2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixeropen
+External_Function mixerOpen "mixerOpen" WINMM.dll ;
+	Pointer phmx ;	// HMIXER*
+	UInteger uMxId ;
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-mixersetcontroldetails
+External_Function mixerSetControlDetails "mixerSetControlDetails" WINMM.dll ;
+	Pointer hmxobj ;	// HMIXEROBJ
+	Pointer pmxcd ;	// MIXERCONTROLDETAILS*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+External_Function sndPlaySoundA "sndPlaySoundA" WINMM.dll ;
+	String pszSound ;	// PSTR
+	UInteger fuSound ;
+	Returns Integer	// BOOL
+
+External_Function sndPlaySoundW "sndPlaySoundW" WINMM.dll ;
+	WString pszSound ;	// PWSTR
+	UInteger fuSound ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinaddbuffer
+External_Function waveInAddBuffer "waveInAddBuffer" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Pointer pwh ;	// WAVEHDR*
+	UInteger cbwh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinclose
+External_Function waveInClose "waveInClose" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Returns UInteger
+
+External_Function waveInGetDevCapsA "waveInGetDevCapsA" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pwic ;	// WAVEINCAPSA*
+	UInteger cbwic ;
+	Returns UInteger
+
+External_Function waveInGetDevCapsW "waveInGetDevCapsW" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pwic ;	// WAVEINCAPSW*
+	UInteger cbwic ;
+	Returns UInteger
+
+External_Function waveInGetErrorTextA "waveInGetErrorTextA" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PSTR
+	UInteger cchText ;
+	Returns UInteger
+
+External_Function waveInGetErrorTextW "waveInGetErrorTextW" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PWSTR
+	UInteger cchText ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveingetid
+External_Function waveInGetID "waveInGetID" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Pointer puDeviceID ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveingetnumdevs
+External_Function waveInGetNumDevs "waveInGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveingetposition
+External_Function waveInGetPosition "waveInGetPosition" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Pointer pmmt ;	// MMTIME*
+	UInteger cbmmt ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinmessage
+External_Function waveInMessage "waveInMessage" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	UInteger uMsg ;
+	ULongPtr dw1 ;
+	ULongPtr dw2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinopen
+External_Function waveInOpen "waveInOpen" WINMM.dll ;
+	Pointer phwi ;	// HWAVEIN*
+	UInteger uDeviceID ;
+	Pointer pwfx ;	// WAVEFORMATEX*
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;	// MIDI_WAVE_OPEN_TYPE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinprepareheader
+External_Function waveInPrepareHeader "waveInPrepareHeader" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Pointer pwh ;	// WAVEHDR*
+	UInteger cbwh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinreset
+External_Function waveInReset "waveInReset" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinstart
+External_Function waveInStart "waveInStart" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinstop
+External_Function waveInStop "waveInStop" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveinunprepareheader
+External_Function waveInUnprepareHeader "waveInUnprepareHeader" WINMM.dll ;
+	Pointer hwi ;	// HWAVEIN
+	Pointer pwh ;	// WAVEHDR*
+	UInteger cbwh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutbreakloop
+External_Function waveOutBreakLoop "waveOutBreakLoop" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutclose
+External_Function waveOutClose "waveOutClose" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Returns UInteger
+
+External_Function waveOutGetDevCapsA "waveOutGetDevCapsA" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pwoc ;	// WAVEOUTCAPSA*
+	UInteger cbwoc ;
+	Returns UInteger
+
+External_Function waveOutGetDevCapsW "waveOutGetDevCapsW" WINMM.dll ;
+	ULongPtr uDeviceID ;
+	Pointer pwoc ;	// WAVEOUTCAPSW*
+	UInteger cbwoc ;
+	Returns UInteger
+
+External_Function waveOutGetErrorTextA "waveOutGetErrorTextA" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PSTR
+	UInteger cchText ;
+	Returns UInteger
+
+External_Function waveOutGetErrorTextW "waveOutGetErrorTextW" WINMM.dll ;
+	UInteger mmrError ;
+	Pointer pszText ;	// PWSTR
+	UInteger cchText ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetid
+External_Function waveOutGetID "waveOutGetID" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer puDeviceID ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetnumdevs
+External_Function waveOutGetNumDevs "waveOutGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetpitch
+External_Function waveOutGetPitch "waveOutGetPitch" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pdwPitch ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetplaybackrate
+External_Function waveOutGetPlaybackRate "waveOutGetPlaybackRate" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pdwRate ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetposition
+External_Function waveOutGetPosition "waveOutGetPosition" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pmmt ;	// MMTIME*
+	UInteger cbmmt ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutgetvolume
+External_Function waveOutGetVolume "waveOutGetVolume" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pdwVolume ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutmessage
+External_Function waveOutMessage "waveOutMessage" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	UInteger uMsg ;
+	ULongPtr dw1 ;
+	ULongPtr dw2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutopen
+External_Function waveOutOpen "waveOutOpen" WINMM.dll ;
+	Pointer phwo ;	// HWAVEOUT*
+	UInteger uDeviceID ;
+	Pointer pwfx ;	// WAVEFORMATEX*
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;	// MIDI_WAVE_OPEN_TYPE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutpause
+External_Function waveOutPause "waveOutPause" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutprepareheader
+External_Function waveOutPrepareHeader "waveOutPrepareHeader" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pwh ;	// WAVEHDR*
+	UInteger cbwh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutreset
+External_Function waveOutReset "waveOutReset" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutrestart
+External_Function waveOutRestart "waveOutRestart" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutsetpitch
+External_Function waveOutSetPitch "waveOutSetPitch" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	UInteger dwPitch ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutsetplaybackrate
+External_Function waveOutSetPlaybackRate "waveOutSetPlaybackRate" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	UInteger dwRate ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutsetvolume
+External_Function waveOutSetVolume "waveOutSetVolume" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	UInteger dwVolume ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutunprepareheader
+External_Function waveOutUnprepareHeader "waveOutUnprepareHeader" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pwh ;	// WAVEHDR*
+	UInteger cbwh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmeapi/nf-mmeapi-waveoutwrite
+External_Function waveOutWrite "waveOutWrite" WINMM.dll ;
+	Pointer hwo ;	// HWAVEOUT
+	Pointer pwh ;	// WAVEHDR*
+	UInteger cbwh ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-activateaudiointerfaceasync
+External_Function ActivateAudioInterfaceAsync "ActivateAudioInterfaceAsync" MMDevAPI.dll ;
+	WString deviceInterfacePath ;	// PWSTR
+	Pointer riid ;	// Guid*
+	Pointer activationParams ;	// PROPVARIANT*
+	Pointer completionHandler ;	// IActivateAudioInterfaceCompletionHandler
+	Pointer activationOperation ;	// IActivateAudioInterfaceAsyncOperation*
+	Returns Integer	// HRESULT
+
+External_Function CreateCaptureAudioStateMonitor "CreateCaptureAudioStateMonitor" Windows.Media.MediaControl.dll ;
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateCaptureAudioStateMonitorForCategory "CreateCaptureAudioStateMonitorForCategory" Windows.Media.MediaControl.dll ;
+	Integer category ;	// AUDIO_STREAM_CATEGORY
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateCaptureAudioStateMonitorForCategoryAndDeviceId "CreateCaptureAudioStateMonitorForCategoryAndDeviceId" Windows.Media.MediaControl.dll ;
+	Integer category ;	// AUDIO_STREAM_CATEGORY
+	WString deviceId ;	// PWSTR
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateCaptureAudioStateMonitorForCategoryAndDeviceRole "CreateCaptureAudioStateMonitorForCategoryAndDeviceRole" Windows.Media.MediaControl.dll ;
+	Integer category ;	// AUDIO_STREAM_CATEGORY
+	Integer role ;	// ERole
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateRenderAudioStateMonitor "CreateRenderAudioStateMonitor" Windows.Media.MediaControl.dll ;
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateRenderAudioStateMonitorForCategory "CreateRenderAudioStateMonitorForCategory" Windows.Media.MediaControl.dll ;
+	Integer category ;	// AUDIO_STREAM_CATEGORY
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateRenderAudioStateMonitorForCategoryAndDeviceId "CreateRenderAudioStateMonitorForCategoryAndDeviceId" Windows.Media.MediaControl.dll ;
+	Integer category ;	// AUDIO_STREAM_CATEGORY
+	WString deviceId ;	// PWSTR
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+External_Function CreateRenderAudioStateMonitorForCategoryAndDeviceRole "CreateRenderAudioStateMonitorForCategoryAndDeviceRole" Windows.Media.MediaControl.dll ;
+	Integer category ;	// AUDIO_STREAM_CATEGORY
+	Integer role ;	// ERole
+	Pointer audioStateMonitor ;	// IAudioStateMonitor*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriveradda
+External_Function acmDriverAddA "acmDriverAddA" MSACM32.dll ;
+	Pointer phadid ;	// HACMDRIVERID*
+	Pointer hinstModule ;	// HINSTANCE
+	LongPtr lParam ;	// LPARAM
+	UInteger dwPriority ;
+	UInteger fdwAdd ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriveraddw
+External_Function acmDriverAddW "acmDriverAddW" MSACM32.dll ;
+	Pointer phadid ;	// HACMDRIVERID*
+	Pointer hinstModule ;	// HINSTANCE
+	LongPtr lParam ;	// LPARAM
+	UInteger dwPriority ;
+	UInteger fdwAdd ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverclose
+External_Function acmDriverClose "acmDriverClose" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	UInteger fdwClose ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverdetailsa
+External_Function acmDriverDetailsA "acmDriverDetailsA" MSACM32.dll ;
+	Pointer hadid ;	// HACMDRIVERID
+	Pointer padd ;	// ACMDRIVERDETAILSA*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverdetailsw
+External_Function acmDriverDetailsW "acmDriverDetailsW" MSACM32.dll ;
+	Pointer hadid ;	// HACMDRIVERID
+	Pointer padd ;	// ACMDRIVERDETAILSW*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverenum
+External_Function acmDriverEnum "acmDriverEnum" MSACM32.dll ;
+	Pointer fnCallback ;	// ACMDRIVERENUMCB
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverid
+External_Function acmDriverID "acmDriverID" MSACM32.dll ;
+	Pointer hao ;	// HACMOBJ
+	Pointer phadid ;	// HACMDRIVERID*
+	UInteger fdwDriverID ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdrivermessage
+External_Function acmDriverMessage "acmDriverMessage" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	UInteger uMsg ;
+	LongPtr lParam1 ;	// LPARAM
+	LongPtr lParam2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriveropen
+External_Function acmDriverOpen "acmDriverOpen" MSACM32.dll ;
+	Pointer phad ;	// HACMDRIVER*
+	Pointer hadid ;	// HACMDRIVERID
+	UInteger fdwOpen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverpriority
+External_Function acmDriverPriority "acmDriverPriority" MSACM32.dll ;
+	Pointer hadid ;	// HACMDRIVERID
+	UInteger dwPriority ;
+	UInteger fdwPriority ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmdriverremove
+External_Function acmDriverRemove "acmDriverRemove" MSACM32.dll ;
+	Pointer hadid ;	// HACMDRIVERID
+	UInteger fdwRemove ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfilterchoosea
+External_Function acmFilterChooseA "acmFilterChooseA" MSACM32.dll ;
+	Pointer pafltrc ;	// ACMFILTERCHOOSEA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfilterchoosew
+External_Function acmFilterChooseW "acmFilterChooseW" MSACM32.dll ;
+	Pointer pafltrc ;	// ACMFILTERCHOOSEW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfilterdetailsa
+External_Function acmFilterDetailsA "acmFilterDetailsA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// ACMFILTERDETAILSA*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfilterdetailsw
+External_Function acmFilterDetailsW "acmFilterDetailsW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// ACMFILTERDETAILSW*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfilterenuma
+External_Function acmFilterEnumA "acmFilterEnumA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// ACMFILTERDETAILSA*
+	Pointer fnCallback ;	// ACMFILTERENUMCBA
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfilterenumw
+External_Function acmFilterEnumW "acmFilterEnumW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// ACMFILTERDETAILSW*
+	Pointer fnCallback ;	// ACMFILTERENUMCBW
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfiltertagdetailsa
+External_Function acmFilterTagDetailsA "acmFilterTagDetailsA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFILTERTAGDETAILSA*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfiltertagdetailsw
+External_Function acmFilterTagDetailsW "acmFilterTagDetailsW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFILTERTAGDETAILSW*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfiltertagenuma
+External_Function acmFilterTagEnumA "acmFilterTagEnumA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFILTERTAGDETAILSA*
+	Pointer fnCallback ;	// ACMFILTERTAGENUMCBA
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmfiltertagenumw
+External_Function acmFilterTagEnumW "acmFilterTagEnumW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFILTERTAGDETAILSW*
+	Pointer fnCallback ;	// ACMFILTERTAGENUMCBW
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatchoosea
+External_Function acmFormatChooseA "acmFormatChooseA" MSACM32.dll ;
+	Pointer pafmtc ;	// ACMFORMATCHOOSEA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatchoosew
+External_Function acmFormatChooseW "acmFormatChooseW" MSACM32.dll ;
+	Pointer pafmtc ;	// ACMFORMATCHOOSEW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatdetailsa
+External_Function acmFormatDetailsA "acmFormatDetailsA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// ACMFORMATDETAILSA*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatdetailsw
+External_Function acmFormatDetailsW "acmFormatDetailsW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// tACMFORMATDETAILSW*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatenuma
+External_Function acmFormatEnumA "acmFormatEnumA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// ACMFORMATDETAILSA*
+	Pointer fnCallback ;	// ACMFORMATENUMCBA
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatenumw
+External_Function acmFormatEnumW "acmFormatEnumW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pafd ;	// tACMFORMATDETAILSW*
+	Pointer fnCallback ;	// ACMFORMATENUMCBW
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformatsuggest
+External_Function acmFormatSuggest "acmFormatSuggest" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer pwfxSrc ;	// WAVEFORMATEX*
+	Pointer pwfxDst ;	// WAVEFORMATEX*
+	UInteger cbwfxDst ;
+	UInteger fdwSuggest ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformattagdetailsa
+External_Function acmFormatTagDetailsA "acmFormatTagDetailsA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFORMATTAGDETAILSA*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformattagdetailsw
+External_Function acmFormatTagDetailsW "acmFormatTagDetailsW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFORMATTAGDETAILSW*
+	UInteger fdwDetails ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformattagenuma
+External_Function acmFormatTagEnumA "acmFormatTagEnumA" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFORMATTAGDETAILSA*
+	Pointer fnCallback ;	// ACMFORMATTAGENUMCBA
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmformattagenumw
+External_Function acmFormatTagEnumW "acmFormatTagEnumW" MSACM32.dll ;
+	Pointer had ;	// HACMDRIVER
+	Pointer paftd ;	// ACMFORMATTAGDETAILSW*
+	Pointer fnCallback ;	// ACMFORMATTAGENUMCBW
+	ULongPtr dwInstance ;
+	UInteger fdwEnum ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmgetversion
+External_Function acmGetVersion "acmGetVersion" MSACM32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmmetrics
+External_Function acmMetrics "acmMetrics" MSACM32.dll ;
+	Pointer hao ;	// HACMOBJ
+	UInteger uMetric ;
+	Pointer pMetric ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamclose
+External_Function acmStreamClose "acmStreamClose" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	UInteger fdwClose ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamconvert
+External_Function acmStreamConvert "acmStreamConvert" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	Pointer pash ;	// ACMSTREAMHEADER*
+	UInteger fdwConvert ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreammessage
+External_Function acmStreamMessage "acmStreamMessage" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	UInteger uMsg ;
+	LongPtr lParam1 ;	// LPARAM
+	LongPtr lParam2 ;	// LPARAM
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamopen
+External_Function acmStreamOpen "acmStreamOpen" MSACM32.dll ;
+	Pointer phas ;	// HACMSTREAM*
+	Pointer had ;	// HACMDRIVER
+	Pointer pwfxSrc ;	// WAVEFORMATEX*
+	Pointer pwfxDst ;	// WAVEFORMATEX*
+	Pointer pwfltr ;	// WAVEFILTER*
+	ULongPtr dwCallback ;
+	ULongPtr dwInstance ;
+	UInteger fdwOpen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamprepareheader
+External_Function acmStreamPrepareHeader "acmStreamPrepareHeader" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	Pointer pash ;	// ACMSTREAMHEADER*
+	UInteger fdwPrepare ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamreset
+External_Function acmStreamReset "acmStreamReset" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	UInteger fdwReset ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamsize
+External_Function acmStreamSize "acmStreamSize" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	UInteger cbInput ;
+	Pointer pdwOutputBytes ;	// UInteger*
+	UInteger fdwSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/msacm/nf-msacm-acmstreamunprepareheader
+External_Function acmStreamUnprepareHeader "acmStreamUnprepareHeader" MSACM32.dll ;
+	Pointer has ;	// HACMSTREAM
+	Pointer pash ;	// ACMSTREAMHEADER*
+	UInteger fdwUnprepare ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

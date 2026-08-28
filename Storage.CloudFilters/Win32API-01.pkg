@@ -1,0 +1,271 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfclosehandle
+External_Function CfCloseHandle "CfCloseHandle" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfconnectsyncroot
+External_Function CfConnectSyncRoot "CfConnectSyncRoot" cldapi.dll ;
+	WString SyncRootPath ;	// PWSTR
+	Pointer CallbackTable ;	// CF_CALLBACK_REGISTRATION*
+	Pointer CallbackContext ;	// Pointer*
+	Integer ConnectFlags ;	// CF_CONNECT_FLAGS
+	Pointer ConnectionKey ;	// CF_CONNECTION_KEY*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfconverttoplaceholder
+External_Function CfConvertToPlaceholder "CfConvertToPlaceholder" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer FileIdentity ;	// Pointer*
+	UInteger FileIdentityLength ;
+	Integer ConvertFlags ;	// CF_CONVERT_FLAGS
+	Pointer ConvertUsn ;	// Bigint*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfcreateplaceholders
+External_Function CfCreatePlaceholders "CfCreatePlaceholders" cldapi.dll ;
+	WString BaseDirectoryPath ;	// PWSTR
+	Pointer PlaceholderArray ;	// CF_PLACEHOLDER_CREATE_INFO*
+	UInteger PlaceholderCount ;
+	Integer CreateFlags ;	// CF_CREATE_FLAGS
+	Pointer EntriesProcessed ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function CfDehydratePlaceholder "CfDehydratePlaceholder" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Bigint StartingOffset ;
+	Bigint Length ;
+	Integer DehydrateFlags ;	// CF_DEHYDRATE_FLAGS
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfdisconnectsyncroot
+External_Function CfDisconnectSyncRoot "CfDisconnectSyncRoot" cldapi.dll ;
+	Bigint ConnectionKey ;	// CF_CONNECTION_KEY
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfexecute
+External_Function CfExecute "CfExecute" cldapi.dll ;
+	Pointer OpInfo ;	// CF_OPERATION_INFO*
+	Pointer OpParams ;	// CF_OPERATION_PARAMETERS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetcorrelationvector
+External_Function CfGetCorrelationVector "CfGetCorrelationVector" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer CorrelationVector ;	// CORRELATION_VECTOR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderinfo
+External_Function CfGetPlaceholderInfo "CfGetPlaceholderInfo" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Integer InfoClass ;	// CF_PLACEHOLDER_INFO_CLASS
+	Pointer InfoBuffer ;	// Pointer*
+	UInteger InfoBufferLength ;
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderrangeinfo
+External_Function CfGetPlaceholderRangeInfo "CfGetPlaceholderRangeInfo" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Integer InfoClass ;	// CF_PLACEHOLDER_RANGE_INFO_CLASS
+	Bigint StartingOffset ;
+	Bigint Length ;
+	Pointer InfoBuffer ;	// Pointer*
+	UInteger InfoBufferLength ;
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderrangeinfoforhydration
+External_Function CfGetPlaceholderRangeInfoForHydration "CfGetPlaceholderRangeInfoForHydration" cldapi.dll ;
+	Bigint ConnectionKey ;	// CF_CONNECTION_KEY
+	Bigint TransferKey ;
+	Bigint FileId ;
+	Integer InfoClass ;	// CF_PLACEHOLDER_RANGE_INFO_CLASS
+	Bigint StartingOffset ;
+	Bigint RangeLength ;
+	Pointer InfoBuffer ;	// Pointer*
+	UInteger InfoBufferSize ;
+	Pointer InfoBufferWritten ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderstatefromattributetag
+External_Function CfGetPlaceholderStateFromAttributeTag "CfGetPlaceholderStateFromAttributeTag" cldapi.dll ;
+	UInteger FileAttributes ;
+	UInteger ReparseTag ;
+	Returns UInteger	// CF_PLACEHOLDER_STATE
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderstatefromfileinfo
+External_Function CfGetPlaceholderStateFromFileInfo "CfGetPlaceholderStateFromFileInfo" cldapi.dll ;
+	Pointer InfoBuffer ;	// Pointer*
+	Integer InfoClass ;	// FILE_INFO_BY_HANDLE_CLASS
+	Returns UInteger	// CF_PLACEHOLDER_STATE
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderstatefromfinddata
+External_Function CfGetPlaceholderStateFromFindData "CfGetPlaceholderStateFromFindData" cldapi.dll ;
+	Pointer FindData ;	// WIN32_FIND_DATAA*
+	Returns UInteger	// CF_PLACEHOLDER_STATE
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetplatforminfo
+External_Function CfGetPlatformInfo "CfGetPlatformInfo" cldapi.dll ;
+	Pointer PlatformVersion ;	// CF_PLATFORM_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetsyncrootinfobyhandle
+External_Function CfGetSyncRootInfoByHandle "CfGetSyncRootInfoByHandle" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Integer InfoClass ;	// CF_SYNC_ROOT_INFO_CLASS
+	Pointer InfoBuffer ;	// Pointer*
+	UInteger InfoBufferLength ;
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetsyncrootinfobypath
+External_Function CfGetSyncRootInfoByPath "CfGetSyncRootInfoByPath" cldapi.dll ;
+	WString FilePath ;	// PWSTR
+	Integer InfoClass ;	// CF_SYNC_ROOT_INFO_CLASS
+	Pointer InfoBuffer ;	// Pointer*
+	UInteger InfoBufferLength ;
+	Pointer ReturnedLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgettransferkey
+External_Function CfGetTransferKey "CfGetTransferKey" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer TransferKey ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfgetwin32handlefromprotectedhandle
+External_Function CfGetWin32HandleFromProtectedHandle "CfGetWin32HandleFromProtectedHandle" cldapi.dll ;
+	Pointer ProtectedHandle ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfhydrateplaceholder
+External_Function CfHydratePlaceholder "CfHydratePlaceholder" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Bigint StartingOffset ;
+	Bigint Length ;
+	Integer HydrateFlags ;	// CF_HYDRATE_FLAGS
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfopenfilewithoplock
+External_Function CfOpenFileWithOplock "CfOpenFileWithOplock" cldapi.dll ;
+	WString FilePath ;	// PWSTR
+	Integer Flags ;	// CF_OPEN_FILE_FLAGS
+	Pointer ProtectedHandle ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfquerysyncproviderstatus
+External_Function CfQuerySyncProviderStatus "CfQuerySyncProviderStatus" cldapi.dll ;
+	Bigint ConnectionKey ;	// CF_CONNECTION_KEY
+	Pointer ProviderStatus ;	// CF_SYNC_PROVIDER_STATUS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfreferenceprotectedhandle
+External_Function CfReferenceProtectedHandle "CfReferenceProtectedHandle" cldapi.dll ;
+	Pointer ProtectedHandle ;	// HANDLE
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfregistersyncroot
+External_Function CfRegisterSyncRoot "CfRegisterSyncRoot" cldapi.dll ;
+	WString SyncRootPath ;	// PWSTR
+	Pointer Registration ;	// CF_SYNC_REGISTRATION*
+	Pointer Policies ;	// CF_SYNC_POLICIES*
+	Integer RegisterFlags ;	// CF_REGISTER_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfreleaseprotectedhandle
+External_Function CfReleaseProtectedHandle "CfReleaseProtectedHandle" cldapi.dll ;
+	Pointer ProtectedHandle ;	// HANDLE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfreleasetransferkey
+External_Function CfReleaseTransferKey "CfReleaseTransferKey" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer TransferKey ;	// Bigint*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfreportproviderprogress
+External_Function CfReportProviderProgress "CfReportProviderProgress" cldapi.dll ;
+	Bigint ConnectionKey ;	// CF_CONNECTION_KEY
+	Bigint TransferKey ;
+	Bigint ProviderProgressTotal ;
+	Bigint ProviderProgressCompleted ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfreportproviderprogress2
+External_Function CfReportProviderProgress2 "CfReportProviderProgress2" cldapi.dll ;
+	Bigint ConnectionKey ;	// CF_CONNECTION_KEY
+	Bigint TransferKey ;
+	Bigint RequestKey ;
+	Bigint ProviderProgressTotal ;
+	Bigint ProviderProgressCompleted ;
+	UInteger TargetSessionId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfreportsyncstatus
+External_Function CfReportSyncStatus "CfReportSyncStatus" cldapi.dll ;
+	WString SyncRootPath ;	// PWSTR
+	Pointer SyncStatus ;	// CF_SYNC_STATUS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfrevertplaceholder
+External_Function CfRevertPlaceholder "CfRevertPlaceholder" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Integer RevertFlags ;	// CF_REVERT_FLAGS
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfsetcorrelationvector
+External_Function CfSetCorrelationVector "CfSetCorrelationVector" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer CorrelationVector ;	// CORRELATION_VECTOR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfsetinsyncstate
+External_Function CfSetInSyncState "CfSetInSyncState" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Integer InSyncState ;	// CF_IN_SYNC_STATE
+	Integer InSyncFlags ;	// CF_SET_IN_SYNC_FLAGS
+	Pointer InSyncUsn ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfsetpinstate
+External_Function CfSetPinState "CfSetPinState" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Integer PinState ;	// CF_PIN_STATE
+	Integer PinFlags ;	// CF_SET_PIN_FLAGS
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfunregistersyncroot
+External_Function CfUnregisterSyncRoot "CfUnregisterSyncRoot" cldapi.dll ;
+	WString SyncRootPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfupdateplaceholder
+External_Function CfUpdatePlaceholder "CfUpdatePlaceholder" cldapi.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer FsMetadata ;	// CF_FS_METADATA*
+	Pointer FileIdentity ;	// Pointer*
+	UInteger FileIdentityLength ;
+	Pointer DehydrateRangeArray ;	// CF_FILE_RANGE*
+	UInteger DehydrateRangeCount ;
+	Integer UpdateFlags ;	// CF_UPDATE_FLAGS
+	Pointer UpdateUsn ;	// Bigint*
+	Pointer Overlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/cfapi/nf-cfapi-cfupdatesyncproviderstatus
+External_Function CfUpdateSyncProviderStatus "CfUpdateSyncProviderStatus" cldapi.dll ;
+	Bigint ConnectionKey ;	// CF_CONNECTION_KEY
+	UInteger ProviderStatus ;	// CF_SYNC_PROVIDER_STATUS
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

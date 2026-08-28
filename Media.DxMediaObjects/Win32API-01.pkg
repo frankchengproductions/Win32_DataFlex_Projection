@@ -1,0 +1,86 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmoenum
+External_Function DMOEnum "DMOEnum" msdmo.dll ;
+	Pointer guidCategory ;	// Guid*
+	UInteger dwFlags ;
+	UInteger cInTypes ;
+	Pointer pInTypes ;	// DMO_PARTIAL_MEDIATYPE*
+	UInteger cOutTypes ;
+	Pointer pOutTypes ;	// DMO_PARTIAL_MEDIATYPE*
+	Pointer ppEnum ;	// IEnumDMO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmogetname
+External_Function DMOGetName "DMOGetName" msdmo.dll ;
+	Pointer clsidDMO ;	// Guid*
+	Pointer szName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmogettypes
+External_Function DMOGetTypes "DMOGetTypes" msdmo.dll ;
+	Pointer clsidDMO ;	// Guid*
+	UInteger ulInputTypesRequested ;
+	Pointer pulInputTypesSupplied ;	// UInteger*
+	Pointer pInputTypes ;	// DMO_PARTIAL_MEDIATYPE*
+	UInteger ulOutputTypesRequested ;
+	Pointer pulOutputTypesSupplied ;	// UInteger*
+	Pointer pOutputTypes ;	// DMO_PARTIAL_MEDIATYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmoregister
+External_Function DMORegister "DMORegister" msdmo.dll ;
+	WString szName ;	// PWSTR
+	Pointer clsidDMO ;	// Guid*
+	Pointer guidCategory ;	// Guid*
+	UInteger dwFlags ;
+	UInteger cInTypes ;
+	Pointer pInTypes ;	// DMO_PARTIAL_MEDIATYPE*
+	UInteger cOutTypes ;
+	Pointer pOutTypes ;	// DMO_PARTIAL_MEDIATYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmoreg/nf-dmoreg-dmounregister
+External_Function DMOUnregister "DMOUnregister" msdmo.dll ;
+	Pointer clsidDMO ;	// Guid*
+	Pointer guidCategory ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmort/nf-dmort-mocopymediatype
+External_Function MoCopyMediaType "MoCopyMediaType" msdmo.dll ;
+	Pointer pmtDest ;	// DMO_MEDIA_TYPE*
+	Pointer pmtSrc ;	// DMO_MEDIA_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmort/nf-dmort-mocreatemediatype
+External_Function MoCreateMediaType "MoCreateMediaType" msdmo.dll ;
+	Pointer ppmt ;	// DMO_MEDIA_TYPE**
+	UInteger cbFormat ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmort/nf-dmort-modeletemediatype
+External_Function MoDeleteMediaType "MoDeleteMediaType" msdmo.dll ;
+	Pointer pmt ;	// DMO_MEDIA_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmort/nf-dmort-moduplicatemediatype
+External_Function MoDuplicateMediaType "MoDuplicateMediaType" msdmo.dll ;
+	Pointer ppmtDest ;	// DMO_MEDIA_TYPE**
+	Pointer pmtSrc ;	// DMO_MEDIA_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmort/nf-dmort-mofreemediatype
+External_Function MoFreeMediaType "MoFreeMediaType" msdmo.dll ;
+	Pointer pmt ;	// DMO_MEDIA_TYPE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dmort/nf-dmort-moinitmediatype
+External_Function MoInitMediaType "MoInitMediaType" msdmo.dll ;
+	Pointer pmt ;	// DMO_MEDIA_TYPE*
+	UInteger cbFormat ;
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

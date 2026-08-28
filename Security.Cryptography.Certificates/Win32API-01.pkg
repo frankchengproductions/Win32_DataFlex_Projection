@@ -1,0 +1,194 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupclose
+External_Function CertSrvBackupClose "CertSrvBackupClose" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupend
+External_Function CertSrvBackupEnd "CertSrvBackupEnd" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupfree
+External_Function CertSrvBackupFree "CertSrvBackupFree" certadm.dll ;
+	Pointer pv ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupgetbackuplogsw
+External_Function CertSrvBackupGetBackupLogsW "CertSrvBackupGetBackupLogsW" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Pointer ppwszzBackupLogFiles ;	// PWSTR*
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupgetdatabasenamesw
+External_Function CertSrvBackupGetDatabaseNamesW "CertSrvBackupGetDatabaseNamesW" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Pointer ppwszzAttachmentInformation ;	// PWSTR*
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupgetdynamicfilelistw
+External_Function CertSrvBackupGetDynamicFileListW "CertSrvBackupGetDynamicFileListW" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Pointer ppwszzFileList ;	// PWSTR*
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupopenfilew
+External_Function CertSrvBackupOpenFileW "CertSrvBackupOpenFileW" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	WString pwszAttachmentName ;	// PWSTR
+	UInteger cbReadHintSize ;
+	Pointer pliFileSize ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackuppreparew
+External_Function CertSrvBackupPrepareW "CertSrvBackupPrepareW" certadm.dll ;
+	WString pwszServerName ;	// PWSTR
+	UInteger grbitJet ;
+	UInteger dwBackupFlags ;	// CSBACKUP_TYPE
+	Pointer phbc ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackupread
+External_Function CertSrvBackupRead "CertSrvBackupRead" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Pointer pvBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Pointer pcbRead ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvbackuptruncatelogs
+External_Function CertSrvBackupTruncateLogs "CertSrvBackupTruncateLogs" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvisserveronlinew
+External_Function CertSrvIsServerOnlineW "CertSrvIsServerOnlineW" certadm.dll ;
+	WString pwszServerName ;	// PWSTR
+	Pointer pfServerOnline ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvrestoreend
+External_Function CertSrvRestoreEnd "CertSrvRestoreEnd" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvrestoregetdatabaselocationsw
+External_Function CertSrvRestoreGetDatabaseLocationsW "CertSrvRestoreGetDatabaseLocationsW" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Pointer ppwszzDatabaseLocationList ;	// PWSTR*
+	Pointer pcbSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvrestorepreparew
+External_Function CertSrvRestorePrepareW "CertSrvRestorePrepareW" certadm.dll ;
+	WString pwszServerName ;	// PWSTR
+	UInteger dwRestoreFlags ;
+	Pointer phbc ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvrestoreregistercomplete
+External_Function CertSrvRestoreRegisterComplete "CertSrvRestoreRegisterComplete" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	Integer hrRestoreState ;	// HRESULT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvrestoreregisterthroughfile
+External_Function CertSrvRestoreRegisterThroughFile "CertSrvRestoreRegisterThroughFile" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	WString pwszCheckPointFilePath ;	// PWSTR
+	WString pwszLogPath ;	// PWSTR
+	Pointer rgrstmap ;	// CSEDB_RSTMAPW*
+	Integer crstmap ;
+	WString pwszBackupLogPath ;	// PWSTR
+	UInteger genLow ;
+	UInteger genHigh ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvrestoreregisterw
+External_Function CertSrvRestoreRegisterW "CertSrvRestoreRegisterW" certadm.dll ;
+	Pointer hbc ;	// Pointer*
+	WString pwszCheckPointFilePath ;	// PWSTR
+	WString pwszLogPath ;	// PWSTR
+	Pointer rgrstmap ;	// CSEDB_RSTMAPW*
+	Integer crstmap ;
+	WString pwszBackupLogPath ;	// PWSTR
+	UInteger genLow ;
+	UInteger genHigh ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certbcli/nf-certbcli-certsrvservercontrolw
+External_Function CertSrvServerControlW "CertSrvServerControlW" certadm.dll ;
+	WString pwszServerName ;	// PWSTR
+	UInteger dwControlFlags ;
+	Pointer pcbOut ;	// UInteger*
+	Pointer ppbOut ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/certpoleng/nf-certpoleng-pstacquireprivatekey
+External_Function PstAcquirePrivateKey "PstAcquirePrivateKey" certpoleng.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	Returns Integer	// NTSTATUS
+
+External_Function PstGetCertificateChain "PstGetCertificateChain" certpoleng.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	Pointer pTrustedIssuers ;	// SecPkgContext_IssuerListInfoEx*
+	Pointer ppCertChainContext ;	// CERT_CHAIN_CONTEXT**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/certpoleng/nf-certpoleng-pstgetcertificates
+External_Function PstGetCertificates "PstGetCertificates" certpoleng.dll ;
+	Pointer pTargetName ;	// UNICODE_STRING*
+	UInteger cCriteria ;
+	Pointer rgpCriteria ;	// CERT_SELECT_CRITERIA*
+	Integer bIsClient ;	// BOOL
+	Pointer pdwCertChainContextCount ;	// UInteger*
+	Pointer ppCertChainContexts ;	// CERT_CHAIN_CONTEXT***
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/certpoleng/nf-certpoleng-pstgettrustanchors
+External_Function PstGetTrustAnchors "PstGetTrustAnchors" certpoleng.dll ;
+	Pointer pTargetName ;	// UNICODE_STRING*
+	UInteger cCriteria ;
+	Pointer rgpCriteria ;	// CERT_SELECT_CRITERIA*
+	Pointer ppTrustedIssuers ;	// SecPkgContext_IssuerListInfoEx**
+	Returns Integer	// NTSTATUS
+
+External_Function PstGetTrustAnchorsEx "PstGetTrustAnchorsEx" certpoleng.dll ;
+	Pointer pTargetName ;	// UNICODE_STRING*
+	UInteger cCriteria ;
+	Pointer rgpCriteria ;	// CERT_SELECT_CRITERIA*
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Pointer ppTrustedIssuers ;	// SecPkgContext_IssuerListInfoEx**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/certpoleng/nf-certpoleng-pstgetusernameforcertificate
+External_Function PstGetUserNameForCertificate "PstGetUserNameForCertificate" certpoleng.dll ;
+	Pointer pCertContext ;	// CERT_CONTEXT*
+	Pointer UserName ;	// UNICODE_STRING*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/certpoleng/nf-certpoleng-pstmapcertificate
+External_Function PstMapCertificate "PstMapCertificate" certpoleng.dll ;
+	Pointer pCert ;	// CERT_CONTEXT*
+	Pointer pTokenInformationType ;	// LSA_TOKEN_INFORMATION_TYPE*
+	Pointer ppTokenInformation ;	// Pointer**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/certpoleng/nf-certpoleng-pstvalidate
+External_Function PstValidate "PstValidate" certpoleng.dll ;
+	Pointer pTargetName ;	// UNICODE_STRING*
+	Integer bIsClient ;	// BOOL
+	Pointer pRequestedIssuancePolicy ;	// CERT_USAGE_MATCH*
+	Pointer phAdditionalCertStore ;	// HCERTSTORE*
+	Pointer pCert ;	// CERT_CONTEXT*
+	Pointer pProvGUID ;	// Guid*
+	Returns Integer	// NTSTATUS
+
+
+Procedure DataFlex_Init
+End_Procedure
+

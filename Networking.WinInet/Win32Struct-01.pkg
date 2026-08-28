@@ -1,0 +1,329 @@
+Use UI
+
+Struct APP_CACHE_DOWNLOAD_ENTRY
+	Pointer pwszUrl											// PWSTR
+	UInteger dwEntryType
+	Integer iMissingAlignment1
+End_Struct
+
+Struct APP_CACHE_DOWNLOAD_LIST
+	UInteger dwEntryCount
+	Integer iMissingAlignment1
+	Pointer pEntries										// APP_CACHE_DOWNLOAD_ENTRY*
+End_Struct
+
+Struct APP_CACHE_GROUP_INFO
+	Pointer pwszManifestUrl									// PWSTR
+	FILETIME ftLastAccessTime
+	UBigint ullSize
+End_Struct
+
+Struct APP_CACHE_GROUP_LIST
+	UInteger dwAppCacheGroupCount
+	Integer iMissingAlignment1
+	Pointer pAppCacheGroups									// APP_CACHE_GROUP_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-gopher_find_dataa
+Struct GOPHER_FIND_DATAA
+	Char[129] DisplayString									// CHAR
+	UChar[3] cMissingAlignment1
+	UInteger GopherType										// GOPHER_TYPE
+	UInteger SizeLow
+	UInteger SizeHigh
+	FILETIME LastModificationTime
+	Char[654] Locator										// CHAR
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-gopher_find_dataw
+Struct GOPHER_FIND_DATAW
+	UShort[129] DisplayString
+	Short iMissingAlignment1
+	UInteger GopherType										// GOPHER_TYPE
+	UInteger SizeLow
+	UInteger SizeHigh
+	FILETIME LastModificationTime
+	UShort[654] Locator
+End_Struct
+
+Struct HTTP_PUSH_NOTIFICATION_STATUS
+	Integer ChannelStatusValid								// BOOL
+	UInteger ChannelStatus
+End_Struct
+
+Struct HTTP_PUSH_TRANSPORT_SETTING
+	Guid TransportSettingId
+	Guid BrokerEventId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_buffersa
+Struct INTERNET_BUFFERSA
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer Next											// INTERNET_BUFFERSA*
+	Pointer lpcszHeader										// PSTR
+	UInteger dwHeadersLength
+	UInteger dwHeadersTotal
+	Pointer lpvBuffer										// Pointer*
+	UInteger dwBufferLength
+	UInteger dwBufferTotal
+	UInteger dwOffsetLow
+	UInteger dwOffsetHigh
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_buffersw
+Struct INTERNET_BUFFERSW
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer Next											// INTERNET_BUFFERSW*
+	Pointer lpcszHeader										// PWSTR
+	UInteger dwHeadersLength
+	UInteger dwHeadersTotal
+	Pointer lpvBuffer										// Pointer*
+	UInteger dwBufferLength
+	UInteger dwBufferTotal
+	UInteger dwOffsetLow
+	UInteger dwOffsetHigh
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winineti/ns-winineti-internet_cache_config_infoa
+Struct INTERNET_CACHE_CONFIG_INFOA
+	UInteger dwStructSize
+	UInteger dwContainer
+	UInteger dwQuota
+	UInteger dwReserved4
+	Integer fPerUser										// BOOL
+	UInteger dwSyncMode
+	UInteger dwNumCachePaths
+	UChar[264] UnionName1
+	UInteger dwNormalUsage
+	UInteger dwExemptUsage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winineti/ns-winineti-internet_cache_config_infow
+Struct INTERNET_CACHE_CONFIG_INFOW
+	UInteger dwStructSize
+	UInteger dwContainer
+	UInteger dwQuota
+	UInteger dwReserved4
+	Integer fPerUser										// BOOL
+	UInteger dwSyncMode
+	UInteger dwNumCachePaths
+	UChar[524] UnionName1
+	UInteger dwNormalUsage
+	UInteger dwExemptUsage
+End_Struct
+
+Struct INTERNET_CACHE_CONFIG_PATH_ENTRYA
+	Char[260] CachePath										// CHAR
+	UInteger dwCacheSize
+End_Struct
+
+Struct INTERNET_CACHE_CONFIG_PATH_ENTRYW
+	UShort[260] CachePath
+	UInteger dwCacheSize
+End_Struct
+
+Struct INTERNET_CACHE_CONTAINER_INFOA
+	UInteger dwCacheVersion
+	Integer iMissingAlignment1
+	Pointer lpszName										// PSTR
+	Pointer lpszCachePrefix									// PSTR
+	Pointer lpszVolumeLabel									// PSTR
+	Pointer lpszVolumeTitle									// PSTR
+End_Struct
+
+Struct INTERNET_CACHE_CONTAINER_INFOW
+	UInteger dwCacheVersion
+	Integer iMissingAlignment1
+	Pointer lpszName										// PWSTR
+	Pointer lpszCachePrefix									// PWSTR
+	Pointer lpszVolumeLabel									// PWSTR
+	Pointer lpszVolumeTitle									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_cache_entry_infoa
+Struct INTERNET_CACHE_ENTRY_INFOA
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpszSourceUrlName								// PSTR
+	Pointer lpszLocalFileName								// PSTR
+	UInteger CacheEntryType
+	UInteger dwUseCount
+	UInteger dwHitRate
+	UInteger dwSizeLow
+	UInteger dwSizeHigh
+	FILETIME LastModifiedTime
+	FILETIME ExpireTime
+	FILETIME LastAccessTime
+	FILETIME LastSyncTime
+	Integer iMissingAlignment2
+	Pointer lpHeaderInfo									// PSTR
+	UInteger dwHeaderInfoSize
+	Integer iMissingAlignment3
+	Pointer lpszFileExtension								// PSTR
+	UChar[4] UnionName1
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_cache_entry_infow
+Struct INTERNET_CACHE_ENTRY_INFOW
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpszSourceUrlName								// PWSTR
+	Pointer lpszLocalFileName								// PWSTR
+	UInteger CacheEntryType
+	UInteger dwUseCount
+	UInteger dwHitRate
+	UInteger dwSizeLow
+	UInteger dwSizeHigh
+	FILETIME LastModifiedTime
+	FILETIME ExpireTime
+	FILETIME LastAccessTime
+	FILETIME LastSyncTime
+	Integer iMissingAlignment2
+	Pointer lpHeaderInfo									// PWSTR
+	UInteger dwHeaderInfoSize
+	Integer iMissingAlignment3
+	Pointer lpszFileExtension								// PWSTR
+	UChar[4] UnionName1
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_cache_group_infoa
+Struct INTERNET_CACHE_GROUP_INFOA
+	UInteger dwGroupSize
+	UInteger dwGroupFlags
+	UInteger dwGroupType
+	UInteger dwDiskUsage
+	UInteger dwDiskQuota
+	UInteger[4] dwOwnerStorage
+	Char[120] szGroupName									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_cache_group_infow
+Struct INTERNET_CACHE_GROUP_INFOW
+	UInteger dwGroupSize
+	UInteger dwGroupFlags
+	UInteger dwGroupType
+	UInteger dwDiskUsage
+	UInteger dwDiskQuota
+	UInteger[4] dwOwnerStorage
+	UShort[120] szGroupName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-internet_cookie2
+Struct INTERNET_COOKIE2
+	Pointer pwszName										// PWSTR
+	Pointer pwszValue										// PWSTR
+	Pointer pwszDomain										// PWSTR
+	Pointer pwszPath										// PWSTR
+	UInteger dwFlags
+	FILETIME ftExpires
+	Integer fExpiresSet										// BOOL
+End_Struct
+
+Struct INTERNET_SECURITY_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pCertificate									// CERT_CONTEXT*
+	Pointer pcCertChain										// CERT_CHAIN_CONTEXT*
+	SecPkgContext_ConnectionInfo connectionInfo
+	SecPkgContext_CipherInfo cipherInfo
+	Integer iMissingAlignment2
+	Pointer pcUnverifiedCertChain							// CERT_CHAIN_CONTEXT*
+	SecPkgContext_Bindings channelBindingToken
+End_Struct
+
+Struct URLCACHE_ENTRY_INFO
+	Pointer pwszSourceUrlName								// PWSTR
+	Pointer pwszLocalFileName								// PWSTR
+	UInteger dwCacheEntryType
+	UInteger dwUseCount
+	UInteger dwHitRate
+	UInteger dwSizeLow
+	UInteger dwSizeHigh
+	FILETIME ftLastModifiedTime
+	FILETIME ftExpireTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastSyncTime
+	Integer iMissingAlignment1
+	Pointer pbHeaderInfo									// UChar*
+	UInteger cbHeaderInfoSize
+	Integer iMissingAlignment2
+	Pointer pbExtraData										// UChar*
+	UInteger cbExtraDataSize
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-url_componentsa
+Struct URL_COMPONENTSA
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpszScheme										// PSTR
+	UInteger dwSchemeLength
+	Integer nScheme											// INTERNET_SCHEME
+	Pointer lpszHostName									// PSTR
+	UInteger dwHostNameLength
+	UShort nPort
+	Short iMissingAlignment2
+	Pointer lpszUserName									// PSTR
+	UInteger dwUserNameLength
+	Integer iMissingAlignment3
+	Pointer lpszPassword									// PSTR
+	UInteger dwPasswordLength
+	Integer iMissingAlignment4
+	Pointer lpszUrlPath										// PSTR
+	UInteger dwUrlPathLength
+	Integer iMissingAlignment5
+	Pointer lpszExtraInfo									// PSTR
+	UInteger dwExtraInfoLength
+	Integer iMissingAlignment6
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wininet/ns-wininet-url_componentsw
+Struct URL_COMPONENTSW
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpszScheme										// PWSTR
+	UInteger dwSchemeLength
+	Integer nScheme											// INTERNET_SCHEME
+	Pointer lpszHostName									// PWSTR
+	UInteger dwHostNameLength
+	UShort nPort
+	Short iMissingAlignment2
+	Pointer lpszUserName									// PWSTR
+	UInteger dwUserNameLength
+	Integer iMissingAlignment3
+	Pointer lpszPassword									// PWSTR
+	UInteger dwPasswordLength
+	Integer iMissingAlignment4
+	Pointer lpszUrlPath										// PWSTR
+	UInteger dwUrlPathLength
+	Integer iMissingAlignment5
+	Pointer lpszExtraInfo									// PWSTR
+	UInteger dwExtraInfoLength
+	Integer iMissingAlignment6
+End_Struct
+
+Struct WININET_PROXY_INFO
+	Integer fProxy											// BOOL
+	Integer fBypass											// BOOL
+	Integer ProxyScheme										// INTERNET_SCHEME
+	Integer iMissingAlignment1
+	Pointer pwszProxy										// PWSTR
+	UShort ProxyPort
+	UChar[6] cMissingAlignment2
+End_Struct
+
+Struct WININET_PROXY_INFO_LIST
+	UInteger dwProxyInfoCount
+	Integer iMissingAlignment1
+	Pointer pProxyInfo										// WININET_PROXY_INFO*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

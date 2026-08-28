@@ -1,0 +1,688 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-bindmoniker
+External_Function BindMoniker "BindMoniker" OLE32.dll ;
+	Pointer pmk ;	// IMoniker
+	UInteger grfOpt ;
+	Pointer iidResult ;	// Guid*
+	Pointer ppvResult ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-clsidfromprogid
+External_Function CLSIDFromProgID "CLSIDFromProgID" OLE32.dll ;
+	WString lpszProgID ;	// PWSTR
+	Pointer lpclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-clsidfromprogidex
+External_Function CLSIDFromProgIDEx "CLSIDFromProgIDEx" OLE32.dll ;
+	WString lpszProgID ;	// PWSTR
+	Pointer lpclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-clsidfromstring
+External_Function CLSIDFromString "CLSIDFromString" OLE32.dll ;
+	WString lpsz ;	// PWSTR
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coaddrefserverprocess
+External_Function CoAddRefServerProcess "CoAddRefServerProcess" OLE32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coallowsetforegroundwindow
+External_Function CoAllowSetForegroundWindow "CoAllowSetForegroundWindow" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	Pointer lpvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coallowunmarshalerclsid
+External_Function CoAllowUnmarshalerCLSID "CoAllowUnmarshalerCLSID" OLE32.dll ;
+	Pointer clsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocancelcall
+External_Function CoCancelCall "CoCancelCall" OLE32.dll ;
+	UInteger dwThreadId ;
+	UInteger ulTimeout ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocopyproxy
+External_Function CoCopyProxy "CoCopyProxy" OLE32.dll ;
+	Pointer pProxy ;	// IUnknown
+	Pointer ppCopy ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocreatefreethreadedmarshaler
+External_Function CoCreateFreeThreadedMarshaler "CoCreateFreeThreadedMarshaler" OLE32.dll ;
+	Pointer punkOuter ;	// IUnknown
+	Pointer ppunkMarshal ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocreateguid
+External_Function CoCreateGuid "CoCreateGuid" OLE32.dll ;
+	Pointer pguid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstance
+External_Function CoCreateInstance "CoCreateInstance" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pUnkOuter ;	// IUnknown
+	UInteger dwClsContext ;	// CLSCTX
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstanceex
+External_Function CoCreateInstanceEx "CoCreateInstanceEx" OLE32.dll ;
+	Pointer Clsid ;	// Guid*
+	Pointer punkOuter ;	// IUnknown
+	UInteger dwClsCtx ;	// CLSCTX
+	Pointer pServerInfo ;	// COSERVERINFO*
+	UInteger dwCount ;
+	Pointer pResults ;	// MULTI_QI*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstancefromapp
+External_Function CoCreateInstanceFromApp "CoCreateInstanceFromApp" OLE32.dll ;
+	Pointer Clsid ;	// Guid*
+	Pointer punkOuter ;	// IUnknown
+	UInteger dwClsCtx ;	// CLSCTX
+	Pointer reserved ;	// Pointer*
+	UInteger dwCount ;
+	Pointer pResults ;	// MULTI_QI*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-codecrementmtausage
+External_Function CoDecrementMTAUsage "CoDecrementMTAUsage" OLE32.dll ;
+	Pointer Cookie ;	// CO_MTA_USAGE_COOKIE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-codisablecallcancellation
+External_Function CoDisableCallCancellation "CoDisableCallCancellation" OLE32.dll ;
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-codisconnectcontext
+External_Function CoDisconnectContext "CoDisconnectContext" OLE32.dll ;
+	UInteger dwTimeout ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-codisconnectobject
+External_Function CoDisconnectObject "CoDisconnectObject" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	UInteger dwReserved ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-codosdatetimetofiletime
+External_Function CoDosDateTimeToFileTime "CoDosDateTimeToFileTime" OLE32.dll ;
+	UShort nDosDate ;
+	UShort nDosTime ;
+	Pointer lpFileTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coenablecallcancellation
+External_Function CoEnableCallCancellation "CoEnableCallCancellation" OLE32.dll ;
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cofiletimenow
+External_Function CoFileTimeNow "CoFileTimeNow" OLE32.dll ;
+	Pointer lpFileTime ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cofiletimetodosdatetime
+External_Function CoFileTimeToDosDateTime "CoFileTimeToDosDateTime" OLE32.dll ;
+	Pointer lpFileTime ;	// FILETIME*
+	Pointer lpDosDate ;	// UShort*
+	Pointer lpDosTime ;	// UShort*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cofreealllibraries
+External_Function CoFreeAllLibraries "CoFreeAllLibraries" OLE32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cofreelibrary
+External_Function CoFreeLibrary "CoFreeLibrary" OLE32.dll ;
+	Pointer hInst ;	// HINSTANCE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cofreeunusedlibraries
+External_Function CoFreeUnusedLibraries "CoFreeUnusedLibraries" OLE32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cofreeunusedlibrariesex
+External_Function CoFreeUnusedLibrariesEx "CoFreeUnusedLibrariesEx" OLE32.dll ;
+	UInteger dwUnloadDelay ;
+	UInteger dwReserved ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetapartmenttype
+External_Function CoGetApartmentType "CoGetApartmentType" OLE32.dll ;
+	Pointer pAptType ;	// APTTYPE*
+	Pointer pAptQualifier ;	// APTTYPEQUALIFIER*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcallcontext
+External_Function CoGetCallContext "CoGetCallContext" OLE32.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppInterface ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcallertid
+External_Function CoGetCallerTID "CoGetCallerTID" OLE32.dll ;
+	Pointer lpdwTID ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcancelobject
+External_Function CoGetCancelObject "CoGetCancelObject" OLE32.dll ;
+	UInteger dwThreadId ;
+	Pointer iid ;	// Guid*
+	Pointer ppUnk ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetclassobject
+External_Function CoGetClassObject "CoGetClassObject" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	UInteger dwClsContext ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcontexttoken
+External_Function CoGetContextToken "CoGetContextToken" OLE32.dll ;
+	Pointer pToken ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcurrentlogicalthreadid
+External_Function CoGetCurrentLogicalThreadId "CoGetCurrentLogicalThreadId" OLE32.dll ;
+	Pointer pguid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetcurrentprocess
+External_Function CoGetCurrentProcess "CoGetCurrentProcess" OLE32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetmalloc
+External_Function CoGetMalloc "CoGetMalloc" OLE32.dll ;
+	UInteger dwMemContext ;
+	Pointer ppMalloc ;	// IMalloc*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cogetobject
+External_Function CoGetObject "CoGetObject" OLE32.dll ;
+	WString pszName ;	// PWSTR
+	Pointer pBindOptions ;	// BIND_OPTS*
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetobjectcontext
+External_Function CoGetObjectContext "CoGetObjectContext" OLE32.dll ;
+	Pointer riid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogetpsclsid
+External_Function CoGetPSClsid "CoGetPSClsid" OLE32.dll ;
+	Pointer riid ;	// Guid*
+	Pointer pClsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cogetsystemsecuritypermissions
+External_Function CoGetSystemSecurityPermissions "CoGetSystemSecurityPermissions" OLE32.dll ;
+	Integer comSDType ;	// COMSD
+	Pointer ppSD ;	// PSECURITY_DESCRIPTOR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cogettreatasclass
+External_Function CoGetTreatAsClass "CoGetTreatAsClass" OLE32.dll ;
+	Pointer clsidOld ;	// Guid*
+	Pointer pClsidNew ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coimpersonateclient
+External_Function CoImpersonateClient "CoImpersonateClient" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coincrementmtausage
+External_Function CoIncrementMTAUsage "CoIncrementMTAUsage" OLE32.dll ;
+	Pointer pCookie ;	// CO_MTA_USAGE_COOKIE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coinitialize
+External_Function CoInitialize "CoInitialize" OLE32.dll ;
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coinitializeex
+External_Function CoInitializeEx "CoInitializeEx" OLE32.dll ;
+	Pointer pvReserved ;	// Pointer*
+	UInteger dwCoInit ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coinitializesecurity
+External_Function CoInitializeSecurity "CoInitializeSecurity" OLE32.dll ;
+	Pointer pSecDesc ;	// PSECURITY_DESCRIPTOR
+	Integer cAuthSvc ;
+	Pointer asAuthSvc ;	// SOLE_AUTHENTICATION_SERVICE*
+	Pointer pReserved1 ;	// Pointer*
+	UInteger dwAuthnLevel ;	// RPC_C_AUTHN_LEVEL
+	UInteger dwImpLevel ;	// RPC_C_IMP_LEVEL
+	Pointer pAuthList ;	// Pointer*
+	UInteger dwCapabilities ;
+	Pointer pReserved3 ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coinvalidateremotemachinebindings
+External_Function CoInvalidateRemoteMachineBindings "CoInvalidateRemoteMachineBindings" OLE32.dll ;
+	WString pszMachineName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coishandlerconnected
+External_Function CoIsHandlerConnected "CoIsHandlerConnected" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coloadlibrary
+External_Function CoLoadLibrary "CoLoadLibrary" OLE32.dll ;
+	WString lpszLibName ;	// PWSTR
+	Integer bAutoFree ;	// BOOL
+	Returns Pointer	// HINSTANCE
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-colockobjectexternal
+External_Function CoLockObjectExternal "CoLockObjectExternal" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	Integer fLock ;	// BOOL
+	Integer fLastUnlockReleases ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coqueryauthenticationservices
+External_Function CoQueryAuthenticationServices "CoQueryAuthenticationServices" OLE32.dll ;
+	Pointer pcAuthSvc ;	// UInteger*
+	Pointer asAuthSvc ;	// SOLE_AUTHENTICATION_SERVICE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coqueryclientblanket
+External_Function CoQueryClientBlanket "CoQueryClientBlanket" OLE32.dll ;
+	Pointer pAuthnSvc ;	// UInteger*
+	Pointer pAuthzSvc ;	// UInteger*
+	Pointer pServerPrincName ;	// PWSTR*
+	Pointer pAuthnLevel ;	// UInteger*
+	Pointer pImpLevel ;	// UInteger*
+	Pointer pPrivs ;	// Pointer**
+	Pointer pCapabilities ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coqueryproxyblanket
+External_Function CoQueryProxyBlanket "CoQueryProxyBlanket" OLE32.dll ;
+	Pointer pProxy ;	// IUnknown
+	Pointer pwAuthnSvc ;	// UInteger*
+	Pointer pAuthzSvc ;	// UInteger*
+	Pointer pServerPrincName ;	// PWSTR*
+	Pointer pAuthnLevel ;	// UInteger*
+	Pointer pImpLevel ;	// UInteger*
+	Pointer pAuthInfo ;	// Pointer**
+	Pointer pCapabilites ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coregisteractivationfilter
+External_Function CoRegisterActivationFilter "CoRegisterActivationFilter" OLE32.dll ;
+	Pointer pActivationFilter ;	// IActivationFilter
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coregisterclassobject
+External_Function CoRegisterClassObject "CoRegisterClassObject" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer pUnk ;	// IUnknown
+	UInteger dwClsContext ;	// CLSCTX
+	UInteger flags ;
+	Pointer lpdwRegister ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coregisterdevicecatalog
+External_Function CoRegisterDeviceCatalog "CoRegisterDeviceCatalog" OLE32.dll ;
+	WString deviceInstanceId ;	// PWSTR
+	Pointer cookie ;	// CO_DEVICE_CATALOG_COOKIE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coregisterinitializespy
+External_Function CoRegisterInitializeSpy "CoRegisterInitializeSpy" OLE32.dll ;
+	Pointer pSpy ;	// IInitializeSpy
+	Pointer puliCookie ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coregistermallocspy
+External_Function CoRegisterMallocSpy "CoRegisterMallocSpy" OLE32.dll ;
+	Pointer pMallocSpy ;	// IMallocSpy
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coregisterpsclsid
+External_Function CoRegisterPSClsid "CoRegisterPSClsid" OLE32.dll ;
+	Pointer riid ;	// Guid*
+	Pointer rclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coregistersurrogate
+External_Function CoRegisterSurrogate "CoRegisterSurrogate" OLE32.dll ;
+	Pointer pSurrogate ;	// ISurrogate
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coreleaseserverprocess
+External_Function CoReleaseServerProcess "CoReleaseServerProcess" OLE32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coresumeclassobjects
+External_Function CoResumeClassObjects "CoResumeClassObjects" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coreverttoself
+External_Function CoRevertToSelf "CoRevertToSelf" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-corevokeclassobject
+External_Function CoRevokeClassObject "CoRevokeClassObject" OLE32.dll ;
+	UInteger dwRegister ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-corevokedevicecatalog
+External_Function CoRevokeDeviceCatalog "CoRevokeDeviceCatalog" OLE32.dll ;
+	Pointer cookie ;	// CO_DEVICE_CATALOG_COOKIE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-corevokeinitializespy
+External_Function CoRevokeInitializeSpy "CoRevokeInitializeSpy" OLE32.dll ;
+	UBigint uliCookie ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-corevokemallocspy
+External_Function CoRevokeMallocSpy "CoRevokeMallocSpy" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cosetcancelobject
+External_Function CoSetCancelObject "CoSetCancelObject" OLE32.dll ;
+	Pointer pUnk ;	// IUnknown
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cosetproxyblanket
+External_Function CoSetProxyBlanket "CoSetProxyBlanket" OLE32.dll ;
+	Pointer pProxy ;	// IUnknown
+	UInteger dwAuthnSvc ;
+	UInteger dwAuthzSvc ;
+	WString pServerPrincName ;	// PWSTR
+	UInteger dwAuthnLevel ;	// RPC_C_AUTHN_LEVEL
+	UInteger dwImpLevel ;	// RPC_C_IMP_LEVEL
+	Pointer pAuthInfo ;	// Pointer*
+	UInteger dwCapabilities ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cosuspendclassobjects
+External_Function CoSuspendClassObjects "CoSuspendClassObjects" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-coswitchcallcontext
+External_Function CoSwitchCallContext "CoSwitchCallContext" OLE32.dll ;
+	Pointer pNewObject ;	// IUnknown
+	Pointer ppOldObject ;	// IUnknown*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cotaskmemalloc
+External_Function CoTaskMemAlloc "CoTaskMemAlloc" OLE32.dll ;
+	ULongPtr cb ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cotaskmemfree
+External_Function CoTaskMemFree "CoTaskMemFree" OLE32.dll ;
+	Pointer pv ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cotaskmemrealloc
+External_Function CoTaskMemRealloc "CoTaskMemRealloc" OLE32.dll ;
+	Pointer pv ;	// Pointer*
+	ULongPtr cb ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cotestcancel
+External_Function CoTestCancel "CoTestCancel" OLE32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-cotreatasclass
+External_Function CoTreatAsClass "CoTreatAsClass" OLE32.dll ;
+	Pointer clsidOld ;	// Guid*
+	Pointer clsidNew ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-couninitialize
+External_Function CoUninitialize "CoUninitialize" OLE32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cowaitformultiplehandles
+External_Function CoWaitForMultipleHandles "CoWaitForMultipleHandles" OLE32.dll ;
+	UInteger dwFlags ;
+	UInteger dwTimeout ;
+	UInteger cHandles ;
+	Pointer pHandles ;	// HANDLE*
+	Pointer lpdwindex ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-cowaitformultipleobjects
+External_Function CoWaitForMultipleObjects "CoWaitForMultipleObjects" OLE32.dll ;
+	UInteger dwFlags ;
+	UInteger dwTimeout ;
+	UInteger cHandles ;
+	Pointer pHandles ;	// HANDLE*
+	Pointer lpdwindex ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createantimoniker
+External_Function CreateAntiMoniker "CreateAntiMoniker" OLE32.dll ;
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createbindctx
+External_Function CreateBindCtx "CreateBindCtx" OLE32.dll ;
+	UInteger reserved ;
+	Pointer ppbc ;	// IBindCtx*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createclassmoniker
+External_Function CreateClassMoniker "CreateClassMoniker" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ole2/nf-ole2-createdataadviseholder
+External_Function CreateDataAdviseHolder "CreateDataAdviseHolder" OLE32.dll ;
+	Pointer ppDAHolder ;	// IDataAdviseHolder*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createdatacache
+External_Function CreateDataCache "CreateDataCache" OLE32.dll ;
+	Pointer pUnkOuter ;	// IUnknown
+	Pointer rclsid ;	// Guid*
+	Pointer iid ;	// Guid*
+	Pointer ppv ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createfilemoniker
+External_Function CreateFileMoniker "CreateFileMoniker" OLE32.dll ;
+	WString lpszPathName ;	// PWSTR
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-creategenericcomposite
+External_Function CreateGenericComposite "CreateGenericComposite" OLE32.dll ;
+	Pointer pmkFirst ;	// IMoniker
+	Pointer pmkRest ;	// IMoniker
+	Pointer ppmkComposite ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createitemmoniker
+External_Function CreateItemMoniker "CreateItemMoniker" OLE32.dll ;
+	WString lpszDelim ;	// PWSTR
+	WString lpszItem ;	// PWSTR
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createobjrefmoniker
+External_Function CreateObjrefMoniker "CreateObjrefMoniker" OLE32.dll ;
+	Pointer punk ;	// IUnknown
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-createpointermoniker
+External_Function CreatePointerMoniker "CreatePointerMoniker" OLE32.dll ;
+	Pointer punk ;	// IUnknown
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-getclassfile
+External_Function GetClassFile "GetClassFile" OLE32.dll ;
+	WString szFilename ;	// PWSTR
+	Pointer pclsid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-getrunningobjecttable
+External_Function GetRunningObjectTable "GetRunningObjectTable" OLE32.dll ;
+	UInteger reserved ;
+	Pointer pprot ;	// IRunningObjectTable*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-iidfromstring
+External_Function IIDFromString "IIDFromString" OLE32.dll ;
+	WString lpsz ;	// PWSTR
+	Pointer lpiid ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-mkparsedisplayname
+External_Function MkParseDisplayName "MkParseDisplayName" OLE32.dll ;
+	Pointer pbc ;	// IBindCtx
+	WString szUserName ;	// PWSTR
+	Pointer pchEaten ;	// UInteger*
+	Pointer ppmk ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-progidfromclsid
+External_Function ProgIDFromCLSID "ProgIDFromCLSID" OLE32.dll ;
+	Pointer clsid ;	// Guid*
+	Pointer lplpszProgID ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-stringfromclsid
+External_Function StringFromCLSID "StringFromCLSID" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer lplpsz ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-stringfromguid2
+External_Function StringFromGUID2 "StringFromGUID2" OLE32.dll ;
+	Pointer rguid ;	// Guid*
+	Pointer lpsz ;	// PWSTR
+	Integer cchMax ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/combaseapi/nf-combaseapi-stringfromiid
+External_Function StringFromIID "StringFromIID" OLE32.dll ;
+	Pointer rclsid ;	// Guid*
+	Pointer lplpsz ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+External_Function CoBuildVersion "CoBuildVersion" ole32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coinstall
+External_Function CoInstall "CoInstall" ole32.dll ;
+	Pointer pbc ;	// IBindCtx
+	UInteger dwFlags ;
+	Pointer pClassSpec ;	// uCLSSPEC*
+	Pointer pQuery ;	// QUERYCONTEXT*
+	WString pszCodeBase ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coisole1class
+External_Function CoIsOle1Class "CoIsOle1Class" ole32.dll ;
+	Pointer rclsid ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-coregisterchannelhook
+External_Function CoRegisterChannelHook "CoRegisterChannelHook" ole32.dll ;
+	Pointer ExtensionUuid ;	// Guid*
+	Pointer pChannelHook ;	// IChannelHook
+	Returns Integer	// HRESULT
+
+External_Function CreateStdProgressIndicator "CreateStdProgressIndicator" ole32.dll ;
+	Pointer hwndParent ;	// HWND
+	WString pszTitle ;	// PWSTR
+	Pointer pIbscCaller ;	// IBindStatusCallback
+	Pointer ppIbsc ;	// IBindStatusCallback*
+	Returns Integer	// HRESULT
+
+External_Function DcomChannelSetHResult "DcomChannelSetHResult" ole32.dll ;
+	Pointer pvReserved ;	// Pointer*
+	Pointer pulReserved ;	// UInteger*
+	Integer appsHR ;	// HRESULT
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-monikercommonprefixwith
+External_Function MonikerCommonPrefixWith "MonikerCommonPrefixWith" ole32.dll ;
+	Pointer pmkThis ;	// IMoniker
+	Pointer pmkOther ;	// IMoniker
+	Pointer ppmkCommon ;	// IMoniker*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/objbase/nf-objbase-monikerrelativepathto
+External_Function MonikerRelativePathTo "MonikerRelativePathTo" ole32.dll ;
+	Pointer pmkSrc ;	// IMoniker
+	Pointer pmkDest ;	// IMoniker
+	Pointer ppmkRelPath ;	// IMoniker*
+	Integer dwReserved ;	// BOOL
+	Returns Integer	// HRESULT
+
+External_Function CreateIUriBuilder "CreateIUriBuilder" URLMON.dll ;
+	Pointer pIUri ;	// IUri
+	UInteger dwFlags ;
+	ULongPtr dwReserved ;
+	Pointer ppIUriBuilder ;	// IUriBuilder*
+	Returns Integer	// HRESULT
+
+External_Function CreateUri "CreateUri" URLMON.dll ;
+	WString pwzURI ;	// PWSTR
+	UInteger dwFlags ;	// URI_CREATE_FLAGS
+	ULongPtr dwReserved ;
+	Pointer ppURI ;	// IUri*
+	Returns Integer	// HRESULT
+
+External_Function CreateUriWithFragment "CreateUriWithFragment" URLMON.dll ;
+	WString pwzURI ;	// PWSTR
+	WString pwzFragment ;	// PWSTR
+	UInteger dwFlags ;
+	ULongPtr dwReserved ;
+	Pointer ppURI ;	// IUri*
+	Returns Integer	// HRESULT
+
+External_Function CreateUriFromMultiByteString "CreateUriFromMultiByteString" urlmon.dll ;
+	String pszANSIInputUri ;	// PSTR
+	UInteger dwEncodingFlags ;
+	UInteger dwCodePage ;
+	UInteger dwCreateFlags ;
+	ULongPtr dwReserved ;
+	Pointer ppUri ;	// IUri*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-geterrorinfo
+External_Function GetErrorInfo "GetErrorInfo" OLEAUT32.dll ;
+	UInteger dwReserved ;
+	Pointer pperrinfo ;	// IErrorInfo*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/oleauto/nf-oleauto-seterrorinfo
+External_Function SetErrorInfo "SetErrorInfo" OLEAUT32.dll ;
+	UInteger dwReserved ;
+	Pointer perrinfo ;	// IErrorInfo
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

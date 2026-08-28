@@ -1,0 +1,544 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immassociatecontext
+External_Function ImmAssociateContext "ImmAssociateContext" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Pointer param1 ;	// HIMC
+	Returns Pointer	// HIMC
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immassociatecontextex
+External_Function ImmAssociateContextEx "ImmAssociateContextEx" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Pointer param1 ;	// HIMC
+	UInteger param2 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immconfigureimea
+External_Function ImmConfigureIMEA "ImmConfigureIMEA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// HWND
+	UInteger param2 ;
+	Pointer param3 ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immconfigureimew
+External_Function ImmConfigureIMEW "ImmConfigureIMEW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// HWND
+	UInteger param2 ;
+	Pointer param3 ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immcreatecontext
+External_Function ImmCreateContext "ImmCreateContext" IMM32.dll ;
+	Returns Pointer	// HIMC
+
+External_Function ImmCreateIMCC "ImmCreateIMCC" IMM32.dll ;
+	UInteger param0 ;
+	Returns Pointer	// HIMCC
+
+External_Function ImmCreateSoftKeyboard "ImmCreateSoftKeyboard" IMM32.dll ;
+	UInteger param0 ;
+	Pointer param1 ;	// HWND
+	Integer param2 ;
+	Integer param3 ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immdestroycontext
+External_Function ImmDestroyContext "ImmDestroyContext" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Returns Integer	// BOOL
+
+External_Function ImmDestroyIMCC "ImmDestroyIMCC" IMM32.dll ;
+	Pointer param0 ;	// HIMCC
+	Returns Pointer	// HIMCC
+
+External_Function ImmDestroySoftKeyboard "ImmDestroySoftKeyboard" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immdisableime
+External_Function ImmDisableIME "ImmDisableIME" IMM32.dll ;
+	UInteger param0 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immdisablelegacyime
+External_Function ImmDisableLegacyIME "ImmDisableLegacyIME" IMM32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immdisabletextframeservice
+External_Function ImmDisableTextFrameService "ImmDisableTextFrameService" IMM32.dll ;
+	UInteger idThread ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immenuminputcontext
+External_Function ImmEnumInputContext "ImmEnumInputContext" IMM32.dll ;
+	UInteger idThread ;
+	Pointer lpfn ;	// IMCENUMPROC
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immenumregisterworda
+External_Function ImmEnumRegisterWordA "ImmEnumRegisterWordA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// REGISTERWORDENUMPROCA
+	String lpszReading ;	// PSTR
+	UInteger param3 ;
+	String lpszRegister ;	// PSTR
+	Pointer param5 ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immenumregisterwordw
+External_Function ImmEnumRegisterWordW "ImmEnumRegisterWordW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// REGISTERWORDENUMPROCW
+	WString lpszReading ;	// PWSTR
+	UInteger param3 ;
+	WString lpszRegister ;	// PWSTR
+	Pointer param5 ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immescapea
+External_Function ImmEscapeA "ImmEscapeA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// HIMC
+	UInteger param2 ;	// IME_ESCAPE
+	Pointer param3 ;	// Pointer*
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immescapew
+External_Function ImmEscapeW "ImmEscapeW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// HIMC
+	UInteger param2 ;	// IME_ESCAPE
+	Pointer param3 ;	// Pointer*
+	Returns LongPtr	// LRESULT
+
+External_Function ImmGenerateMessage "ImmGenerateMessage" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcandidatelista
+External_Function ImmGetCandidateListA "ImmGetCandidateListA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger deIndex ;
+	Pointer lpCandList ;	// CANDIDATELIST*
+	UInteger dwBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcandidatelistcounta
+External_Function ImmGetCandidateListCountA "ImmGetCandidateListCountA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpdwListCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcandidatelistcountw
+External_Function ImmGetCandidateListCountW "ImmGetCandidateListCountW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpdwListCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcandidatelistw
+External_Function ImmGetCandidateListW "ImmGetCandidateListW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger deIndex ;
+	Pointer lpCandList ;	// CANDIDATELIST*
+	UInteger dwBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcandidatewindow
+External_Function ImmGetCandidateWindow "ImmGetCandidateWindow" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger param1 ;
+	Pointer lpCandidate ;	// CANDIDATEFORM*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcompositionfonta
+External_Function ImmGetCompositionFontA "ImmGetCompositionFontA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lplf ;	// LOGFONTA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcompositionfontw
+External_Function ImmGetCompositionFontW "ImmGetCompositionFontW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lplf ;	// LOGFONTW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcompositionstringa
+External_Function ImmGetCompositionStringA "ImmGetCompositionStringA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger param1 ;	// IME_COMPOSITION_STRING
+	Pointer lpBuf ;	// Pointer*
+	UInteger dwBufLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcompositionstringw
+External_Function ImmGetCompositionStringW "ImmGetCompositionStringW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger param1 ;	// IME_COMPOSITION_STRING
+	Pointer lpBuf ;	// Pointer*
+	UInteger dwBufLen ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcompositionwindow
+External_Function ImmGetCompositionWindow "ImmGetCompositionWindow" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpCompForm ;	// COMPOSITIONFORM*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetcontext
+External_Function ImmGetContext "ImmGetContext" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Returns Pointer	// HIMC
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetconversionlista
+External_Function ImmGetConversionListA "ImmGetConversionListA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// HIMC
+	String lpSrc ;	// PSTR
+	Pointer lpDst ;	// CANDIDATELIST*
+	UInteger dwBufLen ;
+	UInteger uFlag ;	// GET_CONVERSION_LIST_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetconversionlistw
+External_Function ImmGetConversionListW "ImmGetConversionListW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer param1 ;	// HIMC
+	WString lpSrc ;	// PWSTR
+	Pointer lpDst ;	// CANDIDATELIST*
+	UInteger dwBufLen ;
+	UInteger uFlag ;	// GET_CONVERSION_LIST_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetconversionstatus
+External_Function ImmGetConversionStatus "ImmGetConversionStatus" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpfdwConversion ;	// IME_CONVERSION_MODE*
+	Pointer lpfdwSentence ;	// IME_SENTENCE_MODE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetdefaultimewnd
+External_Function ImmGetDefaultIMEWnd "ImmGetDefaultIMEWnd" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetdescriptiona
+External_Function ImmGetDescriptionA "ImmGetDescriptionA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer lpszDescription ;	// PSTR
+	UInteger uBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetdescriptionw
+External_Function ImmGetDescriptionW "ImmGetDescriptionW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer lpszDescription ;	// PWSTR
+	UInteger uBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetguidelinea
+External_Function ImmGetGuideLineA "ImmGetGuideLineA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger dwIndex ;	// GET_GUIDE_LINE_TYPE
+	Pointer lpBuf ;	// PSTR
+	UInteger dwBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetguidelinew
+External_Function ImmGetGuideLineW "ImmGetGuideLineW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger dwIndex ;	// GET_GUIDE_LINE_TYPE
+	Pointer lpBuf ;	// PWSTR
+	UInteger dwBufLen ;
+	Returns UInteger
+
+External_Function ImmGetHotKey "ImmGetHotKey" IMM32.dll ;
+	UInteger param0 ;
+	Pointer lpuModifiers ;	// UInteger*
+	Pointer lpuVKey ;	// UInteger*
+	Pointer phKL ;	// HKL*
+	Returns Integer	// BOOL
+
+External_Function ImmGetIMCCLockCount "ImmGetIMCCLockCount" IMM32.dll ;
+	Pointer param0 ;	// HIMCC
+	Returns UInteger
+
+External_Function ImmGetIMCCSize "ImmGetIMCCSize" IMM32.dll ;
+	Pointer param0 ;	// HIMCC
+	Returns UInteger
+
+External_Function ImmGetIMCLockCount "ImmGetIMCLockCount" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetimefilenamea
+External_Function ImmGetIMEFileNameA "ImmGetIMEFileNameA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer lpszFileName ;	// PSTR
+	UInteger uBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetimefilenamew
+External_Function ImmGetIMEFileNameW "ImmGetIMEFileNameW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Pointer lpszFileName ;	// PWSTR
+	UInteger uBufLen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetimemenuitemsa
+External_Function ImmGetImeMenuItemsA "ImmGetImeMenuItemsA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger param1 ;
+	UInteger param2 ;
+	Pointer lpImeParentMenu ;	// IMEMENUITEMINFOA*
+	Pointer lpImeMenu ;	// IMEMENUITEMINFOA*
+	UInteger dwSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetimemenuitemsw
+External_Function ImmGetImeMenuItemsW "ImmGetImeMenuItemsW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger param1 ;
+	UInteger param2 ;
+	Pointer lpImeParentMenu ;	// IMEMENUITEMINFOW*
+	Pointer lpImeMenu ;	// IMEMENUITEMINFOW*
+	UInteger dwSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetopenstatus
+External_Function ImmGetOpenStatus "ImmGetOpenStatus" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetproperty
+External_Function ImmGetProperty "ImmGetProperty" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	UInteger param1 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetregisterwordstylea
+External_Function ImmGetRegisterWordStyleA "ImmGetRegisterWordStyleA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	UInteger nItem ;
+	Pointer lpStyleBuf ;	// STYLEBUFA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetregisterwordstylew
+External_Function ImmGetRegisterWordStyleW "ImmGetRegisterWordStyleW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	UInteger nItem ;
+	Pointer lpStyleBuf ;	// STYLEBUFW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetstatuswindowpos
+External_Function ImmGetStatusWindowPos "ImmGetStatusWindowPos" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpptPos ;	// POINT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immgetvirtualkey
+External_Function ImmGetVirtualKey "ImmGetVirtualKey" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-imminstallimea
+External_Function ImmInstallIMEA "ImmInstallIMEA" IMM32.dll ;
+	String lpszIMEFileName ;	// PSTR
+	String lpszLayoutText ;	// PSTR
+	Returns Pointer	// HKL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-imminstallimew
+External_Function ImmInstallIMEW "ImmInstallIMEW" IMM32.dll ;
+	WString lpszIMEFileName ;	// PWSTR
+	WString lpszLayoutText ;	// PWSTR
+	Returns Pointer	// HKL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immisime
+External_Function ImmIsIME "ImmIsIME" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immisuimessagea
+External_Function ImmIsUIMessageA "ImmIsUIMessageA" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	UInteger param1 ;
+	ULongPtr param2 ;	// WPARAM
+	LongPtr param3 ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immisuimessagew
+External_Function ImmIsUIMessageW "ImmIsUIMessageW" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	UInteger param1 ;
+	ULongPtr param2 ;	// WPARAM
+	LongPtr param3 ;	// LPARAM
+	Returns Integer	// BOOL
+
+External_Function ImmLockIMC "ImmLockIMC" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Returns Pointer	// INPUTCONTEXT*
+
+External_Function ImmLockIMCC "ImmLockIMCC" IMM32.dll ;
+	Pointer param0 ;	// HIMCC
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immnotifyime
+External_Function ImmNotifyIME "ImmNotifyIME" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger dwAction ;	// NOTIFY_IME_ACTION
+	UInteger dwIndex ;	// NOTIFY_IME_INDEX
+	UInteger dwValue ;
+	Returns Integer	// BOOL
+
+External_Function ImmReSizeIMCC "ImmReSizeIMCC" IMM32.dll ;
+	Pointer param0 ;	// HIMCC
+	UInteger param1 ;
+	Returns Pointer	// HIMCC
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immregisterworda
+External_Function ImmRegisterWordA "ImmRegisterWordA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	String lpszReading ;	// PSTR
+	UInteger param2 ;
+	String lpszRegister ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immregisterwordw
+External_Function ImmRegisterWordW "ImmRegisterWordW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	WString lpszReading ;	// PWSTR
+	UInteger param2 ;
+	WString lpszRegister ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immreleasecontext
+External_Function ImmReleaseContext "ImmReleaseContext" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Pointer param1 ;	// HIMC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immrequestmessagea
+External_Function ImmRequestMessageA "ImmRequestMessageA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	ULongPtr param1 ;	// WPARAM
+	LongPtr param2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immrequestmessagew
+External_Function ImmRequestMessageW "ImmRequestMessageW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	ULongPtr param1 ;	// WPARAM
+	LongPtr param2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetcandidatewindow
+External_Function ImmSetCandidateWindow "ImmSetCandidateWindow" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpCandidate ;	// CANDIDATEFORM*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetcompositionfonta
+External_Function ImmSetCompositionFontA "ImmSetCompositionFontA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lplf ;	// LOGFONTA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetcompositionfontw
+External_Function ImmSetCompositionFontW "ImmSetCompositionFontW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lplf ;	// LOGFONTW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetcompositionstringa
+External_Function ImmSetCompositionStringA "ImmSetCompositionStringA" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger dwIndex ;	// SET_COMPOSITION_STRING_TYPE
+	Pointer lpComp ;	// Pointer*
+	UInteger dwCompLen ;
+	Pointer lpRead ;	// Pointer*
+	UInteger dwReadLen ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetcompositionstringw
+External_Function ImmSetCompositionStringW "ImmSetCompositionStringW" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger dwIndex ;	// SET_COMPOSITION_STRING_TYPE
+	Pointer lpComp ;	// Pointer*
+	UInteger dwCompLen ;
+	Pointer lpRead ;	// Pointer*
+	UInteger dwReadLen ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetcompositionwindow
+External_Function ImmSetCompositionWindow "ImmSetCompositionWindow" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpCompForm ;	// COMPOSITIONFORM*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetconversionstatus
+External_Function ImmSetConversionStatus "ImmSetConversionStatus" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	UInteger param1 ;	// IME_CONVERSION_MODE
+	UInteger param2 ;	// IME_SENTENCE_MODE
+	Returns Integer	// BOOL
+
+External_Function ImmSetHotKey "ImmSetHotKey" IMM32.dll ;
+	UInteger param0 ;
+	UInteger param1 ;
+	UInteger param2 ;
+	Pointer param3 ;	// HKL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetopenstatus
+External_Function ImmSetOpenStatus "ImmSetOpenStatus" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Integer param1 ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsetstatuswindowpos
+External_Function ImmSetStatusWindowPos "ImmSetStatusWindowPos" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Pointer lpptPos ;	// POINT*
+	Returns Integer	// BOOL
+
+External_Function ImmShowSoftKeyboard "ImmShowSoftKeyboard" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	Integer param1 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immsimulatehotkey
+External_Function ImmSimulateHotKey "ImmSimulateHotKey" IMM32.dll ;
+	Pointer param0 ;	// HWND
+	UInteger param1 ;	// IME_HOTKEY_IDENTIFIER
+	Returns Integer	// BOOL
+
+External_Function ImmUnlockIMC "ImmUnlockIMC" IMM32.dll ;
+	Pointer param0 ;	// HIMC
+	Returns Integer	// BOOL
+
+External_Function ImmUnlockIMCC "ImmUnlockIMCC" IMM32.dll ;
+	Pointer param0 ;	// HIMCC
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immunregisterworda
+External_Function ImmUnregisterWordA "ImmUnregisterWordA" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	String lpszReading ;	// PSTR
+	UInteger param2 ;
+	String lpszUnregister ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/immdev/nf-immdev-immunregisterwordw
+External_Function ImmUnregisterWordW "ImmUnregisterWordW" IMM32.dll ;
+	Pointer param0 ;	// HKL
+	WString lpszReading ;	// PWSTR
+	UInteger param2 ;
+	WString lpszUnregister ;	// PWSTR
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,51 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbclaimnextfreeport
+External_Function ComDBClaimNextFreePort "ComDBClaimNextFreePort" MSPORTS.dll ;
+	Pointer HComDB ;	// HCOMDB
+	Pointer ComNumber ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbclaimport
+External_Function ComDBClaimPort "ComDBClaimPort" MSPORTS.dll ;
+	Pointer HComDB ;	// HCOMDB
+	UInteger ComNumber ;
+	Integer ForceClaim ;	// BOOL
+	Pointer Forced ;	// BOOL*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbclose
+External_Function ComDBClose "ComDBClose" MSPORTS.dll ;
+	Pointer HComDB ;	// HCOMDB
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbgetcurrentportusage
+External_Function ComDBGetCurrentPortUsage "ComDBGetCurrentPortUsage" MSPORTS.dll ;
+	Pointer HComDB ;	// HCOMDB
+	Pointer Buffer ;	// UChar*
+	UInteger BufferSize ;
+	UInteger ReportType ;
+	Pointer MaxPortsReported ;	// UInteger*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbopen
+External_Function ComDBOpen "ComDBOpen" MSPORTS.dll ;
+	Pointer PHComDB ;	// HCOMDB*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbreleaseport
+External_Function ComDBReleasePort "ComDBReleasePort" MSPORTS.dll ;
+	Pointer HComDB ;	// HCOMDB
+	UInteger ComNumber ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/msports/nf-msports-comdbresizedatabase
+External_Function ComDBResizeDatabase "ComDBResizeDatabase" MSPORTS.dll ;
+	Pointer HComDB ;	// HCOMDB
+	UInteger NewSize ;
+	Returns Integer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

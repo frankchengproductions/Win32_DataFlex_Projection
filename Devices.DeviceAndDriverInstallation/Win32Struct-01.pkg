@@ -1,0 +1,333 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-cm_notify_filter
+Struct CM_NOTIFY_FILTER
+	UInteger cbSize
+	UInteger Flags
+	Integer FilterType										// CM_NOTIFY_FILTER_TYPE
+	UInteger Reserved
+	UChar[400] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-conflict_details_a
+Struct CONFLICT_DETAILS_A
+	UInteger CD_ulSize
+	UInteger CD_ulMask										// CM_CDMASK
+	UInteger CD_dnDevInst
+	Integer iMissingAlignment1
+	ULongPtr CD_rdResDes
+	UInteger CD_ulFlags										// CM_CDFLAGS
+	Char[260] CD_szDescription								// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-conflict_details_w
+Struct CONFLICT_DETAILS_W
+	UInteger CD_ulSize
+	UInteger CD_ulMask										// CM_CDMASK
+	UInteger CD_dnDevInst
+	Integer iMissingAlignment1
+	ULongPtr CD_rdResDes
+	UInteger CD_ulFlags										// CM_CDFLAGS
+	UShort[260] CD_szDescription
+	Integer iMissingAlignment2
+End_Struct
+
+Struct HWPROFILEINFO_A
+	UInteger HWPI_ulHWProfile
+	Char[80] HWPI_szFriendlyName							// CHAR
+	UInteger HWPI_dwFlags
+End_Struct
+
+Struct HWPROFILEINFO_W
+	UInteger HWPI_ulHWProfile
+	UShort[80] HWPI_szFriendlyName
+	UInteger HWPI_dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-infcontext
+Struct INFCONTEXT
+	Pointer Inf												// Pointer*
+	Pointer CurrentInf										// Pointer*
+	UInteger Section
+	UInteger Line
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_altplatform_info_v2
+Struct SP_ALTPLATFORM_INFO_V2
+	UInteger cbSize
+	UInteger Platform										// VER_PLATFORM
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture							// PROCESSOR_ARCHITECTURE
+	UChar[2] UnionName1
+	UInteger FirstValidatedMajorVersion
+	UInteger FirstValidatedMinorVersion
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V2_A
+	UInteger cbSize
+	Char[260] FullInfPath									// CHAR
+	Integer FilenameOffset
+	Char[260] ReinstallInstance								// CHAR
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V2_W
+	UInteger cbSize
+	UShort[260] FullInfPath
+	Integer FilenameOffset
+	UShort[260] ReinstallInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_classimagelist_data
+Struct SP_CLASSIMAGELIST_DATA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	LongPtr ImageList										// HIMAGELIST
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_classinstall_header
+Struct SP_CLASSINSTALL_HEADER
+	UInteger cbSize
+	UInteger InstallFunction								// DI_FUNCTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_data
+Struct SP_DEVICE_INTERFACE_DATA
+	UInteger cbSize
+	Guid InterfaceClassGuid
+	UInteger Flags
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_detail_data_a
+Struct SP_DEVICE_INTERFACE_DETAIL_DATA_A
+	UInteger cbSize
+	Char[1] DevicePath										// CHAR
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_detail_data_w
+Struct SP_DEVICE_INTERFACE_DETAIL_DATA_W
+	UInteger cbSize
+	UShort[1] DevicePath
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_data
+Struct SP_DEVINFO_DATA
+	UInteger cbSize
+	Guid ClassGuid
+	UInteger DevInst
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_list_detail_data_a
+Struct SP_DEVINFO_LIST_DETAIL_DATA_A
+	UInteger cbSize
+	Guid ClassGuid
+	Integer iMissingAlignment1
+	Pointer RemoteMachineHandle								// HANDLE
+	Char[263] RemoteMachineName								// CHAR
+	UChar[1] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_list_detail_data_w
+Struct SP_DEVINFO_LIST_DETAIL_DATA_W
+	UInteger cbSize
+	Guid ClassGuid
+	Integer iMissingAlignment1
+	Pointer RemoteMachineHandle								// HANDLE
+	UShort[263] RemoteMachineName
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinstall_params_a
+Struct SP_DEVINSTALL_PARAMS_A
+	UInteger cbSize
+	UInteger Flags											// SETUP_DI_DEVICE_INSTALL_FLAGS
+	UInteger FlagsEx										// SETUP_DI_DEVICE_INSTALL_FLAGS_EX
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer InstallMsgHandler								// PSP_FILE_CALLBACK_A
+	Pointer InstallMsgHandlerContext						// Pointer*
+	Pointer FileQueue										// Pointer*
+	ULongPtr ClassInstallReserved
+	UInteger Reserved
+	Char[260] DriverPath									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinstall_params_w
+Struct SP_DEVINSTALL_PARAMS_W
+	UInteger cbSize
+	UInteger Flags											// SETUP_DI_DEVICE_INSTALL_FLAGS
+	UInteger FlagsEx										// SETUP_DI_DEVICE_INSTALL_FLAGS_EX
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer InstallMsgHandler								// PSP_FILE_CALLBACK_W
+	Pointer InstallMsgHandlerContext						// Pointer*
+	Pointer FileQueue										// Pointer*
+	ULongPtr ClassInstallReserved
+	UInteger Reserved
+	UShort[260] DriverPath
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_drvinfo_data_v2_a
+Struct SP_DRVINFO_DATA_V2_A
+	UInteger cbSize
+	UInteger DriverType
+	ULongPtr Reserved
+	Char[256] Description									// CHAR
+	Char[256] MfgName										// CHAR
+	Char[256] ProviderName									// CHAR
+	FILETIME DriverDate
+	UBigint DriverVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_drvinfo_data_v2_w
+Struct SP_DRVINFO_DATA_V2_W
+	UInteger cbSize
+	UInteger DriverType
+	ULongPtr Reserved
+	UShort[256] Description
+	UShort[256] MfgName
+	UShort[256] ProviderName
+	FILETIME DriverDate
+	UBigint DriverVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_drvinfo_detail_data_a
+Struct SP_DRVINFO_DETAIL_DATA_A
+	UInteger cbSize
+	FILETIME InfDate
+	UInteger CompatIDsOffset
+	UInteger CompatIDsLength
+	Integer iMissingAlignment1
+	ULongPtr Reserved
+	Char[256] SectionName									// CHAR
+	Char[260] InfFileName									// CHAR
+	Char[256] DrvDescription								// CHAR
+	Char[1] HardwareID										// CHAR
+	UChar[3] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_drvinfo_detail_data_w
+Struct SP_DRVINFO_DETAIL_DATA_W
+	UInteger cbSize
+	FILETIME InfDate
+	UInteger CompatIDsOffset
+	UInteger CompatIDsLength
+	Integer iMissingAlignment1
+	ULongPtr Reserved
+	UShort[256] SectionName
+	UShort[260] InfFileName
+	UShort[256] DrvDescription
+	UShort[1] HardwareID
+	UChar[6] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_drvinstall_params
+Struct SP_DRVINSTALL_PARAMS
+	UInteger cbSize
+	UInteger Rank
+	UInteger Flags											// SETUP_DI_DRIVER_INSTALL_FLAGS
+	Integer iMissingAlignment1
+	ULongPtr PrivateData
+	UInteger Reserved
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_file_copy_params_a
+Struct SP_FILE_COPY_PARAMS_A
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer QueueHandle										// Pointer*
+	Pointer SourceRootPath									// PSTR
+	Pointer SourcePath										// PSTR
+	Pointer SourceFilename									// PSTR
+	Pointer SourceDescription								// PSTR
+	Pointer SourceTagfile									// PSTR
+	Pointer TargetDirectory									// PSTR
+	Pointer TargetFilename									// PSTR
+	UInteger CopyStyle
+	Integer iMissingAlignment2
+	Pointer LayoutInf										// Pointer*
+	Pointer SecurityDescriptor								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_file_copy_params_w
+Struct SP_FILE_COPY_PARAMS_W
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer QueueHandle										// Pointer*
+	Pointer SourceRootPath									// PWSTR
+	Pointer SourcePath										// PWSTR
+	Pointer SourceFilename									// PWSTR
+	Pointer SourceDescription								// PWSTR
+	Pointer SourceTagfile									// PWSTR
+	Pointer TargetDirectory									// PWSTR
+	Pointer TargetFilename									// PWSTR
+	UInteger CopyStyle
+	Integer iMissingAlignment2
+	Pointer LayoutInf										// Pointer*
+	Pointer SecurityDescriptor								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_inf_information
+Struct SP_INF_INFORMATION
+	UInteger InfStyle										// INF_STYLE
+	UInteger InfCount
+	UChar[1] VersionData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_inf_signer_info_v2_a
+Struct SP_INF_SIGNER_INFO_V2_A
+	UInteger cbSize
+	Char[260] CatalogFile									// CHAR
+	Char[260] DigitalSigner									// CHAR
+	Char[260] DigitalSignerVersion							// CHAR
+	UInteger SignerScore
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_inf_signer_info_v2_w
+Struct SP_INF_SIGNER_INFO_V2_W
+	UInteger cbSize
+	UShort[260] CatalogFile
+	UShort[260] DigitalSigner
+	UShort[260] DigitalSignerVersion
+	UInteger SignerScore
+End_Struct
+
+Struct SP_INSTALLWIZARD_DATA
+	SP_CLASSINSTALL_HEADER ClassInstallHeader
+	UInteger Flags
+	Integer iMissingAlignment1
+	Pointer[20] DynamicPages								// HPROPSHEETPAGE
+	UInteger NumDynamicPages
+	UInteger DynamicPageFlags
+	UInteger PrivateFlags
+	Integer iMissingAlignment2
+	LongPtr PrivateData										// LPARAM
+	Pointer hwndWizardDlg									// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_original_file_info_a
+Struct SP_ORIGINAL_FILE_INFO_A
+	UInteger cbSize
+	Char[260] OriginalInfName								// CHAR
+	Char[260] OriginalCatalogName							// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_original_file_info_w
+Struct SP_ORIGINAL_FILE_INFO_W
+	UInteger cbSize
+	UShort[260] OriginalInfName
+	UShort[260] OriginalCatalogName
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

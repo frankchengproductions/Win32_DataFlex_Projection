@@ -1,0 +1,61 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/psapi/ns-psapi-moduleinfo
+Struct MODULEINFO
+	Pointer lpBaseOfDll										// Pointer*
+	UInteger SizeOfImage
+	Integer iMissingAlignment1
+	Pointer EntryPoint										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/psapi/ns-psapi-performance_information
+Struct PERFORMANCE_INFORMATION
+	UInteger cb
+	Integer iMissingAlignment1
+	ULongPtr CommitTotal
+	ULongPtr CommitLimit
+	ULongPtr CommitPeak
+	ULongPtr PhysicalTotal
+	ULongPtr PhysicalAvailable
+	ULongPtr SystemCache
+	ULongPtr KernelTotal
+	ULongPtr KernelPaged
+	ULongPtr KernelNonpaged
+	ULongPtr PageSize
+	UInteger HandleCount
+	UInteger ProcessCount
+	UInteger ThreadCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/psapi/ns-psapi-process_memory_counters
+Struct PROCESS_MEMORY_COUNTERS
+	UInteger cb
+	UInteger PageFaultCount
+	ULongPtr PeakWorkingSetSize
+	ULongPtr WorkingSetSize
+	ULongPtr QuotaPeakPagedPoolUsage
+	ULongPtr QuotaPagedPoolUsage
+	ULongPtr QuotaPeakNonPagedPoolUsage
+	ULongPtr QuotaNonPagedPoolUsage
+	ULongPtr PagefileUsage
+	ULongPtr PeakPagefileUsage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/psapi/ns-psapi-psapi_ws_watch_information
+Struct PSAPI_WS_WATCH_INFORMATION
+	Pointer FaultingPc										// Pointer*
+	Pointer FaultingVa										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/psapi/ns-psapi-psapi_ws_watch_information_ex
+Struct PSAPI_WS_WATCH_INFORMATION_EX
+	PSAPI_WS_WATCH_INFORMATION BasicInfo
+	ULongPtr FaultingThreadId
+	ULongPtr Flags
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

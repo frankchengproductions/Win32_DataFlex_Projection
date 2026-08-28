@@ -1,0 +1,1505 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditcomputeeffectivepolicybysid
+External_Function AuditComputeEffectivePolicyBySid "AuditComputeEffectivePolicyBySid" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Pointer pSubCategoryGuids ;	// Guid*
+	UInteger dwPolicyCount ;
+	Pointer ppAuditPolicy ;	// AUDIT_POLICY_INFORMATION**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditcomputeeffectivepolicybytoken
+External_Function AuditComputeEffectivePolicyByToken "AuditComputeEffectivePolicyByToken" ADVAPI32.dll ;
+	Pointer hTokenHandle ;	// HANDLE
+	Pointer pSubCategoryGuids ;	// Guid*
+	UInteger dwPolicyCount ;
+	Pointer ppAuditPolicy ;	// AUDIT_POLICY_INFORMATION**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditenumeratecategories
+External_Function AuditEnumerateCategories "AuditEnumerateCategories" ADVAPI32.dll ;
+	Pointer ppAuditCategoriesArray ;	// Guid**
+	Pointer pdwCountReturned ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditenumerateperuserpolicy
+External_Function AuditEnumeratePerUserPolicy "AuditEnumeratePerUserPolicy" ADVAPI32.dll ;
+	Pointer ppAuditSidArray ;	// POLICY_AUDIT_SID_ARRAY**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditenumeratesubcategories
+External_Function AuditEnumerateSubCategories "AuditEnumerateSubCategories" ADVAPI32.dll ;
+	Pointer pAuditCategoryGuid ;	// Guid*
+	UChar bRetrieveAllSubCategories ;	// BOOLEAN
+	Pointer ppAuditSubCategoriesArray ;	// Guid**
+	Pointer pdwCountReturned ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditfree
+External_Function AuditFree "AuditFree" ADVAPI32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditlookupcategoryguidfromcategoryid
+External_Function AuditLookupCategoryGuidFromCategoryId "AuditLookupCategoryGuidFromCategoryId" ADVAPI32.dll ;
+	Integer AuditCategoryId ;	// POLICY_AUDIT_EVENT_TYPE
+	Pointer pAuditCategoryGuid ;	// Guid*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditlookupcategoryidfromcategoryguid
+External_Function AuditLookupCategoryIdFromCategoryGuid "AuditLookupCategoryIdFromCategoryGuid" ADVAPI32.dll ;
+	Pointer pAuditCategoryGuid ;	// Guid*
+	Pointer pAuditCategoryId ;	// POLICY_AUDIT_EVENT_TYPE*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditlookupcategorynamea
+External_Function AuditLookupCategoryNameA "AuditLookupCategoryNameA" ADVAPI32.dll ;
+	Pointer pAuditCategoryGuid ;	// Guid*
+	Pointer ppszCategoryName ;	// PSTR*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditlookupcategorynamew
+External_Function AuditLookupCategoryNameW "AuditLookupCategoryNameW" ADVAPI32.dll ;
+	Pointer pAuditCategoryGuid ;	// Guid*
+	Pointer ppszCategoryName ;	// PWSTR*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditlookupsubcategorynamea
+External_Function AuditLookupSubCategoryNameA "AuditLookupSubCategoryNameA" ADVAPI32.dll ;
+	Pointer pAuditSubCategoryGuid ;	// Guid*
+	Pointer ppszSubCategoryName ;	// PSTR*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditlookupsubcategorynamew
+External_Function AuditLookupSubCategoryNameW "AuditLookupSubCategoryNameW" ADVAPI32.dll ;
+	Pointer pAuditSubCategoryGuid ;	// Guid*
+	Pointer ppszSubCategoryName ;	// PWSTR*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditqueryglobalsacla
+External_Function AuditQueryGlobalSaclA "AuditQueryGlobalSaclA" ADVAPI32.dll ;
+	String ObjectTypeName ;	// PSTR
+	Pointer Acl ;	// ACL**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditqueryglobalsaclw
+External_Function AuditQueryGlobalSaclW "AuditQueryGlobalSaclW" ADVAPI32.dll ;
+	WString ObjectTypeName ;	// PWSTR
+	Pointer Acl ;	// ACL**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditqueryperuserpolicy
+External_Function AuditQueryPerUserPolicy "AuditQueryPerUserPolicy" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Pointer pSubCategoryGuids ;	// Guid*
+	UInteger dwPolicyCount ;
+	Pointer ppAuditPolicy ;	// AUDIT_POLICY_INFORMATION**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditquerysecurity
+External_Function AuditQuerySecurity "AuditQuerySecurity" ADVAPI32.dll ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer ppSecurityDescriptor ;	// PSECURITY_DESCRIPTOR*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditquerysystempolicy
+External_Function AuditQuerySystemPolicy "AuditQuerySystemPolicy" ADVAPI32.dll ;
+	Pointer pSubCategoryGuids ;	// Guid*
+	UInteger dwPolicyCount ;
+	Pointer ppAuditPolicy ;	// AUDIT_POLICY_INFORMATION**
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditsetglobalsacla
+External_Function AuditSetGlobalSaclA "AuditSetGlobalSaclA" ADVAPI32.dll ;
+	String ObjectTypeName ;	// PSTR
+	Pointer Acl ;	// ACL*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditsetglobalsaclw
+External_Function AuditSetGlobalSaclW "AuditSetGlobalSaclW" ADVAPI32.dll ;
+	WString ObjectTypeName ;	// PWSTR
+	Pointer Acl ;	// ACL*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditsetperuserpolicy
+External_Function AuditSetPerUserPolicy "AuditSetPerUserPolicy" ADVAPI32.dll ;
+	Pointer pSid ;	// PSID
+	Pointer pAuditPolicy ;	// AUDIT_POLICY_INFORMATION*
+	UInteger dwPolicyCount ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditsetsecurity
+External_Function AuditSetSecurity "AuditSetSecurity" ADVAPI32.dll ;
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-auditsetsystempolicy
+External_Function AuditSetSystemPolicy "AuditSetSystemPolicy" ADVAPI32.dll ;
+	Pointer pAuditPolicy ;	// AUDIT_POLICY_INFORMATION*
+	UInteger dwPolicyCount ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaaddaccountrights
+External_Function LsaAddAccountRights "LsaAddAccountRights" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer AccountSid ;	// PSID
+	Pointer UserRights ;	// LSA_UNICODE_STRING*
+	UInteger CountOfRights ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaclose
+External_Function LsaClose "LsaClose" ADVAPI32.dll ;
+	LongPtr ObjectHandle ;	// LSA_HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsacreatetrusteddomainex
+External_Function LsaCreateTrustedDomainEx "LsaCreateTrustedDomainEx" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainInformation ;	// TRUSTED_DOMAIN_INFORMATION_EX*
+	Pointer AuthenticationInformation ;	// TRUSTED_DOMAIN_AUTH_INFORMATION*
+	UInteger DesiredAccess ;
+	Pointer TrustedDomainHandle ;	// LSA_HANDLE*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsadeletetrusteddomain
+External_Function LsaDeleteTrustedDomain "LsaDeleteTrustedDomain" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainSid ;	// PSID
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaenumerateaccountrights
+External_Function LsaEnumerateAccountRights "LsaEnumerateAccountRights" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer AccountSid ;	// PSID
+	Pointer UserRights ;	// LSA_UNICODE_STRING**
+	Pointer CountOfRights ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaenumerateaccountswithuserright
+External_Function LsaEnumerateAccountsWithUserRight "LsaEnumerateAccountsWithUserRight" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer UserRight ;	// LSA_UNICODE_STRING*
+	Pointer Buffer ;	// Pointer**
+	Pointer CountReturned ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaenumeratetrusteddomains
+External_Function LsaEnumerateTrustedDomains "LsaEnumerateTrustedDomains" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer EnumerationContext ;	// UInteger*
+	Pointer Buffer ;	// Pointer**
+	UInteger PreferedMaximumLength ;
+	Pointer CountReturned ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaenumeratetrusteddomainsex
+External_Function LsaEnumerateTrustedDomainsEx "LsaEnumerateTrustedDomainsEx" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer EnumerationContext ;	// UInteger*
+	Pointer Buffer ;	// Pointer**
+	UInteger PreferedMaximumLength ;
+	Pointer CountReturned ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsafreememory
+External_Function LsaFreeMemory "LsaFreeMemory" ADVAPI32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntlsa/nf-ntlsa-lsagetappliedcapids
+External_Function LsaGetAppliedCAPIDs "LsaGetAppliedCAPIDs" ADVAPI32.dll ;
+	Pointer SystemName ;	// LSA_UNICODE_STRING*
+	Pointer CAPIDs ;	// PSID**
+	Pointer CAPIDCount ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsalookupnames
+External_Function LsaLookupNames "LsaLookupNames" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	UInteger Count ;
+	Pointer Names ;	// LSA_UNICODE_STRING*
+	Pointer ReferencedDomains ;	// LSA_REFERENCED_DOMAIN_LIST**
+	Pointer Sids ;	// LSA_TRANSLATED_SID**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsalookupnames2
+External_Function LsaLookupNames2 "LsaLookupNames2" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	UInteger Flags ;
+	UInteger Count ;
+	Pointer Names ;	// LSA_UNICODE_STRING*
+	Pointer ReferencedDomains ;	// LSA_REFERENCED_DOMAIN_LIST**
+	Pointer Sids ;	// LSA_TRANSLATED_SID2**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsalookupsids
+External_Function LsaLookupSids "LsaLookupSids" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	UInteger Count ;
+	Pointer Sids ;	// PSID*
+	Pointer ReferencedDomains ;	// LSA_REFERENCED_DOMAIN_LIST**
+	Pointer Names ;	// LSA_TRANSLATED_NAME**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsalookupsids2
+External_Function LsaLookupSids2 "LsaLookupSids2" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	UInteger LookupOptions ;
+	UInteger Count ;
+	Pointer Sids ;	// PSID*
+	Pointer ReferencedDomains ;	// LSA_REFERENCED_DOMAIN_LIST**
+	Pointer Names ;	// LSA_TRANSLATED_NAME**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsantstatustowinerror
+External_Function LsaNtStatusToWinError "LsaNtStatusToWinError" ADVAPI32.dll ;
+	Integer Status ;	// NTSTATUS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaopenpolicy
+External_Function LsaOpenPolicy "LsaOpenPolicy" ADVAPI32.dll ;
+	Pointer SystemName ;	// LSA_UNICODE_STRING*
+	Pointer ObjectAttributes ;	// LSA_OBJECT_ATTRIBUTES*
+	UInteger DesiredAccess ;
+	Pointer PolicyHandle ;	// LSA_HANDLE*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaopentrusteddomainbyname
+External_Function LsaOpenTrustedDomainByName "LsaOpenTrustedDomainByName" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	UInteger DesiredAccess ;
+	Pointer TrustedDomainHandle ;	// LSA_HANDLE*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntlsa/nf-ntlsa-lsaquerycaps
+External_Function LsaQueryCAPs "LsaQueryCAPs" ADVAPI32.dll ;
+	Pointer CAPIDs ;	// PSID*
+	UInteger CAPIDCount ;
+	Pointer CAPs ;	// CENTRAL_ACCESS_POLICY**
+	Pointer CAPCount ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaquerydomaininformationpolicy
+External_Function LsaQueryDomainInformationPolicy "LsaQueryDomainInformationPolicy" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Integer InformationClass ;	// POLICY_DOMAIN_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaqueryforesttrustinformation
+External_Function LsaQueryForestTrustInformation "LsaQueryForestTrustInformation" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	Pointer ForestTrustInfo ;	// LSA_FOREST_TRUST_INFORMATION**
+	Returns Integer	// NTSTATUS
+
+External_Function LsaQueryForestTrustInformation2 "LsaQueryForestTrustInformation2" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	Integer HighestRecordType ;	// LSA_FOREST_TRUST_RECORD_TYPE
+	Pointer ForestTrustInfo ;	// LSA_FOREST_TRUST_INFORMATION2**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaqueryinformationpolicy
+External_Function LsaQueryInformationPolicy "LsaQueryInformationPolicy" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Integer InformationClass ;	// POLICY_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaquerytrusteddomaininfo
+External_Function LsaQueryTrustedDomainInfo "LsaQueryTrustedDomainInfo" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainSid ;	// PSID
+	Integer InformationClass ;	// TRUSTED_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaquerytrusteddomaininfobyname
+External_Function LsaQueryTrustedDomainInfoByName "LsaQueryTrustedDomainInfoByName" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	Integer InformationClass ;	// TRUSTED_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaremoveaccountrights
+External_Function LsaRemoveAccountRights "LsaRemoveAccountRights" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer AccountSid ;	// PSID
+	UChar AllRights ;	// BOOLEAN
+	Pointer UserRights ;	// LSA_UNICODE_STRING*
+	UInteger CountOfRights ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaretrieveprivatedata
+External_Function LsaRetrievePrivateData "LsaRetrievePrivateData" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer KeyName ;	// LSA_UNICODE_STRING*
+	Pointer PrivateData ;	// LSA_UNICODE_STRING**
+	Returns Integer	// NTSTATUS
+
+External_Function LsaSetCAPs "LsaSetCAPs" ADVAPI32.dll ;
+	Pointer CAPDNs ;	// LSA_UNICODE_STRING*
+	UInteger CAPDNCount ;
+	UInteger Flags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsasetdomaininformationpolicy
+External_Function LsaSetDomainInformationPolicy "LsaSetDomainInformationPolicy" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Integer InformationClass ;	// POLICY_DOMAIN_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsasetforesttrustinformation
+External_Function LsaSetForestTrustInformation "LsaSetForestTrustInformation" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	Pointer ForestTrustInfo ;	// LSA_FOREST_TRUST_INFORMATION*
+	UChar CheckOnly ;	// BOOLEAN
+	Pointer CollisionInfo ;	// LSA_FOREST_TRUST_COLLISION_INFORMATION**
+	Returns Integer	// NTSTATUS
+
+External_Function LsaSetForestTrustInformation2 "LsaSetForestTrustInformation2" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	Integer HighestRecordType ;	// LSA_FOREST_TRUST_RECORD_TYPE
+	Pointer ForestTrustInfo ;	// LSA_FOREST_TRUST_INFORMATION2*
+	UChar CheckOnly ;	// BOOLEAN
+	Pointer CollisionInfo ;	// LSA_FOREST_TRUST_COLLISION_INFORMATION**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsasetinformationpolicy
+External_Function LsaSetInformationPolicy "LsaSetInformationPolicy" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Integer InformationClass ;	// POLICY_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsasettrusteddomaininfobyname
+External_Function LsaSetTrustedDomainInfoByName "LsaSetTrustedDomainInfoByName" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainName ;	// LSA_UNICODE_STRING*
+	Integer InformationClass ;	// TRUSTED_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsasettrusteddomaininformation
+External_Function LsaSetTrustedDomainInformation "LsaSetTrustedDomainInformation" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer TrustedDomainSid ;	// PSID
+	Integer InformationClass ;	// TRUSTED_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsastoreprivatedata
+External_Function LsaStorePrivateData "LsaStorePrivateData" ADVAPI32.dll ;
+	LongPtr PolicyHandle ;	// LSA_HANDLE
+	Pointer KeyName ;	// LSA_UNICODE_STRING*
+	Pointer PrivateData ;	// LSA_UNICODE_STRING*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-rtlgenrandom
+External_Function SystemFunction036 "SystemFunction036" ADVAPI32.dll ;
+	Pointer RandomBuffer ;	// Pointer*
+	UInteger RandomBufferLength ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-rtlencryptmemory
+External_Function SystemFunction040 "SystemFunction040" ADVAPI32.dll ;
+	Pointer Memory ;	// Pointer*
+	UInteger MemorySize ;
+	UInteger OptionFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-rtldecryptmemory
+External_Function SystemFunction041 "SystemFunction041" ADVAPI32.dll ;
+	Pointer Memory ;	// Pointer*
+	UInteger MemorySize ;
+	UInteger OptionFlags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-acceptsecuritycontext
+External_Function AcceptSecurityContext "AcceptSecurityContext" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Pointer phContext ;	// SecHandle*
+	Pointer pInput ;	// SecBufferDesc*
+	UInteger fContextReq ;	// ASC_REQ_FLAGS
+	UInteger TargetDataRep ;
+	Pointer phNewContext ;	// SecHandle*
+	Pointer pOutput ;	// SecBufferDesc*
+	Pointer pfContextAttr ;	// UInteger*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea
+External_Function AcquireCredentialsHandleA "AcquireCredentialsHandleA" SECUR32.dll ;
+	String pszPrincipal ;	// PSTR
+	String pszPackage ;	// PSTR
+	UInteger fCredentialUse ;	// SECPKG_CRED
+	Pointer pvLogonId ;	// Pointer*
+	Pointer pAuthData ;	// Pointer*
+	Pointer pGetKeyFn ;	// SEC_GET_KEY_FN
+	Pointer pvGetKeyArgument ;	// Pointer*
+	Pointer phCredential ;	// SecHandle*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlew
+External_Function AcquireCredentialsHandleW "AcquireCredentialsHandleW" SECUR32.dll ;
+	WString pszPrincipal ;	// PWSTR
+	WString pszPackage ;	// PWSTR
+	UInteger fCredentialUse ;	// SECPKG_CRED
+	Pointer pvLogonId ;	// Pointer*
+	Pointer pAuthData ;	// Pointer*
+	Pointer pGetKeyFn ;	// SEC_GET_KEY_FN
+	Pointer pvGetKeyArgument ;	// Pointer*
+	Pointer phCredential ;	// SecHandle*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-addcredentialsa
+External_Function AddCredentialsA "AddCredentialsA" SECUR32.dll ;
+	Pointer hCredentials ;	// SecHandle*
+	String pszPrincipal ;	// PSTR
+	String pszPackage ;	// PSTR
+	UInteger fCredentialUse ;
+	Pointer pAuthData ;	// Pointer*
+	Pointer pGetKeyFn ;	// SEC_GET_KEY_FN
+	Pointer pvGetKeyArgument ;	// Pointer*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-addcredentialsw
+External_Function AddCredentialsW "AddCredentialsW" SECUR32.dll ;
+	Pointer hCredentials ;	// SecHandle*
+	WString pszPrincipal ;	// PWSTR
+	WString pszPackage ;	// PWSTR
+	UInteger fCredentialUse ;
+	Pointer pAuthData ;	// Pointer*
+	Pointer pGetKeyFn ;	// SEC_GET_KEY_FN
+	Pointer pvGetKeyArgument ;	// Pointer*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-addsecuritypackagea
+External_Function AddSecurityPackageA "AddSecurityPackageA" SECUR32.dll ;
+	String pszPackageName ;	// PSTR
+	Pointer pOptions ;	// SECURITY_PACKAGE_OPTIONS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-addsecuritypackagew
+External_Function AddSecurityPackageW "AddSecurityPackageW" SECUR32.dll ;
+	WString pszPackageName ;	// PWSTR
+	Pointer pOptions ;	// SECURITY_PACKAGE_OPTIONS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-applycontroltoken
+External_Function ApplyControlToken "ApplyControlToken" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Pointer pInput ;	// SecBufferDesc*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-changeaccountpassworda
+External_Function ChangeAccountPasswordA "ChangeAccountPasswordA" SECUR32.dll ;
+	Pointer pszPackageName ;	// Char*
+	Pointer pszDomainName ;	// Char*
+	Pointer pszAccountName ;	// Char*
+	Pointer pszOldPassword ;	// Char*
+	Pointer pszNewPassword ;	// Char*
+	UChar bImpersonating ;	// BOOLEAN
+	UInteger dwReserved ;
+	Pointer pOutput ;	// SecBufferDesc*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-changeaccountpasswordw
+External_Function ChangeAccountPasswordW "ChangeAccountPasswordW" SECUR32.dll ;
+	Pointer pszPackageName ;	// UShort*
+	Pointer pszDomainName ;	// UShort*
+	Pointer pszAccountName ;	// UShort*
+	Pointer pszOldPassword ;	// UShort*
+	Pointer pszNewPassword ;	// UShort*
+	UChar bImpersonating ;	// BOOLEAN
+	UInteger dwReserved ;
+	Pointer pOutput ;	// SecBufferDesc*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-completeauthtoken
+External_Function CompleteAuthToken "CompleteAuthToken" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Pointer pToken ;	// SecBufferDesc*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/nf-ntsecpkg-credmarshaltargetinfo
+External_Function CredMarshalTargetInfo "CredMarshalTargetInfo" SECUR32.dll ;
+	Pointer InTargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONW*
+	Pointer Buffer ;	// UShort**
+	Pointer BufferSize ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+External_Function CredUnmarshalTargetInfo "CredUnmarshalTargetInfo" SECUR32.dll ;
+	Pointer Buffer ;	// UShort*
+	UInteger BufferSize ;
+	Pointer RetTargetInfo ;	// CREDENTIAL_TARGET_INFORMATIONW**
+	Pointer RetActualSize ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-decryptmessage
+External_Function DecryptMessage "DecryptMessage" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Pointer pMessage ;	// SecBufferDesc*
+	UInteger MessageSeqNo ;
+	Pointer pfQOP ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-deletesecuritycontext
+External_Function DeleteSecurityContext "DeleteSecurityContext" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-deletesecuritypackagea
+External_Function DeleteSecurityPackageA "DeleteSecurityPackageA" SECUR32.dll ;
+	String pszPackageName ;	// PSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-deletesecuritypackagew
+External_Function DeleteSecurityPackageW "DeleteSecurityPackageW" SECUR32.dll ;
+	WString pszPackageName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-encryptmessage
+External_Function EncryptMessage "EncryptMessage" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger fQOP ;
+	Pointer pMessage ;	// SecBufferDesc*
+	UInteger MessageSeqNo ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-enumeratesecuritypackagesa
+External_Function EnumerateSecurityPackagesA "EnumerateSecurityPackagesA" SECUR32.dll ;
+	Pointer pcPackages ;	// UInteger*
+	Pointer ppPackageInfo ;	// SecPkgInfoA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-enumeratesecuritypackagesw
+External_Function EnumerateSecurityPackagesW "EnumerateSecurityPackagesW" SECUR32.dll ;
+	Pointer pcPackages ;	// UInteger*
+	Pointer ppPackageInfo ;	// SecPkgInfoW**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-exportsecuritycontext
+External_Function ExportSecurityContext "ExportSecurityContext" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger fFlags ;	// EXPORT_SECURITY_CONTEXT_FLAGS
+	Pointer pPackedContext ;	// SecBuffer*
+	Pointer pToken ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-freecontextbuffer
+External_Function FreeContextBuffer "FreeContextBuffer" SECUR32.dll ;
+	Pointer pvContextBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-freecredentialshandle
+External_Function FreeCredentialsHandle "FreeCredentialsHandle" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/secext/nf-secext-getcomputerobjectnamea
+External_Function GetComputerObjectNameA "GetComputerObjectNameA" SECUR32.dll ;
+	Integer NameFormat ;	// EXTENDED_NAME_FORMAT
+	Pointer lpNameBuffer ;	// PSTR
+	Pointer nSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/secext/nf-secext-getcomputerobjectnamew
+External_Function GetComputerObjectNameW "GetComputerObjectNameW" SECUR32.dll ;
+	Integer NameFormat ;	// EXTENDED_NAME_FORMAT
+	Pointer lpNameBuffer ;	// PWSTR
+	Pointer nSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/secext/nf-secext-getusernameexa
+External_Function GetUserNameExA "GetUserNameExA" SECUR32.dll ;
+	Integer NameFormat ;	// EXTENDED_NAME_FORMAT
+	Pointer lpNameBuffer ;	// PSTR
+	Pointer nSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/secext/nf-secext-getusernameexw
+External_Function GetUserNameExW "GetUserNameExW" SECUR32.dll ;
+	Integer NameFormat ;	// EXTENDED_NAME_FORMAT
+	Pointer lpNameBuffer ;	// PWSTR
+	Pointer nSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-impersonatesecuritycontext
+External_Function ImpersonateSecurityContext "ImpersonateSecurityContext" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-importsecuritycontexta
+External_Function ImportSecurityContextA "ImportSecurityContextA" SECUR32.dll ;
+	String pszPackage ;	// PSTR
+	Pointer pPackedContext ;	// SecBuffer*
+	Pointer Token ;	// Pointer*
+	Pointer phContext ;	// SecHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-importsecuritycontextw
+External_Function ImportSecurityContextW "ImportSecurityContextW" SECUR32.dll ;
+	WString pszPackage ;	// PWSTR
+	Pointer pPackedContext ;	// SecBuffer*
+	Pointer Token ;	// Pointer*
+	Pointer phContext ;	// SecHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-initsecurityinterfacea
+External_Function InitSecurityInterfaceA "InitSecurityInterfaceA" SECUR32.dll ;
+	Returns Pointer	// SecurityFunctionTableA*
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-initsecurityinterfacew
+External_Function InitSecurityInterfaceW "InitSecurityInterfaceW" SECUR32.dll ;
+	Returns Pointer	// SecurityFunctionTableW*
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-initializesecuritycontexta
+External_Function InitializeSecurityContextA "InitializeSecurityContextA" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Pointer phContext ;	// SecHandle*
+	Pointer pszTargetName ;	// Char*
+	UInteger fContextReq ;	// ISC_REQ_FLAGS
+	UInteger Reserved1 ;
+	UInteger TargetDataRep ;
+	Pointer pInput ;	// SecBufferDesc*
+	UInteger Reserved2 ;
+	Pointer phNewContext ;	// SecHandle*
+	Pointer pOutput ;	// SecBufferDesc*
+	Pointer pfContextAttr ;	// UInteger*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-initializesecuritycontextw
+External_Function InitializeSecurityContextW "InitializeSecurityContextW" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Pointer phContext ;	// SecHandle*
+	Pointer pszTargetName ;	// UShort*
+	UInteger fContextReq ;	// ISC_REQ_FLAGS
+	UInteger Reserved1 ;
+	UInteger TargetDataRep ;
+	Pointer pInput ;	// SecBufferDesc*
+	UInteger Reserved2 ;
+	Pointer phNewContext ;	// SecHandle*
+	Pointer pOutput ;	// SecBufferDesc*
+	Pointer pfContextAttr ;	// UInteger*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsacallauthenticationpackage
+External_Function LsaCallAuthenticationPackage "LsaCallAuthenticationPackage" SECUR32.dll ;
+	Pointer LsaHandle ;	// HANDLE
+	UInteger AuthenticationPackage ;
+	Pointer ProtocolSubmitBuffer ;	// Pointer*
+	UInteger SubmitBufferLength ;
+	Pointer ProtocolReturnBuffer ;	// Pointer**
+	Pointer ReturnBufferLength ;	// UInteger*
+	Pointer ProtocolStatus ;	// Integer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaconnectuntrusted
+External_Function LsaConnectUntrusted "LsaConnectUntrusted" SECUR32.dll ;
+	Pointer LsaHandle ;	// HANDLE*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaderegisterlogonprocess
+External_Function LsaDeregisterLogonProcess "LsaDeregisterLogonProcess" SECUR32.dll ;
+	Pointer LsaHandle ;	// HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaenumeratelogonsessions
+External_Function LsaEnumerateLogonSessions "LsaEnumerateLogonSessions" SECUR32.dll ;
+	Pointer LogonSessionCount ;	// UInteger*
+	Pointer LogonSessionList ;	// LUID**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsafreereturnbuffer
+External_Function LsaFreeReturnBuffer "LsaFreeReturnBuffer" SECUR32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsagetlogonsessiondata
+External_Function LsaGetLogonSessionData "LsaGetLogonSessionData" SECUR32.dll ;
+	Pointer LogonId ;	// LUID*
+	Pointer ppLogonSessionData ;	// SECURITY_LOGON_SESSION_DATA**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsalogonuser
+External_Function LsaLogonUser "LsaLogonUser" SECUR32.dll ;
+	Pointer LsaHandle ;	// HANDLE
+	Pointer OriginName ;	// LSA_STRING*
+	Integer LogonType ;	// SECURITY_LOGON_TYPE
+	UInteger AuthenticationPackage ;
+	Pointer AuthenticationInformation ;	// Pointer*
+	UInteger AuthenticationInformationLength ;
+	Pointer LocalGroups ;	// TOKEN_GROUPS*
+	Pointer SourceContext ;	// TOKEN_SOURCE*
+	Pointer ProfileBuffer ;	// Pointer**
+	Pointer ProfileBufferLength ;	// UInteger*
+	Pointer LogonId ;	// LUID*
+	Pointer Token ;	// HANDLE*
+	Pointer Quotas ;	// QUOTA_LIMITS*
+	Pointer SubStatus ;	// Integer*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsalookupauthenticationpackage
+External_Function LsaLookupAuthenticationPackage "LsaLookupAuthenticationPackage" SECUR32.dll ;
+	Pointer LsaHandle ;	// HANDLE
+	Pointer PackageName ;	// LSA_STRING*
+	Pointer AuthenticationPackage ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaregisterlogonprocess
+External_Function LsaRegisterLogonProcess "LsaRegisterLogonProcess" SECUR32.dll ;
+	Pointer LogonProcessName ;	// LSA_STRING*
+	Pointer LsaHandle ;	// HANDLE*
+	Pointer SecurityMode ;	// UInteger*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaregisterpolicychangenotification
+External_Function LsaRegisterPolicyChangeNotification "LsaRegisterPolicyChangeNotification" SECUR32.dll ;
+	Integer InformationClass ;	// POLICY_NOTIFICATION_INFORMATION_CLASS
+	Pointer NotificationEventHandle ;	// HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/nf-ntsecapi-lsaunregisterpolicychangenotification
+External_Function LsaUnregisterPolicyChangeNotification "LsaUnregisterPolicyChangeNotification" SECUR32.dll ;
+	Integer InformationClass ;	// POLICY_NOTIFICATION_INFORMATION_CLASS
+	Pointer NotificationEventHandle ;	// HANDLE
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-makesignature
+External_Function MakeSignature "MakeSignature" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger fQOP ;
+	Pointer pMessage ;	// SecBufferDesc*
+	UInteger MessageSeqNo ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycontextattributesa
+External_Function QueryContextAttributesA "QueryContextAttributesA" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger ulAttribute ;	// SECPKG_ATTR
+	Pointer pBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycontextattributesw
+External_Function QueryContextAttributesW "QueryContextAttributesW" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger ulAttribute ;	// SECPKG_ATTR
+	Pointer pBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycredentialsattributesa
+External_Function QueryCredentialsAttributesA "QueryCredentialsAttributesA" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	UInteger ulAttribute ;
+	Pointer pBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycredentialsattributesw
+External_Function QueryCredentialsAttributesW "QueryCredentialsAttributesW" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	UInteger ulAttribute ;
+	Pointer pBuffer ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querysecuritycontexttoken
+External_Function QuerySecurityContextToken "QuerySecurityContextToken" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Pointer Token ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querysecuritypackageinfoa
+External_Function QuerySecurityPackageInfoA "QuerySecurityPackageInfoA" SECUR32.dll ;
+	String pszPackageName ;	// PSTR
+	Pointer ppPackageInfo ;	// SecPkgInfoA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querysecuritypackageinfow
+External_Function QuerySecurityPackageInfoW "QuerySecurityPackageInfoW" SECUR32.dll ;
+	WString pszPackageName ;	// PWSTR
+	Pointer ppPackageInfo ;	// SecPkgInfoW**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-revertsecuritycontext
+External_Function RevertSecurityContext "RevertSecurityContext" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslacceptsecuritycontext
+External_Function SaslAcceptSecurityContext "SaslAcceptSecurityContext" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Pointer phContext ;	// SecHandle*
+	Pointer pInput ;	// SecBufferDesc*
+	UInteger fContextReq ;	// ASC_REQ_FLAGS
+	UInteger TargetDataRep ;
+	Pointer phNewContext ;	// SecHandle*
+	Pointer pOutput ;	// SecBufferDesc*
+	Pointer pfContextAttr ;	// UInteger*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslenumerateprofilesa
+External_Function SaslEnumerateProfilesA "SaslEnumerateProfilesA" SECUR32.dll ;
+	Pointer ProfileList ;	// PSTR*
+	Pointer ProfileCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslenumerateprofilesw
+External_Function SaslEnumerateProfilesW "SaslEnumerateProfilesW" SECUR32.dll ;
+	Pointer ProfileList ;	// PWSTR*
+	Pointer ProfileCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslgetcontextoption
+External_Function SaslGetContextOption "SaslGetContextOption" SECUR32.dll ;
+	Pointer ContextHandle ;	// SecHandle*
+	UInteger Option ;
+	Pointer Value ;	// Pointer*
+	UInteger Size ;
+	Pointer Needed ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslgetprofilepackagea
+External_Function SaslGetProfilePackageA "SaslGetProfilePackageA" SECUR32.dll ;
+	String ProfileName ;	// PSTR
+	Pointer PackageInfo ;	// SecPkgInfoA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslgetprofilepackagew
+External_Function SaslGetProfilePackageW "SaslGetProfilePackageW" SECUR32.dll ;
+	WString ProfileName ;	// PWSTR
+	Pointer PackageInfo ;	// SecPkgInfoW**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslidentifypackagea
+External_Function SaslIdentifyPackageA "SaslIdentifyPackageA" SECUR32.dll ;
+	Pointer pInput ;	// SecBufferDesc*
+	Pointer PackageInfo ;	// SecPkgInfoA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslidentifypackagew
+External_Function SaslIdentifyPackageW "SaslIdentifyPackageW" SECUR32.dll ;
+	Pointer pInput ;	// SecBufferDesc*
+	Pointer PackageInfo ;	// SecPkgInfoW**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslinitializesecuritycontexta
+External_Function SaslInitializeSecurityContextA "SaslInitializeSecurityContextA" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Pointer phContext ;	// SecHandle*
+	String pszTargetName ;	// PSTR
+	UInteger fContextReq ;	// ISC_REQ_FLAGS
+	UInteger Reserved1 ;
+	UInteger TargetDataRep ;
+	Pointer pInput ;	// SecBufferDesc*
+	UInteger Reserved2 ;
+	Pointer phNewContext ;	// SecHandle*
+	Pointer pOutput ;	// SecBufferDesc*
+	Pointer pfContextAttr ;	// UInteger*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslinitializesecuritycontextw
+External_Function SaslInitializeSecurityContextW "SaslInitializeSecurityContextW" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	Pointer phContext ;	// SecHandle*
+	WString pszTargetName ;	// PWSTR
+	UInteger fContextReq ;	// ISC_REQ_FLAGS
+	UInteger Reserved1 ;
+	UInteger TargetDataRep ;
+	Pointer pInput ;	// SecBufferDesc*
+	UInteger Reserved2 ;
+	Pointer phNewContext ;	// SecHandle*
+	Pointer pOutput ;	// SecBufferDesc*
+	Pointer pfContextAttr ;	// UInteger*
+	Pointer ptsExpiry ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-saslsetcontextoption
+External_Function SaslSetContextOption "SaslSetContextOption" SECUR32.dll ;
+	Pointer ContextHandle ;	// SecHandle*
+	UInteger Option ;
+	Pointer Value ;	// Pointer*
+	UInteger Size ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-setcontextattributesa
+External_Function SetContextAttributesA "SetContextAttributesA" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger ulAttribute ;	// SECPKG_ATTR
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-setcontextattributesw
+External_Function SetContextAttributesW "SetContextAttributesW" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger ulAttribute ;	// SECPKG_ATTR
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-setcredentialsattributesa
+External_Function SetCredentialsAttributesA "SetCredentialsAttributesA" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	UInteger ulAttribute ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-setcredentialsattributesw
+External_Function SetCredentialsAttributesW "SetCredentialsAttributesW" SECUR32.dll ;
+	Pointer phCredential ;	// SecHandle*
+	UInteger ulAttribute ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspicompareauthidentities
+External_Function SspiCompareAuthIdentities "SspiCompareAuthIdentities" SECUR32.dll ;
+	Pointer AuthIdentity1 ;	// Pointer*
+	Pointer AuthIdentity2 ;	// Pointer*
+	Pointer SameSuppliedUser ;	// BOOLEAN*
+	Pointer SameSuppliedIdentity ;	// BOOLEAN*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspicopyauthidentity
+External_Function SspiCopyAuthIdentity "SspiCopyAuthIdentity" SECUR32.dll ;
+	Pointer AuthData ;	// Pointer*
+	Pointer AuthDataCopy ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspidecryptauthidentity
+External_Function SspiDecryptAuthIdentity "SspiDecryptAuthIdentity" SECUR32.dll ;
+	Pointer EncryptedAuthData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiencodeauthidentityasstrings
+External_Function SspiEncodeAuthIdentityAsStrings "SspiEncodeAuthIdentityAsStrings" SECUR32.dll ;
+	Pointer pAuthIdentity ;	// Pointer*
+	Pointer ppszUserName ;	// PWSTR*
+	Pointer ppszDomainName ;	// PWSTR*
+	Pointer ppszPackedCredentialsString ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiencodestringsasauthidentity
+External_Function SspiEncodeStringsAsAuthIdentity "SspiEncodeStringsAsAuthIdentity" SECUR32.dll ;
+	WString pszUserName ;	// PWSTR
+	WString pszDomainName ;	// PWSTR
+	WString pszPackedCredentialsString ;	// PWSTR
+	Pointer ppAuthIdentity ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiencryptauthidentity
+External_Function SspiEncryptAuthIdentity "SspiEncryptAuthIdentity" SECUR32.dll ;
+	Pointer AuthData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiexcludepackage
+External_Function SspiExcludePackage "SspiExcludePackage" SECUR32.dll ;
+	Pointer AuthIdentity ;	// Pointer*
+	WString pszPackageName ;	// PWSTR
+	Pointer ppNewAuthIdentity ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspifreeauthidentity
+External_Function SspiFreeAuthIdentity "SspiFreeAuthIdentity" SECUR32.dll ;
+	Pointer AuthData ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspigettargethostname
+External_Function SspiGetTargetHostName "SspiGetTargetHostName" SECUR32.dll ;
+	WString pszTargetName ;	// PWSTR
+	Pointer pszHostName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiisauthidentityencrypted
+External_Function SspiIsAuthIdentityEncrypted "SspiIsAuthIdentityEncrypted" SECUR32.dll ;
+	Pointer EncryptedAuthData ;	// Pointer*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspilocalfree
+External_Function SspiLocalFree "SspiLocalFree" SECUR32.dll ;
+	Pointer DataBuffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspimarshalauthidentity
+External_Function SspiMarshalAuthIdentity "SspiMarshalAuthIdentity" SECUR32.dll ;
+	Pointer AuthIdentity ;	// Pointer*
+	Pointer AuthIdentityLength ;	// UInteger*
+	Pointer AuthIdentityByteArray ;	// Char**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiprepareforcredread
+External_Function SspiPrepareForCredRead "SspiPrepareForCredRead" SECUR32.dll ;
+	Pointer AuthIdentity ;	// Pointer*
+	WString pszTargetName ;	// PWSTR
+	Pointer pCredmanCredentialType ;	// UInteger*
+	Pointer ppszCredmanTargetName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiprepareforcredwrite
+External_Function SspiPrepareForCredWrite "SspiPrepareForCredWrite" SECUR32.dll ;
+	Pointer AuthIdentity ;	// Pointer*
+	WString pszTargetName ;	// PWSTR
+	Pointer pCredmanCredentialType ;	// UInteger*
+	Pointer ppszCredmanTargetName ;	// PWSTR*
+	Pointer ppszCredmanUserName ;	// PWSTR*
+	Pointer ppCredentialBlob ;	// UChar**
+	Pointer pCredentialBlobSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiunmarshalauthidentity
+External_Function SspiUnmarshalAuthIdentity "SspiUnmarshalAuthIdentity" SECUR32.dll ;
+	UInteger AuthIdentityLength ;
+	String AuthIdentityByteArray ;	// PSTR
+	Pointer ppAuthIdentity ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspivalidateauthidentity
+External_Function SspiValidateAuthIdentity "SspiValidateAuthIdentity" SECUR32.dll ;
+	Pointer AuthData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspizeroauthidentity
+External_Function SspiZeroAuthIdentity "SspiZeroAuthIdentity" SECUR32.dll ;
+	Pointer AuthData ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/secext/nf-secext-translatenamea
+External_Function TranslateNameA "TranslateNameA" SECUR32.dll ;
+	String lpAccountName ;	// PSTR
+	Integer AccountNameFormat ;	// EXTENDED_NAME_FORMAT
+	Integer DesiredNameFormat ;	// EXTENDED_NAME_FORMAT
+	Pointer lpTranslatedName ;	// PSTR
+	Pointer nSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/secext/nf-secext-translatenamew
+External_Function TranslateNameW "TranslateNameW" SECUR32.dll ;
+	WString lpAccountName ;	// PWSTR
+	Integer AccountNameFormat ;	// EXTENDED_NAME_FORMAT
+	Integer DesiredNameFormat ;	// EXTENDED_NAME_FORMAT
+	Pointer lpTranslatedName ;	// PWSTR
+	Pointer nSize ;	// UInteger*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-verifysignature
+External_Function VerifySignature "VerifySignature" SECUR32.dll ;
+	Pointer phContext ;	// SecHandle*
+	Pointer pMessage ;	// SecBufferDesc*
+	UInteger MessageSeqNo ;
+	Pointer pfQOP ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycontextattributesexa
+External_Function QueryContextAttributesExA "QueryContextAttributesExA" SspiCli.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger ulAttribute ;	// SECPKG_ATTR
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycontextattributesexw
+External_Function QueryContextAttributesExW "QueryContextAttributesExW" SspiCli.dll ;
+	Pointer phContext ;	// SecHandle*
+	UInteger ulAttribute ;	// SECPKG_ATTR
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycredentialsattributesexa
+External_Function QueryCredentialsAttributesExA "QueryCredentialsAttributesExA" SspiCli.dll ;
+	Pointer phCredential ;	// SecHandle*
+	UInteger ulAttribute ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-querycredentialsattributesexw
+External_Function QueryCredentialsAttributesExW "QueryCredentialsAttributesExW" SspiCli.dll ;
+	Pointer phCredential ;	// SecHandle*
+	UInteger ulAttribute ;
+	Pointer pBuffer ;	// Pointer*
+	UInteger cbBuffer ;
+	Returns Integer	// HRESULT
+
+External_Function SecAllocateAndSetCallTarget "SecAllocateAndSetCallTarget" SspiCli.dll ;
+	Pointer lpIpAddress ;	// UChar*
+	UInteger cchIpAddress ;
+	WString TargetName ;	// PWSTR
+	Pointer FreeCallContext ;	// Integer*
+	Returns Integer	// HRESULT
+
+External_Function SecAllocateAndSetIPAddress "SecAllocateAndSetIPAddress" SspiCli.dll ;
+	Pointer lpIpAddress ;	// UChar*
+	UInteger cchIpAddress ;
+	Pointer FreeCallContext ;	// Integer*
+	Returns Integer	// HRESULT
+
+External_Function SecFreeCallContext "SecFreeCallContext" SspiCli.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspidecryptauthidentityex
+External_Function SspiDecryptAuthIdentityEx "SspiDecryptAuthIdentityEx" SspiCli.dll ;
+	UInteger Options ;
+	Pointer EncryptedAuthData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiencryptauthidentityex
+External_Function SspiEncryptAuthIdentityEx "SspiEncryptAuthIdentityEx" SspiCli.dll ;
+	UInteger Options ;
+	Pointer AuthData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+External_Function SspiSetChannelBindingFlags "SspiSetChannelBindingFlags" SspiCli.dll ;
+	Pointer pBindings ;	// SecPkgContext_Bindings*
+	UInteger flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspiispromptingneeded
+External_Function SspiIsPromptingNeeded "SspiIsPromptingNeeded" credui.dll ;
+	UInteger ErrorOrNtStatus ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspipromptforcredentialsa
+External_Function SspiPromptForCredentialsA "SspiPromptForCredentialsA" credui.dll ;
+	String pszTargetName ;	// PSTR
+	Pointer pUiInfo ;	// Pointer*
+	UInteger dwAuthError ;
+	String pszPackage ;	// PSTR
+	Pointer pInputAuthIdentity ;	// Pointer*
+	Pointer ppAuthIdentity ;	// Pointer**
+	Pointer pfSave ;	// Integer*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-sspipromptforcredentialsw
+External_Function SspiPromptForCredentialsW "SspiPromptForCredentialsW" credui.dll ;
+	WString pszTargetName ;	// PWSTR
+	Pointer pUiInfo ;	// Pointer*
+	UInteger dwAuthError ;
+	WString pszPackage ;	// PWSTR
+	Pointer pInputAuthIdentity ;	// Pointer*
+	Pointer ppAuthIdentity ;	// Pointer**
+	Pointer pfSave ;	// Integer*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/schannel/nf-schannel-sslcrackcertificate
+External_Function SslCrackCertificate "SslCrackCertificate" SCHANNEL.dll ;
+	Pointer pbCertificate ;	// UChar*
+	UInteger cbCertificate ;
+	UInteger dwFlags ;
+	Pointer ppCertificate ;	// X509Certificate**
+	Returns Integer	// BOOL
+
+External_Function SslDeserializeCertificateStore "SslDeserializeCertificateStore" SCHANNEL.dll ;
+	CRYPT_INTEGER_BLOB SerializedCertificateStore ;
+	Pointer ppCertContext ;	// CERT_CONTEXT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/schannel/nf-schannel-sslemptycachea
+External_Function SslEmptyCacheA "SslEmptyCacheA" SCHANNEL.dll ;
+	String pszTargetName ;	// PSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/schannel/nf-schannel-sslemptycachew
+External_Function SslEmptyCacheW "SslEmptyCacheW" SCHANNEL.dll ;
+	WString pszTargetName ;	// PWSTR
+	UInteger dwFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/schannel/nf-schannel-sslfreecertificate
+External_Function SslFreeCertificate "SslFreeCertificate" SCHANNEL.dll ;
+	Pointer pCertificate ;	// X509Certificate*
+	Returns Pointer
+
+External_Function SslGenerateRandomBits "SslGenerateRandomBits" SCHANNEL.dll ;
+	Pointer pRandomData ;	// UChar*
+	Integer cRandomData ;
+	Returns Pointer
+
+External_Function SslGetExtensions "SslGetExtensions" SCHANNEL.dll ;
+	Pointer clientHello ;	// UChar*
+	UInteger clientHelloByteSize ;
+	Pointer genericExtensions ;	// SCH_EXTENSION_DATA*
+	UChar genericExtensionsCount ;
+	Pointer bytesToRead ;	// UInteger*
+	Integer flags ;	// SchGetExtensionsOptions
+	Returns Integer	// HRESULT
+
+External_Function SslGetMaximumKeySize "SslGetMaximumKeySize" SCHANNEL.dll ;
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/schannel/nf-schannel-sslgetserveridentity
+External_Function SslGetServerIdentity "SslGetServerIdentity" SCHANNEL.dll ;
+	Pointer ClientHello ;	// UChar*
+	UInteger ClientHelloSize ;
+	Pointer ServerIdentity ;	// UChar**
+	Pointer ServerIdentitySize ;	// UInteger*
+	UInteger Flags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindingdeleteallbindings
+External_Function TokenBindingDeleteAllBindings "TokenBindingDeleteAllBindings" TOKENBINDING.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindingdeletebinding
+External_Function TokenBindingDeleteBinding "TokenBindingDeleteBinding" TOKENBINDING.dll ;
+	WString targetURL ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindinggeneratebinding
+External_Function TokenBindingGenerateBinding "TokenBindingGenerateBinding" TOKENBINDING.dll ;
+	Integer keyType ;	// TOKENBINDING_KEY_PARAMETERS_TYPE
+	WString targetURL ;	// PWSTR
+	Integer bindingType ;	// TOKENBINDING_TYPE
+	Pointer tlsEKM ;	// Pointer*
+	UInteger tlsEKMSize ;
+	Integer extensionFormat ;	// TOKENBINDING_EXTENSION_FORMAT
+	Pointer extensionData ;	// Pointer*
+	Pointer tokenBinding ;	// Pointer**
+	Pointer tokenBindingSize ;	// UInteger*
+	Pointer resultData ;	// TOKENBINDING_RESULT_DATA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindinggenerateid
+External_Function TokenBindingGenerateID "TokenBindingGenerateID" TOKENBINDING.dll ;
+	Integer keyType ;	// TOKENBINDING_KEY_PARAMETERS_TYPE
+	Pointer publicKey ;	// Pointer*
+	UInteger publicKeySize ;
+	Pointer resultData ;	// TOKENBINDING_RESULT_DATA**
+	Returns Integer	// HRESULT
+
+External_Function TokenBindingGenerateIDForUri "TokenBindingGenerateIDForUri" TOKENBINDING.dll ;
+	Integer keyType ;	// TOKENBINDING_KEY_PARAMETERS_TYPE
+	WString targetUri ;	// PWSTR
+	Pointer resultData ;	// TOKENBINDING_RESULT_DATA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindinggeneratemessage
+External_Function TokenBindingGenerateMessage "TokenBindingGenerateMessage" TOKENBINDING.dll ;
+	Pointer tokenBindings ;	// Pointer**
+	Pointer tokenBindingsSize ;	// UInteger*
+	UInteger tokenBindingsCount ;
+	Pointer tokenBindingMessage ;	// Pointer**
+	Pointer tokenBindingMessageSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function TokenBindingGetHighestSupportedVersion "TokenBindingGetHighestSupportedVersion" TOKENBINDING.dll ;
+	Pointer majorVersion ;	// UChar*
+	Pointer minorVersion ;	// UChar*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindinggetkeytypesclient
+External_Function TokenBindingGetKeyTypesClient "TokenBindingGetKeyTypesClient" TOKENBINDING.dll ;
+	Pointer keyTypes ;	// TOKENBINDING_KEY_TYPES**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindinggetkeytypesserver
+External_Function TokenBindingGetKeyTypesServer "TokenBindingGetKeyTypesServer" TOKENBINDING.dll ;
+	Pointer keyTypes ;	// TOKENBINDING_KEY_TYPES**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/tokenbinding/nf-tokenbinding-tokenbindingverifymessage
+External_Function TokenBindingVerifyMessage "TokenBindingVerifyMessage" TOKENBINDING.dll ;
+	Pointer tokenBindingMessage ;	// Pointer*
+	UInteger tokenBindingMessageSize ;
+	Integer keyType ;	// TOKENBINDING_KEY_PARAMETERS_TYPE
+	Pointer tlsEKM ;	// Pointer*
+	UInteger tlsEKMSize ;
+	Pointer resultList ;	// TOKENBINDING_RESULT_LIST**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slclose
+External_Function SLClose "SLClose" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slconsumeright
+External_Function SLConsumeRight "SLConsumeRight" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pAppId ;	// Guid*
+	Pointer pProductSkuId ;	// Guid*
+	WString pwszRightName ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-sldepositofflineconfirmationid
+External_Function SLDepositOfflineConfirmationId "SLDepositOfflineConfirmationId" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	WString pwszInstallationId ;	// PWSTR
+	WString pwszConfirmationId ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-sldepositofflineconfirmationidex
+External_Function SLDepositOfflineConfirmationIdEx "SLDepositOfflineConfirmationIdEx" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	Pointer pActivationInfo ;	// SL_ACTIVATION_INFO_HEADER*
+	WString pwszInstallationId ;	// PWSTR
+	WString pwszConfirmationId ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slfireevent
+External_Function SLFireEvent "SLFireEvent" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszEventId ;	// PWSTR
+	Pointer pApplicationId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgenerateofflineinstallationid
+External_Function SLGenerateOfflineInstallationId "SLGenerateOfflineInstallationId" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	Pointer ppwszInstallationId ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgenerateofflineinstallationidex
+External_Function SLGenerateOfflineInstallationIdEx "SLGenerateOfflineInstallationIdEx" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	Pointer pActivationInfo ;	// SL_ACTIVATION_INFO_HEADER*
+	Pointer ppwszInstallationId ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetapplicationinformation
+External_Function SLGetApplicationInformation "SLGetApplicationInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pApplicationId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetgenuineinformation
+External_Function SLGetGenuineInformation "SLGetGenuineInformation" SLC.dll ;
+	Pointer pQueryId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetinstalledproductkeyids
+External_Function SLGetInstalledProductKeyIds "SLGetInstalledProductKeyIds" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	Pointer pnProductKeyIds ;	// UInteger*
+	Pointer ppProductKeyIds ;	// Guid**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetlicense
+External_Function SLGetLicense "SLGetLicense" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pLicenseFileId ;	// Guid*
+	Pointer pcbLicenseFile ;	// UInteger*
+	Pointer ppbLicenseFile ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetlicensefileid
+External_Function SLGetLicenseFileId "SLGetLicenseFileId" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	UInteger cbLicenseBlob ;
+	Pointer pbLicenseBlob ;	// UChar*
+	Pointer pLicenseFileId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetlicenseinformation
+External_Function SLGetLicenseInformation "SLGetLicenseInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pSLLicenseId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetlicensingstatusinformation
+External_Function SLGetLicensingStatusInformation "SLGetLicensingStatusInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pAppID ;	// Guid*
+	Pointer pProductSkuId ;	// Guid*
+	WString pwszRightName ;	// PWSTR
+	Pointer pnStatusCount ;	// UInteger*
+	Pointer ppLicensingStatus ;	// SL_LICENSING_STATUS**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetpkeyid
+External_Function SLGetPKeyId "SLGetPKeyId" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszPKeyAlgorithm ;	// PWSTR
+	WString pwszPKeyString ;	// PWSTR
+	UInteger cbPKeySpecificData ;
+	Pointer pbPKeySpecificData ;	// UChar*
+	Pointer pPKeyId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetpkeyinformation
+External_Function SLGetPKeyInformation "SLGetPKeyInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pPKeyId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetpolicyinformation
+External_Function SLGetPolicyInformation "SLGetPolicyInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetpolicyinformationdword
+External_Function SLGetPolicyInformationDWORD "SLGetPolicyInformationDWORD" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	WString pwszValueName ;	// PWSTR
+	Pointer pdwValue ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetproductskuinformation
+External_Function SLGetProductSkuInformation "SLGetProductSkuInformation" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Pointer pProductSkuId ;	// Guid*
+	WString pwszValueName ;	// PWSTR
+	Pointer peDataType ;	// SLDATATYPE*
+	Pointer pcbValue ;	// UInteger*
+	Pointer ppbValue ;	// UChar**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/nf-slpublic-slgetslidlist
+External_Function SLGetSLIDList "SLGetSLIDList" SLC.dll ;
+	Pointer hSLC ;	// Pointer*
+	Integer eQueryIdType ;	// SLIDTYPE
+	Pointer pQueryId ;	// Guid*
+	Integer eReturnIdType ;	// SLIDTYPE
+	Pointer pnReturnIds ;	// UInteger*
+	Pointer ppReturnIds ;	// Guid**
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

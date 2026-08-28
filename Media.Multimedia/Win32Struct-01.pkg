@@ -1,0 +1,256 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avicompressoptions
+Struct AVICOMPRESSOPTIONS
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwKeyFrameEvery
+	UInteger dwQuality
+	UInteger dwBytesPerSecond
+	UInteger dwFlags
+	Pointer lpFormat										// Pointer*
+	UInteger cbFormat
+	Integer iMissingAlignment1
+	Pointer lpParms											// Pointer*
+	UInteger cbParms
+	UInteger dwInterleaveEvery
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avifileinfoa
+Struct AVIFILEINFOA
+	UInteger dwMaxBytesPerSec
+	UInteger dwFlags
+	UInteger dwCaps
+	UInteger dwStreams
+	UInteger dwSuggestedBufferSize
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwLength
+	UInteger dwEditCount
+	Char[64] szFileType										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avifileinfow
+Struct AVIFILEINFOW
+	UInteger dwMaxBytesPerSec
+	UInteger dwFlags
+	UInteger dwCaps
+	UInteger dwStreams
+	UInteger dwSuggestedBufferSize
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwLength
+	UInteger dwEditCount
+	UShort[64] szFileType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avistreaminfoa
+Struct AVISTREAMINFOA
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwFlags
+	UInteger dwCaps
+	UShort wPriority
+	UShort wLanguage
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwStart
+	UInteger dwLength
+	UInteger dwInitialFrames
+	UInteger dwSuggestedBufferSize
+	UInteger dwQuality
+	UInteger dwSampleSize
+	RECT rcFrame
+	UInteger dwEditCount
+	UInteger dwFormatChangeCount
+	Char[64] szName											// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avistreaminfow
+Struct AVISTREAMINFOW
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwFlags
+	UInteger dwCaps
+	UShort wPriority
+	UShort wLanguage
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwStart
+	UInteger dwLength
+	UInteger dwInitialFrames
+	UInteger dwSuggestedBufferSize
+	UInteger dwQuality
+	UInteger dwSampleSize
+	RECT rcFrame
+	UInteger dwEditCount
+	UInteger dwFormatChangeCount
+	UShort[64] szName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-compvars
+Struct COMPVARS
+	Integer cbSize
+	UInteger dwFlags
+	Pointer hic												// HIC
+	UInteger fccType
+	UInteger fccHandler
+	Pointer lpbiIn											// BITMAPINFO*
+	Pointer lpbiOut											// BITMAPINFO*
+	Pointer lpBitsOut										// Pointer*
+	Pointer lpBitsPrev										// Pointer*
+	Integer lFrame
+	Integer lKey
+	Integer lDataRate
+	Integer lQ
+	Integer lKeyCount
+	Integer iMissingAlignment1
+	Pointer lpState											// Pointer*
+	Integer cbState
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-drawdibtime
+Struct DRAWDIBTIME
+	Integer timeCount
+	Integer timeDraw
+	Integer timeDecompress
+	Integer timeDither
+	Integer timeStretch
+	Integer timeBlt
+	Integer timeSetDIBits
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icinfo
+Struct ICINFO
+	UInteger dwSize
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwFlags
+	UInteger dwVersion
+	UInteger dwVersionICM
+	UShort[16] szName
+	UShort[128] szDescription
+	UShort[128] szDriver
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joycapsa
+Struct JOYCAPSA
+	UShort wMid
+	UShort wPid
+	Char[32] szPname										// CHAR
+	UInteger wXmin
+	UInteger wXmax
+	UInteger wYmin
+	UInteger wYmax
+	UInteger wZmin
+	UInteger wZmax
+	UInteger wNumButtons
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+	UInteger wRmin
+	UInteger wRmax
+	UInteger wUmin
+	UInteger wUmax
+	UInteger wVmin
+	UInteger wVmax
+	UInteger wCaps
+	UInteger wMaxAxes
+	UInteger wNumAxes
+	UInteger wMaxButtons
+	Char[32] szRegKey										// CHAR
+	Char[260] szOEMVxD										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joycapsw
+Struct JOYCAPSW
+	UShort wMid
+	UShort wPid
+	UShort[32] szPname
+	UInteger wXmin
+	UInteger wXmax
+	UInteger wYmin
+	UInteger wYmax
+	UInteger wZmin
+	UInteger wZmax
+	UInteger wNumButtons
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+	UInteger wRmin
+	UInteger wRmax
+	UInteger wUmin
+	UInteger wUmax
+	UInteger wVmin
+	UInteger wVmax
+	UInteger wCaps
+	UInteger wMaxAxes
+	UInteger wNumAxes
+	UInteger wMaxButtons
+	UShort[32] szRegKey
+	UShort[260] szOEMVxD
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joyinfo
+Struct JOYINFO
+	UInteger wXpos
+	UInteger wYpos
+	UInteger wZpos
+	UInteger wButtons
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joyinfoex
+Struct JOYINFOEX
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwXpos
+	UInteger dwYpos
+	UInteger dwZpos
+	UInteger dwRpos
+	UInteger dwUpos
+	UInteger dwVpos
+	UInteger dwButtons
+	UInteger dwButtonNumber
+	UInteger dwPOV
+	UInteger dwReserved1
+	UInteger dwReserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/ns-mmiscapi-mmckinfo
+Struct MMCKINFO
+	UInteger ckid
+	UInteger cksize
+	UInteger fccType
+	UInteger dwDataOffset
+	UInteger dwFlags
+End_Struct
+
+Struct MMIOINFO
+	UInteger dwFlags
+	UInteger fccIOProc
+	Pointer pIOProc											// LPMMIOPROC
+	UInteger wErrorRet
+	Integer iMissingAlignment1
+	Pointer htask											// HTASK
+	Integer cchBuffer
+	Integer iMissingAlignment2
+	Pointer pchBuffer										// Char*
+	Pointer pchNext											// Char*
+	Pointer pchEndRead										// Char*
+	Pointer pchEndWrite										// Char*
+	Integer lBufOffset
+	Integer lDiskOffset
+	UInteger[3] adwInfo
+	UInteger dwReserved1
+	UInteger dwReserved2
+	Integer iMissingAlignment3
+	Pointer hmmio											// HMMIO
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

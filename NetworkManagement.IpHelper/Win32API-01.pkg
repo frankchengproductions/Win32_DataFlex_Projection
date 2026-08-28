@@ -1,0 +1,1272 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-addipaddress
+External_Function AddIPAddress "AddIPAddress" IPHLPAPI.dll ;
+	UInteger Address ;
+	UInteger IpMask ;
+	UInteger IfIndex ;
+	Pointer NTEContext ;	// UInteger*
+	Pointer NTEInstance ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-cancelipchangenotify
+External_Function CancelIPChangeNotify "CancelIPChangeNotify" IPHLPAPI.dll ;
+	Pointer notifyOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-cancelmibchangenotify2
+External_Function CancelMibChangeNotify2 "CancelMibChangeNotify2" IPHLPAPI.dll ;
+	Pointer NotificationHandle ;	// HANDLE
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-captureinterfacehardwarecrosstimestamp
+External_Function CaptureInterfaceHardwareCrossTimestamp "CaptureInterfaceHardwareCrossTimestamp" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer CrossTimestamp ;	// INTERFACE_HARDWARE_CROSSTIMESTAMP*
+	Returns UInteger
+
+External_Function ConvertCompartmentGuidToId "ConvertCompartmentGuidToId" IPHLPAPI.dll ;
+	Pointer CompartmentGuid ;	// Guid*
+	Pointer CompartmentId ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+External_Function ConvertCompartmentIdToGuid "ConvertCompartmentIdToGuid" IPHLPAPI.dll ;
+	UInteger CompartmentId ;	// NET_IF_COMPARTMENT_ID
+	Pointer CompartmentGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfacealiastoluid
+External_Function ConvertInterfaceAliasToLuid "ConvertInterfaceAliasToLuid" IPHLPAPI.dll ;
+	WString InterfaceAlias ;	// PWSTR
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceguidtoluid
+External_Function ConvertInterfaceGuidToLuid "ConvertInterfaceGuidToLuid" IPHLPAPI.dll ;
+	Pointer InterfaceGuid ;	// Guid*
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceindextoluid
+External_Function ConvertInterfaceIndexToLuid "ConvertInterfaceIndexToLuid" IPHLPAPI.dll ;
+	UInteger InterfaceIndex ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceluidtoalias
+External_Function ConvertInterfaceLuidToAlias "ConvertInterfaceLuidToAlias" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer InterfaceAlias ;	// PWSTR
+	ULongPtr Length ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceluidtoguid
+External_Function ConvertInterfaceLuidToGuid "ConvertInterfaceLuidToGuid" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer InterfaceGuid ;	// Guid*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceluidtoindex
+External_Function ConvertInterfaceLuidToIndex "ConvertInterfaceLuidToIndex" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer InterfaceIndex ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceluidtonamea
+External_Function ConvertInterfaceLuidToNameA "ConvertInterfaceLuidToNameA" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer InterfaceName ;	// PSTR
+	ULongPtr Length ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfaceluidtonamew
+External_Function ConvertInterfaceLuidToNameW "ConvertInterfaceLuidToNameW" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer InterfaceName ;	// PWSTR
+	ULongPtr Length ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfacenametoluida
+External_Function ConvertInterfaceNameToLuidA "ConvertInterfaceNameToLuidA" IPHLPAPI.dll ;
+	String InterfaceName ;	// PSTR
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertinterfacenametoluidw
+External_Function ConvertInterfaceNameToLuidW "ConvertInterfaceNameToLuidW" IPHLPAPI.dll ;
+	WString InterfaceName ;	// PWSTR
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertipv4masktolength
+External_Function ConvertIpv4MaskToLength "ConvertIpv4MaskToLength" IPHLPAPI.dll ;
+	UInteger Mask ;
+	Pointer MaskLength ;	// UChar*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-convertlengthtoipv4mask
+External_Function ConvertLengthToIpv4Mask "ConvertLengthToIpv4Mask" IPHLPAPI.dll ;
+	UInteger MaskLength ;
+	Pointer Mask ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-createanycastipaddressentry
+External_Function CreateAnycastIpAddressEntry "CreateAnycastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_ANYCASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-createipforwardentry
+External_Function CreateIpForwardEntry "CreateIpForwardEntry" IPHLPAPI.dll ;
+	Pointer pRoute ;	// MIB_IPFORWARDROW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-createipforwardentry2
+External_Function CreateIpForwardEntry2 "CreateIpForwardEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPFORWARD_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-createipnetentry
+External_Function CreateIpNetEntry "CreateIpNetEntry" IPHLPAPI.dll ;
+	Pointer pArpEntry ;	// MIB_IPNETROW_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-createipnetentry2
+External_Function CreateIpNetEntry2 "CreateIpNetEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPNET_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-createpersistenttcpportreservation
+External_Function CreatePersistentTcpPortReservation "CreatePersistentTcpPortReservation" IPHLPAPI.dll ;
+	UShort StartPort ;
+	UShort NumberOfPorts ;
+	Pointer Token ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-createpersistentudpportreservation
+External_Function CreatePersistentUdpPortReservation "CreatePersistentUdpPortReservation" IPHLPAPI.dll ;
+	UShort StartPort ;
+	UShort NumberOfPorts ;
+	Pointer Token ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-createproxyarpentry
+External_Function CreateProxyArpEntry "CreateProxyArpEntry" IPHLPAPI.dll ;
+	UInteger dwAddress ;
+	UInteger dwMask ;
+	UInteger dwIfIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-createsortedaddresspairs
+External_Function CreateSortedAddressPairs "CreateSortedAddressPairs" IPHLPAPI.dll ;
+	Pointer SourceAddressList ;	// SOCKADDR_IN6*
+	UInteger SourceAddressCount ;
+	Pointer DestinationAddressList ;	// SOCKADDR_IN6*
+	UInteger DestinationAddressCount ;
+	UInteger AddressSortOptions ;
+	Pointer SortedAddressPairList ;	// SOCKADDR_IN6_PAIR**
+	Pointer SortedAddressPairCount ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-createunicastipaddressentry
+External_Function CreateUnicastIpAddressEntry "CreateUnicastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_UNICASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-deleteanycastipaddressentry
+External_Function DeleteAnycastIpAddressEntry "DeleteAnycastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_ANYCASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-deleteipaddress
+External_Function DeleteIPAddress "DeleteIPAddress" IPHLPAPI.dll ;
+	UInteger NTEContext ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-deleteipforwardentry
+External_Function DeleteIpForwardEntry "DeleteIpForwardEntry" IPHLPAPI.dll ;
+	Pointer pRoute ;	// MIB_IPFORWARDROW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-deleteipforwardentry2
+External_Function DeleteIpForwardEntry2 "DeleteIpForwardEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPFORWARD_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-deleteipnetentry
+External_Function DeleteIpNetEntry "DeleteIpNetEntry" IPHLPAPI.dll ;
+	Pointer pArpEntry ;	// MIB_IPNETROW_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-deleteipnetentry2
+External_Function DeleteIpNetEntry2 "DeleteIpNetEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPNET_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-deletepersistenttcpportreservation
+External_Function DeletePersistentTcpPortReservation "DeletePersistentTcpPortReservation" IPHLPAPI.dll ;
+	UShort StartPort ;
+	UShort NumberOfPorts ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-deletepersistentudpportreservation
+External_Function DeletePersistentUdpPortReservation "DeletePersistentUdpPortReservation" IPHLPAPI.dll ;
+	UShort StartPort ;
+	UShort NumberOfPorts ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-deleteproxyarpentry
+External_Function DeleteProxyArpEntry "DeleteProxyArpEntry" IPHLPAPI.dll ;
+	UInteger dwAddress ;
+	UInteger dwMask ;
+	UInteger dwIfIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-deleteunicastipaddressentry
+External_Function DeleteUnicastIpAddressEntry "DeleteUnicastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_UNICASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-disablemediasense
+External_Function DisableMediaSense "DisableMediaSense" IPHLPAPI.dll ;
+	Pointer pHandle ;	// HANDLE*
+	Pointer pOverLapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-enablerouter
+External_Function EnableRouter "EnableRouter" IPHLPAPI.dll ;
+	Pointer pHandle ;	// HANDLE*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-flushipnettable
+External_Function FlushIpNetTable "FlushIpNetTable" IPHLPAPI.dll ;
+	UInteger dwIfIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-flushipnettable2
+External_Function FlushIpNetTable2 "FlushIpNetTable2" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	UInteger InterfaceIndex ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-flushippathtable
+External_Function FlushIpPathTable "FlushIpPathTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Returns UInteger	// WIN32_ERROR
+
+External_Function FreeDnsSettings "FreeDnsSettings" IPHLPAPI.dll ;
+	Pointer Settings ;	// DNS_SETTINGS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-freeinterfacednssettings
+External_Function FreeInterfaceDnsSettings "FreeInterfaceDnsSettings" IPHLPAPI.dll ;
+	Pointer Settings ;	// DNS_INTERFACE_SETTINGS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-freemibtable
+External_Function FreeMibTable "FreeMibTable" IPHLPAPI.dll ;
+	Pointer Memory ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getadapterindex
+External_Function GetAdapterIndex "GetAdapterIndex" IPHLPAPI.dll ;
+	WString AdapterName ;	// PWSTR
+	Pointer IfIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getadapterordermap
+External_Function GetAdapterOrderMap "GetAdapterOrderMap" IPHLPAPI.dll ;
+	Returns Pointer	// IP_ADAPTER_ORDER_MAP*
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getadaptersaddresses
+External_Function GetAdaptersAddresses "GetAdaptersAddresses" IPHLPAPI.dll ;
+	UInteger Family ;
+	UInteger Flags ;	// GET_ADAPTERS_ADDRESSES_FLAGS
+	Pointer Reserved ;	// Pointer*
+	Pointer AdapterAddresses ;	// IP_ADAPTER_ADDRESSES_LH*
+	Pointer SizePointer ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getadaptersinfo
+External_Function GetAdaptersInfo "GetAdaptersInfo" IPHLPAPI.dll ;
+	Pointer AdapterInfo ;	// IP_ADAPTER_INFO*
+	Pointer SizePointer ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getanycastipaddressentry
+External_Function GetAnycastIpAddressEntry "GetAnycastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_ANYCASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getanycastipaddresstable
+External_Function GetAnycastIpAddressTable "GetAnycastIpAddressTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_ANYCASTIPADDRESS_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getbestinterface
+External_Function GetBestInterface "GetBestInterface" IPHLPAPI.dll ;
+	UInteger dwDestAddr ;
+	Pointer pdwBestIfIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getbestinterfaceex
+External_Function GetBestInterfaceEx "GetBestInterfaceEx" IPHLPAPI.dll ;
+	Pointer pDestAddr ;	// SOCKADDR*
+	Pointer pdwBestIfIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getbestroute
+External_Function GetBestRoute "GetBestRoute" IPHLPAPI.dll ;
+	UInteger dwDestAddr ;
+	UInteger dwSourceAddr ;
+	Pointer pBestRoute ;	// MIB_IPFORWARDROW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getbestroute2
+External_Function GetBestRoute2 "GetBestRoute2" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	UInteger InterfaceIndex ;
+	Pointer SourceAddress ;	// SOCKADDR_INET*
+	Pointer DestinationAddress ;	// SOCKADDR_INET*
+	UInteger AddressSortOptions ;
+	Pointer BestRoute ;	// MIB_IPFORWARD_ROW2*
+	Pointer BestSourceAddress ;	// SOCKADDR_INET*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getcurrentthreadcompartmentid
+External_Function GetCurrentThreadCompartmentId "GetCurrentThreadCompartmentId" IPHLPAPI.dll ;
+	Returns UInteger	// NET_IF_COMPARTMENT_ID
+
+External_Function GetCurrentThreadCompartmentScope "GetCurrentThreadCompartmentScope" IPHLPAPI.dll ;
+	Pointer CompartmentScope ;	// UInteger*
+	Pointer CompartmentId ;	// UInteger*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getdefaultcompartmentid
+External_Function GetDefaultCompartmentId "GetDefaultCompartmentId" IPHLPAPI.dll ;
+	Returns UInteger	// NET_IF_COMPARTMENT_ID
+
+External_Function GetDnsSettings "GetDnsSettings" IPHLPAPI.dll ;
+	Pointer Settings ;	// DNS_SETTINGS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getextendedtcptable
+External_Function GetExtendedTcpTable "GetExtendedTcpTable" IPHLPAPI.dll ;
+	Pointer pTcpTable ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Integer bOrder ;	// BOOL
+	UInteger ulAf ;
+	Integer TableClass ;	// TCP_TABLE_CLASS
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getextendedudptable
+External_Function GetExtendedUdpTable "GetExtendedUdpTable" IPHLPAPI.dll ;
+	Pointer pUdpTable ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Integer bOrder ;	// BOOL
+	UInteger ulAf ;
+	Integer TableClass ;	// UDP_TABLE_CLASS
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getfriendlyifindex
+External_Function GetFriendlyIfIndex "GetFriendlyIfIndex" IPHLPAPI.dll ;
+	UInteger IfIndex ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-geticmpstatistics
+External_Function GetIcmpStatistics "GetIcmpStatistics" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_ICMP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-geticmpstatisticsex
+External_Function GetIcmpStatisticsEx "GetIcmpStatisticsEx" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_ICMP_EX_XPSP1*
+	UInteger Family ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getifentry
+External_Function GetIfEntry "GetIfEntry" IPHLPAPI.dll ;
+	Pointer pIfRow ;	// MIB_IFROW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getifentry2
+External_Function GetIfEntry2 "GetIfEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IF_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getifentry2ex
+External_Function GetIfEntry2Ex "GetIfEntry2Ex" IPHLPAPI.dll ;
+	Integer Level ;	// MIB_IF_ENTRY_LEVEL
+	Pointer Row ;	// MIB_IF_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getifstacktable
+External_Function GetIfStackTable "GetIfStackTable" IPHLPAPI.dll ;
+	Pointer Table ;	// MIB_IFSTACK_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getiftable
+External_Function GetIfTable "GetIfTable" IPHLPAPI.dll ;
+	Pointer pIfTable ;	// MIB_IFTABLE*
+	Pointer pdwSize ;	// UInteger*
+	Integer bOrder ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getiftable2
+External_Function GetIfTable2 "GetIfTable2" IPHLPAPI.dll ;
+	Pointer Table ;	// MIB_IF_TABLE2**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getiftable2ex
+External_Function GetIfTable2Ex "GetIfTable2Ex" IPHLPAPI.dll ;
+	Integer Level ;	// MIB_IF_TABLE_LEVEL
+	Pointer Table ;	// MIB_IF_TABLE2**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getinterfaceactivetimestampcapabilities
+External_Function GetInterfaceActiveTimestampCapabilities "GetInterfaceActiveTimestampCapabilities" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer TimestampCapabilites ;	// INTERFACE_TIMESTAMP_CAPABILITIES*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getinterfacednssettings
+External_Function GetInterfaceDnsSettings "GetInterfaceDnsSettings" IPHLPAPI.dll ;
+	Guid Interface ;
+	Pointer Settings ;	// DNS_INTERFACE_SETTINGS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getinterfaceinfo
+External_Function GetInterfaceInfo "GetInterfaceInfo" IPHLPAPI.dll ;
+	Pointer pIfTable ;	// IP_INTERFACE_INFO*
+	Pointer dwOutBufLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getinterfacesupportedtimestampcapabilities
+External_Function GetInterfaceSupportedTimestampCapabilities "GetInterfaceSupportedTimestampCapabilities" IPHLPAPI.dll ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer TimestampCapabilites ;	// INTERFACE_TIMESTAMP_CAPABILITIES*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getinvertedifstacktable
+External_Function GetInvertedIfStackTable "GetInvertedIfStackTable" IPHLPAPI.dll ;
+	Pointer Table ;	// MIB_INVERTEDIFSTACK_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getipaddrtable
+External_Function GetIpAddrTable "GetIpAddrTable" IPHLPAPI.dll ;
+	Pointer pIpAddrTable ;	// MIB_IPADDRTABLE*
+	Pointer pdwSize ;	// UInteger*
+	Integer bOrder ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getiperrorstring
+External_Function GetIpErrorString "GetIpErrorString" IPHLPAPI.dll ;
+	UInteger ErrorCode ;
+	Pointer Buffer ;	// PWSTR
+	Pointer Size ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipforwardentry2
+External_Function GetIpForwardEntry2 "GetIpForwardEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPFORWARD_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getipforwardtable
+External_Function GetIpForwardTable "GetIpForwardTable" IPHLPAPI.dll ;
+	Pointer pIpForwardTable ;	// MIB_IPFORWARDTABLE*
+	Pointer pdwSize ;	// UInteger*
+	Integer bOrder ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipforwardtable2
+External_Function GetIpForwardTable2 "GetIpForwardTable2" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_IPFORWARD_TABLE2**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipinterfaceentry
+External_Function GetIpInterfaceEntry "GetIpInterfaceEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPINTERFACE_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipinterfacetable
+External_Function GetIpInterfaceTable "GetIpInterfaceTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_IPINTERFACE_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipnetentry2
+External_Function GetIpNetEntry2 "GetIpNetEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPNET_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getipnettable
+External_Function GetIpNetTable "GetIpNetTable" IPHLPAPI.dll ;
+	Pointer IpNetTable ;	// MIB_IPNETTABLE*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipnettable2
+External_Function GetIpNetTable2 "GetIpNetTable2" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_IPNET_TABLE2**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getipnetworkconnectionbandwidthestimates
+External_Function GetIpNetworkConnectionBandwidthEstimates "GetIpNetworkConnectionBandwidthEstimates" IPHLPAPI.dll ;
+	UInteger InterfaceIndex ;
+	UShort AddressFamily ;	// ADDRESS_FAMILY
+	Pointer BandwidthEstimates ;	// MIB_IP_NETWORK_CONNECTION_BANDWIDTH_ESTIMATES*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getippathentry
+External_Function GetIpPathEntry "GetIpPathEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPPATH_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getippathtable
+External_Function GetIpPathTable "GetIpPathTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_IPPATH_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getipstatistics
+External_Function GetIpStatistics "GetIpStatistics" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_IPSTATS_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getipstatisticsex
+External_Function GetIpStatisticsEx "GetIpStatisticsEx" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_IPSTATS_LH*
+	UInteger Family ;
+	Returns UInteger
+
+External_Function GetJobCompartmentId "GetJobCompartmentId" IPHLPAPI.dll ;
+	Pointer JobHandle ;	// HANDLE
+	Returns UInteger	// NET_IF_COMPARTMENT_ID
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getmulticastipaddressentry
+External_Function GetMulticastIpAddressEntry "GetMulticastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_MULTICASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getmulticastipaddresstable
+External_Function GetMulticastIpAddressTable "GetMulticastIpAddressTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_MULTICASTIPADDRESS_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getnetworkconnectivityhint
+External_Function GetNetworkConnectivityHint "GetNetworkConnectivityHint" IPHLPAPI.dll ;
+	Pointer ConnectivityHint ;	// NL_NETWORK_CONNECTIVITY_HINT*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getnetworkconnectivityhintforinterface
+External_Function GetNetworkConnectivityHintForInterface "GetNetworkConnectivityHintForInterface" IPHLPAPI.dll ;
+	UInteger InterfaceIndex ;
+	Pointer ConnectivityHint ;	// NL_NETWORK_CONNECTIVITY_HINT*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getnetworkinformation
+External_Function GetNetworkInformation "GetNetworkInformation" IPHLPAPI.dll ;
+	Pointer NetworkGuid ;	// Guid*
+	Pointer CompartmentId ;	// UInteger*
+	Pointer SiteId ;	// UInteger*
+	Pointer NetworkName ;	// PWSTR
+	UInteger Length ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getnetworkparams
+External_Function GetNetworkParams "GetNetworkParams" IPHLPAPI.dll ;
+	Pointer pFixedInfo ;	// FIXED_INFO_W2KSP1*
+	Pointer pOutBufLen ;	// UInteger*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getnumberofinterfaces
+External_Function GetNumberOfInterfaces "GetNumberOfInterfaces" IPHLPAPI.dll ;
+	Pointer pdwNumIf ;	// UInteger*
+	Returns UInteger
+
+External_Function GetOwnerModuleFromPidAndInfo "GetOwnerModuleFromPidAndInfo" IPHLPAPI.dll ;
+	UInteger ulPid ;
+	Pointer pInfo ;	// UBigint*
+	Integer Class ;	// TCPIP_OWNER_MODULE_INFO_CLASS
+	Pointer pBuffer ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getownermodulefromtcp6entry
+External_Function GetOwnerModuleFromTcp6Entry "GetOwnerModuleFromTcp6Entry" IPHLPAPI.dll ;
+	Pointer pTcpEntry ;	// MIB_TCP6ROW_OWNER_MODULE*
+	Integer Class ;	// TCPIP_OWNER_MODULE_INFO_CLASS
+	Pointer pBuffer ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getownermodulefromtcpentry
+External_Function GetOwnerModuleFromTcpEntry "GetOwnerModuleFromTcpEntry" IPHLPAPI.dll ;
+	Pointer pTcpEntry ;	// MIB_TCPROW_OWNER_MODULE*
+	Integer Class ;	// TCPIP_OWNER_MODULE_INFO_CLASS
+	Pointer pBuffer ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getownermodulefromudp6entry
+External_Function GetOwnerModuleFromUdp6Entry "GetOwnerModuleFromUdp6Entry" IPHLPAPI.dll ;
+	Pointer pUdpEntry ;	// MIB_UDP6ROW_OWNER_MODULE*
+	Integer Class ;	// TCPIP_OWNER_MODULE_INFO_CLASS
+	Pointer pBuffer ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getownermodulefromudpentry
+External_Function GetOwnerModuleFromUdpEntry "GetOwnerModuleFromUdpEntry" IPHLPAPI.dll ;
+	Pointer pUdpEntry ;	// MIB_UDPROW_OWNER_MODULE*
+	Integer Class ;	// TCPIP_OWNER_MODULE_INFO_CLASS
+	Pointer pBuffer ;	// Pointer*
+	Pointer pdwSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getperadapterinfo
+External_Function GetPerAdapterInfo "GetPerAdapterInfo" IPHLPAPI.dll ;
+	UInteger IfIndex ;
+	Pointer pPerAdapterInfo ;	// IP_PER_ADAPTER_INFO_W2KSP1*
+	Pointer pOutBufLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getpertcp6connectionestats
+External_Function GetPerTcp6ConnectionEStats "GetPerTcp6ConnectionEStats" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_TCP6ROW*
+	Integer EstatsType ;	// TCP_ESTATS_TYPE
+	Pointer Rw ;	// UChar*
+	UInteger RwVersion ;
+	UInteger RwSize ;
+	Pointer Ros ;	// UChar*
+	UInteger RosVersion ;
+	UInteger RosSize ;
+	Pointer Rod ;	// UChar*
+	UInteger RodVersion ;
+	UInteger RodSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getpertcpconnectionestats
+External_Function GetPerTcpConnectionEStats "GetPerTcpConnectionEStats" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_TCPROW_LH*
+	Integer EstatsType ;	// TCP_ESTATS_TYPE
+	Pointer Rw ;	// UChar*
+	UInteger RwVersion ;
+	UInteger RwSize ;
+	Pointer Ros ;	// UChar*
+	UInteger RosVersion ;
+	UInteger RosSize ;
+	Pointer Rod ;	// UChar*
+	UInteger RodVersion ;
+	UInteger RodSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getrttandhopcount
+External_Function GetRTTAndHopCount "GetRTTAndHopCount" IPHLPAPI.dll ;
+	UInteger DestIpAddress ;
+	Pointer HopCount ;	// UInteger*
+	UInteger MaxHops ;
+	Pointer RTT ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getsessioncompartmentid
+External_Function GetSessionCompartmentId "GetSessionCompartmentId" IPHLPAPI.dll ;
+	UInteger SessionId ;
+	Returns UInteger	// NET_IF_COMPARTMENT_ID
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcp6table
+External_Function GetTcp6Table "GetTcp6Table" IPHLPAPI.dll ;
+	Pointer TcpTable ;	// MIB_TCP6TABLE*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcp6table2
+External_Function GetTcp6Table2 "GetTcp6Table2" IPHLPAPI.dll ;
+	Pointer TcpTable ;	// MIB_TCP6TABLE2*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcpstatistics
+External_Function GetTcpStatistics "GetTcpStatistics" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_TCPSTATS_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcpstatisticsex
+External_Function GetTcpStatisticsEx "GetTcpStatisticsEx" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_TCPSTATS_LH*
+	UInteger Family ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcpstatisticsex2
+External_Function GetTcpStatisticsEx2 "GetTcpStatisticsEx2" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_TCPSTATS2*
+	UInteger Family ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcptable
+External_Function GetTcpTable "GetTcpTable" IPHLPAPI.dll ;
+	Pointer TcpTable ;	// MIB_TCPTABLE*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-gettcptable2
+External_Function GetTcpTable2 "GetTcpTable2" IPHLPAPI.dll ;
+	Pointer TcpTable ;	// MIB_TCPTABLE2*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getteredoport
+External_Function GetTeredoPort "GetTeredoPort" IPHLPAPI.dll ;
+	Pointer Port ;	// UShort*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getudp6table
+External_Function GetUdp6Table "GetUdp6Table" IPHLPAPI.dll ;
+	Pointer Udp6Table ;	// MIB_UDP6TABLE*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getudpstatistics
+External_Function GetUdpStatistics "GetUdpStatistics" IPHLPAPI.dll ;
+	Pointer Stats ;	// MIB_UDPSTATS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getudpstatisticsex
+External_Function GetUdpStatisticsEx "GetUdpStatisticsEx" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_UDPSTATS*
+	UInteger Family ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getudpstatisticsex2
+External_Function GetUdpStatisticsEx2 "GetUdpStatisticsEx2" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_UDPSTATS2*
+	UInteger Family ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getudptable
+External_Function GetUdpTable "GetUdpTable" IPHLPAPI.dll ;
+	Pointer UdpTable ;	// MIB_UDPTABLE*
+	Pointer SizePointer ;	// UInteger*
+	Integer Order ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getunidirectionaladapterinfo
+External_Function GetUniDirectionalAdapterInfo "GetUniDirectionalAdapterInfo" IPHLPAPI.dll ;
+	Pointer pIPIfInfo ;	// IP_UNIDIRECTIONAL_ADAPTER_ADDRESS*
+	Pointer dwOutBufLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getunicastipaddressentry
+External_Function GetUnicastIpAddressEntry "GetUnicastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_UNICASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getunicastipaddresstable
+External_Function GetUnicastIpAddressTable "GetUnicastIpAddressTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_UNICASTIPADDRESS_TABLE**
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmp6createfile
+External_Function Icmp6CreateFile "Icmp6CreateFile" IPHLPAPI.dll ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmp6parsereplies
+External_Function Icmp6ParseReplies "Icmp6ParseReplies" IPHLPAPI.dll ;
+	Pointer ReplyBuffer ;	// Pointer*
+	UInteger ReplySize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmp6sendecho2
+External_Function Icmp6SendEcho2 "Icmp6SendEcho2" IPHLPAPI.dll ;
+	Pointer IcmpHandle ;	// HANDLE
+	Pointer Event ;	// HANDLE
+	Pointer ApcRoutine ;	// PIO_APC_ROUTINE
+	Pointer ApcContext ;	// Pointer*
+	Pointer SourceAddress ;	// SOCKADDR_IN6*
+	Pointer DestinationAddress ;	// SOCKADDR_IN6*
+	Pointer RequestData ;	// Pointer*
+	UShort RequestSize ;
+	Pointer RequestOptions ;	// IP_OPTION_INFORMATION*
+	Pointer ReplyBuffer ;	// Pointer*
+	UInteger ReplySize ;
+	UInteger Timeout ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmpclosehandle
+External_Function IcmpCloseHandle "IcmpCloseHandle" IPHLPAPI.dll ;
+	Pointer IcmpHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmpcreatefile
+External_Function IcmpCreateFile "IcmpCreateFile" IPHLPAPI.dll ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmpparsereplies
+External_Function IcmpParseReplies "IcmpParseReplies" IPHLPAPI.dll ;
+	Pointer ReplyBuffer ;	// Pointer*
+	UInteger ReplySize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmpsendecho
+External_Function IcmpSendEcho "IcmpSendEcho" IPHLPAPI.dll ;
+	Pointer IcmpHandle ;	// HANDLE
+	UInteger DestinationAddress ;
+	Pointer RequestData ;	// Pointer*
+	UShort RequestSize ;
+	Pointer RequestOptions ;	// IP_OPTION_INFORMATION*
+	Pointer ReplyBuffer ;	// Pointer*
+	UInteger ReplySize ;
+	UInteger Timeout ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmpsendecho2
+External_Function IcmpSendEcho2 "IcmpSendEcho2" IPHLPAPI.dll ;
+	Pointer IcmpHandle ;	// HANDLE
+	Pointer Event ;	// HANDLE
+	Pointer ApcRoutine ;	// PIO_APC_ROUTINE
+	Pointer ApcContext ;	// Pointer*
+	UInteger DestinationAddress ;
+	Pointer RequestData ;	// Pointer*
+	UShort RequestSize ;
+	Pointer RequestOptions ;	// IP_OPTION_INFORMATION*
+	Pointer ReplyBuffer ;	// Pointer*
+	UInteger ReplySize ;
+	UInteger Timeout ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/icmpapi/nf-icmpapi-icmpsendecho2ex
+External_Function IcmpSendEcho2Ex "IcmpSendEcho2Ex" IPHLPAPI.dll ;
+	Pointer IcmpHandle ;	// HANDLE
+	Pointer Event ;	// HANDLE
+	Pointer ApcRoutine ;	// PIO_APC_ROUTINE
+	Pointer ApcContext ;	// Pointer*
+	UInteger SourceAddress ;
+	UInteger DestinationAddress ;
+	Pointer RequestData ;	// Pointer*
+	UShort RequestSize ;
+	Pointer RequestOptions ;	// IP_OPTION_INFORMATION*
+	Pointer ReplyBuffer ;	// Pointer*
+	UInteger ReplySize ;
+	UInteger Timeout ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-initializeipforwardentry
+External_Function InitializeIpForwardEntry "InitializeIpForwardEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPFORWARD_ROW2*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-initializeipinterfaceentry
+External_Function InitializeIpInterfaceEntry "InitializeIpInterfaceEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPINTERFACE_ROW*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-initializeunicastipaddressentry
+External_Function InitializeUnicastIpAddressEntry "InitializeUnicastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_UNICASTIPADDRESS_ROW*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-ipreleaseaddress
+External_Function IpReleaseAddress "IpReleaseAddress" IPHLPAPI.dll ;
+	Pointer AdapterInfo ;	// IP_ADAPTER_INDEX_MAP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-iprenewaddress
+External_Function IpRenewAddress "IpRenewAddress" IPHLPAPI.dll ;
+	Pointer AdapterInfo ;	// IP_ADAPTER_INDEX_MAP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-lookuppersistenttcpportreservation
+External_Function LookupPersistentTcpPortReservation "LookupPersistentTcpPortReservation" IPHLPAPI.dll ;
+	UShort StartPort ;
+	UShort NumberOfPorts ;
+	Pointer Token ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-lookuppersistentudpportreservation
+External_Function LookupPersistentUdpPortReservation "LookupPersistentUdpPortReservation" IPHLPAPI.dll ;
+	UShort StartPort ;
+	UShort NumberOfPorts ;
+	Pointer Token ;	// UBigint*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-nhpallocateandgetinterfaceinfofromstack
+External_Function NhpAllocateAndGetInterfaceInfoFromStack "NhpAllocateAndGetInterfaceInfoFromStack" IPHLPAPI.dll ;
+	Pointer ppTable ;	// IP_INTERFACE_NAME_INFO_W2KSP1**
+	Pointer pdwCount ;	// UInteger*
+	Integer bOrder ;	// BOOL
+	Pointer hHeap ;	// HANDLE
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-notifyaddrchange
+External_Function NotifyAddrChange "NotifyAddrChange" IPHLPAPI.dll ;
+	Pointer Handle ;	// HANDLE*
+	Pointer overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-notifyipinterfacechange
+External_Function NotifyIpInterfaceChange "NotifyIpInterfaceChange" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Callback ;	// PIPINTERFACE_CHANGE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	UChar InitialNotification ;	// BOOLEAN
+	Pointer NotificationHandle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-notifynetworkconnectivityhintchange
+External_Function NotifyNetworkConnectivityHintChange "NotifyNetworkConnectivityHintChange" IPHLPAPI.dll ;
+	Pointer Callback ;	// PNETWORK_CONNECTIVITY_HINT_CHANGE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	UChar InitialNotification ;	// BOOLEAN
+	Pointer NotificationHandle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-notifyroutechange
+External_Function NotifyRouteChange "NotifyRouteChange" IPHLPAPI.dll ;
+	Pointer Handle ;	// HANDLE*
+	Pointer overlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-notifyroutechange2
+External_Function NotifyRouteChange2 "NotifyRouteChange2" IPHLPAPI.dll ;
+	UShort AddressFamily ;	// ADDRESS_FAMILY
+	Pointer Callback ;	// PIPFORWARD_CHANGE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	UChar InitialNotification ;	// BOOLEAN
+	Pointer NotificationHandle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-notifystableunicastipaddresstable
+External_Function NotifyStableUnicastIpAddressTable "NotifyStableUnicastIpAddressTable" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_UNICASTIPADDRESS_TABLE**
+	Pointer CallerCallback ;	// PSTABLE_UNICAST_IPADDRESS_TABLE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	Pointer NotificationHandle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-notifyteredoportchange
+External_Function NotifyTeredoPortChange "NotifyTeredoPortChange" IPHLPAPI.dll ;
+	Pointer Callback ;	// PTEREDO_PORT_CHANGE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	UChar InitialNotification ;	// BOOLEAN
+	Pointer NotificationHandle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-notifyunicastipaddresschange
+External_Function NotifyUnicastIpAddressChange "NotifyUnicastIpAddressChange" IPHLPAPI.dll ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Callback ;	// PUNICAST_IPADDRESS_CHANGE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	UChar InitialNotification ;	// BOOLEAN
+	Pointer NotificationHandle ;	// HANDLE*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-parsenetworkstring
+External_Function ParseNetworkString "ParseNetworkString" IPHLPAPI.dll ;
+	WString NetworkString ;	// PWSTR
+	UInteger Types ;
+	Pointer AddressInfo ;	// NET_ADDRESS_INFO*
+	Pointer PortNumber ;	// UShort*
+	Pointer PrefixLength ;	// UChar*
+	Returns UInteger
+
+External_Function PfAddFiltersToInterface "PfAddFiltersToInterface" IPHLPAPI.dll ;
+	Pointer ih ;	// Pointer*
+	UInteger cInFilters ;
+	Pointer pfiltIn ;	// PF_FILTER_DESCRIPTOR*
+	UInteger cOutFilters ;
+	Pointer pfiltOut ;	// PF_FILTER_DESCRIPTOR*
+	Pointer pfHandle ;	// Pointer**
+	Returns UInteger
+
+External_Function PfAddGlobalFilterToInterface "PfAddGlobalFilterToInterface" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Integer gfFilter ;	// GLOBAL_FILTER
+	Returns UInteger
+
+External_Function PfBindInterfaceToIPAddress "PfBindInterfaceToIPAddress" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Integer pfatType ;	// PFADDRESSTYPE
+	Pointer IPAddress ;	// UChar*
+	Returns UInteger
+
+External_Function PfBindInterfaceToIndex "PfBindInterfaceToIndex" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	UInteger dwIndex ;
+	Integer pfatLinkType ;	// PFADDRESSTYPE
+	Pointer LinkIPAddress ;	// UChar*
+	Returns UInteger
+
+External_Function PfCreateInterface "PfCreateInterface" IPHLPAPI.dll ;
+	UInteger dwName ;
+	Integer inAction ;	// PFFORWARD_ACTION
+	Integer outAction ;	// PFFORWARD_ACTION
+	Integer bUseLog ;	// BOOL
+	Integer bMustBeUnique ;	// BOOL
+	Pointer ppInterface ;	// Pointer**
+	Returns UInteger
+
+External_Function PfDeleteInterface "PfDeleteInterface" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Returns UInteger
+
+External_Function PfDeleteLog "PfDeleteLog" IPHLPAPI.dll ;
+	Returns UInteger
+
+External_Function PfGetInterfaceStatistics "PfGetInterfaceStatistics" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Pointer ppfStats ;	// PF_INTERFACE_STATS*
+	Pointer pdwBufferSize ;	// UInteger*
+	Integer fResetCounters ;	// BOOL
+	Returns UInteger
+
+External_Function PfMakeLog "PfMakeLog" IPHLPAPI.dll ;
+	Pointer hEvent ;	// HANDLE
+	Returns UInteger
+
+External_Function PfRebindFilters "PfRebindFilters" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Pointer pLateBindInfo ;	// PF_LATEBIND_INFO*
+	Returns UInteger
+
+External_Function PfRemoveFilterHandles "PfRemoveFilterHandles" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	UInteger cFilters ;
+	Pointer pvHandles ;	// Pointer**
+	Returns UInteger
+
+External_Function PfRemoveFiltersFromInterface "PfRemoveFiltersFromInterface" IPHLPAPI.dll ;
+	Pointer ih ;	// Pointer*
+	UInteger cInFilters ;
+	Pointer pfiltIn ;	// PF_FILTER_DESCRIPTOR*
+	UInteger cOutFilters ;
+	Pointer pfiltOut ;	// PF_FILTER_DESCRIPTOR*
+	Returns UInteger
+
+External_Function PfRemoveGlobalFilterFromInterface "PfRemoveGlobalFilterFromInterface" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Integer gfFilter ;	// GLOBAL_FILTER
+	Returns UInteger
+
+External_Function PfSetLogBuffer "PfSetLogBuffer" IPHLPAPI.dll ;
+	Pointer pbBuffer ;	// UChar*
+	UInteger dwSize ;
+	UInteger dwThreshold ;
+	UInteger dwEntries ;
+	Pointer pdwLoggedEntries ;	// UInteger*
+	Pointer pdwLostEntries ;	// UInteger*
+	Pointer pdwSizeUsed ;	// UInteger*
+	Returns UInteger
+
+External_Function PfTestPacket "PfTestPacket" IPHLPAPI.dll ;
+	Pointer pInInterface ;	// Pointer*
+	Pointer pOutInterface ;	// Pointer*
+	UInteger cBytes ;
+	Pointer pbPacket ;	// UChar*
+	Pointer ppAction ;	// PFFORWARD_ACTION*
+	Returns UInteger
+
+External_Function PfUnBindInterface "PfUnBindInterface" IPHLPAPI.dll ;
+	Pointer pInterface ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-registerinterfacetimestampconfigchange
+External_Function RegisterInterfaceTimestampConfigChange "RegisterInterfaceTimestampConfigChange" IPHLPAPI.dll ;
+	Pointer Callback ;	// PINTERFACE_TIMESTAMP_CONFIG_CHANGE_CALLBACK
+	Pointer CallerContext ;	// Pointer*
+	Pointer NotificationHandle ;	// HIFTIMESTAMPCHANGE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-resolveipnetentry2
+External_Function ResolveIpNetEntry2 "ResolveIpNetEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPNET_ROW2*
+	Pointer SourceAddress ;	// SOCKADDR_INET*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-resolveneighbor
+External_Function ResolveNeighbor "ResolveNeighbor" IPHLPAPI.dll ;
+	Pointer NetworkAddress ;	// SOCKADDR*
+	Pointer PhysicalAddress ;	// Pointer*
+	Pointer PhysicalAddressLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-restoremediasense
+External_Function RestoreMediaSense "RestoreMediaSense" IPHLPAPI.dll ;
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Pointer lpdwEnableCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-sendarp
+External_Function SendARP "SendARP" IPHLPAPI.dll ;
+	UInteger DestIP ;
+	UInteger SrcIP ;
+	Pointer pMacAddr ;	// Pointer*
+	Pointer PhyAddrLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setcurrentthreadcompartmentid
+External_Function SetCurrentThreadCompartmentId "SetCurrentThreadCompartmentId" IPHLPAPI.dll ;
+	UInteger CompartmentId ;	// NET_IF_COMPARTMENT_ID
+	Returns UInteger	// WIN32_ERROR
+
+External_Function SetCurrentThreadCompartmentScope "SetCurrentThreadCompartmentScope" IPHLPAPI.dll ;
+	UInteger CompartmentScope ;
+	Returns UInteger	// WIN32_ERROR
+
+External_Function SetDnsSettings "SetDnsSettings" IPHLPAPI.dll ;
+	Pointer Settings ;	// DNS_SETTINGS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setifentry
+External_Function SetIfEntry "SetIfEntry" IPHLPAPI.dll ;
+	Pointer pIfRow ;	// MIB_IFROW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setinterfacednssettings
+External_Function SetInterfaceDnsSettings "SetInterfaceDnsSettings" IPHLPAPI.dll ;
+	Guid Interface ;
+	Pointer Settings ;	// DNS_INTERFACE_SETTINGS*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setipforwardentry
+External_Function SetIpForwardEntry "SetIpForwardEntry" IPHLPAPI.dll ;
+	Pointer pRoute ;	// MIB_IPFORWARDROW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setipforwardentry2
+External_Function SetIpForwardEntry2 "SetIpForwardEntry2" IPHLPAPI.dll ;
+	Pointer Route ;	// MIB_IPFORWARD_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setipinterfaceentry
+External_Function SetIpInterfaceEntry "SetIpInterfaceEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPINTERFACE_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setipnetentry
+External_Function SetIpNetEntry "SetIpNetEntry" IPHLPAPI.dll ;
+	Pointer pArpEntry ;	// MIB_IPNETROW_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setipnetentry2
+External_Function SetIpNetEntry2 "SetIpNetEntry2" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_IPNET_ROW2*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setipstatistics
+External_Function SetIpStatistics "SetIpStatistics" IPHLPAPI.dll ;
+	Pointer pIpStats ;	// MIB_IPSTATS_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setipstatisticsex
+External_Function SetIpStatisticsEx "SetIpStatisticsEx" IPHLPAPI.dll ;
+	Pointer Statistics ;	// MIB_IPSTATS_LH*
+	UInteger Family ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setipttl
+External_Function SetIpTTL "SetIpTTL" IPHLPAPI.dll ;
+	UInteger nTTL ;
+	Returns UInteger
+
+External_Function SetJobCompartmentId "SetJobCompartmentId" IPHLPAPI.dll ;
+	Pointer JobHandle ;	// HANDLE
+	UInteger CompartmentId ;	// NET_IF_COMPARTMENT_ID
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setnetworkinformation
+External_Function SetNetworkInformation "SetNetworkInformation" IPHLPAPI.dll ;
+	Pointer NetworkGuid ;	// Guid*
+	UInteger CompartmentId ;	// NET_IF_COMPARTMENT_ID
+	WString NetworkName ;	// PWSTR
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setpertcp6connectionestats
+External_Function SetPerTcp6ConnectionEStats "SetPerTcp6ConnectionEStats" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_TCP6ROW*
+	Integer EstatsType ;	// TCP_ESTATS_TYPE
+	Pointer Rw ;	// UChar*
+	UInteger RwVersion ;
+	UInteger RwSize ;
+	UInteger Offset ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-setpertcpconnectionestats
+External_Function SetPerTcpConnectionEStats "SetPerTcpConnectionEStats" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_TCPROW_LH*
+	Integer EstatsType ;	// TCP_ESTATS_TYPE
+	Pointer Rw ;	// UChar*
+	UInteger RwVersion ;
+	UInteger RwSize ;
+	UInteger Offset ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setsessioncompartmentid
+External_Function SetSessionCompartmentId "SetSessionCompartmentId" IPHLPAPI.dll ;
+	UInteger SessionId ;
+	UInteger CompartmentId ;	// NET_IF_COMPARTMENT_ID
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-settcpentry
+External_Function SetTcpEntry "SetTcpEntry" IPHLPAPI.dll ;
+	Pointer pTcpRow ;	// MIB_TCPROW_LH*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-setunicastipaddressentry
+External_Function SetUnicastIpAddressEntry "SetUnicastIpAddressEntry" IPHLPAPI.dll ;
+	Pointer Row ;	// MIB_UNICASTIPADDRESS_ROW*
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-unenablerouter
+External_Function UnenableRouter "UnenableRouter" IPHLPAPI.dll ;
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Pointer lpdwEnableCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-unregisterinterfacetimestampconfigchange
+External_Function UnregisterInterfaceTimestampConfigChange "UnregisterInterfaceTimestampConfigChange" IPHLPAPI.dll ;
+	Pointer NotificationHandle ;	// HIFTIMESTAMPCHANGE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-if_indextoname
+External_Function if_indextoname "if_indextoname" IPHLPAPI.dll ;
+	UInteger InterfaceIndex ;
+	Pointer InterfaceName ;	// PSTR
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/netioapi/nf-netioapi-if_nametoindex
+External_Function if_nametoindex "if_nametoindex" IPHLPAPI.dll ;
+	String InterfaceName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-canceliftimestampconfigchange
+External_Function CancelIfTimestampConfigChange "CancelIfTimestampConfigChange" IPHLPAPI.DLL ;
+	Pointer NotificationHandle ;	// HIFTIMESTAMPCHANGE
+	Returns Pointer
+
+External_Function CreateFlVirtualInterface "CreateFlVirtualInterface" IPHLPAPI.DLL ;
+	Pointer Row ;	// MIB_FL_VIRTUAL_INTERFACE_ROW*
+	Returns UInteger
+
+External_Function DeleteFlVirtualInterface "DeleteFlVirtualInterface" IPHLPAPI.DLL ;
+	Pointer Row ;	// MIB_FL_VIRTUAL_INTERFACE_ROW*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

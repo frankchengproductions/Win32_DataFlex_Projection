@@ -1,0 +1,94 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-candidateform
+Struct CANDIDATEFORM
+	UInteger dwIndex
+	UInteger dwStyle
+	POINT ptCurrentPos
+	RECT rcArea
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-candidatelist
+Struct CANDIDATELIST
+	UInteger dwSize
+	UInteger dwStyle
+	UInteger dwCount
+	UInteger dwSelection
+	UInteger dwPageStart
+	UInteger dwPageSize
+	UInteger[1] dwOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-compositionform
+Struct COMPOSITIONFORM
+	UInteger dwStyle
+	POINT ptCurrentPos
+	RECT rcArea
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-imemenuiteminfoa
+Struct IMEMENUITEMINFOA
+	UInteger cbSize
+	UInteger fType
+	UInteger fState
+	UInteger wID
+	Pointer hbmpChecked										// HBITMAP
+	Pointer hbmpUnchecked									// HBITMAP
+	UInteger dwItemData
+	Char[80] szString										// CHAR
+	Integer iMissingAlignment1
+	Pointer hbmpItem										// HBITMAP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-imemenuiteminfow
+Struct IMEMENUITEMINFOW
+	UInteger cbSize
+	UInteger fType
+	UInteger fState
+	UInteger wID
+	Pointer hbmpChecked										// HBITMAP
+	Pointer hbmpUnchecked									// HBITMAP
+	UInteger dwItemData
+	UShort[80] szString
+	Integer iMissingAlignment1
+	Pointer hbmpItem										// HBITMAP
+End_Struct
+
+Struct INPUTCONTEXT
+	Pointer hWnd											// HWND
+	Integer fOpen											// BOOL
+	POINT ptStatusWndPos
+	POINT ptSoftKbdPos
+	UInteger fdwConversion
+	UInteger fdwSentence
+	UChar[92] UnionName1
+	COMPOSITIONFORM cfCompForm
+	CANDIDATEFORM[4] cfCandForm
+	Integer iMissingAlignment1
+	Pointer hCompStr										// HIMCC
+	Pointer hCandInfo										// HIMCC
+	Pointer hGuideLine										// HIMCC
+	Pointer hPrivate										// HIMCC
+	UInteger dwNumMsgBuf
+	Integer iMissingAlignment2
+	Pointer hMsgBuf											// HIMCC
+	UInteger fdwInit
+	UInteger[3] dwReserve
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-stylebufa
+Struct STYLEBUFA
+	UInteger dwStyle
+	Char[32] szDescription									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/immdev/ns-immdev-stylebufw
+Struct STYLEBUFW
+	UInteger dwStyle
+	UShort[32] szDescription
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

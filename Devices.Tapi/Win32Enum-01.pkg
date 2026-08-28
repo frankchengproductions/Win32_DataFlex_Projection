@@ -1,0 +1,683 @@
+Use UI
+
+// Define TAPI_TONEMODE For Integer
+Enum_List
+	Define TTM_RINGBACK										For 2
+	Define TTM_BUSY											For 4
+	Define TTM_BEEP											For 8
+	Define TTM_BILLING										For 16
+End_Enum_List
+
+// Define TAPI_GATHERTERM For Integer
+Enum_List
+	Define TGT_BUFFERFULL									For 1
+	Define TGT_TERMDIGIT									For 2
+	Define TGT_FIRSTTIMEOUT									For 4
+	Define TGT_INTERTIMEOUT									For 8
+	Define TGT_CANCEL										For 16
+End_Enum_List
+
+// Define ADDRESS_EVENT For Integer
+Enum_List
+	Define AE_STATE											For 0
+	Define AE_CAPSCHANGE									For 1
+	Define AE_RINGING										For 2
+	Define AE_CONFIGCHANGE									For 3
+	Define AE_FORWARD										For 4
+	Define AE_NEWTERMINAL									For 5
+	Define AE_REMOVETERMINAL								For 6
+	Define AE_MSGWAITON										For 7
+	Define AE_MSGWAITOFF									For 8
+	Define AE_LASTITEM										For 8
+End_Enum_List
+
+// Define ADDRESS_STATE For Integer
+Enum_List
+	Define AS_INSERVICE										For 0
+	Define AS_OUTOFSERVICE									For 1
+End_Enum_List
+
+// Define CALL_STATE For Integer
+Enum_List
+	Define CS_IDLE											For 0
+	Define CS_INPROGRESS									For 1
+	Define CS_CONNECTED										For 2
+	Define CS_DISCONNECTED									For 3
+	Define CS_OFFERING										For 4
+	Define CS_HOLD											For 5
+	Define CS_QUEUED										For 6
+	Define CS_LASTITEM										For 6
+End_Enum_List
+
+// Define CALL_STATE_EVENT_CAUSE For Integer
+Enum_List
+	Define CEC_NONE											For 0
+	Define CEC_DISCONNECT_NORMAL							For 1
+	Define CEC_DISCONNECT_BUSY								For 2
+	Define CEC_DISCONNECT_BADADDRESS						For 3
+	Define CEC_DISCONNECT_NOANSWER							For 4
+	Define CEC_DISCONNECT_CANCELLED							For 5
+	Define CEC_DISCONNECT_REJECTED							For 6
+	Define CEC_DISCONNECT_FAILED							For 7
+	Define CEC_DISCONNECT_BLOCKED							For 8
+End_Enum_List
+
+// Define CALL_MEDIA_EVENT For Integer
+Enum_List
+	Define CME_NEW_STREAM									For 0
+	Define CME_STREAM_FAIL									For 1
+	Define CME_TERMINAL_FAIL								For 2
+	Define CME_STREAM_NOT_USED								For 3
+	Define CME_STREAM_ACTIVE								For 4
+	Define CME_STREAM_INACTIVE								For 5
+	Define CME_LASTITEM										For 5
+End_Enum_List
+
+// Define CALL_MEDIA_EVENT_CAUSE For Integer
+Enum_List
+	Define CMC_UNKNOWN										For 0
+	Define CMC_BAD_DEVICE									For 1
+	Define CMC_CONNECT_FAIL									For 2
+	Define CMC_LOCAL_REQUEST								For 3
+	Define CMC_REMOTE_REQUEST								For 4
+	Define CMC_MEDIA_TIMEOUT								For 5
+	Define CMC_MEDIA_RECOVERED								For 6
+	Define CMC_QUALITY_OF_SERVICE							For 7
+End_Enum_List
+
+// Define DISCONNECT_CODE For Integer
+Enum_List
+	Define DC_NORMAL										For 0
+	Define DC_NOANSWER										For 1
+	Define DC_REJECTED										For 2
+End_Enum_List
+
+// Define TERMINAL_STATE For Integer
+Enum_List
+	Define TS_INUSE											For 0
+	Define TS_NOTINUSE										For 1
+End_Enum_List
+
+// Define TERMINAL_DIRECTION For Integer
+Enum_List
+	Define TD_CAPTURE										For 0
+	Define TD_RENDER										For 1
+	Define TD_BIDIRECTIONAL									For 2
+	Define TD_MULTITRACK_MIXED								For 3
+	Define TD_NONE											For 4
+End_Enum_List
+
+// Define TERMINAL_TYPE For Integer
+Enum_List
+	Define TT_STATIC										For 0
+	Define TT_DYNAMIC										For 1
+End_Enum_List
+
+// Define CALL_PRIVILEGE For Integer
+Enum_List
+	Define CP_OWNER											For 0
+	Define CP_MONITOR										For 1
+End_Enum_List
+
+// Define TAPI_EVENT For Integer
+Enum_List
+	Define TE_TAPIOBJECT									For 1
+	Define TE_ADDRESS										For 2
+	Define TE_CALLNOTIFICATION								For 4
+	Define TE_CALLSTATE										For 8
+	Define TE_CALLMEDIA										For 16
+	Define TE_CALLHUB										For 32
+	Define TE_CALLINFOCHANGE								For 64
+	Define TE_PRIVATE										For 128
+	Define TE_REQUEST										For 256
+	Define TE_AGENT											For 512
+	Define TE_AGENTSESSION									For 1024
+	Define TE_QOSEVENT										For 2048
+	Define TE_AGENTHANDLER									For 4096
+	Define TE_ACDGROUP										For 8192
+	Define TE_QUEUE											For 16384
+	Define TE_DIGITEVENT									For 32768
+	Define TE_GENERATEEVENT									For 65536
+	Define TE_ASRTERMINAL									For 131072
+	Define TE_TTSTERMINAL									For 262144
+	Define TE_FILETERMINAL									For 524288
+	Define TE_TONETERMINAL									For 1048576
+	Define TE_PHONEEVENT									For 2097152
+	Define TE_TONEEVENT										For 4194304
+	Define TE_GATHERDIGITS									For 8388608
+	Define TE_ADDRESSDEVSPECIFIC							For 16777216
+	Define TE_PHONEDEVSPECIFIC								For 33554432
+End_Enum_List
+
+// Define CALL_NOTIFICATION_EVENT For Integer
+Enum_List
+	Define CNE_OWNER										For 0
+	Define CNE_MONITOR										For 1
+	Define CNE_LASTITEM										For 1
+End_Enum_List
+
+// Define CALLHUB_EVENT For Integer
+Enum_List
+	Define CHE_CALLJOIN										For 0
+	Define CHE_CALLLEAVE									For 1
+	Define CHE_CALLHUBNEW									For 2
+	Define CHE_CALLHUBIDLE									For 3
+	Define CHE_LASTITEM										For 3
+End_Enum_List
+
+// Define CALLHUB_STATE For Integer
+Enum_List
+	Define CHS_ACTIVE										For 0
+	Define CHS_IDLE											For 1
+End_Enum_List
+
+// Define TAPIOBJECT_EVENT For Integer
+Enum_List
+	Define TE_ADDRESSCREATE									For 0
+	Define TE_ADDRESSREMOVE									For 1
+	Define TE_REINIT										For 2
+	Define TE_TRANSLATECHANGE								For 3
+	Define TE_ADDRESSCLOSE									For 4
+	Define TE_PHONECREATE									For 5
+	Define TE_PHONEREMOVE									For 6
+End_Enum_List
+
+// Define TAPI_OBJECT_TYPE For Integer
+Enum_List
+	Define TOT_NONE											For 0
+	Define TOT_TAPI											For 1
+	Define TOT_ADDRESS										For 2
+	Define TOT_TERMINAL										For 3
+	Define TOT_CALL											For 4
+	Define TOT_CALLHUB										For 5
+	Define TOT_PHONE										For 6
+End_Enum_List
+
+// Define QOS_SERVICE_LEVEL For Integer
+Enum_List
+	Define QSL_NEEDED										For 1
+	Define QSL_IF_AVAILABLE									For 2
+	Define QSL_BEST_EFFORT									For 3
+End_Enum_List
+
+// Define QOS_EVENT For Integer
+Enum_List
+	Define QE_NOQOS											For 1
+	Define QE_ADMISSIONFAILURE								For 2
+	Define QE_POLICYFAILURE									For 3
+	Define QE_GENERICERROR									For 4
+	Define QE_LASTITEM										For 4
+End_Enum_List
+
+// Define CALLINFOCHANGE_CAUSE For Integer
+Enum_List
+	Define CIC_OTHER										For 0
+	Define CIC_DEVSPECIFIC									For 1
+	Define CIC_BEARERMODE									For 2
+	Define CIC_RATE											For 3
+	Define CIC_APPSPECIFIC									For 4
+	Define CIC_CALLID										For 5
+	Define CIC_RELATEDCALLID								For 6
+	Define CIC_ORIGIN										For 7
+	Define CIC_REASON										For 8
+	Define CIC_COMPLETIONID									For 9
+	Define CIC_NUMOWNERINCR									For 10
+	Define CIC_NUMOWNERDECR									For 11
+	Define CIC_NUMMONITORS									For 12
+	Define CIC_TRUNK										For 13
+	Define CIC_CALLERID										For 14
+	Define CIC_CALLEDID										For 15
+	Define CIC_CONNECTEDID									For 16
+	Define CIC_REDIRECTIONID								For 17
+	Define CIC_REDIRECTINGID								For 18
+	Define CIC_USERUSERINFO									For 19
+	Define CIC_HIGHLEVELCOMP								For 20
+	Define CIC_LOWLEVELCOMP									For 21
+	Define CIC_CHARGINGINFO									For 22
+	Define CIC_TREATMENT									For 23
+	Define CIC_CALLDATA										For 24
+	Define CIC_PRIVILEGE									For 25
+	Define CIC_MEDIATYPE									For 26
+	Define CIC_LASTITEM										For 26
+End_Enum_List
+
+// Define CALLINFO_LONG For Integer
+Enum_List
+	Define CIL_MEDIATYPESAVAILABLE							For 0
+	Define CIL_BEARERMODE									For 1
+	Define CIL_CALLERIDADDRESSTYPE							For 2
+	Define CIL_CALLEDIDADDRESSTYPE							For 3
+	Define CIL_CONNECTEDIDADDRESSTYPE						For 4
+	Define CIL_REDIRECTIONIDADDRESSTYPE						For 5
+	Define CIL_REDIRECTINGIDADDRESSTYPE						For 6
+	Define CIL_ORIGIN										For 7
+	Define CIL_REASON										For 8
+	Define CIL_APPSPECIFIC									For 9
+	Define CIL_CALLPARAMSFLAGS								For 10
+	Define CIL_CALLTREATMENT								For 11
+	Define CIL_MINRATE										For 12
+	Define CIL_MAXRATE										For 13
+	Define CIL_COUNTRYCODE									For 14
+	Define CIL_CALLID										For 15
+	Define CIL_RELATEDCALLID								For 16
+	Define CIL_COMPLETIONID									For 17
+	Define CIL_NUMBEROFOWNERS								For 18
+	Define CIL_NUMBEROFMONITORS								For 19
+	Define CIL_TRUNK										For 20
+	Define CIL_RATE											For 21
+	Define CIL_GENERATEDIGITDURATION						For 22
+	Define CIL_MONITORDIGITMODES							For 23
+	Define CIL_MONITORMEDIAMODES							For 24
+End_Enum_List
+
+// Define CALLINFO_STRING For Integer
+Enum_List
+	Define CIS_CALLERIDNAME									For 0
+	Define CIS_CALLERIDNUMBER								For 1
+	Define CIS_CALLEDIDNAME									For 2
+	Define CIS_CALLEDIDNUMBER								For 3
+	Define CIS_CONNECTEDIDNAME								For 4
+	Define CIS_CONNECTEDIDNUMBER							For 5
+	Define CIS_REDIRECTIONIDNAME							For 6
+	Define CIS_REDIRECTIONIDNUMBER							For 7
+	Define CIS_REDIRECTINGIDNAME							For 8
+	Define CIS_REDIRECTINGIDNUMBER							For 9
+	Define CIS_CALLEDPARTYFRIENDLYNAME						For 10
+	Define CIS_COMMENT										For 11
+	Define CIS_DISPLAYABLEADDRESS							For 12
+	Define CIS_CALLINGPARTYID								For 13
+End_Enum_List
+
+// Define CALLINFO_BUFFER For Integer
+Enum_List
+	Define CIB_USERUSERINFO									For 0
+	Define CIB_DEVSPECIFICBUFFER							For 1
+	Define CIB_CALLDATABUFFER								For 2
+	Define CIB_CHARGINGINFOBUFFER							For 3
+	Define CIB_HIGHLEVELCOMPATIBILITYBUFFER					For 4
+	Define CIB_LOWLEVELCOMPATIBILITYBUFFER					For 5
+End_Enum_List
+
+// Define ADDRESS_CAPABILITY For Integer
+Enum_List
+	Define AC_ADDRESSTYPES									For 0
+	Define AC_BEARERMODES									For 1
+	Define AC_MAXACTIVECALLS								For 2
+	Define AC_MAXONHOLDCALLS								For 3
+	Define AC_MAXONHOLDPENDINGCALLS							For 4
+	Define AC_MAXNUMCONFERENCE								For 5
+	Define AC_MAXNUMTRANSCONF								For 6
+	Define AC_MONITORDIGITSUPPORT							For 7
+	Define AC_GENERATEDIGITSUPPORT							For 8
+	Define AC_GENERATETONEMODES								For 9
+	Define AC_GENERATETONEMAXNUMFREQ						For 10
+	Define AC_MONITORTONEMAXNUMFREQ							For 11
+	Define AC_MONITORTONEMAXNUMENTRIES						For 12
+	Define AC_DEVCAPFLAGS									For 13
+	Define AC_ANSWERMODES									For 14
+	Define AC_LINEFEATURES									For 15
+	Define AC_SETTABLEDEVSTATUS								For 16
+	Define AC_PARKSUPPORT									For 17
+	Define AC_CALLERIDSUPPORT								For 18
+	Define AC_CALLEDIDSUPPORT								For 19
+	Define AC_CONNECTEDIDSUPPORT							For 20
+	Define AC_REDIRECTIONIDSUPPORT							For 21
+	Define AC_REDIRECTINGIDSUPPORT							For 22
+	Define AC_ADDRESSCAPFLAGS								For 23
+	Define AC_CALLFEATURES1									For 24
+	Define AC_CALLFEATURES2									For 25
+	Define AC_REMOVEFROMCONFCAPS							For 26
+	Define AC_REMOVEFROMCONFSTATE							For 27
+	Define AC_TRANSFERMODES									For 28
+	Define AC_ADDRESSFEATURES								For 29
+	Define AC_PREDICTIVEAUTOTRANSFERSTATES					For 30
+	Define AC_MAXCALLDATASIZE								For 31
+	Define AC_LINEID										For 32
+	Define AC_ADDRESSID										For 33
+	Define AC_FORWARDMODES									For 34
+	Define AC_MAXFORWARDENTRIES								For 35
+	Define AC_MAXSPECIFICENTRIES							For 36
+	Define AC_MINFWDNUMRINGS								For 37
+	Define AC_MAXFWDNUMRINGS								For 38
+	Define AC_MAXCALLCOMPLETIONS							For 39
+	Define AC_CALLCOMPLETIONCONDITIONS						For 40
+	Define AC_CALLCOMPLETIONMODES							For 41
+	Define AC_PERMANENTDEVICEID								For 42
+	Define AC_GATHERDIGITSMINTIMEOUT						For 43
+	Define AC_GATHERDIGITSMAXTIMEOUT						For 44
+	Define AC_GENERATEDIGITMINDURATION						For 45
+	Define AC_GENERATEDIGITMAXDURATION						For 46
+	Define AC_GENERATEDIGITDEFAULTDURATION					For 47
+End_Enum_List
+
+// Define ADDRESS_CAPABILITY_STRING For Integer
+Enum_List
+	Define ACS_PROTOCOL										For 0
+	Define ACS_ADDRESSDEVICESPECIFIC						For 1
+	Define ACS_LINEDEVICESPECIFIC							For 2
+	Define ACS_PROVIDERSPECIFIC								For 3
+	Define ACS_SWITCHSPECIFIC								For 4
+	Define ACS_PERMANENTDEVICEGUID							For 5
+End_Enum_List
+
+// Define FULLDUPLEX_SUPPORT For Integer
+Enum_List
+	Define FDS_SUPPORTED									For 0
+	Define FDS_NOTSUPPORTED									For 1
+	Define FDS_UNKNOWN										For 2
+End_Enum_List
+
+// Define FINISH_MODE For Integer
+Enum_List
+	Define FM_ASTRANSFER									For 0
+	Define FM_ASCONFERENCE									For 1
+End_Enum_List
+
+// Define PHONE_PRIVILEGE For Integer
+Enum_List
+	Define PP_OWNER											For 0
+	Define PP_MONITOR										For 1
+End_Enum_List
+
+// Define PHONE_HOOK_SWITCH_DEVICE For Integer
+Enum_List
+	Define PHSD_HANDSET										For 1
+	Define PHSD_SPEAKERPHONE								For 2
+	Define PHSD_HEADSET										For 4
+End_Enum_List
+
+// Define PHONE_HOOK_SWITCH_STATE For Integer
+Enum_List
+	Define PHSS_ONHOOK										For 1
+	Define PHSS_OFFHOOK_MIC_ONLY							For 2
+	Define PHSS_OFFHOOK_SPEAKER_ONLY						For 4
+	Define PHSS_OFFHOOK										For 8
+End_Enum_List
+
+// Define PHONE_LAMP_MODE For Integer
+Enum_List
+	Define LM_DUMMY											For 1
+	Define LM_OFF											For 2
+	Define LM_STEADY										For 4
+	Define LM_WINK											For 8
+	Define LM_FLASH											For 16
+	Define LM_FLUTTER										For 32
+	Define LM_BROKENFLUTTER									For 64
+	Define LM_UNKNOWN										For 128
+End_Enum_List
+
+// Define PHONECAPS_LONG For Integer
+Enum_List
+	Define PCL_HOOKSWITCHES									For 0
+	Define PCL_HANDSETHOOKSWITCHMODES						For 1
+	Define PCL_HEADSETHOOKSWITCHMODES						For 2
+	Define PCL_SPEAKERPHONEHOOKSWITCHMODES					For 3
+	Define PCL_DISPLAYNUMROWS								For 4
+	Define PCL_DISPLAYNUMCOLUMNS							For 5
+	Define PCL_NUMRINGMODES									For 6
+	Define PCL_NUMBUTTONLAMPS								For 7
+	Define PCL_GENERICPHONE									For 8
+End_Enum_List
+
+// Define PHONECAPS_STRING For Integer
+Enum_List
+	Define PCS_PHONENAME									For 0
+	Define PCS_PHONEINFO									For 1
+	Define PCS_PROVIDERINFO									For 2
+End_Enum_List
+
+// Define PHONECAPS_BUFFER For Integer
+Enum_List
+	Define PCB_DEVSPECIFICBUFFER							For 0
+End_Enum_List
+
+// Define PHONE_BUTTON_STATE For Integer
+Enum_List
+	Define PBS_UP											For 1
+	Define PBS_DOWN											For 2
+	Define PBS_UNKNOWN										For 4
+	Define PBS_UNAVAIL										For 8
+End_Enum_List
+
+// Define PHONE_BUTTON_MODE For Integer
+Enum_List
+	Define PBM_DUMMY										For 0
+	Define PBM_CALL											For 1
+	Define PBM_FEATURE										For 2
+	Define PBM_KEYPAD										For 3
+	Define PBM_LOCAL										For 4
+	Define PBM_DISPLAY										For 5
+End_Enum_List
+
+// Define PHONE_BUTTON_FUNCTION For Integer
+Enum_List
+	Define PBF_UNKNOWN										For 0
+	Define PBF_CONFERENCE									For 1
+	Define PBF_TRANSFER										For 2
+	Define PBF_DROP											For 3
+	Define PBF_HOLD											For 4
+	Define PBF_RECALL										For 5
+	Define PBF_DISCONNECT									For 6
+	Define PBF_CONNECT										For 7
+	Define PBF_MSGWAITON									For 8
+	Define PBF_MSGWAITOFF									For 9
+	Define PBF_SELECTRING									For 10
+	Define PBF_ABBREVDIAL									For 11
+	Define PBF_FORWARD										For 12
+	Define PBF_PICKUP										For 13
+	Define PBF_RINGAGAIN									For 14
+	Define PBF_PARK											For 15
+	Define PBF_REJECT										For 16
+	Define PBF_REDIRECT										For 17
+	Define PBF_MUTE											For 18
+	Define PBF_VOLUMEUP										For 19
+	Define PBF_VOLUMEDOWN									For 20
+	Define PBF_SPEAKERON									For 21
+	Define PBF_SPEAKEROFF									For 22
+	Define PBF_FLASH										For 23
+	Define PBF_DATAON										For 24
+	Define PBF_DATAOFF										For 25
+	Define PBF_DONOTDISTURB									For 26
+	Define PBF_INTERCOM										For 27
+	Define PBF_BRIDGEDAPP									For 28
+	Define PBF_BUSY											For 29
+	Define PBF_CALLAPP										For 30
+	Define PBF_DATETIME										For 31
+	Define PBF_DIRECTORY									For 32
+	Define PBF_COVER										For 33
+	Define PBF_CALLID										For 34
+	Define PBF_LASTNUM										For 35
+	Define PBF_NIGHTSRV										For 36
+	Define PBF_SENDCALLS									For 37
+	Define PBF_MSGINDICATOR									For 38
+	Define PBF_REPDIAL										For 39
+	Define PBF_SETREPDIAL									For 40
+	Define PBF_SYSTEMSPEED									For 41
+	Define PBF_STATIONSPEED									For 42
+	Define PBF_CAMPON										For 43
+	Define PBF_SAVEREPEAT									For 44
+	Define PBF_QUEUECALL									For 45
+	Define PBF_NONE											For 46
+	Define PBF_SEND											For 47
+End_Enum_List
+
+// Define PHONE_TONE For Integer
+Enum_List
+	Define PT_KEYPADZERO									For 0
+	Define PT_KEYPADONE										For 1
+	Define PT_KEYPADTWO										For 2
+	Define PT_KEYPADTHREE									For 3
+	Define PT_KEYPADFOUR									For 4
+	Define PT_KEYPADFIVE									For 5
+	Define PT_KEYPADSIX										For 6
+	Define PT_KEYPADSEVEN									For 7
+	Define PT_KEYPADEIGHT									For 8
+	Define PT_KEYPADNINE									For 9
+	Define PT_KEYPADSTAR									For 10
+	Define PT_KEYPADPOUND									For 11
+	Define PT_KEYPADA										For 12
+	Define PT_KEYPADB										For 13
+	Define PT_KEYPADC										For 14
+	Define PT_KEYPADD										For 15
+	Define PT_NORMALDIALTONE								For 16
+	Define PT_EXTERNALDIALTONE								For 17
+	Define PT_BUSY											For 18
+	Define PT_RINGBACK										For 19
+	Define PT_ERRORTONE										For 20
+	Define PT_SILENCE										For 21
+End_Enum_List
+
+// Define PHONE_EVENT For Integer
+Enum_List
+	Define PE_DISPLAY										For 0
+	Define PE_LAMPMODE										For 1
+	Define PE_RINGMODE										For 2
+	Define PE_RINGVOLUME									For 3
+	Define PE_HOOKSWITCH									For 4
+	Define PE_CAPSCHANGE									For 5
+	Define PE_BUTTON										For 6
+	Define PE_CLOSE											For 7
+	Define PE_NUMBERGATHERED								For 8
+	Define PE_DIALING										For 9
+	Define PE_ANSWER										For 10
+	Define PE_DISCONNECT									For 11
+	Define PE_LASTITEM										For 11
+End_Enum_List
+
+// Define TERMINAL_MEDIA_STATE For Integer
+Enum_List
+	Define TMS_IDLE											For 0
+	Define TMS_ACTIVE										For 1
+	Define TMS_PAUSED										For 2
+	Define TMS_LASTITEM										For 2
+End_Enum_List
+
+// Define FT_STATE_EVENT_CAUSE For Integer
+Enum_List
+	Define FTEC_NORMAL										For 0
+	Define FTEC_END_OF_FILE									For 1
+	Define FTEC_READ_ERROR									For 2
+	Define FTEC_WRITE_ERROR									For 3
+End_Enum_List
+
+// Define AGENT_EVENT For Integer
+Enum_List
+	Define AE_NOT_READY										For 0
+	Define AE_READY											For 1
+	Define AE_BUSY_ACD										For 2
+	Define AE_BUSY_INCOMING									For 3
+	Define AE_BUSY_OUTGOING									For 4
+	Define AE_UNKNOWN										For 5
+End_Enum_List
+
+// Define AGENT_STATE For Integer
+Enum_List
+	Define AS_NOT_READY										For 0
+	Define AS_READY											For 1
+	Define AS_BUSY_ACD										For 2
+	Define AS_BUSY_INCOMING									For 3
+	Define AS_BUSY_OUTGOING									For 4
+	Define AS_UNKNOWN										For 5
+End_Enum_List
+
+// Define AGENT_SESSION_EVENT For Integer
+Enum_List
+	Define ASE_NEW_SESSION									For 0
+	Define ASE_NOT_READY									For 1
+	Define ASE_READY										For 2
+	Define ASE_BUSY											For 3
+	Define ASE_WRAPUP										For 4
+	Define ASE_END											For 5
+End_Enum_List
+
+// Define AGENT_SESSION_STATE For Integer
+Enum_List
+	Define ASST_NOT_READY									For 0
+	Define ASST_READY										For 1
+	Define ASST_BUSY_ON_CALL								For 2
+	Define ASST_BUSY_WRAPUP									For 3
+	Define ASST_SESSION_ENDED								For 4
+End_Enum_List
+
+// Define AGENTHANDLER_EVENT For Integer
+Enum_List
+	Define AHE_NEW_AGENTHANDLER								For 0
+	Define AHE_AGENTHANDLER_REMOVED							For 1
+End_Enum_List
+
+// Define ACDGROUP_EVENT For Integer
+Enum_List
+	Define ACDGE_NEW_GROUP									For 0
+	Define ACDGE_GROUP_REMOVED								For 1
+End_Enum_List
+
+// Define ACDQUEUE_EVENT For Integer
+Enum_List
+	Define ACDQE_NEW_QUEUE									For 0
+	Define ACDQE_QUEUE_REMOVED								For 1
+End_Enum_List
+
+// Define MSP_ADDRESS_EVENT For Integer
+Enum_List
+	Define ADDRESS_TERMINAL_AVAILABLE						For 0
+	Define ADDRESS_TERMINAL_UNAVAILABLE						For 1
+End_Enum_List
+
+// Define MSP_CALL_EVENT For Integer
+Enum_List
+	Define CALL_NEW_STREAM									For 0
+	Define CALL_STREAM_FAIL									For 1
+	Define CALL_TERMINAL_FAIL								For 2
+	Define CALL_STREAM_NOT_USED								For 3
+	Define CALL_STREAM_ACTIVE								For 4
+	Define CALL_STREAM_INACTIVE								For 5
+End_Enum_List
+
+// Define MSP_CALL_EVENT_CAUSE For Integer
+Enum_List
+	Define CALL_CAUSE_UNKNOWN								For 0
+	Define CALL_CAUSE_BAD_DEVICE							For 1
+	Define CALL_CAUSE_CONNECT_FAIL							For 2
+	Define CALL_CAUSE_LOCAL_REQUEST							For 3
+	Define CALL_CAUSE_REMOTE_REQUEST						For 4
+	Define CALL_CAUSE_MEDIA_TIMEOUT							For 5
+	Define CALL_CAUSE_MEDIA_RECOVERED						For 6
+	Define CALL_CAUSE_QUALITY_OF_SERVICE					For 7
+End_Enum_List
+
+// Define MSP_EVENT For Integer
+Enum_List
+	Define ME_ADDRESS_EVENT									For 0
+	Define ME_CALL_EVENT									For 1
+	Define ME_TSP_DATA										For 2
+	Define ME_PRIVATE_EVENT									For 3
+	Define ME_ASR_TERMINAL_EVENT							For 4
+	Define ME_TTS_TERMINAL_EVENT							For 5
+	Define ME_FILE_TERMINAL_EVENT							For 6
+	Define ME_TONE_TERMINAL_EVENT							For 7
+End_Enum_List
+
+// Define DIRECTORY_TYPE For Integer
+Enum_List
+	Define DT_NTDS											For 1
+	Define DT_ILS											For 2
+End_Enum_List
+
+// Define DIRECTORY_OBJECT_TYPE For Integer
+Enum_List
+	Define OT_CONFERENCE									For 1
+	Define OT_USER											For 2
+End_Enum_List
+
+// Define RND_ADVERTISING_SCOPE For Integer
+Enum_List
+	Define RAS_LOCAL										For 1
+	Define RAS_SITE											For 2
+	Define RAS_REGION										For 3
+	Define RAS_WORLD										For 4
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure
+

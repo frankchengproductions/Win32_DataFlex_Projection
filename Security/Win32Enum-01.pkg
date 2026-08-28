@@ -1,0 +1,424 @@
+Use UI
+
+// Define OBJECT_SECURITY_INFORMATION For UInteger
+Enum_List
+	Define ATTRIBUTE_SECURITY_INFORMATION					For 32
+	Define BACKUP_SECURITY_INFORMATION						For 65536
+	Define DACL_SECURITY_INFORMATION						For 4
+	Define GROUP_SECURITY_INFORMATION						For 2
+	Define LABEL_SECURITY_INFORMATION						For 16
+	Define OWNER_SECURITY_INFORMATION						For 1
+	Define PROTECTED_DACL_SECURITY_INFORMATION				For 2147483648
+	Define PROTECTED_SACL_SECURITY_INFORMATION				For 1073741824
+	Define SACL_SECURITY_INFORMATION						For 8
+	Define SCOPE_SECURITY_INFORMATION						For 64
+	Define UNPROTECTED_DACL_SECURITY_INFORMATION			For 536870912
+	Define UNPROTECTED_SACL_SECURITY_INFORMATION			For 268435456
+End_Enum_List
+
+// Define SID_NAME_USE For Integer
+Enum_List
+	Define SidTypeUser										For 1
+	Define SidTypeGroup										For 2
+	Define SidTypeDomain									For 3
+	Define SidTypeAlias										For 4
+	Define SidTypeWellKnownGroup							For 5
+	Define SidTypeDeletedAccount							For 6
+	Define SidTypeInvalid									For 7
+	Define SidTypeUnknown									For 8
+	Define SidTypeComputer									For 9
+	Define SidTypeLabel										For 10
+	Define SidTypeLogonSession								For 11
+End_Enum_List
+
+// Define TOKEN_PRIVILEGES_ATTRIBUTES For UInteger
+Enum_List
+	Define SE_PRIVILEGE_ENABLED								For 2
+	Define SE_PRIVILEGE_ENABLED_BY_DEFAULT					For 1
+	Define SE_PRIVILEGE_REMOVED								For 4
+	Define SE_PRIVILEGE_USED_FOR_ACCESS						For 2147483648
+End_Enum_List
+
+// Define LOGON32_PROVIDER For UInteger
+Enum_List
+	Define LOGON32_PROVIDER_DEFAULT							For 0
+	Define LOGON32_PROVIDER_WINNT50							For 3
+	Define LOGON32_PROVIDER_WINNT40							For 2
+End_Enum_List
+
+// Define CREATE_RESTRICTED_TOKEN_FLAGS For UInteger
+Enum_List
+	Define DISABLE_MAX_PRIVILEGE							For 1
+	Define SANDBOX_INERT									For 2
+	Define LUA_TOKEN										For 4
+	Define WRITE_RESTRICTED									For 8
+End_Enum_List
+
+// Define LOGON32_LOGON For UInteger
+Enum_List
+	Define LOGON32_LOGON_BATCH								For 4
+	Define LOGON32_LOGON_INTERACTIVE						For 2
+	Define LOGON32_LOGON_NETWORK							For 3
+	Define LOGON32_LOGON_NETWORK_CLEARTEXT					For 8
+	Define LOGON32_LOGON_NEW_CREDENTIALS					For 9
+	Define LOGON32_LOGON_SERVICE							For 5
+	Define LOGON32_LOGON_UNLOCK								For 7
+End_Enum_List
+
+// Define ACE_FLAGS For UInteger
+Enum_List
+	Define CONTAINER_INHERIT_ACE							For 2
+	Define FAILED_ACCESS_ACE_FLAG							For 128
+	Define INHERIT_ONLY_ACE									For 8
+	Define INHERITED_ACE									For 16
+	Define NO_PROPAGATE_INHERIT_ACE							For 4
+	Define OBJECT_INHERIT_ACE								For 1
+	Define SUCCESSFUL_ACCESS_ACE_FLAG						For 64
+	Define SUB_CONTAINERS_AND_OBJECTS_INHERIT				For 3
+	Define SUB_CONTAINERS_ONLY_INHERIT						For 2
+	Define SUB_OBJECTS_ONLY_INHERIT							For 1
+	Define INHERIT_NO_PROPAGATE								For 4
+	Define INHERIT_ONLY										For 8
+	Define NO_INHERITANCE									For 0
+End_Enum_List
+
+// Define SECURITY_AUTO_INHERIT_FLAGS For UInteger
+Enum_List
+	Define SEF_AVOID_OWNER_CHECK							For 16
+	Define SEF_AVOID_OWNER_RESTRICTION						For 4096
+	Define SEF_AVOID_PRIVILEGE_CHECK						For 8
+	Define SEF_DACL_AUTO_INHERIT							For 1
+	Define SEF_DEFAULT_DESCRIPTOR_FOR_OBJECT				For 4
+	Define SEF_DEFAULT_GROUP_FROM_PARENT					For 64
+	Define SEF_DEFAULT_OWNER_FROM_PARENT					For 32
+	Define SEF_MACL_NO_EXECUTE_UP							For 1024
+	Define SEF_MACL_NO_READ_UP								For 512
+	Define SEF_MACL_NO_WRITE_UP								For 256
+	Define SEF_SACL_AUTO_INHERIT							For 2
+End_Enum_List
+
+// Define ACE_REVISION For UInteger
+Enum_List
+	Define ACL_REVISION										For 2
+	Define ACL_REVISION_DS									For 4
+End_Enum_List
+
+// Define TOKEN_MANDATORY_POLICY_ID For UInteger
+Enum_List
+	Define TOKEN_MANDATORY_POLICY_OFF						For 0
+	Define TOKEN_MANDATORY_POLICY_NO_WRITE_UP				For 1
+	Define TOKEN_MANDATORY_POLICY_NEW_PROCESS_MIN			For 2
+	Define TOKEN_MANDATORY_POLICY_VALID_MASK				For 3
+End_Enum_List
+
+// Define SYSTEM_AUDIT_OBJECT_ACE_FLAGS For UInteger
+Enum_List
+	Define ACE_OBJECT_TYPE_PRESENT							For 1
+	Define ACE_INHERITED_OBJECT_TYPE_PRESENT				For 2
+End_Enum_List
+
+// Define CLAIM_SECURITY_ATTRIBUTE_FLAGS For UInteger
+Enum_List
+	Define CLAIM_SECURITY_ATTRIBUTE_NON_INHERITABLE			For 1
+	Define CLAIM_SECURITY_ATTRIBUTE_VALUE_CASE_SENSITIVE	For 2
+	Define CLAIM_SECURITY_ATTRIBUTE_USE_FOR_DENY_ONLY		For 4
+	Define CLAIM_SECURITY_ATTRIBUTE_DISABLED_BY_DEFAULT		For 8
+	Define CLAIM_SECURITY_ATTRIBUTE_DISABLED				For 16
+	Define CLAIM_SECURITY_ATTRIBUTE_MANDATORY				For 32
+End_Enum_List
+
+// Define CLAIM_SECURITY_ATTRIBUTE_VALUE_TYPE For UShort
+Enum_List
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_INT64				For 1
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_UINT64				For 2
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_STRING				For 3
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_OCTET_STRING		For 16
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_FQBN				For 4
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_SID				For 5
+	Define CLAIM_SECURITY_ATTRIBUTE_TYPE_BOOLEAN			For 6
+End_Enum_List
+
+// Define SECURITY_DESCRIPTOR_CONTROL For UShort
+Enum_List
+	Define SE_OWNER_DEFAULTED								For 1
+	Define SE_GROUP_DEFAULTED								For 2
+	Define SE_DACL_PRESENT									For 4
+	Define SE_DACL_DEFAULTED								For 8
+	Define SE_SACL_PRESENT									For 16
+	Define SE_SACL_DEFAULTED								For 32
+	Define SE_DACL_AUTO_INHERIT_REQ							For 256
+	Define SE_SACL_AUTO_INHERIT_REQ							For 512
+	Define SE_DACL_AUTO_INHERITED							For 1024
+	Define SE_SACL_AUTO_INHERITED							For 2048
+	Define SE_DACL_PROTECTED								For 4096
+	Define SE_SACL_PROTECTED								For 8192
+	Define SE_RM_CONTROL_VALID								For 16384
+	Define SE_SELF_RELATIVE									For 32768
+End_Enum_List
+
+// Define AUDIT_EVENT_TYPE For Integer
+Enum_List
+	Define AuditEventObjectAccess							For 0
+	Define AuditEventDirectoryServiceAccess					For 1
+End_Enum_List
+
+// Define WELL_KNOWN_SID_TYPE For Integer
+Enum_List
+	Define WinNullSid										For 0
+	Define WinWorldSid										For 1
+	Define WinLocalSid										For 2
+	Define WinCreatorOwnerSid								For 3
+	Define WinCreatorGroupSid								For 4
+	Define WinCreatorOwnerServerSid							For 5
+	Define WinCreatorGroupServerSid							For 6
+	Define WinNtAuthoritySid								For 7
+	Define WinDialupSid										For 8
+	Define WinNetworkSid									For 9
+	Define WinBatchSid										For 10
+	Define WinInteractiveSid								For 11
+	Define WinServiceSid									For 12
+	Define WinAnonymousSid									For 13
+	Define WinProxySid										For 14
+	Define WinEnterpriseControllersSid						For 15
+	Define WinSelfSid										For 16
+	Define WinAuthenticatedUserSid							For 17
+	Define WinRestrictedCodeSid								For 18
+	Define WinTerminalServerSid								For 19
+	Define WinRemoteLogonIdSid								For 20
+	Define WinLogonIdsSid									For 21
+	Define WinLocalSystemSid								For 22
+	Define WinLocalServiceSid								For 23
+	Define WinNetworkServiceSid								For 24
+	Define WinBuiltinDomainSid								For 25
+	Define WinBuiltinAdministratorsSid						For 26
+	Define WinBuiltinUsersSid								For 27
+	Define WinBuiltinGuestsSid								For 28
+	Define WinBuiltinPowerUsersSid							For 29
+	Define WinBuiltinAccountOperatorsSid					For 30
+	Define WinBuiltinSystemOperatorsSid						For 31
+	Define WinBuiltinPrintOperatorsSid						For 32
+	Define WinBuiltinBackupOperatorsSid						For 33
+	Define WinBuiltinReplicatorSid							For 34
+	Define WinBuiltinPreWindows2000CompatibleAccessSid		For 35
+	Define WinBuiltinRemoteDesktopUsersSid					For 36
+	Define WinBuiltinNetworkConfigurationOperatorsSid		For 37
+	Define WinAccountAdministratorSid						For 38
+	Define WinAccountGuestSid								For 39
+	Define WinAccountKrbtgtSid								For 40
+	Define WinAccountDomainAdminsSid						For 41
+	Define WinAccountDomainUsersSid							For 42
+	Define WinAccountDomainGuestsSid						For 43
+	Define WinAccountComputersSid							For 44
+	Define WinAccountControllersSid							For 45
+	Define WinAccountCertAdminsSid							For 46
+	Define WinAccountSchemaAdminsSid						For 47
+	Define WinAccountEnterpriseAdminsSid					For 48
+	Define WinAccountPolicyAdminsSid						For 49
+	Define WinAccountRasAndIasServersSid					For 50
+	Define WinNTLMAuthenticationSid							For 51
+	Define WinDigestAuthenticationSid						For 52
+	Define WinSChannelAuthenticationSid						For 53
+	Define WinThisOrganizationSid							For 54
+	Define WinOtherOrganizationSid							For 55
+	Define WinBuiltinIncomingForestTrustBuildersSid			For 56
+	Define WinBuiltinPerfMonitoringUsersSid					For 57
+	Define WinBuiltinPerfLoggingUsersSid					For 58
+	Define WinBuiltinAuthorizationAccessSid					For 59
+	Define WinBuiltinTerminalServerLicenseServersSid		For 60
+	Define WinBuiltinDCOMUsersSid							For 61
+	Define WinBuiltinIUsersSid								For 62
+	Define WinIUserSid										For 63
+	Define WinBuiltinCryptoOperatorsSid						For 64
+	Define WinUntrustedLabelSid								For 65
+	Define WinLowLabelSid									For 66
+	Define WinMediumLabelSid								For 67
+	Define WinHighLabelSid									For 68
+	Define WinSystemLabelSid								For 69
+	Define WinWriteRestrictedCodeSid						For 70
+	Define WinCreatorOwnerRightsSid							For 71
+	Define WinCacheablePrincipalsGroupSid					For 72
+	Define WinNonCacheablePrincipalsGroupSid				For 73
+	Define WinEnterpriseReadonlyControllersSid				For 74
+	Define WinAccountReadonlyControllersSid					For 75
+	Define WinBuiltinEventLogReadersGroup					For 76
+	Define WinNewEnterpriseReadonlyControllersSid			For 77
+	Define WinBuiltinCertSvcDComAccessGroup					For 78
+	Define WinMediumPlusLabelSid							For 79
+	Define WinLocalLogonSid									For 80
+	Define WinConsoleLogonSid								For 81
+	Define WinThisOrganizationCertificateSid				For 82
+	Define WinApplicationPackageAuthoritySid				For 83
+	Define WinBuiltinAnyPackageSid							For 84
+	Define WinCapabilityInternetClientSid					For 85
+	Define WinCapabilityInternetClientServerSid				For 86
+	Define WinCapabilityPrivateNetworkClientServerSid		For 87
+	Define WinCapabilityPicturesLibrarySid					For 88
+	Define WinCapabilityVideosLibrarySid					For 89
+	Define WinCapabilityMusicLibrarySid						For 90
+	Define WinCapabilityDocumentsLibrarySid					For 91
+	Define WinCapabilitySharedUserCertificatesSid			For 92
+	Define WinCapabilityEnterpriseAuthenticationSid			For 93
+	Define WinCapabilityRemovableStorageSid					For 94
+	Define WinBuiltinRDSRemoteAccessServersSid				For 95
+	Define WinBuiltinRDSEndpointServersSid					For 96
+	Define WinBuiltinRDSManagementServersSid				For 97
+	Define WinUserModeDriversSid							For 98
+	Define WinBuiltinHyperVAdminsSid						For 99
+	Define WinAccountCloneableControllersSid				For 100
+	Define WinBuiltinAccessControlAssistanceOperatorsSid	For 101
+	Define WinBuiltinRemoteManagementUsersSid				For 102
+	Define WinAuthenticationAuthorityAssertedSid			For 103
+	Define WinAuthenticationServiceAssertedSid				For 104
+	Define WinLocalAccountSid								For 105
+	Define WinLocalAccountAndAdministratorSid				For 106
+	Define WinAccountProtectedUsersSid						For 107
+	Define WinCapabilityAppointmentsSid						For 108
+	Define WinCapabilityContactsSid							For 109
+	Define WinAccountDefaultSystemManagedSid				For 110
+	Define WinBuiltinDefaultSystemManagedGroupSid			For 111
+	Define WinBuiltinStorageReplicaAdminsSid				For 112
+	Define WinAccountKeyAdminsSid							For 113
+	Define WinAccountEnterpriseKeyAdminsSid					For 114
+	Define WinAuthenticationKeyTrustSid						For 115
+	Define WinAuthenticationKeyPropertyMFASid				For 116
+	Define WinAuthenticationKeyPropertyAttestationSid		For 117
+	Define WinAuthenticationFreshKeyAuthSid					For 118
+	Define WinBuiltinDeviceOwnersSid						For 119
+	Define WinBuiltinUserModeHardwareOperatorsSid			For 120
+	Define WinBuiltinOpenSSHUsersSid						For 121
+End_Enum_List
+
+// Define SECURITY_IMPERSONATION_LEVEL For Integer
+Enum_List
+	Define SecurityAnonymous								For 0
+	Define SecurityIdentification							For 1
+	Define SecurityImpersonation							For 2
+	Define SecurityDelegation								For 3
+End_Enum_List
+
+// Define TOKEN_ACCESS_MASK For UInteger
+Enum_List
+	Define TOKEN_DELETE										For 65536
+	Define TOKEN_READ_CONTROL								For 131072
+	Define TOKEN_WRITE_DAC									For 262144
+	Define TOKEN_WRITE_OWNER								For 524288
+	Define TOKEN_ACCESS_SYSTEM_SECURITY						For 16777216
+	Define TOKEN_ASSIGN_PRIMARY								For 1
+	Define TOKEN_DUPLICATE									For 2
+	Define TOKEN_IMPERSONATE								For 4
+	Define TOKEN_QUERY										For 8
+	Define TOKEN_QUERY_SOURCE								For 16
+	Define TOKEN_ADJUST_PRIVILEGES							For 32
+	Define TOKEN_ADJUST_GROUPS								For 64
+	Define TOKEN_ADJUST_DEFAULT								For 128
+	Define TOKEN_ADJUST_SESSIONID							For 256
+	Define TOKEN_READ										For 131080
+	Define TOKEN_WRITE										For 131296
+	Define TOKEN_EXECUTE									For 131072
+	Define TOKEN_TRUST_CONSTRAINT_MASK						For 131096
+	Define TOKEN_ACCESS_PSEUDO_HANDLE_WIN8					For 24
+	Define TOKEN_ACCESS_PSEUDO_HANDLE						For 24
+	Define TOKEN_ALL_ACCESS									For 983551
+End_Enum_List
+
+// Define TOKEN_TYPE For Integer
+Enum_List
+	Define TokenPrimary										For 1
+	Define TokenImpersonation								For 2
+End_Enum_List
+
+// Define ACL_INFORMATION_CLASS For Integer
+Enum_List
+	Define AclRevisionInformation							For 1
+	Define AclSizeInformation								For 2
+End_Enum_List
+
+// Define TOKEN_INFORMATION_CLASS For Integer
+Enum_List
+	Define TokenUser										For 1
+	Define TokenGroups										For 2
+	Define TokenPrivileges									For 3
+	Define TokenOwner										For 4
+	Define TokenPrimaryGroup								For 5
+	Define TokenDefaultDacl									For 6
+	Define TokenSource										For 7
+	Define TokenType										For 8
+	Define TokenImpersonationLevel							For 9
+	Define TokenStatistics									For 10
+	Define TokenRestrictedSids								For 11
+	Define TokenSessionId									For 12
+	Define TokenGroupsAndPrivileges							For 13
+	Define TokenSessionReference							For 14
+	Define TokenSandBoxInert								For 15
+	Define TokenAuditPolicy									For 16
+	Define TokenOrigin										For 17
+	Define TokenElevationType								For 18
+	Define TokenLinkedToken									For 19
+	Define TokenElevation									For 20
+	Define TokenHasRestrictions								For 21
+	Define TokenAccessInformation							For 22
+	Define TokenVirtualizationAllowed						For 23
+	Define TokenVirtualizationEnabled						For 24
+	Define TokenIntegrityLevel								For 25
+	Define TokenUIAccess									For 26
+	Define TokenMandatoryPolicy								For 27
+	Define TokenLogonSid									For 28
+	Define TokenIsAppContainer								For 29
+	Define TokenCapabilities								For 30
+	Define TokenAppContainerSid								For 31
+	Define TokenAppContainerNumber							For 32
+	Define TokenUserClaimAttributes							For 33
+	Define TokenDeviceClaimAttributes						For 34
+	Define TokenRestrictedUserClaimAttributes				For 35
+	Define TokenRestrictedDeviceClaimAttributes				For 36
+	Define TokenDeviceGroups								For 37
+	Define TokenRestrictedDeviceGroups						For 38
+	Define TokenSecurityAttributes							For 39
+	Define TokenIsRestricted								For 40
+	Define TokenProcessTrustLevel							For 41
+	Define TokenPrivateNameSpace							For 42
+	Define TokenSingletonAttributes							For 43
+	Define TokenBnoIsolation								For 44
+	Define TokenChildProcessFlags							For 45
+	Define TokenIsLessPrivilegedAppContainer				For 46
+	Define TokenIsSandboxed									For 47
+	Define TokenIsAppSilo									For 48
+	Define TokenLoggingInformation							For 49
+	Define TokenLearningMode								For 50
+	Define MaxTokenInfoClass								For 51
+End_Enum_List
+
+// Define ENUM_PERIOD For Integer
+Enum_List
+	Define ENUM_PERIOD_INVALID								For -1
+	Define ENUM_PERIOD_SECONDS								For 0
+	Define ENUM_PERIOD_MINUTES								For 1
+	Define ENUM_PERIOD_HOURS								For 2
+	Define ENUM_PERIOD_DAYS									For 3
+	Define ENUM_PERIOD_WEEKS								For 4
+	Define ENUM_PERIOD_MONTHS								For 5
+	Define ENUM_PERIOD_YEARS								For 6
+End_Enum_List
+
+// Define TOKEN_ELEVATION_TYPE For Integer
+Enum_List
+	Define TokenElevationTypeDefault						For 1
+	Define TokenElevationTypeFull							For 2
+	Define TokenElevationTypeLimited						For 3
+End_Enum_List
+
+// Define MANDATORY_LEVEL For Integer
+Enum_List
+	Define MandatoryLevelUntrusted							For 0
+	Define MandatoryLevelLow								For 1
+	Define MandatoryLevelMedium								For 2
+	Define MandatoryLevelHigh								For 3
+	Define MandatoryLevelSystem								For 4
+	Define MandatoryLevelSecureProcess						For 5
+	Define MandatoryLevelCount								For 6
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,266 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/uxtheme/ns-uxtheme-bp_animationparams
+Struct BP_ANIMATIONPARAMS
+	UInteger cbSize
+	UInteger dwFlags
+	Integer style											// BP_ANIMATIONSTYLE
+	UInteger dwDuration
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/uxtheme/ns-uxtheme-bp_paintparams
+Struct BP_PAINTPARAMS
+	UInteger cbSize
+	UInteger dwFlags										// BP_PAINTPARAMS_FLAGS
+	Pointer prcExclude										// RECT*
+	Pointer pBlendFunction									// BLENDFUNCTION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-colormap
+Struct COLORMAP
+	UInteger from											// COLORREF
+	UInteger to												// COLORREF
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-comboboxinfo
+Struct COMBOBOXINFO
+	UInteger cbSize
+	RECT rcItem
+	RECT rcButton
+	UInteger stateButton									// COMBOBOXINFO_BUTTON_STATE
+	Pointer hwndCombo										// HWND
+	Pointer hwndItem										// HWND
+	Pointer hwndList										// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/uxtheme/ns-uxtheme-dtbgopts
+Struct DTBGOPTS
+	UInteger dwSize
+	UInteger dwFlags
+	RECT rcClip
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/uxtheme/ns-uxtheme-dttopts
+Struct DTTOPTS
+	UInteger dwSize
+	UInteger dwFlags										// DTTOPTS_FLAGS
+	UInteger crText											// COLORREF
+	UInteger crBorder										// COLORREF
+	UInteger crShadow										// COLORREF
+	Integer iTextShadowType
+	POINT ptShadowOffset
+	Integer iBorderSize
+	Integer iFontPropId
+	Integer iColorPropId
+	Integer iStateId
+	Integer fApplyOverlay									// BOOL
+	Integer iGlowSize
+	Pointer pfnDrawTextCallback								// DTT_CALLBACK_PROC
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-imageinfo
+Struct IMAGEINFO
+	Pointer hbmImage										// HBITMAP
+	Pointer hbmMask											// HBITMAP
+	Integer Unused1
+	Integer Unused2
+	RECT rcImage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-imagelistdrawparams
+Struct IMAGELISTDRAWPARAMS
+	UInteger cbSize
+	Integer iMissingAlignment1
+	LongPtr himl											// HIMAGELIST
+	Integer i
+	Integer iMissingAlignment2
+	Pointer hdcDst											// HDC
+	Integer x
+	Integer y
+	Integer cx
+	Integer cy
+	Integer xBitmap
+	Integer yBitmap
+	UInteger rgbBk											// COLORREF
+	UInteger rgbFg											// COLORREF
+	UInteger fStyle
+	UInteger dwRop
+	UInteger fState
+	UInteger Frame
+	UInteger crEffect										// COLORREF
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-initcommoncontrolsex
+Struct INITCOMMONCONTROLSEX
+	UInteger dwSize
+	UInteger dwICC											// INITCOMMONCONTROLSEX_ICC
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/uxtheme/ns-uxtheme-intlist
+Struct INTLIST
+	Integer iValueCount
+	Integer[402] iValues
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/uxtheme/ns-uxtheme-margins
+Struct MARGINS
+	Integer cxLeftWidth
+	Integer cxRightWidth
+	Integer cyTopHeight
+	Integer cyBottomHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetheadera_v2
+Struct PROPSHEETHEADERA_V2
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	UChar[8] UnionName1
+	Pointer pszCaption										// PSTR
+	UInteger nPages
+	Integer iMissingAlignment1
+	UChar[8] UnionName2
+	UChar[8] UnionName3
+	Pointer pfnCallback										// PFNPROPSHEETCALLBACK
+	UChar[8] UnionName4
+	Pointer hplWatermark									// HPALETTE
+	UChar[8] UnionName5
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetheaderw_v2
+Struct PROPSHEETHEADERW_V2
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	UChar[8] UnionName1
+	Pointer pszCaption										// PWSTR
+	UInteger nPages
+	Integer iMissingAlignment1
+	UChar[8] UnionName2
+	UChar[8] UnionName3
+	Pointer pfnCallback										// PFNPROPSHEETCALLBACK
+	UChar[8] UnionName4
+	Pointer hplWatermark									// HPALETTE
+	UChar[8] UnionName5
+End_Struct
+
+Struct PROPSHEETPAGEA
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+	Pointer pszTitle										// PSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKA
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PSTR
+	Pointer pszHeaderSubTitle								// PSTR
+	Pointer hActCtx											// HANDLE
+	UChar[8] UnionName3
+End_Struct
+
+Struct PROPSHEETPAGEW
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	UChar[8] UnionName1
+	UChar[8] UnionName2
+	Pointer pszTitle										// PWSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKW
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PWSTR
+	Pointer pszHeaderSubTitle								// PWSTR
+	Pointer hActCtx											// HANDLE
+	UChar[8] UnionName3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-taskdialogconfig
+Struct TASKDIALOGCONFIG
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	Integer dwFlags											// TASKDIALOG_FLAGS
+	Integer dwCommonButtons									// TASKDIALOG_COMMON_BUTTON_FLAGS
+	Pointer pszWindowTitle									// PWSTR
+	UChar[8] UnionName1
+	Pointer pszMainInstruction								// PWSTR
+	Pointer pszContent										// PWSTR
+	UInteger cButtons
+	Integer iMissingAlignment2
+	Pointer pButtons										// TASKDIALOG_BUTTON*
+	Integer nDefaultButton
+	UInteger cRadioButtons
+	Pointer pRadioButtons									// TASKDIALOG_BUTTON*
+	Integer nDefaultRadioButton
+	Integer iMissingAlignment3
+	Pointer pszVerificationText								// PWSTR
+	Pointer pszExpandedInformation							// PWSTR
+	Pointer pszExpandedControlText							// PWSTR
+	Pointer pszCollapsedControlText							// PWSTR
+	UChar[8] UnionName2
+	Pointer pszFooter										// PWSTR
+	Pointer pfCallback										// PFTASKDIALOGCALLBACK
+	LongPtr lpCallbackData
+	UInteger cxWidth
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-taskdialog_button
+Struct TASKDIALOG_BUTTON
+	Integer nButtonID
+	Integer iMissingAlignment1
+	Pointer pszButtonText									// PWSTR
+End_Struct
+
+Struct TA_TIMINGFUNCTION
+	Integer eTimingFunctionType								// TA_TIMINGFUNCTION_TYPE
+End_Struct
+
+Struct TA_TRANSFORM
+	Integer eTransformType									// TA_TRANSFORM_TYPE
+	UInteger dwTimingFunctionId
+	UInteger dwStartTime
+	UInteger dwDurationTime
+	Integer eFlags											// TA_TRANSFORM_FLAG
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-tbbutton
+Struct TBBUTTON
+	Integer iBitmap
+	Integer idCommand
+	UChar fsState
+	UChar fsStyle
+	UChar[6] bReserved
+	ULongPtr dwData
+	LongPtr iString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-touch_hit_testing_input
+Struct TOUCH_HIT_TESTING_INPUT
+	UInteger pointerId
+	POINT point
+	RECT boundingBox
+	RECT nonOccludedBoundingBox
+	UInteger orientation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-touch_hit_testing_proximity_evaluation
+Struct TOUCH_HIT_TESTING_PROXIMITY_EVALUATION
+	UShort score
+	Short iMissingAlignment1
+	POINT adjustedPoint
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,141 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjallocatealignedbuffer
+External_Function PrjAllocateAlignedBuffer "PrjAllocateAlignedBuffer" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	ULongPtr size ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjclearnegativepathcache
+External_Function PrjClearNegativePathCache "PrjClearNegativePathCache" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	Pointer totalEntryNumber ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjcompletecommand
+External_Function PrjCompleteCommand "PrjCompleteCommand" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	Integer commandId ;
+	Integer completionResult ;	// HRESULT
+	Pointer extendedParameters ;	// PRJ_COMPLETE_COMMAND_EXTENDED_PARAMETERS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjdeletefile
+External_Function PrjDeleteFile "PrjDeleteFile" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	WString destinationFileName ;	// PWSTR
+	Integer updateFlags ;	// PRJ_UPDATE_TYPES
+	Pointer failureReason ;	// PRJ_UPDATE_FAILURE_CAUSES*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjdoesnamecontainwildcards
+External_Function PrjDoesNameContainWildCards "PrjDoesNameContainWildCards" PROJECTEDFSLIB.dll ;
+	WString fileName ;	// PWSTR
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjfilenamecompare
+External_Function PrjFileNameCompare "PrjFileNameCompare" PROJECTEDFSLIB.dll ;
+	WString fileName1 ;	// PWSTR
+	WString fileName2 ;	// PWSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjfilenamematch
+External_Function PrjFileNameMatch "PrjFileNameMatch" PROJECTEDFSLIB.dll ;
+	WString fileNameToCheck ;	// PWSTR
+	WString pattern ;	// PWSTR
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjfilldirentrybuffer
+External_Function PrjFillDirEntryBuffer "PrjFillDirEntryBuffer" PROJECTEDFSLIB.dll ;
+	WString fileName ;	// PWSTR
+	Pointer fileBasicInfo ;	// PRJ_FILE_BASIC_INFO*
+	Pointer dirEntryBufferHandle ;	// PRJ_DIR_ENTRY_BUFFER_HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjfilldirentrybuffer2
+External_Function PrjFillDirEntryBuffer2 "PrjFillDirEntryBuffer2" PROJECTEDFSLIB.dll ;
+	Pointer dirEntryBufferHandle ;	// PRJ_DIR_ENTRY_BUFFER_HANDLE
+	WString fileName ;	// PWSTR
+	Pointer fileBasicInfo ;	// PRJ_FILE_BASIC_INFO*
+	Pointer extendedInfo ;	// PRJ_EXTENDED_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjfreealignedbuffer
+External_Function PrjFreeAlignedBuffer "PrjFreeAlignedBuffer" PROJECTEDFSLIB.dll ;
+	Pointer buffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjgetondiskfilestate
+External_Function PrjGetOnDiskFileState "PrjGetOnDiskFileState" PROJECTEDFSLIB.dll ;
+	WString destinationFileName ;	// PWSTR
+	Pointer fileState ;	// PRJ_FILE_STATE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjgetvirtualizationinstanceinfo
+External_Function PrjGetVirtualizationInstanceInfo "PrjGetVirtualizationInstanceInfo" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	Pointer virtualizationInstanceInfo ;	// PRJ_VIRTUALIZATION_INSTANCE_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjmarkdirectoryasplaceholder
+External_Function PrjMarkDirectoryAsPlaceholder "PrjMarkDirectoryAsPlaceholder" PROJECTEDFSLIB.dll ;
+	WString rootPathName ;	// PWSTR
+	WString targetPathName ;	// PWSTR
+	Pointer versionInfo ;	// PRJ_PLACEHOLDER_VERSION_INFO*
+	Pointer virtualizationInstanceID ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjstartvirtualizing
+External_Function PrjStartVirtualizing "PrjStartVirtualizing" PROJECTEDFSLIB.dll ;
+	WString virtualizationRootPath ;	// PWSTR
+	Pointer callbacks ;	// PRJ_CALLBACKS*
+	Pointer instanceContext ;	// Pointer*
+	Pointer options ;	// PRJ_STARTVIRTUALIZING_OPTIONS*
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjstopvirtualizing
+External_Function PrjStopVirtualizing "PrjStopVirtualizing" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjupdatefileifneeded
+External_Function PrjUpdateFileIfNeeded "PrjUpdateFileIfNeeded" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	WString destinationFileName ;	// PWSTR
+	Pointer placeholderInfo ;	// PRJ_PLACEHOLDER_INFO*
+	UInteger placeholderInfoSize ;
+	Integer updateFlags ;	// PRJ_UPDATE_TYPES
+	Pointer failureReason ;	// PRJ_UPDATE_FAILURE_CAUSES*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjwritefiledata
+External_Function PrjWriteFileData "PrjWriteFileData" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	Pointer dataStreamId ;	// Guid*
+	Pointer buffer ;	// Pointer*
+	UBigint byteOffset ;
+	UInteger length ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjwriteplaceholderinfo
+External_Function PrjWritePlaceholderInfo "PrjWritePlaceholderInfo" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	WString destinationFileName ;	// PWSTR
+	Pointer placeholderInfo ;	// PRJ_PLACEHOLDER_INFO*
+	UInteger placeholderInfoSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/projectedfslib/nf-projectedfslib-prjwriteplaceholderinfo2
+External_Function PrjWritePlaceholderInfo2 "PrjWritePlaceholderInfo2" PROJECTEDFSLIB.dll ;
+	Pointer namespaceVirtualizationContext ;	// PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT
+	WString destinationFileName ;	// PWSTR
+	Pointer placeholderInfo ;	// PRJ_PLACEHOLDER_INFO*
+	UInteger placeholderInfoSize ;
+	Pointer ExtendedInfo ;	// PRJ_EXTENDED_INFO*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

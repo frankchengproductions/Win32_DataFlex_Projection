@@ -1,0 +1,1557 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dhcpv6csdk/nf-dhcpv6csdk-dhcpv6capicleanup
+External_Function Dhcpv6CApiCleanup "Dhcpv6CApiCleanup" dhcpcsvc6.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpv6csdk/nf-dhcpv6csdk-dhcpv6capiinitialize
+External_Function Dhcpv6CApiInitialize "Dhcpv6CApiInitialize" dhcpcsvc6.dll ;
+	Pointer Version ;	// UInteger*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpv6csdk/nf-dhcpv6csdk-dhcpv6releaseprefix
+External_Function Dhcpv6ReleasePrefix "Dhcpv6ReleasePrefix" dhcpcsvc6.dll ;
+	WString adapterName ;	// PWSTR
+	Pointer classId ;	// DHCPV6CAPI_CLASSID*
+	Pointer leaseInfo ;	// DHCPV6PrefixLeaseInformation*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpv6csdk/nf-dhcpv6csdk-dhcpv6renewprefix
+External_Function Dhcpv6RenewPrefix "Dhcpv6RenewPrefix" dhcpcsvc6.dll ;
+	WString adapterName ;	// PWSTR
+	Pointer pclassId ;	// DHCPV6CAPI_CLASSID*
+	Pointer prefixleaseInfo ;	// DHCPV6PrefixLeaseInformation*
+	Pointer pdwTimeToWait ;	// UInteger*
+	UInteger bValidatePrefix ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpv6csdk/nf-dhcpv6csdk-dhcpv6requestparams
+External_Function Dhcpv6RequestParams "Dhcpv6RequestParams" dhcpcsvc6.dll ;
+	Integer forceNewInform ;	// BOOL
+	Pointer reserved ;	// Pointer*
+	WString adapterName ;	// PWSTR
+	Pointer classId ;	// DHCPV6CAPI_CLASSID*
+	DHCPV6CAPI_PARAMS_ARRAY recdParams ;
+	Pointer buffer ;	// UChar*
+	Pointer pSize ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpv6csdk/nf-dhcpv6csdk-dhcpv6requestprefix
+External_Function Dhcpv6RequestPrefix "Dhcpv6RequestPrefix" dhcpcsvc6.dll ;
+	WString adapterName ;	// PWSTR
+	Pointer pclassId ;	// DHCPV6CAPI_CLASSID*
+	Pointer prefixleaseInfo ;	// DHCPV6PrefixLeaseInformation*
+	Pointer pdwTimeToWait ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcpcapicleanup
+External_Function DhcpCApiCleanup "DhcpCApiCleanup" dhcpcsvc.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcpcapiinitialize
+External_Function DhcpCApiInitialize "DhcpCApiInitialize" dhcpcsvc.dll ;
+	Pointer Version ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcpderegisterparamchange
+External_Function DhcpDeRegisterParamChange "DhcpDeRegisterParamChange" dhcpcsvc.dll ;
+	UInteger Flags ;
+	Pointer Reserved ;	// Pointer*
+	Pointer Event ;	// Pointer*
+	Returns UInteger
+
+External_Function DhcpGetOriginalSubnetMask "DhcpGetOriginalSubnetMask" dhcpcsvc.dll ;
+	WString sAdapterName ;	// PWSTR
+	Pointer dwSubnetMask ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcpregisterparamchange
+External_Function DhcpRegisterParamChange "DhcpRegisterParamChange" dhcpcsvc.dll ;
+	UInteger Flags ;
+	Pointer Reserved ;	// Pointer*
+	WString AdapterName ;	// PWSTR
+	Pointer ClassId ;	// DHCPCAPI_CLASSID*
+	DHCPCAPI_PARAMS_ARRAY Params ;
+	Pointer Handle ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcpremovednsregistrations
+External_Function DhcpRemoveDNSRegistrations "DhcpRemoveDNSRegistrations" dhcpcsvc.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcprequestparams
+External_Function DhcpRequestParams "DhcpRequestParams" dhcpcsvc.dll ;
+	UInteger Flags ;
+	Pointer Reserved ;	// Pointer*
+	WString AdapterName ;	// PWSTR
+	Pointer ClassId ;	// DHCPCAPI_CLASSID*
+	DHCPCAPI_PARAMS_ARRAY SendParams ;
+	DHCPCAPI_PARAMS_ARRAY RecdParams ;
+	Pointer Buffer ;	// UChar*
+	Pointer pSize ;	// UInteger*
+	WString RequestIdStr ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpcsdk/nf-dhcpcsdk-dhcpundorequestparams
+External_Function DhcpUndoRequestParams "DhcpUndoRequestParams" dhcpcsvc.dll ;
+	UInteger Flags ;
+	Pointer Reserved ;	// Pointer*
+	WString AdapterName ;	// PWSTR
+	WString RequestIdStr ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpaddfilterv4
+External_Function DhcpAddFilterV4 "DhcpAddFilterV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer AddFilterInfo ;	// DHCP_FILTER_ADD_INFO*
+	Integer ForceFlag ;	// BOOL
+	Returns UInteger
+
+External_Function DhcpAddSecurityGroup "DhcpAddSecurityGroup" DHCPSAPI.dll ;
+	WString pServer ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpaddserver
+External_Function DhcpAddServer "DhcpAddServer" DHCPSAPI.dll ;
+	UInteger Flags ;
+	Pointer IdInfo ;	// Pointer*
+	Pointer NewServer ;	// DHCPDS_SERVER*
+	Pointer CallbackFn ;	// Pointer*
+	Pointer CallbackData ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpaddsubnetelement
+External_Function DhcpAddSubnetElement "DhcpAddSubnetElement" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer AddElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpaddsubnetelementv4
+External_Function DhcpAddSubnetElementV4 "DhcpAddSubnetElementV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer AddElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA_V4*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpaddsubnetelementv5
+External_Function DhcpAddSubnetElementV5 "DhcpAddSubnetElementV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer AddElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA_V5*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpaddsubnetelementv6
+External_Function DhcpAddSubnetElementV6 "DhcpAddSubnetElementV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer AddElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpauditloggetparams
+External_Function DhcpAuditLogGetParams "DhcpAuditLogGetParams" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer AuditLogDir ;	// PWSTR*
+	Pointer DiskCheckInterval ;	// UInteger*
+	Pointer MaxLogFilesSize ;	// UInteger*
+	Pointer MinSpaceOnDisk ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpauditlogsetparams
+External_Function DhcpAuditLogSetParams "DhcpAuditLogSetParams" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString AuditLogDir ;	// PWSTR
+	UInteger DiskCheckInterval ;
+	UInteger MaxLogFilesSize ;
+	UInteger MinSpaceOnDisk ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateclass
+External_Function DhcpCreateClass "DhcpCreateClass" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer ClassInfo ;	// DHCP_CLASS_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateclassv6
+External_Function DhcpCreateClassV6 "DhcpCreateClassV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer ClassInfo ;	// DHCP_CLASS_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateclientinfo
+External_Function DhcpCreateClientInfo "DhcpCreateClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateclientinfov4
+External_Function DhcpCreateClientInfoV4 "DhcpCreateClientInfoV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_V4*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateclientinfovq
+External_Function DhcpCreateClientInfoVQ "DhcpCreateClientInfoVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_VQ*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateoption
+External_Function DhcpCreateOption "DhcpCreateOption" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Pointer OptionInfo ;	// DHCP_OPTION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateoptionv5
+External_Function DhcpCreateOptionV5 "DhcpCreateOptionV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionId ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer OptionInfo ;	// DHCP_OPTION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreateoptionv6
+External_Function DhcpCreateOptionV6 "DhcpCreateOptionV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionId ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer OptionInfo ;	// DHCP_OPTION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreatesubnet
+External_Function DhcpCreateSubnet "DhcpCreateSubnet" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreatesubnetv6
+External_Function DhcpCreateSubnetV6 "DhcpCreateSubnetV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpcreatesubnetvq
+External_Function DhcpCreateSubnetVQ "DhcpCreateSubnetVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO_VQ*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeleteclass
+External_Function DhcpDeleteClass "DhcpDeleteClass" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	WString ClassName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeleteclassv6
+External_Function DhcpDeleteClassV6 "DhcpDeleteClassV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	WString ClassName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeleteclientinfo
+External_Function DhcpDeleteClientInfo "DhcpDeleteClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_SEARCH_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeleteclientinfov6
+External_Function DhcpDeleteClientInfoV6 "DhcpDeleteClientInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_SEARCH_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeletefilterv4
+External_Function DhcpDeleteFilterV4 "DhcpDeleteFilterV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer DeleteFilterInfo ;	// DHCP_ADDR_PATTERN*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeleteserver
+External_Function DhcpDeleteServer "DhcpDeleteServer" DHCPSAPI.dll ;
+	UInteger Flags ;
+	Pointer IdInfo ;	// Pointer*
+	Pointer NewServer ;	// DHCPDS_SERVER*
+	Pointer CallbackFn ;	// Pointer*
+	Pointer CallbackData ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeletesubnet
+External_Function DhcpDeleteSubnet "DhcpDeleteSubnet" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Integer ForceFlag ;	// DHCP_FORCE_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeletesubnetv6
+External_Function DhcpDeleteSubnetV6 "DhcpDeleteSubnetV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Integer ForceFlag ;	// DHCP_FORCE_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdeletesuperscopev4
+External_Function DhcpDeleteSuperScopeV4 "DhcpDeleteSuperScopeV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString SuperScopeName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdscleanup
+External_Function DhcpDsCleanup "DhcpDsCleanup" DHCPSAPI.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpdsinit
+External_Function DhcpDsInit "DhcpDsInit" DHCPSAPI.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumclasses
+External_Function DhcpEnumClasses "DhcpEnumClasses" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClassInfoArray ;	// DHCP_CLASS_INFO_ARRAY**
+	Pointer nRead ;	// UInteger*
+	Pointer nTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumclassesv6
+External_Function DhcpEnumClassesV6 "DhcpEnumClassesV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClassInfoArray ;	// DHCP_CLASS_INFO_ARRAY_V6**
+	Pointer nRead ;	// UInteger*
+	Pointer nTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumfilterv4
+External_Function DhcpEnumFilterV4 "DhcpEnumFilterV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// DHCP_ADDR_PATTERN*
+	UInteger PreferredMaximum ;
+	Integer ListType ;	// DHCP_FILTER_LIST_TYPE
+	Pointer EnumFilterInfo ;	// DHCP_FILTER_ENUM_INFO**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumoptionvalues
+External_Function DhcpEnumOptionValues "DhcpEnumOptionValues" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer OptionValues ;	// DHCP_OPTION_VALUE_ARRAY**
+	Pointer OptionsRead ;	// UInteger*
+	Pointer OptionsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumoptionvaluesv5
+External_Function DhcpEnumOptionValuesV5 "DhcpEnumOptionValuesV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer OptionValues ;	// DHCP_OPTION_VALUE_ARRAY**
+	Pointer OptionsRead ;	// UInteger*
+	Pointer OptionsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumoptionvaluesv6
+External_Function DhcpEnumOptionValuesV6 "DhcpEnumOptionValuesV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer OptionValues ;	// DHCP_OPTION_VALUE_ARRAY**
+	Pointer OptionsRead ;	// UInteger*
+	Pointer OptionsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumoptions
+External_Function DhcpEnumOptions "DhcpEnumOptions" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer Options ;	// DHCP_OPTION_ARRAY**
+	Pointer OptionsRead ;	// UInteger*
+	Pointer OptionsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumoptionsv5
+External_Function DhcpEnumOptionsV5 "DhcpEnumOptionsV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer Options ;	// DHCP_OPTION_ARRAY**
+	Pointer OptionsRead ;	// UInteger*
+	Pointer OptionsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumoptionsv6
+External_Function DhcpEnumOptionsV6 "DhcpEnumOptionsV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer Options ;	// DHCP_OPTION_ARRAY**
+	Pointer OptionsRead ;	// UInteger*
+	Pointer OptionsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumservers
+External_Function DhcpEnumServers "DhcpEnumServers" DHCPSAPI.dll ;
+	UInteger Flags ;
+	Pointer IdInfo ;	// Pointer*
+	Pointer Servers ;	// DHCPDS_SERVERS**
+	Pointer CallbackFn ;	// Pointer*
+	Pointer CallbackData ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetclients
+External_Function DhcpEnumSubnetClients "DhcpEnumSubnetClients" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_ARRAY**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetclientsfilterstatusinfo
+External_Function DhcpEnumSubnetClientsFilterStatusInfo "DhcpEnumSubnetClientsFilterStatusInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_FILTER_STATUS_INFO_ARRAY**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetclientsv4
+External_Function DhcpEnumSubnetClientsV4 "DhcpEnumSubnetClientsV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_ARRAY_V4**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetclientsv5
+External_Function DhcpEnumSubnetClientsV5 "DhcpEnumSubnetClientsV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_ARRAY_V5**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetclientsv6
+External_Function DhcpEnumSubnetClientsV6 "DhcpEnumSubnetClientsV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer ResumeHandle ;	// DHCP_IPV6_ADDRESS*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_ARRAY_V6**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetclientsvq
+External_Function DhcpEnumSubnetClientsVQ "DhcpEnumSubnetClientsVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_ARRAY_VQ**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetelements
+External_Function DhcpEnumSubnetElements "DhcpEnumSubnetElements" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Integer EnumElementType ;	// DHCP_SUBNET_ELEMENT_TYPE
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumElementInfo ;	// DHCP_SUBNET_ELEMENT_INFO_ARRAY**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetelementsv4
+External_Function DhcpEnumSubnetElementsV4 "DhcpEnumSubnetElementsV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Integer EnumElementType ;	// DHCP_SUBNET_ELEMENT_TYPE
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumElementInfo ;	// DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetelementsv5
+External_Function DhcpEnumSubnetElementsV5 "DhcpEnumSubnetElementsV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Integer EnumElementType ;	// DHCP_SUBNET_ELEMENT_TYPE
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumElementInfo ;	// DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetelementsv6
+External_Function DhcpEnumSubnetElementsV6 "DhcpEnumSubnetElementsV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Integer EnumElementType ;	// DHCP_SUBNET_ELEMENT_TYPE_V6
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumElementInfo ;	// DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnets
+External_Function DhcpEnumSubnets "DhcpEnumSubnets" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumInfo ;	// DHCP_IP_ARRAY**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpenumsubnetsv6
+External_Function DhcpEnumSubnetsV6 "DhcpEnumSubnetsV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumInfo ;	// DHCPV6_IP_ARRAY**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetalloptionvalues
+External_Function DhcpGetAllOptionValues "DhcpGetAllOptionValues" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer Values ;	// DHCP_ALL_OPTION_VALUES**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetalloptionvaluesv6
+External_Function DhcpGetAllOptionValuesV6 "DhcpGetAllOptionValuesV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	Pointer Values ;	// DHCP_ALL_OPTION_VALUES**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetalloptions
+External_Function DhcpGetAllOptions "DhcpGetAllOptions" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer OptionStruct ;	// DHCP_ALL_OPTIONS**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetalloptionsv6
+External_Function DhcpGetAllOptionsV6 "DhcpGetAllOptionsV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer OptionStruct ;	// DHCP_ALL_OPTIONS**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetclassinfo
+External_Function DhcpGetClassInfo "DhcpGetClassInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer PartialClassInfo ;	// DHCP_CLASS_INFO*
+	Pointer FilledClassInfo ;	// DHCP_CLASS_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetclientinfo
+External_Function DhcpGetClientInfo "DhcpGetClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO*
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetclientinfov4
+External_Function DhcpGetClientInfoV4 "DhcpGetClientInfoV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO*
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_V4**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetclientinfov6
+External_Function DhcpGetClientInfoV6 "DhcpGetClientInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO_V6*
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_V6**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetclientinfovq
+External_Function DhcpGetClientInfoVQ "DhcpGetClientInfoVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO*
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_VQ**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetclientoptions
+External_Function DhcpGetClientOptions "DhcpGetClientOptions" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ClientIpAddress ;
+	UInteger ClientSubnetMask ;
+	Pointer ClientOptions ;	// DHCP_OPTION_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetfilterv4
+External_Function DhcpGetFilterV4 "DhcpGetFilterV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer GlobalFilterInfo ;	// DHCP_FILTER_GLOBAL_INFO*
+	Returns UInteger
+
+External_Function DhcpGetMibInfo "DhcpGetMibInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer MibInfo ;	// DHCP_MIB_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetmibinfov5
+External_Function DhcpGetMibInfoV5 "DhcpGetMibInfoV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer MibInfo ;	// DHCP_MIB_INFO_V5**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetmibinfov6
+External_Function DhcpGetMibInfoV6 "DhcpGetMibInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer MibInfo ;	// DHCP_MIB_INFO_V6**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetoptioninfo
+External_Function DhcpGetOptionInfo "DhcpGetOptionInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Pointer OptionInfo ;	// DHCP_OPTION**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetoptioninfov5
+External_Function DhcpGetOptionInfoV5 "DhcpGetOptionInfoV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer OptionInfo ;	// DHCP_OPTION**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetoptioninfov6
+External_Function DhcpGetOptionInfoV6 "DhcpGetOptionInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer OptionInfo ;	// DHCP_OPTION**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetoptionvalue
+External_Function DhcpGetOptionValue "DhcpGetOptionValue" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValue ;	// DHCP_OPTION_VALUE**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetoptionvaluev5
+External_Function DhcpGetOptionValueV5 "DhcpGetOptionValueV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValue ;	// DHCP_OPTION_VALUE**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetoptionvaluev6
+External_Function DhcpGetOptionValueV6 "DhcpGetOptionValueV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	Pointer OptionValue ;	// DHCP_OPTION_VALUE**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetserverbindinginfo
+External_Function DhcpGetServerBindingInfo "DhcpGetServerBindingInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer BindElementsInfo ;	// DHCP_BIND_ELEMENT_ARRAY**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetserverbindinginfov6
+External_Function DhcpGetServerBindingInfoV6 "DhcpGetServerBindingInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer BindElementsInfo ;	// DHCPV6_BIND_ELEMENT_ARRAY**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetserverspecificstrings
+External_Function DhcpGetServerSpecificStrings "DhcpGetServerSpecificStrings" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ServerSpecificStrings ;	// DHCP_SERVER_SPECIFIC_STRINGS**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetsubnetdelayoffer
+External_Function DhcpGetSubnetDelayOffer "DhcpGetSubnetDelayOffer" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer TimeDelayInMilliseconds ;	// UShort*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetsubnetinfo
+External_Function DhcpGetSubnetInfo "DhcpGetSubnetInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetsubnetinfov6
+External_Function DhcpGetSubnetInfoV6 "DhcpGetSubnetInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO_V6**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetsubnetinfovq
+External_Function DhcpGetSubnetInfoVQ "DhcpGetSubnetInfoVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO_VQ**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetsuperscopeinfov4
+External_Function DhcpGetSuperScopeInfoV4 "DhcpGetSuperScopeInfoV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SuperScopeTable ;	// DHCP_SUPER_SCOPE_TABLE**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetthreadoptions
+External_Function DhcpGetThreadOptions "DhcpGetThreadOptions" DHCPSAPI.dll ;
+	Pointer pFlags ;	// UInteger*
+	Pointer Reserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpgetversion
+External_Function DhcpGetVersion "DhcpGetVersion" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer MajorVersion ;	// UInteger*
+	Pointer MinorVersion ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlpraddv4policycondition
+External_Function DhcpHlprAddV4PolicyCondition "DhcpHlprAddV4PolicyCondition" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	UInteger ParentExpr ;
+	Integer Type ;	// DHCP_POL_ATTR_TYPE
+	UInteger OptionID ;
+	UInteger SubOptionID ;
+	WString VendorName ;	// PWSTR
+	Integer Operator ;	// DHCP_POL_COMPARATOR
+	Pointer Value ;	// UChar*
+	UInteger ValueLength ;
+	Pointer ConditionIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlpraddv4policyexpr
+External_Function DhcpHlprAddV4PolicyExpr "DhcpHlprAddV4PolicyExpr" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	UInteger ParentExpr ;
+	Integer Operator ;	// DHCP_POL_LOGIC_OPER
+	Pointer ExprIndex ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlpraddv4policyrange
+External_Function DhcpHlprAddV4PolicyRange "DhcpHlprAddV4PolicyRange" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	Pointer Range ;	// DHCP_IP_RANGE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprcreatev4policy
+External_Function DhcpHlprCreateV4Policy "DhcpHlprCreateV4Policy" DHCPSAPI.dll ;
+	WString PolicyName ;	// PWSTR
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger Subnet ;
+	UInteger ProcessingOrder ;
+	Integer RootOperator ;	// DHCP_POL_LOGIC_OPER
+	WString Description ;	// PWSTR
+	Integer Enabled ;	// BOOL
+	Pointer Policy ;	// DHCP_POLICY**
+	Returns UInteger
+
+External_Function DhcpHlprCreateV4PolicyEx "DhcpHlprCreateV4PolicyEx" DHCPSAPI.dll ;
+	WString PolicyName ;	// PWSTR
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger Subnet ;
+	UInteger ProcessingOrder ;
+	Integer RootOperator ;	// DHCP_POL_LOGIC_OPER
+	WString Description ;	// PWSTR
+	Integer Enabled ;	// BOOL
+	Pointer Policy ;	// DHCP_POLICY_EX**
+	Returns UInteger
+
+External_Function DhcpHlprFindV4DhcpProperty "DhcpHlprFindV4DhcpProperty" DHCPSAPI.dll ;
+	Pointer PropertyArray ;	// DHCP_PROPERTY_ARRAY*
+	Integer ID ;	// DHCP_PROPERTY_ID
+	Integer Type ;	// DHCP_PROPERTY_TYPE
+	Returns Pointer	// DHCP_PROPERTY*
+
+External_Function DhcpHlprFreeV4DhcpProperty "DhcpHlprFreeV4DhcpProperty" DHCPSAPI.dll ;
+	Pointer Property ;	// DHCP_PROPERTY*
+	Returns Pointer
+
+External_Function DhcpHlprFreeV4DhcpPropertyArray "DhcpHlprFreeV4DhcpPropertyArray" DHCPSAPI.dll ;
+	Pointer PropertyArray ;	// DHCP_PROPERTY_ARRAY*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprfreev4policy
+External_Function DhcpHlprFreeV4Policy "DhcpHlprFreeV4Policy" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	Returns Pointer
+
+External_Function DhcpHlprFreeV4PolicyArray "DhcpHlprFreeV4PolicyArray" DHCPSAPI.dll ;
+	Pointer PolicyArray ;	// DHCP_POLICY_ARRAY*
+	Returns Pointer
+
+External_Function DhcpHlprFreeV4PolicyEx "DhcpHlprFreeV4PolicyEx" DHCPSAPI.dll ;
+	Pointer PolicyEx ;	// DHCP_POLICY_EX*
+	Returns Pointer
+
+External_Function DhcpHlprFreeV4PolicyExArray "DhcpHlprFreeV4PolicyExArray" DHCPSAPI.dll ;
+	Pointer PolicyExArray ;	// DHCP_POLICY_EX_ARRAY*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprisv4policysingleuc
+External_Function DhcpHlprIsV4PolicySingleUC "DhcpHlprIsV4PolicySingleUC" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprisv4policyvalid
+External_Function DhcpHlprIsV4PolicyValid "DhcpHlprIsV4PolicyValid" DHCPSAPI.dll ;
+	Pointer pPolicy ;	// DHCP_POLICY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprisv4policywellformed
+External_Function DhcpHlprIsV4PolicyWellFormed "DhcpHlprIsV4PolicyWellFormed" DHCPSAPI.dll ;
+	Pointer pPolicy ;	// DHCP_POLICY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprmodifyv4policyexpr
+External_Function DhcpHlprModifyV4PolicyExpr "DhcpHlprModifyV4PolicyExpr" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	Integer Operator ;	// DHCP_POL_LOGIC_OPER
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcphlprresetv4policyexpr
+External_Function DhcpHlprResetV4PolicyExpr "DhcpHlprResetV4PolicyExpr" DHCPSAPI.dll ;
+	Pointer Policy ;	// DHCP_POLICY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpmodifyclass
+External_Function DhcpModifyClass "DhcpModifyClass" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer ClassInfo ;	// DHCP_CLASS_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpmodifyclassv6
+External_Function DhcpModifyClassV6 "DhcpModifyClassV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ReservedMustBeZero ;
+	Pointer ClassInfo ;	// DHCP_CLASS_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremoveoption
+External_Function DhcpRemoveOption "DhcpRemoveOption" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremoveoptionv5
+External_Function DhcpRemoveOptionV5 "DhcpRemoveOptionV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremoveoptionv6
+External_Function DhcpRemoveOptionV6 "DhcpRemoveOptionV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremoveoptionvalue
+External_Function DhcpRemoveOptionValue "DhcpRemoveOptionValue" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremoveoptionvaluev5
+External_Function DhcpRemoveOptionValueV5 "DhcpRemoveOptionValueV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremoveoptionvaluev6
+External_Function DhcpRemoveOptionValueV6 "DhcpRemoveOptionValueV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremovesubnetelement
+External_Function DhcpRemoveSubnetElement "DhcpRemoveSubnetElement" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer RemoveElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA*
+	Integer ForceFlag ;	// DHCP_FORCE_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremovesubnetelementv4
+External_Function DhcpRemoveSubnetElementV4 "DhcpRemoveSubnetElementV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer RemoveElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA_V4*
+	Integer ForceFlag ;	// DHCP_FORCE_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremovesubnetelementv5
+External_Function DhcpRemoveSubnetElementV5 "DhcpRemoveSubnetElementV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer RemoveElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA_V5*
+	Integer ForceFlag ;	// DHCP_FORCE_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpremovesubnetelementv6
+External_Function DhcpRemoveSubnetElementV6 "DhcpRemoveSubnetElementV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer RemoveElementInfo ;	// DHCP_SUBNET_ELEMENT_DATA_V6*
+	Integer ForceFlag ;	// DHCP_FORCE_FLAG
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcprpcfreememory
+External_Function DhcpRpcFreeMemory "DhcpRpcFreeMemory" DHCPSAPI.dll ;
+	Pointer BufferPointer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpscandatabase
+External_Function DhcpScanDatabase "DhcpScanDatabase" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	UInteger FixFlag ;
+	Pointer ScanList ;	// DHCP_SCAN_LIST**
+	Returns UInteger
+
+External_Function DhcpServerAuditlogParamsFree "DhcpServerAuditlogParamsFree" DHCPSAPI.dll ;
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_VQ*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserverbackupdatabase
+External_Function DhcpServerBackupDatabase "DhcpServerBackupDatabase" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString Path ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpservergetconfig
+External_Function DhcpServerGetConfig "DhcpServerGetConfig" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpservergetconfigv4
+External_Function DhcpServerGetConfigV4 "DhcpServerGetConfigV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_V4**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpservergetconfigv6
+External_Function DhcpServerGetConfigV6 "DhcpServerGetConfigV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_V6**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpservergetconfigvq
+External_Function DhcpServerGetConfigVQ "DhcpServerGetConfigVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_VQ**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserverqueryattribute
+External_Function DhcpServerQueryAttribute "DhcpServerQueryAttribute" DHCPSAPI.dll ;
+	WString ServerIpAddr ;	// PWSTR
+	UInteger dwReserved ;
+	UInteger DhcpAttribId ;
+	Pointer pDhcpAttrib ;	// DHCP_ATTRIB**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserverqueryattributes
+External_Function DhcpServerQueryAttributes "DhcpServerQueryAttributes" DHCPSAPI.dll ;
+	WString ServerIpAddr ;	// PWSTR
+	UInteger dwReserved ;
+	UInteger dwAttribCount ;
+	Pointer pDhcpAttribs ;	// UInteger*
+	Pointer pDhcpAttribArr ;	// DHCP_ATTRIB_ARRAY**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserverquerydnsregcredentials
+External_Function DhcpServerQueryDnsRegCredentials "DhcpServerQueryDnsRegCredentials" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger UnameSize ;
+	Pointer Uname ;	// PWSTR
+	UInteger DomainSize ;
+	Pointer Domain ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserverredoauthorization
+External_Function DhcpServerRedoAuthorization "DhcpServerRedoAuthorization" DHCPSAPI.dll ;
+	WString ServerIpAddr ;	// PWSTR
+	UInteger dwReserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserverrestoredatabase
+External_Function DhcpServerRestoreDatabase "DhcpServerRestoreDatabase" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString Path ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserversetconfig
+External_Function DhcpServerSetConfig "DhcpServerSetConfig" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger FieldsToSet ;
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserversetconfigv4
+External_Function DhcpServerSetConfigV4 "DhcpServerSetConfigV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger FieldsToSet ;
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_V4*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserversetconfigv6
+External_Function DhcpServerSetConfigV6 "DhcpServerSetConfigV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	UInteger FieldsToSet ;
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserversetconfigvq
+External_Function DhcpServerSetConfigVQ "DhcpServerSetConfigVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger FieldsToSet ;
+	Pointer ConfigInfo ;	// DHCP_SERVER_CONFIG_INFO_VQ*
+	Returns UInteger
+
+External_Function DhcpServerSetDnsRegCredentials "DhcpServerSetDnsRegCredentials" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString Uname ;	// PWSTR
+	WString Domain ;	// PWSTR
+	WString Passwd ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpserversetdnsregcredentialsv5
+External_Function DhcpServerSetDnsRegCredentialsV5 "DhcpServerSetDnsRegCredentialsV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString Uname ;	// PWSTR
+	WString Domain ;	// PWSTR
+	WString Passwd ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetclientinfo
+External_Function DhcpSetClientInfo "DhcpSetClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetclientinfov4
+External_Function DhcpSetClientInfoV4 "DhcpSetClientInfoV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_V4*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetclientinfov6
+External_Function DhcpSetClientInfoV6 "DhcpSetClientInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetclientinfovq
+External_Function DhcpSetClientInfoVQ "DhcpSetClientInfoVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_VQ*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetfilterv4
+External_Function DhcpSetFilterV4 "DhcpSetFilterV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer GlobalFilterInfo ;	// DHCP_FILTER_GLOBAL_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptioninfo
+External_Function DhcpSetOptionInfo "DhcpSetOptionInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Pointer OptionInfo ;	// DHCP_OPTION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptioninfov5
+External_Function DhcpSetOptionInfoV5 "DhcpSetOptionInfoV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer OptionInfo ;	// DHCP_OPTION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptioninfov6
+External_Function DhcpSetOptionInfoV6 "DhcpSetOptionInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer OptionInfo ;	// DHCP_OPTION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptionvalue
+External_Function DhcpSetOptionValue "DhcpSetOptionValue" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger OptionID ;
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValue ;	// DHCP_OPTION_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptionvaluev5
+External_Function DhcpSetOptionValueV5 "DhcpSetOptionValueV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionId ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValue ;	// DHCP_OPTION_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptionvaluev6
+External_Function DhcpSetOptionValueV6 "DhcpSetOptionValueV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionId ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO6*
+	Pointer OptionValue ;	// DHCP_OPTION_DATA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptionvalues
+External_Function DhcpSetOptionValues "DhcpSetOptionValues" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValues ;	// DHCP_OPTION_VALUE_ARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetoptionvaluesv5
+External_Function DhcpSetOptionValuesV5 "DhcpSetOptionValuesV5" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	WString ClassName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValues ;	// DHCP_OPTION_VALUE_ARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetserverbindinginfo
+External_Function DhcpSetServerBindingInfo "DhcpSetServerBindingInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer BindElementInfo ;	// DHCP_BIND_ELEMENT_ARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetserverbindinginfov6
+External_Function DhcpSetServerBindingInfoV6 "DhcpSetServerBindingInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer BindElementInfo ;	// DHCPV6_BIND_ELEMENT_ARRAY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetsubnetdelayoffer
+External_Function DhcpSetSubnetDelayOffer "DhcpSetSubnetDelayOffer" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	UShort TimeDelayInMilliseconds ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetsubnetinfo
+External_Function DhcpSetSubnetInfo "DhcpSetSubnetInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetsubnetinfov6
+External_Function DhcpSetSubnetInfoV6 "DhcpSetSubnetInfoV6" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	DHCP_IPV6_ADDRESS SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO_V6*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetsubnetinfovq
+External_Function DhcpSetSubnetInfoVQ "DhcpSetSubnetInfoVQ" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer SubnetInfo ;	// DHCP_SUBNET_INFO_VQ*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetsuperscopev4
+External_Function DhcpSetSuperScopeV4 "DhcpSetSuperScopeV4" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	WString SuperScopeName ;	// PWSTR
+	Integer ChangeExisting ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpsetthreadoptions
+External_Function DhcpSetThreadOptions "DhcpSetThreadOptions" DHCPSAPI.dll ;
+	UInteger Flags ;
+	Pointer Reserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4addpolicyrange
+External_Function DhcpV4AddPolicyRange "DhcpV4AddPolicyRange" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Pointer Range ;	// DHCP_IP_RANGE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4createclientinfo
+External_Function DhcpV4CreateClientInfo "DhcpV4CreateClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_PB*
+	Returns UInteger
+
+External_Function DhcpV4CreateClientInfoEx "DhcpV4CreateClientInfoEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_EX*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4createpolicy
+External_Function DhcpV4CreatePolicy "DhcpV4CreatePolicy" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer pPolicy ;	// DHCP_POLICY*
+	Returns UInteger
+
+External_Function DhcpV4CreatePolicyEx "DhcpV4CreatePolicyEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer PolicyEx ;	// DHCP_POLICY_EX*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4deletepolicy
+External_Function DhcpV4DeletePolicy "DhcpV4DeletePolicy" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4enumpolicies
+External_Function DhcpV4EnumPolicies "DhcpV4EnumPolicies" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	Pointer EnumInfo ;	// DHCP_POLICY_ARRAY**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+External_Function DhcpV4EnumPoliciesEx "DhcpV4EnumPoliciesEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Integer GlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	Pointer EnumInfo ;	// DHCP_POLICY_EX_ARRAY**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4enumsubnetclients
+External_Function DhcpV4EnumSubnetClients "DhcpV4EnumSubnetClients" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_PB_ARRAY**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+External_Function DhcpV4EnumSubnetClientsEx "DhcpV4EnumSubnetClientsEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_EX_ARRAY**
+	Pointer ClientsRead ;	// UInteger*
+	Pointer ClientsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4enumsubnetreservations
+External_Function DhcpV4EnumSubnetReservations "DhcpV4EnumSubnetReservations" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer EnumElementInfo ;	// DHCP_RESERVATION_INFO_ARRAY**
+	Pointer ElementsRead ;	// UInteger*
+	Pointer ElementsTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failoveraddscopetorelationship
+External_Function DhcpV4FailoverAddScopeToRelationship "DhcpV4FailoverAddScopeToRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovercreaterelationship
+External_Function DhcpV4FailoverCreateRelationship "DhcpV4FailoverCreateRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failoverdeleterelationship
+External_Function DhcpV4FailoverDeleteRelationship "DhcpV4FailoverDeleteRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString pRelationshipName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failoverdeletescopefromrelationship
+External_Function DhcpV4FailoverDeleteScopeFromRelationship "DhcpV4FailoverDeleteScopeFromRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failoverenumrelationship
+External_Function DhcpV4FailoverEnumRelationship "DhcpV4FailoverEnumRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer ResumeHandle ;	// UInteger*
+	UInteger PreferredMaximum ;
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP_ARRAY**
+	Pointer RelationshipRead ;	// UInteger*
+	Pointer RelationshipTotal ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovergetaddressstatus
+External_Function DhcpV4FailoverGetAddressStatus "DhcpV4FailoverGetAddressStatus" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	Pointer pStatus ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovergetclientinfo
+External_Function DhcpV4FailoverGetClientInfo "DhcpV4FailoverGetClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO*
+	Pointer ClientInfo ;	// DHCPV4_FAILOVER_CLIENT_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovergetrelationship
+External_Function DhcpV4FailoverGetRelationship "DhcpV4FailoverGetRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString pRelationshipName ;	// PWSTR
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovergetscoperelationship
+External_Function DhcpV4FailoverGetScopeRelationship "DhcpV4FailoverGetScopeRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ScopeId ;
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovergetscopestatistics
+External_Function DhcpV4FailoverGetScopeStatistics "DhcpV4FailoverGetScopeStatistics" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ScopeId ;
+	Pointer pStats ;	// DHCP_FAILOVER_STATISTICS**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovergetsystemtime
+External_Function DhcpV4FailoverGetSystemTime "DhcpV4FailoverGetSystemTime" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer pTime ;	// UInteger*
+	Pointer pMaxAllowedDeltaTime ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failoversetrelationship
+External_Function DhcpV4FailoverSetRelationship "DhcpV4FailoverSetRelationship" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer pRelationship ;	// DHCP_FAILOVER_RELATIONSHIP*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4failovertriggeraddrallocation
+External_Function DhcpV4FailoverTriggerAddrAllocation "DhcpV4FailoverTriggerAddrAllocation" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	WString pFailRelName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4getalloptionvalues
+External_Function DhcpV4GetAllOptionValues "DhcpV4GetAllOptionValues" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer Values ;	// DHCP_ALL_OPTION_VALUES_PB**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4getclientinfo
+External_Function DhcpV4GetClientInfo "DhcpV4GetClientInfo" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO*
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_PB**
+	Returns UInteger
+
+External_Function DhcpV4GetClientInfoEx "DhcpV4GetClientInfoEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Pointer SearchInfo ;	// DHCP_SEARCH_INFO*
+	Pointer ClientInfo ;	// DHCP_CLIENT_INFO_EX**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4getfreeipaddress
+External_Function DhcpV4GetFreeIPAddress "DhcpV4GetFreeIPAddress" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger ScopeId ;
+	UInteger StartIP ;
+	UInteger EndIP ;
+	UInteger NumFreeAddrReq ;
+	Pointer IPAddrList ;	// DHCP_IP_ARRAY**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4getoptionvalue
+External_Function DhcpV4GetOptionValue "DhcpV4GetOptionValue" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString PolicyName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Pointer OptionValue ;	// DHCP_OPTION_VALUE**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4getpolicy
+External_Function DhcpV4GetPolicy "DhcpV4GetPolicy" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Pointer Policy ;	// DHCP_POLICY**
+	Returns UInteger
+
+External_Function DhcpV4GetPolicyEx "DhcpV4GetPolicyEx" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer GlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Pointer Policy ;	// DHCP_POLICY_EX**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4querypolicyenforcement
+External_Function DhcpV4QueryPolicyEnforcement "DhcpV4QueryPolicyEnforcement" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	Integer fGlobalPolicy ;	// BOOL
+	UInteger SubnetAddress ;
+	Pointer Enabled ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4removeoptionvalue
+External_Function DhcpV4RemoveOptionValue "DhcpV4RemoveOptionValue" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger Flags ;
+	UInteger OptionID ;
+	WString PolicyName ;	// PWSTR
+	WString VendorName ;	// PWSTR
+	Pointer ScopeInfo ;	// DHCP_OPTION_SCOPE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dhcpsapi/nf-dhcpsapi-dhcpv4removepolicyrange
+External_Function DhcpV4RemovePolicyRange "DhcpV4RemovePolicyRange" DHCPSAPI.dll ;
+	WString ServerIpAddress ;	// PWSTR
+	UInteger SubnetAddress ;
+	WString PolicyName ;	// PWSTR
+	Pointer Range ;	// DHCP_IP_RANGE*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

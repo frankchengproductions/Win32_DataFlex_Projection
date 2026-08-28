@@ -1,0 +1,408 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-blendobj
+Struct BLENDOBJ
+	BLENDFUNCTION BlendFunction
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-brushobj
+Struct BRUSHOBJ
+	UInteger iSolidColor
+	Integer iMissingAlignment1
+	Pointer pvRbrush										// Pointer*
+	UInteger flColorType
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-clipline
+Struct CLIPLINE
+	POINTFIX ptfxA
+	POINTFIX ptfxB
+	Integer lStyleState
+	UInteger c
+	RUN[1] arun
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-clipobj
+Struct CLIPOBJ
+	UInteger iUniq
+	RECTL rclBounds
+	UChar iDComplexity
+	UChar iFComplexity
+	UChar iMode
+	UChar fjOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_2dregion
+Struct DISPLAYCONFIG_2DREGION
+	UInteger cx
+	UInteger cy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_desktop_image_info
+Struct DISPLAYCONFIG_DESKTOP_IMAGE_INFO
+	POINTL PathSourceSize
+	RECTL DesktopImageRegion
+	RECTL DesktopImageClip
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_device_info_header
+Struct DISPLAYCONFIG_DEVICE_INFO_HEADER
+	Integer type											// DISPLAYCONFIG_DEVICE_INFO_TYPE
+	UInteger size
+	LUID adapterId
+	UInteger id
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_mode_info
+Struct DISPLAYCONFIG_MODE_INFO
+	Integer infoType										// DISPLAYCONFIG_MODE_INFO_TYPE
+	UInteger id
+	LUID adapterId
+	UChar[48] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_path_info
+Struct DISPLAYCONFIG_PATH_INFO
+	DISPLAYCONFIG_PATH_SOURCE_INFO sourceInfo
+	DISPLAYCONFIG_PATH_TARGET_INFO targetInfo
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_path_source_info
+Struct DISPLAYCONFIG_PATH_SOURCE_INFO
+	LUID adapterId
+	UInteger id
+	UChar[4] UnionName1
+	UInteger statusFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_path_target_info
+Struct DISPLAYCONFIG_PATH_TARGET_INFO
+	LUID adapterId
+	UInteger id
+	UChar[4] UnionName1
+	Integer outputTechnology								// DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY
+	Integer rotation										// DISPLAYCONFIG_ROTATION
+	Integer scaling											// DISPLAYCONFIG_SCALING
+	DISPLAYCONFIG_RATIONAL refreshRate
+	Integer scanLineOrdering								// DISPLAYCONFIG_SCANLINE_ORDERING
+	Integer targetAvailable									// BOOL
+	UInteger statusFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_rational
+Struct DISPLAYCONFIG_RATIONAL
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_source_mode
+Struct DISPLAYCONFIG_SOURCE_MODE
+	UInteger width
+	UInteger height
+	Integer pixelFormat										// DISPLAYCONFIG_PIXELFORMAT
+	POINTL position
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_target_mode
+Struct DISPLAYCONFIG_TARGET_MODE
+	DISPLAYCONFIG_VIDEO_SIGNAL_INFO targetVideoSignalInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/ns-wingdi-displayconfig_video_signal_info
+Struct DISPLAYCONFIG_VIDEO_SIGNAL_INFO
+	UBigint pixelRate
+	DISPLAYCONFIG_RATIONAL hSyncFreq
+	DISPLAYCONFIG_RATIONAL vSyncFreq
+	DISPLAYCONFIG_2DREGION activeSize
+	DISPLAYCONFIG_2DREGION totalSize
+	UChar[4] UnionName1
+	Integer scanLineOrdering								// DISPLAYCONFIG_SCANLINE_ORDERING
+End_Struct
+
+Struct EMFINFO
+	UInteger nSize
+	Integer iMissingAlignment1
+	Pointer hdc												// HDC
+	Pointer pvEMF											// UChar*
+	Pointer pvCurrentRecord									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-eng_time_fields
+Struct ENG_TIME_FIELDS
+	UShort usYear
+	UShort usMonth
+	UShort usDay
+	UShort usHour
+	UShort usMinute
+	UShort usSecond
+	UShort usMilliseconds
+	UShort usWeekday
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fd_glyphattr
+Struct FD_GLYPHATTR
+	UInteger cjThis
+	UInteger cGlyphs
+	UInteger iMode
+	UChar[1] aGlyphAttr
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fd_glyphset
+Struct FD_GLYPHSET
+	UInteger cjThis
+	UInteger flAccel
+	UInteger cGlyphsSupported
+	UInteger cRuns
+	WCRUN[1] awcrun
+End_Struct
+
+Struct FLOAT_LONG
+	Float e
+	Integer l
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontinfo
+Struct FONTINFO
+	UInteger cjThis
+	UInteger flCaps
+	UInteger cGlyphsSupported
+	UInteger cjMaxGlyph1
+	UInteger cjMaxGlyph4
+	UInteger cjMaxGlyph8
+	UInteger cjMaxGlyph32
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontobj
+Struct FONTOBJ
+	UInteger iUniq
+	UInteger iFace
+	UInteger cxMax
+	UInteger flFontType
+	ULongPtr iTTUniq
+	ULongPtr iFile
+	SIZE sizLogResPpi
+	UInteger ulStyleSize
+	Integer iMissingAlignment1
+	Pointer pvConsumer										// Pointer*
+	Pointer pvProducer										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-glyphbits
+Struct GLYPHBITS
+	POINTL ptlOrigin
+	SIZE sizlBitmap
+	UChar[1] aj
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-glyphdef
+Struct GLYPHDEF
+	Pointer pgb												// GLYPHBITS*
+	Pointer ppo												// PATHOBJ*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-glyphpos
+Struct GLYPHPOS
+	UInteger hg
+	Integer iMissingAlignment1
+	Pointer pgdf											// GLYPHDEF*
+	POINTL ptl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-ifimetrics
+Struct IFIMETRICS
+	UInteger cjThis
+	UInteger cjIfiExtra
+	Integer dpwszFamilyName
+	Integer dpwszStyleName
+	Integer dpwszFaceName
+	Integer dpwszUniqueName
+	Integer dpFontSim
+	Integer lEmbedId
+	Integer lItalicAngle
+	Integer lCharBias
+	Integer dpCharSets
+	UChar jWinCharSet
+	UChar jWinPitchAndFamily
+	UShort usWinWeight
+	UInteger flInfo
+	UShort fsSelection
+	UShort fsType
+	Short fwdUnitsPerEm
+	Short fwdLowestPPEm
+	Short fwdWinAscender
+	Short fwdWinDescender
+	Short fwdMacAscender
+	Short fwdMacDescender
+	Short fwdMacLineGap
+	Short fwdTypoAscender
+	Short fwdTypoDescender
+	Short fwdTypoLineGap
+	Short fwdAveCharWidth
+	Short fwdMaxCharInc
+	Short fwdCapHeight
+	Short fwdXHeight
+	Short fwdSubscriptXSize
+	Short fwdSubscriptYSize
+	Short fwdSubscriptXOffset
+	Short fwdSubscriptYOffset
+	Short fwdSuperscriptXSize
+	Short fwdSuperscriptYSize
+	Short fwdSuperscriptXOffset
+	Short fwdSuperscriptYOffset
+	Short fwdUnderscoreSize
+	Short fwdUnderscorePosition
+	Short fwdStrikeoutSize
+	Short fwdStrikeoutPosition
+	UChar chFirstChar
+	UChar chLastChar
+	UChar chDefaultChar
+	UChar chBreakChar
+	UShort wcFirstChar
+	UShort wcLastChar
+	UShort wcDefaultChar
+	UShort wcBreakChar
+	POINTL ptlBaseline
+	POINTL ptlAspect
+	POINTL ptlCaret
+	RECTL rclFontBox
+	UChar[4] achVendId
+	UInteger cKerningPairs
+	UInteger ulPanoseCulture
+	PANOSE panose
+	Short iMissingAlignment1
+	Pointer Align											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-lineattrs
+Struct LINEATTRS
+	UInteger fl
+	UInteger iJoin
+	UInteger iEndCap
+	FLOAT_LONG elWidth
+	Float eMiterLimit
+	UInteger cstyle
+	Integer iMissingAlignment1
+	Pointer pstyle											// FLOAT_LONG*
+	FLOAT_LONG elStyleState
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/ns-lowlevelmonitorconfigurationapi-mc_timing_report
+Struct MC_TIMING_REPORT
+	UInteger dwHorizontalFrequencyInHZ
+	UInteger dwVerticalFrequencyInHZ
+	UChar bTimingStatusByte
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-pathdata
+Struct PATHDATA
+	UInteger flags
+	UInteger count
+	Pointer pptfx											// POINTFIX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-pathobj
+Struct PATHOBJ
+	UInteger fl
+	UInteger cCurves
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/ns-physicalmonitorenumerationapi-physical_monitor
+Struct PHYSICAL_MONITOR
+	Pointer hPhysicalMonitor								// HANDLE
+	UShort[128] szPhysicalMonitorDescription
+End_Struct
+
+Struct POINTFIX
+	Integer x
+	Integer y
+End_Struct
+
+Struct POINTQF
+	Bigint x
+	Bigint y
+End_Struct
+
+Struct RECTFX
+	Integer xLeft
+	Integer yTop
+	Integer xRight
+	Integer yBottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-run
+Struct RUN
+	Integer iStart
+	Integer iStop
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-strobj
+Struct STROBJ
+	UInteger cGlyphs
+	UInteger flAccel
+	UInteger ulCharInc
+	RECTL rclBkGround
+	Integer iMissingAlignment1
+	Pointer pgp												// GLYPHPOS*
+	Pointer pwszOrg											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-surfobj
+Struct SURFOBJ
+	Pointer dhsurf											// DHSURF
+	Pointer hsurf											// HSURF
+	Pointer dhpdev											// DHPDEV
+	Pointer hdev											// HDEV
+	SIZE sizlBitmap
+	UInteger cjBits
+	Integer iMissingAlignment1
+	Pointer pvBits											// Pointer*
+	Pointer pvScan0											// Pointer*
+	Integer lDelta
+	UInteger iUniq
+	UInteger iBitmapFormat
+	UShort iType
+	UShort fjBitmap
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-wcrun
+Struct WCRUN
+	UShort wcLow
+	UShort cGlyphs
+	Integer iMissingAlignment1
+	Pointer phg												// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-xforml
+Struct XFORML
+	Float eM11
+	Float eM12
+	Float eM21
+	Float eM22
+	Float eDx
+	Float eDy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-xformobj
+Struct XFORMOBJ
+	UInteger ulReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-xlateobj
+Struct XLATEOBJ
+	UInteger iUniq
+	UInteger flXlate
+	UShort iSrcType
+	UShort iDstType
+	UInteger cEntries
+	Pointer pulXlate										// UInteger*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

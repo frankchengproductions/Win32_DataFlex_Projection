@@ -1,0 +1,42 @@
+Use UI
+
+External_Function GetFlVirtualInterface "GetFlVirtualInterface" IPHLPAPI.DLL ;
+	Pointer Row ;	// MIB_FL_VIRTUAL_INTERFACE_ROW*
+	Returns UInteger
+
+External_Function GetFlVirtualInterfaceTable "GetFlVirtualInterfaceTable" IPHLPAPI.DLL ;
+	UShort Family ;	// ADDRESS_FAMILY
+	Pointer Table ;	// MIB_FL_VIRTUAL_INTERFACE_TABLE**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getinterfacecurrenttimestampcapabilities
+External_Function GetInterfaceCurrentTimestampCapabilities "GetInterfaceCurrentTimestampCapabilities" IPHLPAPI.DLL ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer TimestampCapabilites ;	// INTERFACE_TIMESTAMP_CAPABILITIES*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-getinterfacehardwaretimestampcapabilities
+External_Function GetInterfaceHardwareTimestampCapabilities "GetInterfaceHardwareTimestampCapabilities" IPHLPAPI.DLL ;
+	Pointer InterfaceLuid ;	// NET_LUID_LH*
+	Pointer TimestampCapabilites ;	// INTERFACE_TIMESTAMP_CAPABILITIES*
+	Returns UInteger
+
+External_Function InitializeFlVirtualInterfaceEntry "InitializeFlVirtualInterfaceEntry" IPHLPAPI.DLL ;
+	Pointer Row ;	// MIB_FL_VIRTUAL_INTERFACE_ROW*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/iphlpapi/nf-iphlpapi-notifyiftimestampconfigchange
+External_Function NotifyIfTimestampConfigChange "NotifyIfTimestampConfigChange" IPHLPAPI.DLL ;
+	Pointer CallerContext ;	// Pointer*
+	Pointer Callback ;	// PINTERFACE_TIMESTAMP_CONFIG_CHANGE_CALLBACK
+	Pointer NotificationHandle ;	// HIFTIMESTAMPCHANGE*
+	Returns UInteger
+
+External_Function SetFlVirtualInterface "SetFlVirtualInterface" IPHLPAPI.DLL ;
+	Pointer Row ;	// MIB_FL_VIRTUAL_INTERFACE_ROW*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

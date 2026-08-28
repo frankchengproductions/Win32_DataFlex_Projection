@@ -1,0 +1,1509 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldapgetlasterror
+External_Function LdapGetLastError "LdapGetLastError" WLDAP32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldapmaperrortowin32
+External_Function LdapMapErrorToWin32 "LdapMapErrorToWin32" WLDAP32.dll ;
+	UInteger LdapError ;
+	Returns UInteger	// WIN32_ERROR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldaputf8tounicode
+External_Function LdapUTF8ToUnicode "LdapUTF8ToUnicode" WLDAP32.dll ;
+	String lpSrcStr ;	// PSTR
+	Integer cchSrc ;
+	Pointer lpDestStr ;	// PWSTR
+	Integer cchDest ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldapunicodetoutf8
+External_Function LdapUnicodeToUTF8 "LdapUnicodeToUTF8" WLDAP32.dll ;
+	WString lpSrcStr ;	// PWSTR
+	Integer cchSrc ;
+	Pointer lpDestStr ;	// PSTR
+	Integer cchDest ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_alloc_t
+External_Function ber_alloc_t "ber_alloc_t" WLDAP32.dll ;
+	Integer options ;
+	Returns Pointer	// BerElement*
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_bvdup
+External_Function ber_bvdup "ber_bvdup" WLDAP32.dll ;
+	Pointer pBerVal ;	// LDAP_BERVAL*
+	Returns Pointer	// LDAP_BERVAL*
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_bvecfree
+External_Function ber_bvecfree "ber_bvecfree" WLDAP32.dll ;
+	Pointer pBerVal ;	// LDAP_BERVAL**
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ber_bvfree
+External_Function ber_bvfree "ber_bvfree" WLDAP32.dll ;
+	Pointer bv ;	// LDAP_BERVAL*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_first_element
+External_Function ber_first_element "ber_first_element" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	Pointer pLen ;	// UInteger*
+	Pointer ppOpaque ;	// CHAR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_flatten
+External_Function ber_flatten "ber_flatten" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	Pointer pBerVal ;	// LDAP_BERVAL**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_free
+External_Function ber_free "ber_free" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	Integer fbuf ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_init
+External_Function ber_init "ber_init" WLDAP32.dll ;
+	Pointer pBerVal ;	// LDAP_BERVAL*
+	Returns Pointer	// BerElement*
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_next_element
+External_Function ber_next_element "ber_next_element" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	Pointer pLen ;	// UInteger*
+	String opaque ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_peek_tag
+External_Function ber_peek_tag "ber_peek_tag" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	Pointer pLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_printf
+External_Function ber_printf "ber_printf" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	String fmt ;	// PSTR
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_scanf
+External_Function ber_scanf "ber_scanf" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	String fmt ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winber/nf-winber-ber_skip_tag
+External_Function ber_skip_tag "ber_skip_tag" WLDAP32.dll ;
+	Pointer pBerElement ;	// BerElement*
+	Pointer pLen ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-cldap_open
+External_Function cldap_open "cldap_open" WLDAP32.dll ;
+	String HostName ;	// PSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-cldap_opena
+External_Function cldap_openA "cldap_openA" WLDAP32.dll ;
+	String HostName ;	// PSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-cldap_openw
+External_Function cldap_openW "cldap_openW" WLDAP32.dll ;
+	WString HostName ;	// PWSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_abandon
+External_Function ldap_abandon "ldap_abandon" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	UInteger msgid ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add
+External_Function ldap_add "ldap_add" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_adda
+External_Function ldap_addA "ldap_addA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_addw
+External_Function ldap_addW "ldap_addW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer attrs ;	// LDAPModW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_ext
+External_Function ldap_add_ext "ldap_add_ext" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_exta
+External_Function ldap_add_extA "ldap_add_extA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_extw
+External_Function ldap_add_extW "ldap_add_extW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer attrs ;	// LDAPModW**
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_ext_s
+External_Function ldap_add_ext_s "ldap_add_ext_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_ext_sa
+External_Function ldap_add_ext_sA "ldap_add_ext_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_ext_sw
+External_Function ldap_add_ext_sW "ldap_add_ext_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer attrs ;	// LDAPModW**
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_s
+External_Function ldap_add_s "ldap_add_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_sa
+External_Function ldap_add_sA "ldap_add_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer attrs ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_add_sw
+External_Function ldap_add_sW "ldap_add_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer attrs ;	// LDAPModW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_bind
+External_Function ldap_bind "ldap_bind" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String cred ;	// PSTR
+	UInteger method ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_binda
+External_Function ldap_bindA "ldap_bindA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String cred ;	// PSTR
+	UInteger method ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_bindw
+External_Function ldap_bindW "ldap_bindW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString cred ;	// PWSTR
+	UInteger method ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_bind_s
+External_Function ldap_bind_s "ldap_bind_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String cred ;	// PSTR
+	UInteger method ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_bind_sa
+External_Function ldap_bind_sA "ldap_bind_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String cred ;	// PSTR
+	UInteger method ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_bind_sw
+External_Function ldap_bind_sW "ldap_bind_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString cred ;	// PWSTR
+	UInteger method ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_check_filtera
+External_Function ldap_check_filterA "ldap_check_filterA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String SearchFilter ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_check_filterw
+External_Function ldap_check_filterW "ldap_check_filterW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString SearchFilter ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_cleanup
+External_Function ldap_cleanup "ldap_cleanup" WLDAP32.dll ;
+	Pointer hInstance ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_close_extended_op
+External_Function ldap_close_extended_op "ldap_close_extended_op" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	UInteger MessageNumber ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare
+External_Function ldap_compare "ldap_compare" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String attr ;	// PSTR
+	String value ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_comparea
+External_Function ldap_compareA "ldap_compareA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String attr ;	// PSTR
+	String value ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_comparew
+External_Function ldap_compareW "ldap_compareW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString attr ;	// PWSTR
+	WString value ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_ext
+External_Function ldap_compare_ext "ldap_compare_ext" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String Attr ;	// PSTR
+	String Value ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_exta
+External_Function ldap_compare_extA "ldap_compare_extA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String Attr ;	// PSTR
+	String Value ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_extw
+External_Function ldap_compare_extW "ldap_compare_extW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString Attr ;	// PWSTR
+	WString Value ;	// PWSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_ext_s
+External_Function ldap_compare_ext_s "ldap_compare_ext_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String Attr ;	// PSTR
+	String Value ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_ext_sa
+External_Function ldap_compare_ext_sA "ldap_compare_ext_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String Attr ;	// PSTR
+	String Value ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_ext_sw
+External_Function ldap_compare_ext_sW "ldap_compare_ext_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString Attr ;	// PWSTR
+	WString Value ;	// PWSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_s
+External_Function ldap_compare_s "ldap_compare_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String attr ;	// PSTR
+	String value ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_sa
+External_Function ldap_compare_sA "ldap_compare_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String attr ;	// PSTR
+	String value ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_compare_sw
+External_Function ldap_compare_sW "ldap_compare_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString attr ;	// PWSTR
+	WString value ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_conn_from_msg
+External_Function ldap_conn_from_msg "ldap_conn_from_msg" WLDAP32.dll ;
+	Pointer PrimaryConn ;	// LDAP*
+	Pointer res ;	// LDAPMessage*
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_connect
+External_Function ldap_connect "ldap_connect" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer timeout ;	// LDAP_TIMEVAL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_control_free
+External_Function ldap_control_free "ldap_control_free" WLDAP32.dll ;
+	Pointer Control ;	// LDAPControlA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_control_freea
+External_Function ldap_control_freeA "ldap_control_freeA" WLDAP32.dll ;
+	Pointer Controls ;	// LDAPControlA*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_control_freew
+External_Function ldap_control_freeW "ldap_control_freeW" WLDAP32.dll ;
+	Pointer Control ;	// LDAPControlW*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_controls_free
+External_Function ldap_controls_free "ldap_controls_free" WLDAP32.dll ;
+	Pointer Controls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_controls_freea
+External_Function ldap_controls_freeA "ldap_controls_freeA" WLDAP32.dll ;
+	Pointer Controls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_controls_freew
+External_Function ldap_controls_freeW "ldap_controls_freeW" WLDAP32.dll ;
+	Pointer Control ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_count_entries
+External_Function ldap_count_entries "ldap_count_entries" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer res ;	// LDAPMessage*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_count_references
+External_Function ldap_count_references "ldap_count_references" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer res ;	// LDAPMessage*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_count_values
+External_Function ldap_count_values "ldap_count_values" WLDAP32.dll ;
+	Pointer vals ;	// PSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_count_valuesa
+External_Function ldap_count_valuesA "ldap_count_valuesA" WLDAP32.dll ;
+	Pointer vals ;	// PSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_count_valuesw
+External_Function ldap_count_valuesW "ldap_count_valuesW" WLDAP32.dll ;
+	Pointer vals ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_count_values_len
+External_Function ldap_count_values_len "ldap_count_values_len" WLDAP32.dll ;
+	Pointer vals ;	// LDAP_BERVAL**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_page_control
+External_Function ldap_create_page_control "ldap_create_page_control" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	UInteger PageSize ;
+	Pointer Cookie ;	// LDAP_BERVAL*
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_page_controla
+External_Function ldap_create_page_controlA "ldap_create_page_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	UInteger PageSize ;
+	Pointer Cookie ;	// LDAP_BERVAL*
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_page_controlw
+External_Function ldap_create_page_controlW "ldap_create_page_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	UInteger PageSize ;
+	Pointer Cookie ;	// LDAP_BERVAL*
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_sort_control
+External_Function ldap_create_sort_control "ldap_create_sort_control" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer SortKeys ;	// LDAPSortKeyA**
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_sort_controla
+External_Function ldap_create_sort_controlA "ldap_create_sort_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer SortKeys ;	// LDAPSortKeyA**
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_sort_controlw
+External_Function ldap_create_sort_controlW "ldap_create_sort_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer SortKeys ;	// LDAPSortKeyW**
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_vlv_controla
+External_Function ldap_create_vlv_controlA "ldap_create_vlv_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer VlvInfo ;	// LDAPVLVInfo*
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlA**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_create_vlv_controlw
+External_Function ldap_create_vlv_controlW "ldap_create_vlv_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer VlvInfo ;	// LDAPVLVInfo*
+	UChar IsCritical ;
+	Pointer Control ;	// LDAPControlW**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete
+External_Function ldap_delete "ldap_delete" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_deletea
+External_Function ldap_deleteA "ldap_deleteA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_deletew
+External_Function ldap_deleteW "ldap_deleteW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_ext
+External_Function ldap_delete_ext "ldap_delete_ext" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_exta
+External_Function ldap_delete_extA "ldap_delete_extA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_extw
+External_Function ldap_delete_extW "ldap_delete_extW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_ext_s
+External_Function ldap_delete_ext_s "ldap_delete_ext_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_ext_sa
+External_Function ldap_delete_ext_sA "ldap_delete_ext_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_ext_sw
+External_Function ldap_delete_ext_sW "ldap_delete_ext_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_s
+External_Function ldap_delete_s "ldap_delete_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_sa
+External_Function ldap_delete_sA "ldap_delete_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_delete_sw
+External_Function ldap_delete_sW "ldap_delete_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_dn2ufn
+External_Function ldap_dn2ufn "ldap_dn2ufn" WLDAP32.dll ;
+	String dn ;	// PSTR
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_dn2ufna
+External_Function ldap_dn2ufnA "ldap_dn2ufnA" WLDAP32.dll ;
+	String dn ;	// PSTR
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_dn2ufnw
+External_Function ldap_dn2ufnW "ldap_dn2ufnW" WLDAP32.dll ;
+	WString dn ;	// PWSTR
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_encode_sort_controla
+External_Function ldap_encode_sort_controlA "ldap_encode_sort_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer SortKeys ;	// LDAPSortKeyA**
+	Pointer Control ;	// LDAPControlA*
+	UChar Criticality ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_encode_sort_controlw
+External_Function ldap_encode_sort_controlW "ldap_encode_sort_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer SortKeys ;	// LDAPSortKeyW**
+	Pointer Control ;	// LDAPControlW*
+	UChar Criticality ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_err2string
+External_Function ldap_err2string "ldap_err2string" WLDAP32.dll ;
+	UInteger err ;
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_err2stringa
+External_Function ldap_err2stringA "ldap_err2stringA" WLDAP32.dll ;
+	UInteger err ;
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_err2stringw
+External_Function ldap_err2stringW "ldap_err2stringW" WLDAP32.dll ;
+	UInteger err ;
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_escape_filter_element
+External_Function ldap_escape_filter_element "ldap_escape_filter_element" WLDAP32.dll ;
+	String sourceFilterElement ;	// PSTR
+	UInteger sourceLength ;
+	Pointer destFilterElement ;	// PSTR
+	UInteger destLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_escape_filter_elementa
+External_Function ldap_escape_filter_elementA "ldap_escape_filter_elementA" WLDAP32.dll ;
+	String sourceFilterElement ;	// PSTR
+	UInteger sourceLength ;
+	Pointer destFilterElement ;	// PSTR
+	UInteger destLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_escape_filter_elementw
+External_Function ldap_escape_filter_elementW "ldap_escape_filter_elementW" WLDAP32.dll ;
+	String sourceFilterElement ;	// PSTR
+	UInteger sourceLength ;
+	Pointer destFilterElement ;	// PWSTR
+	UInteger destLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_explode_dn
+External_Function ldap_explode_dn "ldap_explode_dn" WLDAP32.dll ;
+	String dn ;	// PSTR
+	UInteger notypes ;
+	Returns Pointer	// PSTR*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_explode_dna
+External_Function ldap_explode_dnA "ldap_explode_dnA" WLDAP32.dll ;
+	String dn ;	// PSTR
+	UInteger notypes ;
+	Returns Pointer	// PSTR*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_explode_dnw
+External_Function ldap_explode_dnW "ldap_explode_dnW" WLDAP32.dll ;
+	WString dn ;	// PWSTR
+	UInteger notypes ;
+	Returns Pointer	// PWSTR*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_extended_operation
+External_Function ldap_extended_operation "ldap_extended_operation" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String Oid ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_extended_operationa
+External_Function ldap_extended_operationA "ldap_extended_operationA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String Oid ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_extended_operationw
+External_Function ldap_extended_operationW "ldap_extended_operationW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString Oid ;	// PWSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_extended_operation_sa
+External_Function ldap_extended_operation_sA "ldap_extended_operation_sA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String Oid ;	// PSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer ReturnedOid ;	// PSTR*
+	Pointer ReturnedData ;	// LDAP_BERVAL**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_extended_operation_sw
+External_Function ldap_extended_operation_sW "ldap_extended_operation_sW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString Oid ;	// PWSTR
+	Pointer Data ;	// LDAP_BERVAL*
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer ReturnedOid ;	// PWSTR*
+	Pointer ReturnedData ;	// LDAP_BERVAL**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_first_attribute
+External_Function ldap_first_attribute "ldap_first_attribute" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Pointer ptr ;	// BerElement**
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_first_attributea
+External_Function ldap_first_attributeA "ldap_first_attributeA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Pointer ptr ;	// BerElement**
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_first_attributew
+External_Function ldap_first_attributeW "ldap_first_attributeW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Pointer ptr ;	// BerElement**
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_first_entry
+External_Function ldap_first_entry "ldap_first_entry" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer res ;	// LDAPMessage*
+	Returns Pointer	// LDAPMessage*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_first_reference
+External_Function ldap_first_reference "ldap_first_reference" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer res ;	// LDAPMessage*
+	Returns Pointer	// LDAPMessage*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_free_controls
+External_Function ldap_free_controls "ldap_free_controls" WLDAP32.dll ;
+	Pointer Controls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_free_controlsa
+External_Function ldap_free_controlsA "ldap_free_controlsA" WLDAP32.dll ;
+	Pointer Controls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_free_controlsw
+External_Function ldap_free_controlsW "ldap_free_controlsW" WLDAP32.dll ;
+	Pointer Controls ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_dn
+External_Function ldap_get_dn "ldap_get_dn" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_dna
+External_Function ldap_get_dnA "ldap_get_dnA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_dnw
+External_Function ldap_get_dnW "ldap_get_dnW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_next_page
+External_Function ldap_get_next_page "ldap_get_next_page" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	LongPtr SearchHandle ;	// PLDAPSearch
+	UInteger PageSize ;
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_next_page_s
+External_Function ldap_get_next_page_s "ldap_get_next_page_s" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	LongPtr SearchHandle ;	// PLDAPSearch
+	Pointer timeout ;	// LDAP_TIMEVAL*
+	UInteger PageSize ;
+	Pointer TotalCount ;	// UInteger*
+	Pointer Results ;	// LDAPMessage**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_option
+External_Function ldap_get_option "ldap_get_option" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Integer option ;
+	Pointer outvalue ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_optionw
+External_Function ldap_get_optionW "ldap_get_optionW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Integer option ;
+	Pointer outvalue ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_paged_count
+External_Function ldap_get_paged_count "ldap_get_paged_count" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	LongPtr SearchBlock ;	// PLDAPSearch
+	Pointer TotalCount ;	// UInteger*
+	Pointer Results ;	// LDAPMessage*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_values
+External_Function ldap_get_values "ldap_get_values" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	String attr ;	// PSTR
+	Returns Pointer	// PSTR*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_valuesa
+External_Function ldap_get_valuesA "ldap_get_valuesA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	String attr ;	// PSTR
+	Returns Pointer	// PSTR*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_valuesw
+External_Function ldap_get_valuesW "ldap_get_valuesW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	WString attr ;	// PWSTR
+	Returns Pointer	// PWSTR*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_values_len
+External_Function ldap_get_values_len "ldap_get_values_len" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Message ;	// LDAPMessage*
+	String attr ;	// PSTR
+	Returns Pointer	// LDAP_BERVAL**
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_values_lena
+External_Function ldap_get_values_lenA "ldap_get_values_lenA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Message ;	// LDAPMessage*
+	String attr ;	// PSTR
+	Returns Pointer	// LDAP_BERVAL**
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_get_values_lenw
+External_Function ldap_get_values_lenW "ldap_get_values_lenW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Message ;	// LDAPMessage*
+	WString attr ;	// PWSTR
+	Returns Pointer	// LDAP_BERVAL**
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_init
+External_Function ldap_init "ldap_init" WLDAP32.dll ;
+	String HostName ;	// PSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_inita
+External_Function ldap_initA "ldap_initA" WLDAP32.dll ;
+	String HostName ;	// PSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_initw
+External_Function ldap_initW "ldap_initW" WLDAP32.dll ;
+	WString HostName ;	// PWSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_memfree
+External_Function ldap_memfree "ldap_memfree" WLDAP32.dll ;
+	String Block ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_memfreea
+External_Function ldap_memfreeA "ldap_memfreeA" WLDAP32.dll ;
+	String Block ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_memfreew
+External_Function ldap_memfreeW "ldap_memfreeW" WLDAP32.dll ;
+	WString Block ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify
+External_Function ldap_modify "ldap_modify" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modifya
+External_Function ldap_modifyA "ldap_modifyA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modifyw
+External_Function ldap_modifyW "ldap_modifyW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer mods ;	// LDAPModW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_ext
+External_Function ldap_modify_ext "ldap_modify_ext" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_exta
+External_Function ldap_modify_extA "ldap_modify_extA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_extw
+External_Function ldap_modify_extW "ldap_modify_extW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer mods ;	// LDAPModW**
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_ext_s
+External_Function ldap_modify_ext_s "ldap_modify_ext_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_ext_sa
+External_Function ldap_modify_ext_sA "ldap_modify_ext_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_ext_sw
+External_Function ldap_modify_ext_sW "ldap_modify_ext_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer mods ;	// LDAPModW**
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_s
+External_Function ldap_modify_s "ldap_modify_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_sa
+External_Function ldap_modify_sA "ldap_modify_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	Pointer mods ;	// LDAPModA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modify_sw
+External_Function ldap_modify_sW "ldap_modify_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	Pointer mods ;	// LDAPModW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn
+External_Function ldap_modrdn "ldap_modrdn" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn2
+External_Function ldap_modrdn2 "ldap_modrdn2" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Integer DeleteOldRdn ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn2a
+External_Function ldap_modrdn2A "ldap_modrdn2A" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Integer DeleteOldRdn ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn2w
+External_Function ldap_modrdn2W "ldap_modrdn2W" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString DistinguishedName ;	// PWSTR
+	WString NewDistinguishedName ;	// PWSTR
+	Integer DeleteOldRdn ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn2_s
+External_Function ldap_modrdn2_s "ldap_modrdn2_s" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Integer DeleteOldRdn ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn2_sa
+External_Function ldap_modrdn2_sA "ldap_modrdn2_sA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Integer DeleteOldRdn ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn2_sw
+External_Function ldap_modrdn2_sW "ldap_modrdn2_sW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString DistinguishedName ;	// PWSTR
+	WString NewDistinguishedName ;	// PWSTR
+	Integer DeleteOldRdn ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdna
+External_Function ldap_modrdnA "ldap_modrdnA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdnw
+External_Function ldap_modrdnW "ldap_modrdnW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString DistinguishedName ;	// PWSTR
+	WString NewDistinguishedName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn_s
+External_Function ldap_modrdn_s "ldap_modrdn_s" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn_sa
+External_Function ldap_modrdn_sA "ldap_modrdn_sA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistinguishedName ;	// PSTR
+	String NewDistinguishedName ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_modrdn_sw
+External_Function ldap_modrdn_sW "ldap_modrdn_sW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString DistinguishedName ;	// PWSTR
+	WString NewDistinguishedName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_msgfree
+External_Function ldap_msgfree "ldap_msgfree" WLDAP32.dll ;
+	Pointer res ;	// LDAPMessage*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_next_attribute
+External_Function ldap_next_attribute "ldap_next_attribute" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Pointer ptr ;	// BerElement*
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_next_attributea
+External_Function ldap_next_attributeA "ldap_next_attributeA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Pointer ptr ;	// BerElement*
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_next_attributew
+External_Function ldap_next_attributeW "ldap_next_attributeW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Pointer ptr ;	// BerElement*
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_next_entry
+External_Function ldap_next_entry "ldap_next_entry" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Returns Pointer	// LDAPMessage*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_next_reference
+External_Function ldap_next_reference "ldap_next_reference" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer entry ;	// LDAPMessage*
+	Returns Pointer	// LDAPMessage*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_open
+External_Function ldap_open "ldap_open" WLDAP32.dll ;
+	String HostName ;	// PSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_opena
+External_Function ldap_openA "ldap_openA" WLDAP32.dll ;
+	String HostName ;	// PSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_openw
+External_Function ldap_openW "ldap_openW" WLDAP32.dll ;
+	WString HostName ;	// PWSTR
+	UInteger PortNumber ;
+	Returns Pointer	// LDAP*
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_extended_resulta
+External_Function ldap_parse_extended_resultA "ldap_parse_extended_resultA" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer ResultOID ;	// PSTR*
+	Pointer ResultData ;	// LDAP_BERVAL**
+	UChar Freeit ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_extended_resultw
+External_Function ldap_parse_extended_resultW "ldap_parse_extended_resultW" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer ResultOID ;	// PWSTR*
+	Pointer ResultData ;	// LDAP_BERVAL**
+	UChar Freeit ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_page_control
+External_Function ldap_parse_page_control "ldap_parse_page_control" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer TotalCount ;	// UInteger*
+	Pointer Cookie ;	// LDAP_BERVAL**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_page_controla
+External_Function ldap_parse_page_controlA "ldap_parse_page_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer TotalCount ;	// UInteger*
+	Pointer Cookie ;	// LDAP_BERVAL**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_page_controlw
+External_Function ldap_parse_page_controlW "ldap_parse_page_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer TotalCount ;	// UInteger*
+	Pointer Cookie ;	// LDAP_BERVAL**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_reference
+External_Function ldap_parse_reference "ldap_parse_reference" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer Referrals ;	// PSTR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_referencea
+External_Function ldap_parse_referenceA "ldap_parse_referenceA" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer Referrals ;	// PSTR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_referencew
+External_Function ldap_parse_referenceW "ldap_parse_referenceW" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer Referrals ;	// PWSTR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_result
+External_Function ldap_parse_result "ldap_parse_result" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer ReturnCode ;	// UInteger*
+	Pointer MatchedDNs ;	// PSTR*
+	Pointer ErrorMessage ;	// PSTR*
+	Pointer Referrals ;	// PSTR**
+	Pointer ServerControls ;	// LDAPControlA***
+	UChar Freeit ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_resulta
+External_Function ldap_parse_resultA "ldap_parse_resultA" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer ReturnCode ;	// UInteger*
+	Pointer MatchedDNs ;	// PSTR*
+	Pointer ErrorMessage ;	// PSTR*
+	Pointer Referrals ;	// Char***
+	Pointer ServerControls ;	// LDAPControlA***
+	UChar Freeit ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_resultw
+External_Function ldap_parse_resultW "ldap_parse_resultW" WLDAP32.dll ;
+	Pointer Connection ;	// LDAP*
+	Pointer ResultMessage ;	// LDAPMessage*
+	Pointer ReturnCode ;	// UInteger*
+	Pointer MatchedDNs ;	// PWSTR*
+	Pointer ErrorMessage ;	// PWSTR*
+	Pointer Referrals ;	// UShort***
+	Pointer ServerControls ;	// LDAPControlW***
+	UChar Freeit ;	// BOOLEAN
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_sort_control
+External_Function ldap_parse_sort_control "ldap_parse_sort_control" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Control ;	// LDAPControlA**
+	Pointer Result ;	// UInteger*
+	Pointer Attribute ;	// PSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_sort_controla
+External_Function ldap_parse_sort_controlA "ldap_parse_sort_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Control ;	// LDAPControlA**
+	Pointer Result ;	// UInteger*
+	Pointer Attribute ;	// PSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_sort_controlw
+External_Function ldap_parse_sort_controlW "ldap_parse_sort_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Control ;	// LDAPControlW**
+	Pointer Result ;	// UInteger*
+	Pointer Attribute ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_vlv_controla
+External_Function ldap_parse_vlv_controlA "ldap_parse_vlv_controlA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Control ;	// LDAPControlA**
+	Pointer TargetPos ;	// UInteger*
+	Pointer ListCount ;	// UInteger*
+	Pointer Context ;	// LDAP_BERVAL**
+	Pointer ErrCode ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_parse_vlv_controlw
+External_Function ldap_parse_vlv_controlW "ldap_parse_vlv_controlW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	Pointer Control ;	// LDAPControlW**
+	Pointer TargetPos ;	// UInteger*
+	Pointer ListCount ;	// UInteger*
+	Pointer Context ;	// LDAP_BERVAL**
+	Pointer ErrCode ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_perror
+External_Function ldap_perror "ldap_perror" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String msg ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_rename_ext
+External_Function ldap_rename_ext "ldap_rename_ext" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String NewRDN ;	// PSTR
+	String NewParent ;	// PSTR
+	Integer DeleteOldRdn ;
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_rename_exta
+External_Function ldap_rename_extA "ldap_rename_extA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String NewRDN ;	// PSTR
+	String NewParent ;	// PSTR
+	Integer DeleteOldRdn ;
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_rename_extw
+External_Function ldap_rename_extW "ldap_rename_extW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString NewRDN ;	// PWSTR
+	WString NewParent ;	// PWSTR
+	Integer DeleteOldRdn ;
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_rename_ext_s
+External_Function ldap_rename_ext_s "ldap_rename_ext_s" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String NewRDN ;	// PSTR
+	String NewParent ;	// PSTR
+	Integer DeleteOldRdn ;
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_rename_ext_sa
+External_Function ldap_rename_ext_sA "ldap_rename_ext_sA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String dn ;	// PSTR
+	String NewRDN ;	// PSTR
+	String NewParent ;	// PSTR
+	Integer DeleteOldRdn ;
+	Pointer ServerControls ;	// LDAPControlA**
+	Pointer ClientControls ;	// LDAPControlA**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_rename_ext_sw
+External_Function ldap_rename_ext_sW "ldap_rename_ext_sW" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	WString dn ;	// PWSTR
+	WString NewRDN ;	// PWSTR
+	WString NewParent ;	// PWSTR
+	Integer DeleteOldRdn ;
+	Pointer ServerControls ;	// LDAPControlW**
+	Pointer ClientControls ;	// LDAPControlW**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_result
+External_Function ldap_result "ldap_result" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	UInteger msgid ;
+	UInteger all ;
+	Pointer timeout ;	// LDAP_TIMEVAL*
+	Pointer res ;	// LDAPMessage**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_result2error
+External_Function ldap_result2error "ldap_result2error" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	Pointer res ;	// LDAPMessage*
+	UInteger freeit ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_sasl_binda
+External_Function ldap_sasl_bindA "ldap_sasl_bindA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistName ;	// PSTR
+	String AuthMechanism ;	// PSTR
+	Pointer cred ;	// LDAP_BERVAL*
+	Pointer ServerCtrls ;	// LDAPControlA**
+	Pointer ClientCtrls ;	// LDAPControlA**
+	Pointer MessageNumber ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_sasl_bindw
+External_Function ldap_sasl_bindW "ldap_sasl_bindW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString DistName ;	// PWSTR
+	WString AuthMechanism ;	// PWSTR
+	Pointer cred ;	// LDAP_BERVAL*
+	Pointer ServerCtrls ;	// LDAPControlW**
+	Pointer ClientCtrls ;	// LDAPControlW**
+	Pointer MessageNumber ;	// Integer*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_sasl_bind_sa
+External_Function ldap_sasl_bind_sA "ldap_sasl_bind_sA" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	String DistName ;	// PSTR
+	String AuthMechanism ;	// PSTR
+	Pointer cred ;	// LDAP_BERVAL*
+	Pointer ServerCtrls ;	// LDAPControlA**
+	Pointer ClientCtrls ;	// LDAPControlA**
+	Pointer ServerData ;	// LDAP_BERVAL**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_sasl_bind_sw
+External_Function ldap_sasl_bind_sW "ldap_sasl_bind_sW" WLDAP32.dll ;
+	Pointer ExternalHandle ;	// LDAP*
+	WString DistName ;	// PWSTR
+	WString AuthMechanism ;	// PWSTR
+	Pointer cred ;	// LDAP_BERVAL*
+	Pointer ServerCtrls ;	// LDAPControlW**
+	Pointer ClientCtrls ;	// LDAPControlW**
+	Pointer ServerData ;	// LDAP_BERVAL**
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_search
+External_Function ldap_search "ldap_search" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String base ;	// PSTR
+	UInteger scope ;
+	String filter ;	// PSTR
+	Pointer attrs ;	// Char**
+	UInteger attrsonly ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winldap/nf-winldap-ldap_searcha
+External_Function ldap_searchA "ldap_searchA" WLDAP32.dll ;
+	Pointer ld ;	// LDAP*
+	String base ;	// PSTR
+	UInteger scope ;
+	String filter ;	// PSTR
+	Pointer attrs ;	// Char**
+	UInteger attrsonly ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

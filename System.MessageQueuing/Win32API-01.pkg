@@ -1,0 +1,203 @@
+Use UI
+
+External_Function MQADsPathToFormatName "MQADsPathToFormatName" mqrt.dll ;
+	WString lpwcsADsPath ;	// PWSTR
+	Pointer lpwcsFormatName ;	// PWSTR
+	Pointer lpdwFormatNameLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MQBeginTransaction "MQBeginTransaction" mqrt.dll ;
+	Pointer ppTransaction ;	// ITransaction*
+	Returns Integer	// HRESULT
+
+External_Function MQCloseCursor "MQCloseCursor" mqrt.dll ;
+	Pointer hCursor ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function MQCloseQueue "MQCloseQueue" mqrt.dll ;
+	LongPtr hQueue ;
+	Returns Integer	// HRESULT
+
+External_Function MQCreateCursor "MQCreateCursor" mqrt.dll ;
+	LongPtr hQueue ;
+	Pointer phCursor ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function MQCreateQueue "MQCreateQueue" mqrt.dll ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Pointer pQueueProps ;	// MQQUEUEPROPS*
+	Pointer lpwcsFormatName ;	// PWSTR
+	Pointer lpdwFormatNameLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MQDeleteQueue "MQDeleteQueue" mqrt.dll ;
+	WString lpwcsFormatName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function MQFreeMemory "MQFreeMemory" mqrt.dll ;
+	Pointer pvMemory ;	// Pointer*
+	Returns Pointer
+
+External_Function MQFreeSecurityContext "MQFreeSecurityContext" mqrt.dll ;
+	Pointer hSecurityContext ;	// HANDLE
+	Returns Pointer
+
+External_Function MQGetMachineProperties "MQGetMachineProperties" mqrt.dll ;
+	WString lpwcsMachineName ;	// PWSTR
+	Pointer pguidMachineId ;	// Guid*
+	Pointer pQMProps ;	// MQQMPROPS*
+	Returns Integer	// HRESULT
+
+External_Function MQGetOverlappedResult "MQGetOverlappedResult" mqrt.dll ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// HRESULT
+
+External_Function MQGetPrivateComputerInformation "MQGetPrivateComputerInformation" mqrt.dll ;
+	WString lpwcsComputerName ;	// PWSTR
+	Pointer pPrivateProps ;	// MQPRIVATEPROPS*
+	Returns Integer	// HRESULT
+
+External_Function MQGetQueueProperties "MQGetQueueProperties" mqrt.dll ;
+	WString lpwcsFormatName ;	// PWSTR
+	Pointer pQueueProps ;	// MQQUEUEPROPS*
+	Returns Integer	// HRESULT
+
+External_Function MQGetQueueSecurity "MQGetQueueSecurity" mqrt.dll ;
+	WString lpwcsFormatName ;	// PWSTR
+	UInteger RequestedInformation ;
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger nLength ;
+	Pointer lpnLengthNeeded ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MQGetSecurityContext "MQGetSecurityContext" mqrt.dll ;
+	Pointer lpCertBuffer ;	// Pointer*
+	UInteger dwCertBufferLength ;
+	Pointer phSecurityContext ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function MQGetSecurityContextEx "MQGetSecurityContextEx" mqrt.dll ;
+	Pointer lpCertBuffer ;	// Pointer*
+	UInteger dwCertBufferLength ;
+	Pointer phSecurityContext ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function MQHandleToFormatName "MQHandleToFormatName" mqrt.dll ;
+	LongPtr hQueue ;
+	Pointer lpwcsFormatName ;	// PWSTR
+	Pointer lpdwFormatNameLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MQInstanceToFormatName "MQInstanceToFormatName" mqrt.dll ;
+	Pointer pGuid ;	// Guid*
+	Pointer lpwcsFormatName ;	// PWSTR
+	Pointer lpdwFormatNameLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MQLocateBegin "MQLocateBegin" mqrt.dll ;
+	WString lpwcsContext ;	// PWSTR
+	Pointer pRestriction ;	// MQRESTRICTION*
+	Pointer pColumns ;	// MQCOLUMNSET*
+	Pointer pSort ;	// MQSORTSET*
+	Pointer phEnum ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+External_Function MQLocateEnd "MQLocateEnd" mqrt.dll ;
+	Pointer hEnum ;	// HANDLE
+	Returns Integer	// HRESULT
+
+External_Function MQLocateNext "MQLocateNext" mqrt.dll ;
+	Pointer hEnum ;	// HANDLE
+	Pointer pcProps ;	// UInteger*
+	Pointer aPropVar ;	// PROPVARIANT*
+	Returns Integer	// HRESULT
+
+External_Function MQMarkMessageRejected "MQMarkMessageRejected" mqrt.dll ;
+	Pointer hQueue ;	// HANDLE
+	UBigint ullLookupId ;
+	Returns Integer	// HRESULT
+
+External_Function MQMgmtAction "MQMgmtAction" mqrt.dll ;
+	WString pComputerName ;	// PWSTR
+	WString pObjectName ;	// PWSTR
+	WString pAction ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function MQMgmtGetInfo "MQMgmtGetInfo" mqrt.dll ;
+	WString pComputerName ;	// PWSTR
+	WString pObjectName ;	// PWSTR
+	Pointer pMgmtProps ;	// MQMGMTPROPS*
+	Returns Integer	// HRESULT
+
+External_Function MQMoveMessage "MQMoveMessage" mqrt.dll ;
+	LongPtr hSourceQueue ;
+	LongPtr hDestinationQueue ;
+	UBigint ullLookupId ;
+	Pointer pTransaction ;	// ITransaction
+	Returns Integer	// HRESULT
+
+External_Function MQOpenQueue "MQOpenQueue" mqrt.dll ;
+	WString lpwcsFormatName ;	// PWSTR
+	UInteger dwAccess ;
+	UInteger dwShareMode ;
+	Pointer phQueue ;	// LongPtr*
+	Returns Integer	// HRESULT
+
+External_Function MQPathNameToFormatName "MQPathNameToFormatName" mqrt.dll ;
+	WString lpwcsPathName ;	// PWSTR
+	Pointer lpwcsFormatName ;	// PWSTR
+	Pointer lpdwFormatNameLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+External_Function MQPurgeQueue "MQPurgeQueue" mqrt.dll ;
+	LongPtr hQueue ;
+	Returns Integer	// HRESULT
+
+External_Function MQReceiveMessage "MQReceiveMessage" mqrt.dll ;
+	LongPtr hSource ;
+	UInteger dwTimeout ;
+	UInteger dwAction ;
+	Pointer pMessageProps ;	// MQMSGPROPS*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer fnReceiveCallback ;	// PMQRECEIVECALLBACK
+	Pointer hCursor ;	// HANDLE
+	Pointer pTransaction ;	// ITransaction
+	Returns Integer	// HRESULT
+
+External_Function MQReceiveMessageByLookupId "MQReceiveMessageByLookupId" mqrt.dll ;
+	LongPtr hSource ;
+	UBigint ullLookupId ;
+	UInteger dwLookupAction ;
+	Pointer pMessageProps ;	// MQMSGPROPS*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer fnReceiveCallback ;	// PMQRECEIVECALLBACK
+	Pointer pTransaction ;	// ITransaction
+	Returns Integer	// HRESULT
+
+External_Function MQRegisterCertificate "MQRegisterCertificate" mqrt.dll ;
+	UInteger dwFlags ;
+	Pointer lpCertBuffer ;	// Pointer*
+	UInteger dwCertBufferLength ;
+	Returns Integer	// HRESULT
+
+External_Function MQSendMessage "MQSendMessage" mqrt.dll ;
+	LongPtr hDestinationQueue ;
+	Pointer pMessageProps ;	// MQMSGPROPS*
+	Pointer pTransaction ;	// ITransaction
+	Returns Integer	// HRESULT
+
+External_Function MQSetQueueProperties "MQSetQueueProperties" mqrt.dll ;
+	WString lpwcsFormatName ;	// PWSTR
+	Pointer pQueueProps ;	// MQQUEUEPROPS*
+	Returns Integer	// HRESULT
+
+External_Function MQSetQueueSecurity "MQSetQueueSecurity" mqrt.dll ;
+	WString lpwcsFormatName ;	// PWSTR
+	UInteger SecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer pSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,55 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-applicationrecoveryfinished
+External_Function ApplicationRecoveryFinished "ApplicationRecoveryFinished" KERNEL32.dll ;
+	Integer bSuccess ;	// BOOL
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-applicationrecoveryinprogress
+External_Function ApplicationRecoveryInProgress "ApplicationRecoveryInProgress" KERNEL32.dll ;
+	Pointer pbCancelled ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getapplicationrecoverycallback
+External_Function GetApplicationRecoveryCallback "GetApplicationRecoveryCallback" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pRecoveryCallback ;	// APPLICATION_RECOVERY_CALLBACK*
+	Pointer ppvParameter ;	// Pointer**
+	Pointer pdwPingInterval ;	// UInteger*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getapplicationrestartsettings
+External_Function GetApplicationRestartSettings "GetApplicationRestartSettings" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pwzCommandline ;	// PWSTR
+	Pointer pcchSize ;	// UInteger*
+	Pointer pdwFlags ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-registerapplicationrecoverycallback
+External_Function RegisterApplicationRecoveryCallback "RegisterApplicationRecoveryCallback" KERNEL32.dll ;
+	Pointer pRecoveyCallback ;	// APPLICATION_RECOVERY_CALLBACK
+	Pointer pvParameter ;	// Pointer*
+	UInteger dwPingInterval ;
+	UInteger dwFlags ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-registerapplicationrestart
+External_Function RegisterApplicationRestart "RegisterApplicationRestart" KERNEL32.dll ;
+	WString pwzCommandline ;	// PWSTR
+	UInteger dwFlags ;	// REGISTER_APPLICATION_RESTART_FLAGS
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-unregisterapplicationrecoverycallback
+External_Function UnregisterApplicationRecoveryCallback "UnregisterApplicationRecoveryCallback" KERNEL32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-unregisterapplicationrestart
+External_Function UnregisterApplicationRestart "UnregisterApplicationRestart" KERNEL32.dll ;
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

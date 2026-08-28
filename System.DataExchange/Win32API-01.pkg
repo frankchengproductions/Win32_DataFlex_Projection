@@ -1,0 +1,481 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-addatoma
+External_Function AddAtomA "AddAtomA" KERNEL32.dll ;
+	String lpString ;	// PSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-addatomw
+External_Function AddAtomW "AddAtomW" KERNEL32.dll ;
+	WString lpString ;	// PWSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-deleteatom
+External_Function DeleteAtom "DeleteAtom" KERNEL32.dll ;
+	UShort nAtom ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findatoma
+External_Function FindAtomA "FindAtomA" KERNEL32.dll ;
+	String lpString ;	// PSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-findatomw
+External_Function FindAtomW "FindAtomW" KERNEL32.dll ;
+	WString lpString ;	// PWSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getatomnamea
+External_Function GetAtomNameA "GetAtomNameA" KERNEL32.dll ;
+	UShort nAtom ;
+	Pointer lpBuffer ;	// PSTR
+	Integer nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getatomnamew
+External_Function GetAtomNameW "GetAtomNameW" KERNEL32.dll ;
+	UShort nAtom ;
+	Pointer lpBuffer ;	// PWSTR
+	Integer nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globaladdatoma
+External_Function GlobalAddAtomA "GlobalAddAtomA" KERNEL32.dll ;
+	String lpString ;	// PSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globaladdatomexa
+External_Function GlobalAddAtomExA "GlobalAddAtomExA" KERNEL32.dll ;
+	String lpString ;	// PSTR
+	UInteger Flags ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globaladdatomexw
+External_Function GlobalAddAtomExW "GlobalAddAtomExW" KERNEL32.dll ;
+	WString lpString ;	// PWSTR
+	UInteger Flags ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globaladdatomw
+External_Function GlobalAddAtomW "GlobalAddAtomW" KERNEL32.dll ;
+	WString lpString ;	// PWSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globaldeleteatom
+External_Function GlobalDeleteAtom "GlobalDeleteAtom" KERNEL32.dll ;
+	UShort nAtom ;
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalfindatoma
+External_Function GlobalFindAtomA "GlobalFindAtomA" KERNEL32.dll ;
+	String lpString ;	// PSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalfindatomw
+External_Function GlobalFindAtomW "GlobalFindAtomW" KERNEL32.dll ;
+	WString lpString ;	// PWSTR
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalgetatomnamea
+External_Function GlobalGetAtomNameA "GlobalGetAtomNameA" KERNEL32.dll ;
+	UShort nAtom ;
+	Pointer lpBuffer ;	// PSTR
+	Integer nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-globalgetatomnamew
+External_Function GlobalGetAtomNameW "GlobalGetAtomNameW" KERNEL32.dll ;
+	UShort nAtom ;
+	Pointer lpBuffer ;	// PWSTR
+	Integer nSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-initatomtable
+External_Function InitAtomTable "InitAtomTable" KERNEL32.dll ;
+	UInteger nSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-addclipboardformatlistener
+External_Function AddClipboardFormatListener "AddClipboardFormatListener" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-changeclipboardchain
+External_Function ChangeClipboardChain "ChangeClipboardChain" USER32.dll ;
+	Pointer hWndRemove ;	// HWND
+	Pointer hWndNewNext ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-closeclipboard
+External_Function CloseClipboard "CloseClipboard" USER32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-countclipboardformats
+External_Function CountClipboardFormats "CountClipboardFormats" USER32.dll ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeabandontransaction
+External_Function DdeAbandonTransaction "DdeAbandonTransaction" USER32.dll ;
+	UInteger idInst ;
+	Pointer hConv ;	// HCONV
+	UInteger idTransaction ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeaccessdata
+External_Function DdeAccessData "DdeAccessData" USER32.dll ;
+	Pointer hData ;	// HDDEDATA
+	Pointer pcbDataSize ;	// UInteger*
+	Returns Pointer	// UChar*
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeadddata
+External_Function DdeAddData "DdeAddData" USER32.dll ;
+	Pointer hData ;	// HDDEDATA
+	Pointer pSrc ;	// UChar*
+	UInteger cb ;
+	UInteger cbOff ;
+	Returns Pointer	// HDDEDATA
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeclienttransaction
+External_Function DdeClientTransaction "DdeClientTransaction" USER32.dll ;
+	Pointer pData ;	// UChar*
+	UInteger cbData ;
+	Pointer hConv ;	// HCONV
+	Pointer hszItem ;	// HSZ
+	UInteger wFmt ;
+	UInteger wType ;	// DDE_CLIENT_TRANSACTION_TYPE
+	UInteger dwTimeout ;
+	Pointer pdwResult ;	// UInteger*
+	Returns Pointer	// HDDEDATA
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddecmpstringhandles
+External_Function DdeCmpStringHandles "DdeCmpStringHandles" USER32.dll ;
+	Pointer hsz1 ;	// HSZ
+	Pointer hsz2 ;	// HSZ
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeconnect
+External_Function DdeConnect "DdeConnect" USER32.dll ;
+	UInteger idInst ;
+	Pointer hszService ;	// HSZ
+	Pointer hszTopic ;	// HSZ
+	Pointer pCC ;	// CONVCONTEXT*
+	Returns Pointer	// HCONV
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeconnectlist
+External_Function DdeConnectList "DdeConnectList" USER32.dll ;
+	UInteger idInst ;
+	Pointer hszService ;	// HSZ
+	Pointer hszTopic ;	// HSZ
+	Pointer hConvList ;	// HCONVLIST
+	Pointer pCC ;	// CONVCONTEXT*
+	Returns Pointer	// HCONVLIST
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddecreatedatahandle
+External_Function DdeCreateDataHandle "DdeCreateDataHandle" USER32.dll ;
+	UInteger idInst ;
+	Pointer pSrc ;	// UChar*
+	UInteger cb ;
+	UInteger cbOff ;
+	Pointer hszItem ;	// HSZ
+	UInteger wFmt ;
+	UInteger afCmd ;
+	Returns Pointer	// HDDEDATA
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddecreatestringhandlea
+External_Function DdeCreateStringHandleA "DdeCreateStringHandleA" USER32.dll ;
+	UInteger idInst ;
+	String psz ;	// PSTR
+	Integer iCodePage ;
+	Returns Pointer	// HSZ
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddecreatestringhandlew
+External_Function DdeCreateStringHandleW "DdeCreateStringHandleW" USER32.dll ;
+	UInteger idInst ;
+	WString psz ;	// PWSTR
+	Integer iCodePage ;
+	Returns Pointer	// HSZ
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddedisconnect
+External_Function DdeDisconnect "DdeDisconnect" USER32.dll ;
+	Pointer hConv ;	// HCONV
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddedisconnectlist
+External_Function DdeDisconnectList "DdeDisconnectList" USER32.dll ;
+	Pointer hConvList ;	// HCONVLIST
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeenablecallback
+External_Function DdeEnableCallback "DdeEnableCallback" USER32.dll ;
+	UInteger idInst ;
+	Pointer hConv ;	// HCONV
+	UInteger wCmd ;	// DDE_ENABLE_CALLBACK_CMD
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddefreedatahandle
+External_Function DdeFreeDataHandle "DdeFreeDataHandle" USER32.dll ;
+	Pointer hData ;	// HDDEDATA
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddefreestringhandle
+External_Function DdeFreeStringHandle "DdeFreeStringHandle" USER32.dll ;
+	UInteger idInst ;
+	Pointer hsz ;	// HSZ
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddegetdata
+External_Function DdeGetData "DdeGetData" USER32.dll ;
+	Pointer hData ;	// HDDEDATA
+	Pointer pDst ;	// UChar*
+	UInteger cbMax ;
+	UInteger cbOff ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddegetlasterror
+External_Function DdeGetLastError "DdeGetLastError" USER32.dll ;
+	UInteger idInst ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeimpersonateclient
+External_Function DdeImpersonateClient "DdeImpersonateClient" USER32.dll ;
+	Pointer hConv ;	// HCONV
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeinitializea
+External_Function DdeInitializeA "DdeInitializeA" USER32.dll ;
+	Pointer pidInst ;	// UInteger*
+	Pointer pfnCallback ;	// PFNCALLBACK
+	UInteger afCmd ;	// DDE_INITIALIZE_COMMAND
+	UInteger ulRes ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeinitializew
+External_Function DdeInitializeW "DdeInitializeW" USER32.dll ;
+	Pointer pidInst ;	// UInteger*
+	Pointer pfnCallback ;	// PFNCALLBACK
+	UInteger afCmd ;	// DDE_INITIALIZE_COMMAND
+	UInteger ulRes ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddekeepstringhandle
+External_Function DdeKeepStringHandle "DdeKeepStringHandle" USER32.dll ;
+	UInteger idInst ;
+	Pointer hsz ;	// HSZ
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddenameservice
+External_Function DdeNameService "DdeNameService" USER32.dll ;
+	UInteger idInst ;
+	Pointer hsz1 ;	// HSZ
+	Pointer hsz2 ;	// HSZ
+	UInteger afCmd ;	// DDE_NAME_SERVICE_CMD
+	Returns Pointer	// HDDEDATA
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddepostadvise
+External_Function DdePostAdvise "DdePostAdvise" USER32.dll ;
+	UInteger idInst ;
+	Pointer hszTopic ;	// HSZ
+	Pointer hszItem ;	// HSZ
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddequeryconvinfo
+External_Function DdeQueryConvInfo "DdeQueryConvInfo" USER32.dll ;
+	Pointer hConv ;	// HCONV
+	UInteger idTransaction ;
+	Pointer pConvInfo ;	// CONVINFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddequerynextserver
+External_Function DdeQueryNextServer "DdeQueryNextServer" USER32.dll ;
+	Pointer hConvList ;	// HCONVLIST
+	Pointer hConvPrev ;	// HCONV
+	Returns Pointer	// HCONV
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddequerystringa
+External_Function DdeQueryStringA "DdeQueryStringA" USER32.dll ;
+	UInteger idInst ;
+	Pointer hsz ;	// HSZ
+	Pointer psz ;	// PSTR
+	UInteger cchMax ;
+	Integer iCodePage ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddequerystringw
+External_Function DdeQueryStringW "DdeQueryStringW" USER32.dll ;
+	UInteger idInst ;
+	Pointer hsz ;	// HSZ
+	Pointer psz ;	// PWSTR
+	UInteger cchMax ;
+	Integer iCodePage ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddereconnect
+External_Function DdeReconnect "DdeReconnect" USER32.dll ;
+	Pointer hConv ;	// HCONV
+	Returns Pointer	// HCONV
+
+// https://learn.microsoft.com/windows/win32/api/dde/nf-dde-ddesetqualityofservice
+External_Function DdeSetQualityOfService "DdeSetQualityOfService" USER32.dll ;
+	Pointer hwndClient ;	// HWND
+	Pointer pqosNew ;	// SECURITY_QUALITY_OF_SERVICE*
+	Pointer pqosPrev ;	// SECURITY_QUALITY_OF_SERVICE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddesetuserhandle
+External_Function DdeSetUserHandle "DdeSetUserHandle" USER32.dll ;
+	Pointer hConv ;	// HCONV
+	UInteger id ;
+	ULongPtr hUser ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeunaccessdata
+External_Function DdeUnaccessData "DdeUnaccessData" USER32.dll ;
+	Pointer hData ;	// HDDEDATA
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ddeml/nf-ddeml-ddeuninitialize
+External_Function DdeUninitialize "DdeUninitialize" USER32.dll ;
+	UInteger idInst ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-emptyclipboard
+External_Function EmptyClipboard "EmptyClipboard" USER32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-enumclipboardformats
+External_Function EnumClipboardFormats "EnumClipboardFormats" USER32.dll ;
+	UInteger format ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dde/nf-dde-freeddelparam
+External_Function FreeDDElParam "FreeDDElParam" USER32.dll ;
+	UInteger msg ;
+	LongPtr lParam ;	// LPARAM
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboarddata
+External_Function GetClipboardData "GetClipboardData" USER32.dll ;
+	UInteger uFormat ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardformatnamea
+External_Function GetClipboardFormatNameA "GetClipboardFormatNameA" USER32.dll ;
+	UInteger format ;
+	Pointer lpszFormatName ;	// PSTR
+	Integer cchMaxCount ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardformatnamew
+External_Function GetClipboardFormatNameW "GetClipboardFormatNameW" USER32.dll ;
+	UInteger format ;
+	Pointer lpszFormatName ;	// PWSTR
+	Integer cchMaxCount ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardowner
+External_Function GetClipboardOwner "GetClipboardOwner" USER32.dll ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardsequencenumber
+External_Function GetClipboardSequenceNumber "GetClipboardSequenceNumber" USER32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getclipboardviewer
+External_Function GetClipboardViewer "GetClipboardViewer" USER32.dll ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getopenclipboardwindow
+External_Function GetOpenClipboardWindow "GetOpenClipboardWindow" USER32.dll ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getpriorityclipboardformat
+External_Function GetPriorityClipboardFormat "GetPriorityClipboardFormat" USER32.dll ;
+	Pointer paFormatPriorityList ;	// UInteger*
+	Integer cFormats ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getupdatedclipboardformats
+External_Function GetUpdatedClipboardFormats "GetUpdatedClipboardFormats" USER32.dll ;
+	Pointer lpuiFormats ;	// UInteger*
+	UInteger cFormats ;
+	Pointer pcFormatsOut ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dde/nf-dde-impersonateddeclientwindow
+External_Function ImpersonateDdeClientWindow "ImpersonateDdeClientWindow" USER32.dll ;
+	Pointer hWndClient ;	// HWND
+	Pointer hWndServer ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-isclipboardformatavailable
+External_Function IsClipboardFormatAvailable "IsClipboardFormatAvailable" USER32.dll ;
+	UInteger format ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-openclipboard
+External_Function OpenClipboard "OpenClipboard" USER32.dll ;
+	Pointer hWndNewOwner ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dde/nf-dde-packddelparam
+External_Function PackDDElParam "PackDDElParam" USER32.dll ;
+	UInteger msg ;
+	ULongPtr uiLo ;
+	ULongPtr uiHi ;
+	Returns LongPtr	// LPARAM
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerclipboardformata
+External_Function RegisterClipboardFormatA "RegisterClipboardFormatA" USER32.dll ;
+	String lpszFormat ;	// PSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-registerclipboardformatw
+External_Function RegisterClipboardFormatW "RegisterClipboardFormatW" USER32.dll ;
+	WString lpszFormat ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-removeclipboardformatlistener
+External_Function RemoveClipboardFormatListener "RemoveClipboardFormatListener" USER32.dll ;
+	Pointer hwnd ;	// HWND
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dde/nf-dde-reuseddelparam
+External_Function ReuseDDElParam "ReuseDDElParam" USER32.dll ;
+	LongPtr lParam ;	// LPARAM
+	UInteger msgIn ;
+	UInteger msgOut ;
+	ULongPtr uiLo ;
+	ULongPtr uiHi ;
+	Returns LongPtr	// LPARAM
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclipboarddata
+External_Function SetClipboardData "SetClipboardData" USER32.dll ;
+	UInteger uFormat ;
+	Pointer hMem ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setclipboardviewer
+External_Function SetClipboardViewer "SetClipboardViewer" USER32.dll ;
+	Pointer hWndNewViewer ;	// HWND
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/dde/nf-dde-unpackddelparam
+External_Function UnpackDDElParam "UnpackDDElParam" USER32.dll ;
+	UInteger msg ;
+	LongPtr lParam ;	// LPARAM
+	Pointer puiLo ;	// ULongPtr*
+	Pointer puiHi ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wingdi/nf-wingdi-setwinmetafilebits
+External_Function SetWinMetaFileBits "SetWinMetaFileBits" GDI32.dll ;
+	UInteger nSize ;
+	Pointer lpMeta16Data ;	// UChar*
+	Pointer hdcRef ;	// HDC
+	Pointer lpMFP ;	// METAFILEPICT*
+	Returns Pointer	// HENHMETAFILE
+
+
+Procedure DataFlex_Init
+End_Procedure
+

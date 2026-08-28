@@ -1,0 +1,104 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-heapentry32
+Struct HEAPENTRY32
+	ULongPtr dwSize
+	Pointer hHandle											// HANDLE
+	ULongPtr dwAddress
+	ULongPtr dwBlockSize
+	UInteger dwFlags										// HEAPENTRY32_FLAGS
+	UInteger dwLockCount
+	UInteger dwResvd
+	UInteger th32ProcessID
+	ULongPtr th32HeapID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-heaplist32
+Struct HEAPLIST32
+	ULongPtr dwSize
+	UInteger th32ProcessID
+	Integer iMissingAlignment1
+	ULongPtr th32HeapID
+	UInteger dwFlags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32
+Struct MODULEENTRY32
+	UInteger dwSize
+	UInteger th32ModuleID
+	UInteger th32ProcessID
+	UInteger GlblcntUsage
+	UInteger ProccntUsage
+	Integer iMissingAlignment1
+	Pointer modBaseAddr										// UChar*
+	UInteger modBaseSize
+	Integer iMissingAlignment2
+	Pointer hModule											// HMODULE
+	Char[256] szModule										// CHAR
+	Char[260] szExePath										// CHAR
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32w
+Struct MODULEENTRY32W
+	UInteger dwSize
+	UInteger th32ModuleID
+	UInteger th32ProcessID
+	UInteger GlblcntUsage
+	UInteger ProccntUsage
+	Integer iMissingAlignment1
+	Pointer modBaseAddr										// UChar*
+	UInteger modBaseSize
+	Integer iMissingAlignment2
+	Pointer hModule											// HMODULE
+	UShort[256] szModule
+	UShort[260] szExePath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32
+Struct PROCESSENTRY32
+	UInteger dwSize
+	UInteger cntUsage
+	UInteger th32ProcessID
+	Integer iMissingAlignment1
+	ULongPtr th32DefaultHeapID
+	UInteger th32ModuleID
+	UInteger cntThreads
+	UInteger th32ParentProcessID
+	Integer pcPriClassBase
+	UInteger dwFlags
+	Char[260] szExeFile										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32w
+Struct PROCESSENTRY32W
+	UInteger dwSize
+	UInteger cntUsage
+	UInteger th32ProcessID
+	Integer iMissingAlignment1
+	ULongPtr th32DefaultHeapID
+	UInteger th32ModuleID
+	UInteger cntThreads
+	UInteger th32ParentProcessID
+	Integer pcPriClassBase
+	UInteger dwFlags
+	UShort[260] szExeFile
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlhelp32/ns-tlhelp32-threadentry32
+Struct THREADENTRY32
+	UInteger dwSize
+	UInteger cntUsage
+	UInteger th32ThreadID
+	UInteger th32OwnerProcessID
+	Integer tpBasePri
+	Integer tpDeltaPri
+	UInteger dwFlags
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

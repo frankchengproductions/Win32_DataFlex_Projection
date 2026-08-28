@@ -1,0 +1,1149 @@
+Use UI
+
+External_Function UCNV_TO_U_CALLBACK_SUBSTITUTE "UCNV_TO_U_CALLBACK_SUBSTITUTE" icuuc.dll ;
+	Pointer context ;	// Pointer*
+	Pointer toUArgs ;	// UConverterToUnicodeArgs*
+	String codeUnits ;	// PSTR
+	Integer length ;
+	Integer reason ;	// UConverterCallbackReason
+	Pointer err ;	// UErrorCode*
+	Returns Pointer
+
+External_Function u_UCharsToChars "u_UCharsToChars" icuuc.dll ;
+	Pointer us ;	// UShort*
+	String cs ;	// PSTR
+	Integer length ;
+	Returns Pointer
+
+External_Function u_austrcpy "u_austrcpy" icuuc.dll ;
+	String dst ;	// PSTR
+	Pointer src ;	// UShort*
+	Returns Pointer	// PSTR
+
+External_Function u_austrncpy "u_austrncpy" icuuc.dll ;
+	String dst ;	// PSTR
+	Pointer src ;	// UShort*
+	Integer n ;
+	Returns Pointer	// PSTR
+
+External_Function u_catclose "u_catclose" icuuc.dll ;
+	Pointer catd ;	// UResourceBundle*
+	Returns Pointer
+
+External_Function u_catgets "u_catgets" icuuc.dll ;
+	Pointer catd ;	// UResourceBundle*
+	Integer set_num ;
+	Integer msg_num ;
+	Pointer s ;	// UShort*
+	Pointer len ;	// Integer*
+	Pointer ec ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_catopen "u_catopen" icuuc.dll ;
+	String name ;	// PSTR
+	String locale ;	// PSTR
+	Pointer ec ;	// UErrorCode*
+	Returns Pointer	// UResourceBundle*
+
+External_Function u_charAge "u_charAge" icuuc.dll ;
+	Integer c ;
+	Pointer versionArray ;	// UChar*
+	Returns Pointer
+
+External_Function u_charDigitValue "u_charDigitValue" icuuc.dll ;
+	Integer c ;
+	Returns Integer
+
+External_Function u_charDirection "u_charDirection" icuuc.dll ;
+	Integer c ;
+	Returns Integer	// UCharDirection
+
+External_Function u_charFromName "u_charFromName" icuuc.dll ;
+	Integer nameChoice ;	// UCharNameChoice
+	String name ;	// PSTR
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_charMirror "u_charMirror" icuuc.dll ;
+	Integer c ;
+	Returns Integer
+
+External_Function u_charName "u_charName" icuuc.dll ;
+	Integer code ;
+	Integer nameChoice ;	// UCharNameChoice
+	String buffer ;	// PSTR
+	Integer bufferLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_charType "u_charType" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_charsToUChars "u_charsToUChars" icuuc.dll ;
+	String cs ;	// PSTR
+	Pointer us ;	// UShort*
+	Integer length ;
+	Returns Pointer
+
+External_Function u_cleanup "u_cleanup" icuuc.dll ;
+	Returns Pointer
+
+External_Function u_countChar32 "u_countChar32" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer length ;
+	Returns Integer
+
+External_Function u_digit "u_digit" icuuc.dll ;
+	Integer ch ;
+	Char radix ;
+	Returns Integer
+
+External_Function u_enumCharNames "u_enumCharNames" icuuc.dll ;
+	Integer start ;
+	Integer limit ;
+	Pointer fn ;	// UEnumCharNamesFn*
+	Pointer context ;	// Pointer*
+	Integer nameChoice ;	// UCharNameChoice
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function u_enumCharTypes "u_enumCharTypes" icuuc.dll ;
+	Pointer enumRange ;	// UCharEnumTypeRange*
+	Pointer context ;	// Pointer*
+	Returns Pointer
+
+External_Function u_errorName "u_errorName" icuuc.dll ;
+	Integer code ;	// UErrorCode
+	Returns Pointer	// PSTR
+
+External_Function u_foldCase "u_foldCase" icuuc.dll ;
+	Integer c ;
+	UInteger options ;
+	Returns Integer
+
+External_Function u_forDigit "u_forDigit" icuuc.dll ;
+	Integer digit ;
+	Char radix ;
+	Returns Integer
+
+External_Function u_getBidiPairedBracket "u_getBidiPairedBracket" icuuc.dll ;
+	Integer c ;
+	Returns Integer
+
+External_Function u_getCombiningClass "u_getCombiningClass" icuuc.dll ;
+	Integer c ;
+	Returns UChar
+
+External_Function u_getDataVersion "u_getDataVersion" icuuc.dll ;
+	Pointer dataVersionFillin ;	// UChar*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function u_getFC_NFKC_Closure "u_getFC_NFKC_Closure" icuuc.dll ;
+	Integer c ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_getIntPropertyMaxValue "u_getIntPropertyMaxValue" icuuc.dll ;
+	Integer which ;	// UProperty
+	Returns Integer
+
+External_Function u_getIntPropertyMinValue "u_getIntPropertyMinValue" icuuc.dll ;
+	Integer which ;	// UProperty
+	Returns Integer
+
+External_Function u_getIntPropertyValue "u_getIntPropertyValue" icuuc.dll ;
+	Integer c ;
+	Integer which ;	// UProperty
+	Returns Integer
+
+External_Function u_getNumericValue "u_getNumericValue" icuuc.dll ;
+	Integer c ;
+	Returns Real
+
+External_Function u_getPropertyEnum "u_getPropertyEnum" icuuc.dll ;
+	String alias ;	// PSTR
+	Returns Integer	// UProperty
+
+External_Function u_getPropertyName "u_getPropertyName" icuuc.dll ;
+	Integer property ;	// UProperty
+	Integer nameChoice ;	// UPropertyNameChoice
+	Returns Pointer	// PSTR
+
+External_Function u_getPropertyValueEnum "u_getPropertyValueEnum" icuuc.dll ;
+	Integer property ;	// UProperty
+	String alias ;	// PSTR
+	Returns Integer
+
+External_Function u_getPropertyValueName "u_getPropertyValueName" icuuc.dll ;
+	Integer property ;	// UProperty
+	Integer value ;
+	Integer nameChoice ;	// UPropertyNameChoice
+	Returns Pointer	// PSTR
+
+External_Function u_getUnicodeVersion "u_getUnicodeVersion" icuuc.dll ;
+	Pointer versionArray ;	// UChar*
+	Returns Pointer
+
+External_Function u_getVersion "u_getVersion" icuuc.dll ;
+	Pointer versionArray ;	// UChar*
+	Returns Pointer
+
+External_Function u_hasBinaryProperty "u_hasBinaryProperty" icuuc.dll ;
+	Integer c ;
+	Integer which ;	// UProperty
+	Returns Char
+
+External_Function u_init "u_init" icuuc.dll ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function u_isIDIgnorable "u_isIDIgnorable" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isIDPart "u_isIDPart" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isIDStart "u_isIDStart" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isISOControl "u_isISOControl" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isJavaIDPart "u_isJavaIDPart" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isJavaIDStart "u_isJavaIDStart" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isJavaSpaceChar "u_isJavaSpaceChar" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isMirrored "u_isMirrored" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isUAlphabetic "u_isUAlphabetic" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isULowercase "u_isULowercase" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isUUppercase "u_isUUppercase" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isUWhiteSpace "u_isUWhiteSpace" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isWhitespace "u_isWhitespace" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isalnum "u_isalnum" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isalpha "u_isalpha" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isbase "u_isbase" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isblank "u_isblank" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_iscntrl "u_iscntrl" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isdefined "u_isdefined" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isdigit "u_isdigit" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isgraph "u_isgraph" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_islower "u_islower" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isprint "u_isprint" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_ispunct "u_ispunct" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isspace "u_isspace" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_istitle "u_istitle" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isupper "u_isupper" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_isxdigit "u_isxdigit" icuuc.dll ;
+	Integer c ;
+	Returns Char
+
+External_Function u_memcasecmp "u_memcasecmp" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	Integer length ;
+	UInteger options ;
+	Returns Integer
+
+External_Function u_memchr "u_memchr" icuuc.dll ;
+	Pointer s ;	// UShort*
+	UShort c ;
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_memchr32 "u_memchr32" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer c ;
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_memcmp "u_memcmp" icuuc.dll ;
+	Pointer buf1 ;	// UShort*
+	Pointer buf2 ;	// UShort*
+	Integer count ;
+	Returns Integer
+
+External_Function u_memcmpCodePointOrder "u_memcmpCodePointOrder" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	Integer count ;
+	Returns Integer
+
+External_Function u_memcpy "u_memcpy" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Pointer src ;	// UShort*
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_memmove "u_memmove" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Pointer src ;	// UShort*
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_memrchr "u_memrchr" icuuc.dll ;
+	Pointer s ;	// UShort*
+	UShort c ;
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_memrchr32 "u_memrchr32" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer c ;
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_memset "u_memset" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	UShort c ;
+	Integer count ;
+	Returns Pointer	// UShort*
+
+External_Function u_setMemoryFunctions "u_setMemoryFunctions" icuuc.dll ;
+	Pointer context ;	// Pointer*
+	Pointer a ;	// UMemAllocFn*
+	Pointer r ;	// UMemReallocFn*
+	Pointer f ;	// UMemFreeFn*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function u_shapeArabic "u_shapeArabic" icuuc.dll ;
+	Pointer source ;	// UShort*
+	Integer sourceLength ;
+	Pointer dest ;	// UShort*
+	Integer destSize ;
+	UInteger options ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_strCaseCompare "u_strCaseCompare" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Integer length1 ;
+	Pointer s2 ;	// UShort*
+	Integer length2 ;
+	UInteger options ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_strCompare "u_strCompare" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Integer length1 ;
+	Pointer s2 ;	// UShort*
+	Integer length2 ;
+	Char codePointOrder ;
+	Returns Integer
+
+External_Function u_strCompareIter "u_strCompareIter" icuuc.dll ;
+	Pointer iter1 ;	// UCharIterator*
+	Pointer iter2 ;	// UCharIterator*
+	Char codePointOrder ;
+	Returns Integer
+
+External_Function u_strFindFirst "u_strFindFirst" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer length ;
+	Pointer substring ;	// UShort*
+	Integer subLength ;
+	Returns Pointer	// UShort*
+
+External_Function u_strFindLast "u_strFindLast" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer length ;
+	Pointer substring ;	// UShort*
+	Integer subLength ;
+	Returns Pointer	// UShort*
+
+External_Function u_strFoldCase "u_strFoldCase" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	UInteger options ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_strFromJavaModifiedUTF8WithSub "u_strFromJavaModifiedUTF8WithSub" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	String src ;	// PSTR
+	Integer srcLength ;
+	Integer subchar ;
+	Pointer pNumSubstitutions ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strFromUTF32 "u_strFromUTF32" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// Integer*
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strFromUTF32WithSub "u_strFromUTF32WithSub" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// Integer*
+	Integer srcLength ;
+	Integer subchar ;
+	Pointer pNumSubstitutions ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strFromUTF8 "u_strFromUTF8" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	String src ;	// PSTR
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strFromUTF8Lenient "u_strFromUTF8Lenient" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	String src ;	// PSTR
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strFromUTF8WithSub "u_strFromUTF8WithSub" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	String src ;	// PSTR
+	Integer srcLength ;
+	Integer subchar ;
+	Pointer pNumSubstitutions ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strFromWCS "u_strFromWCS" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	WString src ;	// PWSTR
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UShort*
+
+External_Function u_strHasMoreChar32Than "u_strHasMoreChar32Than" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer length ;
+	Integer number ;
+	Returns Char
+
+External_Function u_strToJavaModifiedUTF8 "u_strToJavaModifiedUTF8" icuuc.dll ;
+	String dest ;	// PSTR
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// PSTR
+
+External_Function u_strToLower "u_strToLower" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	String locale ;	// PSTR
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_strToTitle "u_strToTitle" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer titleIter ;	// UBreakIterator*
+	String locale ;	// PSTR
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_strToUTF32 "u_strToUTF32" icuuc.dll ;
+	Pointer dest ;	// Integer*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// Integer*
+
+External_Function u_strToUTF32WithSub "u_strToUTF32WithSub" icuuc.dll ;
+	Pointer dest ;	// Integer*
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Integer subchar ;
+	Pointer pNumSubstitutions ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// Integer*
+
+External_Function u_strToUTF8 "u_strToUTF8" icuuc.dll ;
+	String dest ;	// PSTR
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// PSTR
+
+External_Function u_strToUTF8WithSub "u_strToUTF8WithSub" icuuc.dll ;
+	String dest ;	// PSTR
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Integer subchar ;
+	Pointer pNumSubstitutions ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// PSTR
+
+External_Function u_strToUpper "u_strToUpper" icuuc.dll ;
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	String locale ;	// PSTR
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function u_strToWCS "u_strToWCS" icuuc.dll ;
+	WString dest ;	// PWSTR
+	Integer destCapacity ;
+	Pointer pDestLength ;	// Integer*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// PWSTR
+
+External_Function u_strcasecmp "u_strcasecmp" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	UInteger options ;
+	Returns Integer
+
+External_Function u_strcat "u_strcat" icuuc.dll ;
+	Pointer dst ;	// UShort*
+	Pointer src ;	// UShort*
+	Returns Pointer	// UShort*
+
+External_Function u_strchr "u_strchr" icuuc.dll ;
+	Pointer s ;	// UShort*
+	UShort c ;
+	Returns Pointer	// UShort*
+
+External_Function u_strchr32 "u_strchr32" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer c ;
+	Returns Pointer	// UShort*
+
+External_Function u_strcmp "u_strcmp" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	Returns Integer
+
+External_Function u_strcmpCodePointOrder "u_strcmpCodePointOrder" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	Returns Integer
+
+External_Function u_strcpy "u_strcpy" icuuc.dll ;
+	Pointer dst ;	// UShort*
+	Pointer src ;	// UShort*
+	Returns Pointer	// UShort*
+
+External_Function u_strcspn "u_strcspn" icuuc.dll ;
+	Pointer string ;	// UShort*
+	Pointer matchSet ;	// UShort*
+	Returns Integer
+
+External_Function u_strlen "u_strlen" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Returns Integer
+
+External_Function u_strncasecmp "u_strncasecmp" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	Integer n ;
+	UInteger options ;
+	Returns Integer
+
+External_Function u_strncat "u_strncat" icuuc.dll ;
+	Pointer dst ;	// UShort*
+	Pointer src ;	// UShort*
+	Integer n ;
+	Returns Pointer	// UShort*
+
+External_Function u_strncmp "u_strncmp" icuuc.dll ;
+	Pointer ucs1 ;	// UShort*
+	Pointer ucs2 ;	// UShort*
+	Integer n ;
+	Returns Integer
+
+External_Function u_strncmpCodePointOrder "u_strncmpCodePointOrder" icuuc.dll ;
+	Pointer s1 ;	// UShort*
+	Pointer s2 ;	// UShort*
+	Integer n ;
+	Returns Integer
+
+External_Function u_strncpy "u_strncpy" icuuc.dll ;
+	Pointer dst ;	// UShort*
+	Pointer src ;	// UShort*
+	Integer n ;
+	Returns Pointer	// UShort*
+
+External_Function u_strpbrk "u_strpbrk" icuuc.dll ;
+	Pointer string ;	// UShort*
+	Pointer matchSet ;	// UShort*
+	Returns Pointer	// UShort*
+
+External_Function u_strrchr "u_strrchr" icuuc.dll ;
+	Pointer s ;	// UShort*
+	UShort c ;
+	Returns Pointer	// UShort*
+
+External_Function u_strrchr32 "u_strrchr32" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Integer c ;
+	Returns Pointer	// UShort*
+
+External_Function u_strrstr "u_strrstr" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Pointer substring ;	// UShort*
+	Returns Pointer	// UShort*
+
+External_Function u_strspn "u_strspn" icuuc.dll ;
+	Pointer string ;	// UShort*
+	Pointer matchSet ;	// UShort*
+	Returns Integer
+
+External_Function u_strstr "u_strstr" icuuc.dll ;
+	Pointer s ;	// UShort*
+	Pointer substring ;	// UShort*
+	Returns Pointer	// UShort*
+
+External_Function u_strtok_r "u_strtok_r" icuuc.dll ;
+	Pointer src ;	// UShort*
+	Pointer delim ;	// UShort*
+	Pointer saveState ;	// UShort**
+	Returns Pointer	// UShort*
+
+External_Function u_tolower "u_tolower" icuuc.dll ;
+	Integer c ;
+	Returns Integer
+
+External_Function u_totitle "u_totitle" icuuc.dll ;
+	Integer c ;
+	Returns Integer
+
+External_Function u_toupper "u_toupper" icuuc.dll ;
+	Integer c ;
+	Returns Integer
+
+External_Function u_uastrcpy "u_uastrcpy" icuuc.dll ;
+	Pointer dst ;	// UShort*
+	String src ;	// PSTR
+	Returns Pointer	// UShort*
+
+External_Function u_uastrncpy "u_uastrncpy" icuuc.dll ;
+	Pointer dst ;	// UShort*
+	String src ;	// PSTR
+	Integer n ;
+	Returns Pointer	// UShort*
+
+External_Function u_unescape "u_unescape" icuuc.dll ;
+	String src ;	// PSTR
+	Pointer dest ;	// UShort*
+	Integer destCapacity ;
+	Returns Integer
+
+External_Function u_unescapeAt "u_unescapeAt" icuuc.dll ;
+	Pointer charAt ;	// UNESCAPE_CHAR_AT
+	Pointer offset ;	// Integer*
+	Integer length ;
+	Pointer context ;	// Pointer*
+	Returns Integer
+
+External_Function u_versionFromString "u_versionFromString" icuuc.dll ;
+	Pointer versionArray ;	// UChar*
+	String versionString ;	// PSTR
+	Returns Pointer
+
+External_Function u_versionFromUString "u_versionFromUString" icuuc.dll ;
+	Pointer versionArray ;	// UChar*
+	Pointer versionString ;	// UShort*
+	Returns Pointer
+
+External_Function u_versionToString "u_versionToString" icuuc.dll ;
+	Pointer versionArray ;	// UChar*
+	String versionString ;	// PSTR
+	Returns Pointer
+
+External_Function ubidi_close "ubidi_close" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Pointer
+
+External_Function ubidi_countParagraphs "ubidi_countParagraphs" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Integer
+
+External_Function ubidi_countRuns "ubidi_countRuns" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubidi_getBaseDirection "ubidi_getBaseDirection" icuuc.dll ;
+	Pointer text ;	// UShort*
+	Integer length ;
+	Returns Integer	// UBiDiDirection
+
+External_Function ubidi_getClassCallback "ubidi_getClassCallback" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer fn ;	// UBiDiClassCallback*
+	Pointer context ;	// Pointer**
+	Returns Pointer
+
+External_Function ubidi_getCustomizedClass "ubidi_getCustomizedClass" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer c ;
+	Returns Integer	// UCharDirection
+
+External_Function ubidi_getDirection "ubidi_getDirection" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Integer	// UBiDiDirection
+
+External_Function ubidi_getLength "ubidi_getLength" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Integer
+
+External_Function ubidi_getLevelAt "ubidi_getLevelAt" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer charIndex ;
+	Returns UChar
+
+External_Function ubidi_getLevels "ubidi_getLevels" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UChar*
+
+External_Function ubidi_getLogicalIndex "ubidi_getLogicalIndex" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer visualIndex ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubidi_getLogicalMap "ubidi_getLogicalMap" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer indexMap ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_getLogicalRun "ubidi_getLogicalRun" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer logicalPosition ;
+	Pointer pLogicalLimit ;	// Integer*
+	Pointer pLevel ;	// UChar*
+	Returns Pointer
+
+External_Function ubidi_getParaLevel "ubidi_getParaLevel" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns UChar
+
+External_Function ubidi_getParagraph "ubidi_getParagraph" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer charIndex ;
+	Pointer pParaStart ;	// Integer*
+	Pointer pParaLimit ;	// Integer*
+	Pointer pParaLevel ;	// UChar*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubidi_getParagraphByIndex "ubidi_getParagraphByIndex" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer paraIndex ;
+	Pointer pParaStart ;	// Integer*
+	Pointer pParaLimit ;	// Integer*
+	Pointer pParaLevel ;	// UChar*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_getProcessedLength "ubidi_getProcessedLength" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Integer
+
+External_Function ubidi_getReorderingMode "ubidi_getReorderingMode" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Integer	// UBiDiReorderingMode
+
+External_Function ubidi_getReorderingOptions "ubidi_getReorderingOptions" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns UInteger
+
+External_Function ubidi_getResultLength "ubidi_getResultLength" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Integer
+
+External_Function ubidi_getText "ubidi_getText" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Pointer	// UShort*
+
+External_Function ubidi_getVisualIndex "ubidi_getVisualIndex" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer logicalIndex ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubidi_getVisualMap "ubidi_getVisualMap" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer indexMap ;	// Integer*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_getVisualRun "ubidi_getVisualRun" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer runIndex ;
+	Pointer pLogicalStart ;	// Integer*
+	Pointer pLength ;	// Integer*
+	Returns Integer	// UBiDiDirection
+
+External_Function ubidi_invertMap "ubidi_invertMap" icuuc.dll ;
+	Pointer srcMap ;	// Integer*
+	Pointer destMap ;	// Integer*
+	Integer length ;
+	Returns Pointer
+
+External_Function ubidi_isInverse "ubidi_isInverse" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Char
+
+External_Function ubidi_isOrderParagraphsLTR "ubidi_isOrderParagraphsLTR" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Returns Char
+
+External_Function ubidi_open "ubidi_open" icuuc.dll ;
+	Returns Pointer	// UBiDi*
+
+External_Function ubidi_openSized "ubidi_openSized" icuuc.dll ;
+	Integer maxLength ;
+	Integer maxRunCount ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UBiDi*
+
+External_Function ubidi_orderParagraphsLTR "ubidi_orderParagraphsLTR" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Char orderParagraphsLTR ;
+	Returns Pointer
+
+External_Function ubidi_reorderLogical "ubidi_reorderLogical" icuuc.dll ;
+	Pointer levels ;	// UChar*
+	Integer length ;
+	Pointer indexMap ;	// Integer*
+	Returns Pointer
+
+External_Function ubidi_reorderVisual "ubidi_reorderVisual" icuuc.dll ;
+	Pointer levels ;	// UChar*
+	Integer length ;
+	Pointer indexMap ;	// Integer*
+	Returns Pointer
+
+External_Function ubidi_setClassCallback "ubidi_setClassCallback" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer newFn ;	// UBiDiClassCallback
+	Pointer newContext ;	// Pointer*
+	Pointer oldFn ;	// UBiDiClassCallback*
+	Pointer oldContext ;	// Pointer**
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_setContext "ubidi_setContext" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer prologue ;	// UShort*
+	Integer proLength ;
+	Pointer epilogue ;	// UShort*
+	Integer epiLength ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_setInverse "ubidi_setInverse" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Char isInverse ;
+	Returns Pointer
+
+External_Function ubidi_setLine "ubidi_setLine" icuuc.dll ;
+	Pointer pParaBiDi ;	// UBiDi*
+	Integer start ;
+	Integer limit ;
+	Pointer pLineBiDi ;	// UBiDi*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_setPara "ubidi_setPara" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer text ;	// UShort*
+	Integer length ;
+	UChar paraLevel ;
+	Pointer embeddingLevels ;	// UChar*
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubidi_setReorderingMode "ubidi_setReorderingMode" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Integer reorderingMode ;	// UBiDiReorderingMode
+	Returns Pointer
+
+External_Function ubidi_setReorderingOptions "ubidi_setReorderingOptions" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	UInteger reorderingOptions ;
+	Returns Pointer
+
+External_Function ubidi_writeReordered "ubidi_writeReordered" icuuc.dll ;
+	Pointer pBiDi ;	// UBiDi*
+	Pointer dest ;	// UShort*
+	Integer destSize ;
+	UShort options ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubidi_writeReverse "ubidi_writeReverse" icuuc.dll ;
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer dest ;	// UShort*
+	Integer destSize ;
+	UShort options ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubiditransform_close "ubiditransform_close" icuuc.dll ;
+	Pointer pBidiTransform ;	// UBiDiTransform*
+	Returns Pointer
+
+External_Function ubiditransform_open "ubiditransform_open" icuuc.dll ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns Pointer	// UBiDiTransform*
+
+External_Function ubiditransform_transform "ubiditransform_transform" icuuc.dll ;
+	Pointer pBiDiTransform ;	// UBiDiTransform*
+	Pointer src ;	// UShort*
+	Integer srcLength ;
+	Pointer dest ;	// UShort*
+	Integer destSize ;
+	UChar inParaLevel ;
+	Integer inOrder ;	// UBiDiOrder
+	UChar outParaLevel ;
+	Integer outOrder ;	// UBiDiOrder
+	Integer doMirroring ;	// UBiDiMirroring
+	UInteger shapingOptions ;
+	Pointer pErrorCode ;	// UErrorCode*
+	Returns UInteger
+
+External_Function ublock_getCode "ublock_getCode" icuuc.dll ;
+	Integer c ;
+	Returns Integer	// UBlockCode
+
+External_Function ubrk_close "ubrk_close" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Pointer
+
+External_Function ubrk_countAvailable "ubrk_countAvailable" icuuc.dll ;
+	Returns Integer
+
+External_Function ubrk_current "ubrk_current" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Integer
+
+External_Function ubrk_first "ubrk_first" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Integer
+
+External_Function ubrk_following "ubrk_following" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Integer offset ;
+	Returns Integer
+
+External_Function ubrk_getAvailable "ubrk_getAvailable" icuuc.dll ;
+	Integer index ;
+	Returns Pointer	// PSTR
+
+External_Function ubrk_getBinaryRules "ubrk_getBinaryRules" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Pointer binaryRules ;	// UChar*
+	Integer rulesCapacity ;
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubrk_getLocaleByType "ubrk_getLocaleByType" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Integer type ;	// ULocDataLocaleType
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// PSTR
+
+External_Function ubrk_getRuleStatus "ubrk_getRuleStatus" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Integer
+
+External_Function ubrk_getRuleStatusVec "ubrk_getRuleStatusVec" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Pointer fillInVec ;	// Integer*
+	Integer capacity ;
+	Pointer status ;	// UErrorCode*
+	Returns Integer
+
+External_Function ubrk_isBoundary "ubrk_isBoundary" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Integer offset ;
+	Returns Char
+
+External_Function ubrk_last "ubrk_last" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Integer
+
+External_Function ubrk_next "ubrk_next" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Integer
+
+External_Function ubrk_open "ubrk_open" icuuc.dll ;
+	Integer type ;	// UBreakIteratorType
+	String locale ;	// PSTR
+	Pointer text ;	// UShort*
+	Integer textLength ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// UBreakIterator*
+
+External_Function ubrk_openBinaryRules "ubrk_openBinaryRules" icuuc.dll ;
+	Pointer binaryRules ;	// UChar*
+	Integer rulesLength ;
+	Pointer text ;	// UShort*
+	Integer textLength ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// UBreakIterator*
+
+External_Function ubrk_openRules "ubrk_openRules" icuuc.dll ;
+	Pointer rules ;	// UShort*
+	Integer rulesLength ;
+	Pointer text ;	// UShort*
+	Integer textLength ;
+	Pointer parseErr ;	// UParseError*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// UBreakIterator*
+
+External_Function ubrk_preceding "ubrk_preceding" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Integer offset ;
+	Returns Integer
+
+External_Function ubrk_previous "ubrk_previous" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Returns Integer
+
+External_Function ubrk_refreshUText "ubrk_refreshUText" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Pointer text ;	// UText*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubrk_safeClone "ubrk_safeClone" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Pointer stackBuffer ;	// Pointer*
+	Pointer pBufferSize ;	// Integer*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer	// UBreakIterator*
+
+External_Function ubrk_setText "ubrk_setText" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Pointer text ;	// UShort*
+	Integer textLength ;
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+External_Function ubrk_setUText "ubrk_setUText" icuuc.dll ;
+	Pointer bi ;	// UBreakIterator*
+	Pointer text ;	// UText*
+	Pointer status ;	// UErrorCode*
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,74 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/securityappcontainer/nf-securityappcontainer-getappcontainernamedobjectpath
+External_Function GetAppContainerNamedObjectPath "GetAppContainerNamedObjectPath" KERNEL32.dll ;
+	Pointer Token ;	// HANDLE
+	Pointer AppContainerSid ;	// PSID
+	UInteger ObjectPathLength ;
+	Pointer ObjectPath ;	// PWSTR
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-createappcontainerprofile
+External_Function CreateAppContainerProfile "CreateAppContainerProfile" USERENV.dll ;
+	WString pszAppContainerName ;	// PWSTR
+	WString pszDisplayName ;	// PWSTR
+	WString pszDescription ;	// PWSTR
+	Pointer pCapabilities ;	// SID_AND_ATTRIBUTES*
+	UInteger dwCapabilityCount ;
+	Pointer ppSidAppContainerSid ;	// PSID*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-deleteappcontainerprofile
+External_Function DeleteAppContainerProfile "DeleteAppContainerProfile" USERENV.dll ;
+	WString pszAppContainerName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-deriveappcontainersidfromappcontainername
+External_Function DeriveAppContainerSidFromAppContainerName "DeriveAppContainerSidFromAppContainerName" USERENV.dll ;
+	WString pszAppContainerName ;	// PWSTR
+	Pointer ppsidAppContainerSid ;	// PSID*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-deriverestrictedappcontainersidfromappcontainersidandrestrictedname
+External_Function DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName "DeriveRestrictedAppContainerSidFromAppContainerSidAndRestrictedName" USERENV.dll ;
+	Pointer psidAppContainerSid ;	// PSID
+	WString pszRestrictedAppContainerName ;	// PWSTR
+	Pointer ppsidRestrictedAppContainerSid ;	// PSID*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-getappcontainerfolderpath
+External_Function GetAppContainerFolderPath "GetAppContainerFolderPath" USERENV.dll ;
+	WString pszAppContainerSid ;	// PWSTR
+	Pointer ppszPath ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/userenv/nf-userenv-getappcontainerregistrylocation
+External_Function GetAppContainerRegistryLocation "GetAppContainerRegistryLocation" USERENV.dll ;
+	UInteger desiredAccess ;
+	Pointer phAppContainerKey ;	// HKEY*
+	Returns Integer	// HRESULT
+
+External_Function IsProcessInWDAGContainer "IsProcessInWDAGContainer" api-ms-win-security-isolatedcontainer-l1-1-1.dll ;
+	Pointer Reserved ;	// Pointer*
+	Pointer isProcessInWDAGContainer ;	// BOOL*
+	Returns Integer	// HRESULT
+
+External_Function IsProcessInIsolatedContainer "IsProcessInIsolatedContainer" api-ms-win-security-isolatedcontainer-l1-1-0.dll ;
+	Pointer isProcessInIsolatedContainer ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/isolatedwindowsenvironmentutils/nf-isolatedwindowsenvironmentutils-iscrossisolatedenvironmentclipboardcontent
+External_Function IsCrossIsolatedEnvironmentClipboardContent "IsCrossIsolatedEnvironmentClipboardContent" IsolatedWindowsEnvironmentUtils.dll ;
+	Pointer isCrossIsolatedEnvironmentClipboardContent ;	// BOOL*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/isolatedwindowsenvironmentutils/nf-isolatedwindowsenvironmentutils-isprocessinisolatedwindowsenvironment
+External_Function IsProcessInIsolatedWindowsEnvironment "IsProcessInIsolatedWindowsEnvironment" IsolatedWindowsEnvironmentUtils.dll ;
+	Pointer isProcessInIsolatedWindowsEnvironment ;	// BOOL*
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

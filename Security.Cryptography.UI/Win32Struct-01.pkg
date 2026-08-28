@@ -1,0 +1,176 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cert_selectui_input
+Struct CERT_SELECTUI_INPUT
+	Pointer hStore											// HCERTSTORE
+	Pointer prgpChain										// CERT_CHAIN_CONTEXT**
+	UInteger cChain
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_cert_mgr_struct
+Struct CRYPTUI_CERT_MGR_STRUCT
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer pwszTitle										// PWSTR
+	Pointer pszInitUsageOID									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_viewcertificate_structa
+Struct CRYPTUI_VIEWCERTIFICATE_STRUCTA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	UInteger dwFlags										// CRYPTUI_VIEWCERTIFICATE_FLAGS
+	Integer iMissingAlignment2
+	Pointer szTitle											// PSTR
+	Pointer pCertContext									// CERT_CONTEXT*
+	Pointer rgszPurposes									// PSTR*
+	UInteger cPurposes
+	Integer iMissingAlignment3
+	UChar[8] UnionName1
+	Integer fpCryptProviderDataTrustedUsage					// BOOL
+	UInteger idxSigner
+	UInteger idxCert
+	Integer fCounterSigner									// BOOL
+	UInteger idxCounterSigner
+	UInteger cStores
+	Pointer rghStores										// HCERTSTORE*
+	UInteger cPropSheetPages
+	Integer iMissingAlignment4
+	Pointer rgPropSheetPages								// PROPSHEETPAGEA*
+	UInteger nStartPage
+	Integer iMissingAlignment5
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_viewcertificate_structw
+Struct CRYPTUI_VIEWCERTIFICATE_STRUCTW
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	UInteger dwFlags										// CRYPTUI_VIEWCERTIFICATE_FLAGS
+	Integer iMissingAlignment2
+	Pointer szTitle											// PWSTR
+	Pointer pCertContext									// CERT_CONTEXT*
+	Pointer rgszPurposes									// PSTR*
+	UInteger cPurposes
+	Integer iMissingAlignment3
+	UChar[8] UnionName1
+	Integer fpCryptProviderDataTrustedUsage					// BOOL
+	UInteger idxSigner
+	UInteger idxCert
+	Integer fCounterSigner									// BOOL
+	UInteger idxCounterSigner
+	UInteger cStores
+	Pointer rghStores										// HCERTSTORE*
+	UInteger cPropSheetPages
+	Integer iMissingAlignment4
+	Pointer rgPropSheetPages								// PROPSHEETPAGEW*
+	UInteger nStartPage
+	Integer iMissingAlignment5
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_blob_info
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_BLOB_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pGuidSubject									// Guid*
+	UInteger cbBlob
+	Integer iMissingAlignment2
+	Pointer pbBlob											// UChar*
+	Pointer pwszDisplayName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_cert_pvk_info
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_CERT_PVK_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pwszSigningCertFileName							// PWSTR
+	UInteger dwPvkChoice									// CRYPTUI_WIZ_DIGITAL_SIGN_PVK_OPTION
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_context
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_CONTEXT
+	UInteger dwSize
+	UInteger cbBlob
+	Pointer pbBlob											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_extended_info
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_EXTENDED_INFO
+	UInteger dwSize
+	UInteger dwAttrFlags									// CRYPTUI_WIZ_DIGITAL_SIGN_SIG_TYPE
+	Pointer pwszDescription									// PWSTR
+	Pointer pwszMoreInfoLocation							// PWSTR
+	Pointer pszHashAlg										// PSTR
+	Pointer pwszSigningCertDisplayString					// PWSTR
+	Pointer hAdditionalCertStore							// HCERTSTORE
+	Pointer psAuthenticated									// CRYPT_ATTRIBUTES*
+	Pointer psUnauthenticated								// CRYPT_ATTRIBUTES*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_info
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_INFO
+	UInteger dwSize
+	UInteger dwSubjectChoice								// CRYPTUI_WIZ_DIGITAL_SIGN_SUBJECT
+	UChar[8] UnionName1
+	UInteger dwSigningCertChoice							// CRYPTUI_WIZ_DIGITAL_SIGN
+	Integer iMissingAlignment1
+	UChar[8] UnionName2
+	Pointer pwszTimestampURL								// PWSTR
+	UInteger dwAdditionalCertChoice							// CRYPTUI_WIZ_DIGITAL_ADDITIONAL_CERT_CHOICE
+	Integer iMissingAlignment2
+	Pointer pSignExtInfo									// CRYPTUI_WIZ_DIGITAL_SIGN_EXTENDED_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_pvk_file_info
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_PVK_FILE_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pwszPvkFileName									// PWSTR
+	Pointer pwszProvName									// PWSTR
+	UInteger dwProvType
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_digital_sign_store_info
+Struct CRYPTUI_WIZ_DIGITAL_SIGN_STORE_INFO
+	UInteger dwSize
+	UInteger cCertStore
+	Pointer rghCertStore									// HCERTSTORE*
+	Pointer pFilterCallback									// PFNCFILTERPROC
+	Pointer pvCallbackData									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_export_info
+Struct CRYPTUI_WIZ_EXPORT_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pwszExportFileName								// PWSTR
+	UInteger dwSubjectChoice								// CRYPTUI_WIZ_EXPORT_SUBJECT
+	Integer iMissingAlignment2
+	UChar[8] UnionName1
+	UInteger cStores
+	Integer iMissingAlignment3
+	Pointer rghStores										// HCERTSTORE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptuiapi/ns-cryptuiapi-cryptui_wiz_import_src_info
+Struct CRYPTUI_WIZ_IMPORT_SRC_INFO
+	UInteger dwSize
+	UInteger dwSubjectChoice								// CRYPTUI_WIZ_IMPORT_SUBJECT_OPTION
+	UChar[8] UnionName1
+	UInteger dwFlags										// CRYPT_KEY_FLAGS
+	Integer iMissingAlignment1
+	Pointer pwszPassword									// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

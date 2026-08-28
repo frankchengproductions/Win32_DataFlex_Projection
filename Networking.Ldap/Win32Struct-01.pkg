@@ -1,0 +1,135 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-berelement
+Struct BerElement
+	Pointer opaque											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldap
+Struct LDAP
+	UChar[41] UnionName1
+	UChar[7] cMissingAlignment1
+	Pointer ld_host											// PSTR
+	UInteger ld_version
+	UChar ld_lberoptions
+	UChar[3] cMissingAlignment2
+	UInteger ld_deref
+	UInteger ld_timelimit
+	UInteger ld_sizelimit
+	UInteger ld_errno
+	Pointer ld_matched										// PSTR
+	Pointer ld_error										// PSTR
+	UInteger ld_msgid
+	UChar[25] Reserved3
+	UChar[3] cMissingAlignment3
+	UInteger ld_cldaptries
+	UInteger ld_cldaptimeout
+	UInteger ld_refhoplimit
+	UInteger ld_options
+	UInteger ld_anonymousmaxvalrange
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapcontrola
+Struct LDAPControlA
+	Pointer ldctl_oid										// PSTR
+	LDAP_BERVAL ldctl_value
+	UChar ldctl_iscritical									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapcontrolw
+Struct LDAPControlW
+	Pointer ldctl_oid										// PWSTR
+	LDAP_BERVAL ldctl_value
+	UChar ldctl_iscritical									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapmessage
+Struct LDAPMessage
+	UInteger lm_msgid
+	UInteger lm_msgtype
+	Pointer lm_ber											// Pointer*
+	Pointer lm_chain										// LDAPMessage*
+	Pointer lm_next											// LDAPMessage*
+	UInteger lm_time
+	Integer iMissingAlignment1
+	Pointer Connection										// LDAP*
+	Pointer Request											// Pointer*
+	UInteger lm_returncode
+	UShort lm_referral
+	UChar lm_chased											// BOOLEAN
+	UChar lm_eom											// BOOLEAN
+	UChar ConnectionReferenced								// BOOLEAN
+	UChar[7] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapmoda
+Struct LDAPModA
+	UInteger mod_op
+	Integer iMissingAlignment1
+	Pointer mod_type										// PSTR
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapmodw
+Struct LDAPModW
+	UInteger mod_op
+	Integer iMissingAlignment1
+	Pointer mod_type										// PWSTR
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapsortkeya
+Struct LDAPSortKeyA
+	Pointer sk_attrtype										// PSTR
+	Pointer sk_matchruleoid									// PSTR
+	UChar sk_reverseorder									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapsortkeyw
+Struct LDAPSortKeyW
+	Pointer sk_attrtype										// PWSTR
+	Pointer sk_matchruleoid									// PWSTR
+	UChar sk_reverseorder									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldapvlvinfo
+Struct LDAPVLVInfo
+	Integer ldvlv_version
+	UInteger ldvlv_before_count
+	UInteger ldvlv_after_count
+	UInteger ldvlv_offset
+	UInteger ldvlv_count
+	Integer iMissingAlignment1
+	Pointer ldvlv_attrvalue									// LDAP_BERVAL*
+	Pointer ldvlv_context									// LDAP_BERVAL*
+	Pointer ldvlv_extradata									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldap_berval
+Struct LDAP_BERVAL
+	UInteger bv_len
+	Integer iMissingAlignment1
+	Pointer bv_val											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winldap/ns-winldap-ldap_timeval
+Struct LDAP_TIMEVAL
+	Integer tv_sec
+	Integer tv_usec
+End_Struct
+
+Struct LDAP_VERSION_INFO
+	UInteger lv_size
+	UInteger lv_major
+	UInteger lv_minor
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

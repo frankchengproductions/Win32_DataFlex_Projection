@@ -1,0 +1,117 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecclose
+External_Function EcClose "EcClose" WecApi.dll ;
+	LongPtr Object ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecdeletesubscription
+External_Function EcDeleteSubscription "EcDeleteSubscription" WecApi.dll ;
+	WString SubscriptionName ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecenumnextsubscription
+External_Function EcEnumNextSubscription "EcEnumNextSubscription" WecApi.dll ;
+	LongPtr SubscriptionEnum ;
+	UInteger SubscriptionNameBufferSize ;
+	Pointer SubscriptionNameBuffer ;	// PWSTR
+	Pointer SubscriptionNameBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecgetobjectarrayproperty
+External_Function EcGetObjectArrayProperty "EcGetObjectArrayProperty" WecApi.dll ;
+	LongPtr ObjectArray ;
+	Integer PropertyId ;	// EC_SUBSCRIPTION_PROPERTY_ID
+	UInteger ArrayIndex ;
+	UInteger Flags ;
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EC_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecgetobjectarraysize
+External_Function EcGetObjectArraySize "EcGetObjectArraySize" WecApi.dll ;
+	LongPtr ObjectArray ;
+	Pointer ObjectArraySize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecgetsubscriptionproperty
+External_Function EcGetSubscriptionProperty "EcGetSubscriptionProperty" WecApi.dll ;
+	LongPtr Subscription ;
+	Integer PropertyId ;	// EC_SUBSCRIPTION_PROPERTY_ID
+	UInteger Flags ;
+	UInteger PropertyValueBufferSize ;
+	Pointer PropertyValueBuffer ;	// EC_VARIANT*
+	Pointer PropertyValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecgetsubscriptionruntimestatus
+External_Function EcGetSubscriptionRunTimeStatus "EcGetSubscriptionRunTimeStatus" WecApi.dll ;
+	WString SubscriptionName ;	// PWSTR
+	Integer StatusInfoId ;	// EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID
+	WString EventSourceName ;	// PWSTR
+	UInteger Flags ;
+	UInteger StatusValueBufferSize ;
+	Pointer StatusValueBuffer ;	// EC_VARIANT*
+	Pointer StatusValueBufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecinsertobjectarrayelement
+External_Function EcInsertObjectArrayElement "EcInsertObjectArrayElement" WecApi.dll ;
+	LongPtr ObjectArray ;
+	UInteger ArrayIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecopensubscription
+External_Function EcOpenSubscription "EcOpenSubscription" WecApi.dll ;
+	WString SubscriptionName ;	// PWSTR
+	UInteger AccessMask ;
+	UInteger Flags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecopensubscriptionenum
+External_Function EcOpenSubscriptionEnum "EcOpenSubscriptionEnum" WecApi.dll ;
+	UInteger Flags ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecremoveobjectarrayelement
+External_Function EcRemoveObjectArrayElement "EcRemoveObjectArrayElement" WecApi.dll ;
+	LongPtr ObjectArray ;
+	UInteger ArrayIndex ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecretrysubscription
+External_Function EcRetrySubscription "EcRetrySubscription" WecApi.dll ;
+	WString SubscriptionName ;	// PWSTR
+	WString EventSourceName ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecsavesubscription
+External_Function EcSaveSubscription "EcSaveSubscription" WecApi.dll ;
+	LongPtr Subscription ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecsetobjectarrayproperty
+External_Function EcSetObjectArrayProperty "EcSetObjectArrayProperty" WecApi.dll ;
+	LongPtr ObjectArray ;
+	Integer PropertyId ;	// EC_SUBSCRIPTION_PROPERTY_ID
+	UInteger ArrayIndex ;
+	UInteger Flags ;
+	Pointer PropertyValue ;	// EC_VARIANT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/evcoll/nf-evcoll-ecsetsubscriptionproperty
+External_Function EcSetSubscriptionProperty "EcSetSubscriptionProperty" WecApi.dll ;
+	LongPtr Subscription ;
+	Integer PropertyId ;	// EC_SUBSCRIPTION_PROPERTY_ID
+	UInteger Flags ;
+	Pointer PropertyValue ;	// EC_VARIANT*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

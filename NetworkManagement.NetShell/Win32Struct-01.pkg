@@ -1,0 +1,69 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/netsh/ns-netsh-cmd_entry
+Struct CMD_ENTRY
+	Pointer pwszCmdToken									// PWSTR
+	Pointer pfnCmdHandler									// PFN_HANDLE_CMD
+	UInteger dwShortCmdHelpToken
+	UInteger dwCmdHlpToken
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pOsVersionCheck									// PNS_OSVERSIONCHECK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netsh/ns-netsh-cmd_group_entry
+Struct CMD_GROUP_ENTRY
+	Pointer pwszCmdGroupToken								// PWSTR
+	UInteger dwShortCmdHelpToken
+	UInteger ulCmdGroupSize
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pCmdGroup										// CMD_ENTRY*
+	Pointer pOsVersionCheck									// PNS_OSVERSIONCHECK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netsh/ns-netsh-ns_context_attributes
+Struct NS_CONTEXT_ATTRIBUTES
+	UChar[8] UnionName1
+	Pointer pwszContext										// PWSTR
+	Guid guidHelper
+	UInteger dwFlags
+	UInteger ulPriority
+	UInteger ulNumTopCmds
+	Integer iMissingAlignment1
+	Pointer pTopCmds										// CMD_ENTRY*
+	UInteger ulNumGroups
+	Integer iMissingAlignment2
+	Pointer pCmdGroups										// CMD_GROUP_ENTRY*
+	Pointer pfnCommitFn										// PNS_CONTEXT_COMMIT_FN
+	Pointer pfnDumpFn										// PNS_CONTEXT_DUMP_FN
+	Pointer pfnConnectFn									// PNS_CONTEXT_CONNECT_FN
+	Pointer pReserved										// Pointer*
+	Pointer pfnOsVersionCheck								// PNS_OSVERSIONCHECK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netsh/ns-netsh-ns_helper_attributes
+Struct NS_HELPER_ATTRIBUTES
+	UChar[8] UnionName1
+	Guid guidHelper
+	Pointer pfnStart										// PNS_HELPER_START_FN
+	Pointer pfnStop											// PNS_HELPER_STOP_FN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netsh/ns-netsh-tag_type
+Struct TAG_TYPE
+	Pointer pwszTag											// PWSTR
+	UInteger dwRequired
+	Integer bPresent										// BOOL
+End_Struct
+
+Struct TOKEN_VALUE
+	Pointer pwszToken										// PWSTR
+	UInteger dwValue
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

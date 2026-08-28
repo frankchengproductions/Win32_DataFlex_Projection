@@ -1,0 +1,485 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-changeserviceconfig2a
+External_Function ChangeServiceConfig2A "ChangeServiceConfig2A" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwInfoLevel ;	// SERVICE_CONFIG
+	Pointer lpInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-changeserviceconfig2w
+External_Function ChangeServiceConfig2W "ChangeServiceConfig2W" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwInfoLevel ;	// SERVICE_CONFIG
+	Pointer lpInfo ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-changeserviceconfiga
+External_Function ChangeServiceConfigA "ChangeServiceConfigA" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwStartType ;	// SERVICE_START_TYPE
+	UInteger dwErrorControl ;	// SERVICE_ERROR
+	String lpBinaryPathName ;	// PSTR
+	String lpLoadOrderGroup ;	// PSTR
+	Pointer lpdwTagId ;	// UInteger*
+	String lpDependencies ;	// PSTR
+	String lpServiceStartName ;	// PSTR
+	String lpPassword ;	// PSTR
+	String lpDisplayName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-changeserviceconfigw
+External_Function ChangeServiceConfigW "ChangeServiceConfigW" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwStartType ;	// SERVICE_START_TYPE
+	UInteger dwErrorControl ;	// SERVICE_ERROR
+	WString lpBinaryPathName ;	// PWSTR
+	WString lpLoadOrderGroup ;	// PWSTR
+	Pointer lpdwTagId ;	// UInteger*
+	WString lpDependencies ;	// PWSTR
+	WString lpServiceStartName ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	WString lpDisplayName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-closeservicehandle
+External_Function CloseServiceHandle "CloseServiceHandle" ADVAPI32.dll ;
+	Pointer hSCObject ;	// SC_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-controlservice
+External_Function ControlService "ControlService" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwControl ;
+	Pointer lpServiceStatus ;	// SERVICE_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-controlserviceexa
+External_Function ControlServiceExA "ControlServiceExA" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwControl ;
+	UInteger dwInfoLevel ;
+	Pointer pControlParams ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-controlserviceexw
+External_Function ControlServiceExW "ControlServiceExW" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwControl ;
+	UInteger dwInfoLevel ;
+	Pointer pControlParams ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-createservicea
+External_Function CreateServiceA "CreateServiceA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	String lpServiceName ;	// PSTR
+	String lpDisplayName ;	// PSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwStartType ;	// SERVICE_START_TYPE
+	UInteger dwErrorControl ;	// SERVICE_ERROR
+	String lpBinaryPathName ;	// PSTR
+	String lpLoadOrderGroup ;	// PSTR
+	Pointer lpdwTagId ;	// UInteger*
+	String lpDependencies ;	// PSTR
+	String lpServiceStartName ;	// PSTR
+	String lpPassword ;	// PSTR
+	Returns Pointer	// SC_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-createservicew
+External_Function CreateServiceW "CreateServiceW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	WString lpServiceName ;	// PWSTR
+	WString lpDisplayName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwStartType ;	// SERVICE_START_TYPE
+	UInteger dwErrorControl ;	// SERVICE_ERROR
+	WString lpBinaryPathName ;	// PWSTR
+	WString lpLoadOrderGroup ;	// PWSTR
+	Pointer lpdwTagId ;	// UInteger*
+	WString lpDependencies ;	// PWSTR
+	WString lpServiceStartName ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	Returns Pointer	// SC_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-deleteservice
+External_Function DeleteService "DeleteService" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-enumdependentservicesa
+External_Function EnumDependentServicesA "EnumDependentServicesA" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwServiceState ;	// ENUM_SERVICE_STATE
+	Pointer lpServices ;	// ENUM_SERVICE_STATUSA*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Pointer lpServicesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-enumdependentservicesw
+External_Function EnumDependentServicesW "EnumDependentServicesW" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwServiceState ;	// ENUM_SERVICE_STATE
+	Pointer lpServices ;	// ENUM_SERVICE_STATUSW*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Pointer lpServicesReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-enumservicesstatusa
+External_Function EnumServicesStatusA "EnumServicesStatusA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwServiceState ;	// ENUM_SERVICE_STATE
+	Pointer lpServices ;	// ENUM_SERVICE_STATUSA*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Pointer lpServicesReturned ;	// UInteger*
+	Pointer lpResumeHandle ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-enumservicesstatusexa
+External_Function EnumServicesStatusExA "EnumServicesStatusExA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	Integer InfoLevel ;	// SC_ENUM_TYPE
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwServiceState ;	// ENUM_SERVICE_STATE
+	Pointer lpServices ;	// UChar*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Pointer lpServicesReturned ;	// UInteger*
+	Pointer lpResumeHandle ;	// UInteger*
+	String pszGroupName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-enumservicesstatusexw
+External_Function EnumServicesStatusExW "EnumServicesStatusExW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	Integer InfoLevel ;	// SC_ENUM_TYPE
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwServiceState ;	// ENUM_SERVICE_STATE
+	Pointer lpServices ;	// UChar*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Pointer lpServicesReturned ;	// UInteger*
+	Pointer lpResumeHandle ;	// UInteger*
+	WString pszGroupName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-enumservicesstatusw
+External_Function EnumServicesStatusW "EnumServicesStatusW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	UInteger dwServiceType ;	// ENUM_SERVICE_TYPE
+	UInteger dwServiceState ;	// ENUM_SERVICE_STATE
+	Pointer lpServices ;	// ENUM_SERVICE_STATUSW*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Pointer lpServicesReturned ;	// UInteger*
+	Pointer lpResumeHandle ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getservicedisplaynamea
+External_Function GetServiceDisplayNameA "GetServiceDisplayNameA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	String lpServiceName ;	// PSTR
+	Pointer lpDisplayName ;	// PSTR
+	Pointer lpcchBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getservicedisplaynamew
+External_Function GetServiceDisplayNameW "GetServiceDisplayNameW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	WString lpServiceName ;	// PWSTR
+	Pointer lpDisplayName ;	// PWSTR
+	Pointer lpcchBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getservicekeynamea
+External_Function GetServiceKeyNameA "GetServiceKeyNameA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	String lpDisplayName ;	// PSTR
+	Pointer lpServiceName ;	// PSTR
+	Pointer lpcchBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getservicekeynamew
+External_Function GetServiceKeyNameW "GetServiceKeyNameW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	WString lpDisplayName ;	// PWSTR
+	Pointer lpServiceName ;	// PWSTR
+	Pointer lpcchBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-lockservicedatabase
+External_Function LockServiceDatabase "LockServiceDatabase" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-notifybootconfigstatus
+External_Function NotifyBootConfigStatus "NotifyBootConfigStatus" ADVAPI32.dll ;
+	Integer BootAcceptable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-notifyservicestatuschangea
+External_Function NotifyServiceStatusChangeA "NotifyServiceStatusChangeA" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwNotifyMask ;	// SERVICE_NOTIFY
+	Pointer pNotifyBuffer ;	// SERVICE_NOTIFY_2A*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-notifyservicestatuschangew
+External_Function NotifyServiceStatusChangeW "NotifyServiceStatusChangeW" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwNotifyMask ;	// SERVICE_NOTIFY
+	Pointer pNotifyBuffer ;	// SERVICE_NOTIFY_2W*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-openscmanagera
+External_Function OpenSCManagerA "OpenSCManagerA" ADVAPI32.dll ;
+	String lpMachineName ;	// PSTR
+	String lpDatabaseName ;	// PSTR
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// SC_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-openscmanagerw
+External_Function OpenSCManagerW "OpenSCManagerW" ADVAPI32.dll ;
+	WString lpMachineName ;	// PWSTR
+	WString lpDatabaseName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// SC_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-openservicea
+External_Function OpenServiceA "OpenServiceA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	String lpServiceName ;	// PSTR
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// SC_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-openservicew
+External_Function OpenServiceW "OpenServiceW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	WString lpServiceName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	Returns Pointer	// SC_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryserviceconfig2a
+External_Function QueryServiceConfig2A "QueryServiceConfig2A" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwInfoLevel ;	// SERVICE_CONFIG
+	Pointer lpBuffer ;	// UChar*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryserviceconfig2w
+External_Function QueryServiceConfig2W "QueryServiceConfig2W" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwInfoLevel ;	// SERVICE_CONFIG
+	Pointer lpBuffer ;	// UChar*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryserviceconfiga
+External_Function QueryServiceConfigA "QueryServiceConfigA" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	Pointer lpServiceConfig ;	// QUERY_SERVICE_CONFIGA*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryserviceconfigw
+External_Function QueryServiceConfigW "QueryServiceConfigW" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	Pointer lpServiceConfig ;	// QUERY_SERVICE_CONFIGW*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryservicedynamicinformation
+External_Function QueryServiceDynamicInformation "QueryServiceDynamicInformation" ADVAPI32.dll ;
+	Pointer hServiceStatus ;	// SERVICE_STATUS_HANDLE
+	UInteger dwInfoLevel ;
+	Pointer ppDynamicInfo ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryservicelockstatusa
+External_Function QueryServiceLockStatusA "QueryServiceLockStatusA" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	Pointer lpLockStatus ;	// QUERY_SERVICE_LOCK_STATUSA*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryservicelockstatusw
+External_Function QueryServiceLockStatusW "QueryServiceLockStatusW" ADVAPI32.dll ;
+	Pointer hSCManager ;	// SC_HANDLE
+	Pointer lpLockStatus ;	// QUERY_SERVICE_LOCK_STATUSW*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryserviceobjectsecurity
+External_Function QueryServiceObjectSecurity "QueryServiceObjectSecurity" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwSecurityInformation ;
+	Pointer lpSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryservicestatus
+External_Function QueryServiceStatus "QueryServiceStatus" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	Pointer lpServiceStatus ;	// SERVICE_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-queryservicestatusex
+External_Function QueryServiceStatusEx "QueryServiceStatusEx" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	Integer InfoLevel ;	// SC_STATUS_TYPE
+	Pointer lpBuffer ;	// UChar*
+	UInteger cbBufSize ;
+	Pointer pcbBytesNeeded ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-registerservicectrlhandlera
+External_Function RegisterServiceCtrlHandlerA "RegisterServiceCtrlHandlerA" ADVAPI32.dll ;
+	String lpServiceName ;	// PSTR
+	Pointer lpHandlerProc ;	// LPHANDLER_FUNCTION
+	Returns Pointer	// SERVICE_STATUS_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-registerservicectrlhandlerexa
+External_Function RegisterServiceCtrlHandlerExA "RegisterServiceCtrlHandlerExA" ADVAPI32.dll ;
+	String lpServiceName ;	// PSTR
+	Pointer lpHandlerProc ;	// LPHANDLER_FUNCTION_EX
+	Pointer lpContext ;	// Pointer*
+	Returns Pointer	// SERVICE_STATUS_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-registerservicectrlhandlerexw
+External_Function RegisterServiceCtrlHandlerExW "RegisterServiceCtrlHandlerExW" ADVAPI32.dll ;
+	WString lpServiceName ;	// PWSTR
+	Pointer lpHandlerProc ;	// LPHANDLER_FUNCTION_EX
+	Pointer lpContext ;	// Pointer*
+	Returns Pointer	// SERVICE_STATUS_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-registerservicectrlhandlerw
+External_Function RegisterServiceCtrlHandlerW "RegisterServiceCtrlHandlerW" ADVAPI32.dll ;
+	WString lpServiceName ;	// PWSTR
+	Pointer lpHandlerProc ;	// LPHANDLER_FUNCTION
+	Returns Pointer	// SERVICE_STATUS_HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-setservicebits
+External_Function SetServiceBits "SetServiceBits" ADVAPI32.dll ;
+	Pointer hServiceStatus ;	// SERVICE_STATUS_HANDLE
+	UInteger dwServiceBits ;
+	Integer bSetBitsOn ;	// BOOL
+	Integer bUpdateImmediately ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-setserviceobjectsecurity
+External_Function SetServiceObjectSecurity "SetServiceObjectSecurity" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwSecurityInformation ;	// OBJECT_SECURITY_INFORMATION
+	Pointer lpSecurityDescriptor ;	// PSECURITY_DESCRIPTOR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-setservicestatus
+External_Function SetServiceStatus "SetServiceStatus" ADVAPI32.dll ;
+	Pointer hServiceStatus ;	// SERVICE_STATUS_HANDLE
+	Pointer lpServiceStatus ;	// SERVICE_STATUS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-startservicea
+External_Function StartServiceA "StartServiceA" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwNumServiceArgs ;
+	Pointer lpServiceArgVectors ;	// PSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-startservicectrldispatchera
+External_Function StartServiceCtrlDispatcherA "StartServiceCtrlDispatcherA" ADVAPI32.dll ;
+	Pointer lpServiceStartTable ;	// SERVICE_TABLE_ENTRYA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-startservicectrldispatcherw
+External_Function StartServiceCtrlDispatcherW "StartServiceCtrlDispatcherW" ADVAPI32.dll ;
+	Pointer lpServiceStartTable ;	// SERVICE_TABLE_ENTRYW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-startservicew
+External_Function StartServiceW "StartServiceW" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwNumServiceArgs ;
+	Pointer lpServiceArgVectors ;	// PWSTR*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-unlockservicedatabase
+External_Function UnlockServiceDatabase "UnlockServiceDatabase" ADVAPI32.dll ;
+	Pointer ScLock ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function WaitServiceState "WaitServiceState" ADVAPI32.dll ;
+	Pointer hService ;	// SC_HANDLE
+	UInteger dwNotify ;
+	UInteger dwTimeout ;
+	Pointer hCancelEvent ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/Services/subscribeservicechangenotifications
+External_Function SubscribeServiceChangeNotifications "SubscribeServiceChangeNotifications" SecHost.dll ;
+	Pointer hService ;	// SC_HANDLE
+	Integer eEventType ;	// SC_EVENT_TYPE
+	Pointer pCallback ;	// PSC_NOTIFICATION_CALLBACK
+	Pointer pCallbackContext ;	// Pointer*
+	Pointer pSubscription ;	// PSC_NOTIFICATION_REGISTRATION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/Services/unsubscribeservicechangenotifications
+External_Function UnsubscribeServiceChangeNotifications "UnsubscribeServiceChangeNotifications" SecHost.dll ;
+	LongPtr pSubscription ;	// PSC_NOTIFICATION_REGISTRATION
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getserviceregistrystatekey
+External_Function GetServiceRegistryStateKey "GetServiceRegistryStateKey" api-ms-win-service-core-l1-1-3.dll ;
+	Pointer ServiceStatusHandle ;	// SERVICE_STATUS_HANDLE
+	Integer StateType ;	// SERVICE_REGISTRY_STATE_TYPE
+	UInteger AccessMask ;
+	Pointer ServiceStateKey ;	// HKEY*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getservicedirectory
+External_Function GetServiceDirectory "GetServiceDirectory" api-ms-win-service-core-l1-1-4.dll ;
+	Pointer hServiceStatus ;	// SERVICE_STATUS_HANDLE
+	Integer eDirectoryType ;	// SERVICE_DIRECTORY_TYPE
+	Pointer lpPathBuffer ;	// PWSTR
+	UInteger cchPathBufferLength ;
+	Pointer lpcchRequiredBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getsharedservicedirectory
+External_Function GetSharedServiceDirectory "GetSharedServiceDirectory" api-ms-win-service-core-l1-1-5.dll ;
+	Pointer ServiceHandle ;	// SC_HANDLE
+	Integer DirectoryType ;	// SERVICE_SHARED_DIRECTORY_TYPE
+	Pointer PathBuffer ;	// PWSTR
+	UInteger PathBufferLength ;
+	Pointer RequiredBufferLength ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winsvc/nf-winsvc-getsharedserviceregistrystatekey
+External_Function GetSharedServiceRegistryStateKey "GetSharedServiceRegistryStateKey" api-ms-win-service-core-l1-1-5.dll ;
+	Pointer ServiceHandle ;	// SC_HANDLE
+	Integer StateType ;	// SERVICE_SHARED_REGISTRY_STATE_TYPE
+	UInteger AccessMask ;
+	Pointer ServiceStateKey ;	// HKEY*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

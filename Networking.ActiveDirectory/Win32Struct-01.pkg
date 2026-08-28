@@ -1,0 +1,346 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/adsprop/ns-adsprop-adsproperror
+Struct ADSPROPERROR
+	Pointer hwndPage										// HWND
+	Pointer pszPageTitle									// PWSTR
+	Pointer pszObjPath										// PWSTR
+	Pointer pszObjClass										// PWSTR
+	Integer hr												// HRESULT
+	Integer iMissingAlignment1
+	Pointer pszError										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/adsprop/ns-adsprop-adspropinitparams
+Struct ADSPROPINITPARAMS
+	UInteger dwSize
+	UInteger dwFlags
+	Integer hr												// HRESULT
+	Integer iMissingAlignment1
+	Pointer pDsObj											// IDirectoryObject
+	Pointer pwzCN											// PWSTR
+	Pointer pWritableAttrs									// ADS_ATTR_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-adsvalue
+Struct ADSVALUE
+	Integer dwType											// ADSTYPE
+	Integer iMissingAlignment1
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_attr_info
+Struct ADS_ATTR_INFO
+	Pointer pszAttrName										// PWSTR
+	UInteger dwControlCode
+	Integer dwADsType										// ADSTYPE
+	Pointer pADsValues										// ADSVALUE*
+	UInteger dwNumValues
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_backlink
+Struct ADS_BACKLINK
+	UInteger RemoteID
+	Integer iMissingAlignment1
+	Pointer ObjectName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_caseignore_list
+Struct ADS_CASEIGNORE_LIST
+	Pointer Next											// ADS_CASEIGNORE_LIST*
+	Pointer String											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_dn_with_binary
+Struct ADS_DN_WITH_BINARY
+	UInteger dwLength
+	Integer iMissingAlignment1
+	Pointer lpBinaryValue									// UChar*
+	Pointer pszDNString										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_dn_with_string
+Struct ADS_DN_WITH_STRING
+	Pointer pszStringValue									// PWSTR
+	Pointer pszDNString										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_email
+Struct ADS_EMAIL
+	Pointer Address											// PWSTR
+	UInteger Type
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_faxnumber
+Struct ADS_FAXNUMBER
+	Pointer TelephoneNumber									// PWSTR
+	UInteger NumberOfBits
+	Integer iMissingAlignment1
+	Pointer Parameters										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_hold
+Struct ADS_HOLD
+	Pointer ObjectName										// PWSTR
+	UInteger Amount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_netaddress
+Struct ADS_NETADDRESS
+	UInteger AddressType
+	UInteger AddressLength
+	Pointer Address											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_nt_security_descriptor
+Struct ADS_NT_SECURITY_DESCRIPTOR
+	UInteger dwLength
+	Integer iMissingAlignment1
+	Pointer lpValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_octet_list
+Struct ADS_OCTET_LIST
+	Pointer Next											// ADS_OCTET_LIST*
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer Data											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_octet_string
+Struct ADS_OCTET_STRING
+	UInteger dwLength
+	Integer iMissingAlignment1
+	Pointer lpValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_path
+Struct ADS_PATH
+	UInteger Type
+	Integer iMissingAlignment1
+	Pointer VolumeName										// PWSTR
+	Pointer Path											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_postaladdress
+Struct ADS_POSTALADDRESS
+	Pointer[6] PostalAddress								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_prov_specific
+Struct ADS_PROV_SPECIFIC
+	UInteger dwLength
+	Integer iMissingAlignment1
+	Pointer lpValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_replicapointer
+Struct ADS_REPLICAPOINTER
+	Pointer ServerName										// PWSTR
+	UInteger ReplicaType
+	UInteger ReplicaNumber
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer ReplicaAddressHints								// ADS_NETADDRESS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_timestamp
+Struct ADS_TIMESTAMP
+	UInteger WholeSeconds
+	UInteger EventID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iads/ns-iads-ads_typedname
+Struct ADS_TYPEDNAME
+	Pointer ObjectName										// PWSTR
+	UInteger Level
+	UInteger Interval
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dsgetdc/ns-dsgetdc-domain_controller_infoa
+Struct DOMAIN_CONTROLLER_INFOA
+	Pointer DomainControllerName							// PSTR
+	Pointer DomainControllerAddress							// PSTR
+	UInteger DomainControllerAddressType
+	Guid DomainGuid
+	Integer iMissingAlignment1
+	Pointer DomainName										// PSTR
+	Pointer DnsForestName									// PSTR
+	UInteger Flags
+	Integer iMissingAlignment2
+	Pointer DcSiteName										// PSTR
+	Pointer ClientSiteName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dsgetdc/ns-dsgetdc-domain_controller_infow
+Struct DOMAIN_CONTROLLER_INFOW
+	Pointer DomainControllerName							// PWSTR
+	Pointer DomainControllerAddress							// PWSTR
+	UInteger DomainControllerAddressType
+	Guid DomainGuid
+	Integer iMissingAlignment1
+	Pointer DomainName										// PWSTR
+	Pointer DnsForestName									// PWSTR
+	UInteger Flags
+	Integer iMissingAlignment2
+	Pointer DcSiteName										// PWSTR
+	Pointer ClientSiteName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dsclient/ns-dsclient-dsbrowseinfoa
+Struct DSBROWSEINFOA
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	Pointer pszCaption										// PSTR
+	Pointer pszTitle										// PSTR
+	Pointer pszRoot											// PWSTR
+	Pointer pszPath											// PWSTR
+	UInteger cchPath
+	UInteger dwFlags
+	Pointer pfnCallback										// BFFCALLBACK
+	LongPtr lParam											// LPARAM
+	UInteger dwReturnFormat
+	Integer iMissingAlignment2
+	Pointer pUserName										// PWSTR
+	Pointer pPassword										// PWSTR
+	Pointer pszObjectClass									// PWSTR
+	UInteger cchObjectClass
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dsclient/ns-dsclient-dsbrowseinfow
+Struct DSBROWSEINFOW
+	UInteger cbStruct
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	Pointer pszCaption										// PWSTR
+	Pointer pszTitle										// PWSTR
+	Pointer pszRoot											// PWSTR
+	Pointer pszPath											// PWSTR
+	UInteger cchPath
+	UInteger dwFlags
+	Pointer pfnCallback										// BFFCALLBACK
+	LongPtr lParam											// LPARAM
+	UInteger dwReturnFormat
+	Integer iMissingAlignment2
+	Pointer pUserName										// PWSTR
+	Pointer pPassword										// PWSTR
+	Pointer pszObjectClass									// PWSTR
+	UInteger cchObjectClass
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dsgetdc/ns-dsgetdc-ds_domain_trustsa
+Struct DS_DOMAIN_TRUSTSA
+	Pointer NetbiosDomainName								// PSTR
+	Pointer DnsDomainName									// PSTR
+	UInteger Flags
+	UInteger ParentIndex
+	UInteger TrustType
+	UInteger TrustAttributes
+	Pointer DomainSid										// PSID
+	Guid DomainGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dsgetdc/ns-dsgetdc-ds_domain_trustsw
+Struct DS_DOMAIN_TRUSTSW
+	Pointer NetbiosDomainName								// PWSTR
+	Pointer DnsDomainName									// PWSTR
+	UInteger Flags
+	UInteger ParentIndex
+	UInteger TrustType
+	UInteger TrustAttributes
+	Pointer DomainSid										// PSID
+	Guid DomainGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_name_resulta
+Struct DS_NAME_RESULTA
+	UInteger cItems
+	Integer iMissingAlignment1
+	Pointer rItems											// DS_NAME_RESULT_ITEMA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_name_resultw
+Struct DS_NAME_RESULTW
+	UInteger cItems
+	Integer iMissingAlignment1
+	Pointer rItems											// DS_NAME_RESULT_ITEMW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_name_result_itema
+Struct DS_NAME_RESULT_ITEMA
+	UInteger status
+	Integer iMissingAlignment1
+	Pointer pDomain											// PSTR
+	Pointer pName											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_name_result_itemw
+Struct DS_NAME_RESULT_ITEMW
+	UInteger status
+	Integer iMissingAlignment1
+	Pointer pDomain											// PWSTR
+	Pointer pName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_errinfoa
+Struct DS_REPSYNCALL_ERRINFOA
+	Pointer pszSvrId										// PSTR
+	Integer error											// DS_REPSYNCALL_ERROR
+	UInteger dwWin32Err
+	Pointer pszSrcId										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_errinfow
+Struct DS_REPSYNCALL_ERRINFOW
+	Pointer pszSvrId										// PWSTR
+	Integer error											// DS_REPSYNCALL_ERROR
+	UInteger dwWin32Err
+	Pointer pszSrcId										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_schema_guid_mapa
+Struct DS_SCHEMA_GUID_MAPA
+	Guid guid
+	UInteger guidType
+	Integer iMissingAlignment1
+	Pointer pName											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_schema_guid_mapw
+Struct DS_SCHEMA_GUID_MAPW
+	Guid guid
+	UInteger guidType
+	Integer iMissingAlignment1
+	Pointer pName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_site_cost_info
+Struct DS_SITE_COST_INFO
+	UInteger errorCode
+	UInteger cost
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schedule/ns-schedule-schedule
+Struct SCHEDULE
+	UInteger Size
+	UInteger Bandwidth
+	UInteger NumberOfSchedules
+	SCHEDULE_HEADER[1] Schedules
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schedule/ns-schedule-schedule_header
+Struct SCHEDULE_HEADER
+	UInteger Type
+	UInteger Offset
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

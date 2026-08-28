@@ -1,0 +1,100 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-assignprocesstojobobject
+External_Function AssignProcessToJobObject "AssignProcessToJobObject" KERNEL32.dll ;
+	Pointer hJob ;	// HANDLE
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-createjobobjecta
+External_Function CreateJobObjectA "CreateJobObjectA" KERNEL32.dll ;
+	Pointer lpJobAttributes ;	// SECURITY_ATTRIBUTES*
+	String lpName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-createjobobjectw
+External_Function CreateJobObjectW "CreateJobObjectW" KERNEL32.dll ;
+	Pointer lpJobAttributes ;	// SECURITY_ATTRIBUTES*
+	WString lpName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+External_Function CreateJobSet "CreateJobSet" KERNEL32.dll ;
+	UInteger NumJob ;
+	Pointer UserJobSet ;	// JOB_SET_ARRAY*
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-freememoryjobobject
+External_Function FreeMemoryJobObject "FreeMemoryJobObject" KERNEL32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/jobapi/nf-jobapi-isprocessinjob
+External_Function IsProcessInJob "IsProcessInJob" KERNEL32.dll ;
+	Pointer ProcessHandle ;	// HANDLE
+	Pointer JobHandle ;	// HANDLE
+	Pointer Result ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openjobobjecta
+External_Function OpenJobObjectA "OpenJobObjectA" KERNEL32.dll ;
+	UInteger dwDesiredAccess ;
+	Integer bInheritHandle ;	// BOOL
+	String lpName ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-openjobobjectw
+External_Function OpenJobObjectW "OpenJobObjectW" KERNEL32.dll ;
+	UInteger dwDesiredAccess ;
+	Integer bInheritHandle ;	// BOOL
+	WString lpName ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-queryinformationjobobject
+External_Function QueryInformationJobObject "QueryInformationJobObject" KERNEL32.dll ;
+	Pointer hJob ;	// HANDLE
+	Integer JobObjectInformationClass ;	// JOBOBJECTINFOCLASS
+	Pointer lpJobObjectInformation ;	// Pointer*
+	UInteger cbJobObjectInformationLength ;
+	Pointer lpReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-queryioratecontrolinformationjobobject
+External_Function QueryIoRateControlInformationJobObject "QueryIoRateControlInformationJobObject" KERNEL32.dll ;
+	Pointer hJob ;	// HANDLE
+	WString VolumeName ;	// PWSTR
+	Pointer InfoBlocks ;	// JOBOBJECT_IO_RATE_CONTROL_INFORMATION**
+	Pointer InfoBlockCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-setinformationjobobject
+External_Function SetInformationJobObject "SetInformationJobObject" KERNEL32.dll ;
+	Pointer hJob ;	// HANDLE
+	Integer JobObjectInformationClass ;	// JOBOBJECTINFOCLASS
+	Pointer lpJobObjectInformation ;	// Pointer*
+	UInteger cbJobObjectInformationLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-setioratecontrolinformationjobobject
+External_Function SetIoRateControlInformationJobObject "SetIoRateControlInformationJobObject" KERNEL32.dll ;
+	Pointer hJob ;	// HANDLE
+	Pointer IoRateControlInfo ;	// JOBOBJECT_IO_RATE_CONTROL_INFORMATION*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/nf-jobapi2-terminatejobobject
+External_Function TerminateJobObject "TerminateJobObject" KERNEL32.dll ;
+	Pointer hJob ;	// HANDLE
+	UInteger uExitCode ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-userhandlegrantaccess
+External_Function UserHandleGrantAccess "UserHandleGrantAccess" USER32.dll ;
+	Pointer hUserHandle ;	// HANDLE
+	Pointer hJob ;	// HANDLE
+	Integer bGrant ;	// BOOL
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,93 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-input_transform
+Struct INPUT_TRANSFORM
+	UChar[64] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_device_cursor_info
+Struct POINTER_DEVICE_CURSOR_INFO
+	UInteger cursorId
+	Integer cursor											// POINTER_DEVICE_CURSOR_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_device_info
+Struct POINTER_DEVICE_INFO
+	UInteger displayOrientation
+	Integer iMissingAlignment1
+	Pointer device											// HANDLE
+	Integer pointerDeviceType								// POINTER_DEVICE_TYPE
+	Integer iMissingAlignment2
+	Pointer monitor											// HMONITOR
+	UInteger startingCursorId
+	UShort maxActiveContacts
+	UShort[520] productString
+	Short iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_device_property
+Struct POINTER_DEVICE_PROPERTY
+	Integer logicalMin
+	Integer logicalMax
+	Integer physicalMin
+	Integer physicalMax
+	UInteger unit
+	UInteger unitExponent
+	UShort usagePageId
+	UShort usageId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_info
+Struct POINTER_INFO
+	Integer pointerType										// POINTER_INPUT_TYPE
+	UInteger pointerId
+	UInteger frameId
+	UInteger pointerFlags									// POINTER_FLAGS
+	Pointer sourceDevice									// HANDLE
+	Pointer hwndTarget										// HWND
+	POINT ptPixelLocation
+	POINT ptHimetricLocation
+	POINT ptPixelLocationRaw
+	POINT ptHimetricLocationRaw
+	UInteger dwTime
+	UInteger historyCount
+	Integer InputData
+	UInteger dwKeyStates
+	UBigint PerformanceCount
+	Integer ButtonChangeType								// POINTER_BUTTON_CHANGE_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_pen_info
+Struct POINTER_PEN_INFO
+	POINTER_INFO pointerInfo
+	UInteger penFlags
+	UInteger penMask
+	UInteger pressure
+	UInteger rotation
+	Integer tiltX
+	Integer tiltY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_touch_info
+Struct POINTER_TOUCH_INFO
+	POINTER_INFO pointerInfo
+	UInteger touchFlags
+	UInteger touchMask
+	RECT rcContact
+	RECT rcContactRaw
+	UInteger orientation
+	UInteger pressure
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-pointer_type_info
+Struct POINTER_TYPE_INFO
+	Integer type											// POINTER_INPUT_TYPE
+	Integer iMissingAlignment1
+	UChar[144] UnionName1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

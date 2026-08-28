@@ -1,0 +1,1096 @@
+Use UI
+
+External_Function alljoyn_busobject_cancelsessionlessmessage_serial "alljoyn_busobject_cancelsessionlessmessage_serial" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	UInteger serialNumber ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_busobject_create "alljoyn_busobject_create" MSAJApi.dll ;
+	String path ;	// PSTR
+	Integer isPlaceholder ;
+	Pointer callbacks_in ;	// alljoyn_busobject_callbacks*
+	Pointer context_in ;	// Pointer*
+	Returns LongPtr	// alljoyn_busobject
+
+External_Function alljoyn_busobject_destroy "alljoyn_busobject_destroy" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	Returns Pointer
+
+External_Function alljoyn_busobject_emitpropertieschanged "alljoyn_busobject_emitpropertieschanged" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	String ifcName ;	// PSTR
+	Pointer propNames ;	// Char**
+	ULongPtr numProps ;
+	UInteger id ;
+	Returns Pointer
+
+External_Function alljoyn_busobject_emitpropertychanged "alljoyn_busobject_emitpropertychanged" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	String ifcName ;	// PSTR
+	String propName ;	// PSTR
+	LongPtr val ;	// alljoyn_msgarg
+	UInteger id ;
+	Returns Pointer
+
+External_Function alljoyn_busobject_getannouncedinterfacenames "alljoyn_busobject_getannouncedinterfacenames" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	Pointer interfaces ;	// Char**
+	ULongPtr numInterfaces ;
+	Returns ULongPtr
+
+External_Function alljoyn_busobject_getbusattachment "alljoyn_busobject_getbusattachment" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	Returns LongPtr	// alljoyn_busattachment
+
+External_Function alljoyn_busobject_getname "alljoyn_busobject_getname" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	String buffer ;	// PSTR
+	ULongPtr bufferSz ;
+	Returns ULongPtr
+
+External_Function alljoyn_busobject_getpath "alljoyn_busobject_getpath" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_busobject_issecure "alljoyn_busobject_issecure" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	Returns Integer
+
+External_Function alljoyn_busobject_methodreply_args "alljoyn_busobject_methodreply_args" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	LongPtr msg ;	// alljoyn_message
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_busobject_methodreply_err "alljoyn_busobject_methodreply_err" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	LongPtr msg ;	// alljoyn_message
+	String error ;	// PSTR
+	String errorMessage ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_busobject_methodreply_status "alljoyn_busobject_methodreply_status" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	LongPtr msg ;	// alljoyn_message
+	Integer status ;	// QStatus
+	Returns Integer	// QStatus
+
+External_Function alljoyn_busobject_setannounceflag "alljoyn_busobject_setannounceflag" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Integer isAnnounced ;	// alljoyn_about_announceflag
+	Returns Integer	// QStatus
+
+External_Function alljoyn_busobject_signal "alljoyn_busobject_signal" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busobject
+	String destination ;	// PSTR
+	UInteger sessionId ;
+	alljoyn_interfacedescription_member signal ;
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	UShort timeToLive ;
+	UChar flags ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer	// QStatus
+
+External_Function alljoyn_credentials_clear "alljoyn_credentials_clear" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer
+
+External_Function alljoyn_credentials_create "alljoyn_credentials_create" MSAJApi.dll ;
+	Returns LongPtr	// alljoyn_credentials
+
+External_Function alljoyn_credentials_destroy "alljoyn_credentials_destroy" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer
+
+External_Function alljoyn_credentials_getcertchain "alljoyn_credentials_getcertchain" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_credentials_getexpiration "alljoyn_credentials_getexpiration" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns UInteger
+
+External_Function alljoyn_credentials_getlogonentry "alljoyn_credentials_getlogonentry" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_credentials_getpassword "alljoyn_credentials_getpassword" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_credentials_getprivateKey "alljoyn_credentials_getprivateKey" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_credentials_getusername "alljoyn_credentials_getusername" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_credentials_isset "alljoyn_credentials_isset" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	UShort creds ;
+	Returns Integer
+
+External_Function alljoyn_credentials_setcertchain "alljoyn_credentials_setcertchain" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	String certChain ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_credentials_setexpiration "alljoyn_credentials_setexpiration" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	UInteger expiration ;
+	Returns Pointer
+
+External_Function alljoyn_credentials_setlogonentry "alljoyn_credentials_setlogonentry" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	String logonEntry ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_credentials_setpassword "alljoyn_credentials_setpassword" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	String pwd ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_credentials_setprivatekey "alljoyn_credentials_setprivatekey" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	String pk ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_credentials_setusername "alljoyn_credentials_setusername" MSAJApi.dll ;
+	LongPtr cred ;	// alljoyn_credentials
+	String userName ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_getbuildinfo "alljoyn_getbuildinfo" MSAJApi.dll ;
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_getnumericversion "alljoyn_getnumericversion" MSAJApi.dll ;
+	Returns UInteger
+
+External_Function alljoyn_getversion "alljoyn_getversion" MSAJApi.dll ;
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_init "alljoyn_init" MSAJApi.dll ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_activate "alljoyn_interfacedescription_activate" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_addannotation "alljoyn_interfacedescription_addannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addargannotation "alljoyn_interfacedescription_addargannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String argName ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addmember "alljoyn_interfacedescription_addmember" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Integer type ;	// alljoyn_messagetype
+	String name ;	// PSTR
+	String inputSig ;	// PSTR
+	String outSig ;	// PSTR
+	String argNames ;	// PSTR
+	UChar annotation ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addmemberannotation "alljoyn_interfacedescription_addmemberannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addmethod "alljoyn_interfacedescription_addmethod" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String inputSig ;	// PSTR
+	String outSig ;	// PSTR
+	String argNames ;	// PSTR
+	UChar annotation ;
+	String accessPerms ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addproperty "alljoyn_interfacedescription_addproperty" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String signature ;	// PSTR
+	UChar access ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addpropertyannotation "alljoyn_interfacedescription_addpropertyannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String property ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_addsignal "alljoyn_interfacedescription_addsignal" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String sig ;	// PSTR
+	String argNames ;	// PSTR
+	UChar annotation ;
+	String accessPerms ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_eql "alljoyn_interfacedescription_eql" MSAJApi.dll ;
+	LongPtr one ;	// alljoyn_interfacedescription
+	LongPtr other ;	// alljoyn_interfacedescription
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getannotation "alljoyn_interfacedescription_getannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getannotationatindex "alljoyn_interfacedescription_getannotationatindex" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	ULongPtr index ;
+	String name ;	// PSTR
+	Pointer name_size ;	// ULongPtr*
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_getannotationscount "alljoyn_interfacedescription_getannotationscount" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getargdescriptionforlanguage "alljoyn_interfacedescription_getargdescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String arg ;	// PSTR
+	String description ;	// PSTR
+	ULongPtr maxLanguageLength ;
+	String languageTag ;	// PSTR
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getdescriptionforlanguage "alljoyn_interfacedescription_getdescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String description ;	// PSTR
+	ULongPtr maxLanguageLength ;
+	String languageTag ;	// PSTR
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getdescriptionlanguages "alljoyn_interfacedescription_getdescriptionlanguages" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Pointer languages ;	// Char**
+	ULongPtr size ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getdescriptionlanguages2 "alljoyn_interfacedescription_getdescriptionlanguages2" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String languages ;	// PSTR
+	ULongPtr languagesSize ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getdescriptiontranslationcallback "alljoyn_interfacedescription_getdescriptiontranslationcallback" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Pointer	// alljoyn_interfacedescription_translation_callback_ptr
+
+External_Function alljoyn_interfacedescription_getmember "alljoyn_interfacedescription_getmember" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	Pointer member ;	// alljoyn_interfacedescription_member*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getmemberannotation "alljoyn_interfacedescription_getmemberannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getmemberargannotation "alljoyn_interfacedescription_getmemberargannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String argName ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getmemberdescriptionforlanguage "alljoyn_interfacedescription_getmemberdescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String description ;	// PSTR
+	ULongPtr maxLanguageLength ;
+	String languageTag ;	// PSTR
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getmembers "alljoyn_interfacedescription_getmembers" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Pointer members ;	// alljoyn_interfacedescription_member*
+	ULongPtr numMembers ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getmethod "alljoyn_interfacedescription_getmethod" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	Pointer member ;	// alljoyn_interfacedescription_member*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getname "alljoyn_interfacedescription_getname" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_interfacedescription_getproperties "alljoyn_interfacedescription_getproperties" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Pointer props ;	// alljoyn_interfacedescription_property*
+	ULongPtr numProps ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getproperty "alljoyn_interfacedescription_getproperty" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	Pointer property ;	// alljoyn_interfacedescription_property*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getpropertyannotation "alljoyn_interfacedescription_getpropertyannotation" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String property ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer str_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_getpropertydescriptionforlanguage "alljoyn_interfacedescription_getpropertydescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String property ;	// PSTR
+	String description ;	// PSTR
+	ULongPtr maxLanguageLength ;
+	String languageTag ;	// PSTR
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_getsecuritypolicy "alljoyn_interfacedescription_getsecuritypolicy" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Integer	// alljoyn_interfacedescription_securitypolicy
+
+External_Function alljoyn_interfacedescription_getsignal "alljoyn_interfacedescription_getsignal" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	Pointer member ;	// alljoyn_interfacedescription_member*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_hasdescription "alljoyn_interfacedescription_hasdescription" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_hasmember "alljoyn_interfacedescription_hasmember" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String inSig ;	// PSTR
+	String outSig ;	// PSTR
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_hasproperties "alljoyn_interfacedescription_hasproperties" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_hasproperty "alljoyn_interfacedescription_hasproperty" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_introspect "alljoyn_interfacedescription_introspect" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String str ;	// PSTR
+	ULongPtr buf ;
+	ULongPtr indent ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_issecure "alljoyn_interfacedescription_issecure" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_member_eql "alljoyn_interfacedescription_member_eql" MSAJApi.dll ;
+	alljoyn_interfacedescription_member one ;
+	alljoyn_interfacedescription_member other ;
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_member_getannotation "alljoyn_interfacedescription_member_getannotation" MSAJApi.dll ;
+	alljoyn_interfacedescription_member member ;
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_member_getannotationatindex "alljoyn_interfacedescription_member_getannotationatindex" MSAJApi.dll ;
+	alljoyn_interfacedescription_member member ;
+	ULongPtr index ;
+	String name ;	// PSTR
+	Pointer name_size ;	// ULongPtr*
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_member_getannotationscount "alljoyn_interfacedescription_member_getannotationscount" MSAJApi.dll ;
+	alljoyn_interfacedescription_member member ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_member_getargannotation "alljoyn_interfacedescription_member_getargannotation" MSAJApi.dll ;
+	alljoyn_interfacedescription_member member ;
+	String argName ;	// PSTR
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_member_getargannotationatindex "alljoyn_interfacedescription_member_getargannotationatindex" MSAJApi.dll ;
+	alljoyn_interfacedescription_member member ;
+	String argName ;	// PSTR
+	ULongPtr index ;
+	String name ;	// PSTR
+	Pointer name_size ;	// ULongPtr*
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_member_getargannotationscount "alljoyn_interfacedescription_member_getargannotationscount" MSAJApi.dll ;
+	alljoyn_interfacedescription_member member ;
+	String argName ;	// PSTR
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_property_eql "alljoyn_interfacedescription_property_eql" MSAJApi.dll ;
+	alljoyn_interfacedescription_property one ;
+	alljoyn_interfacedescription_property other ;
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_property_getannotation "alljoyn_interfacedescription_property_getannotation" MSAJApi.dll ;
+	alljoyn_interfacedescription_property property ;
+	String name ;	// PSTR
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Integer
+
+External_Function alljoyn_interfacedescription_property_getannotationatindex "alljoyn_interfacedescription_property_getannotationatindex" MSAJApi.dll ;
+	alljoyn_interfacedescription_property property ;
+	ULongPtr index ;
+	String name ;	// PSTR
+	Pointer name_size ;	// ULongPtr*
+	String value ;	// PSTR
+	Pointer value_size ;	// ULongPtr*
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_property_getannotationscount "alljoyn_interfacedescription_property_getannotationscount" MSAJApi.dll ;
+	alljoyn_interfacedescription_property property ;
+	Returns ULongPtr
+
+External_Function alljoyn_interfacedescription_setargdescription "alljoyn_interfacedescription_setargdescription" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String argName ;	// PSTR
+	String description ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_setargdescriptionforlanguage "alljoyn_interfacedescription_setargdescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String arg ;	// PSTR
+	String description ;	// PSTR
+	String languageTag ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_setdescription "alljoyn_interfacedescription_setdescription" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String description ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_setdescriptionforlanguage "alljoyn_interfacedescription_setdescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String description ;	// PSTR
+	String languageTag ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_setdescriptionlanguage "alljoyn_interfacedescription_setdescriptionlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String language ;	// PSTR
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_setdescriptiontranslationcallback "alljoyn_interfacedescription_setdescriptiontranslationcallback" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Pointer translationCallback ;	// alljoyn_interfacedescription_translation_callback_ptr
+	Returns Pointer
+
+External_Function alljoyn_interfacedescription_setmemberdescription "alljoyn_interfacedescription_setmemberdescription" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String description ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_setmemberdescriptionforlanguage "alljoyn_interfacedescription_setmemberdescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String member ;	// PSTR
+	String description ;	// PSTR
+	String languageTag ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_setpropertydescription "alljoyn_interfacedescription_setpropertydescription" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String description ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_interfacedescription_setpropertydescriptionforlanguage "alljoyn_interfacedescription_setpropertydescriptionforlanguage" MSAJApi.dll ;
+	LongPtr iface ;	// alljoyn_interfacedescription
+	String name ;	// PSTR
+	String description ;	// PSTR
+	String languageTag ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_keystorelistener_create "alljoyn_keystorelistener_create" MSAJApi.dll ;
+	Pointer callbacks ;	// alljoyn_keystorelistener_callbacks*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_keystorelistener
+
+External_Function alljoyn_keystorelistener_destroy "alljoyn_keystorelistener_destroy" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_keystorelistener
+	Returns Pointer
+
+External_Function alljoyn_keystorelistener_getkeys "alljoyn_keystorelistener_getkeys" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_keystorelistener
+	LongPtr keyStore ;	// alljoyn_keystore
+	String sink ;	// PSTR
+	Pointer sink_sz ;	// ULongPtr*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_keystorelistener_putkeys "alljoyn_keystorelistener_putkeys" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_keystorelistener
+	LongPtr keyStore ;	// alljoyn_keystore
+	String source ;	// PSTR
+	String password ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_keystorelistener_with_synchronization_create "alljoyn_keystorelistener_with_synchronization_create" MSAJApi.dll ;
+	Pointer callbacks ;	// alljoyn_keystorelistener_with_synchronization_callbacks*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_keystorelistener
+
+External_Function alljoyn_message_create "alljoyn_message_create" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busattachment
+	Returns LongPtr	// alljoyn_message
+
+External_Function alljoyn_message_description "alljoyn_message_description" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	String str ;	// PSTR
+	ULongPtr buf ;
+	Returns ULongPtr
+
+External_Function alljoyn_message_destroy "alljoyn_message_destroy" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer
+
+External_Function alljoyn_message_eql "alljoyn_message_eql" MSAJApi.dll ;
+	LongPtr one ;	// alljoyn_message
+	LongPtr other ;	// alljoyn_message
+	Returns Integer
+
+External_Function alljoyn_message_getarg "alljoyn_message_getarg" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	ULongPtr argN ;
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_message_getargs "alljoyn_message_getargs" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Pointer numArgs ;	// ULongPtr*
+	Pointer args ;	// alljoyn_msgarg*
+	Returns Pointer
+
+External_Function alljoyn_message_getauthmechanism "alljoyn_message_getauthmechanism" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getcallserial "alljoyn_message_getcallserial" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns UInteger
+
+External_Function alljoyn_message_getcompressiontoken "alljoyn_message_getcompressiontoken" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns UInteger
+
+External_Function alljoyn_message_getdestination "alljoyn_message_getdestination" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_geterrorname "alljoyn_message_geterrorname" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	String errorMessage ;	// PSTR
+	Pointer errorMessage_size ;	// ULongPtr*
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getflags "alljoyn_message_getflags" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns UChar
+
+External_Function alljoyn_message_getinterface "alljoyn_message_getinterface" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getmembername "alljoyn_message_getmembername" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getobjectpath "alljoyn_message_getobjectpath" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getreceiveendpointname "alljoyn_message_getreceiveendpointname" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getreplyserial "alljoyn_message_getreplyserial" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns UInteger
+
+External_Function alljoyn_message_getsender "alljoyn_message_getsender" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_getsessionid "alljoyn_message_getsessionid" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns UInteger
+
+External_Function alljoyn_message_getsignature "alljoyn_message_getsignature" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_message_gettimestamp "alljoyn_message_gettimestamp" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns UInteger
+
+External_Function alljoyn_message_gettype "alljoyn_message_gettype" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer	// alljoyn_messagetype
+
+External_Function alljoyn_message_isbroadcastsignal "alljoyn_message_isbroadcastsignal" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer
+
+External_Function alljoyn_message_isencrypted "alljoyn_message_isencrypted" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer
+
+External_Function alljoyn_message_isexpired "alljoyn_message_isexpired" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Pointer tillExpireMS ;	// UInteger*
+	Returns Integer
+
+External_Function alljoyn_message_isglobalbroadcast "alljoyn_message_isglobalbroadcast" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer
+
+External_Function alljoyn_message_issessionless "alljoyn_message_issessionless" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer
+
+External_Function alljoyn_message_isunreliable "alljoyn_message_isunreliable" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	Returns Integer
+
+External_Function alljoyn_message_parseargs "alljoyn_message_parseargs" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_message_setendianess "alljoyn_message_setendianess" MSAJApi.dll ;
+	Char endian ;
+	Returns Pointer
+
+External_Function alljoyn_message_tostring "alljoyn_message_tostring" MSAJApi.dll ;
+	LongPtr msg ;	// alljoyn_message
+	String str ;	// PSTR
+	ULongPtr buf ;
+	Returns ULongPtr
+
+External_Function alljoyn_msgarg_array_create "alljoyn_msgarg_array_create" MSAJApi.dll ;
+	ULongPtr size ;
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_array_element "alljoyn_msgarg_array_element" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr index ;
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_array_get "alljoyn_msgarg_array_get" MSAJApi.dll ;
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_array_set "alljoyn_msgarg_array_set" MSAJApi.dll ;
+	LongPtr args ;	// alljoyn_msgarg
+	Pointer numArgs ;	// ULongPtr*
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_array_set_offset "alljoyn_msgarg_array_set_offset" MSAJApi.dll ;
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr argOffset ;
+	Pointer numArgs ;	// ULongPtr*
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_array_signature "alljoyn_msgarg_array_signature" MSAJApi.dll ;
+	LongPtr values ;	// alljoyn_msgarg
+	ULongPtr numValues ;
+	String str ;	// PSTR
+	ULongPtr buf ;
+	Returns ULongPtr
+
+External_Function alljoyn_msgarg_array_tostring "alljoyn_msgarg_array_tostring" MSAJApi.dll ;
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	String str ;	// PSTR
+	ULongPtr buf ;
+	ULongPtr indent ;
+	Returns ULongPtr
+
+External_Function alljoyn_msgarg_clear "alljoyn_msgarg_clear" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns Pointer
+
+External_Function alljoyn_msgarg_clone "alljoyn_msgarg_clone" MSAJApi.dll ;
+	LongPtr destination ;	// alljoyn_msgarg
+	LongPtr source ;	// alljoyn_msgarg
+	Returns Pointer
+
+External_Function alljoyn_msgarg_copy "alljoyn_msgarg_copy" MSAJApi.dll ;
+	LongPtr source ;	// alljoyn_msgarg
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_create "alljoyn_msgarg_create" MSAJApi.dll ;
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_create_and_set "alljoyn_msgarg_create_and_set" MSAJApi.dll ;
+	String signature ;	// PSTR
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_destroy "alljoyn_msgarg_destroy" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns Pointer
+
+External_Function alljoyn_msgarg_equal "alljoyn_msgarg_equal" MSAJApi.dll ;
+	LongPtr lhv ;	// alljoyn_msgarg
+	LongPtr rhv ;	// alljoyn_msgarg
+	Returns Integer
+
+External_Function alljoyn_msgarg_get "alljoyn_msgarg_get" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_array_element "alljoyn_msgarg_get_array_element" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr index ;
+	Pointer element ;	// alljoyn_msgarg*
+	Returns Pointer
+
+External_Function alljoyn_msgarg_get_array_elementsignature "alljoyn_msgarg_get_array_elementsignature" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr index ;
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_msgarg_get_array_numberofelements "alljoyn_msgarg_get_array_numberofelements" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns ULongPtr
+
+External_Function alljoyn_msgarg_get_bool "alljoyn_msgarg_get_bool" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer b ;	// Integer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_bool_array "alljoyn_msgarg_get_bool_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer ab ;	// Integer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_double "alljoyn_msgarg_get_double" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer d ;	// Real*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_double_array "alljoyn_msgarg_get_double_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer ad ;	// Real*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_int16 "alljoyn_msgarg_get_int16" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer n ;	// Short*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_int16_array "alljoyn_msgarg_get_int16_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer an ;	// Short*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_int32 "alljoyn_msgarg_get_int32" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer i ;	// Integer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_int32_array "alljoyn_msgarg_get_int32_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer ai ;	// Integer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_int64 "alljoyn_msgarg_get_int64" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer x ;	// Bigint*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_int64_array "alljoyn_msgarg_get_int64_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer ax ;	// Bigint*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_objectpath "alljoyn_msgarg_get_objectpath" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer o ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_signature "alljoyn_msgarg_get_signature" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer g ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_string "alljoyn_msgarg_get_string" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer s ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint16 "alljoyn_msgarg_get_uint16" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer q ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint16_array "alljoyn_msgarg_get_uint16_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer aq ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint32 "alljoyn_msgarg_get_uint32" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer u ;	// UInteger*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint32_array "alljoyn_msgarg_get_uint32_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer au ;	// UInteger*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint64 "alljoyn_msgarg_get_uint64" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer t ;	// UBigint*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint64_array "alljoyn_msgarg_get_uint64_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer at ;	// UBigint*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint8 "alljoyn_msgarg_get_uint8" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer y ;	// UChar*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_uint8_array "alljoyn_msgarg_get_uint8_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Pointer length ;	// ULongPtr*
+	Pointer ay ;	// UChar*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_variant "alljoyn_msgarg_get_variant" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	LongPtr v ;	// alljoyn_msgarg
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_get_variant_array "alljoyn_msgarg_get_variant_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String signature ;	// PSTR
+	Pointer length ;	// ULongPtr*
+	Pointer av ;	// alljoyn_msgarg*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_getdictelement "alljoyn_msgarg_getdictelement" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String elemSig ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_getkey "alljoyn_msgarg_getkey" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_getmember "alljoyn_msgarg_getmember" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr index ;
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_getnummembers "alljoyn_msgarg_getnummembers" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns ULongPtr
+
+External_Function alljoyn_msgarg_gettype "alljoyn_msgarg_gettype" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns Integer	// alljoyn_typeid
+
+External_Function alljoyn_msgarg_getvalue "alljoyn_msgarg_getvalue" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns LongPtr	// alljoyn_msgarg
+
+External_Function alljoyn_msgarg_hassignature "alljoyn_msgarg_hassignature" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String signature ;	// PSTR
+	Returns Integer
+
+External_Function alljoyn_msgarg_set "alljoyn_msgarg_set" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_and_stabilize "alljoyn_msgarg_set_and_stabilize" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String signature ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_bool "alljoyn_msgarg_set_bool" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Integer b ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_bool_array "alljoyn_msgarg_set_bool_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ab ;	// Integer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_double "alljoyn_msgarg_set_double" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Real d ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_double_array "alljoyn_msgarg_set_double_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ad ;	// Real*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_int16 "alljoyn_msgarg_set_int16" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Short n ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_int16_array "alljoyn_msgarg_set_int16_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer an ;	// Short*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_int32 "alljoyn_msgarg_set_int32" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Integer i ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_int32_array "alljoyn_msgarg_set_int32_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ai ;	// Integer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_int64 "alljoyn_msgarg_set_int64" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Bigint x ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_int64_array "alljoyn_msgarg_set_int64_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ax ;	// Bigint*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_objectpath "alljoyn_msgarg_set_objectpath" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String o ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_objectpath_array "alljoyn_msgarg_set_objectpath_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ao ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_signature "alljoyn_msgarg_set_signature" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String g ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_signature_array "alljoyn_msgarg_set_signature_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ag ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_string "alljoyn_msgarg_set_string" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String s ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_string_array "alljoyn_msgarg_set_string_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer as ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint16 "alljoyn_msgarg_set_uint16" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	UShort q ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint16_array "alljoyn_msgarg_set_uint16_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer aq ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint32 "alljoyn_msgarg_set_uint32" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	UInteger u ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint32_array "alljoyn_msgarg_set_uint32_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer au ;	// UInteger*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint64 "alljoyn_msgarg_set_uint64" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	UBigint t ;
+	Returns Integer	// QStatus
+
+
+Procedure DataFlex_Init
+End_Procedure
+

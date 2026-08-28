@@ -1,0 +1,1202 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-closedriver
+External_Function CloseDriver "CloseDriver" WINMM.dll ;
+	Pointer hDriver ;	// HDRVR
+	LongPtr lParam1 ;	// LPARAM
+	LongPtr lParam2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-defdriverproc
+External_Function DefDriverProc "DefDriverProc" WINMM.dll ;
+	ULongPtr dwDriverIdentifier ;
+	Pointer hdrvr ;	// HDRVR
+	UInteger uMsg ;
+	LongPtr lParam1 ;	// LPARAM
+	LongPtr lParam2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-drivercallback
+External_Function DriverCallback "DriverCallback" WINMM.dll ;
+	ULongPtr dwCallback ;
+	UInteger dwFlags ;
+	Pointer hDevice ;	// HDRVR
+	UInteger dwMsg ;
+	ULongPtr dwUser ;
+	ULongPtr dwParam1 ;
+	ULongPtr dwParam2 ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-drvgetmodulehandle
+External_Function DrvGetModuleHandle "DrvGetModuleHandle" WINMM.dll ;
+	Pointer hDriver ;	// HDRVR
+	Returns Pointer	// HMODULE
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-getdrivermodulehandle
+External_Function GetDriverModuleHandle "GetDriverModuleHandle" WINMM.dll ;
+	Pointer hDriver ;	// HDRVR
+	Returns Pointer	// HMODULE
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-opendriver
+External_Function OpenDriver "OpenDriver" WINMM.dll ;
+	WString szDriverName ;	// PWSTR
+	WString szSectionName ;	// PWSTR
+	LongPtr lParam2 ;	// LPARAM
+	Returns Pointer	// HDRVR
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-senddrivermessage
+External_Function SendDriverMessage "SendDriverMessage" WINMM.dll ;
+	Pointer hDriver ;	// HDRVR
+	UInteger message ;
+	LongPtr lParam1 ;	// LPARAM
+	LongPtr lParam2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetdevcapsa
+External_Function joyGetDevCapsA "joyGetDevCapsA" WINMM.dll ;
+	ULongPtr uJoyID ;
+	Pointer pjc ;	// JOYCAPSA*
+	UInteger cbjc ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetdevcapsw
+External_Function joyGetDevCapsW "joyGetDevCapsW" WINMM.dll ;
+	ULongPtr uJoyID ;
+	Pointer pjc ;	// JOYCAPSW*
+	UInteger cbjc ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetnumdevs
+External_Function joyGetNumDevs "joyGetNumDevs" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetpos
+External_Function joyGetPos "joyGetPos" WINMM.dll ;
+	UInteger uJoyID ;
+	Pointer pji ;	// JOYINFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetposex
+External_Function joyGetPosEx "joyGetPosEx" WINMM.dll ;
+	UInteger uJoyID ;
+	Pointer pji ;	// JOYINFOEX*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joygetthreshold
+External_Function joyGetThreshold "joyGetThreshold" WINMM.dll ;
+	UInteger uJoyID ;
+	Pointer puThreshold ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joyreleasecapture
+External_Function joyReleaseCapture "joyReleaseCapture" WINMM.dll ;
+	UInteger uJoyID ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joysetcapture
+External_Function joySetCapture "joySetCapture" WINMM.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger uJoyID ;
+	UInteger uPeriod ;
+	Integer fChanged ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/nf-joystickapi-joysetthreshold
+External_Function joySetThreshold "joySetThreshold" WINMM.dll ;
+	UInteger uJoyID ;
+	UInteger uThreshold ;
+	Returns UInteger
+
+External_Function mciDriverNotify "mciDriverNotify" WINMM.dll ;
+	Pointer hwndCallback ;	// HANDLE
+	UInteger wDeviceID ;
+	UInteger uStatus ;
+	Returns Integer	// BOOL
+
+External_Function mciDriverYield "mciDriverYield" WINMM.dll ;
+	UInteger wDeviceID ;
+	Returns UInteger
+
+External_Function mciFreeCommandResource "mciFreeCommandResource" WINMM.dll ;
+	UInteger wTable ;
+	Returns Integer	// BOOL
+
+External_Function mciGetCreatorTask "mciGetCreatorTask" WINMM.dll ;
+	UInteger mciId ;
+	Returns Pointer	// HTASK
+
+External_Function mciGetDeviceIDA "mciGetDeviceIDA" WINMM.dll ;
+	String pszDevice ;	// PSTR
+	Returns UInteger
+
+External_Function mciGetDeviceIDFromElementIDA "mciGetDeviceIDFromElementIDA" WINMM.dll ;
+	UInteger dwElementID ;
+	String lpstrType ;	// PSTR
+	Returns UInteger
+
+External_Function mciGetDeviceIDFromElementIDW "mciGetDeviceIDFromElementIDW" WINMM.dll ;
+	UInteger dwElementID ;
+	WString lpstrType ;	// PWSTR
+	Returns UInteger
+
+External_Function mciGetDeviceIDW "mciGetDeviceIDW" WINMM.dll ;
+	WString pszDevice ;	// PWSTR
+	Returns UInteger
+
+External_Function mciGetDriverData "mciGetDriverData" WINMM.dll ;
+	UInteger wDeviceID ;
+	Returns ULongPtr
+
+External_Function mciGetErrorStringA "mciGetErrorStringA" WINMM.dll ;
+	UInteger mcierr ;
+	Pointer pszText ;	// PSTR
+	UInteger cchText ;
+	Returns Integer	// BOOL
+
+External_Function mciGetErrorStringW "mciGetErrorStringW" WINMM.dll ;
+	UInteger mcierr ;
+	Pointer pszText ;	// PWSTR
+	UInteger cchText ;
+	Returns Integer	// BOOL
+
+External_Function mciGetYieldProc "mciGetYieldProc" WINMM.dll ;
+	UInteger mciId ;
+	Pointer pdwYieldData ;	// UInteger*
+	Returns Pointer	// YIELDPROC
+
+External_Function mciLoadCommandResource "mciLoadCommandResource" WINMM.dll ;
+	Pointer hInstance ;	// HANDLE
+	WString lpResName ;	// PWSTR
+	UInteger wType ;
+	Returns UInteger
+
+External_Function mciSendCommandA "mciSendCommandA" WINMM.dll ;
+	UInteger mciId ;
+	UInteger uMsg ;
+	ULongPtr dwParam1 ;
+	ULongPtr dwParam2 ;
+	Returns UInteger
+
+External_Function mciSendCommandW "mciSendCommandW" WINMM.dll ;
+	UInteger mciId ;
+	UInteger uMsg ;
+	ULongPtr dwParam1 ;
+	ULongPtr dwParam2 ;
+	Returns UInteger
+
+External_Function mciSendStringA "mciSendStringA" WINMM.dll ;
+	String lpstrCommand ;	// PSTR
+	Pointer lpstrReturnString ;	// PSTR
+	UInteger uReturnLength ;
+	Pointer hwndCallback ;	// HWND
+	Returns UInteger
+
+External_Function mciSendStringW "mciSendStringW" WINMM.dll ;
+	WString lpstrCommand ;	// PWSTR
+	Pointer lpstrReturnString ;	// PWSTR
+	UInteger uReturnLength ;
+	Pointer hwndCallback ;	// HWND
+	Returns UInteger
+
+External_Function mciSetDriverData "mciSetDriverData" WINMM.dll ;
+	UInteger wDeviceID ;
+	ULongPtr dwData ;
+	Returns Integer	// BOOL
+
+External_Function mciSetYieldProc "mciSetYieldProc" WINMM.dll ;
+	UInteger mciId ;
+	Pointer fpYieldProc ;	// YIELDPROC
+	UInteger dwYieldData ;
+	Returns Integer	// BOOL
+
+External_Function mmDrvInstall "mmDrvInstall" WINMM.dll ;
+	Pointer hDriver ;	// HDRVR
+	WString wszDrvEntry ;	// PWSTR
+	Pointer drvMessage ;	// DRIVERMSGPROC
+	UInteger wFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/nf-mmddk-mmgetcurrenttask
+External_Function mmGetCurrentTask "mmGetCurrentTask" WINMM.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/nf-mmddk-mmtaskblock
+External_Function mmTaskBlock "mmTaskBlock" WINMM.dll ;
+	UInteger h ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/nf-mmddk-mmtaskcreate
+External_Function mmTaskCreate "mmTaskCreate" WINMM.dll ;
+	Pointer lpfn ;	// LPTASKCALLBACK
+	Pointer lph ;	// HANDLE*
+	ULongPtr dwInst ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/nf-mmddk-mmtasksignal
+External_Function mmTaskSignal "mmTaskSignal" WINMM.dll ;
+	UInteger h ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/nf-mmddk-mmtaskyield
+External_Function mmTaskYield "mmTaskYield" WINMM.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioadvance
+External_Function mmioAdvance "mmioAdvance" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fuAdvance ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioascend
+External_Function mmioAscend "mmioAscend" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pmmcki ;	// MMCKINFO*
+	UInteger fuAscend ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioclose
+External_Function mmioClose "mmioClose" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	UInteger fuClose ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiocreatechunk
+External_Function mmioCreateChunk "mmioCreateChunk" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pmmcki ;	// MMCKINFO*
+	UInteger fuCreate ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiodescend
+External_Function mmioDescend "mmioDescend" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pmmcki ;	// MMCKINFO*
+	Pointer pmmckiParent ;	// MMCKINFO*
+	UInteger fuDescend ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioflush
+External_Function mmioFlush "mmioFlush" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	UInteger fuFlush ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiogetinfo
+External_Function mmioGetInfo "mmioGetInfo" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fuInfo ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioinstallioproca
+External_Function mmioInstallIOProcA "mmioInstallIOProcA" WINMM.dll ;
+	UInteger fccIOProc ;
+	Pointer pIOProc ;	// LPMMIOPROC
+	UInteger dwFlags ;
+	Returns Pointer	// LPMMIOPROC
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioinstallioprocw
+External_Function mmioInstallIOProcW "mmioInstallIOProcW" WINMM.dll ;
+	UInteger fccIOProc ;
+	Pointer pIOProc ;	// LPMMIOPROC
+	UInteger dwFlags ;
+	Returns Pointer	// LPMMIOPROC
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioopena
+External_Function mmioOpenA "mmioOpenA" WINMM.dll ;
+	Pointer pszFileName ;	// PSTR
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fdwOpen ;
+	Returns Pointer	// HMMIO
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioopenw
+External_Function mmioOpenW "mmioOpenW" WINMM.dll ;
+	Pointer pszFileName ;	// PWSTR
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fdwOpen ;
+	Returns Pointer	// HMMIO
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioread
+External_Function mmioRead "mmioRead" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pch ;	// Char*
+	Integer cch ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiorenamea
+External_Function mmioRenameA "mmioRenameA" WINMM.dll ;
+	String pszFileName ;	// PSTR
+	String pszNewFileName ;	// PSTR
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fdwRename ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiorenamew
+External_Function mmioRenameW "mmioRenameW" WINMM.dll ;
+	WString pszFileName ;	// PWSTR
+	WString pszNewFileName ;	// PWSTR
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fdwRename ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmioseek
+External_Function mmioSeek "mmioSeek" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Integer lOffset ;
+	Integer iOrigin ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiosendmessage
+External_Function mmioSendMessage "mmioSendMessage" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	UInteger uMsg ;
+	LongPtr lParam1 ;	// LPARAM
+	LongPtr lParam2 ;	// LPARAM
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiosetbuffer
+External_Function mmioSetBuffer "mmioSetBuffer" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pchBuffer ;	// PSTR
+	Integer cchBuffer ;
+	UInteger fuBuffer ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiosetinfo
+External_Function mmioSetInfo "mmioSetInfo" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	Pointer pmmioinfo ;	// MMIOINFO*
+	UInteger fuInfo ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiostringtofourcca
+External_Function mmioStringToFOURCCA "mmioStringToFOURCCA" WINMM.dll ;
+	String sz ;	// PSTR
+	UInteger uFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiostringtofourccw
+External_Function mmioStringToFOURCCW "mmioStringToFOURCCW" WINMM.dll ;
+	WString sz ;	// PWSTR
+	UInteger uFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-mmiowrite
+External_Function mmioWrite "mmioWrite" WINMM.dll ;
+	Pointer hmmio ;	// HMMIO
+	String pch ;	// PSTR
+	Integer cch ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/nf-mmiscapi-sndopensound
+External_Function sndOpenSound "sndOpenSound" api-ms-win-mm-misc-l1-1-1.dll ;
+	WString EventName ;	// PWSTR
+	WString AppName ;	// PWSTR
+	Integer Flags ;
+	Pointer FileHandle ;	// HANDLE*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibbegin
+External_Function DrawDibBegin "DrawDibBegin" MSVFW32.dll ;
+	LongPtr hdd ;
+	Pointer hdc ;	// HDC
+	Integer dxDst ;
+	Integer dyDst ;
+	Pointer lpbi ;	// BITMAPINFOHEADER*
+	Integer dxSrc ;
+	Integer dySrc ;
+	UInteger wFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibchangepalette
+External_Function DrawDibChangePalette "DrawDibChangePalette" MSVFW32.dll ;
+	LongPtr hdd ;
+	Integer iStart ;
+	Integer iLen ;
+	Pointer lppe ;	// PALETTEENTRY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibclose
+External_Function DrawDibClose "DrawDibClose" MSVFW32.dll ;
+	LongPtr hdd ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibdraw
+External_Function DrawDibDraw "DrawDibDraw" MSVFW32.dll ;
+	LongPtr hdd ;
+	Pointer hdc ;	// HDC
+	Integer xDst ;
+	Integer yDst ;
+	Integer dxDst ;
+	Integer dyDst ;
+	Pointer lpbi ;	// BITMAPINFOHEADER*
+	Pointer lpBits ;	// Pointer*
+	Integer xSrc ;
+	Integer ySrc ;
+	Integer dxSrc ;
+	Integer dySrc ;
+	UInteger wFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibend
+External_Function DrawDibEnd "DrawDibEnd" MSVFW32.dll ;
+	LongPtr hdd ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibgetbuffer
+External_Function DrawDibGetBuffer "DrawDibGetBuffer" MSVFW32.dll ;
+	LongPtr hdd ;
+	Pointer lpbi ;	// BITMAPINFOHEADER*
+	UInteger dwSize ;
+	UInteger dwFlags ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibgetpalette
+External_Function DrawDibGetPalette "DrawDibGetPalette" MSVFW32.dll ;
+	LongPtr hdd ;
+	Returns Pointer	// HPALETTE
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibopen
+External_Function DrawDibOpen "DrawDibOpen" MSVFW32.dll ;
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibprofiledisplay
+External_Function DrawDibProfileDisplay "DrawDibProfileDisplay" MSVFW32.dll ;
+	Pointer lpbi ;	// BITMAPINFOHEADER*
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibrealize
+External_Function DrawDibRealize "DrawDibRealize" MSVFW32.dll ;
+	LongPtr hdd ;
+	Pointer hdc ;	// HDC
+	Integer fBackground ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibsetpalette
+External_Function DrawDibSetPalette "DrawDibSetPalette" MSVFW32.dll ;
+	LongPtr hdd ;
+	Pointer hpal ;	// HPALETTE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibstart
+External_Function DrawDibStart "DrawDibStart" MSVFW32.dll ;
+	LongPtr hdd ;
+	UInteger rate ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibstop
+External_Function DrawDibStop "DrawDibStop" MSVFW32.dll ;
+	LongPtr hdd ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-drawdibtime
+External_Function DrawDibTime "DrawDibTime" MSVFW32.dll ;
+	LongPtr hdd ;
+	Pointer lpddtime ;	// DRAWDIBTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getopenfilenamepreviewa
+External_Function GetOpenFileNamePreviewA "GetOpenFileNamePreviewA" MSVFW32.dll ;
+	Pointer lpofn ;	// OPENFILENAMEA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getopenfilenameprevieww
+External_Function GetOpenFileNamePreviewW "GetOpenFileNamePreviewW" MSVFW32.dll ;
+	Pointer lpofn ;	// OPENFILENAMEW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getsavefilenamepreviewa
+External_Function GetSaveFileNamePreviewA "GetSaveFileNamePreviewA" MSVFW32.dll ;
+	Pointer lpofn ;	// OPENFILENAMEA*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-getsavefilenameprevieww
+External_Function GetSaveFileNamePreviewW "GetSaveFileNamePreviewW" MSVFW32.dll ;
+	Pointer lpofn ;	// OPENFILENAMEW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icclose
+External_Function ICClose "ICClose" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iccompress
+External_Function ICCompress "ICCompress" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger dwFlags ;
+	Pointer lpbiOutput ;	// BITMAPINFOHEADER*
+	Pointer lpData ;	// Pointer*
+	Pointer lpbiInput ;	// BITMAPINFOHEADER*
+	Pointer lpBits ;	// Pointer*
+	Pointer lpckid ;	// UInteger*
+	Pointer lpdwFlags ;	// UInteger*
+	Integer lFrameNum ;
+	UInteger dwFrameSize ;
+	UInteger dwQuality ;
+	Pointer lpbiPrev ;	// BITMAPINFOHEADER*
+	Pointer lpPrev ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iccompressorchoose
+External_Function ICCompressorChoose "ICCompressorChoose" MSVFW32.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger uiFlags ;
+	Pointer pvIn ;	// Pointer*
+	Pointer lpData ;	// Pointer*
+	Pointer pc ;	// COMPVARS*
+	String lpszTitle ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iccompressorfree
+External_Function ICCompressorFree "ICCompressorFree" MSVFW32.dll ;
+	Pointer pc ;	// COMPVARS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icdecompress
+External_Function ICDecompress "ICDecompress" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger dwFlags ;
+	Pointer lpbiFormat ;	// BITMAPINFOHEADER*
+	Pointer lpData ;	// Pointer*
+	Pointer lpbi ;	// BITMAPINFOHEADER*
+	Pointer lpBits ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icdraw
+External_Function ICDraw "ICDraw" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger dwFlags ;
+	Pointer lpFormat ;	// Pointer*
+	Pointer lpData ;	// Pointer*
+	UInteger cbData ;
+	Integer lTime ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icdrawbegin
+External_Function ICDrawBegin "ICDrawBegin" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger dwFlags ;
+	Pointer hpal ;	// HPALETTE
+	Pointer hwnd ;	// HWND
+	Pointer hdc ;	// HDC
+	Integer xDst ;
+	Integer yDst ;
+	Integer dxDst ;
+	Integer dyDst ;
+	Pointer lpbi ;	// BITMAPINFOHEADER*
+	Integer xSrc ;
+	Integer ySrc ;
+	Integer dxSrc ;
+	Integer dySrc ;
+	UInteger dwRate ;
+	UInteger dwScale ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icgetdisplayformat
+External_Function ICGetDisplayFormat "ICGetDisplayFormat" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	Pointer lpbiIn ;	// BITMAPINFOHEADER*
+	Pointer lpbiOut ;	// BITMAPINFOHEADER*
+	Integer BitDepth ;
+	Integer dx ;
+	Integer dy ;
+	Returns Pointer	// HIC
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icgetinfo
+External_Function ICGetInfo "ICGetInfo" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	Pointer picinfo ;	// ICINFO*
+	UInteger cb ;
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icimagecompress
+External_Function ICImageCompress "ICImageCompress" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger uiFlags ;
+	Pointer lpbiIn ;	// BITMAPINFO*
+	Pointer lpBits ;	// Pointer*
+	Pointer lpbiOut ;	// BITMAPINFO*
+	Integer lQuality ;
+	Pointer plSize ;	// Integer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icimagedecompress
+External_Function ICImageDecompress "ICImageDecompress" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger uiFlags ;
+	Pointer lpbiIn ;	// BITMAPINFO*
+	Pointer lpBits ;	// Pointer*
+	Pointer lpbiOut ;	// BITMAPINFO*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icinfo
+External_Function ICInfo "ICInfo" MSVFW32.dll ;
+	UInteger fccType ;
+	UInteger fccHandler ;
+	Pointer lpicinfo ;	// ICINFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icinstall
+External_Function ICInstall "ICInstall" MSVFW32.dll ;
+	UInteger fccType ;
+	UInteger fccHandler ;
+	LongPtr lParam ;	// LPARAM
+	String szDesc ;	// PSTR
+	UInteger wFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-iclocate
+External_Function ICLocate "ICLocate" MSVFW32.dll ;
+	UInteger fccType ;
+	UInteger fccHandler ;
+	Pointer lpbiIn ;	// BITMAPINFOHEADER*
+	Pointer lpbiOut ;	// BITMAPINFOHEADER*
+	UShort wFlags ;
+	Returns Pointer	// HIC
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icopen
+External_Function ICOpen "ICOpen" MSVFW32.dll ;
+	UInteger fccType ;
+	UInteger fccHandler ;
+	UInteger wMode ;
+	Returns Pointer	// HIC
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icopenfunction
+External_Function ICOpenFunction "ICOpenFunction" MSVFW32.dll ;
+	UInteger fccType ;
+	UInteger fccHandler ;
+	UInteger wMode ;
+	Pointer lpfnHandler ;	// FARPROC
+	Returns Pointer	// HIC
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icremove
+External_Function ICRemove "ICRemove" MSVFW32.dll ;
+	UInteger fccType ;
+	UInteger fccHandler ;
+	UInteger wFlags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icsendmessage
+External_Function ICSendMessage "ICSendMessage" MSVFW32.dll ;
+	Pointer hic ;	// HIC
+	UInteger msg ;
+	ULongPtr dw1 ;
+	ULongPtr dw2 ;
+	Returns LongPtr	// LRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icseqcompressframe
+External_Function ICSeqCompressFrame "ICSeqCompressFrame" MSVFW32.dll ;
+	Pointer pc ;	// COMPVARS*
+	UInteger uiFlags ;
+	Pointer lpBits ;	// Pointer*
+	Pointer pfKey ;	// BOOL*
+	Pointer plSize ;	// Integer*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icseqcompressframeend
+External_Function ICSeqCompressFrameEnd "ICSeqCompressFrameEnd" MSVFW32.dll ;
+	Pointer pc ;	// COMPVARS*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-icseqcompressframestart
+External_Function ICSeqCompressFrameStart "ICSeqCompressFrameStart" MSVFW32.dll ;
+	Pointer pc ;	// COMPVARS*
+	Pointer lpbiIn ;	// BITMAPINFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndcreatea
+External_Function MCIWndCreateA "MCIWndCreateA" MSVFW32.dll ;
+	Pointer hwndParent ;	// HWND
+	Pointer hInstance ;	// HINSTANCE
+	UInteger dwStyle ;
+	String szFile ;	// PSTR
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndcreatew
+External_Function MCIWndCreateW "MCIWndCreateW" MSVFW32.dll ;
+	Pointer hwndParent ;	// HWND
+	Pointer hInstance ;	// HINSTANCE
+	UInteger dwStyle ;
+	WString szFile ;	// PWSTR
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-mciwndregisterclass
+External_Function MCIWndRegisterClass "MCIWndRegisterClass" MSVFW32.dll ;
+	Returns Integer	// BOOL
+
+External_Function VideoForWindowsVersion "VideoForWindowsVersion" MSVFW32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avibuildfiltera
+External_Function AVIBuildFilterA "AVIBuildFilterA" AVIFIL32.dll ;
+	Pointer lpszFilter ;	// PSTR
+	Integer cbFilter ;
+	Integer fSaving ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avibuildfilterw
+External_Function AVIBuildFilterW "AVIBuildFilterW" AVIFIL32.dll ;
+	Pointer lpszFilter ;	// PWSTR
+	Integer cbFilter ;
+	Integer fSaving ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-aviclearclipboard
+External_Function AVIClearClipboard "AVIClearClipboard" AVIFIL32.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileaddref
+External_Function AVIFileAddRef "AVIFileAddRef" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilecreatestreama
+External_Function AVIFileCreateStreamA "AVIFileCreateStreamA" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Pointer ppavi ;	// IAVIStream*
+	Pointer psi ;	// AVISTREAMINFOA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilecreatestreamw
+External_Function AVIFileCreateStreamW "AVIFileCreateStreamW" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Pointer ppavi ;	// IAVIStream*
+	Pointer psi ;	// AVISTREAMINFOW*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileendrecord
+External_Function AVIFileEndRecord "AVIFileEndRecord" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileexit
+External_Function AVIFileExit "AVIFileExit" AVIFIL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilegetstream
+External_Function AVIFileGetStream "AVIFileGetStream" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Pointer ppavi ;	// IAVIStream*
+	UInteger fccType ;
+	Integer lParam ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileinfoa
+External_Function AVIFileInfoA "AVIFileInfoA" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Pointer pfi ;	// AVIFILEINFOA*
+	Integer lSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileinfow
+External_Function AVIFileInfoW "AVIFileInfoW" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Pointer pfi ;	// AVIFILEINFOW*
+	Integer lSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileinit
+External_Function AVIFileInit "AVIFileInit" AVIFIL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileopena
+External_Function AVIFileOpenA "AVIFileOpenA" AVIFIL32.dll ;
+	Pointer ppfile ;	// IAVIFile*
+	String szFile ;	// PSTR
+	UInteger uMode ;
+	Pointer lpHandler ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifileopenw
+External_Function AVIFileOpenW "AVIFileOpenW" AVIFIL32.dll ;
+	Pointer ppfile ;	// IAVIFile*
+	WString szFile ;	// PWSTR
+	UInteger uMode ;
+	Pointer lpHandler ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilereaddata
+External_Function AVIFileReadData "AVIFileReadData" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	UInteger ckid ;
+	Pointer lpData ;	// Pointer*
+	Pointer lpcbData ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilerelease
+External_Function AVIFileRelease "AVIFileRelease" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avifilewritedata
+External_Function AVIFileWriteData "AVIFileWriteData" AVIFIL32.dll ;
+	Pointer pfile ;	// IAVIFile
+	UInteger ckid ;
+	Pointer lpData ;	// Pointer*
+	Integer cbData ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avigetfromclipboard
+External_Function AVIGetFromClipboard "AVIGetFromClipboard" AVIFIL32.dll ;
+	Pointer lppf ;	// IAVIFile*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avimakecompressedstream
+External_Function AVIMakeCompressedStream "AVIMakeCompressedStream" AVIFIL32.dll ;
+	Pointer ppsCompressed ;	// IAVIStream*
+	Pointer ppsSource ;	// IAVIStream
+	Pointer lpOptions ;	// AVICOMPRESSOPTIONS*
+	Pointer pclsidHandler ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avimakefilefromstreams
+External_Function AVIMakeFileFromStreams "AVIMakeFileFromStreams" AVIFIL32.dll ;
+	Pointer ppfile ;	// IAVIFile*
+	Integer nStreams ;
+	Pointer papStreams ;	// IAVIStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avimakestreamfromclipboard
+External_Function AVIMakeStreamFromClipboard "AVIMakeStreamFromClipboard" AVIFIL32.dll ;
+	UInteger cfFormat ;
+	Pointer hGlobal ;	// HANDLE
+	Pointer ppstream ;	// IAVIStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-aviputfileonclipboard
+External_Function AVIPutFileOnClipboard "AVIPutFileOnClipboard" AVIFIL32.dll ;
+	Pointer pf ;	// IAVIFile
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisavea
+External_Function AVISaveA "AVISaveA" AVIFIL32.dll ;
+	String szFile ;	// PSTR
+	Pointer pclsidHandler ;	// Guid*
+	Pointer lpfnCallback ;	// AVISAVECALLBACK
+	Integer nStreams ;
+	Pointer pfile ;	// IAVIStream
+	Pointer lpOptions ;	// AVICOMPRESSOPTIONS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisaveoptions
+External_Function AVISaveOptions "AVISaveOptions" AVIFIL32.dll ;
+	Pointer hwnd ;	// HWND
+	UInteger uiFlags ;
+	Integer nStreams ;
+	Pointer ppavi ;	// IAVIStream*
+	Pointer plpOptions ;	// AVICOMPRESSOPTIONS**
+	Returns LongPtr
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisaveoptionsfree
+External_Function AVISaveOptionsFree "AVISaveOptionsFree" AVIFIL32.dll ;
+	Integer nStreams ;
+	Pointer plpOptions ;	// AVICOMPRESSOPTIONS**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisaveva
+External_Function AVISaveVA "AVISaveVA" AVIFIL32.dll ;
+	String szFile ;	// PSTR
+	Pointer pclsidHandler ;	// Guid*
+	Pointer lpfnCallback ;	// AVISAVECALLBACK
+	Integer nStreams ;
+	Pointer ppavi ;	// IAVIStream*
+	Pointer plpOptions ;	// AVICOMPRESSOPTIONS**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisavevw
+External_Function AVISaveVW "AVISaveVW" AVIFIL32.dll ;
+	WString szFile ;	// PWSTR
+	Pointer pclsidHandler ;	// Guid*
+	Pointer lpfnCallback ;	// AVISAVECALLBACK
+	Integer nStreams ;
+	Pointer ppavi ;	// IAVIStream*
+	Pointer plpOptions ;	// AVICOMPRESSOPTIONS**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avisavew
+External_Function AVISaveW "AVISaveW" AVIFIL32.dll ;
+	WString szFile ;	// PWSTR
+	Pointer pclsidHandler ;	// Guid*
+	Pointer lpfnCallback ;	// AVISAVECALLBACK
+	Integer nStreams ;
+	Pointer pfile ;	// IAVIStream
+	Pointer lpOptions ;	// AVICOMPRESSOPTIONS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamaddref
+External_Function AVIStreamAddRef "AVIStreamAddRef" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreambeginstreaming
+External_Function AVIStreamBeginStreaming "AVIStreamBeginStreaming" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lStart ;
+	Integer lEnd ;
+	Integer lRate ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamcreate
+External_Function AVIStreamCreate "AVIStreamCreate" AVIFIL32.dll ;
+	Pointer ppavi ;	// IAVIStream*
+	Integer lParam1 ;
+	Integer lParam2 ;
+	Pointer pclsidHandler ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamendstreaming
+External_Function AVIStreamEndStreaming "AVIStreamEndStreaming" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamfindsample
+External_Function AVIStreamFindSample "AVIStreamFindSample" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lPos ;
+	Integer lFlags ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamgetframe
+External_Function AVIStreamGetFrame "AVIStreamGetFrame" AVIFIL32.dll ;
+	Pointer pg ;	// IGetFrame
+	Integer lPos ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamgetframeclose
+External_Function AVIStreamGetFrameClose "AVIStreamGetFrameClose" AVIFIL32.dll ;
+	Pointer pg ;	// IGetFrame
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamgetframeopen
+External_Function AVIStreamGetFrameOpen "AVIStreamGetFrameOpen" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer lpbiWanted ;	// BITMAPINFOHEADER*
+	Returns Pointer	// IGetFrame
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreaminfoa
+External_Function AVIStreamInfoA "AVIStreamInfoA" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer psi ;	// AVISTREAMINFOA*
+	Integer lSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreaminfow
+External_Function AVIStreamInfoW "AVIStreamInfoW" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer psi ;	// AVISTREAMINFOW*
+	Integer lSize ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamlength
+External_Function AVIStreamLength "AVIStreamLength" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamopenfromfilea
+External_Function AVIStreamOpenFromFileA "AVIStreamOpenFromFileA" AVIFIL32.dll ;
+	Pointer ppavi ;	// IAVIStream*
+	String szFile ;	// PSTR
+	UInteger fccType ;
+	Integer lParam ;
+	UInteger mode ;
+	Pointer pclsidHandler ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamopenfromfilew
+External_Function AVIStreamOpenFromFileW "AVIStreamOpenFromFileW" AVIFIL32.dll ;
+	Pointer ppavi ;	// IAVIStream*
+	WString szFile ;	// PWSTR
+	UInteger fccType ;
+	Integer lParam ;
+	UInteger mode ;
+	Pointer pclsidHandler ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamread
+External_Function AVIStreamRead "AVIStreamRead" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lStart ;
+	Integer lSamples ;
+	Pointer lpBuffer ;	// Pointer*
+	Integer cbBuffer ;
+	Pointer plBytes ;	// Integer*
+	Pointer plSamples ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamreaddata
+External_Function AVIStreamReadData "AVIStreamReadData" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	UInteger fcc ;
+	Pointer lp ;	// Pointer*
+	Pointer lpcb ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamreadformat
+External_Function AVIStreamReadFormat "AVIStreamReadFormat" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lPos ;
+	Pointer lpFormat ;	// Pointer*
+	Pointer lpcbFormat ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamrelease
+External_Function AVIStreamRelease "AVIStreamRelease" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamsampletotime
+External_Function AVIStreamSampleToTime "AVIStreamSampleToTime" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lSample ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamsetformat
+External_Function AVIStreamSetFormat "AVIStreamSetFormat" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lPos ;
+	Pointer lpFormat ;	// Pointer*
+	Integer cbFormat ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamstart
+External_Function AVIStreamStart "AVIStreamStart" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamtimetosample
+External_Function AVIStreamTimeToSample "AVIStreamTimeToSample" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lTime ;
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamwrite
+External_Function AVIStreamWrite "AVIStreamWrite" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Integer lStart ;
+	Integer lSamples ;
+	Pointer lpBuffer ;	// Pointer*
+	Integer cbBuffer ;
+	UInteger dwFlags ;
+	Pointer plSampWritten ;	// Integer*
+	Pointer plBytesWritten ;	// Integer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-avistreamwritedata
+External_Function AVIStreamWriteData "AVIStreamWriteData" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	UInteger fcc ;
+	Pointer lp ;	// Pointer*
+	Integer cb ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-createeditablestream
+External_Function CreateEditableStream "CreateEditableStream" AVIFIL32.dll ;
+	Pointer ppsEditable ;	// IAVIStream*
+	Pointer psSource ;	// IAVIStream
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamclone
+External_Function EditStreamClone "EditStreamClone" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer ppResult ;	// IAVIStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamcopy
+External_Function EditStreamCopy "EditStreamCopy" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer plStart ;	// Integer*
+	Pointer plLength ;	// Integer*
+	Pointer ppResult ;	// IAVIStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamcut
+External_Function EditStreamCut "EditStreamCut" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer plStart ;	// Integer*
+	Pointer plLength ;	// Integer*
+	Pointer ppResult ;	// IAVIStream*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreampaste
+External_Function EditStreamPaste "EditStreamPaste" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer plPos ;	// Integer*
+	Pointer plLength ;	// Integer*
+	Pointer pstream ;	// IAVIStream
+	Integer lStart ;
+	Integer lEnd ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamsetinfoa
+External_Function EditStreamSetInfoA "EditStreamSetInfoA" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer lpInfo ;	// AVISTREAMINFOA*
+	Integer cbInfo ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamsetinfow
+External_Function EditStreamSetInfoW "EditStreamSetInfoW" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	Pointer lpInfo ;	// AVISTREAMINFOW*
+	Integer cbInfo ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamsetnamea
+External_Function EditStreamSetNameA "EditStreamSetNameA" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	String lpszName ;	// PSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-editstreamsetnamew
+External_Function EditStreamSetNameW "EditStreamSetNameW" AVIFIL32.dll ;
+	Pointer pavi ;	// IAVIStream
+	WString lpszName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capcreatecapturewindowa
+External_Function capCreateCaptureWindowA "capCreateCaptureWindowA" AVICAP32.dll ;
+	String lpszWindowName ;	// PSTR
+	UInteger dwStyle ;
+	Integer x ;
+	Integer y ;
+	Integer nWidth ;
+	Integer nHeight ;
+	Pointer hwndParent ;	// HWND
+	Integer nID ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capcreatecapturewindoww
+External_Function capCreateCaptureWindowW "capCreateCaptureWindowW" AVICAP32.dll ;
+	WString lpszWindowName ;	// PWSTR
+	UInteger dwStyle ;
+	Integer x ;
+	Integer y ;
+	Integer nWidth ;
+	Integer nHeight ;
+	Pointer hwndParent ;	// HWND
+	Integer nID ;
+	Returns Pointer	// HWND
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capgetdriverdescriptiona
+External_Function capGetDriverDescriptionA "capGetDriverDescriptionA" AVICAP32.dll ;
+	UInteger wDriverIndex ;
+	Pointer lpszName ;	// PSTR
+	Integer cbName ;
+	Pointer lpszVer ;	// PSTR
+	Integer cbVer ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/vfw/nf-vfw-capgetdriverdescriptionw
+External_Function capGetDriverDescriptionW "capGetDriverDescriptionW" AVICAP32.dll ;
+	UInteger wDriverIndex ;
+	Pointer lpszName ;	// PWSTR
+	Integer cbName ;
+	Pointer lpszVer ;	// PWSTR
+	Integer cbVer ;
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

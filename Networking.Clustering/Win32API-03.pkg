@@ -1,0 +1,42 @@
+Use UI
+
+External_Function ResUtilsDeleteKeyTree "ResUtilsDeleteKeyTree" RESUTILS.dll ;
+	Pointer key ;	// HKEY
+	WString keyName ;	// PWSTR
+	Integer treatNoKeyAsError ;	// BOOL
+	Returns UInteger
+
+External_Function QueryAppInstanceVersion "QueryAppInstanceVersion" NTLANMAN.dll ;
+	Pointer AppInstanceId ;	// Guid*
+	Pointer InstanceVersionHigh ;	// UBigint*
+	Pointer InstanceVersionLow ;	// UBigint*
+	Pointer VersionStatus ;	// NTSTATUS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/smbclnt/nf-smbclnt-registerappinstance
+External_Function RegisterAppInstance "RegisterAppInstance" NTLANMAN.dll ;
+	Pointer ProcessHandle ;	// HANDLE
+	Pointer AppInstanceId ;	// Guid*
+	Integer ChildrenInheritAppInstance ;	// BOOL
+	Returns UInteger
+
+External_Function RegisterAppInstanceVersion "RegisterAppInstanceVersion" NTLANMAN.dll ;
+	Pointer AppInstanceId ;	// Guid*
+	UBigint InstanceVersionHigh ;
+	UBigint InstanceVersionLow ;
+	Returns UInteger
+
+External_Function ResetAllAppInstanceVersions "ResetAllAppInstanceVersions" NTLANMAN.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/smbclnt/nf-smbclnt-setappinstancecsvflags
+External_Function SetAppInstanceCsvFlags "SetAppInstanceCsvFlags" NTLANMAN.dll ;
+	Pointer ProcessHandle ;	// HANDLE
+	UInteger Mask ;
+	UInteger Flags ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,116 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/gpedit/ns-gpedit-gpobrowseinfo
+Struct GPOBROWSEINFO
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndOwner										// HWND
+	Pointer lpTitle											// PWSTR
+	Pointer lpInitialOU										// PWSTR
+	Pointer lpDSPath										// PWSTR
+	UInteger dwDSPathSize
+	Integer iMissingAlignment1
+	Pointer lpName											// PWSTR
+	UInteger dwNameSize
+	Integer gpoType											// GROUP_POLICY_OBJECT_TYPE
+	Integer gpoHint											// GROUP_POLICY_HINT_TYPE
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/userenv/ns-userenv-group_policy_objecta
+Struct GROUP_POLICY_OBJECTA
+	UInteger dwOptions
+	UInteger dwVersion
+	Pointer lpDSPath										// PSTR
+	Pointer lpFileSysPath									// PSTR
+	Pointer lpDisplayName									// PSTR
+	Char[50] szGPOName										// CHAR
+	Short iMissingAlignment1
+	Integer GPOLink											// GPO_LINK
+	LongPtr lParam											// LPARAM
+	Pointer pNext											// GROUP_POLICY_OBJECTA*
+	Pointer pPrev											// GROUP_POLICY_OBJECTA*
+	Pointer lpExtensions									// PSTR
+	LongPtr lParam2											// LPARAM
+	Pointer lpLink											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/userenv/ns-userenv-group_policy_objectw
+Struct GROUP_POLICY_OBJECTW
+	UInteger dwOptions
+	UInteger dwVersion
+	Pointer lpDSPath										// PWSTR
+	Pointer lpFileSysPath									// PWSTR
+	Pointer lpDisplayName									// PWSTR
+	UShort[50] szGPOName
+	Integer GPOLink											// GPO_LINK
+	LongPtr lParam											// LPARAM
+	Pointer pNext											// GROUP_POLICY_OBJECTW*
+	Pointer pPrev											// GROUP_POLICY_OBJECTW*
+	Pointer lpExtensions									// PWSTR
+	LongPtr lParam2											// LPARAM
+	Pointer lpLink											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/ns-appmgmt-installdata
+Struct INSTALLDATA
+	Integer Type											// INSTALLSPECTYPE
+	Integer iMissingAlignment1
+	INSTALLSPEC Spec
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/ns-appmgmt-installspec
+Struct INSTALLSPEC
+	UChar[16] UnionName1
+	Pointer FileExt											// PWSTR
+	Pointer ProgId											// PWSTR
+	UChar[16] UnionName2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/ns-appmgmt-localmanagedapplication
+Struct LOCALMANAGEDAPPLICATION
+	Pointer pszDeploymentName								// PWSTR
+	Pointer pszPolicyName									// PWSTR
+	Pointer pszProductId									// PWSTR
+	UInteger dwState
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/appmgmt/ns-appmgmt-managedapplication
+Struct MANAGEDAPPLICATION
+	Pointer pszPackageName									// PWSTR
+	Pointer pszPublisher									// PWSTR
+	UInteger dwVersionHi
+	UInteger dwVersionLo
+	UInteger dwRevision
+	Guid GpoId
+	Integer iMissingAlignment1
+	Pointer pszPolicyName									// PWSTR
+	Guid ProductId
+	UShort Language
+	UChar[6] cMissingAlignment2
+	Pointer pszOwner										// PWSTR
+	Pointer pszCompany										// PWSTR
+	Pointer pszComments										// PWSTR
+	Pointer pszContact										// PWSTR
+	Pointer pszSupportUrl									// PWSTR
+	UInteger dwPathType
+	Integer bInstalled										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/userenv/ns-userenv-policysettingstatusinfo
+Struct POLICYSETTINGSTATUSINFO
+	Pointer szKey											// PWSTR
+	Pointer szEventSource									// PWSTR
+	Pointer szEventLogName									// PWSTR
+	UInteger dwEventID
+	UInteger dwErrorCode
+	Integer status											// SETTINGSTATUS
+	SYSTEMTIME timeLogged
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

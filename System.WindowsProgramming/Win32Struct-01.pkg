@@ -1,0 +1,204 @@
+Use UI
+
+Struct ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA
+	Pointer lpInformation									// Pointer*
+	Pointer lpSectionBase									// Pointer*
+	UInteger ulSectionLength
+	Integer iMissingAlignment1
+	Pointer lpSectionGlobalDataBase							// Pointer*
+	UInteger ulSectionGlobalDataLength
+	Integer iMissingAlignment2
+End_Struct
+
+Struct CABINFOA
+	Pointer pszCab											// PSTR
+	Pointer pszInf											// PSTR
+	Pointer pszSection										// PSTR
+	Char[260] szSrcPath										// CHAR
+	UInteger dwFlags
+End_Struct
+
+Struct CABINFOW
+	Pointer pszCab											// PWSTR
+	Pointer pszInf											// PWSTR
+	Pointer pszSection										// PWSTR
+	UShort[260] szSrcPath
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG
+	UInteger Size
+	Integer iMissingAlignment1
+	Pointer TriggerId										// PWSTR
+End_Struct
+
+Struct DATETIME
+	UShort year
+	UShort month
+	UShort day
+	UShort hour
+	UShort min
+	UShort sec
+End_Struct
+
+Struct DCIOFFSCREEN
+	DCISURFACEINFO dciInfo
+	LongPtr Draw
+	LongPtr SetClipList
+	LongPtr SetDestination
+End_Struct
+
+Struct DCIOVERLAY
+	DCISURFACEINFO dciInfo
+	UInteger dwChromakeyValue
+	UInteger dwChromakeyMask
+End_Struct
+
+Struct DCISURFACEINFO
+	UInteger dwSize
+	UInteger dwDCICaps
+	UInteger dwCompression
+	UInteger[3] dwMask
+	UInteger dwWidth
+	UInteger dwHeight
+	Integer lStride
+	UInteger dwBitCount
+	ULongPtr dwOffSurface
+	UShort wSelSurface
+	UShort wReserved
+	UInteger dwReserved1
+	UInteger dwReserved2
+	UInteger dwReserved3
+	LongPtr BeginAccess
+	LongPtr EndAccess
+	LongPtr DestroySurface
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/featurestagingapi/ns-featurestagingapi-feature_error
+Struct FEATURE_ERROR
+	Integer hr												// HRESULT
+	UShort lineNumber
+	Short iMissingAlignment1
+	Pointer file											// PSTR
+	Pointer process											// PSTR
+	Pointer module											// PSTR
+	UInteger callerReturnAddressOffset
+	Integer iMissingAlignment2
+	Pointer callerModule									// PSTR
+	Pointer message											// PSTR
+	UShort originLineNumber
+	UChar[6] cMissingAlignment3
+	Pointer originFile										// PSTR
+	Pointer originModule									// PSTR
+	UInteger originCallerReturnAddressOffset
+	Integer iMissingAlignment4
+	Pointer originCallerModule								// PSTR
+	Pointer originName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-hw_profile_infoa
+Struct HW_PROFILE_INFOA
+	UInteger dwDockInfo
+	Char[39] szHwProfileGuid								// CHAR
+	Char[80] szHwProfileName								// CHAR
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-hw_profile_infow
+Struct HW_PROFILE_INFOW
+	UInteger dwDockInfo
+	UShort[39] szHwProfileGuid
+	UShort[80] szHwProfileName
+	Short iMissingAlignment1
+End_Struct
+
+Struct IMEPROA
+	Pointer hWnd											// HWND
+	DATETIME InstDate
+	UInteger wVersion
+	UChar[50] szDescription
+	UChar[80] szName
+	UChar[30] szOptions
+End_Struct
+
+Struct IMEPROW
+	Pointer hWnd											// HWND
+	DATETIME InstDate
+	UInteger wVersion
+	UShort[50] szDescription
+	UShort[80] szName
+	UShort[30] szOptions
+End_Struct
+
+Struct PERUSERSECTIONA
+	Char[59] szGUID											// CHAR
+	Char[128] szDispName									// CHAR
+	Char[10] szLocale										// CHAR
+	Char[1040] szStub										// CHAR
+	Char[32] szVersion										// CHAR
+	Char[128] szCompID										// CHAR
+	UChar[3] cMissingAlignment1
+	UInteger dwIsInstalled
+	Integer bRollback										// BOOL
+End_Struct
+
+Struct PERUSERSECTIONW
+	UShort[59] szGUID
+	UShort[128] szDispName
+	UShort[10] szLocale
+	UShort[1040] szStub
+	UShort[32] szVersion
+	UShort[128] szCompID
+	Short iMissingAlignment1
+	UInteger dwIsInstalled
+	Integer bRollback										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/advpub/ns-advpub-strentrya
+Struct STRENTRYA
+	Pointer pszName											// PSTR
+	Pointer pszValue										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/advpub/ns-advpub-strentryw
+Struct STRENTRYW
+	Pointer pszName											// PWSTR
+	Pointer pszValue										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/advpub/ns-advpub-strtablea
+Struct STRTABLEA
+	UInteger cEntries
+	Integer iMissingAlignment1
+	Pointer pse												// STRENTRYA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/advpub/ns-advpub-strtablew
+Struct STRTABLEW
+	UInteger cEntries
+	Integer iMissingAlignment1
+	Pointer pse												// STRENTRYW*
+End_Struct
+
+Struct WLDP_DEVICE_SECURITY_INFORMATION
+	UInteger UnlockIdSize
+	Integer iMissingAlignment1
+	Pointer UnlockId										// UChar*
+	UInteger ManufacturerIDLength
+	Integer iMissingAlignment2
+	Pointer ManufacturerID									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wldp/ns-wldp-wldp_host_information
+Struct WLDP_HOST_INFORMATION
+	UInteger dwRevision
+	Integer dwHostId										// WLDP_HOST_ID
+	Pointer szSource										// PWSTR
+	Pointer hSource											// HANDLE
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

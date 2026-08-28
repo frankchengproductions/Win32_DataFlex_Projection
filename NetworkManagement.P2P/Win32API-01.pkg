@@ -1,0 +1,1327 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphaddrecord
+External_Function PeerGraphAddRecord "PeerGraphAddRecord" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pRecord ;	// PEER_RECORD*
+	Pointer pRecordId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphclose
+External_Function PeerGraphClose "PeerGraphClose" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphclosedirectconnection
+External_Function PeerGraphCloseDirectConnection "PeerGraphCloseDirectConnection" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	UBigint ullConnectionId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphconnect
+External_Function PeerGraphConnect "PeerGraphConnect" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzPeerId ;	// PWSTR
+	Pointer pAddress ;	// PEER_ADDRESS*
+	Pointer pullConnectionId ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphcreate
+External_Function PeerGraphCreate "PeerGraphCreate" P2PGRAPH.dll ;
+	Pointer pGraphProperties ;	// PEER_GRAPH_PROPERTIES*
+	WString pwzDatabaseName ;	// PWSTR
+	Pointer pSecurityInterface ;	// PEER_SECURITY_INTERFACE*
+	Pointer phGraph ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphdelete
+External_Function PeerGraphDelete "PeerGraphDelete" P2PGRAPH.dll ;
+	WString pwzGraphId ;	// PWSTR
+	WString pwzPeerId ;	// PWSTR
+	WString pwzDatabaseName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphdeleterecord
+External_Function PeerGraphDeleteRecord "PeerGraphDeleteRecord" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pRecordId ;	// Guid*
+	Integer fLocal ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphendenumeration
+External_Function PeerGraphEndEnumeration "PeerGraphEndEnumeration" P2PGRAPH.dll ;
+	Pointer hPeerEnum ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphenumconnections
+External_Function PeerGraphEnumConnections "PeerGraphEnumConnections" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphenumnodes
+External_Function PeerGraphEnumNodes "PeerGraphEnumNodes" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzPeerId ;	// PWSTR
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphenumrecords
+External_Function PeerGraphEnumRecords "PeerGraphEnumRecords" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pRecordType ;	// Guid*
+	WString pwzPeerId ;	// PWSTR
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphexportdatabase
+External_Function PeerGraphExportDatabase "PeerGraphExportDatabase" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphfreedata
+External_Function PeerGraphFreeData "PeerGraphFreeData" P2PGRAPH.dll ;
+	Pointer pvData ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgeteventdata
+External_Function PeerGraphGetEventData "PeerGraphGetEventData" P2PGRAPH.dll ;
+	Pointer hPeerEvent ;	// Pointer*
+	Pointer ppEventData ;	// PEER_GRAPH_EVENT_DATA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgetitemcount
+External_Function PeerGraphGetItemCount "PeerGraphGetItemCount" P2PGRAPH.dll ;
+	Pointer hPeerEnum ;	// Pointer*
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgetnextitem
+External_Function PeerGraphGetNextItem "PeerGraphGetNextItem" P2PGRAPH.dll ;
+	Pointer hPeerEnum ;	// Pointer*
+	Pointer pCount ;	// UInteger*
+	Pointer pppvItems ;	// Pointer***
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgetnodeinfo
+External_Function PeerGraphGetNodeInfo "PeerGraphGetNodeInfo" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	UBigint ullNodeId ;
+	Pointer ppNodeInfo ;	// PEER_NODE_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgetproperties
+External_Function PeerGraphGetProperties "PeerGraphGetProperties" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer ppGraphProperties ;	// PEER_GRAPH_PROPERTIES**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgetrecord
+External_Function PeerGraphGetRecord "PeerGraphGetRecord" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pRecordId ;	// Guid*
+	Pointer ppRecord ;	// PEER_RECORD**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphgetstatus
+External_Function PeerGraphGetStatus "PeerGraphGetStatus" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pdwStatus ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphimportdatabase
+External_Function PeerGraphImportDatabase "PeerGraphImportDatabase" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphlisten
+External_Function PeerGraphListen "PeerGraphListen" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	UInteger dwScope ;
+	UInteger dwScopeId ;
+	UShort wPort ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphopen
+External_Function PeerGraphOpen "PeerGraphOpen" P2PGRAPH.dll ;
+	WString pwzGraphId ;	// PWSTR
+	WString pwzPeerId ;	// PWSTR
+	WString pwzDatabaseName ;	// PWSTR
+	Pointer pSecurityInterface ;	// PEER_SECURITY_INTERFACE*
+	UInteger cRecordTypeSyncPrecedence ;
+	Pointer pRecordTypeSyncPrecedence ;	// Guid*
+	Pointer phGraph ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphopendirectconnection
+External_Function PeerGraphOpenDirectConnection "PeerGraphOpenDirectConnection" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzPeerId ;	// PWSTR
+	Pointer pAddress ;	// PEER_ADDRESS*
+	Pointer pullConnectionId ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphpeertimetouniversaltime
+External_Function PeerGraphPeerTimeToUniversalTime "PeerGraphPeerTimeToUniversalTime" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pftPeerTime ;	// FILETIME*
+	Pointer pftUniversalTime ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphregisterevent
+External_Function PeerGraphRegisterEvent "PeerGraphRegisterEvent" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer hEvent ;	// HANDLE
+	UInteger cEventRegistrations ;
+	Pointer pEventRegistrations ;	// PEER_GRAPH_EVENT_REGISTRATION*
+	Pointer phPeerEvent ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphsearchrecords
+External_Function PeerGraphSearchRecords "PeerGraphSearchRecords" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzCriteria ;	// PWSTR
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphsenddata
+External_Function PeerGraphSendData "PeerGraphSendData" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	UBigint ullConnectionId ;
+	Pointer pType ;	// Guid*
+	UInteger cbData ;
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphsetnodeattributes
+External_Function PeerGraphSetNodeAttributes "PeerGraphSetNodeAttributes" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	WString pwzAttributes ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphsetpresence
+External_Function PeerGraphSetPresence "PeerGraphSetPresence" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Integer fPresent ;	// BOOL
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphsetproperties
+External_Function PeerGraphSetProperties "PeerGraphSetProperties" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pGraphProperties ;	// PEER_GRAPH_PROPERTIES*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphshutdown
+External_Function PeerGraphShutdown "PeerGraphShutdown" P2PGRAPH.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphstartup
+External_Function PeerGraphStartup "PeerGraphStartup" P2PGRAPH.dll ;
+	UShort wVersionRequested ;
+	Pointer pVersionData ;	// PEER_VERSION_DATA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphuniversaltimetopeertime
+External_Function PeerGraphUniversalTimeToPeerTime "PeerGraphUniversalTimeToPeerTime" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pftUniversalTime ;	// FILETIME*
+	Pointer pftPeerTime ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphunregisterevent
+External_Function PeerGraphUnregisterEvent "PeerGraphUnregisterEvent" P2PGRAPH.dll ;
+	Pointer hPeerEvent ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphupdaterecord
+External_Function PeerGraphUpdateRecord "PeerGraphUpdateRecord" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	Pointer pRecord ;	// PEER_RECORD*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergraphvalidatedeferredrecords
+External_Function PeerGraphValidateDeferredRecords "PeerGraphValidateDeferredRecords" P2PGRAPH.dll ;
+	Pointer hGraph ;	// Pointer*
+	UInteger cRecordIds ;
+	Pointer pRecordIds ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabaddcontact
+External_Function PeerCollabAddContact "PeerCollabAddContact" P2P.dll ;
+	WString pwzContactData ;	// PWSTR
+	Pointer ppContact ;	// PEER_CONTACT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabasyncinvitecontact
+External_Function PeerCollabAsyncInviteContact "PeerCollabAsyncInviteContact" P2P.dll ;
+	Pointer pcContact ;	// PEER_CONTACT*
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer pcInvitation ;	// PEER_INVITATION*
+	Pointer hEvent ;	// HANDLE
+	Pointer phInvitation ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabasyncinviteendpoint
+External_Function PeerCollabAsyncInviteEndpoint "PeerCollabAsyncInviteEndpoint" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer pcInvitation ;	// PEER_INVITATION*
+	Pointer hEvent ;	// HANDLE
+	Pointer phInvitation ;	// HANDLE*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabcancelinvitation
+External_Function PeerCollabCancelInvitation "PeerCollabCancelInvitation" P2P.dll ;
+	Pointer hInvitation ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabclosehandle
+External_Function PeerCollabCloseHandle "PeerCollabCloseHandle" P2P.dll ;
+	Pointer hInvitation ;	// HANDLE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabdeletecontact
+External_Function PeerCollabDeleteContact "PeerCollabDeleteContact" P2P.dll ;
+	WString pwzPeerName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabdeleteendpointdata
+External_Function PeerCollabDeleteEndpointData "PeerCollabDeleteEndpointData" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabdeleteobject
+External_Function PeerCollabDeleteObject "PeerCollabDeleteObject" P2P.dll ;
+	Pointer pObjectId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabenumapplicationregistrationinfo
+External_Function PeerCollabEnumApplicationRegistrationInfo "PeerCollabEnumApplicationRegistrationInfo" P2P.dll ;
+	Integer registrationType ;	// PEER_APPLICATION_REGISTRATION_TYPE
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabenumapplications
+External_Function PeerCollabEnumApplications "PeerCollabEnumApplications" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer pApplicationId ;	// Guid*
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabenumcontacts
+External_Function PeerCollabEnumContacts "PeerCollabEnumContacts" P2P.dll ;
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabenumendpoints
+External_Function PeerCollabEnumEndpoints "PeerCollabEnumEndpoints" P2P.dll ;
+	Pointer pcContact ;	// PEER_CONTACT*
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabenumobjects
+External_Function PeerCollabEnumObjects "PeerCollabEnumObjects" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer pObjectId ;	// Guid*
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabenumpeoplenearme
+External_Function PeerCollabEnumPeopleNearMe "PeerCollabEnumPeopleNearMe" P2P.dll ;
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabexportcontact
+External_Function PeerCollabExportContact "PeerCollabExportContact" P2P.dll ;
+	WString pwzPeerName ;	// PWSTR
+	Pointer ppwzContactData ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetapplaunchinfo
+External_Function PeerCollabGetAppLaunchInfo "PeerCollabGetAppLaunchInfo" P2P.dll ;
+	Pointer ppLaunchInfo ;	// PEER_APP_LAUNCH_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetapplicationregistrationinfo
+External_Function PeerCollabGetApplicationRegistrationInfo "PeerCollabGetApplicationRegistrationInfo" P2P.dll ;
+	Pointer pApplicationId ;	// Guid*
+	Integer registrationType ;	// PEER_APPLICATION_REGISTRATION_TYPE
+	Pointer ppApplication ;	// PEER_APPLICATION_REGISTRATION_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetcontact
+External_Function PeerCollabGetContact "PeerCollabGetContact" P2P.dll ;
+	WString pwzPeerName ;	// PWSTR
+	Pointer ppContact ;	// PEER_CONTACT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetendpointname
+External_Function PeerCollabGetEndpointName "PeerCollabGetEndpointName" P2P.dll ;
+	Pointer ppwzEndpointName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgeteventdata
+External_Function PeerCollabGetEventData "PeerCollabGetEventData" P2P.dll ;
+	Pointer hPeerEvent ;	// Pointer*
+	Pointer ppEventData ;	// PEER_COLLAB_EVENT_DATA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetinvitationresponse
+External_Function PeerCollabGetInvitationResponse "PeerCollabGetInvitationResponse" P2P.dll ;
+	Pointer hInvitation ;	// HANDLE
+	Pointer ppInvitationResponse ;	// PEER_INVITATION_RESPONSE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetpresenceinfo
+External_Function PeerCollabGetPresenceInfo "PeerCollabGetPresenceInfo" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer ppPresenceInfo ;	// PEER_PRESENCE_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabgetsigninoptions
+External_Function PeerCollabGetSigninOptions "PeerCollabGetSigninOptions" P2P.dll ;
+	Pointer pdwSigninOptions ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabinvitecontact
+External_Function PeerCollabInviteContact "PeerCollabInviteContact" P2P.dll ;
+	Pointer pcContact ;	// PEER_CONTACT*
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer pcInvitation ;	// PEER_INVITATION*
+	Pointer ppResponse ;	// PEER_INVITATION_RESPONSE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabinviteendpoint
+External_Function PeerCollabInviteEndpoint "PeerCollabInviteEndpoint" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer pcInvitation ;	// PEER_INVITATION*
+	Pointer ppResponse ;	// PEER_INVITATION_RESPONSE**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabparsecontact
+External_Function PeerCollabParseContact "PeerCollabParseContact" P2P.dll ;
+	WString pwzContactData ;	// PWSTR
+	Pointer ppContact ;	// PEER_CONTACT**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabquerycontactdata
+External_Function PeerCollabQueryContactData "PeerCollabQueryContactData" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Pointer ppwzContactData ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabrefreshendpointdata
+External_Function PeerCollabRefreshEndpointData "PeerCollabRefreshEndpointData" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabregisterapplication
+External_Function PeerCollabRegisterApplication "PeerCollabRegisterApplication" P2P.dll ;
+	Pointer pcApplication ;	// PEER_APPLICATION_REGISTRATION_INFO*
+	Integer registrationType ;	// PEER_APPLICATION_REGISTRATION_TYPE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabregisterevent
+External_Function PeerCollabRegisterEvent "PeerCollabRegisterEvent" P2P.dll ;
+	Pointer hEvent ;	// HANDLE
+	UInteger cEventRegistration ;
+	Pointer pEventRegistrations ;	// PEER_COLLAB_EVENT_REGISTRATION*
+	Pointer phPeerEvent ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabsetendpointname
+External_Function PeerCollabSetEndpointName "PeerCollabSetEndpointName" P2P.dll ;
+	WString pwzEndpointName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabsetobject
+External_Function PeerCollabSetObject "PeerCollabSetObject" P2P.dll ;
+	Pointer pcObject ;	// PEER_OBJECT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabsetpresenceinfo
+External_Function PeerCollabSetPresenceInfo "PeerCollabSetPresenceInfo" P2P.dll ;
+	Pointer pcPresenceInfo ;	// PEER_PRESENCE_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabshutdown
+External_Function PeerCollabShutdown "PeerCollabShutdown" P2P.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabsignin
+External_Function PeerCollabSignin "PeerCollabSignin" P2P.dll ;
+	Pointer hwndParent ;	// HWND
+	UInteger dwSigninOptions ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabsignout
+External_Function PeerCollabSignout "PeerCollabSignout" P2P.dll ;
+	UInteger dwSigninOptions ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabstartup
+External_Function PeerCollabStartup "PeerCollabStartup" P2P.dll ;
+	UShort wVersionRequested ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabsubscribeendpointdata
+External_Function PeerCollabSubscribeEndpointData "PeerCollabSubscribeEndpointData" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabunregisterapplication
+External_Function PeerCollabUnregisterApplication "PeerCollabUnregisterApplication" P2P.dll ;
+	Pointer pApplicationId ;	// Guid*
+	Integer registrationType ;	// PEER_APPLICATION_REGISTRATION_TYPE
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabunregisterevent
+External_Function PeerCollabUnregisterEvent "PeerCollabUnregisterEvent" P2P.dll ;
+	Pointer hPeerEvent ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabunsubscribeendpointdata
+External_Function PeerCollabUnsubscribeEndpointData "PeerCollabUnsubscribeEndpointData" P2P.dll ;
+	Pointer pcEndpoint ;	// PEER_ENDPOINT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercollabupdatecontact
+External_Function PeerCollabUpdateContact "PeerCollabUpdateContact" P2P.dll ;
+	Pointer pContact ;	// PEER_CONTACT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peercreatepeername
+External_Function PeerCreatePeerName "PeerCreatePeerName" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzClassifier ;	// PWSTR
+	Pointer ppwzPeerName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerendenumeration
+External_Function PeerEndEnumeration "PeerEndEnumeration" P2P.dll ;
+	Pointer hPeerEnum ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerenumgroups
+External_Function PeerEnumGroups "PeerEnumGroups" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerenumidentities
+External_Function PeerEnumIdentities "PeerEnumIdentities" P2P.dll ;
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerfreedata
+External_Function PeerFreeData "PeerFreeData" P2P.dll ;
+	Pointer pvData ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergetitemcount
+External_Function PeerGetItemCount "PeerGetItemCount" P2P.dll ;
+	Pointer hPeerEnum ;	// Pointer*
+	Pointer pCount ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergetnextitem
+External_Function PeerGetNextItem "PeerGetNextItem" P2P.dll ;
+	Pointer hPeerEnum ;	// Pointer*
+	Pointer pCount ;	// UInteger*
+	Pointer pppvItems ;	// Pointer***
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupaddrecord
+External_Function PeerGroupAddRecord "PeerGroupAddRecord" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pRecord ;	// PEER_RECORD*
+	Pointer pRecordId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupclose
+External_Function PeerGroupClose "PeerGroupClose" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupclosedirectconnection
+External_Function PeerGroupCloseDirectConnection "PeerGroupCloseDirectConnection" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	UBigint ullConnectionId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupconnect
+External_Function PeerGroupConnect "PeerGroupConnect" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupconnectbyaddress
+External_Function PeerGroupConnectByAddress "PeerGroupConnectByAddress" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	UInteger cAddresses ;
+	Pointer pAddresses ;	// PEER_ADDRESS*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupcreate
+External_Function PeerGroupCreate "PeerGroupCreate" P2P.dll ;
+	Pointer pProperties ;	// PEER_GROUP_PROPERTIES*
+	Pointer phGroup ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupcreateinvitation
+External_Function PeerGroupCreateInvitation "PeerGroupCreateInvitation" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzIdentityInfo ;	// PWSTR
+	Pointer pftExpiration ;	// FILETIME*
+	UInteger cRoles ;
+	Pointer pRoles ;	// Guid*
+	Pointer ppwzInvitation ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupcreatepasswordinvitation
+External_Function PeerGroupCreatePasswordInvitation "PeerGroupCreatePasswordInvitation" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer ppwzInvitation ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupdelete
+External_Function PeerGroupDelete "PeerGroupDelete" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzGroupPeerName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupdeleterecord
+External_Function PeerGroupDeleteRecord "PeerGroupDeleteRecord" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pRecordId ;	// Guid*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupenumconnections
+External_Function PeerGroupEnumConnections "PeerGroupEnumConnections" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	UInteger dwFlags ;
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupenummembers
+External_Function PeerGroupEnumMembers "PeerGroupEnumMembers" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	UInteger dwFlags ;
+	WString pwzIdentity ;	// PWSTR
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupenumrecords
+External_Function PeerGroupEnumRecords "PeerGroupEnumRecords" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pRecordType ;	// Guid*
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupexportconfig
+External_Function PeerGroupExportConfig "PeerGroupExportConfig" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzPassword ;	// PWSTR
+	Pointer ppwzXML ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupexportdatabase
+External_Function PeerGroupExportDatabase "PeerGroupExportDatabase" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupgeteventdata
+External_Function PeerGroupGetEventData "PeerGroupGetEventData" P2P.dll ;
+	Pointer hPeerEvent ;	// Pointer*
+	Pointer ppEventData ;	// PEER_GROUP_EVENT_DATA**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupgetproperties
+External_Function PeerGroupGetProperties "PeerGroupGetProperties" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer ppProperties ;	// PEER_GROUP_PROPERTIES**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupgetrecord
+External_Function PeerGroupGetRecord "PeerGroupGetRecord" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pRecordId ;	// Guid*
+	Pointer ppRecord ;	// PEER_RECORD**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupgetstatus
+External_Function PeerGroupGetStatus "PeerGroupGetStatus" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pdwStatus ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupimportconfig
+External_Function PeerGroupImportConfig "PeerGroupImportConfig" P2P.dll ;
+	WString pwzXML ;	// PWSTR
+	WString pwzPassword ;	// PWSTR
+	Integer fOverwrite ;	// BOOL
+	Pointer ppwzIdentity ;	// PWSTR*
+	Pointer ppwzGroup ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupimportdatabase
+External_Function PeerGroupImportDatabase "PeerGroupImportDatabase" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzFilePath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupissuecredentials
+External_Function PeerGroupIssueCredentials "PeerGroupIssueCredentials" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzSubjectIdentity ;	// PWSTR
+	Pointer pCredentialInfo ;	// PEER_CREDENTIAL_INFO*
+	UInteger dwFlags ;
+	Pointer ppwzInvitation ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupjoin
+External_Function PeerGroupJoin "PeerGroupJoin" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzInvitation ;	// PWSTR
+	WString pwzCloud ;	// PWSTR
+	Pointer phGroup ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupopen
+External_Function PeerGroupOpen "PeerGroupOpen" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzGroupPeerName ;	// PWSTR
+	WString pwzCloud ;	// PWSTR
+	Pointer phGroup ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupopendirectconnection
+External_Function PeerGroupOpenDirectConnection "PeerGroupOpenDirectConnection" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzIdentity ;	// PWSTR
+	Pointer pAddress ;	// PEER_ADDRESS*
+	Pointer pullConnectionId ;	// UBigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupparseinvitation
+External_Function PeerGroupParseInvitation "PeerGroupParseInvitation" P2P.dll ;
+	WString pwzInvitation ;	// PWSTR
+	Pointer ppInvitationInfo ;	// PEER_INVITATION_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergrouppasswordjoin
+External_Function PeerGroupPasswordJoin "PeerGroupPasswordJoin" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzInvitation ;	// PWSTR
+	WString pwzPassword ;	// PWSTR
+	WString pwzCloud ;	// PWSTR
+	Pointer phGroup ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergrouppeertimetouniversaltime
+External_Function PeerGroupPeerTimeToUniversalTime "PeerGroupPeerTimeToUniversalTime" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pftPeerTime ;	// FILETIME*
+	Pointer pftUniversalTime ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupregisterevent
+External_Function PeerGroupRegisterEvent "PeerGroupRegisterEvent" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer hEvent ;	// HANDLE
+	UInteger cEventRegistration ;
+	Pointer pEventRegistrations ;	// PEER_GROUP_EVENT_REGISTRATION*
+	Pointer phPeerEvent ;	// Pointer**
+	Returns Integer	// HRESULT
+
+External_Function PeerGroupResumePasswordAuthentication "PeerGroupResumePasswordAuthentication" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer hPeerEventHandle ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupsearchrecords
+External_Function PeerGroupSearchRecords "PeerGroupSearchRecords" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	WString pwzCriteria ;	// PWSTR
+	Pointer phPeerEnum ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupsenddata
+External_Function PeerGroupSendData "PeerGroupSendData" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	UBigint ullConnectionId ;
+	Pointer pType ;	// Guid*
+	UInteger cbData ;
+	Pointer pvData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupsetproperties
+External_Function PeerGroupSetProperties "PeerGroupSetProperties" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pProperties ;	// PEER_GROUP_PROPERTIES*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupshutdown
+External_Function PeerGroupShutdown "PeerGroupShutdown" P2P.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupstartup
+External_Function PeerGroupStartup "PeerGroupStartup" P2P.dll ;
+	UShort wVersionRequested ;
+	Pointer pVersionData ;	// PEER_VERSION_DATA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupuniversaltimetopeertime
+External_Function PeerGroupUniversalTimeToPeerTime "PeerGroupUniversalTimeToPeerTime" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pftUniversalTime ;	// FILETIME*
+	Pointer pftPeerTime ;	// FILETIME*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupunregisterevent
+External_Function PeerGroupUnregisterEvent "PeerGroupUnregisterEvent" P2P.dll ;
+	Pointer hPeerEvent ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peergroupupdaterecord
+External_Function PeerGroupUpdateRecord "PeerGroupUpdateRecord" P2P.dll ;
+	Pointer hGroup ;	// Pointer*
+	Pointer pRecord ;	// PEER_RECORD*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerhostnametopeername
+External_Function PeerHostNameToPeerName "PeerHostNameToPeerName" P2P.dll ;
+	WString pwzHostName ;	// PWSTR
+	Pointer ppwzPeerName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitycreate
+External_Function PeerIdentityCreate "PeerIdentityCreate" P2P.dll ;
+	WString pwzClassifier ;	// PWSTR
+	WString pwzFriendlyName ;	// PWSTR
+	ULongPtr hCryptProv ;
+	Pointer ppwzIdentity ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitydelete
+External_Function PeerIdentityDelete "PeerIdentityDelete" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentityexport
+External_Function PeerIdentityExport "PeerIdentityExport" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzPassword ;	// PWSTR
+	Pointer ppwzExportXML ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitygetcryptkey
+External_Function PeerIdentityGetCryptKey "PeerIdentityGetCryptKey" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	Pointer phCryptProv ;	// ULongPtr*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitygetdefault
+External_Function PeerIdentityGetDefault "PeerIdentityGetDefault" P2P.dll ;
+	Pointer ppwzPeerName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitygetfriendlyname
+External_Function PeerIdentityGetFriendlyName "PeerIdentityGetFriendlyName" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	Pointer ppwzFriendlyName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitygetxml
+External_Function PeerIdentityGetXML "PeerIdentityGetXML" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	Pointer ppwzIdentityXML ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentityimport
+External_Function PeerIdentityImport "PeerIdentityImport" P2P.dll ;
+	WString pwzImportXML ;	// PWSTR
+	WString pwzPassword ;	// PWSTR
+	Pointer ppwzIdentity ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peeridentitysetfriendlyname
+External_Function PeerIdentitySetFriendlyName "PeerIdentitySetFriendlyName" P2P.dll ;
+	WString pwzIdentity ;	// PWSTR
+	WString pwzFriendlyName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peernametopeerhostname
+External_Function PeerNameToPeerHostName "PeerNameToPeerHostName" P2P.dll ;
+	WString pwzPeerName ;	// PWSTR
+	Pointer ppwzHostName ;	// PWSTR*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpendresolve
+External_Function PeerPnrpEndResolve "PeerPnrpEndResolve" P2P.dll ;
+	Pointer hResolve ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpgetcloudinfo
+External_Function PeerPnrpGetCloudInfo "PeerPnrpGetCloudInfo" P2P.dll ;
+	Pointer pcNumClouds ;	// UInteger*
+	Pointer ppCloudInfo ;	// PEER_PNRP_CLOUD_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpgetendpoint
+External_Function PeerPnrpGetEndpoint "PeerPnrpGetEndpoint" P2P.dll ;
+	Pointer hResolve ;	// Pointer*
+	Pointer ppEndpoint ;	// PEER_PNRP_ENDPOINT_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpregister
+External_Function PeerPnrpRegister "PeerPnrpRegister" P2P.dll ;
+	WString pcwzPeerName ;	// PWSTR
+	Pointer pRegistrationInfo ;	// PEER_PNRP_REGISTRATION_INFO*
+	Pointer phRegistration ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpresolve
+External_Function PeerPnrpResolve "PeerPnrpResolve" P2P.dll ;
+	WString pcwzPeerName ;	// PWSTR
+	WString pcwzCloudName ;	// PWSTR
+	Pointer pcEndpoints ;	// UInteger*
+	Pointer ppEndpoints ;	// PEER_PNRP_ENDPOINT_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpshutdown
+External_Function PeerPnrpShutdown "PeerPnrpShutdown" P2P.dll ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpstartresolve
+External_Function PeerPnrpStartResolve "PeerPnrpStartResolve" P2P.dll ;
+	WString pcwzPeerName ;	// PWSTR
+	WString pcwzCloudName ;	// PWSTR
+	UInteger cMaxEndpoints ;
+	Pointer hEvent ;	// HANDLE
+	Pointer phResolve ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpstartup
+External_Function PeerPnrpStartup "PeerPnrpStartup" P2P.dll ;
+	UShort wVersionRequested ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpunregister
+External_Function PeerPnrpUnregister "PeerPnrpUnregister" P2P.dll ;
+	Pointer hRegistration ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/p2p/nf-p2p-peerpnrpupdateregistration
+External_Function PeerPnrpUpdateRegistration "PeerPnrpUpdateRegistration" P2P.dll ;
+	Pointer hRegistration ;	// Pointer*
+	Pointer pRegistrationInfo ;	// PEER_PNRP_REGISTRATION_INFO*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcreatederivedkey
+External_Function DrtCreateDerivedKey "DrtCreateDerivedKey" drtprov.dll ;
+	Pointer pLocalCert ;	// CERT_CONTEXT*
+	Pointer pKey ;	// DRT_DATA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcreatederivedkeysecurityprovider
+External_Function DrtCreateDerivedKeySecurityProvider "DrtCreateDerivedKeySecurityProvider" drtprov.dll ;
+	Pointer pRootCert ;	// CERT_CONTEXT*
+	Pointer pLocalCert ;	// CERT_CONTEXT*
+	Pointer ppSecurityProvider ;	// DRT_SECURITY_PROVIDER**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcreatednsbootstrapresolver
+External_Function DrtCreateDnsBootstrapResolver "DrtCreateDnsBootstrapResolver" drtprov.dll ;
+	UShort port ;
+	WString pwszAddress ;	// PWSTR
+	Pointer ppModule ;	// DRT_BOOTSTRAP_PROVIDER**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcreatenullsecurityprovider
+External_Function DrtCreateNullSecurityProvider "DrtCreateNullSecurityProvider" drtprov.dll ;
+	Pointer ppSecurityProvider ;	// DRT_SECURITY_PROVIDER**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcreatepnrpbootstrapresolver
+External_Function DrtCreatePnrpBootstrapResolver "DrtCreatePnrpBootstrapResolver" drtprov.dll ;
+	Integer fPublish ;	// BOOL
+	WString pwzPeerName ;	// PWSTR
+	WString pwzCloudName ;	// PWSTR
+	WString pwzPublishingIdentity ;	// PWSTR
+	Pointer ppResolver ;	// DRT_BOOTSTRAP_PROVIDER**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtdeletederivedkeysecurityprovider
+External_Function DrtDeleteDerivedKeySecurityProvider "DrtDeleteDerivedKeySecurityProvider" drtprov.dll ;
+	Pointer pSecurityProvider ;	// DRT_SECURITY_PROVIDER*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtdeletednsbootstrapresolver
+External_Function DrtDeleteDnsBootstrapResolver "DrtDeleteDnsBootstrapResolver" drtprov.dll ;
+	Pointer pResolver ;	// DRT_BOOTSTRAP_PROVIDER*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtdeletenullsecurityprovider
+External_Function DrtDeleteNullSecurityProvider "DrtDeleteNullSecurityProvider" drtprov.dll ;
+	Pointer pSecurityProvider ;	// DRT_SECURITY_PROVIDER*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtdeletepnrpbootstrapresolver
+External_Function DrtDeletePnrpBootstrapResolver "DrtDeletePnrpBootstrapResolver" drtprov.dll ;
+	Pointer pResolver ;	// DRT_BOOTSTRAP_PROVIDER*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcreateipv6udptransport
+External_Function DrtCreateIpv6UdpTransport "DrtCreateIpv6UdpTransport" drttransport.dll ;
+	Integer scope ;	// DRT_SCOPE
+	UInteger dwScopeId ;
+	UInteger dwLocalityThreshold ;
+	Pointer pwPort ;	// UShort*
+	Pointer phTransport ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtdeleteipv6udptransport
+External_Function DrtDeleteIpv6UdpTransport "DrtDeleteIpv6UdpTransport" drttransport.dll ;
+	Pointer hTransport ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtclose
+External_Function DrtClose "DrtClose" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtcontinuesearch
+External_Function DrtContinueSearch "DrtContinueSearch" drt.dll ;
+	Pointer hSearchContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtendsearch
+External_Function DrtEndSearch "DrtEndSearch" drt.dll ;
+	Pointer hSearchContext ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgeteventdata
+External_Function DrtGetEventData "DrtGetEventData" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	UInteger ulEventDataLen ;
+	Pointer pEventData ;	// DRT_EVENT_DATA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgeteventdatasize
+External_Function DrtGetEventDataSize "DrtGetEventDataSize" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	Pointer pulEventDataLen ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgetinstancename
+External_Function DrtGetInstanceName "DrtGetInstanceName" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	UInteger ulcbInstanceNameSize ;
+	Pointer pwzDrtInstanceName ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgetinstancenamesize
+External_Function DrtGetInstanceNameSize "DrtGetInstanceNameSize" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	Pointer pulcbInstanceNameSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgetsearchpath
+External_Function DrtGetSearchPath "DrtGetSearchPath" drt.dll ;
+	Pointer hSearchContext ;	// Pointer*
+	UInteger ulSearchPathSize ;
+	Pointer pSearchPath ;	// DRT_ADDRESS_LIST*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgetsearchpathsize
+External_Function DrtGetSearchPathSize "DrtGetSearchPathSize" drt.dll ;
+	Pointer hSearchContext ;	// Pointer*
+	Pointer pulSearchPathSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgetsearchresult
+External_Function DrtGetSearchResult "DrtGetSearchResult" drt.dll ;
+	Pointer hSearchContext ;	// Pointer*
+	UInteger ulSearchResultSize ;
+	Pointer pSearchResult ;	// DRT_SEARCH_RESULT*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtgetsearchresultsize
+External_Function DrtGetSearchResultSize "DrtGetSearchResultSize" drt.dll ;
+	Pointer hSearchContext ;	// Pointer*
+	Pointer pulSearchResultSize ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtopen
+External_Function DrtOpen "DrtOpen" drt.dll ;
+	Pointer pSettings ;	// DRT_SETTINGS*
+	Pointer hEvent ;	// HANDLE
+	Pointer pvContext ;	// Pointer*
+	Pointer phDrt ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtregisterkey
+External_Function DrtRegisterKey "DrtRegisterKey" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	Pointer pRegistration ;	// DRT_REGISTRATION*
+	Pointer pvKeyContext ;	// Pointer*
+	Pointer phKeyRegistration ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtstartsearch
+External_Function DrtStartSearch "DrtStartSearch" drt.dll ;
+	Pointer hDrt ;	// Pointer*
+	Pointer pKey ;	// DRT_DATA*
+	Pointer pInfo ;	// DRT_SEARCH_INFO*
+	UInteger timeout ;
+	Pointer hEvent ;	// HANDLE
+	Pointer pvContext ;	// Pointer*
+	Pointer hSearchContext ;	// Pointer**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtunregisterkey
+External_Function DrtUnregisterKey "DrtUnregisterKey" drt.dll ;
+	Pointer hKeyRegistration ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/drt/nf-drt-drtupdatekey
+External_Function DrtUpdateKey "DrtUpdateKey" drt.dll ;
+	Pointer hKeyRegistration ;	// Pointer*
+	Pointer pAppData ;	// DRT_DATA*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientaddcontentinformation
+External_Function PeerDistClientAddContentInformation "PeerDistClientAddContentInformation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	UInteger cbNumberOfBytes ;
+	Pointer pBuffer ;	// UChar*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientadddata
+External_Function PeerDistClientAddData "PeerDistClientAddData" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	UInteger cbNumberOfBytes ;
+	Pointer pBuffer ;	// UChar*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientblockread
+External_Function PeerDistClientBlockRead "PeerDistClientBlockRead" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	UInteger cbMaxNumberOfBytes ;
+	Pointer pBuffer ;	// UChar*
+	UInteger dwTimeoutInMilliseconds ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientcancelasyncoperation
+External_Function PeerDistClientCancelAsyncOperation "PeerDistClientCancelAsyncOperation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientclosecontent
+External_Function PeerDistClientCloseContent "PeerDistClientCloseContent" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientcompletecontentinformation
+External_Function PeerDistClientCompleteContentInformation "PeerDistClientCompleteContentInformation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientflushcontent
+External_Function PeerDistClientFlushContent "PeerDistClientFlushContent" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Pointer pContentTag ;	// PEERDIST_CONTENT_TAG*
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientgetinformationbyhandle
+External_Function PeerDistClientGetInformationByHandle "PeerDistClientGetInformationByHandle" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	Integer PeerDistClientInfoClass ;	// PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS
+	UInteger dwBufferSize ;
+	Pointer lpInformation ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientopencontent
+External_Function PeerDistClientOpenContent "PeerDistClientOpenContent" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Pointer pContentTag ;	// PEERDIST_CONTENT_TAG*
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer phContentHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistclientstreamread
+External_Function PeerDistClientStreamRead "PeerDistClientStreamRead" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentHandle ;
+	UInteger cbMaxNumberOfBytes ;
+	Pointer pBuffer ;	// UChar*
+	UInteger dwTimeoutInMilliseconds ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistgetoverlappedresult
+External_Function PeerDistGetOverlappedResult "PeerDistGetOverlappedResult" PeerDist.dll ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpNumberOfBytesTransferred ;	// UInteger*
+	Integer bWait ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistgetstatus
+External_Function PeerDistGetStatus "PeerDistGetStatus" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Pointer pPeerDistStatus ;	// PEERDIST_STATUS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistgetstatusex
+External_Function PeerDistGetStatusEx "PeerDistGetStatusEx" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Pointer pPeerDistStatus ;	// PEERDIST_STATUS_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistregisterforstatuschangenotification
+External_Function PeerDistRegisterForStatusChangeNotification "PeerDistRegisterForStatusChangeNotification" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer pPeerDistStatus ;	// PEERDIST_STATUS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistregisterforstatuschangenotificationex
+External_Function PeerDistRegisterForStatusChangeNotificationEx "PeerDistRegisterForStatusChangeNotificationEx" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer pPeerDistStatus ;	// PEERDIST_STATUS_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistservercancelasyncoperation
+External_Function PeerDistServerCancelAsyncOperation "PeerDistServerCancelAsyncOperation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	UInteger cbContentIdentifier ;
+	Pointer pContentIdentifier ;	// UChar*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverclosecontentinformation
+External_Function PeerDistServerCloseContentInformation "PeerDistServerCloseContentInformation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentInfo ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverclosestreamhandle
+External_Function PeerDistServerCloseStreamHandle "PeerDistServerCloseStreamHandle" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hStream ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserveropencontentinformation
+External_Function PeerDistServerOpenContentInformation "PeerDistServerOpenContentInformation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	UInteger cbContentIdentifier ;
+	Pointer pContentIdentifier ;	// UChar*
+	UBigint ullContentOffset ;
+	UBigint cbContentLength ;
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer phContentInfo ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserveropencontentinformationex
+External_Function PeerDistServerOpenContentInformationEx "PeerDistServerOpenContentInformationEx" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	UInteger cbContentIdentifier ;
+	Pointer pContentIdentifier ;	// UChar*
+	UBigint ullContentOffset ;
+	UBigint cbContentLength ;
+	Pointer pRetrievalOptions ;	// PEERDIST_RETRIEVAL_OPTIONS*
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer phContentInfo ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverpublishaddtostream
+External_Function PeerDistServerPublishAddToStream "PeerDistServerPublishAddToStream" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hStream ;
+	UInteger cbNumberOfBytes ;
+	Pointer pBuffer ;	// UChar*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverpublishcompletestream
+External_Function PeerDistServerPublishCompleteStream "PeerDistServerPublishCompleteStream" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hStream ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverpublishstream
+External_Function PeerDistServerPublishStream "PeerDistServerPublishStream" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	UInteger cbContentIdentifier ;
+	Pointer pContentIdentifier ;	// UChar*
+	UBigint cbContentLength ;
+	Pointer pPublishOptions ;	// PEERDIST_PUBLICATION_OPTIONS*
+	Pointer hCompletionPort ;	// HANDLE
+	ULongPtr ulCompletionKey ;
+	Pointer phStream ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverretrievecontentinformation
+External_Function PeerDistServerRetrieveContentInformation "PeerDistServerRetrieveContentInformation" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	LongPtr hContentInfo ;
+	UInteger cbMaxNumberOfBytes ;
+	Pointer pBuffer ;	// UChar*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistserverunpublish
+External_Function PeerDistServerUnpublish "PeerDistServerUnpublish" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	UInteger cbContentIdentifier ;
+	Pointer pContentIdentifier ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistshutdown
+External_Function PeerDistShutdown "PeerDistShutdown" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdiststartup
+External_Function PeerDistStartup "PeerDistStartup" PeerDist.dll ;
+	UInteger dwVersionRequested ;
+	Pointer phPeerDist ;	// LongPtr*
+	Pointer pdwSupportedVersion ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/peerdist/nf-peerdist-peerdistunregisterforstatuschangenotification
+External_Function PeerDistUnregisterForStatusChangeNotification "PeerDistUnregisterForStatusChangeNotification" PeerDist.dll ;
+	LongPtr hPeerDist ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

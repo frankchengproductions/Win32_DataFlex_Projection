@@ -1,0 +1,74 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psscapturesnapshot
+External_Function PssCaptureSnapshot "PssCaptureSnapshot" KERNEL32.dll ;
+	Pointer ProcessHandle ;	// HANDLE
+	UInteger CaptureFlags ;	// PSS_CAPTURE_FLAGS
+	UInteger ThreadContextFlags ;
+	Pointer SnapshotHandle ;	// HPSS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-pssduplicatesnapshot
+External_Function PssDuplicateSnapshot "PssDuplicateSnapshot" KERNEL32.dll ;
+	Pointer SourceProcessHandle ;	// HANDLE
+	Pointer SnapshotHandle ;	// HPSS
+	Pointer TargetProcessHandle ;	// HANDLE
+	Pointer TargetSnapshotHandle ;	// HPSS*
+	Integer Flags ;	// PSS_DUPLICATE_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-pssfreesnapshot
+External_Function PssFreeSnapshot "PssFreeSnapshot" KERNEL32.dll ;
+	Pointer ProcessHandle ;	// HANDLE
+	Pointer SnapshotHandle ;	// HPSS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-pssquerysnapshot
+External_Function PssQuerySnapshot "PssQuerySnapshot" KERNEL32.dll ;
+	Pointer SnapshotHandle ;	// HPSS
+	Integer InformationClass ;	// PSS_QUERY_INFORMATION_CLASS
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psswalkmarkercreate
+External_Function PssWalkMarkerCreate "PssWalkMarkerCreate" KERNEL32.dll ;
+	Pointer Allocator ;	// PSS_ALLOCATOR*
+	Pointer WalkMarkerHandle ;	// HPSSWALK*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psswalkmarkerfree
+External_Function PssWalkMarkerFree "PssWalkMarkerFree" KERNEL32.dll ;
+	Pointer WalkMarkerHandle ;	// HPSSWALK
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psswalkmarkergetposition
+External_Function PssWalkMarkerGetPosition "PssWalkMarkerGetPosition" KERNEL32.dll ;
+	Pointer WalkMarkerHandle ;	// HPSSWALK
+	Pointer Position ;	// ULongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psswalkmarkerseektobeginning
+External_Function PssWalkMarkerSeekToBeginning "PssWalkMarkerSeekToBeginning" KERNEL32.dll ;
+	Pointer WalkMarkerHandle ;	// HPSSWALK
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psswalkmarkersetposition
+External_Function PssWalkMarkerSetPosition "PssWalkMarkerSetPosition" KERNEL32.dll ;
+	Pointer WalkMarkerHandle ;	// HPSSWALK
+	ULongPtr Position ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/nf-processsnapshot-psswalksnapshot
+External_Function PssWalkSnapshot "PssWalkSnapshot" KERNEL32.dll ;
+	Pointer SnapshotHandle ;	// HPSS
+	Integer InformationClass ;	// PSS_WALK_INFORMATION_CLASS
+	Pointer WalkMarkerHandle ;	// HPSSWALK
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferLength ;
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

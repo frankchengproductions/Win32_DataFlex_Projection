@@ -1,0 +1,42 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-enclave_identity
+Struct ENCLAVE_IDENTITY
+	UChar[32] OwnerId
+	UChar[32] UniqueId
+	UChar[32] AuthorId
+	UChar[16] FamilyId
+	UChar[16] ImageId
+	UInteger EnclaveSvn
+	UInteger SecureKernelSvn
+	UInteger PlatformSvn
+	UInteger Flags
+	UInteger SigningLevel
+	UInteger EnclaveType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-enclave_information
+Struct ENCLAVE_INFORMATION
+	UInteger EnclaveType
+	UInteger Reserved
+	Pointer BaseAddress										// Pointer*
+	ULongPtr Size
+	ENCLAVE_IDENTITY Identity
+End_Struct
+
+Struct PS_TRUSTLET_TKSESSION_ID
+	UBigint[4] SessionId
+End_Struct
+
+Struct TRUSTLET_BINDING_DATA
+	UBigint TrustletIdentity
+	PS_TRUSTLET_TKSESSION_ID TrustletSessionId
+	UInteger TrustletSvn
+	UInteger Reserved1
+	UBigint Reserved2
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

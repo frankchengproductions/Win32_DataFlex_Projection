@@ -1,0 +1,54 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dssec/nf-dssec-dscreateisecurityinfoobject
+External_Function DSCreateISecurityInfoObject "DSCreateISecurityInfoObject" DSSEC.dll ;
+	WString pwszObjectPath ;	// PWSTR
+	WString pwszObjectClass ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer ppSI ;	// ISecurityInformation*
+	Pointer pfnReadSD ;	// PFNREADOBJECTSECURITY
+	Pointer pfnWriteSD ;	// PFNWRITEOBJECTSECURITY
+	LongPtr lpContext ;	// LPARAM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dssec/nf-dssec-dscreateisecurityinfoobjectex
+External_Function DSCreateISecurityInfoObjectEx "DSCreateISecurityInfoObjectEx" DSSEC.dll ;
+	WString pwszObjectPath ;	// PWSTR
+	WString pwszObjectClass ;	// PWSTR
+	WString pwszServer ;	// PWSTR
+	WString pwszUserName ;	// PWSTR
+	WString pwszPassword ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer ppSI ;	// ISecurityInformation*
+	Pointer pfnReadSD ;	// PFNREADOBJECTSECURITY
+	Pointer pfnWriteSD ;	// PFNWRITEOBJECTSECURITY
+	LongPtr lpContext ;	// LPARAM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dssec/nf-dssec-dscreatesecuritypage
+External_Function DSCreateSecurityPage "DSCreateSecurityPage" DSSEC.dll ;
+	WString pwszObjectPath ;	// PWSTR
+	WString pwszObjectClass ;	// PWSTR
+	UInteger dwFlags ;
+	Pointer phPage ;	// HPROPSHEETPAGE*
+	Pointer pfnReadSD ;	// PFNREADOBJECTSECURITY
+	Pointer pfnWriteSD ;	// PFNWRITEOBJECTSECURITY
+	LongPtr lpContext ;	// LPARAM
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/dssec/nf-dssec-dseditsecurity
+External_Function DSEditSecurity "DSEditSecurity" DSSEC.dll ;
+	Pointer hwndOwner ;	// HWND
+	WString pwszObjectPath ;	// PWSTR
+	WString pwszObjectClass ;	// PWSTR
+	UInteger dwFlags ;
+	WString pwszCaption ;	// PWSTR
+	Pointer pfnReadSD ;	// PFNREADOBJECTSECURITY
+	Pointer pfnWriteSD ;	// PFNWRITEOBJECTSECURITY
+	LongPtr lpContext ;	// LPARAM
+	Returns Integer	// HRESULT
+
+
+Procedure DataFlex_Init
+End_Procedure
+

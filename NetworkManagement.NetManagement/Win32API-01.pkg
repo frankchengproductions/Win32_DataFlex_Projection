@@ -1,0 +1,1386 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-i_netlogoncontrol2
+External_Function I_NetLogonControl2 "I_NetLogonControl2" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	UInteger FunctionCode ;
+	UInteger QueryLevel ;
+	Pointer Data ;	// UChar*
+	Pointer Buffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaccessadd
+External_Function NetAccessAdd "NetAccessAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaccessdel
+External_Function NetAccessDel "NetAccessDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString resource ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaccessenum
+External_Function NetAccessEnum "NetAccessEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString BasePath ;	// PWSTR
+	UInteger Recursive ;
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaccessgetinfo
+External_Function NetAccessGetInfo "NetAccessGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString resource ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaccessgetuserperms
+External_Function NetAccessGetUserPerms "NetAccessGetUserPerms" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString UGname ;	// PWSTR
+	WString resource ;	// PWSTR
+	Pointer Perms ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaccesssetinfo
+External_Function NetAccessSetInfo "NetAccessSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString resource ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netaddalternatecomputername
+External_Function NetAddAlternateComputerName "NetAddAlternateComputerName" NETAPI32.dll ;
+	WString Server ;	// PWSTR
+	WString AlternateName ;	// PWSTR
+	WString DomainAccount ;	// PWSTR
+	WString DomainAccountPassword ;	// PWSTR
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netaddserviceaccount
+External_Function NetAddServiceAccount "NetAddServiceAccount" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString AccountName ;	// PWSTR
+	WString Password ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/lmalert/nf-lmalert-netalertraise
+External_Function NetAlertRaise "NetAlertRaise" NETAPI32.dll ;
+	WString AlertType ;	// PWSTR
+	Pointer Buffer ;	// Pointer*
+	UInteger BufferSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmalert/nf-lmalert-netalertraiseex
+External_Function NetAlertRaiseEx "NetAlertRaiseEx" NETAPI32.dll ;
+	WString AlertType ;	// PWSTR
+	Pointer VariableInfo ;	// Pointer*
+	UInteger VariableInfoSize ;
+	WString ServiceName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmapibuf/nf-lmapibuf-netapibufferallocate
+External_Function NetApiBufferAllocate "NetApiBufferAllocate" NETAPI32.dll ;
+	UInteger ByteCount ;
+	Pointer Buffer ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmapibuf/nf-lmapibuf-netapibufferfree
+External_Function NetApiBufferFree "NetApiBufferFree" NETAPI32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmapibuf/nf-lmapibuf-netapibufferreallocate
+External_Function NetApiBufferReallocate "NetApiBufferReallocate" NETAPI32.dll ;
+	Pointer OldBuffer ;	// Pointer*
+	UInteger NewByteCount ;
+	Pointer NewBuffer ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmapibuf/nf-lmapibuf-netapibuffersize
+External_Function NetApiBufferSize "NetApiBufferSize" NETAPI32.dll ;
+	Pointer Buffer ;	// Pointer*
+	Pointer ByteCount ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netauditclear
+External_Function NetAuditClear "NetAuditClear" NETAPI32.dll ;
+	WString server ;	// PWSTR
+	WString backupfile ;	// PWSTR
+	WString service ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netauditread
+External_Function NetAuditRead "NetAuditRead" NETAPI32.dll ;
+	WString server ;	// PWSTR
+	WString service ;	// PWSTR
+	Pointer auditloghandle ;	// HLOG*
+	UInteger offset ;
+	Pointer reserved1 ;	// UInteger*
+	UInteger reserved2 ;
+	UInteger offsetflag ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer bytesread ;	// UInteger*
+	Pointer totalavailable ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netauditwrite
+External_Function NetAuditWrite "NetAuditWrite" NETAPI32.dll ;
+	UInteger type ;
+	Pointer buf ;	// UChar*
+	UInteger numbytes ;
+	WString service ;	// PWSTR
+	Pointer reserved ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmconfig/nf-lmconfig-netconfigget
+External_Function NetConfigGet "NetConfigGet" NETAPI32.dll ;
+	WString server ;	// PWSTR
+	WString component ;	// PWSTR
+	WString parameter ;	// PWSTR
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmconfig/nf-lmconfig-netconfiggetall
+External_Function NetConfigGetAll "NetConfigGetAll" NETAPI32.dll ;
+	WString server ;	// PWSTR
+	WString component ;	// PWSTR
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmconfig/nf-lmconfig-netconfigset
+External_Function NetConfigSet "NetConfigSet" NETAPI32.dll ;
+	WString server ;	// PWSTR
+	WString reserved1 ;	// PWSTR
+	WString component ;	// PWSTR
+	UInteger level ;
+	UInteger reserved2 ;
+	Pointer buf ;	// UChar*
+	UInteger reserved3 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netcreateprovisioningpackage
+External_Function NetCreateProvisioningPackage "NetCreateProvisioningPackage" NETAPI32.dll ;
+	Pointer pProvisioningParams ;	// NETSETUP_PROVISIONING_PARAMS*
+	Pointer ppPackageBinData ;	// UChar**
+	Pointer pdwPackageBinDataSize ;	// UInteger*
+	Pointer ppPackageTextData ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netenumeratecomputernames
+External_Function NetEnumerateComputerNames "NetEnumerateComputerNames" NETAPI32.dll ;
+	WString Server ;	// PWSTR
+	Integer NameType ;	// NET_COMPUTER_NAME_TYPE
+	UInteger Reserved ;
+	Pointer EntryCount ;	// UInteger*
+	Pointer ComputerNames ;	// PWSTR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netenumerateserviceaccounts
+External_Function NetEnumerateServiceAccounts "NetEnumerateServiceAccounts" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	UInteger Flags ;
+	Pointer AccountsCount ;	// UInteger*
+	Pointer Accounts ;	// UShort***
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/lmerrlog/nf-lmerrlog-neterrorlogclear
+External_Function NetErrorLogClear "NetErrorLogClear" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	WString BackupFile ;	// PWSTR
+	Pointer Reserved ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmerrlog/nf-lmerrlog-neterrorlogread
+External_Function NetErrorLogRead "NetErrorLogRead" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	WString Reserved1 ;	// PWSTR
+	Pointer ErrorLogHandle ;	// HLOG*
+	UInteger Offset ;
+	Pointer Reserved2 ;	// UInteger*
+	UInteger Reserved3 ;
+	UInteger OffsetFlag ;
+	Pointer BufPtr ;	// UChar**
+	UInteger PrefMaxSize ;
+	Pointer BytesRead ;	// UInteger*
+	Pointer TotalAvailable ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmerrlog/nf-lmerrlog-neterrorlogwrite
+External_Function NetErrorLogWrite "NetErrorLogWrite" NETAPI32.dll ;
+	Pointer Reserved1 ;	// UChar*
+	UInteger Code ;
+	WString Component ;	// PWSTR
+	Pointer Buffer ;	// UChar*
+	UInteger NumBytes ;
+	Pointer MsgBuf ;	// UChar*
+	UInteger StrCount ;
+	Pointer Reserved2 ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netfreeaadjoininformation
+External_Function NetFreeAadJoinInformation "NetFreeAadJoinInformation" NETAPI32.dll ;
+	Pointer pJoinInfo ;	// DSREG_JOIN_INFO*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netgetaadjoininformation
+External_Function NetGetAadJoinInformation "NetGetAadJoinInformation" NETAPI32.dll ;
+	WString pcszTenantId ;	// PWSTR
+	Pointer ppJoinInfo ;	// DSREG_JOIN_INFO**
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgetanydcname
+External_Function NetGetAnyDCName "NetGetAnyDCName" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString DomainName ;	// PWSTR
+	Pointer Buffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgetdcname
+External_Function NetGetDCName "NetGetDCName" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString DomainName ;	// PWSTR
+	Pointer Buffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgetdisplayinformationindex
+External_Function NetGetDisplayInformationIndex "NetGetDisplayInformationIndex" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	UInteger Level ;
+	WString Prefix ;	// PWSTR
+	Pointer Index ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netgetjoininformation
+External_Function NetGetJoinInformation "NetGetJoinInformation" NETAPI32.dll ;
+	WString lpServer ;	// PWSTR
+	Pointer lpNameBuffer ;	// PWSTR*
+	Pointer BufferType ;	// NETSETUP_JOIN_STATUS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netgetjoinableous
+External_Function NetGetJoinableOUs "NetGetJoinableOUs" NETAPI32.dll ;
+	WString lpServer ;	// PWSTR
+	WString lpDomain ;	// PWSTR
+	WString lpAccount ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	Pointer OUCount ;	// UInteger*
+	Pointer OUs ;	// PWSTR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupadd
+External_Function NetGroupAdd "NetGroupAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupadduser
+External_Function NetGroupAddUser "NetGroupAddUser" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString GroupName ;	// PWSTR
+	WString username ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupdel
+External_Function NetGroupDel "NetGroupDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupdeluser
+External_Function NetGroupDelUser "NetGroupDelUser" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString GroupName ;	// PWSTR
+	WString Username ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupenum
+External_Function NetGroupEnum "NetGroupEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// ULongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupgetinfo
+External_Function NetGroupGetInfo "NetGroupGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupgetusers
+External_Function NetGroupGetUsers "NetGroupGetUsers" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer ResumeHandle ;	// ULongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupsetinfo
+External_Function NetGroupSetInfo "NetGroupSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netgroupsetusers
+External_Function NetGroupSetUsers "NetGroupSetUsers" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	UInteger totalentries ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netisserviceaccount
+External_Function NetIsServiceAccount "NetIsServiceAccount" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString AccountName ;	// PWSTR
+	Pointer IsService ;	// BOOL*
+	Returns Integer	// NTSTATUS
+
+External_Function NetIsServiceAccount2 "NetIsServiceAccount2" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString AccountName ;	// PWSTR
+	Pointer IsService ;	// BOOL*
+	Pointer AccountType ;	// MSA_INFO_ACCOUNT_TYPE*
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netjoindomain
+External_Function NetJoinDomain "NetJoinDomain" NETAPI32.dll ;
+	WString lpServer ;	// PWSTR
+	WString lpDomain ;	// PWSTR
+	WString lpMachineAccountOU ;	// PWSTR
+	WString lpAccount ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	UInteger fJoinOptions ;	// NET_JOIN_DOMAIN_JOIN_OPTIONS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupadd
+External_Function NetLocalGroupAdd "NetLocalGroupAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupaddmember
+External_Function NetLocalGroupAddMember "NetLocalGroupAddMember" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	Pointer membersid ;	// PSID
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupaddmembers
+External_Function NetLocalGroupAddMembers "NetLocalGroupAddMembers" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	UInteger totalentries ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupdel
+External_Function NetLocalGroupDel "NetLocalGroupDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupdelmember
+External_Function NetLocalGroupDelMember "NetLocalGroupDelMember" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	Pointer membersid ;	// PSID
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupdelmembers
+External_Function NetLocalGroupDelMembers "NetLocalGroupDelMembers" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	UInteger totalentries ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupenum
+External_Function NetLocalGroupEnum "NetLocalGroupEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resumehandle ;	// ULongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupgetinfo
+External_Function NetLocalGroupGetInfo "NetLocalGroupGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupgetmembers
+External_Function NetLocalGroupGetMembers "NetLocalGroupGetMembers" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString localgroupname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resumehandle ;	// ULongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupsetinfo
+External_Function NetLocalGroupSetInfo "NetLocalGroupSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netlocalgroupsetmembers
+External_Function NetLocalGroupSetMembers "NetLocalGroupSetMembers" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString groupname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	UInteger totalentries ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmmsg/nf-lmmsg-netmessagebuffersend
+External_Function NetMessageBufferSend "NetMessageBufferSend" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString msgname ;	// PWSTR
+	WString fromname ;	// PWSTR
+	Pointer buf ;	// UChar*
+	UInteger buflen ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmmsg/nf-lmmsg-netmessagenameadd
+External_Function NetMessageNameAdd "NetMessageNameAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString msgname ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmmsg/nf-lmmsg-netmessagenamedel
+External_Function NetMessageNameDel "NetMessageNameDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString msgname ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmmsg/nf-lmmsg-netmessagenameenum
+External_Function NetMessageNameEnum "NetMessageNameEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmmsg/nf-lmmsg-netmessagenamegetinfo
+External_Function NetMessageNameGetInfo "NetMessageNameGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString msgname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netprovisioncomputeraccount
+External_Function NetProvisionComputerAccount "NetProvisionComputerAccount" NETAPI32.dll ;
+	WString lpDomain ;	// PWSTR
+	WString lpMachineName ;	// PWSTR
+	WString lpMachineAccountOU ;	// PWSTR
+	WString lpDcName ;	// PWSTR
+	UInteger dwOptions ;	// NETSETUP_PROVISION
+	Pointer pProvisionBinData ;	// UChar**
+	Pointer pdwProvisionBinDataSize ;	// UInteger*
+	Pointer pProvisionTextData ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netquerydisplayinformation
+External_Function NetQueryDisplayInformation "NetQueryDisplayInformation" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	UInteger Level ;
+	UInteger Index ;
+	UInteger EntriesRequested ;
+	UInteger PreferredMaximumLength ;
+	Pointer ReturnedEntryCount ;	// UInteger*
+	Pointer SortedBuffer ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netqueryserviceaccount
+External_Function NetQueryServiceAccount "NetQueryServiceAccount" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString AccountName ;	// PWSTR
+	UInteger InfoLevel ;
+	Pointer Buffer ;	// UChar**
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/lmremutl/nf-lmremutl-netremotecomputersupports
+External_Function NetRemoteComputerSupports "NetRemoteComputerSupports" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	UInteger OptionsWanted ;	// NET_REMOTE_COMPUTER_SUPPORTS_OPTIONS
+	Pointer OptionsSupported ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmremutl/nf-lmremutl-netremotetod
+External_Function NetRemoteTOD "NetRemoteTOD" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	Pointer BufferPtr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netremovealternatecomputername
+External_Function NetRemoveAlternateComputerName "NetRemoveAlternateComputerName" NETAPI32.dll ;
+	WString Server ;	// PWSTR
+	WString AlternateName ;	// PWSTR
+	WString DomainAccount ;	// PWSTR
+	WString DomainAccountPassword ;	// PWSTR
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netremoveserviceaccount
+External_Function NetRemoveServiceAccount "NetRemoveServiceAccount" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString AccountName ;	// PWSTR
+	UInteger Flags ;
+	Returns Integer	// NTSTATUS
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netrenamemachineindomain
+External_Function NetRenameMachineInDomain "NetRenameMachineInDomain" NETAPI32.dll ;
+	WString lpServer ;	// PWSTR
+	WString lpNewMachineName ;	// PWSTR
+	WString lpAccount ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	UInteger fRenameOptions ;
+	Returns UInteger
+
+External_Function NetReplExportDirAdd "NetReplExportDirAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+External_Function NetReplExportDirDel "NetReplExportDirDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	Returns UInteger
+
+External_Function NetReplExportDirEnum "NetReplExportDirEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resumehandle ;	// UInteger*
+	Returns UInteger
+
+External_Function NetReplExportDirGetInfo "NetReplExportDirGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+External_Function NetReplExportDirLock "NetReplExportDirLock" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	Returns UInteger
+
+External_Function NetReplExportDirSetInfo "NetReplExportDirSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+External_Function NetReplExportDirUnlock "NetReplExportDirUnlock" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	UInteger unlockforce ;
+	Returns UInteger
+
+External_Function NetReplGetInfo "NetReplGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+External_Function NetReplImportDirAdd "NetReplImportDirAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+External_Function NetReplImportDirDel "NetReplImportDirDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	Returns UInteger
+
+External_Function NetReplImportDirEnum "NetReplImportDirEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resumehandle ;	// UInteger*
+	Returns UInteger
+
+External_Function NetReplImportDirGetInfo "NetReplImportDirGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+External_Function NetReplImportDirLock "NetReplImportDirLock" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	Returns UInteger
+
+External_Function NetReplImportDirUnlock "NetReplImportDirUnlock" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString dirname ;	// PWSTR
+	UInteger unlockforce ;
+	Returns UInteger
+
+External_Function NetReplSetInfo "NetReplSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netrequestofflinedomainjoin
+External_Function NetRequestOfflineDomainJoin "NetRequestOfflineDomainJoin" NETAPI32.dll ;
+	Pointer pProvisionBinData ;	// UChar*
+	UInteger cbProvisionBinDataSize ;
+	UInteger dwOptions ;	// NET_REQUEST_PROVISION_OPTIONS
+	WString lpWindowsPath ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netrequestprovisioningpackageinstall
+External_Function NetRequestProvisioningPackageInstall "NetRequestProvisioningPackageInstall" NETAPI32.dll ;
+	Pointer pPackageBinData ;	// UChar*
+	UInteger dwPackageBinDataSize ;
+	UInteger dwProvisionOptions ;	// NET_REQUEST_PROVISION_OPTIONS
+	WString lpWindowsPath ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmat/nf-lmat-netschedulejobadd
+External_Function NetScheduleJobAdd "NetScheduleJobAdd" NETAPI32.dll ;
+	WString Servername ;	// PWSTR
+	Pointer Buffer ;	// UChar*
+	Pointer JobId ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmat/nf-lmat-netschedulejobdel
+External_Function NetScheduleJobDel "NetScheduleJobDel" NETAPI32.dll ;
+	WString Servername ;	// PWSTR
+	UInteger MinJobId ;
+	UInteger MaxJobId ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmat/nf-lmat-netschedulejobenum
+External_Function NetScheduleJobEnum "NetScheduleJobEnum" NETAPI32.dll ;
+	WString Servername ;	// PWSTR
+	Pointer PointerToBuffer ;	// UChar**
+	UInteger PrefferedMaximumLength ;
+	Pointer EntriesRead ;	// UInteger*
+	Pointer TotalEntries ;	// UInteger*
+	Pointer ResumeHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmat/nf-lmat-netschedulejobgetinfo
+External_Function NetScheduleJobGetInfo "NetScheduleJobGetInfo" NETAPI32.dll ;
+	WString Servername ;	// PWSTR
+	UInteger JobId ;
+	Pointer PointerToBuffer ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservercomputernameadd
+External_Function NetServerComputerNameAdd "NetServerComputerNameAdd" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString EmulatedDomainName ;	// PWSTR
+	WString EmulatedServerName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservercomputernamedel
+External_Function NetServerComputerNameDel "NetServerComputerNameDel" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	WString EmulatedServerName ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netserverdiskenum
+External_Function NetServerDiskEnum "NetServerDiskEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netserverenum
+External_Function NetServerEnum "NetServerEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	UInteger servertype ;	// NET_SERVER_TYPE
+	WString domain ;	// PWSTR
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservergetinfo
+External_Function NetServerGetInfo "NetServerGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netserversetinfo
+External_Function NetServerSetInfo "NetServerSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer ParmError ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservertransportadd
+External_Function NetServerTransportAdd "NetServerTransportAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservertransportaddex
+External_Function NetServerTransportAddEx "NetServerTransportAddEx" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservertransportdel
+External_Function NetServerTransportDel "NetServerTransportDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmserver/nf-lmserver-netservertransportenum
+External_Function NetServerTransportEnum "NetServerTransportEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netservicecontrol
+External_Function NetServiceControl "NetServiceControl" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString service ;	// PWSTR
+	UInteger opcode ;
+	UInteger arg ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netserviceenum
+External_Function NetServiceEnum "NetServiceEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netservicegetinfo
+External_Function NetServiceGetInfo "NetServiceGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString service ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/netserviceinstall
+External_Function NetServiceInstall "NetServiceInstall" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString service ;	// PWSTR
+	UInteger argc ;
+	Pointer argv ;	// PWSTR*
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netsetprimarycomputername
+External_Function NetSetPrimaryComputerName "NetSetPrimaryComputerName" NETAPI32.dll ;
+	WString Server ;	// PWSTR
+	WString PrimaryName ;	// PWSTR
+	WString DomainAccount ;	// PWSTR
+	WString DomainAccountPassword ;	// PWSTR
+	UInteger Reserved ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netunjoindomain
+External_Function NetUnjoinDomain "NetUnjoinDomain" NETAPI32.dll ;
+	WString lpServer ;	// PWSTR
+	WString lpAccount ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	UInteger fUnjoinOptions ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/nf-lmuse-netuseadd
+External_Function NetUseAdd "NetUseAdd" NETAPI32.dll ;
+	Pointer servername ;	// Char*
+	UInteger LevelFlags ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/nf-lmuse-netusedel
+External_Function NetUseDel "NetUseDel" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	WString UseName ;	// PWSTR
+	UInteger ForceLevelFlags ;	// FORCE_LEVEL_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/nf-lmuse-netuseenum
+External_Function NetUseEnum "NetUseEnum" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	UInteger LevelFlags ;
+	Pointer BufPtr ;	// UChar**
+	UInteger PreferedMaximumSize ;
+	Pointer EntriesRead ;	// UInteger*
+	Pointer TotalEntries ;	// UInteger*
+	Pointer ResumeHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/nf-lmuse-netusegetinfo
+External_Function NetUseGetInfo "NetUseGetInfo" NETAPI32.dll ;
+	WString UncServerName ;	// PWSTR
+	WString UseName ;	// PWSTR
+	UInteger LevelFlags ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netuseradd
+External_Function NetUserAdd "NetUserAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netuserchangepassword
+External_Function NetUserChangePassword "NetUserChangePassword" NETAPI32.dll ;
+	WString domainname ;	// PWSTR
+	WString username ;	// PWSTR
+	WString oldpassword ;	// PWSTR
+	WString newpassword ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netuserdel
+External_Function NetUserDel "NetUserDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString username ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netuserenum
+External_Function NetUserEnum "NetUserEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	UInteger filter ;	// NET_USER_ENUM_FILTER_FLAGS
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusergetgroups
+External_Function NetUserGetGroups "NetUserGetGroups" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusergetinfo
+External_Function NetUserGetInfo "NetUserGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusergetlocalgroups
+External_Function NetUserGetLocalGroups "NetUserGetLocalGroups" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	UInteger flags ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusermodalsget
+External_Function NetUserModalsGet "NetUserModalsGet" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusermodalsset
+External_Function NetUserModalsSet "NetUserModalsSet" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusersetgroups
+External_Function NetUserSetGroups "NetUserSetGroups" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	UInteger num_entries ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netusersetinfo
+External_Function NetUserSetInfo "NetUserSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmjoin/nf-lmjoin-netvalidatename
+External_Function NetValidateName "NetValidateName" NETAPI32.dll ;
+	WString lpServer ;	// PWSTR
+	WString lpName ;	// PWSTR
+	WString lpAccount ;	// PWSTR
+	WString lpPassword ;	// PWSTR
+	Integer NameType ;	// NETSETUP_NAME_TYPE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy
+External_Function NetValidatePasswordPolicy "NetValidatePasswordPolicy" NETAPI32.dll ;
+	WString ServerName ;	// PWSTR
+	Pointer Qualifier ;	// Pointer*
+	Integer ValidationType ;	// NET_VALIDATE_PASSWORD_TYPE
+	Pointer InputArg ;	// Pointer*
+	Pointer OutputArg ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicyfree
+External_Function NetValidatePasswordPolicyFree "NetValidatePasswordPolicyFree" NETAPI32.dll ;
+	Pointer OutputArg ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstagetinfo
+External_Function NetWkstaGetInfo "NetWkstaGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstasetinfo
+External_Function NetWkstaSetInfo "NetWkstaSetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buffer ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstatransportadd
+External_Function NetWkstaTransportAdd "NetWkstaTransportAdd" NETAPI32.dll ;
+	Pointer servername ;	// Char*
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstatransportdel
+External_Function NetWkstaTransportDel "NetWkstaTransportDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString transportname ;	// PWSTR
+	UInteger ucond ;	// FORCE_LEVEL_FLAGS
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstatransportenum
+External_Function NetWkstaTransportEnum "NetWkstaTransportEnum" NETAPI32.dll ;
+	Pointer servername ;	// Char*
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstauserenum
+External_Function NetWkstaUserEnum "NetWkstaUserEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resumehandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstausergetinfo
+External_Function NetWkstaUserGetInfo "NetWkstaUserGetInfo" NETAPI32.dll ;
+	WString reserved ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/nf-lmwksta-netwkstausersetinfo
+External_Function NetWkstaUserSetInfo "NetWkstaUserSetInfo" NETAPI32.dll ;
+	WString reserved ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Pointer parm_err ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/atacct/nf-atacct-getnetscheduleaccountinformation
+External_Function GetNetScheduleAccountInformation "GetNetScheduleAccountInformation" mstask.dll ;
+	WString pwszServerName ;	// PWSTR
+	UInteger ccAccount ;
+	Pointer wszAccount ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/atacct/nf-atacct-setnetscheduleaccountinformation
+External_Function SetNetScheduleAccountInformation "SetNetScheduleAccountInformation" mstask.dll ;
+	WString pwszServerName ;	// PWSTR
+	WString pwszAccount ;	// PWSTR
+	WString pwszPassword ;	// PWSTR
+	Returns Integer	// HRESULT
+
+External_Function LogErrorA "LogErrorA" rtutils.dll ;
+	UInteger dwMessageId ;
+	UInteger cNumberOfSubStrings ;
+	Pointer plpwsSubStrings ;	// PSTR*
+	UInteger dwErrorCode ;
+	Returns Pointer
+
+External_Function LogErrorW "LogErrorW" rtutils.dll ;
+	UInteger dwMessageId ;
+	UInteger cNumberOfSubStrings ;
+	Pointer plpwsSubStrings ;	// PWSTR*
+	UInteger dwErrorCode ;
+	Returns Pointer
+
+External_Function LogEventA "LogEventA" rtutils.dll ;
+	UInteger wEventType ;
+	UInteger dwMessageId ;
+	UInteger cNumberOfSubStrings ;
+	Pointer plpwsSubStrings ;	// PSTR*
+	Returns Pointer
+
+External_Function LogEventW "LogEventW" rtutils.dll ;
+	UInteger wEventType ;
+	UInteger dwMessageId ;
+	UInteger cNumberOfSubStrings ;
+	Pointer plpwsSubStrings ;	// PWSTR*
+	Returns Pointer
+
+External_Function MprSetupProtocolEnum "MprSetupProtocolEnum" rtutils.dll ;
+	UInteger dwTransportId ;
+	Pointer lplpBuffer ;	// UChar**
+	Pointer lpdwEntriesRead ;	// UInteger*
+	Returns UInteger
+
+External_Function MprSetupProtocolFree "MprSetupProtocolFree" rtutils.dll ;
+	Pointer lpBuffer ;	// Pointer*
+	Returns UInteger
+
+External_Function RouterAssert "RouterAssert" rtutils.dll ;
+	String pszFailedAssertion ;	// PSTR
+	String pszFileName ;	// PSTR
+	UInteger dwLineNumber ;
+	String pszMessage ;	// PSTR
+	Returns Pointer
+
+External_Function RouterGetErrorStringA "RouterGetErrorStringA" rtutils.dll ;
+	UInteger dwErrorCode ;
+	Pointer lplpszErrorString ;	// PSTR*
+	Returns UInteger
+
+External_Function RouterGetErrorStringW "RouterGetErrorStringW" rtutils.dll ;
+	UInteger dwErrorCode ;
+	Pointer lplpwszErrorString ;	// PWSTR*
+	Returns UInteger
+
+External_Function RouterLogDeregisterA "RouterLogDeregisterA" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	Returns Pointer
+
+External_Function RouterLogDeregisterW "RouterLogDeregisterW" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	Returns Pointer
+
+External_Function RouterLogEventA "RouterLogEventA" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwMessageId ;
+	UInteger dwSubStringCount ;
+	Pointer plpszSubStringArray ;	// PSTR*
+	UInteger dwErrorCode ;
+	Returns Pointer
+
+External_Function RouterLogEventDataA "RouterLogEventDataA" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwMessageId ;
+	UInteger dwSubStringCount ;
+	Pointer plpszSubStringArray ;	// PSTR*
+	UInteger dwDataBytes ;
+	Pointer lpDataBytes ;	// UChar*
+	Returns Pointer
+
+External_Function RouterLogEventDataW "RouterLogEventDataW" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwMessageId ;
+	UInteger dwSubStringCount ;
+	Pointer plpszSubStringArray ;	// PWSTR*
+	UInteger dwDataBytes ;
+	Pointer lpDataBytes ;	// UChar*
+	Returns Pointer
+
+External_Function RouterLogEventExA "RouterLogEventExA" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwErrorCode ;
+	UInteger dwMessageId ;
+	String ptszFormat ;	// PSTR
+	Returns Pointer
+
+External_Function RouterLogEventExW "RouterLogEventExW" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwErrorCode ;
+	UInteger dwMessageId ;
+	WString ptszFormat ;	// PWSTR
+	Returns Pointer
+
+External_Function RouterLogEventStringA "RouterLogEventStringA" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwMessageId ;
+	UInteger dwSubStringCount ;
+	Pointer plpszSubStringArray ;	// PSTR*
+	UInteger dwErrorCode ;
+	UInteger dwErrorIndex ;
+	Returns Pointer
+
+External_Function RouterLogEventStringW "RouterLogEventStringW" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwMessageId ;
+	UInteger dwSubStringCount ;
+	Pointer plpszSubStringArray ;	// PWSTR*
+	UInteger dwErrorCode ;
+	UInteger dwErrorIndex ;
+	Returns Pointer
+
+External_Function RouterLogEventValistExA "RouterLogEventValistExA" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwErrorCode ;
+	UInteger dwMessageId ;
+	String ptszFormat ;	// PSTR
+	Pointer arglist ;	// Char*
+	Returns Pointer
+
+External_Function RouterLogEventValistExW "RouterLogEventValistExW" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwErrorCode ;
+	UInteger dwMessageId ;
+	WString ptszFormat ;	// PWSTR
+	Pointer arglist ;	// Char*
+	Returns Pointer
+
+External_Function RouterLogEventW "RouterLogEventW" rtutils.dll ;
+	Pointer hLogHandle ;	// HANDLE
+	UInteger dwEventType ;
+	UInteger dwMessageId ;
+	UInteger dwSubStringCount ;
+	Pointer plpszSubStringArray ;	// PWSTR*
+	UInteger dwErrorCode ;
+	Returns Pointer
+
+External_Function RouterLogRegisterA "RouterLogRegisterA" rtutils.dll ;
+	String lpszSource ;	// PSTR
+	Returns Pointer	// HANDLE
+
+External_Function RouterLogRegisterW "RouterLogRegisterW" rtutils.dll ;
+	WString lpszSource ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+External_Function TraceDeregisterA "TraceDeregisterA" rtutils.dll ;
+	UInteger dwTraceID ;
+	Returns UInteger
+
+External_Function TraceDeregisterExA "TraceDeregisterExA" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function TraceDeregisterExW "TraceDeregisterExW" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function TraceDeregisterW "TraceDeregisterW" rtutils.dll ;
+	UInteger dwTraceID ;
+	Returns UInteger
+
+External_Function TraceDumpExA "TraceDumpExA" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	Pointer lpbBytes ;	// UChar*
+	UInteger dwByteCount ;
+	UInteger dwGroupSize ;
+	Integer bAddressPrefix ;	// BOOL
+	String lpszPrefix ;	// PSTR
+	Returns UInteger
+
+External_Function TraceDumpExW "TraceDumpExW" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	Pointer lpbBytes ;	// UChar*
+	UInteger dwByteCount ;
+	UInteger dwGroupSize ;
+	Integer bAddressPrefix ;	// BOOL
+	WString lpszPrefix ;	// PWSTR
+	Returns UInteger
+
+External_Function TraceGetConsoleA "TraceGetConsoleA" rtutils.dll ;
+	UInteger dwTraceID ;
+	Pointer lphConsole ;	// HANDLE*
+	Returns UInteger
+
+External_Function TraceGetConsoleW "TraceGetConsoleW" rtutils.dll ;
+	UInteger dwTraceID ;
+	Pointer lphConsole ;	// HANDLE*
+	Returns UInteger
+
+External_Function TracePrintfA "TracePrintfA" rtutils.dll ;
+	UInteger dwTraceID ;
+	String lpszFormat ;	// PSTR
+	Returns UInteger
+
+External_Function TracePrintfExA "TracePrintfExA" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	String lpszFormat ;	// PSTR
+	Returns UInteger
+
+External_Function TracePrintfExW "TracePrintfExW" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	WString lpszFormat ;	// PWSTR
+	Returns UInteger
+
+External_Function TracePrintfW "TracePrintfW" rtutils.dll ;
+	UInteger dwTraceID ;
+	WString lpszFormat ;	// PWSTR
+	Returns UInteger
+
+External_Function TracePutsExA "TracePutsExA" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	String lpszString ;	// PSTR
+	Returns UInteger
+
+External_Function TracePutsExW "TracePutsExW" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	WString lpszString ;	// PWSTR
+	Returns UInteger
+
+External_Function TraceRegisterExA "TraceRegisterExA" rtutils.dll ;
+	String lpszCallerName ;	// PSTR
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function TraceRegisterExW "TraceRegisterExW" rtutils.dll ;
+	WString lpszCallerName ;	// PWSTR
+	UInteger dwFlags ;
+	Returns UInteger
+
+External_Function TraceVprintfExA "TraceVprintfExA" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	String lpszFormat ;	// PSTR
+	Pointer arglist ;	// Char*
+	Returns UInteger
+
+External_Function TraceVprintfExW "TraceVprintfExW" rtutils.dll ;
+	UInteger dwTraceID ;
+	UInteger dwFlags ;
+	WString lpszFormat ;	// PWSTR
+	Pointer arglist ;	// Char*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

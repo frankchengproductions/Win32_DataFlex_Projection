@@ -1,0 +1,1494 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-addvectoredcontinuehandler
+External_Function AddVectoredContinueHandler "AddVectoredContinueHandler" KERNEL32.dll ;
+	UInteger First ;
+	Pointer Handler ;	// PVECTORED_EXCEPTION_HANDLER
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-addvectoredexceptionhandler
+External_Function AddVectoredExceptionHandler "AddVectoredExceptionHandler" KERNEL32.dll ;
+	UInteger First ;
+	Pointer Handler ;	// PVECTORED_EXCEPTION_HANDLER
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/utilapiset/nf-utilapiset-beep
+External_Function Beep "Beep" KERNEL32.dll ;
+	UInteger dwFreq ;
+	UInteger dwDuration ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-checkremotedebuggerpresent
+External_Function CheckRemoteDebuggerPresent "CheckRemoteDebuggerPresent" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer pbDebuggerPresent ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-continuedebugevent
+External_Function ContinueDebugEvent "ContinueDebugEvent" KERNEL32.dll ;
+	UInteger dwProcessId ;
+	UInteger dwThreadId ;
+	Integer dwContinueStatus ;	// NTSTATUS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-copycontext
+External_Function CopyContext "CopyContext" KERNEL32.dll ;
+	Pointer Destination ;	// CONTEXT*
+	UInteger ContextFlags ;	// CONTEXT_FLAGS
+	Pointer Source ;	// CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-debugactiveprocess
+External_Function DebugActiveProcess "DebugActiveProcess" KERNEL32.dll ;
+	UInteger dwProcessId ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-debugactiveprocessstop
+External_Function DebugActiveProcessStop "DebugActiveProcessStop" KERNEL32.dll ;
+	UInteger dwProcessId ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-debugbreak
+External_Function DebugBreak "DebugBreak" KERNEL32.dll ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-debugbreakprocess
+External_Function DebugBreakProcess "DebugBreakProcess" KERNEL32.dll ;
+	Pointer Process ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-debugsetprocesskillonexit
+External_Function DebugSetProcessKillOnExit "DebugSetProcessKillOnExit" KERNEL32.dll ;
+	Integer KillOnExit ;	// BOOL
+	Returns Integer	// BOOL
+
+External_Function DecodePointer "DecodePointer" KERNEL32.dll ;
+	Pointer Ptr ;	// Pointer*
+	Returns Pointer	// Pointer*
+
+External_Function DecodeSystemPointer "DecodeSystemPointer" KERNEL32.dll ;
+	Pointer Ptr ;	// Pointer*
+	Returns Pointer	// Pointer*
+
+External_Function EncodePointer "EncodePointer" KERNEL32.dll ;
+	Pointer Ptr ;	// Pointer*
+	Returns Pointer	// Pointer*
+
+External_Function EncodeSystemPointer "EncodeSystemPointer" KERNEL32.dll ;
+	Pointer Ptr ;	// Pointer*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-fatalappexita
+External_Function FatalAppExitA "FatalAppExitA" KERNEL32.dll ;
+	UInteger uAction ;
+	String lpMessageText ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-fatalappexitw
+External_Function FatalAppExitW "FatalAppExitW" KERNEL32.dll ;
+	UInteger uAction ;
+	WString lpMessageText ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-fatalexit
+External_Function FatalExit "FatalExit" KERNEL32.dll ;
+	Integer ExitCode ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-flushinstructioncache
+External_Function FlushInstructionCache "FlushInstructionCache" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpBaseAddress ;	// Pointer*
+	ULongPtr dwSize ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-formatmessagea
+External_Function FormatMessageA "FormatMessageA" KERNEL32.dll ;
+	UInteger dwFlags ;	// FORMAT_MESSAGE_OPTIONS
+	Pointer lpSource ;	// Pointer*
+	UInteger dwMessageId ;
+	UInteger dwLanguageId ;
+	Pointer lpBuffer ;	// PSTR
+	UInteger nSize ;
+	Pointer Arguments ;	// Char**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-formatmessagew
+External_Function FormatMessageW "FormatMessageW" KERNEL32.dll ;
+	UInteger dwFlags ;	// FORMAT_MESSAGE_OPTIONS
+	Pointer lpSource ;	// Pointer*
+	UInteger dwMessageId ;
+	UInteger dwLanguageId ;
+	Pointer lpBuffer ;	// PWSTR
+	UInteger nSize ;
+	Pointer Arguments ;	// Char**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getenabledxstatefeatures
+External_Function GetEnabledXStateFeatures "GetEnabledXStateFeatures" KERNEL32.dll ;
+	Returns UBigint
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-geterrormode
+External_Function GetErrorMode "GetErrorMode" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getthreadcontext
+External_Function GetThreadContext "GetThreadContext" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Pointer lpContext ;	// CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-getthreaderrormode
+External_Function GetThreadErrorMode "GetThreadErrorMode" KERNEL32.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getthreadselectorentry
+External_Function GetThreadSelectorEntry "GetThreadSelectorEntry" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	UInteger dwSelector ;
+	Pointer lpSelectorEntry ;	// LDT_ENTRY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-getxstatefeaturesmask
+External_Function GetXStateFeaturesMask "GetXStateFeaturesMask" KERNEL32.dll ;
+	Pointer Context ;	// CONTEXT*
+	Pointer FeatureMask ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-initializecontext
+External_Function InitializeContext "InitializeContext" KERNEL32.dll ;
+	Pointer Buffer ;	// Pointer*
+	UInteger ContextFlags ;	// CONTEXT_FLAGS
+	Pointer Context ;	// CONTEXT**
+	Pointer ContextLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-initializecontext2
+External_Function InitializeContext2 "InitializeContext2" KERNEL32.dll ;
+	Pointer Buffer ;	// Pointer*
+	UInteger ContextFlags ;	// CONTEXT_FLAGS
+	Pointer Context ;	// CONTEXT**
+	Pointer ContextLength ;	// UInteger*
+	UBigint XStateCompactionMask ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-isdebuggerpresent
+External_Function IsDebuggerPresent "IsDebuggerPresent" KERNEL32.dll ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-locatexstatefeature
+External_Function LocateXStateFeature "LocateXStateFeature" KERNEL32.dll ;
+	Pointer Context ;	// CONTEXT*
+	UInteger FeatureId ;
+	Pointer Length ;	// UInteger*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-outputdebugstringa
+External_Function OutputDebugStringA "OutputDebugStringA" KERNEL32.dll ;
+	String lpOutputString ;	// PSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-outputdebugstringw
+External_Function OutputDebugStringW "OutputDebugStringW" KERNEL32.dll ;
+	WString lpOutputString ;	// PWSTR
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-raiseexception
+External_Function RaiseException "RaiseException" KERNEL32.dll ;
+	UInteger dwExceptionCode ;
+	UInteger dwExceptionFlags ;
+	UInteger nNumberOfArguments ;
+	Pointer lpArguments ;	// ULongPtr*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-raisefailfastexception
+External_Function RaiseFailFastException "RaiseFailFastException" KERNEL32.dll ;
+	Pointer pExceptionRecord ;	// EXCEPTION_RECORD*
+	Pointer pContextRecord ;	// CONTEXT*
+	UInteger dwFlags ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory
+External_Function ReadProcessMemory "ReadProcessMemory" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpBaseAddress ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	ULongPtr nSize ;
+	Pointer lpNumberOfBytesRead ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-removevectoredcontinuehandler
+External_Function RemoveVectoredContinueHandler "RemoveVectoredContinueHandler" KERNEL32.dll ;
+	Pointer Handle ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-removevectoredexceptionhandler
+External_Function RemoveVectoredExceptionHandler "RemoveVectoredExceptionHandler" KERNEL32.dll ;
+	Pointer Handle ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtladdfunctiontable
+External_Function RtlAddFunctionTable "RtlAddFunctionTable" KERNEL32.dll ;
+	Pointer FunctionTable ;	// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+	UInteger EntryCount ;
+	ULongPtr BaseAddress ;
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlcapturecontext
+External_Function RtlCaptureContext "RtlCaptureContext" KERNEL32.dll ;
+	Pointer ContextRecord ;	// CONTEXT*
+	Returns Pointer
+
+External_Function RtlCaptureContext2 "RtlCaptureContext2" KERNEL32.dll ;
+	Pointer ContextRecord ;	// CONTEXT*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlcapturestackbacktrace
+External_Function RtlCaptureStackBackTrace "RtlCaptureStackBackTrace" KERNEL32.dll ;
+	UInteger FramesToSkip ;
+	UInteger FramesToCapture ;
+	Pointer BackTrace ;	// Pointer**
+	Pointer BackTraceHash ;	// UInteger*
+	Returns UShort
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtldeletefunctiontable
+External_Function RtlDeleteFunctionTable "RtlDeleteFunctionTable" KERNEL32.dll ;
+	Pointer FunctionTable ;	// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlinstallfunctiontablecallback
+External_Function RtlInstallFunctionTableCallback "RtlInstallFunctionTableCallback" KERNEL32.dll ;
+	UBigint TableIdentifier ;
+	UBigint BaseAddress ;
+	UInteger Length ;
+	Pointer Callback ;	// PGET_RUNTIME_FUNCTION_CALLBACK
+	Pointer Context ;	// Pointer*
+	WString OutOfProcessCallbackDll ;	// PWSTR
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtllookupfunctionentry
+External_Function RtlLookupFunctionEntry "RtlLookupFunctionEntry" KERNEL32.dll ;
+	ULongPtr ControlPc ;
+	Pointer ImageBase ;	// ULongPtr*
+	Pointer HistoryTable ;	// UNWIND_HISTORY_TABLE*
+	Returns Pointer	// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlpctofileheader
+External_Function RtlPcToFileHeader "RtlPcToFileHeader" KERNEL32.dll ;
+	Pointer PcValue ;	// Pointer*
+	Pointer BaseOfImage ;	// Pointer**
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/rtlsupportapi/nf-rtlsupportapi-rtlraiseexception
+External_Function RtlRaiseException "RtlRaiseException" KERNEL32.dll ;
+	Pointer ExceptionRecord ;	// EXCEPTION_RECORD*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlrestorecontext
+External_Function RtlRestoreContext "RtlRestoreContext" KERNEL32.dll ;
+	Pointer ContextRecord ;	// CONTEXT*
+	Pointer ExceptionRecord ;	// EXCEPTION_RECORD*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlunwind
+External_Function RtlUnwind "RtlUnwind" KERNEL32.dll ;
+	Pointer TargetFrame ;	// Pointer*
+	Pointer TargetIp ;	// Pointer*
+	Pointer ExceptionRecord ;	// EXCEPTION_RECORD*
+	Pointer ReturnValue ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlunwindex
+External_Function RtlUnwindEx "RtlUnwindEx" KERNEL32.dll ;
+	Pointer TargetFrame ;	// Pointer*
+	Pointer TargetIp ;	// Pointer*
+	Pointer ExceptionRecord ;	// EXCEPTION_RECORD*
+	Pointer ReturnValue ;	// Pointer*
+	Pointer ContextRecord ;	// CONTEXT*
+	Pointer HistoryTable ;	// UNWIND_HISTORY_TABLE*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlvirtualunwind
+External_Function RtlVirtualUnwind "RtlVirtualUnwind" KERNEL32.dll ;
+	UInteger HandlerType ;	// RTL_VIRTUAL_UNWIND_HANDLER_TYPE
+	ULongPtr ImageBase ;
+	ULongPtr ControlPc ;
+	Pointer FunctionEntry ;	// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+	Pointer ContextRecord ;	// CONTEXT*
+	Pointer HandlerData ;	// Pointer**
+	Pointer EstablisherFrame ;	// ULongPtr*
+	Pointer ContextPointers ;	// KNONVOLATILE_CONTEXT_POINTERS*
+	Returns Pointer	// EXCEPTION_ROUTINE
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-seterrormode
+External_Function SetErrorMode "SetErrorMode" KERNEL32.dll ;
+	UInteger uMode ;	// THREAD_ERROR_MODE
+	Returns UInteger	// THREAD_ERROR_MODE
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadcontext
+External_Function SetThreadContext "SetThreadContext" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Pointer lpContext ;	// CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-setthreaderrormode
+External_Function SetThreadErrorMode "SetThreadErrorMode" KERNEL32.dll ;
+	UInteger dwNewMode ;	// THREAD_ERROR_MODE
+	Pointer lpOldMode ;	// THREAD_ERROR_MODE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-setunhandledexceptionfilter
+External_Function SetUnhandledExceptionFilter "SetUnhandledExceptionFilter" KERNEL32.dll ;
+	Pointer lpTopLevelExceptionFilter ;	// LPTOP_LEVEL_EXCEPTION_FILTER
+	Returns Pointer	// LPTOP_LEVEL_EXCEPTION_FILTER
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setxstatefeaturesmask
+External_Function SetXStateFeaturesMask "SetXStateFeaturesMask" KERNEL32.dll ;
+	Pointer Context ;	// CONTEXT*
+	UBigint FeatureMask ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/errhandlingapi/nf-errhandlingapi-unhandledexceptionfilter
+External_Function UnhandledExceptionFilter "UnhandledExceptionFilter" KERNEL32.dll ;
+	Pointer ExceptionInfo ;	// EXCEPTION_POINTERS*
+	Returns Integer
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-waitfordebugevent
+External_Function WaitForDebugEvent "WaitForDebugEvent" KERNEL32.dll ;
+	Pointer lpDebugEvent ;	// DEBUG_EVENT*
+	UInteger dwMilliseconds ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/debugapi/nf-debugapi-waitfordebugeventex
+External_Function WaitForDebugEventEx "WaitForDebugEventEx" KERNEL32.dll ;
+	Pointer lpDebugEvent ;	// DEBUG_EVENT*
+	UInteger dwMilliseconds ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-wow64getthreadcontext
+External_Function Wow64GetThreadContext "Wow64GetThreadContext" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Pointer lpContext ;	// WOW64_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-wow64getthreadselectorentry
+External_Function Wow64GetThreadSelectorEntry "Wow64GetThreadSelectorEntry" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	UInteger dwSelector ;
+	Pointer lpSelectorEntry ;	// WOW64_LDT_ENTRY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-wow64setthreadcontext
+External_Function Wow64SetThreadContext "Wow64SetThreadContext" KERNEL32.dll ;
+	Pointer hThread ;	// HANDLE
+	Pointer lpContext ;	// WOW64_CONTEXT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory
+External_Function WriteProcessMemory "WriteProcessMemory" KERNEL32.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer lpBaseAddress ;	// Pointer*
+	Pointer lpBuffer ;	// Pointer*
+	ULongPtr nSize ;
+	Pointer lpNumberOfBytesWritten ;	// ULongPtr*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-messagebeep
+External_Function MessageBeep "MessageBeep" USER32.dll ;
+	UInteger uType ;	// MESSAGEBOX_STYLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wct/nf-wct-closethreadwaitchainsession
+External_Function CloseThreadWaitChainSession "CloseThreadWaitChainSession" ADVAPI32.dll ;
+	Pointer WctHandle ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/wct/nf-wct-getthreadwaitchain
+External_Function GetThreadWaitChain "GetThreadWaitChain" ADVAPI32.dll ;
+	Pointer WctHandle ;	// Pointer*
+	ULongPtr Context ;
+	UInteger Flags ;	// WAIT_CHAIN_THREAD_OPTIONS
+	UInteger ThreadId ;
+	Pointer NodeCount ;	// UInteger*
+	Pointer NodeInfoArray ;	// WAITCHAIN_NODE_INFO*
+	Pointer IsCycle ;	// BOOL*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wct/nf-wct-openthreadwaitchainsession
+External_Function OpenThreadWaitChainSession "OpenThreadWaitChainSession" ADVAPI32.dll ;
+	UInteger Flags ;	// OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS
+	Pointer callback ;	// PWAITCHAINCALLBACK
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/wct/nf-wct-registerwaitchaincomcallback
+External_Function RegisterWaitChainCOMCallback "RegisterWaitChainCOMCallback" ADVAPI32.dll ;
+	Pointer CallStateCallback ;	// PCOGETCALLSTATE
+	Pointer ActivationStateCallback ;	// PCOGETACTIVATIONSTATE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtladdgrowablefunctiontable
+External_Function RtlAddGrowableFunctionTable "RtlAddGrowableFunctionTable" ntdll.dll ;
+	Pointer DynamicTable ;	// Pointer**
+	Pointer FunctionTable ;	// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+	UInteger EntryCount ;
+	UInteger MaximumEntryCount ;
+	ULongPtr RangeBase ;
+	ULongPtr RangeEnd ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtldeletegrowablefunctiontable
+External_Function RtlDeleteGrowableFunctionTable "RtlDeleteGrowableFunctionTable" ntdll.dll ;
+	Pointer DynamicTable ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winnt/nf-winnt-rtlgrowfunctiontable
+External_Function RtlGrowFunctionTable "RtlGrowFunctionTable" ntdll.dll ;
+	Pointer DynamicTable ;	// Pointer*
+	UInteger NewEntryCount ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-bindimage
+External_Function BindImage "BindImage" imagehlp.dll ;
+	String ImageName ;	// PSTR
+	String DllPath ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-bindimageex
+External_Function BindImageEx "BindImageEx" imagehlp.dll ;
+	UInteger Flags ;
+	String ImageName ;	// PSTR
+	String DllPath ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer StatusRoutine ;	// PIMAGEHLP_STATUS_ROUTINE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-checksummappedfile
+External_Function CheckSumMappedFile "CheckSumMappedFile" imagehlp.dll ;
+	Pointer BaseAddress ;	// Pointer*
+	UInteger FileLength ;
+	Pointer HeaderSum ;	// UInteger*
+	Pointer CheckSum ;	// UInteger*
+	Returns Pointer	// IMAGE_NT_HEADERS64*
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-getimageconfiginformation
+External_Function GetImageConfigInformation "GetImageConfigInformation" imagehlp.dll ;
+	Pointer LoadedImage ;	// LOADED_IMAGE*
+	Pointer ImageConfigInformation ;	// IMAGE_LOAD_CONFIG_DIRECTORY64*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-getimageunusedheaderbytes
+External_Function GetImageUnusedHeaderBytes "GetImageUnusedHeaderBytes" imagehlp.dll ;
+	Pointer LoadedImage ;	// LOADED_IMAGE*
+	Pointer SizeUnusedHeaderBytes ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imageaddcertificate
+External_Function ImageAddCertificate "ImageAddCertificate" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer Certificate ;	// WIN_CERTIFICATE*
+	Pointer Index ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imageenumeratecertificates
+External_Function ImageEnumerateCertificates "ImageEnumerateCertificates" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UShort TypeFilter ;
+	Pointer CertificateCount ;	// UInteger*
+	Pointer Indices ;	// UInteger*
+	UInteger IndexCount ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imagegetcertificatedata
+External_Function ImageGetCertificateData "ImageGetCertificateData" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UInteger CertificateIndex ;
+	Pointer Certificate ;	// WIN_CERTIFICATE*
+	Pointer RequiredLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imagegetcertificateheader
+External_Function ImageGetCertificateHeader "ImageGetCertificateHeader" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UInteger CertificateIndex ;
+	Pointer Certificateheader ;	// WIN_CERTIFICATE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imagegetdigeststream
+External_Function ImageGetDigestStream "ImageGetDigestStream" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UInteger DigestLevel ;
+	Pointer DigestFunction ;	// DIGEST_FUNCTION
+	Pointer DigestHandle ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imageload
+External_Function ImageLoad "ImageLoad" imagehlp.dll ;
+	String DllName ;	// PSTR
+	String DllPath ;	// PSTR
+	Returns Pointer	// LOADED_IMAGE*
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imageremovecertificate
+External_Function ImageRemoveCertificate "ImageRemoveCertificate" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UInteger Index ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-imageunload
+External_Function ImageUnload "ImageUnload" imagehlp.dll ;
+	Pointer LoadedImage ;	// LOADED_IMAGE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-mapandload
+External_Function MapAndLoad "MapAndLoad" imagehlp.dll ;
+	String ImageName ;	// PSTR
+	String DllPath ;	// PSTR
+	Pointer LoadedImage ;	// LOADED_IMAGE*
+	Integer DotDll ;	// BOOL
+	Integer ReadOnly ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-mapfileandchecksuma
+External_Function MapFileAndCheckSumA "MapFileAndCheckSumA" imagehlp.dll ;
+	String Filename ;	// PSTR
+	Pointer HeaderSum ;	// UInteger*
+	Pointer CheckSum ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-mapfileandchecksumw
+External_Function MapFileAndCheckSumW "MapFileAndCheckSumW" imagehlp.dll ;
+	WString Filename ;	// PWSTR
+	Pointer HeaderSum ;	// UInteger*
+	Pointer CheckSum ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-rebaseimage
+External_Function ReBaseImage "ReBaseImage" imagehlp.dll ;
+	String CurrentImageName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Integer fReBase ;	// BOOL
+	Integer fRebaseSysfileOk ;	// BOOL
+	Integer fGoingDown ;	// BOOL
+	UInteger CheckImageSize ;
+	Pointer OldImageSize ;	// UInteger*
+	Pointer OldImageBase ;	// ULongPtr*
+	Pointer NewImageSize ;	// UInteger*
+	Pointer NewImageBase ;	// ULongPtr*
+	UInteger TimeStamp ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-rebaseimage64
+External_Function ReBaseImage64 "ReBaseImage64" imagehlp.dll ;
+	String CurrentImageName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Integer fReBase ;	// BOOL
+	Integer fRebaseSysfileOk ;	// BOOL
+	Integer fGoingDown ;	// BOOL
+	UInteger CheckImageSize ;
+	Pointer OldImageSize ;	// UInteger*
+	Pointer OldImageBase ;	// UBigint*
+	Pointer NewImageSize ;	// UInteger*
+	Pointer NewImageBase ;	// UBigint*
+	UInteger TimeStamp ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-setimageconfiginformation
+External_Function SetImageConfigInformation "SetImageConfigInformation" imagehlp.dll ;
+	Pointer LoadedImage ;	// LOADED_IMAGE*
+	Pointer ImageConfigInformation ;	// IMAGE_LOAD_CONFIG_DIRECTORY64*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-touchfiletimes
+External_Function TouchFileTimes "TouchFileTimes" imagehlp.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer pSystemTime ;	// SYSTEMTIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-unmapandload
+External_Function UnMapAndLoad "UnMapAndLoad" imagehlp.dll ;
+	Pointer LoadedImage ;	// LOADED_IMAGE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-updatedebuginfofile
+External_Function UpdateDebugInfoFile "UpdateDebugInfoFile" imagehlp.dll ;
+	String ImageFileName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer DebugFilePath ;	// PSTR
+	Pointer NtHeaders ;	// IMAGE_NT_HEADERS32*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/imagehlp/nf-imagehlp-updatedebuginfofileex
+External_Function UpdateDebugInfoFileEx "UpdateDebugInfoFileEx" imagehlp.dll ;
+	String ImageFileName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer DebugFilePath ;	// PSTR
+	Pointer NtHeaders ;	// IMAGE_NT_HEADERS32*
+	UInteger OldCheckSum ;
+	Returns Integer	// BOOL
+
+External_Function DbgHelpCreateUserDump "DbgHelpCreateUserDump" dbghelp.dll ;
+	String FileName ;	// PSTR
+	Pointer Callback ;	// PDBGHELP_CREATE_USER_DUMP_CALLBACK
+	Pointer UserData ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function DbgHelpCreateUserDumpW "DbgHelpCreateUserDumpW" dbghelp.dll ;
+	WString FileName ;	// PWSTR
+	Pointer Callback ;	// PDBGHELP_CREATE_USER_DUMP_CALLBACK
+	Pointer UserData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumdirtree
+External_Function EnumDirTree "EnumDirTree" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	String RootPath ;	// PSTR
+	String InputPathName ;	// PSTR
+	Pointer OutputPathBuffer ;	// PSTR
+	Pointer cb ;	// PENUMDIRTREE_CALLBACK
+	Pointer data ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumdirtreew
+External_Function EnumDirTreeW "EnumDirTreeW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	WString RootPath ;	// PWSTR
+	WString InputPathName ;	// PWSTR
+	Pointer OutputPathBuffer ;	// PWSTR
+	Pointer cb ;	// PENUMDIRTREE_CALLBACKW
+	Pointer data ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumerateloadedmodules
+External_Function EnumerateLoadedModules "EnumerateLoadedModules" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumLoadedModulesCallback ;	// PENUMLOADED_MODULES_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumerateloadedmodules64
+External_Function EnumerateLoadedModules64 "EnumerateLoadedModules64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumLoadedModulesCallback ;	// PENUMLOADED_MODULES_CALLBACK64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumerateloadedmodulesex
+External_Function EnumerateLoadedModulesEx "EnumerateLoadedModulesEx" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumLoadedModulesCallback ;	// PENUMLOADED_MODULES_CALLBACK64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumerateloadedmodulesexw
+External_Function EnumerateLoadedModulesExW "EnumerateLoadedModulesExW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumLoadedModulesCallback ;	// PENUMLOADED_MODULES_CALLBACKW64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-enumerateloadedmodulesw64
+External_Function EnumerateLoadedModulesW64 "EnumerateLoadedModulesW64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumLoadedModulesCallback ;	// PENUMLOADED_MODULES_CALLBACKW64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-finddebuginfofile
+External_Function FindDebugInfoFile "FindDebugInfoFile" dbghelp.dll ;
+	String FileName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer DebugFilePath ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-finddebuginfofileex
+External_Function FindDebugInfoFileEx "FindDebugInfoFileEx" dbghelp.dll ;
+	String FileName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer DebugFilePath ;	// PSTR
+	Pointer Callback ;	// PFIND_DEBUG_FILE_CALLBACK
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-finddebuginfofileexw
+External_Function FindDebugInfoFileExW "FindDebugInfoFileExW" dbghelp.dll ;
+	WString FileName ;	// PWSTR
+	WString SymbolPath ;	// PWSTR
+	Pointer DebugFilePath ;	// PWSTR
+	Pointer Callback ;	// PFIND_DEBUG_FILE_CALLBACKW
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-findexecutableimage
+External_Function FindExecutableImage "FindExecutableImage" dbghelp.dll ;
+	String FileName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer ImageFilePath ;	// PSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-findexecutableimageex
+External_Function FindExecutableImageEx "FindExecutableImageEx" dbghelp.dll ;
+	String FileName ;	// PSTR
+	String SymbolPath ;	// PSTR
+	Pointer ImageFilePath ;	// PSTR
+	Pointer Callback ;	// PFIND_EXE_FILE_CALLBACK
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-findexecutableimageexw
+External_Function FindExecutableImageExW "FindExecutableImageExW" dbghelp.dll ;
+	WString FileName ;	// PWSTR
+	WString SymbolPath ;	// PWSTR
+	Pointer ImageFilePath ;	// PWSTR
+	Pointer Callback ;	// PFIND_EXE_FILE_CALLBACKW
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+External_Function FindFileInPath "FindFileInPath" dbghelp.dll ;
+	Pointer hprocess ;	// HANDLE
+	String SearchPathA ;	// PSTR
+	String FileName ;	// PSTR
+	Pointer id ;	// Pointer*
+	UInteger two ;
+	UInteger three ;
+	UInteger flags ;
+	Pointer FilePath ;	// PSTR
+	Returns Integer	// BOOL
+
+External_Function FindFileInSearchPath "FindFileInSearchPath" dbghelp.dll ;
+	Pointer hprocess ;	// HANDLE
+	String SearchPathA ;	// PSTR
+	String FileName ;	// PSTR
+	UInteger one ;
+	UInteger two ;
+	UInteger three ;
+	Pointer FilePath ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-getsymloaderror
+External_Function GetSymLoadError "GetSymLoadError" dbghelp.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-gettimestampforloadedlibrary
+External_Function GetTimestampForLoadedLibrary "GetTimestampForLoadedLibrary" dbghelp.dll ;
+	Pointer Module ;	// HMODULE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagedirectoryentrytodata
+External_Function ImageDirectoryEntryToData "ImageDirectoryEntryToData" dbghelp.dll ;
+	Pointer Base ;	// Pointer*
+	UChar MappedAsImage ;	// BOOLEAN
+	UShort DirectoryEntry ;	// IMAGE_DIRECTORY_ENTRY
+	Pointer Size ;	// UInteger*
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagedirectoryentrytodataex
+External_Function ImageDirectoryEntryToDataEx "ImageDirectoryEntryToDataEx" dbghelp.dll ;
+	Pointer Base ;	// Pointer*
+	UChar MappedAsImage ;	// BOOLEAN
+	UShort DirectoryEntry ;	// IMAGE_DIRECTORY_ENTRY
+	Pointer Size ;	// UInteger*
+	Pointer FoundHeader ;	// IMAGE_SECTION_HEADER**
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagentheader
+External_Function ImageNtHeader "ImageNtHeader" dbghelp.dll ;
+	Pointer Base ;	// Pointer*
+	Returns Pointer	// IMAGE_NT_HEADERS64*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagervatosection
+External_Function ImageRvaToSection "ImageRvaToSection" dbghelp.dll ;
+	Pointer NtHeaders ;	// IMAGE_NT_HEADERS64*
+	Pointer Base ;	// Pointer*
+	UInteger Rva ;
+	Returns Pointer	// IMAGE_SECTION_HEADER*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagervatova
+External_Function ImageRvaToVa "ImageRvaToVa" dbghelp.dll ;
+	Pointer NtHeaders ;	// IMAGE_NT_HEADERS64*
+	Pointer Base ;	// Pointer*
+	UInteger Rva ;
+	Pointer LastRvaSection ;	// IMAGE_SECTION_HEADER**
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagehlpapiversion
+External_Function ImagehlpApiVersion "ImagehlpApiVersion" dbghelp.dll ;
+	Returns Pointer	// API_VERSION*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-imagehlpapiversionex
+External_Function ImagehlpApiVersionEx "ImagehlpApiVersionEx" dbghelp.dll ;
+	Pointer AppVersion ;	// API_VERSION*
+	Returns Pointer	// API_VERSION*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-makesuredirectorypathexists
+External_Function MakeSureDirectoryPathExists "MakeSureDirectoryPathExists" dbghelp.dll ;
+	String DirPath ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpreaddumpstream
+External_Function MiniDumpReadDumpStream "MiniDumpReadDumpStream" dbghelp.dll ;
+	Pointer BaseOfDump ;	// Pointer*
+	UInteger StreamNumber ;
+	Pointer Dir ;	// MINIDUMP_DIRECTORY**
+	Pointer StreamPointer ;	// Pointer**
+	Pointer StreamSize ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump
+External_Function MiniDumpWriteDump "MiniDumpWriteDump" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger ProcessId ;
+	Pointer hFile ;	// HANDLE
+	Integer DumpType ;	// MINIDUMP_TYPE
+	Pointer ExceptionParam ;	// MINIDUMP_EXCEPTION_INFORMATION*
+	Pointer UserStreamParam ;	// MINIDUMP_USER_STREAM_INFORMATION*
+	Pointer CallbackParam ;	// MINIDUMP_CALLBACK_INFORMATION*
+	Returns Integer	// BOOL
+
+External_Function RangeMapAddPeImageSections "RangeMapAddPeImageSections" dbghelp.dll ;
+	Pointer RmapHandle ;	// Pointer*
+	WString ImageName ;	// PWSTR
+	Pointer MappedImage ;	// Pointer*
+	UInteger MappingBytes ;
+	UBigint ImageBase ;
+	UBigint UserTag ;
+	UInteger MappingFlags ;
+	Returns Integer	// BOOL
+
+External_Function RangeMapCreate "RangeMapCreate" dbghelp.dll ;
+	Returns Pointer	// Pointer*
+
+External_Function RangeMapFree "RangeMapFree" dbghelp.dll ;
+	Pointer RmapHandle ;	// Pointer*
+	Returns Pointer
+
+External_Function RangeMapRead "RangeMapRead" dbghelp.dll ;
+	Pointer RmapHandle ;	// Pointer*
+	UBigint Offset ;
+	Pointer Buffer ;	// Pointer*
+	UInteger RequestBytes ;
+	UInteger Flags ;
+	Pointer DoneBytes ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function RangeMapRemove "RangeMapRemove" dbghelp.dll ;
+	Pointer RmapHandle ;	// Pointer*
+	UBigint UserTag ;
+	Returns Integer	// BOOL
+
+External_Function RangeMapWrite "RangeMapWrite" dbghelp.dll ;
+	Pointer RmapHandle ;	// Pointer*
+	UBigint Offset ;
+	Pointer Buffer ;	// Pointer*
+	UInteger RequestBytes ;
+	UInteger Flags ;
+	Pointer DoneBytes ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function RemoveInvalidModuleList "RemoveInvalidModuleList" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Pointer
+
+External_Function ReportSymbolLoadSummary "ReportSymbolLoadSummary" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	WString pLoadModule ;	// PWSTR
+	Pointer pSymbolData ;	// DBGHELP_DATA_REPORT_STRUCT*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-searchtreeforfile
+External_Function SearchTreeForFile "SearchTreeForFile" dbghelp.dll ;
+	String RootPath ;	// PSTR
+	String InputPathName ;	// PSTR
+	Pointer OutputPathBuffer ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-searchtreeforfilew
+External_Function SearchTreeForFileW "SearchTreeForFileW" dbghelp.dll ;
+	WString RootPath ;	// PWSTR
+	WString InputPathName ;	// PWSTR
+	Pointer OutputPathBuffer ;	// PWSTR
+	Returns Integer	// BOOL
+
+External_Function SetCheckUserInterruptShared "SetCheckUserInterruptShared" dbghelp.dll ;
+	Pointer lpStartAddress ;	// LPCALL_BACK_USER_INTERRUPT_ROUTINE
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-setsymloaderror
+External_Function SetSymLoadError "SetSymLoadError" dbghelp.dll ;
+	UInteger error ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/ETW/stackwalk
+External_Function StackWalk "StackWalk" dbghelp.dll ;
+	UInteger MachineType ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hThread ;	// HANDLE
+	Pointer StackFrame ;	// STACKFRAME*
+	Pointer ContextRecord ;	// Pointer*
+	Pointer ReadMemoryRoutine ;	// PREAD_PROCESS_MEMORY_ROUTINE
+	Pointer FunctionTableAccessRoutine ;	// PFUNCTION_TABLE_ACCESS_ROUTINE
+	Pointer GetModuleBaseRoutine ;	// PGET_MODULE_BASE_ROUTINE
+	Pointer TranslateAddress ;	// PTRANSLATE_ADDRESS_ROUTINE
+	Returns Integer	// BOOL
+
+External_Function StackWalk2 "StackWalk2" dbghelp.dll ;
+	UInteger MachineType ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hThread ;	// HANDLE
+	Pointer StackFrame ;	// STACKFRAME_EX*
+	Pointer ContextRecord ;	// Pointer*
+	Pointer ReadMemoryRoutine ;	// PREAD_PROCESS_MEMORY_ROUTINE64
+	Pointer FunctionTableAccessRoutine ;	// PFUNCTION_TABLE_ACCESS_ROUTINE64
+	Pointer GetModuleBaseRoutine ;	// PGET_MODULE_BASE_ROUTINE64
+	Pointer TranslateAddress ;	// PTRANSLATE_ADDRESS_ROUTINE64
+	Pointer GetTargetAttributeValue ;	// PGET_TARGET_ATTRIBUTE_VALUE64
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-stackwalk64
+External_Function StackWalk64 "StackWalk64" dbghelp.dll ;
+	UInteger MachineType ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hThread ;	// HANDLE
+	Pointer StackFrame ;	// STACKFRAME64*
+	Pointer ContextRecord ;	// Pointer*
+	Pointer ReadMemoryRoutine ;	// PREAD_PROCESS_MEMORY_ROUTINE64
+	Pointer FunctionTableAccessRoutine ;	// PFUNCTION_TABLE_ACCESS_ROUTINE64
+	Pointer GetModuleBaseRoutine ;	// PGET_MODULE_BASE_ROUTINE64
+	Pointer TranslateAddress ;	// PTRANSLATE_ADDRESS_ROUTINE64
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-stackwalkex
+External_Function StackWalkEx "StackWalkEx" dbghelp.dll ;
+	UInteger MachineType ;
+	Pointer hProcess ;	// HANDLE
+	Pointer hThread ;	// HANDLE
+	Pointer StackFrame ;	// STACKFRAME_EX*
+	Pointer ContextRecord ;	// Pointer*
+	Pointer ReadMemoryRoutine ;	// PREAD_PROCESS_MEMORY_ROUTINE64
+	Pointer FunctionTableAccessRoutine ;	// PFUNCTION_TABLE_ACCESS_ROUTINE64
+	Pointer GetModuleBaseRoutine ;	// PGET_MODULE_BASE_ROUTINE64
+	Pointer TranslateAddress ;	// PTRANSLATE_ADDRESS_ROUTINE64
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symaddsourcestream
+External_Function SymAddSourceStream "SymAddSourceStream" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	String StreamFile ;	// PSTR
+	Pointer Buffer ;	// UChar*
+	ULongPtr Size ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symaddsourcestreama
+External_Function SymAddSourceStreamA "SymAddSourceStreamA" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	String StreamFile ;	// PSTR
+	Pointer Buffer ;	// UChar*
+	ULongPtr Size ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symaddsourcestreamw
+External_Function SymAddSourceStreamW "SymAddSourceStreamW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	WString FileSpec ;	// PWSTR
+	Pointer Buffer ;	// UChar*
+	ULongPtr Size ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symaddsymbol
+External_Function SymAddSymbol "SymAddSymbol" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	String Name ;	// PSTR
+	UBigint Address ;
+	UInteger Size ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symaddsymbolw
+External_Function SymAddSymbolW "SymAddSymbolW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	WString Name ;	// PWSTR
+	UBigint Address ;
+	UInteger Size ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symaddrincludeinlinetrace
+External_Function SymAddrIncludeInlineTrace "SymAddrIncludeInlineTrace" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symcleanup
+External_Function SymCleanup "SymCleanup" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symcompareinlinetrace
+External_Function SymCompareInlineTrace "SymCompareInlineTrace" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address1 ;
+	UInteger InlineContext1 ;
+	UBigint RetAddress1 ;
+	UBigint Address2 ;
+	UBigint RetAddress2 ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symdeletesymbol
+External_Function SymDeleteSymbol "SymDeleteSymbol" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	String Name ;	// PSTR
+	UBigint Address ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symdeletesymbolw
+External_Function SymDeleteSymbolW "SymDeleteSymbolW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	WString Name ;	// PWSTR
+	UBigint Address ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumlines
+External_Function SymEnumLines "SymEnumLines" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	String Obj ;	// PSTR
+	String File ;	// PSTR
+	Pointer EnumLinesCallback ;	// PSYM_ENUMLINES_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumlinesw
+External_Function SymEnumLinesW "SymEnumLinesW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	WString Obj ;	// PWSTR
+	WString File ;	// PWSTR
+	Pointer EnumLinesCallback ;	// PSYM_ENUMLINES_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumprocesses
+External_Function SymEnumProcesses "SymEnumProcesses" dbghelp.dll ;
+	Pointer EnumProcessesCallback ;	// PSYM_ENUMPROCESSES_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsourcefiletokens
+External_Function SymEnumSourceFileTokens "SymEnumSourceFileTokens" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	Pointer Callback ;	// PENUMSOURCEFILETOKENSCALLBACK
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsourcefiles
+External_Function SymEnumSourceFiles "SymEnumSourceFiles" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint ModBase ;
+	String Mask ;	// PSTR
+	Pointer cbSrcFiles ;	// PSYM_ENUMSOURCEFILES_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsourcefilesw
+External_Function SymEnumSourceFilesW "SymEnumSourceFilesW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint ModBase ;
+	WString Mask ;	// PWSTR
+	Pointer cbSrcFiles ;	// PSYM_ENUMSOURCEFILES_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsourcelines
+External_Function SymEnumSourceLines "SymEnumSourceLines" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	String Obj ;	// PSTR
+	String File ;	// PSTR
+	UInteger Line ;
+	UInteger Flags ;
+	Pointer EnumLinesCallback ;	// PSYM_ENUMLINES_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsourcelinesw
+External_Function SymEnumSourceLinesW "SymEnumSourceLinesW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	WString Obj ;	// PWSTR
+	WString File ;	// PWSTR
+	UInteger Line ;
+	UInteger Flags ;
+	Pointer EnumLinesCallback ;	// PSYM_ENUMLINES_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+External_Function SymEnumSym "SymEnumSym" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsymbols
+External_Function SymEnumSymbols "SymEnumSymbols" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	String Mask ;	// PSTR
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsymbolsex
+External_Function SymEnumSymbolsEx "SymEnumSymbolsEx" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	String Mask ;	// PSTR
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	UInteger Options ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsymbolsexw
+External_Function SymEnumSymbolsExW "SymEnumSymbolsExW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	WString Mask ;	// PWSTR
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	UInteger Options ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsymbolsforaddr
+External_Function SymEnumSymbolsForAddr "SymEnumSymbolsForAddr" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsymbolsforaddrw
+External_Function SymEnumSymbolsForAddrW "SymEnumSymbolsForAddrW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumsymbolsw
+External_Function SymEnumSymbolsW "SymEnumSymbolsW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	WString Mask ;	// PWSTR
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumtypes
+External_Function SymEnumTypes "SymEnumTypes" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumtypesbyname
+External_Function SymEnumTypesByName "SymEnumTypesByName" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	String mask ;	// PSTR
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumtypesbynamew
+External_Function SymEnumTypesByNameW "SymEnumTypesByNameW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	WString mask ;	// PWSTR
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumtypesw
+External_Function SymEnumTypesW "SymEnumTypesW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMERATESYMBOLS_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratemodules
+External_Function SymEnumerateModules "SymEnumerateModules" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumModulesCallback ;	// PSYM_ENUMMODULES_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratemodules64
+External_Function SymEnumerateModules64 "SymEnumerateModules64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumModulesCallback ;	// PSYM_ENUMMODULES_CALLBACK64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratemodulesw64
+External_Function SymEnumerateModulesW64 "SymEnumerateModulesW64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	Pointer EnumModulesCallback ;	// PSYM_ENUMMODULES_CALLBACKW64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratesymbols
+External_Function SymEnumerateSymbols "SymEnumerateSymbols" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMSYMBOLS_CALLBACK
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratesymbols64
+External_Function SymEnumerateSymbols64 "SymEnumerateSymbols64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMSYMBOLS_CALLBACK64
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratesymbolsw
+External_Function SymEnumerateSymbolsW "SymEnumerateSymbolsW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMSYMBOLS_CALLBACKW
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symenumeratesymbolsw64
+External_Function SymEnumerateSymbolsW64 "SymEnumerateSymbolsW64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	Pointer EnumSymbolsCallback ;	// PSYM_ENUMSYMBOLS_CALLBACK64W
+	Pointer UserContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfinddebuginfofile
+External_Function SymFindDebugInfoFile "SymFindDebugInfoFile" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	String FileName ;	// PSTR
+	Pointer DebugFilePath ;	// PSTR
+	Pointer Callback ;	// PFIND_DEBUG_FILE_CALLBACK
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfinddebuginfofilew
+External_Function SymFindDebugInfoFileW "SymFindDebugInfoFileW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	WString FileName ;	// PWSTR
+	Pointer DebugFilePath ;	// PWSTR
+	Pointer Callback ;	// PFIND_DEBUG_FILE_CALLBACKW
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfindexecutableimage
+External_Function SymFindExecutableImage "SymFindExecutableImage" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	String FileName ;	// PSTR
+	Pointer ImageFilePath ;	// PSTR
+	Pointer Callback ;	// PFIND_EXE_FILE_CALLBACK
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfindexecutableimagew
+External_Function SymFindExecutableImageW "SymFindExecutableImageW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	WString FileName ;	// PWSTR
+	Pointer ImageFilePath ;	// PWSTR
+	Pointer Callback ;	// PFIND_EXE_FILE_CALLBACKW
+	Pointer CallerData ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfindfileinpath
+External_Function SymFindFileInPath "SymFindFileInPath" dbghelp.dll ;
+	Pointer hprocess ;	// HANDLE
+	String SearchPathA ;	// PSTR
+	String FileName ;	// PSTR
+	Pointer id ;	// Pointer*
+	UInteger two ;
+	UInteger three ;
+	UInteger flags ;	// SYM_FIND_ID_OPTION
+	Pointer FoundFile ;	// PSTR
+	Pointer callback ;	// PFINDFILEINPATHCALLBACK
+	Pointer context ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfindfileinpathw
+External_Function SymFindFileInPathW "SymFindFileInPathW" dbghelp.dll ;
+	Pointer hprocess ;	// HANDLE
+	WString SearchPathA ;	// PWSTR
+	WString FileName ;	// PWSTR
+	Pointer id ;	// Pointer*
+	UInteger two ;
+	UInteger three ;
+	UInteger flags ;	// SYM_FIND_ID_OPTION
+	Pointer FoundFile ;	// PWSTR
+	Pointer callback ;	// PFINDFILEINPATHCALLBACKW
+	Pointer context ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromaddr
+External_Function SymFromAddr "SymFromAddr" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	Pointer Displacement ;	// UBigint*
+	Pointer Symbol ;	// SYMBOL_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromaddrw
+External_Function SymFromAddrW "SymFromAddrW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	Pointer Displacement ;	// UBigint*
+	Pointer Symbol ;	// SYMBOL_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromindex
+External_Function SymFromIndex "SymFromIndex" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	UInteger Index ;
+	Pointer Symbol ;	// SYMBOL_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromindexw
+External_Function SymFromIndexW "SymFromIndexW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint BaseOfDll ;
+	UInteger Index ;
+	Pointer Symbol ;	// SYMBOL_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfrominlinecontext
+External_Function SymFromInlineContext "SymFromInlineContext" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	UInteger InlineContext ;
+	Pointer Displacement ;	// UBigint*
+	Pointer Symbol ;	// SYMBOL_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfrominlinecontextw
+External_Function SymFromInlineContextW "SymFromInlineContextW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Address ;
+	UInteger InlineContext ;
+	Pointer Displacement ;	// UBigint*
+	Pointer Symbol ;	// SYMBOL_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromname
+External_Function SymFromName "SymFromName" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	String Name ;	// PSTR
+	Pointer Symbol ;	// SYMBOL_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromnamew
+External_Function SymFromNameW "SymFromNameW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	WString Name ;	// PWSTR
+	Pointer Symbol ;	// SYMBOL_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromtoken
+External_Function SymFromToken "SymFromToken" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	UInteger Token ;
+	Pointer Symbol ;	// SYMBOL_INFO*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfromtokenw
+External_Function SymFromTokenW "SymFromTokenW" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint Base ;
+	UInteger Token ;
+	Pointer Symbol ;	// SYMBOL_INFOW*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfunctiontableaccess
+External_Function SymFunctionTableAccess "SymFunctionTableAccess" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger AddrBase ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfunctiontableaccess64
+External_Function SymFunctionTableAccess64 "SymFunctionTableAccess64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint AddrBase ;
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symfunctiontableaccess64accessroutines
+External_Function SymFunctionTableAccess64AccessRoutines "SymFunctionTableAccess64AccessRoutines" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint AddrBase ;
+	Pointer ReadMemoryRoutine ;	// PREAD_PROCESS_MEMORY_ROUTINE64
+	Pointer GetModuleBaseRoutine ;	// PGET_MODULE_BASE_ROUTINE64
+	Returns Pointer	// Pointer*
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symgetextendedoption
+External_Function SymGetExtendedOption "SymGetExtendedOption" dbghelp.dll ;
+	Integer option ;	// IMAGEHLP_EXTENDED_OPTIONS
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symgetfilelineoffsets64
+External_Function SymGetFileLineOffsets64 "SymGetFileLineOffsets64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	String ModuleName ;	// PSTR
+	String FileName ;	// PSTR
+	Pointer Buffer ;	// UBigint*
+	UInteger BufferLines ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symgethomedirectory
+External_Function SymGetHomeDirectory "SymGetHomeDirectory" dbghelp.dll ;
+	UInteger type ;
+	Pointer dir ;	// PSTR
+	ULongPtr size ;
+	Returns Pointer	// PSTR
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symgethomedirectoryw
+External_Function SymGetHomeDirectoryW "SymGetHomeDirectoryW" dbghelp.dll ;
+	UInteger type ;
+	Pointer dir ;	// PWSTR
+	ULongPtr size ;
+	Returns Pointer	// PWSTR
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symgetlinefromaddr
+External_Function SymGetLineFromAddr "SymGetLineFromAddr" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UInteger dwAddr ;
+	Pointer pdwDisplacement ;	// UInteger*
+	Pointer Line ;	// IMAGEHLP_LINE*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/nf-dbghelp-symgetlinefromaddr64
+External_Function SymGetLineFromAddr64 "SymGetLineFromAddr64" dbghelp.dll ;
+	Pointer hProcess ;	// HANDLE
+	UBigint qwAddr ;
+	Pointer pdwDisplacement ;	// UInteger*
+	Pointer Line64 ;	// IMAGEHLP_LINE64*
+	Returns Integer	// BOOL
+
+
+Procedure DataFlex_Init
+End_Procedure
+

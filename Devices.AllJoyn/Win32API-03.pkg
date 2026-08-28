@@ -1,0 +1,781 @@
+Use UI
+
+External_Function alljoyn_msgarg_set_uint64_array "alljoyn_msgarg_set_uint64_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer at ;	// UBigint*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint8 "alljoyn_msgarg_set_uint8" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	UChar y ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_set_uint8_array "alljoyn_msgarg_set_uint8_array" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	ULongPtr length ;
+	Pointer ay ;	// UChar*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_setdictentry "alljoyn_msgarg_setdictentry" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	LongPtr key ;	// alljoyn_msgarg
+	LongPtr value ;	// alljoyn_msgarg
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_setstruct "alljoyn_msgarg_setstruct" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	LongPtr struct_members ;	// alljoyn_msgarg
+	ULongPtr num_members ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_msgarg_signature "alljoyn_msgarg_signature" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String str ;	// PSTR
+	ULongPtr buf ;
+	Returns ULongPtr
+
+External_Function alljoyn_msgarg_stabilize "alljoyn_msgarg_stabilize" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	Returns Pointer
+
+External_Function alljoyn_msgarg_tostring "alljoyn_msgarg_tostring" MSAJApi.dll ;
+	LongPtr arg ;	// alljoyn_msgarg
+	String str ;	// PSTR
+	ULongPtr buf ;
+	ULongPtr indent ;
+	Returns ULongPtr
+
+External_Function alljoyn_observer_create "alljoyn_observer_create" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busattachment
+	Pointer mandatoryInterfaces ;	// Char**
+	ULongPtr numMandatoryInterfaces ;
+	Returns LongPtr	// alljoyn_observer
+
+External_Function alljoyn_observer_destroy "alljoyn_observer_destroy" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	Returns Pointer
+
+External_Function alljoyn_observer_get "alljoyn_observer_get" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	String uniqueBusName ;	// PSTR
+	String objectPath ;	// PSTR
+	Returns LongPtr	// alljoyn_proxybusobject_ref
+
+External_Function alljoyn_observer_getfirst "alljoyn_observer_getfirst" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	Returns LongPtr	// alljoyn_proxybusobject_ref
+
+External_Function alljoyn_observer_getnext "alljoyn_observer_getnext" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	LongPtr proxyref ;	// alljoyn_proxybusobject_ref
+	Returns LongPtr	// alljoyn_proxybusobject_ref
+
+External_Function alljoyn_observer_registerlistener "alljoyn_observer_registerlistener" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	LongPtr listener ;	// alljoyn_observerlistener
+	Integer triggerOnExisting ;
+	Returns Pointer
+
+External_Function alljoyn_observer_unregisteralllisteners "alljoyn_observer_unregisteralllisteners" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	Returns Pointer
+
+External_Function alljoyn_observer_unregisterlistener "alljoyn_observer_unregisterlistener" MSAJApi.dll ;
+	LongPtr observer ;	// alljoyn_observer
+	LongPtr listener ;	// alljoyn_observerlistener
+	Returns Pointer
+
+External_Function alljoyn_observerlistener_create "alljoyn_observerlistener_create" MSAJApi.dll ;
+	Pointer callback ;	// alljoyn_observerlistener_callback*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_observerlistener
+
+External_Function alljoyn_observerlistener_destroy "alljoyn_observerlistener_destroy" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_observerlistener
+	Returns Pointer
+
+External_Function alljoyn_passwordmanager_setcredentials "alljoyn_passwordmanager_setcredentials" MSAJApi.dll ;
+	String authMechanism ;	// PSTR
+	String password ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurationlistener_create "alljoyn_permissionconfigurationlistener_create" MSAJApi.dll ;
+	Pointer callbacks ;	// alljoyn_permissionconfigurationlistener_callbacks*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_permissionconfigurationlistener
+
+External_Function alljoyn_permissionconfigurationlistener_destroy "alljoyn_permissionconfigurationlistener_destroy" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_permissionconfigurationlistener
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_certificatechain_destroy "alljoyn_permissionconfigurator_certificatechain_destroy" MSAJApi.dll ;
+	Pointer certificateChain ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_certificateid_cleanup "alljoyn_permissionconfigurator_certificateid_cleanup" MSAJApi.dll ;
+	Pointer certificateId ;	// alljoyn_certificateid*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_certificateidarray_cleanup "alljoyn_permissionconfigurator_certificateidarray_cleanup" MSAJApi.dll ;
+	Pointer certificateIdArray ;	// alljoyn_certificateidarray*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_claim "alljoyn_permissionconfigurator_claim" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer caKey ;	// Char*
+	Pointer identityCertificateChain ;	// Char*
+	Pointer groupId ;	// UChar*
+	ULongPtr groupSize ;
+	Pointer groupAuthority ;	// Char*
+	Pointer manifestsXmls ;	// Char**
+	ULongPtr manifestsCount ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_endmanagement "alljoyn_permissionconfigurator_endmanagement" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getapplicationstate "alljoyn_permissionconfigurator_getapplicationstate" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer state ;	// alljoyn_applicationstate*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getclaimcapabilities "alljoyn_permissionconfigurator_getclaimcapabilities" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer claimCapabilities ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getclaimcapabilitiesadditionalinfo "alljoyn_permissionconfigurator_getclaimcapabilitiesadditionalinfo" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer additionalInfo ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getdefaultclaimcapabilities "alljoyn_permissionconfigurator_getdefaultclaimcapabilities" MSAJApi.dll ;
+	Returns UShort
+
+External_Function alljoyn_permissionconfigurator_getdefaultpolicy "alljoyn_permissionconfigurator_getdefaultpolicy" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer policyXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getidentity "alljoyn_permissionconfigurator_getidentity" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer identityCertificateChain ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getidentitycertificateid "alljoyn_permissionconfigurator_getidentitycertificateid" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer certificateId ;	// alljoyn_certificateid*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getmanifests "alljoyn_permissionconfigurator_getmanifests" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer manifestArray ;	// alljoyn_manifestarray*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getmanifesttemplate "alljoyn_permissionconfigurator_getmanifesttemplate" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer manifestTemplateXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getmembershipsummaries "alljoyn_permissionconfigurator_getmembershipsummaries" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer certificateIds ;	// alljoyn_certificateidarray*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getpolicy "alljoyn_permissionconfigurator_getpolicy" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer policyXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_getpublickey "alljoyn_permissionconfigurator_getpublickey" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer publicKey ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_installmanifests "alljoyn_permissionconfigurator_installmanifests" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer manifestsXmls ;	// Char**
+	ULongPtr manifestsCount ;
+	Integer append ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_installmembership "alljoyn_permissionconfigurator_installmembership" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer membershipCertificateChain ;	// Char*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_manifestarray_cleanup "alljoyn_permissionconfigurator_manifestarray_cleanup" MSAJApi.dll ;
+	Pointer manifestArray ;	// alljoyn_manifestarray*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_manifesttemplate_destroy "alljoyn_permissionconfigurator_manifesttemplate_destroy" MSAJApi.dll ;
+	Pointer manifestTemplateXml ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_policy_destroy "alljoyn_permissionconfigurator_policy_destroy" MSAJApi.dll ;
+	Pointer policyXml ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_publickey_destroy "alljoyn_permissionconfigurator_publickey_destroy" MSAJApi.dll ;
+	Pointer publicKey ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_permissionconfigurator_removemembership "alljoyn_permissionconfigurator_removemembership" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer serial ;	// UChar*
+	ULongPtr serialLen ;
+	Pointer issuerPublicKey ;	// Char*
+	Pointer issuerAki ;	// UChar*
+	ULongPtr issuerAkiLen ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_reset "alljoyn_permissionconfigurator_reset" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_resetpolicy "alljoyn_permissionconfigurator_resetpolicy" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_setapplicationstate "alljoyn_permissionconfigurator_setapplicationstate" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Integer state ;	// alljoyn_applicationstate
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_setclaimcapabilities "alljoyn_permissionconfigurator_setclaimcapabilities" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	UShort claimCapabilities ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_setclaimcapabilitiesadditionalinfo "alljoyn_permissionconfigurator_setclaimcapabilitiesadditionalinfo" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	UShort additionalInfo ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_setmanifesttemplatefromxml "alljoyn_permissionconfigurator_setmanifesttemplatefromxml" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer manifestTemplateXml ;	// Char*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_startmanagement "alljoyn_permissionconfigurator_startmanagement" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_updateidentity "alljoyn_permissionconfigurator_updateidentity" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer identityCertificateChain ;	// Char*
+	Pointer manifestsXmls ;	// Char**
+	ULongPtr manifestsCount ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_permissionconfigurator_updatepolicy "alljoyn_permissionconfigurator_updatepolicy" MSAJApi.dll ;
+	LongPtr configurator ;	// alljoyn_permissionconfigurator
+	Pointer policyXml ;	// Char*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_pinglistener_create "alljoyn_pinglistener_create" MSAJApi.dll ;
+	Pointer callback ;	// alljoyn_pinglistener_callback*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_pinglistener
+
+External_Function alljoyn_pinglistener_destroy "alljoyn_pinglistener_destroy" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_pinglistener
+	Returns Pointer
+
+External_Function alljoyn_proxybusobject_addchild "alljoyn_proxybusobject_addchild" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	LongPtr child ;	// alljoyn_proxybusobject
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_addinterface "alljoyn_proxybusobject_addinterface" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	LongPtr iface ;	// alljoyn_interfacedescription
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_addinterface_by_name "alljoyn_proxybusobject_addinterface_by_name" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String name ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_copy "alljoyn_proxybusobject_copy" MSAJApi.dll ;
+	LongPtr source ;	// alljoyn_proxybusobject
+	Returns LongPtr	// alljoyn_proxybusobject
+
+External_Function alljoyn_proxybusobject_create "alljoyn_proxybusobject_create" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busattachment
+	String service ;	// PSTR
+	String path ;	// PSTR
+	UInteger sessionId ;
+	Returns LongPtr	// alljoyn_proxybusobject
+
+External_Function alljoyn_proxybusobject_create_secure "alljoyn_proxybusobject_create_secure" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busattachment
+	String service ;	// PSTR
+	String path ;	// PSTR
+	UInteger sessionId ;
+	Returns LongPtr	// alljoyn_proxybusobject
+
+External_Function alljoyn_proxybusobject_destroy "alljoyn_proxybusobject_destroy" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Pointer
+
+External_Function alljoyn_proxybusobject_enablepropertycaching "alljoyn_proxybusobject_enablepropertycaching" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Pointer
+
+External_Function alljoyn_proxybusobject_getallproperties "alljoyn_proxybusobject_getallproperties" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	LongPtr values ;	// alljoyn_msgarg
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_getallpropertiesasync "alljoyn_proxybusobject_getallpropertiesasync" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	Pointer callback ;	// alljoyn_proxybusobject_listener_getallpropertiescb_ptr
+	UInteger timeout ;
+	Pointer context ;	// Pointer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_getchild "alljoyn_proxybusobject_getchild" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String path ;	// PSTR
+	Returns LongPtr	// alljoyn_proxybusobject
+
+External_Function alljoyn_proxybusobject_getchildren "alljoyn_proxybusobject_getchildren" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Pointer children ;	// alljoyn_proxybusobject*
+	ULongPtr numChildren ;
+	Returns ULongPtr
+
+External_Function alljoyn_proxybusobject_getinterface "alljoyn_proxybusobject_getinterface" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	Returns LongPtr	// alljoyn_interfacedescription
+
+External_Function alljoyn_proxybusobject_getinterfaces "alljoyn_proxybusobject_getinterfaces" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Pointer ifaces ;	// alljoyn_interfacedescription*
+	ULongPtr numIfaces ;
+	Returns ULongPtr
+
+External_Function alljoyn_proxybusobject_getpath "alljoyn_proxybusobject_getpath" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_proxybusobject_getproperty "alljoyn_proxybusobject_getproperty" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	String property ;	// PSTR
+	LongPtr value ;	// alljoyn_msgarg
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_getpropertyasync "alljoyn_proxybusobject_getpropertyasync" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	String property ;	// PSTR
+	Pointer callback ;	// alljoyn_proxybusobject_listener_getpropertycb_ptr
+	UInteger timeout ;
+	Pointer context ;	// Pointer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_getservicename "alljoyn_proxybusobject_getservicename" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_proxybusobject_getsessionid "alljoyn_proxybusobject_getsessionid" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns UInteger
+
+External_Function alljoyn_proxybusobject_getuniquename "alljoyn_proxybusobject_getuniquename" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Pointer	// PSTR
+
+External_Function alljoyn_proxybusobject_implementsinterface "alljoyn_proxybusobject_implementsinterface" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	Returns Integer
+
+External_Function alljoyn_proxybusobject_introspectremoteobject "alljoyn_proxybusobject_introspectremoteobject" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_introspectremoteobjectasync "alljoyn_proxybusobject_introspectremoteobjectasync" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Pointer callback ;	// alljoyn_proxybusobject_listener_introspectcb_ptr
+	Pointer context ;	// Pointer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_issecure "alljoyn_proxybusobject_issecure" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Integer
+
+External_Function alljoyn_proxybusobject_isvalid "alljoyn_proxybusobject_isvalid" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Returns Integer
+
+External_Function alljoyn_proxybusobject_methodcall "alljoyn_proxybusobject_methodcall" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String ifaceName ;	// PSTR
+	String methodName ;	// PSTR
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	LongPtr replyMsg ;	// alljoyn_message
+	UInteger timeout ;
+	UChar flags ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_methodcall_member "alljoyn_proxybusobject_methodcall_member" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	alljoyn_interfacedescription_member method ;
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	LongPtr replyMsg ;	// alljoyn_message
+	UInteger timeout ;
+	UChar flags ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_methodcall_member_noreply "alljoyn_proxybusobject_methodcall_member_noreply" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	alljoyn_interfacedescription_member method ;
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	UChar flags ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_methodcall_noreply "alljoyn_proxybusobject_methodcall_noreply" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String ifaceName ;	// PSTR
+	String methodName ;	// PSTR
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	UChar flags ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_methodcallasync "alljoyn_proxybusobject_methodcallasync" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String ifaceName ;	// PSTR
+	String methodName ;	// PSTR
+	Pointer replyFunc ;	// alljoyn_messagereceiver_replyhandler_ptr
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	Pointer context ;	// Pointer*
+	UInteger timeout ;
+	UChar flags ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_methodcallasync_member "alljoyn_proxybusobject_methodcallasync_member" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	alljoyn_interfacedescription_member method ;
+	Pointer replyFunc ;	// alljoyn_messagereceiver_replyhandler_ptr
+	LongPtr args ;	// alljoyn_msgarg
+	ULongPtr numArgs ;
+	Pointer context ;	// Pointer*
+	UInteger timeout ;
+	UChar flags ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_parsexml "alljoyn_proxybusobject_parsexml" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String xml ;	// PSTR
+	String identifier ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_ref_create "alljoyn_proxybusobject_ref_create" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_proxybusobject
+	Returns LongPtr	// alljoyn_proxybusobject_ref
+
+External_Function alljoyn_proxybusobject_ref_decref "alljoyn_proxybusobject_ref_decref" MSAJApi.dll ;
+	LongPtr ref ;	// alljoyn_proxybusobject_ref
+	Returns Pointer
+
+External_Function alljoyn_proxybusobject_ref_get "alljoyn_proxybusobject_ref_get" MSAJApi.dll ;
+	LongPtr ref ;	// alljoyn_proxybusobject_ref
+	Returns LongPtr	// alljoyn_proxybusobject
+
+External_Function alljoyn_proxybusobject_ref_incref "alljoyn_proxybusobject_ref_incref" MSAJApi.dll ;
+	LongPtr ref ;	// alljoyn_proxybusobject_ref
+	Returns Pointer
+
+External_Function alljoyn_proxybusobject_registerpropertieschangedlistener "alljoyn_proxybusobject_registerpropertieschangedlistener" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	Pointer properties ;	// Char**
+	ULongPtr numProperties ;
+	Pointer callback ;	// alljoyn_proxybusobject_listener_propertieschanged_ptr
+	Pointer context ;	// Pointer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_removechild "alljoyn_proxybusobject_removechild" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String path ;	// PSTR
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_secureconnection "alljoyn_proxybusobject_secureconnection" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Integer forceAuth ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_secureconnectionasync "alljoyn_proxybusobject_secureconnectionasync" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	Integer forceAuth ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_setproperty "alljoyn_proxybusobject_setproperty" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	String property ;	// PSTR
+	LongPtr value ;	// alljoyn_msgarg
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_setpropertyasync "alljoyn_proxybusobject_setpropertyasync" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	String property ;	// PSTR
+	LongPtr value ;	// alljoyn_msgarg
+	Pointer callback ;	// alljoyn_proxybusobject_listener_setpropertycb_ptr
+	UInteger timeout ;
+	Pointer context ;	// Pointer*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_proxybusobject_unregisterpropertieschangedlistener "alljoyn_proxybusobject_unregisterpropertieschangedlistener" MSAJApi.dll ;
+	LongPtr proxyObj ;	// alljoyn_proxybusobject
+	String iface ;	// PSTR
+	Pointer callback ;	// alljoyn_proxybusobject_listener_propertieschanged_ptr
+	Returns Integer	// QStatus
+
+External_Function alljoyn_routerinit "alljoyn_routerinit" MSAJApi.dll ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_routerinitwithconfig "alljoyn_routerinitwithconfig" MSAJApi.dll ;
+	Pointer configXml ;	// Char*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_routershutdown "alljoyn_routershutdown" MSAJApi.dll ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_claim "alljoyn_securityapplicationproxy_claim" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer caKey ;	// Char*
+	Pointer identityCertificateChain ;	// Char*
+	Pointer groupId ;	// UChar*
+	ULongPtr groupSize ;
+	Pointer groupAuthority ;	// Char*
+	Pointer manifestsXmls ;	// Char**
+	ULongPtr manifestsCount ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_computemanifestdigest "alljoyn_securityapplicationproxy_computemanifestdigest" MSAJApi.dll ;
+	Pointer unsignedManifestXml ;	// Char*
+	Pointer identityCertificatePem ;	// Char*
+	Pointer digest ;	// UChar**
+	Pointer digestSize ;	// ULongPtr*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_create "alljoyn_securityapplicationproxy_create" MSAJApi.dll ;
+	LongPtr bus ;	// alljoyn_busattachment
+	Pointer appBusName ;	// Char*
+	UInteger sessionId ;
+	Returns LongPtr	// alljoyn_securityapplicationproxy
+
+External_Function alljoyn_securityapplicationproxy_destroy "alljoyn_securityapplicationproxy_destroy" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Returns Pointer
+
+External_Function alljoyn_securityapplicationproxy_digest_destroy "alljoyn_securityapplicationproxy_digest_destroy" MSAJApi.dll ;
+	Pointer digest ;	// UChar*
+	Returns Pointer
+
+External_Function alljoyn_securityapplicationproxy_eccpublickey_destroy "alljoyn_securityapplicationproxy_eccpublickey_destroy" MSAJApi.dll ;
+	Pointer eccPublicKey ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_securityapplicationproxy_endmanagement "alljoyn_securityapplicationproxy_endmanagement" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_getapplicationstate "alljoyn_securityapplicationproxy_getapplicationstate" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer applicationState ;	// alljoyn_applicationstate*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_getclaimcapabilities "alljoyn_securityapplicationproxy_getclaimcapabilities" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer capabilities ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_getclaimcapabilitiesadditionalinfo "alljoyn_securityapplicationproxy_getclaimcapabilitiesadditionalinfo" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer additionalInfo ;	// UShort*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_getdefaultpolicy "alljoyn_securityapplicationproxy_getdefaultpolicy" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer policyXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_geteccpublickey "alljoyn_securityapplicationproxy_geteccpublickey" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer eccPublicKey ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_getmanifesttemplate "alljoyn_securityapplicationproxy_getmanifesttemplate" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer manifestTemplateXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_getpermissionmanagementsessionport "alljoyn_securityapplicationproxy_getpermissionmanagementsessionport" MSAJApi.dll ;
+	Returns UShort
+
+External_Function alljoyn_securityapplicationproxy_getpolicy "alljoyn_securityapplicationproxy_getpolicy" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer policyXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_installmembership "alljoyn_securityapplicationproxy_installmembership" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer membershipCertificateChain ;	// Char*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_manifest_destroy "alljoyn_securityapplicationproxy_manifest_destroy" MSAJApi.dll ;
+	Pointer signedManifestXml ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_securityapplicationproxy_manifesttemplate_destroy "alljoyn_securityapplicationproxy_manifesttemplate_destroy" MSAJApi.dll ;
+	Pointer manifestTemplateXml ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_securityapplicationproxy_policy_destroy "alljoyn_securityapplicationproxy_policy_destroy" MSAJApi.dll ;
+	Pointer policyXml ;	// Char*
+	Returns Pointer
+
+External_Function alljoyn_securityapplicationproxy_reset "alljoyn_securityapplicationproxy_reset" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_resetpolicy "alljoyn_securityapplicationproxy_resetpolicy" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_setmanifestsignature "alljoyn_securityapplicationproxy_setmanifestsignature" MSAJApi.dll ;
+	Pointer unsignedManifestXml ;	// Char*
+	Pointer identityCertificatePem ;	// Char*
+	Pointer signature ;	// UChar*
+	ULongPtr signatureSize ;
+	Pointer signedManifestXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_signmanifest "alljoyn_securityapplicationproxy_signmanifest" MSAJApi.dll ;
+	Pointer unsignedManifestXml ;	// Char*
+	Pointer identityCertificatePem ;	// Char*
+	Pointer signingPrivateKeyPem ;	// Char*
+	Pointer signedManifestXml ;	// Char**
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_startmanagement "alljoyn_securityapplicationproxy_startmanagement" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_updateidentity "alljoyn_securityapplicationproxy_updateidentity" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer identityCertificateChain ;	// Char*
+	Pointer manifestsXmls ;	// Char**
+	ULongPtr manifestsCount ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_securityapplicationproxy_updatepolicy "alljoyn_securityapplicationproxy_updatepolicy" MSAJApi.dll ;
+	LongPtr proxy ;	// alljoyn_securityapplicationproxy
+	Pointer policyXml ;	// Char*
+	Returns Integer	// QStatus
+
+External_Function alljoyn_sessionlistener_create "alljoyn_sessionlistener_create" MSAJApi.dll ;
+	Pointer callbacks ;	// alljoyn_sessionlistener_callbacks*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_sessionlistener
+
+External_Function alljoyn_sessionlistener_destroy "alljoyn_sessionlistener_destroy" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_sessionlistener
+	Returns Pointer
+
+External_Function alljoyn_sessionopts_cmp "alljoyn_sessionopts_cmp" MSAJApi.dll ;
+	LongPtr one ;	// alljoyn_sessionopts
+	LongPtr other ;	// alljoyn_sessionopts
+	Returns Integer
+
+External_Function alljoyn_sessionopts_create "alljoyn_sessionopts_create" MSAJApi.dll ;
+	UChar traffic ;
+	Integer isMultipoint ;
+	UChar proximity ;
+	UShort transports ;
+	Returns LongPtr	// alljoyn_sessionopts
+
+External_Function alljoyn_sessionopts_destroy "alljoyn_sessionopts_destroy" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	Returns Pointer
+
+External_Function alljoyn_sessionopts_get_multipoint "alljoyn_sessionopts_get_multipoint" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	Returns Integer
+
+External_Function alljoyn_sessionopts_get_proximity "alljoyn_sessionopts_get_proximity" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	Returns UChar
+
+External_Function alljoyn_sessionopts_get_traffic "alljoyn_sessionopts_get_traffic" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	Returns UChar
+
+External_Function alljoyn_sessionopts_get_transports "alljoyn_sessionopts_get_transports" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	Returns UShort
+
+External_Function alljoyn_sessionopts_iscompatible "alljoyn_sessionopts_iscompatible" MSAJApi.dll ;
+	LongPtr one ;	// alljoyn_sessionopts
+	LongPtr other ;	// alljoyn_sessionopts
+	Returns Integer
+
+External_Function alljoyn_sessionopts_set_multipoint "alljoyn_sessionopts_set_multipoint" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	Integer isMultipoint ;
+	Returns Pointer
+
+External_Function alljoyn_sessionopts_set_proximity "alljoyn_sessionopts_set_proximity" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	UChar proximity ;
+	Returns Pointer
+
+External_Function alljoyn_sessionopts_set_traffic "alljoyn_sessionopts_set_traffic" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	UChar traffic ;
+	Returns Pointer
+
+External_Function alljoyn_sessionopts_set_transports "alljoyn_sessionopts_set_transports" MSAJApi.dll ;
+	LongPtr opts ;	// alljoyn_sessionopts
+	UShort transports ;
+	Returns Pointer
+
+External_Function alljoyn_sessionportlistener_create "alljoyn_sessionportlistener_create" MSAJApi.dll ;
+	Pointer callbacks ;	// alljoyn_sessionportlistener_callbacks*
+	Pointer context ;	// Pointer*
+	Returns LongPtr	// alljoyn_sessionportlistener
+
+External_Function alljoyn_sessionportlistener_destroy "alljoyn_sessionportlistener_destroy" MSAJApi.dll ;
+	LongPtr listener ;	// alljoyn_sessionportlistener
+	Returns Pointer
+
+External_Function alljoyn_shutdown "alljoyn_shutdown" MSAJApi.dll ;
+	Returns Integer	// QStatus
+
+External_Function alljoyn_unity_deferred_callbacks_process "alljoyn_unity_deferred_callbacks_process" MSAJApi.dll ;
+	Returns Integer
+
+External_Function alljoyn_unity_set_deferred_callback_mainthread_only "alljoyn_unity_set_deferred_callback_mainthread_only" MSAJApi.dll ;
+	Integer mainthread_only ;
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

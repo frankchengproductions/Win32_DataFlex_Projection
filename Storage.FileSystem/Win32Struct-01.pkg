@@ -1,0 +1,350 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/ns-fileapi-by_handle_file_information
+Struct BY_HANDLE_FILE_INFORMATION
+	UInteger dwFileAttributes
+	FILETIME ftCreationTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastWriteTime
+	UInteger dwVolumeSerialNumber
+	UInteger nFileSizeHigh
+	UInteger nFileSizeLow
+	UInteger nNumberOfLinks
+	UInteger nFileIndexHigh
+	UInteger nFileIndexLow
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmt/ns-clfsmgmt-clfs_mgmt_notification
+Struct CLFS_MGMT_NOTIFICATION
+	Integer Notification									// CLFS_MGMT_NOTIFICATION_TYPE
+	Integer iMissingAlignment1
+	CLS_LSN Lsn
+	UShort LogIsPinned
+	UChar[6] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmt/ns-clfsmgmt-clfs_mgmt_policy
+Struct CLFS_MGMT_POLICY
+	UInteger Version
+	UInteger LengthInBytes
+	UInteger PolicyFlags
+	Integer PolicyType										// CLFS_MGMT_POLICY_TYPE
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-clfs_node_id
+Struct CLFS_NODE_ID
+	UInteger cType
+	UInteger cbNode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-cls_archive_descriptor
+Struct CLS_ARCHIVE_DESCRIPTOR
+	UBigint coffLow
+	UBigint coffHigh
+	CLS_CONTAINER_INFORMATION infoContainer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-cls_container_information
+Struct CLS_CONTAINER_INFORMATION
+	UInteger FileAttributes
+	Integer iMissingAlignment1
+	UBigint CreationTime
+	UBigint LastAccessTime
+	UBigint LastWriteTime
+	Bigint ContainerSize
+	UInteger FileNameActualLength
+	UInteger FileNameLength
+	UShort[256] FileName
+	UInteger State
+	UInteger PhysicalContainerId
+	UInteger LogicalContainerId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-cls_information
+Struct CLS_INFORMATION
+	Bigint TotalAvailable
+	Bigint CurrentAvailable
+	Bigint TotalReservation
+	UBigint BaseFileSize
+	UBigint ContainerSize
+	UInteger TotalContainers
+	UInteger FreeContainers
+	UInteger TotalClients
+	UInteger Attributes
+	UInteger FlushThreshold
+	UInteger SectorSize
+	CLS_LSN MinArchiveTailLsn
+	CLS_LSN BaseLsn
+	CLS_LSN LastFlushedLsn
+	CLS_LSN LastLsn
+	CLS_LSN RestartLsn
+	Guid Identity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-cls_lsn
+Struct CLS_LSN
+	UBigint Internal
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-cls_scan_context~r1
+Struct CLS_SCAN_CONTEXT
+	CLFS_NODE_ID cidNode
+	Pointer hLog											// HANDLE
+	UInteger cIndex
+	UInteger cContainers
+	UInteger cContainersReturned
+	UChar eScanMode
+	UChar[3] cMissingAlignment1
+	Pointer pinfoContainer									// CLS_CONTAINER_INFORMATION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfs/ns-clfs-cls_write_entry
+Struct CLS_WRITE_ENTRY
+	Pointer Buffer											// Pointer*
+	UInteger ByteLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-copyfile2_extended_parameters
+Struct COPYFILE2_EXTENDED_PARAMETERS
+	UInteger dwSize
+	UInteger dwCopyFlags									// COPYFILE_FLAGS
+	Pointer pfCancel										// BOOL*
+	Pointer pProgressRoutine								// PCOPYFILE2_PROGRESS_ROUTINE
+	Pointer pvCallbackContext								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/ns-fileapi-createfile2_extended_parameters
+Struct CREATEFILE2_EXTENDED_PARAMETERS
+	UInteger dwSize
+	UInteger dwFileAttributes
+	UInteger dwFileFlags
+	UInteger dwSecurityQosFlags
+	Pointer lpSecurityAttributes							// SECURITY_ATTRIBUTES*
+	Pointer hTemplateFile									// HANDLE
+End_Struct
+
+Struct CREATEFILE3_EXTENDED_PARAMETERS
+	UInteger dwSize
+	UInteger dwFileAttributes
+	UInteger dwFileFlags
+	UInteger dwSecurityQosFlags
+	Pointer lpSecurityAttributes							// SECURITY_ATTRIBUTES*
+	Pointer hTemplateFile									// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/ns-fileapi-disk_space_information
+Struct DISK_SPACE_INFORMATION
+	UBigint ActualTotalAllocationUnits
+	UBigint ActualAvailableAllocationUnits
+	UBigint ActualPoolUnavailableAllocationUnits
+	UBigint CallerTotalAllocationUnits
+	UBigint CallerAvailableAllocationUnits
+	UBigint CallerPoolUnavailableAllocationUnits
+	UBigint UsedAllocationUnits
+	UBigint TotalReservedAllocationUnits
+	UBigint VolumeStorageReserveAllocationUnits
+	UBigint AvailableCommittedAllocationUnits
+	UBigint PoolAvailableAllocationUnits
+	UInteger SectorsPerAllocationUnit
+	UInteger BytesPerSector
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winefs/ns-winefs-efs_certificate_blob
+Struct EFS_CERTIFICATE_BLOB
+	UInteger dwCertEncodingType
+	UInteger cbData
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winefs/ns-winefs-efs_hash_blob
+Struct EFS_HASH_BLOB
+	UInteger cbData
+	Integer iMissingAlignment1
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winefs/ns-winefs-encryption_certificate
+Struct ENCRYPTION_CERTIFICATE
+	UInteger cbTotalLength
+	Integer iMissingAlignment1
+	Pointer pUserSid										// SID*
+	Pointer pCertBlob										// EFS_CERTIFICATE_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winefs/ns-winefs-encryption_certificate_hash
+Struct ENCRYPTION_CERTIFICATE_HASH
+	UInteger cbTotalLength
+	Integer iMissingAlignment1
+	Pointer pUserSid										// SID*
+	Pointer pHash											// EFS_HASH_BLOB*
+	Pointer lpDisplayInformation							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winefs/ns-winefs-encryption_certificate_hash_list
+Struct ENCRYPTION_CERTIFICATE_HASH_LIST
+	UInteger nCert_Hash
+	Integer iMissingAlignment1
+	Pointer pUsers											// ENCRYPTION_CERTIFICATE_HASH**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winefs/ns-winefs-encryption_certificate_list
+Struct ENCRYPTION_CERTIFICATE_LIST
+	UInteger nUsers
+	Integer iMissingAlignment1
+	Pointer pUsers											// ENCRYPTION_CERTIFICATE**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-file_basic_info
+Struct FILE_BASIC_INFO
+	Bigint CreationTime
+	Bigint LastAccessTime
+	Bigint LastWriteTime
+	Bigint ChangeTime
+	UInteger FileAttributes
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-file_id_128
+Struct FILE_ID_128
+	UChar[16] Identifier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-file_id_descriptor
+Struct FILE_ID_DESCRIPTOR
+	UInteger dwSize
+	Integer Type											// FILE_ID_TYPE
+	UChar[16] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-file_segment_element
+Struct FILE_SEGMENT_ELEMENT
+	Pointer Buffer											// Pointer*
+	UBigint Alignment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntioring_x/ns-ntioring_x-ioring_buffer_info
+Struct IORING_BUFFER_INFO
+	Pointer Address											// Pointer*
+	UInteger Length
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/ns-ioringapi-ioring_buffer_ref
+Struct IORING_BUFFER_REF
+	Integer Kind											// IORING_REF_KIND
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/ns-ioringapi-ioring_capabilities
+Struct IORING_CAPABILITIES
+	Integer MaxVersion										// IORING_VERSION
+	UInteger MaxSubmissionQueueSize
+	UInteger MaxCompletionQueueSize
+	Integer FeatureFlags									// IORING_FEATURE_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/ns-ioringapi-ioring_cqe
+Struct IORING_CQE
+	ULongPtr UserData
+	Integer ResultCode										// HRESULT
+	Integer iMissingAlignment1
+	ULongPtr Information
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/ns-ioringapi-ioring_create_flags
+Struct IORING_CREATE_FLAGS
+	Integer Required										// IORING_CREATE_REQUIRED_FLAGS
+	Integer Advisory										// IORING_CREATE_ADVISORY_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/ns-ioringapi-ioring_handle_ref
+Struct IORING_HANDLE_REF
+	Integer Kind											// IORING_REF_KIND
+	Integer iMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ioringapi/ns-ioringapi-ioring_info
+Struct IORING_INFO
+	Integer IoRingVersion									// IORING_VERSION
+	IORING_CREATE_FLAGS Flags
+	UInteger SubmissionQueueSize
+	UInteger CompletionQueueSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntioring_x/ns-ntioring_x-ioring_registered_buffer
+Struct IORING_REGISTERED_BUFFER
+	UInteger BufferIndex
+	UInteger Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/ns-clfsmgmtw32-log_management_callbacks
+Struct LOG_MANAGEMENT_CALLBACKS
+	Pointer CallbackContext									// Pointer*
+	Pointer AdvanceTailCallback								// PLOG_TAIL_ADVANCE_CALLBACK
+	Pointer LogFullHandlerCallback							// PLOG_FULL_HANDLER_CALLBACK
+	Pointer LogUnpinnedCallback								// PLOG_UNPINNED_CALLBACK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-ofstruct
+Struct OFSTRUCT
+	UChar cBytes
+	UChar fFixedDisk
+	UShort nErrCode
+	UShort Reserved1
+	UShort Reserved2
+	Char[128] szPathName									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ktmtypes/ns-ktmtypes-transaction_notification
+Struct TRANSACTION_NOTIFICATION
+	Pointer TransactionKey									// Pointer*
+	UInteger TransactionNotification
+	Integer iMissingAlignment1
+	Bigint TmVirtualClock
+	UInteger ArgumentLength
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/ns-txfw32-txf_id
+Struct TXF_ID
+	UChar[8] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
+Struct WIN32_FIND_DATAA
+	UInteger dwFileAttributes
+	FILETIME ftCreationTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastWriteTime
+	UInteger nFileSizeHigh
+	UInteger nFileSizeLow
+	UInteger dwReserved0
+	UInteger dwReserved1
+	Char[260] cFileName										// CHAR
+	Char[14] cAlternateFileName								// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataw
+Struct WIN32_FIND_DATAW
+	UInteger dwFileAttributes
+	FILETIME ftCreationTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastWriteTime
+	UInteger nFileSizeHigh
+	UInteger nFileSizeLow
+	UInteger dwReserved0
+	UInteger dwReserved1
+	UShort[260] cFileName
+	UShort[14] cAlternateFileName
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

@@ -1,0 +1,612 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_aaaa_data
+Struct DNS_AAAA_DATA
+	IP6_ADDRESS Ip6Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_addr
+Struct DNS_ADDR
+	Char[32] MaxSa											// CHAR
+	UChar[32] UnionName1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_addr_array
+Struct DNS_ADDR_ARRAY
+	UInteger MaxCount
+	UInteger AddrCount
+	UInteger Tag
+	UShort Family
+	UShort WordReserved
+	UInteger Flags
+	UInteger MatchFlag
+	UInteger Reserved1
+	UInteger Reserved2
+	DNS_ADDR[1] AddrArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_application_settings
+Struct DNS_APPLICATION_SETTINGS
+	UInteger Version
+	Integer iMissingAlignment1
+	UBigint Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_atma_data
+Struct DNS_ATMA_DATA
+	UChar AddressType
+	UChar[20] Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_a_data
+Struct DNS_A_DATA
+	UInteger IpAddress
+End_Struct
+
+Struct DNS_CONNECTION_IFINDEX_ENTRY
+	Pointer pwszConnectionName								// PWSTR
+	UInteger dwIfIndex
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DNS_CONNECTION_IFINDEX_LIST
+	Pointer pConnectionIfIndexEntries						// DNS_CONNECTION_IFINDEX_ENTRY*
+	UInteger nEntries
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DNS_CONNECTION_NAME
+	UShort[65] wszName
+End_Struct
+
+Struct DNS_CONNECTION_NAME_LIST
+	UInteger cNames
+	Integer iMissingAlignment1
+	Pointer pNames											// DNS_CONNECTION_NAME*
+End_Struct
+
+Struct DNS_CONNECTION_POLICY_ENTRY
+	Pointer pwszHost										// PWSTR
+	Pointer pwszAppId										// PWSTR
+	UInteger cbAppSid
+	Integer iMissingAlignment1
+	Pointer pbAppSid										// UChar*
+	UInteger nConnections
+	Integer iMissingAlignment2
+	Pointer ppwszConnections								// PWSTR*
+	UInteger dwPolicyEntryFlags
+	Integer iMissingAlignment3
+End_Struct
+
+Struct DNS_CONNECTION_POLICY_ENTRY_LIST
+	Pointer pPolicyEntries									// DNS_CONNECTION_POLICY_ENTRY*
+	UInteger nEntries
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DNS_CONNECTION_PROXY_ELEMENT
+	Integer Type											// DNS_CONNECTION_PROXY_TYPE
+	Integer iMissingAlignment1
+	DNS_CONNECTION_PROXY_INFO Info
+End_Struct
+
+Struct DNS_CONNECTION_PROXY_INFO
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer pwszFriendlyName								// PWSTR
+	UInteger Flags
+	Integer Switch											// DNS_CONNECTION_PROXY_INFO_SWITCH
+	UChar[8] UnionName1
+End_Struct
+
+Struct DNS_CONNECTION_PROXY_INFO_EX
+	DNS_CONNECTION_PROXY_INFO ProxyInfo
+	UInteger dwInterfaceIndex
+	Integer iMissingAlignment1
+	Pointer pwszConnectionName								// PWSTR
+	Integer fDirectConfiguration							// BOOL
+	Integer iMissingAlignment2
+	Pointer hConnection										// HANDLE
+End_Struct
+
+Struct DNS_CONNECTION_PROXY_LIST
+	UInteger cProxies
+	Integer iMissingAlignment1
+	Pointer pProxies										// DNS_CONNECTION_PROXY_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_custom_server
+Struct DNS_CUSTOM_SERVER
+	UInteger dwServerType
+	Integer iMissingAlignment1
+	UBigint ullFlags
+	UChar[8] UnionName1
+	UChar[32] UnionName2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_dhcid_data
+Struct DNS_DHCID_DATA
+	UInteger dwByteCount
+	UChar[1] DHCID
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_ds_data
+Struct DNS_DS_DATA
+	UShort wKeyTag
+	UChar chAlgorithm
+	UChar chDigestType
+	UShort wDigestLength
+	UShort wPad
+	UChar[1] Digest
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_header
+Struct DNS_HEADER
+	UShort Xid
+	UChar _bitfield1
+	UChar _bitfield2
+	UShort QuestionCount
+	UShort AnswerCount
+	UShort NameServerCount
+	UShort AdditionalCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_key_data
+Struct DNS_KEY_DATA
+	UShort wFlags
+	UChar chProtocol
+	UChar chAlgorithm
+	UShort wKeyLength
+	UShort wPad
+	UChar[1] Key
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_message_buffer
+Struct DNS_MESSAGE_BUFFER
+	DNS_HEADER MessageHead
+	Char[1] MessageBody										// CHAR
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_minfo_dataa
+Struct DNS_MINFO_DATAA
+	Pointer pNameMailbox									// PSTR
+	Pointer pNameErrorsMailbox								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_mx_dataa
+Struct DNS_MX_DATAA
+	Pointer pNameExchange									// PSTR
+	UShort wPreference
+	UShort Pad
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_naptr_dataa
+Struct DNS_NAPTR_DATAA
+	UShort wOrder
+	UShort wPreference
+	Integer iMissingAlignment1
+	Pointer pFlags											// PSTR
+	Pointer pService										// PSTR
+	Pointer pRegularExpression								// PSTR
+	Pointer pReplacement									// PSTR
+End_Struct
+
+Struct DNS_NSEC3PARAM_DATA
+	UChar chAlgorithm
+	UChar bFlags
+	UShort wIterations
+	UChar bSaltLength
+	UChar[3] bPad
+	UChar[1] pbSalt
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DNS_NSEC3_DATA
+	UChar chAlgorithm
+	UChar bFlags
+	UShort wIterations
+	UChar bSaltLength
+	UChar bHashLength
+	UShort wTypeBitMapsLength
+	UChar[1] chData
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_nsec_dataa
+Struct DNS_NSEC_DATAA
+	Pointer pNextDomainName									// PSTR
+	UShort wTypeBitMapsLength
+	UShort wPad
+	UChar[1] TypeBitMaps
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_null_data
+Struct DNS_NULL_DATA
+	UInteger dwByteCount
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_nxt_dataa
+Struct DNS_NXT_DATAA
+	Pointer pNameNext										// PSTR
+	UShort wNumTypes
+	UShort[1] wTypes
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_opt_data
+Struct DNS_OPT_DATA
+	UShort wDataLength
+	UShort wPad
+	UChar[1] Data
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_proxy_information
+Struct DNS_PROXY_INFORMATION
+	UInteger version
+	Integer proxyInformationType							// DNS_PROXY_INFORMATION_TYPE
+	Pointer proxyName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_ptr_dataa
+Struct DNS_PTR_DATAA
+	Pointer pNameHost										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_query_cancel
+Struct DNS_QUERY_CANCEL
+	Char[32] Reserved										// CHAR
+End_Struct
+
+Struct DNS_QUERY_RAW_CANCEL
+	Char[32] reserved										// CHAR
+End_Struct
+
+Struct DNS_QUERY_RAW_REQUEST
+	UInteger version
+	UInteger resultsVersion
+	UInteger dnsQueryRawSize
+	Integer iMissingAlignment1
+	Pointer dnsQueryRaw										// UChar*
+	Pointer dnsQueryName									// PWSTR
+	UShort dnsQueryType
+	UChar[6] cMissingAlignment2
+	UBigint queryOptions
+	UInteger interfaceIndex
+	Integer iMissingAlignment3
+	Pointer queryCompletionCallback							// DNS_QUERY_RAW_COMPLETION_ROUTINE
+	Pointer queryContext									// Pointer*
+	UBigint queryRawOptions
+	UInteger customServersSize
+	Integer iMissingAlignment4
+	Pointer customServers									// DNS_CUSTOM_SERVER*
+	UInteger protocol
+	UChar[32] UnionName1
+	Integer iMissingAlignment5
+End_Struct
+
+Struct DNS_QUERY_RAW_RESULT
+	UInteger version
+	Integer queryStatus
+	UBigint queryOptions
+	UBigint queryRawOptions
+	UBigint responseFlags
+	UInteger queryRawResponseSize
+	Integer iMissingAlignment1
+	Pointer queryRawResponse								// UChar*
+	Pointer queryRecords									// DNS_RECORDA*
+	UInteger protocol
+	UChar[32] UnionName1
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_query_request
+Struct DNS_QUERY_REQUEST
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer QueryName										// PWSTR
+	UShort QueryType
+	UChar[6] cMissingAlignment2
+	UBigint QueryOptions
+	Pointer pDnsServerList									// DNS_ADDR_ARRAY*
+	UInteger InterfaceIndex
+	Integer iMissingAlignment3
+	Pointer pQueryCompletionCallback						// PDNS_QUERY_COMPLETION_ROUTINE
+	Pointer pQueryContext									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_query_result
+Struct DNS_QUERY_RESULT
+	UInteger Version
+	Integer QueryStatus
+	UBigint QueryOptions
+	Pointer pQueryRecords									// DNS_RECORDA*
+	Pointer Reserved										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_recorda
+Struct DNS_RECORDA
+	Pointer pNext											// DNS_RECORDA*
+	Pointer pName											// PSTR
+	UShort wType
+	UShort wDataLength
+	UChar[4] UnionName1
+	UInteger dwTtl
+	UInteger dwReserved
+	UChar[64] UnionName2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_record_flags
+Struct DNS_RECORD_FLAGS
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_service_browse_request
+Struct DNS_SERVICE_BROWSE_REQUEST
+	UInteger Version
+	UInteger InterfaceIndex
+	Pointer QueryName										// PWSTR
+	UChar[8] UnionName1
+	Pointer pQueryContext									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_service_cancel
+Struct DNS_SERVICE_CANCEL
+	Pointer reserved										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_service_instance
+Struct DNS_SERVICE_INSTANCE
+	Pointer pszInstanceName									// PWSTR
+	Pointer pszHostName										// PWSTR
+	Pointer ip4Address										// UInteger*
+	Pointer ip6Address										// IP6_ADDRESS*
+	UShort wPort
+	UShort wPriority
+	UShort wWeight
+	Short iMissingAlignment1
+	UInteger dwPropertyCount
+	Integer iMissingAlignment2
+	Pointer keys											// PWSTR*
+	Pointer values											// PWSTR*
+	UInteger dwInterfaceIndex
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_service_register_request
+Struct DNS_SERVICE_REGISTER_REQUEST
+	UInteger Version
+	UInteger InterfaceIndex
+	Pointer pServiceInstance								// DNS_SERVICE_INSTANCE*
+	Pointer pRegisterCompletionCallback						// PDNS_SERVICE_REGISTER_COMPLETE
+	Pointer pQueryContext									// Pointer*
+	Pointer hCredentials									// HANDLE
+	Integer unicastEnabled									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_service_resolve_request
+Struct DNS_SERVICE_RESOLVE_REQUEST
+	UInteger Version
+	UInteger InterfaceIndex
+	Pointer QueryName										// PWSTR
+	Pointer pResolveCompletionCallback						// PDNS_SERVICE_RESOLVE_COMPLETE
+	Pointer pQueryContext									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_sig_dataa
+Struct DNS_SIG_DATAA
+	UShort wTypeCovered
+	UChar chAlgorithm
+	UChar chLabelCount
+	UInteger dwOriginalTtl
+	UInteger dwExpiration
+	UInteger dwTimeSigned
+	UShort wKeyTag
+	UShort wSignatureLength
+	Integer iMissingAlignment1
+	Pointer pNameSigner										// PSTR
+	UChar[1] Signature
+	UChar[7] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_soa_dataa
+Struct DNS_SOA_DATAA
+	Pointer pNamePrimaryServer								// PSTR
+	Pointer pNameAdministrator								// PSTR
+	UInteger dwSerialNo
+	UInteger dwRefresh
+	UInteger dwRetry
+	UInteger dwExpire
+	UInteger dwDefaultTtl
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_srv_dataa
+Struct DNS_SRV_DATAA
+	Pointer pNameTarget										// PSTR
+	UShort wPriority
+	UShort wWeight
+	UShort wPort
+	UShort Pad
+End_Struct
+
+Struct DNS_SVCB_DATA
+	UShort wSvcPriority
+	UChar[6] cMissingAlignment1
+	Pointer pszTargetName									// PSTR
+	UShort cSvcParams
+	UChar[6] cMissingAlignment2
+	Pointer pSvcParams										// DNS_SVCB_PARAM*
+End_Struct
+
+Struct DNS_SVCB_PARAM
+	UShort wSvcParamKey
+	UChar[6] cMissingAlignment1
+	UChar[8] UnionName1
+End_Struct
+
+Struct DNS_SVCB_PARAM_ALPN
+	UShort cIds
+	UChar[6] cMissingAlignment1
+	DNS_SVCB_PARAM_ALPN_ID[1] rgIds
+End_Struct
+
+Struct DNS_SVCB_PARAM_ALPN_ID
+	UChar cBytes
+	UChar[7] cMissingAlignment1
+	Pointer pbId											// UChar*
+End_Struct
+
+Struct DNS_SVCB_PARAM_IPV4
+	UShort cIps
+	Short iMissingAlignment1
+	UInteger[1] rgIps
+End_Struct
+
+Struct DNS_SVCB_PARAM_IPV6
+	UShort cIps
+	UChar[6] cMissingAlignment1
+	IP6_ADDRESS[1] rgIps
+End_Struct
+
+Struct DNS_SVCB_PARAM_MANDATORY
+	UShort cMandatoryKeys
+	UShort[1] rgwMandatoryKeys
+End_Struct
+
+Struct DNS_SVCB_PARAM_UNKNOWN
+	UShort cBytes
+	UChar[1] pbSvcParamValue
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_tkey_dataa
+Struct DNS_TKEY_DATAA
+	Pointer pNameAlgorithm									// PSTR
+	Pointer pAlgorithmPacket								// UChar*
+	Pointer pKey											// UChar*
+	Pointer pOtherData										// UChar*
+	UInteger dwCreateTime
+	UInteger dwExpireTime
+	UShort wMode
+	UShort wError
+	UShort wKeyLength
+	UShort wOtherLength
+	UChar cAlgNameLength
+	UChar[3] cMissingAlignment1
+	Integer bPacketPointers									// BOOL
+End_Struct
+
+Struct DNS_TLSA_DATA
+	UChar bCertUsage
+	UChar bSelector
+	UChar bMatchingType
+	UChar[1] cMissingAlignment1
+	UShort bCertificateAssociationDataLength
+	UChar[3] bPad
+	UChar[1] bCertificateAssociationData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_tsig_dataa
+Struct DNS_TSIG_DATAA
+	Pointer pNameAlgorithm									// PSTR
+	Pointer pAlgorithmPacket								// UChar*
+	Pointer pSignature										// UChar*
+	Pointer pOtherData										// UChar*
+	Bigint i64CreateTime
+	UShort wFudgeTime
+	UShort wOriginalXid
+	UShort wError
+	UShort wSigLength
+	UShort wOtherLength
+	UChar cAlgNameLength
+	UChar[1] cMissingAlignment1
+	Integer bPacketPointers									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_txt_dataa
+Struct DNS_TXT_DATAA
+	UInteger dwStringCount
+	Integer iMissingAlignment1
+	Pointer[1] pStringArray									// PSTR
+End_Struct
+
+Struct DNS_UNKNOWN_DATA
+	UInteger dwByteCount
+	UChar[1] bData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_winsr_dataa
+Struct DNS_WINSR_DATAA
+	UInteger dwMappingFlag
+	UInteger dwLookupTimeout
+	UInteger dwCacheTimeout
+	Integer iMissingAlignment1
+	Pointer pNameResultDomain								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_wins_data
+Struct DNS_WINS_DATA
+	UInteger dwMappingFlag
+	UInteger dwLookupTimeout
+	UInteger dwCacheTimeout
+	UInteger cWinsServerCount
+	UInteger[1] WinsServers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_wks_data
+Struct DNS_WKS_DATA
+	UInteger IpAddress
+	UChar chProtocol
+	UChar[1] BitMask
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-ip6_address
+Struct IP6_ADDRESS
+	UBigint[2] IP6Qword
+	UInteger[4] IP6Dword
+	UShort[8] IP6Word
+	UChar[16] IP6Byte
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-mdns_query_handle
+Struct MDNS_QUERY_HANDLE
+	UShort[256] nameBuf
+	UShort wType
+	UChar[6] cMissingAlignment1
+	Pointer pSubscription									// Pointer*
+	Pointer pWnfCallbackParams								// Pointer*
+	UInteger[2] stateNameData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-mdns_query_request
+Struct MDNS_QUERY_REQUEST
+	UInteger Version
+	UInteger ulRefCount
+	Pointer Query											// PWSTR
+	UShort QueryType
+	UChar[6] cMissingAlignment1
+	UBigint QueryOptions
+	UInteger InterfaceIndex
+	Integer iMissingAlignment2
+	Pointer pQueryCallback									// PMDNS_QUERY_CALLBACK
+	Pointer pQueryContext									// Pointer*
+	Integer fAnswerReceived									// BOOL
+	UInteger ulResendCount
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
+

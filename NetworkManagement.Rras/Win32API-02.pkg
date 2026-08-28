@@ -1,0 +1,609 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/nf-mprapi-mprinfoduplicate
+External_Function MprInfoDuplicate "MprInfoDuplicate" MPRAPI.dll ;
+	Pointer lpHeader ;	// Pointer*
+	Pointer lplpNewHeader ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/nf-mprapi-mprinforemoveall
+External_Function MprInfoRemoveAll "MprInfoRemoveAll" MPRAPI.dll ;
+	Pointer lpHeader ;	// Pointer*
+	Pointer lplpNewHeader ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmaddgroupmembershipentry
+External_Function MgmAddGroupMembershipEntry "MgmAddGroupMembershipEntry" rtm.dll ;
+	Pointer hProtocol ;	// HANDLE
+	UInteger dwSourceAddr ;
+	UInteger dwSourceMask ;
+	UInteger dwGroupAddr ;
+	UInteger dwGroupMask ;
+	UInteger dwIfIndex ;
+	UInteger dwIfNextHopIPAddr ;
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmderegistermprotocol
+External_Function MgmDeRegisterMProtocol "MgmDeRegisterMProtocol" rtm.dll ;
+	Pointer hProtocol ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmdeletegroupmembershipentry
+External_Function MgmDeleteGroupMembershipEntry "MgmDeleteGroupMembershipEntry" rtm.dll ;
+	Pointer hProtocol ;	// HANDLE
+	UInteger dwSourceAddr ;
+	UInteger dwSourceMask ;
+	UInteger dwGroupAddr ;
+	UInteger dwGroupMask ;
+	UInteger dwIfIndex ;
+	UInteger dwIfNextHopIPAddr ;
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetfirstmfe
+External_Function MgmGetFirstMfe "MgmGetFirstMfe" rtm.dll ;
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Pointer pdwNumEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetfirstmfestats
+External_Function MgmGetFirstMfeStats "MgmGetFirstMfeStats" rtm.dll ;
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Pointer pdwNumEntries ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetmfe
+External_Function MgmGetMfe "MgmGetMfe" rtm.dll ;
+	Pointer pimm ;	// MIB_IPMCAST_MFE*
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetmfestats
+External_Function MgmGetMfeStats "MgmGetMfeStats" rtm.dll ;
+	Pointer pimm ;	// MIB_IPMCAST_MFE*
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetnextmfe
+External_Function MgmGetNextMfe "MgmGetNextMfe" rtm.dll ;
+	Pointer pimmStart ;	// MIB_IPMCAST_MFE*
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Pointer pdwNumEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetnextmfestats
+External_Function MgmGetNextMfeStats "MgmGetNextMfeStats" rtm.dll ;
+	Pointer pimmStart ;	// MIB_IPMCAST_MFE*
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Pointer pdwNumEntries ;	// UInteger*
+	UInteger dwFlags ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgetprotocoloninterface
+External_Function MgmGetProtocolOnInterface "MgmGetProtocolOnInterface" rtm.dll ;
+	UInteger dwIfIndex ;
+	UInteger dwIfNextHopAddr ;
+	Pointer pdwIfProtocolId ;	// UInteger*
+	Pointer pdwIfComponentId ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgroupenumerationend
+External_Function MgmGroupEnumerationEnd "MgmGroupEnumerationEnd" rtm.dll ;
+	Pointer hEnum ;	// HANDLE
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgroupenumerationgetnext
+External_Function MgmGroupEnumerationGetNext "MgmGroupEnumerationGetNext" rtm.dll ;
+	Pointer hEnum ;	// HANDLE
+	Pointer pdwBufferSize ;	// UInteger*
+	Pointer pbBuffer ;	// UChar*
+	Pointer pdwNumEntries ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmgroupenumerationstart
+External_Function MgmGroupEnumerationStart "MgmGroupEnumerationStart" rtm.dll ;
+	Pointer hProtocol ;	// HANDLE
+	Integer metEnumType ;	// MGM_ENUM_TYPES
+	Pointer phEnumHandle ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmregistermprotocol
+External_Function MgmRegisterMProtocol "MgmRegisterMProtocol" rtm.dll ;
+	Pointer prpiInfo ;	// ROUTING_PROTOCOL_CONFIG*
+	UInteger dwProtocolId ;
+	UInteger dwComponentId ;
+	Pointer phProtocol ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmreleaseinterfaceownership
+External_Function MgmReleaseInterfaceOwnership "MgmReleaseInterfaceOwnership" rtm.dll ;
+	Pointer hProtocol ;	// HANDLE
+	UInteger dwIfIndex ;
+	UInteger dwIfNextHopAddr ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/mgm/nf-mgm-mgmtakeinterfaceownership
+External_Function MgmTakeInterfaceOwnership "MgmTakeInterfaceOwnership" rtm.dll ;
+	Pointer hProtocol ;	// HANDLE
+	UInteger dwIfIndex ;
+	UInteger dwIfNextHopAddr ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmaddnexthop
+External_Function RtmAddNextHop "RtmAddNextHop" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer NextHopInfo ;	// RTM_NEXTHOP_INFO*
+	Pointer NextHopHandle ;	// LongPtr*
+	Pointer ChangeFlags ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmaddroutetodest
+External_Function RtmAddRouteToDest "RtmAddRouteToDest" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer RouteHandle ;	// LongPtr*
+	Pointer DestAddress ;	// RTM_NET_ADDRESS*
+	Pointer RouteInfo ;	// RTM_ROUTE_INFO*
+	UInteger TimeToLive ;
+	LongPtr RouteListHandle ;
+	UInteger NotifyType ;
+	LongPtr NotifyHandle ;
+	Pointer ChangeFlags ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmblockmethods
+External_Function RtmBlockMethods "RtmBlockMethods" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer TargetHandle ;	// HANDLE
+	UChar TargetType ;
+	UInteger BlockingFlag ;
+	Returns UInteger
+
+External_Function RtmConvertIpv6AddressAndLengthToNetAddress "RtmConvertIpv6AddressAndLengthToNetAddress" rtm.dll ;
+	Pointer pNetAddress ;	// RTM_NET_ADDRESS*
+	IN6_ADDR Address ;
+	UInteger dwLength ;
+	UInteger dwAddressSize ;
+	Returns UInteger
+
+External_Function RtmConvertNetAddressToIpv6AddressAndLength "RtmConvertNetAddressToIpv6AddressAndLength" rtm.dll ;
+	Pointer pNetAddress ;	// RTM_NET_ADDRESS*
+	Pointer pAddress ;	// IN6_ADDR*
+	Pointer pLength ;	// UInteger*
+	UInteger dwAddressSize ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmcreatedestenum
+External_Function RtmCreateDestEnum "RtmCreateDestEnum" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger TargetViews ;
+	UInteger EnumFlags ;
+	Pointer NetAddress ;	// RTM_NET_ADDRESS*
+	UInteger ProtocolId ;
+	Pointer RtmEnumHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmcreatenexthopenum
+External_Function RtmCreateNextHopEnum "RtmCreateNextHopEnum" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger EnumFlags ;
+	Pointer NetAddress ;	// RTM_NET_ADDRESS*
+	Pointer RtmEnumHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmcreaterouteenum
+External_Function RtmCreateRouteEnum "RtmCreateRouteEnum" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr DestHandle ;
+	UInteger TargetViews ;
+	UInteger EnumFlags ;
+	Pointer StartDest ;	// RTM_NET_ADDRESS*
+	UInteger MatchingFlags ;
+	Pointer CriteriaRoute ;	// RTM_ROUTE_INFO*
+	UInteger CriteriaInterface ;
+	Pointer RtmEnumHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmcreateroutelist
+External_Function RtmCreateRouteList "RtmCreateRouteList" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer RouteListHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmcreateroutelistenum
+External_Function RtmCreateRouteListEnum "RtmCreateRouteListEnum" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteListHandle ;
+	Pointer RtmEnumHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmdeleteenumhandle
+External_Function RtmDeleteEnumHandle "RtmDeleteEnumHandle" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EnumHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmdeletenexthop
+External_Function RtmDeleteNextHop "RtmDeleteNextHop" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NextHopHandle ;
+	Pointer NextHopInfo ;	// RTM_NEXTHOP_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmdeleteroutelist
+External_Function RtmDeleteRouteList "RtmDeleteRouteList" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteListHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmdeleteroutetodest
+External_Function RtmDeleteRouteToDest "RtmDeleteRouteToDest" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteHandle ;
+	Pointer ChangeFlags ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmderegisterentity
+External_Function RtmDeregisterEntity "RtmDeregisterEntity" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmderegisterfromchangenotification
+External_Function RtmDeregisterFromChangeNotification "RtmDeregisterFromChangeNotification" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmfindnexthop
+External_Function RtmFindNextHop "RtmFindNextHop" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer NextHopInfo ;	// RTM_NEXTHOP_INFO*
+	Pointer NextHopHandle ;	// LongPtr*
+	Pointer NextHopPointer ;	// RTM_NEXTHOP_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetchangestatus
+External_Function RtmGetChangeStatus "RtmGetChangeStatus" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	LongPtr DestHandle ;
+	Pointer ChangeStatus ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetchangeddests
+External_Function RtmGetChangedDests "RtmGetChangedDests" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	Pointer NumDests ;	// UInteger*
+	Pointer ChangedDests ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetdestinfo
+External_Function RtmGetDestInfo "RtmGetDestInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr DestHandle ;
+	UInteger ProtocolId ;
+	UInteger TargetViews ;
+	Pointer DestInfo ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetentityinfo
+External_Function RtmGetEntityInfo "RtmGetEntityInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EntityHandle ;
+	Pointer EntityInfo ;	// RTM_ENTITY_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetentitymethods
+External_Function RtmGetEntityMethods "RtmGetEntityMethods" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EntityHandle ;
+	Pointer NumMethods ;	// UInteger*
+	Pointer ExptMethods ;	// RTM_ENTITY_EXPORT_METHOD*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetenumdests
+External_Function RtmGetEnumDests "RtmGetEnumDests" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EnumHandle ;
+	Pointer NumDests ;	// UInteger*
+	Pointer DestInfos ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetenumnexthops
+External_Function RtmGetEnumNextHops "RtmGetEnumNextHops" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EnumHandle ;
+	Pointer NumNextHops ;	// UInteger*
+	Pointer NextHopHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetenumroutes
+External_Function RtmGetEnumRoutes "RtmGetEnumRoutes" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EnumHandle ;
+	Pointer NumRoutes ;	// UInteger*
+	Pointer RouteHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetexactmatchdestination
+External_Function RtmGetExactMatchDestination "RtmGetExactMatchDestination" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer DestAddress ;	// RTM_NET_ADDRESS*
+	UInteger ProtocolId ;
+	UInteger TargetViews ;
+	Pointer DestInfo ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetexactmatchroute
+External_Function RtmGetExactMatchRoute "RtmGetExactMatchRoute" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer DestAddress ;	// RTM_NET_ADDRESS*
+	UInteger MatchingFlags ;
+	Pointer RouteInfo ;	// RTM_ROUTE_INFO*
+	UInteger InterfaceIndex ;
+	UInteger TargetViews ;
+	Pointer RouteHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetlessspecificdestination
+External_Function RtmGetLessSpecificDestination "RtmGetLessSpecificDestination" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr DestHandle ;
+	UInteger ProtocolId ;
+	UInteger TargetViews ;
+	Pointer DestInfo ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetlistenumroutes
+External_Function RtmGetListEnumRoutes "RtmGetListEnumRoutes" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EnumHandle ;
+	Pointer NumRoutes ;	// UInteger*
+	Pointer RouteHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetmostspecificdestination
+External_Function RtmGetMostSpecificDestination "RtmGetMostSpecificDestination" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer DestAddress ;	// RTM_NET_ADDRESS*
+	UInteger ProtocolId ;
+	UInteger TargetViews ;
+	Pointer DestInfo ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetnexthopinfo
+External_Function RtmGetNextHopInfo "RtmGetNextHopInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NextHopHandle ;
+	Pointer NextHopInfo ;	// RTM_NEXTHOP_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetnexthoppointer
+External_Function RtmGetNextHopPointer "RtmGetNextHopPointer" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NextHopHandle ;
+	Pointer NextHopPointer ;	// RTM_NEXTHOP_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetopaqueinformationpointer
+External_Function RtmGetOpaqueInformationPointer "RtmGetOpaqueInformationPointer" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr DestHandle ;
+	Pointer OpaqueInfoPointer ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetregisteredentities
+External_Function RtmGetRegisteredEntities "RtmGetRegisteredEntities" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer NumEntities ;	// UInteger*
+	Pointer EntityHandles ;	// LongPtr*
+	Pointer EntityInfos ;	// RTM_ENTITY_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetrouteinfo
+External_Function RtmGetRouteInfo "RtmGetRouteInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteHandle ;
+	Pointer RouteInfo ;	// RTM_ROUTE_INFO*
+	Pointer DestAddress ;	// RTM_NET_ADDRESS*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmgetroutepointer
+External_Function RtmGetRoutePointer "RtmGetRoutePointer" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteHandle ;
+	Pointer RoutePointer ;	// RTM_ROUTE_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmholddestination
+External_Function RtmHoldDestination "RtmHoldDestination" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr DestHandle ;
+	UInteger TargetViews ;
+	UInteger HoldTime ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmignorechangeddests
+External_Function RtmIgnoreChangedDests "RtmIgnoreChangedDests" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	UInteger NumDests ;
+	Pointer ChangedDests ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtminsertinroutelist
+External_Function RtmInsertInRouteList "RtmInsertInRouteList" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteListHandle ;
+	UInteger NumRoutes ;
+	Pointer RouteHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtminvokemethod
+External_Function RtmInvokeMethod "RtmInvokeMethod" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr EntityHandle ;
+	Pointer Input ;	// RTM_ENTITY_METHOD_INPUT*
+	Pointer OutputSize ;	// UInteger*
+	Pointer Output ;	// RTM_ENTITY_METHOD_OUTPUT*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmisbestroute
+External_Function RtmIsBestRoute "RtmIsBestRoute" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteHandle ;
+	Pointer BestInViews ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmismarkedforchangenotification
+External_Function RtmIsMarkedForChangeNotification "RtmIsMarkedForChangeNotification" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	LongPtr DestHandle ;
+	Pointer DestMarked ;	// BOOL*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmlockdestination
+External_Function RtmLockDestination "RtmLockDestination" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr DestHandle ;
+	Integer Exclusive ;	// BOOL
+	Integer LockDest ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmlocknexthop
+External_Function RtmLockNextHop "RtmLockNextHop" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NextHopHandle ;
+	Integer Exclusive ;	// BOOL
+	Integer LockNextHop ;	// BOOL
+	Pointer NextHopPointer ;	// RTM_NEXTHOP_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmlockroute
+External_Function RtmLockRoute "RtmLockRoute" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteHandle ;
+	Integer Exclusive ;	// BOOL
+	Integer LockRoute ;	// BOOL
+	Pointer RoutePointer ;	// RTM_ROUTE_INFO**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmmarkdestforchangenotification
+External_Function RtmMarkDestForChangeNotification "RtmMarkDestForChangeNotification" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	LongPtr DestHandle ;
+	Integer MarkDest ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreferencehandles
+External_Function RtmReferenceHandles "RtmReferenceHandles" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger NumHandles ;
+	Pointer RtmHandles ;	// HANDLE*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmregisterentity
+External_Function RtmRegisterEntity "RtmRegisterEntity" rtm.dll ;
+	Pointer RtmEntityInfo ;	// RTM_ENTITY_INFO*
+	Pointer ExportMethods ;	// RTM_ENTITY_EXPORT_METHODS*
+	Pointer EventCallback ;	// RTM_EVENT_CALLBACK
+	Integer ReserveOpaquePointer ;	// BOOL
+	Pointer RtmRegProfile ;	// RTM_REGN_PROFILE*
+	Pointer RtmRegHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmregisterforchangenotification
+External_Function RtmRegisterForChangeNotification "RtmRegisterForChangeNotification" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger TargetViews ;
+	UInteger NotifyFlags ;
+	Pointer NotifyContext ;	// Pointer*
+	Pointer NotifyHandle ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleasechangeddests
+External_Function RtmReleaseChangedDests "RtmReleaseChangedDests" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr NotifyHandle ;
+	UInteger NumDests ;
+	Pointer ChangedDests ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleasedestinfo
+External_Function RtmReleaseDestInfo "RtmReleaseDestInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer DestInfo ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleasedests
+External_Function RtmReleaseDests "RtmReleaseDests" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger NumDests ;
+	Pointer DestInfos ;	// RTM_DEST_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleaseentities
+External_Function RtmReleaseEntities "RtmReleaseEntities" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger NumEntities ;
+	Pointer EntityHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleaseentityinfo
+External_Function RtmReleaseEntityInfo "RtmReleaseEntityInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer EntityInfo ;	// RTM_ENTITY_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleasenexthopinfo
+External_Function RtmReleaseNextHopInfo "RtmReleaseNextHopInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer NextHopInfo ;	// RTM_NEXTHOP_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleasenexthops
+External_Function RtmReleaseNextHops "RtmReleaseNextHops" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger NumNextHops ;
+	Pointer NextHopHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleaserouteinfo
+External_Function RtmReleaseRouteInfo "RtmReleaseRouteInfo" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	Pointer RouteInfo ;	// RTM_ROUTE_INFO*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmreleaseroutes
+External_Function RtmReleaseRoutes "RtmReleaseRoutes" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	UInteger NumRoutes ;
+	Pointer RouteHandles ;	// LongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/nf-rtmv2-rtmupdateandunlockroute
+External_Function RtmUpdateAndUnlockRoute "RtmUpdateAndUnlockRoute" rtm.dll ;
+	LongPtr RtmRegHandle ;
+	LongPtr RouteHandle ;
+	UInteger TimeToLive ;
+	LongPtr RouteListHandle ;
+	UInteger NotifyType ;
+	LongPtr NotifyHandle ;
+	Pointer ChangeFlags ;	// UInteger*
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+

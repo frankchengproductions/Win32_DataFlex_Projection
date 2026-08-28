@@ -1,0 +1,302 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerconfigblob2xml
+External_Function EapHostPeerConfigBlob2Xml "EapHostPeerConfigBlob2Xml" eappcfg.dll ;
+	UInteger dwFlags ;
+	EAP_METHOD_TYPE eapMethodType ;
+	UInteger dwSizeOfConfigIn ;
+	Pointer pConfigIn ;	// UChar*
+	Pointer ppConfigDoc ;	// IXMLDOMDocument2*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerconfigxml2blob
+External_Function EapHostPeerConfigXml2Blob "EapHostPeerConfigXml2Blob" eappcfg.dll ;
+	UInteger dwFlags ;
+	Pointer pConfigDoc ;	// IXMLDOMNode
+	Pointer pdwSizeOfConfigOut ;	// UInteger*
+	Pointer ppConfigOut ;	// UChar**
+	Pointer pEapMethodType ;	// EAP_METHOD_TYPE*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeercredentialsxml2blob
+External_Function EapHostPeerCredentialsXml2Blob "EapHostPeerCredentialsXml2Blob" eappcfg.dll ;
+	UInteger dwFlags ;
+	Pointer pCredentialsDoc ;	// IXMLDOMNode
+	UInteger dwSizeOfConfigIn ;
+	Pointer pConfigIn ;	// UChar*
+	Pointer pdwSizeOfCredentialsOut ;	// UInteger*
+	Pointer ppCredentialsOut ;	// UChar**
+	Pointer pEapMethodType ;	// EAP_METHOD_TYPE*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerfreeerrormemory
+External_Function EapHostPeerFreeErrorMemory "EapHostPeerFreeErrorMemory" eappcfg.dll ;
+	Pointer pEapError ;	// EAP_ERROR*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerfreememory
+External_Function EapHostPeerFreeMemory "EapHostPeerFreeMemory" eappcfg.dll ;
+	Pointer pData ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeergetmethodproperties
+External_Function EapHostPeerGetMethodProperties "EapHostPeerGetMethodProperties" eappcfg.dll ;
+	UInteger dwVersion ;
+	UInteger dwFlags ;
+	EAP_METHOD_TYPE eapMethodType ;
+	Pointer hUserImpersonationToken ;	// HANDLE
+	UInteger dwEapConnDataSize ;
+	Pointer pbEapConnData ;	// UChar*
+	UInteger dwUserDataSize ;
+	Pointer pbUserData ;	// UChar*
+	Pointer pMethodPropertyArray ;	// EAP_METHOD_PROPERTY_ARRAY*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeergetmethods
+External_Function EapHostPeerGetMethods "EapHostPeerGetMethods" eappcfg.dll ;
+	Pointer pEapMethodInfoArray ;	// EAP_METHOD_INFO_ARRAY*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerinvokeconfigui
+External_Function EapHostPeerInvokeConfigUI "EapHostPeerInvokeConfigUI" eappcfg.dll ;
+	Pointer hwndParent ;	// HWND
+	UInteger dwFlags ;
+	EAP_METHOD_TYPE eapMethodType ;
+	UInteger dwSizeOfConfigIn ;
+	Pointer pConfigIn ;	// UChar*
+	Pointer pdwSizeOfConfigOut ;	// UInteger*
+	Pointer ppConfigOut ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerinvokeidentityui
+External_Function EapHostPeerInvokeIdentityUI "EapHostPeerInvokeIdentityUI" eappcfg.dll ;
+	UInteger dwVersion ;
+	EAP_METHOD_TYPE eapMethodType ;
+	UInteger dwFlags ;
+	Pointer hwndParent ;	// HWND
+	UInteger dwSizeofConnectionData ;
+	Pointer pConnectionData ;	// UChar*
+	UInteger dwSizeofUserData ;
+	Pointer pUserData ;	// UChar*
+	Pointer pdwSizeOfUserDataOut ;	// UInteger*
+	Pointer ppUserDataOut ;	// UChar**
+	Pointer ppwszIdentity ;	// PWSTR*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Pointer ppvReserved ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerinvokeinteractiveui
+External_Function EapHostPeerInvokeInteractiveUI "EapHostPeerInvokeInteractiveUI" eappcfg.dll ;
+	Pointer hwndParent ;	// HWND
+	UInteger dwSizeofUIContextData ;
+	Pointer pUIContextData ;	// UChar*
+	Pointer pdwSizeOfDataFromInteractiveUI ;	// UInteger*
+	Pointer ppDataFromInteractiveUI ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerquerycredentialinputfields
+External_Function EapHostPeerQueryCredentialInputFields "EapHostPeerQueryCredentialInputFields" eappcfg.dll ;
+	Pointer hUserImpersonationToken ;	// HANDLE
+	EAP_METHOD_TYPE eapMethodType ;
+	UInteger dwFlags ;
+	UInteger dwEapConnDataSize ;
+	Pointer pbEapConnData ;	// UChar*
+	Pointer pEapConfigInputFieldArray ;	// EAP_CONFIG_INPUT_FIELD_ARRAY*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerqueryinteractiveuiinputfields
+External_Function EapHostPeerQueryInteractiveUIInputFields "EapHostPeerQueryInteractiveUIInputFields" eappcfg.dll ;
+	UInteger dwVersion ;
+	UInteger dwFlags ;
+	UInteger dwSizeofUIContextData ;
+	Pointer pUIContextData ;	// UChar*
+	Pointer pEapInteractiveUIData ;	// EAP_INTERACTIVE_UI_DATA*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Pointer ppvReserved ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerqueryuiblobfrominteractiveuiinputfields
+External_Function EapHostPeerQueryUIBlobFromInteractiveUIInputFields "EapHostPeerQueryUIBlobFromInteractiveUIInputFields" eappcfg.dll ;
+	UInteger dwVersion ;
+	UInteger dwFlags ;
+	UInteger dwSizeofUIContextData ;
+	Pointer pUIContextData ;	// UChar*
+	Pointer pEapInteractiveUIData ;	// EAP_INTERACTIVE_UI_DATA*
+	Pointer pdwSizeOfDataFromInteractiveUI ;	// UInteger*
+	Pointer ppDataFromInteractiveUI ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Pointer ppvReserved ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeerconfigapis/nf-eaphostpeerconfigapis-eaphostpeerqueryuserblobfromcredentialinputfields
+External_Function EapHostPeerQueryUserBlobFromCredentialInputFields "EapHostPeerQueryUserBlobFromCredentialInputFields" eappcfg.dll ;
+	Pointer hUserImpersonationToken ;	// HANDLE
+	EAP_METHOD_TYPE eapMethodType ;
+	UInteger dwFlags ;
+	UInteger dwEapConnDataSize ;
+	Pointer pbEapConnData ;	// UChar*
+	Pointer pEapConfigInputFieldArray ;	// EAP_CONFIG_INPUT_FIELD_ARRAY*
+	Pointer pdwUserBlobSize ;	// UInteger*
+	Pointer ppbUserBlob ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerbeginsession
+External_Function EapHostPeerBeginSession "EapHostPeerBeginSession" eappprxy.dll ;
+	UInteger dwFlags ;
+	EAP_METHOD_TYPE eapType ;
+	Pointer pAttributeArray ;	// EAP_ATTRIBUTES*
+	Pointer hTokenImpersonateUser ;	// HANDLE
+	UInteger dwSizeofConnectionData ;
+	Pointer pConnectionData ;	// UChar*
+	UInteger dwSizeofUserData ;
+	Pointer pUserData ;	// UChar*
+	UInteger dwMaxSendPacketSize ;
+	Pointer pConnectionId ;	// Guid*
+	Pointer func ;	// NotificationHandler
+	Pointer pContextData ;	// Pointer*
+	Pointer pSessionId ;	// UInteger*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerclearconnection
+External_Function EapHostPeerClearConnection "EapHostPeerClearConnection" eappprxy.dll ;
+	Pointer pConnectionId ;	// Guid*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerendsession
+External_Function EapHostPeerEndSession "EapHostPeerEndSession" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerfreeeaperror
+External_Function EapHostPeerFreeEapError "EapHostPeerFreeEapError" eappprxy.dll ;
+	Pointer pEapError ;	// EAP_ERROR*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerfreeruntimememory
+External_Function EapHostPeerFreeRuntimeMemory "EapHostPeerFreeRuntimeMemory" eappprxy.dll ;
+	Pointer pData ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetauthstatus
+External_Function EapHostPeerGetAuthStatus "EapHostPeerGetAuthStatus" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Integer authParam ;	// EapHostPeerAuthParams
+	Pointer pcbAuthData ;	// UInteger*
+	Pointer ppAuthData ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetdatatounplumbcredentials
+External_Function EapHostPeerGetDataToUnplumbCredentials "EapHostPeerGetDataToUnplumbCredentials" eappprxy.dll ;
+	Pointer pConnectionIdThatLastSavedCreds ;	// Guid*
+	Pointer phCredentialImpersonationToken ;	// LongPtr*
+	UInteger sessionHandle ;
+	Pointer ppEapError ;	// EAP_ERROR**
+	Pointer fSaveToCredMan ;	// BOOL*
+	Returns UInteger
+
+External_Function EapHostPeerGetEncryptedPassword "EapHostPeerGetEncryptedPassword" eappprxy.dll ;
+	UInteger dwSizeofPassword ;
+	WString szPassword ;	// PWSTR
+	Pointer ppszEncPassword ;	// PWSTR*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetidentity
+External_Function EapHostPeerGetIdentity "EapHostPeerGetIdentity" eappprxy.dll ;
+	UInteger dwVersion ;
+	UInteger dwFlags ;
+	EAP_METHOD_TYPE eapMethodType ;
+	UInteger dwSizeofConnectionData ;
+	Pointer pConnectionData ;	// UChar*
+	UInteger dwSizeofUserData ;
+	Pointer pUserData ;	// UChar*
+	Pointer hTokenImpersonateUser ;	// HANDLE
+	Pointer pfInvokeUI ;	// BOOL*
+	Pointer pdwSizeOfUserDataOut ;	// UInteger*
+	Pointer ppUserDataOut ;	// UChar**
+	Pointer ppwszIdentity ;	// PWSTR*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Pointer ppvReserved ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetresponseattributes
+External_Function EapHostPeerGetResponseAttributes "EapHostPeerGetResponseAttributes" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Pointer pAttribs ;	// EAP_ATTRIBUTES*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetresult
+External_Function EapHostPeerGetResult "EapHostPeerGetResult" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Integer reason ;	// EapHostPeerMethodResultReason
+	Pointer ppResult ;	// EapHostPeerMethodResult*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetsendpacket
+External_Function EapHostPeerGetSendPacket "EapHostPeerGetSendPacket" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Pointer pcbSendPacket ;	// UInteger*
+	Pointer ppSendPacket ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeergetuicontext
+External_Function EapHostPeerGetUIContext "EapHostPeerGetUIContext" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Pointer pdwSizeOfUIContextData ;	// UInteger*
+	Pointer ppUIContextData ;	// UChar**
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerinitialize
+External_Function EapHostPeerInitialize "EapHostPeerInitialize" eappprxy.dll ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeerprocessreceivedpacket
+External_Function EapHostPeerProcessReceivedPacket "EapHostPeerProcessReceivedPacket" eappprxy.dll ;
+	UInteger sessionHandle ;
+	UInteger cbReceivePacket ;
+	Pointer pReceivePacket ;	// UChar*
+	Pointer pEapOutput ;	// EapHostPeerResponseAction*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeersetresponseattributes
+External_Function EapHostPeerSetResponseAttributes "EapHostPeerSetResponseAttributes" eappprxy.dll ;
+	UInteger sessionHandle ;
+	Pointer pAttribs ;	// EAP_ATTRIBUTES*
+	Pointer pEapOutput ;	// EapHostPeerResponseAction*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeersetuicontext
+External_Function EapHostPeerSetUIContext "EapHostPeerSetUIContext" eappprxy.dll ;
+	UInteger sessionHandle ;
+	UInteger dwSizeOfUIContextData ;
+	Pointer pUIContextData ;	// UChar*
+	Pointer pEapOutput ;	// EapHostPeerResponseAction*
+	Pointer ppEapError ;	// EAP_ERROR**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/eappapis/nf-eappapis-eaphostpeeruninitialize
+External_Function EapHostPeerUninitialize "EapHostPeerUninitialize" eappprxy.dll ;
+	Returns Pointer
+
+
+Procedure DataFlex_Init
+End_Procedure
+

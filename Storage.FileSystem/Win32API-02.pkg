@@ -1,0 +1,1474 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfilepointer
+External_Function SetFilePointer "SetFilePointer" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Integer lDistanceToMove ;
+	Pointer lpDistanceToMoveHigh ;	// Integer*
+	UInteger dwMoveMethod ;	// SET_FILE_POINTER_MOVE_METHOD
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfilepointerex
+External_Function SetFilePointerEx "SetFilePointerEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Bigint liDistanceToMove ;
+	Pointer lpNewFilePointer ;	// Bigint*
+	UInteger dwMoveMethod ;	// SET_FILE_POINTER_MOVE_METHOD
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfileshortnamea
+External_Function SetFileShortNameA "SetFileShortNameA" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	String lpShortName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setfileshortnamew
+External_Function SetFileShortNameW "SetFileShortNameW" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	WString lpShortName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfiletime
+External_Function SetFileTime "SetFileTime" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpCreationTime ;	// FILETIME*
+	Pointer lpLastAccessTime ;	// FILETIME*
+	Pointer lpLastWriteTime ;	// FILETIME*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-setfilevaliddata
+External_Function SetFileValidData "SetFileValidData" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Bigint ValidDataLength ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setsearchpathmode
+External_Function SetSearchPathMode "SetSearchPathMode" KERNEL32.dll ;
+	UInteger Flags ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-settapeparameters
+External_Function SetTapeParameters "SetTapeParameters" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwOperation ;	// TAPE_INFORMATION_TYPE
+	Pointer lpTapeInformation ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-settapeposition
+External_Function SetTapePosition "SetTapePosition" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwPositionMethod ;	// TAPE_POSITION_METHOD
+	UInteger dwPartition ;
+	UInteger dwOffsetLow ;
+	UInteger dwOffsetHigh ;
+	Integer bImmediate ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setvolumelabela
+External_Function SetVolumeLabelA "SetVolumeLabelA" KERNEL32.dll ;
+	String lpRootPathName ;	// PSTR
+	String lpVolumeName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setvolumelabelw
+External_Function SetVolumeLabelW "SetVolumeLabelW" KERNEL32.dll ;
+	WString lpRootPathName ;	// PWSTR
+	WString lpVolumeName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setvolumemountpointa
+External_Function SetVolumeMountPointA "SetVolumeMountPointA" KERNEL32.dll ;
+	String lpszVolumeMountPoint ;	// PSTR
+	String lpszVolumeName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setvolumemountpointw
+External_Function SetVolumeMountPointW "SetVolumeMountPointW" KERNEL32.dll ;
+	WString lpszVolumeMountPoint ;	// PWSTR
+	WString lpszVolumeName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-unlockfile
+External_Function UnlockFile "UnlockFile" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	UInteger dwFileOffsetLow ;
+	UInteger dwFileOffsetHigh ;
+	UInteger nNumberOfBytesToUnlockLow ;
+	UInteger nNumberOfBytesToUnlockHigh ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-unlockfileex
+External_Function UnlockFileEx "UnlockFileEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	UInteger dwReserved ;
+	UInteger nNumberOfBytesToUnlockLow ;
+	UInteger nNumberOfBytesToUnlockHigh ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verlanguagenamea
+External_Function VerLanguageNameA "VerLanguageNameA" KERNEL32.dll ;
+	UInteger wLang ;
+	Pointer szLang ;	// PSTR
+	UInteger cchLang ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verlanguagenamew
+External_Function VerLanguageNameW "VerLanguageNameW" KERNEL32.dll ;
+	UInteger wLang ;
+	Pointer szLang ;	// PWSTR
+	UInteger cchLang ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-wow64disablewow64fsredirection
+External_Function Wow64DisableWow64FsRedirection "Wow64DisableWow64FsRedirection" KERNEL32.dll ;
+	Pointer OldValue ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-wow64enablewow64fsredirection
+External_Function Wow64EnableWow64FsRedirection "Wow64EnableWow64FsRedirection" KERNEL32.dll ;
+	UChar Wow64FsEnableRedirection ;	// BOOLEAN
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/wow64apiset/nf-wow64apiset-wow64revertwow64fsredirection
+External_Function Wow64RevertWow64FsRedirection "Wow64RevertWow64FsRedirection" KERNEL32.dll ;
+	Pointer OlValue ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-writefile
+External_Function WriteFile "WriteFile" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpBuffer ;	// UChar*
+	UInteger nNumberOfBytesToWrite ;
+	Pointer lpNumberOfBytesWritten ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-writefileex
+External_Function WriteFileEx "WriteFileEx" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer lpBuffer ;	// UChar*
+	UInteger nNumberOfBytesToWrite ;
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Pointer lpCompletionRoutine ;	// LPOVERLAPPED_COMPLETION_ROUTINE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/nf-fileapi-writefilegather
+External_Function WriteFileGather "WriteFileGather" KERNEL32.dll ;
+	Pointer hFile ;	// HANDLE
+	Pointer aSegmentArray ;	// FILE_SEGMENT_ELEMENT*
+	UInteger nNumberOfBytesToWrite ;
+	Pointer lpReserved ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-writetapemark
+External_Function WriteTapemark "WriteTapemark" KERNEL32.dll ;
+	Pointer hDevice ;	// HANDLE
+	UInteger dwTapemarkType ;	// TAPEMARK_TYPE
+	UInteger dwTapemarkCount ;
+	Integer bImmediate ;	// BOOL
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-adduserstoencryptedfile
+External_Function AddUsersToEncryptedFile "AddUsersToEncryptedFile" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer pEncryptionCertificates ;	// ENCRYPTION_CERTIFICATE_LIST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-closeencryptedfileraw
+External_Function CloseEncryptedFileRaw "CloseEncryptedFileRaw" ADVAPI32.dll ;
+	Pointer pvContext ;	// Pointer*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-decryptfilea
+External_Function DecryptFileA "DecryptFileA" ADVAPI32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-decryptfilew
+External_Function DecryptFileW "DecryptFileW" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwReserved ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-duplicateencryptioninfofile
+External_Function DuplicateEncryptionInfoFile "DuplicateEncryptionInfoFile" ADVAPI32.dll ;
+	WString SrcFileName ;	// PWSTR
+	WString DstFileName ;	// PWSTR
+	UInteger dwCreationDistribution ;
+	UInteger dwAttributes ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-encryptfilea
+External_Function EncryptFileA "EncryptFileA" ADVAPI32.dll ;
+	String lpFileName ;	// PSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-encryptfilew
+External_Function EncryptFileW "EncryptFileW" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-encryptiondisable
+External_Function EncryptionDisable "EncryptionDisable" ADVAPI32.dll ;
+	WString DirPath ;	// PWSTR
+	Integer Disable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-fileencryptionstatusa
+External_Function FileEncryptionStatusA "FileEncryptionStatusA" ADVAPI32.dll ;
+	String lpFileName ;	// PSTR
+	Pointer lpStatus ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-fileencryptionstatusw
+External_Function FileEncryptionStatusW "FileEncryptionStatusW" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer lpStatus ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function FreeEncryptedFileMetadata "FreeEncryptedFileMetadata" ADVAPI32.dll ;
+	Pointer pbMetadata ;	// UChar*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-freeencryptioncertificatehashlist
+External_Function FreeEncryptionCertificateHashList "FreeEncryptionCertificateHashList" ADVAPI32.dll ;
+	Pointer pUsers ;	// ENCRYPTION_CERTIFICATE_HASH_LIST*
+	Returns Pointer
+
+External_Function GetEncryptedFileMetadata "GetEncryptedFileMetadata" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer pcbMetadata ;	// UInteger*
+	Pointer ppbMetadata ;	// UChar**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openencryptedfilerawa
+External_Function OpenEncryptedFileRawA "OpenEncryptedFileRawA" ADVAPI32.dll ;
+	String lpFileName ;	// PSTR
+	UInteger ulFlags ;
+	Pointer pvContext ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-openencryptedfileraww
+External_Function OpenEncryptedFileRawW "OpenEncryptedFileRawW" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger ulFlags ;
+	Pointer pvContext ;	// Pointer**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-queryrecoveryagentsonencryptedfile
+External_Function QueryRecoveryAgentsOnEncryptedFile "QueryRecoveryAgentsOnEncryptedFile" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer pRecoveryAgents ;	// ENCRYPTION_CERTIFICATE_HASH_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-queryusersonencryptedfile
+External_Function QueryUsersOnEncryptedFile "QueryUsersOnEncryptedFile" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer pUsers ;	// ENCRYPTION_CERTIFICATE_HASH_LIST**
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-readencryptedfileraw
+External_Function ReadEncryptedFileRaw "ReadEncryptedFileRaw" ADVAPI32.dll ;
+	Pointer pfExportCallback ;	// PFE_EXPORT_FUNC
+	Pointer pvCallbackContext ;	// Pointer*
+	Pointer pvContext ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-removeusersfromencryptedfile
+External_Function RemoveUsersFromEncryptedFile "RemoveUsersFromEncryptedFile" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer pHashes ;	// ENCRYPTION_CERTIFICATE_HASH_LIST*
+	Returns UInteger
+
+External_Function SetEncryptedFileMetadata "SetEncryptedFileMetadata" ADVAPI32.dll ;
+	WString lpFileName ;	// PWSTR
+	Pointer pbOldMetadata ;	// UChar*
+	Pointer pbNewMetadata ;	// UChar*
+	Pointer pOwnerHash ;	// ENCRYPTION_CERTIFICATE_HASH*
+	UInteger dwOperation ;
+	Pointer pCertificatesAdded ;	// ENCRYPTION_CERTIFICATE_HASH_LIST*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winefs/nf-winefs-setuserfileencryptionkey
+External_Function SetUserFileEncryptionKey "SetUserFileEncryptionKey" ADVAPI32.dll ;
+	Pointer pEncryptionCertificate ;	// ENCRYPTION_CERTIFICATE*
+	Returns UInteger
+
+External_Function SetUserFileEncryptionKeyEx "SetUserFileEncryptionKeyEx" ADVAPI32.dll ;
+	Pointer pEncryptionCertificate ;	// ENCRYPTION_CERTIFICATE*
+	UInteger dwCapabilities ;
+	UInteger dwFlags ;
+	Pointer pvReserved ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-writeencryptedfileraw
+External_Function WriteEncryptedFileRaw "WriteEncryptedFileRaw" ADVAPI32.dll ;
+	Pointer pfImportCallback ;	// PFE_IMPORT_FUNC
+	Pointer pvCallbackContext ;	// Pointer*
+	Pointer pvContext ;	// Pointer*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-copyfilefromappw
+External_Function CopyFileFromAppW "CopyFileFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Integer bFailIfExists ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-createdirectoryfromappw
+External_Function CreateDirectoryFromAppW "CreateDirectoryFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpPathName ;	// PWSTR
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-createfile2fromappw
+External_Function CreateFile2FromAppW "CreateFile2FromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	UInteger dwCreationDisposition ;
+	Pointer pCreateExParams ;	// CREATEFILE2_EXTENDED_PARAMETERS*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-createfilefromappw
+External_Function CreateFileFromAppW "CreateFileFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwDesiredAccess ;
+	UInteger dwShareMode ;
+	Pointer lpSecurityAttributes ;	// SECURITY_ATTRIBUTES*
+	UInteger dwCreationDisposition ;
+	UInteger dwFlagsAndAttributes ;
+	Pointer hTemplateFile ;	// HANDLE
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-deletefilefromappw
+External_Function DeleteFileFromAppW "DeleteFileFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-findfirstfileexfromappw
+External_Function FindFirstFileExFromAppW "FindFirstFileExFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer fInfoLevelId ;	// FINDEX_INFO_LEVELS
+	Pointer lpFindFileData ;	// Pointer*
+	Integer fSearchOp ;	// FINDEX_SEARCH_OPS
+	Pointer lpSearchFilter ;	// Pointer*
+	UInteger dwAdditionalFlags ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-getfileattributesexfromappw
+External_Function GetFileAttributesExFromAppW "GetFileAttributesExFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpFileName ;	// PWSTR
+	Integer fInfoLevelId ;	// GET_FILEEX_INFO_LEVELS
+	Pointer lpFileInformation ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-movefilefromappw
+External_Function MoveFileFromAppW "MoveFileFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpExistingFileName ;	// PWSTR
+	WString lpNewFileName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-removedirectoryfromappw
+External_Function RemoveDirectoryFromAppW "RemoveDirectoryFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpPathName ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-replacefilefromappw
+External_Function ReplaceFileFromAppW "ReplaceFileFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpReplacedFileName ;	// PWSTR
+	WString lpReplacementFileName ;	// PWSTR
+	WString lpBackupFileName ;	// PWSTR
+	UInteger dwReplaceFlags ;
+	Pointer lpExclude ;	// Pointer*
+	Pointer lpReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/fileapifromapp/nf-fileapifromapp-setfileattributesfromappw
+External_Function SetFileAttributesFromAppW "SetFileAttributesFromAppW" api-ms-win-core-file-fromapp-l1-1-0.dll ;
+	WString lpFileName ;	// PWSTR
+	UInteger dwFileAttributes ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfoa
+External_Function GetFileVersionInfoA "GetFileVersionInfoA" VERSION.dll ;
+	String lptstrFilename ;	// PSTR
+	UInteger dwHandle ;
+	UInteger dwLen ;
+	Pointer lpData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfoexa
+External_Function GetFileVersionInfoExA "GetFileVersionInfoExA" VERSION.dll ;
+	UInteger dwFlags ;	// GET_FILE_VERSION_INFO_FLAGS
+	String lpwstrFilename ;	// PSTR
+	UInteger dwHandle ;
+	UInteger dwLen ;
+	Pointer lpData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfoexw
+External_Function GetFileVersionInfoExW "GetFileVersionInfoExW" VERSION.dll ;
+	UInteger dwFlags ;	// GET_FILE_VERSION_INFO_FLAGS
+	WString lpwstrFilename ;	// PWSTR
+	UInteger dwHandle ;
+	UInteger dwLen ;
+	Pointer lpData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfosizea
+External_Function GetFileVersionInfoSizeA "GetFileVersionInfoSizeA" VERSION.dll ;
+	String lptstrFilename ;	// PSTR
+	Pointer lpdwHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfosizeexa
+External_Function GetFileVersionInfoSizeExA "GetFileVersionInfoSizeExA" VERSION.dll ;
+	UInteger dwFlags ;	// GET_FILE_VERSION_INFO_FLAGS
+	String lpwstrFilename ;	// PSTR
+	Pointer lpdwHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfosizeexw
+External_Function GetFileVersionInfoSizeExW "GetFileVersionInfoSizeExW" VERSION.dll ;
+	UInteger dwFlags ;	// GET_FILE_VERSION_INFO_FLAGS
+	WString lpwstrFilename ;	// PWSTR
+	Pointer lpdwHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfosizew
+External_Function GetFileVersionInfoSizeW "GetFileVersionInfoSizeW" VERSION.dll ;
+	WString lptstrFilename ;	// PWSTR
+	Pointer lpdwHandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-getfileversioninfow
+External_Function GetFileVersionInfoW "GetFileVersionInfoW" VERSION.dll ;
+	WString lptstrFilename ;	// PWSTR
+	UInteger dwHandle ;
+	UInteger dwLen ;
+	Pointer lpData ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verfindfilea
+External_Function VerFindFileA "VerFindFileA" VERSION.dll ;
+	UInteger uFlags ;	// VER_FIND_FILE_FLAGS
+	String szFileName ;	// PSTR
+	String szWinDir ;	// PSTR
+	String szAppDir ;	// PSTR
+	Pointer szCurDir ;	// PSTR
+	Pointer puCurDirLen ;	// UInteger*
+	Pointer szDestDir ;	// PSTR
+	Pointer puDestDirLen ;	// UInteger*
+	Returns UInteger	// VER_FIND_FILE_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verfindfilew
+External_Function VerFindFileW "VerFindFileW" VERSION.dll ;
+	UInteger uFlags ;	// VER_FIND_FILE_FLAGS
+	WString szFileName ;	// PWSTR
+	WString szWinDir ;	// PWSTR
+	WString szAppDir ;	// PWSTR
+	Pointer szCurDir ;	// PWSTR
+	Pointer puCurDirLen ;	// UInteger*
+	Pointer szDestDir ;	// PWSTR
+	Pointer puDestDirLen ;	// UInteger*
+	Returns UInteger	// VER_FIND_FILE_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verinstallfilea
+External_Function VerInstallFileA "VerInstallFileA" VERSION.dll ;
+	UInteger uFlags ;	// VER_INSTALL_FILE_FLAGS
+	String szSrcFileName ;	// PSTR
+	String szDestFileName ;	// PSTR
+	String szSrcDir ;	// PSTR
+	String szDestDir ;	// PSTR
+	String szCurDir ;	// PSTR
+	Pointer szTmpFile ;	// PSTR
+	Pointer puTmpFileLen ;	// UInteger*
+	Returns UInteger	// VER_INSTALL_FILE_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verinstallfilew
+External_Function VerInstallFileW "VerInstallFileW" VERSION.dll ;
+	UInteger uFlags ;	// VER_INSTALL_FILE_FLAGS
+	WString szSrcFileName ;	// PWSTR
+	WString szDestFileName ;	// PWSTR
+	WString szSrcDir ;	// PWSTR
+	WString szDestDir ;	// PWSTR
+	WString szCurDir ;	// PWSTR
+	Pointer szTmpFile ;	// PWSTR
+	Pointer puTmpFileLen ;	// UInteger*
+	Returns UInteger	// VER_INSTALL_FILE_STATUS
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verqueryvaluea
+External_Function VerQueryValueA "VerQueryValueA" VERSION.dll ;
+	Pointer pBlock ;	// Pointer*
+	String lpSubBlock ;	// PSTR
+	Pointer lplpBuffer ;	// Pointer**
+	Pointer puLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/winver/nf-winver-verqueryvaluew
+External_Function VerQueryValueW "VerQueryValueW" VERSION.dll ;
+	Pointer pBlock ;	// Pointer*
+	WString lpSubBlock ;	// PWSTR
+	Pointer lplpBuffer ;	// Pointer**
+	Pointer puLen ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-addlogcontainer
+External_Function AddLogContainer "AddLogContainer" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pcbContainer ;	// UBigint*
+	WString pwszContainerPath ;	// PWSTR
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-addlogcontainerset
+External_Function AddLogContainerSet "AddLogContainerSet" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	UShort cContainer ;
+	Pointer pcbContainer ;	// UBigint*
+	Pointer rgwszContainerPath ;	// PWSTR*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-advancelogbase
+External_Function AdvanceLogBase "AdvanceLogBase" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer plsnBase ;	// CLS_LSN*
+	UInteger fFlags ;
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-alignreservedlog
+External_Function AlignReservedLog "AlignReservedLog" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	UInteger cReservedRecords ;
+	Pointer rgcbReservation ;	// Bigint*
+	Pointer pcbAlignReservation ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-allocreservedlog
+External_Function AllocReservedLog "AllocReservedLog" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	UInteger cReservedRecords ;
+	Pointer pcbAdjustment ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-closeandresetlogfile
+External_Function CloseAndResetLogFile "CloseAndResetLogFile" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-createlogcontainerscancontext
+External_Function CreateLogContainerScanContext "CreateLogContainerScanContext" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	UInteger cFromContainer ;
+	UInteger cContainers ;
+	UChar eScanMode ;
+	Pointer pcxScan ;	// CLS_SCAN_CONTEXT*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-createlogfile
+External_Function CreateLogFile "CreateLogFile" clfsw32.dll ;
+	WString pszLogFileName ;	// PWSTR
+	UInteger fDesiredAccess ;
+	UInteger dwShareMode ;	// FILE_SHARE_MODE
+	Pointer psaLogFile ;	// SECURITY_ATTRIBUTES*
+	UInteger fCreateDisposition ;	// FILE_CREATION_DISPOSITION
+	UInteger fFlagsAndAttributes ;	// FILE_FLAGS_AND_ATTRIBUTES
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-createlogmarshallingarea
+External_Function CreateLogMarshallingArea "CreateLogMarshallingArea" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pfnAllocBuffer ;	// CLFS_BLOCK_ALLOCATION
+	Pointer pfnFreeBuffer ;	// CLFS_BLOCK_DEALLOCATION
+	Pointer pvBlockAllocContext ;	// Pointer*
+	UInteger cbMarshallingBuffer ;
+	UInteger cMaxWriteBuffers ;
+	UInteger cMaxReadBuffers ;
+	Pointer ppvMarshal ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-deletelogbyhandle
+External_Function DeleteLogByHandle "DeleteLogByHandle" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-deletelogfile
+External_Function DeleteLogFile "DeleteLogFile" clfsw32.dll ;
+	WString pszLogFileName ;	// PWSTR
+	Pointer pvReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-deletelogmarshallingarea
+External_Function DeleteLogMarshallingArea "DeleteLogMarshallingArea" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-deregistermanageablelogclient
+External_Function DeregisterManageableLogClient "DeregisterManageableLogClient" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-flushlogbuffers
+External_Function FlushLogBuffers "FlushLogBuffers" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-flushlogtolsn
+External_Function FlushLogToLsn "FlushLogToLsn" clfsw32.dll ;
+	Pointer pvMarshalContext ;	// Pointer*
+	Pointer plsnFlush ;	// CLS_LSN*
+	Pointer plsnLastFlushed ;	// CLS_LSN*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-freereservedlog
+External_Function FreeReservedLog "FreeReservedLog" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	UInteger cReservedRecords ;
+	Pointer pcbAdjustment ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-getlogcontainername
+External_Function GetLogContainerName "GetLogContainerName" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	UInteger cidLogicalContainer ;
+	WString pwstrContainerName ;	// PWSTR
+	UInteger cLenContainerName ;
+	Pointer pcActualLenContainerName ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-getlogfileinformation
+External_Function GetLogFileInformation "GetLogFileInformation" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pinfoBuffer ;	// CLS_INFORMATION*
+	Pointer cbBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-getlogiostatistics
+External_Function GetLogIoStatistics "GetLogIoStatistics" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pvStatsBuffer ;	// Pointer*
+	UInteger cbStatsBuffer ;
+	Integer eStatsClass ;	// CLFS_IOSTATS_CLASS
+	Pointer pcbStatsWritten ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function GetLogReservationInfo "GetLogReservationInfo" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer pcbRecordNumber ;	// UInteger*
+	Pointer pcbUserReservation ;	// Bigint*
+	Pointer pcbCommitReservation ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-getnextlogarchiveextent
+External_Function GetNextLogArchiveExtent "GetNextLogArchiveExtent" clfsw32.dll ;
+	Pointer pvArchiveContext ;	// Pointer*
+	Pointer rgadExtent ;	// CLS_ARCHIVE_DESCRIPTOR*
+	UInteger cDescriptors ;
+	Pointer pcDescriptorsReturned ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-handlelogfull
+External_Function HandleLogFull "HandleLogFull" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-installlogpolicy
+External_Function InstallLogPolicy "InstallLogPolicy" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pPolicy ;	// CLFS_MGMT_POLICY*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-logtailadvancefailure
+External_Function LogTailAdvanceFailure "LogTailAdvanceFailure" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	UInteger dwReason ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-lsnblockoffset
+External_Function LsnBlockOffset "LsnBlockOffset" clfsw32.dll ;
+	Pointer plsn ;	// CLS_LSN*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-lsncontainer
+External_Function LsnContainer "LsnContainer" clfsw32.dll ;
+	Pointer plsn ;	// CLS_LSN*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-lsncreate
+External_Function LsnCreate "LsnCreate" clfsw32.dll ;
+	UInteger cidContainer ;
+	UInteger offBlock ;
+	UInteger cRecord ;
+	Returns CLS_LSN
+
+External_Function LsnEqual "LsnEqual" clfsw32.dll ;
+	Pointer plsn1 ;	// CLS_LSN*
+	Pointer plsn2 ;	// CLS_LSN*
+	Returns UChar	// BOOLEAN
+
+External_Function LsnGreater "LsnGreater" clfsw32.dll ;
+	Pointer plsn1 ;	// CLS_LSN*
+	Pointer plsn2 ;	// CLS_LSN*
+	Returns UChar	// BOOLEAN
+
+External_Function LsnIncrement "LsnIncrement" clfsw32.dll ;
+	Pointer plsn ;	// CLS_LSN*
+	Returns CLS_LSN
+
+External_Function LsnInvalid "LsnInvalid" clfsw32.dll ;
+	Pointer plsn ;	// CLS_LSN*
+	Returns UChar	// BOOLEAN
+
+External_Function LsnLess "LsnLess" clfsw32.dll ;
+	Pointer plsn1 ;	// CLS_LSN*
+	Pointer plsn2 ;	// CLS_LSN*
+	Returns UChar	// BOOLEAN
+
+External_Function LsnNull "LsnNull" clfsw32.dll ;
+	Pointer plsn ;	// CLS_LSN*
+	Returns UChar	// BOOLEAN
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-lsnrecordsequence
+External_Function LsnRecordSequence "LsnRecordSequence" clfsw32.dll ;
+	Pointer plsn ;	// CLS_LSN*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-preparelogarchive
+External_Function PrepareLogArchive "PrepareLogArchive" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pszBaseLogFileName ;	// PWSTR
+	UInteger cLen ;
+	Pointer plsnLow ;	// CLS_LSN*
+	Pointer plsnHigh ;	// CLS_LSN*
+	Pointer pcActualLength ;	// UInteger*
+	Pointer poffBaseLogFileData ;	// UBigint*
+	Pointer pcbBaseLogFileLength ;	// UBigint*
+	Pointer plsnBase ;	// CLS_LSN*
+	Pointer plsnLast ;	// CLS_LSN*
+	Pointer plsnCurrentArchiveTail ;	// CLS_LSN*
+	Pointer ppvArchiveContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-querylogpolicy
+External_Function QueryLogPolicy "QueryLogPolicy" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Integer ePolicyType ;	// CLFS_MGMT_POLICY_TYPE
+	Pointer pPolicyBuffer ;	// CLFS_MGMT_POLICY*
+	Pointer pcbPolicyBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-readlogarchivemetadata
+External_Function ReadLogArchiveMetadata "ReadLogArchiveMetadata" clfsw32.dll ;
+	Pointer pvArchiveContext ;	// Pointer*
+	UInteger cbOffset ;
+	UInteger cbBytesToRead ;
+	Pointer pbReadBuffer ;	// UChar*
+	Pointer pcbBytesRead ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-readlognotification
+External_Function ReadLogNotification "ReadLogNotification" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pNotification ;	// CLFS_MGMT_NOTIFICATION*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-readlogrecord
+External_Function ReadLogRecord "ReadLogRecord" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer plsnFirst ;	// CLS_LSN*
+	Integer eContextMode ;	// CLFS_CONTEXT_MODE
+	Pointer ppvReadBuffer ;	// Pointer**
+	Pointer pcbReadBuffer ;	// UInteger*
+	Pointer peRecordType ;	// UChar*
+	Pointer plsnUndoNext ;	// CLS_LSN*
+	Pointer plsnPrevious ;	// CLS_LSN*
+	Pointer ppvReadContext ;	// Pointer**
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-readlogrestartarea
+External_Function ReadLogRestartArea "ReadLogRestartArea" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer ppvRestartBuffer ;	// Pointer**
+	Pointer pcbRestartBuffer ;	// UInteger*
+	Pointer plsn ;	// CLS_LSN*
+	Pointer ppvContext ;	// Pointer**
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-readnextlogrecord
+External_Function ReadNextLogRecord "ReadNextLogRecord" clfsw32.dll ;
+	Pointer pvReadContext ;	// Pointer*
+	Pointer ppvBuffer ;	// Pointer**
+	Pointer pcbBuffer ;	// UInteger*
+	Pointer peRecordType ;	// UChar*
+	Pointer plsnUser ;	// CLS_LSN*
+	Pointer plsnUndoNext ;	// CLS_LSN*
+	Pointer plsnPrevious ;	// CLS_LSN*
+	Pointer plsnRecord ;	// CLS_LSN*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-readpreviouslogrestartarea
+External_Function ReadPreviousLogRestartArea "ReadPreviousLogRestartArea" clfsw32.dll ;
+	Pointer pvReadContext ;	// Pointer*
+	Pointer ppvRestartBuffer ;	// Pointer**
+	Pointer pcbRestartBuffer ;	// UInteger*
+	Pointer plsnRestart ;	// CLS_LSN*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-registerforlogwritenotification
+External_Function RegisterForLogWriteNotification "RegisterForLogWriteNotification" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	UInteger cbThreshold ;
+	Integer fEnable ;	// BOOL
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-registermanageablelogclient
+External_Function RegisterManageableLogClient "RegisterManageableLogClient" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pCallbacks ;	// LOG_MANAGEMENT_CALLBACKS*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-removelogcontainer
+External_Function RemoveLogContainer "RemoveLogContainer" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	WString pwszContainerPath ;	// PWSTR
+	Integer fForce ;	// BOOL
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-removelogcontainerset
+External_Function RemoveLogContainerSet "RemoveLogContainerSet" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	UShort cContainer ;
+	Pointer rgwszContainerPath ;	// PWSTR*
+	Integer fForce ;	// BOOL
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-removelogpolicy
+External_Function RemoveLogPolicy "RemoveLogPolicy" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Integer ePolicyType ;	// CLFS_MGMT_POLICY_TYPE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-reserveandappendlog
+External_Function ReserveAndAppendLog "ReserveAndAppendLog" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer rgWriteEntries ;	// CLS_WRITE_ENTRY*
+	UInteger cWriteEntries ;
+	Pointer plsnUndoNext ;	// CLS_LSN*
+	Pointer plsnPrevious ;	// CLS_LSN*
+	UInteger cReserveRecords ;
+	Pointer rgcbReservation ;	// Bigint*
+	UInteger fFlags ;	// CLFS_FLAG
+	Pointer plsn ;	// CLS_LSN*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-reserveandappendlogaligned
+External_Function ReserveAndAppendLogAligned "ReserveAndAppendLogAligned" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer rgWriteEntries ;	// CLS_WRITE_ENTRY*
+	UInteger cWriteEntries ;
+	UInteger cbEntryAlignment ;
+	Pointer plsnUndoNext ;	// CLS_LSN*
+	Pointer plsnPrevious ;	// CLS_LSN*
+	UInteger cReserveRecords ;
+	Pointer rgcbReservation ;	// Bigint*
+	UInteger fFlags ;	// CLFS_FLAG
+	Pointer plsn ;	// CLS_LSN*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-scanlogcontainers
+External_Function ScanLogContainers "ScanLogContainers" clfsw32.dll ;
+	Pointer pcxScan ;	// CLS_SCAN_CONTEXT*
+	UChar eScanMode ;
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-setendoflog
+External_Function SetEndOfLog "SetEndOfLog" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer plsnEnd ;	// CLS_LSN*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-setlogarchivemode
+External_Function SetLogArchiveMode "SetLogArchiveMode" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Integer eMode ;	// CLFS_LOG_ARCHIVE_MODE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-setlogarchivetail
+External_Function SetLogArchiveTail "SetLogArchiveTail" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer plsnArchiveTail ;	// CLS_LSN*
+	Pointer pReserved ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsmgmtw32/nf-clfsmgmtw32-setlogfilesizewithpolicy
+External_Function SetLogFileSizeWithPolicy "SetLogFileSizeWithPolicy" clfsw32.dll ;
+	Pointer hLog ;	// HANDLE
+	Pointer pDesiredSize ;	// UBigint*
+	Pointer pResultingSize ;	// UBigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-terminatelogarchive
+External_Function TerminateLogArchive "TerminateLogArchive" clfsw32.dll ;
+	Pointer pvArchiveContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-terminatereadlog
+External_Function TerminateReadLog "TerminateReadLog" clfsw32.dll ;
+	Pointer pvCursorContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-truncatelog
+External_Function TruncateLog "TruncateLog" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer plsnEnd ;	// CLS_LSN*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-validatelog
+External_Function ValidateLog "ValidateLog" clfsw32.dll ;
+	WString pszLogFileName ;	// PWSTR
+	Pointer psaLogFile ;	// SECURITY_ATTRIBUTES*
+	Pointer pinfoBuffer ;	// CLS_INFORMATION*
+	Pointer pcbBuffer ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/clfsw32/nf-clfsw32-writelogrestartarea
+External_Function WriteLogRestartArea "WriteLogRestartArea" clfsw32.dll ;
+	Pointer pvMarshal ;	// Pointer*
+	Pointer pvRestartBuffer ;	// Pointer*
+	UInteger cbRestartBuffer ;
+	Pointer plsnBase ;	// CLS_LSN*
+	UInteger fFlags ;	// CLFS_FLAG
+	Pointer pcbWritten ;	// UInteger*
+	Pointer plsnNext ;	// CLS_LSN*
+	Pointer pOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofenumentries
+External_Function WofEnumEntries "WofEnumEntries" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	UInteger Provider ;
+	Pointer EnumProc ;	// WofEnumEntryProc
+	Pointer UserData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-woffileenumfiles
+External_Function WofFileEnumFiles "WofFileEnumFiles" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	UInteger Algorithm ;
+	Pointer EnumProc ;	// WofEnumFilesProc
+	Pointer UserData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofgetdriverversion
+External_Function WofGetDriverVersion "WofGetDriverVersion" WOFUTIL.dll ;
+	Pointer FileOrVolumeHandle ;	// HANDLE
+	UInteger Provider ;
+	Pointer WofVersion ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofisexternalfile
+External_Function WofIsExternalFile "WofIsExternalFile" WOFUTIL.dll ;
+	WString FilePath ;	// PWSTR
+	Pointer IsExternalFile ;	// BOOL*
+	Pointer Provider ;	// UInteger*
+	Pointer ExternalFileInfo ;	// Pointer*
+	Pointer BufferLength ;	// UInteger*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofsetfiledatalocation
+External_Function WofSetFileDataLocation "WofSetFileDataLocation" WOFUTIL.dll ;
+	Pointer FileHandle ;	// HANDLE
+	UInteger Provider ;
+	Pointer ExternalFileInfo ;	// Pointer*
+	UInteger Length ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofshouldcompressbinaries
+External_Function WofShouldCompressBinaries "WofShouldCompressBinaries" WOFUTIL.dll ;
+	WString Volume ;	// PWSTR
+	Pointer Algorithm ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofwimaddentry
+External_Function WofWimAddEntry "WofWimAddEntry" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	WString WimPath ;	// PWSTR
+	UInteger WimType ;
+	UInteger WimIndex ;
+	Pointer DataSourceId ;	// Bigint*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofwimenumfiles
+External_Function WofWimEnumFiles "WofWimEnumFiles" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	Bigint DataSourceId ;
+	Pointer EnumProc ;	// WofEnumFilesProc
+	Pointer UserData ;	// Pointer*
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofwimremoveentry
+External_Function WofWimRemoveEntry "WofWimRemoveEntry" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	Bigint DataSourceId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofwimsuspendentry
+External_Function WofWimSuspendEntry "WofWimSuspendEntry" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	Bigint DataSourceId ;
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/nf-wofapi-wofwimupdateentry
+External_Function WofWimUpdateEntry "WofWimUpdateEntry" WOFUTIL.dll ;
+	WString VolumeName ;	// PWSTR
+	Bigint DataSourceId ;
+	WString NewWimPath ;	// PWSTR
+	Returns Integer	// HRESULT
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/nf-txfw32-txfgetthreadminiversionforcreate
+External_Function TxfGetThreadMiniVersionForCreate "TxfGetThreadMiniVersionForCreate" txfw32.dll ;
+	Pointer MiniVersion ;	// UShort*
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/nf-txfw32-txflogcreatefilereadcontext
+External_Function TxfLogCreateFileReadContext "TxfLogCreateFileReadContext" txfw32.dll ;
+	WString LogPath ;	// PWSTR
+	CLS_LSN BeginningLsn ;
+	CLS_LSN EndingLsn ;
+	Pointer TxfFileId ;	// TXF_ID*
+	Pointer TxfLogContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/nf-txfw32-txflogcreaterangereadcontext
+External_Function TxfLogCreateRangeReadContext "TxfLogCreateRangeReadContext" txfw32.dll ;
+	WString LogPath ;	// PWSTR
+	CLS_LSN BeginningLsn ;
+	CLS_LSN EndingLsn ;
+	Pointer BeginningVirtualClock ;	// Bigint*
+	Pointer EndingVirtualClock ;	// Bigint*
+	UInteger RecordTypeMask ;
+	Pointer TxfLogContext ;	// Pointer**
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/nf-txfw32-txflogdestroyreadcontext
+External_Function TxfLogDestroyReadContext "TxfLogDestroyReadContext" txfw32.dll ;
+	Pointer TxfLogContext ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/nf-txfw32-txflogreadrecords
+External_Function TxfLogReadRecords "TxfLogReadRecords" txfw32.dll ;
+	Pointer TxfLogContext ;	// Pointer*
+	UInteger BufferLength ;
+	Pointer Buffer ;	// Pointer*
+	Pointer BytesUsed ;	// UInteger*
+	Pointer RecordCount ;	// UInteger*
+	Returns Integer	// BOOL
+
+External_Function TxfLogRecordGetFileName "TxfLogRecordGetFileName" txfw32.dll ;
+	Pointer RecordBuffer ;	// Pointer*
+	UInteger RecordBufferLengthInBytes ;
+	Pointer NameBuffer ;	// PWSTR
+	Pointer NameBufferLengthInBytes ;	// UInteger*
+	Pointer TxfId ;	// TXF_ID*
+	Returns Integer	// BOOL
+
+External_Function TxfLogRecordGetGenericType "TxfLogRecordGetGenericType" txfw32.dll ;
+	Pointer RecordBuffer ;	// Pointer*
+	UInteger RecordBufferLengthInBytes ;
+	Pointer GenericType ;	// UInteger*
+	Pointer VirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+External_Function TxfReadMetadataInfo "TxfReadMetadataInfo" txfw32.dll ;
+	Pointer FileHandle ;	// HANDLE
+	Pointer TxfFileId ;	// TXF_ID*
+	Pointer LastLsn ;	// CLS_LSN*
+	Pointer TransactionState ;	// UInteger*
+	Pointer LockingTransaction ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/nf-txfw32-txfsetthreadminiversionforcreate
+External_Function TxfSetThreadMiniVersionForCreate "TxfSetThreadMiniVersionForCreate" txfw32.dll ;
+	UShort MiniVersion ;
+	Returns Pointer
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-commitcomplete
+External_Function CommitComplete "CommitComplete" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-commitenlistment
+External_Function CommitEnlistment "CommitEnlistment" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-committransaction
+External_Function CommitTransaction "CommitTransaction" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-committransactionasync
+External_Function CommitTransactionAsync "CommitTransactionAsync" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-createenlistment
+External_Function CreateEnlistment "CreateEnlistment" ktmw32.dll ;
+	Pointer lpEnlistmentAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer ResourceManagerHandle ;	// HANDLE
+	Pointer TransactionHandle ;	// HANDLE
+	UInteger NotificationMask ;
+	UInteger CreateOptions ;
+	Pointer EnlistmentKey ;	// Pointer*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-createresourcemanager
+External_Function CreateResourceManager "CreateResourceManager" ktmw32.dll ;
+	Pointer lpResourceManagerAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer ResourceManagerId ;	// Guid*
+	UInteger CreateOptions ;
+	Pointer TmHandle ;	// HANDLE
+	WString Description ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-createtransaction
+External_Function CreateTransaction "CreateTransaction" ktmw32.dll ;
+	Pointer lpTransactionAttributes ;	// SECURITY_ATTRIBUTES*
+	Pointer UOW ;	// Guid*
+	UInteger CreateOptions ;
+	UInteger IsolationLevel ;
+	UInteger IsolationFlags ;
+	UInteger Timeout ;
+	WString Description ;	// PWSTR
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-createtransactionmanager
+External_Function CreateTransactionManager "CreateTransactionManager" ktmw32.dll ;
+	Pointer lpTransactionAttributes ;	// SECURITY_ATTRIBUTES*
+	WString LogFileName ;	// PWSTR
+	UInteger CreateOptions ;
+	UInteger CommitStrength ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-getcurrentclocktransactionmanager
+External_Function GetCurrentClockTransactionManager "GetCurrentClockTransactionManager" ktmw32.dll ;
+	Pointer TransactionManagerHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-getenlistmentid
+External_Function GetEnlistmentId "GetEnlistmentId" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer EnlistmentId ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-getenlistmentrecoveryinformation
+External_Function GetEnlistmentRecoveryInformation "GetEnlistmentRecoveryInformation" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	UInteger BufferSize ;
+	Pointer Buffer ;	// Pointer*
+	Pointer BufferUsed ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-getnotificationresourcemanager
+External_Function GetNotificationResourceManager "GetNotificationResourceManager" ktmw32.dll ;
+	Pointer ResourceManagerHandle ;	// HANDLE
+	Pointer TransactionNotification ;	// TRANSACTION_NOTIFICATION*
+	UInteger NotificationLength ;
+	UInteger dwMilliseconds ;
+	Pointer ReturnLength ;	// UInteger*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-getnotificationresourcemanagerasync
+External_Function GetNotificationResourceManagerAsync "GetNotificationResourceManagerAsync" ktmw32.dll ;
+	Pointer ResourceManagerHandle ;	// HANDLE
+	Pointer TransactionNotification ;	// TRANSACTION_NOTIFICATION*
+	UInteger TransactionNotificationLength ;
+	Pointer ReturnLength ;	// UInteger*
+	Pointer lpOverlapped ;	// OVERLAPPED*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-gettransactionid
+External_Function GetTransactionId "GetTransactionId" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	Pointer TransactionId ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-gettransactioninformation
+External_Function GetTransactionInformation "GetTransactionInformation" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	Pointer Outcome ;	// UInteger*
+	Pointer IsolationLevel ;	// UInteger*
+	Pointer IsolationFlags ;	// UInteger*
+	Pointer Timeout ;	// UInteger*
+	UInteger BufferLength ;
+	Pointer Description ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-gettransactionmanagerid
+External_Function GetTransactionManagerId "GetTransactionManagerId" ktmw32.dll ;
+	Pointer TransactionManagerHandle ;	// HANDLE
+	Pointer TransactionManagerId ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-openenlistment
+External_Function OpenEnlistment "OpenEnlistment" ktmw32.dll ;
+	UInteger dwDesiredAccess ;
+	Pointer ResourceManagerHandle ;	// HANDLE
+	Pointer EnlistmentId ;	// Guid*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-openresourcemanager
+External_Function OpenResourceManager "OpenResourceManager" ktmw32.dll ;
+	UInteger dwDesiredAccess ;
+	Pointer TmHandle ;	// HANDLE
+	Pointer ResourceManagerId ;	// Guid*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-opentransaction
+External_Function OpenTransaction "OpenTransaction" ktmw32.dll ;
+	UInteger dwDesiredAccess ;
+	Pointer TransactionId ;	// Guid*
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-opentransactionmanager
+External_Function OpenTransactionManager "OpenTransactionManager" ktmw32.dll ;
+	WString LogFileName ;	// PWSTR
+	UInteger DesiredAccess ;
+	UInteger OpenOptions ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-opentransactionmanagerbyid
+External_Function OpenTransactionManagerById "OpenTransactionManagerById" ktmw32.dll ;
+	Pointer TransactionManagerId ;	// Guid*
+	UInteger DesiredAccess ;
+	UInteger OpenOptions ;
+	Returns Pointer	// HANDLE
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-prepreparecomplete
+External_Function PrePrepareComplete "PrePrepareComplete" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-preprepareenlistment
+External_Function PrePrepareEnlistment "PrePrepareEnlistment" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-preparecomplete
+External_Function PrepareComplete "PrepareComplete" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-prepareenlistment
+External_Function PrepareEnlistment "PrepareEnlistment" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-readonlyenlistment
+External_Function ReadOnlyEnlistment "ReadOnlyEnlistment" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-recoverenlistment
+External_Function RecoverEnlistment "RecoverEnlistment" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer EnlistmentKey ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-recoverresourcemanager
+External_Function RecoverResourceManager "RecoverResourceManager" ktmw32.dll ;
+	Pointer ResourceManagerHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-recovertransactionmanager
+External_Function RecoverTransactionManager "RecoverTransactionManager" ktmw32.dll ;
+	Pointer TransactionManagerHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-renametransactionmanager
+External_Function RenameTransactionManager "RenameTransactionManager" ktmw32.dll ;
+	WString LogFileName ;	// PWSTR
+	Pointer ExistingTransactionManagerGuid ;	// Guid*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-rollbackcomplete
+External_Function RollbackComplete "RollbackComplete" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-rollbackenlistment
+External_Function RollbackEnlistment "RollbackEnlistment" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-rollbacktransaction
+External_Function RollbackTransaction "RollbackTransaction" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-rollbacktransactionasync
+External_Function RollbackTransactionAsync "RollbackTransactionAsync" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-rollforwardtransactionmanager
+External_Function RollforwardTransactionManager "RollforwardTransactionManager" ktmw32.dll ;
+	Pointer TransactionManagerHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-setenlistmentrecoveryinformation
+External_Function SetEnlistmentRecoveryInformation "SetEnlistmentRecoveryInformation" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	UInteger BufferSize ;
+	Pointer Buffer ;	// Pointer*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-setresourcemanagercompletionport
+External_Function SetResourceManagerCompletionPort "SetResourceManagerCompletionPort" ktmw32.dll ;
+	Pointer ResourceManagerHandle ;	// HANDLE
+	Pointer IoCompletionPortHandle ;	// HANDLE
+	ULongPtr CompletionKey ;
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-settransactioninformation
+External_Function SetTransactionInformation "SetTransactionInformation" ktmw32.dll ;
+	Pointer TransactionHandle ;	// HANDLE
+	UInteger IsolationLevel ;
+	UInteger IsolationFlags ;
+	UInteger Timeout ;
+	WString Description ;	// PWSTR
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/ktmw32/nf-ktmw32-singlephasereject
+External_Function SinglePhaseReject "SinglePhaseReject" ktmw32.dll ;
+	Pointer EnlistmentHandle ;	// HANDLE
+	Pointer TmVirtualClock ;	// Bigint*
+	Returns Integer	// BOOL
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netconnectionenum
+External_Function NetConnectionEnum "NetConnectionEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString qualifier ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netfileclose
+External_Function NetFileClose "NetFileClose" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger fileid ;
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netfileenum
+External_Function NetFileEnum "NetFileEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString basepath ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// ULongPtr*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netfilegetinfo
+External_Function NetFileGetInfo "NetFileGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger fileid ;
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+External_Function NetServerAliasAdd "NetServerAliasAdd" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Returns UInteger
+
+External_Function NetServerAliasDel "NetServerAliasDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer buf ;	// UChar*
+	Returns UInteger
+
+External_Function NetServerAliasEnum "NetServerAliasEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resumehandle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsessiondel
+External_Function NetSessionDel "NetSessionDel" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString UncClientName ;	// PWSTR
+	WString username ;	// PWSTR
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsessionenum
+External_Function NetSessionEnum "NetSessionEnum" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString UncClientName ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	UInteger prefmaxlen ;
+	Pointer entriesread ;	// UInteger*
+	Pointer totalentries ;	// UInteger*
+	Pointer resume_handle ;	// UInteger*
+	Returns UInteger
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/nf-lmshare-netsessiongetinfo
+External_Function NetSessionGetInfo "NetSessionGetInfo" NETAPI32.dll ;
+	WString servername ;	// PWSTR
+	WString UncClientName ;	// PWSTR
+	WString username ;	// PWSTR
+	UInteger level ;
+	Pointer bufptr ;	// UChar**
+	Returns UInteger
+
+
+Procedure DataFlex_Init
+End_Procedure
+
