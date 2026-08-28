@@ -5,10 +5,10 @@
 The DataFlex language can consume most Win32 APIs. However the process of consuming those APIs requires manually looking up documentation online and translating all the related APIs / structs / enums / constants correctly from C++ to DataFlex. This project will do the grunt work for you. All you need is a multi-file search tool to find what you need. After that it's just copy/paste.
 
 ## Folder Structure
-The folder structure of this project resembles the structure within the Win32 MetaData project. Within each folder, there will be 3 types of files.
+The folder structure of this project resembles the structure within the Win32 MetaData project. Within each folder, there will be 5 types of files.
 * Win32Alias-##.pkg - Define `[One Data Type]` For `[Another Data Type]`
 * Win32API-##.pkg - External_Function
-* Win32Constant-##.pkg - Define `[Constant Name]` For `[Literal Value]`
+* Win32Constant-##.pkg - Define `[Constant's Name]` For `[Literal Value]`
 * Win32Enum-##.pkg - Enum_List/End_Enum_List
 * Win32Struct-##.pkg - Struct/End_Struct
 
@@ -16,6 +16,7 @@ The folder structure of this project resembles the structure within the Win32 Me
 * This DataFlex Language Projection only translates the necessary data structures / constants in order to call all the APIs included.
 * DataFlex does not support union data type. Thus all unions are defined as `UChar[Length] Union#`
 * All structure alignments are specifically translated for running under 64 bit Windows (As all 32 bit Windows are out of support)
+* If an API's parameter type is defined as `[in] PSTR` or `[in] PWSTR` in the Win32 MetaData project, it will be translated as `String` and `WString` correspondingly. `[in/out]` or `[out]` parameters are translated as `Pointer` because the API can potentially modify the content of the parameter.
 
 ## Acknowledgement
 * Microsoft - for providing the metadata for the entire Win32 API system
