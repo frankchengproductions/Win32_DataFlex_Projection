@@ -229,7 +229,7 @@ External_Function GlobalCompact "GlobalCompact" KERNEL32.dll ;
 
 External_Function GlobalFix "GlobalFix" KERNEL32.dll ;
 	Pointer hMem ;	// HGLOBAL
-	Returns Pointer
+	Returns Void_Type
 
 External_Function GlobalUnWire "GlobalUnWire" KERNEL32.dll ;
 	Pointer hMem ;	// HGLOBAL
@@ -237,7 +237,7 @@ External_Function GlobalUnWire "GlobalUnWire" KERNEL32.dll ;
 
 External_Function GlobalUnfix "GlobalUnfix" KERNEL32.dll ;
 	Pointer hMem ;	// HGLOBAL
-	Returns Pointer
+	Returns Void_Type
 
 External_Function GlobalWire "GlobalWire" KERNEL32.dll ;
 	Pointer hMem ;	// HGLOBAL
@@ -636,17 +636,17 @@ External_Function RtlCharToInteger "RtlCharToInteger" ntdll.dll ;
 // https://learn.microsoft.com/windows/win32/api/winternl/nf-winternl-rtlfreeansistring
 External_Function RtlFreeAnsiString "RtlFreeAnsiString" ntdll.dll ;
 	Pointer AnsiString ;	// STRING*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/winternl/nf-winternl-rtlfreeoemstring
 External_Function RtlFreeOemString "RtlFreeOemString" ntdll.dll ;
 	Pointer OemString ;	// STRING*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/winternl/nf-winternl-rtlfreeunicodestring
 External_Function RtlFreeUnicodeString "RtlFreeUnicodeString" ntdll.dll ;
 	Pointer UnicodeString ;	// UNICODE_STRING*
-	Returns Pointer
+	Returns Void_Type
 
 External_Function RtlGetReturnAddressHijackTarget "RtlGetReturnAddressHijackTarget" ntdll.dll ;
 	Returns ULongPtr
@@ -654,7 +654,7 @@ External_Function RtlGetReturnAddressHijackTarget "RtlGetReturnAddressHijackTarg
 External_Function RtlInitAnsiString "RtlInitAnsiString" ntdll.dll ;
 	Pointer DestinationString ;	// STRING*
 	Pointer SourceString ;	// Char*
-	Returns Pointer
+	Returns Void_Type
 
 External_Function RtlInitAnsiStringEx "RtlInitAnsiStringEx" ntdll.dll ;
 	Pointer DestinationString ;	// STRING*
@@ -665,7 +665,7 @@ External_Function RtlInitAnsiStringEx "RtlInitAnsiStringEx" ntdll.dll ;
 External_Function RtlInitString "RtlInitString" ntdll.dll ;
 	Pointer DestinationString ;	// STRING*
 	Pointer SourceString ;	// Char*
-	Returns Pointer
+	Returns Void_Type
 
 External_Function RtlInitStringEx "RtlInitStringEx" ntdll.dll ;
 	Pointer DestinationString ;	// STRING*
@@ -676,7 +676,7 @@ External_Function RtlInitStringEx "RtlInitStringEx" ntdll.dll ;
 External_Function RtlInitUnicodeString "RtlInitUnicodeString" ntdll.dll ;
 	Pointer DestinationString ;	// UNICODE_STRING*
 	WString SourceString ;	// PWSTR
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/winternl/nf-winternl-rtlisnamelegaldos8dot3
 External_Function RtlIsNameLegalDOS8Dot3 "RtlIsNameLegalDOS8Dot3" ntdll.dll ;
@@ -742,17 +742,17 @@ External_Function GetApiSetModuleBaseName "GetApiSetModuleBaseName" api-ms-win-c
 // https://learn.microsoft.com/windows/win32/api/realtimeapiset/nf-realtimeapiset-queryinterrupttime
 External_Function QueryInterruptTime "QueryInterruptTime" api-ms-win-core-realtime-l1-1-1.dll ;
 	Pointer lpInterruptTime ;	// UBigint*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/realtimeapiset/nf-realtimeapiset-queryinterrupttimeprecise
 External_Function QueryInterruptTimePrecise "QueryInterruptTimePrecise" api-ms-win-core-realtime-l1-1-1.dll ;
 	Pointer lpInterruptTimePrecise ;	// UBigint*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/realtimeapiset/nf-realtimeapiset-queryunbiasedinterrupttimeprecise
 External_Function QueryUnbiasedInterruptTimePrecise "QueryUnbiasedInterruptTimePrecise" api-ms-win-core-realtime-l1-1-1.dll ;
 	Pointer lpUnbiasedInterruptTimePrecise ;	// UBigint*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/realtimeapiset/nf-realtimeapiset-convertauxiliarycountertoperformancecounter
 External_Function ConvertAuxiliaryCounterToPerformanceCounter "ConvertAuxiliaryCounterToPerformanceCounter" api-ms-win-core-realtime-l1-1-2.dll ;
@@ -787,7 +787,7 @@ External_Function GetFeatureEnabledState "GetFeatureEnabledState" api-ms-win-cor
 External_Function RecordFeatureError "RecordFeatureError" api-ms-win-core-featurestaging-l1-1-0.dll ;
 	UInteger featureId ;
 	Pointer error ;	// FEATURE_ERROR*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/featurestagingapi/nf-featurestagingapi-recordfeatureusage
 External_Function RecordFeatureUsage "RecordFeatureUsage" api-ms-win-core-featurestaging-l1-1-0.dll ;
@@ -795,19 +795,19 @@ External_Function RecordFeatureUsage "RecordFeatureUsage" api-ms-win-core-featur
 	UInteger kind ;
 	UInteger addend ;
 	String originName ;	// PSTR
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/featurestagingapi/nf-featurestagingapi-subscribefeaturestatechangenotification
 External_Function SubscribeFeatureStateChangeNotification "SubscribeFeatureStateChangeNotification" api-ms-win-core-featurestaging-l1-1-0.dll ;
 	Pointer subscription ;	// FEATURE_STATE_CHANGE_SUBSCRIPTION*
 	Pointer callback ;	// PFEATURE_STATE_CHANGE_CALLBACK
 	Pointer context ;	// Pointer*
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/featurestagingapi/nf-featurestagingapi-unsubscribefeaturestatechangenotification
 External_Function UnsubscribeFeatureStateChangeNotification "UnsubscribeFeatureStateChangeNotification" api-ms-win-core-featurestaging-l1-1-0.dll ;
 	Pointer subscription ;	// FEATURE_STATE_CHANGE_SUBSCRIPTION
-	Returns Pointer
+	Returns Void_Type
 
 // https://learn.microsoft.com/windows/win32/api/featurestagingapi/nf-featurestagingapi-getfeaturevariant
 External_Function GetFeatureVariant "GetFeatureVariant" api-ms-win-core-featurestaging-l1-1-1.dll ;
@@ -829,7 +829,7 @@ External_Function DCIBeginAccess "DCIBeginAccess" DCIMAN32.dll ;
 // https://learn.microsoft.com/windows/win32/api/dciman/nf-dciman-dcicloseprovider
 External_Function DCICloseProvider "DCICloseProvider" DCIMAN32.dll ;
 	Pointer hdc ;	// HDC
-	Returns Pointer
+	Returns Void_Type
 
 External_Function DCICreateOffscreen "DCICreateOffscreen" DCIMAN32.dll ;
 	Pointer hdc ;	// HDC
@@ -859,7 +859,7 @@ External_Function DCICreatePrimary "DCICreatePrimary" DCIMAN32.dll ;
 // https://learn.microsoft.com/windows/win32/api/dciman/nf-dciman-dcidestroy
 External_Function DCIDestroy "DCIDestroy" DCIMAN32.dll ;
 	Pointer pdci ;	// DCISURFACEINFO*
-	Returns Pointer
+	Returns Void_Type
 
 External_Function DCIDraw "DCIDraw" DCIMAN32.dll ;
 	Pointer pdci ;	// DCIOFFSCREEN*
@@ -868,7 +868,7 @@ External_Function DCIDraw "DCIDraw" DCIMAN32.dll ;
 // https://learn.microsoft.com/windows/win32/api/dciman/nf-dciman-dciendaccess
 External_Function DCIEndAccess "DCIEndAccess" DCIMAN32.dll ;
 	Pointer pdci ;	// DCISURFACEINFO*
-	Returns Pointer
+	Returns Void_Type
 
 External_Function DCIEnum "DCIEnum" DCIMAN32.dll ;
 	Pointer hdc ;	// HDC
@@ -914,7 +914,7 @@ External_Function GetWindowRegionData "GetWindowRegionData" DCIMAN32.dll ;
 
 External_Function WinWatchClose "WinWatchClose" DCIMAN32.dll ;
 	Pointer hWW ;	// HWINWATCH
-	Returns Pointer
+	Returns Void_Type
 
 External_Function WinWatchDidStatusChange "WinWatchDidStatusChange" DCIMAN32.dll ;
 	Pointer hWW ;	// HWINWATCH
