@@ -2,212 +2,212 @@ Use UI
 
 // Define GLOBAL_ALLOC_FLAGS For UInteger
 Enum_List
-	Define GHND												For 66
-	Define GMEM_FIXED										For 0
-	Define GMEM_MOVEABLE									For 2
-	Define GMEM_ZEROINIT									For 64
-	Define GPTR												For 64
+	Define GMEM_FIXED										For |CI$00000000
+	Define GMEM_MOVEABLE									For |CI$00000002
+	Define GMEM_ZEROINIT									For |CI$00000040
+	Define GPTR												For |CI$00000040
+	Define GHND												For |CI$00000042
 End_Enum_List
 
 // Define SECTION_FLAGS For UInteger
 Enum_List
-	Define SECTION_ALL_ACCESS								For 983071
-	Define SECTION_QUERY									For 1
-	Define SECTION_MAP_WRITE								For 2
-	Define SECTION_MAP_READ									For 4
-	Define SECTION_MAP_EXECUTE								For 8
-	Define SECTION_EXTEND_SIZE								For 16
-	Define SECTION_MAP_EXECUTE_EXPLICIT						For 32
+	Define SECTION_QUERY									For |CI$00000001
+	Define SECTION_MAP_WRITE								For |CI$00000002
+	Define SECTION_MAP_READ									For |CI$00000004
+	Define SECTION_MAP_EXECUTE								For |CI$00000008
+	Define SECTION_EXTEND_SIZE								For |CI$00000010
+	Define SECTION_MAP_EXECUTE_EXPLICIT						For |CI$00000020
+	Define SECTION_ALL_ACCESS								For |CI$000F001F
 End_Enum_List
 
 // Define FILE_MAP For UInteger
 Enum_List
-	Define FILE_MAP_WRITE									For 2
-	Define FILE_MAP_READ									For 4
-	Define FILE_MAP_ALL_ACCESS								For 983071
-	Define FILE_MAP_EXECUTE									For 32
-	Define FILE_MAP_COPY									For 1
-	Define FILE_MAP_RESERVE									For 2147483648
-	Define FILE_MAP_TARGETS_INVALID							For 1073741824
-	Define FILE_MAP_LARGE_PAGES								For 536870912
+	Define FILE_MAP_COPY									For |CI$00000001
+	Define FILE_MAP_WRITE									For |CI$00000002
+	Define FILE_MAP_READ									For |CI$00000004
+	Define FILE_MAP_EXECUTE									For |CI$00000020
+	Define FILE_MAP_ALL_ACCESS								For |CI$000F001F
+	Define FILE_MAP_LARGE_PAGES								For |CI$20000000
+	Define FILE_MAP_TARGETS_INVALID							For |CI$40000000
+	Define FILE_MAP_RESERVE									For |CV$80000000
 End_Enum_List
 
 // Define HEAP_FLAGS For UInteger
 Enum_List
-	Define HEAP_NONE										For 0
-	Define HEAP_NO_SERIALIZE								For 1
-	Define HEAP_GROWABLE									For 2
-	Define HEAP_GENERATE_EXCEPTIONS							For 4
-	Define HEAP_ZERO_MEMORY									For 8
-	Define HEAP_REALLOC_IN_PLACE_ONLY						For 16
-	Define HEAP_TAIL_CHECKING_ENABLED						For 32
-	Define HEAP_FREE_CHECKING_ENABLED						For 64
-	Define HEAP_DISABLE_COALESCE_ON_FREE					For 128
-	Define HEAP_CREATE_ALIGN_16								For 65536
-	Define HEAP_CREATE_ENABLE_TRACING						For 131072
-	Define HEAP_CREATE_ENABLE_EXECUTE						For 262144
-	Define HEAP_MAXIMUM_TAG									For 4095
-	Define HEAP_PSEUDO_TAG_FLAG								For 32768
-	Define HEAP_TAG_SHIFT									For 18
-	Define HEAP_CREATE_SEGMENT_HEAP							For 256
-	Define HEAP_CREATE_HARDENED								For 512
+	Define HEAP_NONE										For |CI$00000000
+	Define HEAP_NO_SERIALIZE								For |CI$00000001
+	Define HEAP_GROWABLE									For |CI$00000002
+	Define HEAP_GENERATE_EXCEPTIONS							For |CI$00000004
+	Define HEAP_ZERO_MEMORY									For |CI$00000008
+	Define HEAP_REALLOC_IN_PLACE_ONLY						For |CI$00000010
+	Define HEAP_TAG_SHIFT									For |CI$00000012
+	Define HEAP_TAIL_CHECKING_ENABLED						For |CI$00000020
+	Define HEAP_FREE_CHECKING_ENABLED						For |CI$00000040
+	Define HEAP_DISABLE_COALESCE_ON_FREE					For |CI$00000080
+	Define HEAP_CREATE_SEGMENT_HEAP							For |CI$00000100
+	Define HEAP_CREATE_HARDENED								For |CI$00000200
+	Define HEAP_MAXIMUM_TAG									For |CI$00000FFF
+	Define HEAP_PSEUDO_TAG_FLAG								For |CI$00008000
+	Define HEAP_CREATE_ALIGN_16								For |CI$00010000
+	Define HEAP_CREATE_ENABLE_TRACING						For |CI$00020000
+	Define HEAP_CREATE_ENABLE_EXECUTE						For |CI$00040000
 End_Enum_List
 
 // Define PAGE_PROTECTION_FLAGS For UInteger
 Enum_List
-	Define PAGE_NOACCESS									For 1
-	Define PAGE_READONLY									For 2
-	Define PAGE_READWRITE									For 4
-	Define PAGE_WRITECOPY									For 8
-	Define PAGE_EXECUTE										For 16
-	Define PAGE_EXECUTE_READ								For 32
-	Define PAGE_EXECUTE_READWRITE							For 64
-	Define PAGE_EXECUTE_WRITECOPY							For 128
-	Define PAGE_GUARD										For 256
-	Define PAGE_NOCACHE										For 512
-	Define PAGE_WRITECOMBINE								For 1024
-	Define PAGE_GRAPHICS_NOACCESS							For 2048
-	Define PAGE_GRAPHICS_READONLY							For 4096
-	Define PAGE_GRAPHICS_READWRITE							For 8192
-	Define PAGE_GRAPHICS_EXECUTE							For 16384
-	Define PAGE_GRAPHICS_EXECUTE_READ						For 32768
-	Define PAGE_GRAPHICS_EXECUTE_READWRITE					For 65536
-	Define PAGE_GRAPHICS_COHERENT							For 131072
-	Define PAGE_GRAPHICS_NOCACHE							For 262144
-	Define PAGE_ENCLAVE_THREAD_CONTROL						For 2147483648
-	Define PAGE_REVERT_TO_FILE_MAP							For 2147483648
-	Define PAGE_TARGETS_NO_UPDATE							For 1073741824
-	Define PAGE_TARGETS_INVALID								For 1073741824
-	Define PAGE_ENCLAVE_UNVALIDATED							For 536870912
-	Define PAGE_ENCLAVE_MASK								For 268435456
-	Define PAGE_ENCLAVE_DECOMMIT							For 268435456
-	Define PAGE_ENCLAVE_SS_FIRST							For 268435457
-	Define PAGE_ENCLAVE_SS_REST								For 268435458
-	Define SEC_PARTITION_OWNER_HANDLE						For 262144
-	Define SEC_64K_PAGES									For 524288
-	Define SEC_FILE											For 8388608
-	Define SEC_IMAGE										For 16777216
-	Define SEC_PROTECTED_IMAGE								For 33554432
-	Define SEC_RESERVE										For 67108864
-	Define SEC_COMMIT										For 134217728
-	Define SEC_NOCACHE										For 268435456
-	Define SEC_WRITECOMBINE									For 1073741824
-	Define SEC_LARGE_PAGES									For 2147483648
-	Define SEC_IMAGE_NO_EXECUTE								For 285212672
+	Define PAGE_NOACCESS									For |CI$00000001
+	Define PAGE_READONLY									For |CI$00000002
+	Define PAGE_READWRITE									For |CI$00000004
+	Define PAGE_WRITECOPY									For |CI$00000008
+	Define PAGE_EXECUTE										For |CI$00000010
+	Define PAGE_EXECUTE_READ								For |CI$00000020
+	Define PAGE_EXECUTE_READWRITE							For |CI$00000040
+	Define PAGE_EXECUTE_WRITECOPY							For |CI$00000080
+	Define PAGE_GUARD										For |CI$00000100
+	Define PAGE_NOCACHE										For |CI$00000200
+	Define PAGE_WRITECOMBINE								For |CI$00000400
+	Define PAGE_GRAPHICS_NOACCESS							For |CI$00000800
+	Define PAGE_GRAPHICS_READONLY							For |CI$00001000
+	Define PAGE_GRAPHICS_READWRITE							For |CI$00002000
+	Define PAGE_GRAPHICS_EXECUTE							For |CI$00004000
+	Define PAGE_GRAPHICS_EXECUTE_READ						For |CI$00008000
+	Define PAGE_GRAPHICS_EXECUTE_READWRITE					For |CI$00010000
+	Define PAGE_GRAPHICS_COHERENT							For |CI$00020000
+	Define PAGE_GRAPHICS_NOCACHE							For |CI$00040000
+	Define SEC_PARTITION_OWNER_HANDLE						For |CI$00040000
+	Define SEC_64K_PAGES									For |CI$00080000
+	Define SEC_FILE											For |CI$00800000
+	Define SEC_IMAGE										For |CI$01000000
+	Define SEC_PROTECTED_IMAGE								For |CI$02000000
+	Define SEC_RESERVE										For |CI$04000000
+	Define SEC_COMMIT										For |CI$08000000
+	Define PAGE_ENCLAVE_MASK								For |CI$10000000
+	Define PAGE_ENCLAVE_DECOMMIT							For |CI$10000000
+	Define SEC_NOCACHE										For |CI$10000000
+	Define PAGE_ENCLAVE_SS_FIRST							For |CI$10000001
+	Define PAGE_ENCLAVE_SS_REST								For |CI$10000002
+	Define SEC_IMAGE_NO_EXECUTE								For |CI$11000000
+	Define PAGE_ENCLAVE_UNVALIDATED							For |CI$20000000
+	Define PAGE_TARGETS_NO_UPDATE							For |CI$40000000
+	Define PAGE_TARGETS_INVALID								For |CI$40000000
+	Define SEC_WRITECOMBINE									For |CI$40000000
+	Define PAGE_ENCLAVE_THREAD_CONTROL						For |CV$80000000
+	Define PAGE_REVERT_TO_FILE_MAP							For |CV$80000000
+	Define SEC_LARGE_PAGES									For |CV$80000000
 End_Enum_List
 
 // Define UNMAP_VIEW_OF_FILE_FLAGS For UInteger
 Enum_List
-	Define MEM_UNMAP_NONE									For 0
-	Define MEM_UNMAP_WITH_TRANSIENT_BOOST					For 1
-	Define MEM_PRESERVE_PLACEHOLDER							For 2
+	Define MEM_UNMAP_NONE									For |CI$00000000
+	Define MEM_UNMAP_WITH_TRANSIENT_BOOST					For |CI$00000001
+	Define MEM_PRESERVE_PLACEHOLDER							For |CI$00000002
 End_Enum_List
 
 // Define VIRTUAL_FREE_TYPE For UInteger
 Enum_List
-	Define MEM_DECOMMIT										For 16384
-	Define MEM_RELEASE										For 32768
+	Define MEM_DECOMMIT										For |CI$00004000
+	Define MEM_RELEASE										For |CI$00008000
 End_Enum_List
 
 // Define VIRTUAL_ALLOCATION_TYPE For UInteger
 Enum_List
-	Define MEM_COMMIT										For 4096
-	Define MEM_RESERVE										For 8192
-	Define MEM_RESET										For 524288
-	Define MEM_RESET_UNDO									For 16777216
-	Define MEM_REPLACE_PLACEHOLDER							For 16384
-	Define MEM_LARGE_PAGES									For 536870912
-	Define MEM_RESERVE_PLACEHOLDER							For 262144
-	Define MEM_FREE											For 65536
+	Define MEM_COMMIT										For |CI$00001000
+	Define MEM_RESERVE										For |CI$00002000
+	Define MEM_REPLACE_PLACEHOLDER							For |CI$00004000
+	Define MEM_FREE											For |CI$00010000
+	Define MEM_RESERVE_PLACEHOLDER							For |CI$00040000
+	Define MEM_RESET										For |CI$00080000
+	Define MEM_RESET_UNDO									For |CI$01000000
+	Define MEM_LARGE_PAGES									For |CI$20000000
 End_Enum_List
 
 // Define LOCAL_ALLOC_FLAGS For UInteger
 Enum_List
-	Define LHND												For 66
-	Define LMEM_FIXED										For 0
-	Define LMEM_MOVEABLE									For 2
-	Define LMEM_ZEROINIT									For 64
-	Define LPTR												For 64
-	Define NONZEROLHND										For 2
-	Define NONZEROLPTR										For 0
+	Define LMEM_FIXED										For |CI$00000000
+	Define NONZEROLPTR										For |CI$00000000
+	Define LMEM_MOVEABLE									For |CI$00000002
+	Define NONZEROLHND										For |CI$00000002
+	Define LMEM_ZEROINIT									For |CI$00000040
+	Define LPTR												For |CI$00000040
+	Define LHND												For |CI$00000042
 End_Enum_List
 
 // Define PAGE_TYPE For UInteger
 Enum_List
-	Define MEM_PRIVATE										For 131072
-	Define MEM_MAPPED										For 262144
-	Define MEM_IMAGE										For 16777216
+	Define MEM_PRIVATE										For |CI$00020000
+	Define MEM_MAPPED										For |CI$00040000
+	Define MEM_IMAGE										For |CI$01000000
 End_Enum_List
 
 // Define SETPROCESSWORKINGSETSIZEEX_FLAGS For UInteger
 Enum_List
-	Define QUOTA_LIMITS_HARDWS_MIN_ENABLE					For 1
-	Define QUOTA_LIMITS_HARDWS_MIN_DISABLE					For 2
-	Define QUOTA_LIMITS_HARDWS_MAX_ENABLE					For 4
-	Define QUOTA_LIMITS_HARDWS_MAX_DISABLE					For 8
+	Define QUOTA_LIMITS_HARDWS_MIN_ENABLE					For |CI$00000001
+	Define QUOTA_LIMITS_HARDWS_MIN_DISABLE					For |CI$00000002
+	Define QUOTA_LIMITS_HARDWS_MAX_ENABLE					For |CI$00000004
+	Define QUOTA_LIMITS_HARDWS_MAX_DISABLE					For |CI$00000008
 End_Enum_List
 
 // Define HEAP_INFORMATION_CLASS For Integer
 Enum_List
-	Define HeapCompatibilityInformation						For 0
-	Define HeapEnableTerminationOnCorruption				For 1
-	Define HeapOptimizeResources							For 3
-	Define HeapTag											For 7
+	Define HeapCompatibilityInformation						For |CI$00000000
+	Define HeapEnableTerminationOnCorruption				For |CI$00000001
+	Define HeapOptimizeResources							For |CI$00000003
+	Define HeapTag											For |CI$00000007
 End_Enum_List
 
 // Define MEMORY_RESOURCE_NOTIFICATION_TYPE For Integer
 Enum_List
-	Define LowMemoryResourceNotification					For 0
-	Define HighMemoryResourceNotification					For 1
+	Define LowMemoryResourceNotification					For |CI$00000000
+	Define HighMemoryResourceNotification					For |CI$00000001
 End_Enum_List
 
 // Define OFFER_PRIORITY For Integer
 Enum_List
-	Define VmOfferPriorityVeryLow							For 1
-	Define VmOfferPriorityLow								For 2
-	Define VmOfferPriorityBelowNormal						For 3
-	Define VmOfferPriorityNormal							For 4
+	Define VmOfferPriorityVeryLow							For |CI$00000001
+	Define VmOfferPriorityLow								For |CI$00000002
+	Define VmOfferPriorityBelowNormal						For |CI$00000003
+	Define VmOfferPriorityNormal							For |CI$00000004
 End_Enum_List
 
 // Define WIN32_MEMORY_INFORMATION_CLASS For Integer
 Enum_List
-	Define MemoryRegionInfo									For 0
+	Define MemoryRegionInfo									For |CI$00000000
 End_Enum_List
 
 // Define WIN32_MEMORY_PARTITION_INFORMATION_CLASS For Integer
 Enum_List
-	Define MemoryPartitionInfo								For 0
-	Define MemoryPartitionDedicatedMemoryInfo				For 1
+	Define MemoryPartitionInfo								For |CI$00000000
+	Define MemoryPartitionDedicatedMemoryInfo				For |CI$00000001
 End_Enum_List
 
 // Define MEM_EXTENDED_PARAMETER_TYPE For Integer
 Enum_List
-	Define MemExtendedParameterInvalidType					For 0
-	Define MemExtendedParameterAddressRequirements			For 1
-	Define MemExtendedParameterNumaNode						For 2
-	Define MemExtendedParameterPartitionHandle				For 3
-	Define MemExtendedParameterUserPhysicalHandle			For 4
-	Define MemExtendedParameterAttributeFlags				For 5
-	Define MemExtendedParameterImageMachine					For 6
-	Define MemExtendedParameterMax							For 7
+	Define MemExtendedParameterInvalidType					For |CI$00000000
+	Define MemExtendedParameterAddressRequirements			For |CI$00000001
+	Define MemExtendedParameterNumaNode						For |CI$00000002
+	Define MemExtendedParameterPartitionHandle				For |CI$00000003
+	Define MemExtendedParameterUserPhysicalHandle			For |CI$00000004
+	Define MemExtendedParameterAttributeFlags				For |CI$00000005
+	Define MemExtendedParameterImageMachine					For |CI$00000006
+	Define MemExtendedParameterMax							For |CI$00000007
 End_Enum_List
 
 // Define MEM_DEDICATED_ATTRIBUTE_TYPE For Integer
 Enum_List
-	Define MemDedicatedAttributeReadBandwidth				For 0
-	Define MemDedicatedAttributeReadLatency					For 1
-	Define MemDedicatedAttributeWriteBandwidth				For 2
-	Define MemDedicatedAttributeWriteLatency				For 3
-	Define MemDedicatedAttributeMax							For 4
+	Define MemDedicatedAttributeReadBandwidth				For |CI$00000000
+	Define MemDedicatedAttributeReadLatency					For |CI$00000001
+	Define MemDedicatedAttributeWriteBandwidth				For |CI$00000002
+	Define MemDedicatedAttributeWriteLatency				For |CI$00000003
+	Define MemDedicatedAttributeMax							For |CI$00000004
 End_Enum_List
 
 // Define MEM_SECTION_EXTENDED_PARAMETER_TYPE For Integer
 Enum_List
-	Define MemSectionExtendedParameterInvalidType			For 0
-	Define MemSectionExtendedParameterUserPhysicalFlags		For 1
-	Define MemSectionExtendedParameterNumaNode				For 2
-	Define MemSectionExtendedParameterSigningLevel			For 3
-	Define MemSectionExtendedParameterMax					For 4
+	Define MemSectionExtendedParameterInvalidType			For |CI$00000000
+	Define MemSectionExtendedParameterUserPhysicalFlags		For |CI$00000001
+	Define MemSectionExtendedParameterNumaNode				For |CI$00000002
+	Define MemSectionExtendedParameterSigningLevel			For |CI$00000003
+	Define MemSectionExtendedParameterMax					For |CI$00000004
 End_Enum_List
 
 
