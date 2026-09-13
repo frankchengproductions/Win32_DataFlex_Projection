@@ -1,0 +1,485 @@
+Use UI
+
+Struct _Anonymous_e__Union_1215
+	// UBigint ullLong // (8)
+	// UChar[6] rgBytes // (6)
+	UBigint ullLong
+End_Struct
+
+Struct _Anonymous_e__Union_1216
+	// BLUETOOTH_PIN_INFO pinInfo // (17)
+	// BLUETOOTH_OOB_DATA_INFO oobInfo // (32)
+	// BLUETOOTH_NUMERIC_COMPARISON_INFO numericCompInfo // (4)
+	// BLUETOOTH_PASSKEY_INFO passkeyInfo // (4)
+	BLUETOOTH_OOB_DATA_INFO oobInfo
+End_Struct
+
+Struct _Anonymous_e__Union_1223
+	// _CharacteristicExtendedProperties_e__Struct_1224 CharacteristicExtendedProperties // (2)
+	// _ClientCharacteristicConfiguration_e__Struct_1225 ClientCharacteristicConfiguration // (2)
+	// _ServerCharacteristicConfiguration_e__Struct_1226 ServerCharacteristicConfiguration // (1)
+	// _CharacteristicFormat_e__Struct_1227 CharacteristicFormat // (48)
+	_CharacteristicFormat_e__Struct_1227 CharacteristicFormat
+End_Struct
+
+Struct _Anonymous_e__Union_1721
+	// Guid uuid128 // (16)
+	// UInteger uuid32 // (4)
+	// UShort uuid16 // (2)
+	Guid uuid128
+End_Struct
+
+Struct _Anonymous_e__Union_1722
+	// UInteger Numeric_Value // (4)
+	// UInteger Passkey // (4)
+	UInteger Numeric_Value
+End_Struct
+
+Struct _Anonymous_e__Union_1724
+	// UShort connectionlessMTU // (2)
+	// UChar[44] data // (44)
+	UChar[44] data
+End_Struct
+
+Struct _Data_e__Union_1723
+	// RFCOMM_MSC_DATA MSC // (2)
+	// RFCOMM_RLS_DATA RLS // (1)
+	// RFCOMM_RPN_DATA RPN // (7)
+	RFCOMM_RPN_DATA RPN
+End_Struct
+
+Struct _Value_e__Union_1222
+	// UShort ShortUuid // (2)
+	// Guid LongUuid // (16)
+	Guid LongUuid
+End_Struct
+
+Struct _data_e__Union_1217
+	// SDP_LARGE_INTEGER_16 int128 // (16)
+	// Bigint int64 // (8)
+	// Integer int32 // (4)
+	// Short int16 // (2)
+	// Char int8												// CHAR // (1)
+	// SDP_ULARGE_INTEGER_16 uint128 // (16)
+	// UBigint uint64 // (8)
+	// UInteger uint32 // (4)
+	// UShort uint16 // (2)
+	// UChar uint8 // (1)
+	// UChar booleanVal // (1)
+	// Guid uuid128 // (16)
+	// UInteger uuid32 // (4)
+	// UShort uuid16 // (2)
+	// _string_e__Struct_1218 string // (16)
+	// _url_e__Struct_1219 url // (16)
+	// _sequence_e__Struct_1220 sequence // (16)
+	// _alternative_e__Struct_1221 alternative // (16)
+	SDP_LARGE_INTEGER_16 int128
+End_Struct
+
+Struct BLUETOOTH_ADDRESS
+	_Anonymous_e__Union_1215 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_authenticate_response
+Struct BLUETOOTH_AUTHENTICATE_RESPONSE
+	BLUETOOTH_ADDRESS bthAddressRemote
+	Integer authMethod										// BLUETOOTH_AUTHENTICATION_METHOD
+	_Anonymous_e__Union_1216 Anonymous
+	UChar negativeResponse
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_authentication_callback_params
+Struct BLUETOOTH_AUTHENTICATION_CALLBACK_PARAMS
+	BLUETOOTH_DEVICE_INFO deviceInfo
+	Integer authenticationMethod							// BLUETOOTH_AUTHENTICATION_METHOD
+	Integer ioCapability									// BLUETOOTH_IO_CAPABILITY
+	Integer authenticationRequirements						// BLUETOOTH_AUTHENTICATION_REQUIREMENTS
+	_Anonymous_e__Union_1722 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_cod_pairs
+Struct BLUETOOTH_COD_PAIRS
+	UInteger ulCODMask
+	Integer iMissingAlignment1
+	Pointer pcszDescription									// PWSTR
+End_Struct
+
+Struct BLUETOOTH_DEVICE_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	BLUETOOTH_ADDRESS Address
+	UInteger ulClassofDevice
+	Integer fConnected										// BOOL
+	Integer fRemembered										// BOOL
+	Integer fAuthenticated									// BOOL
+	SYSTEMTIME stLastSeen
+	SYSTEMTIME stLastUsed
+	UShort[248] szName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_device_search_params
+Struct BLUETOOTH_DEVICE_SEARCH_PARAMS
+	UInteger dwSize
+	Integer fReturnAuthenticated							// BOOL
+	Integer fReturnRemembered								// BOOL
+	Integer fReturnUnknown									// BOOL
+	Integer fReturnConnected								// BOOL
+	Integer fIssueInquiry									// BOOL
+	UChar cTimeoutMultiplier
+	UChar[7] cMissingAlignment1
+	Pointer hRadio											// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_find_radio_params
+Struct BLUETOOTH_FIND_RADIO_PARAMS
+	UInteger dwSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bluetooth_gatt_value_changed_event
+Struct BLUETOOTH_GATT_VALUE_CHANGED_EVENT
+	UShort ChangedAttributeHandle
+	UChar[6] cMissingAlignment1
+	ULongPtr CharacteristicValueDataSize
+	Pointer CharacteristicValue								// BTH_LE_GATT_CHARACTERISTIC_VALUE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bluetooth_gatt_value_changed_event_registration
+Struct BLUETOOTH_GATT_VALUE_CHANGED_EVENT_REGISTRATION
+	UShort NumCharacteristics
+	Short iMissingAlignment1
+	BTH_LE_GATT_CHARACTERISTIC[1] Characteristics
+End_Struct
+
+Struct BLUETOOTH_LOCAL_SERVICE_INFO
+	Integer Enabled											// BOOL
+	Integer iMissingAlignment1
+	BLUETOOTH_ADDRESS btAddr
+	UShort[256] szName
+	UShort[256] szDeviceString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_numeric_comparison_info
+Struct BLUETOOTH_NUMERIC_COMPARISON_INFO
+	UInteger NumericValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_oob_data_info
+Struct BLUETOOTH_OOB_DATA_INFO
+	UChar[16] C
+	UChar[16] R
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_passkey_info
+Struct BLUETOOTH_PASSKEY_INFO
+	UInteger passkey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_pin_info
+Struct BLUETOOTH_PIN_INFO
+	UChar[16] pin
+	UChar pinLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_radio_info
+Struct BLUETOOTH_RADIO_INFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	BLUETOOTH_ADDRESS address
+	UShort[248] szName
+	UInteger ulClassofDevice
+	UShort lmpSubversion
+	UShort manufacturer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-bluetooth_select_device_params
+Struct BLUETOOTH_SELECT_DEVICE_PARAMS
+	UInteger dwSize
+	UInteger cNumOfClasses
+	Pointer prgClassOfDevices								// BLUETOOTH_COD_PAIRS*
+	Pointer pszInfo											// PWSTR
+	Pointer hwndParent										// HWND
+	Integer fForceAuthentication							// BOOL
+	Integer fShowAuthenticated								// BOOL
+	Integer fShowRemembered									// BOOL
+	Integer fShowUnknown									// BOOL
+	Integer fAddNewDeviceWizard								// BOOL
+	Integer fSkipServicesPage								// BOOL
+	Pointer pfnDeviceCallback								// PFN_DEVICE_CALLBACK
+	Pointer pvParam											// Pointer*
+	UInteger cNumDevices
+	Integer iMissingAlignment1
+	Pointer pDevices										// BLUETOOTH_DEVICE_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthdef/ns-bthdef-bth_device_info
+Struct BTH_DEVICE_INFO
+	UInteger flags
+	Integer iMissingAlignment1
+	UBigint address
+	UInteger classOfDevice
+	Char[248] name											// CHAR
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthdef/ns-bthdef-bth_hci_event_info
+Struct BTH_HCI_EVENT_INFO
+	UBigint bthAddress
+	UChar connectionType
+	UChar connected
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct BTH_INFO_REQ
+	UBigint btAddr
+	UShort infoType
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct BTH_INFO_RSP
+	UShort result
+	UChar dataLen
+	UChar[1] cMissingAlignment1
+	_Anonymous_e__Union_1724 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthdef/ns-bthdef-bth_l2cap_event_info
+Struct BTH_L2CAP_EVENT_INFO
+	UBigint bthAddress
+	UShort psm
+	UChar connected
+	UChar initiated
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_characteristic
+Struct BTH_LE_GATT_CHARACTERISTIC
+	UShort ServiceHandle
+	Short iMissingAlignment1
+	BTH_LE_UUID CharacteristicUuid
+	UShort AttributeHandle
+	UShort CharacteristicValueHandle
+	UChar IsBroadcastable									// BOOLEAN
+	UChar IsReadable										// BOOLEAN
+	UChar IsWritable										// BOOLEAN
+	UChar IsWritableWithoutResponse							// BOOLEAN
+	UChar IsSignedWritable									// BOOLEAN
+	UChar IsNotifiable										// BOOLEAN
+	UChar IsIndicatable										// BOOLEAN
+	UChar HasExtendedProperties								// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_characteristic_value
+Struct BTH_LE_GATT_CHARACTERISTIC_VALUE
+	UInteger DataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_descriptor
+Struct BTH_LE_GATT_DESCRIPTOR
+	UShort ServiceHandle
+	UShort CharacteristicHandle
+	Integer DescriptorType									// BTH_LE_GATT_DESCRIPTOR_TYPE
+	BTH_LE_UUID DescriptorUuid
+	UShort AttributeHandle
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_descriptor_value
+Struct BTH_LE_GATT_DESCRIPTOR_VALUE
+	Integer DescriptorType									// BTH_LE_GATT_DESCRIPTOR_TYPE
+	BTH_LE_UUID DescriptorUuid
+	_Anonymous_e__Union_1223 Anonymous
+	UInteger DataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_gatt_service
+Struct BTH_LE_GATT_SERVICE
+	BTH_LE_UUID ServiceUuid
+	UShort AttributeHandle
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthledef/ns-bthledef-bth_le_uuid
+Struct BTH_LE_UUID
+	UChar IsShortUuid										// BOOLEAN
+	UChar[3] cMissingAlignment1
+	_Value_e__Union_1222 Value
+End_Struct
+
+Struct BTH_PING_REQ
+	UBigint btAddr
+	UChar dataLen
+	UChar[44] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct BTH_PING_RSP
+	UChar dataLen
+	UChar[44] data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2bth/ns-ws2bth-bth_query_device
+Struct BTH_QUERY_DEVICE
+	UInteger LAP
+	UChar length
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2bth/ns-ws2bth-bth_query_service
+Struct BTH_QUERY_SERVICE
+	UInteger type
+	UInteger serviceHandle
+	SdpQueryUuid[12] uuids
+	UInteger numRange
+	SdpAttributeRange[1] pRange
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthdef/ns-bthdef-bth_radio_in_range
+Struct BTH_RADIO_IN_RANGE
+	BTH_DEVICE_INFO deviceInfo
+	UInteger previousDeviceFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2bth/ns-ws2bth-bth_set_service
+Struct BTH_SET_SERVICE
+	Pointer pSdpVersion										// UInteger*
+	Pointer pRecordHandle									// HANDLE*
+	UInteger fCodService
+	UInteger[5] Reserved
+	UInteger ulRecordLength
+	UChar[1] pRecord
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RFCOMM_COMMAND
+	UInteger CmdType
+	_Data_e__Union_1723 Data
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct RFCOMM_MSC_DATA
+	UChar Signals
+	UChar Break
+End_Struct
+
+Struct RFCOMM_RLS_DATA
+	UChar LineStatus
+End_Struct
+
+Struct RFCOMM_RPN_DATA
+	UChar Baud
+	UChar Data
+	UChar FlowControl
+	UChar XonChar
+	UChar XoffChar
+	UChar ParameterMask1
+	UChar ParameterMask2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-sdp_element_data
+Struct SDP_ELEMENT_DATA
+	Integer type											// SDP_TYPE
+	Integer specificType									// SDP_SPECIFICTYPE
+	_data_e__Union_1217 data
+End_Struct
+
+Struct SDP_LARGE_INTEGER_16
+	UBigint LowPart
+	Bigint HighPart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bluetoothapis/ns-bluetoothapis-sdp_string_type_data
+Struct SDP_STRING_TYPE_DATA
+	UShort encoding
+	UShort mibeNum
+	UShort attributeId
+End_Struct
+
+Struct SDP_ULARGE_INTEGER_16
+	UBigint LowPart
+	UBigint HighPart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2bth/ns-ws2bth-sockaddr_bth
+Struct SOCKADDR_BTH
+	UShort addressFamily
+	UChar[6] cMissingAlignment1
+	UBigint btAddr
+	Guid serviceClassId
+	UInteger port
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthsdpdef/ns-bthsdpdef-sdpattributerange
+Struct SdpAttributeRange
+	UShort minAttribute
+	UShort maxAttribute
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bthsdpdef/ns-bthsdpdef-sdpqueryuuid
+Struct SdpQueryUuid
+	SdpQueryUuidUnion u
+	UShort uuidType
+	Short iMissingAlignment1
+End_Struct
+
+Struct SdpQueryUuidUnion
+	_Anonymous_e__Union_1721 Anonymous
+End_Struct
+
+Struct _CharacteristicExtendedProperties_e__Struct_1224
+	UChar IsReliableWriteEnabled							// BOOLEAN
+	UChar IsAuxiliariesWritable								// BOOLEAN
+End_Struct
+
+Struct _CharacteristicFormat_e__Struct_1227
+	UChar Format
+	UChar Exponent
+	Short iMissingAlignment1
+	BTH_LE_UUID Unit
+	UChar NameSpace
+	UChar[3] cMissingAlignment2
+	BTH_LE_UUID Description
+End_Struct
+
+Struct _ClientCharacteristicConfiguration_e__Struct_1225
+	UChar IsSubscribeToNotification							// BOOLEAN
+	UChar IsSubscribeToIndication							// BOOLEAN
+End_Struct
+
+Struct _ServerCharacteristicConfiguration_e__Struct_1226
+	UChar IsBroadcast										// BOOLEAN
+End_Struct
+
+Struct _alternative_e__Struct_1221
+	Pointer value											// UChar*
+	UInteger length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _sequence_e__Struct_1220
+	Pointer value											// UChar*
+	UInteger length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _string_e__Struct_1218
+	Pointer value											// UChar*
+	UInteger length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _url_e__Struct_1219
+	Pointer value											// UChar*
+	UInteger length
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

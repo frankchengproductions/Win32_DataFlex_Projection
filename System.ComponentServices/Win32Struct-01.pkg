@@ -1,0 +1,173 @@
+Use UI
+
+Struct APPDATA
+	UInteger m_idApp
+	UShort[40] m_szAppGuid
+	UInteger m_dwAppProcessId
+	APPSTATISTICS m_AppStatistics
+End_Struct
+
+Struct APPSTATISTICS
+	UInteger m_cTotalCalls
+	UInteger m_cTotalInstances
+	UInteger m_cTotalClasses
+	UInteger m_cCallsPerSecond
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-applicationprocessrecycleinfo
+Struct ApplicationProcessRecycleInfo
+	Integer IsRecyclable									// BOOL
+	Integer IsRecycled										// BOOL
+	FILETIME TimeRecycled
+	FILETIME TimeToTerminate
+	Integer RecycleReasonCode
+	Integer IsPendingRecycle								// BOOL
+	Integer HasAutomaticLifetimeRecycling					// BOOL
+	FILETIME TimeForAutomaticRecycling
+	UInteger MemoryLimitInKB
+	UInteger MemoryUsageInKBLastCheck
+	UInteger ActivationLimit
+	UInteger NumActivationsLastReported
+	UInteger CallLimit
+	UInteger NumCallsLastReported
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-applicationprocessstatistics
+Struct ApplicationProcessStatistics
+	UInteger NumCallsOutstanding
+	UInteger NumTrackedComponents
+	UInteger NumComponentInstances
+	UInteger AvgCallsPerSecond
+	UInteger Reserved1
+	UInteger Reserved2
+	UInteger Reserved3
+	UInteger Reserved4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-applicationprocesssummary
+Struct ApplicationProcessSummary
+	Guid PartitionIdPrimaryApplication
+	Guid ApplicationIdPrimaryApplication
+	Guid ApplicationInstanceId
+	UInteger ProcessId
+	Integer Type											// COMPLUS_APPTYPE
+	Pointer ProcessExeName									// PWSTR
+	Integer IsService										// BOOL
+	Integer IsPaused										// BOOL
+	Integer IsRecycled										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-applicationsummary
+Struct ApplicationSummary
+	Guid ApplicationInstanceId
+	Guid PartitionId
+	Guid ApplicationId
+	Integer Type											// COMPLUS_APPTYPE
+	Integer iMissingAlignment1
+	Pointer ApplicationName									// PWSTR
+	UInteger NumTrackedComponents
+	UInteger NumComponentInstances
+End_Struct
+
+Struct CLSIDDATA
+	Guid m_clsid
+	UInteger m_cReferences
+	UInteger m_cBound
+	UInteger m_cPooled
+	UInteger m_cInCall
+	UInteger m_dwRespTime
+	UInteger m_cCallsCompleted
+	UInteger m_cCallsFailed
+End_Struct
+
+Struct CLSIDDATA2
+	Guid m_clsid
+	Guid m_appid
+	Guid m_partid
+	Pointer m_pwszAppName									// PWSTR
+	Pointer m_pwszCtxName									// PWSTR
+	Integer m_eAppType										// COMPLUS_APPTYPE
+	UInteger m_cReferences
+	UInteger m_cBound
+	UInteger m_cPooled
+	UInteger m_cInCall
+	UInteger m_dwRespTime
+	UInteger m_cCallsCompleted
+	UInteger m_cCallsFailed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-comsvcseventinfo
+Struct COMSVCSEVENTINFO
+	UInteger cbSize
+	UInteger dwPid
+	Bigint lTime
+	Integer lMicroTime
+	Integer iMissingAlignment1
+	Bigint perfCount
+	Guid guidApp
+	Pointer sMachineName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-componenthangmonitorinfo
+Struct ComponentHangMonitorInfo
+	Integer IsMonitored										// BOOL
+	Integer TerminateOnHang									// BOOL
+	UInteger AvgCallThresholdInMs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-componentstatistics
+Struct ComponentStatistics
+	UInteger NumInstances
+	UInteger NumBoundReferences
+	UInteger NumPooledObjects
+	UInteger NumObjectsInCall
+	UInteger AvgResponseTimeInMs
+	UInteger NumCallsCompletedRecent
+	UInteger NumCallsFailedRecent
+	UInteger NumCallsCompletedTotal
+	UInteger NumCallsFailedTotal
+	UInteger Reserved1
+	UInteger Reserved2
+	UInteger Reserved3
+	UInteger Reserved4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-componentsummary
+Struct ComponentSummary
+	Guid ApplicationInstanceId
+	Guid PartitionId
+	Guid ApplicationId
+	Guid Clsid
+	Pointer ClassName										// PWSTR
+	Pointer ApplicationName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/comsvcs/ns-comsvcs-crmlogrecordread
+Struct CrmLogRecordRead
+	UInteger dwCrmFlags
+	UInteger dwSequenceNumber
+	BLOB blobUserData
+End_Struct
+
+Struct HANG_INFO
+	Integer fAppHangMonitorEnabled							// BOOL
+	Integer fTerminateOnHang								// BOOL
+	Integer DumpType										// DUMPTYPE
+	UInteger dwHangTimeout
+	UInteger dwDumpCount
+	UInteger dwInfoMsgCount
+End_Struct
+
+Struct RECYCLE_INFO
+	Guid guidCombaseProcessIdentifier
+	Bigint ProcessStartTime
+	UInteger dwRecycleLifetimeLimit
+	UInteger dwRecycleMemoryLimit
+	UInteger dwRecycleExpirationTimeout
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

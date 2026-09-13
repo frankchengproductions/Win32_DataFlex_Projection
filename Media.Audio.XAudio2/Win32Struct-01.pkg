@@ -1,0 +1,273 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/xapofx/ns-xapofx-fxecho_initdata
+Struct FXECHO_INITDATA
+	Float MaxDelay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapofx/ns-xapofx-fxecho_parameters
+Struct FXECHO_PARAMETERS
+	Float WetDryMix
+	Float Feedback
+	Float Delay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapofx/ns-xapofx-fxeq_parameters
+Struct FXEQ_PARAMETERS
+	Float FrequencyCenter0
+	Float Gain0
+	Float Bandwidth0
+	Float FrequencyCenter1
+	Float Gain1
+	Float Bandwidth1
+	Float FrequencyCenter2
+	Float Gain2
+	Float Bandwidth2
+	Float FrequencyCenter3
+	Float Gain3
+	Float Bandwidth3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapofx/ns-xapofx-fxmasteringlimiter_parameters
+Struct FXMASTERINGLIMITER_PARAMETERS
+	UInteger Release
+	UInteger Loudness
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapofx/ns-xapofx-fxreverb_parameters
+Struct FXREVERB_PARAMETERS
+	Float Diffusion
+	Float RoomSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtfapoinit
+Struct HrtfApoInit
+	Pointer distanceDecay									// HrtfDistanceDecay*
+	Pointer directivity										// HrtfDirectivity*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtfdirectivity
+Struct HrtfDirectivity
+	Integer type											// HrtfDirectivityType
+	Float scaling
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtfdirectivitycardioid
+Struct HrtfDirectivityCardioid
+	HrtfDirectivity directivity
+	Float order
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtfdirectivitycone
+Struct HrtfDirectivityCone
+	HrtfDirectivity directivity
+	Float innerAngle
+	Float outerAngle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtfdistancedecay
+Struct HrtfDistanceDecay
+	Integer type											// HrtfDistanceDecayType
+	Float maxGain
+	Float minGain
+	Float unityGainDistance
+	Float cutoffDistance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtforientation
+Struct HrtfOrientation
+	Float[9] element
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/hrtfapoapi/ns-hrtfapoapi-hrtfposition
+Struct HrtfPosition
+	Float x
+	Float y
+	Float z
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapo/ns-xapo-xapo_lockforprocess_parameters
+Struct XAPO_LOCKFORPROCESS_PARAMETERS
+	Pointer pFormat											// WAVEFORMATEX*
+	UInteger MaxFrameCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapo/ns-xapo-xapo_process_buffer_parameters
+Struct XAPO_PROCESS_BUFFER_PARAMETERS
+	Pointer pBuffer											// Pointer*
+	Integer BufferFlags										// XAPO_BUFFER_FLAGS
+	UInteger ValidFrameCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xapo/ns-xapo-xapo_registration_properties
+Struct XAPO_REGISTRATION_PROPERTIES
+	Guid clsid
+	UShort[256] FriendlyName
+	UShort[256] CopyrightInfo
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UInteger Flags
+	UInteger MinInputBufferCount
+	UInteger MaxInputBufferCount
+	UInteger MinOutputBufferCount
+	UInteger MaxOutputBufferCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2fx/ns-xaudio2fx-xaudio2fx_reverb_i3dl2_parameters
+Struct XAUDIO2FX_REVERB_I3DL2_PARAMETERS
+	Float WetDryMix
+	Integer Room
+	Integer RoomHF
+	Float RoomRolloffFactor
+	Float DecayTime
+	Float DecayHFRatio
+	Integer Reflections
+	Float ReflectionsDelay
+	Integer Reverb
+	Float ReverbDelay
+	Float Diffusion
+	Float Density
+	Float HFReference
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2fx/ns-xaudio2fx-xaudio2fx_reverb_parameters
+Struct XAUDIO2FX_REVERB_PARAMETERS
+	Float WetDryMix
+	UInteger ReflectionsDelay
+	UChar ReverbDelay
+	UChar RearDelay
+	UChar SideDelay
+	UChar PositionLeft
+	UChar PositionRight
+	UChar PositionMatrixLeft
+	UChar PositionMatrixRight
+	UChar EarlyDiffusion
+	UChar LateDiffusion
+	UChar LowEQGain
+	UChar LowEQCutoff
+	UChar HighEQGain
+	UChar HighEQCutoff
+	UChar[3] cMissingAlignment1
+	Float RoomFilterFreq
+	Float RoomFilterMain
+	Float RoomFilterHF
+	Float ReflectionsGain
+	Float ReverbGain
+	Float DecayTime
+	Float Density
+	Float RoomSize
+	Integer DisableLateField								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2fx/ns-xaudio2fx-xaudio2fx_volumemeter_levels
+Struct XAUDIO2FX_VOLUMEMETER_LEVELS
+	Pointer pPeakLevels										// Float*
+	Pointer pRMSLevels										// Float*
+	UInteger ChannelCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_buffer
+Struct XAUDIO2_BUFFER
+	UInteger Flags
+	UInteger AudioBytes
+	Pointer pAudioData										// UChar*
+	UInteger PlayBegin
+	UInteger PlayLength
+	UInteger LoopBegin
+	UInteger LoopLength
+	UInteger LoopCount
+	Integer iMissingAlignment1
+	Pointer pContext										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_buffer_wma
+Struct XAUDIO2_BUFFER_WMA
+	Pointer pDecodedPacketCumulativeBytes					// UInteger*
+	UInteger PacketCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_debug_configuration
+Struct XAUDIO2_DEBUG_CONFIGURATION
+	UInteger TraceMask
+	UInteger BreakMask
+	Integer LogThreadID										// BOOL
+	Integer LogFileline										// BOOL
+	Integer LogFunctionName									// BOOL
+	Integer LogTiming										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_effect_chain
+Struct XAUDIO2_EFFECT_CHAIN
+	UInteger EffectCount
+	Integer iMissingAlignment1
+	Pointer pEffectDescriptors								// XAUDIO2_EFFECT_DESCRIPTOR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_effect_descriptor
+Struct XAUDIO2_EFFECT_DESCRIPTOR
+	Pointer pEffect											// IUnknown
+	Integer InitialState									// BOOL
+	UInteger OutputChannels
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_filter_parameters
+Struct XAUDIO2_FILTER_PARAMETERS
+	Integer Type											// XAUDIO2_FILTER_TYPE
+	Float Frequency
+	Float OneOverQ
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_performance_data
+Struct XAUDIO2_PERFORMANCE_DATA
+	UBigint AudioCyclesSinceLastQuery
+	UBigint TotalCyclesSinceLastQuery
+	UInteger MinimumCyclesPerQuantum
+	UInteger MaximumCyclesPerQuantum
+	UInteger MemoryUsageInBytes
+	UInteger CurrentLatencyInSamples
+	UInteger GlitchesSinceEngineStarted
+	UInteger ActiveSourceVoiceCount
+	UInteger TotalSourceVoiceCount
+	UInteger ActiveSubmixVoiceCount
+	UInteger ActiveResamplerCount
+	UInteger ActiveMatrixMixCount
+	UInteger ActiveXmaSourceVoices
+	UInteger ActiveXmaStreams
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_send_descriptor
+Struct XAUDIO2_SEND_DESCRIPTOR
+	UInteger Flags
+	Integer iMissingAlignment1
+	Pointer pOutputVoice									// IXAudio2Voice
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_voice_details
+Struct XAUDIO2_VOICE_DETAILS
+	UInteger CreationFlags
+	UInteger ActiveFlags
+	UInteger InputChannels
+	UInteger InputSampleRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_voice_sends
+Struct XAUDIO2_VOICE_SENDS
+	UInteger SendCount
+	Integer iMissingAlignment1
+	Pointer pSends											// XAUDIO2_SEND_DESCRIPTOR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/xaudio2/ns-xaudio2-xaudio2_voice_state
+Struct XAUDIO2_VOICE_STATE
+	Pointer pCurrentBufferContext							// Pointer*
+	UInteger BuffersQueued
+	Integer iMissingAlignment1
+	UBigint SamplesPlayed
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

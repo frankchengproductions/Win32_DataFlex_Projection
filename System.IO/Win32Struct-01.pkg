@@ -1,0 +1,44 @@
+Use UI
+
+Struct _Anonymous_e__Union_1133
+	// _Anonymous_e__Struct_1134 Anonymous // (8)
+	// Pointer Pointer											// Pointer* // (8)
+	_Anonymous_e__Struct_1134 Anonymous
+End_Struct
+
+Struct _Anonymous_e__Union_3359
+	// Integer Status											// NTSTATUS // (4)
+	// Pointer Pointer											// Pointer* // (8)
+	Pointer Pointer
+End_Struct
+
+Struct IO_STATUS_BLOCK
+	_Anonymous_e__Union_3359 Anonymous
+	ULongPtr Information
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-overlapped
+Struct OVERLAPPED
+	ULongPtr Internal
+	ULongPtr InternalHigh
+	_Anonymous_e__Union_1133 Anonymous
+	Pointer hEvent											// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-overlapped_entry
+Struct OVERLAPPED_ENTRY
+	ULongPtr lpCompletionKey
+	Pointer lpOverlapped									// OVERLAPPED*
+	ULongPtr Internal
+	UInteger dwNumberOfBytesTransferred
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Anonymous_e__Struct_1134
+	UInteger Offset
+	UInteger OffsetHigh
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

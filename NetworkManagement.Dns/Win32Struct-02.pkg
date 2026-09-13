@@ -1,0 +1,106 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_wins_data
+Struct DNS_WINS_DATA
+	UInteger dwMappingFlag
+	UInteger dwLookupTimeout
+	UInteger dwCacheTimeout
+	UInteger cWinsServerCount
+	UInteger[1] WinsServers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_wire_question
+Struct DNS_WIRE_QUESTION
+	UShort QuestionType
+	UShort QuestionClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_wire_record
+Struct DNS_WIRE_RECORD
+	UShort RecordType
+	UShort RecordClass
+	UInteger TimeToLive
+	UShort DataLength
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-dns_wks_data
+Struct DNS_WKS_DATA
+	UInteger IpAddress
+	UChar chProtocol
+	UChar[1] BitMask
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-ip4_array
+Struct IP4_ARRAY
+	UInteger AddrCount
+	UInteger[1] AddrArray
+End_Struct
+
+Struct IP6_ADDRESS
+	_Anonymous_e__Union_1343 Anonymous
+End_Struct
+
+Struct IP6_ADDRESS
+	_Anonymous_e__Union_3110 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-mdns_query_handle
+Struct MDNS_QUERY_HANDLE
+	UShort[256] nameBuf
+	UShort wType
+	UChar[6] cMissingAlignment1
+	Pointer pSubscription									// Pointer*
+	Pointer pWnfCallbackParams								// Pointer*
+	UInteger[2] stateNameData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/windns/ns-windns-mdns_query_request
+Struct MDNS_QUERY_REQUEST
+	UInteger Version
+	UInteger ulRefCount
+	Pointer Query											// PWSTR
+	UShort QueryType
+	UChar[6] cMissingAlignment1
+	UBigint QueryOptions
+	UInteger InterfaceIndex
+	Integer iMissingAlignment2
+	Pointer pQueryCallback									// PMDNS_QUERY_CALLBACK
+	Pointer pQueryContext									// Pointer*
+	Integer fAnswerReceived									// BOOL
+	UInteger ulResendCount
+End_Struct
+
+Struct _DNS_CONNECTION_PROXY_INFO_CONFIG_1351
+	Pointer pwszServer										// PWSTR
+	Pointer pwszUsername									// PWSTR
+	Pointer pwszPassword									// PWSTR
+	Pointer pwszException									// PWSTR
+	Pointer pwszExtraInfo									// PWSTR
+	UShort Port
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct _DNS_CONNECTION_PROXY_INFO_SCRIPT_1352
+	Pointer pwszScript										// PWSTR
+	Pointer pwszUsername									// PWSTR
+	Pointer pwszPassword									// PWSTR
+End_Struct
+
+Struct _DnsRecordOptA
+	Pointer pNext											// DNS_RECORDA*
+	Pointer pName											// PSTR
+	UShort wType
+	UShort wDataLength
+	_Flags_e__Union_3115 Flags
+	DNS_HEADER_EXT ExtHeader
+	UShort wPayloadSize
+	UShort wReserved
+	_Data_e__Union_3116 Data
+	Short iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

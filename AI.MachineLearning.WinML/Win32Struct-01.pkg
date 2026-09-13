@@ -1,0 +1,236 @@
+Use UI
+
+Struct _Anonymous1_e__Union_2099
+	// Pointer pStringKeys										// PWSTR* // (8)
+	// Pointer pIntKeys										// Bigint* // (8)
+	Pointer pStringKeys
+End_Struct
+
+Struct _Anonymous2_e__Union_2100
+	// Pointer pStringFields									// PWSTR* // (8)
+	// Pointer pIntFields										// Bigint* // (8)
+	// Pointer pFloatFields									// Float* // (8)
+	// Pointer pDoubleFields									// Real* // (8)
+	Pointer pStringFields
+End_Struct
+
+Struct _Anonymous_e__Union_2098
+	// Pointer pStrings										// PWSTR* // (8)
+	// Pointer pInts											// Bigint* // (8)
+	// Pointer pFloats											// Float* // (8)
+	// Pointer pDoubles										// Real* // (8)
+	Pointer pStrings
+End_Struct
+
+Struct _Anonymous_e__Union_2101
+	// WINML_TENSOR_BINDING_DESC Tensor // (32)
+	// WINML_SEQUENCE_BINDING_DESC Sequence // (16)
+	// WINML_MAP_BINDING_DESC Map // (32)
+	// WINML_IMAGE_BINDING_DESC Image // (32)
+	// WINML_RESOURCE_BINDING_DESC Resource // (24)
+	WINML_TENSOR_BINDING_DESC Tensor
+End_Struct
+
+Struct _Anonymous_e__Union_2102
+	// WINML_TENSOR_VARIABLE_DESC Tensor // (16)
+	// WINML_SEQUENCE_VARIABLE_DESC Sequence // (4)
+	// WINML_MAP_VARIABLE_DESC Map // (8)
+	// WINML_IMAGE_VARIABLE_DESC Image // (16)
+	WINML_TENSOR_VARIABLE_DESC Tensor
+End_Struct
+
+Struct _Anonymous_e__Union_2103
+	// UBigint reserved // (8)
+	// UInteger tensorDataType									// MLOperatorTensorDataType // (4)
+	UBigint reserved
+End_Struct
+
+Struct _Anonymous_e__Union_2104
+	// Pointer reserved										// Pointer* // (8)
+	// Pointer typeLabel										// PSTR // (8)
+	// MLOperatorEdgeDescription edgeDescription // (16)
+	MLOperatorEdgeDescription edgeDescription
+End_Struct
+
+Struct _Anonymous_e__Union_2105
+	// Pointer reserved										// Pointer* // (8)
+	// Pointer ints											// Bigint* // (8)
+	// Pointer strings											// Char** // (8)
+	// Pointer floats											// Float* // (8)
+	Pointer reserved
+End_Struct
+
+Struct MLOperatorAttribute
+	Pointer name											// PSTR
+	UInteger type											// MLOperatorAttributeType
+	UChar required
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct MLOperatorAttributeNameValue
+	Pointer name											// PSTR
+	UInteger type											// MLOperatorAttributeType
+	UInteger valueCount
+	_Anonymous_e__Union_2105 Anonymous
+End_Struct
+
+Struct MLOperatorEdgeDescription
+	UInteger edgeType										// MLOperatorEdgeType
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2103 Anonymous
+End_Struct
+
+Struct MLOperatorEdgeTypeConstraint
+	Pointer typeLabel										// PSTR
+	Pointer allowedTypes									// MLOperatorEdgeDescription*
+	UInteger allowedTypeCount
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MLOperatorKernelDescription
+	Pointer domain											// PSTR
+	Pointer name											// PSTR
+	Integer minimumOperatorSetVersion
+	UInteger executionType									// MLOperatorExecutionType
+	Pointer typeConstraints									// MLOperatorEdgeTypeConstraint*
+	UInteger typeConstraintCount
+	Integer iMissingAlignment1
+	Pointer defaultAttributes								// MLOperatorAttributeNameValue*
+	UInteger defaultAttributeCount
+	UInteger options										// MLOperatorKernelOptions
+	UInteger executionOptions
+	Integer iMissingAlignment2
+End_Struct
+
+Struct MLOperatorSchemaDescription
+	Pointer name											// PSTR
+	Integer operatorSetVersionAtLastChange
+	Integer iMissingAlignment1
+	Pointer inputs											// MLOperatorSchemaEdgeDescription*
+	UInteger inputCount
+	Integer iMissingAlignment2
+	Pointer outputs											// MLOperatorSchemaEdgeDescription*
+	UInteger outputCount
+	Integer iMissingAlignment3
+	Pointer typeConstraints									// MLOperatorEdgeTypeConstraint*
+	UInteger typeConstraintCount
+	Integer iMissingAlignment4
+	Pointer attributes										// MLOperatorAttribute*
+	UInteger attributeCount
+	Integer iMissingAlignment5
+	Pointer defaultAttributes								// MLOperatorAttributeNameValue*
+	UInteger defaultAttributeCount
+	Integer iMissingAlignment6
+End_Struct
+
+Struct MLOperatorSchemaEdgeDescription
+	UInteger options										// MLOperatorParameterOptions
+	Integer typeFormat										// MLOperatorSchemaEdgeTypeFormat
+	_Anonymous_e__Union_2104 Anonymous
+End_Struct
+
+Struct MLOperatorSetId
+	Pointer domain											// PSTR
+	Integer version
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_binding_desc
+Struct WINML_BINDING_DESC
+	Pointer Name											// PWSTR
+	Integer BindType										// WINML_BINDING_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2101 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_image_binding_desc
+Struct WINML_IMAGE_BINDING_DESC
+	Integer ElementType										// WINML_TENSOR_DATA_TYPE
+	UInteger NumDimensions
+	Pointer pShape											// Bigint*
+	UInteger DataSize
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_image_variable_desc
+Struct WINML_IMAGE_VARIABLE_DESC
+	Integer ElementType										// WINML_TENSOR_DATA_TYPE
+	UInteger NumDimensions
+	Pointer pShape											// Bigint*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_map_binding_desc
+Struct WINML_MAP_BINDING_DESC
+	UInteger ElementCount
+	Integer KeyType											// WINML_TENSOR_DATA_TYPE
+	_Anonymous1_e__Union_2099 Anonymous1
+	Integer Fields											// WINML_TENSOR_DATA_TYPE
+	Integer iMissingAlignment1
+	_Anonymous2_e__Union_2100 Anonymous2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_map_variable_desc
+Struct WINML_MAP_VARIABLE_DESC
+	Integer KeyType											// WINML_TENSOR_DATA_TYPE
+	Integer Fields											// WINML_TENSOR_DATA_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_model_desc
+Struct WINML_MODEL_DESC
+	Pointer Author											// PWSTR
+	Pointer Name											// PWSTR
+	Pointer Domain											// PWSTR
+	Pointer Description										// PWSTR
+	ULongPtr Version
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_resource_binding_desc
+Struct WINML_RESOURCE_BINDING_DESC
+	Integer ElementType										// WINML_TENSOR_DATA_TYPE
+	UInteger NumDimensions
+	Pointer pShape											// Bigint*
+	Pointer pResource										// ID3D12Resource
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_sequence_binding_desc
+Struct WINML_SEQUENCE_BINDING_DESC
+	UInteger ElementCount
+	Integer ElementType										// WINML_TENSOR_DATA_TYPE
+	_Anonymous_e__Union_2098 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_sequence_variable_desc
+Struct WINML_SEQUENCE_VARIABLE_DESC
+	Integer ElementType										// WINML_TENSOR_DATA_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_tensor_binding_desc
+Struct WINML_TENSOR_BINDING_DESC
+	Integer DataType										// WINML_TENSOR_DATA_TYPE
+	UInteger NumDimensions
+	Pointer pShape											// Bigint*
+	UInteger DataSize
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_tensor_variable_desc
+Struct WINML_TENSOR_VARIABLE_DESC
+	Integer ElementType										// WINML_TENSOR_DATA_TYPE
+	UInteger NumDimensions
+	Pointer pShape											// Bigint*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winml/ns-winml-winml_variable_desc
+Struct WINML_VARIABLE_DESC
+	Pointer Name											// PWSTR
+	Pointer Description										// PWSTR
+	Integer FeatureType										// WINML_FEATURE_TYPE
+	Integer Required										// BOOL
+	_Anonymous_e__Union_2102 Anonymous
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,111 @@
+Use UI
+
+Struct _Anonymous_e__Union_2953
+	// _cabinet_e__Struct_2954 cabinet // (16)
+	// _folder_e__Struct_2955 folder // (16)
+	// _decrypt_e__Struct_2956 decrypt // (40)
+	_decrypt_e__Struct_2956 decrypt
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fci/ns-fci-ccab
+Struct CCAB
+	UInteger cb
+	UInteger cbFolderThresh
+	UInteger cbReserveCFHeader
+	UInteger cbReserveCFFolder
+	UInteger cbReserveCFData
+	Integer iCab
+	Integer iDisk
+	Integer fFailOnIncompressible
+	UShort setID
+	Char[256] szDisk										// CHAR
+	Char[256] szCab											// CHAR
+	Char[256] szCabPath										// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fdi_fci_types/ns-fdi_fci_types-erf
+Struct ERF
+	Integer erfOper
+	Integer erfType
+	Integer fError											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fdi/ns-fdi-fdicabinetinfo
+Struct FDICABINETINFO
+	Integer cbCabinet
+	UShort cFolders
+	UShort cFiles
+	UShort setID
+	UShort iCabinet
+	Integer fReserve										// BOOL
+	Integer hasprev											// BOOL
+	Integer hasnext											// BOOL
+End_Struct
+
+Struct FDIDECRYPT
+	Integer fdidt											// FDIDECRYPTTYPE
+	Integer iMissingAlignment1
+	Pointer pvUser											// Pointer*
+	_Anonymous_e__Union_2953 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fdi/ns-fdi-fdinotification
+Struct FDINOTIFICATION
+	Integer cb
+	Integer iMissingAlignment1
+	Pointer psz1											// PSTR
+	Pointer psz2											// PSTR
+	Pointer psz3											// PSTR
+	Pointer pv												// Pointer*
+	LongPtr hf
+	UShort date
+	UShort time
+	UShort attribs
+	UShort setID
+	UShort iCabinet
+	UShort iFolder
+	Integer fdie											// FDIERROR
+End_Struct
+
+Struct FDISPILLFILE
+	Char[2] ach												// CHAR
+	Short iMissingAlignment1
+	Integer cbFile
+End_Struct
+
+Struct FDISPILLFILE
+	Char[2] ach												// CHAR
+	Short iMissingAlignment1
+	Integer cbFile
+End_Struct
+
+Struct _cabinet_e__Struct_2954
+	Pointer pHeaderReserve									// Pointer*
+	UShort cbHeaderReserve
+	UShort setID
+	Integer iCabinet
+End_Struct
+
+Struct _decrypt_e__Struct_2956
+	Pointer pDataReserve									// Pointer*
+	UShort cbDataReserve
+	UChar[6] cMissingAlignment1
+	Pointer pbData											// Pointer*
+	UShort cbData
+	Short iMissingAlignment2
+	Integer fSplit											// BOOL
+	UShort cbPartial
+	UChar[6] cMissingAlignment3
+End_Struct
+
+Struct _folder_e__Struct_2955
+	Pointer pFolderReserve									// Pointer*
+	UShort cbFolderReserve
+	UShort iFolder
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

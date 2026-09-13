@@ -1,0 +1,79 @@
+Use UI
+
+Struct _Anonymous_e__Union_2771
+	// INET_FIREWALL_AC_CAPABILITIES capabilities // (16)
+	// INET_FIREWALL_AC_BINARIES binaries // (16)
+	INET_FIREWALL_AC_CAPABILITIES capabilities
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netfw/ns-netfw-fw_dynamic_keyword_address0
+Struct FW_DYNAMIC_KEYWORD_ADDRESS0
+	Guid id
+	Pointer keyword											// PWSTR
+	UInteger flags
+	Integer iMissingAlignment1
+	Pointer addresses										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netfw/ns-netfw-fw_dynamic_keyword_address_data0
+Struct FW_DYNAMIC_KEYWORD_ADDRESS_DATA0
+	FW_DYNAMIC_KEYWORD_ADDRESS0 dynamicKeywordAddress
+	Pointer next											// FW_DYNAMIC_KEYWORD_ADDRESS_DATA0*
+	UShort schemaVersion
+	Short iMissingAlignment1
+	Integer originType										// FW_DYNAMIC_KEYWORD_ORIGIN_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netfw/ns-netfw-inet_firewall_ac_binaries
+Struct INET_FIREWALL_AC_BINARIES
+	UInteger count
+	Integer iMissingAlignment1
+	Pointer binaries										// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netfw/ns-netfw-inet_firewall_ac_capabilities
+Struct INET_FIREWALL_AC_CAPABILITIES
+	UInteger count
+	Integer iMissingAlignment1
+	Pointer capabilities									// SID_AND_ATTRIBUTES*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netfw/ns-netfw-inet_firewall_ac_change
+Struct INET_FIREWALL_AC_CHANGE
+	Integer changeType										// INET_FIREWALL_AC_CHANGE_TYPE
+	Integer createType										// INET_FIREWALL_AC_CREATION_TYPE
+	Pointer appContainerSid									// SID*
+	Pointer userSid											// SID*
+	Pointer displayName										// PWSTR
+	_Anonymous_e__Union_2771 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netfw/ns-netfw-inet_firewall_app_container
+Struct INET_FIREWALL_APP_CONTAINER
+	Pointer appContainerSid									// SID*
+	Pointer userSid											// SID*
+	Pointer appContainerName								// PWSTR
+	Pointer displayName										// PWSTR
+	Pointer description										// PWSTR
+	INET_FIREWALL_AC_CAPABILITIES capabilities
+	INET_FIREWALL_AC_BINARIES binaries
+	Pointer workingDirectory								// PWSTR
+	Pointer packageFullName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/netcon/ns-netcon-netcon_properties
+Struct NETCON_PROPERTIES
+	Guid guidId
+	Pointer pszwName										// PWSTR
+	Pointer pszwDeviceName									// PWSTR
+	Integer Status											// NETCON_STATUS
+	Integer MediaType										// NETCON_MEDIATYPE
+	UInteger dwCharacter
+	Guid clsidThisObject
+	Guid clsidUiObject
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

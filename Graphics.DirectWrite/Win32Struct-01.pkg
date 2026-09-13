@@ -1,0 +1,491 @@
+Use UI
+
+Struct PAINT_UNION_1984
+	// PAINT_LAYERS_1985 layers // (4)
+	// PAINT_SOLID_GLYPH_1986 solidGlyph // (32)
+	// DWRITE_PAINT_COLOR solid // (28)
+	// PAINT_LINEAR_GRADIENT_1987 linearGradient // (32)
+	// PAINT_RADIAL_GRADIENT_1988 radialGradient // (32)
+	// PAINT_SWEEP_GRADIENT_1989 sweepGradient // (24)
+	// PAINT_GLYPH_1990 glyph // (4)
+	// PAINT_COLOR_GLYPH_1991 colorGlyph // (20)
+	// DWRITE_MATRIX transform // (24)
+	// PAINT_COMPOSITE_1992 composite // (4)
+	PAINT_SOLID_GLYPH_1986 solidGlyph
+End_Struct
+
+Struct _Anonymous_e__Union_1979
+	// UChar[10] values // (10)
+	// UChar familyKind // (1)
+	// _text_e__Struct_1980 text // (10)
+	// _script_e__Struct_1981 script // (10)
+	// _decorative_e__Struct_1982 decorative // (10)
+	// _symbol_e__Struct_1983 symbol // (10)
+	UChar[10] values
+End_Struct
+
+Struct DWRITE_BITMAP_DATA_BGRA32
+	UInteger width
+	UInteger height
+	Pointer pixels											// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_1/ns-dwrite_1-dwrite_caret_metrics
+Struct DWRITE_CARET_METRICS
+	Short slopeRise
+	Short slopeRun
+	Short offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_cluster_metrics
+Struct DWRITE_CLUSTER_METRICS
+	Float width
+	UShort length
+	UShort _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/DirectWrite/dwrite-color-f
+Struct DWRITE_COLOR_F
+	Float r
+	Float g
+	Float b
+	Float a
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_2/ns-dwrite_2-dwrite_color_glyph_run
+Struct DWRITE_COLOR_GLYPH_RUN
+	DWRITE_GLYPH_RUN glyphRun
+	Pointer glyphRunDescription								// DWRITE_GLYPH_RUN_DESCRIPTION*
+	Float baselineOriginX
+	Float baselineOriginY
+	DWRITE_COLOR_F runColor
+	UShort paletteIndex
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_color_glyph_run1
+Struct DWRITE_COLOR_GLYPH_RUN1
+	DWRITE_COLOR_GLYPH_RUN Base
+	Integer glyphImageFormat								// DWRITE_GLYPH_IMAGE_FORMATS
+	Integer measuringMode									// DWRITE_MEASURING_MODE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_file_fragment
+Struct DWRITE_FILE_FRAGMENT
+	UBigint fileOffset
+	UBigint fragmentSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_font_axis_range
+Struct DWRITE_FONT_AXIS_RANGE
+	UInteger axisTag										// DWRITE_FONT_AXIS_TAG
+	Float minValue
+	Float maxValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_font_axis_value
+Struct DWRITE_FONT_AXIS_VALUE
+	UInteger axisTag										// DWRITE_FONT_AXIS_TAG
+	Float value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_font_feature
+Struct DWRITE_FONT_FEATURE
+	UInteger nameTag										// DWRITE_FONT_FEATURE_TAG
+	UInteger parameter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_font_metrics
+Struct DWRITE_FONT_METRICS
+	UShort designUnitsPerEm
+	UShort ascent
+	UShort descent
+	Short lineGap
+	UShort capHeight
+	UShort xHeight
+	Short underlinePosition
+	UShort underlineThickness
+	Short strikethroughPosition
+	UShort strikethroughThickness
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_1/ns-dwrite_1-dwrite_font_metrics1
+Struct DWRITE_FONT_METRICS1
+	DWRITE_FONT_METRICS Base
+	Short glyphBoxLeft
+	Short glyphBoxTop
+	Short glyphBoxRight
+	Short glyphBoxBottom
+	Short subscriptPositionX
+	Short subscriptPositionY
+	Short subscriptSizeX
+	Short subscriptSizeY
+	Short superscriptPositionX
+	Short superscriptPositionY
+	Short superscriptSizeX
+	Short superscriptSizeY
+	Integer hasTypographicMetrics							// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_font_property
+Struct DWRITE_FONT_PROPERTY
+	Integer propertyId										// DWRITE_FONT_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer propertyValue									// PWSTR
+	Pointer localeName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_glyph_image_data
+Struct DWRITE_GLYPH_IMAGE_DATA
+	Pointer imageData										// Pointer*
+	UInteger imageDataSize
+	UInteger uniqueDataId
+	UInteger pixelsPerEm
+	D2D_SIZE_U pixelSize
+	POINT horizontalLeftOrigin
+	POINT horizontalRightOrigin
+	POINT verticalTopOrigin
+	POINT verticalBottomOrigin
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_glyph_metrics
+Struct DWRITE_GLYPH_METRICS
+	Integer leftSideBearing
+	UInteger advanceWidth
+	Integer rightSideBearing
+	Integer topSideBearing
+	UInteger advanceHeight
+	Integer bottomSideBearing
+	Integer verticalOriginY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_glyph_offset
+Struct DWRITE_GLYPH_OFFSET
+	Float advanceOffset
+	Float ascenderOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_glyph_run
+Struct DWRITE_GLYPH_RUN
+	Pointer fontFace										// IDWriteFontFace
+	Float fontEmSize
+	UInteger glyphCount
+	Pointer glyphIndices									// UShort*
+	Pointer glyphAdvances									// Float*
+	Pointer glyphOffsets									// DWRITE_GLYPH_OFFSET*
+	Integer isSideways										// BOOL
+	UInteger bidiLevel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_glyph_run_description
+Struct DWRITE_GLYPH_RUN_DESCRIPTION
+	Pointer localeName										// PWSTR
+	Pointer string											// PWSTR
+	UInteger stringLength
+	Integer iMissingAlignment1
+	Pointer clusterMap										// UShort*
+	UInteger textPosition
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_hit_test_metrics
+Struct DWRITE_HIT_TEST_METRICS
+	UInteger textPosition
+	UInteger length
+	Float left
+	Float top
+	Float width
+	Float height
+	UInteger bidiLevel
+	Integer isText											// BOOL
+	Integer isTrimmed										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_inline_object_metrics
+Struct DWRITE_INLINE_OBJECT_METRICS
+	Float width
+	Float height
+	Float baseline
+	Integer supportsSideways								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_1/ns-dwrite_1-dwrite_justification_opportunity
+Struct DWRITE_JUSTIFICATION_OPPORTUNITY
+	Float expansionMinimum
+	Float expansionMaximum
+	Float compressionMaximum
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_line_breakpoint
+Struct DWRITE_LINE_BREAKPOINT
+	UChar _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_line_metrics
+Struct DWRITE_LINE_METRICS
+	UInteger length
+	UInteger trailingWhitespaceLength
+	UInteger newlineLength
+	Float height
+	Float baseline
+	Integer isTrimmed										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_line_metrics1
+Struct DWRITE_LINE_METRICS1
+	DWRITE_LINE_METRICS Base
+	Float leadingBefore
+	Float leadingAfter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_3/ns-dwrite_3-dwrite_line_spacing
+Struct DWRITE_LINE_SPACING
+	Integer method											// DWRITE_LINE_SPACING_METHOD
+	Float height
+	Float baseline
+	Float leadingBefore
+	Integer fontLineGapUsage								// DWRITE_FONT_LINE_GAP_USAGE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_matrix
+Struct DWRITE_MATRIX
+	Float m11
+	Float m12
+	Float m21
+	Float m22
+	Float dx
+	Float dy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_overhang_metrics
+Struct DWRITE_OVERHANG_METRICS
+	Float left
+	Float top
+	Float right
+	Float bottom
+End_Struct
+
+Struct DWRITE_PAINT_COLOR
+	DWRITE_COLOR_F value
+	UShort paletteEntryIndex
+	Short iMissingAlignment1
+	Float alphaMultiplier
+	Integer colorAttributes									// DWRITE_PAINT_ATTRIBUTES
+End_Struct
+
+Struct DWRITE_PAINT_ELEMENT
+	Integer paintType										// DWRITE_PAINT_TYPE
+	PAINT_UNION_1984 paint
+End_Struct
+
+Struct DWRITE_PANOSE
+	_Anonymous_e__Union_1979 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_script_analysis
+Struct DWRITE_SCRIPT_ANALYSIS
+	UShort script
+	Short iMissingAlignment1
+	Integer shapes											// DWRITE_SCRIPT_SHAPES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_1/ns-dwrite_1-dwrite_script_properties
+Struct DWRITE_SCRIPT_PROPERTIES
+	UInteger isoScriptCode
+	UInteger isoScriptNumber
+	UInteger clusterLookahead
+	UInteger justificationCharacter
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_shaping_glyph_properties
+Struct DWRITE_SHAPING_GLYPH_PROPERTIES
+	UShort _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_shaping_text_properties
+Struct DWRITE_SHAPING_TEXT_PROPERTIES
+	UShort _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_strikethrough
+Struct DWRITE_STRIKETHROUGH
+	Float width
+	Float thickness
+	Float offset
+	Integer readingDirection								// DWRITE_READING_DIRECTION
+	Integer flowDirection									// DWRITE_FLOW_DIRECTION
+	Integer iMissingAlignment1
+	Pointer localeName										// PWSTR
+	Integer measuringMode									// DWRITE_MEASURING_MODE
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_text_metrics
+Struct DWRITE_TEXT_METRICS
+	Float left
+	Float top
+	Float width
+	Float widthIncludingTrailingWhitespace
+	Float height
+	Float layoutWidth
+	Float layoutHeight
+	UInteger maxBidiReorderingDepth
+	UInteger lineCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_2/ns-dwrite_2-dwrite_text_metrics1
+Struct DWRITE_TEXT_METRICS1
+	DWRITE_TEXT_METRICS Base
+	Float heightIncludingTrailingWhitespace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_text_range
+Struct DWRITE_TEXT_RANGE
+	UInteger startPosition
+	UInteger length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_trimming
+Struct DWRITE_TRIMMING
+	Integer granularity										// DWRITE_TRIMMING_GRANULARITY
+	UInteger delimiter
+	UInteger delimiterCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_typographic_features
+Struct DWRITE_TYPOGRAPHIC_FEATURES
+	Pointer features										// DWRITE_FONT_FEATURE*
+	UInteger featureCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite/ns-dwrite-dwrite_underline
+Struct DWRITE_UNDERLINE
+	Float width
+	Float thickness
+	Float offset
+	Float runHeight
+	Integer readingDirection								// DWRITE_READING_DIRECTION
+	Integer flowDirection									// DWRITE_FLOW_DIRECTION
+	Pointer localeName										// PWSTR
+	Integer measuringMode									// DWRITE_MEASURING_MODE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dwrite_1/ns-dwrite_1-dwrite_unicode_range
+Struct DWRITE_UNICODE_RANGE
+	UInteger first
+	UInteger last
+End_Struct
+
+Struct PAINT_COLOR_GLYPH_1991
+	UInteger glyphIndex
+	D2D_RECT_F clipBox
+End_Struct
+
+Struct PAINT_COMPOSITE_1992
+	Integer mode											// DWRITE_COLOR_COMPOSITE_MODE
+End_Struct
+
+Struct PAINT_GLYPH_1990
+	UInteger glyphIndex
+End_Struct
+
+Struct PAINT_LAYERS_1985
+	UInteger childCount
+End_Struct
+
+Struct PAINT_LINEAR_GRADIENT_1987
+	UInteger extendMode
+	UInteger gradientStopCount
+	Float x0
+	Float y0
+	Float x1
+	Float y1
+	Float x2
+	Float y2
+End_Struct
+
+Struct PAINT_RADIAL_GRADIENT_1988
+	UInteger extendMode
+	UInteger gradientStopCount
+	Float x0
+	Float y0
+	Float radius0
+	Float x1
+	Float y1
+	Float radius1
+End_Struct
+
+Struct PAINT_SOLID_GLYPH_1986
+	UInteger glyphIndex
+	DWRITE_PAINT_COLOR color
+End_Struct
+
+Struct PAINT_SWEEP_GRADIENT_1989
+	UInteger extendMode
+	UInteger gradientStopCount
+	Float centerX
+	Float centerY
+	Float startAngle
+	Float endAngle
+End_Struct
+
+Struct _decorative_e__Struct_1982
+	UChar familyKind
+	UChar decorativeClass
+	UChar weight
+	UChar aspect
+	UChar contrast
+	UChar serifVariant
+	UChar fill
+	UChar lining
+	UChar decorativeTopology
+	UChar characterRange
+End_Struct
+
+Struct _script_e__Struct_1981
+	UChar familyKind
+	UChar toolKind
+	UChar weight
+	UChar spacing
+	UChar aspectRatio
+	UChar contrast
+	UChar scriptTopology
+	UChar scriptForm
+	UChar finials
+	UChar xAscent
+End_Struct
+
+Struct _symbol_e__Struct_1983
+	UChar familyKind
+	UChar symbolKind
+	UChar weight
+	UChar spacing
+	UChar aspectRatioAndContrast
+	UChar aspectRatio94
+	UChar aspectRatio119
+	UChar aspectRatio157
+	UChar aspectRatio163
+	UChar aspectRatio211
+End_Struct
+
+Struct _text_e__Struct_1980
+	UChar familyKind
+	UChar serifStyle
+	UChar weight
+	UChar proportion
+	UChar contrast
+	UChar strokeVariation
+	UChar armStyle
+	UChar letterform
+	UChar midline
+	UChar xHeight
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,819 @@
+Use UI
+
+Struct NDR64_USER_MARSHAL_FORMAT
+	UChar FormatCode
+	UChar Flags
+	UShort RoutineIndex
+	UShort TransmittedTypeWireAlignment
+	UShort MemoryAlignment
+	UInteger UserTypeMemorySize
+	UInteger TransmittedTypeBufferSize
+	Pointer TransmittedType									// Pointer*
+End_Struct
+
+Struct NDR64_VAR_ARRAY_HEADER_FORMAT
+	UChar FormatCode
+	UChar Alignment
+	NDR64_ARRAY_FLAGS Flags
+	UChar Reserved
+	UInteger TotalSize
+	UInteger ElementSize
+	Integer iMissingAlignment1
+	Pointer VarDescriptor									// Pointer*
+End_Struct
+
+Struct NDR_CS_ROUTINES
+	Pointer pSizeConvertRoutines							// NDR_CS_SIZE_CONVERT_ROUTINES*
+	Pointer pTagGettingRoutines								// CS_TAG_GETTING_ROUTINE*
+End_Struct
+
+Struct NDR_CS_SIZE_CONVERT_ROUTINES
+	Pointer pfnNetSize										// CS_TYPE_NET_SIZE_ROUTINE
+	Pointer pfnToNetCs										// CS_TYPE_TO_NETCS_ROUTINE
+	Pointer pfnLocalSize									// CS_TYPE_LOCAL_SIZE_ROUTINE
+	Pointer pfnFromNetCs									// CS_TYPE_FROM_NETCS_ROUTINE
+End_Struct
+
+Struct NDR_EXPR_DESC
+	Pointer pOffset											// UShort*
+	Pointer pFormatExpr										// UChar*
+End_Struct
+
+Struct NDR_SCONTEXT
+	Pointer[2] pad											// Pointer*
+	Pointer userContext										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/ns-rpcndr-ndr_user_marshal_info
+Struct NDR_USER_MARSHAL_INFO
+	UInteger InformationLevel
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1697 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcndr/ns-rpcndr-ndr_user_marshal_info_level1
+Struct NDR_USER_MARSHAL_INFO_LEVEL1
+	Pointer Buffer											// Pointer*
+	UInteger BufferSize
+	Integer iMissingAlignment1
+	LongPtr pfnAllocate
+	LongPtr pfnFree
+	Pointer pRpcChannelBuffer								// IRpcChannelBuffer
+	ULongPtr[5] Reserved
+End_Struct
+
+Struct RDR_CALLOUT_STATE
+	Integer LastError										// RPC_STATUS
+	Integer iMissingAlignment1
+	Pointer LastEEInfo										// Pointer*
+	Integer LastCalledStage									// RPC_HTTP_REDIRECTOR_STAGE
+	Integer iMissingAlignment2
+	Pointer ServerName										// UShort*
+	Pointer ServerPort										// UShort*
+	Pointer RemoteUser										// UShort*
+	Pointer AuthType										// UShort*
+	UChar ResourceTypePresent
+	UChar SessionIdPresent
+	UChar InterfacePresent
+	UChar[1] cMissingAlignment3
+	Guid ResourceType
+	Guid SessionId
+	RPC_SYNTAX_IDENTIFIER Interface
+	Pointer CertContext										// Pointer*
+End_Struct
+
+Struct RPC_ASYNC_NOTIFICATION_INFO
+	_Anonymous_e__Union_1689 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_async_state
+Struct RPC_ASYNC_STATE
+	UInteger Size
+	UInteger Signature
+	Integer Lock
+	UInteger Flags
+	Pointer StubInfo										// Pointer*
+	Pointer UserInfo										// Pointer*
+	Pointer RuntimeInfo										// Pointer*
+	Integer Event											// RPC_ASYNC_EVENT
+	Integer NotificationType								// RPC_NOTIFICATION_TYPES
+	RPC_ASYNC_NOTIFICATION_INFO u
+	LongPtr[4] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_binding_handle_options_v1
+Struct RPC_BINDING_HANDLE_OPTIONS_V1
+	UInteger Version
+	UInteger Flags											// RPC_BINDING_HANDLE_OPTIONS_FLAGS
+	UInteger ComTimeout
+	UInteger CallTimeout
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_binding_handle_security_v1_a
+Struct RPC_BINDING_HANDLE_SECURITY_V1_A
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer ServerPrincName									// UChar*
+	UInteger AuthnLevel
+	UInteger AuthnSvc
+	Pointer AuthIdentity									// SEC_WINNT_AUTH_IDENTITY_A*
+	Pointer SecurityQos										// RPC_SECURITY_QOS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_binding_handle_security_v1_w
+Struct RPC_BINDING_HANDLE_SECURITY_V1_W
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer ServerPrincName									// UShort*
+	UInteger AuthnLevel
+	UInteger AuthnSvc
+	Pointer AuthIdentity									// SEC_WINNT_AUTH_IDENTITY_W*
+	Pointer SecurityQos										// RPC_SECURITY_QOS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_binding_handle_template_v1_a
+Struct RPC_BINDING_HANDLE_TEMPLATE_V1_A
+	UInteger Version
+	UInteger Flags
+	UInteger ProtocolSequence
+	Integer iMissingAlignment1
+	Pointer NetworkAddress									// UChar*
+	Pointer StringEndpoint									// UChar*
+	_u1_e__Union_1687 u1
+	Guid ObjectUuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_binding_handle_template_v1_w
+Struct RPC_BINDING_HANDLE_TEMPLATE_V1_W
+	UInteger Version
+	UInteger Flags
+	UInteger ProtocolSequence
+	Integer iMissingAlignment1
+	Pointer NetworkAddress									// UShort*
+	Pointer StringEndpoint									// UShort*
+	_u1_e__Union_1688 u1
+	Guid ObjectUuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_binding_vector
+Struct RPC_BINDING_VECTOR
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer[1] BindingH										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_call_attributes_v1_a
+Struct RPC_CALL_ATTRIBUTES_V1_A
+	UInteger Version
+	UInteger Flags
+	UInteger ServerPrincipalNameBufferLength
+	Integer iMissingAlignment1
+	Pointer ServerPrincipalName								// UChar*
+	UInteger ClientPrincipalNameBufferLength
+	Integer iMissingAlignment2
+	Pointer ClientPrincipalName								// UChar*
+	UInteger AuthenticationLevel
+	UInteger AuthenticationService
+	Integer NullSession										// BOOL
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_call_attributes_v1_w
+Struct RPC_CALL_ATTRIBUTES_V1_W
+	UInteger Version
+	UInteger Flags
+	UInteger ServerPrincipalNameBufferLength
+	Integer iMissingAlignment1
+	Pointer ServerPrincipalName								// UShort*
+	UInteger ClientPrincipalNameBufferLength
+	Integer iMissingAlignment2
+	Pointer ClientPrincipalName								// UShort*
+	UInteger AuthenticationLevel
+	UInteger AuthenticationService
+	Integer NullSession										// BOOL
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_call_attributes_v2_a
+Struct RPC_CALL_ATTRIBUTES_V2_A
+	UInteger Version
+	UInteger Flags
+	UInteger ServerPrincipalNameBufferLength
+	Integer iMissingAlignment1
+	Pointer ServerPrincipalName								// UChar*
+	UInteger ClientPrincipalNameBufferLength
+	Integer iMissingAlignment2
+	Pointer ClientPrincipalName								// UChar*
+	UInteger AuthenticationLevel
+	UInteger AuthenticationService
+	Integer NullSession										// BOOL
+	Integer KernelModeCaller								// BOOL
+	UInteger ProtocolSequence
+	UInteger IsClientLocal
+	Pointer ClientPID										// HANDLE
+	UInteger CallStatus
+	Integer CallType										// RpcCallType
+	Pointer CallLocalAddress								// RPC_CALL_LOCAL_ADDRESS_V1*
+	UShort OpNum
+	Short iMissingAlignment3
+	Guid InterfaceUuid
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_call_attributes_v2_w
+Struct RPC_CALL_ATTRIBUTES_V2_W
+	UInteger Version
+	UInteger Flags
+	UInteger ServerPrincipalNameBufferLength
+	Integer iMissingAlignment1
+	Pointer ServerPrincipalName								// UShort*
+	UInteger ClientPrincipalNameBufferLength
+	Integer iMissingAlignment2
+	Pointer ClientPrincipalName								// UShort*
+	UInteger AuthenticationLevel
+	UInteger AuthenticationService
+	Integer NullSession										// BOOL
+	Integer KernelModeCaller								// BOOL
+	UInteger ProtocolSequence
+	Integer IsClientLocal									// RpcCallClientLocality
+	Pointer ClientPID										// HANDLE
+	UInteger CallStatus
+	Integer CallType										// RpcCallType
+	Pointer CallLocalAddress								// RPC_CALL_LOCAL_ADDRESS_V1*
+	UShort OpNum
+	Short iMissingAlignment3
+	Guid InterfaceUuid
+	Integer iMissingAlignment4
+End_Struct
+
+Struct RPC_CALL_ATTRIBUTES_V3_A
+	UInteger Version
+	UInteger Flags
+	UInteger ServerPrincipalNameBufferLength
+	Integer iMissingAlignment1
+	Pointer ServerPrincipalName								// UChar*
+	UInteger ClientPrincipalNameBufferLength
+	Integer iMissingAlignment2
+	Pointer ClientPrincipalName								// UChar*
+	UInteger AuthenticationLevel
+	UInteger AuthenticationService
+	Integer NullSession										// BOOL
+	Integer KernelModeCaller								// BOOL
+	UInteger ProtocolSequence
+	UInteger IsClientLocal
+	Pointer ClientPID										// HANDLE
+	UInteger CallStatus
+	Integer CallType										// RpcCallType
+	Pointer CallLocalAddress								// RPC_CALL_LOCAL_ADDRESS_V1*
+	UShort OpNum
+	Short iMissingAlignment3
+	Guid InterfaceUuid
+	UInteger ClientIdentifierBufferLength
+	Pointer ClientIdentifier								// UChar*
+End_Struct
+
+Struct RPC_CALL_ATTRIBUTES_V3_W
+	UInteger Version
+	UInteger Flags
+	UInteger ServerPrincipalNameBufferLength
+	Integer iMissingAlignment1
+	Pointer ServerPrincipalName								// UShort*
+	UInteger ClientPrincipalNameBufferLength
+	Integer iMissingAlignment2
+	Pointer ClientPrincipalName								// UShort*
+	UInteger AuthenticationLevel
+	UInteger AuthenticationService
+	Integer NullSession										// BOOL
+	Integer KernelModeCaller								// BOOL
+	UInteger ProtocolSequence
+	Integer IsClientLocal									// RpcCallClientLocality
+	Pointer ClientPID										// HANDLE
+	UInteger CallStatus
+	Integer CallType										// RpcCallType
+	Pointer CallLocalAddress								// RPC_CALL_LOCAL_ADDRESS_V1*
+	UShort OpNum
+	Short iMissingAlignment3
+	Guid InterfaceUuid
+	UInteger ClientIdentifierBufferLength
+	Pointer ClientIdentifier								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_call_local_address_v1
+Struct RPC_CALL_LOCAL_ADDRESS_V1
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer Buffer											// Pointer*
+	UInteger BufferSize
+	Integer AddressFormat									// RpcLocalAddressFormat
+End_Struct
+
+Struct RPC_CLIENT_INFORMATION1
+	Pointer UserName										// UChar*
+	Pointer ComputerName									// UChar*
+	UShort Privilege
+	Short iMissingAlignment1
+	UInteger AuthFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdcep/ns-rpcdcep-rpc_client_interface
+Struct RPC_CLIENT_INTERFACE
+	UInteger Length
+	RPC_SYNTAX_IDENTIFIER InterfaceId
+	RPC_SYNTAX_IDENTIFIER TransferSyntax
+	Integer iMissingAlignment1
+	Pointer DispatchTable									// RPC_DISPATCH_TABLE*
+	UInteger RpcProtseqEndpointCount
+	Integer iMissingAlignment2
+	Pointer RpcProtseqEndpoint								// RPC_PROTSEQ_ENDPOINT*
+	ULongPtr Reserved
+	Pointer InterpreterInfo									// Pointer*
+	UInteger Flags
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdcep/ns-rpcdcep-rpc_c_opt_cookie_auth_descriptor
+Struct RPC_C_OPT_COOKIE_AUTH_DESCRIPTOR
+	UInteger BufferSize
+	Integer iMissingAlignment1
+	Pointer Buffer											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdcep/ns-rpcdcep-rpc_dispatch_table
+Struct RPC_DISPATCH_TABLE
+	UInteger DispatchTableCount
+	Integer iMissingAlignment1
+	Pointer DispatchTable									// RPC_DISPATCH_FUNCTION
+	LongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_ee_info_param
+Struct RPC_EE_INFO_PARAM
+	Integer ParameterType									// ExtendedErrorParamTypes
+	Integer iMissingAlignment1
+	_u_e__Union_1694 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_endpoint_templatea
+Struct RPC_ENDPOINT_TEMPLATEA
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer ProtSeq											// PSTR
+	Pointer Endpoint										// PSTR
+	Pointer SecurityDescriptor								// Pointer*
+	UInteger Backlog
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_endpoint_templatew
+Struct RPC_ENDPOINT_TEMPLATEW
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer ProtSeq											// PWSTR
+	Pointer Endpoint										// PWSTR
+	Pointer SecurityDescriptor								// Pointer*
+	UInteger Backlog
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_error_enum_handle
+Struct RPC_ERROR_ENUM_HANDLE
+	UInteger Signature
+	Integer iMissingAlignment1
+	Pointer CurrentPos										// Pointer*
+	Pointer Head											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcasync/ns-rpcasync-rpc_extended_error_info
+Struct RPC_EXTENDED_ERROR_INFO
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer ComputerName									// PWSTR
+	UInteger ProcessID
+	_u_e__Union_1693 u
+	UInteger GeneratingComponent
+	UInteger Status
+	UShort DetectionLocation
+	UShort Flags
+	Integer NumberOfParameters
+	Integer iMissingAlignment2
+	RPC_EE_INFO_PARAM[4] Parameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_http_transport_credentials_a
+Struct RPC_HTTP_TRANSPORT_CREDENTIALS_A
+	Pointer TransportCredentials							// SEC_WINNT_AUTH_IDENTITY_A*
+	UInteger Flags											// RPC_C_HTTP_FLAGS
+	UInteger AuthenticationTarget							// RPC_C_HTTP_AUTHN_TARGET
+	UInteger NumberOfAuthnSchemes
+	Integer iMissingAlignment1
+	Pointer AuthnSchemes									// UInteger*
+	Pointer ServerCertificateSubject						// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_http_transport_credentials_v2_a
+Struct RPC_HTTP_TRANSPORT_CREDENTIALS_V2_A
+	Pointer TransportCredentials							// SEC_WINNT_AUTH_IDENTITY_A*
+	UInteger Flags											// RPC_C_HTTP_FLAGS
+	UInteger AuthenticationTarget							// RPC_C_HTTP_AUTHN_TARGET
+	UInteger NumberOfAuthnSchemes
+	Integer iMissingAlignment1
+	Pointer AuthnSchemes									// UInteger*
+	Pointer ServerCertificateSubject						// UChar*
+	Pointer ProxyCredentials								// SEC_WINNT_AUTH_IDENTITY_A*
+	UInteger NumberOfProxyAuthnSchemes
+	Integer iMissingAlignment2
+	Pointer ProxyAuthnSchemes								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_http_transport_credentials_v2_w
+Struct RPC_HTTP_TRANSPORT_CREDENTIALS_V2_W
+	Pointer TransportCredentials							// SEC_WINNT_AUTH_IDENTITY_W*
+	UInteger Flags											// RPC_C_HTTP_FLAGS
+	UInteger AuthenticationTarget							// RPC_C_HTTP_AUTHN_TARGET
+	UInteger NumberOfAuthnSchemes
+	Integer iMissingAlignment1
+	Pointer AuthnSchemes									// UInteger*
+	Pointer ServerCertificateSubject						// UShort*
+	Pointer ProxyCredentials								// SEC_WINNT_AUTH_IDENTITY_W*
+	UInteger NumberOfProxyAuthnSchemes
+	Integer iMissingAlignment2
+	Pointer ProxyAuthnSchemes								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_http_transport_credentials_v3_a
+Struct RPC_HTTP_TRANSPORT_CREDENTIALS_V3_A
+	Pointer TransportCredentials							// Pointer*
+	UInteger Flags											// RPC_C_HTTP_FLAGS
+	UInteger AuthenticationTarget							// RPC_C_HTTP_AUTHN_TARGET
+	UInteger NumberOfAuthnSchemes
+	Integer iMissingAlignment1
+	Pointer AuthnSchemes									// UInteger*
+	Pointer ServerCertificateSubject						// UChar*
+	Pointer ProxyCredentials								// Pointer*
+	UInteger NumberOfProxyAuthnSchemes
+	Integer iMissingAlignment2
+	Pointer ProxyAuthnSchemes								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_http_transport_credentials_v3_w
+Struct RPC_HTTP_TRANSPORT_CREDENTIALS_V3_W
+	Pointer TransportCredentials							// Pointer*
+	UInteger Flags											// RPC_C_HTTP_FLAGS
+	UInteger AuthenticationTarget							// RPC_C_HTTP_AUTHN_TARGET
+	UInteger NumberOfAuthnSchemes
+	Integer iMissingAlignment1
+	Pointer AuthnSchemes									// UInteger*
+	Pointer ServerCertificateSubject						// UShort*
+	Pointer ProxyCredentials								// Pointer*
+	UInteger NumberOfProxyAuthnSchemes
+	Integer iMissingAlignment2
+	Pointer ProxyAuthnSchemes								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_http_transport_credentials_w
+Struct RPC_HTTP_TRANSPORT_CREDENTIALS_W
+	Pointer TransportCredentials							// SEC_WINNT_AUTH_IDENTITY_W*
+	UInteger Flags											// RPC_C_HTTP_FLAGS
+	UInteger AuthenticationTarget							// RPC_C_HTTP_AUTHN_TARGET
+	UInteger NumberOfAuthnSchemes
+	Integer iMissingAlignment1
+	Pointer AuthnSchemes									// UInteger*
+	Pointer ServerCertificateSubject						// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_if_id
+Struct RPC_IF_ID
+	Guid Uuid
+	UShort VersMajor
+	UShort VersMinor
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_if_id_vector
+Struct RPC_IF_ID_VECTOR
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer IfId											// RPC_IF_ID*
+End_Struct
+
+Struct RPC_IMPORT_CONTEXT_P
+	Pointer LookupContext									// Pointer*
+	Pointer ProposedHandle									// Pointer*
+	Pointer Bindings										// RPC_BINDING_VECTOR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_interface_templatea
+Struct RPC_INTERFACE_TEMPLATEA
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer IfSpec											// Pointer*
+	Pointer MgrTypeUuid										// Guid*
+	Pointer MgrEpv											// Pointer*
+	UInteger Flags
+	UInteger MaxCalls
+	UInteger MaxRpcSize
+	Integer iMissingAlignment2
+	Pointer IfCallback										// RPC_IF_CALLBACK_FN
+	Pointer UuidVector										// UUID_VECTOR*
+	Pointer Annotation										// PSTR
+	Pointer SecurityDescriptor								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_interface_templatew
+Struct RPC_INTERFACE_TEMPLATEW
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer IfSpec											// Pointer*
+	Pointer MgrTypeUuid										// Guid*
+	Pointer MgrEpv											// Pointer*
+	UInteger Flags
+	UInteger MaxCalls
+	UInteger MaxRpcSize
+	Integer iMissingAlignment2
+	Pointer IfCallback										// RPC_IF_CALLBACK_FN
+	Pointer UuidVector										// UUID_VECTOR*
+	Pointer Annotation										// PWSTR
+	Pointer SecurityDescriptor								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdcep/ns-rpcdcep-rpc_message
+Struct RPC_MESSAGE
+	Pointer Handle											// Pointer*
+	UInteger DataRepresentation
+	Integer iMissingAlignment1
+	Pointer Buffer											// Pointer*
+	UInteger BufferLength
+	UInteger ProcNum
+	Pointer TransferSyntax									// RPC_SYNTAX_IDENTIFIER*
+	Pointer RpcInterfaceInformation							// Pointer*
+	Pointer ReservedForRuntime								// Pointer*
+	Pointer ManagerEpv										// Pointer*
+	Pointer ImportContext									// Pointer*
+	UInteger RpcFlags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_policy
+Struct RPC_POLICY
+	UInteger Length
+	UInteger EndpointFlags
+	UInteger NICFlags
+End_Struct
+
+Struct RPC_PROTSEQ_ENDPOINT
+	Pointer RpcProtocolSequence								// UChar*
+	Pointer Endpoint										// UChar*
+End_Struct
+
+Struct RPC_PROTSEQ_VECTORA
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer[1] Protseq										// UChar*
+End_Struct
+
+Struct RPC_PROTSEQ_VECTORW
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer[1] Protseq										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos
+Struct RPC_SECURITY_QOS
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v2_a
+Struct RPC_SECURITY_QOS_V2_A
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2226 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v2_w
+Struct RPC_SECURITY_QOS_V2_W
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2225 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v3_a
+Struct RPC_SECURITY_QOS_V3_A
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2228 u
+	Pointer Sid												// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v3_w
+Struct RPC_SECURITY_QOS_V3_W
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2227 u
+	Pointer Sid												// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v4_a
+Struct RPC_SECURITY_QOS_V4_A
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2230 u
+	Pointer Sid												// Pointer*
+	UInteger EffectiveOnly
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v4_w
+Struct RPC_SECURITY_QOS_V4_W
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2229 u
+	Pointer Sid												// Pointer*
+	UInteger EffectiveOnly
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v5_a
+Struct RPC_SECURITY_QOS_V5_A
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2232 u
+	Pointer Sid												// Pointer*
+	UInteger EffectiveOnly
+	Integer iMissingAlignment2
+	Pointer ServerSecurityDescriptor						// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_security_qos_v5_w
+Struct RPC_SECURITY_QOS_V5_W
+	UInteger Version
+	UInteger Capabilities									// RPC_C_QOS_CAPABILITIES
+	UInteger IdentityTracking								// RPC_C_QOS_IDENTITY
+	UInteger ImpersonationType								// RPC_C_IMP_LEVEL
+	UInteger AdditionalSecurityInfoType						// RPC_C_AUTHN_INFO_TYPE
+	Integer iMissingAlignment1
+	_u_e__Union_2231 u
+	Pointer Sid												// Pointer*
+	UInteger EffectiveOnly
+	Integer iMissingAlignment2
+	Pointer ServerSecurityDescriptor						// Pointer*
+End_Struct
+
+Struct RPC_SEC_CONTEXT_KEY_INFO
+	UInteger EncryptAlgorithm
+	UInteger KeySize
+	UInteger SignatureAlgorithm
+End_Struct
+
+Struct RPC_SERVER_INTERFACE
+	UInteger Length
+	RPC_SYNTAX_IDENTIFIER InterfaceId
+	RPC_SYNTAX_IDENTIFIER TransferSyntax
+	Integer iMissingAlignment1
+	Pointer DispatchTable									// RPC_DISPATCH_TABLE*
+	UInteger RpcProtseqEndpointCount
+	Integer iMissingAlignment2
+	Pointer RpcProtseqEndpoint								// RPC_PROTSEQ_ENDPOINT*
+	Pointer DefaultManagerEpv								// Pointer*
+	Pointer InterpreterInfo									// Pointer*
+	UInteger Flags
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-rpc_stats_vector
+Struct RPC_STATS_VECTOR
+	UInteger Count
+	UInteger[1] Stats
+End_Struct
+
+Struct RPC_SYNTAX_IDENTIFIER
+	Guid SyntaxGUID
+	RPC_VERSION SyntaxVersion
+End_Struct
+
+Struct RPC_TRANSFER_SYNTAX
+	Guid Uuid
+	UShort VersMajor
+	UShort VersMinor
+End_Struct
+
+Struct RPC_VERSION
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+Struct SCONTEXT_QUEUE
+	UInteger NumberOfObjects
+	Integer iMissingAlignment1
+	Pointer ArrayOfObjects									// NDR_SCONTEXT**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-sec_winnt_auth_identity_a
+Struct SEC_WINNT_AUTH_IDENTITY_A
+	Pointer User											// UChar*
+	UInteger UserLength
+	Integer iMissingAlignment1
+	Pointer Domain											// UChar*
+	UInteger DomainLength
+	Integer iMissingAlignment2
+	Pointer Password										// UChar*
+	UInteger PasswordLength
+	UInteger Flags											// SEC_WINNT_AUTH_IDENTITY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-sec_winnt_auth_identity_w
+Struct SEC_WINNT_AUTH_IDENTITY_W
+	Pointer User											// UShort*
+	UInteger UserLength
+	Integer iMissingAlignment1
+	Pointer Domain											// UShort*
+	UInteger DomainLength
+	Integer iMissingAlignment2
+	Pointer Password										// UShort*
+	UInteger PasswordLength
+	UInteger Flags											// SEC_WINNT_AUTH_IDENTITY
+End_Struct
+
+Struct USER_MARSHAL_CB
+	UInteger Flags
+	Integer iMissingAlignment1
+	Pointer pStubMsg										// MIDL_STUB_MESSAGE*
+	Pointer pReserve										// UChar*
+	UInteger Signature
+	Integer CBType											// USER_MARSHAL_CB_TYPE
+	Pointer pFormat											// UChar*
+	Pointer pTypeFormat										// UChar*
+End_Struct
+
+Struct USER_MARSHAL_ROUTINE_QUADRUPLE
+	Pointer pfnBufferSize									// USER_MARSHAL_SIZING_ROUTINE
+	Pointer pfnMarshall										// USER_MARSHAL_MARSHALLING_ROUTINE
+	Pointer pfnUnmarshall									// USER_MARSHAL_UNMARSHALLING_ROUTINE
+	Pointer pfnFree											// USER_MARSHAL_FREEING_ROUTINE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rpcdce/ns-rpcdce-uuid_vector
+Struct UUID_VECTOR
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer Uuid											// Guid*
+End_Struct
+
+Struct XMIT_ROUTINE_QUINTUPLE
+	Pointer pfnTranslateToXmit								// XMIT_HELPER_ROUTINE
+	Pointer pfnTranslateFromXmit							// XMIT_HELPER_ROUTINE
+	Pointer pfnFreeXmit										// XMIT_HELPER_ROUTINE
+	Pointer pfnFreeInst										// XMIT_HELPER_ROUTINE
+End_Struct
+
+Struct _APC_e__Struct_1690
+	Pointer NotificationRoutine								// PFN_RPCNOTIFICATION_ROUTINE
+	Pointer hThread											// HANDLE
+End_Struct
+
+Struct _IOC_e__Struct_1691
+	Pointer hIOPort											// HANDLE
+	UInteger dwNumberOfBytesTransferred
+	Integer iMissingAlignment1
+	ULongPtr dwCompletionKey
+	Pointer lpOverlapped									// OVERLAPPED*
+End_Struct
+
+Struct _IntPtr_e__Struct_1692
+	Pointer hWnd											// HWND
+	UInteger Msg
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

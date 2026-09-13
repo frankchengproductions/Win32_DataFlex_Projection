@@ -1,0 +1,800 @@
+Use UI
+
+Struct SMB_TREE_CONNECT_PARAMETERS
+	UInteger EABufferOffset
+	UInteger EABufferLen
+	UInteger CreateOptions
+	UInteger TreeConnectAttributes
+End_Struct
+
+Struct SMB_USE_OPTION_COMPRESSION_PARAMETERS
+	UInteger Tag
+	UShort Length
+	UShort Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmalert/ns-lmalert-std_alert
+Struct STD_ALERT
+	UInteger alrt_timestamp
+	UShort[17] alrt_eventname
+	UShort[81] alrt_servicename
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmremutl/ns-lmremutl-time_of_day_info
+Struct TIME_OF_DAY_INFO
+	UInteger tod_elapsedt
+	UInteger tod_msecs
+	UInteger tod_hours
+	UInteger tod_mins
+	UInteger tod_secs
+	UInteger tod_hunds
+	Integer tod_timezone
+	UInteger tod_tinterval
+	UInteger tod_day
+	UInteger tod_month
+	UInteger tod_year
+	UInteger tod_weekday
+End_Struct
+
+Struct TRANSPORT_INFO
+	Integer Type											// TRANSPORT_TYPE
+	UChar SkipCertificateCheck								// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UShort TcpPort
+	UShort QuicPort
+	UShort RdmaPort
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_0
+Struct USER_INFO_0
+	Pointer usri0_name										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1
+Struct USER_INFO_1
+	Pointer usri1_name										// PWSTR
+	Pointer usri1_password									// PWSTR
+	UInteger usri1_password_age
+	UInteger usri1_priv										// USER_PRIV
+	Pointer usri1_home_dir									// PWSTR
+	Pointer usri1_comment									// PWSTR
+	UInteger usri1_flags									// USER_ACCOUNT_FLAGS
+	Integer iMissingAlignment1
+	Pointer usri1_script_path								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_10
+Struct USER_INFO_10
+	Pointer usri10_name										// PWSTR
+	Pointer usri10_comment									// PWSTR
+	Pointer usri10_usr_comment								// PWSTR
+	Pointer usri10_full_name								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1003
+Struct USER_INFO_1003
+	Pointer usri1003_password								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1005
+Struct USER_INFO_1005
+	UInteger usri1005_priv									// USER_PRIV
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1006
+Struct USER_INFO_1006
+	Pointer usri1006_home_dir								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1007
+Struct USER_INFO_1007
+	Pointer usri1007_comment								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1008
+Struct USER_INFO_1008
+	UInteger usri1008_flags									// USER_ACCOUNT_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1009
+Struct USER_INFO_1009
+	Pointer usri1009_script_path							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1010
+Struct USER_INFO_1010
+	UInteger usri1010_auth_flags							// AF_OP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1011
+Struct USER_INFO_1011
+	Pointer usri1011_full_name								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1012
+Struct USER_INFO_1012
+	Pointer usri1012_usr_comment							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1013
+Struct USER_INFO_1013
+	Pointer usri1013_parms									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1014
+Struct USER_INFO_1014
+	Pointer usri1014_workstations							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1017
+Struct USER_INFO_1017
+	UInteger usri1017_acct_expires
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1018
+Struct USER_INFO_1018
+	UInteger usri1018_max_storage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1020
+Struct USER_INFO_1020
+	UInteger usri1020_units_per_week
+	Integer iMissingAlignment1
+	Pointer usri1020_logon_hours							// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1023
+Struct USER_INFO_1023
+	Pointer usri1023_logon_server							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1024
+Struct USER_INFO_1024
+	UInteger usri1024_country_code
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1025
+Struct USER_INFO_1025
+	UInteger usri1025_code_page
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1051
+Struct USER_INFO_1051
+	UInteger usri1051_primary_group_id
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1052
+Struct USER_INFO_1052
+	Pointer usri1052_profile								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_1053
+Struct USER_INFO_1053
+	Pointer usri1053_home_dir_drive							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_11
+Struct USER_INFO_11
+	Pointer usri11_name										// PWSTR
+	Pointer usri11_comment									// PWSTR
+	Pointer usri11_usr_comment								// PWSTR
+	Pointer usri11_full_name								// PWSTR
+	UInteger usri11_priv									// USER_PRIV
+	UInteger usri11_auth_flags								// AF_OP
+	UInteger usri11_password_age
+	Integer iMissingAlignment1
+	Pointer usri11_home_dir									// PWSTR
+	Pointer usri11_parms									// PWSTR
+	UInteger usri11_last_logon
+	UInteger usri11_last_logoff
+	UInteger usri11_bad_pw_count
+	UInteger usri11_num_logons
+	Pointer usri11_logon_server								// PWSTR
+	UInteger usri11_country_code
+	Integer iMissingAlignment2
+	Pointer usri11_workstations								// PWSTR
+	UInteger usri11_max_storage
+	UInteger usri11_units_per_week
+	Pointer usri11_logon_hours								// UChar*
+	UInteger usri11_code_page
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_2
+Struct USER_INFO_2
+	Pointer usri2_name										// PWSTR
+	Pointer usri2_password									// PWSTR
+	UInteger usri2_password_age
+	UInteger usri2_priv										// USER_PRIV
+	Pointer usri2_home_dir									// PWSTR
+	Pointer usri2_comment									// PWSTR
+	UInteger usri2_flags									// USER_ACCOUNT_FLAGS
+	Integer iMissingAlignment1
+	Pointer usri2_script_path								// PWSTR
+	UInteger usri2_auth_flags								// AF_OP
+	Integer iMissingAlignment2
+	Pointer usri2_full_name									// PWSTR
+	Pointer usri2_usr_comment								// PWSTR
+	Pointer usri2_parms										// PWSTR
+	Pointer usri2_workstations								// PWSTR
+	UInteger usri2_last_logon
+	UInteger usri2_last_logoff
+	UInteger usri2_acct_expires
+	UInteger usri2_max_storage
+	UInteger usri2_units_per_week
+	Integer iMissingAlignment3
+	Pointer usri2_logon_hours								// UChar*
+	UInteger usri2_bad_pw_count
+	UInteger usri2_num_logons
+	Pointer usri2_logon_server								// PWSTR
+	UInteger usri2_country_code
+	UInteger usri2_code_page
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_20
+Struct USER_INFO_20
+	Pointer usri20_name										// PWSTR
+	Pointer usri20_full_name								// PWSTR
+	Pointer usri20_comment									// PWSTR
+	UInteger usri20_flags									// USER_ACCOUNT_FLAGS
+	UInteger usri20_user_id
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_21
+Struct USER_INFO_21
+	UChar[16] usri21_password
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_22
+Struct USER_INFO_22
+	Pointer usri22_name										// PWSTR
+	UChar[16] usri22_password
+	UInteger usri22_password_age
+	UInteger usri22_priv									// USER_PRIV
+	Pointer usri22_home_dir									// PWSTR
+	Pointer usri22_comment									// PWSTR
+	UInteger usri22_flags									// USER_ACCOUNT_FLAGS
+	Integer iMissingAlignment1
+	Pointer usri22_script_path								// PWSTR
+	UInteger usri22_auth_flags								// AF_OP
+	Integer iMissingAlignment2
+	Pointer usri22_full_name								// PWSTR
+	Pointer usri22_usr_comment								// PWSTR
+	Pointer usri22_parms									// PWSTR
+	Pointer usri22_workstations								// PWSTR
+	UInteger usri22_last_logon
+	UInteger usri22_last_logoff
+	UInteger usri22_acct_expires
+	UInteger usri22_max_storage
+	UInteger usri22_units_per_week
+	Integer iMissingAlignment3
+	Pointer usri22_logon_hours								// UChar*
+	UInteger usri22_bad_pw_count
+	UInteger usri22_num_logons
+	Pointer usri22_logon_server								// PWSTR
+	UInteger usri22_country_code
+	UInteger usri22_code_page
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_23
+Struct USER_INFO_23
+	Pointer usri23_name										// PWSTR
+	Pointer usri23_full_name								// PWSTR
+	Pointer usri23_comment									// PWSTR
+	UInteger usri23_flags									// USER_ACCOUNT_FLAGS
+	Integer iMissingAlignment1
+	Pointer usri23_user_sid									// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_24
+Struct USER_INFO_24
+	Integer usri24_internet_identity						// BOOL
+	UInteger usri24_flags
+	Pointer usri24_internet_provider_name					// PWSTR
+	Pointer usri24_internet_principal_name					// PWSTR
+	Pointer usri24_user_sid									// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_3
+Struct USER_INFO_3
+	Pointer usri3_name										// PWSTR
+	Pointer usri3_password									// PWSTR
+	UInteger usri3_password_age
+	UInteger usri3_priv										// USER_PRIV
+	Pointer usri3_home_dir									// PWSTR
+	Pointer usri3_comment									// PWSTR
+	UInteger usri3_flags									// USER_ACCOUNT_FLAGS
+	Integer iMissingAlignment1
+	Pointer usri3_script_path								// PWSTR
+	UInteger usri3_auth_flags								// AF_OP
+	Integer iMissingAlignment2
+	Pointer usri3_full_name									// PWSTR
+	Pointer usri3_usr_comment								// PWSTR
+	Pointer usri3_parms										// PWSTR
+	Pointer usri3_workstations								// PWSTR
+	UInteger usri3_last_logon
+	UInteger usri3_last_logoff
+	UInteger usri3_acct_expires
+	UInteger usri3_max_storage
+	UInteger usri3_units_per_week
+	Integer iMissingAlignment3
+	Pointer usri3_logon_hours								// UChar*
+	UInteger usri3_bad_pw_count
+	UInteger usri3_num_logons
+	Pointer usri3_logon_server								// PWSTR
+	UInteger usri3_country_code
+	UInteger usri3_code_page
+	UInteger usri3_user_id
+	UInteger usri3_primary_group_id
+	Pointer usri3_profile									// PWSTR
+	Pointer usri3_home_dir_drive							// PWSTR
+	UInteger usri3_password_expired
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_info_4
+Struct USER_INFO_4
+	Pointer usri4_name										// PWSTR
+	Pointer usri4_password									// PWSTR
+	UInteger usri4_password_age
+	UInteger usri4_priv										// USER_PRIV
+	Pointer usri4_home_dir									// PWSTR
+	Pointer usri4_comment									// PWSTR
+	UInteger usri4_flags									// USER_ACCOUNT_FLAGS
+	Integer iMissingAlignment1
+	Pointer usri4_script_path								// PWSTR
+	UInteger usri4_auth_flags								// AF_OP
+	Integer iMissingAlignment2
+	Pointer usri4_full_name									// PWSTR
+	Pointer usri4_usr_comment								// PWSTR
+	Pointer usri4_parms										// PWSTR
+	Pointer usri4_workstations								// PWSTR
+	UInteger usri4_last_logon
+	UInteger usri4_last_logoff
+	UInteger usri4_acct_expires
+	UInteger usri4_max_storage
+	UInteger usri4_units_per_week
+	Integer iMissingAlignment3
+	Pointer usri4_logon_hours								// UChar*
+	UInteger usri4_bad_pw_count
+	UInteger usri4_num_logons
+	Pointer usri4_logon_server								// PWSTR
+	UInteger usri4_country_code
+	UInteger usri4_code_page
+	Pointer usri4_user_sid									// PSID
+	UInteger usri4_primary_group_id
+	Integer iMissingAlignment4
+	Pointer usri4_profile									// PWSTR
+	Pointer usri4_home_dir_drive							// PWSTR
+	UInteger usri4_password_expired
+	Integer iMissingAlignment5
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_0
+Struct USER_MODALS_INFO_0
+	UInteger usrmod0_min_passwd_len
+	UInteger usrmod0_max_passwd_age
+	UInteger usrmod0_min_passwd_age
+	UInteger usrmod0_force_logoff
+	UInteger usrmod0_password_hist_len
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1
+Struct USER_MODALS_INFO_1
+	UInteger usrmod1_role
+	Integer iMissingAlignment1
+	Pointer usrmod1_primary									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1001
+Struct USER_MODALS_INFO_1001
+	UInteger usrmod1001_min_passwd_len
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1002
+Struct USER_MODALS_INFO_1002
+	UInteger usrmod1002_max_passwd_age
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1003
+Struct USER_MODALS_INFO_1003
+	UInteger usrmod1003_min_passwd_age
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1004
+Struct USER_MODALS_INFO_1004
+	UInteger usrmod1004_force_logoff
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1005
+Struct USER_MODALS_INFO_1005
+	UInteger usrmod1005_password_hist_len
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1006
+Struct USER_MODALS_INFO_1006
+	UInteger usrmod1006_role								// USER_MODALS_ROLES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_1007
+Struct USER_MODALS_INFO_1007
+	Pointer usrmod1007_primary								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_2
+Struct USER_MODALS_INFO_2
+	Pointer usrmod2_domain_name								// PWSTR
+	Pointer usrmod2_domain_id								// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmaccess/ns-lmaccess-user_modals_info_3
+Struct USER_MODALS_INFO_3
+	UInteger usrmod3_lockout_duration
+	UInteger usrmod3_lockout_observation_window
+	UInteger usrmod3_lockout_threshold
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmalert/ns-lmalert-user_other_info
+Struct USER_OTHER_INFO
+	UInteger alrtus_errcode
+	UInteger alrtus_numstrings
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/ns-lmuse-use_info_0
+Struct USE_INFO_0
+	Pointer ui0_local										// PWSTR
+	Pointer ui0_remote										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/ns-lmuse-use_info_1
+Struct USE_INFO_1
+	Pointer ui1_local										// PWSTR
+	Pointer ui1_remote										// PWSTR
+	Pointer ui1_password									// PWSTR
+	UInteger ui1_status
+	UInteger ui1_asg_type									// USE_INFO_ASG_TYPE
+	UInteger ui1_refcount
+	UInteger ui1_usecount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/ns-lmuse-use_info_2
+Struct USE_INFO_2
+	Pointer ui2_local										// PWSTR
+	Pointer ui2_remote										// PWSTR
+	Pointer ui2_password									// PWSTR
+	UInteger ui2_status
+	UInteger ui2_asg_type									// USE_INFO_ASG_TYPE
+	UInteger ui2_refcount
+	UInteger ui2_usecount
+	Pointer ui2_username									// PWSTR
+	Pointer ui2_domainname									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmuse/ns-lmuse-use_info_3
+Struct USE_INFO_3
+	USE_INFO_2 ui3_ui2
+	UInteger ui3_flags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct USE_INFO_4
+	USE_INFO_3 ui4_ui3
+	UInteger ui4_auth_identity_length
+	Integer iMissingAlignment1
+	Pointer ui4_auth_identity								// UChar*
+End_Struct
+
+Struct USE_INFO_5
+	USE_INFO_3 ui4_ui3
+	UInteger ui4_auth_identity_length
+	Integer iMissingAlignment1
+	Pointer ui4_auth_identity								// UChar*
+	UInteger ui5_security_descriptor_length
+	Integer iMissingAlignment2
+	Pointer ui5_security_descriptor							// UChar*
+	UInteger ui5_use_options_length
+	Integer iMissingAlignment3
+	Pointer ui5_use_options									// UChar*
+End_Struct
+
+Struct USE_OPTION_BLOCK_NTLM_PARAMETERS
+	UInteger Tag
+	UShort Length
+	UShort Reserved
+End_Struct
+
+Struct USE_OPTION_DEFERRED_CONNECTION_PARAMETERS
+	UInteger Tag
+	UShort Length
+	UShort Reserved
+End_Struct
+
+Struct USE_OPTION_GENERIC
+	UInteger Tag
+	UShort Length
+	UShort Reserved
+End_Struct
+
+Struct USE_OPTION_PROPERTIES
+	UInteger Tag
+	Integer iMissingAlignment1
+	Pointer pInfo											// Pointer*
+	ULongPtr Length
+End_Struct
+
+Struct USE_OPTION_TRANSPORT_PARAMETERS
+	UInteger Tag
+	UShort Length
+	UShort Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/ns-lmwksta-wksta_info_100
+Struct WKSTA_INFO_100
+	UInteger wki100_platform_id
+	Integer iMissingAlignment1
+	Pointer wki100_computername								// PWSTR
+	Pointer wki100_langroup									// PWSTR
+	UInteger wki100_ver_major
+	UInteger wki100_ver_minor
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/ns-lmwksta-wksta_info_101
+Struct WKSTA_INFO_101
+	UInteger wki101_platform_id
+	Integer iMissingAlignment1
+	Pointer wki101_computername								// PWSTR
+	Pointer wki101_langroup									// PWSTR
+	UInteger wki101_ver_major
+	UInteger wki101_ver_minor
+	Pointer wki101_lanroot									// PWSTR
+End_Struct
+
+Struct WKSTA_INFO_1010
+	UInteger wki1010_char_wait
+End_Struct
+
+Struct WKSTA_INFO_1011
+	UInteger wki1011_collection_time
+End_Struct
+
+Struct WKSTA_INFO_1012
+	UInteger wki1012_maximum_collection_count
+End_Struct
+
+Struct WKSTA_INFO_1013
+	UInteger wki1013_keep_conn
+End_Struct
+
+Struct WKSTA_INFO_1018
+	UInteger wki1018_sess_timeout
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/ns-lmwksta-wksta_info_102
+Struct WKSTA_INFO_102
+	UInteger wki102_platform_id
+	Integer iMissingAlignment1
+	Pointer wki102_computername								// PWSTR
+	Pointer wki102_langroup									// PWSTR
+	UInteger wki102_ver_major
+	UInteger wki102_ver_minor
+	Pointer wki102_lanroot									// PWSTR
+	UInteger wki102_logged_on_users
+	Integer iMissingAlignment2
+End_Struct
+
+Struct WKSTA_INFO_1023
+	UInteger wki1023_siz_char_buf
+End_Struct
+
+Struct WKSTA_INFO_1027
+	UInteger wki1027_errlog_sz
+End_Struct
+
+Struct WKSTA_INFO_1028
+	UInteger wki1028_print_buf_time
+End_Struct
+
+Struct WKSTA_INFO_1032
+	UInteger wki1032_wrk_heuristics
+End_Struct
+
+Struct WKSTA_INFO_1033
+	UInteger wki1033_max_threads
+End_Struct
+
+Struct WKSTA_INFO_1041
+	UInteger wki1041_lock_quota
+End_Struct
+
+Struct WKSTA_INFO_1042
+	UInteger wki1042_lock_increment
+End_Struct
+
+Struct WKSTA_INFO_1043
+	UInteger wki1043_lock_maximum
+End_Struct
+
+Struct WKSTA_INFO_1044
+	UInteger wki1044_pipe_increment
+End_Struct
+
+Struct WKSTA_INFO_1045
+	UInteger wki1045_pipe_maximum
+End_Struct
+
+Struct WKSTA_INFO_1046
+	UInteger wki1046_dormant_file_limit
+End_Struct
+
+Struct WKSTA_INFO_1047
+	UInteger wki1047_cache_file_timeout
+End_Struct
+
+Struct WKSTA_INFO_1048
+	Integer wki1048_use_opportunistic_locking				// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1049
+	Integer wki1049_use_unlock_behind						// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1050
+	Integer wki1050_use_close_behind						// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1051
+	Integer wki1051_buf_named_pipes							// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1052
+	Integer wki1052_use_lock_read_unlock					// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1053
+	Integer wki1053_utilize_nt_caching						// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1054
+	Integer wki1054_use_raw_read							// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1055
+	Integer wki1055_use_raw_write							// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1056
+	Integer wki1056_use_write_raw_data						// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1057
+	Integer wki1057_use_encryption							// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1058
+	Integer wki1058_buf_files_deny_write					// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1059
+	Integer wki1059_buf_read_only_files						// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1060
+	Integer wki1060_force_core_create_mode					// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1061
+	Integer wki1061_use_512_byte_max_transfer				// BOOL
+End_Struct
+
+Struct WKSTA_INFO_1062
+	UInteger wki1062_read_ahead_throughput
+End_Struct
+
+Struct WKSTA_INFO_302
+	UInteger wki302_char_wait
+	UInteger wki302_collection_time
+	UInteger wki302_maximum_collection_count
+	UInteger wki302_keep_conn
+	UInteger wki302_keep_search
+	UInteger wki302_max_cmds
+	UInteger wki302_num_work_buf
+	UInteger wki302_siz_work_buf
+	UInteger wki302_max_wrk_cache
+	UInteger wki302_sess_timeout
+	UInteger wki302_siz_error
+	UInteger wki302_num_alerts
+	UInteger wki302_num_services
+	UInteger wki302_errlog_sz
+	UInteger wki302_print_buf_time
+	UInteger wki302_num_char_buf
+	UInteger wki302_siz_char_buf
+	Integer iMissingAlignment1
+	Pointer wki302_wrk_heuristics							// PWSTR
+	UInteger wki302_mailslots
+	UInteger wki302_num_dgram_buf
+End_Struct
+
+Struct WKSTA_INFO_402
+	UInteger wki402_char_wait
+	UInteger wki402_collection_time
+	UInteger wki402_maximum_collection_count
+	UInteger wki402_keep_conn
+	UInteger wki402_keep_search
+	UInteger wki402_max_cmds
+	UInteger wki402_num_work_buf
+	UInteger wki402_siz_work_buf
+	UInteger wki402_max_wrk_cache
+	UInteger wki402_sess_timeout
+	UInteger wki402_siz_error
+	UInteger wki402_num_alerts
+	UInteger wki402_num_services
+	UInteger wki402_errlog_sz
+	UInteger wki402_print_buf_time
+	UInteger wki402_num_char_buf
+	UInteger wki402_siz_char_buf
+	Integer iMissingAlignment1
+	Pointer wki402_wrk_heuristics							// PWSTR
+	UInteger wki402_mailslots
+	UInteger wki402_num_dgram_buf
+	UInteger wki402_max_threads
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/ns-lmwksta-wksta_info_502
+Struct WKSTA_INFO_502
+	UInteger wki502_char_wait
+	UInteger wki502_collection_time
+	UInteger wki502_maximum_collection_count
+	UInteger wki502_keep_conn
+	UInteger wki502_max_cmds
+	UInteger wki502_sess_timeout
+	UInteger wki502_siz_char_buf
+	UInteger wki502_max_threads
+	UInteger wki502_lock_quota
+	UInteger wki502_lock_increment
+	UInteger wki502_lock_maximum
+	UInteger wki502_pipe_increment
+	UInteger wki502_pipe_maximum
+	UInteger wki502_cache_file_timeout
+	UInteger wki502_dormant_file_limit
+	UInteger wki502_read_ahead_throughput
+	UInteger wki502_num_mailslot_buffers
+	UInteger wki502_num_srv_announce_buffers
+	UInteger wki502_max_illegal_datagram_events
+	UInteger wki502_illegal_datagram_event_reset_frequency
+	Integer wki502_log_election_packets						// BOOL
+	Integer wki502_use_opportunistic_locking				// BOOL
+	Integer wki502_use_unlock_behind						// BOOL
+	Integer wki502_use_close_behind							// BOOL
+	Integer wki502_buf_named_pipes							// BOOL
+	Integer wki502_use_lock_read_unlock						// BOOL
+	Integer wki502_utilize_nt_caching						// BOOL
+	Integer wki502_use_raw_read								// BOOL
+	Integer wki502_use_raw_write							// BOOL
+	Integer wki502_use_write_raw_data						// BOOL
+	Integer wki502_use_encryption							// BOOL
+	Integer wki502_buf_files_deny_write						// BOOL
+	Integer wki502_buf_read_only_files						// BOOL
+	Integer wki502_force_core_create_mode					// BOOL
+	Integer wki502_use_512_byte_max_transfer				// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/ns-lmwksta-wksta_transport_info_0
+Struct WKSTA_TRANSPORT_INFO_0
+	UInteger wkti0_quality_of_service
+	UInteger wkti0_number_of_vcs
+	Pointer wkti0_transport_name							// PWSTR
+	Pointer wkti0_transport_address							// PWSTR
+	Integer wkti0_wan_ish									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmwksta/ns-lmwksta-wksta_user_info_0
+Struct WKSTA_USER_INFO_0
+	Pointer wkui0_username									// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

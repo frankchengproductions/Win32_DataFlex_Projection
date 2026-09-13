@@ -1,0 +1,963 @@
+Use UI
+
+Struct BDA_TEMPLATE_PIN_JOINT
+	UInteger uliTemplateConnection
+	UInteger ulcInstancesMax
+End_Struct
+
+Struct BDA_TS_SELECTORINFO
+	UChar bTSInfolength
+	UChar[2] bReserved
+	UChar[1] cMissingAlignment1
+	Guid guidNetworkType
+	UChar bTSIDCount
+	UChar[1] cMissingAlignment2
+	UShort[1] usTSID
+End_Struct
+
+Struct BDA_TS_SELECTORINFO_ISDBS_EXT
+	UChar[48] bTMCC
+End_Struct
+
+Struct BDA_TUNER_DIAGNOSTICS
+	Integer lResult
+	UInteger ulSignalLevel
+	UInteger ulSignalLevelQuality
+	UInteger ulSignalNoiseRatio
+End_Struct
+
+Struct BDA_TUNER_TUNERSTATE
+	Integer lResult
+	UInteger ulTuneLength
+	UChar[1] argbTuneData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct BDA_USERACTIVITY_INTERVAL
+	Integer lResult
+	UInteger ulActivityInterval
+End_Struct
+
+Struct BDA_WMDRMTUNER_PIDPROTECTION
+	Integer lResult
+	Guid uuidKeyID
+End_Struct
+
+Struct BDA_WMDRMTUNER_PURCHASEENTITLEMENT
+	Integer lResult
+	UInteger ulDescrambleStatus
+	UInteger ulCaptureTokenLength
+	UChar[1] argbCaptureTokenBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct BDA_WMDRM_KEYINFOLIST
+	Integer lResult
+	UInteger ulKeyuuidBufferLen
+	Guid[1] argKeyuuidBuffer
+End_Struct
+
+Struct BDA_WMDRM_RENEWLICENSE
+	Integer lResult
+	UInteger ulDescrambleStatus
+	UInteger ulXmrLicenseOutputLength
+	UChar[1] argbXmrLicenceOutputBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct BDA_WMDRM_STATUS
+	Integer lResult
+	UInteger ulMaxCaptureTokenSize
+	UInteger uMaxStreamingPid
+	UInteger ulMaxLicense
+	UInteger ulMinSecurityLevel
+	UInteger ulRevInfoSequenceNumber
+	UBigint ulRevInfoIssuedTime
+	UInteger ulRevListVersion
+	UInteger ulRevInfoTTL
+	UInteger ulState
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-colorkey
+Struct COLORKEY
+	UInteger KeyType
+	UInteger PaletteIndex
+	UInteger LowColorValue									// COLORREF
+	UInteger HighColorValue									// COLORREF
+End_Struct
+
+Struct DVD_ATR
+	UInteger ulCAT
+	UChar[768] pbATRI
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_audioattributes
+Struct DVD_AudioAttributes
+	Integer AppMode											// DVD_AUDIO_APPMODE
+	UChar AppModeData
+	UChar[3] cMissingAlignment1
+	Integer AudioFormat										// DVD_AUDIO_FORMAT
+	UInteger Language
+	Integer LanguageExtension								// DVD_AUDIO_LANG_EXT
+	Integer fHasMultichannelInfo							// BOOL
+	UInteger dwFrequency
+	UChar bQuantization
+	UChar bNumberOfChannels
+	Short iMissingAlignment2
+	UInteger[2] dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_decoder_caps
+Struct DVD_DECODER_CAPS
+	UInteger dwSize
+	UInteger dwAudioCaps
+	Real dFwdMaxRateVideo
+	Real dFwdMaxRateAudio
+	Real dFwdMaxRateSP
+	Real dBwdMaxRateVideo
+	Real dBwdMaxRateAudio
+	Real dBwdMaxRateSP
+	UInteger dwRes1
+	UInteger dwRes2
+	UInteger dwRes3
+	UInteger dwRes4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_hmsf_timecode
+Struct DVD_HMSF_TIMECODE
+	UChar bHours
+	UChar bMinutes
+	UChar bSeconds
+	UChar bFrames
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_karaokeattributes
+Struct DVD_KaraokeAttributes
+	UChar bVersion
+	UChar[3] cMissingAlignment1
+	Integer fMasterOfCeremoniesInGuideVocal1				// BOOL
+	Integer fDuet											// BOOL
+	Integer ChannelAssignment								// DVD_KARAOKE_ASSIGNMENT
+	UShort[8] wChannelContents
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_mua_coeff
+Struct DVD_MUA_Coeff
+	Real log2_alpha
+	Real log2_beta
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_mua_mixinginfo
+Struct DVD_MUA_MixingInfo
+	Integer fMixTo0											// BOOL
+	Integer fMixTo1											// BOOL
+	Integer fMix0InPhase									// BOOL
+	Integer fMix1InPhase									// BOOL
+	UInteger dwSpeakerPosition
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_menuattributes
+Struct DVD_MenuAttributes
+	Integer[8] fCompatibleRegion							// BOOL
+	DVD_VideoAttributes VideoAttributes
+	Integer fAudioPresent									// BOOL
+	DVD_AudioAttributes AudioAttributes
+	Integer fSubpicturePresent								// BOOL
+	DVD_SubpictureAttributes SubpictureAttributes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_multichannelaudioattributes
+Struct DVD_MultichannelAudioAttributes
+	DVD_MUA_MixingInfo[8] Info
+	DVD_MUA_Coeff[8] Coeff
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_playback_location
+Struct DVD_PLAYBACK_LOCATION
+	UInteger TitleNum
+	UInteger ChapterNum
+	UInteger TimeCode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_playback_location2
+Struct DVD_PLAYBACK_LOCATION2
+	UInteger TitleNum
+	UInteger ChapterNum
+	DVD_HMSF_TIMECODE TimeCode
+	UInteger TimeCodeFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_subpictureattributes
+Struct DVD_SubpictureAttributes
+	Integer Type											// DVD_SUBPICTURE_TYPE
+	Integer CodingMode										// DVD_SUBPICTURE_CODING
+	UInteger Language
+	Integer LanguageExtension								// DVD_SUBPICTURE_LANG_EXT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_timecode
+Struct DVD_TIMECODE
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_titleattributes
+Struct DVD_TitleAttributes
+	_Anonymous_e__Union_2109 Anonymous
+	DVD_VideoAttributes VideoAttributes
+	UInteger ulNumberOfAudioStreams
+	DVD_AudioAttributes[8] AudioAttributes
+	Integer iMissingAlignment1
+	DVD_MultichannelAudioAttributes[8] MultichannelAudioAttributes
+	UInteger ulNumberOfSubpictureStreams
+	DVD_SubpictureAttributes[32] SubpictureAttributes
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvd_videoattributes
+Struct DVD_VideoAttributes
+	Integer fPanscanPermitted								// BOOL
+	Integer fLetterboxPermitted								// BOOL
+	UInteger ulAspectX
+	UInteger ulAspectY
+	UInteger ulFrameRate
+	UInteger ulFrameHeight
+	Integer Compression										// DVD_VIDEO_COMPRESSION
+	Integer fLine21Field1InGOP								// BOOL
+	Integer fLine21Field2InGOP								// BOOL
+	UInteger ulSourceResolutionX
+	UInteger ulSourceResolutionY
+	Integer fIsSourceLetterboxed							// BOOL
+	Integer fIsFilmMode										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-dvinfo
+Struct DVINFO
+	UInteger dwDVAAuxSrc
+	UInteger dwDVAAuxCtl
+	UInteger dwDVAAuxSrc1
+	UInteger dwDVAAuxCtl1
+	UInteger dwDVVAuxSrc
+	UInteger dwDVVAuxCtl
+	UInteger[2] dwDVReserved
+End_Struct
+
+Struct DXVA2SW_CALLBACKS
+	UInteger Size
+	Integer iMissingAlignment1
+	Pointer GetVideoProcessorRenderTargetCount				// PDXVA2SW_GETVIDEOPROCESSORRENDERTARGETCOUNT
+	Pointer GetVideoProcessorRenderTargets					// PDXVA2SW_GETVIDEOPROCESSORRENDERTARGETS
+	Pointer GetVideoProcessorCaps							// PDXVA2SW_GETVIDEOPROCESSORCAPS
+	Pointer GetVideoProcessorSubStreamFormatCount			// PDXVA2SW_GETVIDEOPROCESSORSUBSTREAMFORMATCOUNT
+	Pointer GetVideoProcessorSubStreamFormats				// PDXVA2SW_GETVIDEOPROCESSORSUBSTREAMFORMATS
+	Pointer GetProcAmpRange									// PDXVA2SW_GETPROCAMPRANGE
+	Pointer GetFilterPropertyRange							// PDXVA2SW_GETFILTERPROPERTYRANGE
+	Pointer CreateVideoProcessDevice						// PDXVA2SW_CREATEVIDEOPROCESSDEVICE
+	Pointer DestroyVideoProcessDevice						// PDXVA2SW_DESTROYVIDEOPROCESSDEVICE
+	Pointer VideoProcessBeginFrame							// PDXVA2SW_VIDEOPROCESSBEGINFRAME
+	Pointer VideoProcessEndFrame							// PDXVA2SW_VIDEOPROCESSENDFRAME
+	Pointer VideoProcessSetRenderTarget						// PDXVA2SW_VIDEOPROCESSSETRENDERTARGET
+	Pointer VideoProcessBlt									// PDXVA2SW_VIDEOPROCESSBLT
+End_Struct
+
+Struct DXVA2TraceVideoProcessBltData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	UBigint pRenderTarget
+	UBigint TargetFrameTime
+	RECT TargetRect
+	Integer Enter											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVA2Trace_DecodeDevBeginFrameData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	UBigint pRenderTarget
+	Integer Enter											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVA2Trace_DecodeDevCreatedData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	UBigint pD3DDevice
+	Guid DeviceGuid
+	UInteger Width
+	UInteger Height
+	Integer Enter											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVA2Trace_DecodeDevGetBufferData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	UInteger BufferType
+	Integer Enter											// BOOL
+End_Struct
+
+Struct DXVA2Trace_DecodeDeviceData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	Integer Enter											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVA2Trace_VideoProcessDevCreatedData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	UBigint pD3DDevice
+	Guid DeviceGuid
+	UInteger RTFourCC
+	UInteger Width
+	UInteger Height
+	Integer Enter											// BOOL
+End_Struct
+
+Struct DXVA2Trace_VideoProcessDeviceData
+	EVENT_TRACE_HEADER wmiHeader
+	UBigint pObject
+	Integer Enter											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVA2_VIDEOPROCESSBLT
+	Bigint TargetFrame
+	RECT TargetRect
+	SIZE ConstrictionSize
+	UInteger StreamingFlags
+	DXVA2_AYUVSample16 BackgroundColor
+	DXVA2_ExtendedFormat DestFormat
+	UInteger DestFlags
+	DXVA2_ProcAmpValues ProcAmpValues
+	DXVA2_Fixed32 Alpha
+	DXVA2_FilterValues NoiseFilterLuma
+	DXVA2_FilterValues NoiseFilterChroma
+	DXVA2_FilterValues DetailFilterLuma
+	DXVA2_FilterValues DetailFilterChroma
+	Pointer pSrcSurfaces									// DXVA2_VIDEOSAMPLE*
+	UInteger NumSrcSurfaces
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVA2_VIDEOSAMPLE
+	Bigint Start
+	Bigint End
+	DXVA2_ExtendedFormat SampleFormat
+	UInteger SampleFlags
+	Pointer SrcResource										// Pointer*
+	RECT SrcRect
+	RECT DstRect
+	DXVA2_AYUVSample8[16] Pal
+	DXVA2_Fixed32 PlanarAlpha
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxva_coppsetprotectionlevelcmddata
+Struct DXVA_COPPSetProtectionLevelCmdData
+	UInteger ProtType
+	UInteger ProtLevel
+	UInteger ExtendedInfoChangeMask
+	UInteger ExtendedInfoData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxva_coppsetsignalingcmddata
+Struct DXVA_COPPSetSignalingCmdData
+	UInteger ActiveTVProtectionStandard
+	UInteger AspectRatioChangeMask1
+	UInteger AspectRatioData1
+	UInteger AspectRatioChangeMask2
+	UInteger AspectRatioData2
+	UInteger AspectRatioChangeMask3
+	UInteger AspectRatioData3
+	UInteger[4] ExtendedInfoChangeMask
+	UInteger[4] ExtendedInfoData
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxva_coppstatusdata
+Struct DXVA_COPPStatusData
+	Guid rApp
+	UInteger dwFlags
+	UInteger dwData
+	UInteger ExtendedInfoValidMask
+	UInteger ExtendedInfoData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxva_coppstatusdisplaydata
+Struct DXVA_COPPStatusDisplayData
+	Guid rApp
+	UInteger dwFlags
+	UInteger DisplayWidth
+	UInteger DisplayHeight
+	UInteger Format
+	UInteger d3dFormat
+	UInteger FreqNumerator
+	UInteger FreqDenominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxva_coppstatushdcpkeydata
+Struct DXVA_COPPStatusHDCPKeyData
+	Guid rApp
+	UInteger dwFlags
+	UInteger dwHDCPFlags
+	Guid BKey
+	Guid Reserved1
+	Guid Reserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxva_coppstatussignalingcmddata
+Struct DXVA_COPPStatusSignalingCmdData
+	Guid rApp
+	UInteger dwFlags
+	UInteger AvailableTVProtectionStandards
+	UInteger ActiveTVProtectionStandard
+	UInteger TVType
+	UInteger AspectRatioValidMask1
+	UInteger AspectRatioData1
+	UInteger AspectRatioValidMask2
+	UInteger AspectRatioData2
+	UInteger AspectRatioValidMask3
+	UInteger AspectRatioData3
+	UInteger[4] ExtendedInfoValidMask
+	UInteger[4] ExtendedInfoData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bdaiface_enums/ns-bdaiface_enums-ealocationcodetype
+Struct EALocationCodeType
+	Integer LocationCodeScheme								// LocationCodeSchemeType
+	UChar state_code
+	UChar county_subdivision
+	UShort county_code
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-filter_info
+Struct FILTER_INFO
+	UShort[128] achName
+	Pointer pGraph											// IFilterGraph
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmreg/ns-mmreg-heaacwaveformat
+Struct HEAACWAVEFORMAT
+	HEAACWAVEINFO wfInfo
+	UChar[1] pbAudioSpecificConfig
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmreg/ns-mmreg-heaacwaveinfo
+Struct HEAACWAVEINFO
+	WAVEFORMATEX wfx
+	UShort wPayloadType
+	UShort wAudioProfileLevelIndication
+	UShort wStructType
+	UShort wReserved1
+	UInteger dwReserved2
+End_Struct
+
+Struct KS_BDA_FRAME_INFO
+	UInteger ExtendedHeaderSize
+	UInteger dwFrameFlags
+	UInteger ulEvent
+	UInteger ulChannelNumber
+	UInteger ulSubchannelNumber
+	UInteger ulReason
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmreg/ns-mmreg-mpeg1waveformat
+Struct MPEG1WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort fwHeadLayer
+	Short iMissingAlignment1
+	UInteger dwHeadBitrate
+	UShort fwHeadMode
+	UShort fwHeadModeExt
+	UShort wHeadEmphasis
+	UShort fwHeadFlags
+	UInteger dwPTSLow
+	UInteger dwPTSHigh
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/DirectShow/mpeg2-transport-stride
+Struct MPEG2_TRANSPORT_STRIDE
+	UInteger dwOffset
+	UInteger dwPacketLength
+	UInteger dwStride
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmreg/ns-mmreg-mpeglayer3waveformat
+Struct MPEGLAYER3WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wID
+	Short iMissingAlignment1
+	UInteger fdwFlags										// MPEGLAYER3WAVEFORMAT_FLAGS
+	UShort nBlockSize
+	UShort nFramesPerBlock
+	UShort nCodecDelay
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/medparam/ns-medparam-mp_envelope_segment
+Struct MP_ENVELOPE_SEGMENT
+	Bigint rtStart
+	Bigint rtEnd
+	Float valStart
+	Float valEnd
+	Integer iCurve											// MP_CURVE_TYPE
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/medparam/ns-medparam-mp_paraminfo
+Struct MP_PARAMINFO
+	Integer mpType											// MP_TYPE
+	UInteger mopCaps
+	Float mpdMinValue
+	Float mpdMaxValue
+	Float mpdNeutralValue
+	UShort[32] szUnitText
+	UShort[32] szLabel
+End_Struct
+
+Struct MainAVIHeader
+	UInteger dwMicroSecPerFrame
+	UInteger dwMaxBytesPerSec
+	UInteger dwPaddingGranularity
+	UInteger dwFlags
+	UInteger dwTotalFrames
+	UInteger dwInitialFrames
+	UInteger dwStreams
+	UInteger dwSuggestedBufferSize
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger[4] dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-normalizedrect
+Struct NORMALIZEDRECT
+	Float left
+	Float top
+	Float right
+	Float bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/DirectShow/pid-map
+Struct PID_MAP
+	UInteger ulPID
+	Integer MediaSampleContent								// MEDIA_SAMPLE_CONTENT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-pin_info
+Struct PIN_INFO
+	Pointer pFilter											// IBaseFilter
+	Integer dir												// PIN_DIRECTION
+	UShort[128] achName
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-quality
+Struct Quality
+	Integer Type											// QualityMessageType
+	Integer Proportion
+	Bigint Late
+	Bigint TimeStamp
+End_Struct
+
+Struct REGFILTER
+	Guid Clsid
+	Pointer Name											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-regfilter2
+Struct REGFILTER2
+	UInteger dwVersion
+	UInteger dwMerit
+	_Anonymous_e__Union_2106 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-regfilterpins
+Struct REGFILTERPINS
+	Pointer strName											// PWSTR
+	Integer bRendered										// BOOL
+	Integer bOutput											// BOOL
+	Integer bZero											// BOOL
+	Integer bMany											// BOOL
+	Pointer clsConnectsToFilter								// Guid*
+	Pointer strConnectsToPin								// PWSTR
+	UInteger nMediaTypes
+	Integer iMissingAlignment1
+	Pointer lpMediaType										// REGPINTYPES*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-regfilterpins2
+Struct REGFILTERPINS2
+	UInteger dwFlags
+	UInteger cInstances
+	UInteger nMediaTypes
+	Integer iMissingAlignment1
+	Pointer lpMediaType										// REGPINTYPES*
+	UInteger nMediums
+	Integer iMissingAlignment2
+	Pointer lpMedium										// REGPINMEDIUM*
+	Pointer clsPinCategory									// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-regpinmedium
+Struct REGPINMEDIUM
+	Guid clsMedium
+	UInteger dw1
+	UInteger dw2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-regpintypes
+Struct REGPINTYPES
+	Pointer clsMajorType									// Guid*
+	Pointer clsMinorType									// Guid*
+End_Struct
+
+Struct RIFFCHUNK
+	UInteger fcc
+	UInteger cb
+End_Struct
+
+Struct RIFFLIST
+	UInteger fcc
+	UInteger cb
+	UInteger fccListType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-stream_id_map
+Struct STREAM_ID_MAP
+	UInteger stream_id
+	UInteger dwMediaSampleContent
+	UInteger ulSubstreamFilterValue
+	Integer iDataOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bdaiface_enums/ns-bdaiface_enums-smartcardapplication
+Struct SmartCardApplication
+	Integer ApplicationType									// ApplicationTypeType
+	UShort ApplicationVersion
+	Short iMissingAlignment1
+	Pointer pbstrApplicationName							// BSTR
+	Pointer pbstrApplicationURL								// BSTR
+End_Struct
+
+Struct TIMECODEDATA
+	TIMECODE time
+	UInteger dwSMPTEflags
+	UInteger dwUser
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/amvideo/ns-amvideo-truecolorinfo
+Struct TRUECOLORINFO
+	UInteger[3] dwBitMasks
+	RGBQUAD[256] bmiColors
+End_Struct
+
+Struct VFW_FILTERLIST
+	UInteger cFilters
+	Guid[1] aClsId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/amvideo/ns-amvideo-videoinfo
+Struct VIDEOINFO
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	BITMAPINFOHEADER bmiHeader
+	_Anonymous_e__Union_2110 Anonymous
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-video_stream_config_caps
+Struct VIDEO_STREAM_CONFIG_CAPS
+	Guid guid
+	UInteger VideoStandard
+	SIZE InputSize
+	SIZE MinCroppingSize
+	SIZE MaxCroppingSize
+	Integer CropGranularityX
+	Integer CropGranularityY
+	Integer CropAlignX
+	Integer CropAlignY
+	SIZE MinOutputSize
+	SIZE MaxOutputSize
+	Integer OutputGranularityX
+	Integer OutputGranularityY
+	Integer StretchTapsX
+	Integer StretchTapsY
+	Integer ShrinkTapsX
+	Integer ShrinkTapsY
+	Integer iMissingAlignment1
+	Bigint MinFrameInterval
+	Bigint MaxFrameInterval
+	Integer MinBitsPerSecond
+	Integer MaxBitsPerSecond
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9allocationinfo
+Struct VMR9AllocationInfo
+	UInteger dwFlags
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger Format											// D3DFORMAT
+	Integer Pool											// D3DPOOL
+	UInteger MinBuffers
+	SIZE szAspectRatio
+	SIZE szNativeSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9alphabitmap
+Struct VMR9AlphaBitmap
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer hdc												// HDC
+	Pointer pDDS											// IDirect3DSurface9
+	RECT rSrc
+	VMR9NormalizedRect rDest
+	Float fAlpha
+	UInteger clrSrcKey										// COLORREF
+	UInteger dwFilterMode
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9deinterlacecaps
+Struct VMR9DeinterlaceCaps
+	UInteger dwSize
+	UInteger dwNumPreviousOutputFrames
+	UInteger dwNumForwardRefSamples
+	UInteger dwNumBackwardRefSamples
+	Integer DeinterlaceTechnology							// VMR9DeinterlaceTech
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9frequency
+Struct VMR9Frequency
+	UInteger dwNumerator
+	UInteger dwDenominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9monitorinfo
+Struct VMR9MonitorInfo
+	UInteger uDevID
+	RECT rcMonitor
+	Integer iMissingAlignment1
+	Pointer hMon											// HMONITOR
+	UInteger dwFlags
+	UShort[32] szDevice
+	UShort[512] szDescription
+	Integer iMissingAlignment2
+	Bigint liDriverVersion
+	UInteger dwVendorId
+	UInteger dwDeviceId
+	UInteger dwSubSysId
+	UInteger dwRevision
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9normalizedrect
+Struct VMR9NormalizedRect
+	Float left
+	Float top
+	Float right
+	Float bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9presentationinfo
+Struct VMR9PresentationInfo
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpSurf											// IDirect3DSurface9
+	Bigint rtStart
+	Bigint rtEnd
+	SIZE szAspectRatio
+	RECT rcSrc
+	RECT rcDst
+	UInteger dwReserved1
+	UInteger dwReserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9procampcontrol
+Struct VMR9ProcAmpControl
+	UInteger dwSize
+	UInteger dwFlags
+	Float Brightness
+	Float Contrast
+	Float Hue
+	Float Saturation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9procampcontrolrange
+Struct VMR9ProcAmpControlRange
+	UInteger dwSize
+	Integer dwProperty										// VMR9ProcAmpControlFlags
+	Float MinValue
+	Float MaxValue
+	Float DefaultValue
+	Float StepSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9videodesc
+Struct VMR9VideoDesc
+	UInteger dwSize
+	UInteger dwSampleWidth
+	UInteger dwSampleHeight
+	Integer SampleFormat									// VMR9_SampleFormat
+	UInteger dwFourCC
+	VMR9Frequency InputSampleFreq
+	VMR9Frequency OutputFrameFreq
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vmr9/ns-vmr9-vmr9videostreaminfo
+Struct VMR9VideoStreamInfo
+	Pointer pddsVideoSurface								// IDirect3DSurface9
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwStrmID
+	Float fAlpha
+	VMR9NormalizedRect rNormal
+	Bigint rtStart
+	Bigint rtEnd
+	Integer SampleFormat									// VMR9_SampleFormat
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrallocationinfo
+Struct VMRALLOCATIONINFO
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpHdr											// BITMAPINFOHEADER*
+	Pointer lpPixFmt										// DDPIXELFORMAT*
+	SIZE szAspectRatio
+	UInteger dwMinBuffers
+	UInteger dwMaxBuffers
+	UInteger dwInterlaceFlags
+	SIZE szNativeSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmralphabitmap
+Struct VMRALPHABITMAP
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer hdc												// HDC
+	Pointer pDDS											// IDirectDrawSurface7
+	RECT rSrc
+	NORMALIZEDRECT rDest
+	Float fAlpha
+	UInteger clrSrcKey										// COLORREF
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrdeinterlacecaps
+Struct VMRDeinterlaceCaps
+	UInteger dwSize
+	UInteger dwNumPreviousOutputFrames
+	UInteger dwNumForwardRefSamples
+	UInteger dwNumBackwardRefSamples
+	Integer DeinterlaceTechnology							// VMRDeinterlaceTech
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrfrequency
+Struct VMRFrequency
+	UInteger dwNumerator
+	UInteger dwDenominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrguid
+Struct VMRGUID
+	Pointer pGUID											// Guid*
+	Guid GUID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrmonitorinfo
+Struct VMRMONITORINFO
+	VMRGUID guid
+	RECT rcMonitor
+	Pointer hMon											// HMONITOR
+	UInteger dwFlags
+	UShort[32] szDevice
+	UShort[256] szDescription
+	Integer iMissingAlignment1
+	Bigint liDriverVersion
+	UInteger dwVendorId
+	UInteger dwDeviceId
+	UInteger dwSubSysId
+	UInteger dwRevision
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrpresentationinfo
+Struct VMRPRESENTATIONINFO
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpSurf											// IDirectDrawSurface7
+	Bigint rtStart
+	Bigint rtEnd
+	SIZE szAspectRatio
+	RECT rcSrc
+	RECT rcDst
+	UInteger dwTypeSpecificFlags
+	UInteger dwInterlaceFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrvideostreaminfo
+Struct VMRVIDEOSTREAMINFO
+	Pointer pddsVideoSurface								// IDirectDrawSurface7
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwStrmID
+	Float fAlpha
+	DDCOLORKEY ddClrKey
+	NORMALIZEDRECT rNormal
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-vmrvideodesc
+Struct VMRVideoDesc
+	UInteger dwSize
+	UInteger dwSampleWidth
+	UInteger dwSampleHeight
+	Integer SingleFieldPerSample							// BOOL
+	UInteger dwFourCC
+	VMRFrequency InputSampleFreq
+	VMRFrequency OutputFrameFreq
+End_Struct
+
+Struct _Anonymous1_e__Struct_2107
+	UInteger cPins
+	Integer iMissingAlignment1
+	Pointer rgPins											// REGFILTERPINS*
+End_Struct
+
+Struct _Anonymous2_e__Struct_2108
+	UInteger cPins2
+	Integer iMissingAlignment1
+	Pointer rgPins2											// REGFILTERPINS2*
+End_Struct
+
+Struct _avifieldindex_entry_2116
+	UInteger dwOffset
+	UInteger dwSize
+	UInteger dwOffsetField2
+End_Struct
+
+Struct _avioldindex_entry_2112
+	UInteger dwChunkId
+	UInteger dwFlags
+	UInteger dwOffset
+	UInteger dwSize
+End_Struct
+
+Struct _avisuperindex_entry_2115
+	UBigint qwOffset
+	UInteger dwSize
+	UInteger dwDuration
+End_Struct
+
+Struct _rcFrame_e__Struct_2111
+	Short left
+	Short top
+	Short right
+	Short bottom
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

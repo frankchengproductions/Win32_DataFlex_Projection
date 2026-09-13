@@ -1,0 +1,543 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-requestbody_getstatus
+Struct REQUESTBODY_GetStatus
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-requestbody_renew
+Struct REQUESTBODY_Renew
+	Pointer Expires											// WSD_EVENTING_EXPIRES*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-requestbody_subscribe
+Struct REQUESTBODY_Subscribe
+	Pointer EndTo											// WSD_ENDPOINT_REFERENCE*
+	Pointer Delivery										// WSD_EVENTING_DELIVERY_MODE*
+	Pointer Expires											// WSD_EVENTING_EXPIRES*
+	Pointer Filter											// WSD_EVENTING_FILTER*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-requestbody_unsubscribe
+Struct REQUESTBODY_Unsubscribe
+	Pointer any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-responsebody_getmetadata
+Struct RESPONSEBODY_GetMetadata
+	Pointer Metadata										// WSD_METADATA_SECTION_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-responsebody_getstatus
+Struct RESPONSEBODY_GetStatus
+	Pointer expires											// WSD_EVENTING_EXPIRES*
+	Pointer any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-responsebody_renew
+Struct RESPONSEBODY_Renew
+	Pointer expires											// WSD_EVENTING_EXPIRES*
+	Pointer any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-responsebody_subscribe
+Struct RESPONSEBODY_Subscribe
+	Pointer SubscriptionManager								// WSD_ENDPOINT_REFERENCE*
+	Pointer expires											// WSD_EVENTING_EXPIRES*
+	Pointer any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-responsebody_subscriptionend
+Struct RESPONSEBODY_SubscriptionEnd
+	Pointer SubscriptionManager								// WSD_ENDPOINT_REFERENCE*
+	Pointer Status											// PWSTR
+	Pointer Reason											// WSD_LOCALIZED_STRING*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsdudpretransmitparams
+Struct WSDUdpRetransmitParams
+	UInteger ulSendDelay
+	UInteger ulRepeat
+	UInteger ulRepeatMinDelay
+	UInteger ulRepeatMaxDelay
+	UInteger ulRepeatUpperDelay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_attribute
+Struct WSDXML_ATTRIBUTE
+	Pointer Element											// WSDXML_ELEMENT*
+	Pointer Next											// WSDXML_ATTRIBUTE*
+	Pointer Name											// WSDXML_NAME*
+	Pointer Value											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_element
+Struct WSDXML_ELEMENT
+	WSDXML_NODE Node
+	Pointer Name											// WSDXML_NAME*
+	Pointer FirstAttribute									// WSDXML_ATTRIBUTE*
+	Pointer FirstChild										// WSDXML_NODE*
+	Pointer PrefixMappings									// WSDXML_PREFIX_MAPPING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_element_list
+Struct WSDXML_ELEMENT_LIST
+	Pointer Next											// WSDXML_ELEMENT_LIST*
+	Pointer Element											// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_name
+Struct WSDXML_NAME
+	Pointer Space											// WSDXML_NAMESPACE*
+	Pointer LocalName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_namespace
+Struct WSDXML_NAMESPACE
+	Pointer Uri												// PWSTR
+	Pointer PreferredPrefix									// PWSTR
+	Pointer Names											// WSDXML_NAME*
+	UShort NamesCount
+	UShort Encoding
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_node
+Struct WSDXML_NODE
+	Integer Type
+	Integer iMissingAlignment1
+	Pointer Parent											// WSDXML_ELEMENT*
+	Pointer Next											// WSDXML_NODE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_prefix_mapping
+Struct WSDXML_PREFIX_MAPPING
+	UInteger Refs
+	Integer iMissingAlignment1
+	Pointer Next											// WSDXML_PREFIX_MAPPING*
+	Pointer Space											// WSDXML_NAMESPACE*
+	Pointer Prefix											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_text
+Struct WSDXML_TEXT
+	WSDXML_NODE Node
+	Pointer Text											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxmldom/ns-wsdxmldom-wsdxml_type
+Struct WSDXML_TYPE
+	Pointer Uri												// PWSTR
+	Pointer Table											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_app_sequence
+Struct WSD_APP_SEQUENCE
+	UBigint InstanceId
+	Pointer SequenceId										// PWSTR
+	UBigint MessageNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_bye
+Struct WSD_BYE
+	Pointer EndpointReference								// WSD_ENDPOINT_REFERENCE*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsd_config_addresses
+Struct WSD_CONFIG_ADDRESSES
+	Pointer addresses										// IWSDAddress*
+	UInteger dwAddressCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsd_config_param
+Struct WSD_CONFIG_PARAM
+	Integer configParamType									// WSD_CONFIG_PARAM_TYPE
+	Integer iMissingAlignment1
+	Pointer pConfigData										// Pointer*
+	UInteger dwConfigDataSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxml/ns-wsdxml-wsd_datetime
+Struct WSD_DATETIME
+	Integer isPositive										// BOOL
+	UInteger year
+	UChar month
+	UChar day
+	UChar hour
+	UChar minute
+	UChar second
+	UChar[3] cMissingAlignment1
+	UInteger millisecond
+	Integer TZIsLocal										// BOOL
+	Integer TZIsPositive									// BOOL
+	UChar TZHour
+	UChar TZMinute
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdxml/ns-wsdxml-wsd_duration
+Struct WSD_DURATION
+	Integer isPositive										// BOOL
+	UInteger year
+	UInteger month
+	UInteger day
+	UInteger hour
+	UInteger minute
+	UInteger second
+	UInteger millisecond
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_endpoint_reference
+Struct WSD_ENDPOINT_REFERENCE
+	Pointer Address											// PWSTR
+	WSD_REFERENCE_PROPERTIES ReferenceProperties
+	WSD_REFERENCE_PARAMETERS ReferenceParameters
+	Pointer PortType										// WSDXML_NAME*
+	Pointer ServiceName										// WSDXML_NAME*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_endpoint_reference_list
+Struct WSD_ENDPOINT_REFERENCE_LIST
+	Pointer Next											// WSD_ENDPOINT_REFERENCE_LIST*
+	Pointer Element											// WSD_ENDPOINT_REFERENCE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_event
+Struct WSD_EVENT
+	Integer Hr												// HRESULT
+	UInteger EventType
+	Pointer DispatchTag										// PWSTR
+	WSD_HANDLER_CONTEXT HandlerContext
+	Pointer Soap											// WSD_SOAP_MESSAGE*
+	Pointer Operation										// WSD_OPERATION*
+	Pointer MessageParameters								// IWSDMessageParameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_eventing_delivery_mode
+Struct WSD_EVENTING_DELIVERY_MODE
+	Pointer Mode											// PWSTR
+	Pointer Push											// WSD_EVENTING_DELIVERY_MODE_PUSH*
+	Pointer Data											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_eventing_delivery_mode_push
+Struct WSD_EVENTING_DELIVERY_MODE_PUSH
+	Pointer NotifyTo										// WSD_ENDPOINT_REFERENCE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_eventing_expires
+Struct WSD_EVENTING_EXPIRES
+	Pointer Duration										// WSD_DURATION*
+	Pointer DateTime										// WSD_DATETIME*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_eventing_filter
+Struct WSD_EVENTING_FILTER
+	Pointer Dialect											// PWSTR
+	Pointer FilterAction									// WSD_EVENTING_FILTER_ACTION*
+	Pointer Data											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_eventing_filter_action
+Struct WSD_EVENTING_FILTER_ACTION
+	Pointer Actions											// WSD_URI_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_handler_context
+Struct WSD_HANDLER_CONTEXT
+	Pointer Handler											// PWSD_SOAP_MESSAGE_HANDLER
+	Pointer PVoid											// Pointer*
+	Pointer Unknown											// IUnknown
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_header_relatesto
+Struct WSD_HEADER_RELATESTO
+	Pointer RelationshipType								// WSDXML_NAME*
+	Pointer MessageID										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_hello
+Struct WSD_HELLO
+	Pointer EndpointReference								// WSD_ENDPOINT_REFERENCE*
+	Pointer Types											// WSD_NAME_LIST*
+	Pointer Scopes											// WSD_SCOPES*
+	Pointer XAddrs											// WSD_URI_LIST*
+	UBigint MetadataVersion
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_host_metadata
+Struct WSD_HOST_METADATA
+	Pointer Host											// WSD_SERVICE_METADATA*
+	Pointer Hosted											// WSD_SERVICE_METADATA_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_localized_string
+Struct WSD_LOCALIZED_STRING
+	Pointer lang											// PWSTR
+	Pointer String											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_localized_string_list
+Struct WSD_LOCALIZED_STRING_LIST
+	Pointer Next											// WSD_LOCALIZED_STRING_LIST*
+	Pointer Element											// WSD_LOCALIZED_STRING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_metadata_section
+Struct WSD_METADATA_SECTION
+	Pointer Dialect											// PWSTR
+	Pointer Identifier										// PWSTR
+	Pointer Data											// Pointer*
+	Pointer MetadataReference								// WSD_ENDPOINT_REFERENCE*
+	Pointer Location										// PWSTR
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_metadata_section_list
+Struct WSD_METADATA_SECTION_LIST
+	Pointer Next											// WSD_METADATA_SECTION_LIST*
+	Pointer Element											// WSD_METADATA_SECTION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_name_list
+Struct WSD_NAME_LIST
+	Pointer Next											// WSD_NAME_LIST*
+	Pointer Element											// WSDXML_NAME*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_operation
+Struct WSD_OPERATION
+	Pointer RequestType										// WSDXML_TYPE*
+	Pointer ResponseType									// WSDXML_TYPE*
+	Pointer RequestStubFunction								// WSD_STUB_FUNCTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_port_type
+Struct WSD_PORT_TYPE
+	UInteger EncodedName
+	UInteger OperationCount
+	Pointer Operations										// WSD_OPERATION*
+	Integer ProtocolType									// WSD_PROTOCOL_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_probe
+Struct WSD_PROBE
+	Pointer Types											// WSD_NAME_LIST*
+	Pointer Scopes											// WSD_SCOPES*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_probe_match
+Struct WSD_PROBE_MATCH
+	Pointer EndpointReference								// WSD_ENDPOINT_REFERENCE*
+	Pointer Types											// WSD_NAME_LIST*
+	Pointer Scopes											// WSD_SCOPES*
+	Pointer XAddrs											// WSD_URI_LIST*
+	UBigint MetadataVersion
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_probe_matches
+Struct WSD_PROBE_MATCHES
+	Pointer ProbeMatch										// WSD_PROBE_MATCH_LIST*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_probe_match_list
+Struct WSD_PROBE_MATCH_LIST
+	Pointer Next											// WSD_PROBE_MATCH_LIST*
+	Pointer Element											// WSD_PROBE_MATCH*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_reference_parameters
+Struct WSD_REFERENCE_PARAMETERS
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_reference_properties
+Struct WSD_REFERENCE_PROPERTIES
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_relationship_metadata
+Struct WSD_RELATIONSHIP_METADATA
+	Pointer Type											// PWSTR
+	Pointer Data											// WSD_HOST_METADATA*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_resolve
+Struct WSD_RESOLVE
+	Pointer EndpointReference								// WSD_ENDPOINT_REFERENCE*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_resolve_match
+Struct WSD_RESOLVE_MATCH
+	Pointer EndpointReference								// WSD_ENDPOINT_REFERENCE*
+	Pointer Types											// WSD_NAME_LIST*
+	Pointer Scopes											// WSD_SCOPES*
+	Pointer XAddrs											// WSD_URI_LIST*
+	UBigint MetadataVersion
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_resolve_matches
+Struct WSD_RESOLVE_MATCHES
+	Pointer ResolveMatch									// WSD_RESOLVE_MATCH*
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_scopes
+Struct WSD_SCOPES
+	Pointer MatchBy											// PWSTR
+	Pointer Scopes											// WSD_URI_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsd_security_cert_validation
+Struct WSD_SECURITY_CERT_VALIDATION
+	Pointer certMatchArray									// CERT_CONTEXT**
+	UInteger dwCertMatchArrayCount
+	Integer iMissingAlignment1
+	Pointer hCertMatchStore									// HCERTSTORE
+	Pointer hCertIssuerStore								// HCERTSTORE
+	UInteger dwCertCheckOptions
+	Integer iMissingAlignment2
+	Pointer pszCNGHashAlgId									// PWSTR
+	Pointer pbCertHash										// UChar*
+	UInteger dwCertHashSize
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsd_security_cert_validation_v1
+Struct WSD_SECURITY_CERT_VALIDATION_V1
+	Pointer certMatchArray									// CERT_CONTEXT**
+	UInteger dwCertMatchArrayCount
+	Integer iMissingAlignment1
+	Pointer hCertMatchStore									// HCERTSTORE
+	Pointer hCertIssuerStore								// HCERTSTORE
+	UInteger dwCertCheckOptions
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdbase/ns-wsdbase-wsd_security_signature_validation
+Struct WSD_SECURITY_SIGNATURE_VALIDATION
+	Pointer signingCertArray								// CERT_CONTEXT**
+	UInteger dwSigningCertArrayCount
+	Integer iMissingAlignment1
+	Pointer hSigningCertStore								// HCERTSTORE
+	UInteger dwFlags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_service_metadata
+Struct WSD_SERVICE_METADATA
+	Pointer EndpointReference								// WSD_ENDPOINT_REFERENCE_LIST*
+	Pointer Types											// WSD_NAME_LIST*
+	Pointer ServiceId										// PWSTR
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_service_metadata_list
+Struct WSD_SERVICE_METADATA_LIST
+	Pointer Next											// WSD_SERVICE_METADATA_LIST*
+	Pointer Element											// WSD_SERVICE_METADATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault
+Struct WSD_SOAP_FAULT
+	Pointer Code											// WSD_SOAP_FAULT_CODE*
+	Pointer Reason											// WSD_SOAP_FAULT_REASON*
+	Pointer Node											// PWSTR
+	Pointer Role											// PWSTR
+	Pointer Detail											// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault_code
+Struct WSD_SOAP_FAULT_CODE
+	Pointer Value											// WSDXML_NAME*
+	Pointer Subcode											// WSD_SOAP_FAULT_SUBCODE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault_reason
+Struct WSD_SOAP_FAULT_REASON
+	Pointer Text											// WSD_LOCALIZED_STRING_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_fault_subcode
+Struct WSD_SOAP_FAULT_SUBCODE
+	Pointer Value											// WSDXML_NAME*
+	Pointer Subcode											// WSD_SOAP_FAULT_SUBCODE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_header
+Struct WSD_SOAP_HEADER
+	Pointer To												// PWSTR
+	Pointer Action											// PWSTR
+	Pointer MessageID										// PWSTR
+	WSD_HEADER_RELATESTO RelatesTo
+	Pointer ReplyTo											// WSD_ENDPOINT_REFERENCE*
+	Pointer From											// WSD_ENDPOINT_REFERENCE*
+	Pointer FaultTo											// WSD_ENDPOINT_REFERENCE*
+	Pointer AppSequence										// WSD_APP_SEQUENCE*
+	Pointer AnyHeaders										// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_soap_message
+Struct WSD_SOAP_MESSAGE
+	WSD_SOAP_HEADER Header
+	Pointer Body											// Pointer*
+	Pointer BodyType										// WSDXML_TYPE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_synchronous_response_context
+Struct WSD_SYNCHRONOUS_RESPONSE_CONTEXT
+	Integer hr												// HRESULT
+	Integer iMissingAlignment1
+	Pointer eventHandle										// HANDLE
+	Pointer messageParameters								// IWSDMessageParameters
+	Pointer results											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_this_device_metadata
+Struct WSD_THIS_DEVICE_METADATA
+	Pointer FriendlyName									// WSD_LOCALIZED_STRING_LIST*
+	Pointer FirmwareVersion									// PWSTR
+	Pointer SerialNumber									// PWSTR
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_this_model_metadata
+Struct WSD_THIS_MODEL_METADATA
+	Pointer Manufacturer									// WSD_LOCALIZED_STRING_LIST*
+	Pointer ManufacturerUrl									// PWSTR
+	Pointer ModelName										// WSD_LOCALIZED_STRING_LIST*
+	Pointer ModelNumber										// PWSTR
+	Pointer ModelUrl										// PWSTR
+	Pointer PresentationUrl									// PWSTR
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_unknown_lookup
+Struct WSD_UNKNOWN_LOOKUP
+	Pointer Any												// WSDXML_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsdtypes/ns-wsdtypes-wsd_uri_list
+Struct WSD_URI_LIST
+	Pointer Next											// WSD_URI_LIST*
+	Pointer Element											// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,91 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/ns-winsafer-safer_code_properties_v1
+Struct SAFER_CODE_PROPERTIES_V1
+	UInteger cbSize
+	UInteger dwCheckFlags
+	Pointer ImagePath										// PWSTR
+	Pointer hImageFileHandle								// HANDLE
+	UInteger UrlZoneId
+	UChar[64] ImageHash
+	UInteger dwImageHashSize
+	Bigint ImageSize
+	UInteger HashAlgorithm									// ALG_ID
+	Integer iMissingAlignment1
+	Pointer pByteBlock										// UChar*
+	Pointer hWndParent										// HWND
+	UInteger dwWVTUIChoice
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/ns-winsafer-safer_code_properties_v2
+Struct SAFER_CODE_PROPERTIES_V2
+	UInteger cbSize
+	UInteger dwCheckFlags
+	Pointer ImagePath										// PWSTR
+	Pointer hImageFileHandle								// HANDLE
+	UInteger UrlZoneId
+	UChar[64] ImageHash
+	UInteger dwImageHashSize
+	Bigint ImageSize
+	UInteger HashAlgorithm									// ALG_ID
+	Integer iMissingAlignment1
+	Pointer pByteBlock										// UChar*
+	Pointer hWndParent										// HWND
+	UInteger dwWVTUIChoice
+	Integer iMissingAlignment2
+	Pointer PackageMoniker									// PWSTR
+	Pointer PackagePublisher								// PWSTR
+	Pointer PackageName										// PWSTR
+	UBigint PackageVersion
+	Integer PackageIsFramework								// BOOL
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/ns-winsafer-safer_hash_identification
+Struct SAFER_HASH_IDENTIFICATION
+	SAFER_IDENTIFICATION_HEADER header
+	UShort[256] Description
+	UShort[256] FriendlyName
+	UInteger HashSize
+	UChar[64] ImageHash
+	UInteger HashAlgorithm									// ALG_ID
+	Bigint ImageSize
+	UInteger dwSaferFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct SAFER_HASH_IDENTIFICATION2
+	SAFER_HASH_IDENTIFICATION hashIdentification
+	UInteger HashSize
+	UChar[64] ImageHash
+	UInteger HashAlgorithm									// ALG_ID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/ns-winsafer-safer_identification_header
+Struct SAFER_IDENTIFICATION_HEADER
+	Integer dwIdentificationType							// SAFER_IDENTIFICATION_TYPES
+	UInteger cbStructSize
+	Guid IdentificationGuid
+	FILETIME lastModified
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/ns-winsafer-safer_pathname_identification
+Struct SAFER_PATHNAME_IDENTIFICATION
+	SAFER_IDENTIFICATION_HEADER header
+	UShort[256] Description
+	Pointer ImageName										// PWSTR
+	UInteger dwSaferFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsafer/ns-winsafer-safer_urlzone_identification
+Struct SAFER_URLZONE_IDENTIFICATION
+	SAFER_IDENTIFICATION_HEADER header
+	UInteger UrlZoneId
+	UInteger dwSaferFlags
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

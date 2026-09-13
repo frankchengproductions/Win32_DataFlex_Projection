@@ -1,0 +1,571 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_configurationa
+Struct FAX_CONFIGURATIONA
+	UInteger SizeOfStruct
+	UInteger Retries
+	UInteger RetryDelay
+	UInteger DirtyDays
+	Integer Branding										// BOOL
+	Integer UseDeviceTsid									// BOOL
+	Integer ServerCp										// BOOL
+	Integer PauseServerQueue								// BOOL
+	FAX_TIME StartCheapTime
+	FAX_TIME StopCheapTime
+	Integer ArchiveOutgoingFaxes							// BOOL
+	Integer iMissingAlignment1
+	Pointer ArchiveDirectory								// PSTR
+	Pointer Reserved										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_configurationw
+Struct FAX_CONFIGURATIONW
+	UInteger SizeOfStruct
+	UInteger Retries
+	UInteger RetryDelay
+	UInteger DirtyDays
+	Integer Branding										// BOOL
+	Integer UseDeviceTsid									// BOOL
+	Integer ServerCp										// BOOL
+	Integer PauseServerQueue								// BOOL
+	FAX_TIME StartCheapTime
+	FAX_TIME StopCheapTime
+	Integer ArchiveOutgoingFaxes							// BOOL
+	Integer iMissingAlignment1
+	Pointer ArchiveDirectory								// PWSTR
+	Pointer Reserved										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_context_infoa
+Struct FAX_CONTEXT_INFOA
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer hDC												// HDC
+	Char[16] ServerName										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_context_infow
+Struct FAX_CONTEXT_INFOW
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer hDC												// HDC
+	UShort[16] ServerName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_coverpage_infoa
+Struct FAX_COVERPAGE_INFOA
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer CoverPageName									// PSTR
+	Integer UseServerCoverPage								// BOOL
+	Integer iMissingAlignment2
+	Pointer RecName											// PSTR
+	Pointer RecFaxNumber									// PSTR
+	Pointer RecCompany										// PSTR
+	Pointer RecStreetAddress								// PSTR
+	Pointer RecCity											// PSTR
+	Pointer RecState										// PSTR
+	Pointer RecZip											// PSTR
+	Pointer RecCountry										// PSTR
+	Pointer RecTitle										// PSTR
+	Pointer RecDepartment									// PSTR
+	Pointer RecOfficeLocation								// PSTR
+	Pointer RecHomePhone									// PSTR
+	Pointer RecOfficePhone									// PSTR
+	Pointer SdrName											// PSTR
+	Pointer SdrFaxNumber									// PSTR
+	Pointer SdrCompany										// PSTR
+	Pointer SdrAddress										// PSTR
+	Pointer SdrTitle										// PSTR
+	Pointer SdrDepartment									// PSTR
+	Pointer SdrOfficeLocation								// PSTR
+	Pointer SdrHomePhone									// PSTR
+	Pointer SdrOfficePhone									// PSTR
+	Pointer Note											// PSTR
+	Pointer Subject											// PSTR
+	SYSTEMTIME TimeSent
+	UInteger PageCount
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_coverpage_infow
+Struct FAX_COVERPAGE_INFOW
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer CoverPageName									// PWSTR
+	Integer UseServerCoverPage								// BOOL
+	Integer iMissingAlignment2
+	Pointer RecName											// PWSTR
+	Pointer RecFaxNumber									// PWSTR
+	Pointer RecCompany										// PWSTR
+	Pointer RecStreetAddress								// PWSTR
+	Pointer RecCity											// PWSTR
+	Pointer RecState										// PWSTR
+	Pointer RecZip											// PWSTR
+	Pointer RecCountry										// PWSTR
+	Pointer RecTitle										// PWSTR
+	Pointer RecDepartment									// PWSTR
+	Pointer RecOfficeLocation								// PWSTR
+	Pointer RecHomePhone									// PWSTR
+	Pointer RecOfficePhone									// PWSTR
+	Pointer SdrName											// PWSTR
+	Pointer SdrFaxNumber									// PWSTR
+	Pointer SdrCompany										// PWSTR
+	Pointer SdrAddress										// PWSTR
+	Pointer SdrTitle										// PWSTR
+	Pointer SdrDepartment									// PWSTR
+	Pointer SdrOfficeLocation								// PWSTR
+	Pointer SdrHomePhone									// PWSTR
+	Pointer SdrOfficePhone									// PWSTR
+	Pointer Note											// PWSTR
+	Pointer Subject											// PWSTR
+	SYSTEMTIME TimeSent
+	UInteger PageCount
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_device_statusa
+Struct FAX_DEVICE_STATUSA
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer CallerId										// PSTR
+	Pointer Csid											// PSTR
+	UInteger CurrentPage
+	UInteger DeviceId
+	Pointer DeviceName										// PSTR
+	Pointer DocumentName									// PSTR
+	UInteger JobType
+	Integer iMissingAlignment2
+	Pointer PhoneNumber										// PSTR
+	Pointer RoutingString									// PSTR
+	Pointer SenderName										// PSTR
+	Pointer RecipientName									// PSTR
+	UInteger Size
+	FILETIME StartTime
+	UInteger Status
+	Pointer StatusString									// PSTR
+	FILETIME SubmittedTime
+	UInteger TotalPages
+	Integer iMissingAlignment3
+	Pointer Tsid											// PSTR
+	Pointer UserName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_device_statusw
+Struct FAX_DEVICE_STATUSW
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer CallerId										// PWSTR
+	Pointer Csid											// PWSTR
+	UInteger CurrentPage
+	UInteger DeviceId
+	Pointer DeviceName										// PWSTR
+	Pointer DocumentName									// PWSTR
+	UInteger JobType
+	Integer iMissingAlignment2
+	Pointer PhoneNumber										// PWSTR
+	Pointer RoutingString									// PWSTR
+	Pointer SenderName										// PWSTR
+	Pointer RecipientName									// PWSTR
+	UInteger Size
+	FILETIME StartTime
+	UInteger Status
+	Pointer StatusString									// PWSTR
+	FILETIME SubmittedTime
+	UInteger TotalPages
+	Integer iMissingAlignment3
+	Pointer Tsid											// PWSTR
+	Pointer UserName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/faxdev/ns-faxdev-fax_dev_status
+Struct FAX_DEV_STATUS
+	UInteger SizeOfStruct
+	UInteger StatusId
+	UInteger StringId
+	UInteger PageCount
+	Pointer CSI												// PWSTR
+	Pointer CallerId										// PWSTR
+	Pointer RoutingInfo										// PWSTR
+	UInteger ErrorCode
+	UInteger[3] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_eventa
+Struct FAX_EVENTA
+	UInteger SizeOfStruct
+	FILETIME TimeStamp
+	UInteger DeviceId
+	UInteger EventId
+	UInteger JobId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_eventw
+Struct FAX_EVENTW
+	UInteger SizeOfStruct
+	FILETIME TimeStamp
+	UInteger DeviceId
+	UInteger EventId
+	UInteger JobId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_global_routing_infoa
+Struct FAX_GLOBAL_ROUTING_INFOA
+	UInteger SizeOfStruct
+	UInteger Priority
+	Pointer Guid											// PSTR
+	Pointer FriendlyName									// PSTR
+	Pointer FunctionName									// PSTR
+	Pointer ExtensionImageName								// PSTR
+	Pointer ExtensionFriendlyName							// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_global_routing_infow
+Struct FAX_GLOBAL_ROUTING_INFOW
+	UInteger SizeOfStruct
+	UInteger Priority
+	Pointer Guid											// PWSTR
+	Pointer FriendlyName									// PWSTR
+	Pointer FunctionName									// PWSTR
+	Pointer ExtensionImageName								// PWSTR
+	Pointer ExtensionFriendlyName							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_job_entrya
+Struct FAX_JOB_ENTRYA
+	UInteger SizeOfStruct
+	UInteger JobId
+	Pointer UserName										// PSTR
+	UInteger JobType
+	UInteger QueueStatus
+	UInteger Status
+	UInteger Size
+	UInteger PageCount
+	Integer iMissingAlignment1
+	Pointer RecipientNumber									// PSTR
+	Pointer RecipientName									// PSTR
+	Pointer Tsid											// PSTR
+	Pointer SenderName										// PSTR
+	Pointer SenderCompany									// PSTR
+	Pointer SenderDept										// PSTR
+	Pointer BillingCode										// PSTR
+	UInteger ScheduleAction
+	SYSTEMTIME ScheduleTime
+	UInteger DeliveryReportType
+	Pointer DeliveryReportAddress							// PSTR
+	Pointer DocumentName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_job_entryw
+Struct FAX_JOB_ENTRYW
+	UInteger SizeOfStruct
+	UInteger JobId
+	Pointer UserName										// PWSTR
+	UInteger JobType
+	UInteger QueueStatus
+	UInteger Status
+	UInteger Size
+	UInteger PageCount
+	Integer iMissingAlignment1
+	Pointer RecipientNumber									// PWSTR
+	Pointer RecipientName									// PWSTR
+	Pointer Tsid											// PWSTR
+	Pointer SenderName										// PWSTR
+	Pointer SenderCompany									// PWSTR
+	Pointer SenderDept										// PWSTR
+	Pointer BillingCode										// PWSTR
+	UInteger ScheduleAction
+	SYSTEMTIME ScheduleTime
+	UInteger DeliveryReportType
+	Pointer DeliveryReportAddress							// PWSTR
+	Pointer DocumentName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_job_parama
+Struct FAX_JOB_PARAMA
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer RecipientNumber									// PSTR
+	Pointer RecipientName									// PSTR
+	Pointer Tsid											// PSTR
+	Pointer SenderName										// PSTR
+	Pointer SenderCompany									// PSTR
+	Pointer SenderDept										// PSTR
+	Pointer BillingCode										// PSTR
+	UInteger ScheduleAction
+	SYSTEMTIME ScheduleTime
+	UInteger DeliveryReportType
+	Pointer DeliveryReportAddress							// PSTR
+	Pointer DocumentName									// PSTR
+	UInteger CallHandle
+	Integer iMissingAlignment2
+	ULongPtr[3] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_job_paramw
+Struct FAX_JOB_PARAMW
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer RecipientNumber									// PWSTR
+	Pointer RecipientName									// PWSTR
+	Pointer Tsid											// PWSTR
+	Pointer SenderName										// PWSTR
+	Pointer SenderCompany									// PWSTR
+	Pointer SenderDept										// PWSTR
+	Pointer BillingCode										// PWSTR
+	UInteger ScheduleAction
+	SYSTEMTIME ScheduleTime
+	UInteger DeliveryReportType
+	Pointer DeliveryReportAddress							// PWSTR
+	Pointer DocumentName									// PWSTR
+	UInteger CallHandle
+	Integer iMissingAlignment2
+	ULongPtr[3] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_log_categorya
+Struct FAX_LOG_CATEGORYA
+	Pointer Name											// PSTR
+	UInteger Category
+	UInteger Level
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_log_categoryw
+Struct FAX_LOG_CATEGORYW
+	Pointer Name											// PWSTR
+	UInteger Category
+	UInteger Level
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_port_infoa
+Struct FAX_PORT_INFOA
+	UInteger SizeOfStruct
+	UInteger DeviceId
+	UInteger State
+	UInteger Flags
+	UInteger Rings
+	UInteger Priority
+	Pointer DeviceName										// PSTR
+	Pointer Tsid											// PSTR
+	Pointer Csid											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_port_infow
+Struct FAX_PORT_INFOW
+	UInteger SizeOfStruct
+	UInteger DeviceId
+	UInteger State
+	UInteger Flags
+	UInteger Rings
+	UInteger Priority
+	Pointer DeviceName										// PWSTR
+	Pointer Tsid											// PWSTR
+	Pointer Csid											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_print_infoa
+Struct FAX_PRINT_INFOA
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer DocName											// PSTR
+	Pointer RecipientName									// PSTR
+	Pointer RecipientNumber									// PSTR
+	Pointer SenderName										// PSTR
+	Pointer SenderCompany									// PSTR
+	Pointer SenderDept										// PSTR
+	Pointer SenderBillingCode								// PSTR
+	Pointer Reserved										// PSTR
+	Pointer DrEmailAddress									// PSTR
+	Pointer OutputFileName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_print_infow
+Struct FAX_PRINT_INFOW
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer DocName											// PWSTR
+	Pointer RecipientName									// PWSTR
+	Pointer RecipientNumber									// PWSTR
+	Pointer SenderName										// PWSTR
+	Pointer SenderCompany									// PWSTR
+	Pointer SenderDept										// PWSTR
+	Pointer SenderBillingCode								// PWSTR
+	Pointer Reserved										// PWSTR
+	Pointer DrEmailAddress									// PWSTR
+	Pointer OutputFileName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/faxdev/ns-faxdev-fax_receive
+Struct FAX_RECEIVE
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer FileName										// PWSTR
+	Pointer ReceiverName									// PWSTR
+	Pointer ReceiverNumber									// PWSTR
+	UInteger[4] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/faxroute/ns-faxroute-fax_route
+Struct FAX_ROUTE
+	UInteger SizeOfStruct
+	UInteger JobId
+	UBigint ElapsedTime
+	UBigint ReceiveTime
+	UInteger PageCount
+	Integer iMissingAlignment1
+	Pointer Csid											// PWSTR
+	Pointer Tsid											// PWSTR
+	Pointer CallerId										// PWSTR
+	Pointer RoutingInfo										// PWSTR
+	Pointer ReceiverName									// PWSTR
+	Pointer ReceiverNumber									// PWSTR
+	Pointer DeviceName										// PWSTR
+	UInteger DeviceId
+	Integer iMissingAlignment2
+	Pointer RoutingInfoData									// UChar*
+	UInteger RoutingInfoDataSize
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/faxroute/ns-faxroute-fax_route_callbackroutines
+Struct FAX_ROUTE_CALLBACKROUTINES
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer FaxRouteAddFile									// PFAXROUTEADDFILE
+	Pointer FaxRouteDeleteFile								// PFAXROUTEDELETEFILE
+	Pointer FaxRouteGetFile									// PFAXROUTEGETFILE
+	Pointer FaxRouteEnumFiles								// PFAXROUTEENUMFILES
+	Pointer FaxRouteModifyRoutingData						// PFAXROUTEMODIFYROUTINGDATA
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_routing_methoda
+Struct FAX_ROUTING_METHODA
+	UInteger SizeOfStruct
+	UInteger DeviceId
+	Integer Enabled											// BOOL
+	Integer iMissingAlignment1
+	Pointer DeviceName										// PSTR
+	Pointer Guid											// PSTR
+	Pointer FriendlyName									// PSTR
+	Pointer FunctionName									// PSTR
+	Pointer ExtensionImageName								// PSTR
+	Pointer ExtensionFriendlyName							// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_routing_methodw
+Struct FAX_ROUTING_METHODW
+	UInteger SizeOfStruct
+	UInteger DeviceId
+	Integer Enabled											// BOOL
+	Integer iMissingAlignment1
+	Pointer DeviceName										// PWSTR
+	Pointer Guid											// PWSTR
+	Pointer FriendlyName									// PWSTR
+	Pointer FunctionName									// PWSTR
+	Pointer ExtensionImageName								// PWSTR
+	Pointer ExtensionFriendlyName							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/faxdev/ns-faxdev-fax_send
+Struct FAX_SEND
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer FileName										// PWSTR
+	Pointer CallerName										// PWSTR
+	Pointer CallerNumber									// PWSTR
+	Pointer ReceiverName									// PWSTR
+	Pointer ReceiverNumber									// PWSTR
+	Integer Branding										// BOOL
+	UInteger CallHandle
+	UInteger[3] Reserved
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winfax/ns-winfax-fax_time
+Struct FAX_TIME
+	UShort Hour
+	UShort Minute
+End_Struct
+
+Struct STINOTIFY
+	UInteger dwSize
+	Guid guidNotificationCode
+	UChar[64] abNotificationData
+End_Struct
+
+Struct STISUBSCRIBE
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwFilter
+	Integer iMissingAlignment1
+	Pointer hWndNotify										// HWND
+	Pointer hEvent											// HANDLE
+	UInteger uiNotificationMessage
+	Integer iMissingAlignment2
+End_Struct
+
+Struct STI_DEVICE_INFORMATIONW
+	UInteger dwSize
+	UInteger DeviceType
+	UShort[128] szDeviceInternalName
+	STI_DEV_CAPS DeviceCapabilitiesA
+	UInteger dwHardwareConfiguration
+	Pointer pszVendorDescription							// PWSTR
+	Pointer pszDeviceDescription							// PWSTR
+	Pointer pszPortName										// PWSTR
+	Pointer pszPropProvider									// PWSTR
+	Pointer pszLocalName									// PWSTR
+End_Struct
+
+Struct STI_DEVICE_STATUS
+	UInteger dwSize
+	UInteger StatusMask
+	UInteger dwOnlineState
+	UInteger dwHardwareStatusCode
+	UInteger dwEventHandlingState
+	UInteger dwPollingInterval
+End_Struct
+
+Struct STI_DEV_CAPS
+	UInteger dwGeneric
+End_Struct
+
+Struct STI_DIAG
+	UInteger dwSize
+	UInteger dwBasicDiagCode
+	UInteger dwVendorDiagCode
+	UInteger dwStatusMask
+	_ERROR_INFOW sErrorInfo
+End_Struct
+
+Struct STI_USD_CAPS
+	UInteger dwVersion
+	UInteger dwGenericCaps
+End_Struct
+
+Struct STI_WIA_DEVICE_INFORMATIONW
+	UInteger dwSize
+	UInteger DeviceType
+	UShort[128] szDeviceInternalName
+	STI_DEV_CAPS DeviceCapabilitiesA
+	UInteger dwHardwareConfiguration
+	Pointer pszVendorDescription							// PWSTR
+	Pointer pszDeviceDescription							// PWSTR
+	Pointer pszPortName										// PWSTR
+	Pointer pszPropProvider									// PWSTR
+	Pointer pszLocalName									// PWSTR
+	Pointer pszUiDll										// PWSTR
+	Pointer pszServer										// PWSTR
+End_Struct
+
+Struct _ERROR_INFOW
+	UInteger dwSize
+	UInteger dwGenericError
+	UInteger dwVendorError
+	UShort[255] szExtendedErrorText
+	Short iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

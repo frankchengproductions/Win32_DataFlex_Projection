@@ -1,0 +1,120 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-correlationid
+Struct CorrelationId
+	Guid connId
+	FILETIME timeStamp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-countedstring
+Struct CountedString
+	UShort length
+	UChar[6] cMissingAlignment1
+	Pointer string											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-failurecategorymapping
+Struct FailureCategoryMapping
+	Integer[5] mappingCompliance							// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-fixupinfo
+Struct FixupInfo
+	Integer state											// FixupState
+	UChar percentage
+	UChar[3] cMissingAlignment1
+	ResultCodes resultCodes
+	UInteger fixupMsgId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-ipv4address
+Struct Ipv4Address
+	UChar[4] addr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-ipv6address
+Struct Ipv6Address
+	UChar[16] addr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-isolationinfo
+Struct IsolationInfo
+	Integer isolationState									// IsolationState
+	FILETIME probEndTime
+	Integer iMissingAlignment1
+	CountedString failureUrl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-isolationinfoex
+Struct IsolationInfoEx
+	Integer isolationState									// IsolationState
+	Integer extendedIsolationState							// ExtendedIsolationState
+	FILETIME probEndTime
+	CountedString failureUrl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-napcomponentregistrationinfo
+Struct NapComponentRegistrationInfo
+	UInteger id
+	Integer iMissingAlignment1
+	CountedString friendlyName
+	CountedString description
+	CountedString version
+	CountedString vendorName
+	Guid infoClsid
+	Guid configClsid
+	FILETIME registrationDate
+	UInteger componentType
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-networksoh
+Struct NetworkSoH
+	UShort size
+	UChar[6] cMissingAlignment1
+	Pointer data											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-privatedata
+Struct PrivateData
+	UShort size
+	UChar[6] cMissingAlignment1
+	Pointer data											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-resultcodes
+Struct ResultCodes
+	UShort count
+	UChar[6] cMissingAlignment1
+	Pointer results											// HRESULT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-soh
+Struct SoH
+	UShort count
+	UChar[6] cMissingAlignment1
+	Pointer attributes										// SoHAttribute*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-sohattribute
+Struct SoHAttribute
+	UShort type
+	UShort size
+	Integer iMissingAlignment1
+	Pointer value											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/naptypes/ns-naptypes-systemhealthagentstate
+Struct SystemHealthAgentState
+	UInteger id
+	Integer iMissingAlignment1
+	ResultCodes shaResultCodes
+	Integer failureCategory									// FailureCategory
+	Integer iMissingAlignment2
+	FixupInfo fixupInfo
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

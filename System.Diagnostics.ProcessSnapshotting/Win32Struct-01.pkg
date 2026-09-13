@@ -1,0 +1,236 @@
+Use UI
+
+Struct _TypeSpecificInformation_e__Union_2191
+	// _Process_e__Struct_2192 Process // (40)
+	// _Thread_e__Struct_2193 Thread // (48)
+	// _Mutant_e__Struct_2194 Mutant // (16)
+	// _Event_e__Struct_2195 Event // (8)
+	// _Section_e__Struct_2196 Section // (24)
+	// _Semaphore_e__Struct_2197 Semaphore // (8)
+	_Thread_e__Struct_2193 Thread
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_allocator
+Struct PSS_ALLOCATOR
+	Pointer Context											// Pointer*
+	LongPtr AllocRoutine
+	LongPtr FreeRoutine
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_auxiliary_pages_information
+Struct PSS_AUXILIARY_PAGES_INFORMATION
+	UInteger AuxPagesCaptured
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_auxiliary_page_entry
+Struct PSS_AUXILIARY_PAGE_ENTRY
+	Pointer Address											// Pointer*
+	MEMORY_BASIC_INFORMATION BasicInformation
+	FILETIME CaptureTime
+	Pointer PageContents									// Pointer*
+	UInteger PageSize
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_handle_entry
+Struct PSS_HANDLE_ENTRY
+	Pointer Handle											// HANDLE
+	Integer Flags											// PSS_HANDLE_FLAGS
+	Integer ObjectType										// PSS_OBJECT_TYPE
+	FILETIME CaptureTime
+	UInteger Attributes
+	UInteger GrantedAccess
+	UInteger HandleCount
+	UInteger PointerCount
+	UInteger PagedPoolCharge
+	UInteger NonPagedPoolCharge
+	FILETIME CreationTime
+	UShort TypeNameLength
+	UChar[6] cMissingAlignment1
+	Pointer TypeName										// PWSTR
+	UShort ObjectNameLength
+	UChar[6] cMissingAlignment2
+	Pointer ObjectName										// PWSTR
+	_TypeSpecificInformation_e__Union_2191 TypeSpecificInformation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_handle_information
+Struct PSS_HANDLE_INFORMATION
+	UInteger HandlesCaptured
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_handle_trace_information
+Struct PSS_HANDLE_TRACE_INFORMATION
+	Pointer SectionHandle									// HANDLE
+	UInteger Size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_performance_counters
+Struct PSS_PERFORMANCE_COUNTERS
+	UBigint TotalCycleCount
+	UBigint TotalWallClockPeriod
+	UBigint VaCloneCycleCount
+	UBigint VaCloneWallClockPeriod
+	UBigint VaSpaceCycleCount
+	UBigint VaSpaceWallClockPeriod
+	UBigint AuxPagesCycleCount
+	UBigint AuxPagesWallClockPeriod
+	UBigint HandlesCycleCount
+	UBigint HandlesWallClockPeriod
+	UBigint ThreadsCycleCount
+	UBigint ThreadsWallClockPeriod
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_process_information
+Struct PSS_PROCESS_INFORMATION
+	UInteger ExitStatus
+	Integer iMissingAlignment1
+	Pointer PebBaseAddress									// Pointer*
+	ULongPtr AffinityMask
+	Integer BasePriority
+	UInteger ProcessId
+	UInteger ParentProcessId
+	Integer Flags											// PSS_PROCESS_FLAGS
+	FILETIME CreateTime
+	FILETIME ExitTime
+	FILETIME KernelTime
+	FILETIME UserTime
+	UInteger PriorityClass
+	Integer iMissingAlignment2
+	ULongPtr PeakVirtualSize
+	ULongPtr VirtualSize
+	UInteger PageFaultCount
+	Integer iMissingAlignment3
+	ULongPtr PeakWorkingSetSize
+	ULongPtr WorkingSetSize
+	ULongPtr QuotaPeakPagedPoolUsage
+	ULongPtr QuotaPagedPoolUsage
+	ULongPtr QuotaPeakNonPagedPoolUsage
+	ULongPtr QuotaNonPagedPoolUsage
+	ULongPtr PagefileUsage
+	ULongPtr PeakPagefileUsage
+	ULongPtr PrivateUsage
+	UInteger ExecuteFlags
+	UShort[260] ImageFileName
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_thread_entry
+Struct PSS_THREAD_ENTRY
+	UInteger ExitStatus
+	Integer iMissingAlignment1
+	Pointer TebBaseAddress									// Pointer*
+	UInteger ProcessId
+	UInteger ThreadId
+	ULongPtr AffinityMask
+	Integer Priority
+	Integer BasePriority
+	Pointer LastSyscallFirstArgument						// Pointer*
+	UShort LastSyscallNumber
+	Short iMissingAlignment2
+	FILETIME CreateTime
+	FILETIME ExitTime
+	FILETIME KernelTime
+	FILETIME UserTime
+	Integer iMissingAlignment3
+	Pointer Win32StartAddress								// Pointer*
+	FILETIME CaptureTime
+	Integer Flags											// PSS_THREAD_FLAGS
+	UShort SuspendCount
+	UShort SizeOfContextRecord
+	Pointer ContextRecord									// CONTEXT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_thread_information
+Struct PSS_THREAD_INFORMATION
+	UInteger ThreadsCaptured
+	UInteger ContextLength
+End_Struct
+
+Struct PSS_THREAD_NAME
+	UShort ThreadNameSize
+	UChar[6] cMissingAlignment1
+	Pointer ThreadName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_va_clone_information
+Struct PSS_VA_CLONE_INFORMATION
+	Pointer VaCloneHandle									// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_va_space_entry
+Struct PSS_VA_SPACE_ENTRY
+	Pointer BaseAddress										// Pointer*
+	Pointer AllocationBase									// Pointer*
+	UInteger AllocationProtect
+	Integer iMissingAlignment1
+	ULongPtr RegionSize
+	UInteger State
+	UInteger Protect
+	UInteger Type
+	UInteger TimeDateStamp
+	UInteger SizeOfImage
+	Integer iMissingAlignment2
+	Pointer ImageBase										// Pointer*
+	UInteger CheckSum
+	UShort MappedFileNameLength
+	Short iMissingAlignment3
+	Pointer MappedFileName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processsnapshot/ns-processsnapshot-pss_va_space_information
+Struct PSS_VA_SPACE_INFORMATION
+	UInteger RegionCount
+End_Struct
+
+Struct _Event_e__Struct_2195
+	Integer ManualReset										// BOOL
+	Integer Signaled										// BOOL
+End_Struct
+
+Struct _Mutant_e__Struct_2194
+	Integer CurrentCount
+	Integer Abandoned										// BOOL
+	UInteger OwnerProcessId
+	UInteger OwnerThreadId
+End_Struct
+
+Struct _Process_e__Struct_2192
+	UInteger ExitStatus
+	Integer iMissingAlignment1
+	Pointer PebBaseAddress									// Pointer*
+	ULongPtr AffinityMask
+	Integer BasePriority
+	UInteger ProcessId
+	UInteger ParentProcessId
+	UInteger Flags
+End_Struct
+
+Struct _Section_e__Struct_2196
+	Pointer BaseAddress										// Pointer*
+	UInteger AllocationAttributes
+	Integer iMissingAlignment1
+	Bigint MaximumSize
+End_Struct
+
+Struct _Semaphore_e__Struct_2197
+	Integer CurrentCount
+	Integer MaximumCount
+End_Struct
+
+Struct _Thread_e__Struct_2193
+	UInteger ExitStatus
+	Integer iMissingAlignment1
+	Pointer TebBaseAddress									// Pointer*
+	UInteger ProcessId
+	UInteger ThreadId
+	ULongPtr AffinityMask
+	Integer Priority
+	Integer BasePriority
+	Pointer Win32StartAddress								// Pointer*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

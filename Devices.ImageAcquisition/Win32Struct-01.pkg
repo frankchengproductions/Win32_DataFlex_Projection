@@ -1,0 +1,424 @@
+Use UI
+
+Struct _Current_e__Union_2767
+	// Integer lVal // (4)
+	// Float fltVal // (4)
+	// Pointer bstrVal											// BSTR // (8)
+	// Guid guidVal // (16)
+	Guid guidVal
+End_Struct
+
+Struct _Old_e__Union_2766
+	// Integer lVal // (4)
+	// Float fltVal // (4)
+	// Pointer bstrVal											// BSTR // (8)
+	// Guid guidVal // (16)
+	Guid guidVal
+End_Struct
+
+Struct _ValidVal_e__Union_2757
+	// _Range_e__Struct_2758 Range // (16)
+	// _RangeFloat_e__Struct_2759 RangeFloat // (32)
+	// _List_e__Struct_2760 List // (16)
+	// _ListFloat_e__Struct_2761 ListFloat // (24)
+	// _ListGuid_e__Struct_2762 ListGuid // (32)
+	// _ListBStr_e__Struct_2763 ListBStr // (24)
+	// _Flag_e__Struct_2764 Flag // (8)
+	// _None_e__Struct_2765 None // (4)
+	_RangeFloat_e__Struct_2759 RangeFloat
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/wia/-wia-devicedialogdata
+Struct DEVICEDIALOGDATA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer pIWiaItemRoot									// IWiaItem
+	UInteger dwFlags
+	Integer lIntent
+	Integer lItemCount
+	Integer iMissingAlignment2
+	Pointer ppWiaItems										// IWiaItem*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/wia/-wia-devicedialogdata2
+Struct DEVICEDIALOGDATA2
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pIWiaItemRoot									// IWiaItem2
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer hwndParent										// HWND
+	Pointer bstrFolderName									// BSTR
+	Pointer bstrFilename									// BSTR
+	Integer lNumFiles
+	Integer iMissingAlignment3
+	Pointer pbstrFilePaths									// BSTR*
+	Pointer pWiaItem										// IWiaItem2
+End_Struct
+
+Struct MINIDRV_TRANSFER_CONTEXT
+	Integer lSize
+	Integer lWidthInPixels
+	Integer lLines
+	Integer lDepth
+	Integer lXRes
+	Integer lYRes
+	Integer lCompression
+	Guid guidFormatID
+	Integer tymed
+	LongPtr hFile
+	Integer cbOffset
+	Integer lBufferSize
+	Integer lActiveBuffer
+	Integer lNumBuffers
+	Pointer pBaseBuffer										// UChar*
+	Pointer pTransferBuffer									// UChar*
+	Integer bTransferDataCB									// BOOL
+	Integer bClassDrvAllocBuf								// BOOL
+	LongPtr lClientAddress
+	Pointer pIWiaMiniDrvCallBack							// IWiaMiniDrvCallBack
+	Integer lImageSize
+	Integer lHeaderSize
+	Integer lItemSize
+	Integer cbWidthInBytes
+	Integer lPage
+	Integer lCurIfdOffset
+	Integer lPrevIfdOffset
+	Integer iMissingAlignment1
+End_Struct
+
+Struct RANGEVALUE
+	Integer lMin
+	Integer lMax
+	Integer lStep
+End_Struct
+
+Struct SCANINFO
+	Integer ADF
+	Integer TPA
+	Integer Endorser
+	Integer OpticalXResolution
+	Integer OpticalYResolution
+	Integer BedWidth
+	Integer BedHeight
+	RANGEVALUE IntensityRange
+	RANGEVALUE ContrastRange
+	Integer SupportedCompressionType
+	Integer SupportedDataTypes
+	Integer WidthPixels
+	Integer WidthBytes
+	Integer Lines
+	Integer DataType
+	Integer PixelBits
+	Integer Intensity
+	Integer Contrast
+	Integer Xresolution
+	Integer Yresolution
+	SCANWINDOW Window
+	Integer DitherPattern
+	Integer Negative
+	Integer Mirror
+	Integer AutoBack
+	Integer ColorDitherPattern
+	Integer ToneMap
+	Integer Compression
+	Integer RawDataFormat
+	Integer RawPixelOrder
+	Integer bNeedDataAlignment
+	Integer DelayBetweenRead
+	Integer MaxBufferSize
+	Pointer[16] DeviceIOHandles								// HANDLE
+	Integer[4] lReserved
+	Pointer pMicroDriverContext								// Pointer*
+End_Struct
+
+Struct SCANWINDOW
+	Integer xPos
+	Integer yPos
+	Integer xExtent
+	Integer yExtent
+End_Struct
+
+Struct TWAIN_CAPABILITY
+	Integer lSize
+	Integer lMSG
+	Integer lCapID
+	Integer lConType
+	Integer lRC
+	Integer lCC
+	Integer lDataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct VAL
+	Integer lVal
+	Integer iMissingAlignment1
+	Real dblVal
+	Pointer pGuid											// Guid*
+	Pointer pScanInfo										// SCANINFO*
+	Pointer handle											// HGLOBAL
+	Pointer ppButtonNames									// UShort**
+	Pointer pHandle											// HANDLE*
+	Integer lReserved
+	Char[255] szVal											// CHAR
+	UChar[5] cMissingAlignment2
+End_Struct
+
+Struct WIAS_CHANGED_VALUE_INFO
+	Integer bChanged										// BOOL
+	Integer vt
+	_Old_e__Union_2766 Old
+	_Current_e__Union_2767 Current
+End_Struct
+
+Struct WIAS_DOWN_SAMPLE_INFO
+	UInteger ulOriginalWidth
+	UInteger ulOriginalHeight
+	UInteger ulBitsPerPixel
+	UInteger ulXRes
+	UInteger ulYRes
+	UInteger ulDownSampledWidth
+	UInteger ulDownSampledHeight
+	UInteger ulActualSize
+	UInteger ulDestBufSize
+	UInteger ulSrcBufSize
+	Pointer pSrcBuffer										// UChar*
+	Pointer pDestBuffer										// UChar*
+End_Struct
+
+Struct WIAS_ENDORSER_INFO
+	UInteger ulPageCount
+	UInteger ulNumEndorserValues
+	Pointer pEndorserValues									// WIAS_ENDORSER_VALUE*
+End_Struct
+
+Struct WIAS_ENDORSER_VALUE
+	Pointer wszTokenName									// PWSTR
+	Pointer wszValue										// PWSTR
+End_Struct
+
+Struct WIA_BARCODES
+	UInteger Tag
+	UInteger Version
+	UInteger Size
+	UInteger Count
+	WIA_BARCODE_INFO[1] Barcodes
+End_Struct
+
+Struct WIA_BARCODE_INFO
+	UInteger Size
+	UInteger Type
+	UInteger Page
+	UInteger Confidence
+	UInteger XOffset
+	UInteger YOffset
+	UInteger Rotation
+	UInteger Length
+	UShort[1] Text
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_data_callback_header
+Struct WIA_DATA_CALLBACK_HEADER
+	Integer lSize
+	Guid guidFormatID
+	Integer lBufferSize
+	Integer lPageCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_data_transfer_info
+Struct WIA_DATA_TRANSFER_INFO
+	UInteger ulSize
+	UInteger ulSection
+	UInteger ulBufferSize
+	Integer bDoubleBuffer									// BOOL
+	UInteger ulReserved1
+	UInteger ulReserved2
+	UInteger ulReserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_dev_cap
+Struct WIA_DEV_CAP
+	Guid guid
+	UInteger ulFlags
+	Integer iMissingAlignment1
+	Pointer bstrName										// BSTR
+	Pointer bstrDescription									// BSTR
+	Pointer bstrIcon										// BSTR
+	Pointer bstrCommandline									// BSTR
+End_Struct
+
+Struct WIA_DEV_CAP_DRV
+	Pointer guid											// Guid*
+	UInteger ulFlags
+	Integer iMissingAlignment1
+	Pointer wszName											// PWSTR
+	Pointer wszDescription									// PWSTR
+	Pointer wszIcon											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_dither_pattern_data
+Struct WIA_DITHER_PATTERN_DATA
+	Integer lSize
+	Integer iMissingAlignment1
+	Pointer bstrPatternName									// BSTR
+	Integer lPatternWidth
+	Integer lPatternLength
+	Integer cbPattern
+	Integer iMissingAlignment2
+	Pointer pbPattern										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_extended_transfer_info
+Struct WIA_EXTENDED_TRANSFER_INFO
+	UInteger ulSize
+	UInteger ulMinBufferSize
+	UInteger ulOptimalBufferSize
+	UInteger ulMaxBufferSize
+	UInteger ulNumBuffers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_format_info
+Struct WIA_FORMAT_INFO
+	Guid guidFormatID
+	Integer lTymed
+End_Struct
+
+Struct WIA_MICR
+	UInteger Tag
+	UInteger Version
+	UInteger Size
+	UShort Placeholder
+	UShort Reserved
+	UInteger Count
+	WIA_MICR_INFO[1] Micr
+End_Struct
+
+Struct WIA_MICR_INFO
+	UInteger Size
+	UInteger Page
+	UInteger Length
+	UShort[1] Text
+	Short iMissingAlignment1
+End_Struct
+
+Struct WIA_PATCH_CODES
+	UInteger Tag
+	UInteger Version
+	UInteger Size
+	UInteger Count
+	WIA_PATCH_CODE_INFO[1] PatchCodes
+End_Struct
+
+Struct WIA_PATCH_CODE_INFO
+	UInteger Type
+End_Struct
+
+Struct WIA_PROPERTY_CONTEXT
+	UInteger cProps
+	Integer iMissingAlignment1
+	Pointer pProps											// UInteger*
+	Pointer pChanged										// BOOL*
+End_Struct
+
+Struct WIA_PROPERTY_INFO
+	UInteger lAccessFlags
+	UShort vt												// VARENUM
+	Short iMissingAlignment1
+	_ValidVal_e__Union_2757 ValidVal
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wia_xp/ns-wia_xp-wia_propid_to_name
+Struct WIA_PROPID_TO_NAME
+	UInteger propid
+	Integer iMissingAlignment1
+	Pointer pszName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/wia/-wia-wia-raw-header
+Struct WIA_RAW_HEADER
+	UInteger Tag
+	UInteger Version
+	UInteger HeaderSize
+	UInteger XRes
+	UInteger YRes
+	UInteger XExtent
+	UInteger YExtent
+	UInteger BytesPerLine
+	UInteger BitsPerPixel
+	UInteger ChannelsPerPixel
+	UInteger DataType
+	UChar[8] BitsPerChannel
+	UInteger Compression
+	UInteger PhotometricInterp
+	UInteger LineOrder
+	UInteger RawDataOffset
+	UInteger RawDataSize
+	UInteger PaletteOffset
+	UInteger PaletteSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/wia/-wia-wiatransferparams
+Struct WiaTransferParams
+	Integer lMessage
+	Integer lPercentComplete
+	UBigint ulTransferredBytes
+	Integer hrErrorStatus									// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Flag_e__Struct_2764
+	Integer Nom
+	Integer ValidBits
+End_Struct
+
+Struct _ListBStr_e__Struct_2763
+	Integer cNumList
+	Integer iMissingAlignment1
+	Pointer Nom												// BSTR
+	Pointer pList											// BSTR*
+End_Struct
+
+Struct _ListFloat_e__Struct_2761
+	Integer cNumList
+	Integer iMissingAlignment1
+	Real Nom
+	Pointer pList											// UChar*
+End_Struct
+
+Struct _ListGuid_e__Struct_2762
+	Integer cNumList
+	Guid Nom
+	Integer iMissingAlignment1
+	Pointer pList											// Guid*
+End_Struct
+
+Struct _List_e__Struct_2760
+	Integer cNumList
+	Integer Nom
+	Pointer pList											// UChar*
+End_Struct
+
+Struct _None_e__Struct_2765
+	Integer Dummy
+End_Struct
+
+Struct _RangeFloat_e__Struct_2759
+	Real Min
+	Real Nom
+	Real Max
+	Real Inc
+End_Struct
+
+Struct _Range_e__Struct_2758
+	Integer Min
+	Integer Nom
+	Integer Max
+	Integer Inc
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,341 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_logfile_header
+Struct TRACE_LOGFILE_HEADER
+	UInteger BufferSize
+	_Anonymous1_e__Union_1107 Anonymous1
+	UInteger ProviderVersion
+	UInteger NumberOfProcessors
+	Bigint EndTime
+	UInteger TimerResolution
+	UInteger MaximumFileSize
+	UInteger LogFileMode
+	UInteger BuffersWritten
+	_Anonymous2_e__Union_1109 Anonymous2
+	Pointer LoggerName										// PWSTR
+	Pointer LogFileName										// PWSTR
+	TIME_ZONE_INFORMATION TimeZone
+	Integer iMissingAlignment1
+	Bigint BootTime
+	Bigint PerfFreq
+	Bigint StartTime
+	UInteger ReservedFlags
+	UInteger BuffersLost
+End_Struct
+
+Struct TRACE_LOGFILE_HEADER32
+	UInteger BufferSize
+	_Anonymous1_e__Union_1997 Anonymous1
+	UInteger ProviderVersion
+	UInteger NumberOfProcessors
+	Bigint EndTime
+	UInteger TimerResolution
+	UInteger MaximumFileSize
+	UInteger LogFileMode
+	UInteger BuffersWritten
+	_Anonymous2_e__Union_1999 Anonymous2
+	UInteger LoggerName
+	UInteger LogFileName
+	TIME_ZONE_INFORMATION TimeZone
+	Integer iMissingAlignment1
+	Bigint BootTime
+	Bigint PerfFreq
+	Bigint StartTime
+	UInteger ReservedFlags
+	UInteger BuffersLost
+End_Struct
+
+Struct TRACE_LOGFILE_HEADER64
+	UInteger BufferSize
+	_Anonymous1_e__Union_2001 Anonymous1
+	UInteger ProviderVersion
+	UInteger NumberOfProcessors
+	Bigint EndTime
+	UInteger TimerResolution
+	UInteger MaximumFileSize
+	UInteger LogFileMode
+	UInteger BuffersWritten
+	_Anonymous2_e__Union_2003 Anonymous2
+	UBigint LoggerName
+	UBigint LogFileName
+	TIME_ZONE_INFORMATION TimeZone
+	Integer iMissingAlignment1
+	Bigint BootTime
+	Bigint PerfFreq
+	Bigint StartTime
+	UInteger ReservedFlags
+	UInteger BuffersLost
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_periodic_capture_state_info
+Struct TRACE_PERIODIC_CAPTURE_STATE_INFO
+	UInteger CaptureStateFrequencyInSeconds
+	UShort ProviderCount
+	UShort Reserved
+End_Struct
+
+Struct TRACE_PROFILE_INTERVAL
+	UInteger Source
+	UInteger Interval
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tdh/ns-tdh-trace_provider_info
+Struct TRACE_PROVIDER_INFO
+	Guid ProviderGuid
+	UInteger SchemaSource
+	UInteger ProviderNameOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_provider_instance_info
+Struct TRACE_PROVIDER_INSTANCE_INFO
+	UInteger NextOffset
+	UInteger EnableCount
+	UInteger Pid
+	UInteger Flags
+End_Struct
+
+Struct TRACE_STACK_CACHING_INFO
+	UChar Enabled											// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger CacheSize
+	UInteger BucketCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evntrace/ns-evntrace-trace_version_info
+Struct TRACE_VERSION_INFO
+	UInteger EtwTraceProcessingVersion
+	UInteger Reserved
+End_Struct
+
+Struct WMIREGGUIDW
+	Guid Guid
+	UInteger Flags
+	UInteger InstanceCount
+	_Anonymous_e__Union_1996 Anonymous
+End_Struct
+
+Struct WMIREGINFOW
+	UInteger BufferSize
+	UInteger NextWmiRegInfo
+	UInteger RegistryPath
+	UInteger MofResourceName
+	UInteger GuidCount
+	Integer iMissingAlignment1
+	WMIREGGUIDW[1] WmiRegGuid
+End_Struct
+
+Struct WNODE_ALL_DATA
+	WNODE_HEADER WnodeHeader
+	UInteger DataBlockOffset
+	UInteger InstanceCount
+	UInteger OffsetInstanceNameOffsets
+	_Anonymous_e__Union_1994 Anonymous
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WNODE_EVENT_ITEM
+	WNODE_HEADER WnodeHeader
+End_Struct
+
+Struct WNODE_EVENT_REFERENCE
+	WNODE_HEADER WnodeHeader
+	Guid TargetGuid
+	UInteger TargetDataBlockSize
+	_Anonymous_e__Union_1995 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/ETW/wnode-header
+Struct WNODE_HEADER
+	UInteger BufferSize
+	UInteger ProviderId
+	_Anonymous1_e__Union_1084 Anonymous1
+	_Anonymous2_e__Union_1086 Anonymous2
+	Guid Guid
+	UInteger ClientContext
+	UInteger Flags
+End_Struct
+
+Struct WNODE_METHOD_ITEM
+	WNODE_HEADER WnodeHeader
+	UInteger OffsetInstanceName
+	UInteger InstanceIndex
+	UInteger MethodId
+	UInteger DataBlockOffset
+	UInteger SizeDataBlock
+	UChar[1] VariableData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct WNODE_SINGLE_INSTANCE
+	WNODE_HEADER WnodeHeader
+	UInteger OffsetInstanceName
+	UInteger InstanceIndex
+	UInteger DataBlockOffset
+	UInteger SizeDataBlock
+	UChar[1] VariableData
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct WNODE_SINGLE_ITEM
+	WNODE_HEADER WnodeHeader
+	UInteger OffsetInstanceName
+	UInteger InstanceIndex
+	UInteger ItemId
+	UInteger DataBlockOffset
+	UInteger SizeDataItem
+	UChar[1] VariableData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct WNODE_TOO_SMALL
+	WNODE_HEADER WnodeHeader
+	UInteger SizeNeeded
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Anonymous1_e__Struct_1094
+	UInteger KernelTime
+	UInteger UserTime
+End_Struct
+
+Struct _Anonymous1_e__Struct_1101
+	UInteger KernelTime
+	UInteger UserTime
+End_Struct
+
+Struct _Anonymous2_e__Struct_1095
+	UInteger ClientContext
+	UInteger Flags
+End_Struct
+
+Struct _Anonymous2_e__Struct_1102
+	UInteger EventId
+	UInteger Flags
+End_Struct
+
+Struct _Anonymous_e__Struct_1085
+	UInteger Version
+	UInteger Linkage
+End_Struct
+
+Struct _Anonymous_e__Struct_1089
+	UChar HeaderType
+	UChar MarkerFlags
+End_Struct
+
+Struct _Anonymous_e__Struct_1097
+	UChar HeaderType
+	UChar MarkerFlags
+End_Struct
+
+Struct _Anonymous_e__Struct_1106
+	UChar ProcessorNumber
+	UChar Alignment
+End_Struct
+
+Struct _Anonymous_e__Struct_1110
+	UInteger StartBuffers
+	UInteger PointerSize
+	UInteger EventsLost
+	UInteger CpuSpeedInMHz
+End_Struct
+
+Struct _Anonymous_e__Struct_1115
+	UChar Type
+	UChar Reserved1
+	UShort Reserved2
+End_Struct
+
+Struct _Anonymous_e__Struct_1117
+	UInteger KernelTime
+	UInteger UserTime
+End_Struct
+
+Struct _Anonymous_e__Struct_1118
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1122
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1130
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2000
+	UInteger StartBuffers
+	UInteger PointerSize
+	UInteger EventsLost
+	UInteger CpuSpeedInMHz
+End_Struct
+
+Struct _Anonymous_e__Struct_2004
+	UInteger StartBuffers
+	UInteger PointerSize
+	UInteger EventsLost
+	UInteger CpuSpeedInMHz
+End_Struct
+
+Struct _Anonymous_e__Struct_2007
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2009
+	UInteger _bitfield
+End_Struct
+
+Struct _Class_e__Struct_1091
+	UChar Type
+	UChar Level
+	UShort Version
+End_Struct
+
+Struct _Class_e__Struct_1099
+	UChar Type
+	UChar Level
+	UShort Version
+End_Struct
+
+Struct _VersionDetail_e__Struct_1108
+	UChar MajorVersion
+	UChar MinorVersion
+	UChar SubVersion
+	UChar SubMinorVersion
+End_Struct
+
+Struct _VersionDetail_e__Struct_1998
+	UChar MajorVersion
+	UChar MinorVersion
+	UChar SubVersion
+	UChar SubMinorVersion
+End_Struct
+
+Struct _VersionDetail_e__Struct_2002
+	UChar MajorVersion
+	UChar MinorVersion
+	UChar SubVersion
+	UChar SubMinorVersion
+End_Struct
+
+Struct _customSchemaType_1126
+	UShort InType
+	UShort OutType
+	UInteger CustomSchemaOffset
+End_Struct
+
+Struct _nonStructType_1124
+	UShort InType
+	UShort OutType
+	UInteger MapNameOffset
+End_Struct
+
+Struct _structType_1125
+	UShort StructStartIndex
+	UShort NumOfStructMembers
+	UInteger padding
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

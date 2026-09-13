@@ -1,0 +1,428 @@
+Use UI
+
+Struct _Anonymous_e__Union_1001
+	// Pointer lpcStart										// Pointer* // (8)
+	// Pointer lpStart											// Pointer* // (8)
+	Pointer lpcStart
+End_Struct
+
+Struct _Anonymous_e__Union_2327
+	// Pointer OldFileNameA									// PSTR // (8)
+	// Pointer OldFileNameW									// PWSTR // (8)
+	// Pointer OldFileHandle									// HANDLE // (8)
+	Pointer OldFileNameA
+End_Struct
+
+Struct _FilterParameter_e__Union_2326
+	// Integer Dummy // (4)
+	// Integer Genre											// PM_APP_GENRE // (4)
+	// Integer AppHubType										// PM_APPLICATION_HUBTYPE // (4)
+	// Integer HubType											// PM_TILE_HUBTYPE // (4)
+	// Integer Tasktype										// PM_TASK_TYPE // (4)
+	// Guid TaskProductID // (16)
+	// Guid TileProductID // (16)
+	// PM_APPTASKTYPE AppTaskType // (20)
+	// PM_EXTENSIONCONSUMER Consumer // (24)
+	// PM_BSATASKID BSATask // (24)
+	// Guid BSAProductID // (16)
+	// PM_BWTASKID BWTask // (24)
+	// Pointer ProtocolName									// BSTR // (8)
+	// Pointer FileType										// BSTR // (8)
+	// Pointer ContentType										// BSTR // (8)
+	// Guid AppSupportedFileExtPID // (16)
+	// Pointer ShareTargetFileType								// BSTR // (8)
+	PM_EXTENSIONCONSUMER Consumer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-actctxa
+Struct ACTCTXA
+	UInteger cbSize
+	UInteger dwFlags
+	Pointer lpSource										// PSTR
+	UShort wProcessorArchitecture
+	UShort wLangId
+	Integer iMissingAlignment1
+	Pointer lpAssemblyDirectory								// PSTR
+	Pointer lpResourceName									// PSTR
+	Pointer lpApplicationName								// PSTR
+	Pointer hModule											// HMODULE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-actctxw
+Struct ACTCTXW
+	UInteger cbSize
+	UInteger dwFlags
+	Pointer lpSource										// PWSTR
+	UShort wProcessorArchitecture
+	UShort wLangId
+	Integer iMissingAlignment1
+	Pointer lpAssemblyDirectory								// PWSTR
+	Pointer lpResourceName									// PWSTR
+	Pointer lpApplicationName								// PWSTR
+	Pointer hModule											// HMODULE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-actctx_section_keyed_data
+Struct ACTCTX_SECTION_KEYED_DATA
+	UInteger cbSize
+	UInteger ulDataFormatVersion
+	Pointer lpData											// Pointer*
+	UInteger ulLength
+	Integer iMissingAlignment1
+	Pointer lpSectionGlobalData								// Pointer*
+	UInteger ulSectionGlobalDataLength
+	Integer iMissingAlignment2
+	Pointer lpSectionBase									// Pointer*
+	UInteger ulSectionTotalLength
+	Integer iMissingAlignment3
+	Pointer hActCtx											// HANDLE
+	UInteger ulAssemblyRosterIndex
+	UInteger ulFlags
+	ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA AssemblyMetadata
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-activation_context_assembly_detailed_information
+Struct ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION
+	UInteger ulFlags
+	UInteger ulEncodedAssemblyIdentityLength
+	UInteger ulManifestPathType
+	UInteger ulManifestPathLength
+	Bigint liManifestLastWriteTime
+	UInteger ulPolicyPathType
+	UInteger ulPolicyPathLength
+	Bigint liPolicyLastWriteTime
+	UInteger ulMetadataSatelliteRosterIndex
+	UInteger ulManifestVersionMajor
+	UInteger ulManifestVersionMinor
+	UInteger ulPolicyVersionMajor
+	UInteger ulPolicyVersionMinor
+	UInteger ulAssemblyDirectoryNameLength
+	Pointer lpAssemblyEncodedAssemblyIdentity				// PWSTR
+	Pointer lpAssemblyManifestPath							// PWSTR
+	Pointer lpAssemblyPolicyPath							// PWSTR
+	Pointer lpAssemblyDirectoryName							// PWSTR
+	UInteger ulFileCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-activation_context_compatibility_information
+Struct ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION
+	UInteger ElementCount
+	Integer iMissingAlignment1
+	COMPATIBILITY_CONTEXT_ELEMENT[1] Elements
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-activation_context_detailed_information
+Struct ACTIVATION_CONTEXT_DETAILED_INFORMATION
+	UInteger dwFlags
+	UInteger ulFormatVersion
+	UInteger ulAssemblyCount
+	UInteger ulRootManifestPathType
+	UInteger ulRootManifestPathChars
+	UInteger ulRootConfigurationPathType
+	UInteger ulRootConfigurationPathChars
+	UInteger ulAppDirPathType
+	UInteger ulAppDirPathChars
+	Integer iMissingAlignment1
+	Pointer lpRootManifestPath								// PWSTR
+	Pointer lpRootConfigurationPath							// PWSTR
+	Pointer lpAppDirPath									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-activation_context_query_index
+Struct ACTIVATION_CONTEXT_QUERY_INDEX
+	UInteger ulAssemblyIndex
+	UInteger ulFileIndexInAssembly
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-activation_context_run_level_information
+Struct ACTIVATION_CONTEXT_RUN_LEVEL_INFORMATION
+	UInteger ulFlags
+	Integer RunLevel										// ACTCTX_REQUESTED_RUN_LEVEL
+	UInteger UiAccess
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-assembly_file_detailed_information
+Struct ASSEMBLY_FILE_DETAILED_INFORMATION
+	UInteger ulFlags
+	UInteger ulFilenameLength
+	UInteger ulPathLength
+	Integer iMissingAlignment1
+	Pointer lpFileName										// PWSTR
+	Pointer lpFilePath										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsxs/ns-winsxs-assembly_info
+Struct ASSEMBLY_INFO
+	UInteger cbAssemblyInfo
+	UInteger dwAssemblyFlags
+	UBigint uliAssemblySizeInKB
+	Pointer pszCurrentAssemblyPathBuf						// PWSTR
+	UInteger cchBuf
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-compatibility_context_element
+Struct COMPATIBILITY_CONTEXT_ELEMENT
+	Guid Id
+	Integer Type											// ACTCTX_COMPATIBILITY_ELEMENT_TYPE
+	Integer iMissingAlignment1
+	UBigint MaxVersionTested
+End_Struct
+
+Struct DELTA_HASH
+	UInteger HashSize
+	UChar[32] HashValue
+End_Struct
+
+Struct DELTA_HEADER_INFO
+	Bigint FileTypeSet
+	Bigint FileType
+	Bigint Flags
+	ULongPtr TargetSize
+	FILETIME TargetFileTime
+	UInteger TargetHashAlgId								// ALG_ID
+	DELTA_HASH TargetHash
+End_Struct
+
+Struct DELTA_INPUT
+	_Anonymous_e__Union_1001 Anonymous
+	ULongPtr uSize
+	Integer Editable										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DELTA_OUTPUT
+	Pointer lpStart											// Pointer*
+	ULongPtr uSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsxs/ns-winsxs-fusion_install_reference
+Struct FUSION_INSTALL_REFERENCE
+	UInteger cbSize
+	UInteger dwFlags
+	Guid guidScheme
+	Pointer szIdentifier									// PWSTR
+	Pointer szNonCannonicalData								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msi/ns-msi-msifilehashinfo
+Struct MSIFILEHASHINFO
+	UInteger dwFileHashInfoSize
+	UInteger[4] dwData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msi/ns-msi-msipatchsequenceinfoa
+Struct MSIPATCHSEQUENCEINFOA
+	Pointer szPatchData										// PSTR
+	Integer ePatchDataType									// MSIPATCHDATATYPE
+	UInteger dwOrder
+	UInteger uStatus
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msi/ns-msi-msipatchsequenceinfow
+Struct MSIPATCHSEQUENCEINFOW
+	Pointer szPatchData										// PWSTR
+	Integer ePatchDataType									// MSIPATCHDATATYPE
+	UInteger dwOrder
+	UInteger uStatus
+	Integer iMissingAlignment1
+End_Struct
+
+Struct PATCH_IGNORE_RANGE
+	UInteger OffsetInOldFile
+	UInteger LengthInBytes
+End_Struct
+
+Struct PATCH_INTERLEAVE_MAP
+	UInteger CountRanges
+	_Anonymous_e__Struct_1000[1] Range
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2327 Anonymous
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO_A
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	Pointer OldFileName										// PSTR
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO_H
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	Pointer OldFileHandle									// HANDLE
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OLD_FILE_INFO_W
+	UInteger SizeOfThisStruct
+	Integer iMissingAlignment1
+	Pointer OldFileName										// PWSTR
+	UInteger IgnoreRangeCount
+	Integer iMissingAlignment2
+	Pointer IgnoreRangeArray								// PATCH_IGNORE_RANGE*
+	UInteger RetainRangeCount
+	Integer iMissingAlignment3
+	Pointer RetainRangeArray								// PATCH_RETAIN_RANGE*
+End_Struct
+
+Struct PATCH_OPTION_DATA
+	UInteger SizeOfThisStruct
+	UInteger SymbolOptionFlags
+	Pointer NewFileSymbolPath								// PSTR
+	Pointer OldFileSymbolPathArray							// PSTR*
+	UInteger ExtendedOptionFlags
+	Integer iMissingAlignment1
+	Pointer SymLoadCallback									// PPATCH_SYMLOAD_CALLBACK
+	Pointer SymLoadContext									// Pointer*
+	Pointer InterleaveMapArray								// PATCH_INTERLEAVE_MAP**
+	UInteger MaxLzxWindowSize
+	Integer iMissingAlignment2
+End_Struct
+
+Struct PATCH_RETAIN_RANGE
+	UInteger OffsetInOldFile
+	UInteger LengthInBytes
+	UInteger OffsetInNewFile
+End_Struct
+
+Struct PMSIHANDLE
+	UInteger m_h											// MSIHANDLE
+End_Struct
+
+Struct PM_APPTASKTYPE
+	Guid ProductID
+	Integer TaskType										// PM_TASK_TYPE
+End_Struct
+
+Struct PM_BSATASKID
+	Guid ProductID
+	Pointer TaskID											// BSTR
+End_Struct
+
+Struct PM_BWTASKID
+	Guid ProductID
+	Pointer TaskID											// BSTR
+End_Struct
+
+Struct PM_ENUM_FILTER
+	Integer FilterType
+	Integer iMissingAlignment1
+	_FilterParameter_e__Union_2326 FilterParameter
+End_Struct
+
+Struct PM_EXTENSIONCONSUMER
+	Guid ConsumerPID
+	Pointer ExtensionID										// BSTR
+End_Struct
+
+Struct PM_INSTALLINFO
+	Guid ProductID
+	Pointer PackagePath										// BSTR
+	Guid InstanceID
+	Pointer pbLicense										// UChar*
+	UInteger cbLicense
+	Integer IsUninstallDisabled								// BOOL
+	UInteger DeploymentOptions
+	Guid OfferID
+	Integer iMissingAlignment1
+	Pointer MarketplaceAppVersion							// BSTR
+End_Struct
+
+Struct PM_INVOCATIONINFO
+	Pointer URIBaseOrAUMID									// BSTR
+	Pointer URIFragmentOrArgs								// BSTR
+End_Struct
+
+Struct PM_STARTAPPBLOB
+	UInteger cbSize
+	Guid ProductID
+	Integer iMissingAlignment1
+	Pointer AppTitle										// BSTR
+	Pointer IconPath										// BSTR
+	Integer IsUninstallable									// BOOL
+	Integer AppInstallType									// PM_APPLICATION_INSTALL_TYPE
+	Guid InstanceID
+	Integer State											// PM_APPLICATION_STATE
+	Integer IsModern										// BOOL
+	Integer IsModernLightUp									// BOOL
+	UShort LightUpSupportMask
+	Short iMissingAlignment2
+End_Struct
+
+Struct PM_STARTTILEBLOB
+	UInteger cbSize
+	Guid ProductID
+	Integer iMissingAlignment1
+	Pointer TileID											// BSTR
+	Integer TemplateType									// TILE_TEMPLATE_TYPE
+	UInteger[32] HubPosition
+	UInteger HubVisibilityBitmask
+	Integer IsDefault										// BOOL
+	Integer TileType										// PM_STARTTILE_TYPE
+	Pointer pbPropBlob										// UChar*
+	UInteger cbPropBlob
+	Integer IsRestoring										// BOOL
+	Integer IsModern										// BOOL
+	Integer iMissingAlignment2
+	PM_INVOCATIONINFO InvocationInfo
+End_Struct
+
+Struct PM_UPDATEINFO
+	Guid ProductID
+	Pointer PackagePath										// BSTR
+	Guid InstanceID
+	Pointer pbLicense										// UChar*
+	UInteger cbLicense
+	Integer iMissingAlignment1
+	Pointer MarketplaceAppVersion							// BSTR
+	UInteger DeploymentOptions
+	Integer iMissingAlignment2
+End_Struct
+
+Struct PM_UPDATEINFO_LEGACY
+	Guid ProductID
+	Pointer PackagePath										// BSTR
+	Guid InstanceID
+	Pointer pbLicense										// UChar*
+	UInteger cbLicense
+	Integer iMissingAlignment1
+	Pointer MarketplaceAppVersion							// BSTR
+End_Struct
+
+Struct PROTECTED_FILE_DATA
+	UShort[260] FileName
+	UInteger FileNumber
+End_Struct
+
+Struct _Anonymous_e__Struct_1000
+	UInteger OldOffset
+	UInteger OldLength
+	UInteger NewLength
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

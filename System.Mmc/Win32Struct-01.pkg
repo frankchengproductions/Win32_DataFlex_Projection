@@ -1,0 +1,290 @@
+Use UI
+
+Struct _Anonymous_e__Union_2126
+	// MMC_TASK_DISPLAY_BITMAP uBitmap // (16)
+	// MMC_TASK_DISPLAY_SYMBOL uSymbol // (24)
+	MMC_TASK_DISPLAY_SYMBOL uSymbol
+End_Struct
+
+Struct _Anonymous_e__Union_2127
+	// LongPtr nCommandID // (8)
+	// Pointer szActionURL										// PWSTR // (8)
+	// Pointer szScript										// PWSTR // (8)
+	LongPtr nCommandID
+End_Struct
+
+Struct _Anonymous_e__Union_2128
+	// UInteger dwListOptions // (4)
+	// _Anonymous1_e__Struct_2129 Anonymous1 // (16)
+	// _Anonymous2_e__Struct_2130 Anonymous2 // (16)
+	_Anonymous1_e__Struct_2129 Anonymous1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-contextmenuitem
+Struct CONTEXTMENUITEM
+	Pointer strName											// PWSTR
+	Pointer strStatusBarText								// PWSTR
+	Integer lCommandID
+	Integer lInsertionPointID
+	Integer fFlags
+	Integer fSpecialFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-contextmenuitem2
+Struct CONTEXTMENUITEM2
+	Pointer strName											// PWSTR
+	Pointer strStatusBarText								// PWSTR
+	Integer lCommandID
+	Integer lInsertionPointID
+	Integer fFlags
+	Integer fSpecialFlags
+	Pointer strLanguageIndependentName						// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-menubuttondata
+Struct MENUBUTTONDATA
+	Integer idCommand
+	Integer x
+	Integer y
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmcbutton
+Struct MMCBUTTON
+	Integer nBitmap
+	Integer idCommand
+	UChar fsState
+	UChar fsType
+	UChar[6] cMissingAlignment1
+	Pointer lpButtonText									// PWSTR
+	Pointer lpTooltipText									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_column_data
+Struct MMC_COLUMN_DATA
+	Integer nColIndex
+	UInteger dwFlags
+	Integer nWidth
+	Integer iMissingAlignment1
+	ULongPtr ulReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_column_set_data
+Struct MMC_COLUMN_SET_DATA
+	Integer cbSize
+	Integer nNumCols
+	Pointer pColData										// MMC_COLUMN_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_expandsync_struct
+Struct MMC_EXPANDSYNC_STRUCT
+	Integer bHandled										// BOOL
+	Integer bExpanding										// BOOL
+	LongPtr hItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_ext_view_data
+Struct MMC_EXT_VIEW_DATA
+	Guid viewID
+	Pointer pszURL											// PWSTR
+	Pointer pszViewTitle									// PWSTR
+	Pointer pszTooltipText									// PWSTR
+	Integer bReplacesDefaultView							// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_filterdata
+Struct MMC_FILTERDATA
+	Pointer pszText											// PWSTR
+	Integer cchTextMax
+	Integer lValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_listpad_info
+Struct MMC_LISTPAD_INFO
+	Pointer szTitle											// PWSTR
+	Pointer szButtonText									// PWSTR
+	LongPtr nCommandID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_restore_view
+Struct MMC_RESTORE_VIEW
+	UInteger dwSize
+	Integer iMissingAlignment1
+	LongPtr cookie
+	Pointer pViewType										// PWSTR
+	Integer lViewOptions
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmcobj/ns-mmcobj-mmc_snapin_property
+Struct MMC_SNAPIN_PROPERTY
+	Pointer pszPropName										// PWSTR
+	VARIANT varValue
+	Integer eAction											// MMC_PROPERTY_ACTION
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_sort_data
+Struct MMC_SORT_DATA
+	Integer nColIndex
+	UInteger dwSortOptions
+	ULongPtr ulReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_sort_set_data
+Struct MMC_SORT_SET_DATA
+	Integer cbSize
+	Integer nNumItems
+	Pointer pSortData										// MMC_SORT_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_task
+Struct MMC_TASK
+	MMC_TASK_DISPLAY_OBJECT sDisplayObject
+	Pointer szText											// PWSTR
+	Pointer szHelpString									// PWSTR
+	Integer eActionType										// MMC_ACTION_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2127 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_task_display_bitmap
+Struct MMC_TASK_DISPLAY_BITMAP
+	Pointer szMouseOverBitmap								// PWSTR
+	Pointer szMouseOffBitmap								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_task_display_object
+Struct MMC_TASK_DISPLAY_OBJECT
+	Integer eDisplayType									// MMC_TASK_DISPLAY_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2126 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_task_display_symbol
+Struct MMC_TASK_DISPLAY_SYMBOL
+	Pointer szFontFamilyName								// PWSTR
+	Pointer szURLtoEOT										// PWSTR
+	Pointer szSymbolString									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-mmc_visible_columns
+Struct MMC_VISIBLE_COLUMNS
+	Integer nVisibleColumns
+	Integer[1] rgVisibleCols
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-rdcompare
+Struct RDCOMPARE
+	UInteger cbSize
+	UInteger dwFlags
+	Integer nColumn
+	Integer iMissingAlignment1
+	LongPtr lUserParam										// LPARAM
+	Pointer prdch1											// RDITEMHDR*
+	Pointer prdch2											// RDITEMHDR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-rditemhdr
+Struct RDITEMHDR
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	LongPtr cookie
+	LongPtr lpReserved										// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-resultdataitem
+Struct RESULTDATAITEM
+	UInteger mask
+	Integer bScopeItem										// BOOL
+	LongPtr itemID
+	Integer nIndex
+	Integer nCol
+	Pointer str												// PWSTR
+	Integer nImage
+	UInteger nState
+	LongPtr lParam											// LPARAM
+	Integer iIndent
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-resultfindinfo
+Struct RESULTFINDINFO
+	Pointer psz												// PWSTR
+	Integer nStart
+	UInteger dwOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-result_view_type_info
+Struct RESULT_VIEW_TYPE_INFO
+	Pointer pstrPersistableViewDescription					// PWSTR
+	Integer eViewType										// MMC_VIEW_TYPE
+	UInteger dwMiscOptions
+	_Anonymous_e__Union_2128 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-scopedataitem
+Struct SCOPEDATAITEM
+	UInteger mask
+	Integer iMissingAlignment1
+	Pointer displayname										// PWSTR
+	Integer nImage
+	Integer nOpenImage
+	UInteger nState
+	Integer cChildren
+	LongPtr lParam											// LPARAM
+	LongPtr relativeID
+	LongPtr ID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-scolumnsetid
+Struct SColumnSetID
+	UInteger dwFlags
+	UInteger cBytes
+	UChar[1] id
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-smmcdataobjects
+Struct SMMCDataObjects
+	UInteger count
+	Integer iMissingAlignment1
+	Pointer[1] lpDataObject									// IDataObject
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-smmcobjecttypes
+Struct SMMCObjectTypes
+	UInteger count
+	Guid[1] guid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-snodeid
+Struct SNodeID
+	UInteger cBytes
+	UChar[1] id
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmc/ns-mmc-snodeid2
+Struct SNodeID2
+	UInteger dwFlags
+	UInteger cBytes
+	UChar[1] id
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct _Anonymous1_e__Struct_2129
+	UInteger dwHTMLOptions
+	Integer iMissingAlignment1
+	Pointer pstrURL											// PWSTR
+End_Struct
+
+Struct _Anonymous2_e__Struct_2130
+	UInteger dwOCXOptions
+	Integer iMissingAlignment1
+	Pointer pUnkControl										// IUnknown
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

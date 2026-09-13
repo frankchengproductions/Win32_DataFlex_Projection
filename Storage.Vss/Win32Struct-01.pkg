@@ -1,0 +1,125 @@
+Use UI
+
+Struct _Anonymous_e__Union_2754
+	// VSS_SNAPSHOT_PROP Snap // (128)
+	// VSS_PROVIDER_PROP Prov // (72)
+	VSS_SNAPSHOT_PROP Snap
+End_Struct
+
+Struct _Anonymous_e__Union_2755
+	// VSS_VOLUME_PROP Vol // (16)
+	// VSS_DIFF_VOLUME_PROP DiffVol // (32)
+	// VSS_DIFF_AREA_PROP DiffArea // (40)
+	VSS_DIFF_AREA_PROP DiffArea
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vsbackup/ns-vsbackup-vss_componentinfo
+Struct VSS_COMPONENTINFO
+	Integer type											// VSS_COMPONENT_TYPE
+	Integer iMissingAlignment1
+	Pointer bstrLogicalPath									// BSTR
+	Pointer bstrComponentName								// BSTR
+	Pointer bstrCaption										// BSTR
+	Pointer pbIcon											// UChar*
+	UInteger cbIcon
+	UChar bRestoreMetadata
+	UChar bNotifyOnBackupComplete
+	UChar bSelectable
+	UChar bSelectableForRestore
+	UInteger dwComponentFlags
+	UInteger cFileCount
+	UInteger cDatabases
+	UInteger cLogFiles
+	UInteger cDependencies
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vsmgmt/ns-vsmgmt-vss_diff_area_prop
+Struct VSS_DIFF_AREA_PROP
+	Pointer m_pwszVolumeName								// UShort*
+	Pointer m_pwszDiffAreaVolumeName						// UShort*
+	Bigint m_llMaximumDiffSpace
+	Bigint m_llAllocatedDiffSpace
+	Bigint m_llUsedDiffSpace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vsmgmt/ns-vsmgmt-vss_diff_volume_prop
+Struct VSS_DIFF_VOLUME_PROP
+	Pointer m_pwszVolumeName								// UShort*
+	Pointer m_pwszVolumeDisplayName							// UShort*
+	Bigint m_llVolumeFreeSpace
+	Bigint m_llVolumeTotalSpace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vsmgmt/ns-vsmgmt-vss_mgmt_object_prop
+Struct VSS_MGMT_OBJECT_PROP
+	Integer Type											// VSS_MGMT_OBJECT_TYPE
+	Integer iMissingAlignment1
+	VSS_MGMT_OBJECT_UNION Obj
+End_Struct
+
+Struct VSS_MGMT_OBJECT_UNION
+	_Anonymous_e__Union_2755 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vss/ns-vss-vss_object_prop
+Struct VSS_OBJECT_PROP
+	Integer Type											// VSS_OBJECT_TYPE
+	Integer iMissingAlignment1
+	VSS_OBJECT_UNION Obj
+End_Struct
+
+Struct VSS_OBJECT_UNION
+	_Anonymous_e__Union_2754 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vss/ns-vss-vss_provider_prop
+Struct VSS_PROVIDER_PROP
+	Guid m_ProviderId
+	Pointer m_pwszProviderName								// UShort*
+	Integer m_eProviderType									// VSS_PROVIDER_TYPE
+	Integer iMissingAlignment1
+	Pointer m_pwszProviderVersion							// UShort*
+	Guid m_ProviderVersionId
+	Guid m_ClassId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vss/ns-vss-vss_snapshot_prop
+Struct VSS_SNAPSHOT_PROP
+	Guid m_SnapshotId
+	Guid m_SnapshotSetId
+	Integer m_lSnapshotsCount
+	Integer iMissingAlignment1
+	Pointer m_pwszSnapshotDeviceObject						// UShort*
+	Pointer m_pwszOriginalVolumeName						// UShort*
+	Pointer m_pwszOriginatingMachine						// UShort*
+	Pointer m_pwszServiceMachine							// UShort*
+	Pointer m_pwszExposedName								// UShort*
+	Pointer m_pwszExposedPath								// UShort*
+	Guid m_ProviderId
+	Integer m_lSnapshotAttributes
+	Integer iMissingAlignment2
+	Bigint m_tsCreationTimestamp
+	Integer m_eStatus										// VSS_SNAPSHOT_STATE
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vsmgmt/ns-vsmgmt-vss_volume_prop
+Struct VSS_VOLUME_PROP
+	Pointer m_pwszVolumeName								// UShort*
+	Pointer m_pwszVolumeDisplayName							// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vsmgmt/ns-vsmgmt-vss_volume_protection_info
+Struct VSS_VOLUME_PROTECTION_INFO
+	Integer m_protectionLevel								// VSS_PROTECTION_LEVEL
+	Integer m_volumeIsOfflineForProtection					// BOOL
+	Integer m_protectionFault								// VSS_PROTECTION_FAULT
+	Integer m_failureStatus
+	Integer m_volumeHasUnusedDiffArea						// BOOL
+	UInteger m_reserved
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,53 @@
+Use UI
+
+Struct _Anonymous_e__Union_2182
+	// UInteger dwValue // (4)
+	// Pointer lpValue											// UChar* // (8)
+	Pointer lpValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authif/ns-authif-radius_attribute
+Struct RADIUS_ATTRIBUTE
+	UInteger dwAttrType
+	Integer fDataType										// RADIUS_DATA_TYPE
+	UInteger cbDataLength
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2182 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authif/ns-authif-radius_attribute_array
+Struct RADIUS_ATTRIBUTE_ARRAY
+	UInteger cbSize
+	Integer iMissingAlignment1
+	LongPtr Add
+	LongPtr AttributeAt
+	LongPtr GetSize
+	LongPtr InsertAt
+	LongPtr RemoveAt
+	LongPtr SetAt
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authif/ns-authif-radius_extension_control_block
+Struct RADIUS_EXTENSION_CONTROL_BLOCK
+	UInteger cbSize
+	UInteger dwVersion
+	Integer repPoint										// RADIUS_EXTENSION_POINT
+	Integer rcRequestType									// RADIUS_CODE
+	Integer rcResponseType									// RADIUS_CODE
+	Integer iMissingAlignment1
+	LongPtr GetRequest
+	LongPtr GetResponse
+	LongPtr SetResponseType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/authif/ns-authif-radius_vsa_format
+Struct RADIUS_VSA_FORMAT
+	UChar[4] VendorId
+	UChar VendorType
+	UChar VendorLength
+	UChar[1] AttributeSpecific
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,822 @@
+Use UI
+
+// Define INSTALLUILEVEL For Integer
+Enum_List
+	Define INSTALLUILEVEL_NOCHANGE							For |CI$00000000
+	Define INSTALLUILEVEL_DEFAULT							For |CI$00000001
+	Define INSTALLUILEVEL_NONE								For |CI$00000002
+	Define INSTALLUILEVEL_BASIC								For |CI$00000003
+	Define INSTALLUILEVEL_REDUCED							For |CI$00000004
+	Define INSTALLUILEVEL_FULL								For |CI$00000005
+	Define INSTALLUILEVEL_HIDECANCEL						For |CI$00000020
+	Define INSTALLUILEVEL_PROGRESSONLY						For |CI$00000040
+	Define INSTALLUILEVEL_ENDDIALOG							For |CI$00000080
+	Define INSTALLUILEVEL_SOURCERESONLY						For |CI$00000100
+	Define INSTALLUILEVEL_UACONLY							For |CI$00000200
+End_Enum_List
+
+// Define INSTALLSTATE For Integer
+Enum_List
+	Define INSTALLSTATE_NOTUSED								For -7
+	Define INSTALLSTATE_BADCONFIG							For -6
+	Define INSTALLSTATE_INCOMPLETE							For -5
+	Define INSTALLSTATE_SOURCEABSENT						For -4
+	Define INSTALLSTATE_MOREDATA							For -3
+	Define INSTALLSTATE_INVALIDARG							For -2
+	Define INSTALLSTATE_UNKNOWN								For -1
+	Define INSTALLSTATE_BROKEN								For |CI$00000000
+	Define INSTALLSTATE_ADVERTISED							For |CI$00000001
+	Define INSTALLSTATE_REMOVED								For |CI$00000001
+	Define INSTALLSTATE_ABSENT								For |CI$00000002
+	Define INSTALLSTATE_LOCAL								For |CI$00000003
+	Define INSTALLSTATE_SOURCE								For |CI$00000004
+	Define INSTALLSTATE_DEFAULT								For |CI$00000005
+End_Enum_List
+
+// Define MSIINSTALLCONTEXT For Integer
+Enum_List
+	Define MSIINSTALLCONTEXT_FIRSTVISIBLE					For |CI$00000000
+	Define MSIINSTALLCONTEXT_NONE							For |CI$00000000
+	Define MSIINSTALLCONTEXT_USERMANAGED					For |CI$00000001
+	Define MSIINSTALLCONTEXT_USERUNMANAGED					For |CI$00000002
+	Define MSIINSTALLCONTEXT_MACHINE						For |CI$00000004
+	Define MSIINSTALLCONTEXT_ALL							For |CI$00000007
+	Define MSIINSTALLCONTEXT_ALLUSERMANAGED					For |CI$00000008
+End_Enum_List
+
+// Define INSTALLLEVEL For Integer
+Enum_List
+	Define INSTALLLEVEL_DEFAULT								For |CI$00000000
+	Define INSTALLLEVEL_MINIMUM								For |CI$00000001
+	Define INSTALLLEVEL_MAXIMUM								For |CI$0000FFFF
+End_Enum_List
+
+// Define USERINFOSTATE For Integer
+Enum_List
+	Define USERINFOSTATE_MOREDATA							For -3
+	Define USERINFOSTATE_INVALIDARG							For -2
+	Define USERINFOSTATE_UNKNOWN							For -1
+	Define USERINFOSTATE_ABSENT								For |CI$00000000
+	Define USERINFOSTATE_PRESENT							For |CI$00000001
+End_Enum_List
+
+// Define INSTALLTYPE For Integer
+Enum_List
+	Define INSTALLTYPE_DEFAULT								For |CI$00000000
+	Define INSTALLTYPE_NETWORK_IMAGE						For |CI$00000001
+	Define INSTALLTYPE_SINGLE_INSTANCE						For |CI$00000002
+End_Enum_List
+
+// Define MSIPATCHDATATYPE For Integer
+Enum_List
+	Define MSIPATCH_DATATYPE_PATCHFILE						For |CI$00000000
+	Define MSIPATCH_DATATYPE_XMLPATH						For |CI$00000001
+	Define MSIPATCH_DATATYPE_XMLBLOB						For |CI$00000002
+End_Enum_List
+
+// Define MSIASSEMBLYINFO For UInteger
+Enum_List
+	Define MSIASSEMBLYINFO_NETASSEMBLY						For |CI$00000000
+	Define MSIASSEMBLYINFO_WIN32ASSEMBLY					For |CI$00000001
+End_Enum_List
+
+// Define MSITRANSACTIONSTATE For UInteger
+Enum_List
+	Define MSITRANSACTIONSTATE_ROLLBACK						For |CI$00000000
+	Define MSITRANSACTIONSTATE_COMMIT						For |CI$00000001
+End_Enum_List
+
+// Define MSIDBERROR For Integer
+Enum_List
+	Define MSIDBERROR_INVALIDARG							For -3
+	Define MSIDBERROR_MOREDATA								For -2
+	Define MSIDBERROR_FUNCTIONERROR							For -1
+	Define MSIDBERROR_NOERROR								For |CI$00000000
+	Define MSIDBERROR_DUPLICATEKEY							For |CI$00000001
+	Define MSIDBERROR_REQUIRED								For |CI$00000002
+	Define MSIDBERROR_BADLINK								For |CI$00000003
+	Define MSIDBERROR_OVERFLOW								For |CI$00000004
+	Define MSIDBERROR_UNDERFLOW								For |CI$00000005
+	Define MSIDBERROR_NOTINSET								For |CI$00000006
+	Define MSIDBERROR_BADVERSION							For |CI$00000007
+	Define MSIDBERROR_BADCASE								For |CI$00000008
+	Define MSIDBERROR_BADGUID								For |CI$00000009
+	Define MSIDBERROR_BADWILDCARD							For |CI$0000000A
+	Define MSIDBERROR_BADIDENTIFIER							For |CI$0000000B
+	Define MSIDBERROR_BADLANGUAGE							For |CI$0000000C
+	Define MSIDBERROR_BADFILENAME							For |CI$0000000D
+	Define MSIDBERROR_BADPATH								For |CI$0000000E
+	Define MSIDBERROR_BADCONDITION							For |CI$0000000F
+	Define MSIDBERROR_BADFORMATTED							For |CI$00000010
+	Define MSIDBERROR_BADTEMPLATE							For |CI$00000011
+	Define MSIDBERROR_BADDEFAULTDIR							For |CI$00000012
+	Define MSIDBERROR_BADREGPATH							For |CI$00000013
+	Define MSIDBERROR_BADCUSTOMSOURCE						For |CI$00000014
+	Define MSIDBERROR_BADPROPERTY							For |CI$00000015
+	Define MSIDBERROR_MISSINGDATA							For |CI$00000016
+	Define MSIDBERROR_BADCATEGORY							For |CI$00000017
+	Define MSIDBERROR_BADKEYTABLE							For |CI$00000018
+	Define MSIDBERROR_BADMAXMINVALUES						For |CI$00000019
+	Define MSIDBERROR_BADCABINET							For |CI$0000001A
+	Define MSIDBERROR_BADSHORTCUT							For |CI$0000001B
+	Define MSIDBERROR_STRINGOVERFLOW						For |CI$0000001C
+	Define MSIDBERROR_BADLOCALIZEATTRIB						For |CI$0000001D
+End_Enum_List
+
+// Define MSIMODIFY For Integer
+Enum_List
+	Define MSIMODIFY_SEEK									For -1
+	Define MSIMODIFY_REFRESH								For |CI$00000000
+	Define MSIMODIFY_INSERT									For |CI$00000001
+	Define MSIMODIFY_UPDATE									For |CI$00000002
+	Define MSIMODIFY_ASSIGN									For |CI$00000003
+	Define MSIMODIFY_REPLACE								For |CI$00000004
+	Define MSIMODIFY_MERGE									For |CI$00000005
+	Define MSIMODIFY_DELETE									For |CI$00000006
+	Define MSIMODIFY_INSERT_TEMPORARY						For |CI$00000007
+	Define MSIMODIFY_VALIDATE								For |CI$00000008
+	Define MSIMODIFY_VALIDATE_NEW							For |CI$00000009
+	Define MSIMODIFY_VALIDATE_FIELD							For |CI$0000000A
+	Define MSIMODIFY_VALIDATE_DELETE						For |CI$0000000B
+End_Enum_List
+
+// Define MSICOLINFO For Integer
+Enum_List
+	Define MSICOLINFO_NAMES									For |CI$00000000
+	Define MSICOLINFO_TYPES									For |CI$00000001
+End_Enum_List
+
+// Define MSICONDITION For Integer
+Enum_List
+	Define MSICONDITION_FALSE								For |CI$00000000
+	Define MSICONDITION_TRUE								For |CI$00000001
+	Define MSICONDITION_NONE								For |CI$00000002
+	Define MSICONDITION_ERROR								For |CI$00000003
+End_Enum_List
+
+// Define MSITRANSFORM_ERROR For Integer
+Enum_List
+	Define MSITRANSFORM_ERROR_NONE							For |CI$00000000
+	Define MSITRANSFORM_ERROR_ADDEXISTINGROW				For |CI$00000001
+	Define MSITRANSFORM_ERROR_DELMISSINGROW					For |CI$00000002
+	Define MSITRANSFORM_ERROR_ADDEXISTINGTABLE				For |CI$00000004
+	Define MSITRANSFORM_ERROR_DELMISSINGTABLE				For |CI$00000008
+	Define MSITRANSFORM_ERROR_UPDATEMISSINGROW				For |CI$00000010
+	Define MSITRANSFORM_ERROR_CHANGECODEPAGE				For |CI$00000020
+	Define MSITRANSFORM_ERROR_VIEWTRANSFORM					For |CI$00000100
+End_Enum_List
+
+// Define MSITRANSFORM_VALIDATE For Integer
+Enum_List
+	Define MSITRANSFORM_VALIDATE_LANGUAGE					For |CI$00000001
+	Define MSITRANSFORM_VALIDATE_PRODUCT					For |CI$00000002
+	Define MSITRANSFORM_VALIDATE_PLATFORM					For |CI$00000004
+	Define MSITRANSFORM_VALIDATE_MAJORVERSION				For |CI$00000008
+	Define MSITRANSFORM_VALIDATE_MINORVERSION				For |CI$00000010
+	Define MSITRANSFORM_VALIDATE_UPDATEVERSION				For |CI$00000020
+	Define MSITRANSFORM_VALIDATE_NEWLESSBASEVERSION			For |CI$00000040
+	Define MSITRANSFORM_VALIDATE_NEWLESSEQUALBASEVERSION	For |CI$00000080
+	Define MSITRANSFORM_VALIDATE_NEWEQUALBASEVERSION		For |CI$00000100
+	Define MSITRANSFORM_VALIDATE_NEWGREATEREQUALBASEVERSION	For |CI$00000200
+	Define MSITRANSFORM_VALIDATE_NEWGREATERBASEVERSION		For |CI$00000400
+	Define MSITRANSFORM_VALIDATE_UPGRADECODE				For |CI$00000800
+End_Enum_List
+
+// Define MSIDBSTATE For Integer
+Enum_List
+	Define MSIDBSTATE_ERROR									For -1
+	Define MSIDBSTATE_READ									For |CI$00000000
+	Define MSIDBSTATE_WRITE									For |CI$00000001
+End_Enum_List
+
+// Define MSIRUNMODE For Integer
+Enum_List
+	Define MSIRUNMODE_ADMIN									For |CI$00000000
+	Define MSIRUNMODE_ADVERTISE								For |CI$00000001
+	Define MSIRUNMODE_MAINTENANCE							For |CI$00000002
+	Define MSIRUNMODE_ROLLBACKENABLED						For |CI$00000003
+	Define MSIRUNMODE_LOGENABLED							For |CI$00000004
+	Define MSIRUNMODE_OPERATIONS							For |CI$00000005
+	Define MSIRUNMODE_REBOOTATEND							For |CI$00000006
+	Define MSIRUNMODE_REBOOTNOW								For |CI$00000007
+	Define MSIRUNMODE_CABINET								For |CI$00000008
+	Define MSIRUNMODE_SOURCESHORTNAMES						For |CI$00000009
+	Define MSIRUNMODE_TARGETSHORTNAMES						For |CI$0000000A
+	Define MSIRUNMODE_RESERVED11							For |CI$0000000B
+	Define MSIRUNMODE_WINDOWS9X								For |CI$0000000C
+	Define MSIRUNMODE_ZAWENABLED							For |CI$0000000D
+	Define MSIRUNMODE_RESERVED14							For |CI$0000000E
+	Define MSIRUNMODE_RESERVED15							For |CI$0000000F
+	Define MSIRUNMODE_SCHEDULED								For |CI$00000010
+	Define MSIRUNMODE_ROLLBACK								For |CI$00000011
+	Define MSIRUNMODE_COMMIT								For |CI$00000012
+End_Enum_List
+
+// Define INSTALLMESSAGE For Integer
+Enum_List
+	Define INSTALLMESSAGE_FATALEXIT							For |CI$00000000
+	Define INSTALLMESSAGE_ERROR								For |CI$01000000
+	Define INSTALLMESSAGE_WARNING							For |CI$02000000
+	Define INSTALLMESSAGE_USER								For |CI$03000000
+	Define INSTALLMESSAGE_INFO								For |CI$04000000
+	Define INSTALLMESSAGE_FILESINUSE						For |CI$05000000
+	Define INSTALLMESSAGE_RESOLVESOURCE						For |CI$06000000
+	Define INSTALLMESSAGE_OUTOFDISKSPACE					For |CI$07000000
+	Define INSTALLMESSAGE_ACTIONSTART						For |CI$08000000
+	Define INSTALLMESSAGE_ACTIONDATA						For |CI$09000000
+	Define INSTALLMESSAGE_PROGRESS							For |CI$0A000000
+	Define INSTALLMESSAGE_COMMONDATA						For |CI$0B000000
+	Define INSTALLMESSAGE_INITIALIZE						For |CI$0C000000
+	Define INSTALLMESSAGE_TERMINATE							For |CI$0D000000
+	Define INSTALLMESSAGE_SHOWDIALOG						For |CI$0E000000
+	Define INSTALLMESSAGE_PERFORMANCE						For |CI$0F000000
+	Define INSTALLMESSAGE_RMFILESINUSE						For |CI$19000000
+	Define INSTALLMESSAGE_INSTALLSTART						For |CI$1A000000
+	Define INSTALLMESSAGE_INSTALLEND						For |CI$1B000000
+End_Enum_List
+
+// Define MSICOSTTREE For Integer
+Enum_List
+	Define MSICOSTTREE_SELFONLY								For |CI$00000000
+	Define MSICOSTTREE_CHILDREN								For |CI$00000001
+	Define MSICOSTTREE_PARENTS								For |CI$00000002
+	Define MSICOSTTREE_RESERVED								For |CI$00000003
+End_Enum_List
+
+// Define IASSEMBLYCACHE_UNINSTALL_DISPOSITION For UInteger
+Enum_List
+	Define IASSEMBLYCACHE_UNINSTALL_DISPOSITION_UNINSTALLED	For |CI$00000001
+	Define IASSEMBLYCACHE_UNINSTALL_DISPOSITION_STILL_IN_USE	For |CI$00000002
+	Define IASSEMBLYCACHE_UNINSTALL_DISPOSITION_ALREADY_UNINSTALLED	For |CI$00000003
+	Define IASSEMBLYCACHE_UNINSTALL_DISPOSITION_DELETE_PENDING	For |CI$00000004
+End_Enum_List
+
+// Define QUERYASMINFO_FLAGS For UInteger
+Enum_List
+	Define QUERYASMINFO_FLAG_VALIDATE						For |CI$00000001
+End_Enum_List
+
+// Define RESULTTYPES For Integer
+Enum_List
+	Define ieUnknown										For |CI$00000000
+	Define ieError											For |CI$00000001
+	Define ieWarning										For |CI$00000002
+	Define ieInfo											For |CI$00000003
+End_Enum_List
+
+// Define STATUSTYPES For Integer
+Enum_List
+	Define ieStatusGetCUB									For |CI$00000000
+	Define ieStatusICECount									For |CI$00000001
+	Define ieStatusMerge									For |CI$00000002
+	Define ieStatusSummaryInfo								For |CI$00000003
+	Define ieStatusCreateEngine								For |CI$00000004
+	Define ieStatusStarting									For |CI$00000005
+	Define ieStatusRunICE									For |CI$00000006
+	Define ieStatusShutdown									For |CI$00000007
+	Define ieStatusSuccess									For |CI$00000008
+	Define ieStatusFail										For |CI$00000009
+	Define ieStatusCancel									For |CI$0000000A
+End_Enum_List
+
+// Define msmErrorType For Integer
+Enum_List
+	Define msmErrorLanguageUnsupported						For |CI$00000001
+	Define msmErrorLanguageFailed							For |CI$00000002
+	Define msmErrorExclusion								For |CI$00000003
+	Define msmErrorTableMerge								For |CI$00000004
+	Define msmErrorResequenceMerge							For |CI$00000005
+	Define msmErrorFileCreate								For |CI$00000006
+	Define msmErrorDirCreate								For |CI$00000007
+	Define msmErrorFeatureRequired							For |CI$00000008
+End_Enum_List
+
+// Define REINSTALLMODE For Integer
+Enum_List
+	Define REINSTALLMODE_REPAIR								For |CI$00000001
+	Define REINSTALLMODE_FILEMISSING						For |CI$00000002
+	Define REINSTALLMODE_FILEOLDERVERSION					For |CI$00000004
+	Define REINSTALLMODE_FILEEQUALVERSION					For |CI$00000008
+	Define REINSTALLMODE_FILEEXACT							For |CI$00000010
+	Define REINSTALLMODE_FILEVERIFY							For |CI$00000020
+	Define REINSTALLMODE_FILEREPLACE						For |CI$00000040
+	Define REINSTALLMODE_MACHINEDATA						For |CI$00000080
+	Define REINSTALLMODE_USERDATA							For |CI$00000100
+	Define REINSTALLMODE_SHORTCUT							For |CI$00000200
+	Define REINSTALLMODE_PACKAGE							For |CI$00000400
+End_Enum_List
+
+// Define INSTALLLOGMODE For Integer
+Enum_List
+	Define INSTALLLOGMODE_FATALEXIT							For |CI$00000001
+	Define INSTALLLOGMODE_ERROR								For |CI$00000002
+	Define INSTALLLOGMODE_WARNING							For |CI$00000004
+	Define INSTALLLOGMODE_USER								For |CI$00000008
+	Define INSTALLLOGMODE_INFO								For |CI$00000010
+	Define INSTALLLOGMODE_FILESINUSE						For |CI$00000020
+	Define INSTALLLOGMODE_RESOLVESOURCE						For |CI$00000040
+	Define INSTALLLOGMODE_OUTOFDISKSPACE					For |CI$00000080
+	Define INSTALLLOGMODE_ACTIONSTART						For |CI$00000100
+	Define INSTALLLOGMODE_ACTIONDATA						For |CI$00000200
+	Define INSTALLLOGMODE_PROPERTYDUMP						For |CI$00000400
+	Define INSTALLLOGMODE_PROGRESS							For |CI$00000400
+	Define INSTALLLOGMODE_COMMONDATA						For |CI$00000800
+	Define INSTALLLOGMODE_VERBOSE							For |CI$00001000
+	Define INSTALLLOGMODE_INITIALIZE						For |CI$00001000
+	Define INSTALLLOGMODE_EXTRADEBUG						For |CI$00002000
+	Define INSTALLLOGMODE_TERMINATE							For |CI$00002000
+	Define INSTALLLOGMODE_LOGONLYONERROR					For |CI$00004000
+	Define INSTALLLOGMODE_SHOWDIALOG						For |CI$00004000
+	Define INSTALLLOGMODE_LOGPERFORMANCE					For |CI$00008000
+	Define INSTALLLOGMODE_RMFILESINUSE						For |CI$02000000
+	Define INSTALLLOGMODE_INSTALLSTART						For |CI$04000000
+	Define INSTALLLOGMODE_INSTALLEND						For |CI$08000000
+End_Enum_List
+
+// Define INSTALLLOGATTRIBUTES For Integer
+Enum_List
+	Define INSTALLLOGATTRIBUTES_APPEND						For |CI$00000001
+	Define INSTALLLOGATTRIBUTES_FLUSHEACHLINE				For |CI$00000002
+End_Enum_List
+
+// Define INSTALLFEATUREATTRIBUTE For Integer
+Enum_List
+	Define INSTALLFEATUREATTRIBUTE_FAVORLOCAL				For |CI$00000001
+	Define INSTALLFEATUREATTRIBUTE_FAVORSOURCE				For |CI$00000002
+	Define INSTALLFEATUREATTRIBUTE_FOLLOWPARENT				For |CI$00000004
+	Define INSTALLFEATUREATTRIBUTE_FAVORADVERTISE			For |CI$00000008
+	Define INSTALLFEATUREATTRIBUTE_DISALLOWADVERTISE		For |CI$00000010
+	Define INSTALLFEATUREATTRIBUTE_NOUNSUPPORTEDADVERTISE	For |CI$00000020
+End_Enum_List
+
+// Define INSTALLMODE For Integer
+Enum_List
+	Define INSTALLMODE_NODETECTION_ANY						For -4
+	Define INSTALLMODE_NOSOURCERESOLUTION					For -3
+	Define INSTALLMODE_NODETECTION							For -2
+	Define INSTALLMODE_EXISTING								For -1
+	Define INSTALLMODE_DEFAULT								For |CI$00000000
+End_Enum_List
+
+// Define MSIPATCHSTATE For Integer
+Enum_List
+	Define MSIPATCHSTATE_INVALID							For |CI$00000000
+	Define MSIPATCHSTATE_APPLIED							For |CI$00000001
+	Define MSIPATCHSTATE_SUPERSEDED							For |CI$00000002
+	Define MSIPATCHSTATE_OBSOLETED							For |CI$00000004
+	Define MSIPATCHSTATE_REGISTERED							For |CI$00000008
+	Define MSIPATCHSTATE_ALL								For |CI$0000000F
+End_Enum_List
+
+// Define SCRIPTFLAGS For Integer
+Enum_List
+	Define SCRIPTFLAGS_CACHEINFO							For |CI$00000001
+	Define SCRIPTFLAGS_SHORTCUTS							For |CI$00000004
+	Define SCRIPTFLAGS_MACHINEASSIGN						For |CI$00000008
+	Define SCRIPTFLAGS_REGDATA_CNFGINFO						For |CI$00000020
+	Define SCRIPTFLAGS_VALIDATE_TRANSFORMS_LIST				For |CI$00000040
+	Define SCRIPTFLAGS_REGDATA_CLASSINFO					For |CI$00000080
+	Define SCRIPTFLAGS_REGDATA_EXTENSIONINFO				For |CI$00000100
+	Define SCRIPTFLAGS_REGDATA_APPINFO						For |CI$00000180
+	Define SCRIPTFLAGS_REGDATA								For |CI$000001A0
+End_Enum_List
+
+// Define ADVERTISEFLAGS For Integer
+Enum_List
+	Define ADVERTISEFLAGS_MACHINEASSIGN						For |CI$00000000
+	Define ADVERTISEFLAGS_USERASSIGN						For |CI$00000001
+End_Enum_List
+
+// Define MSIARCHITECTUREFLAGS For Integer
+Enum_List
+	Define MSIARCHITECTUREFLAGS_X86							For |CI$00000001
+	Define MSIARCHITECTUREFLAGS_IA64						For |CI$00000002
+	Define MSIARCHITECTUREFLAGS_AMD64						For |CI$00000004
+	Define MSIARCHITECTUREFLAGS_ARM							For |CI$00000008
+End_Enum_List
+
+// Define MSIOPENPACKAGEFLAGS For Integer
+Enum_List
+	Define MSIOPENPACKAGEFLAGS_IGNOREMACHINESTATE			For |CI$00000001
+End_Enum_List
+
+// Define MSIADVERTISEOPTIONFLAGS For Integer
+Enum_List
+	Define MSIADVERTISEOPTIONFLAGS_INSTANCE					For |CI$00000001
+End_Enum_List
+
+// Define MSISOURCETYPE For Integer
+Enum_List
+	Define MSISOURCETYPE_UNKNOWN							For |CI$00000000
+	Define MSISOURCETYPE_NETWORK							For |CI$00000001
+	Define MSISOURCETYPE_URL								For |CI$00000002
+	Define MSISOURCETYPE_MEDIA								For |CI$00000004
+End_Enum_List
+
+// Define MSICODE For Integer
+Enum_List
+	Define MSICODE_PRODUCT									For |CI$00000000
+	Define MSICODE_PATCH									For |CI$40000000
+End_Enum_List
+
+// Define MSITRANSACTION For Integer
+Enum_List
+	Define MSITRANSACTION_CHAIN_EMBEDDEDUI					For |CI$00000001
+	Define MSITRANSACTION_JOIN_EXISTING_EMBEDDEDUI			For |CI$00000002
+End_Enum_List
+
+// Define ASM_NAME For Integer
+Enum_List
+	Define ASM_NAME_PUBLIC_KEY								For |CI$00000000
+	Define ASM_NAME_PUBLIC_KEY_TOKEN						For |CI$00000001
+	Define ASM_NAME_HASH_VALUE								For |CI$00000002
+	Define ASM_NAME_NAME									For |CI$00000003
+	Define ASM_NAME_MAJOR_VERSION							For |CI$00000004
+	Define ASM_NAME_MINOR_VERSION							For |CI$00000005
+	Define ASM_NAME_BUILD_NUMBER							For |CI$00000006
+	Define ASM_NAME_REVISION_NUMBER							For |CI$00000007
+	Define ASM_NAME_CULTURE									For |CI$00000008
+	Define ASM_NAME_PROCESSOR_ID_ARRAY						For |CI$00000009
+	Define ASM_NAME_OSINFO_ARRAY							For |CI$0000000A
+	Define ASM_NAME_HASH_ALGID								For |CI$0000000B
+	Define ASM_NAME_ALIAS									For |CI$0000000C
+	Define ASM_NAME_CODEBASE_URL							For |CI$0000000D
+	Define ASM_NAME_CODEBASE_LASTMOD						For |CI$0000000E
+	Define ASM_NAME_NULL_PUBLIC_KEY							For |CI$0000000F
+	Define ASM_NAME_NULL_PUBLIC_KEY_TOKEN					For |CI$00000010
+	Define ASM_NAME_CUSTOM									For |CI$00000011
+	Define ASM_NAME_NULL_CUSTOM								For |CI$00000012
+	Define ASM_NAME_MVID									For |CI$00000013
+	Define ASM_NAME_MAX_PARAMS								For |CI$00000014
+End_Enum_List
+
+// Define ASM_BIND_FLAGS For Integer
+Enum_List
+	Define ASM_BINDF_FORCE_CACHE_INSTALL					For |CI$00000001
+	Define ASM_BINDF_RFS_INTEGRITY_CHECK					For |CI$00000002
+	Define ASM_BINDF_RFS_MODULE_CHECK						For |CI$00000004
+	Define ASM_BINDF_BINPATH_PROBE_ONLY						For |CI$00000008
+	Define ASM_BINDF_SHARED_BINPATH_HINT					For |CI$00000010
+	Define ASM_BINDF_PARENT_ASM_HINT						For |CI$00000020
+End_Enum_List
+
+// Define ASM_DISPLAY_FLAGS For Integer
+Enum_List
+	Define ASM_DISPLAYF_VERSION								For |CI$00000001
+	Define ASM_DISPLAYF_CULTURE								For |CI$00000002
+	Define ASM_DISPLAYF_PUBLIC_KEY_TOKEN					For |CI$00000004
+	Define ASM_DISPLAYF_PUBLIC_KEY							For |CI$00000008
+	Define ASM_DISPLAYF_CUSTOM								For |CI$00000010
+	Define ASM_DISPLAYF_PROCESSORARCHITECTURE				For |CI$00000020
+	Define ASM_DISPLAYF_LANGUAGEID							For |CI$00000040
+End_Enum_List
+
+// Define ASM_CMP_FLAGS For Integer
+Enum_List
+	Define ASM_CMPF_NAME									For |CI$00000001
+	Define ASM_CMPF_MAJOR_VERSION							For |CI$00000002
+	Define ASM_CMPF_MINOR_VERSION							For |CI$00000004
+	Define ASM_CMPF_BUILD_NUMBER							For |CI$00000008
+	Define ASM_CMPF_REVISION_NUMBER							For |CI$00000010
+	Define ASM_CMPF_PUBLIC_KEY_TOKEN						For |CI$00000020
+	Define ASM_CMPF_CULTURE									For |CI$00000040
+	Define ASM_CMPF_CUSTOM									For |CI$00000080
+	Define ASM_CMPF_ALL										For |CI$000000FF
+	Define ASM_CMPF_DEFAULT									For |CI$00000100
+End_Enum_List
+
+// Define CREATE_ASM_NAME_OBJ_FLAGS For Integer
+Enum_List
+	Define CANOF_PARSE_DISPLAY_NAME							For |CI$00000001
+	Define CANOF_SET_DEFAULT_VALUES							For |CI$00000002
+End_Enum_List
+
+// Define msidbControlAttributes For Integer
+Enum_List
+	Define msidbControlAttributesVisible					For |CI$00000001
+	Define msidbControlAttributesEnabled					For |CI$00000002
+	Define msidbControlAttributesSunken						For |CI$00000004
+	Define msidbControlAttributesIndirect					For |CI$00000008
+	Define msidbControlAttributesInteger					For |CI$00000010
+	Define msidbControlAttributesRTLRO						For |CI$00000020
+	Define msidbControlAttributesRightAligned				For |CI$00000040
+	Define msidbControlAttributesLeftScroll					For |CI$00000080
+	Define msidbControlAttributesBiDi						For |CI$000000E0
+	Define msidbControlAttributesTransparent				For |CI$00010000
+	Define msidbControlAttributesMultiline					For |CI$00010000
+	Define msidbControlAttributesProgress95					For |CI$00010000
+	Define msidbControlAttributesRemovableVolume			For |CI$00010000
+	Define msidbControlAttributesSorted						For |CI$00010000
+	Define msidbControlAttributesImageHandle				For |CI$00010000
+	Define msidbControlAttributesNoPrefix					For |CI$00020000
+	Define msidbControlAttributesFixedVolume				For |CI$00020000
+	Define msidbControlAttributesComboList					For |CI$00020000
+	Define msidbControlAttributesPushLike					For |CI$00020000
+	Define msidbControlAttributesNoWrap						For |CI$00040000
+	Define msidbControlAttributesRemoteVolume				For |CI$00040000
+	Define msidbControlAttributesBitmap						For |CI$00040000
+	Define msidbControlAttributesFormatSize					For |CI$00080000
+	Define msidbControlAttributesCDROMVolume				For |CI$00080000
+	Define msidbControlAttributesIcon						For |CI$00080000
+	Define msidbControlAttributesUsersLanguage				For |CI$00100000
+	Define msidbControlAttributesRAMDiskVolume				For |CI$00100000
+	Define msidbControlAttributesFixedSize					For |CI$00100000
+	Define msidbControlAttributesPasswordInput				For |CI$00200000
+	Define msidbControlAttributesFloppyVolume				For |CI$00200000
+	Define msidbControlAttributesIconSize16					For |CI$00200000
+	Define msidbControlShowRollbackCost						For |CI$00400000
+	Define msidbControlAttributesIconSize32					For |CI$00400000
+	Define msidbControlAttributesIconSize48					For |CI$00600000
+	Define msidbControlAttributesElevationShield			For |CI$00800000
+	Define msidbControlAttributesHasBorder					For |CI$01000000
+End_Enum_List
+
+// Define msidbLocatorType For Integer
+Enum_List
+	Define msidbLocatorTypeDirectory						For |CI$00000000
+	Define msidbLocatorTypeFileName							For |CI$00000001
+	Define msidbLocatorTypeRawValue							For |CI$00000002
+	Define msidbLocatorType64bit							For |CI$00000010
+End_Enum_List
+
+// Define msidbComponentAttributes For Integer
+Enum_List
+	Define msidbComponentAttributesLocalOnly				For |CI$00000000
+	Define msidbComponentAttributesSourceOnly				For |CI$00000001
+	Define msidbComponentAttributesOptional					For |CI$00000002
+	Define msidbComponentAttributesRegistryKeyPath			For |CI$00000004
+	Define msidbComponentAttributesSharedDllRefCount		For |CI$00000008
+	Define msidbComponentAttributesPermanent				For |CI$00000010
+	Define msidbComponentAttributesODBCDataSource			For |CI$00000020
+	Define msidbComponentAttributesTransitive				For |CI$00000040
+	Define msidbComponentAttributesNeverOverwrite			For |CI$00000080
+	Define msidbComponentAttributes64bit					For |CI$00000100
+	Define msidbComponentAttributesDisableRegistryReflection	For |CI$00000200
+	Define msidbComponentAttributesUninstallOnSupersedence	For |CI$00000400
+	Define msidbComponentAttributesShared					For |CI$00000800
+End_Enum_List
+
+// Define msidbAssemblyAttributes For Integer
+Enum_List
+	Define msidbAssemblyAttributesURT						For |CI$00000000
+	Define msidbAssemblyAttributesWin32						For |CI$00000001
+End_Enum_List
+
+// Define msidbCustomActionType For Integer
+Enum_List
+	Define msidbCustomActionTypeBinaryData					For |CI$00000000
+	Define msidbCustomActionTypeDll							For |CI$00000001
+	Define msidbCustomActionTypeExe							For |CI$00000002
+	Define msidbCustomActionTypeTextData					For |CI$00000003
+	Define msidbCustomActionTypeJScript						For |CI$00000005
+	Define msidbCustomActionTypeVBScript					For |CI$00000006
+	Define msidbCustomActionTypeInstall						For |CI$00000007
+	Define msidbCustomActionTypeSourceFile					For |CI$00000010
+	Define msidbCustomActionTypeDirectory					For |CI$00000020
+	Define msidbCustomActionTypeProperty					For |CI$00000030
+	Define msidbCustomActionTypeContinue					For |CI$00000040
+	Define msidbCustomActionTypeAsync						For |CI$00000080
+	Define msidbCustomActionTypeFirstSequence				For |CI$00000100
+	Define msidbCustomActionTypeRollback					For |CI$00000100
+	Define msidbCustomActionTypeOncePerProcess				For |CI$00000200
+	Define msidbCustomActionTypeCommit						For |CI$00000200
+	Define msidbCustomActionTypeClientRepeat				For |CI$00000300
+	Define msidbCustomActionTypeInScript					For |CI$00000400
+	Define msidbCustomActionTypeNoImpersonate				For |CI$00000800
+	Define msidbCustomActionType64BitScript					For |CI$00001000
+	Define msidbCustomActionTypeHideTarget					For |CI$00002000
+	Define msidbCustomActionTypeTSAware						For |CI$00004000
+	Define msidbCustomActionTypePatchUninstall				For |CI$00008000
+End_Enum_List
+
+// Define msidbDialogAttributes For Integer
+Enum_List
+	Define msidbDialogAttributesVisible						For |CI$00000001
+	Define msidbDialogAttributesModal						For |CI$00000002
+	Define msidbDialogAttributesMinimize					For |CI$00000004
+	Define msidbDialogAttributesSysModal					For |CI$00000008
+	Define msidbDialogAttributesKeepModeless				For |CI$00000010
+	Define msidbDialogAttributesTrackDiskSpace				For |CI$00000020
+	Define msidbDialogAttributesUseCustomPalette			For |CI$00000040
+	Define msidbDialogAttributesRTLRO						For |CI$00000080
+	Define msidbDialogAttributesRightAligned				For |CI$00000100
+	Define msidbDialogAttributesLeftScroll					For |CI$00000200
+	Define msidbDialogAttributesBiDi						For |CI$00000380
+	Define msidbDialogAttributesError						For |CI$00010000
+End_Enum_List
+
+// Define msidbFeatureAttributes For Integer
+Enum_List
+	Define msidbFeatureAttributesFavorLocal					For |CI$00000000
+	Define msidbFeatureAttributesFavorSource				For |CI$00000001
+	Define msidbFeatureAttributesFollowParent				For |CI$00000002
+	Define msidbFeatureAttributesFavorAdvertise				For |CI$00000004
+	Define msidbFeatureAttributesDisallowAdvertise			For |CI$00000008
+	Define msidbFeatureAttributesUIDisallowAbsent			For |CI$00000010
+	Define msidbFeatureAttributesNoUnsupportedAdvertise		For |CI$00000020
+End_Enum_List
+
+// Define msidbFileAttributes For Integer
+Enum_List
+	Define msidbFileAttributesReadOnly						For |CI$00000001
+	Define msidbFileAttributesHidden						For |CI$00000002
+	Define msidbFileAttributesSystem						For |CI$00000004
+	Define msidbFileAttributesReserved0						For |CI$00000008
+	Define msidbFileAttributesIsolatedComp					For |CI$00000010
+	Define msidbFileAttributesReserved1						For |CI$00000040
+	Define msidbFileAttributesReserved2						For |CI$00000080
+	Define msidbFileAttributesReserved3						For |CI$00000100
+	Define msidbFileAttributesVital							For |CI$00000200
+	Define msidbFileAttributesChecksum						For |CI$00000400
+	Define msidbFileAttributesPatchAdded					For |CI$00001000
+	Define msidbFileAttributesNoncompressed					For |CI$00002000
+	Define msidbFileAttributesCompressed					For |CI$00004000
+	Define msidbFileAttributesReserved4						For |CI$00008000
+End_Enum_List
+
+// Define msidbIniFileAction For Integer
+Enum_List
+	Define msidbIniFileActionAddLine						For |CI$00000000
+	Define msidbIniFileActionCreateLine						For |CI$00000001
+	Define msidbIniFileActionRemoveLine						For |CI$00000002
+	Define msidbIniFileActionAddTag							For |CI$00000003
+	Define msidbIniFileActionRemoveTag						For |CI$00000004
+End_Enum_List
+
+// Define msidbMoveFileOptions For Integer
+Enum_List
+	Define msidbMoveFileOptionsMove							For |CI$00000001
+End_Enum_List
+
+// Define msidbODBCDataSourceRegistration For Integer
+Enum_List
+	Define msidbODBCDataSourceRegistrationPerMachine		For |CI$00000000
+	Define msidbODBCDataSourceRegistrationPerUser			For |CI$00000001
+End_Enum_List
+
+// Define msidbClassAttributes For Integer
+Enum_List
+	Define msidbClassAttributesRelativePath					For |CI$00000001
+End_Enum_List
+
+// Define msidbPatchAttributes For Integer
+Enum_List
+	Define msidbPatchAttributesNonVital						For |CI$00000001
+End_Enum_List
+
+// Define msidbRegistryRoot For Integer
+Enum_List
+	Define msidbRegistryRootClassesRoot						For |CI$00000000
+	Define msidbRegistryRootCurrentUser						For |CI$00000001
+	Define msidbRegistryRootLocalMachine					For |CI$00000002
+	Define msidbRegistryRootUsers							For |CI$00000003
+End_Enum_List
+
+// Define msidbRemoveFileInstallMode For Integer
+Enum_List
+	Define msidbRemoveFileInstallModeOnInstall				For |CI$00000001
+	Define msidbRemoveFileInstallModeOnRemove				For |CI$00000002
+	Define msidbRemoveFileInstallModeOnBoth					For |CI$00000003
+End_Enum_List
+
+// Define msidbServiceControlEvent For Integer
+Enum_List
+	Define msidbServiceControlEventStart					For |CI$00000001
+	Define msidbServiceControlEventStop						For |CI$00000002
+	Define msidbServiceControlEventDelete					For |CI$00000008
+	Define msidbServiceControlEventUninstallStart			For |CI$00000010
+	Define msidbServiceControlEventUninstallStop			For |CI$00000020
+	Define msidbServiceControlEventUninstallDelete			For |CI$00000080
+End_Enum_List
+
+// Define msidbServiceConfigEvent For Integer
+Enum_List
+	Define msidbServiceConfigEventInstall					For |CI$00000001
+	Define msidbServiceConfigEventUninstall					For |CI$00000002
+	Define msidbServiceConfigEventReinstall					For |CI$00000004
+End_Enum_List
+
+// Define msidbServiceInstallErrorControl For Integer
+Enum_List
+	Define msidbServiceInstallErrorControlVital				For |CI$00008000
+End_Enum_List
+
+// Define msidbTextStyleStyleBits For Integer
+Enum_List
+	Define msidbTextStyleStyleBitsBold						For |CI$00000001
+	Define msidbTextStyleStyleBitsItalic					For |CI$00000002
+	Define msidbTextStyleStyleBitsUnderline					For |CI$00000004
+	Define msidbTextStyleStyleBitsStrike					For |CI$00000008
+End_Enum_List
+
+// Define msidbUpgradeAttributes For Integer
+Enum_List
+	Define msidbUpgradeAttributesMigrateFeatures			For |CI$00000001
+	Define msidbUpgradeAttributesOnlyDetect					For |CI$00000002
+	Define msidbUpgradeAttributesIgnoreRemoveFailure		For |CI$00000004
+	Define msidbUpgradeAttributesVersionMinInclusive		For |CI$00000100
+	Define msidbUpgradeAttributesVersionMaxInclusive		For |CI$00000200
+	Define msidbUpgradeAttributesLanguagesExclusive			For |CI$00000400
+End_Enum_List
+
+// Define msidbEmbeddedUIAttributes For Integer
+Enum_List
+	Define msidbEmbeddedUI									For |CI$00000001
+	Define msidbEmbeddedHandlesBasic						For |CI$00000002
+End_Enum_List
+
+// Define msidbSumInfoSourceType For Integer
+Enum_List
+	Define msidbSumInfoSourceTypeSFN						For |CI$00000001
+	Define msidbSumInfoSourceTypeCompressed					For |CI$00000002
+	Define msidbSumInfoSourceTypeAdminImage					For |CI$00000004
+	Define msidbSumInfoSourceTypeLUAPackage					For |CI$00000008
+End_Enum_List
+
+// Define msirbRebootType For Integer
+Enum_List
+	Define msirbRebootImmediate								For |CI$00000001
+	Define msirbRebootDeferred								For |CI$00000002
+End_Enum_List
+
+// Define msirbRebootReason For Integer
+Enum_List
+	Define msirbRebootUndeterminedReason					For |CI$00000000
+	Define msirbRebootInUseFilesReason						For |CI$00000001
+	Define msirbRebootScheduleRebootReason					For |CI$00000002
+	Define msirbRebootForceRebootReason						For |CI$00000003
+	Define msirbRebootCustomActionReason					For |CI$00000004
+End_Enum_List
+
+// Define msifiFastInstallBits For Integer
+Enum_List
+	Define msifiFastInstallNoSR								For |CI$00000001
+	Define msifiFastInstallQuickCosting						For |CI$00000002
+	Define msifiFastInstallLessPrgMsg						For |CI$00000004
+End_Enum_List
+
+// Define TILE_TEMPLATE_TYPE For Integer
+Enum_List
+	Define TILE_TEMPLATE_INVALID							For |CI$00000000
+	Define TILE_TEMPLATE_METROCOUNT							For |CI$00000001
+	Define TILE_TEMPLATE_AGILESTORE							For |CI$00000002
+	Define TILE_TEMPLATE_GAMES								For |CI$00000003
+	Define TILE_TEMPLATE_CALENDAR							For |CI$00000004
+	Define TILE_TEMPLATE_FLIP								For |CI$00000005
+	Define TILE_TEMPLATE_MUSICVIDEO							For |CI$00000007
+	Define TILE_TEMPLATE_PEOPLE								For |CI$0000000A
+	Define TILE_TEMPLATE_CONTACT							For |CI$0000000B
+	Define TILE_TEMPLATE_GROUP								For |CI$0000000C
+	Define TILE_TEMPLATE_DEEPLINK							For |CI$0000000D
+	Define TILE_TEMPLATE_CYCLE								For |CI$0000000E
+	Define TILE_TEMPLATE_DEFAULT							For |CI$0000000F
+	Define TILE_TEMPLATE_BADGE								For |CI$00000010
+	Define TILE_TEMPLATE_BLOCK								For |CI$00000011
+	Define TILE_TEMPLATE_TEXT01								For |CI$00000012
+	Define TILE_TEMPLATE_TEXT02								For |CI$00000013
+	Define TILE_TEMPLATE_TEXT03								For |CI$00000014
+	Define TILE_TEMPLATE_TEXT04								For |CI$00000015
+	Define TILE_TEMPLATE_TEXT05								For |CI$00000016
+	Define TILE_TEMPLATE_TEXT06								For |CI$00000017
+	Define TILE_TEMPLATE_TEXT07								For |CI$00000018
+	Define TILE_TEMPLATE_TEXT08								For |CI$00000019
+	Define TILE_TEMPLATE_TEXT09								For |CI$0000001A
+	Define TILE_TEMPLATE_TEXT10								For |CI$0000001B
+	Define TILE_TEMPLATE_TEXT11								For |CI$0000001C
+	Define TILE_TEMPLATE_IMAGE								For |CI$0000001D
+	Define TILE_TEMPLATE_IMAGECOLLECTION					For |CI$0000001E
+	Define TILE_TEMPLATE_IMAGEANDTEXT01						For |CI$0000001F
+	Define TILE_TEMPLATE_IMAGEANDTEXT02						For |CI$00000020
+	Define TILE_TEMPLATE_BLOCKANDTEXT01						For |CI$00000021
+	Define TILE_TEMPLATE_BLOCKANDTEXT02						For |CI$00000022
+	Define TILE_TEMPLATE_PEEKIMAGEANDTEXT01					For |CI$00000023
+	Define TILE_TEMPLATE_PEEKIMAGEANDTEXT02					For |CI$00000024
+	Define TILE_TEMPLATE_PEEKIMAGEANDTEXT03					For |CI$00000025
+	Define TILE_TEMPLATE_PEEKIMAGEANDTEXT04					For |CI$00000026
+	Define TILE_TEMPLATE_PEEKIMAGE01						For |CI$00000027
+	Define TILE_TEMPLATE_PEEKIMAGE02						For |CI$00000028
+	Define TILE_TEMPLATE_PEEKIMAGE03						For |CI$00000029
+	Define TILE_TEMPLATE_PEEKIMAGE04						For |CI$0000002A
+	Define TILE_TEMPLATE_PEEKIMAGE05						For |CI$0000002B
+	Define TILE_TEMPLATE_PEEKIMAGE06						For |CI$0000002C
+	Define TILE_TEMPLATE_PEEKIMAGECOLLECTION01				For |CI$0000002D
+	Define TILE_TEMPLATE_PEEKIMAGECOLLECTION02				For |CI$0000002E
+	Define TILE_TEMPLATE_PEEKIMAGECOLLECTION03				For |CI$0000002F
+	Define TILE_TEMPLATE_PEEKIMAGECOLLECTION04				For |CI$00000030
+	Define TILE_TEMPLATE_PEEKIMAGECOLLECTION05				For |CI$00000031
+	Define TILE_TEMPLATE_PEEKIMAGECOLLECTION06				For |CI$00000032
+	Define TILE_TEMPLATE_SMALLIMAGEANDTEXT01				For |CI$00000033
+	Define TILE_TEMPLATE_SMALLIMAGEANDTEXT02				For |CI$00000034
+	Define TILE_TEMPLATE_SMALLIMAGEANDTEXT03				For |CI$00000035
+	Define TILE_TEMPLATE_SMALLIMAGEANDTEXT04				For |CI$00000036
+	Define TILE_TEMPLATE_SMALLIMAGEANDTEXT05				For |CI$00000037
+	Define TILE_TEMPLATE_METROCOUNTQUEUE					For |CI$00000038
+	Define TILE_TEMPLATE_SEARCH								For |CI$00000039
+	Define TILE_TEMPLATE_TILEFLYOUT01						For |CI$0000003A
+	Define TILE_TEMPLATE_FOLDER								For |CI$0000003B
+	Define TILE_TEMPLATE_ALL								For |CI$00000064
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure

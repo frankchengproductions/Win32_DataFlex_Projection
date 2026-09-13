@@ -1,0 +1,919 @@
+Use UI
+
+Struct DOT11_MANUFACTURING_FUNCTIONAL_TEST_TX
+	UChar bEnable											// BOOLEAN
+	UChar bOpenLoop											// BOOLEAN
+	Short iMissingAlignment1
+	Integer Dot11Band										// DOT11_BAND
+	UInteger uChannel
+	UInteger uSetPowerLevel
+	Integer ADCPowerLevel
+End_Struct
+
+Struct DOT11_MANUFACTURING_SELF_TEST_QUERY_RESULTS
+	Integer SelfTestType									// DOT11_MANUFACTURING_SELF_TEST_TYPE
+	UInteger uTestID
+	UChar bResult											// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger uPinFailedBitMask
+	Pointer pvContext										// Pointer*
+	UInteger uBytesWrittenOut
+	UChar[1] ucBufferOut
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct DOT11_MANUFACTURING_SELF_TEST_SET_PARAMS
+	Integer SelfTestType									// DOT11_MANUFACTURING_SELF_TEST_TYPE
+	UInteger uTestID
+	UInteger uPinBitMask
+	Integer iMissingAlignment1
+	Pointer pvContext										// Pointer*
+	UInteger uBufferLength
+	UChar[1] ucBufferIn
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct DOT11_MANUFACTURING_TEST
+	Integer dot11ManufacturingTestType						// DOT11_MANUFACTURING_TEST_TYPE
+	UInteger uBufferLength
+	UChar[1] ucBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_MANUFACTURING_TEST_QUERY_DATA
+	UInteger uKey
+	UInteger uOffset
+	UInteger uBufferLength
+	UInteger uBytesRead
+	UChar[1] ucBufferOut
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_MANUFACTURING_TEST_SET_DATA
+	UInteger uKey
+	UInteger uOffset
+	UInteger uBufferLength
+	UChar[1] ucBufferIn
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_MANUFACTURING_TEST_SLEEP
+	UInteger uSleepTime
+	Integer iMissingAlignment1
+	Pointer pvContext										// Pointer*
+End_Struct
+
+Struct DOT11_MD_CAPABILITY_ENTRY_LIST
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_MULTI_DOMAIN_CAPABILITY_ENTRY[1] dot11MDCapabilityEntry
+End_Struct
+
+Struct DOT11_MPDU_MAX_LENGTH_INDICATION
+	NDIS_OBJECT_HEADER Header
+	UInteger uPhyId
+	UInteger uMPDUMaxLength
+End_Struct
+
+Struct DOT11_MSONEX_RESULT_PARAMS
+	Integer Dot11OnexAuthStatus								// ONEX_AUTH_STATUS
+	Integer Dot11OneXReasonCode								// ONEX_REASON_CODE
+	Pointer pbMPPESendKey									// UChar*
+	UInteger dwMPPESendKeyLen
+	Integer iMissingAlignment1
+	Pointer pbMPPERecvKey									// UChar*
+	UInteger dwMPPERecvKeyLen
+	Integer iMissingAlignment2
+	Pointer pDot11EapResult									// DOT11_EAP_RESULT*
+End_Struct
+
+Struct DOT11_MSSECURITY_SETTINGS
+	Integer dot11AuthAlgorithm								// DOT11_AUTH_ALGORITHM
+	Integer dot11CipherAlgorithm							// DOT11_CIPHER_ALGORITHM
+	Integer fOneXEnabled									// BOOL
+	EAP_METHOD_TYPE eapMethodType
+	UInteger dwEapConnectionDataLen
+	Pointer pEapConnectionData								// UChar*
+End_Struct
+
+Struct DOT11_MULTI_DOMAIN_CAPABILITY_ENTRY
+	UInteger uMultiDomainCapabilityIndex
+	UInteger uFirstChannelNumber
+	UInteger uNumberOfChannels
+	Integer lMaximumTransmitPowerLevel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-dot11_network
+Struct DOT11_NETWORK
+	DOT11_SSID dot11Ssid
+	Integer dot11BssType									// DOT11_BSS_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-dot11_network_list
+Struct DOT11_NETWORK_LIST
+	UInteger dwNumberOfItems
+	UInteger dwIndex
+	DOT11_NETWORK[1] Network
+End_Struct
+
+Struct DOT11_NIC_SPECIFIC_EXTENSION
+	UInteger uBufferLength
+	UInteger uTotalBufferLength
+	UChar[1] ucBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_OFDM_PHY_ATTRIBUTES
+	UInteger uFrequencyBandsSupported
+End_Struct
+
+Struct DOT11_OFFLOAD_CAPABILITY
+	UInteger uReserved
+	UInteger uFlags
+	UInteger uSupportedWEPAlgorithms
+	UInteger uNumOfReplayWindows
+	UInteger uMaxWEPKeyMappingLength
+	UInteger uSupportedAuthAlgorithms
+	UInteger uMaxAuthKeyMappingLength
+End_Struct
+
+Struct DOT11_OFFLOAD_NETWORK
+	DOT11_SSID Ssid
+	Integer UnicastCipher									// DOT11_CIPHER_ALGORITHM
+	Integer AuthAlgo										// DOT11_AUTH_ALGORITHM
+	DOT11_CHANNEL_HINT[4] Dot11ChannelHints
+End_Struct
+
+Struct DOT11_OFFLOAD_NETWORK_LIST_INFO
+	NDIS_OBJECT_HEADER Header
+	UInteger ulFlags
+	UInteger FastScanPeriod
+	UInteger FastScanIterations
+	UInteger SlowScanPeriod
+	UInteger uNumOfEntries
+	DOT11_OFFLOAD_NETWORK[1] offloadNetworkList
+End_Struct
+
+Struct DOT11_OFFLOAD_NETWORK_STATUS_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	Integer Status
+End_Struct
+
+Struct DOT11_OI
+	UShort OILength
+	UChar[5] OI
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_OPERATION_MODE_CAPABILITY
+	UInteger uReserved
+	UInteger uMajorVersion
+	UInteger uMinorVersion
+	UInteger uNumOfTXBuffers
+	UInteger uNumOfRXBuffers
+	UInteger uOpModeCapability
+End_Struct
+
+Struct DOT11_OPTIONAL_CAPABILITY
+	UInteger uReserved
+	UChar bDot11PCF											// BOOLEAN
+	UChar bDot11PCFMPDUTransferToPC							// BOOLEAN
+	UChar bStrictlyOrderedServiceClass						// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_PEER_INFO
+	UChar[6] MacAddress
+	UShort usCapabilityInformation
+	Integer AuthAlgo										// DOT11_AUTH_ALGORITHM
+	Integer UnicastCipherAlgo								// DOT11_CIPHER_ALGORITHM
+	Integer MulticastCipherAlgo								// DOT11_CIPHER_ALGORITHM
+	UChar bWpsEnabled										// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UShort usListenInterval
+	UChar[255] ucSupportedRates
+	UChar[1] cMissingAlignment2
+	UShort usAssociationID
+	Short iMissingAlignment3
+	Integer AssociationState								// DOT11_ASSOCIATION_STATE
+	Integer PowerMode										// DOT11_POWER_MODE
+	Integer iMissingAlignment4
+	Bigint liAssociationUpTime
+	DOT11_PEER_STATISTICS Statistics
+End_Struct
+
+Struct DOT11_PEER_INFO_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	Integer iMissingAlignment1
+	DOT11_PEER_INFO[1] PeerInfo
+End_Struct
+
+Struct DOT11_PEER_STATISTICS
+	UBigint ullDecryptSuccessCount
+	UBigint ullDecryptFailureCount
+	UBigint ullTxPacketSuccessCount
+	UBigint ullTxPacketFailureCount
+	UBigint ullRxPacketSuccessCount
+	UBigint ullRxPacketFailureCount
+End_Struct
+
+Struct DOT11_PER_MSDU_COUNTERS
+	UInteger uTransmittedFragmentCount
+	UInteger uRetryCount
+	UInteger uRTSSuccessCount
+	UInteger uRTSFailureCount
+	UInteger uACKFailureCount
+End_Struct
+
+Struct DOT11_PHY_ATTRIBUTES
+	NDIS_OBJECT_HEADER Header
+	Integer PhyType											// DOT11_PHY_TYPE
+	UChar bHardwarePhyState									// BOOLEAN
+	UChar bSoftwarePhyState									// BOOLEAN
+	UChar bCFPollable										// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UInteger uMPDUMaxLength
+	Integer TempType										// DOT11_TEMP_TYPE
+	Integer DiversitySupport								// DOT11_DIVERSITY_SUPPORT
+	_PhySpecificAttributes_e__Union_2186 PhySpecificAttributes
+	UInteger uNumberSupportedPowerLevels
+	UInteger[8] TxPowerLevels
+	UInteger uNumDataRateMappingEntries
+	DOT11_DATA_RATE_MAPPING_ENTRY[126] DataRateMappingEntries
+	DOT11_SUPPORTED_DATA_RATES_VALUE_V2 SupportedDataRatesValue
+	Short iMissingAlignment2
+End_Struct
+
+Struct DOT11_PHY_FRAME_STATISTICS
+	UBigint ullTransmittedFrameCount
+	UBigint ullMulticastTransmittedFrameCount
+	UBigint ullFailedCount
+	UBigint ullRetryCount
+	UBigint ullMultipleRetryCount
+	UBigint ullMaxTXLifetimeExceededCount
+	UBigint ullTransmittedFragmentCount
+	UBigint ullRTSSuccessCount
+	UBigint ullRTSFailureCount
+	UBigint ullACKFailureCount
+	UBigint ullReceivedFrameCount
+	UBigint ullMulticastReceivedFrameCount
+	UBigint ullPromiscuousReceivedFrameCount
+	UBigint ullMaxRXLifetimeExceededCount
+	UBigint ullFrameDuplicateCount
+	UBigint ullReceivedFragmentCount
+	UBigint ullPromiscuousReceivedFragmentCount
+	UBigint ullFCSErrorCount
+End_Struct
+
+Struct DOT11_PHY_FREQUENCY_ADOPTED_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UInteger ulPhyId
+	_Anonymous_e__Union_2187 Anonymous
+End_Struct
+
+Struct DOT11_PHY_ID_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	UInteger[1] dot11PhyId
+End_Struct
+
+Struct DOT11_PHY_STATE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UInteger uPhyId
+	UChar bHardwarePhyState									// BOOLEAN
+	UChar bSoftwarePhyState									// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_PHY_TYPE_INFO
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UChar bUseParameters									// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger uProbeDelay
+	UInteger uMinChannelTime
+	UInteger uMaxChannelTime
+	Integer ChDescriptionType								// CH_DESCRIPTION_TYPE
+	UInteger uChannelListSize
+	UChar[1] ucChannelListBuffer
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct DOT11_PHY_TYPE_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	Integer[1] dot11PhyType									// DOT11_PHY_TYPE
+End_Struct
+
+Struct DOT11_PMKID_CANDIDATE_LIST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UInteger uCandidateListSize
+	UInteger uCandidateListOffset
+End_Struct
+
+Struct DOT11_PMKID_ENTRY
+	UChar[6] BSSID
+	UChar[16] PMKID
+	Short iMissingAlignment1
+	UInteger uFlags
+End_Struct
+
+Struct DOT11_PMKID_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_PMKID_ENTRY[1] PMKIDs
+End_Struct
+
+Struct DOT11_PORT_STATE
+	UChar[6] PeerMacAddress
+	Short iMissingAlignment1
+	UInteger uSessionId
+	Integer bPortControlled									// BOOL
+	Integer bPortAuthorized									// BOOL
+End_Struct
+
+Struct DOT11_PORT_STATE_NOTIFICATION
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerMac
+	UChar bOpen												// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_POWER_MGMT_AUTO_MODE_ENABLED_INFO
+	NDIS_OBJECT_HEADER Header
+	UChar bEnabled											// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_POWER_MGMT_MODE
+	Integer dot11PowerMode									// DOT11_POWER_MODE
+	UInteger uPowerSaveLevel
+	UShort usListenInterval
+	UShort usAID
+	UChar bReceiveDTIMs										// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_POWER_MGMT_MODE_STATUS_INFO
+	NDIS_OBJECT_HEADER Header
+	Integer PowerSaveMode									// DOT11_POWER_MODE
+	UInteger uPowerSaveLevel
+	Integer Reason											// DOT11_POWER_MODE_REASON
+End_Struct
+
+Struct DOT11_PRIVACY_EXEMPTION
+	UShort usEtherType
+	UShort usExemptionActionType
+	UShort usExemptionPacketType
+End_Struct
+
+Struct DOT11_PRIVACY_EXEMPTION_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_PRIVACY_EXEMPTION[1] PrivacyExemptionEntries
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_PROVISION_DISCOVERY_REQUEST_SEND_COMPLETE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar[6] ReceiverAddress
+	UChar DialogToken
+	UChar[3] cMissingAlignment1
+	Integer Status
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_PROVISION_DISCOVERY_RESPONSE_SEND_COMPLETE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] ReceiverDeviceAddress
+	UChar DialogToken
+	UChar[1] cMissingAlignment1
+	Integer Status
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_QOS_PARAMS
+	NDIS_OBJECT_HEADER Header
+	UChar ucEnabledQoSProtocolFlags
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_QOS_TX_DURATION
+	UInteger uNominalMSDUSize
+	UInteger uMinPHYRate
+	UInteger uDuration
+End_Struct
+
+Struct DOT11_QOS_TX_MEDIUM_TIME
+	UChar[6] dot11PeerAddress
+	UChar ucQoSPriority
+	UChar[1] cMissingAlignment1
+	UInteger uMediumTimeAdmited
+End_Struct
+
+Struct DOT11_RATE_SET
+	UInteger uRateSetLength
+	UChar[126] ucRateSet
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_RECEIVED_GO_NEGOTIATION_CONFIRMATION_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar DialogToken
+	UChar[1] cMissingAlignment1
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECEIVED_GO_NEGOTIATION_REQUEST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar DialogToken
+	UChar[5] cMissingAlignment1
+	Pointer RequestContext									// Pointer*
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECEIVED_GO_NEGOTIATION_RESPONSE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar DialogToken
+	UChar[5] cMissingAlignment1
+	Pointer ResponseContext									// Pointer*
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECEIVED_INVITATION_REQUEST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] TransmitterDeviceAddress
+	UChar[6] BSSID
+	UChar DialogToken
+	UChar[7] cMissingAlignment1
+	Pointer RequestContext									// Pointer*
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECEIVED_INVITATION_RESPONSE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] TransmitterDeviceAddress
+	UChar[6] BSSID
+	UChar DialogToken
+	UChar[3] cMissingAlignment1
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECEIVED_PROVISION_DISCOVERY_REQUEST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] TransmitterDeviceAddress
+	UChar[6] BSSID
+	UChar DialogToken
+	UChar[7] cMissingAlignment1
+	Pointer RequestContext									// Pointer*
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECEIVED_PROVISION_DISCOVERY_RESPONSE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] TransmitterDeviceAddress
+	UChar[6] BSSID
+	UChar DialogToken
+	UChar[3] cMissingAlignment1
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_RECV_EXTENSION_INFO
+	UInteger uVersion
+	Integer iMissingAlignment1
+	Pointer pvReserved										// Pointer*
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UInteger uChCenterFrequency
+	Integer lRSSI
+	Integer lRSSIMin
+	Integer lRSSIMax
+	UInteger uRSSI
+	UChar ucPriority
+	UChar ucDataRate
+	UChar[6] ucPeerMacAddress
+	UInteger dwExtendedStatus
+	Integer iMissingAlignment2
+	Pointer hWEPOffloadContext								// HANDLE
+	Pointer hAuthOffloadContext								// HANDLE
+	UShort usWEPAppliedMask
+	UShort usWPAMSDUPriority
+	DOT11_IV48_COUNTER dot11LowestIV48Counter
+	UShort usDot11LeftRWBitMap
+	Short iMissingAlignment3
+	DOT11_IV48_COUNTER dot11HighestIV48Counter
+	UShort usDot11RightRWBitMap
+	UShort usNumberOfMPDUsReceived
+	UShort usNumberOfFragments
+	Short iMissingAlignment4
+	Pointer[1] pNdisPackets									// Pointer*
+End_Struct
+
+Struct DOT11_RECV_EXTENSION_INFO_V2
+	UInteger uVersion
+	Integer iMissingAlignment1
+	Pointer pvReserved										// Pointer*
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UInteger uChCenterFrequency
+	Integer lRSSI
+	UInteger uRSSI
+	UChar ucPriority
+	UChar ucDataRate
+	UChar[6] ucPeerMacAddress
+	UInteger dwExtendedStatus
+	Integer iMissingAlignment2
+	Pointer hWEPOffloadContext								// HANDLE
+	Pointer hAuthOffloadContext								// HANDLE
+	UShort usWEPAppliedMask
+	UShort usWPAMSDUPriority
+	DOT11_IV48_COUNTER dot11LowestIV48Counter
+	UShort usDot11LeftRWBitMap
+	Short iMissingAlignment3
+	DOT11_IV48_COUNTER dot11HighestIV48Counter
+	UShort usDot11RightRWBitMap
+	UShort usNumberOfMPDUsReceived
+	UShort usNumberOfFragments
+	Short iMissingAlignment4
+	Pointer[1] pNdisPackets									// Pointer*
+End_Struct
+
+Struct DOT11_RECV_SENSITIVITY
+	UChar ucDataRate
+	UChar[3] cMissingAlignment1
+	Integer lRSSIMin
+	Integer lRSSIMax
+End_Struct
+
+Struct DOT11_RECV_SENSITIVITY_LIST
+	_Anonymous_e__Union_2183 Anonymous
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_RECV_SENSITIVITY[1] dot11RecvSensitivity
+End_Struct
+
+Struct DOT11_REG_DOMAINS_SUPPORT_VALUE
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_REG_DOMAIN_VALUE[1] dot11RegDomainValue
+End_Struct
+
+Struct DOT11_REG_DOMAIN_VALUE
+	UInteger uRegDomainsSupportIndex
+	UInteger uRegDomainsSupportValue
+End_Struct
+
+Struct DOT11_RESET_REQUEST
+	Integer dot11ResetType									// DOT11_RESET_TYPE
+	UChar[6] dot11MacAddress
+	UChar bSetDefaultMIB									// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_ROAMING_COMPLETION_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UInteger uStatus
+End_Struct
+
+Struct DOT11_ROAMING_START_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] AdhocBSSID
+	Short iMissingAlignment1
+	DOT11_SSID AdhocSSID
+	UInteger uRoamingReason
+End_Struct
+
+Struct DOT11_RSSI_RANGE
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UInteger uRSSIMin
+	UInteger uRSSIMax
+End_Struct
+
+Struct DOT11_SCAN_REQUEST
+	Integer dot11BSSType									// DOT11_BSS_TYPE
+	UChar[6] dot11BSSID
+	Short iMissingAlignment1
+	DOT11_SSID dot11SSID
+	Integer dot11ScanType									// DOT11_SCAN_TYPE
+	UChar bRestrictedScan									// BOOLEAN
+	UChar bUseRequestIE										// BOOLEAN
+	Short iMissingAlignment2
+	UInteger uRequestIDsOffset
+	UInteger uNumOfRequestIDs
+	UInteger uPhyTypesOffset
+	UInteger uNumOfPhyTypes
+	UInteger uIEsOffset
+	UInteger uIEsLength
+	UChar[1] ucBuffer
+	UChar[3] cMissingAlignment3
+End_Struct
+
+Struct DOT11_SCAN_REQUEST_V2
+	Integer dot11BSSType									// DOT11_BSS_TYPE
+	UChar[6] dot11BSSID
+	Short iMissingAlignment1
+	Integer dot11ScanType									// DOT11_SCAN_TYPE
+	UChar bRestrictedScan									// BOOLEAN
+	UChar[3] cMissingAlignment2
+	UInteger udot11SSIDsOffset
+	UInteger uNumOfdot11SSIDs
+	UChar bUseRequestIE										// BOOLEAN
+	UChar[3] cMissingAlignment3
+	UInteger uRequestIDsOffset
+	UInteger uNumOfRequestIDs
+	UInteger uPhyTypeInfosOffset
+	UInteger uNumOfPhyTypeInfos
+	UInteger uIEsOffset
+	UInteger uIEsLength
+	UChar[1] ucBuffer
+	UChar[3] cMissingAlignment4
+End_Struct
+
+Struct DOT11_SECURITY_PACKET_HEADER
+	UChar[6] PeerMac
+	UShort usEtherType
+	UChar[1] Data
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_SEND_GO_NEGOTIATION_CONFIRMATION_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar DialogToken
+	UChar[5] cMissingAlignment1
+	Pointer ResponseContext									// Pointer*
+	UInteger uSendTimeout
+	UChar Status
+	UChar GroupCapability
+	Short iMissingAlignment2
+	DOT11_WFD_GROUP_ID GroupID
+	UChar bUseGroupID										// BOOLEAN
+	UChar[3] cMissingAlignment3
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_SEND_GO_NEGOTIATION_REQUEST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar DialogToken
+	UChar[1] cMissingAlignment1
+	UInteger uSendTimeout
+	DOT11_WFD_GO_INTENT GroupOwnerIntent
+	DOT11_WFD_CONFIGURATION_TIMEOUT MinimumConfigTimeout
+	UChar[6] IntendedInterfaceAddress
+	UChar GroupCapability
+	Short iMissingAlignment2
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_SEND_GO_NEGOTIATION_RESPONSE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] PeerDeviceAddress
+	UChar DialogToken
+	UChar[5] cMissingAlignment1
+	Pointer RequestContext									// Pointer*
+	UInteger uSendTimeout
+	UChar Status
+	DOT11_WFD_GO_INTENT GroupOwnerIntent
+	DOT11_WFD_CONFIGURATION_TIMEOUT MinimumConfigTimeout
+	UChar[6] IntendedInterfaceAddress
+	UChar GroupCapability
+	UChar[1] cMissingAlignment2
+	DOT11_WFD_GROUP_ID GroupID
+	UChar bUseGroupID										// BOOLEAN
+	UChar[3] cMissingAlignment3
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_SEND_INVITATION_REQUEST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar DialogToken
+	UChar[6] PeerDeviceAddress
+	UChar[1] cMissingAlignment1
+	UInteger uSendTimeout
+	DOT11_WFD_CONFIGURATION_TIMEOUT MinimumConfigTimeout
+	DOT11_WFD_INVITATION_FLAGS InvitationFlags
+	UChar[6] GroupBSSID
+	UChar bUseGroupBSSID									// BOOLEAN
+	DOT11_WFD_CHANNEL OperatingChannel
+	UChar bUseSpecifiedOperatingChannel						// BOOLEAN
+	DOT11_WFD_GROUP_ID GroupID
+	UChar bLocalGO											// BOOLEAN
+	UChar[3] cMissingAlignment2
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_SEND_INVITATION_RESPONSE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] ReceiverDeviceAddress
+	UChar DialogToken
+	UChar[5] cMissingAlignment1
+	Pointer RequestContext									// Pointer*
+	UInteger uSendTimeout
+	UChar Status
+	DOT11_WFD_CONFIGURATION_TIMEOUT MinimumConfigTimeout
+	UChar[6] GroupBSSID
+	UChar bUseGroupBSSID									// BOOLEAN
+	DOT11_WFD_CHANNEL OperatingChannel
+	UChar bUseSpecifiedOperatingChannel						// BOOLEAN
+	UInteger uIEsOffset
+	UInteger uIEsLength
+	Integer iMissingAlignment2
+End_Struct
+
+Struct DOT11_SEND_PROVISION_DISCOVERY_REQUEST_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar DialogToken
+	UChar[6] PeerDeviceAddress
+	UChar[1] cMissingAlignment1
+	UInteger uSendTimeout
+	UChar GroupCapability
+	UChar[3] cMissingAlignment2
+	DOT11_WFD_GROUP_ID GroupID
+	UChar bUseGroupID										// BOOLEAN
+	UChar[3] cMissingAlignment3
+	UInteger uIEsOffset
+	UInteger uIEsLength
+End_Struct
+
+Struct DOT11_SEND_PROVISION_DISCOVERY_RESPONSE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar[6] ReceiverDeviceAddress
+	UChar DialogToken
+	UChar[5] cMissingAlignment1
+	Pointer RequestContext									// Pointer*
+	UInteger uSendTimeout
+	UInteger uIEsOffset
+	UInteger uIEsLength
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/NativeWiFi/dot11-ssid
+Struct DOT11_SSID
+	UInteger uSSIDLength
+	UChar[32] ucSSID
+End_Struct
+
+Struct DOT11_SSID_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_SSID[1] SSIDs
+End_Struct
+
+Struct DOT11_START_REQUEST
+	UInteger uStartFailureTimeout
+	DOT11_RATE_SET OperationalRateSet
+	UInteger uChCenterFrequency
+	Integer iMissingAlignment1
+	DOT11_BSS_DESCRIPTION dot11BSSDescription
+End_Struct
+
+Struct DOT11_STATISTICS
+	NDIS_OBJECT_HEADER Header
+	Integer iMissingAlignment1
+	UBigint ullFourWayHandshakeFailures
+	UBigint ullTKIPCounterMeasuresInvoked
+	UBigint ullReserved
+	DOT11_MAC_FRAME_STATISTICS MacUcastCounters
+	DOT11_MAC_FRAME_STATISTICS MacMcastCounters
+	DOT11_PHY_FRAME_STATISTICS[1] PhyCounters
+End_Struct
+
+Struct DOT11_STATUS_INDICATION
+	UInteger uStatusType
+	Integer ndisStatus
+End_Struct
+
+Struct DOT11_STOP_AP_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UInteger ulReason
+End_Struct
+
+Struct DOT11_SUPPORTED_ANTENNA
+	UInteger uAntennaListIndex
+	UChar bSupportedAntenna									// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_SUPPORTED_ANTENNA_LIST
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_SUPPORTED_ANTENNA[1] dot11SupportedAntenna
+End_Struct
+
+Struct DOT11_SUPPORTED_DATA_RATES_VALUE
+	UChar[8] ucSupportedTxDataRatesValue
+	UChar[8] ucSupportedRxDataRatesValue
+End_Struct
+
+Struct DOT11_SUPPORTED_DATA_RATES_VALUE_V2
+	UChar[255] ucSupportedTxDataRatesValue
+	UChar[255] ucSupportedRxDataRatesValue
+End_Struct
+
+Struct DOT11_SUPPORTED_DSSS_CHANNEL
+	UInteger uChannel
+End_Struct
+
+Struct DOT11_SUPPORTED_DSSS_CHANNEL_LIST
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_SUPPORTED_DSSS_CHANNEL[1] dot11SupportedDSSSChannel
+End_Struct
+
+Struct DOT11_SUPPORTED_OFDM_FREQUENCY
+	UInteger uCenterFrequency
+End_Struct
+
+Struct DOT11_SUPPORTED_OFDM_FREQUENCY_LIST
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_SUPPORTED_OFDM_FREQUENCY[1] dot11SupportedOFDMFrequency
+End_Struct
+
+Struct DOT11_SUPPORTED_PHY_TYPES
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	Integer[1] dot11PHYType									// DOT11_PHY_TYPE
+End_Struct
+
+Struct DOT11_SUPPORTED_POWER_LEVELS
+	UInteger uNumOfSupportedPowerLevels
+	UInteger[8] uTxPowerLevelValues
+End_Struct
+
+Struct DOT11_TKIPMIC_FAILURE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	UChar bDefaultKeyFailure								// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger uKeyIndex
+	UChar[6] PeerMac
+	Short iMissingAlignment2
+End_Struct
+
+Struct DOT11_UPDATE_IE
+	Integer dot11UpdateIEOp									// DOT11_UPDATE_IE_OP
+	UInteger uBufferLength
+	UChar[1] ucBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_VENUEINFO
+	UChar VenueGroup
+	UChar VenueType
+End_Struct
+
+Struct DOT11_VWIFI_ATTRIBUTES
+	NDIS_OBJECT_HEADER Header
+	UInteger uTotalNumOfEntries
+	DOT11_VWIFI_COMBINATION[1] Combinations
+End_Struct
+
+Struct DOT11_VWIFI_COMBINATION
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumInfrastructure
+	UInteger uNumAdhoc
+	UInteger uNumSoftAP
+End_Struct
+
+Struct DOT11_VWIFI_COMBINATION_V2
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumInfrastructure
+	UInteger uNumAdhoc
+	UInteger uNumSoftAP
+	UInteger uNumVirtualStation
+End_Struct
+
+Struct DOT11_VWIFI_COMBINATION_V3
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumInfrastructure
+	UInteger uNumAdhoc
+	UInteger uNumSoftAP
+	UInteger uNumVirtualStation
+	UInteger uNumWFDGroup
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

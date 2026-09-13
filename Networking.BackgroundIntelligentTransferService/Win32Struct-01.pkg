@@ -1,0 +1,98 @@
+Use UI
+
+Struct _Anonymous_e__Union_1718
+	// BG_BASIC_CREDENTIALS Basic // (16)
+	BG_BASIC_CREDENTIALS Basic
+End_Struct
+
+Struct _Anonymous_e__Union_1719
+	// UInteger Dword // (4)
+	// Guid ClsID // (16)
+	// Integer Enable											// BOOL // (4)
+	// UBigint Uint64 // (8)
+	// Integer Target											// BG_AUTH_TARGET // (4)
+	Guid ClsID
+End_Struct
+
+Struct _Anonymous_e__Union_1720
+	// Pointer String											// PWSTR // (8)
+	Pointer String
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits1_5/ns-bits1_5-bg_auth_credentials
+Struct BG_AUTH_CREDENTIALS
+	Integer Target											// BG_AUTH_TARGET
+	Integer Scheme											// BG_AUTH_SCHEME
+	BG_AUTH_CREDENTIALS_UNION Credentials
+End_Struct
+
+Struct BG_AUTH_CREDENTIALS_UNION
+	_Anonymous_e__Union_1718 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits1_5/ns-bits1_5-bg_basic_credentials
+Struct BG_BASIC_CREDENTIALS
+	Pointer UserName										// PWSTR
+	Pointer Password										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits/ns-bits-bg_file_info
+Struct BG_FILE_INFO
+	Pointer RemoteName										// PWSTR
+	Pointer LocalName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits/ns-bits-bg_file_progress
+Struct BG_FILE_PROGRESS
+	UBigint BytesTotal
+	UBigint BytesTransferred
+	Integer Completed										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits2_0/ns-bits2_0-bg_file_range
+Struct BG_FILE_RANGE
+	UBigint InitialOffset
+	UBigint Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits/ns-bits-bg_job_progress
+Struct BG_JOB_PROGRESS
+	UBigint BytesTotal
+	UBigint BytesTransferred
+	UInteger FilesTotal
+	UInteger FilesTransferred
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits1_5/ns-bits1_5-bg_job_reply_progress
+Struct BG_JOB_REPLY_PROGRESS
+	UBigint BytesTotal
+	UBigint BytesTransferred
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bits/ns-bits-bg_job_times
+Struct BG_JOB_TIMES
+	FILETIME CreationTime
+	FILETIME ModificationTime
+	FILETIME TransferCompletionTime
+End_Struct
+
+Struct BITS_FILE_PROPERTY_VALUE
+	_Anonymous_e__Union_1720 Anonymous
+End_Struct
+
+Struct BITS_JOB_PROPERTY_VALUE
+	_Anonymous_e__Union_1719 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qmgr/ns-qmgr-filesetinfo
+Struct FILESETINFO
+	Pointer bstrRemoteFile									// BSTR
+	Pointer bstrLocalFile									// BSTR
+	UInteger dwSizeHint
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

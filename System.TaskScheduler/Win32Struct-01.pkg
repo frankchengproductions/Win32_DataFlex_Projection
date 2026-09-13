@@ -1,0 +1,63 @@
+Use UI
+
+Struct _Anonymous_e__Union_2710
+	// DAILY Daily // (2)
+	// WEEKLY Weekly // (4)
+	// MONTHLYDATE MonthlyDate // (8)
+	// MONTHLYDOW MonthlyDOW // (6)
+	MONTHLYDATE MonthlyDate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstask/ns-mstask-daily
+Struct DAILY
+	UShort DaysInterval
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstask/ns-mstask-monthlydate
+Struct MONTHLYDATE
+	UInteger rgfDays
+	UShort rgfMonths
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstask/ns-mstask-monthlydow
+Struct MONTHLYDOW
+	UShort wWhichWeek
+	UShort rgfDaysOfTheWeek
+	UShort rgfMonths
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstask/ns-mstask-task_trigger
+Struct TASK_TRIGGER
+	UShort cbTriggerSize
+	UShort Reserved1
+	UShort wBeginYear
+	UShort wBeginMonth
+	UShort wBeginDay
+	UShort wEndYear
+	UShort wEndMonth
+	UShort wEndDay
+	UShort wStartHour
+	UShort wStartMinute
+	UInteger MinutesDuration
+	UInteger MinutesInterval
+	UInteger rgFlags
+	Integer TriggerType										// TASK_TRIGGER_TYPE
+	TRIGGER_TYPE_UNION Type
+	UShort Reserved2
+	UShort wRandomMinutesInterval
+End_Struct
+
+Struct TRIGGER_TYPE_UNION
+	_Anonymous_e__Union_2710 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstask/ns-mstask-weekly
+Struct WEEKLY
+	UShort WeeksInterval
+	UShort rgfDaysOfTheWeek
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

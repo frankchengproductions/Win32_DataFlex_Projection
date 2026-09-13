@@ -1,0 +1,289 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-fileshare_change_list
+Struct FILESHARE_CHANGE_LIST
+	UInteger NumEntries
+	FILESHARE_CHANGE[1] ChangeEntry
+End_Struct
+
+Struct GET_OPERATION_CONTEXT_PARAMS
+	UInteger Size
+	UInteger Version
+	Integer Type											// RESDLL_CONTEXT_OPERATION_TYPE
+	UInteger Priority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-group_failure_info
+Struct GROUP_FAILURE_INFO
+	UInteger dwFailoverAttemptsRemaining
+	UInteger dwFailoverPeriodRemaining
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-group_failure_info_buffer
+Struct GROUP_FAILURE_INFO_BUFFER
+	UInteger dwVersion
+	GROUP_FAILURE_INFO Info
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-monitor_state
+Struct MONITOR_STATE
+	Bigint LastUpdate
+	Integer State											// RESOURCE_MONITOR_STATE
+	Integer iMissingAlignment1
+	Pointer ActiveResource									// HANDLE
+	Integer ResmonStop										// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-notify_filter_and_type
+Struct NOTIFY_FILTER_AND_TYPE
+	UInteger dwObjectType
+	Integer iMissingAlignment1
+	Bigint FilterFlags
+End_Struct
+
+Struct NodeSriovInfo
+	UInteger VFTotal
+	UInteger VFUsed
+	UInteger QPTotal
+	UInteger QPUsed
+End_Struct
+
+Struct NodeUtilizationInfoElement
+	UBigint Id
+	UBigint AvailableMemory
+	UBigint AvailableMemoryAfterReclamation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-post_upgrade_version_info
+Struct POST_UPGRADE_VERSION_INFO
+	UInteger newMajorVersion
+	UInteger newUpgradeVersion
+	UInteger oldMajorVersion
+	UInteger oldUpgradeVersion
+	UInteger reserved
+End_Struct
+
+Struct PaxosTagCStruct
+	UBigint __padding__PaxosTagVtable
+	UBigint __padding__NextEpochVtable
+	UBigint __padding__NextEpoch_DateTimeVtable
+	UBigint NextEpoch_DateTime_ticks
+	Integer NextEpoch_Value
+	UInteger __padding__BoundryNextEpoch
+	UBigint __padding__EpochVtable
+	UBigint __padding__Epoch_DateTimeVtable
+	UBigint Epoch_DateTime_ticks
+	Integer Epoch_Value
+	UInteger __padding__BoundryEpoch
+	Integer Sequence
+	UInteger __padding__BoundrySequence
+End_Struct
+
+Struct REPAIR_CLUSTER_NAME_ACCOUNT_CONFIG
+	UInteger dwVersion
+	UInteger dwFlags
+	Pointer pszUserName										// PWSTR
+	Pointer pszPassword										// PWSTR
+	Pointer pszDomain										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-resource_failure_info
+Struct RESOURCE_FAILURE_INFO
+	UInteger dwRestartAttemptsRemaining
+	UInteger dwRestartPeriodRemaining
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msclus/ns-msclus-resource_failure_info_buffer
+Struct RESOURCE_FAILURE_INFO_BUFFER
+	UInteger dwVersion
+	RESOURCE_FAILURE_INFO Info
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resource_status
+Struct RESOURCE_STATUS
+	Integer ResourceState									// CLUSTER_RESOURCE_STATE
+	UInteger CheckPoint
+	UInteger WaitHint
+	Integer iMissingAlignment1
+	Pointer EventHandle										// HANDLE
+End_Struct
+
+Struct RESOURCE_STATUS_EX
+	Integer ResourceState									// CLUSTER_RESOURCE_STATE
+	UInteger CheckPoint
+	Pointer EventHandle										// HANDLE
+	UInteger ApplicationSpecificErrorCode
+	UInteger Flags
+	UInteger WaitHint
+	Integer iMissingAlignment1
+End_Struct
+
+Struct RESOURCE_TERMINAL_FAILURE_INFO_BUFFER
+	Integer isTerminalFailure								// BOOL
+	UInteger restartPeriodRemaining
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_filetime_data
+Struct RESUTIL_FILETIME_DATA
+	FILETIME Default
+	FILETIME Minimum
+	FILETIME Maximum
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_largeint_data
+Struct RESUTIL_LARGEINT_DATA
+	Bigint Default
+	Bigint Minimum
+	Bigint Maximum
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_property_item
+Struct RESUTIL_PROPERTY_ITEM
+	Pointer Name											// PWSTR
+	Pointer KeyName											// PWSTR
+	UInteger Format
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1290 Anonymous
+	UInteger Minimum
+	UInteger Maximum
+	UInteger Flags
+	UInteger Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-resutil_ulargeint_data
+Struct RESUTIL_ULARGEINT_DATA
+	UBigint Default
+	UBigint Minimum
+	UBigint Maximum
+End_Struct
+
+Struct ResourceUtilizationInfoElement
+	UBigint PhysicalNumaId
+	UBigint CurrentMemory
+End_Struct
+
+Struct SR_RESOURCE_TYPE_ADD_REPLICATION_GROUP
+	UShort[260] ReplicationGroupName
+	UShort[260] Description
+	UShort[260] LogPath
+	UBigint MaxLogSizeInBytes
+	UShort LogType
+	Short iMissingAlignment1
+	UInteger ReplicationMode
+	UInteger MinimumPartnersInSync
+	UChar EnableWriteConsistency							// BOOLEAN
+	UChar EnableEncryption									// BOOLEAN
+	UChar EnableCompression									// BOOLEAN
+	UChar[1] cMissingAlignment2
+	UShort[260] CertificateThumbprint
+	UInteger VolumeNameCount
+	UShort[260] VolumeNames
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SR_RESOURCE_TYPE_ADD_REPLICATION_GROUP_RESULT
+	UInteger Result
+	UShort[260] ErrorString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_disk_info
+Struct SR_RESOURCE_TYPE_DISK_INFO
+	Integer Reason											// SR_DISK_REPLICATION_ELIGIBLE
+	Guid DiskGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_eligible_disks_result
+Struct SR_RESOURCE_TYPE_ELIGIBLE_DISKS_RESULT
+	UShort Count
+	Short iMissingAlignment1
+	SR_RESOURCE_TYPE_DISK_INFO[1] DiskInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_query_eligible_logdisks
+Struct SR_RESOURCE_TYPE_QUERY_ELIGIBLE_LOGDISKS
+	Guid DataDiskGuid
+	UChar IncludeOfflineDisks								// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_query_eligible_source_datadisks
+Struct SR_RESOURCE_TYPE_QUERY_ELIGIBLE_SOURCE_DATADISKS
+	Guid DataDiskGuid
+	UChar IncludeAvailableStoargeDisks						// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_query_eligible_target_datadisks
+Struct SR_RESOURCE_TYPE_QUERY_ELIGIBLE_TARGET_DATADISKS
+	Guid SourceDataDiskGuid
+	Guid TargetReplicationGroupGuid
+	UChar SkipConnectivityCheck								// BOOLEAN
+	UChar IncludeOfflineDisks								// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_replicated_disk
+Struct SR_RESOURCE_TYPE_REPLICATED_DISK
+	Integer Type											// SR_REPLICATED_DISK_TYPE
+	Guid ClusterDiskResourceGuid
+	Guid ReplicationGroupId
+	UShort[260] ReplicationGroupName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_replicated_disks_result
+Struct SR_RESOURCE_TYPE_REPLICATED_DISKS_RESULT
+	UShort Count
+	Short iMissingAlignment1
+	SR_RESOURCE_TYPE_REPLICATED_DISK[1] ReplicatedDisks
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_replicated_partition_array
+Struct SR_RESOURCE_TYPE_REPLICATED_PARTITION_ARRAY
+	UInteger Count
+	Integer iMissingAlignment1
+	SR_RESOURCE_TYPE_REPLICATED_PARTITION_INFO[1] PartitionArray
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/clusapi/ns-clusapi-sr_resource_type_replicated_partition_info
+Struct SR_RESOURCE_TYPE_REPLICATED_PARTITION_INFO
+	UBigint PartitionOffset
+	UInteger Capabilities
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-witnesstaghelper
+Struct WitnessTagHelper
+	Integer Version
+	Integer iMissingAlignment1
+	PaxosTagCStruct paxosToValidate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/resapi/ns-resapi-witnesstagupdatehelper
+Struct WitnessTagUpdateHelper
+	Integer Version
+	Integer iMissingAlignment1
+	PaxosTagCStruct paxosToSet
+	PaxosTagCStruct paxosToValidate
+End_Struct
+
+Struct _Anonymous_e__Struct_1169
+	UShort wFormat
+	UShort wType
+End_Struct
+
+Struct _Anonymous_e__Struct_1171
+	_Anonymous_e__Union_1172 Anonymous
+	UInteger SubClass
+End_Struct
+
+Struct _Anonymous_e__Struct_1175
+	UChar PortNumber
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

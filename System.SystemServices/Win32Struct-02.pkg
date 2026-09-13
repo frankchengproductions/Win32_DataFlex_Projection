@@ -1,0 +1,787 @@
+Use UI
+
+Struct IMAGE_DYNAMIC_RELOCATION64
+	UBigint Symbol
+	UInteger BaseRelocSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct IMAGE_DYNAMIC_RELOCATION64_V2
+	UInteger HeaderSize
+	UInteger FixupInfoSize
+	UBigint Symbol
+	UInteger SymbolGroup
+	UInteger Flags
+End_Struct
+
+Struct IMAGE_DYNAMIC_RELOCATION_TABLE
+	UInteger Version
+	UInteger Size
+End_Struct
+
+Struct IMAGE_EPILOGUE_DYNAMIC_RELOCATION_HEADER
+	UInteger EpilogueCount
+	UChar EpilogueByteCount
+	UChar BranchDescriptorElementSize
+	UShort BranchDescriptorCount
+End_Struct
+
+Struct IMAGE_EXPORT_DIRECTORY
+	UInteger Characteristics
+	UInteger TimeDateStamp
+	UShort MajorVersion
+	UShort MinorVersion
+	UInteger Name
+	UInteger Base
+	UInteger NumberOfFunctions
+	UInteger NumberOfNames
+	UInteger AddressOfFunctions
+	UInteger AddressOfNames
+	UInteger AddressOfNameOrdinals
+End_Struct
+
+Struct IMAGE_FUNCTION_OVERRIDE_DYNAMIC_RELOCATION
+	UInteger OriginalRva
+	UInteger BDDOffset
+	UInteger RvaSize
+	UInteger BaseRelocSize
+End_Struct
+
+Struct IMAGE_FUNCTION_OVERRIDE_HEADER
+	UInteger FuncOverrideSize
+End_Struct
+
+Struct IMAGE_HOT_PATCH_BASE
+	UInteger SequenceNumber
+	UInteger Flags
+	UInteger OriginalTimeDateStamp
+	UInteger OriginalCheckSum
+	UInteger CodeIntegrityInfo
+	UInteger CodeIntegritySize
+	UInteger PatchTable
+	UInteger BufferOffset
+End_Struct
+
+Struct IMAGE_HOT_PATCH_HASHES
+	UChar[32] SHA256
+	UChar[20] SHA1
+End_Struct
+
+Struct IMAGE_HOT_PATCH_INFO
+	UInteger Version
+	UInteger Size
+	UInteger SequenceNumber
+	UInteger BaseImageList
+	UInteger BaseImageCount
+	UInteger BufferOffset
+	UInteger ExtraPatchSize
+	UInteger MinSequenceNumber
+	UInteger Flags
+End_Struct
+
+Struct IMAGE_HOT_PATCH_MACHINE
+	_Anonymous_e__Struct_2920 Anonymous
+End_Struct
+
+Struct IMAGE_IMPORT_BY_NAME
+	UShort Hint
+	Char[1] Name											// CHAR
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct IMAGE_IMPORT_CONTROL_TRANSFER_ARM64_RELOCATION
+	UInteger _bitfield
+End_Struct
+
+Struct IMAGE_IMPORT_CONTROL_TRANSFER_DYNAMIC_RELOCATION
+	UInteger _bitfield
+End_Struct
+
+Struct IMAGE_IMPORT_DESCRIPTOR
+	_Anonymous_e__Union_2915 Anonymous
+	UInteger TimeDateStamp
+	UInteger ForwarderChain
+	UInteger Name
+	UInteger FirstThunk
+End_Struct
+
+Struct IMAGE_INDIR_CONTROL_TRANSFER_DYNAMIC_RELOCATION
+	UShort _bitfield
+End_Struct
+
+Struct IMAGE_LINENUMBER
+	_Type_e__Union_2910 Type
+	UShort Linenumber
+	Short iMissingAlignment1
+End_Struct
+
+Struct IMAGE_OS2_HEADER
+	UShort ne_magic
+	Char ne_ver												// CHAR
+	Char ne_rev												// CHAR
+	UShort ne_enttab
+	UShort ne_cbenttab
+	Integer ne_crc
+	UShort ne_flags
+	UShort ne_autodata
+	UShort ne_heap
+	UShort ne_stack
+	Integer ne_csip
+	Integer ne_sssp
+	UShort ne_cseg
+	UShort ne_cmod
+	UShort ne_cbnrestab
+	UShort ne_segtab
+	UShort ne_rsrctab
+	UShort ne_restab
+	UShort ne_modtab
+	UShort ne_imptab
+	Integer ne_nrestab
+	UShort ne_cmovent
+	UShort ne_align
+	UShort ne_cres
+	UChar ne_exetyp
+	UChar ne_flagsothers
+	UShort ne_pretthunks
+	UShort ne_psegrefbytes
+	UShort ne_swaparea
+	UShort ne_expver
+End_Struct
+
+Struct IMAGE_POLICY_ENTRY
+	Integer Type											// IMAGE_POLICY_ENTRY_TYPE
+	Integer PolicyId										// IMAGE_POLICY_ID
+	_u_e__Union_2930 u
+End_Struct
+
+Struct IMAGE_POLICY_METADATA
+	UChar Version
+	UChar[7] Reserved0
+	UBigint ApplicationId
+	IMAGE_POLICY_ENTRY[1] Policies
+End_Struct
+
+Struct IMAGE_PROLOGUE_DYNAMIC_RELOCATION_HEADER
+	UChar PrologueByteCount
+End_Struct
+
+Struct IMAGE_RELOCATION
+	_Anonymous_e__Union_2909 Anonymous
+	UInteger SymbolTableIndex
+	UShort Type
+	Short iMissingAlignment1
+End_Struct
+
+Struct IMAGE_RESOURCE_DATA_ENTRY
+	UInteger OffsetToData
+	UInteger Size
+	UInteger CodePage
+	UInteger Reserved
+End_Struct
+
+Struct IMAGE_RESOURCE_DIRECTORY
+	UInteger Characteristics
+	UInteger TimeDateStamp
+	UShort MajorVersion
+	UShort MinorVersion
+	UShort NumberOfNamedEntries
+	UShort NumberOfIdEntries
+End_Struct
+
+Struct IMAGE_RESOURCE_DIRECTORY_ENTRY
+	_Anonymous1_e__Union_2916 Anonymous1
+	_Anonymous2_e__Union_2918 Anonymous2
+End_Struct
+
+Struct IMAGE_RESOURCE_DIRECTORY_STRING
+	UShort Length
+	Char[1] NameString										// CHAR
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct IMAGE_RESOURCE_DIR_STRING_U
+	UShort Length
+	UShort[1] NameString
+End_Struct
+
+Struct IMAGE_SEPARATE_DEBUG_HEADER
+	UShort Signature
+	UShort Flags
+	UShort Machine
+	UShort Characteristics
+	UInteger TimeDateStamp
+	UInteger CheckSum
+	UInteger ImageBase
+	UInteger SizeOfImage
+	UInteger NumberOfSections
+	UInteger ExportedNamesSize
+	UInteger DebugDirectorySize
+	UInteger SectionAlignment
+	UInteger[2] Reserved
+End_Struct
+
+Struct IMAGE_SWITCHTABLE_BRANCH_DYNAMIC_RELOCATION
+	UShort _bitfield
+End_Struct
+
+Struct IMAGE_SYMBOL
+	_N_e__Union_2889 N
+	UInteger Value
+	Short SectionNumber
+	UShort Type
+	UChar StorageClass
+	UChar NumberOfAuxSymbols
+	Short iMissingAlignment1
+End_Struct
+
+Struct IMAGE_SYMBOL_EX
+	_N_e__Union_2891 N
+	UInteger Value
+	Integer SectionNumber
+	UShort Type
+	UChar StorageClass
+	UChar NumberOfAuxSymbols
+End_Struct
+
+Struct IMAGE_TLS_DIRECTORY32
+	UInteger StartAddressOfRawData
+	UInteger EndAddressOfRawData
+	UInteger AddressOfIndex
+	UInteger AddressOfCallBacks
+	UInteger SizeOfZeroFill
+	_Anonymous_e__Union_2913 Anonymous
+End_Struct
+
+Struct IMAGE_TLS_DIRECTORY64
+	UBigint StartAddressOfRawData
+	UBigint EndAddressOfRawData
+	UBigint AddressOfIndex
+	UBigint AddressOfCallBacks
+	UInteger SizeOfZeroFill
+	_Anonymous_e__Union_2911 Anonymous
+End_Struct
+
+Struct IMAGE_VXD_HEADER
+	UShort e32_magic
+	UChar e32_border
+	UChar e32_worder
+	UInteger e32_level
+	UShort e32_cpu
+	UShort e32_os
+	UInteger e32_ver
+	UInteger e32_mflags
+	UInteger e32_mpages
+	UInteger e32_startobj
+	UInteger e32_eip
+	UInteger e32_stackobj
+	UInteger e32_esp
+	UInteger e32_pagesize
+	UInteger e32_lastpagesize
+	UInteger e32_fixupsize
+	UInteger e32_fixupsum
+	UInteger e32_ldrsize
+	UInteger e32_ldrsum
+	UInteger e32_objtab
+	UInteger e32_objcnt
+	UInteger e32_objmap
+	UInteger e32_itermap
+	UInteger e32_rsrctab
+	UInteger e32_rsrccnt
+	UInteger e32_restab
+	UInteger e32_enttab
+	UInteger e32_dirtab
+	UInteger e32_dircnt
+	UInteger e32_fpagetab
+	UInteger e32_frectab
+	UInteger e32_impmod
+	UInteger e32_impmodcnt
+	UInteger e32_impproc
+	UInteger e32_pagesum
+	UInteger e32_datapage
+	UInteger e32_preload
+	UInteger e32_nrestab
+	UInteger e32_cbnrestab
+	UInteger e32_nressum
+	UInteger e32_autodata
+	UInteger e32_debuginfo
+	UInteger e32_debuglen
+	UInteger e32_instpreload
+	UInteger e32_instdemand
+	UInteger e32_heapsize
+	UChar[12] e32_res3
+	UInteger e32_winresoff
+	UInteger e32_winreslen
+	UShort e32_devid
+	UShort e32_ddkver
+End_Struct
+
+Struct IMPORT_OBJECT_HEADER
+	UShort Sig1
+	UShort Sig2
+	UShort Version
+	UShort Machine
+	UInteger TimeDateStamp
+	UInteger SizeOfData
+	_Anonymous_e__Union_2929 Anonymous
+	UShort _bitfield
+End_Struct
+
+Struct JOBOBJECT_NETWORK_ACCOUNTING_INFORMATION
+	UBigint DataBytesIn
+	UBigint DataBytesOut
+End_Struct
+
+Struct KERNEL_CET_CONTEXT
+	UBigint Ssp
+	UBigint Rip
+	UShort SegCs
+	_Anonymous_e__Union_2828 Anonymous
+	UShort[2] Fill
+End_Struct
+
+Struct KTMOBJECT_CURSOR
+	Guid LastQuery
+	UInteger ObjectIdCount
+	Guid[1] ObjectIds
+End_Struct
+
+Struct MAXVERSIONTESTED_INFO
+	UBigint MaxVersionTested
+End_Struct
+
+Struct NETWORK_APP_INSTANCE_EA
+	Guid AppInstanceID
+	UInteger CsvFlags
+End_Struct
+
+Struct NON_PAGED_DEBUG_INFO
+	UShort Signature
+	UShort Flags
+	UInteger Size
+	UShort Machine
+	UShort Characteristics
+	UInteger TimeDateStamp
+	UInteger CheckSum
+	UInteger SizeOfImage
+	UBigint ImageBase
+End_Struct
+
+Struct NOTIFY_USER_POWER_SETTING
+	Guid Guid
+End_Struct
+
+Struct NT_TIB32
+	UInteger ExceptionList
+	UInteger StackBase
+	UInteger StackLimit
+	UInteger SubSystemTib
+	_Anonymous_e__Union_2837 Anonymous
+	UInteger ArbitraryUserPointer
+	UInteger Self
+End_Struct
+
+Struct NT_TIB64
+	UBigint ExceptionList
+	UBigint StackBase
+	UBigint StackLimit
+	UBigint SubSystemTib
+	_Anonymous_e__Union_2838 Anonymous
+	UBigint ArbitraryUserPointer
+	UBigint Self
+End_Struct
+
+Struct PACKEDEVENTINFO
+	UInteger ulSize
+	UInteger ulNumEventsForLogFile
+	UInteger[1] ulOffsets
+End_Struct
+
+Struct POWER_LIMIT_ATTRIBUTES
+	Integer Type											// POWER_LIMIT_TYPES
+	UInteger DomainId
+	UInteger MaxValue
+	UInteger MinValue
+	UInteger MinTimeParameter
+	UInteger MaxTimeParameter
+	UInteger DefaultACValue
+	UInteger DefaultDCValue
+	_Flags_e__Union_2882 Flags
+End_Struct
+
+Struct POWER_LIMIT_VALUE
+	Integer Type											// POWER_LIMIT_TYPES
+	UInteger DomainId
+	UInteger TargetValue
+	UInteger TimeParameter
+End_Struct
+
+Struct PROCESSOR_IDLESTATE_INFO
+	UInteger TimeCheck
+	UChar DemotePercent
+	UChar PromotePercent
+	UChar[2] Spare
+End_Struct
+
+Struct PROCESSOR_IDLESTATE_POLICY
+	UShort Revision
+	_Flags_e__Union_2884 Flags
+	UInteger PolicyCount
+	PROCESSOR_IDLESTATE_INFO[3] Policy
+End_Struct
+
+Struct PROCESSOR_PERFSTATE_POLICY
+	UInteger Revision
+	UChar MaxThrottle
+	UChar MinThrottle
+	UChar BusyAdjThreshold
+	_Anonymous_e__Union_2886 Anonymous
+	UInteger TimeCheck
+	UInteger IncreaseTime
+	UInteger DecreaseTime
+	UInteger IncreasePercent
+	UInteger DecreasePercent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_aslr_policy
+Struct PROCESS_MITIGATION_ASLR_POLICY
+	_Anonymous_e__Union_2841 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_binary_signature_policy
+Struct PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY
+	_Anonymous_e__Union_2857 Anonymous
+End_Struct
+
+Struct PROCESS_MITIGATION_CHILD_PROCESS_POLICY
+	_Anonymous_e__Union_2867 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_control_flow_guard_policy
+Struct PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY
+	_Anonymous_e__Union_2855 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_dep_policy
+Struct PROCESS_MITIGATION_DEP_POLICY
+	_Anonymous_e__Union_2843 Anonymous
+	UChar Permanent											// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_dynamic_code_policy
+Struct PROCESS_MITIGATION_DYNAMIC_CODE_POLICY
+	_Anonymous_e__Union_2853 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_extension_point_disable_policy
+Struct PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY
+	_Anonymous_e__Union_2851 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_font_disable_policy
+Struct PROCESS_MITIGATION_FONT_DISABLE_POLICY
+	_Anonymous_e__Union_2859 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_image_load_policy
+Struct PROCESS_MITIGATION_IMAGE_LOAD_POLICY
+	_Anonymous_e__Union_2861 Anonymous
+End_Struct
+
+Struct PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY
+	_Anonymous_e__Union_2865 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process-mitigation-redirection-trust-policy
+Struct PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY
+	_Anonymous_e__Union_2875 Anonymous
+End_Struct
+
+Struct PROCESS_MITIGATION_SEHOP_POLICY
+	_Anonymous_e__Union_2845 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_side_channel_isolation_policy
+Struct PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY
+	_Anonymous_e__Union_2869 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_strict_handle_check_policy
+Struct PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY
+	_Anonymous_e__Union_2847 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_system_call_disable_policy
+Struct PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY
+	_Anonymous_e__Union_2849 Anonymous
+End_Struct
+
+Struct PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY
+	_Anonymous_e__Union_2863 Anonymous
+End_Struct
+
+Struct PROCESS_MITIGATION_USER_POINTER_AUTH_POLICY
+	_Anonymous_e__Union_2873 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_mitigation_user_shadow_stack_policy
+Struct PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY
+	_Anonymous_e__Union_2871 Anonymous
+End_Struct
+
+Struct PROCESS_NETWORK_COUNTERS
+	UBigint BytesIn
+	UBigint BytesOut
+End_Struct
+
+Struct QUOTA_LIMITS_EX
+	ULongPtr PagedPoolLimit
+	ULongPtr NonPagedPoolLimit
+	ULongPtr MinimumWorkingSetSize
+	ULongPtr MaximumWorkingSetSize
+	ULongPtr PagefileLimit
+	Bigint TimeLimit
+	ULongPtr WorkingSetLimit
+	ULongPtr Reserved2
+	ULongPtr Reserved3
+	ULongPtr Reserved4
+	UInteger Flags
+	RATE_QUOTA_LIMIT CpuRateLimit
+End_Struct
+
+Struct RATE_QUOTA_LIMIT
+	_Anonymous_e__Union_2839 Anonymous
+End_Struct
+
+Struct REARRANGE_FILE_DATA
+	UBigint SourceStartingOffset
+	UBigint TargetOffset
+	Pointer SourceFileHandle								// HANDLE
+	UInteger Length
+	UInteger Flags
+End_Struct
+
+Struct REARRANGE_FILE_DATA32
+	UBigint SourceStartingOffset
+	UBigint TargetOffset
+	UInteger SourceFileHandle
+	UInteger Length
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct REDBOOK_DIGITAL_AUDIO_EXTRACTION_INFO
+	UInteger Version
+	UInteger Accurate
+	UInteger Supported
+	UInteger AccurateMask0
+End_Struct
+
+Struct RESOURCEMANAGER_BASIC_INFORMATION
+	Guid ResourceManagerId
+	UInteger DescriptionLength
+	UShort[1] Description
+	Short iMissingAlignment1
+End_Struct
+
+Struct RESOURCEMANAGER_COMPLETION_INFORMATION
+	Pointer IoCompletionPortHandle							// HANDLE
+	ULongPtr CompletionKey
+End_Struct
+
+Struct RUNTIME_REPORT_DIGEST_HEADER
+	UShort ReportType
+	UShort Reserved
+	UChar[64] ReportDigest
+End_Struct
+
+Struct RUNTIME_REPORT_HEADER
+	UShort ReportType
+	UShort Reserved
+	UInteger ReportSize
+End_Struct
+
+Struct RUNTIME_REPORT_PACKAGE_HEADER
+	UInteger Magic
+	UShort PackageVersion
+	UShort NumberOfReports
+	UBigint ReportTypesBitmap
+	UInteger PackageSize
+	UShort ReportDigestType
+	UShort TotalReportDigestsSize
+	UShort Reserved
+	UShort SignatureScheme
+	UInteger SignatureSize
+	UInteger TotalAuthenticatedReportsSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct RemHBITMAP
+	UInteger cbData
+	UChar[1] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RemHBRUSH
+	UInteger cbData
+	UChar[1] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RemHENHMETAFILE
+	UInteger cbData
+	UChar[1] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RemHGLOBAL
+	Integer fNullHGlobal
+	UInteger cbData
+	UChar[1] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RemHMETAFILEPICT
+	Integer mm
+	Integer xExt
+	Integer yExt
+	UInteger cbData
+	UChar[1] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RemHPALETTE
+	UInteger cbData
+	UChar[1] data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct RemotableHandle
+	Integer fContext
+	_u_e__Struct_1717 u
+End_Struct
+
+Struct SCOPE_TABLE_AMD64
+	UInteger Count
+	_Anonymous_e__Struct_2830[1] ScopeRecord
+End_Struct
+
+Struct SCOPE_TABLE_ARM
+	UInteger Count
+	_Anonymous_e__Struct_2831[1] ScopeRecord
+End_Struct
+
+Struct SCOPE_TABLE_ARM64
+	UInteger Count
+	_Anonymous_e__Struct_2832[1] ScopeRecord
+End_Struct
+
+Struct SCRUB_DATA_INPUT
+	UInteger Size
+	UInteger Flags
+	UInteger MaximumIos
+	UInteger[4] ObjectId
+	Integer iMissingAlignment1
+	UBigint StartingByteOffset
+	UBigint ByteCount
+	UInteger[36] Reserved
+	UChar[1040] ResumeContext
+End_Struct
+
+Struct SCRUB_DATA_OUTPUT
+	UInteger Size
+	UInteger Flags
+	UInteger Status
+	Integer iMissingAlignment1
+	UBigint ErrorFileOffset
+	UBigint ErrorLength
+	UBigint NumberOfBytesRepaired
+	UBigint NumberOfBytesFailed
+	UBigint InternalFileReference
+	UShort ResumeContextLength
+	UShort ParityExtentDataOffset
+	Integer iMissingAlignment2
+	UBigint NextStartingByteOffset
+	UBigint ValidDataLength
+	UInteger[4] Reserved
+	UBigint NumberOfMetadataBytesProcessed
+	UBigint NumberOfDataBytesProcessed
+	UBigint TotalNumberOfMetadataBytesInUse
+	UBigint TotalNumberOfDataBytesInUse
+	UBigint DataBytesSkippedDueToNoAllocation
+	UBigint DataBytesSkippedDueToInvalidRun
+	UBigint DataBytesSkippedDueToIntegrityStream
+	UBigint DataBytesSkippedDueToRegionBeingClean
+	UBigint DataBytesSkippedDueToLockConflict
+	UBigint DataBytesSkippedDueToNoScrubDataFlag
+	UBigint DataBytesSkippedDueToNoScrubNonIntegrityStreamFlag
+	UBigint DataBytesScrubbed
+	UChar[1040] ResumeContext
+End_Struct
+
+Struct SCRUB_PARITY_EXTENT
+	Bigint Offset
+	UBigint Length
+End_Struct
+
+Struct SCRUB_PARITY_EXTENT_DATA
+	UShort Size
+	UShort Flags
+	UShort NumberOfParityExtents
+	UShort MaximumNumberOfParityExtents
+	SCRUB_PARITY_EXTENT[1] ParityExtents
+End_Struct
+
+Struct SECURITY_OBJECT_AI_PARAMS
+	UInteger Size
+	UInteger ConstraintMask
+End_Struct
+
+Struct SERVERSILO_BASIC_INFORMATION
+	UInteger ServiceSessionId
+	Integer State											// SERVERSILO_STATE
+	UInteger ExitStatus
+	UChar Reserved											// BOOLEAN
+	UChar[3] cMissingAlignment1
+	Pointer ApiSetSchema									// Pointer*
+	Pointer HostApiSetSchema								// Pointer*
+	UInteger ContainerBuildNumber
+	UInteger HostBuildNumber
+End_Struct
+
+Struct SERVERSILO_DIAGNOSTIC_INFORMATION
+	Guid ReportId
+	UInteger ExitStatus
+	UShort[15] CriticalProcessName
+	Short iMissingAlignment1
+End_Struct
+
+Struct SE_TOKEN_USER
+	_Anonymous1_e__Union_2835 Anonymous1
+	_Anonymous2_e__Union_2836 Anonymous2
+	Integer iMissingAlignment1
+End_Struct
+
+Struct SHARED_VIRTUAL_DISK_SUPPORT
+	Integer SharedVirtualDiskSupport						// SharedVirtualDiskSupportType
+	Integer HandleState										// SharedVirtualDiskHandleState
+End_Struct
+
+Struct SHUFFLE_FILE_DATA
+	Bigint StartingOffset
+	Bigint Length
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct SILOOBJECT_BASIC_INFORMATION
+	UInteger SiloId
+	UInteger SiloParentId
+	UInteger NumberOfProcesses
+	UChar IsInServerSilo									// BOOLEAN
+	UChar[3] Reserved
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

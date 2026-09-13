@@ -1,0 +1,40 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/callobj/ns-callobj-callframeinfo
+Struct CALLFRAMEINFO
+	UInteger iMethod
+	Integer fHasInValues									// BOOL
+	Integer fHasInOutValues									// BOOL
+	Integer fHasOutValues									// BOOL
+	Integer fDerivesFromIDispatch							// BOOL
+	Integer cInInterfacesMax
+	Integer cInOutInterfacesMax
+	Integer cOutInterfacesMax
+	Integer cTopLevelInInterfaces
+	Guid iid
+	UInteger cMethod
+	UInteger cParams
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/callobj/ns-callobj-callframeparaminfo
+Struct CALLFRAMEPARAMINFO
+	UChar fIn												// BOOLEAN
+	UChar fOut												// BOOLEAN
+	Short iMissingAlignment1
+	UInteger stackOffset
+	UInteger cbParam
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/callobj/ns-callobj-callframe_marshalcontext
+Struct CALLFRAME_MARSHALCONTEXT
+	UChar fIn												// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger dwDestContext
+	Pointer pvDestContext									// Pointer*
+	Pointer punkReserved									// IUnknown
+	Guid guidTransferSyntax
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

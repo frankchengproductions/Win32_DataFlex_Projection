@@ -1,0 +1,131 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-enclave_identity
+Struct ENCLAVE_IDENTITY
+	UChar[32] OwnerId
+	UChar[32] UniqueId
+	UChar[32] AuthorId
+	UChar[16] FamilyId
+	UChar[16] ImageId
+	UInteger EnclaveSvn
+	UInteger SecureKernelSvn
+	UInteger PlatformSvn
+	UInteger Flags
+	UInteger SigningLevel
+	UInteger EnclaveType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-enclave_information
+Struct ENCLAVE_INFORMATION
+	UInteger EnclaveType
+	UInteger Reserved
+	Pointer BaseAddress										// Pointer*
+	ULongPtr Size
+	ENCLAVE_IDENTITY Identity
+End_Struct
+
+Struct ENCLAVE_VBS_BASIC_KEY_REQUEST
+	UInteger RequestSize
+	UInteger Flags
+	UInteger EnclaveSVN
+	UInteger SystemKeyID
+	UInteger CurrentSystemKeyID
+End_Struct
+
+Struct PS_TRUSTLET_TKSESSION_ID
+	UBigint[4] SessionId
+End_Struct
+
+Struct TRUSTLET_BINDING_DATA
+	UBigint TrustletIdentity
+	PS_TRUSTLET_TKSESSION_ID TrustletSessionId
+	UInteger TrustletSvn
+	UInteger Reserved1
+	UBigint Reserved2
+End_Struct
+
+Struct VBS_BASIC_ENCLAVE_EXCEPTION_AMD64
+	UInteger ExceptionCode
+	UInteger NumberParameters
+	ULongPtr[3] ExceptionInformation
+	ULongPtr ExceptionRAX
+	ULongPtr ExceptionRCX
+	ULongPtr ExceptionRIP
+	ULongPtr ExceptionRFLAGS
+	ULongPtr ExceptionRSP
+End_Struct
+
+Struct VBS_BASIC_ENCLAVE_SYSCALL_PAGE
+	Pointer ReturnFromEnclave								// VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_ENCLAVE
+	Pointer ReturnFromException								// VBS_BASIC_ENCLAVE_BASIC_CALL_RETURN_FROM_EXCEPTION
+	Pointer TerminateThread									// VBS_BASIC_ENCLAVE_BASIC_CALL_TERMINATE_THREAD
+	Pointer InterruptThread									// VBS_BASIC_ENCLAVE_BASIC_CALL_INTERRUPT_THREAD
+	Pointer CommitPages										// VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES
+	Pointer DecommitPages									// VBS_BASIC_ENCLAVE_BASIC_CALL_DECOMMIT_PAGES
+	Pointer ProtectPages									// VBS_BASIC_ENCLAVE_BASIC_CALL_PROTECT_PAGES
+	Pointer CreateThread									// VBS_BASIC_ENCLAVE_BASIC_CALL_CREATE_THREAD
+	Pointer GetEnclaveInformation							// VBS_BASIC_ENCLAVE_BASIC_CALL_GET_ENCLAVE_INFORMATION
+	Pointer GenerateKey										// VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_KEY
+	Pointer GenerateReport									// VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_REPORT
+	Pointer VerifyReport									// VBS_BASIC_ENCLAVE_BASIC_CALL_VERIFY_REPORT
+	Pointer GenerateRandomData								// VBS_BASIC_ENCLAVE_BASIC_CALL_GENERATE_RANDOM_DATA
+End_Struct
+
+Struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32
+	UInteger[4] ThreadContext
+	UInteger EntryPoint
+	UInteger StackPointer
+	UInteger ExceptionEntryPoint
+	UInteger ExceptionStack
+	UInteger ExceptionActive
+End_Struct
+
+Struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64
+	UBigint[4] ThreadContext
+	UBigint EntryPoint
+	UBigint StackPointer
+	UBigint ExceptionEntryPoint
+	UBigint ExceptionStack
+	UInteger ExceptionActive
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-vbs_enclave_report
+Struct VBS_ENCLAVE_REPORT
+	UInteger ReportSize
+	UInteger ReportVersion
+	UChar[64] EnclaveData
+	ENCLAVE_IDENTITY EnclaveIdentity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-vbs_enclave_report_module
+Struct VBS_ENCLAVE_REPORT_MODULE
+	VBS_ENCLAVE_REPORT_VARDATA_HEADER Header
+	UChar[32] UniqueId
+	UChar[32] AuthorId
+	UChar[16] FamilyId
+	UChar[16] ImageId
+	UInteger Svn
+	UShort[1] ModuleName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-vbs_enclave_report_pkg_header
+Struct VBS_ENCLAVE_REPORT_PKG_HEADER
+	UInteger PackageSize
+	UInteger Version
+	UInteger SignatureScheme
+	UInteger SignedStatementSize
+	UInteger SignatureSize
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntenclv/ns-ntenclv-vbs_enclave_report_vardata_header
+Struct VBS_ENCLAVE_REPORT_VARDATA_HEADER
+	UInteger DataType
+	UInteger Size
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

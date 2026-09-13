@@ -1,0 +1,860 @@
+Use UI
+
+Struct _Anonymous_e__Union_1228
+	// UShort Reserved // (2)
+	// UShort Flags // (2)
+	UShort Reserved
+End_Struct
+
+Struct _Anonymous_e__Union_2814
+	// UShort Reserved // (2)
+	// UShort Flags // (2)
+	UShort Reserved
+End_Struct
+
+Struct _Anonymous_e__Union_3030
+	// UShort Reserved // (2)
+	// UShort Flags // (2)
+	UShort Reserved
+End_Struct
+
+Struct _Anonymous_e__Union_3031
+	// UShort Reserved // (2)
+	// UShort Flags // (2)
+	UShort Reserved
+End_Struct
+
+Struct _u_e__Union_1229
+	// _DeviceInterface_e__Struct_1230 DeviceInterface // (16)
+	// _DeviceHandle_e__Struct_1231 DeviceHandle // (8)
+	// _DeviceInstance_e__Struct_1232 DeviceInstance // (400)
+	_DeviceInstance_e__Struct_1232 DeviceInstance
+End_Struct
+
+Struct _u_e__Union_3032
+	// _DeviceInterface_e__Struct_3033 DeviceInterface // (20)
+	// _DeviceHandle_e__Struct_3034 DeviceHandle // (28)
+	// _DeviceInstance_e__Struct_3035 DeviceInstance // (2)
+	_DeviceHandle_e__Struct_3034 DeviceHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-busnumber_des
+Struct BUSNUMBER_DES
+	UInteger BUSD_Count
+	UInteger BUSD_Type
+	UInteger BUSD_Flags
+	UInteger BUSD_Alloc_Base
+	UInteger BUSD_Alloc_End
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-busnumber_range
+Struct BUSNUMBER_RANGE
+	UInteger BUSR_Min
+	UInteger BUSR_Max
+	UInteger BUSR_nBusNumbers
+	UInteger BUSR_Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-busnumber_resource
+Struct BUSNUMBER_RESOURCE
+	BUSNUMBER_DES BusNumber_Header
+	BUSNUMBER_RANGE[1] BusNumber_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-cabinet_info_a
+Struct CABINET_INFO_A
+	Pointer CabinetPath										// PSTR
+	Pointer CabinetFile										// PSTR
+	Pointer DiskName										// PSTR
+	UShort SetId
+	UShort CabinetNumber
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-cabinet_info_a
+Struct CABINET_INFO_A
+	Pointer CabinetPath										// PSTR
+	Pointer CabinetFile										// PSTR
+	Pointer DiskName										// PSTR
+	UShort SetId
+	UShort CabinetNumber
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-cabinet_info_w
+Struct CABINET_INFO_W
+	Pointer CabinetPath										// PWSTR
+	Pointer CabinetFile										// PWSTR
+	Pointer DiskName										// PWSTR
+	UShort SetId
+	UShort CabinetNumber
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-cabinet_info_w
+Struct CABINET_INFO_W
+	Pointer CabinetPath										// PWSTR
+	Pointer CabinetFile										// PWSTR
+	Pointer DiskName										// PWSTR
+	UShort SetId
+	UShort CabinetNumber
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-cm_notify_event_data
+Struct CM_NOTIFY_EVENT_DATA
+	Integer FilterType										// CM_NOTIFY_FILTER_TYPE
+	UInteger Reserved
+	_u_e__Union_3032 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-cm_notify_filter
+Struct CM_NOTIFY_FILTER
+	UInteger cbSize
+	UInteger Flags
+	Integer FilterType										// CM_NOTIFY_FILTER_TYPE
+	UInteger Reserved
+	_u_e__Union_1229 u
+End_Struct
+
+Struct COINSTALLER_CONTEXT_DATA
+	Integer PostProcessing									// BOOL
+	UInteger InstallResult
+	Pointer PrivateData										// Pointer*
+End_Struct
+
+Struct COINSTALLER_CONTEXT_DATA
+	Integer PostProcessing									// BOOL
+	UInteger InstallResult
+	Pointer PrivateData										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-conflict_details_a
+Struct CONFLICT_DETAILS_A
+	UInteger CD_ulSize
+	UInteger CD_ulMask										// CM_CDMASK
+	UInteger CD_dnDevInst
+	Integer iMissingAlignment1
+	ULongPtr CD_rdResDes
+	UInteger CD_ulFlags										// CM_CDFLAGS
+	Char[260] CD_szDescription								// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-conflict_details_w
+Struct CONFLICT_DETAILS_W
+	UInteger CD_ulSize
+	UInteger CD_ulMask										// CM_CDMASK
+	UInteger CD_dnDevInst
+	Integer iMissingAlignment1
+	ULongPtr CD_rdResDes
+	UInteger CD_ulFlags										// CM_CDFLAGS
+	UShort[260] CD_szDescription
+	Integer iMissingAlignment2
+End_Struct
+
+Struct CONNECTION_DES
+	UInteger COND_Type
+	UInteger COND_Flags
+	UChar COND_Class
+	UChar COND_ClassType
+	UChar COND_Reserved1
+	UChar COND_Reserved2
+	Integer iMissingAlignment1
+	Bigint COND_Id
+End_Struct
+
+Struct CONNECTION_RESOURCE
+	CONNECTION_DES Connection_Header
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-cs_des
+Struct CS_DES
+	UInteger CSD_SignatureLength
+	UInteger CSD_LegacyDataOffset
+	UInteger CSD_LegacyDataSize
+	UInteger CSD_Flags
+	Guid CSD_ClassGuid
+	UChar[1] CSD_Signature
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-cs_resource
+Struct CS_RESOURCE
+	CS_DES CS_Header
+End_Struct
+
+Struct DEVPRIVATE_DES
+	UInteger PD_Count
+	UInteger PD_Type
+	UInteger PD_Data1
+	UInteger PD_Data2
+	UInteger PD_Data3
+	UInteger PD_Flags
+End_Struct
+
+Struct DEVPRIVATE_RANGE
+	UInteger PR_Data1
+	UInteger PR_Data2
+	UInteger PR_Data3
+End_Struct
+
+Struct DEVPRIVATE_RESOURCE
+	DEVPRIVATE_DES PRV_Header
+	DEVPRIVATE_RANGE[1] PRV_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-dma_des
+Struct DMA_DES
+	UInteger DD_Count
+	UInteger DD_Type
+	UInteger DD_Flags										// DD_FLAGS
+	UInteger DD_Alloc_Chan
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-dma_range
+Struct DMA_RANGE
+	UInteger DR_Min
+	UInteger DR_Max
+	UInteger DR_Flags										// DD_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-dma_resource
+Struct DMA_RESOURCE
+	DMA_DES DMA_Header
+	DMA_RANGE[1] DMA_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_a
+Struct FILEPATHS_A
+	Pointer Target											// PSTR
+	Pointer Source											// PSTR
+	UInteger Win32Error
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_a
+Struct FILEPATHS_A
+	Pointer Target											// PSTR
+	Pointer Source											// PSTR
+	UInteger Win32Error
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_signerinfo_a
+Struct FILEPATHS_SIGNERINFO_A
+	Pointer Target											// PSTR
+	Pointer Source											// PSTR
+	UInteger Win32Error
+	UInteger Flags
+	Pointer DigitalSigner									// PSTR
+	Pointer Version											// PSTR
+	Pointer CatalogFile										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_signerinfo_a
+Struct FILEPATHS_SIGNERINFO_A
+	Pointer Target											// PSTR
+	Pointer Source											// PSTR
+	UInteger Win32Error
+	UInteger Flags
+	Pointer DigitalSigner									// PSTR
+	Pointer Version											// PSTR
+	Pointer CatalogFile										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_signerinfo_w
+Struct FILEPATHS_SIGNERINFO_W
+	Pointer Target											// PWSTR
+	Pointer Source											// PWSTR
+	UInteger Win32Error
+	UInteger Flags
+	Pointer DigitalSigner									// PWSTR
+	Pointer Version											// PWSTR
+	Pointer CatalogFile										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_signerinfo_w
+Struct FILEPATHS_SIGNERINFO_W
+	Pointer Target											// PWSTR
+	Pointer Source											// PWSTR
+	UInteger Win32Error
+	UInteger Flags
+	Pointer DigitalSigner									// PWSTR
+	Pointer Version											// PWSTR
+	Pointer CatalogFile										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_w
+Struct FILEPATHS_W
+	Pointer Target											// PWSTR
+	Pointer Source											// PWSTR
+	UInteger Win32Error
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-filepaths_w
+Struct FILEPATHS_W
+	Pointer Target											// PWSTR
+	Pointer Source											// PWSTR
+	UInteger Win32Error
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-file_in_cabinet_info_a
+Struct FILE_IN_CABINET_INFO_A
+	Pointer NameInCabinet									// PSTR
+	UInteger FileSize
+	UInteger Win32Error
+	UShort DosDate
+	UShort DosTime
+	UShort DosAttribs
+	Char[260] FullTargetName								// CHAR
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-file_in_cabinet_info_a
+Struct FILE_IN_CABINET_INFO_A
+	Pointer NameInCabinet									// PSTR
+	UInteger FileSize
+	UInteger Win32Error
+	UShort DosDate
+	UShort DosTime
+	UShort DosAttribs
+	Char[260] FullTargetName								// CHAR
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-file_in_cabinet_info_w
+Struct FILE_IN_CABINET_INFO_W
+	Pointer NameInCabinet									// PWSTR
+	UInteger FileSize
+	UInteger Win32Error
+	UShort DosDate
+	UShort DosTime
+	UShort DosAttribs
+	UShort[260] FullTargetName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-file_in_cabinet_info_w
+Struct FILE_IN_CABINET_INFO_W
+	Pointer NameInCabinet									// PWSTR
+	UInteger FileSize
+	UInteger Win32Error
+	UShort DosDate
+	UShort DosTime
+	UShort DosAttribs
+	UShort[260] FullTargetName
+	Short iMissingAlignment1
+End_Struct
+
+Struct HWPROFILEINFO_A
+	UInteger HWPI_ulHWProfile
+	Char[80] HWPI_szFriendlyName							// CHAR
+	UInteger HWPI_dwFlags
+End_Struct
+
+Struct HWPROFILEINFO_W
+	UInteger HWPI_ulHWProfile
+	UShort[80] HWPI_szFriendlyName
+	UInteger HWPI_dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-infcontext
+Struct INFCONTEXT
+	Pointer Inf												// Pointer*
+	Pointer CurrentInf										// Pointer*
+	UInteger Section
+	UInteger Line
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-infcontext
+Struct INFCONTEXT
+	Pointer Inf												// Pointer*
+	Pointer CurrentInf										// Pointer*
+	UInteger Section
+	UInteger Line
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-io_des
+Struct IO_DES
+	UInteger IOD_Count
+	UInteger IOD_Type
+	UBigint IOD_Alloc_Base
+	UBigint IOD_Alloc_End
+	UInteger IOD_DesFlags									// IOD_DESFLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-io_range
+Struct IO_RANGE
+	UBigint IOR_Align
+	UInteger IOR_nPorts
+	Integer iMissingAlignment1
+	UBigint IOR_Min
+	UBigint IOR_Max
+	UInteger IOR_RangeFlags									// IOD_DESFLAGS
+	Integer iMissingAlignment2
+	UBigint IOR_Alias
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-io_resource
+Struct IO_RESOURCE
+	IO_DES IO_Header
+	IO_RANGE[1] IO_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-irq_des_32
+Struct IRQ_DES_32
+	UInteger IRQD_Count
+	UInteger IRQD_Type
+	UInteger IRQD_Flags										// IRQD_FLAGS
+	UInteger IRQD_Alloc_Num
+	UInteger IRQD_Affinity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-irq_des_64
+Struct IRQ_DES_64
+	UInteger IRQD_Count
+	UInteger IRQD_Type
+	UInteger IRQD_Flags										// IRQD_FLAGS
+	UInteger IRQD_Alloc_Num
+	UBigint IRQD_Affinity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-irq_range
+Struct IRQ_RANGE
+	UInteger IRQR_Min
+	UInteger IRQR_Max
+	UInteger IRQR_Flags										// IRQD_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-irq_resource_32
+Struct IRQ_RESOURCE_32
+	IRQ_DES_32 IRQ_Header
+	IRQ_RANGE[1] IRQ_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-irq_resource_64
+Struct IRQ_RESOURCE_64
+	IRQ_DES_64 IRQ_Header
+	IRQ_RANGE[1] IRQ_Data
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-mem_des
+Struct MEM_DES
+	UInteger MD_Count
+	UInteger MD_Type
+	UBigint MD_Alloc_Base
+	UBigint MD_Alloc_End
+	UInteger MD_Flags										// MD_FLAGS
+	UInteger MD_Reserved
+End_Struct
+
+Struct MEM_LARGE_DES
+	UInteger MLD_Count
+	UInteger MLD_Type
+	UBigint MLD_Alloc_Base
+	UBigint MLD_Alloc_End
+	UInteger MLD_Flags
+	UInteger MLD_Reserved
+End_Struct
+
+Struct MEM_LARGE_RANGE
+	UBigint MLR_Align
+	UBigint MLR_nBytes
+	UBigint MLR_Min
+	UBigint MLR_Max
+	UInteger MLR_Flags
+	UInteger MLR_Reserved
+End_Struct
+
+Struct MEM_LARGE_RESOURCE
+	MEM_LARGE_DES MEM_LARGE_Header
+	MEM_LARGE_RANGE[1] MEM_LARGE_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-mem_range
+Struct MEM_RANGE
+	UBigint MR_Align
+	UInteger MR_nBytes
+	Integer iMissingAlignment1
+	UBigint MR_Min
+	UBigint MR_Max
+	UInteger MR_Flags										// MD_FLAGS
+	UInteger MR_Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-mem_resource
+Struct MEM_RESOURCE
+	MEM_DES MEM_Header
+	MEM_RANGE[1] MEM_Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-mfcard_des
+Struct MFCARD_DES
+	UInteger PMF_Count
+	UInteger PMF_Type
+	UInteger PMF_Flags										// PMF_FLAGS
+	UChar PMF_ConfigOptions
+	UChar PMF_IoResourceIndex
+	UChar[2] PMF_Reserved
+	UInteger PMF_ConfigRegisterBase
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-mfcard_resource
+Struct MFCARD_RESOURCE
+	MFCARD_DES MfCard_Header
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-pccard_des
+Struct PCCARD_DES
+	UInteger PCD_Count
+	UInteger PCD_Type
+	UInteger PCD_Flags										// PCD_FLAGS
+	UChar PCD_ConfigIndex
+	UChar[3] PCD_Reserved
+	UInteger PCD_MemoryCardBase1
+	UInteger PCD_MemoryCardBase2
+	UInteger[2] PCD_MemoryCardBase
+	UShort[2] PCD_MemoryFlags
+	UChar[2] PCD_IoFlags
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cfgmgr32/ns-cfgmgr32-pccard_resource
+Struct PCCARD_RESOURCE
+	PCCARD_DES PcCard_Header
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-source_media_a
+Struct SOURCE_MEDIA_A
+	Pointer Reserved										// PSTR
+	Pointer Tagfile											// PSTR
+	Pointer Description										// PSTR
+	Pointer SourcePath										// PSTR
+	Pointer SourceFile										// PSTR
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-source_media_a
+Struct SOURCE_MEDIA_A
+	Pointer Reserved										// PSTR
+	Pointer Tagfile											// PSTR
+	Pointer Description										// PSTR
+	Pointer SourcePath										// PSTR
+	Pointer SourceFile										// PSTR
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-source_media_w
+Struct SOURCE_MEDIA_W
+	Pointer Reserved										// PWSTR
+	Pointer Tagfile											// PWSTR
+	Pointer Description										// PWSTR
+	Pointer SourcePath										// PWSTR
+	Pointer SourceFile										// PWSTR
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-source_media_w
+Struct SOURCE_MEDIA_W
+	Pointer Reserved										// PWSTR
+	Pointer Tagfile											// PWSTR
+	Pointer Description										// PWSTR
+	Pointer SourcePath										// PWSTR
+	Pointer SourceFile										// PWSTR
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_altplatform_info_v1
+Struct SP_ALTPLATFORM_INFO_V1
+	UInteger cbSize
+	UInteger Platform										// VER_PLATFORM
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture
+	UShort Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_altplatform_info_v1
+Struct SP_ALTPLATFORM_INFO_V1
+	UInteger cbSize
+	UInteger Platform										// VER_PLATFORM
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture
+	UShort Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_altplatform_info_v2
+Struct SP_ALTPLATFORM_INFO_V2
+	UInteger cbSize
+	UInteger Platform										// VER_PLATFORM
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture							// PROCESSOR_ARCHITECTURE
+	_Anonymous_e__Union_1228 Anonymous
+	UInteger FirstValidatedMajorVersion
+	UInteger FirstValidatedMinorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_altplatform_info_v2
+Struct SP_ALTPLATFORM_INFO_V2
+	UInteger cbSize
+	UInteger Platform										// VER_PLATFORM
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture							// PROCESSOR_ARCHITECTURE
+	_Anonymous_e__Union_3031 Anonymous
+	UInteger FirstValidatedMajorVersion
+	UInteger FirstValidatedMinorVersion
+End_Struct
+
+Struct SP_ALTPLATFORM_INFO_V3
+	UInteger cbSize
+	UInteger Platform
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture
+	_Anonymous_e__Union_2814 Anonymous
+	UInteger FirstValidatedMajorVersion
+	UInteger FirstValidatedMinorVersion
+	UChar ProductType
+	UChar[1] cMissingAlignment1
+	UShort SuiteMask
+	UInteger BuildNumber
+End_Struct
+
+Struct SP_ALTPLATFORM_INFO_V3
+	UInteger cbSize
+	UInteger Platform
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UShort ProcessorArchitecture
+	_Anonymous_e__Union_3030 Anonymous
+	UInteger FirstValidatedMajorVersion
+	UInteger FirstValidatedMinorVersion
+	UChar ProductType
+	UChar[1] cMissingAlignment1
+	UShort SuiteMask
+	UInteger BuildNumber
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V1_A
+	UInteger cbSize
+	Char[260] FullInfPath									// CHAR
+	Integer FilenameOffset
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V1_A
+	UInteger cbSize
+	Char[260] FullInfPath									// CHAR
+	Integer FilenameOffset
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V1_W
+	UInteger cbSize
+	UShort[260] FullInfPath
+	Integer FilenameOffset
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V1_W
+	UInteger cbSize
+	UShort[260] FullInfPath
+	Integer FilenameOffset
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V2_A
+	UInteger cbSize
+	Char[260] FullInfPath									// CHAR
+	Integer FilenameOffset
+	Char[260] ReinstallInstance								// CHAR
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V2_A
+	UInteger cbSize
+	Char[260] FullInfPath									// CHAR
+	Integer FilenameOffset
+	Char[260] ReinstallInstance								// CHAR
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V2_W
+	UInteger cbSize
+	UShort[260] FullInfPath
+	Integer FilenameOffset
+	UShort[260] ReinstallInstance
+End_Struct
+
+Struct SP_BACKUP_QUEUE_PARAMS_V2_W
+	UInteger cbSize
+	UShort[260] FullInfPath
+	Integer FilenameOffset
+	UShort[260] ReinstallInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_classimagelist_data
+Struct SP_CLASSIMAGELIST_DATA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	LongPtr ImageList										// HIMAGELIST
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_classimagelist_data
+Struct SP_CLASSIMAGELIST_DATA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	LongPtr ImageList										// HIMAGELIST
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_classinstall_header
+Struct SP_CLASSINSTALL_HEADER
+	UInteger cbSize
+	UInteger InstallFunction								// DI_FUNCTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_classinstall_header
+Struct SP_CLASSINSTALL_HEADER
+	UInteger cbSize
+	UInteger InstallFunction								// DI_FUNCTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_detectdevice_params
+Struct SP_DETECTDEVICE_PARAMS
+	SP_CLASSINSTALL_HEADER ClassInstallHeader
+	Pointer DetectProgressNotify							// PDETECT_PROGRESS_NOTIFY
+	Pointer ProgressNotifyParam								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_detectdevice_params
+Struct SP_DETECTDEVICE_PARAMS
+	SP_CLASSINSTALL_HEADER ClassInstallHeader
+	Pointer DetectProgressNotify							// PDETECT_PROGRESS_NOTIFY
+	Pointer ProgressNotifyParam								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_data
+Struct SP_DEVICE_INTERFACE_DATA
+	UInteger cbSize
+	Guid InterfaceClassGuid
+	UInteger Flags
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_data
+Struct SP_DEVICE_INTERFACE_DATA
+	UInteger cbSize
+	Guid InterfaceClassGuid
+	UInteger Flags
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_detail_data_a
+Struct SP_DEVICE_INTERFACE_DETAIL_DATA_A
+	UInteger cbSize
+	Char[1] DevicePath										// CHAR
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_detail_data_a
+Struct SP_DEVICE_INTERFACE_DETAIL_DATA_A
+	UInteger cbSize
+	Char[1] DevicePath										// CHAR
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_detail_data_w
+Struct SP_DEVICE_INTERFACE_DETAIL_DATA_W
+	UInteger cbSize
+	UShort[1] DevicePath
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_device_interface_detail_data_w
+Struct SP_DEVICE_INTERFACE_DETAIL_DATA_W
+	UInteger cbSize
+	UShort[1] DevicePath
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_data
+Struct SP_DEVINFO_DATA
+	UInteger cbSize
+	Guid ClassGuid
+	UInteger DevInst
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_data
+Struct SP_DEVINFO_DATA
+	UInteger cbSize
+	Guid ClassGuid
+	UInteger DevInst
+	ULongPtr Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_list_detail_data_a
+Struct SP_DEVINFO_LIST_DETAIL_DATA_A
+	UInteger cbSize
+	Guid ClassGuid
+	Integer iMissingAlignment1
+	Pointer RemoteMachineHandle								// HANDLE
+	Char[263] RemoteMachineName								// CHAR
+	UChar[1] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_list_detail_data_a
+Struct SP_DEVINFO_LIST_DETAIL_DATA_A
+	UInteger cbSize
+	Guid ClassGuid
+	Integer iMissingAlignment1
+	Pointer RemoteMachineHandle								// HANDLE
+	Char[263] RemoteMachineName								// CHAR
+	UChar[1] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_list_detail_data_w
+Struct SP_DEVINFO_LIST_DETAIL_DATA_W
+	UInteger cbSize
+	Guid ClassGuid
+	Integer iMissingAlignment1
+	Pointer RemoteMachineHandle								// HANDLE
+	UShort[263] RemoteMachineName
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinfo_list_detail_data_w
+Struct SP_DEVINFO_LIST_DETAIL_DATA_W
+	UInteger cbSize
+	Guid ClassGuid
+	Integer iMissingAlignment1
+	Pointer RemoteMachineHandle								// HANDLE
+	UShort[263] RemoteMachineName
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/setupapi/ns-setupapi-sp_devinstall_params_a
+Struct SP_DEVINSTALL_PARAMS_A
+	UInteger cbSize
+	UInteger Flags											// SETUP_DI_DEVICE_INSTALL_FLAGS
+	UInteger FlagsEx										// SETUP_DI_DEVICE_INSTALL_FLAGS_EX
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer InstallMsgHandler								// PSP_FILE_CALLBACK_A
+	Pointer InstallMsgHandlerContext						// Pointer*
+	Pointer FileQueue										// Pointer*
+	ULongPtr ClassInstallReserved
+	UInteger Reserved
+	Char[260] DriverPath									// CHAR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

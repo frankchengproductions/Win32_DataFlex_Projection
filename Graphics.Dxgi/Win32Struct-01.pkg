@@ -1,0 +1,317 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_adapter_desc
+Struct DXGI_ADAPTER_DESC
+	UShort[128] Description
+	UInteger VendorId
+	UInteger DeviceId
+	UInteger SubSysId
+	UInteger Revision
+	ULongPtr DedicatedVideoMemory
+	ULongPtr DedicatedSystemMemory
+	ULongPtr SharedSystemMemory
+	LUID AdapterLuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_adapter_desc1
+Struct DXGI_ADAPTER_DESC1
+	UShort[128] Description
+	UInteger VendorId
+	UInteger DeviceId
+	UInteger SubSysId
+	UInteger Revision
+	ULongPtr DedicatedVideoMemory
+	ULongPtr DedicatedSystemMemory
+	ULongPtr SharedSystemMemory
+	LUID AdapterLuid
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_adapter_desc2
+Struct DXGI_ADAPTER_DESC2
+	UShort[128] Description
+	UInteger VendorId
+	UInteger DeviceId
+	UInteger SubSysId
+	UInteger Revision
+	ULongPtr DedicatedVideoMemory
+	ULongPtr DedicatedSystemMemory
+	ULongPtr SharedSystemMemory
+	LUID AdapterLuid
+	UInteger Flags
+	Integer GraphicsPreemptionGranularity					// DXGI_GRAPHICS_PREEMPTION_GRANULARITY
+	Integer ComputePreemptionGranularity					// DXGI_COMPUTE_PREEMPTION_GRANULARITY
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_6/ns-dxgi1_6-dxgi_adapter_desc3
+Struct DXGI_ADAPTER_DESC3
+	UShort[128] Description
+	UInteger VendorId
+	UInteger DeviceId
+	UInteger SubSysId
+	UInteger Revision
+	ULongPtr DedicatedVideoMemory
+	ULongPtr DedicatedSystemMemory
+	ULongPtr SharedSystemMemory
+	LUID AdapterLuid
+	Integer Flags											// DXGI_ADAPTER_FLAG3
+	Integer GraphicsPreemptionGranularity					// DXGI_GRAPHICS_PREEMPTION_GRANULARITY
+	Integer ComputePreemptionGranularity					// DXGI_COMPUTE_PREEMPTION_GRANULARITY
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_3/ns-dxgi1_3-dxgi_decode_swap_chain_desc
+Struct DXGI_DECODE_SWAP_CHAIN_DESC
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_display_color_space
+Struct DXGI_DISPLAY_COLOR_SPACE
+	Float[16] PrimaryCoordinates
+	Float[32] WhitePoints
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_frame_statistics
+Struct DXGI_FRAME_STATISTICS
+	UInteger PresentCount
+	UInteger PresentRefreshCount
+	UInteger SyncRefreshCount
+	Integer iMissingAlignment1
+	Bigint SyncQPCTime
+	Bigint SyncGPUTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_3/ns-dxgi1_3-dxgi_frame_statistics_media
+Struct DXGI_FRAME_STATISTICS_MEDIA
+	UInteger PresentCount
+	UInteger PresentRefreshCount
+	UInteger SyncRefreshCount
+	Integer iMissingAlignment1
+	Bigint SyncQPCTime
+	Bigint SyncGPUTime
+	Integer CompositionMode									// DXGI_FRAME_PRESENTATION_MODE
+	UInteger ApprovedPresentDuration
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_5/ns-dxgi1_5-dxgi_hdr_metadata_hdr10
+Struct DXGI_HDR_METADATA_HDR10
+	UShort[2] RedPrimary
+	UShort[2] GreenPrimary
+	UShort[2] BluePrimary
+	UShort[2] WhitePoint
+	UInteger MaxMasteringLuminance
+	UInteger MinMasteringLuminance
+	UShort MaxContentLightLevel
+	UShort MaxFrameAverageLightLevel
+End_Struct
+
+Struct DXGI_HDR_METADATA_HDR10PLUS
+	UChar[72] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgidebug/ns-dxgidebug-dxgi_info_queue_filter
+Struct DXGI_INFO_QUEUE_FILTER
+	DXGI_INFO_QUEUE_FILTER_DESC AllowList
+	DXGI_INFO_QUEUE_FILTER_DESC DenyList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgidebug/ns-dxgidebug-dxgi_info_queue_filter_desc
+Struct DXGI_INFO_QUEUE_FILTER_DESC
+	UInteger NumCategories
+	Integer iMissingAlignment1
+	Pointer pCategoryList									// DXGI_INFO_QUEUE_MESSAGE_CATEGORY*
+	UInteger NumSeverities
+	Integer iMissingAlignment2
+	Pointer pSeverityList									// DXGI_INFO_QUEUE_MESSAGE_SEVERITY*
+	UInteger NumIDs
+	Integer iMissingAlignment3
+	Pointer pIDList											// Integer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgidebug/ns-dxgidebug-dxgi_info_queue_message
+Struct DXGI_INFO_QUEUE_MESSAGE
+	Guid Producer
+	Integer Category										// DXGI_INFO_QUEUE_MESSAGE_CATEGORY
+	Integer Severity										// DXGI_INFO_QUEUE_MESSAGE_SEVERITY
+	Integer ID
+	Integer iMissingAlignment1
+	Pointer pDescription									// UChar*
+	ULongPtr DescriptionByteLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_mapped_rect
+Struct DXGI_MAPPED_RECT
+	Integer Pitch
+	Integer iMissingAlignment1
+	Pointer pBits											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_3/ns-dxgi1_3-dxgi_matrix_3x2_f
+Struct DXGI_MATRIX_3X2_F
+	Float _11
+	Float _12
+	Float _21
+	Float _22
+	Float _31
+	Float _32
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_mode_desc1
+Struct DXGI_MODE_DESC1
+	UInteger Width
+	UInteger Height
+	DXGI_RATIONAL RefreshRate
+	Integer Format											// DXGI_FORMAT
+	Integer ScanlineOrdering								// DXGI_MODE_SCANLINE_ORDER
+	Integer Scaling											// DXGI_MODE_SCALING
+	Integer Stereo											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_outdupl_desc
+Struct DXGI_OUTDUPL_DESC
+	DXGI_MODE_DESC ModeDesc
+	Integer Rotation										// DXGI_MODE_ROTATION
+	Integer DesktopImageInSystemMemory						// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_outdupl_frame_info
+Struct DXGI_OUTDUPL_FRAME_INFO
+	Bigint LastPresentTime
+	Bigint LastMouseUpdateTime
+	UInteger AccumulatedFrames
+	Integer RectsCoalesced									// BOOL
+	Integer ProtectedContentMaskedOut						// BOOL
+	DXGI_OUTDUPL_POINTER_POSITION PointerPosition
+	UInteger TotalMetadataBufferSize
+	UInteger PointerShapeBufferSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_outdupl_move_rect
+Struct DXGI_OUTDUPL_MOVE_RECT
+	POINT SourcePoint
+	RECT DestinationRect
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_outdupl_pointer_position
+Struct DXGI_OUTDUPL_POINTER_POSITION
+	POINT Position
+	Integer Visible											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_outdupl_pointer_shape_info
+Struct DXGI_OUTDUPL_POINTER_SHAPE_INFO
+	UInteger Type
+	UInteger Width
+	UInteger Height
+	UInteger Pitch
+	POINT HotSpot
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_output_desc
+Struct DXGI_OUTPUT_DESC
+	UShort[32] DeviceName
+	RECT DesktopCoordinates
+	Integer AttachedToDesktop								// BOOL
+	Integer Rotation										// DXGI_MODE_ROTATION
+	Pointer Monitor											// HMONITOR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_6/ns-dxgi1_6-dxgi_output_desc1
+Struct DXGI_OUTPUT_DESC1
+	UShort[32] DeviceName
+	RECT DesktopCoordinates
+	Integer AttachedToDesktop								// BOOL
+	Integer Rotation										// DXGI_MODE_ROTATION
+	Pointer Monitor											// HMONITOR
+	UInteger BitsPerColor
+	Integer ColorSpace										// DXGI_COLOR_SPACE_TYPE
+	Float[2] RedPrimary
+	Float[2] GreenPrimary
+	Float[2] BluePrimary
+	Float[2] WhitePoint
+	Float MinLuminance
+	Float MaxLuminance
+	Float MaxFullFrameLuminance
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_present_parameters
+Struct DXGI_PRESENT_PARAMETERS
+	UInteger DirtyRectsCount
+	Integer iMissingAlignment1
+	Pointer pDirtyRects										// RECT*
+	Pointer pScrollRect										// RECT*
+	Pointer pScrollOffset									// POINT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info
+Struct DXGI_QUERY_VIDEO_MEMORY_INFO
+	UBigint Budget
+	UBigint CurrentUsage
+	UBigint AvailableForReservation
+	UBigint CurrentReservation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/direct3ddxgi/dxgi-rgba
+Struct DXGI_RGBA
+	Float r
+	Float g
+	Float b
+	Float a
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_shared_resource
+Struct DXGI_SHARED_RESOURCE
+	Pointer Handle											// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_surface_desc
+Struct DXGI_SURFACE_DESC
+	UInteger Width
+	UInteger Height
+	Integer Format											// DXGI_FORMAT
+	DXGI_SAMPLE_DESC SampleDesc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi/ns-dxgi-dxgi_swap_chain_desc
+Struct DXGI_SWAP_CHAIN_DESC
+	DXGI_MODE_DESC BufferDesc
+	DXGI_SAMPLE_DESC SampleDesc
+	UInteger BufferUsage									// DXGI_USAGE
+	UInteger BufferCount
+	Integer iMissingAlignment1
+	Pointer OutputWindow									// HWND
+	Integer Windowed										// BOOL
+	Integer SwapEffect										// DXGI_SWAP_EFFECT
+	UInteger Flags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_swap_chain_desc1
+Struct DXGI_SWAP_CHAIN_DESC1
+	UInteger Width
+	UInteger Height
+	Integer Format											// DXGI_FORMAT
+	Integer Stereo											// BOOL
+	DXGI_SAMPLE_DESC SampleDesc
+	UInteger BufferUsage									// DXGI_USAGE
+	UInteger BufferCount
+	Integer Scaling											// DXGI_SCALING
+	Integer SwapEffect										// DXGI_SWAP_EFFECT
+	Integer AlphaMode										// DXGI_ALPHA_MODE
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxgi1_2/ns-dxgi1_2-dxgi_swap_chain_fullscreen_desc
+Struct DXGI_SWAP_CHAIN_FULLSCREEN_DESC
+	DXGI_RATIONAL RefreshRate
+	Integer ScanlineOrdering								// DXGI_MODE_SCANLINE_ORDER
+	Integer Scaling											// DXGI_MODE_SCALING
+	Integer Windowed										// BOOL
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

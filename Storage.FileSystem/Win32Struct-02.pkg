@@ -1,0 +1,1111 @@
+Use UI
+
+Struct NTMS_ASYNC_IO
+	Guid OperationId
+	Guid EventId
+	UInteger dwOperationType
+	UInteger dwResult
+	UInteger dwAsyncState
+	Integer iMissingAlignment1
+	Pointer hEvent											// HANDLE
+	Integer bOnStateChange									// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_changerinformationa
+Struct NTMS_CHANGERINFORMATIONA
+	UInteger Number
+	Guid ChangerType
+	Char[32] szSerialNumber									// CHAR
+	Char[32] szRevision										// CHAR
+	Char[64] szDeviceName									// CHAR
+	UShort ScsiPort
+	UShort ScsiBus
+	UShort ScsiTarget
+	UShort ScsiLun
+	Guid Library
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_changerinformationw
+Struct NTMS_CHANGERINFORMATIONW
+	UInteger Number
+	Guid ChangerType
+	UShort[32] szSerialNumber
+	UShort[32] szRevision
+	UShort[64] szDeviceName
+	UShort ScsiPort
+	UShort ScsiBus
+	UShort ScsiTarget
+	UShort ScsiLun
+	Guid Library
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_changertypeinformationa
+Struct NTMS_CHANGERTYPEINFORMATIONA
+	Char[128] szVendor										// CHAR
+	Char[128] szProduct										// CHAR
+	UInteger DeviceType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_changertypeinformationw
+Struct NTMS_CHANGERTYPEINFORMATIONW
+	UShort[128] szVendor
+	UShort[128] szProduct
+	UInteger DeviceType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_computerinformation
+Struct NTMS_COMPUTERINFORMATION
+	UInteger dwLibRequestPurgeTime
+	UInteger dwOpRequestPurgeTime
+	UInteger dwLibRequestFlags
+	UInteger dwOpRequestFlags
+	UInteger dwMediaPoolPolicy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_driveinformationa
+Struct NTMS_DRIVEINFORMATIONA
+	UInteger Number
+	UInteger State
+	Guid DriveType
+	Char[64] szDeviceName									// CHAR
+	Char[32] szSerialNumber									// CHAR
+	Char[32] szRevision										// CHAR
+	UShort ScsiPort
+	UShort ScsiBus
+	UShort ScsiTarget
+	UShort ScsiLun
+	UInteger dwMountCount
+	SYSTEMTIME LastCleanedTs
+	Guid SavedPartitionId
+	Guid Library
+	Guid Reserved
+	UInteger dwDeferDismountDelay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_driveinformationw
+Struct NTMS_DRIVEINFORMATIONW
+	UInteger Number
+	UInteger State
+	Guid DriveType
+	UShort[64] szDeviceName
+	UShort[32] szSerialNumber
+	UShort[32] szRevision
+	UShort ScsiPort
+	UShort ScsiBus
+	UShort ScsiTarget
+	UShort ScsiLun
+	UInteger dwMountCount
+	SYSTEMTIME LastCleanedTs
+	Guid SavedPartitionId
+	Guid Library
+	Guid Reserved
+	UInteger dwDeferDismountDelay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_drivetypeinformationa
+Struct NTMS_DRIVETYPEINFORMATIONA
+	Char[128] szVendor										// CHAR
+	Char[128] szProduct										// CHAR
+	UInteger NumberOfHeads
+	UInteger DeviceType										// FILE_DEVICE_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_drivetypeinformationw
+Struct NTMS_DRIVETYPEINFORMATIONW
+	UShort[128] szVendor
+	UShort[128] szProduct
+	UInteger NumberOfHeads
+	UInteger DeviceType										// FILE_DEVICE_TYPE
+End_Struct
+
+Struct NTMS_FILESYSTEM_INFO
+	UShort[64] FileSystemType
+	UShort[256] VolumeName
+	UInteger SerialNumber
+End_Struct
+
+Struct NTMS_I1_LIBRARYINFORMATION
+	UInteger LibraryType
+	Guid CleanerSlot
+	Guid CleanerSlotDefault
+	Integer LibrarySupportsDriveCleaning					// BOOL
+	Integer BarCodeReaderInstalled							// BOOL
+	UInteger InventoryMethod
+	UInteger dwCleanerUsesRemaining
+	UInteger FirstDriveNumber
+	UInteger dwNumberOfDrives
+	UInteger FirstSlotNumber
+	UInteger dwNumberOfSlots
+	UInteger FirstDoorNumber
+	UInteger dwNumberOfDoors
+	UInteger FirstPortNumber
+	UInteger dwNumberOfPorts
+	UInteger FirstChangerNumber
+	UInteger dwNumberOfChangers
+	UInteger dwNumberOfMedia
+	UInteger dwNumberOfMediaTypes
+	UInteger dwNumberOfLibRequests
+	Guid Reserved
+End_Struct
+
+Struct NTMS_I1_LIBREQUESTINFORMATIONA
+	UInteger OperationCode
+	UInteger OperationOption
+	UInteger State
+	Guid PartitionId
+	Guid DriveId
+	Guid PhysMediaId
+	Guid Library
+	Guid SlotId
+	SYSTEMTIME TimeQueued
+	SYSTEMTIME TimeCompleted
+	Char[64] szApplication									// CHAR
+	Char[64] szUser											// CHAR
+	Char[64] szComputer										// CHAR
+End_Struct
+
+Struct NTMS_I1_LIBREQUESTINFORMATIONW
+	UInteger OperationCode
+	UInteger OperationOption
+	UInteger State
+	Guid PartitionId
+	Guid DriveId
+	Guid PhysMediaId
+	Guid Library
+	Guid SlotId
+	SYSTEMTIME TimeQueued
+	SYSTEMTIME TimeCompleted
+	UShort[64] szApplication
+	UShort[64] szUser
+	UShort[64] szComputer
+End_Struct
+
+Struct NTMS_I1_OBJECTINFORMATIONA
+	UInteger dwSize
+	UInteger dwType
+	SYSTEMTIME Created
+	SYSTEMTIME Modified
+	Guid ObjectGuid
+	Integer Enabled											// BOOL
+	UInteger dwOperationalState
+	Char[64] szName											// CHAR
+	Char[127] szDescription									// CHAR
+	UChar[1] cMissingAlignment1
+	_Info_e__Union_2012 Info
+End_Struct
+
+Struct NTMS_I1_OBJECTINFORMATIONW
+	UInteger dwSize
+	UInteger dwType
+	SYSTEMTIME Created
+	SYSTEMTIME Modified
+	Guid ObjectGuid
+	Integer Enabled											// BOOL
+	UInteger dwOperationalState
+	UShort[64] szName
+	UShort[127] szDescription
+	Short iMissingAlignment1
+	_Info_e__Union_2013 Info
+End_Struct
+
+Struct NTMS_I1_OPREQUESTINFORMATIONA
+	UInteger Request
+	SYSTEMTIME Submitted
+	UInteger State
+	Char[127] szMessage										// CHAR
+	UChar[1] cMissingAlignment1
+	UInteger Arg1Type
+	Guid Arg1
+	UInteger Arg2Type
+	Guid Arg2
+	Char[64] szApplication									// CHAR
+	Char[64] szUser											// CHAR
+	Char[64] szComputer										// CHAR
+End_Struct
+
+Struct NTMS_I1_OPREQUESTINFORMATIONW
+	UInteger Request
+	SYSTEMTIME Submitted
+	UInteger State
+	UShort[127] szMessage
+	Short iMissingAlignment1
+	UInteger Arg1Type
+	Guid Arg1
+	UInteger Arg2Type
+	Guid Arg2
+	UShort[64] szApplication
+	UShort[64] szUser
+	UShort[64] szComputer
+End_Struct
+
+Struct NTMS_I1_PARTITIONINFORMATIONA
+	Guid PhysicalMedia
+	Guid LogicalMedia
+	UInteger State
+	UShort Side
+	Short iMissingAlignment1
+	UInteger dwOmidLabelIdLength
+	UChar[255] OmidLabelId
+	Char[64] szOmidLabelType								// CHAR
+	Char[256] szOmidLabelInfo								// CHAR
+	UChar[1] cMissingAlignment2
+	UInteger dwMountCount
+	UInteger dwAllocateCount
+End_Struct
+
+Struct NTMS_I1_PARTITIONINFORMATIONW
+	Guid PhysicalMedia
+	Guid LogicalMedia
+	UInteger State
+	UShort Side
+	Short iMissingAlignment1
+	UInteger dwOmidLabelIdLength
+	UChar[255] OmidLabelId
+	UChar[1] cMissingAlignment2
+	UShort[64] szOmidLabelType
+	UShort[256] szOmidLabelInfo
+	UInteger dwMountCount
+	UInteger dwAllocateCount
+End_Struct
+
+Struct NTMS_I1_PMIDINFORMATIONA
+	Guid CurrentLibrary
+	Guid MediaPool
+	Guid Location
+	UInteger LocationType
+	Guid MediaType
+	Guid HomeSlot
+	Char[64] szBarCode										// CHAR
+	UInteger BarCodeState
+	Char[32] szSequenceNumber								// CHAR
+	UInteger MediaState
+	UInteger dwNumberOfPartitions
+End_Struct
+
+Struct NTMS_I1_PMIDINFORMATIONW
+	Guid CurrentLibrary
+	Guid MediaPool
+	Guid Location
+	UInteger LocationType
+	Guid MediaType
+	Guid HomeSlot
+	UShort[64] szBarCode
+	UInteger BarCodeState
+	UShort[32] szSequenceNumber
+	UInteger MediaState
+	UInteger dwNumberOfPartitions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_iedoorinformation
+Struct NTMS_IEDOORINFORMATION
+	UInteger Number
+	UInteger State
+	UShort MaxOpenSecs
+	Short iMissingAlignment1
+	Guid Library
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_ieportinformation
+Struct NTMS_IEPORTINFORMATION
+	UInteger Number
+	UInteger Content
+	UInteger Position
+	UShort MaxExtendSecs
+	Short iMissingAlignment1
+	Guid Library
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_libraryinformation
+Struct NTMS_LIBRARYINFORMATION
+	UInteger LibraryType
+	Guid CleanerSlot
+	Guid CleanerSlotDefault
+	Integer LibrarySupportsDriveCleaning					// BOOL
+	Integer BarCodeReaderInstalled							// BOOL
+	UInteger InventoryMethod
+	UInteger dwCleanerUsesRemaining
+	UInteger FirstDriveNumber
+	UInteger dwNumberOfDrives
+	UInteger FirstSlotNumber
+	UInteger dwNumberOfSlots
+	UInteger FirstDoorNumber
+	UInteger dwNumberOfDoors
+	UInteger FirstPortNumber
+	UInteger dwNumberOfPorts
+	UInteger FirstChangerNumber
+	UInteger dwNumberOfChangers
+	UInteger dwNumberOfMedia
+	UInteger dwNumberOfMediaTypes
+	UInteger dwNumberOfLibRequests
+	Guid Reserved
+	Integer AutoRecovery									// BOOL
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_librequestinformationa
+Struct NTMS_LIBREQUESTINFORMATIONA
+	UInteger OperationCode
+	UInteger OperationOption
+	UInteger State
+	Guid PartitionId
+	Guid DriveId
+	Guid PhysMediaId
+	Guid Library
+	Guid SlotId
+	SYSTEMTIME TimeQueued
+	SYSTEMTIME TimeCompleted
+	Char[64] szApplication									// CHAR
+	Char[64] szUser											// CHAR
+	Char[64] szComputer										// CHAR
+	UInteger dwErrorCode
+	Guid WorkItemId
+	UInteger dwPriority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_librequestinformationw
+Struct NTMS_LIBREQUESTINFORMATIONW
+	UInteger OperationCode
+	UInteger OperationOption
+	UInteger State
+	Guid PartitionId
+	Guid DriveId
+	Guid PhysMediaId
+	Guid Library
+	Guid SlotId
+	SYSTEMTIME TimeQueued
+	SYSTEMTIME TimeCompleted
+	UShort[64] szApplication
+	UShort[64] szUser
+	UShort[64] szComputer
+	UInteger dwErrorCode
+	Guid WorkItemId
+	UInteger dwPriority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_lmidinformation
+Struct NTMS_LMIDINFORMATION
+	Guid MediaPool
+	UInteger dwNumberOfPartitions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_mediapoolinformation
+Struct NTMS_MEDIAPOOLINFORMATION
+	UInteger PoolType
+	Guid MediaType
+	Guid Parent
+	UInteger AllocationPolicy
+	UInteger DeallocationPolicy
+	UInteger dwMaxAllocates
+	UInteger dwNumberOfPhysicalMedia
+	UInteger dwNumberOfLogicalMedia
+	UInteger dwNumberOfMediaPools
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_mediatypeinformation
+Struct NTMS_MEDIATYPEINFORMATION
+	UInteger MediaType
+	UInteger NumberOfSides
+	UInteger ReadWriteCharacteristics
+	UInteger DeviceType										// FILE_DEVICE_TYPE
+End_Struct
+
+Struct NTMS_MOUNT_INFORMATION
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpReserved										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_notificationinformation
+Struct NTMS_NOTIFICATIONINFORMATION
+	UInteger dwOperation
+	Guid ObjectId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_objectinformationa
+Struct NTMS_OBJECTINFORMATIONA
+	UInteger dwSize
+	UInteger dwType
+	SYSTEMTIME Created
+	SYSTEMTIME Modified
+	Guid ObjectGuid
+	Integer Enabled											// BOOL
+	UInteger dwOperationalState
+	Char[64] szName											// CHAR
+	Char[127] szDescription									// CHAR
+	UChar[1] cMissingAlignment1
+	_Info_e__Union_2010 Info
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_objectinformationw
+Struct NTMS_OBJECTINFORMATIONW
+	UInteger dwSize
+	UInteger dwType
+	SYSTEMTIME Created
+	SYSTEMTIME Modified
+	Guid ObjectGuid
+	Integer Enabled											// BOOL
+	UInteger dwOperationalState
+	UShort[64] szName
+	UShort[127] szDescription
+	Short iMissingAlignment1
+	_Info_e__Union_2011 Info
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_oprequestinformationa
+Struct NTMS_OPREQUESTINFORMATIONA
+	UInteger Request
+	SYSTEMTIME Submitted
+	UInteger State
+	Char[256] szMessage										// CHAR
+	UInteger Arg1Type
+	Guid Arg1
+	UInteger Arg2Type
+	Guid Arg2
+	Char[64] szApplication									// CHAR
+	Char[64] szUser											// CHAR
+	Char[64] szComputer										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_oprequestinformationw
+Struct NTMS_OPREQUESTINFORMATIONW
+	UInteger Request
+	SYSTEMTIME Submitted
+	UInteger State
+	UShort[256] szMessage
+	UInteger Arg1Type
+	Guid Arg1
+	UInteger Arg2Type
+	Guid Arg2
+	UShort[64] szApplication
+	UShort[64] szUser
+	UShort[64] szComputer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_partitioninformationa
+Struct NTMS_PARTITIONINFORMATIONA
+	Guid PhysicalMedia
+	Guid LogicalMedia
+	UInteger State
+	UShort Side
+	Short iMissingAlignment1
+	UInteger dwOmidLabelIdLength
+	UChar[255] OmidLabelId
+	Char[64] szOmidLabelType								// CHAR
+	Char[256] szOmidLabelInfo								// CHAR
+	UChar[1] cMissingAlignment2
+	UInteger dwMountCount
+	UInteger dwAllocateCount
+	Integer iMissingAlignment3
+	Bigint Capacity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_partitioninformationw
+Struct NTMS_PARTITIONINFORMATIONW
+	Guid PhysicalMedia
+	Guid LogicalMedia
+	UInteger State
+	UShort Side
+	Short iMissingAlignment1
+	UInteger dwOmidLabelIdLength
+	UChar[255] OmidLabelId
+	UChar[1] cMissingAlignment2
+	UShort[64] szOmidLabelType
+	UShort[256] szOmidLabelInfo
+	UInteger dwMountCount
+	UInteger dwAllocateCount
+	Integer iMissingAlignment3
+	Bigint Capacity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_pmidinformationa
+Struct NTMS_PMIDINFORMATIONA
+	Guid CurrentLibrary
+	Guid MediaPool
+	Guid Location
+	UInteger LocationType
+	Guid MediaType
+	Guid HomeSlot
+	Char[64] szBarCode										// CHAR
+	UInteger BarCodeState
+	Char[32] szSequenceNumber								// CHAR
+	UInteger MediaState
+	UInteger dwNumberOfPartitions
+	UInteger dwMediaTypeCode
+	UInteger dwDensityCode
+	Guid MountedPartition
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_pmidinformationw
+Struct NTMS_PMIDINFORMATIONW
+	Guid CurrentLibrary
+	Guid MediaPool
+	Guid Location
+	UInteger LocationType
+	Guid MediaType
+	Guid HomeSlot
+	UShort[64] szBarCode
+	UInteger BarCodeState
+	UShort[32] szSequenceNumber
+	UInteger MediaState
+	UInteger dwNumberOfPartitions
+	UInteger dwMediaTypeCode
+	UInteger dwDensityCode
+	Guid MountedPartition
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntmsapi/ns-ntmsapi-ntms_storageslotinformation
+Struct NTMS_STORAGESLOTINFORMATION
+	UInteger Number
+	UInteger State
+	Guid Library
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-ofstruct
+Struct OFSTRUCT
+	UChar cBytes
+	UChar fFixedDisk
+	UShort nErrCode
+	UShort Reserved1
+	UShort Reserved2
+	Char[128] szPathName									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-reparse_guid_data_buffer
+Struct REPARSE_GUID_DATA_BUFFER
+	UInteger ReparseTag
+	UShort ReparseDataLength
+	UShort Reserved
+	Guid ReparseGuid
+	_GenericReparseBuffer_e__Struct_2951 GenericReparseBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SERVER_ALIAS_INFO_0
+	Pointer srvai0_alias									// PWSTR
+	Pointer srvai0_target									// PWSTR
+	UChar srvai0_default									// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger srvai0_reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-session_info_0
+Struct SESSION_INFO_0
+	Pointer sesi0_cname										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-session_info_1
+Struct SESSION_INFO_1
+	Pointer sesi1_cname										// PWSTR
+	Pointer sesi1_username									// PWSTR
+	UInteger sesi1_num_opens
+	UInteger sesi1_time
+	UInteger sesi1_idle_time
+	UInteger sesi1_user_flags								// SESSION_INFO_USER_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-session_info_10
+Struct SESSION_INFO_10
+	Pointer sesi10_cname									// PWSTR
+	Pointer sesi10_username									// PWSTR
+	UInteger sesi10_time
+	UInteger sesi10_idle_time
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-session_info_2
+Struct SESSION_INFO_2
+	Pointer sesi2_cname										// PWSTR
+	Pointer sesi2_username									// PWSTR
+	UInteger sesi2_num_opens
+	UInteger sesi2_time
+	UInteger sesi2_idle_time
+	UInteger sesi2_user_flags								// SESSION_INFO_USER_FLAGS
+	Pointer sesi2_cltype_name								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-session_info_502
+Struct SESSION_INFO_502
+	Pointer sesi502_cname									// PWSTR
+	Pointer sesi502_username								// PWSTR
+	UInteger sesi502_num_opens
+	UInteger sesi502_time
+	UInteger sesi502_idle_time
+	UInteger sesi502_user_flags								// SESSION_INFO_USER_FLAGS
+	Pointer sesi502_cltype_name								// PWSTR
+	Pointer sesi502_transport								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_0
+Struct SHARE_INFO_0
+	Pointer shi0_netname									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_1
+Struct SHARE_INFO_1
+	Pointer shi1_netname									// PWSTR
+	UInteger shi1_type										// SHARE_TYPE
+	Integer iMissingAlignment1
+	Pointer shi1_remark										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_1004
+Struct SHARE_INFO_1004
+	Pointer shi1004_remark									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_1005
+Struct SHARE_INFO_1005
+	UInteger shi1005_flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_1006
+Struct SHARE_INFO_1006
+	UInteger shi1006_max_uses
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_1501
+Struct SHARE_INFO_1501
+	UInteger shi1501_reserved
+	Integer iMissingAlignment1
+	Pointer shi1501_security_descriptor						// PSECURITY_DESCRIPTOR
+End_Struct
+
+Struct SHARE_INFO_1503
+	Guid shi1503_sharefilter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_2
+Struct SHARE_INFO_2
+	Pointer shi2_netname									// PWSTR
+	UInteger shi2_type										// SHARE_TYPE
+	Integer iMissingAlignment1
+	Pointer shi2_remark										// PWSTR
+	UInteger shi2_permissions								// SHARE_INFO_PERMISSIONS
+	UInteger shi2_max_uses
+	UInteger shi2_current_uses
+	Integer iMissingAlignment2
+	Pointer shi2_path										// PWSTR
+	Pointer shi2_passwd										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_501
+Struct SHARE_INFO_501
+	Pointer shi501_netname									// PWSTR
+	UInteger shi501_type									// SHARE_TYPE
+	Integer iMissingAlignment1
+	Pointer shi501_remark									// PWSTR
+	UInteger shi501_flags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_502
+Struct SHARE_INFO_502
+	Pointer shi502_netname									// PWSTR
+	UInteger shi502_type									// SHARE_TYPE
+	Integer iMissingAlignment1
+	Pointer shi502_remark									// PWSTR
+	UInteger shi502_permissions								// SHARE_INFO_PERMISSIONS
+	UInteger shi502_max_uses
+	UInteger shi502_current_uses
+	Integer iMissingAlignment2
+	Pointer shi502_path										// PWSTR
+	Pointer shi502_passwd									// PWSTR
+	UInteger shi502_reserved
+	Integer iMissingAlignment3
+	Pointer shi502_security_descriptor						// PSECURITY_DESCRIPTOR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmshare/ns-lmshare-share_info_503
+Struct SHARE_INFO_503
+	Pointer shi503_netname									// PWSTR
+	UInteger shi503_type									// SHARE_TYPE
+	Integer iMissingAlignment1
+	Pointer shi503_remark									// PWSTR
+	UInteger shi503_permissions								// SHARE_INFO_PERMISSIONS
+	UInteger shi503_max_uses
+	UInteger shi503_current_uses
+	Integer iMissingAlignment2
+	Pointer shi503_path										// PWSTR
+	Pointer shi503_passwd									// PWSTR
+	Pointer shi503_servername								// PWSTR
+	UInteger shi503_reserved
+	Integer iMissingAlignment3
+	Pointer shi503_security_descriptor						// PSECURITY_DESCRIPTOR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmstats/ns-lmstats-stat_server_0
+Struct STAT_SERVER_0
+	UInteger sts0_start
+	UInteger sts0_fopens
+	UInteger sts0_devopens
+	UInteger sts0_jobsqueued
+	UInteger sts0_sopens
+	UInteger sts0_stimedout
+	UInteger sts0_serrorout
+	UInteger sts0_pwerrors
+	UInteger sts0_permerrors
+	UInteger sts0_syserrors
+	UInteger sts0_bytessent_low
+	UInteger sts0_bytessent_high
+	UInteger sts0_bytesrcvd_low
+	UInteger sts0_bytesrcvd_high
+	UInteger sts0_avresponse
+	UInteger sts0_reqbufneed
+	UInteger sts0_bigbufneed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lmstats/ns-lmstats-stat_workstation_0~r1
+Struct STAT_WORKSTATION_0
+	Bigint StatisticsStartTime
+	Bigint BytesReceived
+	Bigint SmbsReceived
+	Bigint PagingReadBytesRequested
+	Bigint NonPagingReadBytesRequested
+	Bigint CacheReadBytesRequested
+	Bigint NetworkReadBytesRequested
+	Bigint BytesTransmitted
+	Bigint SmbsTransmitted
+	Bigint PagingWriteBytesRequested
+	Bigint NonPagingWriteBytesRequested
+	Bigint CacheWriteBytesRequested
+	Bigint NetworkWriteBytesRequested
+	UInteger InitiallyFailedOperations
+	UInteger FailedCompletionOperations
+	UInteger ReadOperations
+	UInteger RandomReadOperations
+	UInteger ReadSmbs
+	UInteger LargeReadSmbs
+	UInteger SmallReadSmbs
+	UInteger WriteOperations
+	UInteger RandomWriteOperations
+	UInteger WriteSmbs
+	UInteger LargeWriteSmbs
+	UInteger SmallWriteSmbs
+	UInteger RawReadsDenied
+	UInteger RawWritesDenied
+	UInteger NetworkErrors
+	UInteger Sessions
+	UInteger FailedSessions
+	UInteger Reconnects
+	UInteger CoreConnects
+	UInteger Lanman20Connects
+	UInteger Lanman21Connects
+	UInteger LanmanNtConnects
+	UInteger ServerDisconnects
+	UInteger HungSessions
+	UInteger UseCount
+	UInteger FailedUseCount
+	UInteger CurrentCommands
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_erase
+Struct TAPE_ERASE
+	UInteger Type											// ERASE_TAPE_TYPE
+	UChar Immediate											// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_get_position
+Struct TAPE_GET_POSITION
+	UInteger Type											// TAPE_POSITION_TYPE
+	UInteger Partition
+	Bigint Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_prepare
+Struct TAPE_PREPARE
+	UInteger Operation										// PREPARE_TAPE_OPERATION
+	UChar Immediate											// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_set_position
+Struct TAPE_SET_POSITION
+	UInteger Method											// TAPE_POSITION_METHOD
+	UInteger Partition
+	Bigint Offset
+	UChar Immediate											// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_write_marks
+Struct TAPE_WRITE_MARKS
+	UInteger Type											// TAPEMARK_TYPE
+	UInteger Count
+	UChar Immediate											// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ktmtypes/ns-ktmtypes-transaction_notification
+Struct TRANSACTION_NOTIFICATION
+	Pointer TransactionKey									// Pointer*
+	UInteger TransactionNotification
+	Integer iMissingAlignment1
+	Bigint TmVirtualClock
+	UInteger ArgumentLength
+	Integer iMissingAlignment2
+End_Struct
+
+Struct TRANSACTION_NOTIFICATION_MARSHAL_ARGUMENT
+	UInteger MarshalCookie
+	Guid UOW
+End_Struct
+
+Struct TRANSACTION_NOTIFICATION_PROPAGATE_ARGUMENT
+	UInteger PropagationCookie
+	Guid UOW
+	Guid TmIdentity
+	UInteger BufferLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ktmtypes/ns-ktmtypes-transaction_notification_recovery_argument
+Struct TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT
+	Guid EnlistmentId
+	Guid UOW
+End_Struct
+
+Struct TRANSACTION_NOTIFICATION_SAVEPOINT_ARGUMENT
+	UInteger SavepointId
+End_Struct
+
+Struct TRANSACTION_NOTIFICATION_TM_ONLINE_ARGUMENT
+	Guid TmIdentity
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/ns-txfw32-txf_id
+Struct TXF_ID
+	_Anonymous_e__Struct_1147 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/ns-txfw32-txf_log_record_affected_file
+Struct TXF_LOG_RECORD_AFFECTED_FILE
+	UShort Version
+	Short iMissingAlignment1
+	UInteger RecordLength
+	UInteger Flags
+	Integer iMissingAlignment2
+	TXF_ID TxfFileId
+	Guid KtmGuid
+	UInteger FileNameLength
+	UInteger FileNameByteOffsetInStructure
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/ns-txfw32-txf_log_record_base
+Struct TXF_LOG_RECORD_BASE
+	UShort Version
+	UShort RecordType										// TXF_LOG_RECORD_TYPE
+	UInteger RecordLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/ns-txfw32-txf_log_record_truncate
+Struct TXF_LOG_RECORD_TRUNCATE
+	UShort Version
+	UShort RecordType
+	UInteger RecordLength
+	UInteger Flags
+	Integer iMissingAlignment1
+	TXF_ID TxfFileId
+	Guid KtmGuid
+	Bigint NewFileSize
+	UInteger FileNameLength
+	UInteger FileNameByteOffsetInStructure
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/txfw32/ns-txfw32-txf_log_record_write
+Struct TXF_LOG_RECORD_WRITE
+	UShort Version
+	UShort RecordType
+	UInteger RecordLength
+	UInteger Flags
+	Integer iMissingAlignment1
+	TXF_ID TxfFileId
+	Guid KtmGuid
+	Bigint ByteOffsetInFile
+	UInteger NumBytesWritten
+	UInteger ByteOffsetInStructure
+	UInteger FileNameLength
+	UInteger FileNameByteOffsetInStructure
+End_Struct
+
+Struct VOLUME_ALLOCATE_BC_STREAM_INPUT
+	UInteger Version
+	UInteger RequestsPerPeriod
+	UInteger Period
+	UChar RetryFailures										// BOOLEAN
+	UChar Discardable										// BOOLEAN
+	UChar[2] Reserved1										// BOOLEAN
+	UBigint LowestByteOffset
+	UBigint HighestByteOffset
+	UInteger AccessType
+	UInteger AccessMode
+End_Struct
+
+Struct VOLUME_ALLOCATE_BC_STREAM_OUTPUT
+	UBigint RequestSize
+	UInteger NumOutStandingRequests
+	Integer iMissingAlignment1
+End_Struct
+
+Struct VOLUME_ALLOCATION_HINT_INPUT
+	UInteger ClusterSize
+	UInteger NumberOfClusters
+	Bigint StartingClusterNumber
+End_Struct
+
+Struct VOLUME_ALLOCATION_HINT_OUTPUT
+	UInteger[1] Bitmap
+End_Struct
+
+Struct VOLUME_CRITICAL_IO
+	UInteger AccessType
+	UInteger ExtentsCount
+	FILE_EXTENT[1] Extents
+End_Struct
+
+Struct VOLUME_FAILOVER_SET
+	UInteger NumberOfDisks
+	UInteger[1] DiskNumbers
+End_Struct
+
+Struct VOLUME_GET_BC_PROPERTIES_INPUT
+	UInteger Version
+	UInteger Reserved1
+	UBigint LowestByteOffset
+	UBigint HighestByteOffset
+	UInteger AccessType
+	UInteger AccessMode
+End_Struct
+
+Struct VOLUME_GET_BC_PROPERTIES_OUTPUT
+	UInteger MaximumRequestsPerPeriod
+	UInteger MinimumPeriod
+	UBigint MaximumRequestSize
+	UInteger EstimatedTimePerRequest
+	UInteger NumOutStandingRequests
+	UBigint RequestSize
+End_Struct
+
+Struct VOLUME_LOGICAL_OFFSET
+	Bigint LogicalOffset
+End_Struct
+
+Struct VOLUME_NUMBER
+	UInteger VolumeNumber
+	UShort[8] VolumeManagerName
+End_Struct
+
+Struct VOLUME_PHYSICAL_OFFSET
+	UInteger DiskNumber
+	Integer iMissingAlignment1
+	Bigint Offset
+End_Struct
+
+Struct VOLUME_PHYSICAL_OFFSETS
+	UInteger NumberOfPhysicalOffsets
+	Integer iMissingAlignment1
+	VOLUME_PHYSICAL_OFFSET[1] PhysicalOffset
+End_Struct
+
+Struct VOLUME_READ_PLEX_INPUT
+	Bigint ByteOffset
+	UInteger Length
+	UInteger PlexNumber
+End_Struct
+
+Struct VOLUME_SET_GPT_ATTRIBUTES_INFORMATION
+	UBigint GptAttributes
+	UChar RevertOnClose										// BOOLEAN
+	UChar ApplyToAllConnectedVolumes						// BOOLEAN
+	UShort Reserved1
+	UInteger Reserved2
+End_Struct
+
+Struct VOLUME_SHRINK_INFO
+	UBigint VolumeSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/verrsrc/ns-verrsrc-vs_fixedfileinfo
+Struct VS_FIXEDFILEINFO
+	UInteger dwSignature
+	UInteger dwStrucVersion
+	UInteger dwFileVersionMS
+	UInteger dwFileVersionLS
+	UInteger dwProductVersionMS
+	UInteger dwProductVersionLS
+	UInteger dwFileFlagsMask
+	UInteger dwFileFlags									// VS_FIXEDFILEINFO_FILE_FLAGS
+	UInteger dwFileOS										// VS_FIXEDFILEINFO_FILE_OS
+	UInteger dwFileType
+	UInteger dwFileSubtype
+	UInteger dwFileDateMS
+	UInteger dwFileDateLS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/ns-wofapi-wim_entry_info
+Struct WIM_ENTRY_INFO
+	UInteger WimEntryInfoSize
+	UInteger WimType
+	Bigint DataSourceId
+	Guid WimGuid
+	Pointer WimPath											// PWSTR
+	UInteger WimIndex
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wofapi/ns-wofapi-wim_external_file_info
+Struct WIM_EXTERNAL_FILE_INFO
+	Bigint DataSourceId
+	UChar[20] ResourceHash
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/ns-fileapi-win32_file_attribute_data
+Struct WIN32_FILE_ATTRIBUTE_DATA
+	UInteger dwFileAttributes
+	FILETIME ftCreationTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastWriteTime
+	UInteger nFileSizeHigh
+	UInteger nFileSizeLow
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
+Struct WIN32_FIND_DATAA
+	UInteger dwFileAttributes
+	FILETIME ftCreationTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastWriteTime
+	UInteger nFileSizeHigh
+	UInteger nFileSizeLow
+	UInteger dwReserved0
+	UInteger dwReserved1
+	Char[260] cFileName										// CHAR
+	Char[14] cAlternateFileName								// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataw
+Struct WIN32_FIND_DATAW
+	UInteger dwFileAttributes
+	FILETIME ftCreationTime
+	FILETIME ftLastAccessTime
+	FILETIME ftLastWriteTime
+	UInteger nFileSizeHigh
+	UInteger nFileSizeLow
+	UInteger dwReserved0
+	UInteger dwReserved1
+	UShort[260] cFileName
+	UShort[14] cAlternateFileName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/fileapi/ns-fileapi-win32_find_stream_data
+Struct WIN32_FIND_STREAM_DATA
+	Bigint StreamSize
+	UShort[296] cStreamName
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

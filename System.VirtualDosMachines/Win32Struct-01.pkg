@@ -1,0 +1,149 @@
+Use UI
+
+Struct _HighWord_e__Union_2818
+	// _Bytes_e__Struct_2819 Bytes // (4)
+	// _Bits_e__Struct_2820 Bits // (4)
+	_Bytes_e__Struct_2819 Bytes
+End_Struct
+
+Struct GLOBALENTRY
+	UInteger dwSize
+	UInteger dwAddress
+	UInteger dwBlockSize
+	Integer iMissingAlignment1
+	Pointer hBlock											// HANDLE
+	UShort wcLock
+	UShort wcPageLock
+	UShort wFlags
+	Short iMissingAlignment2
+	Integer wHeapPresent									// BOOL
+	Integer iMissingAlignment3
+	Pointer hOwner											// HANDLE
+	UShort wType
+	UShort wData
+	UInteger dwNext
+	UInteger dwNextAlt
+	Integer iMissingAlignment4
+End_Struct
+
+Struct IMAGE_NOTE
+	Char[10] Module											// CHAR
+	Char[256] FileName										// CHAR
+	UShort hModule
+	UShort hTask
+End_Struct
+
+Struct MODULEENTRY
+	UInteger dwSize
+	Char[10] szModule										// CHAR
+	Short iMissingAlignment1
+	Pointer hModule											// HANDLE
+	UShort wcUsage
+	Char[256] szExePath										// CHAR
+	UShort wNext
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SEGMENT_NOTE
+	UShort Selector1
+	UShort Selector2
+	UShort Segment
+	Char[10] Module											// CHAR
+	Char[256] FileName										// CHAR
+	UShort Type
+	Short iMissingAlignment1
+	UInteger Length
+End_Struct
+
+Struct TEMP_BP_NOTE
+	UShort Seg
+	Short iMissingAlignment1
+	UInteger Offset
+	Integer bPM												// BOOL
+End_Struct
+
+Struct VDMCONTEXT
+	UInteger ContextFlags
+	UInteger Dr0
+	UInteger Dr1
+	UInteger Dr2
+	UInteger Dr3
+	UInteger Dr6
+	UInteger Dr7
+	FLOATING_SAVE_AREA FloatSave
+	UInteger SegGs
+	UInteger SegFs
+	UInteger SegEs
+	UInteger SegDs
+	UInteger Edi
+	UInteger Esi
+	UInteger Ebx
+	UInteger Edx
+	UInteger Ecx
+	UInteger Eax
+	UInteger Ebp
+	UInteger Eip
+	UInteger SegCs
+	UInteger EFlags
+	UInteger Esp
+	UInteger SegSs
+	UChar[512] ExtendedRegisters
+End_Struct
+
+Struct VDMCONTEXT_WITHOUT_XSAVE
+	UInteger ContextFlags
+	UInteger Dr0
+	UInteger Dr1
+	UInteger Dr2
+	UInteger Dr3
+	UInteger Dr6
+	UInteger Dr7
+	FLOATING_SAVE_AREA FloatSave
+	UInteger SegGs
+	UInteger SegFs
+	UInteger SegEs
+	UInteger SegDs
+	UInteger Edi
+	UInteger Esi
+	UInteger Ebx
+	UInteger Edx
+	UInteger Ecx
+	UInteger Eax
+	UInteger Ebp
+	UInteger Eip
+	UInteger SegCs
+	UInteger EFlags
+	UInteger Esp
+	UInteger SegSs
+End_Struct
+
+Struct VDMLDT_ENTRY
+	UShort LimitLow
+	UShort BaseLow
+	_HighWord_e__Union_2818 HighWord
+End_Struct
+
+Struct VDM_SEGINFO
+	UShort Selector
+	UShort SegNumber
+	UInteger Length
+	UShort Type
+	Char[9] ModuleName										// CHAR
+	Char[255] FileName										// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+Struct _Bits_e__Struct_2820
+	UInteger _bitfield
+End_Struct
+
+Struct _Bytes_e__Struct_2819
+	UChar BaseMid
+	UChar Flags1
+	UChar Flags2
+	UChar BaseHi
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

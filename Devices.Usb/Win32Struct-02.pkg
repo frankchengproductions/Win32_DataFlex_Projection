@@ -1,0 +1,814 @@
+Use UI
+
+Struct USB_20_PORT_CHANGE
+	_Anonymous_e__Union_1766 Anonymous
+End_Struct
+
+Struct USB_20_PORT_STATUS
+	_Anonymous_e__Union_1764 Anonymous
+End_Struct
+
+Struct USB_30_HUB_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bNumberOfPorts
+	UChar[1] cMissingAlignment1
+	UShort wHubCharacteristics
+	UChar bPowerOnToPowerGood
+	UChar bHubControlCurrent
+	UChar bHubHdrDecLat
+	UChar[1] cMissingAlignment2
+	UShort wHubDelay
+	UShort DeviceRemovable
+End_Struct
+
+Struct USB_30_PORT_CHANGE
+	_Anonymous_e__Union_1770 Anonymous
+End_Struct
+
+Struct USB_30_PORT_STATUS
+	_Anonymous_e__Union_1768 Anonymous
+End_Struct
+
+Struct USB_ACQUIRE_INFO
+	Integer NotificationType								// USB_NOTIFICATION_TYPE
+	UInteger TotalSize
+	UShort[1] Buffer
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_bandwidth_info
+Struct USB_BANDWIDTH_INFO
+	UInteger DeviceCount
+	UInteger TotalBusBandwidth
+	UInteger Total32secBandwidth
+	UInteger AllocedBulkAndControl
+	UInteger AllocedIso
+	UInteger AllocedInterrupt_1ms
+	UInteger AllocedInterrupt_2ms
+	UInteger AllocedInterrupt_4ms
+	UInteger AllocedInterrupt_8ms
+	UInteger AllocedInterrupt_16ms
+	UInteger AllocedInterrupt_32ms
+End_Struct
+
+Struct USB_BOS_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort wTotalLength
+	UChar bNumDeviceCaps
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct USB_BUS_NOTIFICATION
+	Integer NotificationType								// USB_NOTIFICATION_TYPE
+	UInteger TotalBandwidth
+	UInteger ConsumedBandwidth
+	UInteger ControllerNameLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_bus_statistics_0
+Struct USB_BUS_STATISTICS_0
+	UInteger DeviceCount
+	Integer iMissingAlignment1
+	Bigint CurrentSystemTime
+	UInteger CurrentUsbFrame
+	UInteger BulkBytes
+	UInteger IsoBytes
+	UInteger InterruptBytes
+	UInteger ControlDataBytes
+	UInteger PciInterruptCount
+	UInteger HardResetCount
+	UInteger WorkerSignalCount
+	UInteger CommonBufferBytes
+	UInteger WorkerIdleTimeMs
+	UChar RootHubEnabled									// BOOLEAN
+	UChar RootHubDevicePowerState
+	UChar Unused
+	UChar NameIndex
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_close_raw_device_parameters
+Struct USB_CLOSE_RAW_DEVICE_PARAMETERS
+	UInteger xxx
+End_Struct
+
+Struct USB_COMMON_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+End_Struct
+
+Struct USB_COMPOSITE_DEVICE_INFO
+	USB_DEVICE_DESCRIPTOR DeviceDescriptor
+	USB_CONFIGURATION_DESCRIPTOR CurrentConfigDescriptor
+	UChar CurrentConfigurationValue
+	UChar NumberOfFunctions
+	USB_COMPOSITE_FUNCTION_INFO[1] FunctionInfo
+End_Struct
+
+Struct USB_COMPOSITE_FUNCTION_INFO
+	UChar FunctionNumber
+	UChar BaseInterfaceNumber
+	UChar NumberOfInterfaces
+	UChar FunctionIsIdle									// BOOLEAN
+End_Struct
+
+Struct USB_CONFIGURATION_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort wTotalLength
+	UChar bNumInterfaces
+	UChar bConfigurationValue
+	UChar iConfiguration
+	UChar bmAttributes
+	UChar MaxPower
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct USB_CONFIGURATION_POWER_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar[3] SelfPowerConsumedD0
+	UChar bPowerSummaryId
+	UChar bBusPowerSavingD1
+	UChar bSelfPowerSavingD1
+	UChar bBusPowerSavingD2
+	UChar bSelfPowerSavingD2
+	UChar bBusPowerSavingD3
+	UChar bSelfPowerSavingD3
+	UShort TransitionTimeFromD1
+	UShort TransitionTimeFromD2
+	UShort TransitionTimeFromD3
+End_Struct
+
+Struct USB_CONNECTION_NOTIFICATION
+	Integer NotificationType								// USB_NOTIFICATION_TYPE
+	UInteger ConnectionNumber
+	UInteger RequestedBandwidth
+	UInteger EnumerationFailReason
+	UInteger PowerRequested
+	UInteger HubNameLength
+End_Struct
+
+Struct USB_CONTROLLER_DEVICE_INFO
+	UInteger PciVendorId
+	UInteger PciDeviceId
+	UInteger PciRevision
+	UInteger NumberOfRootPorts
+	UInteger HcFeatureFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_controller_info_0
+Struct USB_CONTROLLER_INFO_0
+	UInteger PciVendorId
+	UInteger PciDeviceId
+	UInteger PciRevision
+	UInteger NumberOfRootPorts
+	Integer ControllerFlavor								// USB_CONTROLLER_FLAVOR
+	UInteger HcFeatureFlags
+End_Struct
+
+Struct USB_CYCLE_PORT_PARAMS
+	UInteger ConnectionIndex
+	UInteger StatusReturned
+End_Struct
+
+Struct USB_DEFAULT_PIPE_SETUP_PACKET
+	BM_REQUEST_TYPE bmRequestType
+	UChar bRequest
+	_wValue_1727 wValue
+	_wIndex_1729 wIndex
+	UShort wLength
+End_Struct
+
+Struct USB_DESCRIPTOR_REQUEST
+	UInteger ConnectionIndex
+	_SetupPacket_e__Struct_1788 SetupPacket
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_BILLBOARD_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar iAddtionalInfoURL
+	UChar bNumberOfAlternateModes
+	UChar bPreferredAlternateMode
+	_VconnPower_e__Union_1749 VconnPower
+	UChar[32] bmConfigured
+	UInteger bReserved
+	_Anonymous_e__Struct_1751[1] AlternateMode
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_CONTAINER_ID_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bReserved
+	UChar[16] ContainerID
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_FIRMWARE_STATUS_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bcdDescriptorVersion
+	_bmAttributes_e__Union_1752 bmAttributes
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_PD_CONSUMER_PORT_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bReserved
+	_bmCapabilities_e__Union_1741 bmCapabilities
+	UShort wMinVoltage
+	UShort wMaxVoltage
+	UShort wReserved
+	UInteger dwMaxOperatingPower
+	UInteger dwMaxPeakPower
+	UInteger dwMaxPeakPowerTime
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_PLATFORM_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bReserved
+	Guid PlatformCapabilityUuid
+	UChar[1] CapabililityData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_POWER_DELIVERY_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bReserved
+	_bmAttributes_e__Union_1739 bmAttributes
+	UShort bmProviderPorts
+	UShort bmConsumerPorts
+	UShort bcdBCVersion
+	UShort bcdPDVersion
+	UShort bcdUSBTypeCVersion
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_SUPERSPEEDPLUS_SPEED
+	_Anonymous_e__Union_1743 Anonymous
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_SUPERSPEEDPLUS_USB_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bReserved
+	_bmAttributes_e__Union_1745 bmAttributes
+	_wFunctionalitySupport_e__Union_1747 wFunctionalitySupport
+	UShort wReserved
+	USB_DEVICE_CAPABILITY_SUPERSPEEDPLUS_SPEED[1] bmSublinkSpeedAttr
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_SUPERSPEED_USB_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar bmAttributes
+	UShort wSpeedsSupported
+	UChar bFunctionalitySupport
+	UChar bU1DevExitLat
+	UShort wU2DevExitLat
+End_Struct
+
+Struct USB_DEVICE_CAPABILITY_USB20_EXTENSION_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bDevCapabilityType
+	UChar[1] cMissingAlignment1
+	_bmAttributes_e__Union_1737 bmAttributes
+End_Struct
+
+Struct USB_DEVICE_CHARACTERISTICS
+	UInteger Version
+	UInteger[2] Reserved
+	UInteger UsbDeviceCharacteristicsFlags
+	UInteger MaximumSendPathDelayInMilliSeconds
+	UInteger MaximumCompletionPathDelayInMilliSeconds
+End_Struct
+
+Struct USB_DEVICE_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort bcdUSB
+	UChar bDeviceClass
+	UChar bDeviceSubClass
+	UChar bDeviceProtocol
+	UChar bMaxPacketSize0
+	UShort idVendor
+	UShort idProduct
+	UShort bcdDevice
+	UChar iManufacturer
+	UChar iProduct
+	UChar iSerialNumber
+	UChar bNumConfigurations
+End_Struct
+
+Struct USB_DEVICE_INFO
+	USB_DEVICE_STATE DeviceState
+	UShort PortNumber
+	USB_DEVICE_DESCRIPTOR DeviceDescriptor
+	UChar CurrentConfigurationValue
+	UChar[3] cMissingAlignment1
+	Integer Speed											// USB_DEVICE_SPEED
+	UShort DeviceAddress
+	Short iMissingAlignment2
+	UInteger ConnectionIndex
+	Integer ConnectionStatus								// USB_CONNECTION_STATUS
+	UShort[128] PnpHardwareId
+	UShort[128] PnpCompatibleId
+	UShort[128] SerialNumberId
+	UShort[128] PnpDeviceDescription
+	UInteger NumberOfOpenPipes
+	USB_PIPE_INFO[1] PipeList
+End_Struct
+
+Struct USB_DEVICE_NODE_INFO
+	UInteger Sig
+	UInteger LengthInBytes
+	UShort[40] DeviceDescription
+	Integer NodeType										// USB_WMI_DEVICE_NODE_TYPE
+	USB_TOPOLOGY_ADDRESS BusAddress
+	_Anonymous_e__Union_1791 Anonymous
+End_Struct
+
+Struct USB_DEVICE_PERFORMANCE_INFO
+	UInteger BulkBytes
+	UInteger ControlDataBytes
+	UInteger IsoBytes
+	UInteger InterruptBytes
+	UInteger BulkUrbCount
+	UInteger ControlUrbCount
+	UInteger IsoUrbCount
+	UInteger InterruptUrbCount
+	UInteger[6] AllocedInterrupt
+	UInteger AllocedIso
+	UInteger Total32secBandwidth
+	UInteger TotalTtBandwidth
+	UShort[60] DeviceDescription
+	Integer DeviceSpeed										// USB_DEVICE_SPEED
+	UInteger TotalIsoLatency
+	UInteger DroppedIsoPackets
+	UInteger TransferErrors
+	UInteger PciInterruptCount
+	UInteger HcIdleState
+	UInteger HcAsyncIdleState
+	UInteger HcAsyncCacheFlushCount
+	UInteger HcPeriodicIdleState
+	UInteger HcPeriodicCacheFlushCount
+End_Struct
+
+Struct USB_DEVICE_QUALIFIER_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort bcdUSB
+	UChar bDeviceClass
+	UChar bDeviceSubClass
+	UChar bDeviceProtocol
+	UChar bMaxPacketSize0
+	UChar bNumConfigurations
+	UChar bReserved
+End_Struct
+
+Struct USB_DEVICE_STATE
+	UInteger _bitfield
+End_Struct
+
+Struct USB_DEVICE_STATUS
+	_Anonymous_e__Union_1731 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_driver_version_parameters
+Struct USB_DRIVER_VERSION_PARAMETERS
+	UInteger DriverTrackingCode
+	UInteger USBDI_Version
+	UInteger USBUSER_Version
+	UChar CheckedPortDriver									// BOOLEAN
+	UChar CheckedMiniportDriver								// BOOLEAN
+	UShort USB_Version
+End_Struct
+
+Struct USB_ENDPOINT_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bEndpointAddress
+	UChar bmAttributes
+	UShort wMaxPacketSize
+	UChar bInterval
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct USB_ENDPOINT_STATUS
+	_Anonymous_e__Union_1735 Anonymous
+End_Struct
+
+Struct USB_FRAME_NUMBER_AND_QPC_FOR_TIME_SYNC_INFORMATION
+	Pointer TimeTrackingHandle								// HANDLE
+	UInteger InputFrameNumber
+	UInteger InputMicroFrameNumber
+	Bigint QueryPerformanceCounterAtInputFrameOrMicroFrame
+	Bigint QueryPerformanceCounterFrequency
+	UInteger PredictedAccuracyInMicroSeconds
+	UInteger CurrentGenerationID
+	Bigint CurrentQueryPerformanceCounter
+	UInteger CurrentHardwareFrameNumber
+	UInteger CurrentHardwareMicroFrameNumber
+	UInteger CurrentUSBFrameNumber
+	Integer iMissingAlignment1
+End_Struct
+
+Struct USB_FUNCTION_SUSPEND_OPTIONS
+	_Anonymous_e__Union_1782 Anonymous
+End_Struct
+
+Struct USB_HCD_DRIVERKEY_NAME
+	UInteger ActualLength
+	UShort[1] DriverKeyName
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_HIGH_SPEED_MAXPACKET
+	_Anonymous_e__Union_1754 Anonymous
+End_Struct
+
+Struct USB_HUB_30_PORT_REMOTE_WAKE_MASK
+	_Anonymous_e__Union_1780 Anonymous
+End_Struct
+
+Struct USB_HUB_CAPABILITIES
+	UInteger _bitfield
+End_Struct
+
+Struct USB_HUB_CAPABILITIES_EX
+	USB_HUB_CAP_FLAGS CapabilityFlags
+End_Struct
+
+Struct USB_HUB_CAP_FLAGS
+	_Anonymous_e__Union_1789 Anonymous
+End_Struct
+
+Struct USB_HUB_CHANGE
+	_Anonymous_e__Union_1760 Anonymous
+End_Struct
+
+Struct USB_HUB_DESCRIPTOR
+	UChar bDescriptorLength
+	UChar bDescriptorType
+	UChar bNumberOfPorts
+	UChar[1] cMissingAlignment1
+	UShort wHubCharacteristics
+	UChar bPowerOnToPowerGood
+	UChar bHubControlCurrent
+	UChar[64] bRemoveAndPowerMask
+End_Struct
+
+Struct USB_HUB_DEVICE_INFO
+	USB_HUB_DESCRIPTOR HubDescriptor
+	UInteger HubNumber
+	UShort DeviceAddress
+	UChar HubIsSelfPowered									// BOOLEAN
+	UChar HubIsRootHub										// BOOLEAN
+	USB_HUB_CAPABILITIES HubCapabilities
+	UInteger NumberOfHubPorts
+	USB_HUB_PORT_INFORMATION[1] PortInfo
+End_Struct
+
+Struct USB_HUB_DEVICE_UXD_SETTINGS
+	UInteger Version
+	Guid PnpGuid
+	Guid OwnerGuid
+	UInteger DeleteOnShutdown
+	UInteger DeleteOnReload
+	UInteger DeleteOnDisconnect
+	UInteger[5] Reserved
+End_Struct
+
+Struct USB_HUB_INFORMATION
+	USB_HUB_DESCRIPTOR HubDescriptor
+	UChar HubIsBusPowered									// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct USB_HUB_INFORMATION_EX
+	Integer HubType											// USB_HUB_TYPE
+	UShort HighestPortNumber
+	_u_e__Union_1792 u
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_HUB_NAME
+	UInteger ActualLength
+	UShort[1] HubName
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_HUB_PORT_INFORMATION
+	USB_DEVICE_STATE DeviceState
+	UShort PortNumber
+	UShort DeviceAddress
+	UInteger ConnectionIndex
+	Integer ConnectionStatus								// USB_CONNECTION_STATUS
+End_Struct
+
+Struct USB_HUB_STATUS
+	_Anonymous_e__Union_1758 Anonymous
+End_Struct
+
+Struct USB_HUB_STATUS_AND_CHANGE
+	_Anonymous_e__Union_1762 Anonymous
+End_Struct
+
+Struct USB_IDLE_CALLBACK_INFO
+	Pointer IdleCallback									// USB_IDLE_CALLBACK
+	Pointer IdleContext										// Pointer*
+End_Struct
+
+Struct USB_ID_STRING
+	UShort LanguageId
+	UShort Pad
+	UInteger LengthInBytes
+	Pointer Buffer											// PWSTR
+End_Struct
+
+Struct USB_INTERFACE_ASSOCIATION_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bFirstInterface
+	UChar bInterfaceCount
+	UChar bFunctionClass
+	UChar bFunctionSubClass
+	UChar bFunctionProtocol
+	UChar iFunction
+End_Struct
+
+Struct USB_INTERFACE_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bInterfaceNumber
+	UChar bAlternateSetting
+	UChar bNumEndpoints
+	UChar bInterfaceClass
+	UChar bInterfaceSubClass
+	UChar bInterfaceProtocol
+	UChar iInterface
+End_Struct
+
+Struct USB_INTERFACE_POWER_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bmCapabilitiesFlags
+	UChar bBusPowerSavingD1
+	UChar bSelfPowerSavingD1
+	UChar bBusPowerSavingD2
+	UChar bSelfPowerSavingD2
+	UChar bBusPowerSavingD3
+	UChar bSelfPowerSavingD3
+	UChar[1] cMissingAlignment1
+	UShort TransitionTimeFromD1
+	UShort TransitionTimeFromD2
+	UShort TransitionTimeFromD3
+End_Struct
+
+Struct USB_INTERFACE_STATUS
+	_Anonymous_e__Union_1733 Anonymous
+End_Struct
+
+Struct USB_MI_PARENT_INFORMATION
+	UInteger NumberOfInterfaces
+End_Struct
+
+Struct USB_NODE_CONNECTION_ATTRIBUTES
+	UInteger ConnectionIndex
+	Integer ConnectionStatus								// USB_CONNECTION_STATUS
+	UInteger PortAttributes
+End_Struct
+
+Struct USB_NODE_CONNECTION_DRIVERKEY_NAME
+	UInteger ConnectionIndex
+	UInteger ActualLength
+	UShort[1] DriverKeyName
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_NODE_CONNECTION_INFORMATION
+	UInteger ConnectionIndex
+	USB_DEVICE_DESCRIPTOR DeviceDescriptor
+	UChar CurrentConfigurationValue
+	UChar LowSpeed											// BOOLEAN
+	UChar DeviceIsHub										// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UShort DeviceAddress
+	UInteger NumberOfOpenPipes
+	Integer ConnectionStatus								// USB_CONNECTION_STATUS
+	USB_PIPE_INFO[1] PipeList
+End_Struct
+
+Struct USB_NODE_CONNECTION_INFORMATION_EX
+	UInteger ConnectionIndex
+	USB_DEVICE_DESCRIPTOR DeviceDescriptor
+	UChar CurrentConfigurationValue
+	UChar Speed
+	UChar DeviceIsHub										// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UShort DeviceAddress
+	UInteger NumberOfOpenPipes
+	Integer ConnectionStatus								// USB_CONNECTION_STATUS
+	USB_PIPE_INFO[1] PipeList
+End_Struct
+
+Struct USB_NODE_CONNECTION_INFORMATION_EX_V2
+	UInteger ConnectionIndex
+	UInteger Length
+	USB_PROTOCOLS SupportedUsbProtocols
+	USB_NODE_CONNECTION_INFORMATION_EX_V2_FLAGS Flags
+End_Struct
+
+Struct USB_NODE_CONNECTION_INFORMATION_EX_V2_FLAGS
+	_Anonymous_e__Union_1797 Anonymous
+End_Struct
+
+Struct USB_NODE_CONNECTION_NAME
+	UInteger ConnectionIndex
+	UInteger ActualLength
+	UShort[1] NodeName
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_NODE_CONNECTION_SUPERSPEEDPLUS_INFORMATION
+	UInteger ConnectionIndex
+	UInteger Length
+	USB_DEVICE_CAPABILITY_SUPERSPEEDPLUS_SPEED RxSuperSpeedPlus
+	UInteger RxLaneCount
+	USB_DEVICE_CAPABILITY_SUPERSPEEDPLUS_SPEED TxSuperSpeedPlus
+	UInteger TxLaneCount
+End_Struct
+
+Struct USB_NODE_INFORMATION
+	Integer NodeType										// USB_HUB_NODE
+	_u_e__Union_1787 u
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_NOTIFICATION
+	Integer NotificationType								// USB_NOTIFICATION_TYPE
+End_Struct
+
+Struct USB_OPEN_RAW_DEVICE_PARAMETERS
+	UShort PortStatus
+	UShort MaxPacketEp0
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_pass_thru_parameters
+Struct USB_PASS_THRU_PARAMETERS
+	Guid FunctionGUID
+	UInteger ParameterLength
+	UChar[4] Parameters
+End_Struct
+
+Struct USB_PIPE_INFO
+	USB_ENDPOINT_DESCRIPTOR EndpointDescriptor
+	UInteger ScheduleOffset
+End_Struct
+
+Struct USB_PORT_CHANGE
+	_Anonymous_e__Union_1773 Anonymous
+End_Struct
+
+Struct USB_PORT_CONNECTOR_PROPERTIES
+	UInteger ConnectionIndex
+	UInteger ActualLength
+	USB_PORT_PROPERTIES UsbPortProperties
+	UShort CompanionIndex
+	UShort CompanionPortNumber
+	UShort[1] CompanionHubSymbolicLinkName
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_PORT_EXT_STATUS
+	_Anonymous_e__Union_1774 Anonymous
+End_Struct
+
+Struct USB_PORT_EXT_STATUS_AND_CHANGE
+	_Anonymous_e__Union_1778 Anonymous
+End_Struct
+
+Struct USB_PORT_PROPERTIES
+	_Anonymous_e__Union_1793 Anonymous
+End_Struct
+
+Struct USB_PORT_STATUS
+	_Anonymous_e__Union_1772 Anonymous
+End_Struct
+
+Struct USB_PORT_STATUS_AND_CHANGE
+	_Anonymous_e__Union_1776 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_power_info
+Struct USB_POWER_INFO
+	Integer SystemState										// WDMUSB_POWER_STATE
+	Integer HcDevicePowerState								// WDMUSB_POWER_STATE
+	Integer HcDeviceWake									// WDMUSB_POWER_STATE
+	Integer HcSystemWake									// WDMUSB_POWER_STATE
+	Integer RhDevicePowerState								// WDMUSB_POWER_STATE
+	Integer RhDeviceWake									// WDMUSB_POWER_STATE
+	Integer RhSystemWake									// WDMUSB_POWER_STATE
+	Integer LastSystemSleepState							// WDMUSB_POWER_STATE
+	UChar CanWakeup											// BOOLEAN
+	UChar IsPowered											// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_PROTOCOLS
+	_Anonymous_e__Union_1795 Anonymous
+End_Struct
+
+Struct USB_ROOT_HUB_NAME
+	UInteger ActualLength
+	UShort[1] RootHubName
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_SEND_RAW_COMMAND_PARAMETERS
+	UChar Usb_bmRequest
+	UChar Usb_bRequest
+	UShort Usb_wVlaue
+	UShort Usb_wIndex
+	UShort Usb_wLength
+	UShort DeviceAddress
+	UShort MaximumPacketSize
+	UInteger Timeout
+	UInteger DataLength
+	Integer UsbdStatusCode
+	UChar[4] Data
+End_Struct
+
+Struct USB_START_TRACKING_FOR_TIME_SYNC_INFORMATION
+	Pointer TimeTrackingHandle								// HANDLE
+	UChar IsStartupDelayTolerable							// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct USB_STOP_TRACKING_FOR_TIME_SYNC_INFORMATION
+	Pointer TimeTrackingHandle								// HANDLE
+End_Struct
+
+Struct USB_STRING_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort[1] bString
+End_Struct
+
+Struct USB_SUPERSPEEDPLUS_ISOCH_ENDPOINT_COMPANION_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UShort wReserved
+	UInteger dwBytesPerInterval
+End_Struct
+
+Struct USB_SUPERSPEED_ENDPOINT_COMPANION_DESCRIPTOR
+	UChar bLength
+	UChar bDescriptorType
+	UChar bMaxBurst
+	_bmAttributes_e__Union_1755 bmAttributes
+	UShort wBytesPerInterval
+End_Struct
+
+Struct USB_TOPOLOGY_ADDRESS
+	UInteger PciBusNumber
+	UInteger PciDeviceNumber
+	UInteger PciFunctionNumber
+	UInteger Reserved
+	UShort RootHubPortNumber
+	UShort[5] HubPortNumber
+	UShort Reserved2
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_TRANSPORT_CHARACTERISTICS
+	UInteger Version
+	UInteger TransportCharacteristicsFlags
+	UBigint CurrentRoundtripLatencyInMilliSeconds
+	UBigint MaxPotentialBandwidth
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

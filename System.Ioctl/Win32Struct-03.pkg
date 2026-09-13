@@ -1,0 +1,960 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-fsctl_set_integrity_information_buffer
+Struct FSCTL_SET_INTEGRITY_INFORMATION_BUFFER
+	UShort ChecksumAlgorithm
+	UShort Reserved
+	UInteger Flags
+End_Struct
+
+Struct FSCTL_SET_INTEGRITY_INFORMATION_BUFFER_EX
+	UChar EnableIntegrity
+	UChar KeepIntegrityStateUnchanged
+	UShort Reserved
+	UInteger Flags
+	UChar Version
+	UChar[7] Reserved2
+End_Struct
+
+Struct FS_BPIO_INFO
+	UInteger ActiveBypassIoCount
+	UShort StorageDriverNameLen
+	UShort[32] StorageDriverName
+	Short iMissingAlignment1
+End_Struct
+
+Struct FS_BPIO_INPUT
+	Integer Operation										// FS_BPIO_OPERATIONS
+	Integer InFlags											// FS_BPIO_INFLAGS
+	UBigint Reserved1
+	UBigint Reserved2
+End_Struct
+
+Struct FS_BPIO_OUTPUT
+	Integer Operation										// FS_BPIO_OPERATIONS
+	Integer OutFlags										// FS_BPIO_OUTFLAGS
+	UBigint Reserved1
+	UBigint Reserved2
+	_Anonymous_e__Union_3211 Anonymous
+End_Struct
+
+Struct FS_BPIO_RESULTS
+	UInteger OpStatus
+	UShort FailingDriverNameLen
+	UShort[32] FailingDriverName
+	UShort FailureReasonLen
+	UShort[128] FailureReason
+End_Struct
+
+Struct GETVERSIONINPARAMS
+	UChar bVersion
+	UChar bRevision
+	UChar bReserved
+	UChar bIDEDeviceMap
+	UInteger fCapabilities
+	UInteger[4] dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-get_changer_parameters
+Struct GET_CHANGER_PARAMETERS
+	UInteger Size
+	UShort NumberTransportElements
+	UShort NumberStorageElements
+	UShort NumberCleanerSlots
+	UShort NumberIEElements
+	UShort NumberDataTransferElements
+	UShort NumberOfDoors
+	UShort FirstSlotNumber
+	UShort FirstDriveNumber
+	UShort FirstTransportNumber
+	UShort FirstIEPortNumber
+	UShort FirstCleanerSlotAddress
+	UShort MagazineSize
+	UInteger DriveCleanTimeout
+	UInteger Features0										// CHANGER_FEATURES
+	UInteger Features1										// GET_CHANGER_PARAMETERS_FEATURES1
+	UChar MoveFromTransport
+	UChar MoveFromSlot
+	UChar MoveFromIePort
+	UChar MoveFromDrive
+	UChar ExchangeFromTransport
+	UChar ExchangeFromSlot
+	UChar ExchangeFromIePort
+	UChar ExchangeFromDrive
+	UChar LockUnlockCapabilities
+	UChar PositionCapabilities
+	UChar[2] Reserved1
+	UInteger[2] Reserved2
+End_Struct
+
+Struct GET_DEVICE_INTERNAL_STATUS_DATA_REQUEST
+	UInteger Version
+	UInteger Size
+	Integer RequestDataType									// DEVICE_INTERNAL_STATUS_DATA_REQUEST_TYPE
+	Integer RequestDataSet									// DEVICE_INTERNAL_STATUS_DATA_SET
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-get_disk_attributes
+Struct GET_DISK_ATTRIBUTES
+	UInteger Version
+	UInteger Reserved1
+	UBigint Attributes
+End_Struct
+
+Struct GET_FILTER_FILE_IDENTIFIER_INPUT
+	UShort AltitudeLength
+	UShort[1] Altitude
+End_Struct
+
+Struct GET_FILTER_FILE_IDENTIFIER_OUTPUT
+	UShort FilterFileIdentifierLength
+	UChar[1] FilterFileIdentifier
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-get_length_information
+Struct GET_LENGTH_INFORMATION
+	Bigint Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-get_media_types
+Struct GET_MEDIA_TYPES
+	UInteger DeviceType
+	UInteger MediaInfoCount
+	DEVICE_MEDIA_INFO[1] MediaInfo
+End_Struct
+
+Struct GP_LOG_PAGE_DESCRIPTOR
+	UShort LogAddress
+	UShort LogSectors
+End_Struct
+
+Struct HISTOGRAM_BUCKET
+	UInteger Reads
+	UInteger Writes
+End_Struct
+
+Struct IDEREGS
+	UChar bFeaturesReg
+	UChar bSectorCountReg
+	UChar bSectorNumberReg
+	UChar bCylLowReg
+	UChar bCylHighReg
+	UChar bDriveHeadReg
+	UChar bCommandReg
+	UChar bReserved
+End_Struct
+
+Struct IO_IRP_EXT_TRACK_OFFSET_HEADER
+	UShort Validation
+	UShort Flags
+	Integer iMissingAlignment1
+	Pointer TrackedOffsetCallback							// PIO_IRP_EXT_PROCESS_TRACKED_OFFSET_CALLBACK
+End_Struct
+
+Struct LMR_QUERY_INFO_PARAM
+	Integer Operation										// LMR_QUERY_INFO_CLASS
+End_Struct
+
+Struct LMR_QUERY_SESSION_INFO
+	UBigint SessionId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-lookup_stream_from_cluster_entry
+Struct LOOKUP_STREAM_FROM_CLUSTER_ENTRY
+	UInteger OffsetToNext
+	UInteger Flags
+	Bigint Reserved
+	Bigint Cluster
+	UShort[1] FileName
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-lookup_stream_from_cluster_input
+Struct LOOKUP_STREAM_FROM_CLUSTER_INPUT
+	UInteger Flags
+	UInteger NumberOfClusters
+	Bigint[1] Cluster
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-lookup_stream_from_cluster_output
+Struct LOOKUP_STREAM_FROM_CLUSTER_OUTPUT
+	UInteger Offset
+	UInteger NumberOfMatches
+	UInteger BufferSizeRequired
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-mark_handle_info
+Struct MARK_HANDLE_INFO
+	_Anonymous_e__Union_3183 Anonymous
+	Integer iMissingAlignment1
+	Pointer VolumeHandle									// HANDLE
+	UInteger HandleInfo
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-mark_handle_info32
+Struct MARK_HANDLE_INFO32
+	_Anonymous_e__Union_2815 Anonymous
+	UInteger VolumeHandle
+	UInteger HandleInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-mft_enum_data_v0
+Struct MFT_ENUM_DATA_V0
+	UBigint StartFileReferenceNumber
+	Bigint LowUsn
+	Bigint HighUsn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-mft_enum_data_v1
+Struct MFT_ENUM_DATA_V1
+	UBigint StartFileReferenceNumber
+	Bigint LowUsn
+	Bigint HighUsn
+	UShort MinMajorVersion
+	UShort MaxMajorVersion
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-move_file_data
+Struct MOVE_FILE_DATA
+	Pointer FileHandle										// HANDLE
+	Bigint StartingVcn
+	Bigint StartingLcn
+	UInteger ClusterCount
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MOVE_FILE_DATA32
+	UInteger FileHandle
+	Integer iMissingAlignment1
+	Bigint StartingVcn
+	Bigint StartingLcn
+	UInteger ClusterCount
+	Integer iMissingAlignment2
+End_Struct
+
+Struct MOVE_FILE_RECORD_DATA
+	Pointer FileHandle										// HANDLE
+	Bigint SourceFileRecord
+	Bigint TargetFileRecord
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-ntfs_extended_volume_data
+Struct NTFS_EXTENDED_VOLUME_DATA
+	UInteger ByteCount
+	UShort MajorVersion
+	UShort MinorVersion
+	UInteger BytesPerPhysicalSector
+	UShort LfsMajorVersion
+	UShort LfsMinorVersion
+	UInteger MaxDeviceTrimExtentCount
+	UInteger MaxDeviceTrimByteCount
+	UInteger MaxVolumeTrimExtentCount
+	UInteger MaxVolumeTrimByteCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-ntfs_file_record_input_buffer
+Struct NTFS_FILE_RECORD_INPUT_BUFFER
+	Bigint FileReferenceNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-ntfs_file_record_output_buffer
+Struct NTFS_FILE_RECORD_OUTPUT_BUFFER
+	Bigint FileReferenceNumber
+	UInteger FileRecordLength
+	UChar[1] FileRecordBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-ntfs_statistics
+Struct NTFS_STATISTICS
+	UInteger LogFileFullExceptions
+	UInteger OtherExceptions
+	UInteger MftReads
+	UInteger MftReadBytes
+	UInteger MftWrites
+	UInteger MftWriteBytes
+	_MftWritesUserLevel_e__Struct_3184 MftWritesUserLevel
+	UShort MftWritesFlushForLogFileFull
+	UShort MftWritesLazyWriter
+	UShort MftWritesUserRequest
+	Short iMissingAlignment1
+	UInteger Mft2Writes
+	UInteger Mft2WriteBytes
+	_Mft2WritesUserLevel_e__Struct_3185 Mft2WritesUserLevel
+	UShort Mft2WritesFlushForLogFileFull
+	UShort Mft2WritesLazyWriter
+	UShort Mft2WritesUserRequest
+	Short iMissingAlignment2
+	UInteger RootIndexReads
+	UInteger RootIndexReadBytes
+	UInteger RootIndexWrites
+	UInteger RootIndexWriteBytes
+	UInteger BitmapReads
+	UInteger BitmapReadBytes
+	UInteger BitmapWrites
+	UInteger BitmapWriteBytes
+	UShort BitmapWritesFlushForLogFileFull
+	UShort BitmapWritesLazyWriter
+	UShort BitmapWritesUserRequest
+	_BitmapWritesUserLevel_e__Struct_3186 BitmapWritesUserLevel
+	UInteger MftBitmapReads
+	UInteger MftBitmapReadBytes
+	UInteger MftBitmapWrites
+	UInteger MftBitmapWriteBytes
+	UShort MftBitmapWritesFlushForLogFileFull
+	UShort MftBitmapWritesLazyWriter
+	UShort MftBitmapWritesUserRequest
+	_MftBitmapWritesUserLevel_e__Struct_3187 MftBitmapWritesUserLevel
+	Short iMissingAlignment3
+	UInteger UserIndexReads
+	UInteger UserIndexReadBytes
+	UInteger UserIndexWrites
+	UInteger UserIndexWriteBytes
+	UInteger LogFileReads
+	UInteger LogFileReadBytes
+	UInteger LogFileWrites
+	UInteger LogFileWriteBytes
+	_Allocate_e__Struct_3188 Allocate
+	UInteger DiskResourcesExhausted
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-ntfs_statistics_ex
+Struct NTFS_STATISTICS_EX
+	UInteger LogFileFullExceptions
+	UInteger OtherExceptions
+	UBigint MftReads
+	UBigint MftReadBytes
+	UBigint MftWrites
+	UBigint MftWriteBytes
+	_MftWritesUserLevel_e__Struct_3189 MftWritesUserLevel
+	UInteger MftWritesFlushForLogFileFull
+	UInteger MftWritesLazyWriter
+	UInteger MftWritesUserRequest
+	Integer iMissingAlignment1
+	UBigint Mft2Writes
+	UBigint Mft2WriteBytes
+	_Mft2WritesUserLevel_e__Struct_3190 Mft2WritesUserLevel
+	UInteger Mft2WritesFlushForLogFileFull
+	UInteger Mft2WritesLazyWriter
+	UInteger Mft2WritesUserRequest
+	Integer iMissingAlignment2
+	UBigint RootIndexReads
+	UBigint RootIndexReadBytes
+	UBigint RootIndexWrites
+	UBigint RootIndexWriteBytes
+	UBigint BitmapReads
+	UBigint BitmapReadBytes
+	UBigint BitmapWrites
+	UBigint BitmapWriteBytes
+	UInteger BitmapWritesFlushForLogFileFull
+	UInteger BitmapWritesLazyWriter
+	UInteger BitmapWritesUserRequest
+	_BitmapWritesUserLevel_e__Struct_3191 BitmapWritesUserLevel
+	Integer iMissingAlignment3
+	UBigint MftBitmapReads
+	UBigint MftBitmapReadBytes
+	UBigint MftBitmapWrites
+	UBigint MftBitmapWriteBytes
+	UInteger MftBitmapWritesFlushForLogFileFull
+	UInteger MftBitmapWritesLazyWriter
+	UInteger MftBitmapWritesUserRequest
+	_MftBitmapWritesUserLevel_e__Struct_3192 MftBitmapWritesUserLevel
+	Integer iMissingAlignment4
+	UBigint UserIndexReads
+	UBigint UserIndexReadBytes
+	UBigint UserIndexWrites
+	UBigint UserIndexWriteBytes
+	UBigint LogFileReads
+	UBigint LogFileReadBytes
+	UBigint LogFileWrites
+	UBigint LogFileWriteBytes
+	_Allocate_e__Struct_3193 Allocate
+	UInteger DiskResourcesExhausted
+	Integer iMissingAlignment5
+	UBigint VolumeTrimCount
+	UBigint VolumeTrimTime
+	UBigint VolumeTrimByteCount
+	UBigint FileLevelTrimCount
+	UBigint FileLevelTrimTime
+	UBigint FileLevelTrimByteCount
+	UBigint VolumeTrimSkippedCount
+	UBigint VolumeTrimSkippedByteCount
+	UBigint NtfsFillStatInfoFromMftRecordCalledCount
+	UBigint NtfsFillStatInfoFromMftRecordBailedBecauseOfAttributeListCount
+	UBigint NtfsFillStatInfoFromMftRecordBailedBecauseOfNonResReparsePointCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-ntfs_volume_data_buffer
+Struct NTFS_VOLUME_DATA_BUFFER
+	Bigint VolumeSerialNumber
+	Bigint NumberSectors
+	Bigint TotalClusters
+	Bigint FreeClusters
+	Bigint TotalReserved
+	UInteger BytesPerSector
+	UInteger BytesPerCluster
+	UInteger BytesPerFileRecordSegment
+	UInteger ClustersPerFileRecordSegment
+	Bigint MftValidDataLength
+	Bigint MftStartLcn
+	Bigint Mft2StartLcn
+	Bigint MftZoneStart
+	Bigint MftZoneEnd
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-partition_information
+Struct PARTITION_INFORMATION
+	Bigint StartingOffset
+	Bigint PartitionLength
+	UInteger HiddenSectors
+	UInteger PartitionNumber
+	UChar PartitionType
+	UChar BootIndicator										// BOOLEAN
+	UChar RecognizedPartition								// BOOLEAN
+	UChar RewritePartition									// BOOLEAN
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-partition_information_ex
+Struct PARTITION_INFORMATION_EX
+	Integer PartitionStyle									// PARTITION_STYLE
+	Integer iMissingAlignment1
+	Bigint StartingOffset
+	Bigint PartitionLength
+	UInteger PartitionNumber
+	UChar RewritePartition									// BOOLEAN
+	UChar IsServicePartition								// BOOLEAN
+	Short iMissingAlignment2
+	_Anonymous_e__Union_3170 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-partition_information_gpt
+Struct PARTITION_INFORMATION_GPT
+	Guid PartitionType
+	Guid PartitionId
+	UBigint Attributes										// GPT_ATTRIBUTES
+	UShort[36] Name
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-partition_information_mbr
+Struct PARTITION_INFORMATION_MBR
+	UChar PartitionType
+	UChar BootIndicator										// BOOLEAN
+	UChar RecognizedPartition								// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UInteger HiddenSectors
+	Guid PartitionId
+End_Struct
+
+Struct PATHNAME_BUFFER
+	UInteger PathNameLength
+	UShort[1] Name
+	Short iMissingAlignment1
+End_Struct
+
+Struct PERF_BIN
+	UInteger NumberOfBins
+	UInteger TypeOfBin
+	BIN_RANGE[1] BinsRanges
+End_Struct
+
+Struct PERSISTENT_RESERVE_COMMAND
+	UInteger Version
+	UInteger Size
+	_Anonymous_e__Union_3156 Anonymous
+End_Struct
+
+Struct PHYSICAL_ELEMENT_STATUS
+	UInteger Version
+	UInteger Size
+	UInteger DescriptorCount
+	UInteger ReturnedDescriptorCount
+	UInteger ElementIdentifierBeingDepoped
+	UInteger Reserved
+	PHYSICAL_ELEMENT_STATUS_DESCRIPTOR[1] Descriptors
+End_Struct
+
+Struct PHYSICAL_ELEMENT_STATUS_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger ElementIdentifier
+	UChar PhysicalElementType
+	UChar PhysicalElementHealth
+	UChar[2] Reserved1
+	UBigint AssociatedCapacity
+	UInteger[4] Reserved2
+End_Struct
+
+Struct PHYSICAL_ELEMENT_STATUS_REQUEST
+	UInteger Version
+	UInteger Size
+	UInteger StartingElement
+	UChar Filter
+	UChar ReportType
+	UChar[2] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-plex_read_data_request
+Struct PLEX_READ_DATA_REQUEST
+	Bigint ByteOffset
+	UInteger ByteLength
+	UInteger PlexNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-prevent_media_removal
+Struct PREVENT_MEDIA_REMOVAL
+	UChar PreventMediaRemoval								// BOOLEAN
+End_Struct
+
+Struct QUERY_BAD_RANGES_INPUT
+	UInteger Flags
+	UInteger NumRanges
+	QUERY_BAD_RANGES_INPUT_RANGE[1] Ranges
+End_Struct
+
+Struct QUERY_BAD_RANGES_INPUT_RANGE
+	UBigint StartOffset
+	UBigint LengthInBytes
+End_Struct
+
+Struct QUERY_BAD_RANGES_OUTPUT
+	UInteger Flags
+	UInteger NumBadRanges
+	UBigint NextOffsetToLookUp
+	QUERY_BAD_RANGES_OUTPUT_RANGE[1] BadRanges
+End_Struct
+
+Struct QUERY_BAD_RANGES_OUTPUT_RANGE
+	UInteger Flags
+	UInteger Reserved
+	UBigint StartOffset
+	UBigint LengthInBytes
+End_Struct
+
+Struct QUERY_FILE_LAYOUT_INPUT
+	_Anonymous_e__Union_3202 Anonymous
+	UInteger Flags
+	Integer FilterType										// QUERY_FILE_LAYOUT_FILTER_TYPE
+	UInteger Reserved
+	_Filter_e__Union_3203 Filter
+End_Struct
+
+Struct QUERY_FILE_LAYOUT_OUTPUT
+	UInteger FileEntryCount
+	UInteger FirstFileOffset
+	UInteger Flags
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_element_address_info
+Struct READ_ELEMENT_ADDRESS_INFO
+	UInteger NumberOfElements
+	CHANGER_ELEMENT_STATUS[1] ElementStatus
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_file_usn_data
+Struct READ_FILE_USN_DATA
+	UShort MinMajorVersion
+	UShort MaxMajorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v0
+Struct READ_USN_JOURNAL_DATA_V0
+	Bigint StartUsn
+	UInteger ReasonMask
+	UInteger ReturnOnlyOnClose
+	UBigint Timeout
+	UBigint BytesToWaitFor
+	UBigint UsnJournalID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-read_usn_journal_data_v1
+Struct READ_USN_JOURNAL_DATA_V1
+	Bigint StartUsn
+	UInteger ReasonMask
+	UInteger ReturnOnlyOnClose
+	UBigint Timeout
+	UBigint BytesToWaitFor
+	UBigint UsnJournalID
+	UShort MinMajorVersion
+	UShort MaxMajorVersion
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-reassign_blocks
+Struct REASSIGN_BLOCKS
+	UShort Reserved
+	UShort Count
+	UInteger[1] BlockNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-reassign_blocks_ex
+Struct REASSIGN_BLOCKS_EX
+	UShort Reserved
+	UShort Count
+	Integer iMissingAlignment1
+	Bigint[1] BlockNumber
+End_Struct
+
+Struct REFS_SMR_VOLUME_GC_PARAMETERS
+	UInteger Version
+	UInteger Flags
+	Integer Action											// REFS_SMR_VOLUME_GC_ACTION
+	Integer Method											// REFS_SMR_VOLUME_GC_METHOD
+	UInteger IoGranularity
+	UInteger CompressionFormat
+	UBigint[8] Unused
+End_Struct
+
+Struct REFS_SMR_VOLUME_INFO_OUTPUT
+	UInteger Version
+	UInteger Flags
+	Bigint SizeOfRandomlyWritableTier
+	Bigint FreeSpaceInRandomlyWritableTier
+	Bigint SizeofSMRTier
+	Bigint FreeSpaceInSMRTier
+	Bigint UsableFreeSpaceInSMRTier
+	Integer VolumeGcState									// REFS_SMR_VOLUME_GC_STATE
+	UInteger VolumeGcLastStatus
+	UInteger CurrentGcBandFillPercentage
+	Integer iMissingAlignment1
+	UBigint[6] Unused
+End_Struct
+
+Struct REFS_VOLUME_DATA_BUFFER
+	UInteger ByteCount
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UInteger BytesPerPhysicalSector
+	Bigint VolumeSerialNumber
+	Bigint NumberSectors
+	Bigint TotalClusters
+	Bigint FreeClusters
+	Bigint TotalReserved
+	UInteger BytesPerSector
+	UInteger BytesPerCluster
+	Bigint MaximumSizeOfResidentFile
+	UShort FastTierDataFillRatio
+	UShort SlowTierDataFillRatio
+	UInteger DestagesFastTierToSlowTierRate
+	UShort MetadataChecksumType
+	UChar[6] Reserved0
+	UInteger DriverMajorVersion
+	UInteger DriverMinorVersion
+	Bigint[7] Reserved
+End_Struct
+
+Struct REMOVE_ELEMENT_AND_TRUNCATE_REQUEST
+	UInteger Version
+	UInteger Size
+	UBigint RequestCapacity
+	UInteger ElementIdentifier
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-repair_copies_input
+Struct REPAIR_COPIES_INPUT
+	UInteger Size
+	UInteger Flags
+	Bigint FileOffset
+	UInteger Length
+	UInteger SourceCopy
+	UInteger NumberOfRepairCopies
+	UInteger[1] RepairCopies
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-repair_copies_output
+Struct REPAIR_COPIES_OUTPUT
+	UInteger Size
+	UInteger Status
+	Bigint ResumeFileOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-request_oplock_input_buffer
+Struct REQUEST_OPLOCK_INPUT_BUFFER
+	UShort StructureVersion
+	UShort StructureLength
+	UInteger RequestedOplockLevel
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-request_oplock_output_buffer
+Struct REQUEST_OPLOCK_OUTPUT_BUFFER
+	UShort StructureVersion
+	UShort StructureLength
+	UInteger OriginalOplockLevel
+	UInteger NewOplockLevel
+	UInteger Flags
+	UInteger AccessMode
+	UShort ShareMode
+	Short iMissingAlignment1
+End_Struct
+
+Struct REQUEST_RAW_ENCRYPTED_DATA
+	Bigint FileOffset
+	UInteger Length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct RETRIEVAL_POINTERS_AND_REFCOUNT_BUFFER
+	UInteger ExtentCount
+	Integer iMissingAlignment1
+	Bigint StartingVcn
+	_Anonymous_e__Struct_3181[1] Extents
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-retrieval_pointers_buffer
+Struct RETRIEVAL_POINTERS_BUFFER
+	UInteger ExtentCount
+	Integer iMissingAlignment1
+	Bigint StartingVcn
+	_Anonymous_e__Struct_3180[1] Extents
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-retrieval_pointer_base
+Struct RETRIEVAL_POINTER_BASE
+	Bigint FileAreaOffset
+End_Struct
+
+Struct RETRIEVAL_POINTER_COUNT
+	UInteger ExtentCount
+End_Struct
+
+Struct SCM_BUS_DEDICATED_MEMORY_DEVICES_INFO
+	UInteger Version
+	UInteger Size
+	UInteger DeviceCount
+	Integer iMissingAlignment1
+	SCM_BUS_DEDICATED_MEMORY_DEVICE_INFO[1] Devices
+End_Struct
+
+Struct SCM_BUS_DEDICATED_MEMORY_DEVICE_INFO
+	Guid DeviceGuid
+	UInteger DeviceNumber
+	_Flags_e__Struct_3166 Flags
+	UBigint DeviceSize
+End_Struct
+
+Struct SCM_BUS_DEDICATED_MEMORY_STATE
+	UChar ActivateState										// BOOLEAN
+End_Struct
+
+Struct SCM_BUS_PROPERTY_QUERY
+	UInteger Version
+	UInteger Size
+	Integer PropertyId										// SCM_BUS_PROPERTY_ID
+	Integer QueryType										// SCM_BUS_QUERY_TYPE
+	UChar[1] AdditionalParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_BUS_PROPERTY_SET
+	UInteger Version
+	UInteger Size
+	Integer PropertyId										// SCM_BUS_PROPERTY_ID
+	Integer SetType											// SCM_BUS_SET_TYPE
+	UChar[1] AdditionalParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_BUS_RUNTIME_FW_ACTIVATION_INFO
+	UInteger Version
+	UInteger Size
+	UChar RuntimeFwActivationSupported						// BOOLEAN
+	UChar[3] cMissingAlignment1
+	Integer FirmwareActivationState							// SCM_BUS_FIRMWARE_ACTIVATION_STATE
+	_FirmwareActivationCapability_e__Struct_3165 FirmwareActivationCapability
+	Integer iMissingAlignment2
+	UBigint EstimatedFirmwareActivationTimeInUSecs
+	UBigint EstimatedProcessorAccessQuiesceTimeInUSecs
+	UBigint EstimatedIOAccessQuiesceTimeInUSecs
+	UBigint PlatformSupportedMaxIOAccessQuiesceTimeInUSecs
+End_Struct
+
+Struct SCM_INTERLEAVED_PD_INFO
+	UInteger DeviceHandle
+	Guid DeviceGuid
+End_Struct
+
+Struct SCM_LD_INTERLEAVE_SET_INFO
+	UInteger Version
+	UInteger Size
+	UInteger InterleaveSetSize
+	SCM_INTERLEAVED_PD_INFO[1] InterleaveSet
+End_Struct
+
+Struct SCM_LOGICAL_DEVICES
+	UInteger Version
+	UInteger Size
+	UInteger DeviceCount
+	SCM_LOGICAL_DEVICE_INSTANCE[1] Devices
+End_Struct
+
+Struct SCM_LOGICAL_DEVICE_INSTANCE
+	UInteger Version
+	UInteger Size
+	Guid DeviceGuid
+	UShort[256] SymbolicLink
+End_Struct
+
+Struct SCM_PD_DESCRIPTOR_HEADER
+	UInteger Version
+	UInteger Size
+End_Struct
+
+Struct SCM_PD_DEVICE_HANDLE
+	UInteger Version
+	UInteger Size
+	Guid DeviceGuid
+	UInteger DeviceHandle
+End_Struct
+
+Struct SCM_PD_DEVICE_INFO
+	UInteger Version
+	UInteger Size
+	Guid DeviceGuid
+	UInteger UnsafeShutdownCount
+	Integer iMissingAlignment1
+	UBigint PersistentMemorySizeInBytes
+	UBigint VolatileMemorySizeInBytes
+	UBigint TotalMemorySizeInBytes
+	UInteger SlotNumber
+	UInteger DeviceHandle
+	UShort PhysicalId
+	UChar NumberOfFormatInterfaceCodes
+	UChar[1] cMissingAlignment2
+	UShort[8] FormatInterfaceCodes
+	UInteger VendorId
+	UInteger ProductId
+	UInteger SubsystemDeviceId
+	UInteger SubsystemVendorId
+	UChar ManufacturingLocation
+	UChar ManufacturingWeek
+	UChar ManufacturingYear
+	UChar[1] cMissingAlignment3
+	UInteger SerialNumber4Byte
+	UInteger SerialNumberLengthInChars
+	Char[1] SerialNumber									// CHAR
+	UChar[7] cMissingAlignment4
+End_Struct
+
+Struct SCM_PD_DEVICE_SPECIFIC_INFO
+	UInteger Version
+	UInteger Size
+	UInteger NumberOfProperties
+	Integer iMissingAlignment1
+	SCM_PD_DEVICE_SPECIFIC_PROPERTY[1] DeviceSpecificProperties
+End_Struct
+
+Struct SCM_PD_DEVICE_SPECIFIC_PROPERTY
+	UShort[128] Name
+	Bigint Value
+End_Struct
+
+Struct SCM_PD_FIRMWARE_ACTIVATE
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UChar Slot
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_FIRMWARE_DOWNLOAD
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UChar Slot
+	UChar[3] Reserved
+	UBigint Offset
+	UInteger FirmwareImageSizeInBytes
+	UChar[1] FirmwareImage
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_FIRMWARE_INFO
+	UInteger Version
+	UInteger Size
+	UChar ActiveSlot
+	UChar NextActiveSlot
+	UChar SlotCount
+	UChar[1] cMissingAlignment1
+	SCM_PD_FIRMWARE_SLOT_INFO[1] Slots
+End_Struct
+
+Struct SCM_PD_FIRMWARE_SLOT_INFO
+	UInteger Version
+	UInteger Size
+	UChar SlotNumber
+	UChar _bitfield
+	UChar[6] Reserved1
+	UChar[32] Revision
+End_Struct
+
+Struct SCM_PD_FRU_ID_STRING
+	UInteger Version
+	UInteger Size
+	UInteger IdentifierSize
+	UChar[1] Identifier
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_HEALTH_NOTIFICATION_DATA
+	Guid DeviceGuid
+End_Struct
+
+Struct SCM_PD_LOCATION_STRING
+	UInteger Version
+	UInteger Size
+	UShort[1] Location
+	Short iMissingAlignment1
+End_Struct
+
+Struct SCM_PD_MANAGEMENT_STATUS
+	UInteger Version
+	UInteger Size
+	Integer Health											// SCM_PD_HEALTH_STATUS
+	UInteger NumberOfOperationalStatus
+	UInteger NumberOfAdditionalReasons
+	Integer[16] OperationalStatus							// SCM_PD_OPERATIONAL_STATUS
+	Integer[1] AdditionalReasons							// SCM_PD_OPERATIONAL_STATUS_REASON
+End_Struct
+
+Struct SCM_PD_PASSTHROUGH_INPUT
+	UInteger Version
+	UInteger Size
+	Guid ProtocolGuid
+	UInteger DataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_PASSTHROUGH_INVDIMM_INPUT
+	UInteger Opcode
+	UInteger OpcodeParametersLength
+	UChar[1] OpcodeParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_PASSTHROUGH_INVDIMM_OUTPUT
+	UShort GeneralStatus
+	UShort ExtendedStatus
+	UInteger OutputDataLength
+	UChar[1] OutputData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_PASSTHROUGH_OUTPUT
+	UInteger Version
+	UInteger Size
+	Guid ProtocolGuid
+	UInteger DataSize
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

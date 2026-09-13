@@ -1,0 +1,214 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-character_range
+Struct CHARACTER_RANGE
+	UShort wcLow
+	UShort cChars
+End_Struct
+
+Struct DYNAMIC_RENDERER_CACHED_DATA
+	Integer strokeId
+	Integer iMissingAlignment1
+	Pointer dynamicRenderer									// IDynamicRenderer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tabflicks/ns-tabflicks-flick_data
+Struct FLICK_DATA
+	Integer _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tabflicks/ns-tabflicks-flick_point
+Struct FLICK_POINT
+	Integer _bitfield
+End_Struct
+
+Struct GESTURE_DATA
+	Integer gestureId
+	Integer recoConfidence
+	Integer strokeCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/inked/ns-inked-iec_gestureinfo
+Struct IEC_GESTUREINFO
+	NMHDR nmhdr
+	Pointer Cursor											// IInkCursor
+	Pointer Strokes											// IInkStrokes
+	VARIANT Gestures
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/inked/ns-inked-iec_recognitionresultinfo
+Struct IEC_RECOGNITIONRESULTINFO
+	NMHDR nmhdr
+	Pointer RecognitionResult								// IInkRecognitionResult
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/inked/ns-inked-iec_strokeinfo
+Struct IEC_STROKEINFO
+	NMHDR nmhdr
+	Pointer Cursor											// IInkCursor
+	Pointer Stroke											// IInkStrokeDisp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msinkaut/ns-msinkaut-inkmetric
+Struct INKMETRIC
+	Integer iHeight
+	Integer iFontAscent
+	Integer iFontDescent
+	UInteger dwFlags
+	UInteger color											// COLORREF
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/msinkaut/ns-msinkaut-inkrecoguide
+Struct InkRecoGuide
+	RECT rectWritingBox
+	RECT rectDrawnBox
+	Integer cRows
+	Integer cColumns
+	Integer midline
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-lattice_metrics
+Struct LATTICE_METRICS
+	LINE_SEGMENT lsBaseline
+	Short iMidlineOffset
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-line_segment
+Struct LINE_SEGMENT
+	POINT PtA
+	POINT PtB
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-packet_description
+Struct PACKET_DESCRIPTION
+	UInteger cbPacketSize
+	UInteger cPacketProperties
+	Pointer pPacketProperties								// PACKET_PROPERTY*
+	UInteger cButtons
+	Integer iMissingAlignment1
+	Pointer pguidButtons									// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-packet_property
+Struct PACKET_PROPERTY
+	Guid guid
+	PROPERTY_METRICS PropertyMetrics
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-property_metrics
+Struct PROPERTY_METRICS
+	Integer nLogicalMin
+	Integer nLogicalMax
+	Integer Units											// PROPERTY_UNITS
+	Float fResolution
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_attrs
+Struct RECO_ATTRS
+	UInteger dwRecoCapabilityFlags
+	UShort[32] awcVendorName
+	UShort[64] awcFriendlyName
+	UShort[64] awLanguageId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_guide
+Struct RECO_GUIDE
+	Integer xOrigin
+	Integer yOrigin
+	Integer cxBox
+	Integer cyBox
+	Integer cxBase
+	Integer cyBase
+	Integer cHorzBox
+	Integer cVertBox
+	Integer cyMid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice
+Struct RECO_LATTICE
+	UInteger ulColumnCount
+	Integer iMissingAlignment1
+	Pointer pLatticeColumns									// RECO_LATTICE_COLUMN*
+	UInteger ulPropertyCount
+	Integer iMissingAlignment2
+	Pointer pGuidProperties									// Guid*
+	UInteger ulBestResultColumnCount
+	Integer iMissingAlignment3
+	Pointer pulBestResultColumns							// UInteger*
+	Pointer pulBestResultIndexes							// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_column
+Struct RECO_LATTICE_COLUMN
+	UInteger key
+	Integer iMissingAlignment1
+	RECO_LATTICE_PROPERTIES cpProp
+	UInteger cStrokes
+	Integer iMissingAlignment2
+	Pointer pStrokes										// UInteger*
+	UInteger cLatticeElements
+	Integer iMissingAlignment3
+	Pointer pLatticeElements								// RECO_LATTICE_ELEMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_element
+Struct RECO_LATTICE_ELEMENT
+	Integer score
+	UShort type
+	Short iMissingAlignment1
+	Pointer pData											// UChar*
+	UInteger ulNextColumn
+	UInteger ulStrokeNumber
+	RECO_LATTICE_PROPERTIES epProp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_properties
+Struct RECO_LATTICE_PROPERTIES
+	UInteger cProperties
+	Integer iMissingAlignment1
+	Pointer apProps											// RECO_LATTICE_PROPERTY**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_lattice_property
+Struct RECO_LATTICE_PROPERTY
+	Guid guidProperty
+	UShort cbPropertyValue
+	UChar[6] cMissingAlignment1
+	Pointer pPropertyValue									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rectypes/ns-rectypes-reco_range
+Struct RECO_RANGE
+	UInteger iwcBegin
+	UInteger cCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-stroke_range
+Struct STROKE_RANGE
+	UInteger iStrokeBegin
+	UInteger iStrokeEnd
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tpcshrd/ns-tpcshrd-system_event_data
+Struct SYSTEM_EVENT_DATA
+	UChar bModifier
+	UChar[1] cMissingAlignment1
+	UShort wKey
+	Integer xPos
+	Integer yPos
+	UChar bCursorMode
+	UChar[3] cMissingAlignment2
+	UInteger dwButtonState
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtscom/ns-rtscom-stylusinfo
+Struct StylusInfo
+	UInteger tcid
+	UInteger cid
+	Integer bIsInvertedCursor								// BOOL
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

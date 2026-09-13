@@ -1,0 +1,387 @@
+Use UI
+
+Struct _Anonymous_e__Union_1860
+	// _Dvdrom_e__Struct_1861 Dvdrom // (1)
+	// _DvdRecordable_Version1_e__Struct_1862 DvdRecordable_Version1 // (1)
+	// _Dvdram_e__Struct_1863 Dvdram // (1)
+	// _DvdRecordable_e__Struct_1864 DvdRecordable // (1)
+	// UChar CPR_MAI // (1)
+	_Dvdrom_e__Struct_1861 Dvdrom
+End_Struct
+
+Struct _Anonymous_e__Union_1869
+	// Pointer Handle											// HANDLE // (8)
+	// UBigint ForceStructureLengthToMatch64bit // (8)
+	Pointer Handle
+End_Struct
+
+Struct _Parameters_e__Union_1859
+	// Pointer FileHandle										// HANDLE // (8)
+	// Bigint TitleOffset // (8)
+	Pointer FileHandle
+End_Struct
+
+Struct _ProhibitedActions_e__Union_1865
+	// _Anonymous_e__Struct_1866 Anonymous // (4)
+	// UChar[4] AsByte // (4)
+	_Anonymous_e__Struct_1866 Anonymous
+End_Struct
+
+Struct _WriteProtectActions_e__Union_1867
+	// _Anonymous_e__Struct_1868 Anonymous // (4)
+	// UChar[4] AsByte // (4)
+	_Anonymous_e__Struct_1868 Anonymous
+End_Struct
+
+Struct AACS_BINDING_NONCE
+	UChar[16] BindingNonce
+	UChar[16] MAC
+End_Struct
+
+Struct AACS_CERTIFICATE
+	UChar[20] Nonce
+	UChar[92] Certificate
+End_Struct
+
+Struct AACS_CHALLENGE_KEY
+	UChar[40] EllipticCurvePoint
+	UChar[40] Signature
+End_Struct
+
+Struct AACS_MEDIA_ID
+	UChar[16] MediaID
+	UChar[16] MAC
+End_Struct
+
+Struct AACS_READ_BINDING_NONCE
+	UInteger SessionId
+	UInteger NumberOfSectors
+	UBigint StartLba
+	_Anonymous_e__Union_1869 Anonymous
+End_Struct
+
+Struct AACS_SEND_CERTIFICATE
+	UInteger SessionId
+	AACS_CERTIFICATE Certificate
+End_Struct
+
+Struct AACS_SEND_CHALLENGE_KEY
+	UInteger SessionId
+	AACS_CHALLENGE_KEY ChallengeKey
+End_Struct
+
+Struct AACS_SERIAL_NUMBER
+	UChar[16] PrerecordedSerialNumber
+	UChar[16] MAC
+End_Struct
+
+Struct AACS_VOLUME_ID
+	UChar[16] VolumeID
+	UChar[16] MAC
+End_Struct
+
+Struct BD_DISC_WRITE_PROTECT_PAC
+	BD_PAC_HEADER Header
+	UChar KnownPACEntireDiscFlags
+	UChar[3] Reserved1
+	UChar WriteProtectControlByte
+	UChar[7] Reserved2
+	UChar[32] WriteProtectPassword
+End_Struct
+
+Struct BD_PAC_HEADER
+	UChar[3] PACId
+	UChar PACFormatNumber
+	UChar[4] PACUpdateCount
+	UChar[4] UnknownPACRules
+	UChar UnkownPACEntireDiscFlag
+	UChar[2] Reserved1
+	UChar NumberOfSegments
+	UChar[256] Segments
+	UChar[112] Reserved2
+End_Struct
+
+Struct DVD_ASF
+	UChar[3] Reserved0
+	UChar _bitfield
+End_Struct
+
+Struct DVD_BCA_DESCRIPTOR
+	UChar[1] BCAInformation
+End_Struct
+
+Struct DVD_BD_SPARE_AREA_INFORMATION
+	UChar[4] Reserved1
+	UChar[4] NumberOfFreeSpareBlocks
+	UChar[4] NumberOfAllocatedSpareBlocks
+End_Struct
+
+Struct DVD_COPYRIGHT_DESCRIPTOR
+	UChar CopyrightProtectionType
+	UChar RegionManagementInformation
+	UShort Reserved
+End_Struct
+
+Struct DVD_COPYRIGHT_MANAGEMENT_DESCRIPTOR
+	_Anonymous_e__Union_1860 Anonymous
+	UChar[3] Reserved0
+End_Struct
+
+Struct DVD_COPY_PROTECT_KEY
+	UInteger KeyLength
+	UInteger SessionId
+	Integer KeyType											// DVD_KEY_TYPE
+	UInteger KeyFlags
+	_Parameters_e__Union_1859 Parameters
+	UChar[1] KeyData
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct DVD_DESCRIPTOR_HEADER
+	UShort Length
+	UChar[2] Reserved
+	UChar[1] Data
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DVD_DISC_CONTROL_BLOCK_HEADER
+	UChar[4] ContentDescriptor
+	_ProhibitedActions_e__Union_1865 ProhibitedActions
+	UChar[32] VendorId
+End_Struct
+
+Struct DVD_DISC_CONTROL_BLOCK_LIST
+	DVD_DISC_CONTROL_BLOCK_HEADER header
+	UChar Reserved0
+	UChar ReadabldDCBs
+	UChar Reserved1
+	UChar WritableDCBs
+	DVD_DISC_CONTROL_BLOCK_LIST_DCB[1] Dcbs
+End_Struct
+
+Struct DVD_DISC_CONTROL_BLOCK_LIST_DCB
+	UChar[4] DcbIdentifier
+End_Struct
+
+Struct DVD_DISC_CONTROL_BLOCK_SESSION
+	DVD_DISC_CONTROL_BLOCK_HEADER header
+	UChar[2] SessionNumber
+	UChar[22] Reserved0
+	UChar[32] DiscID
+	UChar[32] Reserved1
+	DVD_DISC_CONTROL_BLOCK_SESSION_ITEM[504] SessionItem
+	UChar[24576] Reserved2
+End_Struct
+
+Struct DVD_DISC_CONTROL_BLOCK_SESSION_ITEM
+	UChar[16] AsByte
+End_Struct
+
+Struct DVD_DISC_CONTROL_BLOCK_WRITE_INHIBIT
+	DVD_DISC_CONTROL_BLOCK_HEADER header
+	UChar[4] UpdateCount
+	_WriteProtectActions_e__Union_1867 WriteProtectActions
+	UChar[16] Reserved0
+	UChar[32] UpdatePassword
+	UChar[32672] Reserved1
+End_Struct
+
+Struct DVD_DISK_KEY_DESCRIPTOR
+	UChar[2048] DiskKeyData
+End_Struct
+
+Struct DVD_DUAL_LAYER_JUMP_INTERVAL_SIZE
+	UChar[4] Reserved1
+	UChar[4] JumpIntervalSize
+End_Struct
+
+Struct DVD_DUAL_LAYER_MANUAL_LAYER_JUMP
+	UChar[4] Reserved1
+	UChar[4] ManualJumpLayerAddress
+End_Struct
+
+Struct DVD_DUAL_LAYER_MIDDLE_ZONE_START_ADDRESS
+	UChar _bitfield
+	UChar[3] Reserved1
+	UChar[4] ShiftedMiddleAreaStartAddress
+End_Struct
+
+Struct DVD_DUAL_LAYER_RECORDING_INFORMATION
+	UChar _bitfield
+	UChar[3] Reserved1
+	UChar[4] Layer0Sectors
+End_Struct
+
+Struct DVD_DUAL_LAYER_REMAPPING_INFORMATION
+	UChar[4] Reserved1
+	UChar[4] RemappingAddress
+End_Struct
+
+Struct DVD_FULL_LAYER_DESCRIPTOR
+	DVD_LAYER_DESCRIPTOR commonHeader
+	UChar[2031] MediaSpecific
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DVD_LAYER_DESCRIPTOR
+	UChar _bitfield1
+	UChar _bitfield2
+	UChar _bitfield3
+	UChar _bitfield4
+	UInteger StartingDataSector
+	UInteger EndDataSector
+	UInteger EndLayerZeroSector
+	UChar _bitfield5
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DVD_LIST_OF_RECOGNIZED_FORMAT_LAYERS
+	UChar[2] TypeCodeOfFormatLayer
+End_Struct
+
+Struct DVD_LIST_OF_RECOGNIZED_FORMAT_LAYERS_TYPE_CODE
+	UChar NumberOfRecognizedFormatLayers
+	UChar _bitfield
+End_Struct
+
+Struct DVD_MANUFACTURER_DESCRIPTOR
+	UChar[2048] ManufacturingInformation
+End_Struct
+
+Struct DVD_PRERECORDED_INFORMATION
+	UChar FieldID_1
+	UChar DiscApplicationCode
+	UChar DiscPhysicalCode
+	UChar[3] LastAddressOfDataRecordableArea
+	UChar _bitfield
+	UChar Reserved0
+	UChar FieldID_2
+	UChar OpcSuggestedCode
+	UChar WavelengthCode
+	UChar[4] WriteStrategyCode
+	UChar Reserved2
+	UChar FieldID_3
+	UChar[6] ManufacturerId_3
+	UChar Reserved3
+	UChar FieldID_4
+	UChar[6] ManufacturerId_4
+	UChar Reserved4
+	UChar FieldID_5
+	UChar[6] ManufacturerId_5
+	UChar Reserved5
+	UChar[24] Reserved99
+End_Struct
+
+Struct DVD_RAM_MEDIUM_STATUS
+	UChar _bitfield
+	UChar DiscTypeIdentification
+	UChar Reserved2
+	UChar MediaSpecificWriteInhibitInformation
+End_Struct
+
+Struct DVD_RAM_RECORDING_TYPE
+	UChar _bitfield
+	UChar[3] Reserved2
+End_Struct
+
+Struct DVD_RAM_SPARE_AREA_INFORMATION
+	UChar[4] FreePrimarySpareSectors
+	UChar[4] FreeSupplementalSpareSectors
+	UChar[4] AllocatedSupplementalSpareSectors
+End_Struct
+
+Struct DVD_READ_STRUCTURE
+	Bigint BlockByteOffset
+	Integer Format											// DVD_STRUCTURE_FORMAT
+	UInteger SessionId
+	UChar LayerNumber
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct DVD_RECORDING_MANAGEMENT_AREA_DATA
+	UChar[4] LastRecordedRMASectorNumber
+	UChar[1] RMDBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvdmedia/ns-dvdmedia-dvd_region
+Struct DVD_REGION
+	UChar CopySystem
+	UChar RegionData
+	UChar SystemRegion
+	UChar ResetCount
+End_Struct
+
+Struct DVD_RPC_KEY
+	UChar _bitfield
+	UChar RegionMask
+	UChar RpcScheme
+	UChar Reserved02
+End_Struct
+
+Struct DVD_SET_RPC_KEY
+	UChar PreferredDriveRegionCode
+	UChar[3] Reserved
+End_Struct
+
+Struct DVD_STRUCTURE_LIST_ENTRY
+	UChar FormatCode
+	UChar _bitfield
+	UChar[2] FormatLength
+End_Struct
+
+Struct DVD_UNIQUE_DISC_IDENTIFIER
+	UChar[2] Reserved0
+	UChar[2] RandomNumber
+	UChar[4] Year
+	UChar[2] Month
+	UChar[2] Day
+	UChar[2] Hour
+	UChar[2] Minute
+	UChar[2] Second
+End_Struct
+
+Struct DVD_WRITE_PROTECTION_STATUS
+	UChar _bitfield
+	UChar[3] Reserved1
+End_Struct
+
+Struct HD_DVD_R_MEDIUM_STATUS
+	UChar _bitfield
+	UChar NumberOfRemainingRMDsInRDZ
+	UChar[2] NumberOfRemainingRMDsInCurrentRMZ
+End_Struct
+
+Struct STORAGE_SET_READ_AHEAD
+	Bigint TriggerAddress
+	Bigint TargetAddress
+End_Struct
+
+Struct _Anonymous_e__Struct_1866
+	UChar[3] ReservedDoNotUse_UseAsByteInstead_0
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1868
+	UChar[3] ReservedDoNotUse_UseAsByteInstead_0
+	UChar _bitfield
+End_Struct
+
+Struct _DvdRecordable_Version1_e__Struct_1862
+	UChar _bitfield
+End_Struct
+
+Struct _DvdRecordable_e__Struct_1864
+	UChar _bitfield
+End_Struct
+
+Struct _Dvdram_e__Struct_1863
+	UChar Reserved0003
+End_Struct
+
+Struct _Dvdrom_e__Struct_1861
+	UChar _bitfield
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

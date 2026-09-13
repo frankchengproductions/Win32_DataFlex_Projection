@@ -1,0 +1,118 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-commconfig
+Struct COMMCONFIG
+	UInteger dwSize
+	UShort wVersion
+	UShort wReserved
+	DCB dcb
+	UInteger dwProviderSubType
+	UInteger dwProviderOffset
+	UInteger dwProviderSize
+	UShort[1] wcProviderData
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-commprop
+Struct COMMPROP
+	UShort wPacketLength
+	UShort wPacketVersion
+	UInteger dwServiceMask
+	UInteger dwReserved1
+	UInteger dwMaxTxQueue
+	UInteger dwMaxRxQueue
+	UInteger dwMaxBaud
+	UInteger dwProvSubType
+	UInteger dwProvCapabilities
+	UInteger dwSettableParams
+	UInteger dwSettableBaud
+	UShort wSettableData
+	UShort wSettableStopParity								// COMMPROP_STOP_PARITY
+	UInteger dwCurrentTxQueue
+	UInteger dwCurrentRxQueue
+	UInteger dwProvSpec1
+	UInteger dwProvSpec2
+	UShort[1] wcProvChar
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-commtimeouts
+Struct COMMTIMEOUTS
+	UInteger ReadIntervalTimeout
+	UInteger ReadTotalTimeoutMultiplier
+	UInteger ReadTotalTimeoutConstant
+	UInteger WriteTotalTimeoutMultiplier
+	UInteger WriteTotalTimeoutConstant
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-comstat
+Struct COMSTAT
+	UInteger _bitfield
+	UInteger cbInQue
+	UInteger cbOutQue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-dcb
+Struct DCB
+	UInteger DCBlength
+	UInteger BaudRate
+	UInteger _bitfield
+	UShort wReserved
+	UShort XonLim
+	UShort XoffLim
+	UChar ByteSize
+	UChar Parity											// DCB_PARITY
+	UChar StopBits											// DCB_STOP_BITS
+	Char XonChar											// CHAR
+	Char XoffChar											// CHAR
+	Char ErrorChar											// CHAR
+	Char EofChar											// CHAR
+	Char EvtChar											// CHAR
+	UShort wReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mcx/ns-mcx-modemdevcaps
+Struct MODEMDEVCAPS
+	UInteger dwActualSize
+	UInteger dwRequiredSize
+	UInteger dwDevSpecificOffset
+	UInteger dwDevSpecificSize
+	UInteger dwModemProviderVersion
+	UInteger dwModemManufacturerOffset
+	UInteger dwModemManufacturerSize
+	UInteger dwModemModelOffset
+	UInteger dwModemModelSize
+	UInteger dwModemVersionOffset
+	UInteger dwModemVersionSize
+	UInteger dwDialOptions									// MODEMDEVCAPS_DIAL_OPTIONS
+	UInteger dwCallSetupFailTimer
+	UInteger dwInactivityTimeout
+	UInteger dwSpeakerVolume								// MODEMDEVCAPS_SPEAKER_VOLUME
+	UInteger dwSpeakerMode									// MODEMDEVCAPS_SPEAKER_MODE
+	UInteger dwModemOptions
+	UInteger dwMaxDTERate
+	UInteger dwMaxDCERate
+	UChar[1] abVariablePortion
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mcx/ns-mcx-modemsettings
+Struct MODEMSETTINGS
+	UInteger dwActualSize
+	UInteger dwRequiredSize
+	UInteger dwDevSpecificOffset
+	UInteger dwDevSpecificSize
+	UInteger dwCallSetupFailTimer
+	UInteger dwInactivityTimeout
+	UInteger dwSpeakerVolume								// MODEM_SPEAKER_VOLUME
+	UInteger dwSpeakerMode									// MODEMSETTINGS_SPEAKER_MODE
+	UInteger dwPreferredModemOptions
+	UInteger dwNegotiatedModemOptions
+	UInteger dwNegotiatedDCERate
+	UChar[1] abVariablePortion
+	UChar[3] cMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

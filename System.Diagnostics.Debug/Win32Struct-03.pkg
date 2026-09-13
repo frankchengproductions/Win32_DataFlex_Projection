@@ -1,0 +1,971 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_unloaded_module
+Struct MINIDUMP_UNLOADED_MODULE
+	UBigint BaseOfImage
+	UInteger SizeOfImage
+	UInteger CheckSum
+	UInteger TimeDateStamp
+	UInteger ModuleNameRva
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_unloaded_module_list
+Struct MINIDUMP_UNLOADED_MODULE_LIST
+	UInteger SizeOfHeader
+	UInteger SizeOfEntry
+	UInteger NumberOfEntries
+End_Struct
+
+Struct MINIDUMP_USER_RECORD
+	UInteger Type
+	MINIDUMP_LOCATION_DESCRIPTOR Memory
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_user_stream
+Struct MINIDUMP_USER_STREAM
+	UInteger Type
+	UInteger BufferSize
+	Pointer Buffer											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_user_stream
+Struct MINIDUMP_USER_STREAM
+	UInteger Type
+	UInteger BufferSize
+	Pointer Buffer											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_user_stream_information
+Struct MINIDUMP_USER_STREAM_INFORMATION
+	UInteger UserStreamCount
+	Integer iMissingAlignment1
+	Pointer UserStreamArray									// MINIDUMP_USER_STREAM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minidumpapiset/ns-minidumpapiset-minidump_user_stream_information
+Struct MINIDUMP_USER_STREAM_INFORMATION
+	UInteger UserStreamCount
+	Integer iMissingAlignment1
+	Pointer UserStreamArray									// MINIDUMP_USER_STREAM*
+End_Struct
+
+Struct MINIDUMP_VM_POST_READ_CALLBACK
+	UBigint Offset
+	Pointer Buffer											// Pointer*
+	UInteger Size
+	UInteger Completed
+	Integer Status											// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MINIDUMP_VM_PRE_READ_CALLBACK
+	UBigint Offset
+	Pointer Buffer											// Pointer*
+	UInteger Size
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MINIDUMP_VM_QUERY_CALLBACK
+	UBigint Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-modload_cvmisc
+Struct MODLOAD_CVMISC
+	UInteger oCV
+	Integer iMissingAlignment1
+	ULongPtr cCV
+	UInteger oMisc
+	Integer iMissingAlignment2
+	ULongPtr cMisc
+	UInteger dtImage
+	UInteger cImage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-modload_data
+Struct MODLOAD_DATA
+	UInteger ssize
+	UInteger ssig											// MODLOAD_DATA_TYPE
+	Pointer data											// Pointer*
+	UInteger size
+	UInteger flags
+End_Struct
+
+Struct MODLOAD_PDBGUID_PDBAGE
+	Guid PdbGuid
+	UInteger PdbAge
+End_Struct
+
+Struct MODULE_TYPE_INFO
+	UShort dataLength
+	UShort leaf
+	UChar[1] data
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-omap
+Struct OMAP
+	UInteger rva
+	UInteger rvaTo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-output_debug_string_info
+Struct OUTPUT_DEBUG_STRING_INFO
+	Pointer lpDebugStringData								// PSTR
+	UShort fUnicode
+	UShort nDebugStringLength
+	Integer iMissingAlignment1
+End_Struct
+
+Struct PAGE_OFFLINE_VALID_BITS
+	_Anonymous_e__Union_3027 Anonymous
+End_Struct
+
+Struct PHYSICAL_MEMORY_DESCRIPTOR32
+	UInteger NumberOfRuns
+	UInteger NumberOfPages
+	PHYSICAL_MEMORY_RUN32[1] Run
+End_Struct
+
+Struct PHYSICAL_MEMORY_DESCRIPTOR64
+	UInteger NumberOfRuns
+	Integer iMissingAlignment1
+	UBigint NumberOfPages
+	PHYSICAL_MEMORY_RUN64[1] Run
+End_Struct
+
+Struct PHYSICAL_MEMORY_RUN32
+	UInteger BasePage
+	UInteger PageCount
+End_Struct
+
+Struct PHYSICAL_MEMORY_RUN64
+	UBigint BasePage
+	UBigint PageCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-rip_info
+Struct RIP_INFO
+	UInteger dwError
+	UInteger dwType											// RIP_INFO_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-sourcefile
+Struct SOURCEFILE
+	UBigint ModBase
+	Pointer FileName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-sourcefilew
+Struct SOURCEFILEW
+	UBigint ModBase
+	Pointer FileName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-srccodeinfo
+Struct SRCCODEINFO
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer Key												// Pointer*
+	UBigint ModBase
+	Char[261] Obj											// CHAR
+	Char[261] FileName										// CHAR
+	Short iMissingAlignment2
+	UInteger LineNumber
+	UBigint Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-srccodeinfow
+Struct SRCCODEINFOW
+	UInteger SizeOfStruct
+	Integer iMissingAlignment1
+	Pointer Key												// Pointer*
+	UBigint ModBase
+	UShort[261] Obj
+	UShort[261] FileName
+	UInteger LineNumber
+	UBigint Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-stackframe
+Struct STACKFRAME
+	ADDRESS AddrPC
+	ADDRESS AddrReturn
+	ADDRESS AddrFrame
+	ADDRESS AddrStack
+	Pointer FuncTableEntry									// Pointer*
+	UInteger[4] Params
+	Integer Far												// BOOL
+	Integer Virtual											// BOOL
+	UInteger[3] Reserved
+	KDHELP KdHelp
+	ADDRESS AddrBStore
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-stackframe64
+Struct STACKFRAME64
+	ADDRESS64 AddrPC
+	ADDRESS64 AddrReturn
+	ADDRESS64 AddrFrame
+	ADDRESS64 AddrStack
+	ADDRESS64 AddrBStore
+	Pointer FuncTableEntry									// Pointer*
+	UBigint[4] Params
+	Integer Far												// BOOL
+	Integer Virtual											// BOOL
+	UBigint[3] Reserved
+	KDHELP64 KdHelp
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-stackframe_ex
+Struct STACKFRAME_EX
+	ADDRESS64 AddrPC
+	ADDRESS64 AddrReturn
+	ADDRESS64 AddrFrame
+	ADDRESS64 AddrStack
+	ADDRESS64 AddrBStore
+	Pointer FuncTableEntry									// Pointer*
+	UBigint[4] Params
+	Integer Far												// BOOL
+	Integer Virtual											// BOOL
+	UBigint[3] Reserved
+	KDHELP64 KdHelp
+	UInteger StackFrameSize
+	UInteger InlineFrameContext
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symbol_info
+Struct SYMBOL_INFO
+	UInteger SizeOfStruct
+	UInteger TypeIndex
+	UBigint[2] Reserved
+	UInteger Index
+	UInteger Size
+	UBigint ModBase
+	UInteger Flags											// SYMBOL_INFO_FLAGS
+	Integer iMissingAlignment1
+	UBigint Value
+	UBigint Address
+	UInteger Register
+	UInteger Scope
+	UInteger Tag
+	UInteger NameLen
+	UInteger MaxNameLen
+	Char[1] Name											// CHAR
+	UChar[3] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symbol_infow
+Struct SYMBOL_INFOW
+	UInteger SizeOfStruct
+	UInteger TypeIndex
+	UBigint[2] Reserved
+	UInteger Index
+	UInteger Size
+	UBigint ModBase
+	UInteger Flags											// SYMBOL_INFO_FLAGS
+	Integer iMissingAlignment1
+	UBigint Value
+	UBigint Address
+	UInteger Register
+	UInteger Scope
+	UInteger Tag
+	UInteger NameLen
+	UInteger MaxNameLen
+	UShort[1] Name
+	Short iMissingAlignment2
+End_Struct
+
+Struct SYMBOL_INFO_PACKAGE
+	SYMBOL_INFO si
+	Char[2001] name											// CHAR
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SYMBOL_INFO_PACKAGEW
+	SYMBOL_INFOW si
+	UShort[2001] name
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct SYMSRV_EXTENDED_OUTPUT_DATA
+	UInteger sizeOfStruct
+	UInteger version
+	UShort[261] filePtrMsg
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symsrv_index_info
+Struct SYMSRV_INDEX_INFO
+	UInteger sizeofstruct
+	Char[261] file											// CHAR
+	UChar[3] cMissingAlignment1
+	Integer stripped										// BOOL
+	UInteger timestamp
+	UInteger size
+	Char[261] dbgfile										// CHAR
+	Char[261] pdbfile										// CHAR
+	Short iMissingAlignment2
+	Guid guid
+	UInteger sig
+	UInteger age
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-symsrv_index_infow
+Struct SYMSRV_INDEX_INFOW
+	UInteger sizeofstruct
+	UShort[261] file
+	Short iMissingAlignment1
+	Integer stripped										// BOOL
+	UInteger timestamp
+	UInteger size
+	UShort[261] dbgfile
+	UShort[261] pdbfile
+	Guid guid
+	UInteger sig
+	UInteger age
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dbghelp/ns-dbghelp-ti_findchildren_params
+Struct TI_FINDCHILDREN_PARAMS
+	UInteger Count
+	UInteger Start
+	UInteger[1] ChildId
+End_Struct
+
+Struct TI_GET_DISCRIMINATEDUNION_TAG_RANGES_PARAMS
+	UInteger Count
+	UInteger Start
+	DISCRIMINATEDUNION_TAG_VALUE[1] Range
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-unload_dll_debug_info
+Struct UNLOAD_DLL_DEBUG_INFO
+	Pointer lpBaseOfDll										// Pointer*
+End_Struct
+
+Struct UNWIND_HISTORY_TABLE
+	UInteger Count
+	UChar LocalHint
+	UChar GlobalHint
+	UChar Search
+	UChar Once
+	ULongPtr LowAddress
+	ULongPtr HighAddress
+	UNWIND_HISTORY_TABLE_ENTRY[12] Entry
+End_Struct
+
+Struct UNWIND_HISTORY_TABLE_ENTRY
+	ULongPtr ImageBase
+	Pointer FunctionEntry									// IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY*
+End_Struct
+
+Struct UNWIND_HISTORY_TABLE_ENTRY
+	ULongPtr ImageBase
+	Pointer FunctionEntry									// IMAGE_RUNTIME_FUNCTION_ENTRY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wct/ns-wct-waitchain_node_info
+Struct WAITCHAIN_NODE_INFO
+	Integer ObjectType										// WCT_OBJECT_TYPE
+	Integer ObjectStatus									// WCT_OBJECT_STATUS
+	_Anonymous_e__Union_1071 Anonymous
+End_Struct
+
+Struct WHEA_AER_BRIDGE_DESCRIPTOR
+	UShort Type
+	UChar Enabled											// BOOLEAN
+	UChar Reserved
+	UInteger BusNumber
+	WHEA_PCI_SLOT_NUMBER Slot
+	UShort DeviceControl
+	AER_BRIDGE_DESCRIPTOR_FLAGS Flags
+	UInteger UncorrectableErrorMask
+	UInteger UncorrectableErrorSeverity
+	UInteger CorrectableErrorMask
+	UInteger AdvancedCapsAndControl
+	UInteger SecondaryUncorrectableErrorMask
+	UInteger SecondaryUncorrectableErrorSev
+	UInteger SecondaryCapsAndControl
+End_Struct
+
+Struct WHEA_AER_ENDPOINT_DESCRIPTOR
+	UShort Type
+	UChar Enabled											// BOOLEAN
+	UChar Reserved
+	UInteger BusNumber
+	WHEA_PCI_SLOT_NUMBER Slot
+	UShort DeviceControl
+	AER_ENDPOINT_DESCRIPTOR_FLAGS Flags
+	UInteger UncorrectableErrorMask
+	UInteger UncorrectableErrorSeverity
+	UInteger CorrectableErrorMask
+	UInteger AdvancedCapsAndControl
+End_Struct
+
+Struct WHEA_AER_ROOTPORT_DESCRIPTOR
+	UShort Type
+	UChar Enabled											// BOOLEAN
+	UChar Reserved
+	UInteger BusNumber
+	WHEA_PCI_SLOT_NUMBER Slot
+	UShort DeviceControl
+	AER_ROOTPORT_DESCRIPTOR_FLAGS Flags
+	UInteger UncorrectableErrorMask
+	UInteger UncorrectableErrorSeverity
+	UInteger CorrectableErrorMask
+	UInteger AdvancedCapsAndControl
+	UInteger RootErrorCommand
+End_Struct
+
+Struct WHEA_DEVICE_DRIVER_DESCRIPTOR
+	UShort Type
+	UChar Enabled											// BOOLEAN
+	UChar Reserved
+	Guid SourceGuid
+	UShort LogTag
+	UShort Reserved2
+	UInteger PacketLength
+	UInteger PacketCount
+	Pointer PacketBuffer									// UChar*
+	WHEA_ERROR_SOURCE_CONFIGURATION_DD Config
+	Guid CreatorId
+	Guid PartitionId
+	UInteger MaxSectionDataLength
+	UInteger MaxSectionsPerRecord
+	Pointer PacketStateBuffer								// UChar*
+	Integer OpenHandles
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WHEA_DRIVER_BUFFER_SET
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer Data											// UChar*
+	UInteger DataSize
+	Integer iMissingAlignment2
+	Pointer SectionTypeGuid									// Guid*
+	Pointer SectionFriendlyName								// UChar*
+	Pointer Flags											// UChar*
+End_Struct
+
+Struct WHEA_ERROR_SOURCE_CONFIGURATION_DD
+	Pointer Initialize										// WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER
+	Pointer Uninitialize									// WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER
+	Pointer Correct											// WHEA_ERROR_SOURCE_CORRECT_DEVICE_DRIVER
+End_Struct
+
+Struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER
+	UInteger Version
+	Guid SourceGuid
+	UShort LogTag
+	UChar[6] Reserved
+	Integer iMissingAlignment1
+	Pointer Initialize										// WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER
+	Pointer Uninitialize									// WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER
+	UInteger MaxSectionDataLength
+	UInteger MaxSectionsPerReport
+	Guid CreatorId
+	Guid PartitionId
+End_Struct
+
+Struct WHEA_ERROR_SOURCE_CONFIGURATION_DEVICE_DRIVER_V1
+	UInteger Version
+	Guid SourceGuid
+	UShort LogTag
+	UChar[6] Reserved
+	Integer iMissingAlignment1
+	Pointer Initialize										// WHEA_ERROR_SOURCE_INITIALIZE_DEVICE_DRIVER
+	Pointer Uninitialize									// WHEA_ERROR_SOURCE_UNINITIALIZE_DEVICE_DRIVER
+End_Struct
+
+Struct WHEA_ERROR_SOURCE_DESCRIPTOR
+	UInteger Length
+	UInteger Version
+	Integer Type											// WHEA_ERROR_SOURCE_TYPE
+	Integer State											// WHEA_ERROR_SOURCE_STATE
+	UInteger MaxRawDataLength
+	UInteger NumRecordsToPreallocate
+	UInteger MaxSectionsPerRecord
+	UInteger ErrorSourceId
+	UInteger PlatformErrorSourceId
+	UInteger Flags
+	_Info_e__Union_3023 Info
+End_Struct
+
+Struct WHEA_GENERIC_ERROR_DESCRIPTOR
+	UShort Type
+	UChar Reserved
+	UChar Enabled
+	UInteger ErrStatusBlockLength
+	UInteger RelatedErrorSourceId
+	UChar ErrStatusAddressSpaceID
+	UChar ErrStatusAddressBitWidth
+	UChar ErrStatusAddressBitOffset
+	UChar ErrStatusAddressAccessSize
+	Bigint ErrStatusAddress
+	WHEA_NOTIFICATION_DESCRIPTOR Notify
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WHEA_GENERIC_ERROR_DESCRIPTOR_V2
+	UShort Type
+	UChar Reserved
+	UChar Enabled
+	UInteger ErrStatusBlockLength
+	UInteger RelatedErrorSourceId
+	UChar ErrStatusAddressSpaceID
+	UChar ErrStatusAddressBitWidth
+	UChar ErrStatusAddressBitOffset
+	UChar ErrStatusAddressAccessSize
+	Bigint ErrStatusAddress
+	WHEA_NOTIFICATION_DESCRIPTOR Notify
+	UChar ReadAckAddressSpaceID
+	UChar ReadAckAddressBitWidth
+	UChar ReadAckAddressBitOffset
+	UChar ReadAckAddressAccessSize
+	Bigint ReadAckAddress
+	UBigint ReadAckPreserveMask
+	UBigint ReadAckWriteMask
+End_Struct
+
+Struct WHEA_IPF_CMC_DESCRIPTOR
+	UShort Type
+	UChar Enabled
+	UChar Reserved
+End_Struct
+
+Struct WHEA_IPF_CPE_DESCRIPTOR
+	UShort Type
+	UChar Enabled
+	UChar Reserved
+End_Struct
+
+Struct WHEA_IPF_MCA_DESCRIPTOR
+	UShort Type
+	UChar Enabled
+	UChar Reserved
+End_Struct
+
+Struct WHEA_NOTIFICATION_DESCRIPTOR
+	UChar Type
+	UChar Length
+	WHEA_NOTIFICATION_FLAGS Flags
+	_u_e__Union_3012 u
+End_Struct
+
+Struct WHEA_NOTIFICATION_FLAGS
+	_Anonymous_e__Union_3000 Anonymous
+End_Struct
+
+Struct WHEA_PCI_SLOT_NUMBER
+	_u_e__Union_3021 u
+End_Struct
+
+Struct WHEA_XPF_CMC_DESCRIPTOR
+	UShort Type
+	UChar Enabled											// BOOLEAN
+	UChar NumberOfBanks
+	UInteger Reserved
+	WHEA_NOTIFICATION_DESCRIPTOR Notify
+	Integer iMissingAlignment1
+	WHEA_XPF_MC_BANK_DESCRIPTOR[32] Banks
+End_Struct
+
+Struct WHEA_XPF_MCE_DESCRIPTOR
+	UShort Type
+	UChar Enabled
+	UChar NumberOfBanks
+	XPF_MCE_FLAGS Flags
+	UBigint MCG_Capability
+	UBigint MCG_GlobalControl
+	WHEA_XPF_MC_BANK_DESCRIPTOR[32] Banks
+End_Struct
+
+Struct WHEA_XPF_MC_BANK_DESCRIPTOR
+	UChar BankNumber
+	UChar ClearOnInitialization								// BOOLEAN
+	UChar StatusDataFormat
+	XPF_MC_BANK_FLAGS Flags
+	UInteger ControlMsr
+	UInteger StatusMsr
+	UInteger AddressMsr
+	UInteger MiscMsr
+	Integer iMissingAlignment1
+	UBigint ControlData
+End_Struct
+
+Struct WHEA_XPF_NMI_DESCRIPTOR
+	UShort Type
+	UChar Enabled											// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-wow64_context
+Struct WOW64_CONTEXT
+	UInteger ContextFlags									// WOW64_CONTEXT_FLAGS
+	UInteger Dr0
+	UInteger Dr1
+	UInteger Dr2
+	UInteger Dr3
+	UInteger Dr6
+	UInteger Dr7
+	WOW64_FLOATING_SAVE_AREA FloatSave
+	UInteger SegGs
+	UInteger SegFs
+	UInteger SegEs
+	UInteger SegDs
+	UInteger Edi
+	UInteger Esi
+	UInteger Ebx
+	UInteger Edx
+	UInteger Ecx
+	UInteger Eax
+	UInteger Ebp
+	UInteger Eip
+	UInteger SegCs
+	UInteger EFlags
+	UInteger Esp
+	UInteger SegSs
+	UChar[512] ExtendedRegisters
+End_Struct
+
+Struct WOW64_DESCRIPTOR_TABLE_ENTRY
+	UInteger Selector
+	WOW64_LDT_ENTRY Descriptor
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-wow64_floating_save_area
+Struct WOW64_FLOATING_SAVE_AREA
+	UInteger ControlWord
+	UInteger StatusWord
+	UInteger TagWord
+	UInteger ErrorOffset
+	UInteger ErrorSelector
+	UInteger DataOffset
+	UInteger DataSelector
+	UChar[80] RegisterArea
+	UInteger Cr0NpxState
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-wow64_ldt_entry
+Struct WOW64_LDT_ENTRY
+	UShort LimitLow
+	UShort BaseLow
+	_HighWord_e__Union_1077 HighWord
+End_Struct
+
+Struct XPF_MCE_FLAGS
+	_Anonymous_e__Union_3004 Anonymous
+End_Struct
+
+Struct XPF_MC_BANK_FLAGS
+	_Anonymous_e__Union_3002 Anonymous
+End_Struct
+
+Struct XSAVE_AREA
+	XSAVE_FORMAT LegacyState
+	XSAVE_AREA_HEADER Header
+End_Struct
+
+Struct XSAVE_AREA_HEADER
+	UBigint Mask
+	UBigint CompactionMask
+	UBigint[6] Reserved2
+End_Struct
+
+Struct XSAVE_FORMAT
+	UShort ControlWord
+	UShort StatusWord
+	UChar TagWord
+	UChar Reserved1
+	UShort ErrorOpcode
+	UInteger ErrorOffset
+	UShort ErrorSelector
+	UShort Reserved2
+	UInteger DataOffset
+	UShort DataSelector
+	UShort Reserved3
+	UInteger MxCsr
+	UInteger MxCsr_Mask
+	M128A[8] FloatRegisters
+	M128A[16] XmmRegisters
+	UChar[96] Reserved4
+End_Struct
+
+Struct XSAVE_FORMAT
+	UShort ControlWord
+	UShort StatusWord
+	UChar TagWord
+	UChar Reserved1
+	UShort ErrorOpcode
+	UInteger ErrorOffset
+	UShort ErrorSelector
+	UShort Reserved2
+	UInteger DataOffset
+	UShort DataSelector
+	UShort Reserved3
+	UInteger MxCsr
+	UInteger MxCsr_Mask
+	M128A[8] FloatRegisters
+	M128A[8] XmmRegisters
+	UChar[224] Reserved4
+End_Struct
+
+Struct XSTATE_CONFIGURATION
+	UBigint EnabledFeatures
+	UBigint EnabledVolatileFeatures
+	UInteger Size
+	_Anonymous_e__Union_2936 Anonymous
+	XSTATE_FEATURE[64] Features
+	UBigint EnabledSupervisorFeatures
+	UBigint AlignedFeatures
+	UInteger AllFeatureSize
+	UInteger[64] AllFeatures
+	Integer iMissingAlignment1
+	UBigint EnabledUserVisibleSupervisorFeatures
+	UBigint ExtendedFeatureDisableFeatures
+	UInteger AllNonLargeFeatureSize
+	UShort MaxSveVectorLength
+	UShort Spare1
+End_Struct
+
+Struct XSTATE_CONFIG_FEATURE_MSC_INFO
+	UInteger SizeOfInfo
+	UInteger ContextSize
+	UBigint EnabledFeatures
+	XSTATE_FEATURE[64] Features
+End_Struct
+
+Struct XSTATE_CONTEXT
+	UBigint Mask
+	UInteger Length
+	UChar Flags
+	UChar[3] Reserved0
+	Pointer Area											// XSAVE_AREA*
+	Pointer Buffer											// Pointer*
+End_Struct
+
+Struct XSTATE_CONTEXT
+	UBigint Mask
+	UInteger Length
+	UChar Flags
+	UChar[3] Reserved0
+	Pointer Area											// XSAVE_AREA*
+	UInteger Reserved2
+	Integer iMissingAlignment1
+	Pointer Buffer											// Pointer*
+	UInteger Reserved3
+	Integer iMissingAlignment2
+End_Struct
+
+Struct XSTATE_FEATURE
+	UInteger Offset
+	UInteger Size
+End_Struct
+
+Struct _Anonymous1_e__Struct_2991
+	UBigint MemoryBase
+	UInteger MemorySize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Anonymous2_e__Struct_2992
+	Integer CheckCancel										// BOOL
+	Integer Cancel											// BOOL
+End_Struct
+
+Struct _Anonymous3_e__Struct_2993
+	MINIDUMP_MEMORY_INFO VmRegion
+	Integer Continue										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Anonymous4_e__Struct_2994
+	Integer VmQueryStatus									// HRESULT
+	Integer iMissingAlignment1
+	MINIDUMP_MEMORY_INFO VmQueryResult
+End_Struct
+
+Struct _Anonymous5_e__Struct_2995
+	Integer VmReadStatus									// HRESULT
+	UInteger VmReadBytesCompleted
+End_Struct
+
+Struct _Anonymous_e__Struct_1063
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1065
+	UBigint X0
+	UBigint X1
+	UBigint X2
+	UBigint X3
+	UBigint X4
+	UBigint X5
+	UBigint X6
+	UBigint X7
+	UBigint X8
+	UBigint X9
+	UBigint X10
+	UBigint X11
+	UBigint X12
+	UBigint X13
+	UBigint X14
+	UBigint X15
+	UBigint X16
+	UBigint X17
+	UBigint X18
+	UBigint X19
+	UBigint X20
+	UBigint X21
+	UBigint X22
+	UBigint X23
+	UBigint X24
+	UBigint X25
+	UBigint X26
+	UBigint X27
+	UBigint X28
+	UBigint Fp
+	UBigint Lr
+End_Struct
+
+Struct _Anonymous_e__Struct_1067
+	UBigint Low
+	Bigint High
+End_Struct
+
+Struct _Anonymous_e__Struct_2809
+	M128A[2] Header
+	M128A[8] Legacy
+	M128A Xmm0
+	M128A Xmm1
+	M128A Xmm2
+	M128A Xmm3
+	M128A Xmm4
+	M128A Xmm5
+	M128A Xmm6
+	M128A Xmm7
+	M128A Xmm8
+	M128A Xmm9
+	M128A Xmm10
+	M128A Xmm11
+	M128A Xmm12
+	M128A Xmm13
+	M128A Xmm14
+	M128A Xmm15
+End_Struct
+
+Struct _Anonymous_e__Struct_2811
+	Pointer Xmm0											// M128A*
+	Pointer Xmm1											// M128A*
+	Pointer Xmm2											// M128A*
+	Pointer Xmm3											// M128A*
+	Pointer Xmm4											// M128A*
+	Pointer Xmm5											// M128A*
+	Pointer Xmm6											// M128A*
+	Pointer Xmm7											// M128A*
+	Pointer Xmm8											// M128A*
+	Pointer Xmm9											// M128A*
+	Pointer Xmm10											// M128A*
+	Pointer Xmm11											// M128A*
+	Pointer Xmm12											// M128A*
+	Pointer Xmm13											// M128A*
+	Pointer Xmm14											// M128A*
+	Pointer Xmm15											// M128A*
+End_Struct
+
+Struct _Anonymous_e__Struct_2813
+	Pointer Rax												// UBigint*
+	Pointer Rcx												// UBigint*
+	Pointer Rdx												// UBigint*
+	Pointer Rbx												// UBigint*
+	Pointer Rsp												// UBigint*
+	Pointer Rbp												// UBigint*
+	Pointer Rsi												// UBigint*
+	Pointer Rdi												// UBigint*
+	Pointer R8												// UBigint*
+	Pointer R9												// UBigint*
+	Pointer R10												// UBigint*
+	Pointer R11												// UBigint*
+	Pointer R12												// UBigint*
+	Pointer R13												// UBigint*
+	Pointer R14												// UBigint*
+	Pointer R15												// UBigint*
+End_Struct
+
+Struct _Anonymous_e__Struct_2935
+	UBigint X0
+	UBigint X1
+	UBigint X2
+	UBigint X3
+	UBigint X4
+	UBigint X5
+	UBigint X6
+	UBigint X7
+	UBigint X8
+	UBigint X9
+	UBigint X10
+	UBigint X11
+	UBigint X12
+	UBigint X13
+	UBigint X14
+	UBigint X15
+	UBigint X16
+	UBigint X17
+	UBigint X18
+	UBigint X19
+	UBigint X20
+	UBigint X21
+	UBigint X22
+	UBigint X23
+	UBigint X24
+	UBigint X25
+	UBigint X26
+	UBigint X27
+	UBigint X28
+	UBigint Fp
+	UBigint Lr
+End_Struct
+
+Struct _Anonymous_e__Struct_2937
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2986
+	UChar NumberOfProcessors
+	UChar ProductType
+End_Struct
+
+Struct _Anonymous_e__Struct_2988
+	UShort SuiteMask
+	UShort Reserved2
+End_Struct
+
+Struct _Anonymous_e__Struct_2997
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3001
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3003
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3005
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3007
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3009
+	UShort _bitfield
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

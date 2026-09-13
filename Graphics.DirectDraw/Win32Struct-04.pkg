@@ -1,0 +1,141 @@
+Use UI
+
+Struct PROCESS_LIST
+	Pointer lpLink											// PROCESS_LIST*
+	UInteger dwProcessId
+	UInteger dwRefCnt
+	UInteger dwAlphaDepth
+	UInteger dwZDepth
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dmemmgr/ns-dmemmgr-surfacealignment
+Struct SURFACEALIGNMENT
+	_Anonymous_e__Union_1954 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-videomemory
+Struct VIDEOMEMORY
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	ULongPtr fpStart
+	_Anonymous1_e__Union_1969 Anonymous1
+	DDSCAPS ddsCaps
+	DDSCAPS ddsCapsAlt
+	_Anonymous2_e__Union_1970 Anonymous2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-videomemoryinfo
+Struct VIDEOMEMORYINFO
+	ULongPtr fpPrimary
+	UInteger dwFlags
+	UInteger dwDisplayWidth
+	UInteger dwDisplayHeight
+	Integer lDisplayPitch
+	DDPIXELFORMAT ddpfDisplay
+	UInteger dwOffscreenAlign
+	UInteger dwOverlayAlign
+	UInteger dwTextureAlign
+	UInteger dwZBufferAlign
+	UInteger dwAlphaAlign
+	Integer iMissingAlignment1
+	Pointer pvPrimary										// Pointer*
+End_Struct
+
+Struct VIDMEM
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	ULongPtr fpStart
+	_Anonymous1_e__Union_1957 Anonymous1
+	DDSCAPS ddsCaps
+	DDSCAPS ddsCapsAlt
+	_Anonymous2_e__Union_1958 Anonymous2
+End_Struct
+
+Struct VIDMEMINFO
+	ULongPtr fpPrimary
+	UInteger dwFlags
+	UInteger dwDisplayWidth
+	UInteger dwDisplayHeight
+	Integer lDisplayPitch
+	DDPIXELFORMAT ddpfDisplay
+	UInteger dwOffscreenAlign
+	UInteger dwOverlayAlign
+	UInteger dwTextureAlign
+	UInteger dwZBufferAlign
+	UInteger dwAlphaAlign
+	UInteger dwNumHeaps
+	Pointer pvmList											// VIDMEM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dmemmgr/ns-dmemmgr-vmemheap
+Struct VMEMHEAP
+	UInteger dwFlags
+	UInteger stride
+	Pointer freeList										// Pointer*
+	Pointer allocList										// Pointer*
+	UInteger dwTotalSize
+	Integer iMissingAlignment1
+	ULongPtr fpGARTLin
+	ULongPtr fpGARTDev
+	UInteger dwCommitedSize
+	UInteger dwCoalesceCount
+	HEAPALIGNMENT Alignment
+	DDSCAPSEX ddsCapsEx
+	DDSCAPSEX ddsCapsExAlt
+	Integer iMissingAlignment2
+	Bigint liPhysAGPBase
+	Pointer hdevAGP											// HANDLE
+	Pointer pvPhysRsrv										// Pointer*
+	Pointer pAgpCommitMask									// UChar*
+	UInteger dwAgpCommitMaskSize
+	Integer iMissingAlignment3
+End_Struct
+
+Struct VMEML
+	Pointer next											// VMEML*
+	ULongPtr ptr
+	UInteger size
+	Integer bDiscardable									// BOOL
+End_Struct
+
+Struct VMEMR
+	Pointer next											// VMEMR*
+	Pointer prev											// VMEMR*
+	Pointer pUp												// VMEMR*
+	Pointer pDown											// VMEMR*
+	Pointer pLeft											// VMEMR*
+	Pointer pRight											// VMEMR*
+	ULongPtr ptr
+	UInteger size
+	UInteger x
+	UInteger y
+	UInteger cx
+	UInteger cy
+	UInteger flags
+	ULongPtr pBits
+	Integer bDiscardable									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Linear_e__Struct_1955
+	UInteger dwStartAlignment
+	UInteger dwPitchAlignment
+	UInteger dwFlags
+	UInteger dwReserved2
+End_Struct
+
+Struct _MultiSampleCaps_e__Struct_1942
+	UShort wFlipMSTypes
+	UShort wBltMSTypes
+End_Struct
+
+Struct _Rectangular_e__Struct_1956
+	UInteger dwXAlignment
+	UInteger dwYAlignment
+	UInteger dwFlags
+	UInteger dwReserved2
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

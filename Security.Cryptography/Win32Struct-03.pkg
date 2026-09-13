@@ -1,0 +1,910 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_data_info
+Struct CMC_DATA_INFO
+	UInteger cTaggedAttribute
+	Integer iMissingAlignment1
+	Pointer rgTaggedAttribute								// CMC_TAGGED_ATTRIBUTE*
+	UInteger cTaggedRequest
+	Integer iMissingAlignment2
+	Pointer rgTaggedRequest									// CMC_TAGGED_REQUEST*
+	UInteger cTaggedContentInfo
+	Integer iMissingAlignment3
+	Pointer rgTaggedContentInfo								// CMC_TAGGED_CONTENT_INFO*
+	UInteger cTaggedOtherMsg
+	Integer iMissingAlignment4
+	Pointer rgTaggedOtherMsg								// CMC_TAGGED_OTHER_MSG*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_pend_info
+Struct CMC_PEND_INFO
+	CRYPT_INTEGER_BLOB PendToken
+	FILETIME PendTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_response_info
+Struct CMC_RESPONSE_INFO
+	UInteger cTaggedAttribute
+	Integer iMissingAlignment1
+	Pointer rgTaggedAttribute								// CMC_TAGGED_ATTRIBUTE*
+	UInteger cTaggedContentInfo
+	Integer iMissingAlignment2
+	Pointer rgTaggedContentInfo								// CMC_TAGGED_CONTENT_INFO*
+	UInteger cTaggedOtherMsg
+	Integer iMissingAlignment3
+	Pointer rgTaggedOtherMsg								// CMC_TAGGED_OTHER_MSG*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_status_info
+Struct CMC_STATUS_INFO
+	UInteger dwStatus
+	UInteger cBodyList
+	Pointer rgdwBodyList									// UInteger*
+	Pointer pwszStatusString								// PWSTR
+	UInteger dwOtherInfoChoice
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2297 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_tagged_attribute
+Struct CMC_TAGGED_ATTRIBUTE
+	UInteger dwBodyPartID
+	Integer iMissingAlignment1
+	CRYPT_ATTRIBUTE Attribute
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_tagged_cert_request
+Struct CMC_TAGGED_CERT_REQUEST
+	UInteger dwBodyPartID
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB SignedCertRequest
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_tagged_content_info
+Struct CMC_TAGGED_CONTENT_INFO
+	UInteger dwBodyPartID
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB EncodedContentInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_tagged_other_msg
+Struct CMC_TAGGED_OTHER_MSG
+	UInteger dwBodyPartID
+	Integer iMissingAlignment1
+	Pointer pszObjId										// PSTR
+	CRYPT_INTEGER_BLOB Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmc_tagged_request
+Struct CMC_TAGGED_REQUEST
+	UInteger dwTaggedRequestChoice
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2296 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_cms_recipient_info
+Struct CMSG_CMS_RECIPIENT_INFO
+	UInteger dwRecipientChoice
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2308 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_cms_signer_info
+Struct CMSG_CMS_SIGNER_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CERT_ID SignerId
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_ALGORITHM_IDENTIFIER HashEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedHash
+	CRYPT_ATTRIBUTES AuthAttrs
+	CRYPT_ATTRIBUTES UnauthAttrs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_cng_content_decrypt_info
+Struct CMSG_CNG_CONTENT_DECRYPT_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER ContentEncryptionAlgorithm
+	Pointer pfnAlloc										// PFN_CMSG_ALLOC
+	Pointer pfnFree											// PFN_CMSG_FREE
+	ULongPtr hNCryptKey										// NCRYPT_KEY_HANDLE
+	Pointer pbContentEncryptKey								// UChar*
+	UInteger cbContentEncryptKey
+	Integer iMissingAlignment2
+	Pointer hCNGContentEncryptKey							// BCRYPT_KEY_HANDLE
+	Pointer pbCNGContentEncryptKeyObject					// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_content_encrypt_info
+Struct CMSG_CONTENT_ENCRYPT_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	CRYPT_ALGORITHM_IDENTIFIER ContentEncryptionAlgorithm
+	Pointer pvEncryptionAuxInfo								// Pointer*
+	UInteger cRecipients
+	Integer iMissingAlignment2
+	Pointer rgCmsRecipients									// CMSG_RECIPIENT_ENCODE_INFO*
+	Pointer pfnAlloc										// PFN_CMSG_ALLOC
+	Pointer pfnFree											// PFN_CMSG_FREE
+	UInteger dwEncryptFlags
+	Integer iMissingAlignment3
+	_Anonymous_e__Union_2313 Anonymous
+	UInteger dwFlags
+	Integer fCNG											// BOOL
+	Pointer pbCNGContentEncryptKeyObject					// UChar*
+	Pointer pbContentEncryptKey								// UChar*
+	UInteger cbContentEncryptKey
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_add_signer_unauth_attr_para
+Struct CMSG_CTRL_ADD_SIGNER_UNAUTH_ATTR_PARA
+	UInteger cbSize
+	UInteger dwSignerIndex
+	CRYPT_INTEGER_BLOB blob
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_decrypt_para
+Struct CMSG_CTRL_DECRYPT_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2309 Anonymous
+	UInteger dwKeySpec
+	UInteger dwRecipientIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_del_signer_unauth_attr_para
+Struct CMSG_CTRL_DEL_SIGNER_UNAUTH_ATTR_PARA
+	UInteger cbSize
+	UInteger dwSignerIndex
+	UInteger dwUnauthAttrIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_key_agree_decrypt_para
+Struct CMSG_CTRL_KEY_AGREE_DECRYPT_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2311 Anonymous
+	UInteger dwKeySpec
+	Integer iMissingAlignment2
+	Pointer pKeyAgree										// CMSG_KEY_AGREE_RECIPIENT_INFO*
+	UInteger dwRecipientIndex
+	UInteger dwRecipientEncryptedKeyIndex
+	CRYPT_BIT_BLOB OriginatorPublicKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_key_trans_decrypt_para
+Struct CMSG_CTRL_KEY_TRANS_DECRYPT_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2310 Anonymous
+	UInteger dwKeySpec
+	Integer iMissingAlignment2
+	Pointer pKeyTrans										// CMSG_KEY_TRANS_RECIPIENT_INFO*
+	UInteger dwRecipientIndex
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_mail_list_decrypt_para
+Struct CMSG_CTRL_MAIL_LIST_DECRYPT_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	ULongPtr hCryptProv
+	Pointer pMailList										// CMSG_MAIL_LIST_RECIPIENT_INFO*
+	UInteger dwRecipientIndex
+	UInteger dwKeyChoice
+	_Anonymous_e__Union_2312 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_ctrl_verify_signature_ex_para
+Struct CMSG_CTRL_VERIFY_SIGNATURE_EX_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	UInteger dwSignerIndex
+	UInteger dwSignerType
+	Pointer pvSigner										// Pointer*
+End_Struct
+
+Struct CMSG_ENCRYPTED_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER ContentEncryptionAlgorithm
+	Pointer pvEncryptionAuxInfo								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_enveloped_encode_info
+Struct CMSG_ENVELOPED_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	CRYPT_ALGORITHM_IDENTIFIER ContentEncryptionAlgorithm
+	Pointer pvEncryptionAuxInfo								// Pointer*
+	UInteger cRecipients
+	Integer iMissingAlignment2
+	Pointer rgpRecipients									// CERT_INFO**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_hashed_encode_info
+Struct CMSG_HASHED_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	Pointer pvHashAuxInfo									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_agree_encrypt_info
+Struct CMSG_KEY_AGREE_ENCRYPT_INFO
+	UInteger cbSize
+	UInteger dwRecipientIndex
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB UserKeyingMaterial
+	UInteger dwOriginatorChoice								// CMSG_KEY_AGREE_ORIGINATOR
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2314 Anonymous
+	UInteger cKeyAgreeKeyEncryptInfo
+	Integer iMissingAlignment2
+	Pointer rgpKeyAgreeKeyEncryptInfo						// CMSG_KEY_AGREE_KEY_ENCRYPT_INFO**
+	UInteger dwFlags
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_agree_key_encrypt_info
+Struct CMSG_KEY_AGREE_KEY_ENCRYPT_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB EncryptedKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_agree_recipient_encode_info
+Struct CMSG_KEY_AGREE_RECIPIENT_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	Pointer pvKeyEncryptionAuxInfo							// Pointer*
+	CRYPT_ALGORITHM_IDENTIFIER KeyWrapAlgorithm
+	Pointer pvKeyWrapAuxInfo								// Pointer*
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	UInteger dwKeySpec
+	UInteger dwKeyChoice									// CMSG_KEY_AGREE_OPTION
+	_Anonymous_e__Union_2304 Anonymous
+	CRYPT_INTEGER_BLOB UserKeyingMaterial
+	UInteger cRecipientEncryptedKeys
+	Integer iMissingAlignment2
+	Pointer rgpRecipientEncryptedKeys						// CMSG_RECIPIENT_ENCRYPTED_KEY_ENCODE_INFO**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_agree_recipient_info
+Struct CMSG_KEY_AGREE_RECIPIENT_INFO
+	UInteger dwVersion
+	UInteger dwOriginatorChoice								// CMSG_KEY_AGREE_ORIGINATOR
+	_Anonymous_e__Union_2307 Anonymous
+	CRYPT_INTEGER_BLOB UserKeyingMaterial
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	UInteger cRecipientEncryptedKeys
+	Integer iMissingAlignment1
+	Pointer rgpRecipientEncryptedKeys						// CMSG_RECIPIENT_ENCRYPTED_KEY_INFO**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_trans_encrypt_info
+Struct CMSG_KEY_TRANS_ENCRYPT_INFO
+	UInteger cbSize
+	UInteger dwRecipientIndex
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedKey
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_trans_recipient_encode_info
+Struct CMSG_KEY_TRANS_RECIPIENT_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	Pointer pvKeyEncryptionAuxInfo							// Pointer*
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	CRYPT_BIT_BLOB RecipientPublicKey
+	CERT_ID RecipientId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_key_trans_recipient_info
+Struct CMSG_KEY_TRANS_RECIPIENT_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CERT_ID RecipientId
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_mail_list_encrypt_info
+Struct CMSG_MAIL_LIST_ENCRYPT_INFO
+	UInteger cbSize
+	UInteger dwRecipientIndex
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedKey
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_mail_list_recipient_encode_info
+Struct CMSG_MAIL_LIST_RECIPIENT_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	Pointer pvKeyEncryptionAuxInfo							// Pointer*
+	ULongPtr hCryptProv
+	UInteger dwKeyChoice
+	Integer iMissingAlignment2
+	_Anonymous_e__Union_2305 Anonymous
+	CRYPT_INTEGER_BLOB KeyId
+	FILETIME Date
+	Pointer pOtherAttr										// CRYPT_ATTRIBUTE_TYPE_VALUE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_mail_list_recipient_info
+Struct CMSG_MAIL_LIST_RECIPIENT_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB KeyId
+	CRYPT_ALGORITHM_IDENTIFIER KeyEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedKey
+	FILETIME Date
+	Pointer pOtherAttr										// CRYPT_ATTRIBUTE_TYPE_VALUE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_rc2_aux_info
+Struct CMSG_RC2_AUX_INFO
+	UInteger cbSize
+	UInteger dwBitLen
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_rc4_aux_info
+Struct CMSG_RC4_AUX_INFO
+	UInteger cbSize
+	UInteger dwBitLen
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_recipient_encode_info
+Struct CMSG_RECIPIENT_ENCODE_INFO
+	UInteger dwRecipientChoice
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2306 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_recipient_encrypted_key_encode_info
+Struct CMSG_RECIPIENT_ENCRYPTED_KEY_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_BIT_BLOB RecipientPublicKey
+	CERT_ID RecipientId
+	FILETIME Date
+	Pointer pOtherAttr										// CRYPT_ATTRIBUTE_TYPE_VALUE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_recipient_encrypted_key_info
+Struct CMSG_RECIPIENT_ENCRYPTED_KEY_INFO
+	CERT_ID RecipientId
+	CRYPT_INTEGER_BLOB EncryptedKey
+	FILETIME Date
+	Pointer pOtherAttr										// CRYPT_ATTRIBUTE_TYPE_VALUE*
+End_Struct
+
+Struct CMSG_SIGNED_AND_ENVELOPED_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CMSG_SIGNED_ENCODE_INFO SignedInfo
+	CMSG_ENVELOPED_ENCODE_INFO EnvelopedInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_signed_encode_info
+Struct CMSG_SIGNED_ENCODE_INFO
+	UInteger cbSize
+	UInteger cSigners
+	Pointer rgSigners										// CMSG_SIGNER_ENCODE_INFO*
+	UInteger cCertEncoded
+	Integer iMissingAlignment1
+	Pointer rgCertEncoded									// CRYPT_INTEGER_BLOB*
+	UInteger cCrlEncoded
+	Integer iMissingAlignment2
+	Pointer rgCrlEncoded									// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_signer_encode_info
+Struct CMSG_SIGNER_ENCODE_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pCertInfo										// CERT_INFO*
+	_Anonymous_e__Union_1051 Anonymous
+	UInteger dwKeySpec
+	Integer iMissingAlignment2
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	Pointer pvHashAuxInfo									// Pointer*
+	UInteger cAuthAttr
+	Integer iMissingAlignment3
+	Pointer rgAuthAttr										// CRYPT_ATTRIBUTE*
+	UInteger cUnauthAttr
+	Integer iMissingAlignment4
+	Pointer rgUnauthAttr									// CRYPT_ATTRIBUTE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_signer_info
+Struct CMSG_SIGNER_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB Issuer
+	CRYPT_INTEGER_BLOB SerialNumber
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_ALGORITHM_IDENTIFIER HashEncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedHash
+	CRYPT_ATTRIBUTES AuthAttrs
+	CRYPT_ATTRIBUTES UnauthAttrs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_sp3_compatible_aux_info
+Struct CMSG_SP3_COMPATIBLE_AUX_INFO
+	UInteger cbSize
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cmsg_stream_info
+Struct CMSG_STREAM_INFO
+	UInteger cbContent
+	Integer iMissingAlignment1
+	Pointer pfnStreamOutput									// PFN_CMSG_STREAM_OUTPUT
+	Pointer pvArg											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cms_dh_key_info
+Struct CMS_DH_KEY_INFO
+	UInteger dwVersion
+	UInteger Algid											// ALG_ID
+	Pointer pszContentEncObjId								// PSTR
+	CRYPT_INTEGER_BLOB PubInfo
+	Pointer pReserved										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cms_key_info
+Struct CMS_KEY_INFO
+	UInteger dwVersion
+	UInteger Algid											// ALG_ID
+	Pointer pbOID											// UChar*
+	UInteger cbOID
+	Integer iMissingAlignment1
+End_Struct
+
+Struct CONTAINER_INFO
+	UInteger dwVersion
+	UInteger dwReserved
+	UInteger cbSigPublicKey
+	Integer iMissingAlignment1
+	Pointer pbSigPublicKey									// UChar*
+	UInteger cbKeyExPublicKey
+	Integer iMissingAlignment2
+	Pointer pbKeyExPublicKey								// UChar*
+End_Struct
+
+Struct CONTAINER_MAP_RECORD
+	UShort[40] wszGuid
+	UChar bFlags
+	UChar bReserved
+	UShort wSigKeySizeBits
+	UShort wKeyExchangeKeySizeBits
+End_Struct
+
+Struct CPS_URLS
+	Pointer pszURL											// PWSTR
+	Pointer pAlgorithm										// CRYPT_ALGORITHM_IDENTIFIER*
+	Pointer pDigest											// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_context
+Struct CRL_CONTEXT
+	UInteger dwCertEncodingType								// CERT_QUERY_ENCODING_TYPE
+	Integer iMissingAlignment1
+	Pointer pbCrlEncoded									// UChar*
+	UInteger cbCrlEncoded
+	Integer iMissingAlignment2
+	Pointer pCrlInfo										// CRL_INFO*
+	Pointer hCertStore										// HCERTSTORE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_dist_point
+Struct CRL_DIST_POINT
+	CRL_DIST_POINT_NAME DistPointName
+	CRYPT_BIT_BLOB ReasonFlags
+	CERT_ALT_NAME_INFO CRLIssuer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_dist_points_info
+Struct CRL_DIST_POINTS_INFO
+	UInteger cDistPoint
+	Integer iMissingAlignment1
+	Pointer rgDistPoint										// CRL_DIST_POINT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_dist_point_name
+Struct CRL_DIST_POINT_NAME
+	UInteger dwDistPointNameChoice
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2295 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_entry
+Struct CRL_ENTRY
+	CRYPT_INTEGER_BLOB SerialNumber
+	FILETIME RevocationDate
+	UInteger cExtension
+	Integer iMissingAlignment1
+	Pointer rgExtension										// CERT_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_find_issued_for_para
+Struct CRL_FIND_ISSUED_FOR_PARA
+	Pointer pSubjectCert									// CERT_CONTEXT*
+	Pointer pIssuerCert										// CERT_CONTEXT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_info
+Struct CRL_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER SignatureAlgorithm
+	CRYPT_INTEGER_BLOB Issuer
+	FILETIME ThisUpdate
+	FILETIME NextUpdate
+	UInteger cCRLEntry
+	Integer iMissingAlignment2
+	Pointer rgCRLEntry										// CRL_ENTRY*
+	UInteger cExtension
+	Integer iMissingAlignment3
+	Pointer rgExtension										// CERT_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crl_issuing_dist_point
+Struct CRL_ISSUING_DIST_POINT
+	CRL_DIST_POINT_NAME DistPointName
+	Integer fOnlyContainsUserCerts							// BOOL
+	Integer fOnlyContainsCACerts							// BOOL
+	CRYPT_BIT_BLOB OnlySomeReasonFlags
+	Integer fIndirectCRL									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct CRL_REVOCATION_INFO
+	Pointer pCrlEntry										// CRL_ENTRY*
+	Pointer pCrlContext										// CRL_CONTEXT*
+	Pointer pCrlIssuerChain									// CERT_CHAIN_CONTEXT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cross_cert_dist_points_info
+Struct CROSS_CERT_DIST_POINTS_INFO
+	UInteger dwSyncDeltaTime
+	UInteger cDistPoint
+	Pointer rgDistPoint										// CERT_ALT_NAME_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cryptnet_url_cache_flush_info
+Struct CRYPTNET_URL_CACHE_FLUSH_INFO
+	UInteger cbSize
+	UInteger dwExemptSeconds
+	FILETIME ExpireTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cryptnet_url_cache_pre_fetch_info
+Struct CRYPTNET_URL_CACHE_PRE_FETCH_INFO
+	UInteger cbSize
+	UInteger dwObjectType
+	UInteger dwError
+	UInteger dwReserved
+	FILETIME ThisUpdateTime
+	FILETIME NextUpdateTime
+	FILETIME PublishTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-cryptnet_url_cache_response_info
+Struct CRYPTNET_URL_CACHE_RESPONSE_INFO
+	UInteger cbSize
+	UShort wResponseType
+	UShort wResponseFlags
+	FILETIME LastModifiedTime
+	UInteger dwMaxAge
+	Integer iMissingAlignment1
+	Pointer pwszETag										// PWSTR
+	UInteger dwProxyId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/ns-dpapi-cryptprotect_promptstruct
+Struct CRYPTPROTECT_PROMPTSTRUCT
+	UInteger cbSize
+	UInteger dwPromptFlags
+	Pointer hwndApp											// HWND
+	Pointer szPrompt										// PWSTR
+End_Struct
+
+Struct CRYPT_3DES_KEY_STATE
+	UChar[24] Key
+	UChar[8] IV
+	UChar[8] Feedback
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_aes_128_key_state
+Struct CRYPT_AES_128_KEY_STATE
+	UChar[16] Key
+	UChar[16] IV
+	UChar[176] EncryptionState
+	UChar[176] DecryptionState
+	UChar[16] Feedback
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_aes_256_key_state
+Struct CRYPT_AES_256_KEY_STATE
+	UChar[32] Key
+	UChar[16] IV
+	UChar[240] EncryptionState
+	UChar[240] DecryptionState
+	UChar[16] Feedback
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_algorithm_identifier
+Struct CRYPT_ALGORITHM_IDENTIFIER
+	Pointer pszObjId										// PSTR
+	CRYPT_INTEGER_BLOB Parameters
+End_Struct
+
+Struct CRYPT_ASYNC_RETRIEVAL_COMPLETION
+	Pointer pfnCompletion									// PFN_CRYPT_ASYNC_RETRIEVAL_COMPLETION_FUNC
+	Pointer pvCompletion									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_attribute
+Struct CRYPT_ATTRIBUTE
+	Pointer pszObjId										// PSTR
+	UInteger cValue
+	Integer iMissingAlignment1
+	Pointer rgValue											// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_attributes
+Struct CRYPT_ATTRIBUTES
+	UInteger cAttr
+	Integer iMissingAlignment1
+	Pointer rgAttr											// CRYPT_ATTRIBUTE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_attribute_type_value
+Struct CRYPT_ATTRIBUTE_TYPE_VALUE
+	Pointer pszObjId										// PSTR
+	CRYPT_INTEGER_BLOB Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_bit_blob
+Struct CRYPT_BIT_BLOB
+	UInteger cbData
+	Integer iMissingAlignment1
+	Pointer pbData											// UChar*
+	UInteger cUnusedBits
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_blob_array
+Struct CRYPT_BLOB_ARRAY
+	UInteger cBlob
+	Integer iMissingAlignment1
+	Pointer rgBlob											// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_content_info
+Struct CRYPT_CONTENT_INFO
+	Pointer pszObjId										// PSTR
+	CRYPT_INTEGER_BLOB Content
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_content_info_sequence_of_any
+Struct CRYPT_CONTENT_INFO_SEQUENCE_OF_ANY
+	Pointer pszObjId										// PSTR
+	UInteger cValue
+	Integer iMissingAlignment1
+	Pointer rgValue											// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_contexts
+Struct CRYPT_CONTEXTS
+	UInteger cContexts
+	Integer iMissingAlignment1
+	Pointer rgpszContexts									// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_context_config
+Struct CRYPT_CONTEXT_CONFIG
+	UInteger dwFlags										// CRYPT_CONTEXT_CONFIG_FLAGS
+	UInteger dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_context_functions
+Struct CRYPT_CONTEXT_FUNCTIONS
+	UInteger cFunctions
+	Integer iMissingAlignment1
+	Pointer rgpszFunctions									// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_context_function_config
+Struct CRYPT_CONTEXT_FUNCTION_CONFIG
+	UInteger dwFlags
+	UInteger dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_context_function_providers
+Struct CRYPT_CONTEXT_FUNCTION_PROVIDERS
+	UInteger cProviders
+	Integer iMissingAlignment1
+	Pointer rgpszProviders									// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_credentials
+Struct CRYPT_CREDENTIALS
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pszCredentialsOid								// PSTR
+	Pointer pvCredentials									// Pointer*
+End_Struct
+
+Struct CRYPT_CSP_PROVIDER
+	UInteger dwKeySpec
+	Integer iMissingAlignment1
+	Pointer pwszProviderName								// PWSTR
+	CRYPT_BIT_BLOB Signature
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_decode_para
+Struct CRYPT_DECODE_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pfnAlloc										// PFN_CRYPT_ALLOC
+	Pointer pfnFree											// PFN_CRYPT_FREE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_decrypt_message_para
+Struct CRYPT_DECRYPT_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgAndCertEncodingType
+	UInteger cCertStore
+	Integer iMissingAlignment1
+	Pointer rghCertStore									// HCERTSTORE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_default_context_multi_oid_para
+Struct CRYPT_DEFAULT_CONTEXT_MULTI_OID_PARA
+	UInteger cOID
+	Integer iMissingAlignment1
+	Pointer rgpszOID										// PSTR*
+End_Struct
+
+Struct CRYPT_DES_KEY_STATE
+	UChar[8] Key
+	UChar[8] IV
+	UChar[8] Feedback
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_ecc_cms_shared_info
+Struct CRYPT_ECC_CMS_SHARED_INFO
+	CRYPT_ALGORITHM_IDENTIFIER Algorithm
+	CRYPT_INTEGER_BLOB EntityUInfo
+	UChar[4] rgbSuppPubInfo
+	Integer iMissingAlignment1
+End_Struct
+
+Struct CRYPT_ECC_PRIVATE_KEY_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB PrivateKey
+	Pointer szCurveOid										// PSTR
+	CRYPT_BIT_BLOB PublicKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_encode_para
+Struct CRYPT_ENCODE_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pfnAlloc										// PFN_CRYPT_ALLOC
+	Pointer pfnFree											// PFN_CRYPT_FREE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_encrypted_private_key_info
+Struct CRYPT_ENCRYPTED_PRIVATE_KEY_INFO
+	CRYPT_ALGORITHM_IDENTIFIER EncryptionAlgorithm
+	CRYPT_INTEGER_BLOB EncryptedPrivateKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_encrypt_message_para
+Struct CRYPT_ENCRYPT_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgEncodingType
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	CRYPT_ALGORITHM_IDENTIFIER ContentEncryptionAlgorithm
+	Pointer pvEncryptionAuxInfo								// Pointer*
+	UInteger dwFlags
+	UInteger dwInnerContentType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_enrollment_name_value_pair
+Struct CRYPT_ENROLLMENT_NAME_VALUE_PAIR
+	Pointer pwszName										// PWSTR
+	Pointer pwszValue										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_get_time_valid_object_extra_info
+Struct CRYPT_GET_TIME_VALID_OBJECT_EXTRA_INFO
+	UInteger cbSize
+	Integer iDeltaCrlIndicator
+	Pointer pftCacheResync									// FILETIME*
+	Pointer pLastSyncTime									// FILETIME*
+	Pointer pMaxAgeTime										// FILETIME*
+	Pointer pChainPara										// CERT_REVOCATION_CHAIN_PARA*
+	Pointer pDeltaCrlIndicator								// CRYPT_INTEGER_BLOB*
+End_Struct
+
+Struct CRYPT_HASH_INFO
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_INTEGER_BLOB Hash
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_hash_message_para
+Struct CRYPT_HASH_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgEncodingType
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	Pointer pvHashAuxInfo									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_image_ref
+Struct CRYPT_IMAGE_REF
+	Pointer pszImage										// PWSTR
+	UInteger dwFlags										// CRYPT_IMAGE_REF_FLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_image_reg
+Struct CRYPT_IMAGE_REG
+	Pointer pszImage										// PWSTR
+	UInteger cInterfaces
+	Integer iMissingAlignment1
+	Pointer rgpInterfaces									// CRYPT_INTERFACE_REG**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dpapi/ns-dpapi-crypt_integer_blob
+Struct CRYPT_INTEGER_BLOB
+	UInteger cbData
+	Integer iMissingAlignment1
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_interface_reg
+Struct CRYPT_INTERFACE_REG
+	UInteger dwInterface									// BCRYPT_INTERFACE
+	UInteger dwFlags										// BCRYPT_TABLE
+	UInteger cFunctions
+	Integer iMissingAlignment1
+	Pointer rgpszFunctions									// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_key_prov_info
+Struct CRYPT_KEY_PROV_INFO
+	Pointer pwszContainerName								// PWSTR
+	Pointer pwszProvName									// PWSTR
+	UInteger dwProvType
+	UInteger dwFlags										// CRYPT_KEY_FLAGS
+	UInteger cProvParam
+	Integer iMissingAlignment1
+	Pointer rgProvParam										// CRYPT_KEY_PROV_PARAM*
+	UInteger dwKeySpec
+	Integer iMissingAlignment2
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

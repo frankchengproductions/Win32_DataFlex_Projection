@@ -1,0 +1,675 @@
+Use UI
+
+Struct KSCAMERA_PERFRAMESETTING_HEADER
+	UInteger Size
+	UInteger FrameCount
+	Guid Id
+	UBigint Flags
+	UInteger LoopCount
+	UInteger Reserved
+End_Struct
+
+Struct KSCAMERA_PERFRAMESETTING_ITEM_HEADER
+	UInteger Size
+	UInteger Type
+	UBigint Flags
+End_Struct
+
+Struct KSCAMERA_PROFILE_CONCURRENCYINFO
+	Guid ReferenceGuid
+	UInteger Reserved
+	UInteger ProfileCount
+	Pointer Profiles										// KSCAMERA_PROFILE_INFO*
+End_Struct
+
+Struct KSCAMERA_PROFILE_INFO
+	Guid ProfileId
+	UInteger Index
+	UInteger PinCount
+	Pointer Pins											// KSCAMERA_PROFILE_PININFO*
+End_Struct
+
+Struct KSCAMERA_PROFILE_MEDIAINFO
+	_Resolution_e__Struct_3254 Resolution
+	_MaxFrameRate_e__Struct_3255 MaxFrameRate
+	UBigint Flags
+	UInteger Data0
+	UInteger Data1
+	UInteger Data2
+	UInteger Data3
+End_Struct
+
+Struct KSCAMERA_PROFILE_PININFO
+	Guid PinCategory
+	_Anonymous_e__Union_3256 Anonymous
+	UInteger MediaInfoCount
+	Pointer MediaInfos										// KSCAMERA_PROFILE_MEDIAINFO*
+End_Struct
+
+Struct KSCLOCK_CREATE
+	UInteger CreateFlags
+End_Struct
+
+Struct KSCOMPONENTID
+	Guid Manufacturer
+	Guid Product
+	Guid Component
+	Guid Name
+	UInteger Version
+	UInteger Revision
+End_Struct
+
+Struct KSCORRELATED_TIME
+	Bigint Time
+	Bigint SystemTime
+End_Struct
+
+Struct KSDATAFORMAT
+	_Anonymous_e__Union_1287 Anonymous
+End_Struct
+
+Struct KSDATARANGE_AUDIO
+	KSDATAFORMAT DataRange
+	UInteger MaximumChannels
+	UInteger MinimumBitsPerSample
+	UInteger MaximumBitsPerSample
+	UInteger MinimumSampleFrequency
+	UInteger MaximumSampleFrequency
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSDATARANGE_MUSIC
+	KSDATAFORMAT DataRange
+	Guid Technology
+	UInteger Channels
+	UInteger Notes
+	UInteger ChannelMask
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSDEVICE_PROFILE_INFO
+	UInteger Type
+	UInteger Size
+	_Anonymous_e__Union_3258 Anonymous
+End_Struct
+
+Struct KSDISPLAYCHANGE
+	UInteger PelsWidth
+	UInteger PelsHeight
+	UInteger BitsPerPel
+	UShort[1] DeviceID
+	Short iMissingAlignment1
+End_Struct
+
+Struct KSDS3D_BUFFER_ALL
+	DS3DVECTOR Position
+	DS3DVECTOR Velocity
+	UInteger InsideConeAngle
+	UInteger OutsideConeAngle
+	DS3DVECTOR ConeOrientation
+	Integer ConeOutsideVolume
+	Float MinDistance
+	Float MaxDistance
+	UInteger Mode
+End_Struct
+
+Struct KSDS3D_BUFFER_CONE_ANGLES
+	UInteger InsideConeAngle
+	UInteger OutsideConeAngle
+End_Struct
+
+Struct KSDS3D_HRTF_FILTER_FORMAT_MSG
+	Integer FilterMethod									// KSDS3D_HRTF_FILTER_METHOD
+	Integer CoeffFormat										// KSDS3D_HRTF_COEFF_FORMAT
+	Integer Version											// KSDS3D_HRTF_FILTER_VERSION
+	UInteger Reserved
+End_Struct
+
+Struct KSDS3D_HRTF_INIT_MSG
+	UInteger Size
+	Integer Quality											// KSDS3D_HRTF_FILTER_QUALITY
+	Float SampleRate
+	UInteger MaxFilterSize
+	UInteger FilterTransientMuteLength
+	UInteger FilterOverlapBufferLength
+	UInteger OutputOverlapBufferLength
+	UInteger Reserved
+End_Struct
+
+Struct KSDS3D_HRTF_PARAMS_MSG
+	UInteger Size
+	UInteger Enabled
+	Integer SwapChannels									// BOOL
+	Integer ZeroAzimuth										// BOOL
+	Integer CrossFadeOutput									// BOOL
+	UInteger FilterSize
+End_Struct
+
+Struct KSDS3D_ITD_PARAMS
+	Integer Channel
+	Float VolSmoothScale
+	Float TotalDryAttenuation
+	Float TotalWetAttenuation
+	Integer SmoothFrequency
+	Integer Delay
+End_Struct
+
+Struct KSDS3D_ITD_PARAMS_MSG
+	UInteger Enabled
+	KSDS3D_ITD_PARAMS LeftParams
+	KSDS3D_ITD_PARAMS RightParams
+	UInteger Reserved
+End_Struct
+
+Struct KSDS3D_LISTENER_ALL
+	DS3DVECTOR Position
+	DS3DVECTOR Velocity
+	DS3DVECTOR OrientFront
+	DS3DVECTOR OrientTop
+	Float DistanceFactor
+	Float RolloffFactor
+	Float DopplerFactor
+End_Struct
+
+Struct KSDS3D_LISTENER_ORIENTATION
+	DS3DVECTOR Front
+	DS3DVECTOR Top
+End_Struct
+
+Struct KSERROR
+	Pointer Context											// Pointer*
+	UInteger Status
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSEVENTDATA
+	UInteger NotificationType
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2152 Anonymous
+End_Struct
+
+Struct KSEVENT_TIME_INTERVAL
+	KSEVENTDATA EventData
+	Bigint TimeBase
+	Bigint Interval
+End_Struct
+
+Struct KSEVENT_TIME_MARK
+	KSEVENTDATA EventData
+	Bigint MarkTime
+End_Struct
+
+Struct KSEVENT_TUNER_INITIATE_SCAN_S
+	KSEVENTDATA EventData
+	UInteger StartFrequency
+	UInteger EndFrequency
+End_Struct
+
+Struct KSE_NODE
+	KSIDENTIFIER Event
+	UInteger NodeId
+	UInteger Reserved
+End_Struct
+
+Struct KSE_PIN
+	KSIDENTIFIER Event
+	UInteger PinId
+	UInteger Reserved
+End_Struct
+
+Struct KSFRAMETIME
+	Bigint Duration
+	UInteger FrameFlags
+	UInteger Reserved
+End_Struct
+
+Struct KSGOP_USERDATA
+	UInteger sc
+	UInteger reserved1
+	UChar cFields
+	Char[3] l21Data											// CHAR
+End_Struct
+
+Struct KSIDENTIFIER
+	_Anonymous_e__Union_1285 Anonymous
+End_Struct
+
+Struct KSINTERVAL
+	Bigint TimeBase
+	Bigint Interval
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/devicetopology/ns-devicetopology-ksjack_description
+Struct KSJACK_DESCRIPTION
+	UInteger ChannelMapping
+	UInteger Color
+	Integer ConnectionType									// EPcxConnectionType
+	Integer GeoLocation										// EPcxGeoLocation
+	Integer GenLocation										// EPcxGenLocation
+	Integer PortConnection									// EPxcPortConnection
+	Integer IsConnected										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/devicetopology/ns-devicetopology-ksjack_description2
+Struct KSJACK_DESCRIPTION2
+	UInteger DeviceStateInfo
+	UInteger JackCapabilities
+End_Struct
+
+Struct KSJACK_DESCRIPTION3
+	UInteger ConfigId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/devicetopology/ns-devicetopology-ksjack_sink_information
+Struct KSJACK_SINK_INFORMATION
+	Integer ConnType										// KSJACK_SINK_CONNECTIONTYPE
+	UShort ManufacturerId
+	UShort ProductId
+	UShort AudioLatency
+	Short iMissingAlignment1
+	Integer HDCPCapable										// BOOL
+	Integer AICapable										// BOOL
+	UChar SinkDescriptionLength
+	UChar[1] cMissingAlignment2
+	UShort[32] SinkDescription
+	Short iMissingAlignment3
+	LUID PortId
+End_Struct
+
+Struct KSMIDILOOPED_BUFFER
+	Pointer BufferAddress									// Pointer*
+	UInteger ActualBufferSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSMIDILOOPED_BUFFER_PROPERTY
+	KSIDENTIFIER Property
+	UInteger RequestedBufferSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSMIDILOOPED_EVENT
+	Pointer WriteEvent										// HANDLE
+End_Struct
+
+Struct KSMIDILOOPED_EVENT2
+	Pointer WriteEvent										// HANDLE
+	Pointer ReadEvent										// HANDLE
+End_Struct
+
+Struct KSMIDILOOPED_REGISTERS
+	Pointer WritePosition									// Pointer*
+	Pointer ReadPosition									// Pointer*
+End_Struct
+
+Struct KSMPEGVID_RECT
+	UInteger StartX
+	UInteger StartY
+	UInteger EndX
+	UInteger EndY
+End_Struct
+
+Struct KSMULTIPLE_DATA_PROP
+	KSIDENTIFIER Property
+	KSMULTIPLE_ITEM MultipleItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/DirectShow/ksmultiple-item
+Struct KSMULTIPLE_ITEM
+	UInteger Size
+	UInteger Count
+End_Struct
+
+Struct KSMUSICFORMAT
+	UInteger TimeDeltaMs
+	UInteger ByteCount
+End_Struct
+
+Struct KSM_NODE
+	KSIDENTIFIER Method
+	UInteger NodeId
+	UInteger Reserved
+End_Struct
+
+Struct KSNODEPROPERTY
+	KSIDENTIFIER Property
+	UInteger NodeId
+	UInteger Reserved
+End_Struct
+
+Struct KSNODEPROPERTY_AUDIO_3D_LISTENER
+	KSNODEPROPERTY NodeProperty
+	Pointer ListenerId										// Pointer*
+End_Struct
+
+Struct KSNODEPROPERTY_AUDIO_3D_LISTENER
+	KSNODEPROPERTY NodeProperty
+	Pointer ListenerId										// Pointer*
+	UInteger Reserved
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSNODEPROPERTY_AUDIO_CHANNEL
+	KSNODEPROPERTY NodeProperty
+	Integer Channel
+	UInteger Reserved
+End_Struct
+
+Struct KSNODEPROPERTY_AUDIO_DEV_SPECIFIC
+	KSNODEPROPERTY NodeProperty
+	UInteger DevSpecificId
+	UInteger DeviceInfo
+	UInteger Length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSNODEPROPERTY_AUDIO_PROPERTY
+	KSNODEPROPERTY NodeProperty
+	Pointer AppContext										// Pointer*
+	UInteger Length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSNODEPROPERTY_AUDIO_PROPERTY
+	KSNODEPROPERTY NodeProperty
+	Pointer AppContext										// Pointer*
+	UInteger Length
+	UInteger Reserved
+End_Struct
+
+Struct KSNODE_CREATE
+	UInteger CreateFlags
+	UInteger Node
+End_Struct
+
+Struct KSPIN_CINSTANCES
+	UInteger PossibleCount
+	UInteger CurrentCount
+End_Struct
+
+Struct KSPIN_CONNECT
+	KSIDENTIFIER Interface
+	KSIDENTIFIER Medium
+	UInteger PinId
+	Integer iMissingAlignment1
+	Pointer PinToHandle										// HANDLE
+	KSPRIORITY Priority
+End_Struct
+
+Struct KSPIN_MDL_CACHING_NOTIFICATION
+	Integer Event											// KSPIN_MDL_CACHING_EVENT
+	Integer iMissingAlignment1
+	Pointer Buffer											// Pointer*
+End_Struct
+
+Struct KSPIN_MDL_CACHING_NOTIFICATION32
+	Integer Event											// KSPIN_MDL_CACHING_EVENT
+	UInteger Buffer
+End_Struct
+
+Struct KSPIN_PHYSICALCONNECTION
+	UInteger Size
+	UInteger Pin
+	UShort[1] SymbolicLinkName
+	Short iMissingAlignment1
+End_Struct
+
+Struct KSPRIORITY
+	UInteger PriorityClass
+	UInteger PrioritySubClass
+End_Struct
+
+Struct KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_CAPS_S
+	UInteger InterleavedCapSupported
+End_Struct
+
+Struct KSPROPERTY_ALLOCATOR_CONTROL_CAPTURE_INTERLEAVE_S
+	UInteger InterleavedCapPossible
+End_Struct
+
+Struct KSPROPERTY_ALLOCATOR_CONTROL_SURFACE_SIZE_S
+	UInteger CX
+	UInteger CY
+End_Struct
+
+Struct KSPROPERTY_BOUNDS_LONG
+	_Anonymous_e__Union_3229 Anonymous
+End_Struct
+
+Struct KSPROPERTY_BOUNDS_LONGLONG
+	_Anonymous_e__Union_3232 Anonymous
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_FLASH_S
+	UInteger Flash
+	UInteger Capabilities
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_FOCAL_LENGTH_S
+	KSIDENTIFIER Property
+	Integer lOcularFocalLength
+	Integer lObjectiveFocalLengthMin
+	Integer lObjectiveFocalLengthMax
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_IMAGE_PIN_CAPABILITY_S
+	UInteger Capabilities
+	UInteger Reserved0
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_NODE_FOCAL_LENGTH_S
+	KSNODEPROPERTY NodeProperty
+	Integer lOcularFocalLength
+	Integer lObjectiveFocalLengthMin
+	Integer lObjectiveFocalLengthMax
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_NODE_S
+	KSP_NODE NodeProperty
+	Integer Value
+	UInteger Flags
+	UInteger Capabilities
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_NODE_S2
+	KSP_NODE NodeProperty
+	Integer Value1
+	UInteger Flags
+	UInteger Capabilities
+	Integer Value2
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_REGION_OF_INTEREST_S
+	RECT FocusRect
+	Integer AutoFocusLock									// BOOL
+	Integer AutoExposureLock								// BOOL
+	Integer AutoWhitebalanceLock							// BOOL
+	_Anonymous_e__Union_3251 Anonymous
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_S
+	KSIDENTIFIER Property
+	Integer Value
+	UInteger Flags
+	UInteger Capabilities
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_S2
+	KSIDENTIFIER Property
+	Integer Value1
+	UInteger Flags
+	UInteger Capabilities
+	Integer Value2
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_S_EX
+	KSIDENTIFIER Property
+	Integer Value
+	UInteger Flags
+	UInteger Capabilities
+	RECT FocusRect
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_CAMERACONTROL_VIDEOSTABILIZATION_MODE_S
+	UInteger VideoStabilizationMode
+	UInteger Capabilities
+End_Struct
+
+Struct KSPROPERTY_CROSSBAR_ACTIVE_S
+	KSIDENTIFIER Property
+	UInteger IndexInputPin
+	UInteger Active
+End_Struct
+
+Struct KSPROPERTY_CROSSBAR_CAPS_S
+	KSIDENTIFIER Property
+	UInteger NumberOfInputs
+	UInteger NumberOfOutputs
+End_Struct
+
+Struct KSPROPERTY_CROSSBAR_PININFO_S
+	KSIDENTIFIER Property
+	Integer Direction										// KSPIN_DATAFLOW
+	UInteger Index
+	UInteger PinType
+	UInteger RelatedPinIndex
+	KSIDENTIFIER Medium
+End_Struct
+
+Struct KSPROPERTY_CROSSBAR_ROUTE_S
+	KSIDENTIFIER Property
+	UInteger IndexInputPin
+	UInteger IndexOutputPin
+	UInteger CanRoute
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_DESCRIPTION
+	UInteger AccessFlags
+	UInteger DescriptionSize
+	KSIDENTIFIER PropTypeSet
+	UInteger MembersListCount
+	UInteger Reserved
+End_Struct
+
+Struct KSPROPERTY_DROPPEDFRAMES_CURRENT_S
+	KSIDENTIFIER Property
+	Bigint PictureNumber
+	Bigint DropCount
+	UInteger AverageFrameSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_EXTDEVICE_S
+	KSIDENTIFIER Property
+	_u_e__Union_3260 u
+End_Struct
+
+Struct KSPROPERTY_EXTXPORT_NODE_S
+	KSP_NODE NodeProperty
+	_u_e__Union_3264 u
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_EXTXPORT_S
+	KSIDENTIFIER Property
+	_u_e__Union_3261 u
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_MEDIAAVAILABLE
+	Bigint Earliest
+	Bigint Latest
+End_Struct
+
+Struct KSPROPERTY_MEMBERSHEADER
+	UInteger MembersFlags
+	UInteger MembersSize
+	UInteger MembersCount
+	UInteger Flags
+End_Struct
+
+Struct KSPROPERTY_NETWORKCAMERACONTROL_EVENT_INFO
+	KSCAMERA_METADATA_ITEMHEADER Header
+	UShort[1] EventFilter
+	Short iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_NETWORKCAMERACONTROL_METADATA_INFO
+	UInteger MetadataItems
+	UInteger Size
+	Integer PTZStatus										// BOOL
+	Integer Events											// BOOL
+	Integer Analytics										// BOOL
+	Integer Reserved										// BOOL
+End_Struct
+
+Struct KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_HEADER
+	UInteger Size
+	Integer Type											// KSPROPERTY_NETWORKCAMERACONTROL_NTPINFO_TYPE
+End_Struct
+
+Struct KSPROPERTY_POSITIONS
+	Bigint Current
+	Bigint Stop
+	Integer CurrentFlags									// KS_SEEKING_FLAGS
+	Integer StopFlags										// KS_SEEKING_FLAGS
+End_Struct
+
+Struct KSPROPERTY_SELECTOR_NODE_S
+	KSP_NODE NodeProperty
+	Integer Value
+	UInteger Flags
+	UInteger Capabilities
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_SELECTOR_S
+	KSIDENTIFIER Property
+	Integer Value
+	UInteger Flags
+	UInteger Capabilities
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KSPROPERTY_SERIAL
+	KSIDENTIFIER PropTypeSet
+	UInteger Id
+	UInteger PropertyLength
+End_Struct
+
+Struct KSPROPERTY_SERIALHDR
+	Guid PropertySet
+	UInteger Count
+End_Struct
+
+Struct KSPROPERTY_SPHLI
+	UShort HLISS
+	UShort Reserved
+	UInteger StartPTM
+	UInteger EndPTM
+	UShort StartX
+	UShort StartY
+	UShort StopX
+	UShort StopY
+	KS_COLCON ColCon
+End_Struct
+
+Struct KSPROPERTY_SPPAL
+	KS_DVD_YUV[16] sppal
+End_Struct
+
+Struct KSPROPERTY_STEPPING_LONG
+	UInteger SteppingDelta
+	UInteger Reserved
+	KSPROPERTY_BOUNDS_LONG Bounds
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

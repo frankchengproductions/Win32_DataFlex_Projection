@@ -1,0 +1,112 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_errinfow
+Struct DS_REPSYNCALL_ERRINFOW
+	Pointer pszSvrId										// PWSTR
+	Integer error											// DS_REPSYNCALL_ERROR
+	UInteger dwWin32Err
+	Pointer pszSrcId										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_synca
+Struct DS_REPSYNCALL_SYNCA
+	Pointer pszSrcId										// PSTR
+	Pointer pszDstId										// PSTR
+	Pointer pszNC											// PSTR
+	Pointer pguidSrc										// Guid*
+	Pointer pguidDst										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_syncw
+Struct DS_REPSYNCALL_SYNCW
+	Pointer pszSrcId										// PWSTR
+	Pointer pszDstId										// PWSTR
+	Pointer pszNC											// PWSTR
+	Pointer pguidSrc										// Guid*
+	Pointer pguidDst										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_updatea
+Struct DS_REPSYNCALL_UPDATEA
+	Integer event											// DS_REPSYNCALL_EVENT
+	Integer iMissingAlignment1
+	Pointer pErrInfo										// DS_REPSYNCALL_ERRINFOA*
+	Pointer pSync											// DS_REPSYNCALL_SYNCA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_repsyncall_updatew
+Struct DS_REPSYNCALL_UPDATEW
+	Integer event											// DS_REPSYNCALL_EVENT
+	Integer iMissingAlignment1
+	Pointer pErrInfo										// DS_REPSYNCALL_ERRINFOW*
+	Pointer pSync											// DS_REPSYNCALL_SYNCW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_schema_guid_mapa
+Struct DS_SCHEMA_GUID_MAPA
+	Guid guid
+	UInteger guidType
+	Integer iMissingAlignment1
+	Pointer pName											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_schema_guid_mapw
+Struct DS_SCHEMA_GUID_MAPW
+	Guid guid
+	UInteger guidType
+	Integer iMissingAlignment1
+	Pointer pName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objsel/ns-objsel-ds_selection
+Struct DS_SELECTION
+	Pointer pwzName											// PWSTR
+	Pointer pwzADsPath										// PWSTR
+	Pointer pwzClass										// PWSTR
+	Pointer pwzUPN											// PWSTR
+	Pointer pvarFetchedAttributes							// VARIANT*
+	UInteger flScopeType
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/objsel/ns-objsel-ds_selection_list
+Struct DS_SELECTION_LIST
+	UInteger cItems
+	UInteger cFetchedAttributes
+	DS_SELECTION[1] aDsSelection
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntdsapi/ns-ntdsapi-ds_site_cost_info
+Struct DS_SITE_COST_INFO
+	UInteger errorCode
+	UInteger cost
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cmnquery/ns-cmnquery-openquerywindow
+Struct OPENQUERYWINDOW
+	UInteger cbStruct
+	UInteger dwFlags
+	Guid clsidHandler
+	Pointer pHandlerParameters								// Pointer*
+	Guid clsidDefaultForm
+	Pointer pPersistQuery									// IPersistQuery
+	_Anonymous_e__Union_1703 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schedule/ns-schedule-schedule
+Struct SCHEDULE
+	UInteger Size
+	UInteger Bandwidth
+	UInteger NumberOfSchedules
+	SCHEDULE_HEADER[1] Schedules
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schedule/ns-schedule-schedule_header
+Struct SCHEDULE_HEADER
+	UInteger Type
+	UInteger Offset
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

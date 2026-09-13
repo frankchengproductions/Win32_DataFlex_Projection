@@ -1,0 +1,31 @@
+Use UI
+
+Struct CloudCampaignAssessment
+	Pointer name											// PWSTR
+	Pointer tool											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/waasapitypes/ns-waasapitypes-osupdateassessment
+Struct OSUpdateAssessment
+	Integer isEndOfSupport									// BOOL
+	UpdateAssessment assessmentForCurrent
+	UpdateAssessment assessmentForUpToDate
+	Integer securityStatus									// UpdateAssessmentStatus
+	FILETIME assessmentTime
+	FILETIME releaseInfoTime
+	Pointer currentOSBuild									// PWSTR
+	FILETIME currentOSReleaseTime
+	Pointer upToDateOSBuild									// PWSTR
+	FILETIME upToDateOSReleaseTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/waasapitypes/ns-waasapitypes-updateassessment
+Struct UpdateAssessment
+	Integer status											// UpdateAssessmentStatus
+	Integer impact											// UpdateImpactLevel
+	UInteger daysOutOfDate
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,653 @@
+Use UI
+
+Struct QCMINFO_IDMAP
+	UInteger nMaxIds
+	QCMINFO_IDMAP_PLACEMENT[1] pIdList
+End_Struct
+
+Struct QCMINFO_IDMAP_PLACEMENT
+	UInteger id
+	UInteger fFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlwapi/ns-shlwapi-qitab
+Struct QITAB
+	Pointer piid											// Guid*
+	UInteger dwOffset
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-sfvm_helptopic_data
+Struct SFVM_HELPTOPIC_DATA
+	UShort[260] wszHelpFile
+	UShort[260] wszHelpTopic
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-sfvm_proppage_data
+Struct SFVM_PROPPAGE_DATA
+	UInteger dwReserved
+	Integer iMissingAlignment1
+	Pointer pfn												// LPFNSVADDPROPSHEETPAGE
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-sfv_create
+Struct SFV_CREATE
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pshf											// IShellFolder
+	Pointer psvOuter										// IShellView
+	Pointer psfvcb											// IShellFolderViewCB
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/ns-shlobj-sfv_setitempos
+Struct SFV_SETITEMPOS
+	Pointer pidl											// ITEMIDLIST*
+	POINT pt
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shardappidinfo
+Struct SHARDAPPIDINFO
+	Pointer psi												// IShellItem
+	Pointer pszAppID										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shardappidinfoidlist
+Struct SHARDAPPIDINFOIDLIST
+	Pointer pidl											// ITEMIDLIST*
+	Pointer pszAppID										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shardappidinfolink
+Struct SHARDAPPIDINFOLINK
+	Pointer psl												// IShellLinkA
+	Pointer pszAppID										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/ns-shlobj-shcolumndata
+Struct SHCOLUMNDATA
+	UInteger dwFlags
+	UInteger dwFileAttributes
+	UInteger dwReserved
+	Integer iMissingAlignment1
+	Pointer pwszExt											// PWSTR
+	UShort[260] wszFile
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/ns-shlobj-shcolumninfo
+Struct SHCOLUMNINFO
+	PROPERTYKEY scid
+	UShort vt												// VARENUM
+	Short iMissingAlignment1
+	UInteger fmt
+	UInteger cChars
+	UInteger csFlags
+	UShort[80] wszTitle
+	UShort[128] wszDescription
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/ns-shlobj-shcolumninit
+Struct SHCOLUMNINIT
+	UInteger dwFlags
+	UInteger dwReserved
+	UShort[260] wszFolder
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shcreateprocessinfow
+Struct SHCREATEPROCESSINFOW
+	UInteger cbSize
+	UInteger fMask
+	Pointer hwnd											// HWND
+	Pointer pszFile											// PWSTR
+	Pointer pszParameters									// PWSTR
+	Pointer pszCurrentDirectory								// PWSTR
+	Pointer hUserToken										// HANDLE
+	Pointer lpProcessAttributes								// SECURITY_ATTRIBUTES*
+	Pointer lpThreadAttributes								// SECURITY_ATTRIBUTES*
+	Integer bInheritHandles									// BOOL
+	UInteger dwCreationFlags
+	Pointer lpStartupInfo									// STARTUPINFOW*
+	Pointer lpProcessInformation							// PROCESS_INFORMATION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shcreateprocessinfow
+Struct SHCREATEPROCESSINFOW
+	UInteger cbSize
+	UInteger fMask
+	Pointer hwnd											// HWND
+	Pointer pszFile											// PWSTR
+	Pointer pszParameters									// PWSTR
+	Pointer pszCurrentDirectory								// PWSTR
+	Pointer hUserToken										// HANDLE
+	Pointer lpProcessAttributes								// SECURITY_ATTRIBUTES*
+	Pointer lpThreadAttributes								// SECURITY_ATTRIBUTES*
+	Integer bInheritHandles									// BOOL
+	UInteger dwCreationFlags
+	Pointer lpStartupInfo									// STARTUPINFOW*
+	Pointer lpProcessInformation							// PROCESS_INFORMATION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shchangedwordasidlist
+Struct SHChangeDWORDAsIDList
+	UShort cb
+	Short iMissingAlignment1
+	UInteger dwItem1
+	UInteger dwItem2
+	UShort cbZero
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shchangenotifyentry
+Struct SHChangeNotifyEntry
+	Pointer pidl											// ITEMIDLIST*
+	Integer fRecursive										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/ns-shlobj-shchangeproductkeyasidlist
+Struct SHChangeProductKeyAsIDList
+	UShort cb
+	UShort[39] wszProductKey
+	UShort cbZero
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shchangeupdateimageidlist
+Struct SHChangeUpdateImageIDList
+	UShort cb
+	Short iMissingAlignment1
+	Integer iIconIndex
+	Integer iCurIndex
+	UInteger uFlags
+	UInteger dwProcessID
+	UShort[260] szName
+	UShort cbZero
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shdescriptionid
+Struct SHDESCRIPTIONID
+	UInteger dwDescriptionId
+	Guid clsid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-shdragimage
+Struct SHDRAGIMAGE
+	SIZE sizeDragImage
+	POINT ptOffset
+	Pointer hbmpDragImage									// HBITMAP
+	UInteger crColorKey										// COLORREF
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shellexecuteinfoa
+Struct SHELLEXECUTEINFOA
+	UInteger cbSize
+	UInteger fMask
+	Pointer hwnd											// HWND
+	Pointer lpVerb											// PSTR
+	Pointer lpFile											// PSTR
+	Pointer lpParameters									// PSTR
+	Pointer lpDirectory										// PSTR
+	Integer nShow
+	Integer iMissingAlignment1
+	Pointer hInstApp										// HINSTANCE
+	Pointer lpIDList										// Pointer*
+	Pointer lpClass											// PSTR
+	Pointer hkeyClass										// HKEY
+	UInteger dwHotKey
+	Integer iMissingAlignment2
+	_Anonymous_e__Union_1186 Anonymous
+	Pointer hProcess										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shellexecuteinfoa
+Struct SHELLEXECUTEINFOA
+	UInteger cbSize
+	UInteger fMask
+	Pointer hwnd											// HWND
+	Pointer lpVerb											// PSTR
+	Pointer lpFile											// PSTR
+	Pointer lpParameters									// PSTR
+	Pointer lpDirectory										// PSTR
+	Integer nShow
+	Integer iMissingAlignment1
+	Pointer hInstApp										// HINSTANCE
+	Pointer lpIDList										// Pointer*
+	Pointer lpClass											// PSTR
+	Pointer hkeyClass										// HKEY
+	UInteger dwHotKey
+	Integer iMissingAlignment2
+	_Anonymous_e__Union_3331 Anonymous
+	Pointer hProcess										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shellexecuteinfow
+Struct SHELLEXECUTEINFOW
+	UInteger cbSize
+	UInteger fMask
+	Pointer hwnd											// HWND
+	Pointer lpVerb											// PWSTR
+	Pointer lpFile											// PWSTR
+	Pointer lpParameters									// PWSTR
+	Pointer lpDirectory										// PWSTR
+	Integer nShow
+	Integer iMissingAlignment1
+	Pointer hInstApp										// HINSTANCE
+	Pointer lpIDList										// Pointer*
+	Pointer lpClass											// PWSTR
+	Pointer hkeyClass										// HKEY
+	UInteger dwHotKey
+	Integer iMissingAlignment2
+	_Anonymous_e__Union_1187 Anonymous
+	Pointer hProcess										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shellexecuteinfow
+Struct SHELLEXECUTEINFOW
+	UInteger cbSize
+	UInteger fMask
+	Pointer hwnd											// HWND
+	Pointer lpVerb											// PWSTR
+	Pointer lpFile											// PWSTR
+	Pointer lpParameters									// PWSTR
+	Pointer lpDirectory										// PWSTR
+	Integer nShow
+	Integer iMissingAlignment1
+	Pointer hInstApp										// HINSTANCE
+	Pointer lpIDList										// Pointer*
+	Pointer lpClass											// PWSTR
+	Pointer hkeyClass										// HKEY
+	UInteger dwHotKey
+	Integer iMissingAlignment2
+	_Anonymous_e__Union_3332 Anonymous
+	Pointer hProcess										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shellflagstate
+Struct SHELLFLAGSTATE
+	Integer _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shellstatea
+Struct SHELLSTATEA
+	Integer _bitfield1
+	UInteger dwWin95Unused
+	UInteger uWin95Unused
+	Integer lParamSort
+	Integer iSortDirection
+	UInteger version
+	UInteger uNotUsed
+	Integer _bitfield2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shellstatew
+Struct SHELLSTATEW
+	Integer _bitfield1
+	UInteger dwWin95Unused
+	UInteger uWin95Unused
+	Integer lParamSort
+	Integer iSortDirection
+	UInteger version
+	UInteger uNotUsed
+	Integer _bitfield2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-shell_item_resource
+Struct SHELL_ITEM_RESOURCE
+	Guid guidType
+	UShort[260] szName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileinfoa
+Struct SHFILEINFOA
+	Pointer hIcon											// HICON
+	Integer iIcon
+	UInteger dwAttributes
+	Char[260] szDisplayName									// CHAR
+	Char[80] szTypeName										// CHAR
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileinfoa
+Struct SHFILEINFOA
+	Pointer hIcon											// HICON
+	Integer iIcon
+	UInteger dwAttributes
+	Char[260] szDisplayName									// CHAR
+	Char[80] szTypeName										// CHAR
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileinfow
+Struct SHFILEINFOW
+	Pointer hIcon											// HICON
+	Integer iIcon
+	UInteger dwAttributes
+	UShort[260] szDisplayName
+	UShort[80] szTypeName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileinfow
+Struct SHFILEINFOW
+	Pointer hIcon											// HICON
+	Integer iIcon
+	UInteger dwAttributes
+	UShort[260] szDisplayName
+	UShort[80] szTypeName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileopstructa
+Struct SHFILEOPSTRUCTA
+	Pointer hwnd											// HWND
+	UInteger wFunc
+	Integer iMissingAlignment1
+	Pointer pFrom											// Char*
+	Pointer pTo												// Char*
+	UShort fFlags
+	Short iMissingAlignment2
+	Integer fAnyOperationsAborted							// BOOL
+	Pointer hNameMappings									// Pointer*
+	Pointer lpszProgressTitle								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileopstructa
+Struct SHFILEOPSTRUCTA
+	Pointer hwnd											// HWND
+	UInteger wFunc
+	Integer iMissingAlignment1
+	Pointer pFrom											// Char*
+	Pointer pTo												// Char*
+	UShort fFlags
+	Short iMissingAlignment2
+	Integer fAnyOperationsAborted							// BOOL
+	Pointer hNameMappings									// Pointer*
+	Pointer lpszProgressTitle								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileopstructw
+Struct SHFILEOPSTRUCTW
+	Pointer hwnd											// HWND
+	UInteger wFunc
+	Integer iMissingAlignment1
+	Pointer pFrom											// PWSTR
+	Pointer pTo												// PWSTR
+	UShort fFlags
+	Short iMissingAlignment2
+	Integer fAnyOperationsAborted							// BOOL
+	Pointer hNameMappings									// Pointer*
+	Pointer lpszProgressTitle								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shfileopstructw
+Struct SHFILEOPSTRUCTW
+	Pointer hwnd											// HWND
+	UInteger wFunc
+	Integer iMissingAlignment1
+	Pointer pFrom											// PWSTR
+	Pointer pTo												// PWSTR
+	UShort fFlags
+	Short iMissingAlignment2
+	Integer fAnyOperationsAborted							// BOOL
+	Pointer hNameMappings									// Pointer*
+	Pointer lpszProgressTitle								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj_core/ns-shlobj_core-shfoldercustomsettings
+Struct SHFOLDERCUSTOMSETTINGS
+	UInteger dwSize
+	UInteger dwMask
+	Pointer pvid											// Guid*
+	Pointer pszWebViewTemplate								// PWSTR
+	UInteger cchWebViewTemplate
+	Integer iMissingAlignment1
+	Pointer pszWebViewTemplateVersion						// PWSTR
+	Pointer pszInfoTip										// PWSTR
+	UInteger cchInfoTip
+	Integer iMissingAlignment2
+	Pointer pclsid											// Guid*
+	UInteger dwFlags
+	Integer iMissingAlignment3
+	Pointer pszIconFile										// PWSTR
+	UInteger cchIconFile
+	Integer iIconIndex
+	Pointer pszLogo											// PWSTR
+	UInteger cchLogo
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shnamemappinga
+Struct SHNAMEMAPPINGA
+	Pointer pszOldPath										// PSTR
+	Pointer pszNewPath										// PSTR
+	Integer cchOldPath
+	Integer cchNewPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shnamemappinga
+Struct SHNAMEMAPPINGA
+	Pointer pszOldPath										// PSTR
+	Pointer pszNewPath										// PSTR
+	Integer cchOldPath
+	Integer cchNewPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shnamemappingw
+Struct SHNAMEMAPPINGW
+	Pointer pszOldPath										// PWSTR
+	Pointer pszNewPath										// PWSTR
+	Integer cchOldPath
+	Integer cchNewPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shnamemappingw
+Struct SHNAMEMAPPINGW
+	Pointer pszOldPath										// PWSTR
+	Pointer pszNewPath										// PWSTR
+	Integer cchOldPath
+	Integer cchNewPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shqueryrbinfo
+Struct SHQUERYRBINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Bigint i64Size
+	Bigint i64NumItems
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shqueryrbinfo
+Struct SHQUERYRBINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Bigint i64Size
+	Bigint i64NumItems
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shstockiconinfo
+Struct SHSTOCKICONINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hIcon											// HICON
+	Integer iSysImageIndex
+	Integer iIcon
+	UShort[260] szPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shellapi/ns-shellapi-shstockiconinfo
+Struct SHSTOCKICONINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hIcon											// HICON
+	Integer iSysImageIndex
+	Integer iIcon
+	UShort[260] szPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shappmgr/ns-shappmgr-slowappinfo
+Struct SLOWAPPINFO
+	UBigint ullSize
+	FILETIME ftLastUsed
+	Integer iTimesUsed
+	Integer iMissingAlignment1
+	Pointer pszImage										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-smcshchangenotifystruct
+Struct SMCSHCHANGENOTIFYSTRUCT
+	Integer lEvent
+	Integer iMissingAlignment1
+	Pointer pidl1											// ITEMIDLIST*
+	Pointer pidl2											// ITEMIDLIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-smdata
+Struct SMDATA
+	UInteger dwMask
+	UInteger dwFlags
+	Pointer hmenu											// HMENU
+	Pointer hwnd											// HWND
+	UInteger uId
+	UInteger uIdParent
+	UInteger uIdAncestor
+	Integer iMissingAlignment1
+	Pointer punk											// IUnknown
+	Pointer pidlFolder										// ITEMIDLIST*
+	Pointer pidlItem										// ITEMIDLIST*
+	Pointer psf												// IShellFolder
+	Pointer pvUserData										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-sminfo
+Struct SMINFO
+	UInteger dwMask
+	UInteger dwType
+	UInteger dwFlags
+	Integer iIcon
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-sortcolumn
+Struct SORTCOLUMN
+	PROPERTYKEY propkey
+	Integer direction										// SORTDIRECTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-sv2cvw2_params
+Struct SV2CVW2_PARAMS
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer psvPrev											// IShellView
+	Pointer pfs												// FOLDERSETTINGS*
+	Pointer psbOwner										// IShellBrowser
+	Pointer prcView											// RECT*
+	Pointer pvid											// Guid*
+	Pointer hwndView										// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mobsync/ns-mobsync-syncmgrhandlerinfo
+Struct SYNCMGRHANDLERINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hIcon											// HICON
+	UInteger SyncMgrHandlerFlags
+	UShort[32] wszHandlerName
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mobsync/ns-mobsync-syncmgritem
+Struct SYNCMGRITEM
+	UInteger cbSize
+	UInteger dwFlags
+	Guid ItemID
+	UInteger dwItemState
+	Integer iMissingAlignment1
+	Pointer hIcon											// HICON
+	UShort[128] wszItemName
+	FILETIME ftLastUpdate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mobsync/ns-mobsync-syncmgrlogerrorinfo
+Struct SYNCMGRLOGERRORINFO
+	UInteger cbSize
+	UInteger mask
+	UInteger dwSyncMgrErrorFlags
+	Guid ErrorID
+	Guid ItemID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mobsync/ns-mobsync-syncmgrprogressitem
+Struct SYNCMGRPROGRESSITEM
+	UInteger cbSize
+	UInteger mask
+	Pointer lpcStatusText									// PWSTR
+	UInteger dwStatusType
+	Integer iProgValue
+	Integer iMaxValue
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/syncmgr/ns-syncmgr-syncmgr_conflict_id_info
+Struct SYNCMGR_CONFLICT_ID_INFO
+	Pointer pblobID											// BYTE_BLOB*
+	Pointer pblobExtra										// BYTE_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shlobj/ns-shlobj-tbinfo
+Struct TBINFO
+	UInteger cbuttons
+	UInteger uFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shobjidl_core/ns-shobjidl_core-thumbbutton
+Struct THUMBBUTTON
+	Integer dwMask											// THUMBBUTTONMASK
+	UInteger iId
+	UInteger iBitmap
+	Integer iMissingAlignment1
+	Pointer hIcon											// HICON
+	UShort[260] szTip
+	Integer dwFlags											// THUMBBUTTONFLAGS
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/shdeprecated/ns-shdeprecated-toolbaritem
+Struct TOOLBARITEM
+	Pointer ptbar											// IDockingWindow
+	RECT rcBorderTool
+	Pointer pwszItem										// PWSTR
+	Integer fShow											// BOOL
+	Integer iMissingAlignment1
+	Pointer hMon											// HMONITOR
+End_Struct
+
+Struct URLINVOKECOMMANDINFOA
+	UInteger dwcbSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer pcszVerb										// PSTR
+End_Struct
+
+Struct URLINVOKECOMMANDINFOW
+	UInteger dwcbSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer pcszVerb										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tlogstg/ns-tlogstg-windowdata
+Struct WINDOWDATA
+	UInteger dwWindowID
+	UInteger uiCP
+	Pointer pidl											// ITEMIDLIST*
+	Pointer lpszUrl											// PWSTR
+	Pointer lpszUrlLocation									// PWSTR
+	Pointer lpszTitle										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/thumbcache/ns-thumbcache-wts_thumbnailid
+Struct WTS_THUMBNAILID
+	UChar[16] rgbKey
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

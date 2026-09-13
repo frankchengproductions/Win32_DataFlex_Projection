@@ -1,0 +1,73 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winsync/ns-winsync-id_parameters
+Struct ID_PARAMETERS
+	UInteger dwSize
+	ID_PARAMETER_PAIR replicaId
+	ID_PARAMETER_PAIR itemId
+	ID_PARAMETER_PAIR changeUnitId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsync/ns-winsync-id_parameter_pair
+Struct ID_PARAMETER_PAIR
+	Integer fIsVariable										// BOOL
+	UShort cbIdSize
+	Short iMissingAlignment1
+End_Struct
+
+Struct SYNC_FILTER_CHANGE
+	Integer fMoveIn											// BOOL
+	Integer iMissingAlignment1
+	SYNC_VERSION moveVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsync/ns-winsync-sync_range
+Struct SYNC_RANGE
+	Pointer pbClosedLowerBound								// UChar*
+	Pointer pbClosedUpperBound								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsync/ns-winsync-sync_session_statistics
+Struct SYNC_SESSION_STATISTICS
+	UInteger dwChangesApplied
+	UInteger dwChangesFailed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsync/ns-winsync-sync_time
+Struct SYNC_TIME
+	UInteger dwDate
+	UInteger dwTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsync/ns-winsync-sync_version
+Struct SYNC_VERSION
+	UInteger dwLastUpdatingReplicaKey
+	Integer iMissingAlignment1
+	UBigint ullTickCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/syncregistration/ns-syncregistration-syncproviderconfiguiconfiguration
+Struct SyncProviderConfigUIConfiguration
+	UInteger dwVersion
+	Guid guidInstanceId
+	Guid clsidConfigUI
+	Guid guidContentType
+	UInteger dwCapabilities
+	UInteger dwSupportedArchitecture
+	Integer fIsGlobal										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/syncregistration/ns-syncregistration-syncproviderconfiguration
+Struct SyncProviderConfiguration
+	UInteger dwVersion
+	Guid guidInstanceId
+	Guid clsidProvider
+	Guid guidConfigUIInstanceId
+	Guid guidContentType
+	UInteger dwCapabilities
+	UInteger dwSupportedArchitecture
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

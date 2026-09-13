@@ -1,0 +1,970 @@
+Use UI
+
+Struct _Anonymous1_e__Union_2737
+	// Guid controllerPortId // (16)
+	// Guid targetPortalId // (16)
+	Guid controllerPortId
+End_Struct
+
+Struct _Anonymous2_e__Union_2738
+	// Guid hbaPortId // (16)
+	// Guid initiatorAdapterId // (16)
+	Guid hbaPortId
+End_Struct
+
+Struct _Anonymous3_e__Union_2739
+	// Pointer pHbaPortProp									// VDS_HBAPORT_PROP* // (8)
+	// Pointer pInitiatorPortalIpAddr							// VDS_IPADDRESS* // (8)
+	Pointer pHbaPortProp
+End_Struct
+
+Struct _Anonymous_e__Union_2727
+	// VDS_PACK_NOTIFICATION Pack // (20)
+	// VDS_DISK_NOTIFICATION Disk // (20)
+	// VDS_VOLUME_NOTIFICATION Volume // (40)
+	// VDS_PARTITION_NOTIFICATION Partition // (32)
+	// VDS_DRIVE_LETTER_NOTIFICATION Letter // (24)
+	// VDS_FILE_SYSTEM_NOTIFICATION FileSystem // (24)
+	// VDS_MOUNT_POINT_NOTIFICATION MountPoint // (20)
+	// VDS_SUB_SYSTEM_NOTIFICATION SubSystem // (20)
+	// VDS_CONTROLLER_NOTIFICATION Controller // (20)
+	// VDS_DRIVE_NOTIFICATION Drive // (20)
+	// VDS_LUN_NOTIFICATION Lun // (20)
+	// VDS_PORT_NOTIFICATION Port // (20)
+	// VDS_PORTAL_NOTIFICATION Portal // (20)
+	// VDS_TARGET_NOTIFICATION Target // (20)
+	// VDS_PORTAL_GROUP_NOTIFICATION PortalGroup // (20)
+	// VDS_SERVICE_NOTIFICATION Service // (8)
+	VDS_VOLUME_NOTIFICATION Volume
+End_Struct
+
+Struct _Anonymous_e__Union_2728
+	// _cp_2729 cp // (24)
+	// _cv_2730 cv // (8)
+	// _bvp_2731 bvp // (8)
+	// _sv_2732 sv // (8)
+	// _cl_2733 cl // (8)
+	// _ct_2734 ct // (8)
+	// _cpg_2735 cpg // (8)
+	// _cvd_2736 cvd // (8)
+	_cp_2729 cp
+End_Struct
+
+Struct _Anonymous_e__Union_2740
+	// UInteger dwSignature // (4)
+	// Guid DiskGuid // (16)
+	Guid DiskGuid
+End_Struct
+
+Struct _Anonymous_e__Union_2741
+	// UInteger dwSignature // (4)
+	// Guid DiskGuid // (16)
+	Guid DiskGuid
+End_Struct
+
+Struct _Anonymous_e__Union_2742
+	// UInteger dwSignature // (4)
+	// Guid DiskGuid // (16)
+	Guid DiskGuid
+End_Struct
+
+Struct _Anonymous_e__Union_2743
+	// VDS_PARTITION_INFO_MBR Mbr // (8)
+	// VDS_PARTITION_INFO_GPT Gpt // (112)
+	VDS_PARTITION_INFO_GPT Gpt
+End_Struct
+
+Struct _Anonymous_e__Union_2744
+	// VDS_PARTITION_INFO_MBR Mbr // (8)
+	// VDS_PARTITION_INFO_GPT Gpt // (112)
+	VDS_PARTITION_INFO_GPT Gpt
+End_Struct
+
+Struct _Anonymous_e__Union_2745
+	// _MbrPartInfo_e__Struct_2746 MbrPartInfo // (2)
+	// _GptPartInfo_e__Struct_2747 GptPartInfo // (112)
+	_GptPartInfo_e__Struct_2747 GptPartInfo
+End_Struct
+
+Struct _Anonymous_e__Union_2748
+	// _MbrPartInfo_e__Struct_2749 MbrPartInfo // (1)
+	// _GptPartInfo_e__Struct_2750 GptPartInfo // (8)
+	_GptPartInfo_e__Struct_2750 GptPartInfo
+End_Struct
+
+Struct _Anonymous_e__Union_2751
+	// _MbrPartInfo_e__Struct_2752 MbrPartInfo // (1)
+	// _GptPartInfo_e__Struct_2753 GptPartInfo // (16)
+	_GptPartInfo_e__Struct_2753 GptPartInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-change_attributes_parameters
+Struct CHANGE_ATTRIBUTES_PARAMETERS
+	Integer style											// VDS_PARTITION_STYLE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2748 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-change_partition_type_parameters
+Struct CHANGE_PARTITION_TYPE_PARAMETERS
+	Integer style											// VDS_PARTITION_STYLE
+	_Anonymous_e__Union_2751 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-create_partition_parameters
+Struct CREATE_PARTITION_PARAMETERS
+	Integer style											// VDS_PARTITION_STYLE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2745 Anonymous
+End_Struct
+
+Struct VDS_ADVANCEDDISK_PROP
+	Pointer pwszId											// PWSTR
+	Pointer pwszPathname									// PWSTR
+	Pointer pwszLocation									// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pswzIdentifier									// PWSTR
+	UShort usIdentifierFormat
+	Short iMissingAlignment1
+	UInteger ulNumber
+	Pointer pwszSerialNumber								// PWSTR
+	Pointer pwszFirmwareVersion								// PWSTR
+	Pointer pwszManufacturer								// PWSTR
+	Pointer pwszModel										// PWSTR
+	UBigint ullTotalSize
+	UBigint ullAllocatedSize
+	UInteger ulLogicalSectorSize
+	UInteger ulPhysicalSectorSize
+	UInteger ulPartitionCount
+	Integer status											// VDS_DISK_STATUS
+	Integer health											// VDS_HEALTH
+	Integer BusType											// VDS_STORAGE_BUS_TYPE
+	Integer PartitionStyle									// VDS_PARTITION_STYLE
+	_Anonymous_e__Union_2742 Anonymous
+	UInteger ulFlags
+	UInteger dwDeviceType
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_async_output
+Struct VDS_ASYNC_OUTPUT
+	Integer type											// VDS_ASYNC_OUTPUT_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2728 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_controller_notification
+Struct VDS_CONTROLLER_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_CONTROLLER
+	Guid controllerId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_controller_prop
+Struct VDS_CONTROLLER_PROP
+	Guid id
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	Integer status											// VDS_CONTROLLER_STATUS
+	Integer health											// VDS_HEALTH
+	Short sNumberOfPorts
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_create_vdisk_parameters
+Struct VDS_CREATE_VDISK_PARAMETERS
+	Guid UniqueId
+	UBigint MaximumSize
+	UInteger BlockSizeInBytes
+	UInteger SectorSizeInBytes
+	Pointer pParentPath										// PWSTR
+	Pointer pSourcePath										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_disk_extent
+Struct VDS_DISK_EXTENT
+	Guid diskId
+	Integer type											// VDS_DISK_EXTENT_TYPE
+	Integer iMissingAlignment1
+	UBigint ullOffset
+	UBigint ullSize
+	Guid volumeId
+	Guid plexId
+	UInteger memberIdx
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_disk_free_extent
+Struct VDS_DISK_FREE_EXTENT
+	Guid diskId
+	UBigint ullOffset
+	UBigint ullSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_disk_notification
+Struct VDS_DISK_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_DISK
+	Guid diskId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_disk_prop
+Struct VDS_DISK_PROP
+	Guid id
+	Integer status											// VDS_DISK_STATUS
+	Integer ReserveMode										// VDS_LUN_RESERVE_MODE
+	Integer health											// VDS_HEALTH
+	UInteger dwDeviceType
+	UInteger dwMediaType
+	Integer iMissingAlignment1
+	UBigint ullSize
+	UInteger ulBytesPerSector
+	UInteger ulSectorsPerTrack
+	UInteger ulTracksPerCylinder
+	UInteger ulFlags
+	Integer BusType											// VDS_STORAGE_BUS_TYPE
+	Integer PartitionStyle									// VDS_PARTITION_STYLE
+	_Anonymous_e__Union_2740 Anonymous
+	Pointer pwszDiskAddress									// PWSTR
+	Pointer pwszName										// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszAdaptorName									// PWSTR
+	Pointer pwszDevicePath									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_disk_prop2
+Struct VDS_DISK_PROP2
+	Guid id
+	Integer status											// VDS_DISK_STATUS
+	Integer OfflineReason									// VDS_DISK_OFFLINE_REASON
+	Integer ReserveMode										// VDS_LUN_RESERVE_MODE
+	Integer health											// VDS_HEALTH
+	UInteger dwDeviceType
+	UInteger dwMediaType
+	UBigint ullSize
+	UInteger ulBytesPerSector
+	UInteger ulSectorsPerTrack
+	UInteger ulTracksPerCylinder
+	UInteger ulFlags
+	Integer BusType											// VDS_STORAGE_BUS_TYPE
+	Integer PartitionStyle									// VDS_PARTITION_STYLE
+	_Anonymous_e__Union_2741 Anonymous
+	Pointer pwszDiskAddress									// PWSTR
+	Pointer pwszName										// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszAdaptorName									// PWSTR
+	Pointer pwszDevicePath									// PWSTR
+	Pointer pwszLocationPath								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_drive_extent
+Struct VDS_DRIVE_EXTENT
+	Guid id
+	Guid LunId
+	UBigint ullSize
+	Integer bUsed											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_drive_letter_notification
+Struct VDS_DRIVE_LETTER_NOTIFICATION
+	UInteger ulEvent
+	UShort wcLetter
+	Short iMissingAlignment1
+	Guid volumeId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_drive_letter_prop
+Struct VDS_DRIVE_LETTER_PROP
+	UShort wcLetter
+	Short iMissingAlignment1
+	Guid volumeId
+	UInteger ulFlags
+	Integer bUsed											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_drive_notification
+Struct VDS_DRIVE_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_DRIVE
+	Guid driveId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_drive_prop
+Struct VDS_DRIVE_PROP
+	Guid id
+	UBigint ullSize
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	UInteger ulFlags
+	Integer status											// VDS_DRIVE_STATUS
+	Integer health											// VDS_HEALTH
+	Short sInternalBusNumber
+	Short sSlotNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_drive_prop2
+Struct VDS_DRIVE_PROP2
+	Guid id
+	UBigint ullSize
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	UInteger ulFlags
+	Integer status											// VDS_DRIVE_STATUS
+	Integer health											// VDS_HEALTH
+	Short sInternalBusNumber
+	Short sSlotNumber
+	UInteger ulEnclosureNumber
+	Integer busType											// VDS_STORAGE_BUS_TYPE
+	UInteger ulSpindleSpeed
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_file_system_format_support_prop
+Struct VDS_FILE_SYSTEM_FORMAT_SUPPORT_PROP
+	UInteger ulFlags
+	UShort usRevision
+	Short iMissingAlignment1
+	UInteger ulDefaultUnitAllocationSize
+	UInteger[32] rgulAllowedUnitAllocationSizes
+	UShort[32] wszName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_file_system_notification
+Struct VDS_FILE_SYSTEM_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_FILE_SYSTEM
+	Guid volumeId
+	UInteger dwPercentCompleted
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_file_system_prop
+Struct VDS_FILE_SYSTEM_PROP
+	Integer type											// VDS_FILE_SYSTEM_TYPE
+	Guid volumeId
+	UInteger ulFlags
+	UBigint ullTotalAllocationUnits
+	UBigint ullAvailableAllocationUnits
+	UInteger ulAllocationUnitSize
+	Integer iMissingAlignment1
+	Pointer pwszLabel										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_file_system_type_prop
+Struct VDS_FILE_SYSTEM_TYPE_PROP
+	Integer type											// VDS_FILE_SYSTEM_TYPE
+	UShort[8] wszName
+	UInteger ulFlags
+	UInteger ulCompressionFlags
+	UInteger ulMaxLableLength
+	Pointer pwszIllegalLabelCharSet							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_hbaport_prop
+Struct VDS_HBAPORT_PROP
+	Guid id
+	VDS_WWN wwnNode
+	VDS_WWN wwnPort
+	Integer type											// VDS_HBAPORT_TYPE
+	Integer status											// VDS_HBAPORT_STATUS
+	UInteger ulPortSpeed
+	UInteger ulSupportedPortSpeed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_hints
+Struct VDS_HINTS
+	UBigint ullHintMask
+	UBigint ullExpectedMaximumSize
+	UInteger ulOptimalReadSize
+	UInteger ulOptimalReadAlignment
+	UInteger ulOptimalWriteSize
+	UInteger ulOptimalWriteAlignment
+	UInteger ulMaximumDriveCount
+	UInteger ulStripeSize
+	Integer bFastCrashRecoveryRequired						// BOOL
+	Integer bMostlyReads									// BOOL
+	Integer bOptimizeForSequentialReads						// BOOL
+	Integer bOptimizeForSequentialWrites					// BOOL
+	Integer bRemapEnabled									// BOOL
+	Integer bReadBackVerifyEnabled							// BOOL
+	Integer bWriteThroughCachingEnabled						// BOOL
+	Integer bHardwareChecksumEnabled						// BOOL
+	Integer bIsYankable										// BOOL
+	Short sRebuildPriority
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_hints2
+Struct VDS_HINTS2
+	UBigint ullHintMask
+	UBigint ullExpectedMaximumSize
+	UInteger ulOptimalReadSize
+	UInteger ulOptimalReadAlignment
+	UInteger ulOptimalWriteSize
+	UInteger ulOptimalWriteAlignment
+	UInteger ulMaximumDriveCount
+	UInteger ulStripeSize
+	UInteger ulReserved1
+	UInteger ulReserved2
+	UInteger ulReserved3
+	Integer bFastCrashRecoveryRequired						// BOOL
+	Integer bMostlyReads									// BOOL
+	Integer bOptimizeForSequentialReads						// BOOL
+	Integer bOptimizeForSequentialWrites					// BOOL
+	Integer bRemapEnabled									// BOOL
+	Integer bReadBackVerifyEnabled							// BOOL
+	Integer bWriteThroughCachingEnabled						// BOOL
+	Integer bHardwareChecksumEnabled						// BOOL
+	Integer bIsYankable										// BOOL
+	Integer bAllocateHotSpare								// BOOL
+	Integer bUseMirroredCache								// BOOL
+	Integer bReadCachingEnabled								// BOOL
+	Integer bWriteCachingEnabled							// BOOL
+	Integer bMediaScanEnabled								// BOOL
+	Integer bConsistencyCheckEnabled						// BOOL
+	Integer BusType											// VDS_STORAGE_BUS_TYPE
+	Integer bReserved1										// BOOL
+	Integer bReserved2										// BOOL
+	Integer bReserved3										// BOOL
+	Short sRebuildPriority
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_input_disk
+Struct VDS_INPUT_DISK
+	Guid diskId
+	UBigint ullSize
+	Guid plexId
+	UInteger memberIdx
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdslun/ns-vdslun-vds_interconnect
+Struct VDS_INTERCONNECT
+	Integer m_addressType									// VDS_INTERCONNECT_ADDRESS_TYPE
+	UInteger m_cbPort
+	Pointer m_pbPort										// UChar*
+	UInteger m_cbAddress
+	Integer iMissingAlignment1
+	Pointer m_pbAddress										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_ipaddress
+Struct VDS_IPADDRESS
+	Integer type											// VDS_IPADDRESS_TYPE
+	UInteger ipv4Address
+	UChar[16] ipv6Address
+	UInteger ulIpv6FlowInfo
+	UInteger ulIpv6ScopeId
+	UShort[257] wszTextAddress
+	Short iMissingAlignment1
+	UInteger ulPort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_initiator_adapter_prop
+Struct VDS_ISCSI_INITIATOR_ADAPTER_PROP
+	Guid id
+	Pointer pwszName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_initiator_portal_prop
+Struct VDS_ISCSI_INITIATOR_PORTAL_PROP
+	Guid id
+	VDS_IPADDRESS address
+	UInteger ulPortIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_ipsec_key
+Struct VDS_ISCSI_IPSEC_KEY
+	Pointer pKey											// UChar*
+	UInteger ulKeySize
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_portalgroup_prop
+Struct VDS_ISCSI_PORTALGROUP_PROP
+	Guid id
+	UShort tag
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_portal_prop
+Struct VDS_ISCSI_PORTAL_PROP
+	Guid id
+	VDS_IPADDRESS address
+	Integer status											// VDS_ISCSI_PORTAL_STATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_shared_secret
+Struct VDS_ISCSI_SHARED_SECRET
+	Pointer pSharedSecret									// UChar*
+	UInteger ulSharedSecretSize
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_iscsi_target_prop
+Struct VDS_ISCSI_TARGET_PROP
+	Guid id
+	Pointer pwszIscsiName									// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	Integer bChapEnabled									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdslun/ns-vdslun-vds_lun_information
+Struct VDS_LUN_INFORMATION
+	UInteger m_version
+	UChar m_DeviceType
+	UChar m_DeviceTypeModifier
+	Short iMissingAlignment1
+	Integer m_bCommandQueueing								// BOOL
+	Integer m_BusType										// VDS_STORAGE_BUS_TYPE
+	Pointer m_szVendorId									// UChar*
+	Pointer m_szProductId									// UChar*
+	Pointer m_szProductRevision								// UChar*
+	Pointer m_szSerialNumber								// UChar*
+	Guid m_diskSignature
+	VDS_STORAGE_DEVICE_ID_DESCRIPTOR m_deviceIdDescriptor
+	UInteger m_cInterconnects
+	Integer iMissingAlignment2
+	Pointer m_rgInterconnects								// VDS_INTERCONNECT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_lun_notification
+Struct VDS_LUN_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_LUN
+	Guid LunId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_lun_plex_prop
+Struct VDS_LUN_PLEX_PROP
+	Guid id
+	UBigint ullSize
+	Integer type											// VDS_LUN_PLEX_TYPE
+	Integer status											// VDS_LUN_PLEX_STATUS
+	Integer health											// VDS_HEALTH
+	Integer TransitionState									// VDS_TRANSITION_STATE
+	UInteger ulFlags
+	UInteger ulStripeSize
+	Short sRebuildPriority
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_lun_prop
+Struct VDS_LUN_PROP
+	Guid id
+	UBigint ullSize
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	Pointer pwszUnmaskingList								// PWSTR
+	UInteger ulFlags
+	Integer type											// VDS_LUN_TYPE
+	Integer status											// VDS_LUN_STATUS
+	Integer health											// VDS_HEALTH
+	Integer TransitionState									// VDS_TRANSITION_STATE
+	Short sRebuildPriority
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_mount_point_notification
+Struct VDS_MOUNT_POINT_NOTIFICATION
+	UInteger ulEvent
+	Guid volumeId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_notification
+Struct VDS_NOTIFICATION
+	Integer objectType										// VDS_NOTIFICATION_TARGET_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2727 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_pack_notification
+Struct VDS_PACK_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_PACK
+	Guid packId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_pack_prop
+Struct VDS_PACK_PROP
+	Guid id
+	Pointer pwszName										// PWSTR
+	Integer status											// VDS_PACK_STATUS
+	UInteger ulFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_partition_information_ex
+Struct VDS_PARTITION_INFORMATION_EX
+	Integer dwPartitionStyle								// __VDS_PARTITION_STYLE
+	Integer iMissingAlignment1
+	UBigint ullStartingOffset
+	UBigint ullPartitionLength
+	UInteger dwPartitionNumber
+	UChar bRewritePartition									// BOOLEAN
+	UChar[3] cMissingAlignment2
+	_Anonymous_e__Union_2744 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_partition_info_gpt
+Struct VDS_PARTITION_INFO_GPT
+	Guid partitionType
+	Guid partitionId
+	UBigint attributes
+	UShort[36] name
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_partition_info_mbr
+Struct VDS_PARTITION_INFO_MBR
+	UChar partitionType
+	UChar bootIndicator										// BOOLEAN
+	UChar recognizedPartition								// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UInteger hiddenSectors
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_partition_notification
+Struct VDS_PARTITION_NOTIFICATION
+	UInteger ulEvent
+	Guid diskId
+	Integer iMissingAlignment1
+	UBigint ullOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_partition_prop
+Struct VDS_PARTITION_PROP
+	Integer PartitionStyle									// VDS_PARTITION_STYLE
+	UInteger ulFlags
+	UInteger ulPartitionNumber
+	Integer iMissingAlignment1
+	UBigint ullOffset
+	UBigint ullSize
+	_Anonymous_e__Union_2743 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_path_id
+Struct VDS_PATH_ID
+	UBigint ullSourceId
+	UBigint ullPathId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_path_info
+Struct VDS_PATH_INFO
+	VDS_PATH_ID pathId
+	Integer type											// VDS_HWPROVIDER_TYPE
+	Integer status											// VDS_PATH_STATUS
+	_Anonymous1_e__Union_2737 Anonymous1
+	_Anonymous2_e__Union_2738 Anonymous2
+	_Anonymous3_e__Union_2739 Anonymous3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_path_policy
+Struct VDS_PATH_POLICY
+	VDS_PATH_ID pathId
+	Integer bPrimaryPath									// BOOL
+	UInteger ulWeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_pool_attributes
+Struct VDS_POOL_ATTRIBUTES
+	UBigint ullAttributeMask
+	Integer raidType										// VDS_RAID_TYPE
+	Integer busType											// VDS_STORAGE_BUS_TYPE
+	Pointer pwszIntendedUsage								// PWSTR
+	Integer bSpinDown										// BOOL
+	Integer bIsThinProvisioned								// BOOL
+	UBigint ullProvisionedSpace
+	Integer bNoSinglePointOfFailure							// BOOL
+	UInteger ulDataRedundancyMax
+	UInteger ulDataRedundancyMin
+	UInteger ulDataRedundancyDefault
+	UInteger ulPackageRedundancyMax
+	UInteger ulPackageRedundancyMin
+	UInteger ulPackageRedundancyDefault
+	UInteger ulStripeSize
+	UInteger ulStripeSizeMax
+	UInteger ulStripeSizeMin
+	UInteger ulDefaultStripeSize
+	UInteger ulNumberOfColumns
+	UInteger ulNumberOfColumnsMax
+	UInteger ulNumberOfColumnsMin
+	UInteger ulDefaultNumberofColumns
+	UInteger ulDataAvailabilityHint
+	UInteger ulAccessRandomnessHint
+	UInteger ulAccessDirectionHint
+	UInteger ulAccessSizeHint
+	UInteger ulAccessLatencyHint
+	UInteger ulAccessBandwidthWeightHint
+	UInteger ulStorageCostHint
+	UInteger ulStorageEfficiencyHint
+	UInteger ulNumOfCustomAttributes
+	Pointer pPoolCustomAttributes							// VDS_POOL_CUSTOM_ATTRIBUTES*
+	Integer bReserved1										// BOOL
+	Integer bReserved2										// BOOL
+	UInteger ulReserved1
+	UInteger ulReserved2
+	UBigint ullReserved1
+	UBigint ullReserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_pool_custom_attributes
+Struct VDS_POOL_CUSTOM_ATTRIBUTES
+	Pointer pwszName										// PWSTR
+	Pointer pwszValue										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_portal_group_notification
+Struct VDS_PORTAL_GROUP_NOTIFICATION
+	UInteger ulEvent
+	Guid portalGroupId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_portal_notification
+Struct VDS_PORTAL_NOTIFICATION
+	UInteger ulEvent
+	Guid portalId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_port_notification
+Struct VDS_PORT_NOTIFICATION
+	UInteger ulEvent										// VDS_NF_PORT
+	Guid portId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_port_prop
+Struct VDS_PORT_PROP
+	Guid id
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	Integer status											// VDS_PORT_STATUS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_provider_prop
+Struct VDS_PROVIDER_PROP
+	Guid id
+	Pointer pwszName										// PWSTR
+	Guid guidVersionId
+	Pointer pwszVersion										// PWSTR
+	Integer type											// VDS_PROVIDER_TYPE
+	UInteger ulFlags
+	UInteger ulStripeSizeFlags
+	Short sRebuildPriority
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_reparse_point_prop
+Struct VDS_REPARSE_POINT_PROP
+	Guid SourceVolumeId
+	Pointer pwszPath										// PWSTR
+End_Struct
+
+Struct VDS_SERVICE_NOTIFICATION
+	UInteger ulEvent
+	Integer action											// VDS_RECOVER_ACTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_service_prop
+Struct VDS_SERVICE_PROP
+	Pointer pwszVersion										// PWSTR
+	UInteger ulFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdslun/ns-vdslun-vds_storage_device_id_descriptor
+Struct VDS_STORAGE_DEVICE_ID_DESCRIPTOR
+	UInteger m_version
+	UInteger m_cIdentifiers
+	Pointer m_rgIdentifiers									// VDS_STORAGE_IDENTIFIER*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdslun/ns-vdslun-vds_storage_identifier
+Struct VDS_STORAGE_IDENTIFIER
+	Integer m_CodeSet										// VDS_STORAGE_IDENTIFIER_CODE_SET
+	Integer m_Type											// VDS_STORAGE_IDENTIFIER_TYPE
+	UInteger m_cbIdentifier
+	Integer iMissingAlignment1
+	Pointer m_rgbIdentifier									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_storage_pool_drive_extent
+Struct VDS_STORAGE_POOL_DRIVE_EXTENT
+	Guid id
+	UBigint ullSize
+	Integer bUsed											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_storage_pool_prop
+Struct VDS_STORAGE_POOL_PROP
+	Guid id
+	Integer status											// VDS_STORAGE_POOL_STATUS
+	Integer health											// VDS_HEALTH
+	Integer type											// VDS_STORAGE_POOL_TYPE
+	Integer iMissingAlignment1
+	Pointer pwszName										// PWSTR
+	Pointer pwszDescription									// PWSTR
+	UBigint ullTotalConsumedSpace
+	UBigint ullTotalManagedSpace
+	UBigint ullRemainingFreeSpace
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_sub_system_notification
+Struct VDS_SUB_SYSTEM_NOTIFICATION
+	UInteger ulEvent
+	Guid subSystemId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_sub_system_prop
+Struct VDS_SUB_SYSTEM_PROP
+	Guid id
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	UInteger ulFlags
+	UInteger ulStripeSizeFlags
+	Integer status											// VDS_SUB_SYSTEM_STATUS
+	Integer health											// VDS_HEALTH
+	Short sNumberOfInternalBuses
+	Short sMaxNumberOfSlotsEachBus
+	Short sMaxNumberOfControllers
+	Short sRebuildPriority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_sub_system_prop2
+Struct VDS_SUB_SYSTEM_PROP2
+	Guid id
+	Pointer pwszFriendlyName								// PWSTR
+	Pointer pwszIdentification								// PWSTR
+	UInteger ulFlags
+	UInteger ulStripeSizeFlags
+	UInteger ulSupportedRaidTypeFlags
+	Integer status											// VDS_SUB_SYSTEM_STATUS
+	Integer health											// VDS_HEALTH
+	Short sNumberOfInternalBuses
+	Short sMaxNumberOfSlotsEachBus
+	Short sMaxNumberOfControllers
+	Short sRebuildPriority
+	UInteger ulNumberOfEnclosures
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_target_notification
+Struct VDS_TARGET_NOTIFICATION
+	UInteger ulEvent
+	Guid targetId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_vdisk_properties
+Struct VDS_VDISK_PROPERTIES
+	Guid Id
+	Integer State											// VDS_VDISK_STATE
+	VIRTUAL_STORAGE_TYPE VirtualDeviceType
+	UBigint VirtualSize
+	UBigint PhysicalSize
+	Pointer pPath											// PWSTR
+	Pointer pDeviceName										// PWSTR
+	Integer DiskFlag										// DEPENDENT_DISK_FLAG
+	Integer bIsChild										// BOOL
+	Pointer pParentPath										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_volume_notification
+Struct VDS_VOLUME_NOTIFICATION
+	UInteger ulEvent
+	Guid volumeId
+	Guid plexId
+	UInteger ulPercentCompleted
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_volume_plex_prop
+Struct VDS_VOLUME_PLEX_PROP
+	Guid id
+	Integer type											// VDS_VOLUME_PLEX_TYPE
+	Integer status											// VDS_VOLUME_PLEX_STATUS
+	Integer health											// VDS_HEALTH
+	Integer TransitionState									// VDS_TRANSITION_STATE
+	UBigint ullSize
+	UInteger ulStripeSize
+	UInteger ulNumberOfMembers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_volume_prop
+Struct VDS_VOLUME_PROP
+	Guid id
+	Integer type											// VDS_VOLUME_TYPE
+	Integer status											// VDS_VOLUME_STATUS
+	Integer health											// VDS_HEALTH
+	Integer TransitionState									// VDS_TRANSITION_STATE
+	UBigint ullSize
+	UInteger ulFlags
+	Integer RecommendedFileSystemType						// VDS_FILE_SYSTEM_TYPE
+	Pointer pwszName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vds/ns-vds-vds_volume_prop2
+Struct VDS_VOLUME_PROP2
+	Guid id
+	Integer type											// VDS_VOLUME_TYPE
+	Integer status											// VDS_VOLUME_STATUS
+	Integer health											// VDS_HEALTH
+	Integer TransitionState									// VDS_TRANSITION_STATE
+	UBigint ullSize
+	UInteger ulFlags
+	Integer RecommendedFileSystemType						// VDS_FILE_SYSTEM_TYPE
+	UInteger cbUniqueId
+	Integer iMissingAlignment1
+	Pointer pwszName										// PWSTR
+	Pointer pUniqueId										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vdshwprv/ns-vdshwprv-vds_wwn
+Struct VDS_WWN
+	UChar[8] rguchWwn
+End_Struct
+
+Struct _GptPartInfo_e__Struct_2747
+	Guid partitionType
+	Guid partitionId
+	UBigint attributes
+	UShort[36] name
+End_Struct
+
+Struct _GptPartInfo_e__Struct_2750
+	UBigint attributes
+End_Struct
+
+Struct _GptPartInfo_e__Struct_2753
+	Guid partitionType
+End_Struct
+
+Struct _MbrPartInfo_e__Struct_2746
+	UChar partitionType
+	UChar bootIndicator										// BOOLEAN
+End_Struct
+
+Struct _MbrPartInfo_e__Struct_2749
+	UChar bootIndicator										// BOOLEAN
+End_Struct
+
+Struct _MbrPartInfo_e__Struct_2752
+	UChar partitionType
+End_Struct
+
+Struct _bvp_2731
+	Pointer pVolumeUnk										// IUnknown
+End_Struct
+
+Struct _cl_2733
+	Pointer pLunUnk											// IUnknown
+End_Struct
+
+Struct _cp_2729
+	UBigint ullOffset
+	Guid volumeId
+End_Struct
+
+Struct _cpg_2735
+	Pointer pPortalGroupUnk									// IUnknown
+End_Struct
+
+Struct _ct_2734
+	Pointer pTargetUnk										// IUnknown
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

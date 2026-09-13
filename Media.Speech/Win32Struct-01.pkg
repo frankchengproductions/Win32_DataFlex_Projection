@@ -1,0 +1,495 @@
+Use UI
+
+Struct _Anonymous2_e__Union_2331
+	// _Anonymous1_e__Struct_2332 Anonymous1 // (24)
+	// _Anonymous2_e__Struct_2333 Anonymous2 // (16)
+	// _Anonymous3_e__Struct_2334 Anonymous3 // (8)
+	_Anonymous1_e__Struct_2332 Anonymous1
+End_Struct
+
+Struct _Anonymous_e__Union_2328
+	// UInteger ulId // (4)
+	// _Anonymous_e__Struct_2329 Anonymous // (4)
+	UInteger ulId
+End_Struct
+
+Struct SPAUDIOBUFFERINFO
+	UInteger ulMsMinNotification
+	UInteger ulMsBufferSize
+	UInteger ulMsEventBias
+End_Struct
+
+Struct SPAUDIOSTATUS
+	Integer cbFreeBuffSpace
+	UInteger cbNonBlockingIO
+	Integer State											// SPAUDIOSTATE
+	Integer iMissingAlignment1
+	UBigint CurSeekPos
+	UBigint CurDevicePos
+	UInteger dwAudioLevel
+	UInteger dwReserved2
+End_Struct
+
+Struct SPBINARYGRAMMAR
+	UInteger ulTotalSerializedSize
+End_Struct
+
+Struct SPDISPLAYPHRASE
+	UInteger ulNumTokens
+	Integer iMissingAlignment1
+	Pointer pTokens											// SPDISPLAYTOKEN*
+End_Struct
+
+Struct SPDISPLAYTOKEN
+	Pointer pszLexical										// PWSTR
+	Pointer pszDisplay										// PWSTR
+	UChar bDisplayAttributes
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SPEVENT
+	Integer _bitfield
+	UInteger ulStreamNum
+	UBigint ullAudioStreamOffset
+	ULongPtr wParam											// WPARAM
+	LongPtr lParam											// LPARAM
+End_Struct
+
+Struct SPEVENTEX
+	Integer _bitfield
+	UInteger ulStreamNum
+	UBigint ullAudioStreamOffset
+	ULongPtr wParam											// WPARAM
+	LongPtr lParam											// LPARAM
+	UBigint ullAudioTimeOffset
+End_Struct
+
+Struct SPEVENTSOURCEINFO
+	UBigint ullEventInterest
+	UBigint ullQueuedInterest
+	UInteger ulCount
+	Integer iMissingAlignment1
+End_Struct
+
+Struct SPNORMALIZATIONLIST
+	UInteger ulSize
+	Integer iMissingAlignment1
+	Pointer ppszzNormalizedList								// UShort**
+End_Struct
+
+Struct SPPARSEINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hRule											// SPRULEHANDLE
+	UBigint ullAudioStreamPosition
+	UInteger ulAudioSize
+	UInteger cTransitions
+	Pointer pPath											// SPPATHENTRY*
+	Guid SREngineID
+	UInteger ulSREnginePrivateDataSize
+	Integer iMissingAlignment2
+	Pointer pSREnginePrivateData							// UChar*
+	Integer fHypothesis										// BOOL
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SPPATHENTRY
+	Pointer hTransition										// SPTRANSITIONID
+	SPPHRASEELEMENT elem
+End_Struct
+
+Struct SPPHRASE
+	SPPHRASE_50 Base
+	Pointer pSML											// PWSTR
+	Pointer pSemanticErrorInfo								// SPSEMANTICERRORINFO*
+End_Struct
+
+Struct SPPHRASEALT
+	Pointer pPhrase											// ISpPhraseBuilder
+	UInteger ulStartElementInParent
+	UInteger cElementsInParent
+	UInteger cElementsInAlternate
+	Integer iMissingAlignment1
+	Pointer pvAltExtra										// Pointer*
+	UInteger cbAltExtra
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SPPHRASEALTREQUEST
+	UInteger ulStartElement
+	UInteger cElements
+	UInteger ulRequestAltCount
+	Integer iMissingAlignment1
+	Pointer pvResultExtra									// Pointer*
+	UInteger cbResultExtra
+	Integer iMissingAlignment2
+	Pointer pPhrase											// ISpPhrase
+	Pointer pRecoContext									// ISpRecoContext
+End_Struct
+
+Struct SPPHRASEELEMENT
+	UInteger ulAudioTimeOffset
+	UInteger ulAudioSizeTime
+	UInteger ulAudioStreamOffset
+	UInteger ulAudioSizeBytes
+	UInteger ulRetainedStreamOffset
+	UInteger ulRetainedSizeBytes
+	Pointer pszDisplayText									// PWSTR
+	Pointer pszLexicalForm									// PWSTR
+	Pointer pszPronunciation								// UShort*
+	UChar bDisplayAttributes
+	Char RequiredConfidence
+	Char ActualConfidence
+	UChar Reserved
+	Float SREngineConfidence
+End_Struct
+
+Struct SPPHRASEPROPERTY
+	Pointer pszName											// PWSTR
+	_Anonymous_e__Union_2328 Anonymous
+	Integer iMissingAlignment1
+	Pointer pszValue										// PWSTR
+	VARIANT vValue
+	UInteger ulFirstElement
+	UInteger ulCountOfElements
+	Pointer pNextSibling									// SPPHRASEPROPERTY*
+	Pointer pFirstChild										// SPPHRASEPROPERTY*
+	Float SREngineConfidence
+	Char Confidence
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct SPPHRASEREPLACEMENT
+	UChar bDisplayAttributes
+	UChar[7] cMissingAlignment1
+	Pointer pszReplacementText								// PWSTR
+	UInteger ulFirstElement
+	UInteger ulCountOfElements
+End_Struct
+
+Struct SPPHRASERULE
+	Pointer pszName											// PWSTR
+	UInteger ulId
+	UInteger ulFirstElement
+	UInteger ulCountOfElements
+	Integer iMissingAlignment1
+	Pointer pNextSibling									// SPPHRASERULE*
+	Pointer pFirstChild										// SPPHRASERULE*
+	Float SREngineConfidence
+	Char Confidence
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct SPPHRASE_50
+	UInteger cbSize
+	UShort LangID
+	UShort wHomophoneGroupId
+	UBigint ullGrammarID
+	UBigint ftStartTime
+	UBigint ullAudioStreamPosition
+	UInteger ulAudioSizeBytes
+	UInteger ulRetainedSizeBytes
+	UInteger ulAudioSizeTime
+	Integer iMissingAlignment1
+	SPPHRASERULE Rule
+	Pointer pProperties										// SPPHRASEPROPERTY*
+	Pointer pElements										// SPPHRASEELEMENT*
+	UInteger cReplacements
+	Integer iMissingAlignment2
+	Pointer pReplacements									// SPPHRASEREPLACEMENT*
+	Guid SREngineID
+	UInteger ulSREnginePrivateDataSize
+	Integer iMissingAlignment3
+	Pointer pSREnginePrivateData							// UChar*
+End_Struct
+
+Struct SPPROPERTYINFO
+	Pointer pszName											// PWSTR
+	UInteger ulId
+	Integer iMissingAlignment1
+	Pointer pszValue										// PWSTR
+	VARIANT vValue
+End_Struct
+
+Struct SPRECOCONTEXTSTATUS
+	Integer eInterference									// SPINTERFERENCE
+	UShort[255] szRequestTypeOfUI
+	Short iMissingAlignment1
+	UInteger dwReserved1
+	UInteger dwReserved2
+End_Struct
+
+Struct SPRECOGNIZERSTATUS
+	SPAUDIOSTATUS AudioStatus
+	UBigint ullRecognitionStreamPos
+	UInteger ulStreamNumber
+	UInteger ulNumActive
+	Guid clsidEngine
+	UInteger cLangIDs
+	UShort[20] aLangID
+	Integer iMissingAlignment1
+	UBigint ullRecognitionStreamTime
+End_Struct
+
+Struct SPRECORESULTINFO
+	UInteger cbSize
+	Integer eResultType										// SPRESULTTYPE
+	Integer fHypothesis										// BOOL
+	Integer fProprietaryAutoPause							// BOOL
+	UBigint ullStreamPosStart
+	UBigint ullStreamPosEnd
+	Pointer hGrammar										// SPGRAMMARHANDLE
+	UInteger ulSizeEngineData
+	Integer iMissingAlignment1
+	Pointer pvEngineData									// Pointer*
+	Pointer pPhrase											// ISpPhraseBuilder
+	Pointer aPhraseAlts										// SPPHRASEALT*
+	UInteger ulNumAlts
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SPRECORESULTINFOEX
+	SPRECORESULTINFO Base
+	UBigint ullStreamTimeStart
+	UBigint ullStreamTimeEnd
+End_Struct
+
+Struct SPRECORESULTTIMES
+	FILETIME ftStreamTime
+	UBigint ullLength
+	UInteger dwTickCount
+	Integer iMissingAlignment1
+	UBigint ullStart
+End_Struct
+
+Struct SPRULE
+	Pointer pszRuleName										// PWSTR
+	UInteger ulRuleId
+	UInteger dwAttributes
+End_Struct
+
+Struct SPRULEENTRY
+	Pointer hRule											// SPRULEHANDLE
+	Pointer hInitialState									// SPSTATEHANDLE
+	UInteger Attributes
+	Integer iMissingAlignment1
+	Pointer pvClientRuleContext								// Pointer*
+	Pointer pvClientGrammarContext							// Pointer*
+End_Struct
+
+Struct SPSEMANTICERRORINFO
+	UInteger ulLineNumber
+	Integer iMissingAlignment1
+	Pointer pszScriptLine									// PWSTR
+	Pointer pszSource										// PWSTR
+	Pointer pszDescription									// PWSTR
+	Integer hrResultCode									// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SPSERIALIZEDEVENT
+	Integer _bitfield
+	UInteger ulStreamNum
+	UBigint ullAudioStreamOffset
+	UInteger SerializedwParam
+	Integer SerializedlParam
+End_Struct
+
+Struct SPSERIALIZEDEVENT64
+	Integer _bitfield
+	UInteger ulStreamNum
+	UBigint ullAudioStreamOffset
+	UBigint SerializedwParam
+	Bigint SerializedlParam
+End_Struct
+
+Struct SPSERIALIZEDPHRASE
+	UInteger ulSerializedSize
+End_Struct
+
+Struct SPSERIALIZEDRESULT
+	UInteger ulSerializedSize
+End_Struct
+
+Struct SPSHORTCUTPAIR
+	Pointer pNextSHORTCUTPAIR								// SPSHORTCUTPAIR*
+	UShort LangID
+	Short iMissingAlignment1
+	Integer shType											// SPSHORTCUTTYPE
+	Pointer pszDisplay										// PWSTR
+	Pointer pszSpoken										// PWSTR
+End_Struct
+
+Struct SPSHORTCUTPAIRLIST
+	UInteger ulSize
+	Integer iMissingAlignment1
+	Pointer pvBuffer										// UChar*
+	Pointer pFirstShortcutPair								// SPSHORTCUTPAIR*
+End_Struct
+
+Struct SPSTATEINFO
+	UInteger cAllocatedEntries
+	Integer iMissingAlignment1
+	Pointer pTransitions									// SPTRANSITIONENTRY*
+	UInteger cEpsilons
+	UInteger cRules
+	UInteger cWords
+	UInteger cSpecialTransitions
+End_Struct
+
+Struct SPTEXTSELECTIONINFO
+	UInteger ulStartActiveOffset
+	UInteger cchActiveChars
+	UInteger ulStartSelection
+	UInteger cchSelection
+End_Struct
+
+Struct SPTMTHREADINFO
+	Integer lPoolSize
+	Integer lPriority
+	UInteger ulConcurrencyLimit
+	UInteger ulMaxQuickAllocThreads
+End_Struct
+
+Struct SPTRANSITIONENTRY
+	Pointer ID												// SPTRANSITIONID
+	Pointer hNextState										// SPSTATEHANDLE
+	UChar Type
+	UChar RequiredConfidence
+	Short iMissingAlignment1
+	_Anonymous1_e__Struct_2330 Anonymous1
+	Float Weight
+	Integer iMissingAlignment2
+	_Anonymous2_e__Union_2331 Anonymous2
+End_Struct
+
+Struct SPTRANSITIONPROPERTY
+	Pointer pszName											// PWSTR
+	UInteger ulId
+	Integer iMissingAlignment1
+	Pointer pszValue										// PWSTR
+	VARIANT vValue
+End_Struct
+
+Struct SPVCONTEXT
+	Pointer pCategory										// PWSTR
+	Pointer pBefore											// PWSTR
+	Pointer pAfter											// PWSTR
+End_Struct
+
+Struct SPVOICESTATUS
+	UInteger ulCurrentStream
+	UInteger ulLastStreamQueued
+	Integer hrLastResult									// HRESULT
+	UInteger dwRunningState
+	UInteger ulInputWordPos
+	UInteger ulInputWordLen
+	UInteger ulInputSentPos
+	UInteger ulInputSentLen
+	Integer lBookmarkId
+	UShort PhonemeId
+	Short iMissingAlignment1
+	Integer VisemeId										// SPVISEMES
+	UInteger dwReserved1
+	UInteger dwReserved2
+End_Struct
+
+Struct SPVPITCH
+	Integer MiddleAdj
+	Integer RangeAdj
+End_Struct
+
+Struct SPVSTATE
+	Integer eAction											// SPVACTIONS
+	UShort LangID
+	UShort wReserved
+	Integer EmphAdj
+	Integer RateAdj
+	UInteger Volume
+	SPVPITCH PitchAdj
+	UInteger SilenceMSecs
+	Pointer pPhoneIds										// UShort*
+	Integer ePartOfSpeech									// SPPARTOFSPEECH
+	Integer iMissingAlignment1
+	SPVCONTEXT Context
+End_Struct
+
+Struct SPVTEXTFRAG
+	Pointer pNext											// SPVTEXTFRAG*
+	SPVSTATE State
+	Pointer pTextStart										// PWSTR
+	UInteger ulTextLen
+	UInteger ulTextSrcOffset
+End_Struct
+
+Struct SPWORD
+	Pointer pNextWord										// SPWORD*
+	UShort LangID
+	UShort wReserved
+	Integer eWordType										// SPWORDTYPE
+	Pointer pszWord											// PWSTR
+	Pointer pFirstWordPronunciation							// SPWORDPRONUNCIATION*
+End_Struct
+
+Struct SPWORDENTRY
+	Pointer hWord											// SPWORDHANDLE
+	UShort LangID
+	UChar[6] cMissingAlignment1
+	Pointer pszDisplayText									// PWSTR
+	Pointer pszLexicalForm									// PWSTR
+	Pointer aPhoneId										// UShort*
+	Pointer pvClientContext									// Pointer*
+End_Struct
+
+Struct SPWORDLIST
+	UInteger ulSize
+	Integer iMissingAlignment1
+	Pointer pvBuffer										// UChar*
+	Pointer pFirstWord										// SPWORD*
+End_Struct
+
+Struct SPWORDPRONUNCIATION
+	Pointer pNextWordPronunciation							// SPWORDPRONUNCIATION*
+	Integer eLexiconType									// SPLEXICONTYPE
+	UShort LangID
+	UShort wPronunciationFlags
+	Integer ePartOfSpeech									// SPPARTOFSPEECH
+	UShort[1] szPronunciation
+	Short iMissingAlignment1
+End_Struct
+
+Struct SPWORDPRONUNCIATIONLIST
+	UInteger ulSize
+	Integer iMissingAlignment1
+	Pointer pvBuffer										// UChar*
+	Pointer pFirstWordPronunciation							// SPWORDPRONUNCIATION*
+End_Struct
+
+Struct _Anonymous1_e__Struct_2330
+	UInteger fHasProperty
+End_Struct
+
+Struct _Anonymous1_e__Struct_2332
+	Pointer hRuleInitialState								// SPSTATEHANDLE
+	Pointer hRule											// SPRULEHANDLE
+	Pointer pvClientRuleContext								// Pointer*
+End_Struct
+
+Struct _Anonymous2_e__Struct_2333
+	Pointer hWord											// SPWORDHANDLE
+	Pointer pvClientWordContext								// Pointer*
+End_Struct
+
+Struct _Anonymous3_e__Struct_2334
+	Pointer pvGrammarCookie									// Pointer*
+End_Struct
+
+Struct _Anonymous_e__Struct_2329
+	UChar bType
+	UChar bReserved
+	UShort usArrayIndex
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

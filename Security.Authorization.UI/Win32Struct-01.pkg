@@ -1,0 +1,71 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-effperm_result_list
+Struct EFFPERM_RESULT_LIST
+	UChar fEvaluated										// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger cObjectTypeListLength
+	Pointer pObjectTypeList									// OBJECT_TYPE_LIST*
+	Pointer pGrantedAccessList								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-security_object
+Struct SECURITY_OBJECT
+	Pointer pwszName										// PWSTR
+	Pointer pData											// Pointer*
+	UInteger cbData
+	Integer iMissingAlignment1
+	Pointer pData2											// Pointer*
+	UInteger cbData2
+	UInteger Id
+	UChar fWellKnown										// BOOLEAN
+	UChar[7] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-sid_info
+Struct SID_INFO
+	Pointer pSid											// PSID
+	Pointer pwzCommonName									// PWSTR
+	Pointer pwzClass										// PWSTR
+	Pointer pwzUPN											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-sid_info_list
+Struct SID_INFO_LIST
+	UInteger cItems
+	Integer iMissingAlignment1
+	SID_INFO[1] aSidInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-si_access
+Struct SI_ACCESS
+	Pointer pguid											// Guid*
+	UInteger mask
+	Integer iMissingAlignment1
+	Pointer pszName											// PWSTR
+	UInteger dwFlags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-si_inherit_type
+Struct SI_INHERIT_TYPE
+	Pointer pguid											// Guid*
+	UInteger dwFlags										// ACE_FLAGS
+	Integer iMissingAlignment1
+	Pointer pszName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/aclui/ns-aclui-si_object_info
+Struct SI_OBJECT_INFO
+	UInteger dwFlags										// SI_OBJECT_INFO_FLAGS
+	Integer iMissingAlignment1
+	Pointer hInstance										// HINSTANCE
+	Pointer pszServerName									// PWSTR
+	Pointer pszObjectName									// PWSTR
+	Pointer pszPageTitle									// PWSTR
+	Guid guidObjectType
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

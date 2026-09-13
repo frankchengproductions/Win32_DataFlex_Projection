@@ -1,0 +1,39 @@
+Use UI
+
+Struct _Anonymous_e__Union_2234
+	// Pointer strFilename										// PWSTR // (8)
+	// RM_UNIQUE_PROCESS Process // (12)
+	// Pointer strServiceShortName								// PWSTR // (8)
+	RM_UNIQUE_PROCESS Process
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/ns-restartmanager-rm_filter_info
+Struct RM_FILTER_INFO
+	Integer FilterAction									// RM_FILTER_ACTION
+	Integer FilterTrigger									// RM_FILTER_TRIGGER
+	UInteger cbNextOffset
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2234 Anonymous
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/ns-restartmanager-rm_process_info
+Struct RM_PROCESS_INFO
+	RM_UNIQUE_PROCESS Process
+	UShort[256] strAppName
+	UShort[64] strServiceShortName
+	Integer ApplicationType									// RM_APP_TYPE
+	UInteger AppStatus
+	UInteger TSSessionId
+	Integer bRestartable									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/restartmanager/ns-restartmanager-rm_unique_process
+Struct RM_UNIQUE_PROCESS
+	UInteger dwProcessId
+	FILETIME ProcessStartTime
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

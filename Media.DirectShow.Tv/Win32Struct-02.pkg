@@ -1,0 +1,162 @@
+Use UI
+
+Struct SAMPLE_LIVE_STREAM_TIME
+	UBigint qwStreamTime
+	UBigint qwLiveTime
+End_Struct
+
+Struct SAMPLE_SEQ_OFFSET
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sbe/ns-sbe-sbe2_stream_desc
+Struct SBE2_STREAM_DESC
+	UInteger Version
+	UInteger StreamId
+	UInteger Default
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sbe/ns-sbe-sbe_pin_data
+Struct SBE_PIN_DATA
+	UBigint cDataBytes
+	UBigint cSamplesProcessed
+	UBigint cDiscontinuities
+	UBigint cSyncPoints
+	UBigint cTimestamps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mpeg2structs/ns-mpeg2structs-section
+Struct SECTION
+	UChar TableId
+	UChar[1] cMissingAlignment1
+	_Header_e__Union_2135 Header
+	UChar[1] SectionData
+	UChar[1] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sbe/ns-sbe-streambuffer_attribute
+Struct STREAMBUFFER_ATTRIBUTE
+	Pointer pszName											// PWSTR
+	Integer StreamBufferAttributeType						// STREAMBUFFER_ATTR_DATATYPE
+	Integer iMissingAlignment1
+	Pointer pbAttribute										// UChar*
+	UShort cbLength
+	UChar[6] cMissingAlignment2
+End_Struct
+
+Struct SpanningEventDescriptor
+	UShort wDataLen
+	UShort wProgNumber
+	UShort wSID
+	UChar[1] bDescriptor
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SpanningEventEmmMessage
+	UChar bCAbroadcasterGroupId
+	UChar bMessageControl
+	UShort wServiceId
+	UShort wTableIdExtension
+	UChar bDeletionStatus
+	UChar bDisplayingDuration1
+	UChar bDisplayingDuration2
+	UChar bDisplayingDuration3
+	UChar bDisplayingCycle
+	UChar bFormatVersion
+	UChar bDisplayPosition
+	UChar[1] cMissingAlignment1
+	UShort wMessageLength
+	UShort[1] szMessageArea
+End_Struct
+
+Struct TID_EXTENSION
+	UShort wTidExt
+	UShort wCount
+End_Struct
+
+Struct TRANSPORT_PROPERTIES
+	UInteger PID
+	Integer iMissingAlignment1
+	Bigint PCR
+	_Fields_e__Union_2143 Fields
+End_Struct
+
+Struct UDCR_TAG
+	UChar bVersion
+	UChar[25] KID
+	UChar[6] cMissingAlignment1
+	UBigint ullBaseCounter
+	UBigint ullBaseCounterRange
+	Integer fScrambled										// BOOL
+	UChar bStreamMark
+	UChar[3] cMissingAlignment2
+	UInteger dwReserved1
+	UInteger dwReserved2
+End_Struct
+
+Struct VA_OPTIONAL_VIDEO_PROPERTIES
+	UShort dwPictureHeight
+	UShort dwPictureWidth
+	UShort dwAspectRatioX
+	UShort dwAspectRatioY
+	Integer VAVideoFormat									// VA_VIDEO_FORMAT
+	Integer VAColorPrimaries								// VA_COLOR_PRIMARIES
+	Integer VATransferCharacteristics						// VA_TRANSFER_CHARACTERISTICS
+	Integer VAMatrixCoefficients							// VA_MATRIX_COEFFICIENTS
+End_Struct
+
+Struct WMDRMProtectionInfo
+	UShort[25] wszKID
+	UChar[6] cMissingAlignment1
+	UBigint qwCounter
+	UBigint qwIndex
+	UChar bOffset
+	UChar[7] cMissingAlignment2
+End_Struct
+
+Struct _ATSC_e__Struct_2151
+	Integer lProgNumber
+End_Struct
+
+Struct _Anonymous_e__Struct_2141
+	UChar bVersionNumber
+	UChar[1] cMissingAlignment1
+	UShort wFilterSize
+	Integer fUseRawFilteringBits							// BOOL
+	UChar[16] Filter
+	UChar[16] Mask
+	Integer fSpecifyTableIdExtension						// BOOL
+	UShort TableIdExtension
+	Short iMissingAlignment2
+	Integer fSpecifyVersion									// BOOL
+	UChar Version
+	UChar[3] cMissingAlignment3
+	Integer fSpecifySectionNumber							// BOOL
+	UChar SectionNumber
+	UChar[3] cMissingAlignment4
+	Integer fSpecifyCurrentNext								// BOOL
+	Integer fNext											// BOOL
+	Integer fSpecifyDsmccOptions							// BOOL
+	DSMCC_FILTER_OPTIONS Dsmcc
+	Integer fSpecifyAtscOptions								// BOOL
+	ATSC_FILTER_OPTIONS Atsc
+End_Struct
+
+Struct _DC_e__Struct_2150
+	Integer lProgNumber
+End_Struct
+
+Struct _DVB_e__Struct_2149
+	Integer lONID
+	Integer lTSID
+	Integer lSID
+End_Struct
+
+Struct _Others_2144
+	Bigint _bitfield
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

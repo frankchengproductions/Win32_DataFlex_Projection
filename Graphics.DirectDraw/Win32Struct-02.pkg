@@ -1,0 +1,1299 @@
+Use UI
+
+Struct DDHAL_DESTROYPALETTEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDPalette										// DDRAWI_DDRAWPALETTE_GBL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer DestroyPalette									// LPDDHALPALCB_DESTROYPALETTE
+End_Struct
+
+Struct DDHAL_DESTROYSURFACEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer DestroySurface									// LPDDHALSURFCB_DESTROYSURFACE
+End_Struct
+
+Struct DDHAL_DESTROYVPORTDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer DestroyVideoPort								// LPDDHALVPORTCB_DESTROYVPORT
+End_Struct
+
+Struct DDHAL_DRVSETCOLORKEYDATA
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwFlags
+	DDCOLORKEY ckNew
+	Integer ddRVal											// HRESULT
+	Pointer SetColorKey										// LPDDHAL_SETCOLORKEY
+End_Struct
+
+Struct DDHAL_ENDMOCOMPFRAMEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpMoComp										// DDRAWI_DDMOTIONCOMP_LCL*
+	Pointer lpInputData										// Pointer*
+	UInteger dwInputDataSize
+	Integer ddRVal											// HRESULT
+	Pointer EndMoCompFrame									// LPDDHALMOCOMPCB_ENDFRAME
+End_Struct
+
+Struct DDHAL_FLIPDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpSurfCurr										// DDRAWI_DDRAWSURFACE_LCL*
+	Pointer lpSurfTarg										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer Flip											// LPDDHALSURFCB_FLIP
+	Pointer lpSurfCurrLeft									// DDRAWI_DDRAWSURFACE_LCL*
+	Pointer lpSurfTargLeft									// DDRAWI_DDRAWSURFACE_LCL*
+End_Struct
+
+Struct DDHAL_FLIPTOGDISURFACEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwToGDI
+	UInteger dwReserved
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer FlipToGDISurface								// LPDDHAL_FLIPTOGDISURFACE
+End_Struct
+
+Struct DDHAL_FLIPVPORTDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	Pointer lpSurfCurr										// DDRAWI_DDRAWSURFACE_LCL*
+	Pointer lpSurfTarg										// DDRAWI_DDRAWSURFACE_LCL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer FlipVideoPort									// LPDDHALVPORTCB_FLIP
+End_Struct
+
+Struct DDHAL_GETAVAILDRIVERMEMORYDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	DDSCAPS DDSCaps
+	UInteger dwTotal
+	UInteger dwFree
+	Integer ddRVal											// HRESULT
+	Pointer GetAvailDriverMemory							// LPDDHAL_GETAVAILDRIVERMEMORY
+	DDSCAPSEX ddsCapsEx
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDHAL_GETBLTSTATUSDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer GetBltStatus									// LPDDHALSURFCB_GETBLTSTATUS
+End_Struct
+
+Struct DDHAL_GETDRIVERINFODATA
+	UInteger dwSize
+	UInteger dwFlags
+	Guid guidInfo
+	UInteger dwExpectedSize
+	Integer iMissingAlignment1
+	Pointer lpvData											// Pointer*
+	UInteger dwActualSize
+	Integer ddRVal											// HRESULT
+	ULongPtr dwContext
+End_Struct
+
+Struct DDHAL_GETDRIVERSTATEDATA
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1968 Anonymous
+	Pointer lpdwStates										// UInteger*
+	UInteger dwLength
+	Integer ddRVal											// HRESULT
+End_Struct
+
+Struct DDHAL_GETFLIPSTATUSDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer GetFlipStatus									// LPDDHALSURFCB_GETFLIPSTATUS
+End_Struct
+
+Struct DDHAL_GETHEAPALIGNMENTDATA
+	ULongPtr dwInstance
+	UInteger dwHeap
+	Integer ddRVal											// HRESULT
+	Pointer GetHeapAlignment								// LPDDHAL_GETHEAPALIGNMENT
+	HEAPALIGNMENT Alignment
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDHAL_GETINTERNALMOCOMPDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpGuid											// Guid*
+	UInteger dwWidth
+	UInteger dwHeight
+	DDPIXELFORMAT ddPixelFormat
+	UInteger dwScratchMemAlloc
+	Integer ddRVal											// HRESULT
+	Pointer GetInternalMoCompInfo							// LPDDHALMOCOMPCB_GETINTERNALINFO
+End_Struct
+
+Struct DDHAL_GETMOCOMPCOMPBUFFDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpGuid											// Guid*
+	UInteger dwWidth
+	UInteger dwHeight
+	DDPIXELFORMAT ddPixelFormat
+	UInteger dwNumTypesCompBuffs
+	Integer iMissingAlignment1
+	Pointer lpCompBuffInfo									// DDMCCOMPBUFFERINFO*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer GetMoCompBuffInfo								// LPDDHALMOCOMPCB_GETCOMPBUFFINFO
+End_Struct
+
+Struct DDHAL_GETMOCOMPFORMATSDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpGuid											// Guid*
+	UInteger dwNumFormats
+	Integer iMissingAlignment1
+	Pointer lpFormats										// DDPIXELFORMAT*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer GetMoCompFormats								// LPDDHALMOCOMPCB_GETFORMATS
+End_Struct
+
+Struct DDHAL_GETMOCOMPGUIDSDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	UInteger dwNumGuids
+	Integer iMissingAlignment1
+	Pointer lpGuids											// Guid*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer GetMoCompGuids									// LPDDHALMOCOMPCB_GETGUIDS
+End_Struct
+
+Struct DDHAL_GETSCANLINEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwScanLine
+	Integer ddRVal											// HRESULT
+	Pointer GetScanLine										// LPDDHAL_GETSCANLINE
+End_Struct
+
+Struct DDHAL_GETVPORTBANDWIDTHDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	Pointer lpddpfFormat									// DDPIXELFORMAT*
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpBandwidth										// DDVIDEOPORTBANDWIDTH*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer GetVideoPortBandwidth							// LPDDHALVPORTCB_GETBANDWIDTH
+End_Struct
+
+Struct DDHAL_GETVPORTCONNECTDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	UInteger dwPortId
+	Integer iMissingAlignment1
+	Pointer lpConnect										// DDVIDEOPORTCONNECT*
+	UInteger dwNumEntries
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortConnectInfo							// LPDDHALVPORTCB_GETVPORTCONNECT
+End_Struct
+
+Struct DDHAL_GETVPORTFIELDDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	Integer bField											// BOOL
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortField								// LPDDHALVPORTCB_GETFIELD
+End_Struct
+
+Struct DDHAL_GETVPORTFLIPSTATUSDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	ULongPtr fpSurface
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer GetVideoPortFlipStatus							// LPDDHALVPORTCB_GETFLIPSTATUS
+End_Struct
+
+Struct DDHAL_GETVPORTINPUTFORMATDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpddpfFormat									// DDPIXELFORMAT*
+	UInteger dwNumFormats
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortInputFormats						// LPDDHALVPORTCB_GETINPUTFORMATS
+End_Struct
+
+Struct DDHAL_GETVPORTLINEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwLine
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortLine								// LPDDHALVPORTCB_GETLINE
+End_Struct
+
+Struct DDHAL_GETVPORTOUTPUTFORMATDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpddpfInputFormat								// DDPIXELFORMAT*
+	Pointer lpddpfOutputFormats								// DDPIXELFORMAT*
+	UInteger dwNumFormats
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortOutputFormats						// LPDDHALVPORTCB_GETOUTPUTFORMATS
+End_Struct
+
+Struct DDHAL_GETVPORTSIGNALDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwStatus
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoSignalStatus							// LPDDHALVPORTCB_GETSIGNALSTATUS
+End_Struct
+
+Struct DDHAL_LOCKDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger bHasRect
+	RECTL rArea
+	Integer iMissingAlignment1
+	Pointer lpSurfData										// Pointer*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer Lock											// LPDDHALSURFCB_LOCK
+	UInteger dwFlags
+	Integer iMissingAlignment3
+End_Struct
+
+Struct DDHAL_QUERYMOCOMPSTATUSDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpMoComp										// DDRAWI_DDMOTIONCOMP_LCL*
+	Pointer lpSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer QueryMoCompStatus								// LPDDHALMOCOMPCB_QUERYSTATUS
+End_Struct
+
+Struct DDHAL_RENDERMOCOMPDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpMoComp										// DDRAWI_DDMOTIONCOMP_LCL*
+	UInteger dwNumBuffers
+	Integer iMissingAlignment1
+	Pointer lpBufferInfo									// DDMCBUFFERINFO*
+	UInteger dwFunction
+	Integer iMissingAlignment2
+	Pointer lpInputData										// Pointer*
+	UInteger dwInputDataSize
+	Integer iMissingAlignment3
+	Pointer lpOutputData									// Pointer*
+	UInteger dwOutputDataSize
+	Integer ddRVal											// HRESULT
+	Pointer RenderMoComp									// LPDDHALMOCOMPCB_RENDER
+End_Struct
+
+Struct DDHAL_SETCLIPLISTDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetClipList										// LPDDHALSURFCB_SETCLIPLIST
+End_Struct
+
+Struct DDHAL_SETCOLORKEYDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwFlags
+	DDCOLORKEY ckNew
+	Integer ddRVal											// HRESULT
+	Pointer SetColorKey										// LPDDHALSURFCB_SETCOLORKEY
+End_Struct
+
+Struct DDHAL_SETENTRIESDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDPalette										// DDRAWI_DDRAWPALETTE_GBL*
+	UInteger dwBase
+	UInteger dwNumEntries
+	Pointer lpEntries										// PALETTEENTRY*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetEntries										// LPDDHALPALCB_SETENTRIES
+End_Struct
+
+Struct DDHAL_SETEXCLUSIVEMODEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwEnterExcl
+	UInteger dwReserved
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetExclusiveMode								// LPDDHAL_SETEXCLUSIVEMODE
+End_Struct
+
+Struct DDHAL_SETMODEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwModeIndex
+	Integer ddRVal											// HRESULT
+	Pointer SetMode											// LPDDHAL_SETMODE
+	Integer inexcl											// BOOL
+	Integer useRefreshRate									// BOOL
+End_Struct
+
+Struct DDHAL_SETOVERLAYPOSITIONDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSrcSurface									// DDRAWI_DDRAWSURFACE_LCL*
+	Pointer lpDDDestSurface									// DDRAWI_DDRAWSURFACE_LCL*
+	Integer lXPos
+	Integer lYPos
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetOverlayPosition								// LPDDHALSURFCB_SETOVERLAYPOSITION
+End_Struct
+
+Struct DDHAL_SETPALETTEDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	Pointer lpDDPalette										// DDRAWI_DDRAWPALETTE_GBL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetPalette										// LPDDHALSURFCB_SETPALETTE
+	Integer Attach											// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+Struct DDHAL_SYNCSURFACEDATA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwSurfaceOffset
+	Integer iMissingAlignment2
+	ULongPtr fpLockPtr
+	Integer lPitch
+	UInteger dwOverlayOffset
+	UInteger dwOverlaySrcWidth
+	UInteger dwOverlaySrcHeight
+	UInteger dwOverlayDestWidth
+	UInteger dwOverlayDestHeight
+	ULongPtr dwDriverReserved1
+	ULongPtr dwDriverReserved2
+	ULongPtr dwDriverReserved3
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment3
+End_Struct
+
+Struct DDHAL_SYNCVIDEOPORTDATA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwOriginOffset
+	UInteger dwHeight
+	UInteger dwVBIHeight
+	Integer iMissingAlignment2
+	ULongPtr dwDriverReserved1
+	ULongPtr dwDriverReserved2
+	ULongPtr dwDriverReserved3
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment3
+End_Struct
+
+Struct DDHAL_UNLOCKDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDSurface										// DDRAWI_DDRAWSURFACE_LCL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer Unlock											// LPDDHALSURFCB_UNLOCK
+End_Struct
+
+Struct DDHAL_UPDATENONLOCALHEAPDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwHeap
+	Integer iMissingAlignment1
+	ULongPtr fpGARTLin
+	ULongPtr fpGARTDev
+	ULongPtr ulPolicyMaxBytes
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer UpdateNonLocalHeap								// LPDDHAL_UPDATENONLOCALHEAP
+End_Struct
+
+Struct DDHAL_UPDATEOVERLAYDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	Pointer lpDDDestSurface									// DDRAWI_DDRAWSURFACE_LCL*
+	RECTL rDest
+	Pointer lpDDSrcSurface									// DDRAWI_DDRAWSURFACE_LCL*
+	RECTL rSrc
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	DDOVERLAYFX overlayFX
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer UpdateOverlay									// LPDDHALSURFCB_UPDATEOVERLAY
+End_Struct
+
+Struct DDHAL_UPDATEVPORTDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	Pointer lplpDDSurface									// DDRAWI_DDRAWSURFACE_INT**
+	Pointer lplpDDVBISurface								// DDRAWI_DDRAWSURFACE_INT**
+	Pointer lpVideoInfo										// DDVIDEOPORTINFO*
+	UInteger dwFlags
+	UInteger dwNumAutoflip
+	UInteger dwNumVBIAutoflip
+	Integer ddRVal											// HRESULT
+	Pointer UpdateVideoPort									// LPDDHALVPORTCB_UPDATE
+End_Struct
+
+Struct DDHAL_VPORTCOLORDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpColorData										// DDCOLORCONTROL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer ColorControl									// LPDDHALVPORTCB_COLORCONTROL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawi/ns-ddrawi-ddhal_waitforverticalblankdata
+Struct DDHAL_WAITFORVERTICALBLANKDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwFlags
+	UInteger bIsInVB
+	ULongPtr hEvent
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer WaitForVerticalBlank							// LPDDHAL_WAITFORVERTICALBLANK
+End_Struct
+
+Struct DDHAL_WAITFORVPORTSYNCDATA
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	UInteger dwFlags
+	UInteger dwLine
+	UInteger dwTimeOut
+	Integer ddRVal											// HRESULT
+	Pointer WaitForVideoPortSync							// LPDDHALVPORTCB_WAITFORSYNC
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddkernel/ns-ddkernel-ddkernelcaps
+Struct DDKERNELCAPS
+	UInteger dwSize
+	UInteger dwCaps
+	UInteger dwIRQCaps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddlockininfo
+Struct DDLOCKININFO
+	Pointer lpSurfaceData									// DDSURFACEDATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddlockoutinfo
+Struct DDLOCKOUTINFO
+	ULongPtr dwSurfacePtr
+End_Struct
+
+Struct DDMCBUFFERINFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpCompSurface									// DDRAWI_DDRAWSURFACE_LCL*
+	UInteger dwDataOffset
+	UInteger dwDataSize
+	Pointer lpPrivate										// Pointer*
+End_Struct
+
+Struct DDMCCOMPBUFFERINFO
+	UInteger dwSize
+	UInteger dwNumCompBuffers
+	UInteger dwWidthToCreate
+	UInteger dwHeightToCreate
+	UInteger dwBytesToAllocate
+	DDSCAPS2 ddCompCaps
+	DDPIXELFORMAT ddPixelFormat
+End_Struct
+
+Struct DDMDL
+	Pointer MdlNext											// DDMDL*
+	Short MdlSize
+	Short MdlFlags
+	Integer iMissingAlignment1
+	LongPtr Process
+	Pointer lpMappedSystemVa								// UInteger*
+	Pointer lpStartVa										// UInteger*
+	UInteger ByteCount
+	UInteger ByteOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-ddmocompbufferinfo
+Struct DDMOCOMPBUFFERINFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpCompSurface									// DD_SURFACE_LOCAL*
+	UInteger dwDataOffset
+	UInteger dwDataSize
+	Pointer lpPrivate										// Pointer*
+End_Struct
+
+Struct DDMONITORINFO
+	UShort Manufacturer
+	UShort Product
+	UInteger SerialNumber
+	Guid DeviceIdentifier
+	Integer Mode640x480
+	Integer Mode800x600
+	Integer Mode1024x768
+	Integer Mode1280x1024
+	Integer Mode1600x1200
+	Integer ModeReserved1
+	Integer ModeReserved2
+	Integer ModeReserved3
+End_Struct
+
+Struct DDMORESURFACECAPS
+	UInteger dwSize
+	DDSCAPSEX ddsCapsMore
+	ExtendedHeapRestrictions_1959[1] ddsExtendedHeapRestrictions
+End_Struct
+
+Struct DDNONLOCALVIDMEMCAPS
+	UInteger dwSize
+	UInteger dwNLVBCaps
+	UInteger dwNLVBCaps2
+	UInteger dwNLVBCKeyCaps
+	UInteger dwNLVBFXCaps
+	UInteger[8] dwNLVBRops
+End_Struct
+
+Struct DDNTCORECAPS
+	UInteger dwSize
+	UInteger dwCaps
+	UInteger dwCaps2
+	UInteger dwCKeyCaps
+	UInteger dwFXCaps
+	UInteger dwFXAlphaCaps
+	UInteger dwPalCaps
+	UInteger dwSVCaps
+	UInteger dwAlphaBltConstBitDepths
+	UInteger dwAlphaBltPixelBitDepths
+	UInteger dwAlphaBltSurfaceBitDepths
+	UInteger dwAlphaOverlayConstBitDepths
+	UInteger dwAlphaOverlayPixelBitDepths
+	UInteger dwAlphaOverlaySurfaceBitDepths
+	UInteger dwZBufferBitDepths
+	UInteger dwVidMemTotal
+	UInteger dwVidMemFree
+	UInteger dwMaxVisibleOverlays
+	UInteger dwCurrVisibleOverlays
+	UInteger dwNumFourCCCodes
+	UInteger dwAlignBoundarySrc
+	UInteger dwAlignSizeSrc
+	UInteger dwAlignBoundaryDest
+	UInteger dwAlignSizeDest
+	UInteger dwAlignStrideAlign
+	UInteger[8] dwRops
+	DDSCAPS ddsCaps
+	UInteger dwMinOverlayStretch
+	UInteger dwMaxOverlayStretch
+	UInteger dwMinLiveVideoStretch
+	UInteger dwMaxLiveVideoStretch
+	UInteger dwMinHwCodecStretch
+	UInteger dwMaxHwCodecStretch
+	UInteger dwReserved1
+	UInteger dwReserved2
+	UInteger dwReserved3
+	UInteger dwSVBCaps
+	UInteger dwSVBCKeyCaps
+	UInteger dwSVBFXCaps
+	UInteger[8] dwSVBRops
+	UInteger dwVSBCaps
+	UInteger dwVSBCKeyCaps
+	UInteger dwVSBFXCaps
+	UInteger[8] dwVSBRops
+	UInteger dwSSBCaps
+	UInteger dwSSBCKeyCaps
+	UInteger dwSSBFXCaps
+	UInteger[8] dwSSBRops
+	UInteger dwMaxVideoPorts
+	UInteger dwCurrVideoPorts
+	UInteger dwSVBCaps2
+End_Struct
+
+Struct DDOPTSURFACEDESC
+	UInteger dwSize
+	UInteger dwFlags
+	DDSCAPS2 ddSCaps
+	DDOSCAPS ddOSCaps
+	Guid guid
+	UInteger dwCompressionRatio
+End_Struct
+
+Struct DDOSCAPS
+	UInteger dwCaps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddoverlayfx
+Struct DDOVERLAYFX
+	UInteger dwSize
+	UInteger dwAlphaEdgeBlendBitDepth
+	UInteger dwAlphaEdgeBlend
+	UInteger dwReserved
+	UInteger dwAlphaDestConstBitDepth
+	Integer iMissingAlignment1
+	_Anonymous1_e__Union_1945 Anonymous1
+	UInteger dwAlphaSrcConstBitDepth
+	Integer iMissingAlignment2
+	_Anonymous2_e__Union_1946 Anonymous2
+	DDCOLORKEY dckDestColorkey
+	DDCOLORKEY dckSrcColorkey
+	UInteger dwDDFX
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddpixelformat
+Struct DDPIXELFORMAT
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwFourCC
+	_Anonymous1_e__Union_1939 Anonymous1
+	_Anonymous2_e__Union_1940 Anonymous2
+	_Anonymous3_e__Union_1941 Anonymous3
+	_Anonymous4_e__Union_1943 Anonymous4
+	_Anonymous5_e__Union_1944 Anonymous5
+End_Struct
+
+Struct DDRAWI_DDMOTIONCOMP_INT
+	Pointer lpVtbl											// Pointer*
+	Pointer lpLcl											// DDRAWI_DDMOTIONCOMP_LCL*
+	Pointer lpLink											// DDRAWI_DDMOTIONCOMP_INT*
+	UInteger dwIntRefCnt
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDRAWI_DDMOTIONCOMP_LCL
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	Guid guid
+	UInteger dwUncompWidth
+	UInteger dwUncompHeight
+	DDPIXELFORMAT ddUncompPixelFormat
+	UInteger dwInternalFlags
+	UInteger dwRefCnt
+	UInteger dwProcessId
+	Integer iMissingAlignment1
+	Pointer hMoComp											// HANDLE
+	UInteger dwDriverReserved1
+	UInteger dwDriverReserved2
+	UInteger dwDriverReserved3
+	Integer iMissingAlignment2
+	Pointer lpDriverReserved1								// Pointer*
+	Pointer lpDriverReserved2								// Pointer*
+	Pointer lpDriverReserved3								// Pointer*
+End_Struct
+
+Struct DDRAWI_DDRAWCLIPPER_GBL
+	UInteger dwRefCnt
+	UInteger dwFlags
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwProcessId
+	Integer iMissingAlignment1
+	ULongPtr dwReserved1
+	ULongPtr hWnd
+	Pointer lpStaticClipList								// RGNDATA*
+End_Struct
+
+Struct DDRAWI_DDRAWCLIPPER_INT
+	Pointer lpVtbl											// Pointer*
+	Pointer lpLcl											// DDRAWI_DDRAWCLIPPER_LCL*
+	Pointer lpLink											// DDRAWI_DDRAWCLIPPER_INT*
+	UInteger dwIntRefCnt
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDRAWI_DDRAWCLIPPER_LCL
+	UInteger lpClipMore
+	Integer iMissingAlignment1
+	Pointer lpGbl											// DDRAWI_DDRAWCLIPPER_GBL*
+	Pointer lpDD_lcl										// DDRAWI_DIRECTDRAW_LCL*
+	UInteger dwLocalRefCnt
+	Integer iMissingAlignment2
+	Pointer pUnkOuter										// IUnknown
+	Pointer lpDD_int										// DDRAWI_DIRECTDRAW_INT*
+	ULongPtr dwReserved1
+	Pointer pAddrefedThisOwner								// IUnknown
+End_Struct
+
+Struct DDRAWI_DDRAWPALETTE_GBL
+	UInteger dwRefCnt
+	UInteger dwFlags
+	Pointer lpDD_lcl										// DDRAWI_DIRECTDRAW_LCL*
+	UInteger dwProcessId
+	Integer iMissingAlignment1
+	Pointer lpColorTable									// PALETTEENTRY*
+	_Anonymous_e__Union_1966 Anonymous
+	UInteger dwDriverReserved
+	UInteger dwContentsStamp
+	UInteger dwSaveStamp
+	UInteger dwHandle
+End_Struct
+
+Struct DDRAWI_DDRAWPALETTE_INT
+	Pointer lpVtbl											// Pointer*
+	Pointer lpLcl											// DDRAWI_DDRAWPALETTE_LCL*
+	Pointer lpLink											// DDRAWI_DDRAWPALETTE_INT*
+	UInteger dwIntRefCnt
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDRAWI_DDRAWPALETTE_LCL
+	UInteger lpPalMore
+	Integer iMissingAlignment1
+	Pointer lpGbl											// DDRAWI_DDRAWPALETTE_GBL*
+	ULongPtr dwUnused0
+	UInteger dwLocalRefCnt
+	Integer iMissingAlignment2
+	Pointer pUnkOuter										// IUnknown
+	Pointer lpDD_lcl										// DDRAWI_DIRECTDRAW_LCL*
+	ULongPtr dwReserved1
+	ULongPtr dwDDRAWReserved1
+	ULongPtr dwDDRAWReserved2
+	ULongPtr dwDDRAWReserved3
+End_Struct
+
+Struct DDRAWI_DDRAWSURFACE_GBL
+	UInteger dwRefCnt
+	UInteger dwGlobalFlags
+	_Anonymous1_e__Union_1960 Anonymous1
+	_Anonymous2_e__Union_1961 Anonymous2
+	_Anonymous3_e__Union_1962 Anonymous3
+	ULongPtr fpVidMem
+	_Anonymous4_e__Union_1963 Anonymous4
+	UShort wHeight
+	UShort wWidth
+	UInteger dwUsageCount
+	Integer iMissingAlignment1
+	ULongPtr dwReserved1
+	DDPIXELFORMAT ddpfSurface
+End_Struct
+
+Struct DDRAWI_DDRAWSURFACE_GBL_MORE
+	UInteger dwSize
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1967 Anonymous
+	Pointer pPageTable										// UInteger*
+	UInteger cPages
+	Integer iMissingAlignment2
+	ULongPtr dwSavedDCContext
+	ULongPtr fpAliasedVidMem
+	ULongPtr dwDriverReserved
+	ULongPtr dwHELReserved
+	UInteger cPageUnlocks
+	Integer iMissingAlignment3
+	ULongPtr hKernelSurface
+	UInteger dwKernelRefCnt
+	Integer iMissingAlignment4
+	Pointer lpColorInfo										// DDCOLORCONTROL*
+	ULongPtr fpNTAlias
+	UInteger dwContentsStamp
+	Integer iMissingAlignment5
+	Pointer lpvUnswappedDriverReserved						// Pointer*
+	Pointer lpDDRAWReserved2								// Pointer*
+	UInteger dwDDRAWReserved1
+	UInteger dwDDRAWReserved2
+	ULongPtr fpAliasOfVidMem
+End_Struct
+
+Struct DDRAWI_DDRAWSURFACE_INT
+	Pointer lpVtbl											// Pointer*
+	Pointer lpLcl											// DDRAWI_DDRAWSURFACE_LCL*
+	Pointer lpLink											// DDRAWI_DDRAWSURFACE_INT*
+	UInteger dwIntRefCnt
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDRAWI_DDRAWSURFACE_LCL
+	Pointer lpSurfMore										// DDRAWI_DDRAWSURFACE_MORE*
+	Pointer lpGbl											// DDRAWI_DDRAWSURFACE_GBL*
+	ULongPtr hDDSurface
+	Pointer lpAttachList									// ATTACHLIST*
+	Pointer lpAttachListFrom								// ATTACHLIST*
+	UInteger dwLocalRefCnt
+	UInteger dwProcessId
+	UInteger dwFlags
+	DDSCAPS ddsCaps
+	_Anonymous1_e__Union_1964 Anonymous1
+	_Anonymous2_e__Union_1965 Anonymous2
+	UInteger dwModeCreatedIn
+	UInteger dwBackBufferCount
+	DDCOLORKEY ddckCKDestBlt
+	DDCOLORKEY ddckCKSrcBlt
+	ULongPtr hDC
+	ULongPtr dwReserved1
+	DDCOLORKEY ddckCKSrcOverlay
+	DDCOLORKEY ddckCKDestOverlay
+	Pointer lpSurfaceOverlaying								// DDRAWI_DDRAWSURFACE_INT*
+	DBLNODE dbnOverlayNode
+	RECT rcOverlaySrc
+	RECT rcOverlayDest
+	UInteger dwClrXparent
+	UInteger dwAlpha
+	Integer lOverlayX
+	Integer lOverlayY
+End_Struct
+
+Struct DDRAWI_DDRAWSURFACE_MORE
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer lpIUnknowns										// IUNKNOWN_LIST*
+	Pointer lpDD_lcl										// DDRAWI_DIRECTDRAW_LCL*
+	UInteger dwPageLockCount
+	UInteger dwBytesAllocated
+	Pointer lpDD_int										// DDRAWI_DIRECTDRAW_INT*
+	UInteger dwMipMapCount
+	Integer iMissingAlignment2
+	Pointer lpDDIClipper									// DDRAWI_DDRAWCLIPPER_INT*
+	Pointer lpHeapAliasInfo									// HEAPALIASINFO*
+	UInteger dwOverlayFlags
+	Integer iMissingAlignment3
+	Pointer rgjunc											// Pointer*
+	Pointer lpVideoPort										// DDRAWI_DDVIDEOPORT_LCL*
+	Pointer lpddOverlayFX									// DDOVERLAYFX*
+	DDSCAPSEX ddsCapsEx
+	UInteger dwTextureStage
+	Pointer lpDDRAWReserved									// Pointer*
+	Pointer lpDDRAWReserved2								// Pointer*
+	Pointer lpDDrawReserved3								// Pointer*
+	UInteger dwDDrawReserved4
+	Integer iMissingAlignment4
+	Pointer lpDDrawReserved5								// Pointer*
+	Pointer lpGammaRamp										// UInteger*
+	Pointer lpOriginalGammaRamp								// UInteger*
+	Pointer lpDDrawReserved6								// Pointer*
+	UInteger dwSurfaceHandle
+	UInteger[2] qwDDrawReserved8
+	Integer iMissingAlignment5
+	Pointer lpDDrawReserved9								// Pointer*
+	UInteger cSurfaces
+	Integer iMissingAlignment6
+	Pointer pCreatedDDSurfaceDesc2							// DDSURFACEDESC2*
+	Pointer slist											// DDRAWI_DDRAWSURFACE_LCL**
+	UInteger dwFVF
+	Integer iMissingAlignment7
+	Pointer lpVB											// Pointer*
+End_Struct
+
+Struct DDRAWI_DDVIDEOPORT_INT
+	Pointer lpVtbl											// Pointer*
+	Pointer lpLcl											// DDRAWI_DDVIDEOPORT_LCL*
+	Pointer lpLink											// DDRAWI_DDVIDEOPORT_INT*
+	UInteger dwIntRefCnt
+	UInteger dwFlags
+End_Struct
+
+Struct DDRAWI_DDVIDEOPORT_LCL
+	Pointer lpDD											// DDRAWI_DIRECTDRAW_LCL*
+	DDVIDEOPORTDESC ddvpDesc
+	DDVIDEOPORTINFO ddvpInfo
+	Pointer lpSurface										// DDRAWI_DDRAWSURFACE_INT*
+	Pointer lpVBISurface									// DDRAWI_DDRAWSURFACE_INT*
+	Pointer lpFlipInts										// DDRAWI_DDRAWSURFACE_INT**
+	UInteger dwNumAutoflip
+	UInteger dwProcessID
+	UInteger dwStateFlags
+	UInteger dwFlags
+	UInteger dwRefCnt
+	Integer iMissingAlignment1
+	ULongPtr fpLastFlip
+	ULongPtr dwReserved1
+	ULongPtr dwReserved2
+	Pointer hDDVideoPort									// HANDLE
+	UInteger dwNumVBIAutoflip
+	Integer iMissingAlignment2
+	Pointer lpVBIDesc										// DDVIDEOPORTDESC*
+	Pointer lpVideoDesc										// DDVIDEOPORTDESC*
+	Pointer lpVBIInfo										// DDVIDEOPORTINFO*
+	Pointer lpVideoInfo										// DDVIDEOPORTINFO*
+	UInteger dwVBIProcessID
+	Integer iMissingAlignment3
+	Pointer lpVPNotify										// DDRAWI_DDVIDEOPORT_INT*
+End_Struct
+
+Struct DDRAWI_DIRECTDRAW_GBL
+	UInteger dwRefCnt
+	UInteger dwFlags
+	ULongPtr fpPrimaryOrig
+	DDCORECAPS ddCaps
+	UInteger dwInternal1
+	UInteger[9] dwUnused1
+	Integer iMissingAlignment1
+	Pointer lpDDCBtmp										// DDHAL_CALLBACKS*
+	Pointer dsList											// DDRAWI_DDRAWSURFACE_INT*
+	Pointer palList											// DDRAWI_DDRAWPALETTE_INT*
+	Pointer clipperList										// DDRAWI_DDRAWCLIPPER_INT*
+	Pointer lp16DD											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwMaxOverlays
+	UInteger dwCurrOverlays
+	UInteger dwMonitorFrequency
+	DDCORECAPS ddHELCaps
+	UInteger[50] dwUnused2
+	DDCOLORKEY ddckCKDestOverlay
+	DDCOLORKEY ddckCKSrcOverlay
+	VIDMEMINFO vmiData
+	Pointer lpDriverHandle									// Pointer*
+	Pointer lpExclusiveOwner								// DDRAWI_DIRECTDRAW_LCL*
+	UInteger dwModeIndex
+	UInteger dwModeIndexOrig
+	UInteger dwNumFourCC
+	Integer iMissingAlignment2
+	Pointer lpdwFourCC										// UInteger*
+	UInteger dwNumModes
+	Integer iMissingAlignment3
+	Pointer lpModeInfo										// DDHALMODEINFO*
+	PROCESS_LIST plProcessList
+	UInteger dwSurfaceLockCount
+	UInteger dwAliasedLockCnt
+	ULongPtr dwReserved3
+	ULongPtr hDD
+	Char[12] cObsolete										// CHAR
+	UInteger dwReserved1
+	UInteger dwReserved2
+	Integer iMissingAlignment4
+	DBLNODE dbnOverlayRoot
+	Pointer lpwPDeviceFlags									// UShort*
+	UInteger dwPDevice
+	UInteger dwWin16LockCnt
+	UInteger dwUnused3
+	UInteger hInstance
+	UInteger dwEvent16
+	UInteger dwSaveNumModes
+	ULongPtr lpD3DGlobalDriverData
+	ULongPtr lpD3DHALCallbacks
+	DDCORECAPS ddBothCaps
+	Integer iMissingAlignment5
+	Pointer lpDDVideoPortCaps								// DDVIDEOPORTCAPS*
+	Pointer dvpList											// DDRAWI_DDVIDEOPORT_INT*
+	ULongPtr lpD3DHALCallbacks2
+	RECT rectDevice
+	UInteger cMonitors
+	Integer iMissingAlignment6
+	Pointer gpbmiSrc										// Pointer*
+	Pointer gpbmiDest										// Pointer*
+	Pointer phaiHeapAliases									// HEAPALIASINFO*
+	ULongPtr hKernelHandle
+	ULongPtr pfnNotifyProc
+	Pointer lpDDKernelCaps									// DDKERNELCAPS*
+	Pointer lpddNLVCaps										// DDNONLOCALVIDMEMCAPS*
+	Pointer lpddNLVHELCaps									// DDNONLOCALVIDMEMCAPS*
+	Pointer lpddNLVBothCaps									// DDNONLOCALVIDMEMCAPS*
+	ULongPtr lpD3DExtendedCaps
+	UInteger dwDOSBoxEvent
+	RECT rectDesktop
+	Char[32] cDriverName									// CHAR
+	Integer iMissingAlignment7
+	ULongPtr lpD3DHALCallbacks3
+	UInteger dwNumZPixelFormats
+	Integer iMissingAlignment8
+	Pointer lpZPixelFormats									// DDPIXELFORMAT*
+	Pointer mcList											// DDRAWI_DDMOTIONCOMP_INT*
+	UInteger hDDVxd
+	DDSCAPSEX ddsCapsMore
+End_Struct
+
+Struct DDRAWI_DIRECTDRAW_INT
+	Pointer lpVtbl											// Pointer*
+	Pointer lpLcl											// DDRAWI_DIRECTDRAW_LCL*
+	Pointer lpLink											// DDRAWI_DIRECTDRAW_INT*
+	UInteger dwIntRefCnt
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDRAWI_DIRECTDRAW_LCL
+	UInteger lpDDMore
+	Integer iMissingAlignment1
+	Pointer lpGbl											// DDRAWI_DIRECTDRAW_GBL*
+	UInteger dwUnused0
+	UInteger dwLocalFlags
+	UInteger dwLocalRefCnt
+	UInteger dwProcessId
+	Pointer pUnkOuter										// IUnknown
+	UInteger dwObsolete1
+	Integer iMissingAlignment2
+	ULongPtr hWnd
+	ULongPtr hDC
+	UInteger dwErrorMode
+	Integer iMissingAlignment3
+	Pointer lpPrimary										// DDRAWI_DDRAWSURFACE_INT*
+	Pointer lpCB											// DDRAWI_DDRAWSURFACE_INT*
+	UInteger dwPreferredMode
+	Integer iMissingAlignment4
+	Pointer hD3DInstance									// HINSTANCE
+	Pointer pD3DIUnknown									// IUnknown
+	Pointer lpDDCB											// DDHAL_CALLBACKS*
+	ULongPtr hDDVxd
+	UInteger dwAppHackFlags
+	Integer iMissingAlignment5
+	ULongPtr hFocusWnd
+	UInteger dwHotTracking
+	UInteger dwIMEState
+	ULongPtr hWndPopup
+	ULongPtr hDD
+	ULongPtr hGammaCalibrator
+	Pointer lpGammaCalibrator								// LPDDGAMMACALIBRATORPROC
+End_Struct
+
+Struct DDRGBA
+	UChar red
+	UChar green
+	UChar blue
+	UChar alpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddscaps
+Struct DDSCAPS
+	UInteger dwCaps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddscaps2
+Struct DDSCAPS2
+	UInteger dwCaps
+	UInteger dwCaps2
+	UInteger dwCaps3
+	_Anonymous_e__Union_1938 Anonymous
+End_Struct
+
+Struct DDSCAPSEX
+	UInteger dwCaps2
+	UInteger dwCaps3
+	_Anonymous_e__Union_1937 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddsetstateininfo
+Struct DDSETSTATEININFO
+	Pointer lpSurfaceData									// DDSURFACEDATA*
+	Pointer lpVideoPortData									// DDVIDEOPORTDATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddsetstateoutinfo
+Struct DDSETSTATEOUTINFO
+	Integer bSoftwareAutoflip								// BOOL
+	UInteger dwSurfaceIndex
+	UInteger dwVBISurfaceIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddskipnextfieldinfo
+Struct DDSKIPNEXTFIELDINFO
+	Pointer lpVideoPortData									// DDVIDEOPORTDATA*
+	UInteger dwSkipFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DDSTEREOMODE
+	UInteger dwSize
+	UInteger dwHeight
+	UInteger dwWidth
+	UInteger dwBpp
+	UInteger dwRefreshRate
+	Integer bSupported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddsurfacedata
+Struct DDSURFACEDATA
+	UInteger ddsCaps
+	UInteger dwSurfaceOffset
+	ULongPtr fpLockPtr
+	UInteger dwWidth
+	UInteger dwHeight
+	Integer lPitch
+	UInteger dwOverlayFlags
+	UInteger dwOverlayOffset
+	UInteger dwOverlaySrcWidth
+	UInteger dwOverlaySrcHeight
+	UInteger dwOverlayDestWidth
+	UInteger dwOverlayDestHeight
+	UInteger dwVideoPortId
+	UInteger dwFormatFlags
+	UInteger dwFormatFourCC
+	UInteger dwFormatBitCount
+	UInteger dwRBitMask
+	UInteger dwGBitMask
+	UInteger dwBBitMask
+	UInteger dwDriverReserved1
+	UInteger dwDriverReserved2
+	UInteger dwDriverReserved3
+	UInteger dwDriverReserved4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddsurfacedesc
+Struct DDSURFACEDESC
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwHeight
+	UInteger dwWidth
+	_Anonymous1_e__Union_1947 Anonymous1
+	UInteger dwBackBufferCount
+	_Anonymous2_e__Union_1948 Anonymous2
+	UInteger dwAlphaBitDepth
+	UInteger dwReserved
+	Integer iMissingAlignment1
+	Pointer lpSurface										// Pointer*
+	DDCOLORKEY ddckCKDestOverlay
+	DDCOLORKEY ddckCKDestBlt
+	DDCOLORKEY ddckCKSrcOverlay
+	DDCOLORKEY ddckCKSrcBlt
+	DDPIXELFORMAT ddpfPixelFormat
+	DDSCAPS ddsCaps
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddraw/ns-ddraw-ddsurfacedesc2
+Struct DDSURFACEDESC2
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwHeight
+	UInteger dwWidth
+	_Anonymous1_e__Union_1949 Anonymous1
+	_Anonymous2_e__Union_1950 Anonymous2
+	_Anonymous3_e__Union_1951 Anonymous3
+	UInteger dwAlphaBitDepth
+	UInteger dwReserved
+	Integer iMissingAlignment1
+	Pointer lpSurface										// Pointer*
+	_Anonymous4_e__Union_1952 Anonymous4
+	DDCOLORKEY ddckCKDestBlt
+	DDCOLORKEY ddckCKSrcOverlay
+	DDCOLORKEY ddckCKSrcBlt
+	_Anonymous5_e__Union_1953 Anonymous5
+	DDSCAPS2 ddsCaps
+	UInteger dwTextureStage
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddtransferininfo
+Struct DDTRANSFERININFO
+	Pointer lpSurfaceData									// DDSURFACEDATA*
+	UInteger dwStartLine
+	UInteger dwEndLine
+	ULongPtr dwTransferID
+	UInteger dwTransferFlags
+	Integer iMissingAlignment1
+	Pointer lpDestMDL										// DDMDL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddtransferoutinfo
+Struct DDTRANSFEROUTINFO
+	UInteger dwBufferPolarity
+End_Struct
+
+Struct DDVERSIONDATA
+	UInteger dwHALVersion
+	Integer iMissingAlignment1
+	ULongPtr dwReserved1
+	ULongPtr dwReserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvp/ns-dvp-ddvideoportbandwidth
+Struct DDVIDEOPORTBANDWIDTH
+	UInteger dwSize
+	UInteger dwCaps
+	UInteger dwOverlay
+	UInteger dwColorkey
+	UInteger dwYInterpolate
+	UInteger dwYInterpAndColorkey
+	ULongPtr dwReserved1
+	ULongPtr dwReserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvp/ns-dvp-ddvideoportcaps
+Struct DDVIDEOPORTCAPS
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwMaxWidth
+	UInteger dwMaxVBIWidth
+	UInteger dwMaxHeight
+	UInteger dwVideoPortID
+	UInteger dwCaps
+	UInteger dwFX
+	UInteger dwNumAutoFlipSurfaces
+	UInteger dwAlignVideoPortBoundary
+	UInteger dwAlignVideoPortPrescaleWidth
+	UInteger dwAlignVideoPortCropBoundary
+	UInteger dwAlignVideoPortCropWidth
+	UInteger dwPreshrinkXStep
+	UInteger dwPreshrinkYStep
+	UInteger dwNumVBIAutoFlipSurfaces
+	UInteger dwNumPreferredAutoflip
+	UShort wNumFilterTapsX
+	UShort wNumFilterTapsY
+End_Struct
+
+Struct DDVIDEOPORTCONNECT
+	UInteger dwSize
+	UInteger dwPortWidth
+	Guid guidTypeID
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	ULongPtr dwReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-ddvideoportdata
+Struct DDVIDEOPORTDATA
+	UInteger dwVideoPortId
+	UInteger dwVPFlags
+	UInteger dwOriginOffset
+	UInteger dwHeight
+	UInteger dwVBIHeight
+	UInteger dwDriverReserved1
+	UInteger dwDriverReserved2
+	UInteger dwDriverReserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvp/ns-dvp-ddvideoportdesc
+Struct DDVIDEOPORTDESC
+	UInteger dwSize
+	UInteger dwFieldWidth
+	UInteger dwVBIWidth
+	UInteger dwFieldHeight
+	UInteger dwMicrosecondsPerField
+	UInteger dwMaxPixelsPerSecond
+	UInteger dwVideoPortID
+	UInteger dwReserved1
+	DDVIDEOPORTCONNECT VideoPortType
+	ULongPtr dwReserved2
+	ULongPtr dwReserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvp/ns-dvp-ddvideoportinfo
+Struct DDVIDEOPORTINFO
+	UInteger dwSize
+	UInteger dwOriginX
+	UInteger dwOriginY
+	UInteger dwVPFlags
+	RECT rCrop
+	UInteger dwPrescaleWidth
+	UInteger dwPrescaleHeight
+	Pointer lpddpfInputFormat								// DDPIXELFORMAT*
+	Pointer lpddpfVBIInputFormat							// DDPIXELFORMAT*
+	Pointer lpddpfVBIOutputFormat							// DDPIXELFORMAT*
+	UInteger dwVBIHeight
+	Integer iMissingAlignment1
+	ULongPtr dwReserved1
+	ULongPtr dwReserved2
+End_Struct
+
+Struct DDVIDEOPORTNOTIFY
+	Bigint ApproximateTimeStamp
+	Integer lField
+	UInteger dwSurfaceIndex
+	Integer lDone
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

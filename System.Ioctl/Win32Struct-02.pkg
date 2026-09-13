@@ -1,0 +1,865 @@
+Use UI
+
+Struct DEVICE_DSM_FREE_SPACE_OUTPUT
+	UInteger Version
+	Integer iMissingAlignment1
+	UBigint FreeSpace
+End_Struct
+
+Struct DEVICE_DSM_LOST_QUERY_OUTPUT
+	UInteger Version
+	UInteger Size
+	UBigint Alignment
+	UInteger NumberOfBits
+	UInteger[1] BitMap
+End_Struct
+
+Struct DEVICE_DSM_LOST_QUERY_PARAMETERS
+	UInteger Version
+	Integer iMissingAlignment1
+	UBigint Granularity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_dsm_notification_parameters
+Struct DEVICE_DSM_NOTIFICATION_PARAMETERS
+	UInteger Size
+	UInteger Flags
+	UInteger NumFileTypeIDs
+	Guid[1] FileTypeID
+End_Struct
+
+Struct DEVICE_DSM_NVCACHE_CHANGE_PRIORITY_PARAMETERS
+	UInteger Size
+	UChar TargetPriority
+	UChar[3] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_dsm_offload_read_parameters
+Struct DEVICE_DSM_OFFLOAD_READ_PARAMETERS
+	UInteger Flags
+	UInteger TimeToLive
+	UInteger[2] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_dsm_offload_write_parameters
+Struct DEVICE_DSM_OFFLOAD_WRITE_PARAMETERS
+	UInteger Flags
+	UInteger Reserved
+	UBigint TokenOffset
+	STORAGE_OFFLOAD_TOKEN Token
+End_Struct
+
+Struct DEVICE_DSM_PHYSICAL_ADDRESSES_OUTPUT
+	UInteger Version
+	UInteger Flags
+	UInteger TotalNumberOfRanges
+	UInteger NumberOfRangesReturned
+	DEVICE_STORAGE_ADDRESS_RANGE[1] Ranges
+End_Struct
+
+Struct DEVICE_DSM_QUERY_PREFER_LOCAL_REPAIR_OUTPUT
+	UInteger Version
+	UChar PreferLocalRepair									// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DEVICE_DSM_RANGE_ERROR_INFO
+	UInteger Version
+	UInteger Flags
+	UInteger TotalNumberOfRanges
+	UInteger NumberOfRangesReturned
+	DEVICE_STORAGE_RANGE_ATTRIBUTES[1] Ranges
+End_Struct
+
+Struct DEVICE_DSM_REPORT_ZONES_DATA
+	UInteger Size
+	UInteger ZoneCount
+	Integer Attributes										// STORAGE_ZONES_ATTRIBUTES
+	UInteger Reserved0
+	STORAGE_ZONE_DESCRIPTOR[1] ZoneDescriptors
+End_Struct
+
+Struct DEVICE_DSM_REPORT_ZONES_PARAMETERS
+	UInteger Size
+	UChar ReportOption
+	UChar Partial
+	UChar[2] Reserved
+End_Struct
+
+Struct DEVICE_DSM_TIERING_QUERY_INPUT
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger NumberOfTierIds
+	Guid[1] TierIds
+End_Struct
+
+Struct DEVICE_DSM_TIERING_QUERY_OUTPUT
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger Reserved
+	UBigint Alignment
+	UInteger TotalNumberOfRegions
+	UInteger NumberOfRegionsReturned
+	STORAGE_TIER_REGION[1] Regions
+End_Struct
+
+Struct DEVICE_INTERNAL_STATUS_DATA
+	UInteger Version
+	UInteger Size
+	UBigint T10VendorId
+	UInteger DataSet1Length
+	UInteger DataSet2Length
+	UInteger DataSet3Length
+	UInteger DataSet4Length
+	UChar StatusDataVersion
+	UChar[3] Reserved
+	UChar[128] ReasonIdentifier
+	UInteger StatusDataLength
+	UChar[1] StatusData
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_lb_provisioning_descriptor
+Struct DEVICE_LB_PROVISIONING_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UChar _bitfield
+	UChar[7] Reserved1
+	UBigint OptimalUnmapGranularity
+	UBigint UnmapGranularityAlignment
+	UInteger MaxUnmapLbaCount
+	UInteger MaxUnmapBlockDescriptorCount
+End_Struct
+
+Struct DEVICE_LOCATION
+	UInteger Socket
+	UInteger Slot
+	UInteger Adapter
+	UInteger Port
+	_Anonymous_e__Union_3147 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_manage_data_set_attributes
+Struct DEVICE_MANAGE_DATA_SET_ATTRIBUTES
+	UInteger Size
+	UInteger Action
+	UInteger Flags
+	UInteger ParameterBlockOffset
+	UInteger ParameterBlockLength
+	UInteger DataSetRangesOffset
+	UInteger DataSetRangesLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_manage_data_set_attributes_output
+Struct DEVICE_MANAGE_DATA_SET_ATTRIBUTES_OUTPUT
+	UInteger Size
+	UInteger Action
+	UInteger Flags
+	UInteger OperationStatus
+	UInteger ExtendedError
+	UInteger TargetDetailedError
+	UInteger ReservedStatus
+	UInteger OutputBlockOffset
+	UInteger OutputBlockLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_media_info
+Struct DEVICE_MEDIA_INFO
+	_DeviceSpecific_e__Union_3123 DeviceSpecific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_power_descriptor
+Struct DEVICE_POWER_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UChar DeviceAttentionSupported							// BOOLEAN
+	UChar AsynchronousNotificationSupported					// BOOLEAN
+	UChar IdlePowerManagementEnabled						// BOOLEAN
+	UChar D3ColdEnabled										// BOOLEAN
+	UChar D3ColdSupported									// BOOLEAN
+	UChar NoVerifyDuringIdlePower							// BOOLEAN
+	UChar[2] Reserved
+	UInteger IdleTimeoutInMS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_seek_penalty_descriptor
+Struct DEVICE_SEEK_PENALTY_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UChar IncursSeekPenalty									// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DEVICE_STORAGE_ADDRESS_RANGE
+	Bigint StartAddress
+	UBigint LengthInBytes
+End_Struct
+
+Struct DEVICE_STORAGE_RANGE_ATTRIBUTES
+	UBigint LengthInBytes
+	_Anonymous_e__Union_3153 Anonymous
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_trim_descriptor
+Struct DEVICE_TRIM_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UChar TrimEnabled										// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-device_write_aggregation_descriptor
+Struct DEVICE_WRITE_AGGREGATION_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UChar BenefitsFromWriteAggregation						// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_cache_information
+Struct DISK_CACHE_INFORMATION
+	UChar ParametersSavable									// BOOLEAN
+	UChar ReadCacheEnabled									// BOOLEAN
+	UChar WriteCacheEnabled									// BOOLEAN
+	UChar[1] cMissingAlignment1
+	Integer ReadRetentionPriority							// DISK_CACHE_RETENTION_PRIORITY
+	Integer WriteRetentionPriority							// DISK_CACHE_RETENTION_PRIORITY
+	UShort DisablePrefetchTransferLength
+	UChar PrefetchScalar									// BOOLEAN
+	UChar[1] cMissingAlignment2
+	_Anonymous_e__Union_3177 Anonymous
+	Short iMissingAlignment3
+End_Struct
+
+Struct DISK_CONTROLLER_NUMBER
+	UInteger ControllerNumber
+	UInteger DiskNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_detection_info
+Struct DISK_DETECTION_INFO
+	UInteger SizeOfDetectInfo
+	Integer DetectionType									// DETECTION_TYPE
+	_Anonymous_e__Union_3172 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_extent
+Struct DISK_EXTENT
+	UInteger DiskNumber
+	Integer iMissingAlignment1
+	Bigint StartingOffset
+	Bigint ExtentLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_ex_int13_info
+Struct DISK_EX_INT13_INFO
+	UShort ExBufferSize
+	UShort ExFlags
+	UInteger ExCylinders
+	UInteger ExHeads
+	UInteger ExSectorsPerTrack
+	UBigint ExSectorsPerDrive
+	UShort ExSectorSize
+	UShort ExReserved
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_geometry
+Struct DISK_GEOMETRY
+	Bigint Cylinders
+	Integer MediaType										// MEDIA_TYPE
+	UInteger TracksPerCylinder
+	UInteger SectorsPerTrack
+	UInteger BytesPerSector
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_geometry_ex
+Struct DISK_GEOMETRY_EX
+	DISK_GEOMETRY Geometry
+	Bigint DiskSize
+	UChar[1] Data
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_grow_partition
+Struct DISK_GROW_PARTITION
+	UInteger PartitionNumber
+	Integer iMissingAlignment1
+	Bigint BytesToGrow
+End_Struct
+
+Struct DISK_HISTOGRAM
+	Bigint DiskSize
+	Bigint Start
+	Bigint End
+	Bigint Average
+	Bigint AverageRead
+	Bigint AverageWrite
+	UInteger Granularity
+	UInteger Size
+	UInteger ReadCount
+	UInteger WriteCount
+	Pointer Histogram										// HISTOGRAM_BUCKET*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_int13_info
+Struct DISK_INT13_INFO
+	UShort DriveSelect
+	Short iMissingAlignment1
+	UInteger MaxCylinders
+	UShort SectorsPerTrack
+	UShort MaxHeads
+	UShort NumberDrives
+	Short iMissingAlignment2
+End_Struct
+
+Struct DISK_LOGGING
+	UChar Function
+	UChar[7] cMissingAlignment1
+	Pointer BufferAddress									// Pointer*
+	UInteger BufferSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_partition_info
+Struct DISK_PARTITION_INFO
+	UInteger SizeOfPartitionInfo
+	Integer PartitionStyle									// PARTITION_STYLE
+	_Anonymous_e__Union_3174 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-disk_performance
+Struct DISK_PERFORMANCE
+	Bigint BytesRead
+	Bigint BytesWritten
+	Bigint ReadTime
+	Bigint WriteTime
+	Bigint IdleTime
+	UInteger ReadCount
+	UInteger WriteCount
+	UInteger QueueDepth
+	UInteger SplitCount
+	Bigint QueryTime
+	UInteger StorageDeviceNumber
+	UShort[8] StorageManagerName
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DISK_RECORD
+	Bigint ByteOffset
+	Bigint StartTime
+	Bigint EndTime
+	Pointer VirtualAddress									// Pointer*
+	UInteger NumberOfBytes
+	UChar DeviceNumber
+	UChar ReadRequest										// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct DRIVERSTATUS
+	UChar bDriverError
+	UChar bIDEError
+	UChar[2] bReserved
+	UInteger[2] dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-drive_layout_information
+Struct DRIVE_LAYOUT_INFORMATION
+	UInteger PartitionCount
+	UInteger Signature
+	PARTITION_INFORMATION[1] PartitionEntry
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex
+Struct DRIVE_LAYOUT_INFORMATION_EX
+	UInteger PartitionStyle
+	UInteger PartitionCount
+	_Anonymous_e__Union_3171 Anonymous
+	PARTITION_INFORMATION_EX[1] PartitionEntry
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_gpt
+Struct DRIVE_LAYOUT_INFORMATION_GPT
+	Guid DiskId
+	Bigint StartingUsableOffset
+	Bigint UsableLength
+	UInteger MaxPartitionCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_mbr
+Struct DRIVE_LAYOUT_INFORMATION_MBR
+	UInteger Signature
+	UInteger CheckSum
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-duplicate_extents_data
+Struct DUPLICATE_EXTENTS_DATA
+	Pointer FileHandle										// HANDLE
+	Bigint SourceFileOffset
+	Bigint TargetFileOffset
+	Bigint ByteCount
+End_Struct
+
+Struct DUPLICATE_EXTENTS_DATA32
+	UInteger FileHandle
+	Integer iMissingAlignment1
+	Bigint SourceFileOffset
+	Bigint TargetFileOffset
+	Bigint ByteCount
+End_Struct
+
+Struct DUPLICATE_EXTENTS_DATA_EX
+	ULongPtr Size
+	Pointer FileHandle										// HANDLE
+	Bigint SourceFileOffset
+	Bigint TargetFileOffset
+	Bigint ByteCount
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DUPLICATE_EXTENTS_DATA_EX32
+	UInteger Size
+	UInteger FileHandle
+	Bigint SourceFileOffset
+	Bigint TargetFileOffset
+	Bigint ByteCount
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct ENCRYPTED_DATA_INFO
+	UBigint StartingFileOffset
+	UInteger OutputBufferOffset
+	UInteger BytesWithinFileSize
+	UInteger BytesWithinValidDataLength
+	UShort CompressionFormat
+	UChar DataUnitShift
+	UChar ChunkShift
+	UChar ClusterShift
+	UChar EncryptionFormat
+	UShort NumberOfDataBlocks
+	UInteger[1] DataBlockSize
+End_Struct
+
+Struct ENCRYPTION_BUFFER
+	UInteger EncryptionOperation
+	UChar[1] Private
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct ENCRYPTION_KEY_CTRL_INPUT
+	UInteger HeaderSize
+	UInteger StructureSize
+	UShort KeyOffset
+	UShort KeySize
+	UInteger DplLock
+	UBigint DplUserId
+	UBigint DplCredentialId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-exfat_statistics
+Struct EXFAT_STATISTICS
+	UInteger CreateHits
+	UInteger SuccessfulCreates
+	UInteger FailedCreates
+	UInteger NonCachedReads
+	UInteger NonCachedReadBytes
+	UInteger NonCachedWrites
+	UInteger NonCachedWriteBytes
+	UInteger NonCachedDiskReads
+	UInteger NonCachedDiskWrites
+End_Struct
+
+Struct EXTENDED_ENCRYPTED_DATA_INFO
+	UInteger ExtendedCode
+	UInteger Length
+	UInteger Flags
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-fat_statistics
+Struct FAT_STATISTICS
+	UInteger CreateHits
+	UInteger SuccessfulCreates
+	UInteger FailedCreates
+	UInteger NonCachedReads
+	UInteger NonCachedReadBytes
+	UInteger NonCachedWrites
+	UInteger NonCachedWriteBytes
+	UInteger NonCachedDiskReads
+	UInteger NonCachedDiskWrites
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-filesystem_statistics
+Struct FILESYSTEM_STATISTICS
+	UShort FileSystemType									// FILESYSTEM_STATISTICS_TYPE
+	UShort Version
+	UInteger SizeOfCompleteStructure
+	UInteger UserFileReads
+	UInteger UserFileReadBytes
+	UInteger UserDiskReads
+	UInteger UserFileWrites
+	UInteger UserFileWriteBytes
+	UInteger UserDiskWrites
+	UInteger MetaDataReads
+	UInteger MetaDataReadBytes
+	UInteger MetaDataDiskReads
+	UInteger MetaDataWrites
+	UInteger MetaDataWriteBytes
+	UInteger MetaDataDiskWrites
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-filesystem_statistics_ex
+Struct FILESYSTEM_STATISTICS_EX
+	UShort FileSystemType									// FILESYSTEM_STATISTICS_TYPE
+	UShort Version
+	UInteger SizeOfCompleteStructure
+	UBigint UserFileReads
+	UBigint UserFileReadBytes
+	UBigint UserDiskReads
+	UBigint UserFileWrites
+	UBigint UserFileWriteBytes
+	UBigint UserDiskWrites
+	UBigint MetaDataReads
+	UBigint MetaDataReadBytes
+	UBigint MetaDataDiskReads
+	UBigint MetaDataWrites
+	UBigint MetaDataWriteBytes
+	UBigint MetaDataDiskWrites
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_allocated_range_buffer
+Struct FILE_ALLOCATED_RANGE_BUFFER
+	Bigint FileOffset
+	Bigint Length
+End_Struct
+
+Struct FILE_DESIRED_STORAGE_CLASS_INFORMATION
+	Integer Class											// FILE_STORAGE_TIER_CLASS
+	UInteger Flags
+End_Struct
+
+Struct FILE_FS_PERSISTENT_VOLUME_INFORMATION
+	UInteger VolumeFlags
+	UInteger FlagMask
+	UInteger Version
+	UInteger Reserved
+End_Struct
+
+Struct FILE_INITIATE_REPAIR_OUTPUT_BUFFER
+	UBigint Hint1
+	UBigint Hint2
+	UBigint Clsn
+	UInteger Status
+	Integer iMissingAlignment1
+End_Struct
+
+Struct FILE_LAYOUT_ENTRY
+	UInteger Version
+	UInteger NextFileOffset
+	UInteger Flags
+	UInteger FileAttributes
+	UBigint FileReferenceNumber
+	UInteger FirstNameOffset
+	UInteger FirstStreamOffset
+	UInteger ExtraInfoOffset
+	UInteger ExtraInfoLength
+End_Struct
+
+Struct FILE_LAYOUT_INFO_ENTRY
+	_BasicInformation_e__Struct_3204 BasicInformation
+	UInteger OwnerId
+	UInteger SecurityId
+	Bigint Usn
+	Integer StorageReserveId								// STORAGE_RESERVE_ID
+	Integer iMissingAlignment1
+End_Struct
+
+Struct FILE_LAYOUT_NAME_ENTRY
+	UInteger NextNameOffset
+	UInteger Flags
+	UBigint ParentFileReferenceNumber
+	UInteger FileNameLength
+	UInteger Reserved
+	UShort[1] FileName
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_level_trim
+Struct FILE_LEVEL_TRIM
+	UInteger Key
+	UInteger NumRanges
+	FILE_LEVEL_TRIM_RANGE[1] Ranges
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_level_trim_output
+Struct FILE_LEVEL_TRIM_OUTPUT
+	UInteger NumRangesProcessed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_level_trim_range
+Struct FILE_LEVEL_TRIM_RANGE
+	UBigint Offset
+	UBigint Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_make_compatible_buffer
+Struct FILE_MAKE_COMPATIBLE_BUFFER
+	UChar CloseDisc											// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_objectid_buffer
+Struct FILE_OBJECTID_BUFFER
+	UChar[16] ObjectId
+	_Anonymous_e__Union_3194 Anonymous
+End_Struct
+
+Struct FILE_PREFETCH
+	UInteger Type
+	UInteger Count
+	UBigint[1] Prefetch
+End_Struct
+
+Struct FILE_PREFETCH_EX
+	UInteger Type
+	UInteger Count
+	Pointer Context											// Pointer*
+	UBigint[1] Prefetch
+End_Struct
+
+Struct FILE_PROVIDER_EXTERNAL_INFO_V0
+	UInteger Version
+	UInteger Algorithm
+End_Struct
+
+Struct FILE_PROVIDER_EXTERNAL_INFO_V1
+	UInteger Version
+	UInteger Algorithm
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_query_on_disk_vol_info_buffer
+Struct FILE_QUERY_ON_DISK_VOL_INFO_BUFFER
+	Bigint DirectoryCount
+	Bigint FileCount
+	UShort FsFormatMajVersion
+	UShort FsFormatMinVersion
+	UShort[12] FsFormatName
+	Integer iMissingAlignment1
+	Bigint FormatTime
+	Bigint LastUpdateTime
+	UShort[34] CopyrightInfo
+	UShort[34] AbstractInfo
+	UShort[34] FormattingImplementationInfo
+	UShort[34] LastModifyingImplementationInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_query_sparing_buffer
+Struct FILE_QUERY_SPARING_BUFFER
+	UInteger SparingUnitBytes
+	UChar SoftwareSparing									// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger TotalSpareBlocks
+	UInteger FreeSpareBlocks
+End_Struct
+
+Struct FILE_REFERENCE_RANGE
+	UBigint StartingFileReferenceNumber
+	UBigint EndingFileReferenceNumber
+End_Struct
+
+Struct FILE_REGION_INFO
+	Bigint FileOffset
+	Bigint Length
+	UInteger Usage
+	UInteger Reserved
+End_Struct
+
+Struct FILE_REGION_INPUT
+	Bigint FileOffset
+	Bigint Length
+	UInteger DesiredUsage
+	Integer iMissingAlignment1
+End_Struct
+
+Struct FILE_REGION_OUTPUT
+	UInteger Flags
+	UInteger TotalRegionEntryCount
+	UInteger RegionEntryCount
+	UInteger Reserved
+	FILE_REGION_INFO[1] Region
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_set_defect_mgmt_buffer
+Struct FILE_SET_DEFECT_MGMT_BUFFER
+	UChar Disable											// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_set_sparse_buffer
+Struct FILE_SET_SPARSE_BUFFER
+	UChar SetSparse											// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_storage_tier
+Struct FILE_STORAGE_TIER
+	Guid Id
+	UShort[256] Name
+	UShort[256] Description
+	UBigint Flags
+	UBigint ProvisionedCapacity
+	Integer MediaType										// FILE_STORAGE_TIER_MEDIA_TYPE
+	Integer Class											// FILE_STORAGE_TIER_CLASS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_storage_tier_region
+Struct FILE_STORAGE_TIER_REGION
+	Guid TierId
+	UBigint Offset
+	UBigint Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_system_recognition_information
+Struct FILE_SYSTEM_RECOGNITION_INFORMATION
+	Char[9] FileSystem										// CHAR
+End_Struct
+
+Struct FILE_TYPE_NOTIFICATION_INPUT
+	UInteger Flags
+	UInteger NumFileTypeIDs
+	Guid[1] FileTypeID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-file_zero_data_information
+Struct FILE_ZERO_DATA_INFORMATION
+	Bigint FileOffset
+	Bigint BeyondFinalZero
+End_Struct
+
+Struct FILE_ZERO_DATA_INFORMATION_EX
+	Bigint FileOffset
+	Bigint BeyondFinalZero
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-find_by_sid_data
+Struct FIND_BY_SID_DATA
+	UInteger Restart
+	SID Sid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-find_by_sid_output
+Struct FIND_BY_SID_OUTPUT
+	UInteger NextEntryOffset
+	UInteger FileIndex
+	UInteger FileNameLength
+	UShort[1] FileName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-format_ex_parameters
+Struct FORMAT_EX_PARAMETERS
+	Integer MediaType										// MEDIA_TYPE
+	UInteger StartCylinderNumber
+	UInteger EndCylinderNumber
+	UInteger StartHeadNumber
+	UInteger EndHeadNumber
+	UShort FormatGapLength
+	UShort SectorsPerTrack
+	UShort[1] SectorNumber
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-format_parameters
+Struct FORMAT_PARAMETERS
+	Integer MediaType										// MEDIA_TYPE
+	UInteger StartCylinderNumber
+	UInteger EndCylinderNumber
+	UInteger StartHeadNumber
+	UInteger EndHeadNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-fsctl_get_integrity_information_buffer
+Struct FSCTL_GET_INTEGRITY_INFORMATION_BUFFER
+	UShort ChecksumAlgorithm
+	UShort Reserved
+	UInteger Flags
+	UInteger ChecksumChunkSizeInBytes
+	UInteger ClusterSizeInBytes
+End_Struct
+
+Struct FSCTL_OFFLOAD_READ_INPUT
+	UInteger Size
+	UInteger Flags
+	UInteger TokenTimeToLive
+	UInteger Reserved
+	UBigint FileOffset
+	UBigint CopyLength
+End_Struct
+
+Struct FSCTL_OFFLOAD_READ_OUTPUT
+	UInteger Size
+	UInteger Flags
+	UBigint TransferLength
+	UChar[512] Token
+End_Struct
+
+Struct FSCTL_OFFLOAD_WRITE_INPUT
+	UInteger Size
+	UInteger Flags
+	UBigint FileOffset
+	UBigint CopyLength
+	UBigint TransferOffset
+	UChar[512] Token
+End_Struct
+
+Struct FSCTL_OFFLOAD_WRITE_OUTPUT
+	UInteger Size
+	UInteger Flags
+	UBigint LengthWritten
+End_Struct
+
+Struct FSCTL_QUERY_FAT_BPB_BUFFER
+	UChar[36] First0x24BytesOfBootSector
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-fsctl_query_region_info_input
+Struct FSCTL_QUERY_REGION_INFO_INPUT
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger NumberOfTierIds
+	Guid[1] TierIds
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-fsctl_query_region_info_output
+Struct FSCTL_QUERY_REGION_INFO_OUTPUT
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger Reserved
+	UBigint Alignment
+	UInteger TotalNumberOfRegions
+	UInteger NumberOfRegionsReturned
+	FILE_STORAGE_TIER_REGION[1] Regions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-fsctl_query_storage_classes_output
+Struct FSCTL_QUERY_STORAGE_CLASSES_OUTPUT
+	UInteger Version
+	UInteger Size
+	UInteger Flags											// FILE_STORAGE_TIER_FLAGS
+	UInteger TotalNumberOfTiers
+	UInteger NumberOfTiersReturned
+	Integer iMissingAlignment1
+	FILE_STORAGE_TIER[1] Tiers
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

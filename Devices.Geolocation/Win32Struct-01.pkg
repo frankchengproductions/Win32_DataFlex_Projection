@@ -1,0 +1,563 @@
+Use UI
+
+Struct _Anonymous_e__Union_2778
+	// GNSS_SINGLESHOT_PARAM SingleShotParam // (12)
+	// GNSS_DISTANCETRACKING_PARAM DistanceParam // (12)
+	// GNSS_CONTINUOUSTRACKING_PARAM ContinuousParam // (12)
+	// GNSS_LKGFIX_PARAM LkgFixParam // (8)
+	// UChar[268] UnusedParam // (268)
+	UChar[268] UnusedParam
+End_Struct
+
+Struct _Anonymous_e__Union_2779
+	// GNSS_BREADCRUMB_V1[50] v1 // (2000)
+	GNSS_BREADCRUMB_V1[50] v1
+End_Struct
+
+Struct _Anonymous_e__Union_2780
+	// GNSS_GEOREGION_CIRCLE Circle // (24)
+	// UChar[512] Unused // (512)
+	UChar[512] Unused
+End_Struct
+
+Struct _Anonymous_e__Union_2781
+	// GNSS_SUPL_NI_INFO SuplNiInfo // (1308)
+	// GNSS_CP_NI_INFO CpNiInfo // (1048)
+	// GNSS_V2UPL_NI_INFO V2UplNiInfo // (528)
+	GNSS_SUPL_NI_INFO SuplNiInfo
+End_Struct
+
+Struct _Anonymous_e__Union_2782
+	// GNSS_FIXDATA FixData // (2208)
+	// GNSS_AGNSS_REQUEST_PARAM AgnssRequest // (16)
+	// GNSS_NI_REQUEST_PARAM NiRequest // (1340)
+	// GNSS_ERRORINFO ErrorInformation // (1040)
+	// GNSS_NMEA_DATA NmeaData // (264)
+	// GNSS_GEOFENCE_ALERT_DATA GeofenceAlertData // (640)
+	// GNSS_BREADCRUMBING_ALERT_DATA BreadcrumbAlertData // (520)
+	// GNSS_GEOFENCES_TRACKINGSTATUS_DATA GeofencesTrackingStatus // (532)
+	// GNSS_DRIVER_REQUEST_DATA DriverRequestData // (16)
+	// UChar[1] CustomData // (1)
+	GNSS_FIXDATA FixData
+End_Struct
+
+Struct _Anonymous_e__Union_2783
+	// GNSS_FIXDATA FixData // (2208)
+	// GNSS_FIXDATA_2 FixData2 // (2272)
+	// GNSS_AGNSS_REQUEST_PARAM AgnssRequest // (16)
+	// GNSS_NI_REQUEST_PARAM NiRequest // (1340)
+	// GNSS_ERRORINFO ErrorInformation // (1040)
+	// GNSS_NMEA_DATA NmeaData // (264)
+	// GNSS_GEOFENCE_ALERT_DATA GeofenceAlertData // (640)
+	// GNSS_BREADCRUMBING_ALERT_DATA BreadcrumbAlertData // (520)
+	// GNSS_GEOFENCES_TRACKINGSTATUS_DATA GeofencesTrackingStatus // (532)
+	// GNSS_DRIVER_REQUEST_DATA DriverRequestData // (16)
+	// UChar[1] CustomData // (1)
+	GNSS_FIXDATA_2 FixData2
+End_Struct
+
+Struct _Anonymous_e__Union_2784
+	// GNSS_AGNSS_INJECTTIME Time // (20)
+	// GNSS_AGNSS_INJECTPOSITION Position // (128)
+	// GNSS_AGNSS_INJECTBLOB BlobData // (28)
+	GNSS_AGNSS_INJECTPOSITION Position
+End_Struct
+
+Struct GNSS_AGNSS_INJECT
+	UInteger Size
+	UInteger Version
+	Integer InjectionType									// GNSS_AGNSS_REQUEST_TYPE
+	Integer InjectionStatus									// NTSTATUS
+	UInteger InjectionDataSize
+	UChar[512] Unused
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2784 Anonymous
+End_Struct
+
+Struct GNSS_AGNSS_INJECTBLOB
+	UInteger Size
+	UInteger Version
+	UInteger BlobOui
+	UInteger BlobVersion
+	UInteger AgnssFormat
+	UInteger BlobSize
+	UChar[1] BlobData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct GNSS_AGNSS_INJECTPOSITION
+	UInteger Size
+	UInteger Version
+	UInteger Age
+	Integer iMissingAlignment1
+	GNSS_FIXDATA_BASIC BasicData
+	GNSS_FIXDATA_ACCURACY AccuracyData
+End_Struct
+
+Struct GNSS_AGNSS_INJECTTIME
+	UInteger Size
+	UInteger Version
+	FILETIME UtcTime
+	UInteger TimeUncertainty
+End_Struct
+
+Struct GNSS_AGNSS_REQUEST_PARAM
+	UInteger Size
+	UInteger Version
+	Integer RequestType										// GNSS_AGNSS_REQUEST_TYPE
+	UInteger BlobFormat
+End_Struct
+
+Struct GNSS_BREADCRUMBING_ALERT_DATA
+	UInteger Size
+	UInteger Version
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_BREADCRUMBING_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger MaximumHorizontalUncertainty
+	UInteger MinDistanceBetweenFixes
+	UInteger MaximumErrorTimeoutMs
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_BREADCRUMB_LIST
+	UInteger Size
+	UInteger Version
+	UInteger NumCrumbs
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2779 Anonymous
+End_Struct
+
+Struct GNSS_BREADCRUMB_V1
+	FILETIME FixTimeStamp
+	Real Latitude
+	Real Longitude
+	UInteger HorizontalAccuracy
+	UShort Speed
+	UShort SpeedAccuracy
+	Short Altitude
+	UShort AltitudeAccuracy
+	Short Heading
+	UChar HeadingAccuracy
+	UChar FixSuccess
+End_Struct
+
+Struct GNSS_CHIPSETINFO
+	UInteger Size
+	UInteger Version
+	UShort[25] ManufacturerID
+	UShort[25] HardwareID
+	UShort[20] FirmwareVersion
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_CONTINUOUSTRACKING_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger PreferredInterval
+End_Struct
+
+Struct GNSS_CP_NI_INFO
+	UInteger Size
+	UInteger Version
+	UShort[260] RequestorId
+	UShort[260] NotificationText
+End_Struct
+
+Struct GNSS_CWTESTDATA
+	UInteger Size
+	UInteger Version
+	Integer TestResultStatus								// NTSTATUS
+	Integer iMissingAlignment1
+	Real SignalToNoiseRatio
+	Real Frequency
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_DEVICE_CAPABILITY
+	UInteger Size
+	UInteger Version
+	Integer SupportMultipleFixSessions						// BOOL
+	Integer SupportMultipleAppSessions						// BOOL
+	Integer RequireAGnssInjection							// BOOL
+	UInteger AgnssFormatSupported
+	UInteger AgnssFormatPreferred
+	Integer SupportDistanceTracking							// BOOL
+	Integer SupportContinuousTracking						// BOOL
+	UInteger Reserved1
+	Integer Reserved2										// BOOL
+	Integer Reserved3										// BOOL
+	Integer Reserved4										// BOOL
+	Integer Reserved5										// BOOL
+	UInteger GeofencingSupport
+	Integer Reserved6										// BOOL
+	Integer Reserved7										// BOOL
+	Integer SupportCpLocation								// BOOL
+	Integer SupportUplV2									// BOOL
+	Integer SupportSuplV1									// BOOL
+	Integer SupportSuplV2									// BOOL
+	GNSS_SUPL_VERSION SupportedSuplVersion
+	UInteger MaxGeofencesSupported
+	Integer SupportMultipleSuplRootCert						// BOOL
+	UInteger GnssBreadCrumbPayloadVersion
+	UInteger MaxGnssBreadCrumbFixes
+	UChar[496] Unused
+End_Struct
+
+Struct GNSS_DISTANCETRACKING_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger MovementThreshold
+End_Struct
+
+Struct GNSS_DRIVERCOMMAND_PARAM
+	UInteger Size
+	UInteger Version
+	Integer CommandType										// GNSS_DRIVERCOMMAND_TYPE
+	UInteger Reserved
+	UInteger CommandDataSize
+	UChar[512] Unused
+	UChar[1] CommandData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct GNSS_DRIVER_REQUEST_DATA
+	UInteger Size
+	UInteger Version
+	Integer Request											// GNSS_DRIVER_REQUEST
+	UInteger RequestFlag
+End_Struct
+
+Struct GNSS_ERRORINFO
+	UInteger Size
+	UInteger Version
+	UInteger ErrorCode
+	Integer IsRecoverable									// BOOL
+	UShort[256] ErrorDescription
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_EVENT
+	UInteger Size
+	UInteger Version
+	Integer EventType										// GNSS_EVENT_TYPE
+	UInteger EventDataSize
+	UChar[512] Unused
+	_Anonymous_e__Union_2782 Anonymous
+End_Struct
+
+Struct GNSS_EVENT_2
+	UInteger Size
+	UInteger Version
+	Integer EventType										// GNSS_EVENT_TYPE
+	UInteger EventDataSize
+	UChar[512] Unused
+	_Anonymous_e__Union_2783 Anonymous
+End_Struct
+
+Struct GNSS_FIXDATA
+	UInteger Size
+	UInteger Version
+	UInteger FixSessionID
+	FILETIME FixTimeStamp
+	Integer IsFinalFix										// BOOL
+	Integer FixStatus										// NTSTATUS
+	UInteger FixLevelOfDetails
+	GNSS_FIXDATA_BASIC BasicData
+	GNSS_FIXDATA_ACCURACY AccuracyData
+	GNSS_FIXDATA_SATELLITE SatelliteData
+End_Struct
+
+Struct GNSS_FIXDATA_2
+	UInteger Size
+	UInteger Version
+	UInteger FixSessionID
+	FILETIME FixTimeStamp
+	Integer IsFinalFix										// BOOL
+	Integer FixStatus										// NTSTATUS
+	UInteger FixLevelOfDetails
+	GNSS_FIXDATA_BASIC_2 BasicData
+	GNSS_FIXDATA_ACCURACY_2 AccuracyData
+	GNSS_FIXDATA_SATELLITE SatelliteData
+End_Struct
+
+Struct GNSS_FIXDATA_ACCURACY
+	UInteger Size
+	UInteger Version
+	UInteger HorizontalAccuracy
+	UInteger HorizontalErrorMajorAxis
+	UInteger HorizontalErrorMinorAxis
+	UInteger HorizontalErrorAngle
+	UInteger HeadingAccuracy
+	UInteger AltitudeAccuracy
+	UInteger SpeedAccuracy
+	UInteger HorizontalConfidence
+	UInteger HeadingConfidence
+	UInteger AltitudeConfidence
+	UInteger SpeedConfidence
+	Float PositionDilutionOfPrecision
+	Float HorizontalDilutionOfPrecision
+	Float VerticalDilutionOfPrecision
+End_Struct
+
+Struct GNSS_FIXDATA_ACCURACY_2
+	UInteger Size
+	UInteger Version
+	Real HorizontalAccuracy
+	Real HorizontalErrorMajorAxis
+	Real HorizontalErrorMinorAxis
+	Real HorizontalErrorAngle
+	Real HeadingAccuracy
+	Real AltitudeAccuracy
+	Real SpeedAccuracy
+	UInteger HorizontalConfidence
+	UInteger HeadingConfidence
+	UInteger AltitudeConfidence
+	UInteger SpeedConfidence
+	Real PositionDilutionOfPrecision
+	Real HorizontalDilutionOfPrecision
+	Real VerticalDilutionOfPrecision
+	Real GeometricDilutionOfPrecision
+	Real TimeDilutionOfPrecision
+End_Struct
+
+Struct GNSS_FIXDATA_BASIC
+	UInteger Size
+	UInteger Version
+	Real Latitude
+	Real Longitude
+	Real Altitude
+	Real Speed
+	Real Heading
+End_Struct
+
+Struct GNSS_FIXDATA_BASIC_2
+	UInteger Size
+	UInteger Version
+	Real Latitude
+	Real Longitude
+	Real Altitude
+	Real Speed
+	Real Heading
+	Real AltitudeEllipsoid
+End_Struct
+
+Struct GNSS_FIXDATA_SATELLITE
+	UInteger Size
+	UInteger Version
+	UInteger SatelliteCount
+	Integer iMissingAlignment1
+	GNSS_SATELLITEINFO[64] SatelliteArray
+End_Struct
+
+Struct GNSS_FIXSESSION_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger FixSessionID
+	Integer SessionType										// GNSS_FIXSESSIONTYPE
+	UInteger HorizontalAccuracy
+	UInteger HorizontalConfidence
+	UInteger[9] Reserved
+	UInteger FixLevelOfDetails
+	_Anonymous_e__Union_2778 Anonymous
+	UChar[256] Unused
+End_Struct
+
+Struct GNSS_GEOFENCES_TRACKINGSTATUS_DATA
+	UInteger Size
+	UInteger Version
+	Integer Status											// NTSTATUS
+	FILETIME StatusTimeStamp
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_GEOFENCE_ALERT_DATA
+	UInteger Size
+	UInteger Version
+	UInteger GeofenceID
+	Integer GeofenceState									// GNSS_GEOFENCE_STATE
+	GNSS_FIXDATA_BASIC FixBasicData
+	GNSS_FIXDATA_ACCURACY FixAccuracyData
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_GEOFENCE_CREATE_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger AlertTypes
+	Integer InitialState									// GNSS_GEOFENCE_STATE
+	GNSS_GEOREGION Boundary
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_GEOFENCE_CREATE_RESPONSE
+	UInteger Size
+	UInteger Version
+	Integer CreationStatus									// NTSTATUS
+	UInteger GeofenceID
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_GEOFENCE_DELETE_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger GeofenceID
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_GEOREGION
+	UInteger Size
+	UInteger Version
+	Integer GeoRegionType									// GNSS_GEOREGIONTYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2780 Anonymous
+End_Struct
+
+Struct GNSS_GEOREGION_CIRCLE
+	Real Latitude
+	Real Longitude
+	Real RadiusInMeters
+End_Struct
+
+Struct GNSS_LKGFIX_PARAM
+	UInteger Size
+	UInteger Version
+End_Struct
+
+Struct GNSS_NI_REQUEST_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger RequestId
+	Integer RequestType										// GNSS_NI_REQUEST_TYPE
+	Integer NotificationType								// GNSS_NI_NOTIFICATION_TYPE
+	Integer RequestPlaneType								// GNSS_NI_PLANE_TYPE
+	_Anonymous_e__Union_2781 Anonymous
+	UInteger ResponseTimeInSec
+	Integer EmergencyLocation								// BOOL
+End_Struct
+
+Struct GNSS_NI_RESPONSE
+	UInteger Size
+	UInteger Version
+	UInteger RequestId
+	Integer UserResponse									// GNSS_NI_USER_RESPONSE
+End_Struct
+
+Struct GNSS_NMEA_DATA
+	UInteger Size
+	UInteger Version
+	Char[256] NmeaSentences									// CHAR
+End_Struct
+
+Struct GNSS_PLATFORM_CAPABILITY
+	UInteger Size
+	UInteger Version
+	Integer SupportAgnssInjection							// BOOL
+	UInteger AgnssFormatSupported
+	UChar[516] Unused
+End_Struct
+
+Struct GNSS_SATELLITEINFO
+	UInteger SatelliteId
+	Integer UsedInPositiong									// BOOL
+	Real Elevation
+	Real Azimuth
+	Real SignalToNoiseRatio
+End_Struct
+
+Struct GNSS_SELFTESTCONFIG
+	UInteger Size
+	UInteger Version
+	UInteger TestType
+	UChar[512] Unused
+	UInteger InBufLen
+	UChar[1] InBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct GNSS_SELFTESTRESULT
+	UInteger Size
+	UInteger Version
+	Integer TestResultStatus								// NTSTATUS
+	UInteger Result
+	UInteger PinFailedBitMask
+	UChar[512] Unused
+	UInteger OutBufLen
+	UChar[1] OutBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct GNSS_SINGLESHOT_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger ResponseTime
+End_Struct
+
+Struct GNSS_STOPFIXSESSION_PARAM
+	UInteger Size
+	UInteger Version
+	UInteger FixSessionID
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_SUPL_CERT_CONFIG
+	UInteger Size
+	UInteger Version
+	Integer CertAction										// GNSS_SUPL_CERT_ACTION
+	Char[260] SuplCertName									// CHAR
+	UInteger CertSize
+	UChar[512] Unused
+	UChar[1] CertData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct GNSS_SUPL_HSLP_CONFIG
+	UInteger Size
+	UInteger Version
+	Char[260] SuplHslp										// CHAR
+	Char[260] SuplHslpFromImsi								// CHAR
+	UInteger Reserved
+	UChar[512] Unused
+End_Struct
+
+Struct GNSS_SUPL_NI_INFO
+	UInteger Size
+	UInteger Version
+	UShort[260] RequestorId
+	UShort[260] ClientName
+	Char[260] SuplNiUrl										// CHAR
+End_Struct
+
+Struct GNSS_SUPL_VERSION
+	UInteger MajorVersion
+	UInteger MinorVersion
+End_Struct
+
+Struct GNSS_SUPL_VERSION_2
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UInteger ServiceIndicator
+End_Struct
+
+Struct GNSS_V2UPL_CONFIG
+	UInteger Size
+	UInteger Version
+	Char[260] MPC											// CHAR
+	Char[260] PDE											// CHAR
+	UChar ApplicationTypeIndicator_MR
+	UChar[512] Unused
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct GNSS_V2UPL_NI_INFO
+	UInteger Size
+	UInteger Version
+	UShort[260] RequestorId
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

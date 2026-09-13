@@ -1,0 +1,1034 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/printdocs/monitor-info-1
+Struct MONITOR_INFO_1W
+	Pointer pName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/monitor-info-2
+Struct MONITOR_INFO_2A
+	Pointer pName											// PSTR
+	Pointer pEnvironment									// PSTR
+	Pointer pDLLName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/monitor-info-2
+Struct MONITOR_INFO_2W
+	Pointer pName											// PWSTR
+	Pointer pEnvironment									// PWSTR
+	Pointer pDLLName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcescapeheader
+Struct MXDC_ESCAPE_HEADER_T
+	UInteger cbInput
+	UInteger cbOutput
+	UInteger opCode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcgetfilenamedata
+Struct MXDC_GET_FILENAME_DATA_T
+	UInteger cbOutput
+	UShort[1] wszData
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcprintticketpassthrough
+Struct MXDC_PRINTTICKET_DATA_T
+	UInteger dwDataSize
+	UChar[1] bData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcprintticketescape
+Struct MXDC_PRINTTICKET_ESCAPE_T
+	MXDC_ESCAPE_HEADER_T mxdcEscape
+	MXDC_PRINTTICKET_DATA_T printTicketData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcs0pagedata
+Struct MXDC_S0PAGE_DATA_T
+	UInteger dwSize
+	UChar[1] bData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcs0pagepassthroughescape
+Struct MXDC_S0PAGE_PASSTHROUGH_ESCAPE_T
+	MXDC_ESCAPE_HEADER_T mxdcEscape
+	MXDC_S0PAGE_DATA_T xpsS0PageData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcs0pageresourceescape
+Struct MXDC_S0PAGE_RESOURCE_ESCAPE_T
+	MXDC_ESCAPE_HEADER_T mxdcEscape
+	MXDC_XPS_S0PAGE_RESOURCE_T xpsS0PageResourcePassthrough
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/mxdcxpss0pageresource
+Struct MXDC_XPS_S0PAGE_RESOURCE_T
+	UInteger dwSize
+	UInteger dwResourceType
+	UChar[260] szUri
+	UInteger dwDataSize
+	UChar[1] bData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct NOTIFICATION_CONFIG_1
+	UInteger cbSize
+	UInteger fdwFlags
+	Pointer pfnNotifyCallback								// ROUTER_NOTIFY_CALLBACK
+	Pointer pContext										// Pointer*
+End_Struct
+
+Struct OEMCUIPPARAM
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer poemuiobj										// OEMUIOBJ*
+	Pointer hPrinter										// HANDLE
+	Pointer pPrinterName									// PWSTR
+	Pointer hModule											// HANDLE
+	Pointer hOEMHeap										// HANDLE
+	Pointer pPublicDM										// DEVMODEA*
+	Pointer pOEMDM											// Pointer*
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer pDrvOptItems									// OPTITEM*
+	UInteger cDrvOptItems
+	Integer iMissingAlignment3
+	Pointer pOEMOptItems									// OPTITEM*
+	UInteger cOEMOptItems
+	Integer iMissingAlignment4
+	Pointer pOEMUserData									// Pointer*
+	Pointer OEMCUIPCallback									// OEMCUIPCALLBACK
+End_Struct
+
+Struct OEMDMPARAM
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pdriverobj										// Pointer*
+	Pointer hPrinter										// HANDLE
+	Pointer hModule											// HANDLE
+	Pointer pPublicDMIn										// DEVMODEA*
+	Pointer pPublicDMOut									// DEVMODEA*
+	Pointer pOEMDMIn										// Pointer*
+	Pointer pOEMDMOut										// Pointer*
+	UInteger cbBufSize
+	Integer iMissingAlignment2
+End_Struct
+
+Struct OEMFONTINSTPARAM
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hPrinter										// HANDLE
+	Pointer hModule											// HANDLE
+	Pointer hHeap											// HANDLE
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer pFontInstallerName								// PWSTR
+End_Struct
+
+Struct OEMUIOBJ
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pOemUIProcs										// OEMUIPROCS*
+End_Struct
+
+Struct OEMUIPROCS
+	Pointer DrvGetDriverSetting								// PFN_DrvGetDriverSetting
+	Pointer DrvUpdateUISetting								// PFN_DrvUpdateUISetting
+End_Struct
+
+Struct OEMUIPSPARAM
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer poemuiobj										// OEMUIOBJ*
+	Pointer hPrinter										// HANDLE
+	Pointer pPrinterName									// PWSTR
+	Pointer hModule											// HANDLE
+	Pointer hOEMHeap										// HANDLE
+	Pointer pPublicDM										// DEVMODEA*
+	Pointer pOEMDM											// Pointer*
+	Pointer pOEMUserData									// Pointer*
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer pOemEntry										// Pointer*
+End_Struct
+
+Struct OEM_DMEXTRAHEADER
+	UInteger dwSize
+	UInteger dwSignature
+	UInteger dwVersion
+End_Struct
+
+Struct OIEXT
+	UShort cbSize
+	UShort Flags
+	Integer iMissingAlignment1
+	Pointer hInstCaller										// HINSTANCE
+	Pointer pHelpFile										// Char*
+	ULongPtr[4] dwReserved
+End_Struct
+
+Struct OPTCOMBO
+	UShort cbSize
+	UChar Flags
+	UChar[1] cMissingAlignment1
+	UShort cListItem
+	Short iMissingAlignment2
+	Pointer pListItem										// OPTPARAM*
+	Integer Sel
+	UInteger[3] dwReserved
+End_Struct
+
+Struct OPTITEM
+	UShort cbSize
+	UChar Level
+	UChar DlgPageIdx
+	UInteger Flags
+	ULongPtr UserData
+	Pointer pName											// Char*
+	_Anonymous1_e__Union_3310 Anonymous1
+	_Anonymous2_e__Union_3311 Anonymous2
+	Pointer pOptType										// OPTTYPE*
+	UInteger HelpIndex
+	UChar DMPubID
+	UChar UserItemID
+	UShort wReserved
+	Pointer pOIExt											// OIEXT*
+	ULongPtr[3] dwReserved
+End_Struct
+
+Struct OPTPARAM
+	UShort cbSize
+	UChar Flags
+	UChar Style
+	Integer iMissingAlignment1
+	Pointer pData											// Char*
+	ULongPtr IconID
+	LongPtr lParam											// LPARAM
+	ULongPtr[2] dwReserved
+End_Struct
+
+Struct OPTTYPE
+	UShort cbSize
+	UChar Type
+	UChar Flags
+	UShort Count
+	UShort BegCtrlID
+	Pointer pOptParam										// OPTPARAM*
+	UShort Style
+	UShort[3] wReserved
+	ULongPtr[3] dwReserved
+End_Struct
+
+Struct PORT_DATA_1
+	UShort[64] sztPortName
+	UInteger dwVersion
+	UInteger dwProtocol
+	UInteger cbSize
+	UInteger dwReserved
+	UShort[49] sztHostAddress
+	UShort[33] sztSNMPCommunity
+	UInteger dwDoubleSpool
+	UShort[33] sztQueue
+	UShort[16] sztIPAddress
+	UChar[540] Reserved
+	Short iMissingAlignment1
+	UInteger dwPortNumber
+	UInteger dwSNMPEnabled
+	UInteger dwSNMPDevIndex
+End_Struct
+
+Struct PORT_DATA_2
+	UShort[64] sztPortName
+	UInteger dwVersion
+	UInteger dwProtocol
+	UInteger cbSize
+	UInteger dwReserved
+	UShort[128] sztHostAddress
+	UShort[33] sztSNMPCommunity
+	Short iMissingAlignment1
+	UInteger dwDoubleSpool
+	UShort[33] sztQueue
+	UChar[514] Reserved
+	UInteger dwPortNumber
+	UInteger dwSNMPEnabled
+	UInteger dwSNMPDevIndex
+	UInteger dwPortMonitorMibIndex
+End_Struct
+
+Struct PORT_DATA_LIST_1
+	UInteger dwVersion
+	UInteger cPortData
+	PORT_DATA_2[1] pPortData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/port-info-1
+Struct PORT_INFO_1A
+	Pointer pName											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/port-info-1
+Struct PORT_INFO_1W
+	Pointer pName											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/port-info-2
+Struct PORT_INFO_2A
+	Pointer pPortName										// PSTR
+	Pointer pMonitorName									// PSTR
+	Pointer pDescription									// PSTR
+	UInteger fPortType
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/port-info-2
+Struct PORT_INFO_2W
+	Pointer pPortName										// PWSTR
+	Pointer pMonitorName									// PWSTR
+	Pointer pDescription									// PWSTR
+	UInteger fPortType
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/port-info-3
+Struct PORT_INFO_3A
+	UInteger dwStatus
+	Integer iMissingAlignment1
+	Pointer pszStatus										// PSTR
+	UInteger dwSeverity
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/port-info-3
+Struct PORT_INFO_3W
+	UInteger dwStatus
+	Integer iMissingAlignment1
+	Pointer pszStatus										// PWSTR
+	UInteger dwSeverity
+	Integer iMissingAlignment2
+End_Struct
+
+Struct PRINTER_CONNECTION_INFO_1A
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pszDriverName									// PSTR
+End_Struct
+
+Struct PRINTER_CONNECTION_INFO_1W
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pszDriverName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-defaults
+Struct PRINTER_DEFAULTSA
+	Pointer pDatatype										// PSTR
+	Pointer pDevMode										// DEVMODEA*
+	UInteger DesiredAccess									// PRINTER_ACCESS_RIGHTS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-defaults
+Struct PRINTER_DEFAULTSW
+	Pointer pDatatype										// PWSTR
+	Pointer pDevMode										// DEVMODEW*
+	UInteger DesiredAccess									// PRINTER_ACCESS_RIGHTS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-enum-values
+Struct PRINTER_ENUM_VALUESA
+	Pointer pValueName										// PSTR
+	UInteger cbValueName
+	UInteger dwType
+	Pointer pData											// UChar*
+	UInteger cbData
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-enum-values
+Struct PRINTER_ENUM_VALUESW
+	Pointer pValueName										// PWSTR
+	UInteger cbValueName
+	UInteger dwType
+	Pointer pData											// UChar*
+	UInteger cbData
+	Integer iMissingAlignment1
+End_Struct
+
+Struct PRINTER_EVENT_ATTRIBUTES_INFO
+	UInteger cbSize
+	UInteger dwOldAttributes
+	UInteger dwNewAttributes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-1
+Struct PRINTER_INFO_1A
+	UInteger Flags
+	Integer iMissingAlignment1
+	Pointer pDescription									// PSTR
+	Pointer pName											// PSTR
+	Pointer pComment										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-1
+Struct PRINTER_INFO_1W
+	UInteger Flags
+	Integer iMissingAlignment1
+	Pointer pDescription									// PWSTR
+	Pointer pName											// PWSTR
+	Pointer pComment										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-2
+Struct PRINTER_INFO_2A
+	Pointer pServerName										// PSTR
+	Pointer pPrinterName									// PSTR
+	Pointer pShareName										// PSTR
+	Pointer pPortName										// PSTR
+	Pointer pDriverName										// PSTR
+	Pointer pComment										// PSTR
+	Pointer pLocation										// PSTR
+	Pointer pDevMode										// DEVMODEA*
+	Pointer pSepFile										// PSTR
+	Pointer pPrintProcessor									// PSTR
+	Pointer pDatatype										// PSTR
+	Pointer pParameters										// PSTR
+	Pointer pSecurityDescriptor								// PSECURITY_DESCRIPTOR
+	UInteger Attributes
+	UInteger Priority
+	UInteger DefaultPriority
+	UInteger StartTime
+	UInteger UntilTime
+	UInteger Status
+	UInteger cJobs
+	UInteger AveragePPM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-2
+Struct PRINTER_INFO_2W
+	Pointer pServerName										// PWSTR
+	Pointer pPrinterName									// PWSTR
+	Pointer pShareName										// PWSTR
+	Pointer pPortName										// PWSTR
+	Pointer pDriverName										// PWSTR
+	Pointer pComment										// PWSTR
+	Pointer pLocation										// PWSTR
+	Pointer pDevMode										// DEVMODEW*
+	Pointer pSepFile										// PWSTR
+	Pointer pPrintProcessor									// PWSTR
+	Pointer pDatatype										// PWSTR
+	Pointer pParameters										// PWSTR
+	Pointer pSecurityDescriptor								// PSECURITY_DESCRIPTOR
+	UInteger Attributes
+	UInteger Priority
+	UInteger DefaultPriority
+	UInteger StartTime
+	UInteger UntilTime
+	UInteger Status
+	UInteger cJobs
+	UInteger AveragePPM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-3
+Struct PRINTER_INFO_3
+	Pointer pSecurityDescriptor								// PSECURITY_DESCRIPTOR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-4
+Struct PRINTER_INFO_4A
+	Pointer pPrinterName									// PSTR
+	Pointer pServerName										// PSTR
+	UInteger Attributes
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-4
+Struct PRINTER_INFO_4W
+	Pointer pPrinterName									// PWSTR
+	Pointer pServerName										// PWSTR
+	UInteger Attributes
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-5
+Struct PRINTER_INFO_5A
+	Pointer pPrinterName									// PSTR
+	Pointer pPortName										// PSTR
+	UInteger Attributes
+	UInteger DeviceNotSelectedTimeout
+	UInteger TransmissionRetryTimeout
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-5
+Struct PRINTER_INFO_5W
+	Pointer pPrinterName									// PWSTR
+	Pointer pPortName										// PWSTR
+	UInteger Attributes
+	UInteger DeviceNotSelectedTimeout
+	UInteger TransmissionRetryTimeout
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-6
+Struct PRINTER_INFO_6
+	UInteger dwStatus
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-7
+Struct PRINTER_INFO_7A
+	Pointer pszObjectGUID									// PSTR
+	UInteger dwAction
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-7
+Struct PRINTER_INFO_7W
+	Pointer pszObjectGUID									// PWSTR
+	UInteger dwAction
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-8
+Struct PRINTER_INFO_8A
+	Pointer pDevMode										// DEVMODEA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-8
+Struct PRINTER_INFO_8W
+	Pointer pDevMode										// DEVMODEW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-9
+Struct PRINTER_INFO_9A
+	Pointer pDevMode										// DEVMODEA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-info-9
+Struct PRINTER_INFO_9W
+	Pointer pDevMode										// DEVMODEW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-info
+Struct PRINTER_NOTIFY_INFO
+	UInteger Version
+	UInteger Flags
+	UInteger Count
+	Integer iMissingAlignment1
+	PRINTER_NOTIFY_INFO_DATA[1] aData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-info-data
+Struct PRINTER_NOTIFY_INFO_DATA
+	UShort Type
+	UShort Field
+	UInteger Reserved
+	UInteger Id
+	Integer iMissingAlignment1
+	_NotifyData_e__Union_1278 NotifyData
+End_Struct
+
+Struct PRINTER_NOTIFY_INIT
+	UInteger Size
+	UInteger Reserved
+	UInteger PollTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-options
+Struct PRINTER_NOTIFY_OPTIONS
+	UInteger Version
+	UInteger Flags
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer pTypes											// PRINTER_NOTIFY_OPTIONS_TYPE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printer-notify-options-type
+Struct PRINTER_NOTIFY_OPTIONS_TYPE
+	UShort Type
+	UShort Reserved0
+	UInteger Reserved1
+	UInteger Reserved2
+	UInteger Count
+	Pointer pFields											// UShort*
+End_Struct
+
+Struct PRINTER_OPTIONSA
+	UInteger cbSize
+	UInteger dwFlags
+End_Struct
+
+Struct PRINTER_OPTIONSW
+	UInteger cbSize
+	UInteger dwFlags
+End_Struct
+
+Struct PRINTIFI32
+	UInteger cjThis
+	UInteger cjIfiExtra
+	Integer dpwszFamilyName
+	Integer dpwszStyleName
+	Integer dpwszFaceName
+	Integer dpwszUniqueName
+	Integer dpFontSim
+	Integer lEmbedId
+	Integer lItalicAngle
+	Integer lCharBias
+	Integer dpCharSets
+	UChar jWinCharSet
+	UChar jWinPitchAndFamily
+	UShort usWinWeight
+	UInteger flInfo
+	UShort fsSelection
+	UShort fsType
+	Short fwdUnitsPerEm
+	Short fwdLowestPPEm
+	Short fwdWinAscender
+	Short fwdWinDescender
+	Short fwdMacAscender
+	Short fwdMacDescender
+	Short fwdMacLineGap
+	Short fwdTypoAscender
+	Short fwdTypoDescender
+	Short fwdTypoLineGap
+	Short fwdAveCharWidth
+	Short fwdMaxCharInc
+	Short fwdCapHeight
+	Short fwdXHeight
+	Short fwdSubscriptXSize
+	Short fwdSubscriptYSize
+	Short fwdSubscriptXOffset
+	Short fwdSubscriptYOffset
+	Short fwdSuperscriptXSize
+	Short fwdSuperscriptYSize
+	Short fwdSuperscriptXOffset
+	Short fwdSuperscriptYOffset
+	Short fwdUnderscoreSize
+	Short fwdUnderscorePosition
+	Short fwdStrikeoutSize
+	Short fwdStrikeoutPosition
+	UChar chFirstChar
+	UChar chLastChar
+	UChar chDefaultChar
+	UChar chBreakChar
+	UShort wcFirstChar
+	UShort wcLastChar
+	UShort wcDefaultChar
+	UShort wcBreakChar
+	POINTL ptlBaseline
+	POINTL ptlAspect
+	POINTL ptlCaret
+	RECTL rclFontBox
+	UChar[4] achVendId
+	UInteger cKerningPairs
+	UInteger ulPanoseCulture
+	PANOSE panose
+	Short iMissingAlignment1
+End_Struct
+
+Struct PRINTPROCESSOROPENDATA
+	Pointer pDevMode										// DEVMODEA*
+	Pointer pDatatype										// PWSTR
+	Pointer pParameters										// PWSTR
+	Pointer pDocumentName									// PWSTR
+	UInteger JobId
+	Integer iMissingAlignment1
+	Pointer pOutputFile										// PWSTR
+	Pointer pPrinterName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printprocessor-caps-1
+Struct PRINTPROCESSOR_CAPS_1
+	UInteger dwLevel
+	UInteger dwNupOptions
+	UInteger dwPageOrderFlags
+	UInteger dwNumberOfCopies
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printprocessor-caps-2
+Struct PRINTPROCESSOR_CAPS_2
+	UInteger dwLevel
+	UInteger dwNupOptions
+	UInteger dwPageOrderFlags
+	UInteger dwNumberOfCopies
+	UInteger dwDuplexHandlingCaps
+	UInteger dwNupDirectionCaps
+	UInteger dwNupBorderCaps
+	UInteger dwBookletHandlingCaps
+	UInteger dwScalingCaps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printprocessor-info-1
+Struct PRINTPROCESSOR_INFO_1A
+	Pointer pName											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/printprocessor-info-1
+Struct PRINTPROCESSOR_INFO_1W
+	Pointer pName											// PWSTR
+End_Struct
+
+Struct PRINTPROVIDOR
+	LongPtr fpOpenPrinter
+	LongPtr fpSetJob
+	LongPtr fpGetJob
+	LongPtr fpEnumJobs
+	LongPtr fpAddPrinter
+	LongPtr fpDeletePrinter
+	LongPtr fpSetPrinter
+	LongPtr fpGetPrinter
+	LongPtr fpEnumPrinters
+	LongPtr fpAddPrinterDriver
+	LongPtr fpEnumPrinterDrivers
+	LongPtr fpGetPrinterDriver
+	LongPtr fpGetPrinterDriverDirectory
+	LongPtr fpDeletePrinterDriver
+	LongPtr fpAddPrintProcessor
+	LongPtr fpEnumPrintProcessors
+	LongPtr fpGetPrintProcessorDirectory
+	LongPtr fpDeletePrintProcessor
+	LongPtr fpEnumPrintProcessorDatatypes
+	LongPtr fpStartDocPrinter
+	LongPtr fpStartPagePrinter
+	LongPtr fpWritePrinter
+	LongPtr fpEndPagePrinter
+	LongPtr fpAbortPrinter
+	LongPtr fpReadPrinter
+	LongPtr fpEndDocPrinter
+	LongPtr fpAddJob
+	LongPtr fpScheduleJob
+	LongPtr fpGetPrinterData
+	LongPtr fpSetPrinterData
+	LongPtr fpWaitForPrinterChange
+	LongPtr fpClosePrinter
+	LongPtr fpAddForm
+	LongPtr fpDeleteForm
+	LongPtr fpGetForm
+	LongPtr fpSetForm
+	LongPtr fpEnumForms
+	LongPtr fpEnumMonitors
+	LongPtr fpEnumPorts
+	LongPtr fpAddPort
+	LongPtr fpConfigurePort
+	LongPtr fpDeletePort
+	LongPtr fpCreatePrinterIC
+	LongPtr fpPlayGdiScriptOnPrinterIC
+	LongPtr fpDeletePrinterIC
+	LongPtr fpAddPrinterConnection
+	LongPtr fpDeletePrinterConnection
+	LongPtr fpPrinterMessageBox
+	LongPtr fpAddMonitor
+	LongPtr fpDeleteMonitor
+	LongPtr fpResetPrinter
+	LongPtr fpGetPrinterDriverEx
+	LongPtr fpFindFirstPrinterChangeNotification
+	LongPtr fpFindClosePrinterChangeNotification
+	LongPtr fpAddPortEx
+	LongPtr fpShutDown
+	LongPtr fpRefreshPrinterChangeNotification
+	LongPtr fpOpenPrinterEx
+	LongPtr fpAddPrinterEx
+	LongPtr fpSetPort
+	LongPtr fpEnumPrinterData
+	LongPtr fpDeletePrinterData
+	LongPtr fpClusterSplOpen
+	LongPtr fpClusterSplClose
+	LongPtr fpClusterSplIsAlive
+	LongPtr fpSetPrinterDataEx
+	LongPtr fpGetPrinterDataEx
+	LongPtr fpEnumPrinterDataEx
+	LongPtr fpEnumPrinterKey
+	LongPtr fpDeletePrinterDataEx
+	LongPtr fpDeletePrinterKey
+	LongPtr fpSeekPrinter
+	LongPtr fpDeletePrinterDriverEx
+	LongPtr fpAddPerMachineConnection
+	LongPtr fpDeletePerMachineConnection
+	LongPtr fpEnumPerMachineConnections
+	LongPtr fpXcvData
+	LongPtr fpAddPrinterDriverEx
+	LongPtr fpSplReadPrinter
+	LongPtr fpDriverUnloadComplete
+	LongPtr fpGetSpoolFileInfo
+	LongPtr fpCommitSpoolData
+	LongPtr fpCloseSpoolFileHandle
+	LongPtr fpFlushPrinter
+	LongPtr fpSendRecvBidiData
+	LongPtr fpAddPrinterConnection2
+	LongPtr fpGetPrintClassObject
+	LongPtr fpReportJobProcessingProgress
+	LongPtr fpEnumAndLogProvidorObjects
+	LongPtr fpInternalGetPrinterDriver
+	LongPtr fpFindCompatibleDriver
+	LongPtr fpInstallPrinterDriverPackageFromConnection
+	LongPtr fpGetJobNamedPropertyValue
+	LongPtr fpSetJobNamedProperty
+	LongPtr fpDeleteJobNamedProperty
+	LongPtr fpEnumJobNamedProperties
+	LongPtr fpPowerEvent
+	LongPtr fpGetUserPropertyBag
+	LongPtr fpCanShutdown
+	LongPtr fpLogJobInfoForBranchOffice
+	LongPtr fpRegeneratePrintDeviceCapabilities
+	LongPtr fpPrintSupportOperation
+	LongPtr fpIppCreateJobOnPrinter
+	LongPtr fpIppGetJobAttributes
+	LongPtr fpIppSetJobAttributes
+	LongPtr fpIppGetPrinterAttributes
+	LongPtr fpIppSetPrinterAttributes
+	LongPtr fpIppCreateJobOnPrinterWithAttributes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/print-execution-data
+Struct PRINT_EXECUTION_DATA
+	Integer context											// PRINT_EXECUTION_CONTEXT
+	UInteger clientAppPID
+End_Struct
+
+Struct PRINT_FEATURE_OPTION
+	Pointer pszFeature										// PSTR
+	Pointer pszOption										// PSTR
+End_Struct
+
+Struct PROPSHEETUI_GETICON_INFO
+	UShort cbSize
+	UShort Flags
+	UShort cxIcon
+	UShort cyIcon
+	Pointer hIcon											// HICON
+End_Struct
+
+Struct PROPSHEETUI_INFO
+	UShort cbSize
+	UShort Version
+	UShort Flags
+	UShort Reason
+	Pointer hComPropSheet									// HANDLE
+	Pointer pfnComPropSheet									// PFNCOMPROPSHEET
+	LongPtr lParamInit										// LPARAM
+	ULongPtr UserData
+	ULongPtr Result
+End_Struct
+
+Struct PROPSHEETUI_INFO_HEADER
+	UShort cbSize
+	UShort Flags
+	Integer iMissingAlignment1
+	Pointer pTitle											// Char*
+	Pointer hWndParent										// HWND
+	Pointer hInst											// HINSTANCE
+	_Anonymous_e__Union_3314 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/providor-info-1
+Struct PROVIDOR_INFO_1A
+	Pointer pName											// PSTR
+	Pointer pEnvironment									// PSTR
+	Pointer pDLLName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/providor-info-1
+Struct PROVIDOR_INFO_1W
+	Pointer pName											// PWSTR
+	Pointer pEnvironment									// PWSTR
+	Pointer pDLLName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/providor-info-2
+Struct PROVIDOR_INFO_2A
+	Pointer pOrder											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/printdocs/providor-info-2
+Struct PROVIDOR_INFO_2W
+	Pointer pOrder											// PWSTR
+End_Struct
+
+Struct PSCRIPT5_PRIVATE_DEVMODE
+	UShort[57] wReserved
+	UShort wSize
+End_Struct
+
+Struct PSPINFO
+	UShort cbSize
+	UShort wReserved
+	Integer iMissingAlignment1
+	Pointer hComPropSheet									// HANDLE
+	Pointer hCPSUIPage										// HANDLE
+	Pointer pfnComPropSheet									// PFNCOMPROPSHEET
+End_Struct
+
+Struct PUBLISHERINFO
+	UInteger dwMode
+	UShort wMinoutlinePPEM
+	UShort wMaxbitmapPPEM
+End_Struct
+
+Struct PrintNamedProperty
+	Pointer propertyName									// PWSTR
+	PrintPropertyValue propertyValue
+End_Struct
+
+Struct PrintPropertiesCollection
+	UInteger numberOfProperties
+	Integer iMissingAlignment1
+	Pointer propertiesCollection							// PrintNamedProperty*
+End_Struct
+
+Struct PrintPropertyValue
+	Integer ePropertyType									// EPrintPropertyType
+	Integer iMissingAlignment1
+	_value_e__Union_1280 value
+End_Struct
+
+Struct SETRESULT_INFO
+	UShort cbSize
+	UShort wReserved
+	Integer iMissingAlignment1
+	Pointer hSetResult										// HANDLE
+	LongPtr Result											// LRESULT
+End_Struct
+
+Struct SHOWUIPARAMS
+	Integer UIType											// UI_TYPE
+	Integer iMissingAlignment1
+	MESSAGEBOX_PARAMS MessageBoxParams
+End_Struct
+
+Struct SIMULATE_CAPS_1
+	UInteger dwLevel
+	UInteger dwPageOrderFlags
+	UInteger dwNumberOfCopies
+	UInteger dwCollate
+	UInteger dwNupOptions
+End_Struct
+
+Struct SPLCLIENT_INFO_1
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pMachineName									// PWSTR
+	Pointer pUserName										// PWSTR
+	UInteger dwBuildNum
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UShort wProcessorArchitecture
+	Short iMissingAlignment2
+End_Struct
+
+Struct SPLCLIENT_INFO_2_W2K
+	ULongPtr hSplPrinter
+End_Struct
+
+Struct SPLCLIENT_INFO_2_WINXP
+	UBigint hSplPrinter
+End_Struct
+
+Struct SPLCLIENT_INFO_2_WINXP
+	UInteger hSplPrinter
+End_Struct
+
+Struct SPLCLIENT_INFO_3_VISTA
+	UInteger cbSize
+	UInteger dwFlags
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pMachineName									// PWSTR
+	Pointer pUserName										// PWSTR
+	UInteger dwBuildNum
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UShort wProcessorArchitecture
+	Short iMissingAlignment2
+	UBigint hSplPrinter
+End_Struct
+
+Struct SPLCLIENT_INFO_INTERNAL
+	UInteger cbSize
+	UInteger dwFlags
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer pMachineName									// PWSTR
+	Pointer pUserName										// PWSTR
+	UInteger dwBuildNum
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	UShort wProcessorArchitecture
+	Short iMissingAlignment2
+	UBigint hSplPrinter
+	UInteger dwProcessId
+	UInteger dwSessionId
+End_Struct
+
+Struct TRANSDATA
+	UChar ubCodePageID
+	UChar ubType
+	_uCode_e__Union_3315 uCode
+End_Struct
+
+Struct UFF_FILEHEADER
+	UInteger dwSignature
+	UInteger dwVersion
+	UInteger dwSize
+	UInteger nFonts
+	UInteger nGlyphSets
+	UInteger nVarData
+	UInteger offFontDir
+	UInteger dwFlags
+	UInteger[4] dwReserved
+End_Struct
+
+Struct UFF_FONTDIRECTORY
+	UInteger dwSignature
+	UShort wSize
+	UShort wFontID
+	Short sGlyphID
+	UShort wFlags
+	UInteger dwInstallerSig
+	UInteger offFontName
+	UInteger offCartridgeName
+	UInteger offFontData
+	UInteger offGlyphData
+	UInteger offVarData
+End_Struct
+
+Struct UNIDRVINFO
+	UInteger dwSize
+	UInteger flGenFlags
+	UShort wType
+	UShort fCaps
+	UShort wXRes
+	UShort wYRes
+	Short sYAdjust
+	Short sYMoved
+	UShort wPrivateData
+	Short sShift
+	INVOC SelectFont
+	INVOC UnSelectFont
+	UShort[4] wReserved
+End_Struct
+
+Struct UNIDRV_PRIVATE_DEVMODE
+	UShort[4] wReserved
+	UShort wSize
+End_Struct
+
+Struct UNIFM_HDR
+	UInteger dwSize
+	UInteger dwVersion
+	UInteger ulDefaultCodepage
+	Integer lGlyphSetDataRCID
+	UInteger loUnidrvInfo
+	UInteger loIFIMetrics
+	UInteger loExtTextMetric
+	UInteger loWidthTable
+	UInteger loKernPair
+	UInteger[2] dwReserved
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

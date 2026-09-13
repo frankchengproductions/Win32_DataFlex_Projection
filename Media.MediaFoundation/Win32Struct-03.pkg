@@ -1,0 +1,866 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encoder_resolve_metadata_input_arguments
+Struct D3D12_VIDEO_ENCODER_RESOLVE_METADATA_INPUT_ARGUMENTS
+	Integer EncoderCodec									// D3D12_VIDEO_ENCODER_CODEC
+	Integer iMissingAlignment1
+	D3D12_VIDEO_ENCODER_PROFILE_DESC EncoderProfile
+	Integer EncoderInputFormat								// DXGI_FORMAT
+	D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC EncodedPictureEffectiveResolution
+	Integer iMissingAlignment2
+	D3D12_VIDEO_ENCODER_ENCODE_OPERATION_METADATA_BUFFER HWLayoutMetadata
+End_Struct
+
+Struct D3D12_VIDEO_ENCODER_RESOLVE_METADATA_INPUT_ARGUMENTS1
+	Integer EncoderCodec									// D3D12_VIDEO_ENCODER_CODEC
+	Integer iMissingAlignment1
+	D3D12_VIDEO_ENCODER_PROFILE_DESC EncoderProfile
+	Integer EncoderInputFormat								// DXGI_FORMAT
+	D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC EncodedPictureEffectiveResolution
+	Integer iMissingAlignment2
+	D3D12_VIDEO_ENCODER_ENCODE_OPERATION_METADATA_BUFFER HWLayoutMetadata
+	Integer OptionalMetadata								// D3D12_VIDEO_ENCODER_OPTIONAL_METADATA_ENABLE_FLAGS
+	Integer iMissingAlignment3
+	D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION CodecConfiguration
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encoder_resolve_metadata_output_arguments
+Struct D3D12_VIDEO_ENCODER_RESOLVE_METADATA_OUTPUT_ARGUMENTS
+	D3D12_VIDEO_ENCODER_ENCODE_OPERATION_METADATA_BUFFER ResolvedLayoutMetadata
+End_Struct
+
+Struct D3D12_VIDEO_ENCODER_RESOLVE_METADATA_OUTPUT_ARGUMENTS1
+	D3D12_VIDEO_ENCODER_ENCODE_OPERATION_METADATA_BUFFER ResolvedLayoutMetadata
+	Pointer pOutputQPMap									// ID3D12Resource
+	Pointer pOutputSATDMap									// ID3D12Resource
+	Pointer pOutputBitAllocationMap							// ID3D12Resource
+	D3D12_VIDEO_ENCODER_ENCODE_OPERATION_METADATA_BUFFER ResolvedFramePSNRData
+	D3D12_VIDEO_ENCODER_ENCODE_OPERATION_METADATA_BUFFER ResolvedSubregionsPSNRData
+End_Struct
+
+Struct D3D12_VIDEO_ENCODER_RESOLVE_METADATA_OUTPUT_PSNR_RESOLVED_LAYOUT
+	Float PSNRY
+	Float PSNRU
+	Float PSNRV
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encoder_sequence_control_desc
+Struct D3D12_VIDEO_ENCODER_SEQUENCE_CONTROL_DESC
+	Integer Flags											// D3D12_VIDEO_ENCODER_SEQUENCE_CONTROL_FLAGS
+	D3D12_VIDEO_ENCODER_INTRA_REFRESH IntraRefreshConfig
+	Integer iMissingAlignment1
+	D3D12_VIDEO_ENCODER_RATE_CONTROL RateControl
+	D3D12_VIDEO_ENCODER_PICTURE_RESOLUTION_DESC PictureTargetResolution
+	Integer SelectedLayoutMode								// D3D12_VIDEO_ENCODER_FRAME_SUBREGION_LAYOUT_MODE
+	Integer iMissingAlignment2
+	D3D12_VIDEO_ENCODER_PICTURE_CONTROL_SUBREGIONS_LAYOUT_DATA FrameSubregionsLayoutData
+	D3D12_VIDEO_ENCODER_SEQUENCE_GOP_STRUCTURE CodecGopSequence
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encoder_sequence_gop_structure
+Struct D3D12_VIDEO_ENCODER_SEQUENCE_GOP_STRUCTURE
+	UInteger DataSize
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_3286 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encoder_sequence_gop_structure_h264
+Struct D3D12_VIDEO_ENCODER_SEQUENCE_GOP_STRUCTURE_H264
+	UInteger GOPLength
+	UInteger PPicturePeriod
+	UChar pic_order_cnt_type
+	UChar log2_max_frame_num_minus4
+	UChar log2_max_pic_order_cnt_lsb_minus4
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encoder_sequence_gop_structure_hevc
+Struct D3D12_VIDEO_ENCODER_SEQUENCE_GOP_STRUCTURE_HEVC
+	UInteger GOPLength
+	UInteger PPicturePeriod
+	UChar log2_max_pic_order_cnt_lsb_minus4
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct D3D12_VIDEO_ENCODER_SUBREGION_COMPRESSED_BITSTREAM
+	Integer BufferMode										// D3D12_VIDEO_ENCODER_SUBREGION_COMPRESSED_BITSTREAM_BUFFER_MODE
+	UInteger ExpectedSubregionCount
+	Pointer pSubregionBitstreamsBaseOffsets					// UBigint*
+	Pointer ppSubregionBitstreams							// ID3D12Resource*
+	Pointer ppSubregionSizes								// ID3D12Resource*
+	Pointer ppSubregionOffsets								// ID3D12Resource*
+	Pointer ppSubregionFences								// ID3D12Fence*
+	Pointer pSubregionFenceValues							// UBigint*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_encode_reference_frames
+Struct D3D12_VIDEO_ENCODE_REFERENCE_FRAMES
+	UInteger NumTexture2Ds
+	Integer iMissingAlignment1
+	Pointer ppTexture2Ds									// ID3D12Resource*
+	Pointer pSubresources									// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_extension_command_desc
+Struct D3D12_VIDEO_EXTENSION_COMMAND_DESC
+	UInteger NodeMask
+	Guid CommandId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_extension_command_info
+Struct D3D12_VIDEO_EXTENSION_COMMAND_INFO
+	Guid CommandId
+	Pointer Name											// PWSTR
+	Integer CommandListSupportFlags							// D3D12_COMMAND_LIST_SUPPORT_FLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_extension_command_parameter_info
+Struct D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_INFO
+	Pointer Name											// PWSTR
+	Integer Type											// D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE
+	Integer Flags											// D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_format
+Struct D3D12_VIDEO_FORMAT
+	Integer Format											// DXGI_FORMAT
+	Integer ColorSpace										// DXGI_COLOR_SPACE_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_motion_estimator_desc
+Struct D3D12_VIDEO_MOTION_ESTIMATOR_DESC
+	UInteger NodeMask
+	Integer InputFormat										// DXGI_FORMAT
+	Integer BlockSize										// D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE
+	Integer Precision										// D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION
+	D3D12_VIDEO_SIZE_RANGE SizeRange
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_motion_estimator_input
+Struct D3D12_VIDEO_MOTION_ESTIMATOR_INPUT
+	Pointer pInputTexture2D									// ID3D12Resource
+	UInteger InputSubresourceIndex
+	Integer iMissingAlignment1
+	Pointer pReferenceTexture2D								// ID3D12Resource
+	UInteger ReferenceSubresourceIndex
+	Integer iMissingAlignment2
+	Pointer pHintMotionVectorHeap							// ID3D12VideoMotionVectorHeap
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_motion_estimator_output
+Struct D3D12_VIDEO_MOTION_ESTIMATOR_OUTPUT
+	Pointer pMotionVectorHeap								// ID3D12VideoMotionVectorHeap
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_motion_vector_heap_desc
+Struct D3D12_VIDEO_MOTION_VECTOR_HEAP_DESC
+	UInteger NodeMask
+	Integer InputFormat										// DXGI_FORMAT
+	Integer BlockSize										// D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE
+	Integer Precision										// D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION
+	D3D12_VIDEO_SIZE_RANGE SizeRange
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_alpha_blending
+Struct D3D12_VIDEO_PROCESS_ALPHA_BLENDING
+	Integer Enable											// BOOL
+	Float Alpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_filter_range
+Struct D3D12_VIDEO_PROCESS_FILTER_RANGE
+	Integer Minimum
+	Integer Maximum
+	Integer Default
+	Float Multiplier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_input_stream
+Struct D3D12_VIDEO_PROCESS_INPUT_STREAM
+	Pointer pTexture2D										// ID3D12Resource
+	UInteger Subresource
+	Integer iMissingAlignment1
+	D3D12_VIDEO_PROCESS_REFERENCE_SET ReferenceSet
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_input_stream_arguments
+Struct D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS
+	D3D12_VIDEO_PROCESS_INPUT_STREAM[2] InputStream
+	D3D12_VIDEO_PROCESS_TRANSFORM Transform
+	Integer Flags											// D3D12_VIDEO_PROCESS_INPUT_STREAM_FLAGS
+	D3D12_VIDEO_PROCESS_INPUT_STREAM_RATE RateInfo
+	Integer[32] FilterLevels
+	D3D12_VIDEO_PROCESS_ALPHA_BLENDING AlphaBlending
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_input_stream_arguments1
+Struct D3D12_VIDEO_PROCESS_INPUT_STREAM_ARGUMENTS1
+	D3D12_VIDEO_PROCESS_INPUT_STREAM[2] InputStream
+	D3D12_VIDEO_PROCESS_TRANSFORM Transform
+	Integer Flags											// D3D12_VIDEO_PROCESS_INPUT_STREAM_FLAGS
+	D3D12_VIDEO_PROCESS_INPUT_STREAM_RATE RateInfo
+	Integer[32] FilterLevels
+	D3D12_VIDEO_PROCESS_ALPHA_BLENDING AlphaBlending
+	Integer FieldType										// D3D12_VIDEO_FIELD_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_input_stream_desc
+Struct D3D12_VIDEO_PROCESS_INPUT_STREAM_DESC
+	Integer Format											// DXGI_FORMAT
+	Integer ColorSpace										// DXGI_COLOR_SPACE_TYPE
+	DXGI_RATIONAL SourceAspectRatio
+	DXGI_RATIONAL DestinationAspectRatio
+	DXGI_RATIONAL FrameRate
+	D3D12_VIDEO_SIZE_RANGE SourceSizeRange
+	D3D12_VIDEO_SIZE_RANGE DestinationSizeRange
+	Integer EnableOrientation								// BOOL
+	Integer FilterFlags										// D3D12_VIDEO_PROCESS_FILTER_FLAGS
+	Integer StereoFormat									// D3D12_VIDEO_FRAME_STEREO_FORMAT
+	Integer FieldType										// D3D12_VIDEO_FIELD_TYPE
+	UInteger DeinterlaceMode								// D3D12_VIDEO_PROCESS_DEINTERLACE_FLAGS
+	Integer EnableAlphaBlending								// BOOL
+	D3D12_VIDEO_PROCESS_LUMA_KEY LumaKey
+	UInteger NumPastFrames
+	UInteger NumFutureFrames
+	Integer EnableAutoProcessing							// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_input_stream_rate
+Struct D3D12_VIDEO_PROCESS_INPUT_STREAM_RATE
+	UInteger OutputIndex
+	UInteger InputFrameOrField
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_luma_key
+Struct D3D12_VIDEO_PROCESS_LUMA_KEY
+	Integer Enable											// BOOL
+	Float Lower
+	Float Upper
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_output_stream
+Struct D3D12_VIDEO_PROCESS_OUTPUT_STREAM
+	Pointer pTexture2D										// ID3D12Resource
+	UInteger Subresource
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_output_stream_arguments
+Struct D3D12_VIDEO_PROCESS_OUTPUT_STREAM_ARGUMENTS
+	D3D12_VIDEO_PROCESS_OUTPUT_STREAM[2] OutputStream
+	RECT TargetRectangle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_output_stream_desc
+Struct D3D12_VIDEO_PROCESS_OUTPUT_STREAM_DESC
+	Integer Format											// DXGI_FORMAT
+	Integer ColorSpace										// DXGI_COLOR_SPACE_TYPE
+	Integer AlphaFillMode									// D3D12_VIDEO_PROCESS_ALPHA_FILL_MODE
+	UInteger AlphaFillModeSourceStreamIndex
+	Float[4] BackgroundColor
+	DXGI_RATIONAL FrameRate
+	Integer EnableStereo									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_reference_set
+Struct D3D12_VIDEO_PROCESS_REFERENCE_SET
+	UInteger NumPastFrames
+	Integer iMissingAlignment1
+	Pointer ppPastFrames									// ID3D12Resource*
+	Pointer pPastSubresources								// UInteger*
+	UInteger NumFutureFrames
+	Integer iMissingAlignment2
+	Pointer ppFutureFrames									// ID3D12Resource*
+	Pointer pFutureSubresources								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_process_transform
+Struct D3D12_VIDEO_PROCESS_TRANSFORM
+	RECT SourceRectangle
+	RECT DestinationRectangle
+	Integer Orientation										// D3D12_VIDEO_PROCESS_ORIENTATION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_sample
+Struct D3D12_VIDEO_SAMPLE
+	UInteger Width
+	UInteger Height
+	D3D12_VIDEO_FORMAT Format
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_scale_support
+Struct D3D12_VIDEO_SCALE_SUPPORT
+	D3D12_VIDEO_SIZE_RANGE OutputSizeRange
+	Integer Flags											// D3D12_VIDEO_SCALE_SUPPORT_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12video/ns-d3d12video-d3d12_video_size_range
+Struct D3D12_VIDEO_SIZE_RANGE
+	UInteger MaxWidth
+	UInteger MaxHeight
+	UInteger MinWidth
+	UInteger MinHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d9caps/ns-d3d9caps-d3dcontentprotectioncaps
+Struct D3DCONTENTPROTECTIONCAPS
+	UInteger Caps
+	Guid KeyExchangeType
+	UInteger BufferAlignmentStart
+	UInteger BlockAlignmentSize
+	Integer iMissingAlignment1
+	UBigint ProtectedMemorySize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d9caps/ns-d3d9caps-d3dcontentprotectioncaps
+Struct D3DCONTENTPROTECTIONCAPS
+	UInteger Caps
+	Guid KeyExchangeType
+	UInteger BufferAlignmentStart
+	UInteger BlockAlignmentSize
+	Integer iMissingAlignment1
+	UBigint ProtectedMemorySize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d9caps/ns-d3d9caps-d3doverlaycaps
+Struct D3DOVERLAYCAPS
+	UInteger Caps
+	UInteger MaxOverlayDisplayWidth
+	UInteger MaxOverlayDisplayHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfsharingengine/ns-mfsharingengine-device_info
+Struct DEVICE_INFO
+	Pointer pFriendlyDeviceName								// BSTR
+	Pointer pUniqueDeviceName								// BSTR
+	Pointer pManufacturerName								// BSTR
+	Pointer pModelName										// BSTR
+	Pointer pIconURL										// BSTR
+End_Struct
+
+Struct DIRTYRECT_INFO
+	UInteger FrameNumber
+	UInteger NumDirtyRects
+	RECT[1] DirtyRects
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_aes_ctr_iv
+Struct DXVA2_AES_CTR_IV
+	UBigint IV
+	UBigint Count
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_ayuvsample16
+Struct DXVA2_AYUVSample16
+	UShort Cr
+	UShort Cb
+	UShort Y
+	UShort Alpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_ayuvsample8
+Struct DXVA2_AYUVSample8
+	UChar Cr
+	UChar Cb
+	UChar Y
+	UChar Alpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_configpicturedecode
+Struct DXVA2_ConfigPictureDecode
+	Guid guidConfigBitstreamEncryption
+	Guid guidConfigMBcontrolEncryption
+	Guid guidConfigResidDiffEncryption
+	UInteger ConfigBitstreamRaw
+	UInteger ConfigMBcontrolRasterOrder
+	UInteger ConfigResidDiffHost
+	UInteger ConfigSpatialResid8
+	UInteger ConfigResid8Subtraction
+	UInteger ConfigSpatialHost8or9Clipping
+	UInteger ConfigSpatialResidInterleaved
+	UInteger ConfigIntraResidUnsigned
+	UInteger ConfigResidDiffAccelerator
+	UInteger ConfigHostInverseScan
+	UInteger ConfigSpecificIDCT
+	UInteger Config4GroupedCoefs
+	UShort ConfigMinRenderTargetBuffCount
+	UShort ConfigDecoderSpecific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_decodebufferdesc
+Struct DXVA2_DecodeBufferDesc
+	UInteger CompressedBufferType
+	UInteger BufferIndex
+	UInteger DataOffset
+	UInteger DataSize
+	UInteger FirstMBaddress
+	UInteger NumMBsInBuffer
+	UInteger Width
+	UInteger Height
+	UInteger Stride
+	UInteger ReservedBits
+	Pointer pvPVPState										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_decodeexecuteparams
+Struct DXVA2_DecodeExecuteParams
+	UInteger NumCompBuffers
+	Integer iMissingAlignment1
+	Pointer pCompressedBuffers								// DXVA2_DecodeBufferDesc*
+	Pointer pExtensionData									// DXVA2_DecodeExtensionData*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_decodeextensiondata
+Struct DXVA2_DecodeExtensionData
+	UInteger Function
+	Integer iMissingAlignment1
+	Pointer pPrivateInputData								// Pointer*
+	UInteger PrivateInputDataSize
+	Integer iMissingAlignment2
+	Pointer pPrivateOutputData								// Pointer*
+	UInteger PrivateOutputDataSize
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_extendedformat
+Struct DXVA2_ExtendedFormat
+	_Anonymous_e__Union_2117 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_filtervalues
+Struct DXVA2_FilterValues
+	DXVA2_Fixed32 Level
+	DXVA2_Fixed32 Threshold
+	DXVA2_Fixed32 Radius
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_fixed32
+Struct DXVA2_Fixed32
+	_Anonymous_e__Union_2119 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_frequency
+Struct DXVA2_Frequency
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_procampvalues
+Struct DXVA2_ProcAmpValues
+	DXVA2_Fixed32 Brightness
+	DXVA2_Fixed32 Contrast
+	DXVA2_Fixed32 Hue
+	DXVA2_Fixed32 Saturation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_valuerange
+Struct DXVA2_ValueRange
+	DXVA2_Fixed32 MinValue
+	DXVA2_Fixed32 MaxValue
+	DXVA2_Fixed32 DefaultValue
+	DXVA2_Fixed32 StepSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_videodesc
+Struct DXVA2_VideoDesc
+	UInteger SampleWidth
+	UInteger SampleHeight
+	DXVA2_ExtendedFormat SampleFormat
+	UInteger Format											// D3DFORMAT
+	DXVA2_Frequency InputSampleFreq
+	DXVA2_Frequency OutputFrameFreq
+	UInteger UABProtectionLevel
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_videoprocessbltparams
+Struct DXVA2_VideoProcessBltParams
+	Bigint TargetFrame
+	RECT TargetRect
+	SIZE ConstrictionSize
+	UInteger StreamingFlags
+	DXVA2_AYUVSample16 BackgroundColor
+	DXVA2_ExtendedFormat DestFormat
+	DXVA2_ProcAmpValues ProcAmpValues
+	DXVA2_Fixed32 Alpha
+	DXVA2_FilterValues NoiseFilterLuma
+	DXVA2_FilterValues NoiseFilterChroma
+	DXVA2_FilterValues DetailFilterLuma
+	DXVA2_FilterValues DetailFilterChroma
+	UInteger DestData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_videoprocessorcaps
+Struct DXVA2_VideoProcessorCaps
+	UInteger DeviceCaps
+	Integer InputPool										// D3DPOOL
+	UInteger NumForwardRefSamples
+	UInteger NumBackwardRefSamples
+	UInteger Reserved
+	UInteger DeinterlaceTechnology
+	UInteger ProcAmpControlCaps
+	UInteger VideoProcessorOperations
+	UInteger NoiseFilterTechnology
+	UInteger DetailFilterTechnology
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva2api/ns-dxva2api-dxva2_videosample
+Struct DXVA2_VideoSample
+	Bigint Start
+	Bigint End
+	DXVA2_ExtendedFormat SampleFormat
+	Integer iMissingAlignment1
+	Pointer SrcSurface										// IDirect3DSurface9
+	RECT SrcRect
+	RECT DstRect
+	DXVA2_AYUVSample8[16] Pal
+	DXVA2_Fixed32 PlanarAlpha
+	UInteger SampleData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxvabufferinfo
+Struct DXVABufferInfo
+	Pointer pCompSurface									// Pointer*
+	UInteger DataOffset
+	UInteger DataSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxvacompbufferinfo
+Struct DXVACompBufferInfo
+	UInteger NumCompBuffers
+	UInteger WidthToCreate
+	UInteger HeightToCreate
+	UInteger BytesToAllocate
+	UInteger Usage
+	Integer Pool											// D3DPOOL
+	UInteger Format											// D3DFORMAT
+End_Struct
+
+Struct DXVAHDETW_CREATEVIDEOPROCESSOR
+	UBigint pObject
+	UBigint pD3D9Ex
+	Guid VPGuid
+End_Struct
+
+Struct DXVAHDETW_DESTROYVIDEOPROCESSOR
+	UBigint pObject
+End_Struct
+
+Struct DXVAHDETW_VIDEOPROCESSBLTHD
+	UBigint pObject
+	UBigint pOutputSurface
+	RECT TargetRect
+	UInteger OutputFormat									// D3DFORMAT
+	UInteger ColorSpace
+	UInteger OutputFrame
+	UInteger StreamCount
+	Integer Enter											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVAHDETW_VIDEOPROCESSBLTHD_STREAM
+	UBigint pObject
+	UBigint pInputSurface
+	RECT SourceRect
+	RECT DestinationRect
+	UInteger InputFormat									// D3DFORMAT
+	Integer FrameFormat										// DXVAHD_FRAME_FORMAT
+	UInteger ColorSpace
+	UInteger StreamNumber
+	UInteger OutputIndex
+	UInteger InputFrameOrField
+	UInteger PastFrames
+	UInteger FutureFrames
+End_Struct
+
+Struct DXVAHDETW_VIDEOPROCESSBLTSTATE
+	UBigint pObject
+	Integer State											// DXVAHD_BLT_STATE
+	UInteger DataSize
+	Integer SetState										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DXVAHDETW_VIDEOPROCESSSTREAMSTATE
+	UBigint pObject
+	UInteger StreamNumber
+	Integer State											// DXVAHD_STREAM_STATE
+	UInteger DataSize
+	Integer SetState										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahdsw_callbacks
+Struct DXVAHDSW_CALLBACKS
+	Pointer CreateDevice									// PDXVAHDSW_CreateDevice
+	Pointer ProposeVideoPrivateFormat						// PDXVAHDSW_ProposeVideoPrivateFormat
+	Pointer GetVideoProcessorDeviceCaps						// PDXVAHDSW_GetVideoProcessorDeviceCaps
+	Pointer GetVideoProcessorOutputFormats					// PDXVAHDSW_GetVideoProcessorOutputFormats
+	Pointer GetVideoProcessorInputFormats					// PDXVAHDSW_GetVideoProcessorInputFormats
+	Pointer GetVideoProcessorCaps							// PDXVAHDSW_GetVideoProcessorCaps
+	Pointer GetVideoProcessorCustomRates					// PDXVAHDSW_GetVideoProcessorCustomRates
+	Pointer GetVideoProcessorFilterRange					// PDXVAHDSW_GetVideoProcessorFilterRange
+	Pointer DestroyDevice									// PDXVAHDSW_DestroyDevice
+	Pointer CreateVideoProcessor							// PDXVAHDSW_CreateVideoProcessor
+	Pointer SetVideoProcessBltState							// PDXVAHDSW_SetVideoProcessBltState
+	Pointer GetVideoProcessBltStatePrivate					// PDXVAHDSW_GetVideoProcessBltStatePrivate
+	Pointer SetVideoProcessStreamState						// PDXVAHDSW_SetVideoProcessStreamState
+	Pointer GetVideoProcessStreamStatePrivate				// PDXVAHDSW_GetVideoProcessStreamStatePrivate
+	Pointer VideoProcessBltHD								// PDXVAHDSW_VideoProcessBltHD
+	Pointer DestroyVideoProcessor							// PDXVAHDSW_DestroyVideoProcessor
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_alpha_fill_data
+Struct DXVAHD_BLT_STATE_ALPHA_FILL_DATA
+	Integer Mode											// DXVAHD_ALPHA_FILL_MODE
+	UInteger StreamNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_background_color_data
+Struct DXVAHD_BLT_STATE_BACKGROUND_COLOR_DATA
+	Integer YCbCr											// BOOL
+	DXVAHD_COLOR BackgroundColor
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_constriction_data
+Struct DXVAHD_BLT_STATE_CONSTRICTION_DATA
+	Integer Enable											// BOOL
+	SIZE Size
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_output_color_space_data
+Struct DXVAHD_BLT_STATE_OUTPUT_COLOR_SPACE_DATA
+	_Anonymous_e__Union_3296 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_private_data
+Struct DXVAHD_BLT_STATE_PRIVATE_DATA
+	Guid Guid
+	UInteger DataSize
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_blt_state_target_rect_data
+Struct DXVAHD_BLT_STATE_TARGET_RECT_DATA
+	Integer Enable											// BOOL
+	RECT TargetRect
+End_Struct
+
+Struct DXVAHD_COLOR
+	_Anonymous_e__Union_3295 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_color_rgba
+Struct DXVAHD_COLOR_RGBA
+	Float R
+	Float G
+	Float B
+	Float A
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_color_ycbcra
+Struct DXVAHD_COLOR_YCbCrA
+	Float Y
+	Float Cb
+	Float Cr
+	Float A
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_content_desc
+Struct DXVAHD_CONTENT_DESC
+	Integer InputFrameFormat								// DXVAHD_FRAME_FORMAT
+	DXVAHD_RATIONAL InputFrameRate
+	UInteger InputWidth
+	UInteger InputHeight
+	DXVAHD_RATIONAL OutputFrameRate
+	UInteger OutputWidth
+	UInteger OutputHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_custom_rate_data
+Struct DXVAHD_CUSTOM_RATE_DATA
+	DXVAHD_RATIONAL CustomRate
+	UInteger OutputFrames
+	Integer InputInterlaced									// BOOL
+	UInteger InputFramesOrFields
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_filter_range_data
+Struct DXVAHD_FILTER_RANGE_DATA
+	Integer Minimum
+	Integer Maximum
+	Integer Default
+	Float Multiplier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_rational
+Struct DXVAHD_RATIONAL
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_data
+Struct DXVAHD_STREAM_DATA
+	Integer Enable											// BOOL
+	UInteger OutputIndex
+	UInteger InputFrameOrField
+	UInteger PastFrames
+	UInteger FutureFrames
+	Integer iMissingAlignment1
+	Pointer ppPastSurfaces									// IDirect3DSurface9*
+	Pointer pInputSurface									// IDirect3DSurface9
+	Pointer ppFutureSurfaces								// IDirect3DSurface9*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_alpha_data
+Struct DXVAHD_STREAM_STATE_ALPHA_DATA
+	Integer Enable											// BOOL
+	Float Alpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_aspect_ratio_data
+Struct DXVAHD_STREAM_STATE_ASPECT_RATIO_DATA
+	Integer Enable											// BOOL
+	DXVAHD_RATIONAL SourceAspectRatio
+	DXVAHD_RATIONAL DestinationAspectRatio
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_d3dformat_data
+Struct DXVAHD_STREAM_STATE_D3DFORMAT_DATA
+	UInteger Format											// D3DFORMAT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_destination_rect_data
+Struct DXVAHD_STREAM_STATE_DESTINATION_RECT_DATA
+	Integer Enable											// BOOL
+	RECT DestinationRect
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_filter_data
+Struct DXVAHD_STREAM_STATE_FILTER_DATA
+	Integer Enable											// BOOL
+	Integer Level
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_frame_format_data
+Struct DXVAHD_STREAM_STATE_FRAME_FORMAT_DATA
+	Integer FrameFormat										// DXVAHD_FRAME_FORMAT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_input_color_space_data
+Struct DXVAHD_STREAM_STATE_INPUT_COLOR_SPACE_DATA
+	_Anonymous_e__Union_3298 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_luma_key_data
+Struct DXVAHD_STREAM_STATE_LUMA_KEY_DATA
+	Integer Enable											// BOOL
+	Float Lower
+	Float Upper
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_output_rate_data
+Struct DXVAHD_STREAM_STATE_OUTPUT_RATE_DATA
+	Integer RepeatFrame										// BOOL
+	Integer OutputRate										// DXVAHD_OUTPUT_RATE
+	DXVAHD_RATIONAL CustomRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_palette_data
+Struct DXVAHD_STREAM_STATE_PALETTE_DATA
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer pEntries										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_private_data
+Struct DXVAHD_STREAM_STATE_PRIVATE_DATA
+	Guid Guid
+	UInteger DataSize
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_private_ivtc_data
+Struct DXVAHD_STREAM_STATE_PRIVATE_IVTC_DATA
+	Integer Enable											// BOOL
+	UInteger ITelecineFlags
+	UInteger Frames
+	UInteger InputField
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_stream_state_source_rect_data
+Struct DXVAHD_STREAM_STATE_SOURCE_RECT_DATA
+	Integer Enable											// BOOL
+	RECT SourceRect
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_vpcaps
+Struct DXVAHD_VPCAPS
+	Guid VPGuid
+	UInteger PastFrames
+	UInteger FutureFrames
+	UInteger ProcessorCaps
+	UInteger ITelecineCaps
+	UInteger CustomRateCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxvahd/ns-dxvahd-dxvahd_vpdevcaps
+Struct DXVAHD_VPDEVCAPS
+	Integer DeviceType										// DXVAHD_DEVICE_TYPE
+	UInteger DeviceCaps
+	UInteger FeatureCaps
+	UInteger FilterCaps
+	UInteger InputFormatCaps
+	Integer InputPool										// D3DPOOL
+	UInteger OutputFormatCount
+	UInteger InputFormatCount
+	UInteger VideoProcessorCount
+	UInteger MaxInputStreams
+	UInteger MaxStreamStates
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxva9typ/ns-dxva9typ-dxvauncompdatainfo
+Struct DXVAUncompDataInfo
+	UInteger UncompWidth
+	UInteger UncompHeight
+	UInteger UncompFormat									// D3DFORMAT
+End_Struct
+
+Struct DXVA_AYUVsample2
+	UChar bCrValue
+	UChar bCbValue
+	UChar bY_Value
+	UChar bSampleAlpha8
+End_Struct
+
+Struct DXVA_BufferDescription
+	UInteger dwTypeIndex
+	UInteger dwBufferIndex
+	UInteger dwDataOffset
+	UInteger dwDataSize
+	UInteger dwFirstMBaddress
+	UInteger dwNumMBsInBuffer
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwStride
+	UInteger dwReservedBits
+End_Struct
+
+Struct DXVA_COPPCommand
+	Guid macKDI
+	Guid guidCommandID
+	UInteger dwSequence
+	UInteger cbSizeData
+	UChar[4056] CommandData
+End_Struct
+
+Struct DXVA_COPPSignature
+	UChar[256] Signature
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

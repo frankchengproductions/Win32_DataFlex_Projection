@@ -1,0 +1,64 @@
+Use UI
+
+Struct _Anonymous_e__Union_2113
+	// _Anonymous_e__Struct_2114 Anonymous // (8)
+	// UBigint qw // (8)
+	_Anonymous_e__Struct_2114 Anonymous
+End_Struct
+
+Struct _u_e__Union_1004
+	// UInteger ms // (4)
+	// UInteger sample // (4)
+	// UInteger cb // (4)
+	// UInteger ticks // (4)
+	// _smpte_e__Struct_1005 smpte // (8)
+	// _midi_e__Struct_1006 midi // (4)
+	_smpte_e__Struct_1005 smpte
+End_Struct
+
+Struct MMTIME
+	UInteger wType
+	_u_e__Union_1004 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/timeapi/ns-timeapi-timecaps
+Struct TIMECAPS
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+End_Struct
+
+Struct TIMECODE
+	_Anonymous_e__Union_2113 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/strmif/ns-strmif-timecode_sample
+Struct TIMECODE_SAMPLE
+	Bigint qwTick
+	TIMECODE timecode
+	UInteger dwUser
+	UInteger dwFlags										// TIMECODE_SAMPLE_FLAGS
+End_Struct
+
+Struct _Anonymous_e__Struct_2114
+	UShort wFrameRate
+	UShort wFrameFract
+	UInteger dwFrames
+End_Struct
+
+Struct _midi_e__Struct_1006
+	UInteger songptrpos
+End_Struct
+
+Struct _smpte_e__Struct_1005
+	UChar hour
+	UChar min
+	UChar sec
+	UChar frame
+	UChar fps
+	UChar dummy
+	UChar[2] pad
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

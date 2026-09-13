@@ -1,0 +1,161 @@
+Use UI
+
+Struct _Anonymous_e__Union_2035
+	// Pointer lpszwData										// PWSTR // (8)
+	// Pointer lpvData											// Pointer* // (8)
+	// UInteger dwValue // (4)
+	Pointer lpszwData
+End_Struct
+
+Struct COLUMNSTATUS
+	Integer cPropCount
+	Integer cPropsLoaded
+End_Struct
+
+Struct CProperty
+	UInteger dwPropID
+	UInteger cbData
+	UInteger dwType
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_2035 Anonymous
+	Integer fPersist										// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/htmlhelp/ns-htmlhelp-hhntrack
+Struct HHNTRACK
+	NMHDR hdr
+	Pointer pszCurUrl										// PSTR
+	Integer idAction
+	Integer iMissingAlignment1
+	Pointer phhWinType										// HH_WINTYPE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/htmlhelp/ns-htmlhelp-hhn_notify
+Struct HHN_NOTIFY
+	NMHDR hdr
+	Pointer pszUrl											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/htmlhelp/ns-htmlhelp-hh_aklink
+Struct HH_AKLINK
+	Integer cbStruct
+	Integer fReserved										// BOOL
+	Pointer pszKeywords										// Char*
+	Pointer pszUrl											// Char*
+	Pointer pszMsgText										// Char*
+	Pointer pszMsgTitle										// Char*
+	Pointer pszWindow										// Char*
+	Integer fIndexOnFail									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+Struct HH_ENUM_CAT
+	Integer cbStruct
+	Integer iMissingAlignment1
+	Pointer pszCatName										// PSTR
+	Pointer pszCatDescription								// PSTR
+End_Struct
+
+Struct HH_ENUM_IT
+	Integer cbStruct
+	Integer iType
+	Pointer pszCatName										// PSTR
+	Pointer pszITName										// PSTR
+	Pointer pszITDescription								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/htmlhelp/ns-htmlhelp-hh_fts_query
+Struct HH_FTS_QUERY
+	Integer cbStruct
+	Integer fUniCodeStrings									// BOOL
+	Pointer pszSearchQuery									// Char*
+	Integer iProximity
+	Integer fStemmedSearch									// BOOL
+	Integer fTitleOnly										// BOOL
+	Integer fExecute										// BOOL
+	Pointer pszWindow										// Char*
+End_Struct
+
+Struct HH_GLOBAL_PROPERTY
+	Integer id												// HH_GPROPID
+	Integer iMissingAlignment1
+	VARIANT var
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/htmlhelp/ns-htmlhelp-hh_popup
+Struct HH_POPUP
+	Integer cbStruct
+	Integer iMissingAlignment1
+	Pointer hinst											// HINSTANCE
+	UInteger idString
+	Integer iMissingAlignment2
+	Pointer pszText											// Char*
+	POINT pt
+	UInteger clrForeground									// COLORREF
+	UInteger clrBackground									// COLORREF
+	RECT rcMargins
+	Pointer pszFont											// Char*
+End_Struct
+
+Struct HH_SET_INFOTYPE
+	Integer cbStruct
+	Integer iMissingAlignment1
+	Pointer pszCatName										// PSTR
+	Pointer pszInfoTypeName									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/htmlhelp/ns-htmlhelp-hh_wintype
+Struct HH_WINTYPE
+	Integer cbStruct
+	Integer fUniCodeStrings									// BOOL
+	Pointer pszType											// Char*
+	UInteger fsValidMembers
+	UInteger fsWinProperties
+	Pointer pszCaption										// Char*
+	UInteger dwStyles
+	UInteger dwExStyles
+	RECT rcWindowPos
+	Integer nShowState
+	Integer iMissingAlignment1
+	Pointer hwndHelp										// HWND
+	Pointer hwndCaller										// HWND
+	Pointer paInfoTypes										// UInteger*
+	Pointer hwndToolBar										// HWND
+	Pointer hwndNavigation									// HWND
+	Pointer hwndHTML										// HWND
+	Integer iNavWidth
+	RECT rcHTML
+	Integer iMissingAlignment2
+	Pointer pszToc											// Char*
+	Pointer pszIndex										// Char*
+	Pointer pszFile											// Char*
+	Pointer pszHome											// Char*
+	UInteger fsToolBarFlags
+	Integer fNotExpanded									// BOOL
+	Integer curNavType
+	Integer tabpos
+	Integer idNotify
+	UChar[20] tabOrder
+	Integer cHistory
+	Integer iMissingAlignment3
+	Pointer pszJump1										// Char*
+	Pointer pszJump2										// Char*
+	Pointer pszUrlJump1										// Char*
+	Pointer pszUrlJump2										// Char*
+	RECT rcMinSize
+	Integer cbInfoTypes
+	Integer iMissingAlignment4
+	Pointer pszCustomTabs									// Char*
+End_Struct
+
+Struct ROWSTATUS
+	Integer lRowFirst
+	Integer cRows
+	Integer cProperties
+	Integer cRowsTotal
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

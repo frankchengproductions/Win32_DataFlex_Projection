@@ -1,0 +1,435 @@
+Use UI
+
+Struct USB_TRANSPORT_CHARACTERISTICS_CHANGE_NOTIFICATION
+	Pointer Handle											// USB_CHANGE_REGISTRATION_HANDLE
+	USB_TRANSPORT_CHARACTERISTICS UsbTransportCharacteristics
+End_Struct
+
+Struct USB_TRANSPORT_CHARACTERISTICS_CHANGE_REGISTRATION
+	UInteger ChangeNotificationInputFlags
+	Integer iMissingAlignment1
+	Pointer Handle											// USB_CHANGE_REGISTRATION_HANDLE
+	USB_TRANSPORT_CHARACTERISTICS UsbTransportCharacteristics
+End_Struct
+
+Struct USB_TRANSPORT_CHARACTERISTICS_CHANGE_UNREGISTRATION
+	Pointer Handle											// USB_CHANGE_REGISTRATION_HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/usbuser/ns-usbuser-usb_unicode_name
+Struct USB_UNICODE_NAME
+	UInteger Length
+	UShort[1] String
+	Short iMissingAlignment1
+End_Struct
+
+Struct USB_USB2HW_VERSION_PARAMETERS
+	UChar Usb2HwRevision
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winusbio/ns-winusbio-winusb_pipe_information
+Struct WINUSB_PIPE_INFORMATION
+	Integer PipeType										// USBD_PIPE_TYPE
+	UChar PipeId
+	UChar[1] cMissingAlignment1
+	UShort MaximumPacketSize
+	UChar Interval
+	UChar[3] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winusbio/ns-winusbio-winusb_pipe_information_ex
+Struct WINUSB_PIPE_INFORMATION_EX
+	Integer PipeType										// USBD_PIPE_TYPE
+	UChar PipeId
+	UChar[1] cMissingAlignment1
+	UShort MaximumPacketSize
+	UChar Interval
+	UChar[3] cMissingAlignment2
+	UInteger MaximumBytesPerInterval
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winusb/ns-winusb-winusb_setup_packet
+Struct WINUSB_SETUP_PACKET
+	UChar RequestType
+	UChar Request
+	UShort Value
+	UShort Index
+	UShort Length
+End_Struct
+
+Struct _Anonymous_e__Struct_1728
+	UChar LowByte
+	UChar HiByte
+End_Struct
+
+Struct _Anonymous_e__Struct_1730
+	UChar LowByte
+	UChar HiByte
+End_Struct
+
+Struct _Anonymous_e__Struct_1732
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1734
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1736
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1738
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1740
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1742
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1744
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1746
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1748
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1750
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1751
+	UShort wSVID
+	UChar bAlternateMode
+	UChar iAlternateModeSetting
+End_Struct
+
+Struct _Anonymous_e__Struct_1753
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1759
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1761
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1763
+	USB_HUB_STATUS HubStatus
+	USB_HUB_CHANGE HubChange
+End_Struct
+
+Struct _Anonymous_e__Struct_1765
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1767
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1769
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1771
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1775
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1777
+	USB_PORT_STATUS PortStatus
+	USB_PORT_CHANGE PortChange
+End_Struct
+
+Struct _Anonymous_e__Struct_1779
+	USB_PORT_STATUS_AND_CHANGE PortStatusChange
+	USB_PORT_EXT_STATUS PortExtStatus
+End_Struct
+
+Struct _Anonymous_e__Struct_1781
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1783
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1790
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1794
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1796
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1798
+	UInteger _bitfield
+End_Struct
+
+Struct _BM_1726
+	UChar _bitfield
+End_Struct
+
+Struct _Bulk_e__Struct_1756
+	UChar _bitfield
+End_Struct
+
+Struct _Isochronous_e__Struct_1757
+	UChar _bitfield
+End_Struct
+
+Struct _SetupPacket_e__Struct_1788
+	UChar bmRequest
+	UChar bRequest
+	UShort wValue
+	UShort wIndex
+	UShort wLength
+End_Struct
+
+Struct _URB_BULK_OR_INTERRUPT_TRANSFER
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger TransferFlags
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+End_Struct
+
+Struct _URB_CONTROL_DESCRIPTOR_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger Reserved0
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UShort Reserved1
+	UChar Index
+	UChar DescriptorType
+	UShort LanguageId
+	UShort Reserved2
+End_Struct
+
+Struct _URB_CONTROL_FEATURE_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger Reserved2
+	UInteger Reserved3
+	Pointer Reserved4										// Pointer*
+	Pointer Reserved5										// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UShort Reserved0
+	UShort FeatureSelector
+	UShort Index
+	UShort Reserved1
+End_Struct
+
+Struct _URB_CONTROL_GET_CONFIGURATION_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger Reserved0
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UChar[8] Reserved1
+End_Struct
+
+Struct _URB_CONTROL_GET_INTERFACE_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger Reserved0
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UChar[4] Reserved1
+	UShort Interface
+	UShort Reserved2
+End_Struct
+
+Struct _URB_CONTROL_GET_STATUS_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger Reserved0
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UChar[4] Reserved1
+	UShort Index
+	UShort Reserved2
+End_Struct
+
+Struct _URB_CONTROL_TRANSFER
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger TransferFlags
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UChar[8] SetupPacket
+End_Struct
+
+Struct _URB_CONTROL_TRANSFER_EX
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger TransferFlags
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	UInteger Timeout
+	Integer iMissingAlignment1
+	_URB_HCD_AREA hca
+	UChar[8] SetupPacket
+End_Struct
+
+Struct _URB_CONTROL_VENDOR_OR_CLASS_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger TransferFlags
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UChar RequestTypeReservedBits
+	UChar Request
+	UShort Value
+	UShort Index
+	UShort Reserved1
+End_Struct
+
+Struct _URB_FRAME_LENGTH_CONTROL
+	_URB_HEADER Hdr
+End_Struct
+
+Struct _URB_GET_CURRENT_FRAME_NUMBER
+	_URB_HEADER Hdr
+	UInteger FrameNumber
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _URB_GET_FRAME_LENGTH
+	_URB_HEADER Hdr
+	UInteger FrameLength
+	UInteger FrameNumber
+End_Struct
+
+Struct _URB_GET_ISOCH_PIPE_TRANSFER_PATH_DELAYS
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger MaximumSendPathDelayInMilliSeconds
+	UInteger MaximumCompletionPathDelayInMilliSeconds
+End_Struct
+
+Struct _URB_HCD_AREA
+	Pointer[8] Reserved8									// Pointer*
+End_Struct
+
+Struct _URB_HEADER
+	UShort Length
+	UShort Function
+	Integer Status
+	Pointer UsbdDeviceHandle								// Pointer*
+	UInteger UsbdFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _URB_ISOCH_TRANSFER
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger TransferFlags
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UInteger StartFrame
+	UInteger NumberOfPackets
+	UInteger ErrorCount
+	USBD_ISO_PACKET_DESCRIPTOR[1] IsoPacket
+End_Struct
+
+Struct _URB_OPEN_STATIC_STREAMS
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger NumberOfStreams
+	UShort StreamInfoVersion
+	UShort StreamInfoSize
+	Pointer Streams											// USBD_STREAM_INFORMATION*
+End_Struct
+
+Struct _URB_OS_FEATURE_DESCRIPTOR_REQUEST
+	_URB_HEADER Hdr
+	Pointer Reserved										// Pointer*
+	UInteger Reserved0
+	UInteger TransferBufferLength
+	Pointer TransferBuffer									// Pointer*
+	Pointer TransferBufferMDL								// Pointer*
+	Pointer UrbLink											// URB*
+	_URB_HCD_AREA hca
+	UChar _bitfield
+	UChar Reserved2
+	UChar InterfaceNumber
+	UChar MS_PageIndex
+	UShort MS_FeatureDescriptorIndex
+	UShort Reserved3
+End_Struct
+
+Struct _URB_PIPE_REQUEST
+	_URB_HEADER Hdr
+	Pointer PipeHandle										// Pointer*
+	UInteger Reserved
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _URB_SELECT_CONFIGURATION
+	_URB_HEADER Hdr
+	Pointer ConfigurationDescriptor							// USB_CONFIGURATION_DESCRIPTOR*
+	Pointer ConfigurationHandle								// Pointer*
+	USBD_INTERFACE_INFORMATION Interface
+End_Struct
+
+Struct _URB_SELECT_INTERFACE
+	_URB_HEADER Hdr
+	Pointer ConfigurationHandle								// Pointer*
+	USBD_INTERFACE_INFORMATION Interface
+End_Struct
+
+Struct _URB_SET_FRAME_LENGTH
+	_URB_HEADER Hdr
+	Integer FrameLengthDelta
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

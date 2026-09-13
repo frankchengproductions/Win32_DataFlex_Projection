@@ -1,0 +1,774 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_export_desc
+Struct D3D12_EXPORT_DESC
+	Pointer Name											// PWSTR
+	Pointer ExportToRename									// PWSTR
+	Integer Flags											// D3D12_EXPORT_FLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+Struct D3D12_FEATURE_DATA_APPLICATION_SPECIFIC_DRIVER_STATE
+	Integer Supported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_architecture
+Struct D3D12_FEATURE_DATA_ARCHITECTURE
+	UInteger NodeIndex
+	Integer TileBasedRenderer								// BOOL
+	Integer UMA												// BOOL
+	Integer CacheCoherentUMA								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_architecture1
+Struct D3D12_FEATURE_DATA_ARCHITECTURE1
+	UInteger NodeIndex
+	Integer TileBasedRenderer								// BOOL
+	Integer UMA												// BOOL
+	Integer CacheCoherentUMA								// BOOL
+	Integer IsolatedMMU										// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_BARRIER_LAYOUT
+	Integer CommandListType									// D3D12_COMMAND_LIST_TYPE
+	Integer Layout											// D3D12_BARRIER_LAYOUT
+	Integer Supported										// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_BYTECODE_BYPASS_HASH_SUPPORTED
+	Integer Supported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_command_queue_priority
+Struct D3D12_FEATURE_DATA_COMMAND_QUEUE_PRIORITY
+	Integer CommandListType									// D3D12_COMMAND_LIST_TYPE
+	UInteger Priority
+	Integer PriorityForTypeIsSupported						// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_cross_node
+Struct D3D12_FEATURE_DATA_CROSS_NODE
+	Integer SharingTier										// D3D12_CROSS_NODE_SHARING_TIER
+	Integer AtomicShaderInstructions						// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS
+	Integer DoublePrecisionFloatShaderOps					// BOOL
+	Integer OutputMergerLogicOp								// BOOL
+	Integer MinPrecisionSupport								// D3D12_SHADER_MIN_PRECISION_SUPPORT
+	Integer TiledResourcesTier								// D3D12_TILED_RESOURCES_TIER
+	Integer ResourceBindingTier								// D3D12_RESOURCE_BINDING_TIER
+	Integer PSSpecifiedStencilRefSupported					// BOOL
+	Integer TypedUAVLoadAdditionalFormats					// BOOL
+	Integer ROVsSupported									// BOOL
+	Integer ConservativeRasterizationTier					// D3D12_CONSERVATIVE_RASTERIZATION_TIER
+	UInteger MaxGPUVirtualAddressBitsPerResource
+	Integer StandardSwizzle64KBSupported					// BOOL
+	Integer CrossNodeSharingTier							// D3D12_CROSS_NODE_SHARING_TIER
+	Integer CrossAdapterRowMajorTextureSupported			// BOOL
+	Integer VPAndRTArrayIndexFromAnyShaderFeedingRasterizerSupportedWithoutGSEmulation	// BOOL
+	Integer ResourceHeapTier								// D3D12_RESOURCE_HEAP_TIER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options1
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS1
+	Integer WaveOps											// BOOL
+	UInteger WaveLaneCountMin
+	UInteger WaveLaneCountMax
+	UInteger TotalLaneCount
+	Integer ExpandedComputeResourceStates					// BOOL
+	Integer Int64ShaderOps									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options10
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS10
+	Integer VariableRateShadingSumCombinerSupported			// BOOL
+	Integer MeshShaderPerPrimitiveShadingRateSupported		// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options11
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS11
+	Integer AtomicInt64OnDescriptorHeapResourceSupported	// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options12
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS12
+	Integer MSPrimitivesPipelineStatisticIncludesCulledPrimitives	// D3D12_TRI_STATE
+	Integer EnhancedBarriersSupported						// BOOL
+	Integer RelaxedFormatCastingSupported					// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options13
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS13
+	Integer UnrestrictedBufferTextureCopyPitchSupported		// BOOL
+	Integer UnrestrictedVertexElementAlignmentSupported		// BOOL
+	Integer InvertedViewportHeightFlipsYSupported			// BOOL
+	Integer InvertedViewportDepthFlipsZSupported			// BOOL
+	Integer TextureCopyBetweenDimensionsSupported			// BOOL
+	Integer AlphaBlendFactorSupported						// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS14
+	Integer AdvancedTextureOpsSupported						// BOOL
+	Integer WriteableMSAATexturesSupported					// BOOL
+	Integer IndependentFrontAndBackStencilRefMaskSupported	// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS15
+	Integer TriangleFanSupported							// BOOL
+	Integer DynamicIndexBufferStripCutSupported				// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS16
+	Integer DynamicDepthBiasSupported						// BOOL
+	Integer GPUUploadHeapSupported							// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS17
+	Integer NonNormalizedCoordinateSamplersSupported		// BOOL
+	Integer ManualWriteTrackingResourceSupported			// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS18
+	Integer RenderPassesValid								// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS19
+	Integer MismatchingOutputDimensionsSupported			// BOOL
+	UInteger SupportedSampleCountsWithNoOutputs
+	Integer PointSamplingAddressesNeverRoundUp				// BOOL
+	Integer RasterizerDesc2Supported						// BOOL
+	Integer NarrowQuadrilateralLinesSupported				// BOOL
+	Integer AnisoFilterWithPointMipSupported				// BOOL
+	UInteger MaxSamplerDescriptorHeapSize
+	UInteger MaxSamplerDescriptorHeapSizeWithStaticSamplers
+	UInteger MaxViewDescriptorHeapSize
+	Integer ComputeOnlyCustomHeapSupported					// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options2
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS2
+	Integer DepthBoundsTestSupported						// BOOL
+	Integer ProgrammableSamplePositionsTier					// D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS20
+	Integer ComputeOnlyWriteWatchSupported					// BOOL
+	Integer RecreateAtTier									// D3D12_RECREATE_AT_TIER
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS21
+	Integer WorkGraphsTier									// D3D12_WORK_GRAPHS_TIER
+	Integer ExecuteIndirectTier								// D3D12_EXECUTE_INDIRECT_TIER
+	Integer SampleCmpGradientAndBiasSupported				// BOOL
+	Integer ExtendedCommandInfoSupported					// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS22
+	Integer ShaderExecutionReorderingActuallyReorders		// BOOL
+	Integer CreateByteOffsetViewsSupported					// BOOL
+	UInteger Max1DDispatchSize
+	UInteger Max1DDispatchMeshSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options3
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS3
+	Integer CopyQueueTimestampQueriesSupported				// BOOL
+	Integer CastingFullyTypedFormatSupported				// BOOL
+	Integer WriteBufferImmediateSupportFlags				// D3D12_COMMAND_LIST_SUPPORT_FLAGS
+	Integer ViewInstancingTier								// D3D12_VIEW_INSTANCING_TIER
+	Integer BarycentricsSupported							// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options4
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS4
+	Integer MSAA64KBAlignedTextureSupported					// BOOL
+	Integer SharedResourceCompatibilityTier					// D3D12_SHARED_RESOURCE_COMPATIBILITY_TIER
+	Integer Native16BitShaderOpsSupported					// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options5
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS5
+	Integer SRVOnlyTiledResourceTier3						// BOOL
+	Integer RenderPassesTier								// D3D12_RENDER_PASS_TIER
+	Integer RaytracingTier									// D3D12_RAYTRACING_TIER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options6
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS6
+	Integer AdditionalShadingRatesSupported					// BOOL
+	Integer PerPrimitiveShadingRateSupportedWithViewportIndexing	// BOOL
+	Integer VariableShadingRateTier							// D3D12_VARIABLE_SHADING_RATE_TIER
+	UInteger ShadingRateImageTileSize
+	Integer BackgroundProcessingSupported					// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options7
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS7
+	Integer MeshShaderTier									// D3D12_MESH_SHADER_TIER
+	Integer SamplerFeedbackTier								// D3D12_SAMPLER_FEEDBACK_TIER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options8
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS8
+	Integer UnalignedBlockTexturesSupported					// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_d3d12_options9
+Struct D3D12_FEATURE_DATA_D3D12_OPTIONS9
+	Integer MeshShaderPipelineStatsSupported				// BOOL
+	Integer MeshShaderSupportsFullRangeRenderTargetArrayIndex	// BOOL
+	Integer AtomicInt64OnTypedResourceSupported				// BOOL
+	Integer AtomicInt64OnGroupSharedSupported				// BOOL
+	Integer DerivativesInMeshAndAmplificationShadersSupported	// BOOL
+	Integer WaveMMATier										// D3D12_WAVE_MMA_TIER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_displayable
+Struct D3D12_FEATURE_DATA_DISPLAYABLE
+	Integer DisplayableTexture								// BOOL
+	Integer SharedResourceCompatibilityTier					// D3D12_SHARED_RESOURCE_COMPATIBILITY_TIER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_existing_heaps
+Struct D3D12_FEATURE_DATA_EXISTING_HEAPS
+	Integer Supported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_feature_levels
+Struct D3D12_FEATURE_DATA_FEATURE_LEVELS
+	UInteger NumFeatureLevels
+	Integer iMissingAlignment1
+	Pointer pFeatureLevelsRequested							// D3D_FEATURE_LEVEL*
+	Integer MaxSupportedFeatureLevel						// D3D_FEATURE_LEVEL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_format_info
+Struct D3D12_FEATURE_DATA_FORMAT_INFO
+	Integer Format											// DXGI_FORMAT
+	UChar PlaneCount
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_format_support
+Struct D3D12_FEATURE_DATA_FORMAT_SUPPORT
+	Integer Format											// DXGI_FORMAT
+	Integer Support1										// D3D12_FORMAT_SUPPORT1
+	Integer Support2										// D3D12_FORMAT_SUPPORT2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_gpu_virtual_address_support
+Struct D3D12_FEATURE_DATA_GPU_VIRTUAL_ADDRESS_SUPPORT
+	UInteger MaxGPUVirtualAddressBitsPerResource
+	UInteger MaxGPUVirtualAddressBitsPerProcess
+End_Struct
+
+Struct D3D12_FEATURE_DATA_HARDWARE_COPY
+	Integer Supported										// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_HARDWARE_SCHEDULING_QUEUE_GROUPINGS
+	UInteger ComputeQueuesPer3DQueue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_multisample_quality_levels
+Struct D3D12_FEATURE_DATA_MULTISAMPLE_QUALITY_LEVELS
+	Integer Format											// DXGI_FORMAT
+	UInteger SampleCount
+	Integer Flags											// D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS
+	UInteger NumQualityLevels
+End_Struct
+
+Struct D3D12_FEATURE_DATA_PLACED_RESOURCE_SUPPORT_INFO
+	Integer Format											// DXGI_FORMAT
+	Integer Dimension										// D3D12_RESOURCE_DIMENSION
+	D3D12_HEAP_PROPERTIES DestHeapProperties
+	Integer Supported										// BOOL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_PREDICATION
+	Integer Supported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_protected_resource_session_support
+Struct D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_SUPPORT
+	UInteger NodeIndex
+	Integer Support											// D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_protected_resource_session_types
+Struct D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPES
+	UInteger NodeIndex
+	UInteger Count
+	Pointer pTypes											// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_protected_resource_session_type_count
+Struct D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPE_COUNT
+	UInteger NodeIndex
+	UInteger Count
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_query_meta_command
+Struct D3D12_FEATURE_DATA_QUERY_META_COMMAND
+	Guid CommandId
+	UInteger NodeMask
+	Integer iMissingAlignment1
+	Pointer pQueryInputData									// Pointer*
+	ULongPtr QueryInputDataSizeInBytes
+	Pointer pQueryOutputData								// Pointer*
+	ULongPtr QueryOutputDataSizeInBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_root_signature
+Struct D3D12_FEATURE_DATA_ROOT_SIGNATURE
+	Integer HighestVersion									// D3D_ROOT_SIGNATURE_VERSION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_serialization
+Struct D3D12_FEATURE_DATA_SERIALIZATION
+	UInteger NodeIndex
+	Integer HeapSerializationTier							// D3D12_HEAP_SERIALIZATION_TIER
+End_Struct
+
+Struct D3D12_FEATURE_DATA_SHADERCACHE_ABI_SUPPORT
+	UShort[128] szAdapterFamily
+	UBigint MinimumABISupportVersion
+	UBigint MaximumABISupportVersion
+	D3D12_VERSION_NUMBER CompilerVersion
+	D3D12_VERSION_NUMBER ApplicationProfileVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_shader_cache
+Struct D3D12_FEATURE_DATA_SHADER_CACHE
+	Integer SupportFlags									// D3D12_SHADER_CACHE_SUPPORT_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_feature_data_shader_model
+Struct D3D12_FEATURE_DATA_SHADER_MODEL
+	Integer HighestShaderModel								// D3D_SHADER_MODEL
+End_Struct
+
+Struct D3D12_FEATURE_DATA_TIGHT_ALIGNMENT
+	Integer SupportTier										// D3D12_TIGHT_ALIGNMENT_TIER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12shader/ns-d3d12shader-d3d12_function_desc
+Struct D3D12_FUNCTION_DESC
+	UInteger Version
+	Integer iMissingAlignment1
+	Pointer Creator											// PSTR
+	UInteger Flags
+	UInteger ConstantBuffers
+	UInteger BoundResources
+	UInteger InstructionCount
+	UInteger TempRegisterCount
+	UInteger TempArrayCount
+	UInteger DefCount
+	UInteger DclCount
+	UInteger TextureNormalInstructions
+	UInteger TextureLoadInstructions
+	UInteger TextureCompInstructions
+	UInteger TextureBiasInstructions
+	UInteger TextureGradientInstructions
+	UInteger FloatInstructionCount
+	UInteger IntInstructionCount
+	UInteger UintInstructionCount
+	UInteger StaticFlowControlCount
+	UInteger DynamicFlowControlCount
+	UInteger MacroInstructionCount
+	UInteger ArrayInstructionCount
+	UInteger MovInstructionCount
+	UInteger MovcInstructionCount
+	UInteger ConversionInstructionCount
+	UInteger BitwiseInstructionCount
+	Integer MinFeatureLevel									// D3D_FEATURE_LEVEL
+	Integer iMissingAlignment2
+	UBigint RequiredFeatureFlags
+	Pointer Name											// PSTR
+	Integer FunctionParameterCount
+	Integer HasReturn										// BOOL
+	Integer Has10Level9VertexShader							// BOOL
+	Integer Has10Level9PixelShader							// BOOL
+End_Struct
+
+Struct D3D12_GENERIC_PROGRAM_DESC
+	Pointer ProgramName										// PWSTR
+	UInteger NumExports
+	Integer iMissingAlignment1
+	Pointer pExports										// PWSTR*
+	UInteger NumSubobjects
+	Integer iMissingAlignment2
+	Pointer ppSubobjects									// D3D12_STATE_SUBOBJECT**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_global_barrier
+Struct D3D12_GLOBAL_BARRIER
+	Integer SyncBefore										// D3D12_BARRIER_SYNC
+	Integer SyncAfter										// D3D12_BARRIER_SYNC
+	Integer AccessBefore									// D3D12_BARRIER_ACCESS
+	Integer AccessAfter										// D3D12_BARRIER_ACCESS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_global_root_signature
+Struct D3D12_GLOBAL_ROOT_SIGNATURE
+	Pointer pGlobalRootSignature							// ID3D12RootSignature
+End_Struct
+
+Struct D3D12_GLOBAL_SERIALIZED_ROOT_SIGNATURE
+	D3D12_SERIALIZED_ROOT_SIGNATURE_DESC Desc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_gpu_descriptor_handle
+Struct D3D12_GPU_DESCRIPTOR_HANDLE
+	UBigint ptr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_gpu_virtual_address_and_stride
+Struct D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE
+	UBigint StartAddress
+	UBigint StrideInBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_gpu_virtual_address_range
+Struct D3D12_GPU_VIRTUAL_ADDRESS_RANGE
+	UBigint StartAddress
+	UBigint SizeInBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_gpu_virtual_address_range_and_stride
+Struct D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDE
+	UBigint StartAddress
+	UBigint SizeInBytes
+	UBigint StrideInBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_graphics_pipeline_state_desc
+Struct D3D12_GRAPHICS_PIPELINE_STATE_DESC
+	Pointer pRootSignature									// ID3D12RootSignature
+	D3D12_SHADER_BYTECODE VS
+	D3D12_SHADER_BYTECODE PS
+	D3D12_SHADER_BYTECODE DS
+	D3D12_SHADER_BYTECODE HS
+	D3D12_SHADER_BYTECODE GS
+	D3D12_STREAM_OUTPUT_DESC StreamOutput
+	D3D12_BLEND_DESC BlendState
+	UInteger SampleMask
+	D3D12_RASTERIZER_DESC RasterizerState
+	D3D12_DEPTH_STENCIL_DESC DepthStencilState
+	Integer iMissingAlignment1
+	D3D12_INPUT_LAYOUT_DESC InputLayout
+	Integer IBStripCutValue									// D3D12_INDEX_BUFFER_STRIP_CUT_VALUE
+	Integer PrimitiveTopologyType							// D3D12_PRIMITIVE_TOPOLOGY_TYPE
+	UInteger NumRenderTargets
+	Integer[8] RTVFormats									// DXGI_FORMAT
+	Integer DSVFormat										// DXGI_FORMAT
+	DXGI_SAMPLE_DESC SampleDesc
+	UInteger NodeMask
+	Integer iMissingAlignment2
+	D3D12_CACHED_PIPELINE_STATE CachedPSO
+	Integer Flags											// D3D12_PIPELINE_STATE_FLAGS
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_heap_desc
+Struct D3D12_HEAP_DESC
+	UBigint SizeInBytes
+	D3D12_HEAP_PROPERTIES Properties
+	Integer iMissingAlignment1
+	UBigint Alignment
+	Integer Flags											// D3D12_HEAP_FLAGS
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_heap_properties
+Struct D3D12_HEAP_PROPERTIES
+	Integer Type											// D3D12_HEAP_TYPE
+	Integer CPUPageProperty									// D3D12_CPU_PAGE_PROPERTY
+	Integer MemoryPoolPreference							// D3D12_MEMORY_POOL
+	UInteger CreationNodeMask
+	UInteger VisibleNodeMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_hit_group_desc
+Struct D3D12_HIT_GROUP_DESC
+	Pointer HitGroupExport									// PWSTR
+	Integer Type											// D3D12_HIT_GROUP_TYPE
+	Integer iMissingAlignment1
+	Pointer AnyHitShaderImport								// PWSTR
+	Pointer ClosestHitShaderImport							// PWSTR
+	Pointer IntersectionShaderImport						// PWSTR
+End_Struct
+
+Struct D3D12_IB_STRIP_CUT_VALUE
+	Integer IndexBufferStripCutValue						// D3D12_INDEX_BUFFER_STRIP_CUT_VALUE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_index_buffer_view
+Struct D3D12_INDEX_BUFFER_VIEW
+	UBigint BufferLocation
+	UInteger SizeInBytes
+	Integer Format											// DXGI_FORMAT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_indirect_argument_desc
+Struct D3D12_INDIRECT_ARGUMENT_DESC
+	Integer Type											// D3D12_INDIRECT_ARGUMENT_TYPE
+	_Anonymous_e__Union_1912 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/ns-d3d12sdklayers-d3d12_info_queue_filter
+Struct D3D12_INFO_QUEUE_FILTER
+	D3D12_INFO_QUEUE_FILTER_DESC AllowList
+	D3D12_INFO_QUEUE_FILTER_DESC DenyList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/ns-d3d12sdklayers-d3d12_info_queue_filter_desc
+Struct D3D12_INFO_QUEUE_FILTER_DESC
+	UInteger NumCategories
+	Integer iMissingAlignment1
+	Pointer pCategoryList									// D3D12_MESSAGE_CATEGORY*
+	UInteger NumSeverities
+	Integer iMissingAlignment2
+	Pointer pSeverityList									// D3D12_MESSAGE_SEVERITY*
+	UInteger NumIDs
+	Integer iMissingAlignment3
+	Pointer pIDList											// D3D12_MESSAGE_ID*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_input_element_desc
+Struct D3D12_INPUT_ELEMENT_DESC
+	Pointer SemanticName									// PSTR
+	UInteger SemanticIndex
+	Integer Format											// DXGI_FORMAT
+	UInteger InputSlot
+	UInteger AlignedByteOffset
+	Integer InputSlotClass									// D3D12_INPUT_CLASSIFICATION
+	UInteger InstanceDataStepRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_input_layout_desc
+Struct D3D12_INPUT_LAYOUT_DESC
+	Pointer pInputElementDescs								// D3D12_INPUT_ELEMENT_DESC*
+	UInteger NumElements
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12shader/ns-d3d12shader-d3d12_library_desc
+Struct D3D12_LIBRARY_DESC
+	Pointer Creator											// PSTR
+	UInteger Flags
+	UInteger FunctionCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_local_root_signature
+Struct D3D12_LOCAL_ROOT_SIGNATURE
+	Pointer pLocalRootSignature								// ID3D12RootSignature
+End_Struct
+
+Struct D3D12_LOCAL_SERIALIZED_ROOT_SIGNATURE
+	D3D12_SERIALIZED_ROOT_SIGNATURE_DESC Desc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_memcpy_dest
+Struct D3D12_MEMCPY_DEST
+	Pointer pData											// Pointer*
+	ULongPtr RowPitch
+	ULongPtr SlicePitch
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12sdklayers/ns-d3d12sdklayers-d3d12_message
+Struct D3D12_MESSAGE
+	Integer Category										// D3D12_MESSAGE_CATEGORY
+	Integer Severity										// D3D12_MESSAGE_SEVERITY
+	Integer ID												// D3D12_MESSAGE_ID
+	Integer iMissingAlignment1
+	Pointer pDescription									// UChar*
+	ULongPtr DescriptionByteLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_meta_command_desc
+Struct D3D12_META_COMMAND_DESC
+	Guid Id
+	Pointer Name											// PWSTR
+	Integer InitializationDirtyState						// D3D12_GRAPHICS_STATES
+	Integer ExecutionDirtyState								// D3D12_GRAPHICS_STATES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_meta_command_parameter_desc
+Struct D3D12_META_COMMAND_PARAMETER_DESC
+	Pointer Name											// PWSTR
+	Integer Type											// D3D12_META_COMMAND_PARAMETER_TYPE
+	Integer Flags											// D3D12_META_COMMAND_PARAMETER_FLAGS
+	Integer RequiredResourceState							// D3D12_RESOURCE_STATES
+	UInteger StructureOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_mip_region
+Struct D3D12_MIP_REGION
+	UInteger Width
+	UInteger Height
+	UInteger Depth
+End_Struct
+
+Struct D3D12_MULTI_NODE_CPU_INPUT
+	UInteger NumNodeInputs
+	Integer iMissingAlignment1
+	Pointer pNodeInputs										// D3D12_NODE_CPU_INPUT*
+	UBigint NodeInputStrideInBytes
+End_Struct
+
+Struct D3D12_MULTI_NODE_GPU_INPUT
+	UInteger NumNodeInputs
+	Integer iMissingAlignment1
+	D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE NodeInputs
+End_Struct
+
+Struct D3D12_NODE
+	Integer NodeType										// D3D12_NODE_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1920 Anonymous
+End_Struct
+
+Struct D3D12_NODE_CPU_INPUT
+	UInteger EntrypointIndex
+	UInteger NumRecords
+	Pointer pRecords										// Pointer*
+	UBigint RecordStrideInBytes
+End_Struct
+
+Struct D3D12_NODE_GPU_INPUT
+	UInteger EntrypointIndex
+	UInteger NumRecords
+	D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE Records
+End_Struct
+
+Struct D3D12_NODE_ID
+	Pointer Name											// PWSTR
+	UInteger ArrayIndex
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_node_mask
+Struct D3D12_NODE_MASK
+	UInteger NodeMask
+End_Struct
+
+Struct D3D12_NODE_OUTPUT_OVERRIDES
+	UInteger OutputIndex
+	Integer iMissingAlignment1
+	Pointer pNewName										// D3D12_NODE_ID*
+	Pointer pAllowSparseNodes								// BOOL*
+	Pointer pMaxRecords										// UInteger*
+	Pointer pMaxRecordsSharedWithOutputIndex				// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_packed_mip_info
+Struct D3D12_PACKED_MIP_INFO
+	UChar NumStandardMips
+	UChar NumPackedMips
+	Short iMissingAlignment1
+	UInteger NumTilesForPackedMips
+	UInteger StartTileIndexInOverallResource
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12shader/ns-d3d12shader-d3d12_parameter_desc
+Struct D3D12_PARAMETER_DESC
+	Pointer Name											// PSTR
+	Pointer SemanticName									// PSTR
+	Integer Type											// D3D_SHADER_VARIABLE_TYPE
+	Integer Class											// D3D_SHADER_VARIABLE_CLASS
+	UInteger Rows
+	UInteger Columns
+	Integer InterpolationMode								// D3D_INTERPOLATION_MODE
+	Integer Flags											// D3D_PARAMETER_FLAGS
+	UInteger FirstInRegister
+	UInteger FirstInComponent
+	UInteger FirstOutRegister
+	UInteger FirstOutComponent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_pipeline_state_stream_desc
+Struct D3D12_PIPELINE_STATE_STREAM_DESC
+	ULongPtr SizeInBytes
+	Pointer pPipelineStateSubobjectStream					// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_placed_subresource_footprint
+Struct D3D12_PLACED_SUBRESOURCE_FOOTPRINT
+	UBigint Offset
+	D3D12_SUBRESOURCE_FOOTPRINT Footprint
+	Integer iMissingAlignment1
+End_Struct
+
+Struct D3D12_PRIMITIVE_TOPOLOGY_DESC
+	Integer PrimitiveTopology								// D3D12_PRIMITIVE_TOPOLOGY_TYPE
+End_Struct
+
+Struct D3D12_PROGRAM_IDENTIFIER
+	UBigint[4] OpaqueData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_protected_resource_session_desc
+Struct D3D12_PROTECTED_RESOURCE_SESSION_DESC
+	UInteger NodeMask
+	Integer Flags											// D3D12_PROTECTED_RESOURCE_SESSION_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_protected_resource_session_desc1
+Struct D3D12_PROTECTED_RESOURCE_SESSION_DESC1
+	UInteger NodeMask
+	Integer Flags											// D3D12_PROTECTED_RESOURCE_SESSION_FLAGS
+	Guid ProtectionType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_query_data_pipeline_statistics
+Struct D3D12_QUERY_DATA_PIPELINE_STATISTICS
+	UBigint IAVertices
+	UBigint IAPrimitives
+	UBigint VSInvocations
+	UBigint GSInvocations
+	UBigint GSPrimitives
+	UBigint CInvocations
+	UBigint CPrimitives
+	UBigint PSInvocations
+	UBigint HSInvocations
+	UBigint DSInvocations
+	UBigint CSInvocations
+End_Struct
+
+Struct D3D12_QUERY_DATA_PIPELINE_STATISTICS1
+	UBigint IAVertices
+	UBigint IAPrimitives
+	UBigint VSInvocations
+	UBigint GSInvocations
+	UBigint GSPrimitives
+	UBigint CInvocations
+	UBigint CPrimitives
+	UBigint PSInvocations
+	UBigint HSInvocations
+	UBigint DSInvocations
+	UBigint CSInvocations
+	UBigint ASInvocations
+	UBigint MSInvocations
+	UBigint MSPrimitives
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_query_data_so_statistics
+Struct D3D12_QUERY_DATA_SO_STATISTICS
+	UBigint NumPrimitivesWritten
+	UBigint PrimitivesStorageNeeded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/d3d12/ns-d3d12-d3d12_query_heap_desc
+Struct D3D12_QUERY_HEAP_DESC
+	Integer Type											// D3D12_QUERY_HEAP_TYPE
+	UInteger Count
+	UInteger NodeMask
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,502 @@
+Use UI
+
+Struct _data_e__Union_2014
+	// GameInputForceFeedbackConstantParams constant // (80)
+	// GameInputForceFeedbackRampParams ramp // (104)
+	// GameInputForceFeedbackPeriodicParams sineWave // (88)
+	// GameInputForceFeedbackPeriodicParams squareWave // (88)
+	// GameInputForceFeedbackPeriodicParams triangleWave // (88)
+	// GameInputForceFeedbackPeriodicParams sawtoothUpWave // (88)
+	// GameInputForceFeedbackPeriodicParams sawtoothDownWave // (88)
+	// GameInputForceFeedbackConditionParams spring // (52)
+	// GameInputForceFeedbackConditionParams friction // (52)
+	// GameInputForceFeedbackConditionParams damper // (52)
+	// GameInputForceFeedbackConditionParams inertia // (52)
+	GameInputForceFeedbackRampParams ramp
+End_Struct
+
+Struct GameInputArcadeStickInfo
+	Integer menuButtonLabel									// GameInputLabel
+	Integer viewButtonLabel									// GameInputLabel
+	Integer stickUpLabel									// GameInputLabel
+	Integer stickDownLabel									// GameInputLabel
+	Integer stickLeftLabel									// GameInputLabel
+	Integer stickRightLabel									// GameInputLabel
+	Integer actionButton1Label								// GameInputLabel
+	Integer actionButton2Label								// GameInputLabel
+	Integer actionButton3Label								// GameInputLabel
+	Integer actionButton4Label								// GameInputLabel
+	Integer actionButton5Label								// GameInputLabel
+	Integer actionButton6Label								// GameInputLabel
+	Integer specialButton1Label								// GameInputLabel
+	Integer specialButton2Label								// GameInputLabel
+End_Struct
+
+Struct GameInputArcadeStickState
+	Integer buttons											// GameInputArcadeStickButtons
+End_Struct
+
+Struct GameInputBatteryState
+	Float chargeRate
+	Float maxChargeRate
+	Float remainingCapacity
+	Float fullChargeCapacity
+	Integer status											// GameInputBatteryStatus
+End_Struct
+
+Struct GameInputControllerAxisInfo
+	Integer mappedInputKinds								// GameInputKind
+	Integer label											// GameInputLabel
+	UChar isContinuous
+	UChar isNonlinear
+	UChar isQuantized
+	UChar hasRestValue
+	Float restValue
+	UBigint resolution
+	UShort legacyDInputIndex
+	UShort legacyHidIndex
+	UInteger rawReportIndex
+	Pointer inputReport										// GameInputRawDeviceReportInfo*
+	Pointer inputReportItem									// GameInputRawDeviceReportItemInfo*
+End_Struct
+
+Struct GameInputControllerButtonInfo
+	Integer mappedInputKinds								// GameInputKind
+	Integer label											// GameInputLabel
+	UShort legacyDInputIndex
+	UShort legacyHidIndex
+	UInteger rawReportIndex
+	Pointer inputReport										// GameInputRawDeviceReportInfo*
+	Pointer inputReportItem									// GameInputRawDeviceReportItemInfo*
+End_Struct
+
+Struct GameInputControllerSwitchInfo
+	Integer mappedInputKinds								// GameInputKind
+	Integer label											// GameInputLabel
+	Integer[9] positionLabels								// GameInputLabel
+	Integer kind											// GameInputSwitchKind
+	UShort legacyDInputIndex
+	UShort legacyHidIndex
+	UInteger rawReportIndex
+	Pointer inputReport										// GameInputRawDeviceReportInfo*
+	Pointer inputReportItem									// GameInputRawDeviceReportItemInfo*
+End_Struct
+
+Struct GameInputDeviceInfo
+	UInteger infoSize
+	UShort vendorId
+	UShort productId
+	UShort revisionNumber
+	UChar interfaceNumber
+	UChar collectionNumber
+	GameInputUsage usage
+	GameInputVersion hardwareVersion
+	GameInputVersion firmwareVersion
+	APP_LOCAL_DEVICE_ID deviceId
+	APP_LOCAL_DEVICE_ID deviceRootId
+	Integer deviceFamily									// GameInputDeviceFamily
+	Integer capabilities									// GameInputDeviceCapabilities
+	Integer supportedInput									// GameInputKind
+	Integer supportedRumbleMotors							// GameInputRumbleMotors
+	UInteger inputReportCount
+	UInteger outputReportCount
+	UInteger featureReportCount
+	UInteger controllerAxisCount
+	UInteger controllerButtonCount
+	UInteger controllerSwitchCount
+	UInteger touchPointCount
+	UInteger touchSensorCount
+	UInteger forceFeedbackMotorCount
+	UInteger hapticFeedbackMotorCount
+	UInteger deviceStringCount
+	UInteger deviceDescriptorSize
+	Pointer inputReportInfo									// GameInputRawDeviceReportInfo*
+	Pointer outputReportInfo								// GameInputRawDeviceReportInfo*
+	Pointer featureReportInfo								// GameInputRawDeviceReportInfo*
+	Pointer controllerAxisInfo								// GameInputControllerAxisInfo*
+	Pointer controllerButtonInfo							// GameInputControllerButtonInfo*
+	Pointer controllerSwitchInfo							// GameInputControllerSwitchInfo*
+	Pointer keyboardInfo									// GameInputKeyboardInfo*
+	Pointer mouseInfo										// GameInputMouseInfo*
+	Pointer touchSensorInfo									// GameInputTouchSensorInfo*
+	Pointer motionInfo										// GameInputMotionInfo*
+	Pointer arcadeStickInfo									// GameInputArcadeStickInfo*
+	Pointer flightStickInfo									// GameInputFlightStickInfo*
+	Pointer gamepadInfo										// GameInputGamepadInfo*
+	Pointer racingWheelInfo									// GameInputRacingWheelInfo*
+	Pointer uiNavigationInfo								// GameInputUiNavigationInfo*
+	Pointer forceFeedbackMotorInfo							// GameInputForceFeedbackMotorInfo*
+	Pointer hapticFeedbackMotorInfo							// GameInputHapticFeedbackMotorInfo*
+	Pointer displayName										// GameInputString*
+	Pointer deviceStrings									// GameInputString*
+	Pointer deviceDescriptorData							// Pointer*
+	Integer supportedSystemButtons							// GameInputSystemButtons
+	Integer iMissingAlignment1
+End_Struct
+
+Struct GameInputFlightStickInfo
+	Integer menuButtonLabel									// GameInputLabel
+	Integer viewButtonLabel									// GameInputLabel
+	Integer firePrimaryButtonLabel							// GameInputLabel
+	Integer fireSecondaryButtonLabel						// GameInputLabel
+	Integer hatSwitchKind									// GameInputSwitchKind
+End_Struct
+
+Struct GameInputFlightStickState
+	Integer buttons											// GameInputFlightStickButtons
+	Integer hatSwitch										// GameInputSwitchPosition
+	Float roll
+	Float pitch
+	Float yaw
+	Float throttle
+End_Struct
+
+Struct GameInputForceFeedbackConditionParams
+	GameInputForceFeedbackMagnitude magnitude
+	Float positiveCoefficient
+	Float negativeCoefficient
+	Float maxPositiveMagnitude
+	Float maxNegativeMagnitude
+	Float deadZone
+	Float bias
+End_Struct
+
+Struct GameInputForceFeedbackConstantParams
+	GameInputForceFeedbackEnvelope envelope
+	GameInputForceFeedbackMagnitude magnitude
+	Integer iMissingAlignment1
+End_Struct
+
+Struct GameInputForceFeedbackEnvelope
+	UBigint attackDuration
+	UBigint sustainDuration
+	UBigint releaseDuration
+	Float attackGain
+	Float sustainGain
+	Float releaseGain
+	UInteger playCount
+	UBigint repeatDelay
+End_Struct
+
+Struct GameInputForceFeedbackMagnitude
+	Float linearX
+	Float linearY
+	Float linearZ
+	Float angularX
+	Float angularY
+	Float angularZ
+	Float normal
+End_Struct
+
+Struct GameInputForceFeedbackMotorInfo
+	Integer supportedAxes									// GameInputFeedbackAxes
+	Integer location										// GameInputLocation
+	UInteger locationId
+	UInteger maxSimultaneousEffects
+	UChar isConstantEffectSupported
+	UChar isRampEffectSupported
+	UChar isSineWaveEffectSupported
+	UChar isSquareWaveEffectSupported
+	UChar isTriangleWaveEffectSupported
+	UChar isSawtoothUpWaveEffectSupported
+	UChar isSawtoothDownWaveEffectSupported
+	UChar isSpringEffectSupported
+	UChar isFrictionEffectSupported
+	UChar isDamperEffectSupported
+	UChar isInertiaEffectSupported
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct GameInputForceFeedbackParams
+	Integer kind											// GameInputForceFeedbackEffectKind
+	Integer iMissingAlignment1
+	_data_e__Union_2014 data
+End_Struct
+
+Struct GameInputForceFeedbackPeriodicParams
+	GameInputForceFeedbackEnvelope envelope
+	GameInputForceFeedbackMagnitude magnitude
+	Float frequency
+	Float phase
+	Float bias
+End_Struct
+
+Struct GameInputForceFeedbackRampParams
+	GameInputForceFeedbackEnvelope envelope
+	GameInputForceFeedbackMagnitude startMagnitude
+	GameInputForceFeedbackMagnitude endMagnitude
+End_Struct
+
+Struct GameInputGamepadInfo
+	Integer menuButtonLabel									// GameInputLabel
+	Integer viewButtonLabel									// GameInputLabel
+	Integer aButtonLabel									// GameInputLabel
+	Integer bButtonLabel									// GameInputLabel
+	Integer xButtonLabel									// GameInputLabel
+	Integer yButtonLabel									// GameInputLabel
+	Integer dpadUpLabel										// GameInputLabel
+	Integer dpadDownLabel									// GameInputLabel
+	Integer dpadLeftLabel									// GameInputLabel
+	Integer dpadRightLabel									// GameInputLabel
+	Integer leftShoulderButtonLabel							// GameInputLabel
+	Integer rightShoulderButtonLabel						// GameInputLabel
+	Integer leftThumbstickButtonLabel						// GameInputLabel
+	Integer rightThumbstickButtonLabel						// GameInputLabel
+End_Struct
+
+Struct GameInputGamepadState
+	Integer buttons											// GameInputGamepadButtons
+	Float leftTrigger
+	Float rightTrigger
+	Float leftThumbstickX
+	Float leftThumbstickY
+	Float rightThumbstickX
+	Float rightThumbstickY
+End_Struct
+
+Struct GameInputHapticFeedbackMotorInfo
+	Integer mappedRumbleMotors								// GameInputRumbleMotors
+	Integer location										// GameInputLocation
+	UInteger locationId
+	UInteger waveformCount
+	Pointer waveformInfo									// GameInputHapticWaveformInfo*
+End_Struct
+
+Struct GameInputHapticFeedbackParams
+	UInteger waveformIndex
+	Integer iMissingAlignment1
+	UBigint duration
+	Float intensity
+	UInteger playCount
+	UBigint repeatDelay
+End_Struct
+
+Struct GameInputHapticWaveformInfo
+	GameInputUsage usage
+	UChar isDurationSupported
+	UChar isIntensitySupported
+	UChar isRepeatSupported
+	UChar isRepeatDelaySupported
+	UBigint defaultDuration
+End_Struct
+
+Struct GameInputKeyState
+	UInteger scanCode
+	UInteger codePoint
+	UChar virtualKey
+	UChar isDeadKey
+	Short iMissingAlignment1
+End_Struct
+
+Struct GameInputKeyboardInfo
+	Integer kind											// GameInputKeyboardKind
+	UInteger layout
+	UInteger keyCount
+	UInteger functionKeyCount
+	UInteger maxSimultaneousKeys
+	UInteger platformType
+	UInteger platformSubtype
+	Integer iMissingAlignment1
+	Pointer nativeLanguage									// GameInputString*
+End_Struct
+
+Struct GameInputMotionInfo
+	Float maxAcceleration
+	Float maxAngularVelocity
+	Float maxMagneticFieldStrength
+End_Struct
+
+Struct GameInputMotionState
+	Float accelerationX
+	Float accelerationY
+	Float accelerationZ
+	Float angularVelocityX
+	Float angularVelocityY
+	Float angularVelocityZ
+	Float magneticFieldX
+	Float magneticFieldY
+	Float magneticFieldZ
+	Float orientationW
+	Float orientationX
+	Float orientationY
+	Float orientationZ
+	Integer accelerometerAccuracy							// GameInputMotionAccuracy
+	Integer gyroscopeAccuracy								// GameInputMotionAccuracy
+	Integer magnetometerAccuracy							// GameInputMotionAccuracy
+	Integer orientationAccuracy								// GameInputMotionAccuracy
+End_Struct
+
+Struct GameInputMouseInfo
+	Integer supportedButtons								// GameInputMouseButtons
+	UInteger sampleRate
+	UInteger sensorDpi
+	UChar hasWheelX
+	UChar hasWheelY
+	Short iMissingAlignment1
+End_Struct
+
+Struct GameInputMouseState
+	Integer buttons											// GameInputMouseButtons
+	Integer iMissingAlignment1
+	Bigint positionX
+	Bigint positionY
+	Bigint wheelX
+	Bigint wheelY
+End_Struct
+
+Struct GameInputRacingWheelInfo
+	Integer menuButtonLabel									// GameInputLabel
+	Integer viewButtonLabel									// GameInputLabel
+	Integer previousGearButtonLabel							// GameInputLabel
+	Integer nextGearButtonLabel								// GameInputLabel
+	Integer dpadUpLabel										// GameInputLabel
+	Integer dpadDownLabel									// GameInputLabel
+	Integer dpadLeftLabel									// GameInputLabel
+	Integer dpadRightLabel									// GameInputLabel
+	UChar hasClutch
+	UChar hasHandbrake
+	UChar hasPatternShifter
+	UChar[1] cMissingAlignment1
+	Integer minPatternShifterGear
+	Integer maxPatternShifterGear
+	Float maxWheelAngle
+End_Struct
+
+Struct GameInputRacingWheelState
+	Integer buttons											// GameInputRacingWheelButtons
+	Integer patternShifterGear
+	Float wheel
+	Float throttle
+	Float brake
+	Float clutch
+	Float handbrake
+End_Struct
+
+Struct GameInputRawDeviceItemCollectionInfo
+	Integer kind											// GameInputRawDeviceItemCollectionKind
+	UInteger childCount
+	UInteger siblingCount
+	UInteger usageCount
+	Pointer usages											// GameInputUsage*
+	Pointer parent											// GameInputRawDeviceItemCollectionInfo*
+	Pointer firstSibling									// GameInputRawDeviceItemCollectionInfo*
+	Pointer previousSibling									// GameInputRawDeviceItemCollectionInfo*
+	Pointer nextSibling										// GameInputRawDeviceItemCollectionInfo*
+	Pointer lastSibling										// GameInputRawDeviceItemCollectionInfo*
+	Pointer firstChild										// GameInputRawDeviceItemCollectionInfo*
+	Pointer lastChild										// GameInputRawDeviceItemCollectionInfo*
+End_Struct
+
+Struct GameInputRawDeviceReportInfo
+	Integer kind											// GameInputRawDeviceReportKind
+	UInteger id
+	UInteger size
+	UInteger itemCount
+	Pointer items											// GameInputRawDeviceReportItemInfo*
+End_Struct
+
+Struct GameInputRawDeviceReportItemInfo
+	UInteger bitOffset
+	UInteger bitSize
+	Bigint logicalMin
+	Bigint logicalMax
+	Real physicalMin
+	Real physicalMax
+	Integer physicalUnits									// GameInputRawDevicePhysicalUnitKind
+	UInteger rawPhysicalUnits
+	Integer rawPhysicalUnitsExponent
+	Integer flags											// GameInputRawDeviceReportItemFlags
+	UInteger usageCount
+	Integer iMissingAlignment1
+	Pointer usages											// GameInputUsage*
+	Pointer collection										// GameInputRawDeviceItemCollectionInfo*
+	Pointer itemString										// GameInputString*
+End_Struct
+
+Struct GameInputRumbleParams
+	Float lowFrequency
+	Float highFrequency
+	Float leftTrigger
+	Float rightTrigger
+End_Struct
+
+Struct GameInputString
+	UInteger sizeInBytes
+	UInteger codePointCount
+	Pointer data											// PSTR
+End_Struct
+
+Struct GameInputTouchSensorInfo
+	Integer mappedInputKinds								// GameInputKind
+	Integer label											// GameInputLabel
+	Integer location										// GameInputLocation
+	UInteger locationId
+	UBigint resolutionX
+	UBigint resolutionY
+	Integer shape											// GameInputTouchShape
+	Float aspectRatio
+	Float orientation
+	Float physicalWidth
+	Float physicalHeight
+	Float maxPressure
+	Float maxProximity
+	UInteger maxTouchPoints
+End_Struct
+
+Struct GameInputTouchState
+	UBigint touchId
+	UInteger sensorIndex
+	Float positionX
+	Float positionY
+	Float pressure
+	Float proximity
+	Float contactRectTop
+	Float contactRectLeft
+	Float contactRectRight
+	Float contactRectBottom
+	Integer iMissingAlignment1
+End_Struct
+
+Struct GameInputUiNavigationInfo
+	Integer menuButtonLabel									// GameInputLabel
+	Integer viewButtonLabel									// GameInputLabel
+	Integer acceptButtonLabel								// GameInputLabel
+	Integer cancelButtonLabel								// GameInputLabel
+	Integer upButtonLabel									// GameInputLabel
+	Integer downButtonLabel									// GameInputLabel
+	Integer leftButtonLabel									// GameInputLabel
+	Integer rightButtonLabel								// GameInputLabel
+	Integer contextButton1Label								// GameInputLabel
+	Integer contextButton2Label								// GameInputLabel
+	Integer contextButton3Label								// GameInputLabel
+	Integer contextButton4Label								// GameInputLabel
+	Integer pageUpButtonLabel								// GameInputLabel
+	Integer pageDownButtonLabel								// GameInputLabel
+	Integer pageLeftButtonLabel								// GameInputLabel
+	Integer pageRightButtonLabel							// GameInputLabel
+	Integer scrollUpButtonLabel								// GameInputLabel
+	Integer scrollDownButtonLabel							// GameInputLabel
+	Integer scrollLeftButtonLabel							// GameInputLabel
+	Integer scrollRightButtonLabel							// GameInputLabel
+	Integer guideButtonLabel								// GameInputLabel
+End_Struct
+
+Struct GameInputUiNavigationState
+	Integer buttons											// GameInputUiNavigationButtons
+End_Struct
+
+Struct GameInputUsage
+	UShort page
+	UShort id
+End_Struct
+
+Struct GameInputVersion
+	UShort major
+	UShort minor
+	UShort build
+	UShort revision
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,148 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicbitmappattern
+Struct WICBitmapPattern
+	UBigint Position
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer Pattern											// UChar*
+	Pointer Mask											// UChar*
+	Integer EndOfStream										// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicbitmapplane
+Struct WICBitmapPlane
+	Guid Format
+	Pointer pbBuffer										// UChar*
+	UInteger cbStride
+	UInteger cbBufferSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicbitmapplanedescription
+Struct WICBitmapPlaneDescription
+	Guid Format
+	UInteger Width
+	UInteger Height
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicddsformatinfo
+Struct WICDdsFormatInfo
+	Integer DxgiFormat										// DXGI_FORMAT
+	UInteger BytesPerBlock
+	UInteger BlockWidth
+	UInteger BlockHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicddsparameters
+Struct WICDdsParameters
+	UInteger Width
+	UInteger Height
+	UInteger Depth
+	UInteger MipLevels
+	UInteger ArraySize
+	Integer DxgiFormat										// DXGI_FORMAT
+	Integer Dimension										// WICDdsDimension
+	Integer AlphaMode										// WICDdsAlphaMode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicimageparameters
+Struct WICImageParameters
+	D2D1_PIXEL_FORMAT PixelFormat
+	Float DpiX
+	Float DpiY
+	Float Top
+	Float Left
+	UInteger PixelWidth
+	UInteger PixelHeight
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicjpegframeheader
+Struct WICJpegFrameHeader
+	UInteger Width
+	UInteger Height
+	Integer TransferMatrix									// WICJpegTransferMatrix
+	Integer ScanType										// WICJpegScanType
+	UInteger cComponents
+	UInteger ComponentIdentifiers
+	UInteger SampleFactors
+	UInteger QuantizationTableIndices
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicjpegscanheader
+Struct WICJpegScanHeader
+	UInteger cComponents
+	UInteger RestartInterval
+	UInteger ComponentSelectors
+	UInteger HuffmanTableIndices
+	UChar StartSpectralSelection
+	UChar EndSpectralSelection
+	UChar SuccessiveApproximationHigh
+	UChar SuccessiveApproximationLow
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodecsdk/ns-wincodecsdk-wicmetadataheader
+Struct WICMetadataHeader
+	UBigint Position
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer Header											// UChar*
+	UBigint DataOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodecsdk/ns-wincodecsdk-wicmetadatapattern
+Struct WICMetadataPattern
+	UBigint Position
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer Pattern											// UChar*
+	Pointer Mask											// UChar*
+	UBigint DataOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicrawcapabilitiesinfo
+Struct WICRawCapabilitiesInfo
+	UInteger cbSize
+	UInteger CodecMajorVersion
+	UInteger CodecMinorVersion
+	Integer ExposureCompensationSupport						// WICRawCapabilities
+	Integer ContrastSupport									// WICRawCapabilities
+	Integer RGBWhitePointSupport							// WICRawCapabilities
+	Integer NamedWhitePointSupport							// WICRawCapabilities
+	UInteger NamedWhitePointSupportMask
+	Integer KelvinWhitePointSupport							// WICRawCapabilities
+	Integer GammaSupport									// WICRawCapabilities
+	Integer TintSupport										// WICRawCapabilities
+	Integer SaturationSupport								// WICRawCapabilities
+	Integer SharpnessSupport								// WICRawCapabilities
+	Integer NoiseReductionSupport							// WICRawCapabilities
+	Integer DestinationColorProfileSupport					// WICRawCapabilities
+	Integer ToneCurveSupport								// WICRawCapabilities
+	Integer RotationSupport									// WICRawRotationCapabilities
+	Integer RenderModeSupport								// WICRawCapabilities
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicrawtonecurve
+Struct WICRawToneCurve
+	UInteger cPoints
+	Integer iMissingAlignment1
+	WICRawToneCurvePoint[1] aPoints
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicrawtonecurvepoint
+Struct WICRawToneCurvePoint
+	Real Input
+	Real Output
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincodec/ns-wincodec-wicrect
+Struct WICRect
+	Integer X
+	Integer Y
+	Integer Width
+	Integer Height
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

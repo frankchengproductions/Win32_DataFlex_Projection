@@ -1,0 +1,995 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcbedragbegina
+Struct NMCBEDRAGBEGINA
+	NMHDR hdr
+	Integer iItemid
+	Char[260] szText										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcbedragbeginw
+Struct NMCBEDRAGBEGINW
+	NMHDR hdr
+	Integer iItemid
+	UShort[260] szText
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcbeendedita
+Struct NMCBEENDEDITA
+	NMHDR hdr
+	Integer fChanged										// BOOL
+	Integer iNewSelection
+	Char[260] szText										// CHAR
+	Integer iWhy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcbeendeditw
+Struct NMCBEENDEDITW
+	NMHDR hdr
+	Integer fChanged										// BOOL
+	Integer iNewSelection
+	UShort[260] szText
+	Integer iWhy
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmchar
+Struct NMCHAR
+	NMHDR hdr
+	UInteger ch
+	UInteger dwItemPrev
+	UInteger dwItemNext
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcomboboxexa
+Struct NMCOMBOBOXEXA
+	NMHDR hdr
+	COMBOBOXEXITEMA ceItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcomboboxexw
+Struct NMCOMBOBOXEXW
+	NMHDR hdr
+	COMBOBOXEXITEMW ceItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcustomdraw
+Struct NMCUSTOMDRAW
+	NMHDR hdr
+	UInteger dwDrawStage									// NMCUSTOMDRAW_DRAW_STAGE
+	Integer iMissingAlignment1
+	Pointer hdc												// HDC
+	RECT rc
+	ULongPtr dwItemSpec
+	UInteger uItemState										// NMCUSTOMDRAW_DRAW_STATE_FLAGS
+	Integer iMissingAlignment2
+	LongPtr lItemlParam										// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcustomsplitrectinfo
+Struct NMCUSTOMSPLITRECTINFO
+	NMHDR hdr
+	RECT rcClient
+	RECT rcButton
+	RECT rcSplit
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmcustomtext
+Struct NMCUSTOMTEXT
+	NMHDR hdr
+	Pointer hDC												// HDC
+	Pointer lpString										// PWSTR
+	Integer nCount
+	Integer iMissingAlignment1
+	Pointer lpRect											// RECT*
+	UInteger uFormat
+	Integer fLink											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimechange
+Struct NMDATETIMECHANGE
+	NMHDR nmhdr
+	UInteger dwFlags										// NMDATETIMECHANGE_FLAGS
+	SYSTEMTIME st
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimeformata
+Struct NMDATETIMEFORMATA
+	NMHDR nmhdr
+	Pointer pszFormat										// PSTR
+	SYSTEMTIME st
+	Pointer pszDisplay										// PSTR
+	Char[64] szDisplay										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimeformatquerya
+Struct NMDATETIMEFORMATQUERYA
+	NMHDR nmhdr
+	Pointer pszFormat										// PSTR
+	SIZE szMax
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimeformatqueryw
+Struct NMDATETIMEFORMATQUERYW
+	NMHDR nmhdr
+	Pointer pszFormat										// PWSTR
+	SIZE szMax
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimeformatw
+Struct NMDATETIMEFORMATW
+	NMHDR nmhdr
+	Pointer pszFormat										// PWSTR
+	SYSTEMTIME st
+	Pointer pszDisplay										// PWSTR
+	UShort[64] szDisplay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimestringa
+Struct NMDATETIMESTRINGA
+	NMHDR nmhdr
+	Pointer pszUserString									// PSTR
+	SYSTEMTIME st
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimestringw
+Struct NMDATETIMESTRINGW
+	NMHDR nmhdr
+	Pointer pszUserString									// PWSTR
+	SYSTEMTIME st
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimewmkeydowna
+Struct NMDATETIMEWMKEYDOWNA
+	NMHDR nmhdr
+	Integer nVirtKey
+	Integer iMissingAlignment1
+	Pointer pszFormat										// PSTR
+	SYSTEMTIME st
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdatetimewmkeydownw
+Struct NMDATETIMEWMKEYDOWNW
+	NMHDR nmhdr
+	Integer nVirtKey
+	Integer iMissingAlignment1
+	Pointer pszFormat										// PWSTR
+	SYSTEMTIME st
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmdaystate
+Struct NMDAYSTATE
+	NMHDR nmhdr
+	SYSTEMTIME stStart
+	Integer cDayState
+	Integer iMissingAlignment1
+	Pointer prgDayState										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmhddispinfoa
+Struct NMHDDISPINFOA
+	NMHDR hdr
+	Integer iItem
+	UInteger mask											// HDI_MASK
+	Pointer pszText											// PSTR
+	Integer cchTextMax
+	Integer iImage
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmhddispinfow
+Struct NMHDDISPINFOW
+	NMHDR hdr
+	Integer iItem
+	UInteger mask											// HDI_MASK
+	Pointer pszText											// PWSTR
+	Integer cchTextMax
+	Integer iImage
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmhdfilterbtnclick
+Struct NMHDFILTERBTNCLICK
+	NMHDR hdr
+	Integer iItem
+	RECT rc
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-nmhdr
+Struct NMHDR
+	Pointer hwndFrom										// HWND
+	ULongPtr idFrom
+	UInteger code
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmheadera
+Struct NMHEADERA
+	NMHDR hdr
+	Integer iItem
+	Integer iButton											// HEADER_CONTROL_NOTIFICATION_BUTTON
+	Pointer pitem											// HDITEMA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmheaderw
+Struct NMHEADERW
+	NMHDR hdr
+	Integer iItem
+	Integer iButton											// HEADER_CONTROL_NOTIFICATION_BUTTON
+	Pointer pitem											// HDITEMW*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmipaddress
+Struct NMIPADDRESS
+	NMHDR hdr
+	Integer iField
+	Integer iValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmitemactivate
+Struct NMITEMACTIVATE
+	NMHDR hdr
+	Integer iItem
+	Integer iSubItem
+	UInteger uNewState
+	UInteger uOldState
+	UInteger uChanged
+	POINT ptAction
+	Integer iMissingAlignment1
+	LongPtr lParam											// LPARAM
+	UInteger uKeyFlags
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmkey
+Struct NMKEY
+	NMHDR hdr
+	UInteger nVKey
+	UInteger uFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlink
+Struct NMLINK
+	NMHDR hdr
+	LITEM item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlistview
+Struct NMLISTVIEW
+	NMHDR hdr
+	Integer iItem
+	Integer iSubItem
+	UInteger uNewState
+	UInteger uOldState
+	UInteger uChanged										// LIST_VIEW_ITEM_FLAGS
+	POINT ptAction
+	Integer iMissingAlignment1
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvcachehint
+Struct NMLVCACHEHINT
+	NMHDR hdr
+	Integer iFrom
+	Integer iTo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvcustomdraw
+Struct NMLVCUSTOMDRAW
+	NMCUSTOMDRAW nmcd
+	UInteger clrText										// COLORREF
+	UInteger clrTextBk										// COLORREF
+	Integer iSubItem
+	UInteger dwItemType										// NMLVCUSTOMDRAW_ITEM_TYPE
+	UInteger clrFace										// COLORREF
+	Integer iIconEffect
+	Integer iIconPhase
+	Integer iPartId
+	Integer iStateId
+	RECT rcText
+	UInteger uAlign											// LIST_VIEW_GROUP_ALIGN_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvdispinfoa
+Struct NMLVDISPINFOA
+	NMHDR hdr
+	LVITEMA item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvdispinfow
+Struct NMLVDISPINFOW
+	NMHDR hdr
+	LVITEMW item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvemptymarkup
+Struct NMLVEMPTYMARKUP
+	NMHDR hdr
+	UInteger dwFlags										// NMLVEMPTYMARKUP_FLAGS
+	UShort[2084] szMarkup
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvfinditema
+Struct NMLVFINDITEMA
+	NMHDR hdr
+	Integer iStart
+	Integer iMissingAlignment1
+	LVFINDINFOA lvfi
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvfinditemw
+Struct NMLVFINDITEMW
+	NMHDR hdr
+	Integer iStart
+	Integer iMissingAlignment1
+	LVFINDINFOW lvfi
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvgetinfotipa
+Struct NMLVGETINFOTIPA
+	NMHDR hdr
+	UInteger dwFlags										// NMLVGETINFOTIP_FLAGS
+	Integer iMissingAlignment1
+	Pointer pszText											// PSTR
+	Integer cchTextMax
+	Integer iItem
+	Integer iSubItem
+	Integer iMissingAlignment2
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvgetinfotipw
+Struct NMLVGETINFOTIPW
+	NMHDR hdr
+	UInteger dwFlags										// NMLVGETINFOTIP_FLAGS
+	Integer iMissingAlignment1
+	Pointer pszText											// PWSTR
+	Integer cchTextMax
+	Integer iItem
+	Integer iSubItem
+	Integer iMissingAlignment2
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvkeydown
+Struct NMLVKEYDOWN
+	NMHDR hdr
+	UShort wVKey
+	Short iMissingAlignment1
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvlink
+Struct NMLVLINK
+	NMHDR hdr
+	LITEM link
+	Integer iItem
+	Integer iSubItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvodstatechange
+Struct NMLVODSTATECHANGE
+	NMHDR hdr
+	Integer iFrom
+	Integer iTo
+	UInteger uNewState										// LIST_VIEW_ITEM_STATE_FLAGS
+	UInteger uOldState										// LIST_VIEW_ITEM_STATE_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmlvscroll
+Struct NMLVSCROLL
+	NMHDR hdr
+	Integer dx
+	Integer dy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmmouse
+Struct NMMOUSE
+	NMHDR hdr
+	ULongPtr dwItemSpec
+	ULongPtr dwItemData
+	POINT pt
+	LongPtr dwHitInfo										// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmobjectnotify
+Struct NMOBJECTNOTIFY
+	NMHDR hdr
+	Integer iItem
+	Integer iMissingAlignment1
+	Pointer piid											// Guid*
+	Pointer pObject											// Pointer*
+	Integer hResult											// HRESULT
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmpgcalcsize
+Struct NMPGCALCSIZE
+	NMHDR hdr
+	UInteger dwFlag											// NMPGCALCSIZE_FLAGS
+	Integer iWidth
+	Integer iHeight
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmpghotitem
+Struct NMPGHOTITEM
+	NMHDR hdr
+	Integer idOld
+	Integer idNew
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmpgscroll
+Struct NMPGSCROLL
+	NMHDR hdr
+	UShort fwKeys											// NMPGSCROLL_KEYS
+	Short iMissingAlignment1
+	RECT rcParent
+	Integer iDir											// NMPGSCROLL_DIR
+	Integer iXpos
+	Integer iYpos
+	Integer iScroll
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmrbautosize
+Struct NMRBAUTOSIZE
+	NMHDR hdr
+	Integer fChanged										// BOOL
+	RECT rcTarget
+	RECT rcActual
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmrebar
+Struct NMREBAR
+	NMHDR hdr
+	UInteger dwMask											// NMREBAR_MASK_FLAGS
+	UInteger uBand
+	UInteger fStyle
+	UInteger wID
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmrebarautobreak
+Struct NMREBARAUTOBREAK
+	NMHDR hdr
+	UInteger uBand
+	UInteger wID
+	LongPtr lParam											// LPARAM
+	UInteger uMsg
+	UInteger fStyleCurrent
+	Integer fAutoBreak										// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmrebarchevron
+Struct NMREBARCHEVRON
+	NMHDR hdr
+	UInteger uBand
+	UInteger wID
+	LongPtr lParam											// LPARAM
+	RECT rc
+	LongPtr lParamNM										// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmrebarchildsize
+Struct NMREBARCHILDSIZE
+	NMHDR hdr
+	UInteger uBand
+	UInteger wID
+	RECT rcChild
+	RECT rcBand
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmrebarsplitter
+Struct NMREBARSPLITTER
+	NMHDR hdr
+	RECT rcSizing
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmsearchweb
+Struct NMSEARCHWEB
+	NMHDR hdr
+	Integer entrypoint										// EC_SEARCHWEB_ENTRYPOINT
+	Integer hasQueryText									// BOOL
+	Integer invokeSucceeded									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmselchange
+Struct NMSELCHANGE
+	NMHDR nmhdr
+	SYSTEMTIME stSelStart
+	SYSTEMTIME stSelEnd
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbcustomdraw
+Struct NMTBCUSTOMDRAW
+	NMCUSTOMDRAW nmcd
+	Pointer hbrMonoDither									// HBRUSH
+	Pointer hbrLines										// HBRUSH
+	Pointer hpenLines										// HPEN
+	UInteger clrText										// COLORREF
+	UInteger clrMark										// COLORREF
+	UInteger clrTextHighlight								// COLORREF
+	UInteger clrBtnFace										// COLORREF
+	UInteger clrBtnHighlight								// COLORREF
+	UInteger clrHighlightHotTrack							// COLORREF
+	RECT rcText
+	Integer nStringBkMode
+	Integer nHLStringBkMode
+	Integer iListGap
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbdispinfoa
+Struct NMTBDISPINFOA
+	NMHDR hdr
+	UInteger dwMask											// NMTBDISPINFOW_MASK
+	Integer idCommand
+	ULongPtr lParam
+	Integer iImage
+	Integer iMissingAlignment1
+	Pointer pszText											// PSTR
+	Integer cchText
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbdispinfow
+Struct NMTBDISPINFOW
+	NMHDR hdr
+	UInteger dwMask											// NMTBDISPINFOW_MASK
+	Integer idCommand
+	ULongPtr lParam
+	Integer iImage
+	Integer iMissingAlignment1
+	Pointer pszText											// PWSTR
+	Integer cchText
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbgetinfotipa
+Struct NMTBGETINFOTIPA
+	NMHDR hdr
+	Pointer pszText											// PSTR
+	Integer cchTextMax
+	Integer iItem
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbgetinfotipw
+Struct NMTBGETINFOTIPW
+	NMHDR hdr
+	Pointer pszText											// PWSTR
+	Integer cchTextMax
+	Integer iItem
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbhotitem
+Struct NMTBHOTITEM
+	NMHDR hdr
+	Integer idOld
+	Integer idNew
+	UInteger dwFlags										// NMTBHOTITEM_FLAGS
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbrestore
+Struct NMTBRESTORE
+	NMHDR hdr
+	Pointer pData											// UInteger*
+	Pointer pCurrent										// UInteger*
+	UInteger cbData
+	Integer iItem
+	Integer cButtons
+	Integer cbBytesPerRecord
+	TBBUTTON tbButton
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtbsave
+Struct NMTBSAVE
+	NMHDR hdr
+	Pointer pData											// UInteger*
+	Pointer pCurrent										// UInteger*
+	UInteger cbData
+	Integer iItem
+	Integer cButtons
+	Integer iMissingAlignment1
+	TBBUTTON tbButton
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtckeydown
+Struct NMTCKEYDOWN
+	NMHDR hdr
+	UShort wVKey
+	Short iMissingAlignment1
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtoolbara
+Struct NMTOOLBARA
+	NMHDR hdr
+	Integer iItem
+	Integer iMissingAlignment1
+	TBBUTTON tbButton
+	Integer cchText
+	Integer iMissingAlignment2
+	Pointer pszText											// PSTR
+	RECT rcButton
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtoolbarw
+Struct NMTOOLBARW
+	NMHDR hdr
+	Integer iItem
+	Integer iMissingAlignment1
+	TBBUTTON tbButton
+	Integer cchText
+	Integer iMissingAlignment2
+	Pointer pszText											// PWSTR
+	RECT rcButton
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtooltipscreated
+Struct NMTOOLTIPSCREATED
+	NMHDR hdr
+	Pointer hwndToolTips									// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtrbthumbposchanging
+Struct NMTRBTHUMBPOSCHANGING
+	NMHDR hdr
+	UInteger dwPos
+	Integer nReason
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtreeviewa
+Struct NMTREEVIEWA
+	NMHDR hdr
+	UInteger action											// NM_TREEVIEW_ACTION
+	Integer iMissingAlignment1
+	TVITEMA itemOld
+	TVITEMA itemNew
+	POINT ptDrag
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtreevieww
+Struct NMTREEVIEWW
+	NMHDR hdr
+	UInteger action											// NM_TREEVIEW_ACTION
+	Integer iMissingAlignment1
+	TVITEMW itemOld
+	TVITEMW itemNew
+	POINT ptDrag
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmttcustomdraw
+Struct NMTTCUSTOMDRAW
+	NMCUSTOMDRAW nmcd
+	UInteger uDrawFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmttdispinfoa
+Struct NMTTDISPINFOA
+	NMHDR hdr
+	Pointer lpszText										// PSTR
+	Char[80] szText											// CHAR
+	Pointer hinst											// HINSTANCE
+	UInteger uFlags											// TOOLTIP_FLAGS
+	Integer iMissingAlignment1
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmttdispinfow
+Struct NMTTDISPINFOW
+	NMHDR hdr
+	Pointer lpszText										// PWSTR
+	UShort[80] szText
+	Pointer hinst											// HINSTANCE
+	UInteger uFlags											// TOOLTIP_FLAGS
+	Integer iMissingAlignment1
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvasyncdraw
+Struct NMTVASYNCDRAW
+	NMHDR hdr
+	Pointer pimldp											// IMAGELISTDRAWPARAMS*
+	Integer hr												// HRESULT
+	Integer iMissingAlignment1
+	LongPtr hItem											// HTREEITEM
+	LongPtr lParam											// LPARAM
+	UInteger dwRetFlags
+	Integer iRetImageIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvcustomdraw
+Struct NMTVCUSTOMDRAW
+	NMCUSTOMDRAW nmcd
+	UInteger clrText										// COLORREF
+	UInteger clrTextBk										// COLORREF
+	Integer iLevel
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvdispinfoa
+Struct NMTVDISPINFOA
+	NMHDR hdr
+	TVITEMA item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvdispinfoexa
+Struct NMTVDISPINFOEXA
+	NMHDR hdr
+	TVITEMEXA item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvdispinfoexw
+Struct NMTVDISPINFOEXW
+	NMHDR hdr
+	TVITEMEXW item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvdispinfow
+Struct NMTVDISPINFOW
+	NMHDR hdr
+	TVITEMW item
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvgetinfotipa
+Struct NMTVGETINFOTIPA
+	NMHDR hdr
+	Pointer pszText											// PSTR
+	Integer cchTextMax
+	Integer iMissingAlignment1
+	LongPtr hItem											// HTREEITEM
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvgetinfotipw
+Struct NMTVGETINFOTIPW
+	NMHDR hdr
+	Pointer pszText											// PWSTR
+	Integer cchTextMax
+	Integer iMissingAlignment1
+	LongPtr hItem											// HTREEITEM
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvitemchange
+Struct NMTVITEMCHANGE
+	NMHDR hdr
+	UInteger uChanged
+	Integer iMissingAlignment1
+	LongPtr hItem											// HTREEITEM
+	UInteger uStateNew
+	UInteger uStateOld
+	LongPtr lParam											// LPARAM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvkeydown
+Struct NMTVKEYDOWN
+	NMHDR hdr
+	UShort wVKey
+	Short iMissingAlignment1
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmtvstateimagechanging
+Struct NMTVSTATEIMAGECHANGING
+	NMHDR hdr
+	LongPtr hti												// HTREEITEM
+	Integer iOldStateImageIndex
+	Integer iNewStateImageIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmupdown
+Struct NMUPDOWN
+	NMHDR hdr
+	Integer iPos
+	Integer iDelta
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-nmviewchange
+Struct NMVIEWCHANGE
+	NMHDR nmhdr
+	UInteger dwOldView										// MONTH_CALDENDAR_MESSAGES_VIEW
+	UInteger dwNewView										// MONTH_CALDENDAR_MESSAGES_VIEW
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/commctrl/ns-commctrl-pbrange
+Struct PBRANGE
+	Integer iLow
+	Integer iHigh
+End_Struct
+
+Struct PROPSHEETHEADERA_V1
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2969 Anonymous1
+	Pointer pszCaption										// PSTR
+	UInteger nPages
+	Integer iMissingAlignment1
+	_Anonymous2_e__Union_2970 Anonymous2
+	_Anonymous3_e__Union_2971 Anonymous3
+	Pointer pfnCallback										// PFNPROPSHEETCALLBACK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetheadera_v2
+Struct PROPSHEETHEADERA_V2
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_1038 Anonymous1
+	Pointer pszCaption										// PSTR
+	UInteger nPages
+	Integer iMissingAlignment1
+	_Anonymous2_e__Union_1039 Anonymous2
+	_Anonymous3_e__Union_1040 Anonymous3
+	Pointer pfnCallback										// PFNPROPSHEETCALLBACK
+	_Anonymous4_e__Union_1041 Anonymous4
+	Pointer hplWatermark									// HPALETTE
+	_Anonymous5_e__Union_1042 Anonymous5
+End_Struct
+
+Struct PROPSHEETHEADERW_V1
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2972 Anonymous1
+	Pointer pszCaption										// PWSTR
+	UInteger nPages
+	Integer iMissingAlignment1
+	_Anonymous2_e__Union_2973 Anonymous2
+	_Anonymous3_e__Union_2974 Anonymous3
+	Pointer pfnCallback										// PFNPROPSHEETCALLBACK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetheaderw_v2
+Struct PROPSHEETHEADERW_V2
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hwndParent										// HWND
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_1043 Anonymous1
+	Pointer pszCaption										// PWSTR
+	UInteger nPages
+	Integer iMissingAlignment1
+	_Anonymous2_e__Union_1044 Anonymous2
+	_Anonymous3_e__Union_1045 Anonymous3
+	Pointer pfnCallback										// PFNPROPSHEETCALLBACK
+	_Anonymous4_e__Union_1046 Anonymous4
+	Pointer hplWatermark									// HPALETTE
+	_Anonymous5_e__Union_1047 Anonymous5
+End_Struct
+
+Struct PROPSHEETPAGEA
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_1032 Anonymous1
+	_Anonymous2_e__Union_1033 Anonymous2
+	Pointer pszTitle										// PSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKA
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PSTR
+	Pointer pszHeaderSubTitle								// PSTR
+	Pointer hActCtx											// HANDLE
+	_Anonymous3_e__Union_1034 Anonymous3
+End_Struct
+
+Struct PROPSHEETPAGEA_V1
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2957 Anonymous1
+	_Anonymous2_e__Union_2958 Anonymous2
+	Pointer pszTitle										// PSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKA
+	Pointer pcRefParent										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetpagea_v2
+Struct PROPSHEETPAGEA_V2
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2959 Anonymous1
+	_Anonymous2_e__Union_2960 Anonymous2
+	Pointer pszTitle										// PSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKA
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PSTR
+	Pointer pszHeaderSubTitle								// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetpagea_v3
+Struct PROPSHEETPAGEA_V3
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2961 Anonymous1
+	_Anonymous2_e__Union_2962 Anonymous2
+	Pointer pszTitle										// PSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKA
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PSTR
+	Pointer pszHeaderSubTitle								// PSTR
+	Pointer hActCtx											// HANDLE
+End_Struct
+
+Struct PROPSHEETPAGEW
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_1035 Anonymous1
+	_Anonymous2_e__Union_1036 Anonymous2
+	Pointer pszTitle										// PWSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKW
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PWSTR
+	Pointer pszHeaderSubTitle								// PWSTR
+	Pointer hActCtx											// HANDLE
+	_Anonymous3_e__Union_1037 Anonymous3
+End_Struct
+
+Struct PROPSHEETPAGEW_V1
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2963 Anonymous1
+	_Anonymous2_e__Union_2964 Anonymous2
+	Pointer pszTitle										// PWSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKW
+	Pointer pcRefParent										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/prsht/ns-prsht-propsheetpagew_v2
+Struct PROPSHEETPAGEW_V2
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer hInstance										// HINSTANCE
+	_Anonymous1_e__Union_2965 Anonymous1
+	_Anonymous2_e__Union_2966 Anonymous2
+	Pointer pszTitle										// PWSTR
+	Pointer pfnDlgProc										// DLGPROC
+	LongPtr lParam											// LPARAM
+	Pointer pfnCallback										// LPFNPSPCALLBACKW
+	Pointer pcRefParent										// UInteger*
+	Pointer pszHeaderTitle									// PWSTR
+	Pointer pszHeaderSubTitle								// PWSTR
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

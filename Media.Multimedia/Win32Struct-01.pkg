@@ -1,0 +1,1053 @@
+Use UI
+
+Struct ADPCMCOEFSET
+	Short iCoef1
+	Short iCoef2
+End_Struct
+
+Struct ADPCMEWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct ADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	UShort wNumCoef
+	ADPCMCOEFSET[1] aCoef
+End_Struct
+
+Struct APTXWAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+Struct AUDIOFILE_AF10WAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+Struct AUDIOFILE_AF36WAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avicompressoptions
+Struct AVICOMPRESSOPTIONS
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwKeyFrameEvery
+	UInteger dwQuality
+	UInteger dwBytesPerSecond
+	UInteger dwFlags
+	Pointer lpFormat										// Pointer*
+	UInteger cbFormat
+	Integer iMissingAlignment1
+	Pointer lpParms											// Pointer*
+	UInteger cbParms
+	UInteger dwInterleaveEvery
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avifileinfoa
+Struct AVIFILEINFOA
+	UInteger dwMaxBytesPerSec
+	UInteger dwFlags
+	UInteger dwCaps
+	UInteger dwStreams
+	UInteger dwSuggestedBufferSize
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwLength
+	UInteger dwEditCount
+	Char[64] szFileType										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avifileinfow
+Struct AVIFILEINFOW
+	UInteger dwMaxBytesPerSec
+	UInteger dwFlags
+	UInteger dwCaps
+	UInteger dwStreams
+	UInteger dwSuggestedBufferSize
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwLength
+	UInteger dwEditCount
+	UShort[64] szFileType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avistreaminfoa
+Struct AVISTREAMINFOA
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwFlags
+	UInteger dwCaps
+	UShort wPriority
+	UShort wLanguage
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwStart
+	UInteger dwLength
+	UInteger dwInitialFrames
+	UInteger dwSuggestedBufferSize
+	UInteger dwQuality
+	UInteger dwSampleSize
+	RECT rcFrame
+	UInteger dwEditCount
+	UInteger dwFormatChangeCount
+	Char[64] szName											// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-avistreaminfow
+Struct AVISTREAMINFOW
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwFlags
+	UInteger dwCaps
+	UShort wPriority
+	UShort wLanguage
+	UInteger dwScale
+	UInteger dwRate
+	UInteger dwStart
+	UInteger dwLength
+	UInteger dwInitialFrames
+	UInteger dwSuggestedBufferSize
+	UInteger dwQuality
+	UInteger dwSampleSize
+	RECT rcFrame
+	UInteger dwEditCount
+	UInteger dwFormatChangeCount
+	UShort[64] szName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-capdrivercaps
+Struct CAPDRIVERCAPS
+	UInteger wDeviceIndex
+	Integer fHasOverlay										// BOOL
+	Integer fHasDlgVideoSource								// BOOL
+	Integer fHasDlgVideoFormat								// BOOL
+	Integer fHasDlgVideoDisplay								// BOOL
+	Integer fCaptureInitialized								// BOOL
+	Integer fDriverSuppliesPalettes							// BOOL
+	Integer iMissingAlignment1
+	Pointer hVideoIn										// HANDLE
+	Pointer hVideoOut										// HANDLE
+	Pointer hVideoExtIn										// HANDLE
+	Pointer hVideoExtOut									// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-capinfochunk
+Struct CAPINFOCHUNK
+	UInteger fccInfoID
+	Integer iMissingAlignment1
+	Pointer lpData											// Pointer*
+	Integer cbData
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-capstatus
+Struct CAPSTATUS
+	UInteger uiImageWidth
+	UInteger uiImageHeight
+	Integer fLiveWindow										// BOOL
+	Integer fOverlayWindow									// BOOL
+	Integer fScale											// BOOL
+	POINT ptScroll
+	Integer fUsingDefaultPalette							// BOOL
+	Integer fAudioHardware									// BOOL
+	Integer fCapFileExists									// BOOL
+	UInteger dwCurrentVideoFrame
+	UInteger dwCurrentVideoFramesDropped
+	UInteger dwCurrentWaveSamples
+	UInteger dwCurrentTimeElapsedMS
+	Pointer hPalCurrent										// HPALETTE
+	Integer fCapturingNow									// BOOL
+	UInteger dwReturn
+	UInteger wNumVideoAllocated
+	UInteger wNumAudioAllocated
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-captureparms
+Struct CAPTUREPARMS
+	UInteger dwRequestMicroSecPerFrame
+	Integer fMakeUserHitOKToCapture							// BOOL
+	UInteger wPercentDropForError
+	Integer fYield											// BOOL
+	UInteger dwIndexSize
+	UInteger wChunkGranularity
+	Integer fUsingDOSMemory									// BOOL
+	UInteger wNumVideoRequested
+	Integer fCaptureAudio									// BOOL
+	UInteger wNumAudioRequested
+	UInteger vKeyAbort
+	Integer fAbortLeftMouse									// BOOL
+	Integer fAbortRightMouse								// BOOL
+	Integer fLimitEnabled									// BOOL
+	UInteger wTimeLimit
+	Integer fMCIControl										// BOOL
+	Integer fStepMCIDevice									// BOOL
+	UInteger dwMCIStartTime
+	UInteger dwMCIStopTime
+	Integer fStepCaptureAt2x								// BOOL
+	UInteger wStepCaptureAverageFrames
+	UInteger dwAudioBufferSize
+	Integer fDisableWriteCache								// BOOL
+	UInteger AVStreamMaster
+End_Struct
+
+Struct CHANNEL_CAPS
+	UInteger dwFlags
+	UInteger dwSrcRectXMod
+	UInteger dwSrcRectYMod
+	UInteger dwSrcRectWidthMod
+	UInteger dwSrcRectHeightMod
+	UInteger dwDstRectXMod
+	UInteger dwDstRectYMod
+	UInteger dwDstRectWidthMod
+	UInteger dwDstRectHeightMod
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-compvars
+Struct COMPVARS
+	Integer cbSize
+	UInteger dwFlags
+	Pointer hic												// HIC
+	UInteger fccType
+	UInteger fccHandler
+	Pointer lpbiIn											// BITMAPINFO*
+	Pointer lpbiOut											// BITMAPINFO*
+	Pointer lpBitsOut										// Pointer*
+	Pointer lpBitsPrev										// Pointer*
+	Integer lFrame
+	Integer lKey
+	Integer lDataRate
+	Integer lQ
+	Integer lKeyCount
+	Integer iMissingAlignment1
+	Pointer lpState											// Pointer*
+	Integer cbState
+	Integer iMissingAlignment2
+End_Struct
+
+Struct CONTRESCR10WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct CONTRESVQLPCWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct CREATIVEADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wRevision
+	Short iMissingAlignment1
+End_Struct
+
+Struct CREATIVEFASTSPEECH10WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wRevision
+	Short iMissingAlignment1
+End_Struct
+
+Struct CREATIVEFASTSPEECH8WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wRevision
+	Short iMissingAlignment1
+End_Struct
+
+Struct CSIMAADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+Struct DIALOGICOKIADPCMWAVEFORMAT
+	WAVEFORMATEX ewf
+End_Struct
+
+Struct DIGIADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct DIGIFIXWAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+Struct DIGIREALWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct DIGISTDWAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+Struct DOLBYAC2WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort nAuxBitsCode
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-drawdibtime
+Struct DRAWDIBTIME
+	Integer timeCount
+	Integer timeDraw
+	Integer timeDecompress
+	Integer timeDither
+	Integer timeStretch
+	Integer timeBlt
+	Integer timeSetDIBits
+End_Struct
+
+Struct DRMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wReserved
+	Short iMissingAlignment1
+	UInteger ulContentId
+	WAVEFORMATEX wfxSecure
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmiscapi/ns-mmiscapi-drvconfiginfo
+Struct DRVCONFIGINFO
+	UInteger dwDCISize
+	Integer iMissingAlignment1
+	Pointer lpszDCISectionName								// PWSTR
+	Pointer lpszDCIAliasName								// PWSTR
+End_Struct
+
+Struct DRVCONFIGINFOEX
+	UInteger dwDCISize
+	Integer iMissingAlignment1
+	Pointer lpszDCISectionName								// PWSTR
+	Pointer lpszDCIAliasName								// PWSTR
+	UInteger dnDevNode
+	Integer iMissingAlignment2
+End_Struct
+
+Struct DRVM_IOCTL_DATA
+	UInteger dwSize
+	UInteger dwCmd
+End_Struct
+
+Struct DVIADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct ECHOSC1WAVEFORMAT
+	WAVEFORMATEX wfx
+End_Struct
+
+Struct EXBMINFOHEADER
+	BITMAPINFOHEADER bmi
+	UInteger biExtDataOffset
+End_Struct
+
+Struct FMTOWNS_SND_WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wRevision
+	Short iMissingAlignment1
+End_Struct
+
+Struct G721_ADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort nAuxBlockSize
+	Short iMissingAlignment1
+End_Struct
+
+Struct G723_ADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort cbExtraSize
+	UShort nAuxBlockSize
+End_Struct
+
+Struct GSM610WAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-iccompress
+Struct ICCOMPRESS
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpbiOutput										// BITMAPINFOHEADER*
+	Pointer lpOutput										// Pointer*
+	Pointer lpbiInput										// BITMAPINFOHEADER*
+	Pointer lpInput											// Pointer*
+	Pointer lpckid											// UInteger*
+	Pointer lpdwFlags										// UInteger*
+	Integer lFrameNum
+	UInteger dwFrameSize
+	UInteger dwQuality
+	Integer iMissingAlignment2
+	Pointer lpbiPrev										// BITMAPINFOHEADER*
+	Pointer lpPrev											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-iccompressframes
+Struct ICCOMPRESSFRAMES
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpbiOutput										// BITMAPINFOHEADER*
+	LongPtr lOutput											// LPARAM
+	Pointer lpbiInput										// BITMAPINFOHEADER*
+	LongPtr lInput											// LPARAM
+	Integer lStartFrame
+	Integer lFrameCount
+	Integer lQuality
+	Integer lDataRate
+	Integer lKeyRate
+	UInteger dwRate
+	UInteger dwScale
+	UInteger dwOverheadPerFrame
+	UInteger dwReserved2
+	Integer iMissingAlignment2
+	LongPtr GetData
+	LongPtr PutData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icdecompress
+Struct ICDECOMPRESS
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpbiInput										// BITMAPINFOHEADER*
+	Pointer lpInput											// Pointer*
+	Pointer lpbiOutput										// BITMAPINFOHEADER*
+	Pointer lpOutput										// Pointer*
+	UInteger ckid
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icdecompressex
+Struct ICDECOMPRESSEX
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpbiSrc											// BITMAPINFOHEADER*
+	Pointer lpSrc											// Pointer*
+	Pointer lpbiDst											// BITMAPINFOHEADER*
+	Pointer lpDst											// Pointer*
+	Integer xDst
+	Integer yDst
+	Integer dxDst
+	Integer dyDst
+	Integer xSrc
+	Integer ySrc
+	Integer dxSrc
+	Integer dySrc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icdraw
+Struct ICDRAW
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpFormat										// Pointer*
+	Pointer lpData											// Pointer*
+	UInteger cbData
+	Integer lTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icdrawbegin
+Struct ICDRAWBEGIN
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer hpal											// HPALETTE
+	Pointer hwnd											// HWND
+	Pointer hdc												// HDC
+	Integer xDst
+	Integer yDst
+	Integer dxDst
+	Integer dyDst
+	Pointer lpbi											// BITMAPINFOHEADER*
+	Integer xSrc
+	Integer ySrc
+	Integer dxSrc
+	Integer dySrc
+	UInteger dwRate
+	UInteger dwScale
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icdrawsuggest
+Struct ICDRAWSUGGEST
+	Pointer lpbiIn											// BITMAPINFOHEADER*
+	Pointer lpbiSuggest										// BITMAPINFOHEADER*
+	Integer dxSrc
+	Integer dySrc
+	Integer dxDst
+	Integer dyDst
+	Pointer hicDecompressor									// HIC
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icinfo
+Struct ICINFO
+	UInteger dwSize
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwFlags
+	UInteger dwVersion
+	UInteger dwVersionICM
+	UShort[16] szName
+	UShort[128] szDescription
+	UShort[128] szDriver
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icopen
+Struct ICOPEN
+	UInteger dwSize
+	UInteger fccType
+	UInteger fccHandler
+	UInteger dwVersion
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	LongPtr dwError											// LRESULT
+	Pointer pV1Reserved										// Pointer*
+	Pointer pV2Reserved										// Pointer*
+	UInteger dnDevNode
+	Integer iMissingAlignment2
+End_Struct
+
+Struct ICPALETTE
+	UInteger dwFlags
+	Integer iStart
+	Integer iLen
+	Integer iMissingAlignment1
+	Pointer lppe											// PALETTEENTRY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/vfw/ns-vfw-icsetstatusproc
+Struct ICSETSTATUSPROC
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	LongPtr lParam											// LPARAM
+	LongPtr Status
+End_Struct
+
+Struct IMAADPCMWAVEFORMAT
+	WAVEFORMATEX wfx
+	UShort wSamplesPerBlock
+	Short iMissingAlignment1
+End_Struct
+
+Struct JOYCAPS2A
+	UShort wMid
+	UShort wPid
+	Char[32] szPname										// CHAR
+	UInteger wXmin
+	UInteger wXmax
+	UInteger wYmin
+	UInteger wYmax
+	UInteger wZmin
+	UInteger wZmax
+	UInteger wNumButtons
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+	UInteger wRmin
+	UInteger wRmax
+	UInteger wUmin
+	UInteger wUmax
+	UInteger wVmin
+	UInteger wVmax
+	UInteger wCaps
+	UInteger wMaxAxes
+	UInteger wNumAxes
+	UInteger wMaxButtons
+	Char[32] szRegKey										// CHAR
+	Char[260] szOEMVxD										// CHAR
+	Guid ManufacturerGuid
+	Guid ProductGuid
+	Guid NameGuid
+End_Struct
+
+Struct JOYCAPS2W
+	UShort wMid
+	UShort wPid
+	UShort[32] szPname
+	UInteger wXmin
+	UInteger wXmax
+	UInteger wYmin
+	UInteger wYmax
+	UInteger wZmin
+	UInteger wZmax
+	UInteger wNumButtons
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+	UInteger wRmin
+	UInteger wRmax
+	UInteger wUmin
+	UInteger wUmax
+	UInteger wVmin
+	UInteger wVmax
+	UInteger wCaps
+	UInteger wMaxAxes
+	UInteger wNumAxes
+	UInteger wMaxButtons
+	UShort[32] szRegKey
+	UShort[260] szOEMVxD
+	Guid ManufacturerGuid
+	Guid ProductGuid
+	Guid NameGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joycapsa
+Struct JOYCAPSA
+	UShort wMid
+	UShort wPid
+	Char[32] szPname										// CHAR
+	UInteger wXmin
+	UInteger wXmax
+	UInteger wYmin
+	UInteger wYmax
+	UInteger wZmin
+	UInteger wZmax
+	UInteger wNumButtons
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+	UInteger wRmin
+	UInteger wRmax
+	UInteger wUmin
+	UInteger wUmax
+	UInteger wVmin
+	UInteger wVmax
+	UInteger wCaps
+	UInteger wMaxAxes
+	UInteger wNumAxes
+	UInteger wMaxButtons
+	Char[32] szRegKey										// CHAR
+	Char[260] szOEMVxD										// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joycapsw
+Struct JOYCAPSW
+	UShort wMid
+	UShort wPid
+	UShort[32] szPname
+	UInteger wXmin
+	UInteger wXmax
+	UInteger wYmin
+	UInteger wYmax
+	UInteger wZmin
+	UInteger wZmax
+	UInteger wNumButtons
+	UInteger wPeriodMin
+	UInteger wPeriodMax
+	UInteger wRmin
+	UInteger wRmax
+	UInteger wUmin
+	UInteger wUmax
+	UInteger wVmin
+	UInteger wVmax
+	UInteger wCaps
+	UInteger wMaxAxes
+	UInteger wNumAxes
+	UInteger wMaxButtons
+	UShort[32] szRegKey
+	UShort[260] szOEMVxD
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joyinfo
+Struct JOYINFO
+	UInteger wXpos
+	UInteger wYpos
+	UInteger wZpos
+	UInteger wButtons
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/joystickapi/ns-joystickapi-joyinfoex
+Struct JOYINFOEX
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwXpos
+	UInteger dwYpos
+	UInteger dwZpos
+	UInteger dwRpos
+	UInteger dwUpos
+	UInteger dwVpos
+	UInteger dwButtons
+	UInteger dwButtonNumber
+	UInteger dwPOV
+	UInteger dwReserved1
+	UInteger dwReserved2
+End_Struct
+
+Struct JPEGINFOHEADER
+	UInteger JPEGSize
+	UInteger JPEGProcess
+	UInteger JPEGColorSpaceID
+	UInteger JPEGBitsPerSample
+	UInteger JPEGHSubSampling
+	UInteger JPEGVSubSampling
+End_Struct
+
+Struct MCI_ANIM_OPEN_PARMSA
+	ULongPtr dwCallback
+	UInteger wDeviceID
+	Integer iMissingAlignment1
+	Pointer lpstrDeviceType									// PSTR
+	Pointer lpstrElementName								// PSTR
+	Pointer lpstrAlias										// PSTR
+	UInteger dwStyle
+	Integer iMissingAlignment2
+	Pointer hWndParent										// HWND
+End_Struct
+
+Struct MCI_ANIM_OPEN_PARMSW
+	ULongPtr dwCallback
+	UInteger wDeviceID
+	Integer iMissingAlignment1
+	Pointer lpstrDeviceType									// PWSTR
+	Pointer lpstrElementName								// PWSTR
+	Pointer lpstrAlias										// PWSTR
+	UInteger dwStyle
+	Integer iMissingAlignment2
+	Pointer hWndParent										// HWND
+End_Struct
+
+Struct MCI_ANIM_PLAY_PARMS
+	ULongPtr dwCallback
+	UInteger dwFrom
+	UInteger dwTo
+	UInteger dwSpeed
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MCI_ANIM_RECT_PARMS
+	ULongPtr dwCallback
+	RECT rc
+End_Struct
+
+Struct MCI_ANIM_STEP_PARMS
+	ULongPtr dwCallback
+	UInteger dwFrames
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MCI_ANIM_UPDATE_PARMS
+	ULongPtr dwCallback
+	RECT rc
+	Pointer hDC												// HDC
+End_Struct
+
+Struct MCI_ANIM_WINDOW_PARMSA
+	ULongPtr dwCallback
+	Pointer hWnd											// HWND
+	UInteger nCmdShow
+	Integer iMissingAlignment1
+	Pointer lpstrText										// PSTR
+End_Struct
+
+Struct MCI_ANIM_WINDOW_PARMSW
+	ULongPtr dwCallback
+	Pointer hWnd											// HWND
+	UInteger nCmdShow
+	Integer iMissingAlignment1
+	Pointer lpstrText										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Multimedia/mci-break-parms
+Struct MCI_BREAK_PARMS
+	ULongPtr dwCallback
+	Integer nVirtKey
+	Integer iMissingAlignment1
+	Pointer hwndBreak										// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_capture_parmsa
+Struct MCI_DGV_CAPTURE_PARMSA
+	ULongPtr dwCallback
+	Pointer lpstrFileName									// PSTR
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_capture_parmsw
+Struct MCI_DGV_CAPTURE_PARMSW
+	ULongPtr dwCallback
+	Pointer lpstrFileName									// PWSTR
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_copy_parms
+Struct MCI_DGV_COPY_PARMS
+	ULongPtr dwCallback
+	UInteger dwFrom
+	UInteger dwTo
+	RECT rc
+	UInteger dwAudioStream
+	UInteger dwVideoStream
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_cue_parms
+Struct MCI_DGV_CUE_PARMS
+	ULongPtr dwCallback
+	UInteger dwTo
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_cut_parms
+Struct MCI_DGV_CUT_PARMS
+	ULongPtr dwCallback
+	UInteger dwFrom
+	UInteger dwTo
+	RECT rc
+	UInteger dwAudioStream
+	UInteger dwVideoStream
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_delete_parms
+Struct MCI_DGV_DELETE_PARMS
+	ULongPtr dwCallback
+	UInteger dwFrom
+	UInteger dwTo
+	RECT rc
+	UInteger dwAudioStream
+	UInteger dwVideoStream
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_info_parmsa
+Struct MCI_DGV_INFO_PARMSA
+	ULongPtr dwCallback
+	Pointer lpstrReturn										// PSTR
+	UInteger dwRetSize
+	UInteger dwItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_info_parmsw
+Struct MCI_DGV_INFO_PARMSW
+	ULongPtr dwCallback
+	Pointer lpstrReturn										// PWSTR
+	UInteger dwRetSize
+	UInteger dwItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_list_parmsa
+Struct MCI_DGV_LIST_PARMSA
+	ULongPtr dwCallback
+	Pointer lpstrReturn										// PSTR
+	UInteger dwLength
+	UInteger dwNumber
+	UInteger dwItem
+	Integer iMissingAlignment1
+	Pointer lpstrAlgorithm									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_list_parmsw
+Struct MCI_DGV_LIST_PARMSW
+	ULongPtr dwCallback
+	Pointer lpstrReturn										// PWSTR
+	UInteger dwLength
+	UInteger dwNumber
+	UInteger dwItem
+	Integer iMissingAlignment1
+	Pointer lpstrAlgorithm									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_monitor_parms
+Struct MCI_DGV_MONITOR_PARMS
+	ULongPtr dwCallback
+	UInteger dwSource
+	UInteger dwMethod
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_open_parmsa
+Struct MCI_DGV_OPEN_PARMSA
+	ULongPtr dwCallback
+	UInteger wDeviceID
+	Integer iMissingAlignment1
+	Pointer lpstrDeviceType									// PSTR
+	Pointer lpstrElementName								// PSTR
+	Pointer lpstrAlias										// PSTR
+	UInteger dwStyle
+	Integer iMissingAlignment2
+	Pointer hWndParent										// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_open_parmsw
+Struct MCI_DGV_OPEN_PARMSW
+	ULongPtr dwCallback
+	UInteger wDeviceID
+	Integer iMissingAlignment1
+	Pointer lpstrDeviceType									// PWSTR
+	Pointer lpstrElementName								// PWSTR
+	Pointer lpstrAlias										// PWSTR
+	UInteger dwStyle
+	Integer iMissingAlignment2
+	Pointer hWndParent										// HWND
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_paste_parms
+Struct MCI_DGV_PASTE_PARMS
+	ULongPtr dwCallback
+	UInteger dwTo
+	RECT rc
+	UInteger dwAudioStream
+	UInteger dwVideoStream
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_quality_parmsa
+Struct MCI_DGV_QUALITY_PARMSA
+	ULongPtr dwCallback
+	UInteger dwItem
+	Integer iMissingAlignment1
+	Pointer lpstrName										// PSTR
+	UInteger lpstrAlgorithm
+	UInteger dwHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_quality_parmsw
+Struct MCI_DGV_QUALITY_PARMSW
+	ULongPtr dwCallback
+	UInteger dwItem
+	Integer iMissingAlignment1
+	Pointer lpstrName										// PWSTR
+	UInteger lpstrAlgorithm
+	UInteger dwHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_record_parms
+Struct MCI_DGV_RECORD_PARMS
+	ULongPtr dwCallback
+	UInteger dwFrom
+	UInteger dwTo
+	RECT rc
+	UInteger dwAudioStream
+	UInteger dwVideoStream
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_rect_parms
+Struct MCI_DGV_RECT_PARMS
+	ULongPtr dwCallback
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_reserve_parmsa
+Struct MCI_DGV_RESERVE_PARMSA
+	ULongPtr dwCallback
+	Pointer lpstrPath										// PSTR
+	UInteger dwSize
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_reserve_parmsw
+Struct MCI_DGV_RESERVE_PARMSW
+	ULongPtr dwCallback
+	Pointer lpstrPath										// PWSTR
+	UInteger dwSize
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_restore_parmsa
+Struct MCI_DGV_RESTORE_PARMSA
+	ULongPtr dwCallback
+	Pointer lpstrFileName									// PSTR
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_restore_parmsw
+Struct MCI_DGV_RESTORE_PARMSW
+	ULongPtr dwCallback
+	Pointer lpstrFileName									// PWSTR
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_save_parmsa
+Struct MCI_DGV_SAVE_PARMSA
+	ULongPtr dwCallback
+	Pointer lpstrFileName									// PSTR
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_save_parmsw
+Struct MCI_DGV_SAVE_PARMSW
+	ULongPtr dwCallback
+	Pointer lpstrFileName									// PWSTR
+	RECT rc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_setaudio_parmsa
+Struct MCI_DGV_SETAUDIO_PARMSA
+	ULongPtr dwCallback
+	UInteger dwItem
+	UInteger dwValue
+	UInteger dwOver
+	Integer iMissingAlignment1
+	Pointer lpstrAlgorithm									// PSTR
+	Pointer lpstrQuality									// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_setaudio_parmsw
+Struct MCI_DGV_SETAUDIO_PARMSW
+	ULongPtr dwCallback
+	UInteger dwItem
+	UInteger dwValue
+	UInteger dwOver
+	Integer iMissingAlignment1
+	Pointer lpstrAlgorithm									// PWSTR
+	Pointer lpstrQuality									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_setvideo_parmsa
+Struct MCI_DGV_SETVIDEO_PARMSA
+	ULongPtr dwCallback
+	UInteger dwItem
+	UInteger dwValue
+	UInteger dwOver
+	Integer iMissingAlignment1
+	Pointer lpstrAlgorithm									// PSTR
+	Pointer lpstrQuality									// PSTR
+	UInteger dwSourceNumber
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_setvideo_parmsw
+Struct MCI_DGV_SETVIDEO_PARMSW
+	ULongPtr dwCallback
+	UInteger dwItem
+	UInteger dwValue
+	UInteger dwOver
+	Integer iMissingAlignment1
+	Pointer lpstrAlgorithm									// PWSTR
+	Pointer lpstrQuality									// PWSTR
+	UInteger dwSourceNumber
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_set_parms
+Struct MCI_DGV_SET_PARMS
+	ULongPtr dwCallback
+	UInteger dwTimeFormat
+	UInteger dwAudio
+	UInteger dwFileFormat
+	UInteger dwSpeed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_signal_parms
+Struct MCI_DGV_SIGNAL_PARMS
+	ULongPtr dwCallback
+	UInteger dwPosition
+	UInteger dwPeriod
+	UInteger dwUserParm
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/digitalv/ns-digitalv-mci_dgv_status_parmsa
+Struct MCI_DGV_STATUS_PARMSA
+	ULongPtr dwCallback
+	ULongPtr dwReturn
+	UInteger dwItem
+	UInteger dwTrack
+	Pointer lpstrDrive										// PSTR
+	UInteger dwReference
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

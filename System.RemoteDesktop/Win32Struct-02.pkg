@@ -1,0 +1,50 @@
+Use UI
+
+Struct _strVal_e__Struct_2720
+	UInteger size
+	Integer iMissingAlignment1
+	Pointer pstrVal											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tspubplugincom/ns-tspubplugincom-pluginresource
+Struct pluginResource
+	UShort[256] alias
+	UShort[256] name
+	Pointer resourceFileContents							// PWSTR
+	UShort[256] fileExtension
+	UShort[256] resourcePluginType
+	UChar isDiscoverable
+	UChar[3] cMissingAlignment1
+	Integer resourceType
+	UInteger pceIconSize
+	Integer iMissingAlignment2
+	Pointer iconContents									// UChar*
+	UInteger pcePluginBlobSize
+	Integer iMissingAlignment3
+	Pointer blobContents									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tspubplugin2com/ns-tspubplugin2com-pluginresource2
+Struct pluginResource2
+	pluginResource resourceV1
+	UInteger pceFileAssocListSize
+	Integer iMissingAlignment1
+	Pointer fileAssocList									// pluginResource2FileAssociation*
+	Pointer securityDescriptor								// PWSTR
+	UInteger pceFolderListSize
+	Integer iMissingAlignment2
+	Pointer folderList										// UShort**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tspubplugin2com/ns-tspubplugin2com-pluginresource2fileassociation
+Struct pluginResource2FileAssociation
+	UShort[256] extName
+	UChar primaryHandler
+	UChar[3] cMissingAlignment1
+	UInteger pceIconSize
+	Pointer iconContents									// UChar*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

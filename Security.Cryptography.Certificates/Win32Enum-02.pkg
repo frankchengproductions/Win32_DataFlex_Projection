@@ -1,0 +1,713 @@
+Use UI
+
+// Define WebSecurityLevel For Integer
+Enum_List
+	Define LevelUnsafe										For |CI$00000000
+	Define LevelSafe										For |CI$00000001
+End_Enum_List
+
+// Define EncodingType For Integer
+Enum_List
+	Define XCN_CRYPT_STRING_NOCR							For -2147483648
+	Define XCN_CRYPT_STRING_BASE64HEADER					For |CI$00000000
+	Define XCN_CRYPT_STRING_BASE64							For |CI$00000001
+	Define XCN_CRYPT_STRING_BINARY							For |CI$00000002
+	Define XCN_CRYPT_STRING_BASE64REQUESTHEADER				For |CI$00000003
+	Define XCN_CRYPT_STRING_HEX								For |CI$00000004
+	Define XCN_CRYPT_STRING_HEXASCII						For |CI$00000005
+	Define XCN_CRYPT_STRING_BASE64_ANY						For |CI$00000006
+	Define XCN_CRYPT_STRING_ANY								For |CI$00000007
+	Define XCN_CRYPT_STRING_HEX_ANY							For |CI$00000008
+	Define XCN_CRYPT_STRING_BASE64X509CRLHEADER				For |CI$00000009
+	Define XCN_CRYPT_STRING_HEXADDR							For |CI$0000000A
+	Define XCN_CRYPT_STRING_HEXASCIIADDR					For |CI$0000000B
+	Define XCN_CRYPT_STRING_HEXRAW							For |CI$0000000C
+	Define XCN_CRYPT_STRING_BASE64URI						For |CI$0000000D
+	Define XCN_CRYPT_STRING_ENCODEMASK						For |CI$000000FF
+	Define XCN_CRYPT_STRING_CHAIN							For |CI$00000100
+	Define XCN_CRYPT_STRING_TEXT							For |CI$00000200
+	Define XCN_CRYPT_STRING_PERCENTESCAPE					For |CI$08000000
+	Define XCN_CRYPT_STRING_HASHDATA						For |CI$10000000
+	Define XCN_CRYPT_STRING_STRICT							For |CI$20000000
+	Define XCN_CRYPT_STRING_NOCRLF							For |CI$40000000
+End_Enum_List
+
+// Define PFXExportOptions For Integer
+Enum_List
+	Define PFXExportEEOnly									For |CI$00000000
+	Define PFXExportChainNoRoot								For |CI$00000001
+	Define PFXExportChainWithRoot							For |CI$00000002
+End_Enum_List
+
+// Define ObjectIdGroupId For Integer
+Enum_List
+	Define XCN_CRYPT_OID_DISABLE_SEARCH_DS_FLAG				For -2147483648
+	Define XCN_CRYPT_ANY_GROUP_ID							For |CI$00000000
+	Define XCN_CRYPT_HASH_ALG_OID_GROUP_ID					For |CI$00000001
+	Define XCN_CRYPT_FIRST_ALG_OID_GROUP_ID					For |CI$00000001
+	Define XCN_CRYPT_ENCRYPT_ALG_OID_GROUP_ID				For |CI$00000002
+	Define XCN_CRYPT_PUBKEY_ALG_OID_GROUP_ID				For |CI$00000003
+	Define XCN_CRYPT_SIGN_ALG_OID_GROUP_ID					For |CI$00000004
+	Define XCN_CRYPT_LAST_ALG_OID_GROUP_ID					For |CI$00000004
+	Define XCN_CRYPT_RDN_ATTR_OID_GROUP_ID					For |CI$00000005
+	Define XCN_CRYPT_EXT_OR_ATTR_OID_GROUP_ID				For |CI$00000006
+	Define XCN_CRYPT_ENHKEY_USAGE_OID_GROUP_ID				For |CI$00000007
+	Define XCN_CRYPT_POLICY_OID_GROUP_ID					For |CI$00000008
+	Define XCN_CRYPT_TEMPLATE_OID_GROUP_ID					For |CI$00000009
+	Define XCN_CRYPT_KDF_OID_GROUP_ID						For |CI$0000000A
+	Define XCN_CRYPT_LAST_OID_GROUP_ID						For |CI$0000000A
+	Define XCN_CRYPT_OID_INFO_OID_GROUP_BIT_LEN_SHIFT		For |CI$00000010
+	Define XCN_CRYPT_GROUP_ID_MASK							For |CI$0000FFFF
+	Define XCN_CRYPT_OID_INFO_OID_GROUP_BIT_LEN_MASK		For |CI$0FFF0000
+	Define XCN_CRYPT_KEY_LENGTH_MASK						For |CI$0FFF0000
+	Define XCN_CRYPT_OID_PREFER_CNG_ALGID_FLAG				For |CI$40000000
+End_Enum_List
+
+// Define ObjectIdPublicKeyFlags For Integer
+Enum_List
+	Define XCN_CRYPT_OID_INFO_PUBKEY_SIGN_KEY_FLAG			For -2147483648
+	Define XCN_CRYPT_OID_INFO_PUBKEY_ANY					For |CI$00000000
+	Define XCN_CRYPT_OID_INFO_PUBKEY_ENCRYPT_KEY_FLAG		For |CI$40000000
+End_Enum_List
+
+// Define AlgorithmFlags For Integer
+Enum_List
+	Define AlgorithmFlagsNone								For |CI$00000000
+	Define AlgorithmFlagsWrap								For |CI$00000001
+End_Enum_List
+
+// Define X500NameFlags For Integer
+Enum_List
+	Define XCN_CERT_NAME_STR_NONE							For |CI$00000000
+	Define XCN_CERT_SIMPLE_NAME_STR							For |CI$00000001
+	Define XCN_CERT_OID_NAME_STR							For |CI$00000002
+	Define XCN_CERT_X500_NAME_STR							For |CI$00000003
+	Define XCN_CERT_XML_NAME_STR							For |CI$00000004
+	Define XCN_CERT_NAME_STR_DISABLE_IE4_UTF8_FLAG			For |CI$00010000
+	Define XCN_CERT_NAME_STR_ENABLE_T61_UNICODE_FLAG		For |CI$00020000
+	Define XCN_CERT_NAME_STR_ENABLE_UTF8_UNICODE_FLAG		For |CI$00040000
+	Define XCN_CERT_NAME_STR_FORCE_UTF8_DIR_STR_FLAG		For |CI$00080000
+	Define XCN_CERT_NAME_STR_DISABLE_UTF8_DIR_STR_FLAG		For |CI$00100000
+	Define XCN_CERT_NAME_STR_ENABLE_PUNYCODE_FLAG			For |CI$00200000
+	Define XCN_CERT_NAME_STR_DS_ESCAPED						For |CI$00800000
+	Define XCN_CERT_NAME_STR_FORWARD_FLAG					For |CI$01000000
+	Define XCN_CERT_NAME_STR_REVERSE_FLAG					For |CI$02000000
+	Define XCN_CERT_NAME_STR_COMMA_FLAG						For |CI$04000000
+	Define XCN_CERT_NAME_STR_CRLF_FLAG						For |CI$08000000
+	Define XCN_CERT_NAME_STR_NO_QUOTING_FLAG				For |CI$10000000
+	Define XCN_CERT_NAME_STR_NO_PLUS_FLAG					For |CI$20000000
+	Define XCN_CERT_NAME_STR_SEMICOLON_FLAG					For |CI$40000000
+	Define XCN_CERT_NAME_STR_AMBIGUOUS_SEPARATOR_FLAGS		For |CI$4C000000
+End_Enum_List
+
+// Define X509CertificateEnrollmentContext For Integer
+Enum_List
+	Define ContextNone										For |CI$00000000
+	Define ContextUser										For |CI$00000001
+	Define ContextMachine									For |CI$00000002
+	Define ContextAdministratorForceMachine					For |CI$00000003
+End_Enum_List
+
+// Define EnrollmentEnrollStatus For Integer
+Enum_List
+	Define Enrolled											For |CI$00000001
+	Define EnrollPended										For |CI$00000002
+	Define EnrollUIDeferredEnrollmentRequired				For |CI$00000004
+	Define EnrollError										For |CI$00000010
+	Define EnrollUnknown									For |CI$00000020
+	Define EnrollSkipped									For |CI$00000040
+	Define EnrollDenied										For |CI$00000100
+End_Enum_List
+
+// Define EnrollmentSelectionStatus For Integer
+Enum_List
+	Define SelectedNo										For |CI$00000000
+	Define SelectedYes										For |CI$00000001
+End_Enum_List
+
+// Define EnrollmentDisplayStatus For Integer
+Enum_List
+	Define DisplayNo										For |CI$00000000
+	Define DisplayYes										For |CI$00000001
+End_Enum_List
+
+// Define X509ProviderType For Integer
+Enum_List
+	Define XCN_PROV_NONE									For |CI$00000000
+	Define XCN_PROV_RSA_FULL								For |CI$00000001
+	Define XCN_PROV_RSA_SIG									For |CI$00000002
+	Define XCN_PROV_DSS										For |CI$00000003
+	Define XCN_PROV_FORTEZZA								For |CI$00000004
+	Define XCN_PROV_MS_EXCHANGE								For |CI$00000005
+	Define XCN_PROV_SSL										For |CI$00000006
+	Define XCN_PROV_RSA_SCHANNEL							For |CI$0000000C
+	Define XCN_PROV_DSS_DH									For |CI$0000000D
+	Define XCN_PROV_EC_ECDSA_SIG							For |CI$0000000E
+	Define XCN_PROV_EC_ECNRA_SIG							For |CI$0000000F
+	Define XCN_PROV_EC_ECDSA_FULL							For |CI$00000010
+	Define XCN_PROV_EC_ECNRA_FULL							For |CI$00000011
+	Define XCN_PROV_DH_SCHANNEL								For |CI$00000012
+	Define XCN_PROV_SPYRUS_LYNKS							For |CI$00000014
+	Define XCN_PROV_RNG										For |CI$00000015
+	Define XCN_PROV_INTEL_SEC								For |CI$00000016
+	Define XCN_PROV_REPLACE_OWF								For |CI$00000017
+	Define XCN_PROV_RSA_AES									For |CI$00000018
+End_Enum_List
+
+// Define AlgorithmType For Integer
+Enum_List
+	Define XCN_BCRYPT_UNKNOWN_INTERFACE						For |CI$00000000
+	Define XCN_BCRYPT_CIPHER_INTERFACE						For |CI$00000001
+	Define XCN_BCRYPT_HASH_INTERFACE						For |CI$00000002
+	Define XCN_BCRYPT_ASYMMETRIC_ENCRYPTION_INTERFACE		For |CI$00000003
+	Define XCN_BCRYPT_SECRET_AGREEMENT_INTERFACE			For |CI$00000004
+	Define XCN_BCRYPT_SIGNATURE_INTERFACE					For |CI$00000005
+	Define XCN_BCRYPT_RNG_INTERFACE							For |CI$00000006
+	Define XCN_BCRYPT_KEY_DERIVATION_INTERFACE				For |CI$00000007
+End_Enum_List
+
+// Define AlgorithmOperationFlags For Integer
+Enum_List
+	Define XCN_NCRYPT_NO_OPERATION							For |CI$00000000
+	Define XCN_NCRYPT_CIPHER_OPERATION						For |CI$00000001
+	Define XCN_NCRYPT_HASH_OPERATION						For |CI$00000002
+	Define XCN_NCRYPT_ASYMMETRIC_ENCRYPTION_OPERATION		For |CI$00000004
+	Define XCN_NCRYPT_SECRET_AGREEMENT_OPERATION			For |CI$00000008
+	Define XCN_NCRYPT_SIGNATURE_OPERATION					For |CI$00000010
+	Define XCN_NCRYPT_RNG_OPERATION							For |CI$00000020
+	Define XCN_NCRYPT_KEY_DERIVATION_OPERATION				For |CI$00000040
+	Define XCN_NCRYPT_KEY_ENCAPSULATION_OPERATION			For |CI$00000080
+	Define XCN_NCRYPT_ANY_ASYMMETRIC_OPERATION				For |CI$0000009C
+	Define XCN_NCRYPT_PREFER_SIGNATURE_ONLY_OPERATION		For |CI$00200000
+	Define XCN_NCRYPT_PREFER_NON_SIGNATURE_OPERATION		For |CI$00400000
+	Define XCN_NCRYPT_EXACT_MATCH_OPERATION					For |CI$00800000
+	Define XCN_NCRYPT_PREFERENCE_MASK_OPERATION				For |CI$00E00000
+End_Enum_List
+
+// Define X509KeySpec For Integer
+Enum_List
+	Define XCN_AT_NONE										For |CI$00000000
+	Define XCN_AT_KEYEXCHANGE								For |CI$00000001
+	Define XCN_AT_SIGNATURE									For |CI$00000002
+End_Enum_List
+
+// Define KeyIdentifierHashAlgorithm For Integer
+Enum_List
+	Define SKIHashDefault									For |CI$00000000
+	Define SKIHashSha1										For |CI$00000001
+	Define SKIHashCapiSha1									For |CI$00000002
+	Define SKIHashSha256									For |CI$00000003
+	Define SKIHashHPKP										For |CI$00000005
+End_Enum_List
+
+// Define X509PrivateKeyExportFlags For Integer
+Enum_List
+	Define XCN_NCRYPT_ALLOW_EXPORT_NONE						For |CI$00000000
+	Define XCN_NCRYPT_ALLOW_EXPORT_FLAG						For |CI$00000001
+	Define XCN_NCRYPT_ALLOW_PLAINTEXT_EXPORT_FLAG			For |CI$00000002
+	Define XCN_NCRYPT_ALLOW_ARCHIVING_FLAG					For |CI$00000004
+	Define XCN_NCRYPT_ALLOW_PLAINTEXT_ARCHIVING_FLAG		For |CI$00000008
+End_Enum_List
+
+// Define X509PrivateKeyUsageFlags For Integer
+Enum_List
+	Define XCN_NCRYPT_ALLOW_USAGES_NONE						For |CI$00000000
+	Define XCN_NCRYPT_ALLOW_DECRYPT_FLAG					For |CI$00000001
+	Define XCN_NCRYPT_ALLOW_SIGNING_FLAG					For |CI$00000002
+	Define XCN_NCRYPT_ALLOW_KEY_AGREEMENT_FLAG				For |CI$00000004
+	Define XCN_NCRYPT_ALLOW_KEY_IMPORT_FLAG					For |CI$00000008
+	Define XCN_NCRYPT_ALLOW_ALL_USAGES						For |CI$00FFFFFF
+End_Enum_List
+
+// Define X509PrivateKeyProtection For Integer
+Enum_List
+	Define XCN_NCRYPT_UI_NO_PROTECTION_FLAG					For |CI$00000000
+	Define XCN_NCRYPT_UI_PROTECT_KEY_FLAG					For |CI$00000001
+	Define XCN_NCRYPT_UI_FORCE_HIGH_PROTECTION_FLAG			For |CI$00000002
+	Define XCN_NCRYPT_UI_FINGERPRINT_PROTECTION_FLAG		For |CI$00000004
+	Define XCN_NCRYPT_UI_APPCONTAINER_ACCESS_MEDIUM_FLAG	For |CI$00000008
+End_Enum_List
+
+// Define X509PrivateKeyVerify For Integer
+Enum_List
+	Define VerifyNone										For |CI$00000000
+	Define VerifySilent										For |CI$00000001
+	Define VerifySmartCardNone								For |CI$00000002
+	Define VerifySmartCardSilent							For |CI$00000003
+	Define VerifyAllowUI									For |CI$00000004
+End_Enum_List
+
+// Define X509HardwareKeyUsageFlags For Integer
+Enum_List
+	Define XCN_NCRYPT_PCP_NONE								For |CI$00000000
+	Define XCN_NCRYPT_PCP_SIGNATURE_KEY						For |CI$00000001
+	Define XCN_NCRYPT_PCP_ENCRYPTION_KEY					For |CI$00000002
+	Define XCN_NCRYPT_PCP_GENERIC_KEY						For |CI$00000003
+	Define XCN_NCRYPT_PCP_STORAGE_KEY						For |CI$00000004
+	Define XCN_NCRYPT_PCP_IDENTITY_KEY						For |CI$00000008
+	Define XCN_NCRYPT_TPM12_PROVIDER						For |CI$00010000
+End_Enum_List
+
+// Define X509KeyParametersExportType For Integer
+Enum_List
+	Define XCN_CRYPT_OID_USE_CURVE_NONE						For |CI$00000000
+	Define XCN_CRYPT_OID_USE_CURVE_PARAMETERS_FOR_ENCODE_FLAG	For |CI$10000000
+	Define XCN_CRYPT_OID_USE_CURVE_NAME_FOR_ENCODE_FLAG		For |CI$20000000
+End_Enum_List
+
+// Define X509KeyUsageFlags For Integer
+Enum_List
+	Define XCN_CERT_NO_KEY_USAGE							For |CI$00000000
+	Define XCN_CERT_ENCIPHER_ONLY_KEY_USAGE					For |CI$00000001
+	Define XCN_CERT_OFFLINE_CRL_SIGN_KEY_USAGE				For |CI$00000002
+	Define XCN_CERT_CRL_SIGN_KEY_USAGE						For |CI$00000002
+	Define XCN_CERT_KEY_CERT_SIGN_KEY_USAGE					For |CI$00000004
+	Define XCN_CERT_KEY_AGREEMENT_KEY_USAGE					For |CI$00000008
+	Define XCN_CERT_DATA_ENCIPHERMENT_KEY_USAGE				For |CI$00000010
+	Define XCN_CERT_KEY_ENCIPHERMENT_KEY_USAGE				For |CI$00000020
+	Define XCN_CERT_NON_REPUDIATION_KEY_USAGE				For |CI$00000040
+	Define XCN_CERT_DIGITAL_SIGNATURE_KEY_USAGE				For |CI$00000080
+	Define XCN_CERT_DECIPHER_ONLY_KEY_USAGE					For |CI$00008000
+End_Enum_List
+
+// Define AlternativeNameType For Integer
+Enum_List
+	Define XCN_CERT_ALT_NAME_UNKNOWN						For |CI$00000000
+	Define XCN_CERT_ALT_NAME_OTHER_NAME						For |CI$00000001
+	Define XCN_CERT_ALT_NAME_RFC822_NAME					For |CI$00000002
+	Define XCN_CERT_ALT_NAME_DNS_NAME						For |CI$00000003
+	Define XCN_CERT_ALT_NAME_X400_ADDRESS					For |CI$00000004
+	Define XCN_CERT_ALT_NAME_DIRECTORY_NAME					For |CI$00000005
+	Define XCN_CERT_ALT_NAME_EDI_PARTY_NAME					For |CI$00000006
+	Define XCN_CERT_ALT_NAME_URL							For |CI$00000007
+	Define XCN_CERT_ALT_NAME_IP_ADDRESS						For |CI$00000008
+	Define XCN_CERT_ALT_NAME_REGISTERED_ID					For |CI$00000009
+	Define XCN_CERT_ALT_NAME_GUID							For |CI$0000000A
+	Define XCN_CERT_ALT_NAME_USER_PRINCIPLE_NAME			For |CI$0000000B
+End_Enum_List
+
+// Define PolicyQualifierType For Integer
+Enum_List
+	Define PolicyQualifierTypeUnknown						For |CI$00000000
+	Define PolicyQualifierTypeUrl							For |CI$00000001
+	Define PolicyQualifierTypeUserNotice					For |CI$00000002
+	Define PolicyQualifierTypeFlags							For |CI$00000003
+End_Enum_List
+
+// Define RequestClientInfoClientId For Integer
+Enum_List
+	Define ClientIdNone										For |CI$00000000
+	Define ClientIdXEnroll2003								For |CI$00000001
+	Define ClientIdAutoEnroll2003							For |CI$00000002
+	Define ClientIdWizard2003								For |CI$00000003
+	Define ClientIdCertReq2003								For |CI$00000004
+	Define ClientIdDefaultRequest							For |CI$00000005
+	Define ClientIdAutoEnroll								For |CI$00000006
+	Define ClientIdRequestWizard							For |CI$00000007
+	Define ClientIdEOBO										For |CI$00000008
+	Define ClientIdCertReq									For |CI$00000009
+	Define ClientIdTest										For |CI$0000000A
+	Define ClientIdWinRT									For |CI$0000000B
+	Define ClientIdUserStart								For |CI$000003E8
+End_Enum_List
+
+// Define CERTENROLL_PROPERTYID For Integer
+Enum_List
+	Define XCN_PROPERTYID_NONE								For |CI$00000000
+	Define XCN_CERT_KEY_PROV_HANDLE_PROP_ID					For |CI$00000001
+	Define XCN_CERT_KEY_PROV_INFO_PROP_ID					For |CI$00000002
+	Define XCN_CERT_SHA1_HASH_PROP_ID						For |CI$00000003
+	Define XCN_CERT_HASH_PROP_ID							For |CI$00000003
+	Define XCN_CERT_MD5_HASH_PROP_ID						For |CI$00000004
+	Define XCN_CERT_KEY_CONTEXT_PROP_ID						For |CI$00000005
+	Define XCN_CERT_KEY_SPEC_PROP_ID						For |CI$00000006
+	Define XCN_CERT_IE30_RESERVED_PROP_ID					For |CI$00000007
+	Define XCN_CERT_PUBKEY_HASH_RESERVED_PROP_ID			For |CI$00000008
+	Define XCN_CERT_ENHKEY_USAGE_PROP_ID					For |CI$00000009
+	Define XCN_CERT_CTL_USAGE_PROP_ID						For |CI$00000009
+	Define XCN_CERT_NEXT_UPDATE_LOCATION_PROP_ID			For |CI$0000000A
+	Define XCN_CERT_FRIENDLY_NAME_PROP_ID					For |CI$0000000B
+	Define XCN_CERT_PVK_FILE_PROP_ID						For |CI$0000000C
+	Define XCN_CERT_DESCRIPTION_PROP_ID						For |CI$0000000D
+	Define XCN_CERT_ACCESS_STATE_PROP_ID					For |CI$0000000E
+	Define XCN_CERT_SIGNATURE_HASH_PROP_ID					For |CI$0000000F
+	Define XCN_CERT_SMART_CARD_DATA_PROP_ID					For |CI$00000010
+	Define XCN_CERT_EFS_PROP_ID								For |CI$00000011
+	Define XCN_CERT_FORTEZZA_DATA_PROP_ID					For |CI$00000012
+	Define XCN_CERT_ARCHIVED_PROP_ID						For |CI$00000013
+	Define XCN_CERT_KEY_IDENTIFIER_PROP_ID					For |CI$00000014
+	Define XCN_CERT_AUTO_ENROLL_PROP_ID						For |CI$00000015
+	Define XCN_CERT_PUBKEY_ALG_PARA_PROP_ID					For |CI$00000016
+	Define XCN_CERT_CROSS_CERT_DIST_POINTS_PROP_ID			For |CI$00000017
+	Define XCN_CERT_ISSUER_PUBLIC_KEY_MD5_HASH_PROP_ID		For |CI$00000018
+	Define XCN_CERT_SUBJECT_PUBLIC_KEY_MD5_HASH_PROP_ID		For |CI$00000019
+	Define XCN_CERT_ENROLLMENT_PROP_ID						For |CI$0000001A
+	Define XCN_CERT_DATE_STAMP_PROP_ID						For |CI$0000001B
+	Define XCN_CERT_ISSUER_SERIAL_NUMBER_MD5_HASH_PROP_ID	For |CI$0000001C
+	Define XCN_CERT_SUBJECT_NAME_MD5_HASH_PROP_ID			For |CI$0000001D
+	Define XCN_CERT_EXTENDED_ERROR_INFO_PROP_ID				For |CI$0000001E
+	Define XCN_CERT_RENEWAL_PROP_ID							For |CI$00000040
+	Define XCN_CERT_ARCHIVED_KEY_HASH_PROP_ID				For |CI$00000041
+	Define XCN_CERT_AUTO_ENROLL_RETRY_PROP_ID				For |CI$00000042
+	Define XCN_CERT_AIA_URL_RETRIEVED_PROP_ID				For |CI$00000043
+	Define XCN_CERT_AUTHORITY_INFO_ACCESS_PROP_ID			For |CI$00000044
+	Define XCN_CERT_BACKED_UP_PROP_ID						For |CI$00000045
+	Define XCN_CERT_OCSP_RESPONSE_PROP_ID					For |CI$00000046
+	Define XCN_CERT_REQUEST_ORIGINATOR_PROP_ID				For |CI$00000047
+	Define XCN_CERT_SOURCE_LOCATION_PROP_ID					For |CI$00000048
+	Define XCN_CERT_SOURCE_URL_PROP_ID						For |CI$00000049
+	Define XCN_CERT_NEW_KEY_PROP_ID							For |CI$0000004A
+	Define XCN_CERT_OCSP_CACHE_PREFIX_PROP_ID				For |CI$0000004B
+	Define XCN_CERT_SMART_CARD_ROOT_INFO_PROP_ID			For |CI$0000004C
+	Define XCN_CERT_NO_AUTO_EXPIRE_CHECK_PROP_ID			For |CI$0000004D
+	Define XCN_CERT_NCRYPT_KEY_HANDLE_PROP_ID				For |CI$0000004E
+	Define XCN_CERT_HCRYPTPROV_OR_NCRYPT_KEY_HANDLE_PROP_ID	For |CI$0000004F
+	Define XCN_CERT_SUBJECT_INFO_ACCESS_PROP_ID				For |CI$00000050
+	Define XCN_CERT_CA_OCSP_AUTHORITY_INFO_ACCESS_PROP_ID	For |CI$00000051
+	Define XCN_CERT_CA_DISABLE_CRL_PROP_ID					For |CI$00000052
+	Define XCN_CERT_ROOT_PROGRAM_CERT_POLICIES_PROP_ID		For |CI$00000053
+	Define XCN_CERT_ROOT_PROGRAM_NAME_CONSTRAINTS_PROP_ID	For |CI$00000054
+	Define XCN_CERT_SUBJECT_OCSP_AUTHORITY_INFO_ACCESS_PROP_ID	For |CI$00000055
+	Define XCN_CERT_SUBJECT_DISABLE_CRL_PROP_ID				For |CI$00000056
+	Define XCN_CERT_CEP_PROP_ID								For |CI$00000057
+	Define XCN_CERT_SIGN_HASH_CNG_ALG_PROP_ID				For |CI$00000059
+	Define XCN_CERT_SCARD_PIN_ID_PROP_ID					For |CI$0000005A
+	Define XCN_CERT_SCARD_PIN_INFO_PROP_ID					For |CI$0000005B
+	Define XCN_CERT_SUBJECT_PUB_KEY_BIT_LENGTH_PROP_ID		For |CI$0000005C
+	Define XCN_CERT_PUB_KEY_CNG_ALG_BIT_LENGTH_PROP_ID		For |CI$0000005D
+	Define XCN_CERT_ISSUER_PUB_KEY_BIT_LENGTH_PROP_ID		For |CI$0000005E
+	Define XCN_CERT_ISSUER_CHAIN_SIGN_HASH_CNG_ALG_PROP_ID	For |CI$0000005F
+	Define XCN_CERT_ISSUER_CHAIN_PUB_KEY_CNG_ALG_BIT_LENGTH_PROP_ID	For |CI$00000060
+	Define XCN_CERT_NO_EXPIRE_NOTIFICATION_PROP_ID			For |CI$00000061
+	Define XCN_CERT_AUTH_ROOT_SHA256_HASH_PROP_ID			For |CI$00000062
+	Define XCN_CERT_NCRYPT_KEY_HANDLE_TRANSFER_PROP_ID		For |CI$00000063
+	Define XCN_CERT_HCRYPTPROV_TRANSFER_PROP_ID				For |CI$00000064
+	Define XCN_CERT_SMART_CARD_READER_PROP_ID				For |CI$00000065
+	Define XCN_CERT_SEND_AS_TRUSTED_ISSUER_PROP_ID			For |CI$00000066
+	Define XCN_CERT_KEY_REPAIR_ATTEMPTED_PROP_ID			For |CI$00000067
+	Define XCN_CERT_DISALLOWED_FILETIME_PROP_ID				For |CI$00000068
+	Define XCN_CERT_ROOT_PROGRAM_CHAIN_POLICIES_PROP_ID		For |CI$00000069
+	Define XCN_CERT_SMART_CARD_READER_NON_REMOVABLE_PROP_ID	For |CI$0000006A
+	Define XCN_CERT_SHA256_HASH_PROP_ID						For |CI$0000006B
+	Define XCN_CERT_SCEP_SERVER_CERTS_PROP_ID				For |CI$0000006C
+	Define XCN_CERT_SCEP_RA_SIGNATURE_CERT_PROP_ID			For |CI$0000006D
+	Define XCN_CERT_SCEP_RA_ENCRYPTION_CERT_PROP_ID			For |CI$0000006E
+	Define XCN_CERT_SCEP_CA_CERT_PROP_ID					For |CI$0000006F
+	Define XCN_CERT_SCEP_SIGNER_CERT_PROP_ID				For |CI$00000070
+	Define XCN_CERT_SCEP_NONCE_PROP_ID						For |CI$00000071
+	Define XCN_CERT_SCEP_ENCRYPT_HASH_CNG_ALG_PROP_ID		For |CI$00000072
+	Define XCN_CERT_SCEP_FLAGS_PROP_ID						For |CI$00000073
+	Define XCN_CERT_SCEP_GUID_PROP_ID						For |CI$00000074
+	Define XCN_CERT_SERIALIZABLE_KEY_CONTEXT_PROP_ID		For |CI$00000075
+	Define XCN_CERT_ISOLATED_KEY_PROP_ID					For |CI$00000076
+	Define XCN_CERT_SERIAL_CHAIN_PROP_ID					For |CI$00000077
+	Define XCN_CERT_KEY_CLASSIFICATION_PROP_ID				For |CI$00000078
+	Define XCN_CERT_DISALLOWED_ENHKEY_USAGE_PROP_ID			For |CI$0000007A
+	Define XCN_CERT_NONCOMPLIANT_ROOT_URL_PROP_ID			For |CI$0000007B
+	Define XCN_CERT_PIN_SHA256_HASH_PROP_ID					For |CI$0000007C
+	Define XCN_CERT_CLR_DELETE_KEY_PROP_ID					For |CI$0000007D
+	Define XCN_CERT_NOT_BEFORE_FILETIME_PROP_ID				For |CI$0000007E
+	Define XCN_CERT_CERT_NOT_BEFORE_ENHKEY_USAGE_PROP_ID	For |CI$0000007F
+	Define XCN_CERT_FIRST_RESERVED_PROP_ID					For |CI$00000082
+	Define XCN_CERT_STORE_LOCALIZED_NAME_PROP_ID			For |CI$00001000
+	Define XCN_CERT_LAST_RESERVED_PROP_ID					For |CI$00007FFF
+	Define XCN_CERT_FIRST_USER_PROP_ID						For |CI$00008000
+	Define XCN_CERT_LAST_USER_PROP_ID						For |CI$0000FFFF
+End_Enum_List
+
+// Define EnrollmentPolicyServerPropertyFlags For Integer
+Enum_List
+	Define DefaultNone										For |CI$00000000
+	Define DefaultPolicyServer								For |CI$00000001
+End_Enum_List
+
+// Define PolicyServerUrlFlags For Integer
+Enum_List
+	Define PsfNone											For |CI$00000000
+	Define PsfLocationGroupPolicy							For |CI$00000001
+	Define PsfLocationRegistry								For |CI$00000002
+	Define PsfUseClientId									For |CI$00000004
+	Define PsfAutoEnrollmentEnabled							For |CI$00000010
+	Define PsfAllowUnTrustedCA								For |CI$00000020
+End_Enum_List
+
+// Define EnrollmentTemplateProperty For Integer
+Enum_List
+	Define TemplatePropCommonName							For |CI$00000001
+	Define TemplatePropFriendlyName							For |CI$00000002
+	Define TemplatePropEKUs									For |CI$00000003
+	Define TemplatePropCryptoProviders						For |CI$00000004
+	Define TemplatePropMajorRevision						For |CI$00000005
+	Define TemplatePropDescription							For |CI$00000006
+	Define TemplatePropKeySpec								For |CI$00000007
+	Define TemplatePropSchemaVersion						For |CI$00000008
+	Define TemplatePropMinorRevision						For |CI$00000009
+	Define TemplatePropRASignatureCount						For |CI$0000000A
+	Define TemplatePropMinimumKeySize						For |CI$0000000B
+	Define TemplatePropOID									For |CI$0000000C
+	Define TemplatePropSupersede							For |CI$0000000D
+	Define TemplatePropRACertificatePolicies				For |CI$0000000E
+	Define TemplatePropRAEKUs								For |CI$0000000F
+	Define TemplatePropCertificatePolicies					For |CI$00000010
+	Define TemplatePropV1ApplicationPolicy					For |CI$00000011
+	Define TemplatePropAsymmetricAlgorithm					For |CI$00000012
+	Define TemplatePropKeySecurityDescriptor				For |CI$00000013
+	Define TemplatePropSymmetricAlgorithm					For |CI$00000014
+	Define TemplatePropSymmetricKeyLength					For |CI$00000015
+	Define TemplatePropHashAlgorithm						For |CI$00000016
+	Define TemplatePropKeyUsage								For |CI$00000017
+	Define TemplatePropEnrollmentFlags						For |CI$00000018
+	Define TemplatePropSubjectNameFlags						For |CI$00000019
+	Define TemplatePropPrivateKeyFlags						For |CI$0000001A
+	Define TemplatePropGeneralFlags							For |CI$0000001B
+	Define TemplatePropSecurityDescriptor					For |CI$0000001C
+	Define TemplatePropExtensions							For |CI$0000001D
+	Define TemplatePropValidityPeriod						For |CI$0000001E
+	Define TemplatePropRenewalPeriod						For |CI$0000001F
+End_Enum_List
+
+// Define CommitTemplateFlags For Integer
+Enum_List
+	Define CommitFlagSaveTemplateGenerateOID				For |CI$00000001
+	Define CommitFlagSaveTemplateUseCurrentOID				For |CI$00000002
+	Define CommitFlagSaveTemplateOverwrite					For |CI$00000003
+	Define CommitFlagDeleteTemplate							For |CI$00000004
+End_Enum_List
+
+// Define EnrollmentCAProperty For Integer
+Enum_List
+	Define CAPropCommonName									For |CI$00000001
+	Define CAPropDistinguishedName							For |CI$00000002
+	Define CAPropSanitizedName								For |CI$00000003
+	Define CAPropSanitizedShortName							For |CI$00000004
+	Define CAPropDNSName									For |CI$00000005
+	Define CAPropCertificateTypes							For |CI$00000006
+	Define CAPropCertificate								For |CI$00000007
+	Define CAPropDescription								For |CI$00000008
+	Define CAPropWebServers									For |CI$00000009
+	Define CAPropSiteName									For |CI$0000000A
+	Define CAPropSecurity									For |CI$0000000B
+	Define CAPropRenewalOnly								For |CI$0000000C
+End_Enum_List
+
+// Define X509EnrollmentPolicyLoadOption For Integer
+Enum_List
+	Define LoadOptionDefault								For |CI$00000000
+	Define LoadOptionCacheOnly								For |CI$00000001
+	Define LoadOptionReload									For |CI$00000002
+	Define LoadOptionRegisterForADChanges					For |CI$00000004
+End_Enum_List
+
+// Define EnrollmentPolicyFlags For Integer
+Enum_List
+	Define DisableGroupPolicyList							For |CI$00000002
+	Define DisableUserServerList							For |CI$00000004
+End_Enum_List
+
+// Define PolicyServerUrlPropertyID For Integer
+Enum_List
+	Define PsPolicyID										For |CI$00000000
+	Define PsFriendlyName									For |CI$00000001
+End_Enum_List
+
+// Define X509EnrollmentPolicyExportFlags For Integer
+Enum_List
+	Define ExportTemplates									For |CI$00000001
+	Define ExportOIDs										For |CI$00000002
+	Define ExportCAs										For |CI$00000004
+End_Enum_List
+
+// Define X509RequestType For Integer
+Enum_List
+	Define TypeAny											For |CI$00000000
+	Define TypePkcs10										For |CI$00000001
+	Define TypePkcs7										For |CI$00000002
+	Define TypeCmc											For |CI$00000003
+	Define TypeCertificate									For |CI$00000004
+End_Enum_List
+
+// Define X509RequestInheritOptions For Integer
+Enum_List
+	Define InheritReserved80000000							For -2147483648
+	Define InheritDefault									For |CI$00000000
+	Define InheritNewDefaultKey								For |CI$00000001
+	Define InheritNewSimilarKey								For |CI$00000002
+	Define InheritPrivateKey								For |CI$00000003
+	Define InheritPublicKey									For |CI$00000004
+	Define InheritKeyMask									For |CI$0000000F
+	Define InheritNone										For |CI$00000010
+	Define InheritRenewalCertificateFlag					For |CI$00000020
+	Define InheritTemplateFlag								For |CI$00000040
+	Define InheritSubjectFlag								For |CI$00000080
+	Define InheritExtensionsFlag							For |CI$00000100
+	Define InheritSubjectAltNameFlag						For |CI$00000200
+	Define InheritValidityPeriodFlag						For |CI$00000400
+End_Enum_List
+
+// Define InnerRequestLevel For Integer
+Enum_List
+	Define LevelInnermost									For |CI$00000000
+	Define LevelNext										For |CI$00000001
+End_Enum_List
+
+// Define Pkcs10AllowedSignatureTypes For Integer
+Enum_List
+	Define AllowedKeySignature								For |CI$00000001
+	Define AllowedNullSignature								For |CI$00000002
+End_Enum_List
+
+// Define KeyAttestationClaimType For Integer
+Enum_List
+	Define XCN_NCRYPT_CLAIM_NONE							For |CI$00000000
+	Define XCN_NCRYPT_CLAIM_AUTHORITY_ONLY					For |CI$00000001
+	Define XCN_NCRYPT_CLAIM_SUBJECT_ONLY					For |CI$00000002
+	Define XCN_NCRYPT_CLAIM_AUTHORITY_AND_SUBJECT			For |CI$00000003
+	Define XCN_NCRYPT_CLAIM_UNKNOWN							For |CI$00001000
+End_Enum_List
+
+// Define InstallResponseRestrictionFlags For Integer
+Enum_List
+	Define AllowNone										For |CI$00000000
+	Define AllowNoOutstandingRequest						For |CI$00000001
+	Define AllowUntrustedCertificate						For |CI$00000002
+	Define AllowUntrustedRoot								For |CI$00000004
+End_Enum_List
+
+// Define WebEnrollmentFlags For Integer
+Enum_List
+	Define EnrollPrompt										For |CI$00000001
+End_Enum_List
+
+// Define CRLRevocationReason For Integer
+Enum_List
+	Define XCN_CRL_REASON_UNSPECIFIED						For |CI$00000000
+	Define XCN_CRL_REASON_KEY_COMPROMISE					For |CI$00000001
+	Define XCN_CRL_REASON_CA_COMPROMISE						For |CI$00000002
+	Define XCN_CRL_REASON_AFFILIATION_CHANGED				For |CI$00000003
+	Define XCN_CRL_REASON_SUPERSEDED						For |CI$00000004
+	Define XCN_CRL_REASON_CESSATION_OF_OPERATION			For |CI$00000005
+	Define XCN_CRL_REASON_CERTIFICATE_HOLD					For |CI$00000006
+	Define XCN_CRL_REASON_REMOVE_FROM_CRL					For |CI$00000008
+	Define XCN_CRL_REASON_PRIVILEGE_WITHDRAWN				For |CI$00000009
+	Define XCN_CRL_REASON_AA_COMPROMISE						For |CI$0000000A
+End_Enum_List
+
+// Define X509SCEPProcessMessageFlags For Integer
+Enum_List
+	Define SCEPProcessDefault								For |CI$00000000
+	Define SCEPProcessSkipCertInstall						For |CI$00000001
+End_Enum_List
+
+// Define DelayRetryAction For Integer
+Enum_List
+	Define DelayRetryUnknown								For |CI$00000000
+	Define DelayRetryNone									For |CI$00000001
+	Define DelayRetryShort									For |CI$00000002
+	Define DelayRetryLong									For |CI$00000003
+	Define DelayRetrySuccess								For |CI$00000004
+	Define DelayRetryPastSuccess							For |CI$00000005
+End_Enum_List
+
+// Define X509CertificateTemplateGeneralFlag For Integer
+Enum_List
+	Define GeneralMachineType								For |CI$00000040
+	Define GeneralCA										For |CI$00000080
+	Define GeneralCrossCA									For |CI$00000800
+	Define GeneralDonotPersist								For |CI$00001000
+	Define GeneralDefault									For |CI$00010000
+	Define GeneralModified									For |CI$00020000
+End_Enum_List
+
+// Define X509CertificateTemplateEnrollmentFlag For Integer
+Enum_List
+	Define EnrollmentIncludeSymmetricAlgorithms				For |CI$00000001
+	Define EnrollmentPendAllRequests						For |CI$00000002
+	Define EnrollmentPublishToKRAContainer					For |CI$00000004
+	Define EnrollmentPublishToDS							For |CI$00000008
+	Define EnrollmentAutoEnrollmentCheckUserDSCertificate	For |CI$00000010
+	Define EnrollmentAutoEnrollment							For |CI$00000020
+	Define EnrollmentPreviousApprovalValidateReenrollment	For |CI$00000040
+	Define EnrollmentDomainAuthenticationNotRequired		For |CI$00000080
+	Define EnrollmentUserInteractionRequired				For |CI$00000100
+	Define EnrollmentAddTemplateName						For |CI$00000200
+	Define EnrollmentRemoveInvalidCertificateFromPersonalStore	For |CI$00000400
+	Define EnrollmentAllowEnrollOnBehalfOf					For |CI$00000800
+	Define EnrollmentAddOCSPNoCheck							For |CI$00001000
+	Define EnrollmentReuseKeyOnFullSmartCard				For |CI$00002000
+	Define EnrollmentNoRevocationInfoInCerts				For |CI$00004000
+	Define EnrollmentIncludeBasicConstraintsForEECerts		For |CI$00008000
+	Define EnrollmentPreviousApprovalKeyBasedValidateReenrollment	For |CI$00010000
+	Define EnrollmentCertificateIssuancePoliciesFromRequest	For |CI$00020000
+	Define EnrollmentSkipAutoRenewal						For |CI$00040000
+End_Enum_List
+
+// Define X509CertificateTemplateSubjectNameFlag For Integer
+Enum_List
+	Define SubjectNameRequireDirectoryPath					For -2147483648
+	Define SubjectNameEnrolleeSupplies						For |CI$00000001
+	Define SubjectNameAndAlternativeNameOldCertSupplies		For |CI$00000008
+	Define SubjectAlternativeNameEnrolleeSupplies			For |CI$00010000
+	Define SubjectAlternativeNameRequireDomainDNS			For |CI$00400000
+	Define SubjectAlternativeNameRequireSPN					For |CI$00800000
+	Define SubjectAlternativeNameRequireDirectoryGUID		For |CI$01000000
+	Define SubjectAlternativeNameRequireUPN					For |CI$02000000
+	Define SubjectAlternativeNameRequireEmail				For |CI$04000000
+	Define SubjectAlternativeNameRequireDNS					For |CI$08000000
+	Define SubjectNameRequireDNS							For |CI$10000000
+	Define SubjectNameRequireEmail							For |CI$20000000
+	Define SubjectNameRequireCommonName						For |CI$40000000
+End_Enum_List
+
+// Define X509CertificateTemplatePrivateKeyFlag For Integer
+Enum_List
+	Define PrivateKeyAttestNone								For |CI$00000000
+	Define PrivateKeyRequireArchival						For |CI$00000001
+	Define PrivateKeyExportable								For |CI$00000010
+	Define PrivateKeyServerVersionShift						For |CI$00000010
+	Define PrivateKeyClientVersionShift						For |CI$00000018
+	Define PrivateKeyRequireStrongKeyProtection				For |CI$00000020
+	Define PrivateKeyRequireAlternateSignatureAlgorithm		For |CI$00000040
+	Define PrivateKeyRequireSameKeyRenewal					For |CI$00000080
+	Define PrivateKeyUseLegacyProvider						For |CI$00000100
+	Define PrivateKeyEKTrustOnUse							For |CI$00000200
+	Define PrivateKeyEKValidateCert							For |CI$00000400
+	Define PrivateKeyEKValidateKey							For |CI$00000800
+	Define PrivateKeyAttestPreferred						For |CI$00001000
+	Define PrivateKeyAttestRequired							For |CI$00002000
+	Define PrivateKeyAttestMask								For |CI$00003000
+	Define PrivateKeyAttestWithoutPolicy					For |CI$00004000
+	Define PrivateKeyServerVersionMask						For |CI$000F0000
+	Define PrivateKeyHelloKspKey							For |CI$00100000
+	Define PrivateKeyHelloLogonKey							For |CI$00200000
+	Define PrivateKeyClientVersionMask						For |CI$0F000000
+End_Enum_List
+
+// Define ImportPFXFlags For Integer
+Enum_List
+	Define ImportNone										For |CI$00000000
+	Define ImportMachineContext								For |CI$00000001
+	Define ImportForceOverwrite								For |CI$00000002
+	Define ImportSilent										For |CI$00000004
+	Define ImportSaveProperties								For |CI$00000008
+	Define ImportExportable									For |CI$00000010
+	Define ImportExportableEncrypted						For |CI$00000020
+	Define ImportNoUserProtected							For |CI$00000040
+	Define ImportUserProtected								For |CI$00000080
+	Define ImportUserProtectedHigh							For |CI$00000100
+	Define ImportInstallCertificate							For |CI$00000200
+	Define ImportInstallChain								For |CI$00000400
+	Define ImportInstallChainAndRoot						For |CI$00000800
+End_Enum_List
+
+// Define ENUM_CATYPES For Integer
+Enum_List
+	Define ENUM_ENTERPRISE_ROOTCA							For |CI$00000000
+	Define ENUM_ENTERPRISE_SUBCA							For |CI$00000001
+	Define ENUM_STANDALONE_ROOTCA							For |CI$00000003
+	Define ENUM_STANDALONE_SUBCA							For |CI$00000004
+	Define ENUM_UNKNOWN_CA									For |CI$00000005
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure

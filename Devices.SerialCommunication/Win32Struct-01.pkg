@@ -1,0 +1,132 @@
+Use UI
+
+Struct SERENUM_PORT_DESC
+	UInteger Size
+	Integer iMissingAlignment1
+	Pointer PortHandle										// Pointer*
+	Bigint PortAddress
+	UShort[1] Reserved
+	UChar[6] cMissingAlignment2
+End_Struct
+
+Struct SERENUM_PORT_PARAMETERS
+	UInteger Size
+	Integer iMissingAlignment1
+	Pointer ReadAccessor									// PSERENUM_READPORT
+	Pointer WriteAccessor									// PSERENUM_WRITEPORT
+	Pointer SerPortAddress									// Pointer*
+	Pointer HardwareHandle									// Pointer*
+	Integer Portion											// SERENUM_PORTION
+	UShort NumberAxis
+	UShort[3] Reserved
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SERIALCONFIG
+	UInteger Size
+	UShort Version
+	Short iMissingAlignment1
+	UInteger SubType
+	UInteger ProvOffset
+	UInteger ProviderSize
+	UShort[1] ProviderData
+	Short iMissingAlignment2
+End_Struct
+
+Struct SERIALPERF_STATS
+	UInteger ReceivedCount
+	UInteger TransmittedCount
+	UInteger FrameErrorCount
+	UInteger SerialOverrunErrorCount
+	UInteger BufferOverrunErrorCount
+	UInteger ParityErrorCount
+End_Struct
+
+Struct SERIAL_BASIC_SETTINGS
+	SERIAL_TIMEOUTS Timeouts
+	SERIAL_HANDFLOW HandFlow
+	UInteger RxFifo
+	UInteger TxFifo
+End_Struct
+
+Struct SERIAL_BAUD_RATE
+	UInteger BaudRate
+End_Struct
+
+Struct SERIAL_CHARS
+	UChar EofChar
+	UChar ErrorChar
+	UChar BreakChar
+	UChar EventChar
+	UChar XonChar
+	UChar XoffChar
+End_Struct
+
+Struct SERIAL_COMMPROP
+	UShort PacketLength
+	UShort PacketVersion
+	UInteger ServiceMask
+	UInteger Reserved1
+	UInteger MaxTxQueue
+	UInteger MaxRxQueue
+	UInteger MaxBaud
+	UInteger ProvSubType
+	UInteger ProvCapabilities
+	UInteger SettableParams
+	UInteger SettableBaud
+	UShort SettableData
+	UShort SettableStopParity
+	UInteger CurrentTxQueue
+	UInteger CurrentRxQueue
+	UInteger ProvSpec1
+	UInteger ProvSpec2
+	UShort[1] ProvChar
+	Short iMissingAlignment1
+End_Struct
+
+Struct SERIAL_HANDFLOW
+	UInteger ControlHandShake
+	UInteger FlowReplace
+	Integer XonLimit
+	Integer XoffLimit
+End_Struct
+
+Struct SERIAL_LINE_CONTROL
+	UChar StopBits
+	UChar Parity
+	UChar WordLength
+End_Struct
+
+Struct SERIAL_QUEUE_SIZE
+	UInteger InSize
+	UInteger OutSize
+End_Struct
+
+Struct SERIAL_STATUS
+	UInteger Errors
+	UInteger HoldReasons
+	UInteger AmountInInQueue
+	UInteger AmountInOutQueue
+	UChar EofReceived										// BOOLEAN
+	UChar WaitForImmediate									// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct SERIAL_TIMEOUTS
+	UInteger ReadIntervalTimeout
+	UInteger ReadTotalTimeoutMultiplier
+	UInteger ReadTotalTimeoutConstant
+	UInteger WriteTotalTimeoutMultiplier
+	UInteger WriteTotalTimeoutConstant
+End_Struct
+
+Struct SERIAL_XOFF_COUNTER
+	UInteger Timeout
+	Integer Counter
+	UChar XoffChar
+	UChar[3] cMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,498 @@
+Use UI
+
+Struct SUPPORTED_OS_INFO
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+Struct SYSTEM_POWER_SOURCE_STATE
+	SYSTEM_BATTERY_STATE BatteryState
+	UInteger InstantaneousPeakPower
+	UInteger InstantaneousPeakPeriod
+	UInteger SustainablePeakPower
+	UInteger SustainablePeakPeriod
+	UInteger PeakPower
+	UInteger MaxOutputPower
+	UInteger MaxInputPower
+	Integer BatteryRateInCurrent
+	UInteger BatteryVoltage
+End_Struct
+
+Struct TAPE_CREATE_PARTITION
+	UInteger Method
+	UInteger Count
+	UInteger Size
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_get_drive_parameters
+Struct TAPE_GET_DRIVE_PARAMETERS
+	UChar ECC												// BOOLEAN
+	UChar Compression										// BOOLEAN
+	UChar DataPadding										// BOOLEAN
+	UChar ReportSetmarks									// BOOLEAN
+	UInteger DefaultBlockSize
+	UInteger MaximumBlockSize
+	UInteger MinimumBlockSize
+	UInteger MaximumPartitionCount
+	UInteger FeaturesLow
+	UInteger FeaturesHigh									// TAPE_GET_DRIVE_PARAMETERS_FEATURES_HIGH
+	UInteger EOTWarningZoneSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_get_media_parameters
+Struct TAPE_GET_MEDIA_PARAMETERS
+	Bigint Capacity
+	Bigint Remaining
+	UInteger BlockSize
+	UInteger PartitionCount
+	UChar WriteProtected									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_set_drive_parameters
+Struct TAPE_SET_DRIVE_PARAMETERS
+	UChar ECC												// BOOLEAN
+	UChar Compression										// BOOLEAN
+	UChar DataPadding										// BOOLEAN
+	UChar ReportSetmarks									// BOOLEAN
+	UInteger EOTWarningZoneSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-tape_set_media_parameters
+Struct TAPE_SET_MEDIA_PARAMETERS
+	UInteger BlockSize
+End_Struct
+
+Struct TAPE_WMI_OPERATIONS
+	UInteger Method
+	UInteger DataBufferSize
+	Pointer DataBuffer										// Pointer*
+End_Struct
+
+Struct TOKEN_BNO_ISOLATION_INFORMATION
+	Pointer IsolationPrefix									// PWSTR
+	UChar IsolationEnabled									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct TOKEN_LOGGING_INFORMATION
+	Integer TokenType										// TOKEN_TYPE
+	TOKEN_ELEVATION TokenElevation
+	Integer TokenElevationType								// TOKEN_ELEVATION_TYPE
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	UInteger IntegrityLevel
+	Integer iMissingAlignment1
+	SID_AND_ATTRIBUTES User
+	Pointer TrustLevelSid									// PSID
+	UInteger SessionId
+	UInteger AppContainerNumber
+	LUID AuthenticationId
+	UInteger GroupCount
+	UInteger GroupsLength
+	Pointer Groups											// SID_AND_ATTRIBUTES*
+End_Struct
+
+Struct TOKEN_SID_INFORMATION
+	Pointer Sid												// PSID
+End_Struct
+
+Struct TRANSACTIONMANAGER_BASIC_INFORMATION
+	Guid TmIdentity
+	Bigint VirtualClock
+End_Struct
+
+Struct TRANSACTIONMANAGER_LOGPATH_INFORMATION
+	UInteger LogPathLength
+	UShort[1] LogPath
+	Short iMissingAlignment1
+End_Struct
+
+Struct TRANSACTIONMANAGER_LOG_INFORMATION
+	Guid LogIdentity
+End_Struct
+
+Struct TRANSACTIONMANAGER_OLDEST_INFORMATION
+	Guid OldestTransactionGuid
+End_Struct
+
+Struct TRANSACTIONMANAGER_RECOVERY_INFORMATION
+	UBigint LastRecoveredLsn
+End_Struct
+
+Struct TRANSACTION_BASIC_INFORMATION
+	Guid TransactionId
+	UInteger State
+	UInteger Outcome
+End_Struct
+
+Struct TRANSACTION_BIND_INFORMATION
+	Pointer TmHandle										// HANDLE
+End_Struct
+
+Struct TRANSACTION_ENLISTMENTS_INFORMATION
+	UInteger NumberOfEnlistments
+	TRANSACTION_ENLISTMENT_PAIR[1] EnlistmentPair
+End_Struct
+
+Struct TRANSACTION_ENLISTMENT_PAIR
+	Guid EnlistmentId
+	Guid ResourceManagerId
+End_Struct
+
+Struct TRANSACTION_LIST_ENTRY
+	Guid UOW
+End_Struct
+
+Struct TRANSACTION_LIST_INFORMATION
+	UInteger NumberOfTransactions
+	TRANSACTION_LIST_ENTRY[1] TransactionInformation
+End_Struct
+
+Struct TRANSACTION_PROPERTIES_INFORMATION
+	UInteger IsolationLevel
+	UInteger IsolationFlags
+	Bigint Timeout
+	UInteger Outcome
+	UInteger DescriptionLength
+	UShort[1] Description
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct TRANSACTION_SUPERIOR_ENLISTMENT_INFORMATION
+	TRANSACTION_ENLISTMENT_PAIR SuperiorEnlistmentPair
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-ums_create_thread_attributes
+Struct UMS_CREATE_THREAD_ATTRIBUTES
+	UInteger UmsVersion
+	Integer iMissingAlignment1
+	Pointer UmsContext										// Pointer*
+	Pointer UmsCompletionList								// Pointer*
+End_Struct
+
+Struct XSAVE_ARM64_SVE_HEADER
+	UInteger VectorLength
+	UInteger VectorRegisterOffset
+	UInteger PredicateRegisterOffset
+	UInteger[5] Reserved
+End_Struct
+
+Struct XSAVE_CET_U_FORMAT
+	UBigint Ia32CetUMsr
+	UBigint Ia32Pl3SspMsr
+End_Struct
+
+Struct _Anonymous_e__Struct_2829
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2830
+	UInteger BeginAddress
+	UInteger EndAddress
+	UInteger HandlerAddress
+	UInteger JumpTarget
+End_Struct
+
+Struct _Anonymous_e__Struct_2831
+	UInteger BeginAddress
+	UInteger EndAddress
+	UInteger HandlerAddress
+	UInteger JumpTarget
+End_Struct
+
+Struct _Anonymous_e__Struct_2832
+	UInteger BeginAddress
+	UInteger EndAddress
+	UInteger HandlerAddress
+	UInteger JumpTarget
+End_Struct
+
+Struct _Anonymous_e__Struct_2834
+	UBigint[11] GpNvRegs
+	Real[8] FpNvRegs
+End_Struct
+
+Struct _Anonymous_e__Struct_2840
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2842
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2844
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2846
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2848
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2850
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2852
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2854
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2856
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2858
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2860
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2862
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2864
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2866
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2868
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2870
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2872
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2874
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2876
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2878
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2880
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2883
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2885
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2888
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2907
+	IMAGE_AUX_SYMBOL_TOKEN_DEF TokenDef
+	UChar[2] rgbReserved
+	Short iMissingAlignment1
+End_Struct
+
+Struct _Anonymous_e__Struct_2912
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2914
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2917
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2919
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2920
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2922
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2924
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2926
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2928
+	UInteger _bitfield
+End_Struct
+
+Struct _Array_e__Struct_2899
+	UShort[4] Dimension
+End_Struct
+
+Struct _CRC_e__Struct_2902
+	UInteger crc
+	UChar[14] rgbReserved
+	Short iMissingAlignment1
+End_Struct
+
+Struct _CRC_e__Struct_2908
+	UInteger crc
+	UChar[16] rgbReserved
+End_Struct
+
+Struct _File_e__Struct_2900
+	UChar[18] Name
+End_Struct
+
+Struct _File_e__Struct_2905
+	UChar[20] Name
+End_Struct
+
+Struct _Function_e__Struct_2898
+	UInteger PointerToLinenumber
+	UInteger PointerToNextFunction
+End_Struct
+
+Struct _LnSz_e__Struct_2896
+	UShort Linenumber
+	UShort Size
+End_Struct
+
+Struct _Name_e__Struct_2890
+	UInteger Short
+	UInteger Long
+End_Struct
+
+Struct _Name_e__Struct_2892
+	UInteger Short
+	UInteger Long
+End_Struct
+
+Struct _Section_e__Struct_2901
+	UInteger Length
+	UShort NumberOfRelocations
+	UShort NumberOfLinenumbers
+	UInteger CheckSum
+	Short Number
+	UChar Selection
+	UChar bReserved
+	Short HighNumber
+	Short iMissingAlignment1
+End_Struct
+
+Struct _Section_e__Struct_2906
+	UInteger Length
+	UShort NumberOfRelocations
+	UShort NumberOfLinenumbers
+	UInteger CheckSum
+	Short Number
+	UChar Selection
+	UChar bReserved
+	Short HighNumber
+	UChar[2] rgbReserved
+End_Struct
+
+Struct _Sym_e__Struct_2894
+	UInteger TagIndex
+	_Misc_e__Union_2895 Misc
+	_FcnAry_e__Union_2897 FcnAry
+	UShort TvIndex
+	Short iMissingAlignment1
+End_Struct
+
+Struct _Sym_e__Struct_2904
+	UInteger WeakDefaultSymIndex
+	UInteger WeakSearchType
+	UChar[12] rgbReserved
+End_Struct
+
+Struct remoteMETAFILEPICT
+	Integer mm
+	Integer xExt
+	Integer yExt
+	Integer iMissingAlignment1
+	Pointer hMF												// userHMETAFILE*
+End_Struct
+
+Struct userBITMAP
+	Integer bmType
+	Integer bmWidth
+	Integer bmHeight
+	Integer bmWidthBytes
+	UShort bmPlanes
+	UShort bmBitsPixel
+	UInteger cbSize
+	UChar[1] pBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct userCLIPFORMAT
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1709 u
+End_Struct
+
+Struct userHBITMAP
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1715 u
+End_Struct
+
+Struct userHENHMETAFILE
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1714 u
+End_Struct
+
+Struct userHGLOBAL
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1711 u
+End_Struct
+
+Struct userHMETAFILE
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1712 u
+End_Struct
+
+Struct userHMETAFILEPICT
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1713 u
+End_Struct
+
+Struct userHPALETTE
+	Integer fContext
+	Integer iMissingAlignment1
+	_u_e__Struct_1716 u
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

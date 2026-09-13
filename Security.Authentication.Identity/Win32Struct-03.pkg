@@ -1,0 +1,872 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_mutual_auth_level
+Struct SECPKG_MUTUAL_AUTH_LEVEL
+	UInteger MutualAuthLevel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_nego2_info
+Struct SECPKG_NEGO2_INFO
+	UChar[16] AuthScheme
+	UInteger PackageFlags
+End_Struct
+
+Struct SECPKG_NTLM_TARGETINFO
+	UInteger Flags
+	Integer iMissingAlignment1
+	Pointer MsvAvNbComputerName								// PWSTR
+	Pointer MsvAvNbDomainName								// PWSTR
+	Pointer MsvAvDnsComputerName							// PWSTR
+	Pointer MsvAvDnsDomainName								// PWSTR
+	Pointer MsvAvDnsTreeName								// PWSTR
+	UInteger MsvAvFlags
+	FILETIME MsvAvTimestamp
+	Integer iMissingAlignment2
+	Pointer MsvAvTargetName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_parameters
+Struct SECPKG_PARAMETERS
+	UInteger Version
+	UInteger MachineState
+	UInteger SetupMode
+	Integer iMissingAlignment1
+	Pointer DomainSid										// PSID
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING DnsDomainName
+	Guid DomainGuid
+End_Struct
+
+Struct SECPKG_POST_LOGON_USER_INFO
+	UInteger Flags
+	LUID LogonId
+	LUID LinkedLogonId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_primary_cred
+Struct SECPKG_PRIMARY_CRED
+	LUID LogonId
+	LSA_UNICODE_STRING DownlevelName
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING Password
+	LSA_UNICODE_STRING OldPassword
+	Pointer UserSid											// PSID
+	UInteger Flags
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING DnsDomainName
+	LSA_UNICODE_STRING Upn
+	LSA_UNICODE_STRING LogonServer
+	LSA_UNICODE_STRING Spare1
+	LSA_UNICODE_STRING Spare2
+	LSA_UNICODE_STRING Spare3
+	LSA_UNICODE_STRING Spare4
+End_Struct
+
+Struct SECPKG_PRIMARY_CRED_EX
+	LUID LogonId
+	LSA_UNICODE_STRING DownlevelName
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING Password
+	LSA_UNICODE_STRING OldPassword
+	Pointer UserSid											// PSID
+	UInteger Flags
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING DnsDomainName
+	LSA_UNICODE_STRING Upn
+	LSA_UNICODE_STRING LogonServer
+	LSA_UNICODE_STRING Spare1
+	LSA_UNICODE_STRING Spare2
+	LSA_UNICODE_STRING Spare3
+	LSA_UNICODE_STRING Spare4
+	ULongPtr PackageId
+	LUID PrevLogonId
+	UInteger FlagsEx
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SECPKG_REDIRECTED_LOGON_BUFFER
+	Guid RedirectedLogonGuid
+	Pointer RedirectedLogonHandle							// HANDLE
+	Pointer Init											// PLSA_REDIRECTED_LOGON_INIT
+	Pointer Callback										// PLSA_REDIRECTED_LOGON_CALLBACK
+	Pointer CleanupCallback									// PLSA_REDIRECTED_LOGON_CLEANUP_CALLBACK
+	Pointer GetLogonCreds									// PLSA_REDIRECTED_LOGON_GET_LOGON_CREDS
+	Pointer GetSupplementalCreds							// PLSA_REDIRECTED_LOGON_GET_SUPP_CREDS
+	Pointer GetRedirectedLogonSid							// PLSA_REDIRECTED_LOGON_GET_SID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_serialized_oid
+Struct SECPKG_SERIALIZED_OID
+	UInteger OidLength
+	UInteger OidAttributes
+	UChar[32] OidValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_short_vector
+Struct SECPKG_SHORT_VECTOR
+	UInteger ShortArrayOffset
+	UShort ShortArrayCount
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_supplemental_cred
+Struct SECPKG_SUPPLEMENTAL_CRED
+	LSA_UNICODE_STRING PackageName
+	UInteger CredentialSize
+	Integer iMissingAlignment1
+	Pointer Credentials										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_supplemental_cred_array
+Struct SECPKG_SUPPLEMENTAL_CRED_ARRAY
+	UInteger CredentialCount
+	Integer iMissingAlignment1
+	SECPKG_SUPPLEMENTAL_CRED[1] Credentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_supplied_credential
+Struct SECPKG_SUPPLIED_CREDENTIAL
+	UShort cbHeaderLength
+	UShort cbStructureLength
+	SECPKG_SHORT_VECTOR UserName
+	SECPKG_SHORT_VECTOR DomainName
+	SECPKG_BYTE_VECTOR PackedCredentials
+	UInteger CredFlags
+End_Struct
+
+Struct SECPKG_SURROGATE_LOGON
+	UInteger Version
+	LUID SurrogateLogonID
+	UInteger EntryCount
+	Pointer Entries											// SECPKG_SURROGATE_LOGON_ENTRY*
+End_Struct
+
+Struct SECPKG_SURROGATE_LOGON_ENTRY
+	Guid Type
+	Pointer Data											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_targetinfo
+Struct SECPKG_TARGETINFO
+	Pointer DomainSid										// PSID
+	Pointer ComputerName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_user_function_table
+Struct SECPKG_USER_FUNCTION_TABLE
+	Pointer InstanceInit									// SpInstanceInitFn
+	Pointer InitUserModeContext								// SpInitUserModeContextFn
+	Pointer MakeSignature									// SpMakeSignatureFn
+	Pointer VerifySignature									// SpVerifySignatureFn
+	Pointer SealMessage										// SpSealMessageFn
+	Pointer UnsealMessage									// SpUnsealMessageFn
+	Pointer GetContextToken									// SpGetContextTokenFn
+	Pointer QueryContextAttributesA							// SpQueryContextAttributesFn
+	Pointer CompleteAuthToken								// SpCompleteAuthTokenFn
+	Pointer DeleteUserModeContext							// SpDeleteContextFn
+	Pointer FormatCredentials								// SpFormatCredentialsFn
+	Pointer MarshallSupplementalCreds						// SpMarshallSupplementalCredsFn
+	Pointer ExportContext									// SpExportSecurityContextFn
+	Pointer ImportContext									// SpImportSecurityContextFn
+	Pointer MarshalAttributeData							// SpMarshalAttributeDataFn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_wow_client_dll
+Struct SECPKG_WOW_CLIENT_DLL
+	SECURITY_STRING WowClientDllPath
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-security_logon_session_data
+Struct SECURITY_LOGON_SESSION_DATA
+	UInteger Size
+	LUID LogonId
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING LogonDomain
+	LSA_UNICODE_STRING AuthenticationPackage
+	UInteger LogonType
+	UInteger Session
+	Pointer Sid												// PSID
+	Bigint LogonTime
+	LSA_UNICODE_STRING LogonServer
+	LSA_UNICODE_STRING DnsDomainName
+	LSA_UNICODE_STRING Upn
+	UInteger UserFlags
+	Integer iMissingAlignment2
+	LSA_LAST_INTER_LOGON_INFO LastLogonInfo
+	LSA_UNICODE_STRING LogonScript
+	LSA_UNICODE_STRING ProfilePath
+	LSA_UNICODE_STRING HomeDirectory
+	LSA_UNICODE_STRING HomeDirectoryDrive
+	Bigint LogoffTime
+	Bigint KickOffTime
+	Bigint PasswordLastSet
+	Bigint PasswordCanChange
+	Bigint PasswordMustChange
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-security_package_options
+Struct SECURITY_PACKAGE_OPTIONS
+	UInteger Size
+	UInteger Type											// SECURITY_PACKAGE_OPTIONS_TYPE
+	UInteger Flags
+	UInteger SignatureSize
+	Pointer Signature										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-security_string
+Struct SECURITY_STRING
+	UShort Length
+	UShort MaximumLength
+	Integer iMissingAlignment1
+	Pointer Buffer											// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-security_user_data
+Struct SECURITY_USER_DATA
+	SECURITY_STRING UserName
+	SECURITY_STRING LogonDomainName
+	SECURITY_STRING LogonServer
+	Pointer pSid											// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_application_protocols
+Struct SEC_APPLICATION_PROTOCOLS
+	UInteger ProtocolListsSize
+	SEC_APPLICATION_PROTOCOL_LIST[1] ProtocolLists
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_application_protocol_list
+Struct SEC_APPLICATION_PROTOCOL_LIST
+	Integer ProtoNegoExt									// SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT
+	UShort ProtocolListSize
+	UChar[1] ProtocolList
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SEC_APP_SESSION_STATE
+	UShort AppSessionStateSize
+	UChar[1] AppSessionState
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_certificate_request_context
+Struct SEC_CERTIFICATE_REQUEST_CONTEXT
+	UChar cbCertificateRequestContext
+	UChar[1] rgCertificateRequestContext
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_channel_bindings
+Struct SEC_CHANNEL_BINDINGS
+	UInteger dwInitiatorAddrType
+	UInteger cbInitiatorLength
+	UInteger dwInitiatorOffset
+	UInteger dwAcceptorAddrType
+	UInteger cbAcceptorLength
+	UInteger dwAcceptorOffset
+	UInteger cbApplicationDataLength
+	UInteger dwApplicationDataOffset
+End_Struct
+
+Struct SEC_CHANNEL_BINDINGS_EX
+	UInteger magicNumber
+	UInteger flags
+	UInteger cbHeaderLength
+	UInteger cbStructureLength
+	UInteger dwInitiatorAddrType
+	UInteger cbInitiatorLength
+	UInteger dwInitiatorOffset
+	UInteger dwAcceptorAddrType
+	UInteger cbAcceptorLength
+	UInteger dwAcceptorOffset
+	UInteger cbApplicationDataLength
+	UInteger dwApplicationDataOffset
+End_Struct
+
+Struct SEC_CHANNEL_BINDINGS_RESULT
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_dtls_mtu
+Struct SEC_DTLS_MTU
+	UShort PathMTU
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_flags
+Struct SEC_FLAGS
+	UBigint Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_negotiation_info
+Struct SEC_NEGOTIATION_INFO
+	UInteger Size
+	UInteger NameLength
+	Pointer Name											// UShort*
+	Pointer Reserved										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_presharedkey
+Struct SEC_PRESHAREDKEY
+	UShort KeySize
+	UChar[1] Key
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_presharedkey_identity
+Struct SEC_PRESHAREDKEY_IDENTITY
+	UShort KeyIdentitySize
+	UChar[1] KeyIdentity
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SEC_SESSION_TICKET
+	UShort SessionTicketSize
+	UChar[1] SessionTicket
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_srtp_master_key_identifier
+Struct SEC_SRTP_MASTER_KEY_IDENTIFIER
+	UChar MasterKeyIdentifierSize
+	UChar[1] MasterKeyIdentifier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_srtp_protection_profiles
+Struct SEC_SRTP_PROTECTION_PROFILES
+	UShort ProfilesSize
+	UShort[1] ProfilesList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_token_binding
+Struct SEC_TOKEN_BINDING
+	UChar MajorVersion
+	UChar MinorVersion
+	UShort KeyParametersSize
+	UChar[1] KeyParameters
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_traffic_secrets
+Struct SEC_TRAFFIC_SECRETS
+	UShort[64] SymmetricAlgId
+	UShort[64] ChainingMode
+	UShort[64] HashAlgId
+	UShort KeySize
+	UShort IvSize
+	UShort MsgSequenceStart
+	UShort MsgSequenceEnd
+	Integer TrafficSecretType								// SEC_TRAFFIC_SECRET_TYPE
+	UShort TrafficSecretSize
+	UChar[1] TrafficSecret
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SEC_WINNT_AUTH_IDENTITY32
+	UInteger User
+	UInteger UserLength
+	UInteger Domain
+	UInteger DomainLength
+	UInteger Password
+	UInteger PasswordLength
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_winnt_auth_identity_ex2
+Struct SEC_WINNT_AUTH_IDENTITY_EX2
+	UInteger Version
+	UShort cbHeaderLength
+	Short iMissingAlignment1
+	UInteger cbStructureLength
+	UInteger UserOffset
+	UShort UserLength
+	Short iMissingAlignment2
+	UInteger DomainOffset
+	UShort DomainLength
+	Short iMissingAlignment3
+	UInteger PackedCredentialsOffset
+	UShort PackedCredentialsLength
+	Short iMissingAlignment4
+	UInteger Flags
+	UInteger PackageListOffset
+	UShort PackageListLength
+	Short iMissingAlignment5
+End_Struct
+
+Struct SEC_WINNT_AUTH_IDENTITY_EX32
+	UInteger Version
+	UInteger Length
+	UInteger User
+	UInteger UserLength
+	UInteger Domain
+	UInteger DomainLength
+	UInteger Password
+	UInteger PasswordLength
+	UInteger Flags
+	UInteger PackageList
+	UInteger PackageListLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_winnt_auth_identity_exa
+Struct SEC_WINNT_AUTH_IDENTITY_EXA
+	UInteger Version
+	UInteger Length
+	Pointer User											// UChar*
+	UInteger UserLength
+	Integer iMissingAlignment1
+	Pointer Domain											// UChar*
+	UInteger DomainLength
+	Integer iMissingAlignment2
+	Pointer Password										// UChar*
+	UInteger PasswordLength
+	UInteger Flags
+	Pointer PackageList										// UChar*
+	UInteger PackageListLength
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sec_winnt_auth_identity_exw
+Struct SEC_WINNT_AUTH_IDENTITY_EXW
+	UInteger Version
+	UInteger Length
+	Pointer User											// UShort*
+	UInteger UserLength
+	Integer iMissingAlignment1
+	Pointer Domain											// UShort*
+	UInteger DomainLength
+	Integer iMissingAlignment2
+	Pointer Password										// UShort*
+	UInteger PasswordLength
+	UInteger Flags
+	Pointer PackageList										// UShort*
+	UInteger PackageListLength
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SEC_WINNT_AUTH_IDENTITY_INFO
+	_Anonymous_e__Union_2071 Anonymous
+End_Struct
+
+Struct SEND_GENERIC_TLS_EXTENSION
+	UShort ExtensionType
+	UShort HandshakeType
+	UInteger Flags
+	UShort BufferSize
+	UChar[1] Buffer
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SE_ADT_ACCESS_REASON
+	UInteger AccessMask
+	UInteger[32] AccessReasons
+	UInteger ObjectTypeIndex
+	UInteger AccessGranted
+	Integer iMissingAlignment1
+	Pointer SecurityDescriptor								// PSECURITY_DESCRIPTOR
+End_Struct
+
+Struct SE_ADT_CLAIMS
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer Claims											// Pointer*
+End_Struct
+
+Struct SE_ADT_OBJECT_TYPE
+	Guid ObjectType
+	UShort Flags
+	UShort Level
+	UInteger AccessMask
+End_Struct
+
+Struct SE_ADT_PARAMETER_ARRAY
+	UInteger CategoryId
+	UInteger AuditId
+	UInteger ParameterCount
+	UInteger Length
+	UShort FlatSubCategoryId
+	UShort Type
+	UInteger Flags
+	SE_ADT_PARAMETER_ARRAY_ENTRY[32] Parameters
+End_Struct
+
+Struct SE_ADT_PARAMETER_ARRAY_ENTRY
+	Integer Type											// SE_ADT_PARAMETER_TYPE
+	UInteger Length
+	ULongPtr[2] Data
+	Pointer Address											// Pointer*
+End_Struct
+
+Struct SE_ADT_PARAMETER_ARRAY_EX
+	UInteger CategoryId
+	UInteger AuditId
+	UInteger Version
+	UInteger ParameterCount
+	UInteger Length
+	UShort FlatSubCategoryId
+	UShort Type
+	UInteger Flags
+	Integer iMissingAlignment1
+	SE_ADT_PARAMETER_ARRAY_ENTRY[32] Parameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/ns-slpublic-sl_activation_info_header
+Struct SL_ACTIVATION_INFO_HEADER
+	UInteger cbSize
+	Integer type											// SL_ACTIVATION_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/ns-slpublic-sl_ad_activation_info
+Struct SL_AD_ACTIVATION_INFO
+	SL_ACTIVATION_INFO_HEADER header
+	Pointer pwszProductKey									// PWSTR
+	Pointer pwszActivationObjectName						// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/ns-slpublic-sl_licensing_status
+Struct SL_LICENSING_STATUS
+	Guid SkuId
+	Integer eStatus											// SLLICENSINGSTATUS
+	UInteger dwGraceTime
+	UInteger dwTotalGraceDays
+	Integer hrReason										// HRESULT
+	UBigint qwValidityExpiration
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/slpublic/ns-slpublic-sl_nongenuine_ui_options
+Struct SL_NONGENUINE_UI_OPTIONS
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pComponentId									// Guid*
+	Integer hResultUI										// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SL_SYSTEM_POLICY_INFORMATION
+	Pointer[2] Reserved1									// Pointer*
+	UInteger[3] Reserved2
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/subauth/ns-subauth-sr_security_descriptor
+Struct SR_SECURITY_DESCRIPTOR
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer SecurityDescriptor								// UChar*
+End_Struct
+
+Struct SSL_CREDENTIAL_CERTIFICATE
+	UInteger cbPrivateKey
+	Integer iMissingAlignment1
+	Pointer pPrivateKey										// UChar*
+	UInteger cbCertificate
+	Integer iMissingAlignment2
+	Pointer pCertificate									// UChar*
+	Pointer pszPassword										// PSTR
+End_Struct
+
+Struct SUBSCRIBE_GENERIC_TLS_EXTENSION
+	UInteger Flags
+	UInteger SubscriptionsCount
+	TLS_EXTENSION_SUBSCRIPTION[1] Subscriptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secbuffer
+Struct SecBuffer
+	UInteger cbBuffer
+	UInteger BufferType
+	Pointer pvBuffer										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secbufferdesc
+Struct SecBufferDesc
+	UInteger ulVersion
+	UInteger cBuffers
+	Pointer pBuffers										// SecBuffer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_accesstoken
+Struct SecPkgContext_AccessToken
+	Pointer AccessToken										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_applicationprotocol
+Struct SecPkgContext_ApplicationProtocol
+	Integer ProtoNegoStatus									// SEC_APPLICATION_PROTOCOL_NEGOTIATION_STATUS
+	Integer ProtoNegoExt									// SEC_APPLICATION_PROTOCOL_NEGOTIATION_EXT
+	UChar ProtocolIdSize
+	UChar[255] ProtocolId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_authoritya
+Struct SecPkgContext_AuthorityA
+	Pointer sAuthorityName									// Char*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_authorityw
+Struct SecPkgContext_AuthorityW
+	Pointer sAuthorityName									// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_authzid
+Struct SecPkgContext_AuthzID
+	UInteger AuthzIDLength
+	Integer iMissingAlignment1
+	Pointer AuthzID											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_bindings
+Struct SecPkgContext_Bindings
+	UInteger BindingsLength
+	Integer iMissingAlignment1
+	Pointer Bindings										// SEC_CHANNEL_BINDINGS*
+End_Struct
+
+Struct SecPkgContext_CertInfo
+	UInteger dwVersion
+	UInteger cbSubjectName
+	Pointer pwszSubjectName									// PWSTR
+	UInteger cbIssuerName
+	Integer iMissingAlignment1
+	Pointer pwszIssuerName									// PWSTR
+	UInteger dwKeySize
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SecPkgContext_CertificateValidationResult
+	UInteger dwChainErrorStatus
+	Integer hrVerifyChainStatus								// HRESULT
+End_Struct
+
+Struct SecPkgContext_Certificates
+	UInteger cCertificates
+	UInteger cbCertificateChain
+	Pointer pbCertificateChain								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_cipherinfo
+Struct SecPkgContext_CipherInfo
+	UInteger dwVersion
+	UInteger dwProtocol
+	UInteger dwCipherSuite
+	UInteger dwBaseCipherSuite
+	UShort[64] szCipherSuite
+	UShort[64] szCipher
+	UInteger dwCipherLen
+	UInteger dwCipherBlockLen
+	UShort[64] szHash
+	UInteger dwHashLen
+	UShort[64] szExchange
+	UInteger dwMinExchangeLen
+	UInteger dwMaxExchangeLen
+	UShort[64] szCertificate
+	UInteger dwKeyType
+End_Struct
+
+Struct SecPkgContext_ClientCertPolicyResult
+	Integer dwPolicyResult									// HRESULT
+	Guid guidPolicyId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_clientspecifiedtarget
+Struct SecPkgContext_ClientSpecifiedTarget
+	Pointer sTargetName										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_connectioninfo
+Struct SecPkgContext_ConnectionInfo
+	UInteger dwProtocol
+	UInteger aiCipher										// ALG_ID
+	UInteger dwCipherStrength
+	UInteger aiHash											// ALG_ID
+	UInteger dwHashStrength
+	UInteger aiExch											// ALG_ID
+	UInteger dwExchStrength
+End_Struct
+
+Struct SecPkgContext_ConnectionInfoEx
+	UInteger dwVersion
+	UInteger dwProtocol
+	UShort[64] szCipher
+	UInteger dwCipherStrength
+	UShort[64] szHash
+	UInteger dwHashStrength
+	UShort[64] szExchange
+	UInteger dwExchStrength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_credinfo
+Struct SecPkgContext_CredInfo
+	Integer CredClass										// SECPKG_CRED_CLASS
+	UInteger IsPromptingNeeded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-_secpkgcontext_credentialnamea
+Struct SecPkgContext_CredentialNameA
+	UInteger CredentialType
+	Integer iMissingAlignment1
+	Pointer sCredentialName									// Char*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_credentialnamew
+Struct SecPkgContext_CredentialNameW
+	UInteger CredentialType
+	Integer iMissingAlignment1
+	Pointer sCredentialName									// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_dceinfo
+Struct SecPkgContext_DceInfo
+	UInteger AuthzSvc
+	Integer iMissingAlignment1
+	Pointer pPac											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_eapkeyblock
+Struct SecPkgContext_EapKeyBlock
+	UChar[128] rgbKeys
+	UChar[64] rgbIVs
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_eapprfinfo
+Struct SecPkgContext_EapPrfInfo
+	UInteger dwVersion
+	UInteger cbPrfData
+	Pointer pbPrfData										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_earlystart
+Struct SecPkgContext_EarlyStart
+	UInteger dwEarlyStartFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_flags
+Struct SecPkgContext_Flags
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_issuerlistinfoex
+Struct SecPkgContext_IssuerListInfoEx
+	Pointer aIssuers										// CRYPT_INTEGER_BLOB*
+	UInteger cIssuers
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_keyinfoa
+Struct SecPkgContext_KeyInfoA
+	Pointer sSignatureAlgorithmName							// Char*
+	Pointer sEncryptAlgorithmName							// Char*
+	UInteger KeySize
+	UInteger SignatureAlgorithm
+	UInteger EncryptAlgorithm
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_keyinfow
+Struct SecPkgContext_KeyInfoW
+	Pointer sSignatureAlgorithmName							// UShort*
+	Pointer sEncryptAlgorithmName							// UShort*
+	UInteger KeySize
+	UInteger SignatureAlgorithm
+	UInteger EncryptAlgorithm
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_keyingmaterial
+Struct SecPkgContext_KeyingMaterial
+	UInteger cbKeyingMaterial
+	Integer iMissingAlignment1
+	Pointer pbKeyingMaterial								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-secpkgcontext_keyingmaterialinfo
+Struct SecPkgContext_KeyingMaterialInfo
+	UShort cbLabel
+	UChar[6] cMissingAlignment1
+	Pointer pszLabel										// PSTR
+	UShort cbContextValue
+	UChar[6] cMissingAlignment2
+	Pointer pbContextValue									// UChar*
+	UInteger cbKeyingMaterial
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SecPkgContext_KeyingMaterial_Inproc
+	UShort cbLabel
+	UChar[6] cMissingAlignment1
+	Pointer pszLabel										// PSTR
+	UShort cbContextValue
+	UChar[6] cMissingAlignment2
+	Pointer pbContextValue									// UChar*
+	UInteger cbKeyingMaterial
+	Integer iMissingAlignment3
+	Pointer pbKeyingMaterial								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_lastclienttokenstatus
+Struct SecPkgContext_LastClientTokenStatus
+	Integer LastClientTokenStatus							// SECPKG_ATTR_LCT_STATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_lifespan
+Struct SecPkgContext_Lifespan
+	Bigint tsStart
+	Bigint tsExpiry
+End_Struct
+
+Struct SecPkgContext_LocalCredentialInfo
+	UInteger cbCertificateChain
+	Integer iMissingAlignment1
+	Pointer pbCertificateChain								// UChar*
+	UInteger cCertificates
+	UInteger fFlags
+	UInteger dwBits
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_logofftime
+Struct SecPkgContext_LogoffTime
+	Bigint tsLogoffTime
+End_Struct
+
+Struct SecPkgContext_MappedCredAttr
+	UInteger dwAttribute
+	Integer iMissingAlignment1
+	Pointer pvBuffer										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_namesa
+Struct SecPkgContext_NamesA
+	Pointer sUserName										// Char*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_namesw
+Struct SecPkgContext_NamesW
+	Pointer sUserName										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-_secpkgcontext_nativenamesa
+Struct SecPkgContext_NativeNamesA
+	Pointer sClientName										// Char*
+	Pointer sServerName										// Char*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_nativenamesw
+Struct SecPkgContext_NativeNamesW
+	Pointer sClientName										// UShort*
+	Pointer sServerName										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-secpkgcontext_negokeys
+Struct SecPkgContext_NegoKeys
+	UInteger KeyType
+	UShort KeyLength
+	Short iMissingAlignment1
+	Pointer KeyValue										// UChar*
+	UInteger VerifyKeyType
+	UShort VerifyKeyLength
+	Short iMissingAlignment2
+	Pointer VerifyKeyValue									// UChar*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

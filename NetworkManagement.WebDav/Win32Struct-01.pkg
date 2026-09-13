@@ -1,0 +1,30 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/ns-davclnt-dav_callback_auth_blob
+Struct DAV_CALLBACK_AUTH_BLOB
+	Pointer pBuffer											// Pointer*
+	UInteger ulSize
+	UInteger ulType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/ns-davclnt-dav_callback_auth_unp
+Struct DAV_CALLBACK_AUTH_UNP
+	Pointer pszUserName										// PWSTR
+	UInteger ulUserNameLength
+	Integer iMissingAlignment1
+	Pointer pszPassword										// PWSTR
+	UInteger ulPasswordLength
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/davclnt/ns-davclnt-dav_callback_cred
+Struct DAV_CALLBACK_CRED
+	DAV_CALLBACK_AUTH_BLOB AuthBlob
+	DAV_CALLBACK_AUTH_UNP UNPBlob
+	Integer bAuthBlobValid									// BOOL
+	Integer bSave											// BOOL
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

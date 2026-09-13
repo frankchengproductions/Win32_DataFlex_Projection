@@ -1,0 +1,910 @@
+Use UI
+
+Struct _Anonymous_e__Union_2240
+	// _FacialFeatures_e__Struct_2241 FacialFeatures // (348)
+	// _Iris_e__Struct_2243 Iris // (52)
+	_FacialFeatures_e__Struct_2241 FacialFeatures
+End_Struct
+
+Struct _Parameters_e__Union_2236
+	// _Unclaimed_e__Struct_2237 Unclaimed // (8)
+	// _UnclaimedIdentify_e__Struct_2238 UnclaimedIdentify // (88)
+	// _Error_e__Struct_2239 Error // (4)
+	_UnclaimedIdentify_e__Struct_2238 UnclaimedIdentify
+End_Struct
+
+Struct _Parameters_e__Union_2272
+	// _Verify_e__Struct_2273 Verify // (8)
+	// _Identify_e__Struct_2274 Identify // (84)
+	// _EnrollBegin_e__Struct_2275 EnrollBegin // (1)
+	// _EnrollCapture_e__Struct_2276 EnrollCapture // (4)
+	// _EnrollCommit_e__Struct_2277 EnrollCommit // (80)
+	// _EnumEnrollments_e__Struct_2278 EnumEnrollments // (96)
+	// _CaptureSample_e__Struct_2279 CaptureSample // (24)
+	// _DeleteTemplate_e__Struct_2280 DeleteTemplate // (80)
+	// _GetProperty_e__Struct_2281 GetProperty // (104)
+	// _SetProperty_e__Struct_2282 SetProperty // (104)
+	// _GetEvent_e__Struct_2283 GetEvent // (92)
+	// _ControlUnit_e__Struct_2284 ControlUnit // (56)
+	// _EnumServiceProviders_e__Struct_2285 EnumServiceProviders // (16)
+	// _EnumBiometricUnits_e__Struct_2286 EnumBiometricUnits // (16)
+	// _EnumDatabases_e__Struct_2287 EnumDatabases // (16)
+	// _VerifyAndReleaseTicket_e__Struct_2288 VerifyAndReleaseTicket // (16)
+	// _IdentifyAndReleaseTicket_e__Struct_2289 IdentifyAndReleaseTicket // (96)
+	// _EnrollSelect_e__Struct_2290 EnrollSelect // (8)
+	// _MonitorPresence_e__Struct_2291 MonitorPresence // (24)
+	// _GetProtectionPolicy_e__Struct_2292 GetProtectionPolicy // (320)
+	// _NotifyUnitStatusChange_e__Struct_2293 NotifyUnitStatusChange // (8)
+	_GetProtectionPolicy_e__Struct_2292 GetProtectionPolicy
+End_Struct
+
+Struct _Specific_e__Union_2245
+	// UInteger Null // (4)
+	// _FacialFeatures_e__Struct_2246 FacialFeatures // (1072)
+	// _Fingerprint_e__Struct_2248 Fingerprint // (4)
+	// _Iris_e__Struct_2249 Iris // (28)
+	// _Voice_e__Struct_2250 Voice // (4)
+	_FacialFeatures_e__Struct_2246 FacialFeatures
+End_Struct
+
+Struct _Specific_e__Union_2251
+	// UInteger Null // (4)
+	// _FacialFeatures_e__Struct_2252 FacialFeatures // (8)
+	// _Fingerprint_e__Struct_2254 Fingerprint // (28)
+	// _Iris_e__Struct_2256 Iris // (8)
+	// _Voice_e__Struct_2258 Voice // (8)
+	_Fingerprint_e__Struct_2254 Fingerprint
+End_Struct
+
+Struct _Specific_e__Union_2260
+	// UInteger Null // (4)
+	// _FacialFeatures_e__Struct_2261 FacialFeatures // (4)
+	// _Fingerprint_e__Struct_2262 Fingerprint // (4)
+	// _Iris_e__Struct_2263 Iris // (4)
+	// _Voice_e__Struct_2264 Voice // (4)
+	UInteger Null
+End_Struct
+
+Struct _Specific_e__Union_2265
+	// UInteger Null // (4)
+	// _FacialFeatures_e__Struct_2266 FacialFeatures // (348)
+	// _Fingerprint_e__Struct_2268 Fingerprint // (24)
+	// _Iris_e__Struct_2269 Iris // (96)
+	// _Voice_e__Struct_2271 Voice // (4)
+	_FacialFeatures_e__Struct_2266 FacialFeatures
+End_Struct
+
+Struct _Value_e__Union_1213
+	// UInteger Null // (4)
+	// UInteger Wildcard // (4)
+	// Guid TemplateGuid // (16)
+	// _AccountSid_e__Struct_1214 AccountSid // (72)
+	// UChar[32] SecureId // (32)
+	_AccountSid_e__Struct_1214 AccountSid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-account-policy
+Struct WINBIO_ACCOUNT_POLICY
+	WINBIO_IDENTITY Identity
+	Integer AntiSpoofBehavior								// WINBIO_ANTI_SPOOF_POLICY_ACTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio_adapter/ns-winbio_adapter-winbio_adapter_interface_version
+Struct WINBIO_ADAPTER_INTERFACE_VERSION
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-anti-spoof-policy
+Struct WINBIO_ANTI_SPOOF_POLICY
+	Integer Action											// WINBIO_ANTI_SPOOF_POLICY_ACTION
+	Integer Source											// WINBIO_POLICY_SOURCE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio/ns-winbio-winbio_async_result
+Struct WINBIO_ASYNC_RESULT
+	UInteger SessionHandle
+	UInteger Operation
+	UBigint SequenceNumber
+	Bigint TimeStamp
+	Integer ApiStatus										// HRESULT
+	UInteger UnitId
+	Pointer UserData										// Pointer*
+	_Parameters_e__Union_2272 Parameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bdb-ansi-381-header
+Struct WINBIO_BDB_ANSI_381_HEADER
+	UBigint RecordLength
+	UInteger FormatIdentifier
+	UInteger VersionNumber
+	WINBIO_REGISTERED_FORMAT ProductId
+	UShort CaptureDeviceId
+	UShort ImageAcquisitionLevel
+	UShort HorizontalScanResolution
+	UShort VerticalScanResolution
+	UShort HorizontalImageResolution
+	UShort VerticalImageResolution
+	UChar ElementCount
+	UChar ScaleUnits
+	UChar PixelDepth
+	UChar ImageCompressionAlg
+	UShort Reserved
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bdb-ansi-381-record
+Struct WINBIO_BDB_ANSI_381_RECORD
+	UInteger BlockLength
+	UShort HorizontalLineLength
+	UShort VerticalLineLength
+	UChar Position
+	UChar CountOfViews
+	UChar ViewNumber
+	UChar ImageQuality
+	UChar ImpressionType
+	UChar Reserved
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bir
+Struct WINBIO_BIR
+	WINBIO_BIR_DATA HeaderBlock
+	WINBIO_BIR_DATA StandardDataBlock
+	WINBIO_BIR_DATA VendorDataBlock
+	WINBIO_BIR_DATA SignatureBlock
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bir-data
+Struct WINBIO_BIR_DATA
+	UInteger Size
+	UInteger Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bir-header
+Struct WINBIO_BIR_HEADER
+	UShort ValidFields
+	UChar HeaderVersion
+	UChar PatronHeaderVersion
+	UChar DataFlags
+	UChar[3] cMissingAlignment1
+	UInteger Type
+	UChar Subtype
+	UChar Purpose
+	Char DataQuality
+	UChar[1] cMissingAlignment2
+	Bigint CreationDate
+	_ValidityPeriod_e__Struct_2235 ValidityPeriod
+	WINBIO_REGISTERED_FORMAT BiometricDataFormat
+	WINBIO_REGISTERED_FORMAT ProductId
+End_Struct
+
+Struct WINBIO_BLANK_PAYLOAD
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-bsp-schema
+Struct WINBIO_BSP_SCHEMA
+	UInteger BiometricFactor
+	Guid BspId
+	UShort[256] Description
+	UShort[256] Vendor
+	WINBIO_VERSION Version
+End_Struct
+
+Struct WINBIO_CALIBRATION_INFO
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	WINBIO_DATA CalibrationData
+End_Struct
+
+Struct WINBIO_CAPTURE_DATA
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	UInteger SensorStatus
+	UInteger RejectDetail
+	WINBIO_DATA CaptureData
+End_Struct
+
+Struct WINBIO_CAPTURE_PARAMETERS
+	UInteger PayloadSize
+	UChar Purpose
+	UChar[1] cMissingAlignment1
+	WINBIO_REGISTERED_FORMAT Format
+	Short iMissingAlignment2
+	Guid VendorFormat
+	UChar Flags
+	UChar[3] cMissingAlignment3
+End_Struct
+
+Struct WINBIO_CONNECTED_SENSOR
+	UInteger biometricType
+	Integer isEnhancedSignInSecurityCapable					// BOOL
+End_Struct
+
+Struct WINBIO_DATA
+	UInteger Size
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct WINBIO_DIAGNOSTICS
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	UInteger SensorStatus
+	WINBIO_DATA VendorDiagnostics
+End_Struct
+
+Struct WINBIO_ENCRYPTED_CAPTURE_PARAMS
+	UInteger PayloadSize
+	UChar Purpose
+	UChar[1] cMissingAlignment1
+	WINBIO_REGISTERED_FORMAT Format
+	Short iMissingAlignment2
+	Guid VendorFormat
+	UChar Flags
+	UChar[3] cMissingAlignment3
+	UInteger NonceSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio_adapter/ns-winbio_adapter-winbio_engine_interface
+Struct WINBIO_ENGINE_INTERFACE
+	WINBIO_ADAPTER_INTERFACE_VERSION Version
+	UInteger Type
+	ULongPtr Size
+	Guid AdapterId
+	Pointer Attach											// PIBIO_ENGINE_ATTACH_FN
+	Pointer Detach											// PIBIO_ENGINE_DETACH_FN
+	Pointer ClearContext									// PIBIO_ENGINE_CLEAR_CONTEXT_FN
+	Pointer QueryPreferredFormat							// PIBIO_ENGINE_QUERY_PREFERRED_FORMAT_FN
+	Pointer QueryIndexVectorSize							// PIBIO_ENGINE_QUERY_INDEX_VECTOR_SIZE_FN
+	Pointer QueryHashAlgorithms								// PIBIO_ENGINE_QUERY_HASH_ALGORITHMS_FN
+	Pointer SetHashAlgorithm								// PIBIO_ENGINE_SET_HASH_ALGORITHM_FN
+	Pointer QuerySampleHint									// PIBIO_ENGINE_QUERY_SAMPLE_HINT_FN
+	Pointer AcceptSampleData								// PIBIO_ENGINE_ACCEPT_SAMPLE_DATA_FN
+	Pointer ExportEngineData								// PIBIO_ENGINE_EXPORT_ENGINE_DATA_FN
+	Pointer VerifyFeatureSet								// PIBIO_ENGINE_VERIFY_FEATURE_SET_FN
+	Pointer IdentifyFeatureSet								// PIBIO_ENGINE_IDENTIFY_FEATURE_SET_FN
+	Pointer CreateEnrollment								// PIBIO_ENGINE_CREATE_ENROLLMENT_FN
+	Pointer UpdateEnrollment								// PIBIO_ENGINE_UPDATE_ENROLLMENT_FN
+	Pointer GetEnrollmentStatus								// PIBIO_ENGINE_GET_ENROLLMENT_STATUS_FN
+	Pointer GetEnrollmentHash								// PIBIO_ENGINE_GET_ENROLLMENT_HASH_FN
+	Pointer CheckForDuplicate								// PIBIO_ENGINE_CHECK_FOR_DUPLICATE_FN
+	Pointer CommitEnrollment								// PIBIO_ENGINE_COMMIT_ENROLLMENT_FN
+	Pointer DiscardEnrollment								// PIBIO_ENGINE_DISCARD_ENROLLMENT_FN
+	Pointer ControlUnit										// PIBIO_ENGINE_CONTROL_UNIT_FN
+	Pointer ControlUnitPrivileged							// PIBIO_ENGINE_CONTROL_UNIT_PRIVILEGED_FN
+	Pointer NotifyPowerChange								// PIBIO_ENGINE_NOTIFY_POWER_CHANGE_FN
+	Pointer Reserved_1										// PIBIO_ENGINE_RESERVED_1_FN
+	Pointer PipelineInit									// PIBIO_ENGINE_PIPELINE_INIT_FN
+	Pointer PipelineCleanup									// PIBIO_ENGINE_PIPELINE_CLEANUP_FN
+	Pointer Activate										// PIBIO_ENGINE_ACTIVATE_FN
+	Pointer Deactivate										// PIBIO_ENGINE_DEACTIVATE_FN
+	Pointer QueryExtendedInfo								// PIBIO_ENGINE_QUERY_EXTENDED_INFO_FN
+	Pointer IdentifyAll										// PIBIO_ENGINE_IDENTIFY_ALL_FN
+	Pointer SetEnrollmentSelector							// PIBIO_ENGINE_SET_ENROLLMENT_SELECTOR_FN
+	Pointer SetEnrollmentParameters							// PIBIO_ENGINE_SET_ENROLLMENT_PARAMETERS_FN
+	Pointer QueryExtendedEnrollmentStatus					// PIBIO_ENGINE_QUERY_EXTENDED_ENROLLMENT_STATUS_FN
+	Pointer RefreshCache									// PIBIO_ENGINE_REFRESH_CACHE_FN
+	Pointer SelectCalibrationFormat							// PIBIO_ENGINE_SELECT_CALIBRATION_FORMAT_FN
+	Pointer QueryCalibrationData							// PIBIO_ENGINE_QUERY_CALIBRATION_DATA_FN
+	Pointer SetAccountPolicy								// PIBIO_ENGINE_SET_ACCOUNT_POLICY_FN
+	Pointer CreateKey										// PIBIO_ENGINE_CREATE_KEY_FN
+	Pointer IdentifyFeatureSetSecure						// PIBIO_ENGINE_IDENTIFY_FEATURE_SET_SECURE_FN
+	Pointer AcceptPrivateSensorTypeInfo						// PIBIO_ENGINE_ACCEPT_PRIVATE_SENSOR_TYPE_INFO_FN
+	Pointer CreateEnrollmentAuthenticated					// PIBIO_ENGINE_CREATE_ENROLLMENT_AUTHENTICATED_FN
+	Pointer IdentifyFeatureSetAuthenticated					// PIBIO_ENGINE_IDENTIFY_FEATURE_SET_AUTHENTICATED_FN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-event-constants
+Struct WINBIO_EVENT
+	UInteger Type
+	_Parameters_e__Union_2236 Parameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-extended-engine-info
+Struct WINBIO_EXTENDED_ENGINE_INFO
+	UInteger GenericEngineCapabilities
+	UInteger Factor
+	_Specific_e__Union_2251 Specific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-extended-enrollment-parameters
+Struct WINBIO_EXTENDED_ENROLLMENT_PARAMETERS
+	ULongPtr Size
+	UChar SubFactor
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-extended-enrollment-status
+Struct WINBIO_EXTENDED_ENROLLMENT_STATUS
+	Integer TemplateStatus									// HRESULT
+	UInteger RejectDetail
+	UInteger PercentComplete
+	UInteger Factor
+	UChar SubFactor
+	UChar[7] cMissingAlignment1
+	_Specific_e__Union_2265 Specific
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-extended-sensor-info
+Struct WINBIO_EXTENDED_SENSOR_INFO
+	UInteger GenericSensorCapabilities
+	UInteger Factor
+	_Specific_e__Union_2245 Specific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-extended-storage-info
+Struct WINBIO_EXTENDED_STORAGE_INFO
+	UInteger GenericStorageCapabilities
+	UInteger Factor
+	_Specific_e__Union_2260 Specific
+End_Struct
+
+Struct WINBIO_EXTENDED_UNIT_STATUS
+	UInteger Availability
+	UInteger ReasonCode
+End_Struct
+
+Struct WINBIO_FP_BU_STATE
+	Integer SensorAttached									// BOOL
+	Integer CreationResult									// HRESULT
+End_Struct
+
+Struct WINBIO_FRAMEWORK_INTERFACE
+	WINBIO_ADAPTER_INTERFACE_VERSION Version
+	UInteger Type
+	ULongPtr Size
+	Guid AdapterId
+	Pointer SetUnitStatus									// PIBIO_FRAMEWORK_SET_UNIT_STATUS_FN
+	Pointer VsmStorageAttach								// PIBIO_STORAGE_ATTACH_FN
+	Pointer VsmStorageDetach								// PIBIO_STORAGE_DETACH_FN
+	Pointer VsmStorageClearContext							// PIBIO_STORAGE_CLEAR_CONTEXT_FN
+	Pointer VsmStorageCreateDatabase						// PIBIO_STORAGE_CREATE_DATABASE_FN
+	Pointer VsmStorageOpenDatabase							// PIBIO_STORAGE_OPEN_DATABASE_FN
+	Pointer VsmStorageCloseDatabase							// PIBIO_STORAGE_CLOSE_DATABASE_FN
+	Pointer VsmStorageDeleteRecord							// PIBIO_STORAGE_DELETE_RECORD_FN
+	Pointer VsmStorageNotifyPowerChange						// PIBIO_STORAGE_NOTIFY_POWER_CHANGE_FN
+	Pointer VsmStoragePipelineInit							// PIBIO_STORAGE_PIPELINE_INIT_FN
+	Pointer VsmStoragePipelineCleanup						// PIBIO_STORAGE_PIPELINE_CLEANUP_FN
+	Pointer VsmStorageActivate								// PIBIO_STORAGE_ACTIVATE_FN
+	Pointer VsmStorageDeactivate							// PIBIO_STORAGE_DEACTIVATE_FN
+	Pointer VsmStorageQueryExtendedInfo						// PIBIO_STORAGE_QUERY_EXTENDED_INFO_FN
+	Pointer VsmStorageCacheClear							// PIBIO_FRAMEWORK_VSM_CACHE_CLEAR_FN
+	Pointer VsmStorageCacheImportBegin						// PIBIO_FRAMEWORK_VSM_CACHE_IMPORT_BEGIN_FN
+	Pointer VsmStorageCacheImportNext						// PIBIO_FRAMEWORK_VSM_CACHE_IMPORT_NEXT_FN
+	Pointer VsmStorageCacheImportEnd						// PIBIO_FRAMEWORK_VSM_CACHE_IMPORT_END_FN
+	Pointer VsmStorageCacheExportBegin						// PIBIO_FRAMEWORK_VSM_CACHE_EXPORT_BEGIN_FN
+	Pointer VsmStorageCacheExportNext						// PIBIO_FRAMEWORK_VSM_CACHE_EXPORT_NEXT_FN
+	Pointer VsmStorageCacheExportEnd						// PIBIO_FRAMEWORK_VSM_CACHE_EXPORT_END_FN
+	Pointer VsmSensorAttach									// PIBIO_SENSOR_ATTACH_FN
+	Pointer VsmSensorDetach									// PIBIO_SENSOR_DETACH_FN
+	Pointer VsmSensorClearContext							// PIBIO_SENSOR_CLEAR_CONTEXT_FN
+	Pointer VsmSensorPushDataToEngine						// PIBIO_SENSOR_PUSH_DATA_TO_ENGINE_FN
+	Pointer VsmSensorNotifyPowerChange						// PIBIO_SENSOR_NOTIFY_POWER_CHANGE_FN
+	Pointer VsmSensorPipelineInit							// PIBIO_SENSOR_PIPELINE_INIT_FN
+	Pointer VsmSensorPipelineCleanup						// PIBIO_SENSOR_PIPELINE_CLEANUP_FN
+	Pointer VsmSensorActivate								// PIBIO_SENSOR_ACTIVATE_FN
+	Pointer VsmSensorDeactivate								// PIBIO_SENSOR_DEACTIVATE_FN
+	Pointer VsmSensorAsyncImportRawBuffer					// PIBIO_SENSOR_ASYNC_IMPORT_RAW_BUFFER_FN
+	Pointer VsmSensorAsyncImportSecureBuffer				// PIBIO_SENSOR_ASYNC_IMPORT_SECURE_BUFFER_FN
+	Pointer Reserved1										// PIBIO_FRAMEWORK_VSM_STORAGE_RESERVED_1_FN
+	Pointer Reserved2										// PIBIO_FRAMEWORK_VSM_STORAGE_RESERVED_2_FN
+	Pointer Reserved3										// PIBIO_FRAMEWORK_VSM_STORAGE_RESERVED_3_FN
+	Pointer Reserved4										// PIBIO_STORAGE_RESERVED_1_FN
+	Pointer Reserved5										// PIBIO_STORAGE_RESERVED_2_FN
+	Pointer AllocateMemory									// PIBIO_FRAMEWORK_ALLOCATE_MEMORY_FN
+	Pointer FreeMemory										// PIBIO_FRAMEWORK_FREE_MEMORY_FN
+	Pointer GetProperty										// PIBIO_FRAMEWORK_GET_PROPERTY_FN
+	Pointer LockAndValidateSecureBuffer						// PIBIO_FRAMEWORK_LOCK_AND_VALIDATE_SECURE_BUFFER_FN
+	Pointer ReleaseSecureBuffer								// PIBIO_FRAMEWORK_RELEASE_SECURE_BUFFER_FN
+	Pointer QueryAuthorizedEnrollments						// PIBIO_FRAMEWORK_VSM_QUERY_AUTHORIZED_ENROLLMENTS_FN
+	Pointer DecryptSample									// PIBIO_FRAMEWORK_VSM_DECRYPT_SAMPLE_FN
+End_Struct
+
+Struct WINBIO_GESTURE_METADATA
+	ULongPtr Size
+	UInteger BiometricType
+	UInteger MatchType
+	UInteger ProtectionType
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WINBIO_GET_INDICATOR
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	UInteger IndicatorStatus
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-identity
+Struct WINBIO_IDENTITY
+	UInteger Type
+	_Value_e__Union_1213 Value
+End_Struct
+
+Struct WINBIO_NOTIFY_WAKE
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	UInteger Reason
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio_adapter/ns-winbio_adapter-winbio_pipeline
+Struct WINBIO_PIPELINE
+	Pointer SensorHandle									// HANDLE
+	Pointer EngineHandle									// HANDLE
+	Pointer StorageHandle									// HANDLE
+	Pointer SensorInterface									// WINBIO_SENSOR_INTERFACE*
+	Pointer EngineInterface									// WINBIO_ENGINE_INTERFACE*
+	Pointer StorageInterface								// WINBIO_STORAGE_INTERFACE*
+	Pointer SensorContext									// WINIBIO_SENSOR_CONTEXT*
+	Pointer EngineContext									// WINIBIO_ENGINE_CONTEXT*
+	Pointer StorageContext									// WINIBIO_STORAGE_CONTEXT*
+	Pointer FrameworkInterface								// WINBIO_FRAMEWORK_INTERFACE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-presence
+Struct WINBIO_PRESENCE
+	UInteger Factor
+	UChar SubFactor
+	UChar[3] cMissingAlignment1
+	Integer Status											// HRESULT
+	UInteger RejectDetail
+	WINBIO_IDENTITY Identity
+	Integer iMissingAlignment2
+	UBigint TrackingId
+	UBigint Ticket
+	WINBIO_PRESENCE_PROPERTIES Properties
+	_Authorization_e__Struct_2244 Authorization
+End_Struct
+
+Struct WINBIO_PRESENCE_PROPERTIES
+	_Anonymous_e__Union_2240 Anonymous
+End_Struct
+
+Struct WINBIO_PRIVATE_SENSOR_TYPE_INFO
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	WINBIO_DATA PrivateSensorTypeInfo
+End_Struct
+
+Struct WINBIO_PROTECTION_POLICY
+	UInteger Version
+	WINBIO_IDENTITY Identity
+	Guid DatabaseId
+	UBigint UserState
+	ULongPtr PolicySize
+	UChar[128] Policy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-registered-format
+Struct WINBIO_REGISTERED_FORMAT
+	UShort Owner
+	UShort Type
+End_Struct
+
+Struct WINBIO_SECURE_BUFFER_HEADER_V1
+	UInteger Type
+	UInteger Size
+	UInteger Flags
+	Integer iMissingAlignment1
+	UBigint ValidationTag
+End_Struct
+
+Struct WINBIO_SECURE_CONNECTION_DATA
+	UInteger Size
+	UShort Version
+	UShort Flags
+	UInteger ModelCertificateSize
+	UInteger IntermediateCA1Size
+	UInteger IntermediateCA2Size
+End_Struct
+
+Struct WINBIO_SECURE_CONNECTION_PARAMS
+	UInteger PayloadSize
+	UShort Version
+	UShort Flags
+End_Struct
+
+Struct WINBIO_SENSOR_ATTRIBUTES
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	WINBIO_VERSION WinBioVersion
+	UInteger SensorType
+	UInteger SensorSubType
+	UInteger Capabilities
+	UShort[256] ManufacturerName
+	UShort[256] ModelName
+	UShort[256] SerialNumber
+	WINBIO_VERSION FirmwareVersion
+	UInteger SupportedFormatEntries
+	WINBIO_REGISTERED_FORMAT[1] SupportedFormat
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio_adapter/ns-winbio_adapter-winbio_sensor_interface
+Struct WINBIO_SENSOR_INTERFACE
+	WINBIO_ADAPTER_INTERFACE_VERSION Version
+	UInteger Type
+	ULongPtr Size
+	Guid AdapterId
+	Pointer Attach											// PIBIO_SENSOR_ATTACH_FN
+	Pointer Detach											// PIBIO_SENSOR_DETACH_FN
+	Pointer ClearContext									// PIBIO_SENSOR_CLEAR_CONTEXT_FN
+	Pointer QueryStatus										// PIBIO_SENSOR_QUERY_STATUS_FN
+	Pointer Reset											// PIBIO_SENSOR_RESET_FN
+	Pointer SetMode											// PIBIO_SENSOR_SET_MODE_FN
+	Pointer SetIndicatorStatus								// PIBIO_SENSOR_SET_INDICATOR_STATUS_FN
+	Pointer GetIndicatorStatus								// PIBIO_SENSOR_GET_INDICATOR_STATUS_FN
+	Pointer StartCapture									// PIBIO_SENSOR_START_CAPTURE_FN
+	Pointer FinishCapture									// PIBIO_SENSOR_FINISH_CAPTURE_FN
+	Pointer ExportSensorData								// PIBIO_SENSOR_EXPORT_SENSOR_DATA_FN
+	Pointer Cancel											// PIBIO_SENSOR_CANCEL_FN
+	Pointer PushDataToEngine								// PIBIO_SENSOR_PUSH_DATA_TO_ENGINE_FN
+	Pointer ControlUnit										// PIBIO_SENSOR_CONTROL_UNIT_FN
+	Pointer ControlUnitPrivileged							// PIBIO_SENSOR_CONTROL_UNIT_PRIVILEGED_FN
+	Pointer NotifyPowerChange								// PIBIO_SENSOR_NOTIFY_POWER_CHANGE_FN
+	Pointer PipelineInit									// PIBIO_SENSOR_PIPELINE_INIT_FN
+	Pointer PipelineCleanup									// PIBIO_SENSOR_PIPELINE_CLEANUP_FN
+	Pointer Activate										// PIBIO_SENSOR_ACTIVATE_FN
+	Pointer Deactivate										// PIBIO_SENSOR_DEACTIVATE_FN
+	Pointer QueryExtendedInfo								// PIBIO_SENSOR_QUERY_EXTENDED_INFO_FN
+	Pointer QueryCalibrationFormats							// PIBIO_SENSOR_QUERY_CALIBRATION_FORMATS_FN
+	Pointer SetCalibrationFormat							// PIBIO_SENSOR_SET_CALIBRATION_FORMAT_FN
+	Pointer AcceptCalibrationData							// PIBIO_SENSOR_ACCEPT_CALIBRATION_DATA_FN
+	Pointer AsyncImportRawBuffer							// PIBIO_SENSOR_ASYNC_IMPORT_RAW_BUFFER_FN
+	Pointer AsyncImportSecureBuffer							// PIBIO_SENSOR_ASYNC_IMPORT_SECURE_BUFFER_FN
+	Pointer QueryPrivateSensorType							// PIBIO_SENSOR_QUERY_PRIVATE_SENSOR_TYPE_FN
+	Pointer ConnectSecure									// PIBIO_SENSOR_CONNECT_SECURE_FN
+	Pointer StartCaptureEx									// PIBIO_SENSOR_START_CAPTURE_EX_FN
+	Pointer StartNotifyWake									// PIBIO_SENSOR_START_NOTIFY_WAKE_FN
+	Pointer FinishNotifyWake								// PIBIO_SENSOR_FINISH_NOTIFY_WAKE_FN
+End_Struct
+
+Struct WINBIO_SET_INDICATOR
+	UInteger PayloadSize
+	UInteger IndicatorStatus
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio_adapter/ns-winbio_adapter-winbio_storage_interface
+Struct WINBIO_STORAGE_INTERFACE
+	WINBIO_ADAPTER_INTERFACE_VERSION Version
+	UInteger Type
+	ULongPtr Size
+	Guid AdapterId
+	Pointer Attach											// PIBIO_STORAGE_ATTACH_FN
+	Pointer Detach											// PIBIO_STORAGE_DETACH_FN
+	Pointer ClearContext									// PIBIO_STORAGE_CLEAR_CONTEXT_FN
+	Pointer CreateDatabase									// PIBIO_STORAGE_CREATE_DATABASE_FN
+	Pointer EraseDatabase									// PIBIO_STORAGE_ERASE_DATABASE_FN
+	Pointer OpenDatabase									// PIBIO_STORAGE_OPEN_DATABASE_FN
+	Pointer CloseDatabase									// PIBIO_STORAGE_CLOSE_DATABASE_FN
+	Pointer GetDataFormat									// PIBIO_STORAGE_GET_DATA_FORMAT_FN
+	Pointer GetDatabaseSize									// PIBIO_STORAGE_GET_DATABASE_SIZE_FN
+	Pointer AddRecord										// PIBIO_STORAGE_ADD_RECORD_FN
+	Pointer DeleteRecord									// PIBIO_STORAGE_DELETE_RECORD_FN
+	Pointer QueryBySubject									// PIBIO_STORAGE_QUERY_BY_SUBJECT_FN
+	Pointer QueryByContent									// PIBIO_STORAGE_QUERY_BY_CONTENT_FN
+	Pointer GetRecordCount									// PIBIO_STORAGE_GET_RECORD_COUNT_FN
+	Pointer FirstRecord										// PIBIO_STORAGE_FIRST_RECORD_FN
+	Pointer NextRecord										// PIBIO_STORAGE_NEXT_RECORD_FN
+	Pointer GetCurrentRecord								// PIBIO_STORAGE_GET_CURRENT_RECORD_FN
+	Pointer ControlUnit										// PIBIO_STORAGE_CONTROL_UNIT_FN
+	Pointer ControlUnitPrivileged							// PIBIO_STORAGE_CONTROL_UNIT_PRIVILEGED_FN
+	Pointer NotifyPowerChange								// PIBIO_STORAGE_NOTIFY_POWER_CHANGE_FN
+	Pointer PipelineInit									// PIBIO_STORAGE_PIPELINE_INIT_FN
+	Pointer PipelineCleanup									// PIBIO_STORAGE_PIPELINE_CLEANUP_FN
+	Pointer Activate										// PIBIO_STORAGE_ACTIVATE_FN
+	Pointer Deactivate										// PIBIO_STORAGE_DEACTIVATE_FN
+	Pointer QueryExtendedInfo								// PIBIO_STORAGE_QUERY_EXTENDED_INFO_FN
+	Pointer NotifyDatabaseChange							// PIBIO_STORAGE_NOTIFY_DATABASE_CHANGE_FN
+	Pointer Reserved1										// PIBIO_STORAGE_RESERVED_1_FN
+	Pointer Reserved2										// PIBIO_STORAGE_RESERVED_2_FN
+	Pointer UpdateRecordBegin								// PIBIO_STORAGE_UPDATE_RECORD_BEGIN_FN
+	Pointer UpdateRecordCommit								// PIBIO_STORAGE_UPDATE_RECORD_COMMIT_FN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbio_adapter/ns-winbio_adapter-winbio_storage_record
+Struct WINBIO_STORAGE_RECORD
+	Pointer Identity										// WINBIO_IDENTITY*
+	UChar SubFactor
+	UChar[7] cMissingAlignment1
+	Pointer IndexVector										// UInteger*
+	ULongPtr IndexElementCount
+	Pointer TemplateBlob									// UChar*
+	ULongPtr TemplateBlobSize
+	Pointer PayloadBlob										// UChar*
+	ULongPtr PayloadBlobSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-storage-schema
+Struct WINBIO_STORAGE_SCHEMA
+	UInteger BiometricFactor
+	Guid DatabaseId
+	Guid DataFormat
+	UInteger Attributes
+	UShort[256] FilePath
+	UShort[256] ConnectionString
+End_Struct
+
+Struct WINBIO_SUPPORTED_ALGORITHMS
+	UInteger PayloadSize
+	Integer WinBioHresult									// HRESULT
+	UInteger NumberOfAlgorithms
+	WINBIO_DATA AlgorithmData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-unit-schema
+Struct WINBIO_UNIT_SCHEMA
+	UInteger UnitId
+	UInteger PoolType
+	UInteger BiometricFactor
+	UInteger SensorSubType
+	UInteger Capabilities
+	UShort[256] DeviceInstanceId
+	UShort[256] Description
+	UShort[256] Manufacturer
+	UShort[256] Model
+	UShort[256] SerialNumber
+	WINBIO_VERSION FirmwareVersion
+End_Struct
+
+Struct WINBIO_UPDATE_FIRMWARE
+	UInteger PayloadSize
+	WINBIO_DATA FirmwareData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecBioMet/winbio-version
+Struct WINBIO_VERSION
+	UInteger MajorVersion
+	UInteger MinorVersion
+End_Struct
+
+Struct _AccountSid_e__Struct_1214
+	UInteger Size
+	UChar[68] Data
+End_Struct
+
+Struct _Authorization_e__Struct_2244
+	UInteger Size
+	UChar[32] Data
+End_Struct
+
+Struct _CaptureSample_e__Struct_2279
+	Pointer Sample											// WINBIO_BIR*
+	ULongPtr SampleSize
+	UInteger RejectDetail
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _ControlUnit_e__Struct_2284
+	UInteger Component										// WINBIO_COMPONENT
+	UInteger ControlCode
+	UInteger OperationStatus
+	Integer iMissingAlignment1
+	Pointer SendBuffer										// UChar*
+	ULongPtr SendBufferSize
+	Pointer ReceiveBuffer									// UChar*
+	ULongPtr ReceiveBufferSize
+	ULongPtr ReceiveDataSize
+End_Struct
+
+Struct _DeleteTemplate_e__Struct_2280
+	WINBIO_IDENTITY Identity
+	UChar SubFactor
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct _EnrollBegin_e__Struct_2275
+	UChar SubFactor
+End_Struct
+
+Struct _EnrollCapture_e__Struct_2276
+	UInteger RejectDetail
+End_Struct
+
+Struct _EnrollCommit_e__Struct_2277
+	WINBIO_IDENTITY Identity
+	UChar IsNewTemplate										// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct _EnrollSelect_e__Struct_2290
+	UBigint SelectorValue
+End_Struct
+
+Struct _EnrollmentRequirements_e__Struct_2253
+	UInteger Null
+End_Struct
+
+Struct _EnrollmentRequirements_e__Struct_2255
+	UInteger GeneralSamples
+	UInteger Center
+	UInteger TopEdge
+	UInteger BottomEdge
+	UInteger LeftEdge
+	UInteger RightEdge
+End_Struct
+
+Struct _EnrollmentRequirements_e__Struct_2257
+	UInteger Null
+End_Struct
+
+Struct _EnrollmentRequirements_e__Struct_2259
+	UInteger Null
+End_Struct
+
+Struct _EnumBiometricUnits_e__Struct_2286
+	ULongPtr UnitCount
+	Pointer UnitSchemaArray									// WINBIO_UNIT_SCHEMA*
+End_Struct
+
+Struct _EnumDatabases_e__Struct_2287
+	ULongPtr StorageCount
+	Pointer StorageSchemaArray								// WINBIO_STORAGE_SCHEMA*
+End_Struct
+
+Struct _EnumEnrollments_e__Struct_2278
+	WINBIO_IDENTITY Identity
+	Integer iMissingAlignment1
+	ULongPtr SubFactorCount
+	Pointer SubFactorArray									// UChar*
+End_Struct
+
+Struct _EnumServiceProviders_e__Struct_2285
+	ULongPtr BspCount
+	Pointer BspSchemaArray									// WINBIO_BSP_SCHEMA*
+End_Struct
+
+Struct _Error_e__Struct_2239
+	Integer ErrorCode										// HRESULT
+End_Struct
+
+Struct _FacialFeatures_e__Struct_2241
+	RECT BoundingBox
+	Integer Distance
+	_OpaqueEngineData_e__Struct_2242 OpaqueEngineData
+End_Struct
+
+Struct _FacialFeatures_e__Struct_2246
+	RECT FrameSize
+	POINT FrameOffset
+	UInteger MandatoryOrientation
+	_HardwareInfo_e__Struct_2247 HardwareInfo
+End_Struct
+
+Struct _FacialFeatures_e__Struct_2252
+	UInteger Capabilities
+	_EnrollmentRequirements_e__Struct_2253 EnrollmentRequirements
+End_Struct
+
+Struct _FacialFeatures_e__Struct_2261
+	UInteger Capabilities
+End_Struct
+
+Struct _FacialFeatures_e__Struct_2266
+	RECT BoundingBox
+	Integer Distance
+	_OpaqueEngineData_e__Struct_2267 OpaqueEngineData
+End_Struct
+
+Struct _Fingerprint_e__Struct_2248
+	UInteger Reserved
+End_Struct
+
+Struct _Fingerprint_e__Struct_2254
+	UInteger Capabilities
+	_EnrollmentRequirements_e__Struct_2255 EnrollmentRequirements
+End_Struct
+
+Struct _Fingerprint_e__Struct_2262
+	UInteger Capabilities
+End_Struct
+
+Struct _Fingerprint_e__Struct_2268
+	UInteger GeneralSamples
+	UInteger Center
+	UInteger TopEdge
+	UInteger BottomEdge
+	UInteger LeftEdge
+	UInteger RightEdge
+End_Struct
+
+Struct _GetEvent_e__Struct_2283
+	WINBIO_EVENT Event
+End_Struct
+
+Struct _GetProperty_e__Struct_2281
+	UInteger PropertyType
+	UInteger PropertyId
+	WINBIO_IDENTITY Identity
+	UChar SubFactor
+	UChar[3] cMissingAlignment1
+	ULongPtr PropertyBufferSize
+	Pointer PropertyBuffer									// Pointer*
+End_Struct
+
+Struct _GetProtectionPolicy_e__Struct_2292
+	WINBIO_IDENTITY Identity
+	Integer iMissingAlignment1
+	WINBIO_PROTECTION_POLICY Policy
+End_Struct
+
+Struct _HardwareInfo_e__Struct_2247
+	UShort[260] ColorSensorId
+	UShort[260] InfraredSensorId
+	UInteger InfraredSensorRotationAngle
+End_Struct
+
+Struct _IdentifyAndReleaseTicket_e__Struct_2289
+	WINBIO_IDENTITY Identity
+	UChar SubFactor
+	UChar[3] cMissingAlignment1
+	UInteger RejectDetail
+	Integer iMissingAlignment2
+	UBigint Ticket
+End_Struct
+
+Struct _Identify_e__Struct_2274
+	WINBIO_IDENTITY Identity
+	UChar SubFactor
+	UChar[3] cMissingAlignment1
+	UInteger RejectDetail
+End_Struct
+
+Struct _Iris_e__Struct_2243
+	RECT EyeBoundingBox_1
+	RECT EyeBoundingBox_2
+	POINT PupilCenter_1
+	POINT PupilCenter_2
+	Integer Distance
+End_Struct
+
+Struct _Iris_e__Struct_2249
+	RECT FrameSize
+	POINT FrameOffset
+	UInteger MandatoryOrientation
+End_Struct
+
+Struct _Iris_e__Struct_2256
+	UInteger Capabilities
+	_EnrollmentRequirements_e__Struct_2257 EnrollmentRequirements
+End_Struct
+
+Struct _Iris_e__Struct_2263
+	UInteger Capabilities
+End_Struct
+
+Struct _Iris_e__Struct_2269
+	RECT EyeBoundingBox_1
+	RECT EyeBoundingBox_2
+	POINT PupilCenter_1
+	POINT PupilCenter_2
+	Integer Distance
+	UInteger GridPointCompletionPercent
+	UShort GridPointIndex
+	UChar[6] cMissingAlignment1
+	_Point3D_e__Struct_2270 Point3D
+	Integer StopCaptureAndShowCriticalFeedback				// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+Struct _MonitorPresence_e__Struct_2291
+	UInteger ChangeType
+	Integer iMissingAlignment1
+	ULongPtr PresenceCount
+	Pointer PresenceArray									// WINBIO_PRESENCE*
+End_Struct
+
+Struct _NotifyUnitStatusChange_e__Struct_2293
+	WINBIO_EXTENDED_UNIT_STATUS ExtendedStatus
+End_Struct
+
+Struct _OpaqueEngineData_e__Struct_2242
+	Guid AdapterId
+	UInteger[78] Data
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

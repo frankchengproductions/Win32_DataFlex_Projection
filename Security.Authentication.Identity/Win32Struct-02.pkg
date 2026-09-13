@@ -1,0 +1,967 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-lsa_secpkg_function_table
+Struct LSA_SECPKG_FUNCTION_TABLE
+	Pointer CreateLogonSession								// PLSA_CREATE_LOGON_SESSION
+	Pointer DeleteLogonSession								// PLSA_DELETE_LOGON_SESSION
+	Pointer AddCredential									// PLSA_ADD_CREDENTIAL
+	Pointer GetCredentials									// PLSA_GET_CREDENTIALS
+	Pointer DeleteCredential								// PLSA_DELETE_CREDENTIAL
+	Pointer AllocateLsaHeap									// PLSA_ALLOCATE_LSA_HEAP
+	Pointer FreeLsaHeap										// PLSA_FREE_LSA_HEAP
+	Pointer AllocateClientBuffer							// PLSA_ALLOCATE_CLIENT_BUFFER
+	Pointer FreeClientBuffer								// PLSA_FREE_CLIENT_BUFFER
+	Pointer CopyToClientBuffer								// PLSA_COPY_TO_CLIENT_BUFFER
+	Pointer CopyFromClientBuffer							// PLSA_COPY_FROM_CLIENT_BUFFER
+	Pointer ImpersonateClient								// PLSA_IMPERSONATE_CLIENT
+	Pointer UnloadPackage									// PLSA_UNLOAD_PACKAGE
+	Pointer DuplicateHandle									// PLSA_DUPLICATE_HANDLE
+	Pointer SaveSupplementalCredentials						// PLSA_SAVE_SUPPLEMENTAL_CREDENTIALS
+	Pointer CreateThread									// PLSA_CREATE_THREAD
+	Pointer GetClientInfo									// PLSA_GET_CLIENT_INFO
+	Pointer RegisterNotification							// PLSA_REGISTER_NOTIFICATION
+	Pointer CancelNotification								// PLSA_CANCEL_NOTIFICATION
+	Pointer MapBuffer										// PLSA_MAP_BUFFER
+	Pointer CreateToken										// PLSA_CREATE_TOKEN
+	Pointer AuditLogon										// PLSA_AUDIT_LOGON
+	Pointer CallPackage										// PLSA_CALL_PACKAGE
+	Pointer FreeReturnBuffer								// PLSA_FREE_LSA_HEAP
+	Pointer GetCallInfo										// PLSA_GET_CALL_INFO
+	Pointer CallPackageEx									// PLSA_CALL_PACKAGEEX
+	Pointer CreateSharedMemory								// PLSA_CREATE_SHARED_MEMORY
+	Pointer AllocateSharedMemory							// PLSA_ALLOCATE_SHARED_MEMORY
+	Pointer FreeSharedMemory								// PLSA_FREE_SHARED_MEMORY
+	Pointer DeleteSharedMemory								// PLSA_DELETE_SHARED_MEMORY
+	Pointer OpenSamUser										// PLSA_OPEN_SAM_USER
+	Pointer GetUserCredentials								// PLSA_GET_USER_CREDENTIALS
+	Pointer GetUserAuthData									// PLSA_GET_USER_AUTH_DATA
+	Pointer CloseSamUser									// PLSA_CLOSE_SAM_USER
+	Pointer ConvertAuthDataToToken							// PLSA_CONVERT_AUTH_DATA_TO_TOKEN
+	Pointer ClientCallback									// PLSA_CLIENT_CALLBACK
+	Pointer UpdateCredentials								// PLSA_UPDATE_PRIMARY_CREDENTIALS
+	Pointer GetAuthDataForUser								// PLSA_GET_AUTH_DATA_FOR_USER
+	Pointer CrackSingleName									// PLSA_CRACK_SINGLE_NAME
+	Pointer AuditAccountLogon								// PLSA_AUDIT_ACCOUNT_LOGON
+	Pointer CallPackagePassthrough							// PLSA_CALL_PACKAGE_PASSTHROUGH
+	Pointer CrediRead										// CredReadFn
+	Pointer CrediReadDomainCredentials						// CredReadDomainCredentialsFn
+	Pointer CrediFreeCredentials							// CredFreeCredentialsFn
+	Pointer LsaProtectMemory								// PLSA_PROTECT_MEMORY
+	Pointer LsaUnprotectMemory								// PLSA_PROTECT_MEMORY
+	Pointer OpenTokenByLogonId								// PLSA_OPEN_TOKEN_BY_LOGON_ID
+	Pointer ExpandAuthDataForDomain							// PLSA_EXPAND_AUTH_DATA_FOR_DOMAIN
+	Pointer AllocatePrivateHeap								// PLSA_ALLOCATE_PRIVATE_HEAP
+	Pointer FreePrivateHeap									// PLSA_FREE_PRIVATE_HEAP
+	Pointer CreateTokenEx									// PLSA_CREATE_TOKEN_EX
+	Pointer CrediWrite										// CredWriteFn
+	Pointer CrediUnmarshalandDecodeString					// CrediUnmarshalandDecodeStringFn
+	Pointer DummyFunction6									// PLSA_PROTECT_MEMORY
+	Pointer GetExtendedCallFlags							// PLSA_GET_EXTENDED_CALL_FLAGS
+	Pointer DuplicateTokenHandle							// PLSA_DUPLICATE_HANDLE
+	Pointer GetServiceAccountPassword						// PLSA_GET_SERVICE_ACCOUNT_PASSWORD
+	Pointer DummyFunction7									// PLSA_PROTECT_MEMORY
+	Pointer AuditLogonEx									// PLSA_AUDIT_LOGON_EX
+	Pointer CheckProtectedUserByToken						// PLSA_CHECK_PROTECTED_USER_BY_TOKEN
+	Pointer QueryClientRequest								// PLSA_QUERY_CLIENT_REQUEST
+	Pointer GetAppModeInfo									// PLSA_GET_APP_MODE_INFO
+	Pointer SetAppModeInfo									// PLSA_SET_APP_MODE_INFO
+	Pointer GetClientInfoEx									// PLSA_GET_CLIENT_INFO_EX
+	Pointer GetSecpkgFailureReason							// PLSA_GET_SECPKG_FAILURE_REASON
+	Pointer SetSecpkgFailureReason							// PLSA_SET_SECPKG_FAILURE_REASON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_string
+Struct LSA_STRING
+	UShort Length
+	UShort MaximumLength
+	Integer iMissingAlignment1
+	Pointer Buffer											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-lsa_token_information_null
+Struct LSA_TOKEN_INFORMATION_NULL
+	Bigint ExpirationTime
+	Pointer Groups											// TOKEN_GROUPS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-lsa_token_information_v1
+Struct LSA_TOKEN_INFORMATION_V1
+	Bigint ExpirationTime
+	TOKEN_USER User
+	Pointer Groups											// TOKEN_GROUPS*
+	TOKEN_PRIMARY_GROUP PrimaryGroup
+	Pointer Privileges										// TOKEN_PRIVILEGES*
+	TOKEN_OWNER Owner
+	TOKEN_DEFAULT_DACL DefaultDacl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-lsa_token_information_v3
+Struct LSA_TOKEN_INFORMATION_V3
+	Bigint ExpirationTime
+	TOKEN_USER User
+	Pointer Groups											// TOKEN_GROUPS*
+	TOKEN_PRIMARY_GROUP PrimaryGroup
+	Pointer Privileges										// TOKEN_PRIVILEGES*
+	TOKEN_OWNER Owner
+	TOKEN_DEFAULT_DACL DefaultDacl
+	TOKEN_USER_CLAIMS UserClaims
+	TOKEN_DEVICE_CLAIMS DeviceClaims
+	Pointer DeviceGroups									// TOKEN_GROUPS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_translated_name
+Struct LSA_TRANSLATED_NAME
+	Integer Use												// SID_NAME_USE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING Name
+	Integer DomainIndex
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_translated_sid
+Struct LSA_TRANSLATED_SID
+	Integer Use												// SID_NAME_USE
+	UInteger RelativeId
+	Integer DomainIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_translated_sid2
+Struct LSA_TRANSLATED_SID2
+	Integer Use												// SID_NAME_USE
+	Integer iMissingAlignment1
+	Pointer Sid												// PSID
+	Integer DomainIndex
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_trust_information
+Struct LSA_TRUST_INFORMATION
+	LSA_UNICODE_STRING Name
+	Pointer Sid												// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_unicode_string
+Struct LSA_UNICODE_STRING
+	UShort Length
+	UShort MaximumLength
+	Integer iMissingAlignment1
+	Pointer Buffer											// PWSTR
+End_Struct
+
+Struct MSV1_0_AV_PAIR
+	UShort AvId
+	UShort AvLen
+End_Struct
+
+Struct MSV1_0_CHANGEPASSWORD_REQUEST
+	Integer MessageType										// MSV1_0_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING AccountName
+	LSA_UNICODE_STRING OldPassword
+	LSA_UNICODE_STRING NewPassword
+	UChar Impersonating										// BOOLEAN
+	UChar[7] cMissingAlignment2
+End_Struct
+
+Struct MSV1_0_CHANGEPASSWORD_RESPONSE
+	Integer MessageType										// MSV1_0_PROTOCOL_MESSAGE_TYPE
+	UChar PasswordInfoValid									// BOOLEAN
+	UChar[3] cMissingAlignment1
+	DOMAIN_PASSWORD_INFORMATION DomainPasswordInfo
+End_Struct
+
+Struct MSV1_0_CREDENTIAL_KEY
+	UChar[20] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_interactive_logon
+Struct MSV1_0_INTERACTIVE_LOGON
+	Integer MessageType										// MSV1_0_LOGON_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING LogonDomainName
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING Password
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_interactive_profile
+Struct MSV1_0_INTERACTIVE_PROFILE
+	Integer MessageType										// MSV1_0_PROFILE_BUFFER_TYPE
+	UShort LogonCount
+	UShort BadPasswordCount
+	Bigint LogonTime
+	Bigint LogoffTime
+	Bigint KickOffTime
+	Bigint PasswordLastSet
+	Bigint PasswordCanChange
+	Bigint PasswordMustChange
+	LSA_UNICODE_STRING LogonScript
+	LSA_UNICODE_STRING HomeDirectory
+	LSA_UNICODE_STRING FullName
+	LSA_UNICODE_STRING ProfilePath
+	LSA_UNICODE_STRING HomeDirectoryDrive
+	LSA_UNICODE_STRING LogonServer
+	UInteger UserFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct MSV1_0_IUM_SUPPLEMENTAL_CREDENTIAL
+	UInteger Version
+	UInteger EncryptedCredsSize
+	UChar[1] EncryptedCreds
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_lm20_logon
+Struct MSV1_0_LM20_LOGON
+	Integer MessageType										// MSV1_0_LOGON_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING LogonDomainName
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING Workstation
+	UChar[8] ChallengeToClient
+	LSA_STRING CaseSensitiveChallengeResponse
+	LSA_STRING CaseInsensitiveChallengeResponse
+	UInteger ParameterControl
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_lm20_logon_profile
+Struct MSV1_0_LM20_LOGON_PROFILE
+	Integer MessageType										// MSV1_0_PROFILE_BUFFER_TYPE
+	Integer iMissingAlignment1
+	Bigint KickOffTime
+	Bigint LogoffTime
+	UInteger UserFlags										// MSV_SUB_AUTHENTICATION_FILTER
+	UChar[16] UserSessionKey
+	Integer iMissingAlignment2
+	LSA_UNICODE_STRING LogonDomainName
+	UChar[8] LanmanSessionKey
+	LSA_UNICODE_STRING LogonServer
+	LSA_UNICODE_STRING UserParameters
+End_Struct
+
+Struct MSV1_0_NTLM3_RESPONSE
+	UChar[16] Response
+	UChar RespType
+	UChar HiRespType
+	UShort Flags
+	UInteger MsgWord
+	UBigint TimeStamp
+	UChar[8] ChallengeFromClient
+	UInteger AvPairsOff
+	UChar[1] Buffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct MSV1_0_PASSTHROUGH_REQUEST
+	Integer MessageType										// MSV1_0_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING PackageName
+	UInteger DataLength
+	Integer iMissingAlignment2
+	Pointer LogonData										// UChar*
+	UInteger Pad
+	Integer iMissingAlignment3
+End_Struct
+
+Struct MSV1_0_PASSTHROUGH_RESPONSE
+	Integer MessageType										// MSV1_0_PROTOCOL_MESSAGE_TYPE
+	UInteger Pad
+	UInteger DataLength
+	Integer iMissingAlignment1
+	Pointer ValidationData									// UChar*
+End_Struct
+
+Struct MSV1_0_REMOTE_SUPPLEMENTAL_CREDENTIAL
+	UInteger Version
+	UInteger Flags
+	MSV1_0_CREDENTIAL_KEY CredentialKey
+	Integer CredentialKeyType								// MSV1_0_CREDENTIAL_KEY_TYPE
+	UInteger EncryptedCredsSize
+	UChar[1] EncryptedCreds
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct MSV1_0_S4U_LOGON
+	Integer MessageType										// MSV1_0_LOGON_SUBMIT_TYPE
+	UInteger Flags
+	LSA_UNICODE_STRING UserPrincipalName
+	LSA_UNICODE_STRING DomainName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_subauth_logon
+Struct MSV1_0_SUBAUTH_LOGON
+	Integer MessageType										// MSV1_0_LOGON_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING LogonDomainName
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING Workstation
+	UChar[8] ChallengeToClient
+	LSA_STRING AuthenticationInfo1
+	LSA_STRING AuthenticationInfo2
+	UInteger ParameterControl								// MSV_SUBAUTH_LOGON_PARAMETER_CONTROL
+	UInteger SubAuthPackageId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_subauth_request
+Struct MSV1_0_SUBAUTH_REQUEST
+	Integer MessageType										// MSV1_0_PROTOCOL_MESSAGE_TYPE
+	UInteger SubAuthPackageId
+	UInteger SubAuthInfoLength
+	Integer iMissingAlignment1
+	Pointer SubAuthSubmitBuffer								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_subauth_response
+Struct MSV1_0_SUBAUTH_RESPONSE
+	Integer MessageType										// MSV1_0_PROTOCOL_MESSAGE_TYPE
+	UInteger SubAuthInfoLength
+	Pointer SubAuthReturnBuffer								// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-msv1_0_supplemental_credential
+Struct MSV1_0_SUPPLEMENTAL_CREDENTIAL
+	UInteger Version
+	UInteger Flags											// MSV_SUPPLEMENTAL_CREDENTIAL_FLAGS
+	UChar[16] LmPassword
+	UChar[16] NtPassword
+End_Struct
+
+Struct MSV1_0_SUPPLEMENTAL_CREDENTIAL_V2
+	UInteger Version
+	UInteger Flags
+	UChar[16] NtPassword
+	MSV1_0_CREDENTIAL_KEY CredentialKey
+End_Struct
+
+Struct MSV1_0_SUPPLEMENTAL_CREDENTIAL_V3
+	UInteger Version
+	UInteger Flags
+	Integer CredentialKeyType								// MSV1_0_CREDENTIAL_KEY_TYPE
+	UChar[16] NtPassword
+	MSV1_0_CREDENTIAL_KEY CredentialKey
+	UChar[20] ShaPassword
+End_Struct
+
+Struct MSV1_0_VALIDATION_INFO
+	Bigint LogoffTime
+	Bigint KickoffTime
+	LSA_UNICODE_STRING LogonServer
+	LSA_UNICODE_STRING LogonDomainName
+	USER_SESSION_KEY SessionKey
+	UChar Authoritative										// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger UserFlags
+	UInteger WhichFields
+	UInteger UserId
+End_Struct
+
+Struct NEGOTIATE_CALLER_NAME_REQUEST
+	UInteger MessageType
+	LUID LogonId
+End_Struct
+
+Struct NEGOTIATE_CALLER_NAME_RESPONSE
+	UInteger MessageType
+	Integer iMissingAlignment1
+	Pointer CallerName										// PWSTR
+End_Struct
+
+Struct NEGOTIATE_PACKAGE_PREFIX
+	ULongPtr PackageId
+	Pointer PackageDataA									// Pointer*
+	Pointer PackageDataW									// Pointer*
+	ULongPtr PrefixLen
+	UChar[32] Prefix
+End_Struct
+
+Struct NEGOTIATE_PACKAGE_PREFIXES
+	UInteger MessageType
+	UInteger PrefixCount
+	UInteger Offset
+	UInteger Pad
+End_Struct
+
+Struct NETLOGON_GENERIC_INFO
+	NETLOGON_LOGON_IDENTITY_INFO Identity
+	LSA_UNICODE_STRING PackageName
+	UInteger DataLength
+	Integer iMissingAlignment1
+	Pointer LogonData										// UChar*
+End_Struct
+
+Struct NETLOGON_INTERACTIVE_INFO
+	NETLOGON_LOGON_IDENTITY_INFO Identity
+	LM_OWF_PASSWORD LmOwfPassword
+	LM_OWF_PASSWORD NtOwfPassword
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/subauth/ns-subauth-netlogon_logon_identity_info
+Struct NETLOGON_LOGON_IDENTITY_INFO
+	LSA_UNICODE_STRING LogonDomainName
+	UInteger ParameterControl
+	Integer iMissingAlignment1
+	Bigint LogonId
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING Workstation
+End_Struct
+
+Struct NETLOGON_NETWORK_INFO
+	NETLOGON_LOGON_IDENTITY_INFO Identity
+	CLEAR_BLOCK LmChallenge
+	LSA_STRING NtChallengeResponse
+	LSA_STRING LmChallengeResponse
+End_Struct
+
+Struct NETLOGON_SERVICE_INFO
+	NETLOGON_LOGON_IDENTITY_INFO Identity
+	LM_OWF_PASSWORD LmOwfPassword
+	LM_OWF_PASSWORD NtOwfPassword
+End_Struct
+
+Struct NETLOGON_TARGET_INFO
+	UInteger Type
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING NbComputerName
+	LSA_UNICODE_STRING NbDomainName
+	LSA_UNICODE_STRING DnsComputerName
+	LSA_UNICODE_STRING DnsDomainName
+	LSA_UNICODE_STRING DnsTreeName
+	LSA_UNICODE_STRING TargetName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-pku2u_certificate_s4u_logon
+Struct PKU2U_CERTIFICATE_S4U_LOGON
+	Integer MessageType										// PKU2U_LOGON_SUBMIT_TYPE
+	UInteger Flags
+	LSA_UNICODE_STRING UserPrincipalName
+	LSA_UNICODE_STRING DomainName
+	UInteger CertificateLength
+	Integer iMissingAlignment1
+	Pointer Certificate										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-pku2u_cert_blob
+Struct PKU2U_CERT_BLOB
+	UInteger CertOffset
+	UShort CertLength
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-pku2u_credui_context
+Struct PKU2U_CREDUI_CONTEXT
+	UBigint Version
+	UShort cbHeaderLength
+	Short iMissingAlignment1
+	UInteger cbStructureLength
+	UShort CertArrayCount
+	Short iMissingAlignment2
+	UInteger CertArrayOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-policy_account_domain_info
+Struct POLICY_ACCOUNT_DOMAIN_INFO
+	LSA_UNICODE_STRING DomainName
+	Pointer DomainSid										// PSID
+End_Struct
+
+Struct POLICY_AUDIT_CATEGORIES_INFO
+	UInteger MaximumCategoryCount
+	Integer iMissingAlignment1
+	Pointer SubCategoriesInfo								// POLICY_AUDIT_SUBCATEGORIES_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-policy_audit_events_info
+Struct POLICY_AUDIT_EVENTS_INFO
+	UChar AuditingMode										// BOOLEAN
+	UChar[7] cMissingAlignment1
+	Pointer EventAuditingOptions							// UInteger*
+	UInteger MaximumAuditEventCount
+	Integer iMissingAlignment2
+End_Struct
+
+Struct POLICY_AUDIT_FULL_QUERY_INFO
+	UChar ShutDownOnFull									// BOOLEAN
+	UChar LogIsFull											// BOOLEAN
+End_Struct
+
+Struct POLICY_AUDIT_FULL_SET_INFO
+	UChar ShutDownOnFull									// BOOLEAN
+End_Struct
+
+Struct POLICY_AUDIT_LOG_INFO
+	UInteger AuditLogPercentFull
+	UInteger MaximumLogSize
+	Bigint AuditRetentionPeriod
+	UChar AuditLogFullShutdownInProgress					// BOOLEAN
+	UChar[7] cMissingAlignment1
+	Bigint TimeToShutdown
+	UInteger NextAuditRecordId
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-policy_audit_sid_array
+Struct POLICY_AUDIT_SID_ARRAY
+	UInteger UsersCount
+	Integer iMissingAlignment1
+	Pointer UserSidArray									// PSID*
+End_Struct
+
+Struct POLICY_AUDIT_SUBCATEGORIES_INFO
+	UInteger MaximumSubCategoryCount
+	Integer iMissingAlignment1
+	Pointer EventAuditingOptions							// UInteger*
+End_Struct
+
+Struct POLICY_DEFAULT_QUOTA_INFO
+	QUOTA_LIMITS QuotaLimits
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-policy_dns_domain_info
+Struct POLICY_DNS_DOMAIN_INFO
+	LSA_UNICODE_STRING Name
+	LSA_UNICODE_STRING DnsDomainName
+	LSA_UNICODE_STRING DnsForestName
+	Guid DomainGuid
+	Pointer Sid												// PSID
+End_Struct
+
+Struct POLICY_DOMAIN_EFS_INFO
+	UInteger InfoLength
+	Integer iMissingAlignment1
+	Pointer EfsBlob											// UChar*
+End_Struct
+
+Struct POLICY_DOMAIN_KERBEROS_TICKET_INFO
+	UInteger AuthenticationOptions
+	Integer iMissingAlignment1
+	Bigint MaxServiceTicketAge
+	Bigint MaxTicketAge
+	Bigint MaxRenewAge
+	Bigint MaxClockSkew
+	Bigint Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-policy_lsa_server_role_info
+Struct POLICY_LSA_SERVER_ROLE_INFO
+	Integer LsaServerRole									// POLICY_LSA_SERVER_ROLE
+End_Struct
+
+Struct POLICY_MACHINE_ACCT_INFO
+	UInteger Rid
+	Integer iMissingAlignment1
+	Pointer Sid												// PSID
+End_Struct
+
+Struct POLICY_MACHINE_ACCT_INFO2
+	UInteger Rid
+	Integer iMissingAlignment1
+	Pointer Sid												// PSID
+	Guid ObjectGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-policy_modification_info
+Struct POLICY_MODIFICATION_INFO
+	Bigint ModifiedId
+	Bigint DatabaseCreationTime
+End_Struct
+
+Struct POLICY_PD_ACCOUNT_INFO
+	LSA_UNICODE_STRING Name
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-policy_primary_domain_info
+Struct POLICY_PRIMARY_DOMAIN_INFO
+	LSA_UNICODE_STRING Name
+	Pointer Sid												// PSID
+End_Struct
+
+Struct POLICY_REPLICA_SOURCE_INFO
+	LSA_UNICODE_STRING ReplicaSource
+	LSA_UNICODE_STRING ReplicaAccountName
+End_Struct
+
+Struct PctPublicKey
+	UInteger Type
+	UInteger cbKey
+	UChar[1] pKey
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SAM_REGISTER_MAPPING_ELEMENT
+	Pointer Original										// PSTR
+	Pointer Mapped											// PSTR
+	UChar Continuable										// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SAM_REGISTER_MAPPING_LIST
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer Elements										// SAM_REGISTER_MAPPING_ELEMENT*
+End_Struct
+
+Struct SAM_REGISTER_MAPPING_TABLE
+	UInteger Count
+	Integer iMissingAlignment1
+	Pointer Lists											// SAM_REGISTER_MAPPING_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-schannel_alert_token
+Struct SCHANNEL_ALERT_TOKEN
+	UInteger dwTokenType
+	UInteger dwAlertType									// SCHANNEL_ALERT_TOKEN_ALERT_TYPE
+	UInteger dwAlertNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-schannel_cert_hash
+Struct SCHANNEL_CERT_HASH
+	UInteger dwLength
+	UInteger dwFlags
+	ULongPtr hProv
+	UChar[20] ShaHash
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-schannel_cert_hash_store
+Struct SCHANNEL_CERT_HASH_STORE
+	UInteger dwLength
+	UInteger dwFlags
+	ULongPtr hProv
+	UChar[20] ShaHash
+	UShort[128] pwszStoreName
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-schannel_client_signature
+Struct SCHANNEL_CLIENT_SIGNATURE
+	UInteger cbLength
+	UInteger aiHash											// ALG_ID
+	UInteger cbHash
+	UChar[36] HashValue
+	UChar[20] CertThumbprint
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-schannel_cred
+Struct SCHANNEL_CRED
+	UInteger dwVersion
+	UInteger cCreds
+	Pointer paCred											// CERT_CONTEXT**
+	Pointer hRootStore										// HCERTSTORE
+	UInteger cMappers
+	Integer iMissingAlignment1
+	Pointer aphMappers										// _HMAPPER**
+	UInteger cSupportedAlgs
+	Integer iMissingAlignment2
+	Pointer palgSupportedAlgs								// ALG_ID*
+	UInteger grbitEnabledProtocols
+	UInteger dwMinimumCipherStrength
+	UInteger dwMaximumCipherStrength
+	UInteger dwSessionLifespan
+	UInteger dwFlags										// SCHANNEL_CRED_FLAGS
+	UInteger dwCredFormat
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-schannel_session_token
+Struct SCHANNEL_SESSION_TOKEN
+	UInteger dwTokenType
+	UInteger dwFlags										// SCHANNEL_SESSION_TOKEN_FLAGS
+End_Struct
+
+Struct SCH_CRED
+	UInteger dwVersion
+	UInteger cCreds
+	Pointer paSecret										// Pointer**
+	Pointer paPublic										// Pointer**
+	UInteger cMappers
+	Integer iMissingAlignment1
+	Pointer aphMappers										// _HMAPPER**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-sch_credentials
+Struct SCH_CREDENTIALS
+	UInteger dwVersion
+	UInteger dwCredFormat
+	UInteger cCreds
+	Integer iMissingAlignment1
+	Pointer paCred											// CERT_CONTEXT**
+	Pointer hRootStore										// HCERTSTORE
+	UInteger cMappers
+	Integer iMissingAlignment2
+	Pointer aphMappers										// _HMAPPER**
+	UInteger dwSessionLifespan
+	UInteger dwFlags
+	UInteger cTlsParameters
+	Integer iMissingAlignment3
+	Pointer pTlsParameters									// TLS_PARAMETERS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-sch_cred_public_certchain
+Struct SCH_CRED_PUBLIC_CERTCHAIN
+	UInteger dwType
+	UInteger cbCertChain
+	Pointer pCertChain										// UChar*
+End_Struct
+
+Struct SCH_CRED_SECRET_CAPI
+	UInteger dwType
+	Integer iMissingAlignment1
+	ULongPtr hProv
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-sch_cred_secret_privkey
+Struct SCH_CRED_SECRET_PRIVKEY
+	UInteger dwType
+	Integer iMissingAlignment1
+	Pointer pPrivateKey										// UChar*
+	UInteger cbPrivateKey
+	Integer iMissingAlignment2
+	Pointer pszPassword										// PSTR
+End_Struct
+
+Struct SCH_EXTENSION_DATA
+	UShort ExtensionType
+	UChar[6] cMissingAlignment1
+	Pointer pExtData										// UChar*
+	UInteger cbExtData
+	Integer iMissingAlignment2
+End_Struct
+
+Struct SECPKG_APP_MODE_INFO
+	UInteger UserFunction
+	Integer iMissingAlignment1
+	ULongPtr Argument1
+	ULongPtr Argument2
+	SecBuffer UserData
+	UChar ReturnToLsa										// BOOLEAN
+	UChar[7] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_byte_vector
+Struct SECPKG_BYTE_VECTOR
+	UInteger ByteArrayOffset
+	UShort ByteArrayLength
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_call_info
+Struct SECPKG_CALL_INFO
+	UInteger ProcessId
+	UInteger ThreadId
+	UInteger Attributes
+	UInteger CallCount
+	Pointer MechOid											// Pointer*
+End_Struct
+
+Struct SECPKG_CALL_PACKAGE_PIN_DC_REQUEST
+	UInteger MessageType
+	UInteger Flags
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING DcName
+	UInteger DcFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct SECPKG_CALL_PACKAGE_TRANSFER_CRED_REQUEST
+	UInteger MessageType
+	LUID OriginLogonId
+	LUID DestinationLogonId
+	UInteger Flags
+End_Struct
+
+Struct SECPKG_CALL_PACKAGE_UNPIN_ALL_DCS_REQUEST
+	UInteger MessageType
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_client_info
+Struct SECPKG_CLIENT_INFO
+	LUID LogonId
+	UInteger ProcessID
+	UInteger ThreadID
+	UChar HasTcbPrivilege									// BOOLEAN
+	UChar Impersonating										// BOOLEAN
+	UChar Restricted										// BOOLEAN
+	UChar ClientFlags
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	Pointer ClientToken										// HANDLE
+End_Struct
+
+Struct SECPKG_CLIENT_INFO_EX
+	LUID LogonId
+	UInteger ProcessID
+	UInteger ThreadID
+	UChar HasTcbPrivilege									// BOOLEAN
+	UChar Impersonating										// BOOLEAN
+	UChar Restricted										// BOOLEAN
+	UChar ClientFlags
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	Pointer ClientToken										// HANDLE
+	LUID IdentificationLogonId
+	Pointer IdentificationToken								// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_context_thunks
+Struct SECPKG_CONTEXT_THUNKS
+	UInteger InfoLevelCount
+	UInteger[1] Levels
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_credential
+Struct SECPKG_CREDENTIAL
+	UBigint Version
+	UShort cbHeaderLength
+	Short iMissingAlignment1
+	UInteger cbStructureLength
+	UInteger ClientProcess
+	UInteger ClientThread
+	LUID LogonId
+	Pointer ClientToken										// HANDLE
+	UInteger SessionId
+	LUID ModifiedId
+	UInteger fCredentials
+	UInteger Flags
+	SECPKG_BYTE_VECTOR PrincipalName
+	SECPKG_BYTE_VECTOR PackageList
+	SECPKG_BYTE_VECTOR MarshaledSuppliedCreds
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_dll_functions
+Struct SECPKG_DLL_FUNCTIONS
+	Pointer AllocateHeap									// PLSA_ALLOCATE_LSA_HEAP
+	Pointer FreeHeap										// PLSA_FREE_LSA_HEAP
+	Pointer RegisterCallback								// PLSA_REGISTER_CALLBACK
+	Pointer LocatePackageById								// PLSA_LOCATE_PKG_BY_ID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_event_notify
+Struct SECPKG_EVENT_NOTIFY
+	UInteger EventClass
+	UInteger Reserved
+	UInteger EventDataSize
+	Integer iMissingAlignment1
+	Pointer EventData										// Pointer*
+	Pointer PackageParameter								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_event_package_change
+Struct SECPKG_EVENT_PACKAGE_CHANGE
+	UInteger ChangeType										// SECPKG_PACKAGE_CHANGE_TYPE
+	Integer iMissingAlignment1
+	ULongPtr PackageId
+	SECURITY_STRING PackageName
+End_Struct
+
+Struct SECPKG_EVENT_ROLE_CHANGE
+	UInteger PreviousRole
+	UInteger NewRole
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_extended_information
+Struct SECPKG_EXTENDED_INFORMATION
+	Integer Class											// SECPKG_EXTENDED_INFORMATION_CLASS
+	Integer iMissingAlignment1
+	_Info_e__Union_2072 Info
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_extra_oids
+Struct SECPKG_EXTRA_OIDS
+	UInteger OidCount
+	SECPKG_SERIALIZED_OID[1] Oids
+End_Struct
+
+Struct SECPKG_FAILURE_REASON
+	Integer Status											// NTSTATUS
+	Integer Reason											// SECPKG_FAILURE_SPECIAL_REASON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_function_table
+Struct SECPKG_FUNCTION_TABLE
+	Pointer InitializePackage								// PLSA_AP_INITIALIZE_PACKAGE
+	Pointer LogonUserA										// PLSA_AP_LOGON_USER
+	Pointer CallPackage										// PLSA_AP_CALL_PACKAGE
+	Pointer LogonTerminated									// PLSA_AP_LOGON_TERMINATED
+	Pointer CallPackageUntrusted							// PLSA_AP_CALL_PACKAGE
+	Pointer CallPackagePassthrough							// PLSA_AP_CALL_PACKAGE_PASSTHROUGH
+	Pointer LogonUserExA									// PLSA_AP_LOGON_USER_EX
+	Pointer LogonUserEx2									// PLSA_AP_LOGON_USER_EX2
+	Pointer Initialize										// SpInitializeFn
+	Pointer Shutdown										// SpShutdownFn
+	Pointer GetInfo											// SpGetInfoFn
+	Pointer AcceptCredentials								// SpAcceptCredentialsFn
+	Pointer AcquireCredentialsHandleA						// SpAcquireCredentialsHandleFn
+	Pointer QueryCredentialsAttributesA						// SpQueryCredentialsAttributesFn
+	Pointer FreeCredentialsHandle							// SpFreeCredentialsHandleFn
+	Pointer SaveCredentials									// SpSaveCredentialsFn
+	Pointer GetCredentials									// SpGetCredentialsFn
+	Pointer DeleteCredentials								// SpDeleteCredentialsFn
+	Pointer InitLsaModeContext								// SpInitLsaModeContextFn
+	Pointer AcceptLsaModeContext							// SpAcceptLsaModeContextFn
+	Pointer DeleteContext									// SpDeleteContextFn
+	Pointer ApplyControlToken								// SpApplyControlTokenFn
+	Pointer GetUserInfo										// SpGetUserInfoFn
+	Pointer GetExtendedInformation							// SpGetExtendedInformationFn
+	Pointer QueryContextAttributesA							// SpQueryContextAttributesFn
+	Pointer AddCredentialsA									// SpAddCredentialsFn
+	Pointer SetExtendedInformation							// SpSetExtendedInformationFn
+	Pointer SetContextAttributesA							// SpSetContextAttributesFn
+	Pointer SetCredentialsAttributesA						// SpSetCredentialsAttributesFn
+	Pointer ChangeAccountPasswordA							// SpChangeAccountPasswordFn
+	Pointer QueryMetaData									// SpQueryMetaDataFn
+	Pointer ExchangeMetaData								// SpExchangeMetaDataFn
+	Pointer GetCredUIContext								// SpGetCredUIContextFn
+	Pointer UpdateCredentials								// SpUpdateCredentialsFn
+	Pointer ValidateTargetInfo								// SpValidateTargetInfoFn
+	Pointer PostLogonUser									// LSA_AP_POST_LOGON_USER
+	Pointer GetRemoteCredGuardLogonBuffer					// SpGetRemoteCredGuardLogonBufferFn
+	Pointer GetRemoteCredGuardSupplementalCreds				// SpGetRemoteCredGuardSupplementalCredsFn
+	Pointer GetTbalSupplementalCreds						// SpGetTbalSupplementalCredsFn
+	Pointer LogonUserEx3									// PLSA_AP_LOGON_USER_EX3
+	Pointer PreLogonUserSurrogate							// PLSA_AP_PRE_LOGON_USER_SURROGATE
+	Pointer PostLogonUserSurrogate							// PLSA_AP_POST_LOGON_USER_SURROGATE
+	Pointer ExtractTargetInfo								// SpExtractTargetInfoFn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-secpkg_gss_info
+Struct SECPKG_GSS_INFO
+	UInteger EncodedIdLength
+	UChar[4] EncodedId
+End_Struct
+
+Struct SECPKG_KERNEL_FUNCTIONS
+	Pointer AllocateHeap									// PLSA_ALLOCATE_LSA_HEAP
+	Pointer FreeHeap										// PLSA_FREE_LSA_HEAP
+	Pointer CreateContextList								// PKSEC_CREATE_CONTEXT_LIST
+	Pointer InsertListEntry									// PKSEC_INSERT_LIST_ENTRY
+	Pointer ReferenceListEntry								// PKSEC_REFERENCE_LIST_ENTRY
+	Pointer DereferenceListEntry							// PKSEC_DEREFERENCE_LIST_ENTRY
+	Pointer SerializeWinntAuthData							// PKSEC_SERIALIZE_WINNT_AUTH_DATA
+	Pointer SerializeSchannelAuthData						// PKSEC_SERIALIZE_SCHANNEL_AUTH_DATA
+	Pointer LocatePackageById								// PKSEC_LOCATE_PKG_BY_ID
+End_Struct
+
+Struct SECPKG_KERNEL_FUNCTION_TABLE
+	Pointer Initialize										// KspInitPackageFn
+	Pointer DeleteContext									// KspDeleteContextFn
+	Pointer InitContext										// KspInitContextFn
+	Pointer MapHandle										// KspMapHandleFn
+	Pointer Sign											// KspMakeSignatureFn
+	Pointer Verify											// KspVerifySignatureFn
+	Pointer Seal											// KspSealMessageFn
+	Pointer Unseal											// KspUnsealMessageFn
+	Pointer GetToken										// KspGetTokenFn
+	Pointer QueryAttributes									// KspQueryAttributesFn
+	Pointer CompleteToken									// KspCompleteTokenFn
+	Pointer ExportContext									// SpExportSecurityContextFn
+	Pointer ImportContext									// SpImportSecurityContextFn
+	Pointer SetPackagePagingMode							// KspSetPagingModeFn
+	Pointer SerializeAuthData								// KspSerializeAuthDataFn
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

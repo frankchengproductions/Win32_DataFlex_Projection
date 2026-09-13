@@ -1,0 +1,35 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/avrfsdk/ns-avrfsdk-avrf_backtrace_information
+Struct AVRF_BACKTRACE_INFORMATION
+	UInteger Depth
+	UInteger Index
+	UBigint[32] ReturnAddresses
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/avrfsdk/ns-avrfsdk-avrf_handle_operation
+Struct AVRF_HANDLE_OPERATION
+	UBigint Handle
+	UInteger ProcessId
+	UInteger ThreadId
+	UInteger OperationType
+	UInteger Spare0
+	AVRF_BACKTRACE_INFORMATION BackTraceInformation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/avrfsdk/ns-avrfsdk-avrf_heap_allocation
+Struct AVRF_HEAP_ALLOCATION
+	UBigint HeapHandle
+	UBigint UserAllocation
+	UBigint UserAllocationSize
+	UBigint Allocation
+	UBigint AllocationSize
+	UInteger UserAllocationState
+	UInteger HeapState
+	UBigint HeapContext
+	Pointer BackTraceInformation							// AVRF_BACKTRACE_INFORMATION*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

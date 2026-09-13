@@ -1,0 +1,788 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_metadata_endpoints
+Struct WS_METADATA_ENDPOINTS
+	Pointer endpoints										// WS_METADATA_ENDPOINT*
+	UInteger endpointCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_metadata_property
+Struct WS_METADATA_PROPERTY
+	Integer id												// WS_METADATA_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_namedpipe_sspi_transport_security_binding
+Struct WS_NAMEDPIPE_SSPI_TRANSPORT_SECURITY_BINDING
+	WS_SECURITY_BINDING binding
+	Pointer clientCredential								// WS_WINDOWS_INTEGRATED_AUTH_CREDENTIAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_ncrypt_asymmetric_security_key_handle
+Struct WS_NCRYPT_ASYMMETRIC_SECURITY_KEY_HANDLE
+	WS_SECURITY_KEY_HANDLE keyHandle
+	Integer iMissingAlignment1
+	ULongPtr asymmetricKey									// NCRYPT_KEY_HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_netpipe_url
+Struct WS_NETPIPE_URL
+	WS_URL url
+	Integer iMissingAlignment1
+	WS_STRING host
+	UShort port
+	UChar[6] cMissingAlignment2
+	WS_STRING portAsString
+	WS_STRING path
+	WS_STRING query
+	WS_STRING fragment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_nettcp_url
+Struct WS_NETTCP_URL
+	WS_URL url
+	Integer iMissingAlignment1
+	WS_STRING host
+	UShort port
+	UChar[6] cMissingAlignment2
+	WS_STRING portAsString
+	WS_STRING path
+	WS_STRING query
+	WS_STRING fragment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_opaque_windows_integrated_auth_credential
+Struct WS_OPAQUE_WINDOWS_INTEGRATED_AUTH_CREDENTIAL
+	WS_WINDOWS_INTEGRATED_AUTH_CREDENTIAL credential
+	Integer iMissingAlignment1
+	Pointer opaqueAuthIdentity								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_operation_description
+Struct WS_OPERATION_DESCRIPTION
+	UInteger versionInfo
+	Integer iMissingAlignment1
+	Pointer inputMessageDescription							// WS_MESSAGE_DESCRIPTION*
+	Pointer outputMessageDescription						// WS_MESSAGE_DESCRIPTION*
+	UInteger inputMessageOptions
+	UInteger outputMessageOptions
+	UShort parameterCount
+	UChar[6] cMissingAlignment2
+	Pointer parameterDescription							// WS_PARAMETER_DESCRIPTION*
+	Pointer stubCallback									// WS_SERVICE_STUB_CALLBACK
+	Integer style											// WS_OPERATION_STYLE
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_parameter_description
+Struct WS_PARAMETER_DESCRIPTION
+	Integer parameterType									// WS_PARAMETER_TYPE
+	UShort inputMessageIndex
+	UShort outputMessageIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_policy_constraints
+Struct WS_POLICY_CONSTRAINTS
+	Integer channelBinding									// WS_CHANNEL_BINDING
+	Integer iMissingAlignment1
+	Pointer channelPropertyConstraints						// WS_CHANNEL_PROPERTY_CONSTRAINT*
+	UInteger channelPropertyConstraintCount
+	Integer iMissingAlignment2
+	Pointer securityConstraints								// WS_SECURITY_CONSTRAINTS*
+	Pointer policyExtensions								// WS_POLICY_EXTENSION**
+	UInteger policyExtensionCount
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_policy_extension
+Struct WS_POLICY_EXTENSION
+	Integer type											// WS_POLICY_EXTENSION_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_policy_properties
+Struct WS_POLICY_PROPERTIES
+	Pointer properties										// WS_POLICY_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_policy_property
+Struct WS_POLICY_PROPERTY
+	Integer id												// WS_POLICY_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_proxy_message_callback_context
+Struct WS_PROXY_MESSAGE_CALLBACK_CONTEXT
+	Pointer callback										// WS_PROXY_MESSAGE_CALLBACK
+	Pointer state											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_proxy_property
+Struct WS_PROXY_PROPERTY
+	Integer id												// WS_PROXY_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_raw_symmetric_security_key_handle
+Struct WS_RAW_SYMMETRIC_SECURITY_KEY_HANDLE
+	WS_SECURITY_KEY_HANDLE keyHandle
+	Integer iMissingAlignment1
+	WS_BYTES rawKeyBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_request_security_token_property
+Struct WS_REQUEST_SECURITY_TOKEN_PROPERTY
+	Integer id												// WS_REQUEST_SECURITY_TOKEN_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_request_security_token_property_constraint
+Struct WS_REQUEST_SECURITY_TOKEN_PROPERTY_CONSTRAINT
+	Integer id												// WS_REQUEST_SECURITY_TOKEN_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer allowedValues									// Pointer*
+	UInteger allowedValuesSize
+	Integer iMissingAlignment2
+	_out_e__Struct_2796 out
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_rsa_endpoint_identity
+Struct WS_RSA_ENDPOINT_IDENTITY
+	WS_ENDPOINT_IDENTITY identity
+	Integer iMissingAlignment1
+	WS_BYTES modulus
+	WS_BYTES exponent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_saml_authenticator
+Struct WS_SAML_AUTHENTICATOR
+	Integer authenticatorType								// WS_SAML_AUTHENTICATOR_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_saml_message_security_binding
+Struct WS_SAML_MESSAGE_SECURITY_BINDING
+	WS_SECURITY_BINDING binding
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+	Pointer authenticator									// WS_SAML_AUTHENTICATOR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_algorithm_property
+Struct WS_SECURITY_ALGORITHM_PROPERTY
+	Integer id												// WS_SECURITY_ALGORITHM_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_algorithm_suite
+Struct WS_SECURITY_ALGORITHM_SUITE
+	Integer canonicalizationAlgorithm						// WS_SECURITY_ALGORITHM_ID
+	Integer digestAlgorithm									// WS_SECURITY_ALGORITHM_ID
+	Integer symmetricSignatureAlgorithm						// WS_SECURITY_ALGORITHM_ID
+	Integer asymmetricSignatureAlgorithm					// WS_SECURITY_ALGORITHM_ID
+	Integer encryptionAlgorithm								// WS_SECURITY_ALGORITHM_ID
+	Integer keyDerivationAlgorithm							// WS_SECURITY_ALGORITHM_ID
+	Integer symmetricKeyWrapAlgorithm						// WS_SECURITY_ALGORITHM_ID
+	Integer asymmetricKeyWrapAlgorithm						// WS_SECURITY_ALGORITHM_ID
+	UInteger minSymmetricKeyLength
+	UInteger maxSymmetricKeyLength
+	UInteger minAsymmetricKeyLength
+	UInteger maxAsymmetricKeyLength
+	Pointer properties										// WS_SECURITY_ALGORITHM_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_binding
+Struct WS_SECURITY_BINDING
+	Integer bindingType										// WS_SECURITY_BINDING_TYPE
+	Integer iMissingAlignment1
+	Pointer properties										// WS_SECURITY_BINDING_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_binding_constraint
+Struct WS_SECURITY_BINDING_CONSTRAINT
+	Integer type											// WS_SECURITY_BINDING_CONSTRAINT_TYPE
+	Integer iMissingAlignment1
+	Pointer propertyConstraints								// WS_SECURITY_BINDING_PROPERTY_CONSTRAINT*
+	UInteger propertyConstraintCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_binding_properties
+Struct WS_SECURITY_BINDING_PROPERTIES
+	Pointer properties										// WS_SECURITY_BINDING_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_binding_property
+Struct WS_SECURITY_BINDING_PROPERTY
+	Integer id												// WS_SECURITY_BINDING_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_binding_property_constraint
+Struct WS_SECURITY_BINDING_PROPERTY_CONSTRAINT
+	Integer id												// WS_SECURITY_BINDING_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer allowedValues									// Pointer*
+	UInteger allowedValuesSize
+	Integer iMissingAlignment2
+	_out_e__Struct_2794 out
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_constraints
+Struct WS_SECURITY_CONSTRAINTS
+	Pointer securityPropertyConstraints						// WS_SECURITY_PROPERTY_CONSTRAINT*
+	UInteger securityPropertyConstraintCount
+	Integer iMissingAlignment1
+	Pointer securityBindingConstraints						// WS_SECURITY_BINDING_CONSTRAINT**
+	UInteger securityBindingConstraintCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_message_security_binding
+Struct WS_SECURITY_CONTEXT_MESSAGE_SECURITY_BINDING
+	WS_SECURITY_BINDING binding
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+	Pointer bootstrapSecurityDescription					// WS_SECURITY_DESCRIPTION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_message_security_binding_constraint
+Struct WS_SECURITY_CONTEXT_MESSAGE_SECURITY_BINDING_CONSTRAINT
+	WS_SECURITY_BINDING_CONSTRAINT bindingConstraint
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+	Pointer bootstrapSecurityConstraint						// WS_SECURITY_CONSTRAINTS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_message_security_binding_policy_description
+Struct WS_SECURITY_CONTEXT_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_message_security_binding_template
+Struct WS_SECURITY_CONTEXT_MESSAGE_SECURITY_BINDING_TEMPLATE
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_property
+Struct WS_SECURITY_CONTEXT_PROPERTY
+	Integer id												// WS_SECURITY_CONTEXT_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_security_binding_policy_description
+Struct WS_SECURITY_CONTEXT_SECURITY_BINDING_POLICY_DESCRIPTION
+	WS_SECURITY_CONTEXT_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION securityContextMessageSecurityBinding
+	WS_SECURITY_PROPERTIES securityProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_context_security_binding_template
+Struct WS_SECURITY_CONTEXT_SECURITY_BINDING_TEMPLATE
+	WS_SECURITY_CONTEXT_MESSAGE_SECURITY_BINDING_TEMPLATE securityContextMessageSecurityBinding
+	WS_SECURITY_PROPERTIES securityProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_description
+Struct WS_SECURITY_DESCRIPTION
+	Pointer securityBindings								// WS_SECURITY_BINDING**
+	UInteger securityBindingCount
+	Integer iMissingAlignment1
+	Pointer properties										// WS_SECURITY_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_key_handle
+Struct WS_SECURITY_KEY_HANDLE
+	Integer keyHandleType									// WS_SECURITY_KEY_HANDLE_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_properties
+Struct WS_SECURITY_PROPERTIES
+	Pointer properties										// WS_SECURITY_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_property
+Struct WS_SECURITY_PROPERTY
+	Integer id												// WS_SECURITY_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_security_property_constraint
+Struct WS_SECURITY_PROPERTY_CONSTRAINT
+	Integer id												// WS_SECURITY_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer allowedValues									// Pointer*
+	UInteger allowedValuesSize
+	Integer iMissingAlignment2
+	_out_e__Struct_2798 out
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_contract
+Struct WS_SERVICE_CONTRACT
+	Pointer contractDescription								// WS_CONTRACT_DESCRIPTION*
+	Pointer defaultMessageHandlerCallback					// WS_SERVICE_MESSAGE_RECEIVE_CALLBACK
+	Pointer methodTable										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_endpoint
+Struct WS_SERVICE_ENDPOINT
+	WS_ENDPOINT_ADDRESS address
+	Integer channelBinding									// WS_CHANNEL_BINDING
+	Integer channelType										// WS_CHANNEL_TYPE
+	Pointer securityDescription								// WS_SECURITY_DESCRIPTION*
+	Pointer contract										// WS_SERVICE_CONTRACT*
+	Pointer authorizationCallback							// WS_SERVICE_SECURITY_CALLBACK
+	Pointer properties										// WS_SERVICE_ENDPOINT_PROPERTY*
+	UInteger propertyCount
+	Integer iMissingAlignment1
+	WS_CHANNEL_PROPERTIES channelProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_endpoint_metadata
+Struct WS_SERVICE_ENDPOINT_METADATA
+	Pointer portName										// WS_XML_STRING*
+	Pointer bindingName										// WS_XML_STRING*
+	Pointer bindingNs										// WS_XML_STRING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_endpoint_property
+Struct WS_SERVICE_ENDPOINT_PROPERTY
+	Integer id												// WS_SERVICE_ENDPOINT_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_metadata
+Struct WS_SERVICE_METADATA
+	UInteger documentCount
+	Integer iMissingAlignment1
+	Pointer documents										// WS_SERVICE_METADATA_DOCUMENT**
+	Pointer serviceName										// WS_XML_STRING*
+	Pointer serviceNs										// WS_XML_STRING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_metadata_document
+Struct WS_SERVICE_METADATA_DOCUMENT
+	Pointer content											// WS_XML_STRING*
+	Pointer name											// WS_STRING*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_property
+Struct WS_SERVICE_PROPERTY
+	Integer id												// WS_SERVICE_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer value											// Pointer*
+	UInteger valueSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_property_accept_callback
+Struct WS_SERVICE_PROPERTY_ACCEPT_CALLBACK
+	Pointer callback										// WS_SERVICE_ACCEPT_CHANNEL_CALLBACK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_property_close_callback
+Struct WS_SERVICE_PROPERTY_CLOSE_CALLBACK
+	Pointer callback										// WS_SERVICE_CLOSE_CHANNEL_CALLBACK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_service_security_identities
+Struct WS_SERVICE_SECURITY_IDENTITIES
+	Pointer serviceIdentities								// WS_STRING*
+	UInteger serviceIdentityCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_soapudp_url
+Struct WS_SOAPUDP_URL
+	WS_URL url
+	Integer iMissingAlignment1
+	WS_STRING host
+	UShort port
+	UChar[6] cMissingAlignment2
+	WS_STRING portAsString
+	WS_STRING path
+	WS_STRING query
+	WS_STRING fragment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_spn_endpoint_identity
+Struct WS_SPN_ENDPOINT_IDENTITY
+	WS_ENDPOINT_IDENTITY identity
+	Integer iMissingAlignment1
+	WS_STRING spn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_ssl_transport_security_binding
+Struct WS_SSL_TRANSPORT_SECURITY_BINDING
+	WS_SECURITY_BINDING binding
+	Pointer localCertCredential								// WS_CERT_CREDENTIAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_ssl_transport_security_binding_constraint
+Struct WS_SSL_TRANSPORT_SECURITY_BINDING_CONSTRAINT
+	WS_SECURITY_BINDING_CONSTRAINT bindingConstraint
+	_out_e__Struct_2795 out
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_ssl_transport_security_binding_policy_description
+Struct WS_SSL_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_ssl_transport_security_binding_template
+Struct WS_SSL_TRANSPORT_SECURITY_BINDING_TEMPLATE
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+	Pointer localCertCredential								// WS_CERT_CREDENTIAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_sspi_transport_security_binding_policy_description
+Struct WS_SSPI_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_string
+Struct WS_STRING
+	UInteger length
+	Integer iMissingAlignment1
+	Pointer chars											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_string_description
+Struct WS_STRING_DESCRIPTION
+	UInteger minCharCount
+	UInteger maxCharCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_string_username_credential
+Struct WS_STRING_USERNAME_CREDENTIAL
+	WS_USERNAME_CREDENTIAL credential
+	Integer iMissingAlignment1
+	WS_STRING username
+	WS_STRING password
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_string_windows_integrated_auth_credential
+Struct WS_STRING_WINDOWS_INTEGRATED_AUTH_CREDENTIAL
+	WS_WINDOWS_INTEGRATED_AUTH_CREDENTIAL credential
+	Integer iMissingAlignment1
+	WS_STRING username
+	WS_STRING password
+	WS_STRING domain
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_struct_description
+Struct WS_STRUCT_DESCRIPTION
+	UInteger size
+	UInteger alignment
+	Pointer fields											// WS_FIELD_DESCRIPTION**
+	UInteger fieldCount
+	Integer iMissingAlignment1
+	Pointer typeLocalName									// WS_XML_STRING*
+	Pointer typeNs											// WS_XML_STRING*
+	Pointer parentType										// WS_STRUCT_DESCRIPTION*
+	Pointer subTypes										// WS_STRUCT_DESCRIPTION**
+	UInteger subTypeCount
+	UInteger structOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_subject_name_cert_credential
+Struct WS_SUBJECT_NAME_CERT_CREDENTIAL
+	WS_CERT_CREDENTIAL credential
+	UInteger storeLocation
+	WS_STRING storeName
+	WS_STRING subjectName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_binding_template
+Struct WS_TCP_BINDING_TEMPLATE
+	WS_CHANNEL_PROPERTIES channelProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_policy_description
+Struct WS_TCP_POLICY_DESCRIPTION
+	WS_CHANNEL_PROPERTIES channelProperties
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_binding_template
+Struct WS_TCP_SSPI_BINDING_TEMPLATE
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_TEMPLATE sspiTransportSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_kerberos_apreq_binding_template
+Struct WS_TCP_SSPI_KERBEROS_APREQ_BINDING_TEMPLATE
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_TEMPLATE sspiTransportSecurityBinding
+	WS_KERBEROS_APREQ_MESSAGE_SECURITY_BINDING_TEMPLATE kerberosApreqMessageSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_kerberos_apreq_policy_description
+Struct WS_TCP_SSPI_KERBEROS_APREQ_POLICY_DESCRIPTION
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_SSPI_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION sspiTransportSecurityBinding
+	WS_KERBEROS_APREQ_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION kerberosApreqMessageSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_kerberos_apreq_security_context_binding_template
+Struct WS_TCP_SSPI_KERBEROS_APREQ_SECURITY_CONTEXT_BINDING_TEMPLATE
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_TEMPLATE sspiTransportSecurityBinding
+	WS_KERBEROS_APREQ_MESSAGE_SECURITY_BINDING_TEMPLATE kerberosApreqMessageSecurityBinding
+	WS_SECURITY_CONTEXT_SECURITY_BINDING_TEMPLATE securityContextSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_kerberos_apreq_security_context_policy_description
+Struct WS_TCP_SSPI_KERBEROS_APREQ_SECURITY_CONTEXT_POLICY_DESCRIPTION
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_SSPI_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION sspiTransportSecurityBinding
+	WS_KERBEROS_APREQ_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION kerberosApreqMessageSecurityBinding
+	WS_SECURITY_CONTEXT_SECURITY_BINDING_POLICY_DESCRIPTION securityContextSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_policy_description
+Struct WS_TCP_SSPI_POLICY_DESCRIPTION
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_SSPI_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION sspiTransportSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_transport_security_binding
+Struct WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING
+	WS_SECURITY_BINDING binding
+	Pointer clientCredential								// WS_WINDOWS_INTEGRATED_AUTH_CREDENTIAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_transport_security_binding_constraint
+Struct WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_CONSTRAINT
+	WS_SECURITY_BINDING_CONSTRAINT bindingConstraint
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_transport_security_binding_template
+Struct WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_TEMPLATE
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+	Pointer clientCredential								// WS_WINDOWS_INTEGRATED_AUTH_CREDENTIAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_username_binding_template
+Struct WS_TCP_SSPI_USERNAME_BINDING_TEMPLATE
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_TEMPLATE sspiTransportSecurityBinding
+	WS_USERNAME_MESSAGE_SECURITY_BINDING_TEMPLATE usernameMessageSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_username_policy_description
+Struct WS_TCP_SSPI_USERNAME_POLICY_DESCRIPTION
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_SSPI_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION sspiTransportSecurityBinding
+	WS_USERNAME_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION usernameMessageSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_username_security_context_binding_template
+Struct WS_TCP_SSPI_USERNAME_SECURITY_CONTEXT_BINDING_TEMPLATE
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_TCP_SSPI_TRANSPORT_SECURITY_BINDING_TEMPLATE sspiTransportSecurityBinding
+	WS_USERNAME_MESSAGE_SECURITY_BINDING_TEMPLATE usernameMessageSecurityBinding
+	WS_SECURITY_CONTEXT_SECURITY_BINDING_TEMPLATE securityContextSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_tcp_sspi_username_security_context_policy_description
+Struct WS_TCP_SSPI_USERNAME_SECURITY_CONTEXT_POLICY_DESCRIPTION
+	WS_CHANNEL_PROPERTIES channelProperties
+	WS_SECURITY_PROPERTIES securityProperties
+	WS_SSPI_TRANSPORT_SECURITY_BINDING_POLICY_DESCRIPTION sspiTransportSecurityBinding
+	WS_USERNAME_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION usernameMessageSecurityBinding
+	WS_SECURITY_CONTEXT_SECURITY_BINDING_POLICY_DESCRIPTION securityContextSecurityBinding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_thumbprint_cert_credential
+Struct WS_THUMBPRINT_CERT_CREDENTIAL
+	WS_CERT_CREDENTIAL credential
+	UInteger storeLocation
+	WS_STRING storeName
+	WS_STRING thumbprint
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_timespan
+Struct WS_TIMESPAN
+	Bigint ticks
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_timespan_description
+Struct WS_TIMESPAN_DESCRIPTION
+	WS_TIMESPAN minValue
+	WS_TIMESPAN maxValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_uint16_description
+Struct WS_UINT16_DESCRIPTION
+	UShort minValue
+	UShort maxValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_uint32_description
+Struct WS_UINT32_DESCRIPTION
+	UInteger minValue
+	UInteger maxValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_uint64_description
+Struct WS_UINT64_DESCRIPTION
+	UBigint minValue
+	UBigint maxValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_uint8_description
+Struct WS_UINT8_DESCRIPTION
+	UChar minValue
+	UChar maxValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_union_description
+Struct WS_UNION_DESCRIPTION
+	UInteger size
+	UInteger alignment
+	Pointer fields											// WS_UNION_FIELD_DESCRIPTION**
+	UInteger fieldCount
+	UInteger enumOffset
+	Integer noneEnumValue
+	Integer iMissingAlignment1
+	Pointer valueIndices									// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_union_field_description
+Struct WS_UNION_FIELD_DESCRIPTION
+	Integer value
+	Integer iMissingAlignment1
+	WS_FIELD_DESCRIPTION field
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_unique_id
+Struct WS_UNIQUE_ID
+	WS_STRING uri
+	Guid guid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_unique_id_description
+Struct WS_UNIQUE_ID_DESCRIPTION
+	UInteger minCharCount
+	UInteger maxCharCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_unknown_endpoint_identity
+Struct WS_UNKNOWN_ENDPOINT_IDENTITY
+	WS_ENDPOINT_IDENTITY identity
+	Integer iMissingAlignment1
+	Pointer element											// WS_XML_BUFFER*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_upn_endpoint_identity
+Struct WS_UPN_ENDPOINT_IDENTITY
+	WS_ENDPOINT_IDENTITY identity
+	Integer iMissingAlignment1
+	WS_STRING upn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_url
+Struct WS_URL
+	Integer scheme											// WS_URL_SCHEME_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_username_credential
+Struct WS_USERNAME_CREDENTIAL
+	Integer credentialType									// WS_USERNAME_CREDENTIAL_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_username_message_security_binding
+Struct WS_USERNAME_MESSAGE_SECURITY_BINDING
+	WS_SECURITY_BINDING binding
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+	Pointer clientCredential								// WS_USERNAME_CREDENTIAL*
+	Pointer passwordValidator								// WS_VALIDATE_PASSWORD_CALLBACK
+	Pointer passwordValidatorCallbackState					// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_username_message_security_binding_constraint
+Struct WS_USERNAME_MESSAGE_SECURITY_BINDING_CONSTRAINT
+	WS_SECURITY_BINDING_CONSTRAINT bindingConstraint
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_username_message_security_binding_policy_description
+Struct WS_USERNAME_MESSAGE_SECURITY_BINDING_POLICY_DESCRIPTION
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+	Integer bindingUsage									// WS_MESSAGE_SECURITY_USAGE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_username_message_security_binding_template
+Struct WS_USERNAME_MESSAGE_SECURITY_BINDING_TEMPLATE
+	WS_SECURITY_BINDING_PROPERTIES securityBindingProperties
+	Pointer clientCredential								// WS_USERNAME_CREDENTIAL*
+	Pointer passwordValidator								// WS_VALIDATE_PASSWORD_CALLBACK
+	Pointer passwordValidatorCallbackState					// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_utf8_array_description
+Struct WS_UTF8_ARRAY_DESCRIPTION
+	UInteger minByteCount
+	UInteger maxByteCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/webservices/ns-webservices-ws_void_description
+Struct WS_VOID_DESCRIPTION
+	UInteger size
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

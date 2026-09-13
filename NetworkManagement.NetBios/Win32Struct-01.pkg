@@ -1,0 +1,135 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-action_header
+Struct ACTION_HEADER
+	UInteger transport_id
+	UShort action_code
+	UShort reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-adapter_status
+Struct ADAPTER_STATUS
+	UChar[6] adapter_address
+	UChar rev_major
+	UChar reserved0
+	UChar adapter_type
+	UChar rev_minor
+	UShort duration
+	UShort frmr_recv
+	UShort frmr_xmit
+	UShort iframe_recv_err
+	UShort xmit_aborts
+	UInteger xmit_success
+	UInteger recv_success
+	UShort iframe_xmit_err
+	UShort recv_buff_unavail
+	UShort t1_timeouts
+	UShort ti_timeouts
+	UInteger reserved1
+	UShort free_ncbs
+	UShort max_cfg_ncbs
+	UShort max_ncbs
+	UShort xmit_buf_unavail
+	UShort max_dgram_size
+	UShort pending_sess
+	UShort max_cfg_sess
+	UShort max_sess
+	UShort max_sess_pkt_size
+	UShort name_count
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-find_name_buffer
+Struct FIND_NAME_BUFFER
+	UChar length
+	UChar access_control
+	UChar frame_control
+	UChar[6] destination_addr
+	UChar[6] source_addr
+	UChar[18] routing_info
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-find_name_header
+Struct FIND_NAME_HEADER
+	UShort node_count
+	UChar reserved
+	UChar unique_group
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-lana_enum
+Struct LANA_ENUM
+	UChar length
+	UChar[255] lana
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-name_buffer
+Struct NAME_BUFFER
+	UChar[16] name
+	UChar name_num
+	UChar name_flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-ncb
+Struct NCB
+	UChar ncb_command
+	UChar ncb_retcode
+	UChar ncb_lsn
+	UChar ncb_num
+	Integer iMissingAlignment1
+	Pointer ncb_buffer										// UChar*
+	UShort ncb_length
+	UChar[16] ncb_callname
+	UChar[16] ncb_name
+	UChar ncb_rto
+	UChar ncb_sto
+	Integer iMissingAlignment2
+	LongPtr ncb_post
+	UChar ncb_lana_num
+	UChar ncb_cmd_cplt
+	UChar[18] ncb_reserve
+	Integer iMissingAlignment3
+	Pointer ncb_event										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-ncb
+Struct NCB
+	UChar ncb_command
+	UChar ncb_retcode
+	UChar ncb_lsn
+	UChar ncb_num
+	Integer iMissingAlignment1
+	Pointer ncb_buffer										// UChar*
+	UShort ncb_length
+	UChar[16] ncb_callname
+	UChar[16] ncb_name
+	UChar ncb_rto
+	UChar ncb_sto
+	Integer iMissingAlignment2
+	LongPtr ncb_post
+	UChar ncb_lana_num
+	UChar ncb_cmd_cplt
+	UChar[10] ncb_reserve
+	Integer iMissingAlignment3
+	Pointer ncb_event										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-session_buffer
+Struct SESSION_BUFFER
+	UChar lsn
+	UChar state
+	UChar[16] local_name
+	UChar[16] remote_name
+	UChar rcvs_outstanding
+	UChar sends_outstanding
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nb30/ns-nb30-session_header
+Struct SESSION_HEADER
+	UChar sess_name
+	UChar num_sess
+	UChar rcv_dg_outstanding
+	UChar rcv_any_outstanding
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

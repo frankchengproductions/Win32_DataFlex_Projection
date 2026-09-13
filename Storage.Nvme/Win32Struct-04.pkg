@@ -1,0 +1,1050 @@
+Use UI
+
+Struct NVME_DISCOVERY_ENTRY
+	UChar TRTYPE
+	UChar ADRFAM
+	UChar SUBTYPE
+	_TREQ_e__Union_2687 TREQ
+	UShort PORTID
+	UShort CNTLID
+	UShort ASQSZ
+	_EFLAGS_e__Union_2689 EFLAGS
+	UChar[20] Reserved0
+	UChar[32] TRSVCID
+	UChar[192] Reserved1
+	UChar[256] NQN
+	UChar[256] TRADDR
+	UChar[256] TSAS
+End_Struct
+
+Struct NVME_DISCOVERY_HEADER
+	UBigint GENCTR
+	UBigint NUMREC
+	UShort RECFMT
+	_DLPF_e__Union_2695 DLPF
+	UChar Reserved0
+	UInteger TDLPL
+	UChar[1000] Reserved1
+End_Struct
+
+Struct NVME_DISCOVERY_INFO_MGMT_HEADER
+	UInteger TDL
+	UInteger Reserved0
+	UBigint NUMENT
+	UShort ENTFMT
+	UShort ETYPE
+	UChar PORTLCL
+	UChar Reserved1
+	_EKTYPE_e__Union_2697 EKTYPE
+	UChar[256] EID
+	UChar[256] ENAME
+	UChar[64] EVER
+	UChar[424] Reserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_endurance_group_log
+Struct NVME_ENDURANCE_GROUP_LOG
+	UInteger Reserved0
+	UChar AvailableSpareThreshold
+	UChar PercentageUsed
+	UChar[26] Reserved1
+	UChar[16] EnduranceEstimate
+	UChar[16] DataUnitsRead
+	UChar[16] DataUnitsWritten
+	UChar[16] MediaUnitsWritten
+	UChar[416] Reserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_error_info_log
+Struct NVME_ERROR_INFO_LOG
+	UBigint ErrorCount
+	UShort SQID
+	UShort CMDID
+	NVME_COMMAND_STATUS Status
+	_ParameterErrorLocation_e__Struct_2545 ParameterErrorLocation
+	UBigint Lba
+	UInteger NameSpace
+	UChar VendorInfoAvailable
+	UChar TRTYPE
+	UChar[2] Reserved0
+	UBigint CommandSpecificInfo
+	UShort TransportTypeSpecificInfo
+	UChar[22] Reserved1
+End_Struct
+
+Struct NVME_ERROR_INJECTION_ENTRY
+	_Flags_e__Union_2508 Flags
+	UChar Reserved1
+	UShort ErrorInjectionType
+	UChar[28] ErrorInjectionTypeSpecific
+End_Struct
+
+Struct NVME_EXTENDED_ATTR
+	UShort EXATTYPE
+	UShort EXATLEN
+	UChar[1] EXATVAL
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct NVME_EXTENDED_DISCOVERY_ENTRY
+	UChar TRTYPE
+	UChar ADRFAM
+	UChar SUBTYPE
+	_TREQ_e__Union_2691 TREQ
+	UShort PORTID
+	UShort CNTLID
+	UShort ASQSZ
+	_EFLAGS_e__Union_2693 EFLAGS
+	UChar[20] Reserved0
+	UChar[32] TRSVCID
+	UChar[192] Reserved1
+	UChar[256] NQN
+	UChar[256] TRADDR
+	UChar[256] TSAS
+	UInteger TEL
+	UShort NUMEXAT
+	UShort Reserved2
+End_Struct
+
+Struct NVME_EXTENDED_REPORT_ZONE_INFO
+	UBigint ZoneCount
+	UBigint[7] Reserved
+	NVME_ZONE_EXTENDED_REPORT_ZONE_DESC[1] Desc
+End_Struct
+
+Struct NVME_FEATURE_HOST_IDENTIFIER_DATA
+	UChar[16] HOSTID
+End_Struct
+
+Struct NVME_FEATURE_HOST_METADATA_DATA
+	UChar NumberOfMetadataElementDescriptors
+	UChar Reserved0
+	UChar[4094] MetadataElementDescriptors
+End_Struct
+
+Struct NVME_FEATURE_IDENTIFIERS_EFFECTS_LOG
+	NVME_FID_SUPPORTED_AND_EFFECTS[256] FeatureIdentifierSupported
+End_Struct
+
+Struct NVME_FID_SUPPORTED_AND_EFFECTS
+	UInteger _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_firmware_slot_info_log
+Struct NVME_FIRMWARE_SLOT_INFO_LOG
+	_AFI_e__Struct_2548 AFI
+	UChar[7] Reserved0
+	UBigint[7] FRS
+	UChar[448] Reserved1
+End_Struct
+
+Struct NVME_GET_FEATURE_TIMESTAMP
+	_Anonymous_e__Struct_2461 Anonymous
+	UBigint AsUlonglong
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_health_info_log
+Struct NVME_HEALTH_INFO_LOG
+	_CriticalWarning_e__Union_2546 CriticalWarning
+	UChar[2] Temperature
+	UChar AvailableSpare
+	UChar AvailableSpareThreshold
+	UChar PercentageUsed
+	UChar[26] Reserved0
+	UChar[16] DataUnitRead
+	UChar[16] DataUnitWritten
+	UChar[16] HostReadCommands
+	UChar[16] HostWrittenCommands
+	UChar[16] ControllerBusyTime
+	UChar[16] PowerCycle
+	UChar[16] PowerOnHours
+	UChar[16] UnsafeShutdowns
+	UChar[16] MediaErrors
+	UChar[16] ErrorInfoLogEntryCount
+	UInteger WarningCompositeTemperatureTime
+	UInteger CriticalCompositeTemperatureTime
+	UShort TemperatureSensor1
+	UShort TemperatureSensor2
+	UShort TemperatureSensor3
+	UShort TemperatureSensor4
+	UShort TemperatureSensor5
+	UShort TemperatureSensor6
+	UShort TemperatureSensor7
+	UShort TemperatureSensor8
+	UChar[296] Reserved1
+End_Struct
+
+Struct NVME_HOST_BEHAVIOR_SUPPORT_DATA
+	UChar ACRE
+	UChar ETDAS
+	UChar LBAFEE
+	UChar[509] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_host_memory_buffer_descriptor_entry
+Struct NVME_HOST_MEMORY_BUFFER_DESCRIPTOR_ENTRY
+	UBigint BADD
+	UInteger BSIZE
+	UInteger Reserved
+End_Struct
+
+Struct NVME_HOST_METADATA_ELEMENT_DESCRIPTOR
+	UInteger _bitfield
+	UChar[1] EVAL
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_identify_controller_data
+Struct NVME_IDENTIFY_CONTROLLER_DATA
+	UShort VID
+	UShort SSVID
+	UChar[20] SN
+	UChar[40] MN
+	UChar[8] FR
+	UChar RAB
+	UChar[3] IEEE
+	_CMIC_e__Struct_2387 CMIC
+	UChar MDTS
+	UShort CNTLID
+	UInteger VER
+	UInteger RTD3R
+	UInteger RTD3E
+	_OAES_e__Struct_2388 OAES
+	_CTRATT_e__Struct_2389 CTRATT
+	_RRLS_e__Struct_2390 RRLS
+	UChar[9] Reserved0
+	UChar CNTRLTYPE
+	UChar[16] FGUID
+	UShort CRDT1
+	UShort CRDT2
+	UShort CRDT3
+	UChar[106] Reserved1
+	UChar[13] ReservedForManagement
+	UChar NVMSR
+	UChar VWCI
+	UChar MEC
+	_OACS_e__Struct_2391 OACS
+	UChar ACL
+	UChar AERL
+	_FRMW_e__Struct_2392 FRMW
+	_LPA_e__Struct_2393 LPA
+	UChar ELPE
+	UChar NPSS
+	_AVSCC_e__Struct_2394 AVSCC
+	_APSTA_e__Struct_2395 APSTA
+	UShort WCTEMP
+	UShort CCTEMP
+	UShort MTFA
+	UInteger HMPRE
+	UInteger HMMIN
+	UChar[16] TNVMCAP
+	UChar[16] UNVMCAP
+	_RPMBS_e__Struct_2396 RPMBS
+	UShort EDSTT
+	UChar DSTO
+	UChar FWUG
+	UShort KAS
+	_HCTMA_e__Struct_2397 HCTMA
+	UShort MNTMT
+	UShort MXTMT
+	_SANICAP_e__Struct_2398 SANICAP
+	UInteger HMMINDS
+	UShort HMMAXD
+	UShort NSETIDMAX
+	UShort ENDGIDMAX
+	UChar ANATT
+	_ANACAP_e__Struct_2399 ANACAP
+	UInteger ANAGRPMAX
+	UInteger NANAGRPID
+	UInteger PELS
+	UShort DomainId
+	UChar[10] Reserved2
+	UChar[16] MEGCAP
+	UChar TMPTHHA
+	UChar Reserved3
+	UShort CQT
+	UChar[124] Reserved4
+	_SQES_e__Struct_2400 SQES
+	_CQES_e__Struct_2401 CQES
+	UShort MAXCMD
+	UInteger NN
+	_ONCS_e__Struct_2402 ONCS
+	_FUSES_e__Struct_2403 FUSES
+	_FNA_e__Struct_2404 FNA
+	_VWC_e__Struct_2405 VWC
+	UShort AWUN
+	UShort AWUPF
+	_NVSCC_e__Struct_2406 NVSCC
+	_NWPC_e__Struct_2407 NWPC
+	UShort ACWU
+	UShort CopyDescFormats
+	_SGLS_e__Struct_2408 SGLS
+	UInteger MNAN
+	UChar[16] MAXDNA
+	UInteger MAXCNA
+	UChar[204] Reserved6
+	UChar[256] SUBNQN
+	UChar[768] Reserved7
+	UInteger IOCCSZ
+	UInteger IORCSZ
+	UShort ICDOFF
+	_FCATT_e__Struct_2409 FCATT
+	UChar MSDBD
+	_OFCS_e__Struct_2410 OFCS
+	UChar DCTYPE
+	UChar[241] Reserved8
+	NVME_POWER_STATE_DESC[32] PDS
+	UChar[1024] VS
+End_Struct
+
+Struct NVME_IDENTIFY_IO_COMMAND_SET
+	IO_COMMAND_SET_VECTOR[512] IOCommandSetVector
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_identify_namespace_data
+Struct NVME_IDENTIFY_NAMESPACE_DATA
+	UBigint NSZE
+	UBigint NCAP
+	UBigint NUSE
+	_NSFEAT_e__Struct_2378 NSFEAT
+	UChar NLBAF
+	_FLBAS_e__Struct_2379 FLBAS
+	_MC_e__Struct_2380 MC
+	_DPC_e__Struct_2381 DPC
+	_DPS_e__Struct_2382 DPS
+	_NMIC_e__Struct_2383 NMIC
+	NVM_RESERVATION_CAPABILITIES RESCAP
+	_FPI_e__Struct_2384 FPI
+	_DLFEAT_e__Struct_2385 DLFEAT
+	UShort NAWUN
+	UShort NAWUPF
+	UShort NACWU
+	UShort NABSN
+	UShort NABO
+	UShort NABSPF
+	UShort NOIOB
+	UChar[16] NVMCAP
+	UShort NPWG
+	UShort NPWA
+	UShort NPDG
+	UShort NPDA
+	UShort NOWS
+	UShort MSSRL
+	UInteger MCL
+	UChar MSRC
+	UChar[11] Reserved2
+	UInteger ANAGRPID
+	UChar[3] Reserved3
+	_NSATTR_e__Struct_2386 NSATTR
+	UShort NVMSETID
+	UShort ENDGID
+	UChar[16] NGUID
+	UChar[8] EUI64
+	NVME_LBA_FORMAT[64] LBAF
+	UChar[3712] VS
+End_Struct
+
+Struct NVME_IDENTIFY_NAMESPACE_DESCRIPTOR
+	UChar NIDT
+	UChar NIDL
+	UChar[2] Reserved
+	UChar[1] NID
+End_Struct
+
+Struct NVME_IDENTIFY_NVM_SPECIFIC_CONTROLLER_IO_COMMAND_SET
+	UChar VSL
+	UChar WZSL
+	UChar WUSL
+	UChar DMRL
+	UInteger DMRSL
+	UBigint DMSL
+	UChar[4080] Reserved
+End_Struct
+
+Struct NVME_IDENTIFY_SPECIFIC_NAMESPACE_IO_COMMAND_SET
+	_ZOC_e__Struct_2411 ZOC
+	_OZCS_e__Struct_2412 OZCS
+	UInteger MAR
+	UInteger MOR
+	UInteger RRL
+	UInteger FRL
+	UChar[2796] Reserved0
+	NVME_LBA_ZONE_FORMAT[16] LBAEF
+	UChar[768] Reserved1
+	UChar[256] VS
+End_Struct
+
+Struct NVME_IDENTIFY_ZNS_SPECIFIC_CONTROLLER_IO_COMMAND_SET
+	UChar ZASL
+	UChar[4095] Reserved
+End_Struct
+
+Struct NVME_LATENCY_MONITORING_ENTRY
+	UShort ActiveBucketTimerThreshold
+	UChar ActiveThresholdA
+	UChar ActiveThresholdB
+	UChar ActiveThresholdC
+	UChar ActiveThresholdD
+	UShort ActiveLatencyConfig
+	UChar ActiveLatencyMinimumWindow
+	UChar[1] cMissingAlignment1
+	UShort DebugLogTriggerEnable
+	UChar DiscardDebugLog
+	UChar LatencyMonitorFeatureEnable
+	UChar[4083] Reserved0
+	UChar[1] cMissingAlignment2
+End_Struct
+
+Struct NVME_LBA_FORMAT
+	_Anonymous_e__Union_2374 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_lba_range
+Struct NVME_LBA_RANGE
+	NVME_CONTEXT_ATTRIBUTES Attributes
+	UInteger LogicalBlockCount
+	UBigint StartingLBA
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_lba_ranget_type_entry
+Struct NVME_LBA_RANGET_TYPE_ENTRY
+	UChar Type
+	_Attributes_e__Struct_2413 Attributes
+	UChar[14] Reserved0
+	UBigint SLBA
+	UBigint NLB
+	UChar[16] GUID
+	UChar[16] Reserved1
+End_Struct
+
+Struct NVME_LBA_ZONE_FORMAT
+	UBigint ZoneSize
+	UChar ZDES
+	UChar[7] Reserved
+End_Struct
+
+Struct NVME_LID_SPECIFIC_PERSISTENT_EVENT_LOG
+	UShort _bitfield
+End_Struct
+
+Struct NVME_LID_SUPPORTED_AND_EFFECTS
+	UInteger _bitfield
+End_Struct
+
+Struct NVME_NVME_MI_COMMANDS_SUPPORTED_AND_EFFECTS
+	UInteger _bitfield
+End_Struct
+
+Struct NVME_NVME_MI_COMMANDS_SUPPORTED_AND_EFFECTS_LOG
+	NVME_NVME_MI_COMMANDS_SUPPORTED_AND_EFFECTS[256] ManagementInterfaceCommandSupported
+	UChar[3072] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_nvm_subsystem_reset
+Struct NVME_NVM_SUBSYSTEM_RESET
+	UInteger NSSRC
+End_Struct
+
+Struct NVME_NVM_SUBSYSTEM_SHUTDOWN
+	UInteger NSSC
+End_Struct
+
+Struct NVME_OCP_DEVICE_CAPABILITIES_LOG
+	UShort PciePorts
+	_OobMgmtSupport_e__Union_2435 OobMgmtSupport
+	_WriteZeroesCommand_e__Union_2437 WriteZeroesCommand
+	_SanitizeCommand_e__Union_2439 SanitizeCommand
+	_DatasetMgmtCommand_e__Union_2441 DatasetMgmtCommand
+	_WriteUncorrectableCommand_e__Union_2443 WriteUncorrectableCommand
+	_FusedCommand_e__Union_2445 FusedCommand
+	UShort MinimumValidDSSDPowerState
+	UChar Reserved0
+	DSSD_POWER_STATE_DESCRIPTOR[127] DssdDescriptors
+	UChar[3934] Reserved1
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_OCP_DEVICE_ERROR_RECOVERY_LOG_V2
+	UShort PanicResetWaitTime
+	NVME_WCS_DEVICE_RESET_ACTION PanicResetAction
+	UChar DeviceRecoveryAction1
+	Integer iMissingAlignment1
+	UBigint PanicId
+	NVME_WCS_DEVICE_CAPABILITIES DeviceCapabilitiesA
+	UChar VendorSpecificRecoveryCode
+	UChar[3] Reserved0
+	UInteger VendorSpecificCommandCDW12
+	UInteger VendorSpecificCommandCDW13
+	UChar VendorSpecificCommandTimeout
+	UChar DeviceRecoveryAction2
+	UChar DeviceRecoveryAction2Timeout
+	UChar[463] Reserved1
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+	Integer iMissingAlignment2
+End_Struct
+
+Struct NVME_OCP_DEVICE_FIRMWARE_ACTIVATION_HISTORY_LOG
+	UChar LID
+	UChar[3] Reserved0
+	UInteger ValidNumberOfEntries
+	FIRMWARE_ACTIVATION_HISTORY_ENTRY[20] Entries
+	UChar[2790] Reserved1
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_OCP_DEVICE_LATENCY_MONITOR_LOG
+	LATENCY_MONITOR_FEATURE_STATUS FeatureStatus
+	UChar Reserved0
+	UShort ActiveBucketTimer
+	UShort ActiveBucketTimerThreshold
+	UChar ActiveThresholdA
+	UChar ActiveThresholdB
+	UChar ActiveThresholdC
+	UChar ActiveThresholdD
+	ACTIVE_LATENCY_CONFIGURATION ActiveLatencyConfig
+	UChar ActiveLatencyMinimumWindow
+	UChar[19] Reserved1
+	BUCKET_COUNTER ActiveBucketCounter0
+	BUCKET_COUNTER ActiveBucketCounter1
+	BUCKET_COUNTER ActiveBucketCounter2
+	BUCKET_COUNTER ActiveBucketCounter3
+	LATENCY_STAMP ActiveLatencyStamp
+	MEASURED_LATENCY ActiveMeasuredLatency
+	LATENCY_STAMP_UNITS ActiveLatencyStampUnits
+	UChar[22] Reserved2
+	BUCKET_COUNTER StaticBucketCounter0
+	BUCKET_COUNTER StaticBucketCounter1
+	BUCKET_COUNTER StaticBucketCounter2
+	BUCKET_COUNTER StaticBucketCounter3
+	LATENCY_STAMP StaticLatencyStamp
+	MEASURED_LATENCY StaticMeasuredLatency
+	LATENCY_STAMP_UNITS StaticLatencyStampUnits
+	UChar[22] Reserved3
+	DEBUG_BIT_FIELD DebugLogTriggerEnable
+	UShort DebugLogMeasuredLatency
+	Integer iMissingAlignment1
+	UBigint DebugLogLatencyStamp
+	UShort DebugLogPointer
+	DEBUG_BIT_FIELD DebugCounterTriggerSource
+	_DebugLogStampUnits_e__Union_2433 DebugLogStampUnits
+	UChar[29] Reserved4
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+	Integer iMissingAlignment2
+End_Struct
+
+Struct NVME_OCP_DEVICE_SMART_INFORMATION_LOG_V3
+	UChar[16] MediaUnitsWritten
+	UChar[16] MediaUnitsRead
+	_BadUserNANDBlockCount_e__Struct_2423 BadUserNANDBlockCount
+	_BadSystemNANDBlockCount_e__Struct_2424 BadSystemNANDBlockCount
+	UBigint XORRecoveryCount
+	UBigint UnrecoverableReadErrorCount
+	UBigint SoftECCErrorCount
+	_EndToEndCorrectionCounts_e__Struct_2425 EndToEndCorrectionCounts
+	UChar PercentageSystemDataUsed
+	UChar[7] RefreshCount
+	_UserDataEraseCounts_e__Struct_2426 UserDataEraseCounts
+	_ThermalThrottling_e__Struct_2427 ThermalThrottling
+	_DSSDSpecVersion_e__Struct_2428 DSSDSpecVersion
+	UChar[6] cMissingAlignment1
+	UBigint PCIeCorrectableErrorCount
+	UInteger IncompleteShutdownCount
+	UInteger Reserved1
+	UChar PercentageFreeBlocks
+	UChar[7] Reserved2
+	UShort CapacitorHealth
+	UChar NvmeErrata
+	UChar[5] Reserved3
+	UBigint UnalignedIOCount
+	UBigint SecurityVersionNumber
+	UBigint NUSE
+	UChar[16] PLPStartCount
+	UChar[16] EnduranceEstimate
+	UBigint PCIeLinkRetrainingCount
+	UBigint PowerStateChangeCount
+	UChar[286] Reserved4
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_OCP_DEVICE_TCG_CONFIGURATION_LOG
+	_State_e__Union_2447 State
+	UChar[3] Reserved0
+	UChar LSPActivationCount
+	UChar TPRevertCount
+	UChar LSPRevertCount
+	UChar LOCount
+	UChar SUMLOCount
+	UChar RPLOCount
+	UChar NPLOCount
+	UChar RLLOCount
+	UChar WLLOCount
+	UChar RULOCount
+	UChar WULOCount
+	UChar Reserved1
+	UInteger SIDAuthTryCount
+	UInteger SIDAuthTryLimit
+	UInteger ResetCount
+	UInteger ResetLockCount
+	UChar[462] Reserved2
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_OCP_DEVICE_TCG_HISTORY_LOG
+	UChar LID
+	UChar[3] Reserved0
+	UInteger HistoryEntryCount
+	TCG_HISTORY_ENTRY[84] HistoryEntries
+	UChar[38] Reserved1
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_OCP_DEVICE_UNSUPPORTED_REQUIREMENTS_LOG
+	UShort UnsupportedCount
+	UChar[14] Reserved0
+	UNSUPPORTED_REQUIREMENT[253] UnsupportedReqList
+	UChar[14] Reserved1
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_PERSISTENT_EVENT_LOG_EVENT_HEADER
+	UChar EventType
+	UChar EventTypeRevision
+	UChar EventHeaderLength
+	UChar Reserved0
+	UShort ControllerIdentifier
+	Short iMissingAlignment1
+	UBigint EventTimestamp
+	UChar[6] Reserved1
+	UShort VendorSpecificInformationLength
+	UShort EventLength
+	UChar[6] cMissingAlignment2
+End_Struct
+
+Struct NVME_PERSISTENT_EVENT_LOG_HEADER
+	UChar LogIdentifier
+	UChar[3] Reserved0
+	UInteger TotalNumberOfEvents
+	UBigint TotalLogLength
+	UChar LogRevision
+	UChar Reserved1
+	UShort LogHeaderLength
+	Integer iMissingAlignment1
+	UBigint Timestamp
+	UChar[16] PowerOnHours
+	UBigint PowerCycleCount
+	UShort PciVendorId
+	UShort PciSubsystemVendorId
+	UChar[20] SerialNumber
+	UChar[40] ModelNumber
+	UChar[256] NVMSubsystemNVMeQualifiedName
+	UChar[108] Reserved
+	UChar[32] SupportedEventsBitmap
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_power_state_desc
+Struct NVME_POWER_STATE_DESC
+	UShort MP
+	UChar Reserved0
+	UChar _bitfield1
+	UInteger ENLAT
+	UInteger EXLAT
+	UChar _bitfield2
+	UChar _bitfield3
+	UChar _bitfield4
+	UChar _bitfield5
+	UShort IDLP
+	UChar _bitfield6
+	UChar Reserved7
+	UShort ACTP
+	UChar _bitfield7
+	UChar[9] Reserved9
+End_Struct
+
+Struct NVME_PRP_ENTRY
+	_Anonymous_e__Union_2623 Anonymous
+End_Struct
+
+Struct NVME_REGISTERED_CONTROLLER_DATA
+	UShort CNTLID
+	_RCSTS_e__Struct_2574 RCSTS
+	UChar[5] Reserved
+	UChar[8] HOSTID
+	UBigint RKEY
+End_Struct
+
+Struct NVME_REGISTERED_CONTROLLER_EXTENDED_DATA
+	UShort CNTLID
+	_RCSTS_e__Struct_2575 RCSTS
+	UChar[5] Reserved
+	UBigint RKEY
+	UChar[16] HOSTID
+	UChar[32] Reserved1
+End_Struct
+
+Struct NVME_REPORT_ZONE_INFO
+	UBigint ZoneCount
+	UBigint[7] Reserved
+	NVME_ZONE_DESCRIPTOR[1] ZoneDescriptor
+End_Struct
+
+Struct NVME_RESERVATION_ACQUIRE_DATA_STRUCTURE
+	UBigint CRKEY
+	UBigint PRKEY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_reservation_notification_log
+Struct NVME_RESERVATION_NOTIFICATION_LOG
+	UBigint LogPageCount
+	UChar LogPageType
+	UChar AvailableLogPageCount
+	UChar[2] Reserved0
+	UInteger NameSpaceId
+	UChar[48] Reserved1
+End_Struct
+
+Struct NVME_RESERVATION_REGISTER_DATA_STRUCTURE
+	UBigint CRKEY
+	UBigint NRKEY
+End_Struct
+
+Struct NVME_RESERVATION_RELEASE_DATA_STRUCTURE
+	UBigint CRKEY
+End_Struct
+
+Struct NVME_RESERVATION_REPORT_STATUS_DATA_STRUCTURE
+	NVME_RESERVATION_REPORT_STATUS_HEADER Header
+	Integer iMissingAlignment1
+	NVME_REGISTERED_CONTROLLER_DATA[1] RegisteredControllersData
+End_Struct
+
+Struct NVME_RESERVATION_REPORT_STATUS_EXTENDED_DATA_STRUCTURE
+	NVME_RESERVATION_REPORT_STATUS_HEADER Header
+	UChar[40] Reserved1
+	Integer iMissingAlignment1
+	NVME_REGISTERED_CONTROLLER_EXTENDED_DATA[1] RegisteredControllersExtendedData
+End_Struct
+
+Struct NVME_RESERVATION_REPORT_STATUS_HEADER
+	UInteger GEN
+	UChar RTYPE
+	UChar[1] cMissingAlignment1
+	UShort REGCTL
+	UChar[2] Reserved
+	UChar PTPLS
+	UChar[14] Reserved1
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct NVME_SANITIZE_STATUS
+	UShort _bitfield
+End_Struct
+
+Struct NVME_SANITIZE_STATUS_LOG
+	UShort SPROG
+	NVME_SANITIZE_STATUS SSTAT
+	UInteger SCDW10
+	UInteger EstimatedTimeForOverwrite
+	UInteger EstimatedTimeForBlockErase
+	UInteger EstimatedTimeForCryptoErase
+	UInteger EstimatedTimeForOverwriteWithNoDeallocateMediaModification
+	UInteger EstimatedTimeForBlockEraseWithNoDeallocateMediaModification
+	UInteger EstimatedTimeForCryptoEraseWithNoDeallocateMediaModification
+	UChar[480] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_scsi_name_string
+Struct NVME_SCSI_NAME_STRING
+	Char[4] PCIVendorID										// CHAR
+	Char[40] ModelNumber									// CHAR
+	Char[4] NamespaceID										// CHAR
+	Char[20] SerialNumber									// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_set_attributes_entry
+Struct NVME_SET_ATTRIBUTES_ENTRY
+	UShort Identifier
+	UShort ENDGID
+	UInteger Reserved1
+	UInteger Random4KBReadTypical
+	UInteger OptimalWriteSize
+	UChar[16] TotalCapacity
+	UChar[16] UnallocatedCapacity
+	UChar[80] Reserved2
+End_Struct
+
+Struct NVME_SGL_BITBUCKET_DESC
+	UBigint Reserved0
+	UInteger Length
+	UChar[3] Reserved1
+	_Identifier_e__Union_2665 Identifier
+End_Struct
+
+Struct NVME_SGL_DATABLOCK_DESC
+	UBigint Address
+	UInteger Length
+	UChar[3] Reserved0
+	_Identifier_e__Union_2663 Identifier
+End_Struct
+
+Struct NVME_SGL_DESC
+	UChar[15] Reserved0
+	_Identifier_e__Union_2661 Identifier
+End_Struct
+
+Struct NVME_SGL_KEYDATABLOCK_DESC
+	UBigint Address
+	UChar[3] Length
+	UChar[4] Key
+	_Identifier_e__Union_2671 Identifier
+End_Struct
+
+Struct NVME_SGL_LASTSEG_DESC
+	UBigint Address
+	UInteger Length
+	UChar[3] Reserved0
+	_Identifier_e__Union_2669 Identifier
+End_Struct
+
+Struct NVME_SGL_SEGMENT_DESC
+	UBigint Address
+	UInteger Length
+	UChar[3] Reserved0
+	_Identifier_e__Union_2667 Identifier
+End_Struct
+
+Struct NVME_SGL_TRANSPORTDATA_DESC
+	UBigint Reserved0
+	UInteger Length
+	UChar[3] Reserved1
+	_Identifier_e__Union_2673 Identifier
+End_Struct
+
+Struct NVME_SUBMISSION_QUEUE_TAIL_DOORBELL
+	_Anonymous_e__Union_2355 Anonymous
+End_Struct
+
+Struct NVME_SUPPORTED_LOG_PAGES_LOG
+	NVME_LID_SUPPORTED_AND_EFFECTS[256] LogPageIdentifierSupported
+End_Struct
+
+Struct NVME_TELEMETRY_CONTROLLER_INITIATED_LOG
+	UChar LogIdentifier
+	UChar[4] Reserved0
+	UChar[3] OrganizationID
+	UShort Area1LastBlock
+	UShort Area2LastBlock
+	UShort Area3LastBlock
+	UChar[2] Reserved1
+	UInteger Area4LastBlock
+	UChar[362] Reserved2
+	UChar ControllerInitiatedDataAvailable
+	UChar ControllerInitiatedDataGenerationNumber
+	UChar[128] ReasonIdentifier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvme_telemetry_host_initiated_log
+Struct NVME_TELEMETRY_HOST_INITIATED_LOG
+	UChar LogIdentifier
+	UChar[4] Reserved0
+	UChar[3] OrganizationID
+	UShort Area1LastBlock
+	UShort Area2LastBlock
+	UShort Area3LastBlock
+	UChar[2] Reserved1
+	UInteger Area4LastBlock
+	UChar[361] Reserved2
+	UChar HostInitiatedDataGenerationNumber
+	UChar ControllerInitiatedDataAvailable
+	UChar ControllerInitiatedDataGenerationNumber
+	UChar[128] ReasonIdentifier
+End_Struct
+
+Struct NVME_UUID_LIST
+	NVME_UUID_LIST_ENTRY[128] UUID
+End_Struct
+
+Struct NVME_UUID_LIST_ENTRY
+	UChar _bitfield
+	UChar[15] Reserved1
+	UChar[16] UUID
+End_Struct
+
+Struct NVME_VERSION
+	_Anonymous_e__Union_2337 Anonymous
+End_Struct
+
+Struct NVME_WCS_DEVICE_CAPABILITIES
+	_Anonymous_e__Union_2416 Anonymous
+End_Struct
+
+Struct NVME_WCS_DEVICE_ERROR_RECOVERY_LOG
+	UShort PanicResetWaitTime
+	NVME_WCS_DEVICE_RESET_ACTION PanicResetAction
+	UChar DriveRecoveryAction
+	Integer iMissingAlignment1
+	UBigint PanicId
+	NVME_WCS_DEVICE_CAPABILITIES DeviceCapabilitiesA
+	UChar VendorSpecificRecoveryCode
+	UChar[3] Reserved0
+	UInteger VendorSpecificCommandCDW12
+	UInteger VendorSpecificCommandCDW13
+	UChar[466] Reserved1
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+	Integer iMissingAlignment2
+End_Struct
+
+Struct NVME_WCS_DEVICE_RESET_ACTION
+	_Anonymous_e__Union_2414 Anonymous
+End_Struct
+
+Struct NVME_WCS_DEVICE_SMART_ATTRIBUTES_LOG
+	UChar[494] VersionSpecificData
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_WCS_DEVICE_SMART_ATTRIBUTES_LOG_V2
+	UChar[16] MediaUnitsWritten
+	UChar[16] MediaUnitsRead
+	_BadUserNANDBlockCount_e__Struct_2418 BadUserNANDBlockCount
+	_BadSystemNANDBlockCount_e__Struct_2419 BadSystemNANDBlockCount
+	UBigint XORRecoveryCount
+	UBigint UnrecoverableReadErrorCount
+	UBigint SoftECCErrorCount
+	_EndToEndCorrectionCounts_e__Struct_2420 EndToEndCorrectionCounts
+	UChar PercentageSystemDataUsed
+	UChar[7] RefreshCount
+	_UserDataEraseCounts_e__Struct_2421 UserDataEraseCounts
+	_ThermalThrottling_e__Struct_2422 ThermalThrottling
+	UChar[6] Reserved0
+	UBigint PCIeCorrectableErrorCount
+	UInteger IncompleteShutdownCount
+	UInteger Reserved1
+	UChar PercentageFreeBlocks
+	UChar[7] Reserved2
+	UShort CapacitorHealth
+	UChar[6] Reserved3
+	UBigint UnalignedIOCount
+	UBigint SecurityVersionNumber
+	UBigint NUSE
+	UChar[16] PLPStartCount
+	UChar[16] EnduranceEstimate
+	UChar[302] Reserved4
+	UShort LogPageVersionNumber
+	Guid LogPageGUID
+End_Struct
+
+Struct NVME_ZONE_DESCRIPTOR
+	_Anonymous1_e__Struct_2606 Anonymous1
+	_Anonymous2_e__Struct_2607 Anonymous2
+	_ZA_e__Struct_2608 ZA
+	UChar[5] Reserved3
+	UBigint ZCAP
+	UBigint ZSLBA
+	UBigint WritePointer
+	UChar[32] Reserved4
+End_Struct
+
+Struct NVME_ZONE_DESCRIPTOR_EXTENSION
+	UChar[64] ZoneDescriptorExtensionInfo
+End_Struct
+
+Struct NVME_ZONE_EXTENDED_REPORT_ZONE_DESC
+	NVME_ZONE_DESCRIPTOR ZoneDescriptor
+	NVME_ZONE_DESCRIPTOR_EXTENSION[1] ZoneDescriptorExtension
+End_Struct
+
+Struct NVM_RESERVATION_CAPABILITIES
+	_Anonymous_e__Union_2376 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nvme/ns-nvme-nvm_set_list
+Struct NVM_SET_LIST
+	UChar IdentifierCount
+	UChar[127] Reserved
+	NVME_SET_ATTRIBUTES_ENTRY[1] Entry
+End_Struct
+
+Struct TCG_ACTIVATE_METHOD_SPECIFIC
+	UChar RangeStartLengthPolicy
+End_Struct
+
+Struct TCG_ASSIGN_METHOD_SPECIFIC
+	UInteger NamespaceId
+End_Struct
+
+Struct TCG_AUTH_METHOD_SPECIFIC
+	UBigint AuthorityId
+	UChar TriesCount
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct TCG_BLOCKSID_METHOD_SPECIFIC
+	UChar ClearEvents
+End_Struct
+
+Struct TCG_HISTORY_ENTRY
+	UChar VersionNumber
+	UChar EntryLength
+	UShort PowerCycleCount
+	UInteger TcgCommandCount
+	UBigint TcgCommandCompletionTS
+	UBigint InvokingId
+	UBigint MethodId
+	UShort ComId
+	UChar ProtocolId
+	UChar TcgStatus
+	UShort ProcessTime
+	UChar[10] CommandSpecific
+End_Struct
+
+Struct TCG_REACTIVATE_METHOD_SPECIFIC
+	UChar RangeStartLengthPolicy
+End_Struct
+
+Struct UNSUPPORTED_REQUIREMENT
+	UChar[16] ReqId
+End_Struct
+
+Struct _ABORT_e__Struct_2631
+	NVME_CDW10_ABORT CDW10
+	UInteger CDW11
+	UInteger CDW12
+	UInteger CDW13
+	UInteger CDW14
+	UInteger CDW15
+End_Struct
+
+Struct _AFI_e__Struct_2548
+	UChar _bitfield
+End_Struct
+
+Struct _ANACAP_e__Struct_2399
+	UChar _bitfield
+End_Struct
+
+Struct _APSTA_e__Struct_2395
+	UChar _bitfield
+End_Struct
+
+Struct _ATTRIB_e__Struct_2681
+	UChar _bitfield
+End_Struct
+
+Struct _ATTRIB_e__Struct_2684
+	UChar _bitfield
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

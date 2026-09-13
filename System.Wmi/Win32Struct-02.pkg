@@ -1,0 +1,593 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_propertyset
+Struct MI_PropertySet
+	Pointer ft												// MI_PropertySetFT*
+	LongPtr[3] reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_propertysetft
+Struct MI_PropertySetFT
+	LongPtr GetElementCount
+	LongPtr ContainsElement
+	LongPtr AddElement
+	LongPtr GetElementAt
+	LongPtr Clear
+	LongPtr Destruct
+	LongPtr Delete
+	LongPtr Clone
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_providerft
+Struct MI_ProviderFT
+	Pointer Load											// MI_ProviderFT_Load
+	Pointer Unload											// MI_ProviderFT_Unload
+	Pointer GetInstance										// MI_ProviderFT_GetInstance
+	Pointer EnumerateInstances								// MI_ProviderFT_EnumerateInstances
+	Pointer CreateInstance									// MI_ProviderFT_CreateInstance
+	Pointer ModifyInstance									// MI_ProviderFT_ModifyInstance
+	Pointer DeleteInstance									// MI_ProviderFT_DeleteInstance
+	Pointer AssociatorInstances								// MI_ProviderFT_AssociatorInstances
+	Pointer ReferenceInstances								// MI_ProviderFT_ReferenceInstances
+	Pointer EnableIndications								// MI_ProviderFT_EnableIndications
+	Pointer DisableIndications								// MI_ProviderFT_DisableIndications
+	Pointer Subscribe										// MI_ProviderFT_Subscribe
+	Pointer Unsubscribe										// MI_ProviderFT_Unsubscribe
+	Pointer Invoke											// MI_ProviderFT_Invoke
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_qualifier
+Struct MI_Qualifier
+	Pointer name											// UShort*
+	UInteger type
+	UInteger flavor
+	Pointer value											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_qualifierdecl
+Struct MI_QualifierDecl
+	Pointer name											// UShort*
+	UInteger type
+	UInteger scope
+	UInteger flavor
+	UInteger subscript
+	Pointer value											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_qualifierset
+Struct MI_QualifierSet
+	UBigint reserved1
+	LongPtr reserved2
+	Pointer ft												// MI_QualifierSetFT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_qualifiersetft
+Struct MI_QualifierSetFT
+	LongPtr GetQualifierCount
+	LongPtr GetQualifierAt
+	LongPtr GetQualifier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_real32a
+Struct MI_Real32A
+	Pointer data											// Float*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_real32afield
+Struct MI_Real32AField
+	MI_Real32A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_real32field
+Struct MI_Real32Field
+	Float value
+	UChar exists
+	UChar flags
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_real64a
+Struct MI_Real64A
+	Pointer data											// Real*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_real64afield
+Struct MI_Real64AField
+	MI_Real64A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_real64field
+Struct MI_Real64Field
+	Real value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_referencea
+Struct MI_ReferenceA
+	Pointer data											// MI_Instance**
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_referenceafield
+Struct MI_ReferenceAField
+	MI_ReferenceA value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_referencefield
+Struct MI_ReferenceField
+	Pointer value											// MI_Instance*
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_schemadecl
+Struct MI_SchemaDecl
+	Pointer qualifierDecls									// MI_QualifierDecl**
+	UInteger numQualifierDecls
+	Integer iMissingAlignment1
+	Pointer classDecls										// MI_ClassDecl**
+	UInteger numClassDecls
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_serializer
+Struct MI_Serializer
+	UBigint reserved1
+	LongPtr reserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_serializerft
+Struct MI_SerializerFT
+	LongPtr Close
+	LongPtr SerializeClass
+	LongPtr SerializeInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_server
+Struct MI_Server
+	Pointer serverFT										// MI_ServerFT*
+	Pointer contextFT										// MI_ContextFT*
+	Pointer instanceFT										// MI_InstanceFT*
+	Pointer propertySetFT									// MI_PropertySetFT*
+	Pointer filterFT										// MI_FilterFT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_serverft
+Struct MI_ServerFT
+	LongPtr GetVersion
+	LongPtr GetSystemName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_session
+Struct MI_Session
+	UBigint reserved1
+	LongPtr reserved2
+	Pointer ft												// MI_SessionFT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sessioncallbacks
+Struct MI_SessionCallbacks
+	Pointer callbackContext									// Pointer*
+	LongPtr writeMessage
+	LongPtr writeError
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sessionft
+Struct MI_SessionFT
+	LongPtr Close
+	LongPtr GetApplication
+	LongPtr GetInstance
+	LongPtr ModifyInstance
+	LongPtr CreateInstance
+	LongPtr DeleteInstance
+	LongPtr Invoke
+	LongPtr EnumerateInstances
+	LongPtr QueryInstances
+	LongPtr AssociatorInstances
+	LongPtr ReferenceInstances
+	LongPtr Subscribe
+	LongPtr GetClass
+	LongPtr EnumerateClasses
+	LongPtr TestConnection
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint16a
+Struct MI_Sint16A
+	Pointer data											// Short*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint16afield
+Struct MI_Sint16AField
+	MI_Sint16A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint16field
+Struct MI_Sint16Field
+	Short value
+	UChar exists
+	UChar flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint32a
+Struct MI_Sint32A
+	Pointer data											// Integer*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint32afield
+Struct MI_Sint32AField
+	MI_Sint32A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint32field
+Struct MI_Sint32Field
+	Integer value
+	UChar exists
+	UChar flags
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint64a
+Struct MI_Sint64A
+	Pointer data											// Bigint*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint64afield
+Struct MI_Sint64AField
+	MI_Sint64A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint64field
+Struct MI_Sint64Field
+	Bigint value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint8a
+Struct MI_Sint8A
+	Pointer data											// Char*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint8afield
+Struct MI_Sint8AField
+	MI_Sint8A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_sint8field
+Struct MI_Sint8Field
+	Char value
+	UChar exists
+	UChar flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_stringa
+Struct MI_StringA
+	Pointer data											// UShort**
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_stringafield
+Struct MI_StringAField
+	MI_StringA value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_stringfield
+Struct MI_StringField
+	Pointer value											// UShort*
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_subscriptiondeliveryoptions
+Struct MI_SubscriptionDeliveryOptions
+	UBigint reserved1
+	LongPtr reserved2
+	Pointer ft												// MI_SubscriptionDeliveryOptionsFT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_subscriptiondeliveryoptionsft
+Struct MI_SubscriptionDeliveryOptionsFT
+	LongPtr SetString
+	LongPtr SetNumber
+	LongPtr SetDateTime
+	LongPtr SetInterval
+	LongPtr AddCredentials
+	LongPtr Delete
+	LongPtr GetString
+	LongPtr GetNumber
+	LongPtr GetDateTime
+	LongPtr GetInterval
+	LongPtr GetOptionCount
+	LongPtr GetOptionAt
+	LongPtr GetOption
+	LongPtr GetCredentialsCount
+	LongPtr GetCredentialsAt
+	LongPtr GetCredentialsPasswordAt
+	LongPtr Clone
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_timestamp
+Struct MI_Timestamp
+	UInteger year
+	UInteger month
+	UInteger day
+	UInteger hour
+	UInteger minute
+	UInteger second
+	UInteger microseconds
+	Integer utc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint16a
+Struct MI_Uint16A
+	Pointer data											// UShort*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint16afield
+Struct MI_Uint16AField
+	MI_Uint16A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint16field
+Struct MI_Uint16Field
+	UShort value
+	UChar exists
+	UChar flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint32a
+Struct MI_Uint32A
+	Pointer data											// UInteger*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint32afield
+Struct MI_Uint32AField
+	MI_Uint32A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint32field
+Struct MI_Uint32Field
+	UInteger value
+	UChar exists
+	UChar flags
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint64a
+Struct MI_Uint64A
+	Pointer data											// UBigint*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint64afield
+Struct MI_Uint64AField
+	MI_Uint64A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint64field
+Struct MI_Uint64Field
+	UBigint value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint8a
+Struct MI_Uint8A
+	Pointer data											// UChar*
+	UInteger size
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint8afield
+Struct MI_Uint8AField
+	MI_Uint8A value
+	UChar exists
+	UChar flags
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_uint8field
+Struct MI_Uint8Field
+	UChar value
+	UChar exists
+	UChar flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_usercredentials
+Struct MI_UserCredentials
+	Pointer authenticationType								// UShort*
+	_credentials_e__Union_2125 credentials
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_usernamepasswordcreds
+Struct MI_UsernamePasswordCreds
+	Pointer domain											// UShort*
+	Pointer username										// UShort*
+	Pointer password										// UShort*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mi/ns-mi-mi_utilitiesft
+Struct MI_UtilitiesFT
+	LongPtr MapErrorToMiErrorCategory
+	LongPtr CimErrorFromErrorCode
+End_Struct
+
+Struct MI_Value
+	_Anonymous_e__Union_2124 Anonymous
+	Integer iMissingAlignment1
+End_Struct
+
+Struct SWbemAnalysisMatrix
+	UInteger m_uVersion
+	UInteger m_uMatrixType
+	Pointer m_pszProperty									// PWSTR
+	UInteger m_uPropertyType
+	UInteger m_uEntries
+	Pointer m_pValues										// Pointer**
+	Pointer m_pbTruthTable									// BOOL*
+End_Struct
+
+Struct SWbemAnalysisMatrixList
+	UInteger m_uVersion
+	UInteger m_uMatrixType
+	UInteger m_uNumMatrices
+	Integer iMissingAlignment1
+	Pointer m_pMatrices										// SWbemAnalysisMatrix*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmiutils/ns-wmiutils-swbemassocqueryinf
+Struct SWbemAssocQueryInf
+	UInteger m_uVersion
+	UInteger m_uAnalysisType
+	UInteger m_uFeatureMask
+	Integer iMissingAlignment1
+	Pointer m_pPath											// IWbemPath
+	Pointer m_pszPath										// PWSTR
+	Pointer m_pszQueryText									// PWSTR
+	Pointer m_pszResultClass								// PWSTR
+	Pointer m_pszAssocClass									// PWSTR
+	Pointer m_pszRole										// PWSTR
+	Pointer m_pszResultRole									// PWSTR
+	Pointer m_pszRequiredQualifier							// PWSTR
+	Pointer m_pszRequiredAssocQualifier						// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmiutils/ns-wmiutils-swbemqueryqualifiedname
+Struct SWbemQueryQualifiedName
+	UInteger m_uVersion
+	UInteger m_uTokenType
+	UInteger m_uNameListSize
+	Integer iMissingAlignment1
+	Pointer m_ppszNameList									// PWSTR*
+	Integer m_bArraysUsed									// BOOL
+	Integer iMissingAlignment2
+	Pointer m_pbArrayElUsed									// BOOL*
+	Pointer m_puArrayIndex									// UInteger*
+End_Struct
+
+Struct SWbemRpnConst
+	_Anonymous_e__Union_2791 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmiutils/ns-wmiutils-swbemrpnencodedquery
+Struct SWbemRpnEncodedQuery
+	UInteger m_uVersion
+	UInteger m_uTokenType
+	UBigint m_uParsedFeatureMask
+	UInteger m_uDetectedArraySize
+	Integer iMissingAlignment1
+	Pointer m_puDetectedFeatures							// UInteger*
+	UInteger m_uSelectListSize
+	Integer iMissingAlignment2
+	Pointer m_ppSelectList									// SWbemQueryQualifiedName**
+	UInteger m_uFromTargetType
+	Integer iMissingAlignment3
+	Pointer m_pszOptionalFromPath							// PWSTR
+	UInteger m_uFromListSize
+	Integer iMissingAlignment4
+	Pointer m_ppszFromList									// PWSTR*
+	UInteger m_uWhereClauseSize
+	Integer iMissingAlignment5
+	Pointer m_ppRpnWhereClause								// SWbemRpnQueryToken**
+	Real m_dblWithinPolling
+	Real m_dblWithinWindow
+	UInteger m_uOrderByListSize
+	Integer iMissingAlignment6
+	Pointer m_ppszOrderByList								// PWSTR*
+	Pointer m_uOrderDirectionEl								// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmiutils/ns-wmiutils-swbemrpnquerytoken
+Struct SWbemRpnQueryToken
+	UInteger m_uVersion
+	UInteger m_uTokenType
+	UInteger m_uSubexpressionShape
+	UInteger m_uOperator
+	Pointer m_pRightIdent									// SWbemQueryQualifiedName*
+	Pointer m_pLeftIdent									// SWbemQueryQualifiedName*
+	UInteger m_uConstApparentType
+	Integer iMissingAlignment1
+	SWbemRpnConst m_Const
+	UInteger m_uConst2ApparentType
+	Integer iMissingAlignment2
+	SWbemRpnConst m_Const2
+	Pointer m_pszRightFunc									// PWSTR
+	Pointer m_pszLeftFunc									// PWSTR
+End_Struct
+
+Struct SWbemRpnTokenList
+	UInteger m_uVersion
+	UInteger m_uTokenType
+	UInteger m_uNumTokens
+End_Struct
+
+Struct WBEM_COMPILE_STATUS_INFO
+	Integer lPhaseError
+	Integer hRes											// HRESULT
+	Integer ObjectNum
+	Integer FirstLine
+	Integer LastLine
+	UInteger dwOutFlags
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

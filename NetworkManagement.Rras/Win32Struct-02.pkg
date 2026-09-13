@@ -1,0 +1,828 @@
+Use UI
+
+Struct RASENTRYW
+	UInteger dwSize
+	UInteger dwfOptions
+	UInteger dwCountryID
+	UInteger dwCountryCode
+	UShort[11] szAreaCode
+	UShort[129] szLocalPhoneNumber
+	UInteger dwAlternateOffset
+	RASIPADDR ipaddr
+	RASIPADDR ipaddrDns
+	RASIPADDR ipaddrDnsAlt
+	RASIPADDR ipaddrWins
+	RASIPADDR ipaddrWinsAlt
+	UInteger dwFrameSize
+	UInteger dwfNetProtocols
+	UInteger dwFramingProtocol
+	UShort[260] szScript
+	UShort[260] szAutodialDll
+	UShort[260] szAutodialFunc
+	UShort[17] szDeviceType
+	UShort[129] szDeviceName
+	UShort[33] szX25PadType
+	UShort[201] szX25Address
+	UShort[201] szX25Facilities
+	UShort[201] szX25UserData
+	UInteger dwChannels
+	UInteger dwReserved1
+	UInteger dwReserved2
+	UInteger dwSubEntries
+	UInteger dwDialMode										// RASENTRY_DIAL_MODE
+	UInteger dwDialExtraPercent
+	UInteger dwDialExtraSampleSeconds
+	UInteger dwHangUpExtraPercent
+	UInteger dwHangUpExtraSampleSeconds
+	UInteger dwIdleDisconnectSeconds
+	UInteger dwType
+	UInteger dwEncryptionType
+	UInteger dwCustomAuthKey
+	Guid guidId
+	UShort[260] szCustomDialDll
+	UInteger dwVpnStrategy
+	UInteger dwfOptions2
+	UInteger dwfOptions3
+	UShort[256] szDnsSuffix
+	UInteger dwTcpWindowSize
+	UShort[260] szPrerequisitePbk
+	UShort[257] szPrerequisiteEntry
+	Short iMissingAlignment1
+	UInteger dwRedialCount
+	UInteger dwRedialPause
+	IN6_ADDR ipv6addrDns
+	IN6_ADDR ipv6addrDnsAlt
+	UInteger dwIPv4InterfaceMetric
+	UInteger dwIPv6InterfaceMetric
+	IN6_ADDR ipv6addr
+	UInteger dwIPv6PrefixLength
+	UInteger dwNetworkOutageTime
+	UShort[257] szIDi
+	UShort[257] szIDr
+	Integer fIsImsConfig									// BOOL
+	Integer IdiType											// IKEV2_ID_PAYLOAD_TYPE
+	Integer IdrType											// IKEV2_ID_PAYLOAD_TYPE
+	Integer fDisableIKEv2Fragmentation						// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ras/ns-ras-rasikev2_projection_info
+Struct RASIKEV2_PROJECTION_INFO
+	UInteger dwIPv4NegotiationError
+	IN_ADDR ipv4Address
+	IN_ADDR ipv4ServerAddress
+	UInteger dwIPv6NegotiationError
+	IN6_ADDR ipv6Address
+	IN6_ADDR ipv6ServerAddress
+	UInteger dwPrefixLength
+	UInteger dwAuthenticationProtocol
+	UInteger dwEapTypeId
+	UInteger dwFlags										// RASIKEV_PROJECTION_INFO_FLAGS
+	UInteger dwEncryptionMethod
+	UInteger numIPv4ServerAddresses
+	Pointer ipv4ServerAddresses								// IN_ADDR*
+	UInteger numIPv6ServerAddresses
+	Integer iMissingAlignment1
+	Pointer ipv6ServerAddresses								// IN6_ADDR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ras/ns-ras-rasikev2_projection_info
+Struct RASIKEV2_PROJECTION_INFO
+	UInteger dwIPv4NegotiationError
+	IN_ADDR ipv4Address
+	IN_ADDR ipv4ServerAddress
+	UInteger dwIPv6NegotiationError
+	IN6_ADDR ipv6Address
+	IN6_ADDR ipv6ServerAddress
+	UInteger dwPrefixLength
+	UInteger dwAuthenticationProtocol
+	UInteger dwEapTypeId
+	UInteger dwFlags										// RASIKEV_PROJECTION_INFO_FLAGS
+	UInteger dwEncryptionMethod
+	UInteger numIPv4ServerAddresses
+	Pointer ipv4ServerAddresses								// IN_ADDR*
+	UInteger numIPv6ServerAddresses
+	Integer iMissingAlignment1
+	Pointer ipv6ServerAddresses								// IN6_ADDR*
+End_Struct
+
+Struct RASIPADDR
+	UChar a
+	UChar b
+	UChar c
+	UChar d
+End_Struct
+
+Struct RASIPXW
+	UInteger dwSize
+	UInteger dwError
+	UShort[22] szIpxAddress
+End_Struct
+
+Struct RASNOUSERA
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwTimeoutMs
+	Char[257] szUserName									// CHAR
+	Char[257] szPassword									// CHAR
+	Char[16] szDomain										// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+Struct RASNOUSERW
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwTimeoutMs
+	UShort[257] szUserName
+	UShort[257] szPassword
+	UShort[16] szDomain
+End_Struct
+
+Struct RASPBDLGA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	UInteger dwFlags
+	Integer xDlg
+	Integer yDlg
+	Integer iMissingAlignment2
+	ULongPtr dwCallbackId
+	Pointer pCallback										// RASPBDLGFUNCA
+	UInteger dwError
+	Integer iMissingAlignment3
+	ULongPtr reserved
+	ULongPtr reserved2
+End_Struct
+
+Struct RASPBDLGA
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	UInteger dwFlags
+	Integer xDlg
+	Integer yDlg
+	Integer iMissingAlignment2
+	ULongPtr dwCallbackId
+	Pointer pCallback										// RASPBDLGFUNCA
+	UInteger dwError
+	Integer iMissingAlignment3
+	ULongPtr reserved
+	ULongPtr reserved2
+End_Struct
+
+Struct RASPBDLGW
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	UInteger dwFlags
+	Integer xDlg
+	Integer yDlg
+	Integer iMissingAlignment2
+	ULongPtr dwCallbackId
+	Pointer pCallback										// RASPBDLGFUNCW
+	UInteger dwError
+	Integer iMissingAlignment3
+	ULongPtr reserved
+	ULongPtr reserved2
+End_Struct
+
+Struct RASPBDLGW
+	UInteger dwSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	UInteger dwFlags
+	Integer xDlg
+	Integer yDlg
+	Integer iMissingAlignment2
+	ULongPtr dwCallbackId
+	Pointer pCallback										// RASPBDLGFUNCW
+	UInteger dwError
+	Integer iMissingAlignment3
+	ULongPtr reserved
+	ULongPtr reserved2
+End_Struct
+
+Struct RASPPPCCP
+	UInteger dwSize
+	UInteger dwError
+	UInteger dwCompressionAlgorithm
+	UInteger dwOptions
+	UInteger dwServerCompressionAlgorithm
+	UInteger dwServerOptions
+End_Struct
+
+Struct RASPPPIPA
+	UInteger dwSize
+	UInteger dwError
+	Char[16] szIpAddress									// CHAR
+	Char[16] szServerIpAddress								// CHAR
+	UInteger dwOptions
+	UInteger dwServerOptions
+End_Struct
+
+Struct RASPPPIPV6
+	UInteger dwSize
+	UInteger dwError
+	UChar[8] bLocalInterfaceIdentifier
+	UChar[8] bPeerInterfaceIdentifier
+	UChar[2] bLocalCompressionProtocol
+	UChar[2] bPeerCompressionProtocol
+End_Struct
+
+Struct RASPPPIPW
+	UInteger dwSize
+	UInteger dwError
+	UShort[16] szIpAddress
+	UShort[16] szServerIpAddress
+	UInteger dwOptions
+	UInteger dwServerOptions
+End_Struct
+
+Struct RASPPPIPXA
+	UInteger dwSize
+	UInteger dwError
+	Char[22] szIpxAddress									// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+Struct RASPPPLCPA
+	UInteger dwSize
+	Integer fBundled										// BOOL
+	UInteger dwError
+	UInteger dwAuthenticationProtocol
+	UInteger dwAuthenticationData
+	UInteger dwEapTypeId
+	UInteger dwServerAuthenticationProtocol
+	UInteger dwServerAuthenticationData
+	UInteger dwServerEapTypeId
+	Integer fMultilink										// BOOL
+	UInteger dwTerminateReason
+	UInteger dwServerTerminateReason
+	Char[1024] szReplyMessage								// CHAR
+	UInteger dwOptions
+	UInteger dwServerOptions
+End_Struct
+
+Struct RASPPPLCPW
+	UInteger dwSize
+	Integer fBundled										// BOOL
+	UInteger dwError
+	UInteger dwAuthenticationProtocol
+	UInteger dwAuthenticationData
+	UInteger dwEapTypeId
+	UInteger dwServerAuthenticationProtocol
+	UInteger dwServerAuthenticationData
+	UInteger dwServerEapTypeId
+	Integer fMultilink										// BOOL
+	UInteger dwTerminateReason
+	UInteger dwServerTerminateReason
+	UShort[1024] szReplyMessage
+	UInteger dwOptions
+	UInteger dwServerOptions
+End_Struct
+
+Struct RASPPPNBFA
+	UInteger dwSize
+	UInteger dwError
+	UInteger dwNetBiosError
+	Char[17] szNetBiosError									// CHAR
+	Char[17] szWorkstationName								// CHAR
+	UChar bLana
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct RASPPPNBFW
+	UInteger dwSize
+	UInteger dwError
+	UInteger dwNetBiosError
+	UShort[17] szNetBiosError
+	UShort[17] szWorkstationName
+	UChar bLana
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ras/ns-ras-rasppp_projection_info
+Struct RASPPP_PROJECTION_INFO
+	UInteger dwIPv4NegotiationError
+	IN_ADDR ipv4Address
+	IN_ADDR ipv4ServerAddress
+	UInteger dwIPv4Options
+	UInteger dwIPv4ServerOptions
+	UInteger dwIPv6NegotiationError
+	UChar[8] bInterfaceIdentifier
+	UChar[8] bServerInterfaceIdentifier
+	Integer fBundled										// BOOL
+	Integer fMultilink										// BOOL
+	UInteger dwAuthenticationProtocol						// RASPPP_PROJECTION_INFO_SERVER_AUTH_PROTOCOL
+	UInteger dwAuthenticationData							// RASPPP_PROJECTION_INFO_SERVER_AUTH_DATA
+	UInteger dwServerAuthenticationProtocol					// RASPPP_PROJECTION_INFO_SERVER_AUTH_PROTOCOL
+	UInteger dwServerAuthenticationData						// RASPPP_PROJECTION_INFO_SERVER_AUTH_DATA
+	UInteger dwEapTypeId
+	UInteger dwServerEapTypeId
+	UInteger dwLcpOptions
+	UInteger dwLcpServerOptions
+	UInteger dwCcpError
+	UInteger dwCcpCompressionAlgorithm
+	UInteger dwCcpServerCompressionAlgorithm
+	UInteger dwCcpOptions
+	UInteger dwCcpServerOptions
+End_Struct
+
+Struct RASSUBENTRYA
+	UInteger dwSize
+	UInteger dwfFlags
+	Char[17] szDeviceType									// CHAR
+	Char[129] szDeviceName									// CHAR
+	Char[129] szLocalPhoneNumber							// CHAR
+	UChar[1] cMissingAlignment1
+	UInteger dwAlternateOffset
+End_Struct
+
+Struct RASSUBENTRYW
+	UInteger dwSize
+	UInteger dwfFlags
+	UShort[17] szDeviceType
+	UShort[129] szDeviceName
+	UShort[129] szLocalPhoneNumber
+	Short iMissingAlignment1
+	UInteger dwAlternateOffset
+End_Struct
+
+Struct RASTUNNELENDPOINT
+	UInteger dwType
+	_Anonymous_e__Union_1410 Anonymous
+End_Struct
+
+Struct RASUPDATECONN
+	Integer version											// RASAPIVERSION
+	UInteger dwSize
+	UInteger dwFlags
+	UInteger dwIfIndex
+	RASTUNNELENDPOINT localEndPoint
+	RASTUNNELENDPOINT remoteEndPoint
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_connection_0
+Struct RAS_CONNECTION_0
+	Pointer hConnection										// HANDLE
+	Pointer hInterface										// HANDLE
+	UInteger dwConnectDuration
+	Integer dwInterfaceType									// ROUTER_INTERFACE_TYPE
+	UInteger dwConnectionFlags								// RAS_FLAGS
+	UShort[257] wszInterfaceName
+	UShort[257] wszUserName
+	UShort[16] wszLogonDomain
+	UShort[17] wszRemoteComputer
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_connection_1
+Struct RAS_CONNECTION_1
+	Pointer hConnection										// HANDLE
+	Pointer hInterface										// HANDLE
+	PPP_INFO PppInfo
+	UInteger dwBytesXmited
+	UInteger dwBytesRcved
+	UInteger dwFramesXmited
+	UInteger dwFramesRcved
+	UInteger dwCrcErr
+	UInteger dwTimeoutErr
+	UInteger dwAlignmentErr
+	UInteger dwHardwareOverrunErr
+	UInteger dwFramingErr
+	UInteger dwBufferOverrunErr
+	UInteger dwCompressionRatioIn
+	UInteger dwCompressionRatioOut
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_connection_2
+Struct RAS_CONNECTION_2
+	Pointer hConnection										// HANDLE
+	UShort[257] wszUserName
+	Short iMissingAlignment1
+	Integer dwInterfaceType									// ROUTER_INTERFACE_TYPE
+	Guid guid
+	PPP_INFO_2 PppInfo2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_connection_3
+Struct RAS_CONNECTION_3
+	UInteger dwVersion
+	UInteger dwSize
+	Pointer hConnection										// HANDLE
+	UShort[257] wszUserName
+	Short iMissingAlignment1
+	Integer dwInterfaceType									// ROUTER_INTERFACE_TYPE
+	Guid guid
+	PPP_INFO_3 PppInfo3
+	Integer rasQuarState									// RAS_QUARANTINE_STATE
+	FILETIME timer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_connection_4
+Struct RAS_CONNECTION_4
+	UInteger dwConnectDuration
+	Integer dwInterfaceType									// ROUTER_INTERFACE_TYPE
+	UInteger dwConnectionFlags								// RAS_FLAGS
+	UShort[257] wszInterfaceName
+	UShort[257] wszUserName
+	UShort[16] wszLogonDomain
+	UShort[17] wszRemoteComputer
+	Short iMissingAlignment1
+	Guid guid
+	Integer rasQuarState									// RAS_QUARANTINE_STATE
+	FILETIME probationTime
+	FILETIME connectionStartTime
+	UBigint ullBytesXmited
+	UBigint ullBytesRcved
+	UInteger dwFramesXmited
+	UInteger dwFramesRcved
+	UInteger dwCrcErr
+	UInteger dwTimeoutErr
+	UInteger dwAlignmentErr
+	UInteger dwHardwareOverrunErr
+	UInteger dwFramingErr
+	UInteger dwBufferOverrunErr
+	UInteger dwCompressionRatioIn
+	UInteger dwCompressionRatioOut
+	UInteger dwNumSwitchOvers
+	UShort[65] wszRemoteEndpointAddress
+	UShort[65] wszLocalEndpointAddress
+	PROJECTION_INFO2 ProjectionInfo
+	Pointer hConnection										// HANDLE
+	Pointer hInterface										// HANDLE
+	UInteger dwDeviceType
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_connection_ex
+Struct RAS_CONNECTION_EX
+	MPRAPI_OBJECT_HEADER Header
+	UInteger dwConnectDuration
+	Integer dwInterfaceType									// ROUTER_INTERFACE_TYPE
+	UInteger dwConnectionFlags								// RAS_FLAGS
+	UShort[257] wszInterfaceName
+	UShort[257] wszUserName
+	UShort[16] wszLogonDomain
+	UShort[17] wszRemoteComputer
+	Short iMissingAlignment1
+	Guid guid
+	Integer rasQuarState									// RAS_QUARANTINE_STATE
+	FILETIME probationTime
+	UInteger dwBytesXmited
+	UInteger dwBytesRcved
+	UInteger dwFramesXmited
+	UInteger dwFramesRcved
+	UInteger dwCrcErr
+	UInteger dwTimeoutErr
+	UInteger dwAlignmentErr
+	UInteger dwHardwareOverrunErr
+	UInteger dwFramingErr
+	UInteger dwBufferOverrunErr
+	UInteger dwCompressionRatioIn
+	UInteger dwCompressionRatioOut
+	UInteger dwNumSwitchOvers
+	UShort[65] wszRemoteEndpointAddress
+	UShort[65] wszLocalEndpointAddress
+	Integer iMissingAlignment2
+	PROJECTION_INFO ProjectionInfo
+	Pointer hConnection										// HANDLE
+	Pointer hInterface										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_port_0
+Struct RAS_PORT_0
+	Pointer hPort											// HANDLE
+	Pointer hConnection										// HANDLE
+	Integer dwPortCondition									// RAS_PORT_CONDITION
+	UInteger dwTotalNumberOfCalls
+	UInteger dwConnectDuration
+	UShort[17] wszPortName
+	UShort[17] wszMediaName
+	UShort[129] wszDeviceName
+	UShort[17] wszDeviceType
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_port_1
+Struct RAS_PORT_1
+	Pointer hPort											// HANDLE
+	Pointer hConnection										// HANDLE
+	Integer dwHardwareCondition								// RAS_HARDWARE_CONDITION
+	UInteger dwLineSpeed
+	UInteger dwBytesXmited
+	UInteger dwBytesRcved
+	UInteger dwFramesXmited
+	UInteger dwFramesRcved
+	UInteger dwCrcErr
+	UInteger dwTimeoutErr
+	UInteger dwAlignmentErr
+	UInteger dwHardwareOverrunErr
+	UInteger dwFramingErr
+	UInteger dwBufferOverrunErr
+	UInteger dwCompressionRatioIn
+	UInteger dwCompressionRatioOut
+End_Struct
+
+Struct RAS_PORT_2
+	Pointer hPort											// HANDLE
+	Pointer hConnection										// HANDLE
+	UInteger dwConn_State
+	UShort[17] wszPortName
+	UShort[17] wszMediaName
+	UShort[129] wszDeviceName
+	UShort[17] wszDeviceType
+	Integer dwHardwareCondition								// RAS_HARDWARE_CONDITION
+	UInteger dwLineSpeed
+	UInteger dwCrcErr
+	UInteger dwSerialOverRunErrs
+	UInteger dwTimeoutErr
+	UInteger dwAlignmentErr
+	UInteger dwHardwareOverrunErr
+	UInteger dwFramingErr
+	UInteger dwBufferOverrunErr
+	UInteger dwCompressionRatioIn
+	UInteger dwCompressionRatioOut
+	UInteger dwTotalErrors
+	Integer iMissingAlignment1
+	UBigint ullBytesXmited
+	UBigint ullBytesRcved
+	UBigint ullFramesXmited
+	UBigint ullFramesRcved
+	UBigint ullBytesTxUncompressed
+	UBigint ullBytesTxCompressed
+	UBigint ullBytesRcvUncompressed
+	UBigint ullBytesRcvCompressed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ras/ns-ras-ras_projection_info
+Struct RAS_PROJECTION_INFO
+	Integer version											// RASAPIVERSION
+	Integer type											// RASPROJECTION_INFO_TYPE
+	_Anonymous_e__Union_1411 Anonymous
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rasshost/ns-rasshost-ras_security_info
+Struct RAS_SECURITY_INFO
+	UInteger LastError
+	UInteger BytesReceived
+	Char[129] DeviceName									// CHAR
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ras/ns-ras-ras_stats
+Struct RAS_STATS
+	UInteger dwSize
+	UInteger dwBytesXmited
+	UInteger dwBytesRcved
+	UInteger dwFramesXmited
+	UInteger dwFramesRcved
+	UInteger dwCrcErr
+	UInteger dwTimeoutErr
+	UInteger dwAlignmentErr
+	UInteger dwHardwareOverrunErr
+	UInteger dwFramingErr
+	UInteger dwBufferOverrunErr
+	UInteger dwCompressionRatioIn
+	UInteger dwCompressionRatioOut
+	UInteger dwBps
+	UInteger dwConnectDuration
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_update_connection
+Struct RAS_UPDATE_CONNECTION
+	MPRAPI_OBJECT_HEADER Header
+	UInteger dwIfIndex
+	UShort[65] wszLocalEndpointAddress
+	UShort[65] wszRemoteEndpointAddress
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_user_0
+Struct RAS_USER_0
+	UChar bfPrivilege
+	UChar[1] cMissingAlignment1
+	UShort[129] wszPhoneNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-ras_user_1
+Struct RAS_USER_1
+	UChar bfPrivilege
+	UChar[1] cMissingAlignment1
+	UShort[129] wszPhoneNumber
+	UChar bfPrivilege2
+	UChar[1] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-router_custom_ikev2_policy0
+Struct ROUTER_CUSTOM_IKEv2_POLICY0
+	UInteger dwIntegrityMethod
+	UInteger dwEncryptionMethod
+	UInteger dwCipherTransformConstant
+	UInteger dwAuthTransformConstant
+	UInteger dwPfsGroup
+	UInteger dwDhGroup
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-router_ikev2_if_custom_config0
+Struct ROUTER_IKEv2_IF_CUSTOM_CONFIG0
+	UInteger dwSaLifeTime
+	UInteger dwSaDataSize
+	CRYPT_INTEGER_BLOB certificateName
+	Pointer customPolicy									// ROUTER_CUSTOM_IKEv2_POLICY0*
+End_Struct
+
+Struct ROUTER_IKEv2_IF_CUSTOM_CONFIG1
+	UInteger dwSaLifeTime
+	UInteger dwSaDataSize
+	CRYPT_INTEGER_BLOB certificateName
+	Pointer customPolicy									// ROUTER_CUSTOM_IKEv2_POLICY0*
+	CRYPT_INTEGER_BLOB certificateHash
+End_Struct
+
+Struct ROUTER_IKEv2_IF_CUSTOM_CONFIG2
+	UInteger dwSaLifeTime
+	UInteger dwSaDataSize
+	CRYPT_INTEGER_BLOB certificateName
+	Pointer customPolicy									// ROUTER_CUSTOM_IKEv2_POLICY0*
+	CRYPT_INTEGER_BLOB certificateHash
+	UInteger dwMmSaLifeTime
+	Integer iMissingAlignment1
+	MPR_VPN_TRAFFIC_SELECTORS vpnTrafficSelectors
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mgm/ns-mgm-routing_protocol_config
+Struct ROUTING_PROTOCOL_CONFIG
+	UInteger dwCallbackFlags
+	Integer iMissingAlignment1
+	Pointer pfnRpfCallback									// PMGM_RPF_CALLBACK
+	Pointer pfnCreationAlertCallback						// PMGM_CREATION_ALERT_CALLBACK
+	Pointer pfnPruneAlertCallback							// PMGM_PRUNE_ALERT_CALLBACK
+	Pointer pfnJoinAlertCallback							// PMGM_JOIN_ALERT_CALLBACK
+	Pointer pfnWrongIfCallback								// PMGM_WRONG_IF_CALLBACK
+	Pointer pfnLocalJoinCallback							// PMGM_LOCAL_JOIN_CALLBACK
+	Pointer pfnLocalLeaveCallback							// PMGM_LOCAL_LEAVE_CALLBACK
+	Pointer pfnDisableIgmpCallback							// PMGM_DISABLE_IGMP_CALLBACK
+	Pointer pfnEnableIgmpCallback							// PMGM_ENABLE_IGMP_CALLBACK
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_dest_info
+Struct RTM_DEST_INFO
+	LongPtr DestHandle
+	RTM_NET_ADDRESS DestAddress
+	FILETIME LastChanged
+	UInteger BelongsToViews
+	UInteger NumberOfViews
+	Integer iMissingAlignment1
+	_Anonymous_e__Struct_1416[1] ViewInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_entity_export_methods
+Struct RTM_ENTITY_EXPORT_METHODS
+	UInteger NumMethods
+	Integer iMissingAlignment1
+	Pointer[1] Methods										// RTM_ENTITY_EXPORT_METHOD
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_entity_id
+Struct RTM_ENTITY_ID
+	_Anonymous_e__Union_1414 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_entity_info
+Struct RTM_ENTITY_INFO
+	UShort RtmInstanceId
+	UShort AddressFamily
+	Integer iMissingAlignment1
+	RTM_ENTITY_ID EntityId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_entity_method_input
+Struct RTM_ENTITY_METHOD_INPUT
+	UInteger MethodType
+	UInteger InputSize
+	UChar[1] InputData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_entity_method_output
+Struct RTM_ENTITY_METHOD_OUTPUT
+	UInteger MethodType
+	UInteger MethodStatus
+	UInteger OutputSize
+	UChar[1] OutputData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_net_address
+Struct RTM_NET_ADDRESS
+	UShort AddressFamily
+	UShort NumBits
+	UChar[16] AddrBits
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_nexthop_info
+Struct RTM_NEXTHOP_INFO
+	RTM_NET_ADDRESS NextHopAddress
+	Integer iMissingAlignment1
+	LongPtr NextHopOwner
+	UInteger InterfaceIndex
+	UShort State
+	UShort Flags
+	Pointer EntitySpecificInfo								// Pointer*
+	LongPtr RemoteNextHop
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_nexthop_list
+Struct RTM_NEXTHOP_LIST
+	UShort NumNextHops
+	UChar[6] cMissingAlignment1
+	LongPtr[1] NextHops
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_pref_info
+Struct RTM_PREF_INFO
+	UInteger Metric
+	UInteger Preference
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_regn_profile
+Struct RTM_REGN_PROFILE
+	UInteger MaxNextHopsInRoute
+	UInteger MaxHandlesInEnum
+	UInteger ViewsSupported
+	UInteger NumberOfViews
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rtmv2/ns-rtmv2-rtm_route_info
+Struct RTM_ROUTE_INFO
+	LongPtr DestHandle
+	LongPtr RouteOwner
+	LongPtr Neighbour
+	UChar State
+	UChar Flags1
+	UShort Flags
+	RTM_PREF_INFO PrefInfo
+	UInteger BelongsToViews
+	Pointer EntitySpecificInfo								// Pointer*
+	RTM_NEXTHOP_LIST NextHopsList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/rasshost/ns-rasshost-security_message
+Struct SECURITY_MESSAGE
+	UInteger dwMsgId										// SECURITY_MESSAGE_MSG_ID
+	Integer iMissingAlignment1
+	LongPtr hPort
+	UInteger dwError
+	Char[257] UserName										// CHAR
+	Char[16] Domain											// CHAR
+	UChar[3] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mgm/ns-mgm-source_group_entry
+Struct SOURCE_GROUP_ENTRY
+	UInteger dwSourceAddr
+	UInteger dwSourceMask
+	UInteger dwGroupAddr
+	UInteger dwGroupMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-sstp_cert_info
+Struct SSTP_CERT_INFO
+	Integer isDefault										// BOOL
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB certBlob
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mprapi/ns-mprapi-sstp_config_params
+Struct SSTP_CONFIG_PARAMS
+	UInteger dwNumPorts
+	UInteger dwPortFlags
+	Integer isUseHttps										// BOOL
+	UInteger certAlgorithm
+	SSTP_CERT_INFO sstpCertDetails
+End_Struct
+
+Struct VPN_TS_IP_ADDRESS
+	UShort Type
+	Short iMissingAlignment1
+	_Anonymous_e__Union_1413 Anonymous
+End_Struct
+
+Struct _Anonymous_e__Struct_1415
+	UInteger EntityProtocolId
+	UInteger EntityInstanceId
+End_Struct
+
+Struct _Anonymous_e__Struct_1416
+	Integer ViewId
+	UInteger NumRoutes
+	LongPtr Route
+	LongPtr Owner
+	UInteger DestFlags
+	Integer iMissingAlignment1
+	LongPtr HoldRoute
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

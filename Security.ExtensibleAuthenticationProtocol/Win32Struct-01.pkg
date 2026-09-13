@@ -1,0 +1,446 @@
+Use UI
+
+Struct _Anonymous_e__Union_1520
+	// EAP_METHOD_PROPERTY_VALUE_BOOL empvBool // (8)
+	// EAP_METHOD_PROPERTY_VALUE_DWORD empvDword // (8)
+	// EAP_METHOD_PROPERTY_VALUE_STRING empvString // (16)
+	EAP_METHOD_PROPERTY_VALUE_STRING empvString
+End_Struct
+
+Struct _Anonymous_e__Union_1521
+	// Pointer credData										// EAP_CONFIG_INPUT_FIELD_ARRAY* // (8)
+	// Pointer credExpiryData									// EAP_CRED_EXPIRY_REQ* // (8)
+	// Pointer credLogonData									// EAP_CONFIG_INPUT_FIELD_ARRAY* // (8)
+	Pointer credData
+End_Struct
+
+Struct _Anonymous_e__Union_1993
+	// EapUsernamePasswordCredential username_password // (16)
+	// EapCertificateCredential certificate // (32)
+	// EapSimCredential sim // (8)
+	EapCertificateCredential certificate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeertypes/ns-eaphostpeertypes-eaphost_auth_info
+Struct EAPHOST_AUTH_INFO
+	Integer status											// EAPHOST_AUTH_STATUS
+	UInteger dwErrorCode
+	UInteger dwReasonCode
+End_Struct
+
+Struct EAPHOST_IDENTITY_UI_PARAMS
+	EAP_METHOD_TYPE eapMethodType
+	UInteger dwFlags
+	UInteger dwSizeofConnectionData
+	Pointer pConnectionData									// UChar*
+	UInteger dwSizeofUserData
+	Integer iMissingAlignment1
+	Pointer pUserData										// UChar*
+	UInteger dwSizeofUserDataOut
+	Integer iMissingAlignment2
+	Pointer pUserDataOut									// UChar*
+	Pointer pwszIdentity									// PWSTR
+	UInteger dwError
+	Integer iMissingAlignment3
+	Pointer pEapError										// EAP_ERROR*
+End_Struct
+
+Struct EAPHOST_INTERACTIVE_UI_PARAMS
+	UInteger dwSizeofContextData
+	Integer iMissingAlignment1
+	Pointer pContextData									// UChar*
+	UInteger dwSizeofInteractiveUIData
+	Integer iMissingAlignment2
+	Pointer pInteractiveUIData								// UChar*
+	UInteger dwError
+	Integer iMissingAlignment3
+	Pointer pEapError										// EAP_ERROR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_attribute
+Struct EAP_ATTRIBUTE
+	Integer eaType											// EAP_ATTRIBUTE_TYPE
+	UInteger dwLength
+	Pointer pValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_attributes
+Struct EAP_ATTRIBUTES
+	UInteger dwNumberOfAttributes
+	Integer iMissingAlignment1
+	Pointer pAttribs										// EAP_ATTRIBUTE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eapmethodauthenticatorapis/ns-eapmethodauthenticatorapis-eap_authenticator_method_routines
+Struct EAP_AUTHENTICATOR_METHOD_ROUTINES
+	UInteger dwSizeInBytes
+	Integer iMissingAlignment1
+	Pointer pEapType										// EAP_METHOD_TYPE*
+	LongPtr EapMethodAuthenticatorInitialize
+	LongPtr EapMethodAuthenticatorBeginSession
+	LongPtr EapMethodAuthenticatorUpdateInnerMethodParams
+	LongPtr EapMethodAuthenticatorReceivePacket
+	LongPtr EapMethodAuthenticatorSendPacket
+	LongPtr EapMethodAuthenticatorGetAttributes
+	LongPtr EapMethodAuthenticatorSetAttributes
+	LongPtr EapMethodAuthenticatorGetResult
+	LongPtr EapMethodAuthenticatorEndSession
+	LongPtr EapMethodAuthenticatorShutdown
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_config_input_field_array
+Struct EAP_CONFIG_INPUT_FIELD_ARRAY
+	UInteger dwVersion
+	UInteger dwNumberOfFields
+	Pointer pFields											// EAP_CONFIG_INPUT_FIELD_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_config_input_field_data
+Struct EAP_CONFIG_INPUT_FIELD_DATA
+	UInteger dwSize
+	Integer Type											// EAP_CONFIG_INPUT_FIELD_TYPE
+	UInteger dwFlagProps
+	Integer iMissingAlignment1
+	Pointer pwszLabel										// PWSTR
+	Pointer pwszData										// PWSTR
+	UInteger dwMinDataLength
+	UInteger dwMaxDataLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_cred_expiry_req
+Struct EAP_CRED_EXPIRY_REQ
+	EAP_CONFIG_INPUT_FIELD_ARRAY curCreds
+	EAP_CONFIG_INPUT_FIELD_ARRAY newCreds
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_error
+Struct EAP_ERROR
+	UInteger dwWinError
+	EAP_METHOD_TYPE type
+	UInteger dwReasonCode
+	Guid rootCauseGuid
+	Guid repairGuid
+	Guid helpLinkGuid
+	Pointer pRootCauseString								// PWSTR
+	Pointer pRepairString									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_interactive_ui_data
+Struct EAP_INTERACTIVE_UI_DATA
+	UInteger dwVersion
+	UInteger dwSize
+	Integer dwDataType										// EAP_INTERACTIVE_UI_DATA_TYPE
+	UInteger cbUiData
+	EAP_UI_DATA_FORMAT pbUiData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eapauthenticatoractiondefine/ns-eapauthenticatoractiondefine-eap_method_authenticator_result
+Struct EAP_METHOD_AUTHENTICATOR_RESULT
+	Integer fIsSuccess										// BOOL
+	UInteger dwFailureReason
+	Pointer pAuthAttribs									// EAP_ATTRIBUTES*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_info
+Struct EAP_METHOD_INFO
+	EAP_METHOD_TYPE eaptype
+	Pointer pwszAuthorName									// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	UInteger eapProperties
+	Integer iMissingAlignment1
+	Pointer pInnerMethodInfo								// EAP_METHOD_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_info_array
+Struct EAP_METHOD_INFO_ARRAY
+	UInteger dwNumberOfMethods
+	Integer iMissingAlignment1
+	Pointer pEapMethods										// EAP_METHOD_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_info_array_ex
+Struct EAP_METHOD_INFO_ARRAY_EX
+	UInteger dwNumberOfMethods
+	Integer iMissingAlignment1
+	Pointer pEapMethods										// EAP_METHOD_INFO_EX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_info_ex
+Struct EAP_METHOD_INFO_EX
+	EAP_METHOD_TYPE eaptype
+	Pointer pwszAuthorName									// PWSTR
+	Pointer pwszFriendlyName								// PWSTR
+	UInteger eapProperties
+	Integer iMissingAlignment1
+	Pointer pInnerMethodInfoArray							// EAP_METHOD_INFO_ARRAY_EX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property
+Struct EAP_METHOD_PROPERTY
+	Integer eapMethodPropertyType							// EAP_METHOD_PROPERTY_TYPE
+	Integer eapMethodPropertyValueType						// EAP_METHOD_PROPERTY_VALUE_TYPE
+	EAP_METHOD_PROPERTY_VALUE eapMethodPropertyValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_array
+Struct EAP_METHOD_PROPERTY_ARRAY
+	UInteger dwNumberOfProperties
+	Integer iMissingAlignment1
+	Pointer pMethodProperty									// EAP_METHOD_PROPERTY*
+End_Struct
+
+Struct EAP_METHOD_PROPERTY_VALUE
+	_Anonymous_e__Union_1520 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value_bool
+Struct EAP_METHOD_PROPERTY_VALUE_BOOL
+	UInteger length
+	Integer value											// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value_dword
+Struct EAP_METHOD_PROPERTY_VALUE_DWORD
+	UInteger length
+	UInteger value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_property_value_string
+Struct EAP_METHOD_PROPERTY_VALUE_STRING
+	UInteger length
+	Integer iMissingAlignment1
+	Pointer value											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_method_type
+Struct EAP_METHOD_TYPE
+	EAP_TYPE eapType
+	UInteger dwAuthorId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eapmethodpeerapis/ns-eapmethodpeerapis-eap_peer_method_routines
+Struct EAP_PEER_METHOD_ROUTINES
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pEapType										// EAP_TYPE*
+	LongPtr EapPeerInitialize
+	LongPtr EapPeerGetIdentity
+	LongPtr EapPeerBeginSession
+	LongPtr EapPeerSetCredentials
+	LongPtr EapPeerProcessRequestPacket
+	LongPtr EapPeerGetResponsePacket
+	LongPtr EapPeerGetResult
+	LongPtr EapPeerGetUIContext
+	LongPtr EapPeerSetUIContext
+	LongPtr EapPeerGetResponseAttributes
+	LongPtr EapPeerSetResponseAttributes
+	LongPtr EapPeerEndSession
+	LongPtr EapPeerShutdown
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eap_type
+Struct EAP_TYPE
+	UChar type
+	UChar[3] cMissingAlignment1
+	UInteger dwVendorId
+	UInteger dwVendorType
+End_Struct
+
+Struct EAP_UI_DATA_FORMAT
+	_Anonymous_e__Union_1521 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eapcertificatecredential
+Struct EapCertificateCredential
+	UChar[20] certHash
+	Integer iMissingAlignment1
+	Pointer password										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eapcredential
+Struct EapCredential
+	Integer credType										// EapCredentialType
+	Integer iMissingAlignment1
+	EapCredentialTypeData credData
+End_Struct
+
+Struct EapCredentialTypeData
+	_Anonymous_e__Union_1993 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaphostpeertypes/ns-eaphostpeertypes-eaphostpeermethodresult
+Struct EapHostPeerMethodResult
+	Integer fIsSuccess										// BOOL
+	UInteger dwFailureReasonCode
+	Integer fSaveConnectionData								// BOOL
+	UInteger dwSizeofConnectionData
+	Pointer pConnectionData									// UChar*
+	Integer fSaveUserData									// BOOL
+	UInteger dwSizeofUserData
+	Pointer pUserData										// UChar*
+	Pointer pAttribArray									// EAP_ATTRIBUTES*
+	Integer isolationState									// ISOLATION_STATE
+	Integer iMissingAlignment1
+	Pointer pEapMethodInfo									// EAP_METHOD_INFO*
+	Pointer pEapError										// EAP_ERROR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eapmethodtypes/ns-eapmethodtypes-eappacket
+Struct EapPacket
+	UChar Code
+	UChar Id
+	UChar[2] Length
+	UChar[1] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eapauthenticatoractiondefine/ns-eapauthenticatoractiondefine-eappeermethodoutput
+Struct EapPeerMethodOutput
+	Integer action											// EapPeerMethodResponseAction
+	Integer fAllowNotifications								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eapmethodpeerapis/ns-eapmethodpeerapis-eappeermethodresult
+Struct EapPeerMethodResult
+	Integer fIsSuccess										// BOOL
+	UInteger dwFailureReasonCode
+	Integer fSaveConnectionData								// BOOL
+	UInteger dwSizeofConnectionData
+	Pointer pConnectionData									// UChar*
+	Integer fSaveUserData									// BOOL
+	UInteger dwSizeofUserData
+	Pointer pUserData										// UChar*
+	Pointer pAttribArray									// EAP_ATTRIBUTES*
+	Pointer pEapError										// EAP_ERROR*
+	Pointer pNgcKerbTicket									// NgcTicketContext*
+	Integer fSaveToCredMan									// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eapsimcredential
+Struct EapSimCredential
+	Pointer iccID											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/eaptypes/ns-eaptypes-eapusernamepasswordcredential
+Struct EapUsernamePasswordCredential
+	Pointer username										// PWSTR
+	Pointer password										// PWSTR
+End_Struct
+
+Struct LEGACY_IDENTITY_UI_PARAMS
+	UInteger eapType
+	UInteger dwFlags
+	UInteger dwSizeofConnectionData
+	Integer iMissingAlignment1
+	Pointer pConnectionData									// UChar*
+	UInteger dwSizeofUserData
+	Integer iMissingAlignment2
+	Pointer pUserData										// UChar*
+	UInteger dwSizeofUserDataOut
+	Integer iMissingAlignment3
+	Pointer pUserDataOut									// UChar*
+	Pointer pwszIdentity									// PWSTR
+	UInteger dwError
+	Integer iMissingAlignment4
+End_Struct
+
+Struct LEGACY_INTERACTIVE_UI_PARAMS
+	UInteger eapType
+	UInteger dwSizeofContextData
+	Pointer pContextData									// UChar*
+	UInteger dwSizeofInteractiveUIData
+	Integer iMissingAlignment1
+	Pointer pInteractiveUIData								// UChar*
+	UInteger dwError
+	Integer iMissingAlignment2
+End_Struct
+
+Struct NgcTicketContext
+	UShort[45] wszTicket
+	UChar[6] cMissingAlignment1
+	ULongPtr hKey											// NCRYPT_KEY_HANDLE
+	Pointer hImpersonateToken								// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/raseapif/ns-raseapif-ppp_eap_info
+Struct PPP_EAP_INFO
+	UInteger dwSizeInBytes
+	UInteger dwEapTypeId
+	LongPtr RasEapInitialize
+	LongPtr RasEapBegin
+	LongPtr RasEapEnd
+	LongPtr RasEapMakeMessage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/raseapif/ns-raseapif-ppp_eap_input
+Struct PPP_EAP_INPUT
+	UInteger dwSizeInBytes
+	UInteger fFlags
+	Integer fAuthenticator									// BOOL
+	Integer iMissingAlignment1
+	Pointer pwszIdentity									// PWSTR
+	Pointer pwszPassword									// PWSTR
+	UChar bInitialId
+	UChar[7] cMissingAlignment2
+	Pointer pUserAttributes									// RAS_AUTH_ATTRIBUTE*
+	Integer fAuthenticationComplete							// BOOL
+	UInteger dwAuthResultCode
+	Pointer hTokenImpersonateUser							// HANDLE
+	Integer fSuccessPacketReceived							// BOOL
+	Integer fDataReceivedFromInteractiveUI					// BOOL
+	Pointer pDataFromInteractiveUI							// UChar*
+	UInteger dwSizeOfDataFromInteractiveUI
+	Integer iMissingAlignment3
+	Pointer pConnectionData									// UChar*
+	UInteger dwSizeOfConnectionData
+	Integer iMissingAlignment4
+	Pointer pUserData										// UChar*
+	UInteger dwSizeOfUserData
+	Integer iMissingAlignment5
+	Pointer hReserved										// HANDLE
+	Guid guidConnectionId
+	Integer isVpn											// BOOL
+	Integer iMissingAlignment6
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/raseapif/ns-raseapif-ppp_eap_output
+Struct PPP_EAP_OUTPUT
+	UInteger dwSizeInBytes
+	Integer Action											// PPP_EAP_ACTION
+	UInteger dwAuthResultCode
+	Integer iMissingAlignment1
+	Pointer pUserAttributes									// RAS_AUTH_ATTRIBUTE*
+	Integer fInvokeInteractiveUI							// BOOL
+	Integer iMissingAlignment2
+	Pointer pUIContextData									// UChar*
+	UInteger dwSizeOfUIContextData
+	Integer fSaveConnectionData								// BOOL
+	Pointer pConnectionData									// UChar*
+	UInteger dwSizeOfConnectionData
+	Integer fSaveUserData									// BOOL
+	Pointer pUserData										// UChar*
+	UInteger dwSizeOfUserData
+	Integer iMissingAlignment3
+	Pointer pNgcKerbTicket									// NgcTicketContext*
+	Integer fSaveToCredMan									// BOOL
+	Integer iMissingAlignment4
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/raseapif/ns-raseapif-ppp_eap_packet
+Struct PPP_EAP_PACKET
+	UChar Code
+	UChar Id
+	UChar[2] Length
+	UChar[1] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/raseapif/ns-raseapif-ras_auth_attribute
+Struct RAS_AUTH_ATTRIBUTE
+	Integer raaType											// RAS_AUTH_ATTRIBUTE_TYPE
+	UInteger dwLength
+	Pointer Value											// Pointer*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,33 @@
+Use UI
+
+Struct HCS_CREATE_OPTIONS_1
+	Integer Version											// HCS_CREATE_OPTIONS
+	Integer iMissingAlignment1
+	Pointer UserToken										// HANDLE
+	Pointer SecurityDescriptor								// SECURITY_DESCRIPTOR*
+	Integer CallbackOptions									// HCS_EVENT_OPTIONS
+	Integer iMissingAlignment2
+	Pointer CallbackContext									// Pointer*
+	Pointer Callback										// HCS_EVENT_CALLBACK
+End_Struct
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HCS_EVENT
+Struct HCS_EVENT
+	Integer Type											// HCS_EVENT_TYPE
+	Integer iMissingAlignment1
+	Pointer EventData										// PWSTR
+	Pointer Operation										// HCS_OPERATION
+End_Struct
+
+// https://learn.microsoft.com/virtualization/api/hcs/Reference/HCS_PROCESS_INFORMATION
+Struct HCS_PROCESS_INFORMATION
+	UInteger ProcessId
+	UInteger Reserved
+	Pointer StdInput										// HANDLE
+	Pointer StdOutput										// HANDLE
+	Pointer StdError										// HANDLE
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

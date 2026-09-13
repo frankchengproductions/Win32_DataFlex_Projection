@@ -1,0 +1,810 @@
+Use UI
+
+Struct _Anonymous_e__Union_2189
+	// _States_e__Struct_2190 States // (4)
+	// UInteger AsUlong // (4)
+	_States_e__Struct_2190 States
+End_Struct
+
+Struct ACPI_REAL_TIME
+	UShort Year
+	UChar Month
+	UChar Day
+	UChar Hour
+	UChar Minute
+	UChar Second
+	UChar Valid
+	UShort Milliseconds
+	Short TimeZone
+	UChar DayLight
+	UChar[3] Reserved1
+End_Struct
+
+Struct ACPI_TIME_AND_ALARM_CAPABILITIES
+	UChar AcWakeSupported									// BOOLEAN
+	UChar DcWakeSupported									// BOOLEAN
+	UChar S4AcWakeSupported									// BOOLEAN
+	UChar S4DcWakeSupported									// BOOLEAN
+	UChar S5AcWakeSupported									// BOOLEAN
+	UChar S5DcWakeSupported									// BOOLEAN
+	UChar S4S5WakeStatusSupported							// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UInteger DeepestWakeSystemState
+	UChar RealTimeFeaturesSupported							// BOOLEAN
+	UChar[3] cMissingAlignment2
+	Integer RealTimeResolution								// ACPI_TIME_RESOLUTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-administrator_power_policy
+Struct ADMINISTRATOR_POWER_POLICY
+	Integer MinSleep										// SYSTEM_POWER_STATE
+	Integer MaxSleep										// SYSTEM_POWER_STATE
+	UInteger MinVideoTimeout
+	UInteger MaxVideoTimeout
+	UInteger MinSpindownTimeout
+	UInteger MaxSpindownTimeout
+End_Struct
+
+Struct BATTERY_CHARGER_STATUS
+	Integer Type											// BATTERY_CHARGING_SOURCE_TYPE
+	UInteger[1] VaData
+End_Struct
+
+Struct BATTERY_CHARGING_SOURCE
+	Integer Type											// BATTERY_CHARGING_SOURCE_TYPE
+	UInteger MaxCurrent
+End_Struct
+
+Struct BATTERY_CHARGING_SOURCE_INFORMATION
+	Integer Type											// BATTERY_CHARGING_SOURCE_TYPE
+	UChar SourceOnline										// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/battery-information-str
+Struct BATTERY_INFORMATION
+	UInteger Capabilities
+	UChar Technology
+	UChar[3] Reserved
+	UChar[4] Chemistry
+	UInteger DesignedCapacity
+	UInteger FullChargedCapacity
+	UInteger DefaultAlert1
+	UInteger DefaultAlert2
+	UInteger CriticalBias
+	UInteger CycleCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/battery-manufacture-date-str
+Struct BATTERY_MANUFACTURE_DATE
+	UChar Day
+	UChar Month
+	UShort Year
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/battery-query-information-str
+Struct BATTERY_QUERY_INFORMATION
+	UInteger BatteryTag
+	Integer InformationLevel								// BATTERY_QUERY_INFORMATION_LEVEL
+	UInteger AtRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-battery_reporting_scale
+Struct BATTERY_REPORTING_SCALE
+	UInteger Granularity
+	UInteger Capacity
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/battery-set-information-str
+Struct BATTERY_SET_INFORMATION
+	UInteger BatteryTag
+	Integer InformationLevel								// BATTERY_SET_INFORMATION_LEVEL
+	UChar[1] Buffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/battery-status-str
+Struct BATTERY_STATUS
+	UInteger PowerState
+	UInteger Capacity
+	UInteger Voltage
+	Integer Rate
+End_Struct
+
+Struct BATTERY_USB_CHARGER_STATUS
+	Integer Type											// BATTERY_CHARGING_SOURCE_TYPE
+	UInteger Reserved
+	UInteger Flags
+	UInteger MaxCurrent
+	UInteger Voltage
+	Integer PortType										// USB_CHARGER_PORT
+	UBigint PortId
+	Pointer PowerSourceInformation							// Pointer*
+	Guid OemCharger
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/battery-wait-status-str
+Struct BATTERY_WAIT_STATUS
+	UInteger BatteryTag
+	UInteger Timeout
+	UInteger PowerState
+	UInteger LowCapacity
+	UInteger HighCapacity
+End_Struct
+
+Struct CM_POWER_DATA
+	UInteger PD_Size
+	Integer PD_MostRecentPowerState							// DEVICE_POWER_STATE
+	UInteger PD_Capabilities
+	UInteger PD_D1Latency
+	UInteger PD_D2Latency
+	UInteger PD_D3Latency
+	Integer[7] PD_PowerStateMapping							// DEVICE_POWER_STATE
+	Integer PD_DeepestSystemWake							// SYSTEM_POWER_STATE
+End_Struct
+
+Struct CUSTOMIZED_IO_CAPABILITIES
+	UInteger SupportedInputs
+	UInteger SupportedOutputs
+End_Struct
+
+Struct CUSTOMIZED_IO_QUERY_INPUT_RETURN
+	UInteger FunctionId
+	UInteger ErrorCode
+	UInteger Value
+End_Struct
+
+Struct CUSTOMIZED_IO_SEND_OUTPUT_BUFFER
+	UInteger FunctionId
+	UInteger Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-device_notify_subscribe_parameters
+Struct DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS
+	Pointer Callback										// PDEVICE_NOTIFY_CALLBACK_ROUTINE
+	Pointer Context											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_channel_measurement_data
+Struct EMI_CHANNEL_MEASUREMENT_DATA
+	UBigint AbsoluteEnergy
+	UBigint AbsoluteTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_channel_v2
+Struct EMI_CHANNEL_V2
+	Integer MeasurementUnit									// EMI_MEASUREMENT_UNIT
+	UShort ChannelNameSize
+	UShort[1] ChannelName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_measurement_data_v2
+Struct EMI_MEASUREMENT_DATA_V2
+	EMI_CHANNEL_MEASUREMENT_DATA[1] ChannelData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_metadata_size
+Struct EMI_METADATA_SIZE
+	UInteger MetadataSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_metadata_v1
+Struct EMI_METADATA_V1
+	Integer MeasurementUnit									// EMI_MEASUREMENT_UNIT
+	UShort[16] HardwareOEM
+	UShort[16] HardwareModel
+	UShort HardwareRevision
+	UShort MeteredHardwareNameSize
+	UShort[1] MeteredHardwareName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_metadata_v2
+Struct EMI_METADATA_V2
+	UShort[16] HardwareOEM
+	UShort[16] HardwareModel
+	UShort HardwareRevision
+	UShort ChannelCount
+	EMI_CHANNEL_V2[1] Channels
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/emi/ns-emi-emi_version
+Struct EMI_VERSION
+	UShort EmiVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-global_machine_power_policy
+Struct GLOBAL_MACHINE_POWER_POLICY
+	UInteger Revision
+	Integer LidOpenWakeAc									// SYSTEM_POWER_STATE
+	Integer LidOpenWakeDc									// SYSTEM_POWER_STATE
+	UInteger BroadcastCapacityResolution
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-global_power_policy
+Struct GLOBAL_POWER_POLICY
+	GLOBAL_USER_POWER_POLICY user
+	GLOBAL_MACHINE_POWER_POLICY mach
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-global_user_power_policy
+Struct GLOBAL_USER_POWER_POLICY
+	UInteger Revision
+	POWER_ACTION_POLICY PowerButtonAc
+	POWER_ACTION_POLICY PowerButtonDc
+	POWER_ACTION_POLICY SleepButtonAc
+	POWER_ACTION_POLICY SleepButtonDc
+	POWER_ACTION_POLICY LidCloseAc
+	POWER_ACTION_POLICY LidCloseDc
+	SYSTEM_POWER_LEVEL[4] DischargePolicy
+	UInteger GlobalFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-machine_power_policy
+Struct MACHINE_POWER_POLICY
+	UInteger Revision
+	Integer MinSleepAc										// SYSTEM_POWER_STATE
+	Integer MinSleepDc										// SYSTEM_POWER_STATE
+	Integer ReducedLatencySleepAc							// SYSTEM_POWER_STATE
+	Integer ReducedLatencySleepDc							// SYSTEM_POWER_STATE
+	UInteger DozeTimeoutAc
+	UInteger DozeTimeoutDc
+	UInteger DozeS4TimeoutAc
+	UInteger DozeS4TimeoutDc
+	UChar MinThrottleAc
+	UChar MinThrottleDc
+	UChar[2] pad1
+	POWER_ACTION_POLICY OverThrottledAc
+	POWER_ACTION_POLICY OverThrottledDc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-machine_processor_power_policy
+Struct MACHINE_PROCESSOR_POWER_POLICY
+	UInteger Revision
+	PROCESSOR_POWER_POLICY ProcessorPolicyAc
+	PROCESSOR_POWER_POLICY ProcessorPolicyDc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-powerbroadcast_setting
+Struct POWERBROADCAST_SETTING
+	Guid PowerSetting
+	UInteger DataLength
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-power_action_policy
+Struct POWER_ACTION_POLICY
+	Integer Action											// POWER_ACTION
+	UInteger Flags
+	UInteger EventCode										// POWER_ACTION_POLICY_EVENT_CODE
+End_Struct
+
+Struct POWER_ADAPTER_CHARGE_REQUIREMENT
+	UInteger AcAdapterType
+	UInteger MinimumPower
+	UInteger NominalPower
+	UInteger MaximumPower
+End_Struct
+
+Struct POWER_ADAPTER_POWER_STATES
+	_Anonymous_e__Union_2189 Anonymous
+End_Struct
+
+Struct POWER_ADAPTER_SET_STATUS_BUFFER
+	UChar Version
+	UChar RecOverride										// BOOLEAN
+	UChar[2] Reserved
+End_Struct
+
+Struct POWER_ADAPTER_STATUS
+	UChar Version
+	UChar[3] Reserved
+	POWER_ADAPTER_POWER_STATES PowerState
+	UInteger PeakPower
+	UInteger MaxOutputPower
+	UInteger MaxInputPower
+	Integer iMissingAlignment1
+	UBigint RecStartTime
+	UBigint RecEndTime
+End_Struct
+
+Struct POWER_IDLE_RESILIENCY
+	UInteger CoalescingTimeout
+	UInteger IdleResiliencyPeriod
+End_Struct
+
+Struct POWER_MONITOR_INVOCATION
+	UChar Console											// BOOLEAN
+	UChar[3] cMissingAlignment1
+	Integer RequestReason									// POWER_MONITOR_REQUEST_REASON
+End_Struct
+
+Struct POWER_PLATFORM_INFORMATION
+	UChar AoAc												// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-power_policy
+Struct POWER_POLICY
+	USER_POWER_POLICY user
+	MACHINE_POWER_POLICY mach
+End_Struct
+
+Struct POWER_SESSION_ALLOW_EXTERNAL_DMA_DEVICES
+	UChar IsAllowed											// BOOLEAN
+End_Struct
+
+Struct POWER_SESSION_CONNECT
+	UChar Connected											// BOOLEAN
+	UChar Console											// BOOLEAN
+End_Struct
+
+Struct POWER_SESSION_RIT_STATE
+	UChar Active											// BOOLEAN
+	UChar[7] cMissingAlignment1
+	UBigint LastInputTime
+End_Struct
+
+Struct POWER_SESSION_TIMEOUTS
+	UInteger InputTimeout
+	UInteger DisplayTimeout
+End_Struct
+
+Struct POWER_SESSION_WINLOGON
+	UInteger SessionId
+	UChar Console											// BOOLEAN
+	UChar Locked											// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct POWER_USER_PRESENCE
+	Integer UserPresence									// POWER_USER_PRESENCE_TYPE
+End_Struct
+
+Struct PPM_IDLESTATE_EVENT
+	UInteger NewState
+	UInteger OldState
+	UBigint Processors
+End_Struct
+
+Struct PPM_IDLE_ACCOUNTING
+	UInteger StateCount
+	UInteger TotalTransitions
+	UInteger ResetCount
+	Integer iMissingAlignment1
+	UBigint StartTime
+	PPM_IDLE_STATE_ACCOUNTING[1] State
+End_Struct
+
+Struct PPM_IDLE_ACCOUNTING_EX
+	UInteger StateCount
+	UInteger TotalTransitions
+	UInteger ResetCount
+	UInteger AbortCount
+	UBigint StartTime
+	PPM_IDLE_STATE_ACCOUNTING_EX[1] State
+End_Struct
+
+Struct PPM_IDLE_STATE_ACCOUNTING
+	UInteger IdleTransitions
+	UInteger FailedTransitions
+	UInteger InvalidBucketIndex
+	Integer iMissingAlignment1
+	UBigint TotalTime
+	UInteger[6] IdleTimeBuckets
+End_Struct
+
+Struct PPM_IDLE_STATE_ACCOUNTING_EX
+	UBigint TotalTime
+	UInteger IdleTransitions
+	UInteger FailedTransitions
+	UInteger InvalidBucketIndex
+	UInteger MinTimeUs
+	UInteger MaxTimeUs
+	UInteger CancelledTransitions
+	PPM_IDLE_STATE_BUCKET_EX[16] IdleTimeBuckets
+End_Struct
+
+Struct PPM_IDLE_STATE_BUCKET_EX
+	UBigint TotalTimeUs
+	UInteger MinTimeUs
+	UInteger MaxTimeUs
+	UInteger Count
+	Integer iMissingAlignment1
+End_Struct
+
+Struct PPM_PERFSTATE_DOMAIN_EVENT
+	UInteger State
+	UInteger Latency
+	UInteger Speed
+	Integer iMissingAlignment1
+	UBigint Processors
+End_Struct
+
+Struct PPM_PERFSTATE_EVENT
+	UInteger State
+	UInteger Status
+	UInteger Latency
+	UInteger Speed
+	UInteger Processor
+End_Struct
+
+Struct PPM_THERMALCHANGE_EVENT
+	UInteger ThermalConstraint
+	Integer iMissingAlignment1
+	UBigint Processors
+End_Struct
+
+Struct PPM_THERMAL_POLICY_EVENT
+	UChar Mode
+	UChar[7] cMissingAlignment1
+	UBigint Processors
+End_Struct
+
+Struct PPM_WMI_IDLE_STATE
+	UInteger Latency
+	UInteger Power
+	UInteger TimeCheck
+	UChar PromotePercent
+	UChar DemotePercent
+	UChar StateType
+	UChar Reserved
+	UInteger StateFlags
+	UInteger Context
+	UInteger IdleHandler
+	UInteger Reserved1
+End_Struct
+
+Struct PPM_WMI_IDLE_STATES
+	UInteger Type
+	UInteger Count
+	UInteger TargetState
+	UInteger OldState
+	UBigint TargetProcessors
+	PPM_WMI_IDLE_STATE[1] State
+End_Struct
+
+Struct PPM_WMI_IDLE_STATES_EX
+	UInteger Type
+	UInteger Count
+	UInteger TargetState
+	UInteger OldState
+	Pointer TargetProcessors								// Pointer*
+	PPM_WMI_IDLE_STATE[1] State
+End_Struct
+
+Struct PPM_WMI_LEGACY_PERFSTATE
+	UInteger Frequency
+	UInteger Flags
+	UInteger PercentFrequency
+End_Struct
+
+Struct PPM_WMI_PERF_STATE
+	UInteger Frequency
+	UInteger Power
+	UChar PercentFrequency
+	UChar IncreaseLevel
+	UChar DecreaseLevel
+	UChar Type
+	UInteger IncreaseTime
+	UInteger DecreaseTime
+	Integer iMissingAlignment1
+	UBigint Control
+	UBigint Status
+	UInteger HitCount
+	UInteger Reserved1
+	UBigint Reserved2
+	UBigint Reserved3
+End_Struct
+
+Struct PPM_WMI_PERF_STATES
+	UInteger Count
+	UInteger MaxFrequency
+	UInteger CurrentState
+	UInteger MaxPerfState
+	UInteger MinPerfState
+	UInteger LowestPerfState
+	UInteger ThermalConstraint
+	UChar BusyAdjThreshold
+	UChar PolicyType
+	UChar Type
+	UChar Reserved
+	UInteger TimerInterval
+	Integer iMissingAlignment1
+	UBigint TargetProcessors
+	UInteger PStateHandler
+	UInteger PStateContext
+	UInteger TStateHandler
+	UInteger TStateContext
+	UInteger FeedbackHandler
+	UInteger Reserved1
+	UBigint Reserved2
+	PPM_WMI_PERF_STATE[1] State
+End_Struct
+
+Struct PPM_WMI_PERF_STATES_EX
+	UInteger Count
+	UInteger MaxFrequency
+	UInteger CurrentState
+	UInteger MaxPerfState
+	UInteger MinPerfState
+	UInteger LowestPerfState
+	UInteger ThermalConstraint
+	UChar BusyAdjThreshold
+	UChar PolicyType
+	UChar Type
+	UChar Reserved
+	UInteger TimerInterval
+	Integer iMissingAlignment1
+	Pointer TargetProcessors								// Pointer*
+	UInteger PStateHandler
+	UInteger PStateContext
+	UInteger TStateHandler
+	UInteger TStateContext
+	UInteger FeedbackHandler
+	UInteger Reserved1
+	UBigint Reserved2
+	PPM_WMI_PERF_STATE[1] State
+End_Struct
+
+Struct PROCESSOR_OBJECT_INFO
+	UInteger PhysicalID
+	UInteger PBlkAddress
+	UChar PBlkLength
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct PROCESSOR_OBJECT_INFO_EX
+	UInteger PhysicalID
+	UInteger PBlkAddress
+	UChar PBlkLength
+	UChar[3] cMissingAlignment1
+	UInteger InitialApicId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/processor-power-information-str
+Struct PROCESSOR_POWER_INFORMATION
+	UInteger Number
+	UInteger MaxMhz
+	UInteger CurrentMhz
+	UInteger MhzLimit
+	UInteger MaxIdleState
+	UInteger CurrentIdleState
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-processor_power_policy
+Struct PROCESSOR_POWER_POLICY
+	UInteger Revision
+	UChar DynamicThrottle
+	UChar[3] Spare
+	UInteger _bitfield
+	UInteger PolicyCount
+	PROCESSOR_POWER_POLICY_INFO[3] Policy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-processor_power_policy_info
+Struct PROCESSOR_POWER_POLICY_INFO
+	UInteger TimeCheck
+	UInteger DemoteLimit
+	UInteger PromoteLimit
+	UChar DemotePercent
+	UChar PromotePercent
+	UChar[2] Spare
+	UInteger _bitfield
+End_Struct
+
+Struct RESUME_PERFORMANCE
+	UInteger PostTimeMs
+	Integer iMissingAlignment1
+	UBigint TotalResumeTimeMs
+	UBigint ResumeCompleteTimestamp
+End_Struct
+
+Struct SET_POWER_SETTING_VALUE
+	UInteger Version
+	Guid Guid
+	Integer PowerCondition									// SYSTEM_POWER_CONDITION
+	UInteger DataLength
+	UChar[1] Data
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_battery_state
+Struct SYSTEM_BATTERY_STATE
+	UChar AcOnLine											// BOOLEAN
+	UChar BatteryPresent									// BOOLEAN
+	UChar Charging											// BOOLEAN
+	UChar Discharging										// BOOLEAN
+	UChar[3] Spare1											// BOOLEAN
+	UChar Tag
+	UInteger MaxCapacity
+	UInteger RemainingCapacity
+	UInteger Rate
+	UInteger EstimatedTime
+	UInteger DefaultAlert1
+	UInteger DefaultAlert2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_power_capabilities
+Struct SYSTEM_POWER_CAPABILITIES
+	UChar PowerButtonPresent								// BOOLEAN
+	UChar SleepButtonPresent								// BOOLEAN
+	UChar LidPresent										// BOOLEAN
+	UChar SystemS1											// BOOLEAN
+	UChar SystemS2											// BOOLEAN
+	UChar SystemS3											// BOOLEAN
+	UChar SystemS4											// BOOLEAN
+	UChar SystemS5											// BOOLEAN
+	UChar HiberFilePresent									// BOOLEAN
+	UChar FullWake											// BOOLEAN
+	UChar VideoDimPresent									// BOOLEAN
+	UChar ApmPresent										// BOOLEAN
+	UChar UpsPresent										// BOOLEAN
+	UChar ThermalControl									// BOOLEAN
+	UChar ProcessorThrottle									// BOOLEAN
+	UChar ProcessorMinThrottle
+	UChar ProcessorMaxThrottle
+	UChar FastSystemS4										// BOOLEAN
+	UChar Hiberboot											// BOOLEAN
+	UChar WakeAlarmPresent									// BOOLEAN
+	UChar AoAc												// BOOLEAN
+	UChar DiskSpinDown										// BOOLEAN
+	UChar HiberFileType
+	UChar AoAcConnectivitySupported							// BOOLEAN
+	UChar[6] spare3
+	UChar SystemBatteriesPresent							// BOOLEAN
+	UChar BatteriesAreShortTerm								// BOOLEAN
+	BATTERY_REPORTING_SCALE[3] BatteryScale
+	Integer AcOnLineWake									// SYSTEM_POWER_STATE
+	Integer SoftLidWake										// SYSTEM_POWER_STATE
+	Integer RtcWake											// SYSTEM_POWER_STATE
+	Integer MinDeviceWakeState								// SYSTEM_POWER_STATE
+	Integer DefaultLowLatencyWake							// SYSTEM_POWER_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/Power/system-power-information-str
+Struct SYSTEM_POWER_INFORMATION
+	UInteger MaxIdlenessAllowed
+	UInteger Idleness
+	UInteger TimeRemaining
+	UShort CoolingMode										// POWER_COOLING_MODE
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_power_level
+Struct SYSTEM_POWER_LEVEL
+	UChar Enable											// BOOLEAN
+	UChar[3] Spare
+	UInteger BatteryLevel
+	POWER_ACTION_POLICY PowerPolicy
+	Integer MinSystemState									// SYSTEM_POWER_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_power_policy
+Struct SYSTEM_POWER_POLICY
+	UInteger Revision
+	POWER_ACTION_POLICY PowerButton
+	POWER_ACTION_POLICY SleepButton
+	POWER_ACTION_POLICY LidClose
+	Integer LidOpenWake										// SYSTEM_POWER_STATE
+	UInteger Reserved
+	POWER_ACTION_POLICY Idle
+	UInteger IdleTimeout
+	UChar IdleSensitivity
+	UChar DynamicThrottle
+	UChar[2] Spare2
+	Integer MinSleep										// SYSTEM_POWER_STATE
+	Integer MaxSleep										// SYSTEM_POWER_STATE
+	Integer ReducedLatencySleep								// SYSTEM_POWER_STATE
+	UInteger WinLogonFlags
+	UInteger Spare3
+	UInteger DozeS4Timeout
+	UInteger BroadcastCapacityResolution
+	SYSTEM_POWER_LEVEL[4] DischargePolicy
+	UInteger VideoTimeout
+	UChar VideoDimDisplay									// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger[3] VideoReserved
+	UInteger SpindownTimeout
+	UChar OptimizeForPower									// BOOLEAN
+	UChar FanThrottleTolerance
+	UChar ForcedThrottle
+	UChar MinThrottle
+	POWER_ACTION_POLICY OverThrottled
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-system_power_status
+Struct SYSTEM_POWER_STATUS
+	UChar ACLineStatus
+	UChar BatteryFlag
+	UChar BatteryLifePercent
+	UChar SystemStatusFlag
+	UInteger BatteryLifeTime
+	UInteger BatteryFullLifeTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-thermal_event
+Struct THERMAL_EVENT
+	UInteger Version
+	UInteger Size
+	UInteger Type
+	UInteger Temperature
+	UInteger TripPointTemperature
+	Integer iMissingAlignment1
+	Pointer Initiator										// PWSTR
+End_Struct
+
+Struct THERMAL_INFORMATION
+	UInteger ThermalStamp
+	UInteger ThermalConstant1
+	UInteger ThermalConstant2
+	Integer iMissingAlignment1
+	ULongPtr Processors
+	UInteger SamplingPeriod
+	UInteger CurrentTemperature
+	UInteger PassiveTripPoint
+	UInteger CriticalTripPoint
+	UChar ActiveTripPointCount
+	UChar[3] cMissingAlignment2
+	UInteger[10] ActiveTripPoint
+	Integer iMissingAlignment3
+End_Struct
+
+Struct THERMAL_POLICY
+	UInteger Version
+	UChar WaitForUpdate										// BOOLEAN
+	UChar Hibernate											// BOOLEAN
+	UChar Critical											// BOOLEAN
+	UChar ThermalStandby									// BOOLEAN
+	UInteger ActivationReasons
+	UInteger PassiveLimit
+	UInteger ActiveLevel
+	UChar OverThrottled										// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct THERMAL_WAIT_READ
+	UInteger Timeout
+	UInteger LowTemperature
+	UInteger HighTemperature
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/powrprof/ns-powrprof-user_power_policy
+Struct USER_POWER_POLICY
+	UInteger Revision
+	POWER_ACTION_POLICY IdleAc
+	POWER_ACTION_POLICY IdleDc
+	UInteger IdleTimeoutAc
+	UInteger IdleTimeoutDc
+	UChar IdleSensitivityAc
+	UChar IdleSensitivityDc
+	UChar ThrottlePolicyAc
+	UChar ThrottlePolicyDc
+	Integer MaxSleepAc										// SYSTEM_POWER_STATE
+	Integer MaxSleepDc										// SYSTEM_POWER_STATE
+	UInteger[2] Reserved
+	UInteger VideoTimeoutAc
+	UInteger VideoTimeoutDc
+	UInteger SpindownTimeoutAc
+	UInteger SpindownTimeoutDc
+	UChar OptimizeForPowerAc								// BOOLEAN
+	UChar OptimizeForPowerDc								// BOOLEAN
+	UChar FanThrottleToleranceAc
+	UChar FanThrottleToleranceDc
+	UChar ForcedThrottleAc
+	UChar ForcedThrottleDc
+	Short iMissingAlignment1
+End_Struct
+
+Struct WAKE_ALARM_INFORMATION
+	UInteger TimerIdentifier
+	UInteger Timeout
+End_Struct
+
+Struct _States_e__Struct_2190
+	UInteger _bitfield
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

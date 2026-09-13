@@ -1,0 +1,809 @@
+Use UI
+
+Struct DOT11_WEP_OFFLOAD
+	UInteger uReserved
+	Integer iMissingAlignment1
+	Pointer hOffloadContext									// HANDLE
+	Pointer hOffload										// HANDLE
+	Integer dot11OffloadType								// DOT11_OFFLOAD_TYPE
+	UInteger dwAlgorithm
+	UChar bRowIsOutbound									// BOOLEAN
+	UChar bUseDefault										// BOOLEAN
+	Short iMissingAlignment2
+	UInteger uFlags
+	UChar[6] ucMacAddress
+	Short iMissingAlignment3
+	UInteger uNumOfRWsOnPeer
+	UInteger uNumOfRWsOnMe
+	DOT11_IV48_COUNTER[16] dot11IV48Counters
+	UShort[16] usDot11RWBitMaps
+	UShort usKeyLength
+	UChar[1] ucKey
+	UChar[5] cMissingAlignment4
+End_Struct
+
+Struct DOT11_WEP_UPLOAD
+	UInteger uReserved
+	Integer dot11OffloadType								// DOT11_OFFLOAD_TYPE
+	Pointer hOffload										// HANDLE
+	UInteger uNumOfRWsUsed
+	DOT11_IV48_COUNTER[16] dot11IV48Counters
+	UShort[16] usDot11RWBitMaps
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_ADDITIONAL_IE
+	NDIS_OBJECT_HEADER Header
+	UInteger uBeaconIEsOffset
+	UInteger uBeaconIEsLength
+	UInteger uProbeResponseIEsOffset
+	UInteger uProbeResponseIEsLength
+	UInteger uDefaultRequestIEsOffset
+	UInteger uDefaultRequestIEsLength
+End_Struct
+
+Struct DOT11_WFD_ADVERTISED_SERVICE_DESCRIPTOR
+	UInteger AdvertisementID
+	UShort ConfigMethods
+	UChar ServiceNameLength
+	UChar[255] ServiceName
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_ADVERTISED_SERVICE_LIST
+	UShort ServiceCount
+	Short iMissingAlignment1
+	DOT11_WFD_ADVERTISED_SERVICE_DESCRIPTOR[1] AdvertisedService
+End_Struct
+
+Struct DOT11_WFD_ADVERTISEMENT_ID
+	UInteger AdvertisementID
+	UChar[6] ServiceAddress
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_ATTRIBUTES
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumConcurrentGORole
+	UInteger uNumConcurrentClientRole
+	UInteger WPSVersionsSupported
+	UChar bServiceDiscoverySupported						// BOOLEAN
+	UChar bClientDiscoverabilitySupported					// BOOLEAN
+	UChar bInfrastructureManagementSupported				// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UInteger uMaxSecondaryDeviceTypeListSize
+	UChar[6] DeviceAddress
+	Short iMissingAlignment2
+	UInteger uInterfaceAddressListCount
+	Integer iMissingAlignment3
+	Pointer pInterfaceAddressList							// UChar*
+	UInteger uNumSupportedCountryOrRegionStrings
+	Integer iMissingAlignment4
+	Pointer pSupportedCountryOrRegionStrings				// UChar*
+	UInteger uDiscoveryFilterListSize
+	UInteger uGORoleClientTableSize
+End_Struct
+
+Struct DOT11_WFD_CHANNEL
+	UChar[3] CountryRegionString
+	UChar OperatingClass
+	UChar ChannelNumber
+End_Struct
+
+Struct DOT11_WFD_CONFIGURATION_TIMEOUT
+	UChar GOTimeout
+	UChar ClientTimeout
+End_Struct
+
+Struct DOT11_WFD_DEVICE_CAPABILITY_CONFIG
+	NDIS_OBJECT_HEADER Header
+	UChar bServiceDiscoveryEnabled							// BOOLEAN
+	UChar bClientDiscoverabilityEnabled						// BOOLEAN
+	UChar bConcurrentOperationSupported						// BOOLEAN
+	UChar bInfrastructureManagementEnabled					// BOOLEAN
+	UChar bDeviceLimitReached								// BOOLEAN
+	UChar bInvitationProcedureEnabled						// BOOLEAN
+	Short iMissingAlignment1
+	UInteger WPSVersionsEnabled
+End_Struct
+
+Struct DOT11_WFD_DEVICE_ENTRY
+	UInteger uPhyId
+	DOT11_BSS_ENTRY_PHY_SPECIFIC_INFO PhySpecificInfo
+	UChar[6] dot11BSSID
+	Short iMissingAlignment1
+	Integer dot11BSSType									// DOT11_BSS_TYPE
+	UChar[6] TransmitterAddress
+	Short iMissingAlignment2
+	Integer lRSSI
+	UInteger uLinkQuality
+	UShort usBeaconPeriod
+	Short iMissingAlignment3
+	UBigint ullTimestamp
+	UBigint ullBeaconHostTimestamp
+	UBigint ullProbeResponseHostTimestamp
+	UShort usCapabilityInformation
+	Short iMissingAlignment4
+	UInteger uBeaconIEsOffset
+	UInteger uBeaconIEsLength
+	UInteger uProbeResponseIEsOffset
+	UInteger uProbeResponseIEsLength
+	Integer iMissingAlignment5
+End_Struct
+
+Struct DOT11_WFD_DEVICE_INFO
+	NDIS_OBJECT_HEADER Header
+	UChar[6] DeviceAddress
+	UShort ConfigMethods
+	DOT11_WFD_DEVICE_TYPE PrimaryDeviceType
+	DOT11_WPS_DEVICE_NAME DeviceName
+End_Struct
+
+Struct DOT11_WFD_DEVICE_LISTEN_CHANNEL
+	NDIS_OBJECT_HEADER Header
+	UChar ChannelNumber
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_DEVICE_TYPE
+	UShort CategoryID
+	UShort SubCategoryID
+	UChar[4] OUI
+End_Struct
+
+Struct DOT11_WFD_DISCOVER_COMPLETE_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	Integer Status
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	UInteger uListOffset
+	UInteger uListLength
+End_Struct
+
+Struct DOT11_WFD_DISCOVER_DEVICE_FILTER
+	UChar[6] DeviceID
+	UChar ucBitmask
+	UChar[1] cMissingAlignment1
+	DOT11_SSID GroupSSID
+End_Struct
+
+Struct DOT11_WFD_DISCOVER_REQUEST
+	NDIS_OBJECT_HEADER Header
+	Integer DiscoverType									// DOT11_WFD_DISCOVER_TYPE
+	Integer ScanType										// DOT11_WFD_SCAN_TYPE
+	UInteger uDiscoverTimeout
+	UInteger uDeviceFilterListOffset
+	UInteger uNumDeviceFilters
+	UInteger uIEsOffset
+	UInteger uIEsLength
+	UChar bForceScanLegacyNetworks							// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_GO_INTENT
+	UChar _bitfield
+End_Struct
+
+Struct DOT11_WFD_GROUP_ID
+	UChar[6] DeviceAddress
+	Short iMissingAlignment1
+	DOT11_SSID SSID
+End_Struct
+
+Struct DOT11_WFD_GROUP_JOIN_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	DOT11_WFD_CHANNEL GOOperatingChannel
+	UChar[3] cMissingAlignment1
+	UInteger GOConfigTime
+	UChar bInGroupFormation									// BOOLEAN
+	UChar bWaitForWPSReady									// BOOLEAN
+	Short iMissingAlignment2
+End_Struct
+
+Struct DOT11_WFD_GROUP_OWNER_CAPABILITY_CONFIG
+	NDIS_OBJECT_HEADER Header
+	UChar bPersistentGroupEnabled							// BOOLEAN
+	UChar bIntraBSSDistributionSupported					// BOOLEAN
+	UChar bCrossConnectionSupported							// BOOLEAN
+	UChar bPersistentReconnectSupported						// BOOLEAN
+	UChar bGroupFormationEnabled							// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger uMaximumGroupLimit
+End_Struct
+
+Struct DOT11_WFD_GROUP_OWNER_CAPABILITY_CONFIG_V2
+	NDIS_OBJECT_HEADER Header
+	UChar bPersistentGroupEnabled							// BOOLEAN
+	UChar bIntraBSSDistributionSupported					// BOOLEAN
+	UChar bCrossConnectionSupported							// BOOLEAN
+	UChar bPersistentReconnectSupported						// BOOLEAN
+	UChar bGroupFormationEnabled							// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger uMaximumGroupLimit
+	UChar bEapolKeyIpAddressAllocationSupported				// BOOLEAN
+	UChar[3] cMissingAlignment2
+End_Struct
+
+Struct DOT11_WFD_GROUP_START_PARAMETERS
+	NDIS_OBJECT_HEADER Header
+	DOT11_WFD_CHANNEL AdvertisedOperatingChannel
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_INVITATION_FLAGS
+	UChar _bitfield
+End_Struct
+
+Struct DOT11_WFD_SECONDARY_DEVICE_TYPE_LIST
+	NDIS_OBJECT_HEADER Header
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_WFD_DEVICE_TYPE[1] SecondaryDeviceTypes
+End_Struct
+
+Struct DOT11_WFD_SERVICE_HASH_LIST
+	UShort ServiceHashCount
+	UChar[6] ServiceHash
+End_Struct
+
+Struct DOT11_WFD_SESSION_ID
+	UInteger SessionID
+	UChar[6] SessionAddress
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_WFD_SESSION_INFO
+	UShort uSessionInfoLength
+	UChar[144] ucSessionInfo
+End_Struct
+
+Struct DOT11_WME_AC_PARAMETERS
+	UChar ucAccessCategoryIndex
+	UChar ucAIFSN
+	UChar ucECWmin
+	UChar ucECWmax
+	UShort usTXOPLimit
+End_Struct
+
+Struct DOT11_WME_AC_PARAMETERS_LIST
+	UInteger uNumOfEntries
+	UInteger uTotalNumOfEntries
+	DOT11_WME_AC_PARAMETERS[1] dot11WMEACParameters
+	Short iMissingAlignment1
+End_Struct
+
+Struct DOT11_WME_UPDATE_IE
+	UInteger uParamElemMinBeaconIntervals
+	UInteger uWMEInfoElemOffset
+	UInteger uWMEInfoElemLength
+	UInteger uWMEParamElemOffset
+	UInteger uWMEParamElemLength
+	UChar[1] ucBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct DOT11_WPA_TSC
+	UInteger uReserved
+	Integer dot11OffloadType								// DOT11_OFFLOAD_TYPE
+	Pointer hOffload										// HANDLE
+	DOT11_IV48_COUNTER dot11IV48Counter
+End_Struct
+
+Struct DOT11_WPS_DEVICE_NAME
+	UInteger uDeviceNameLength
+	UChar[32] ucDeviceName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/l2cmn/ns-l2cmn-l2_notification_data
+Struct L2_NOTIFICATION_DATA
+	UInteger NotificationSource								// WLAN_NOTIFICATION_SOURCES
+	UInteger NotificationCode
+	Guid InterfaceGuid
+	UInteger dwDataSize
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dot1x/ns-dot1x-onex_auth_params
+Struct ONEX_AUTH_PARAMS
+	Integer fUpdatePending									// BOOL
+	ONEX_VARIABLE_BLOB oneXConnProfile
+	Integer authIdentity									// ONEX_AUTH_IDENTITY
+	UInteger dwQuarantineState
+	UInteger _bitfield
+	UInteger dwSessionId
+	Integer iMissingAlignment1
+	Pointer hUserToken										// HANDLE
+	ONEX_VARIABLE_BLOB OneXUserProfile
+	ONEX_VARIABLE_BLOB Identity
+	ONEX_VARIABLE_BLOB UserName
+	ONEX_VARIABLE_BLOB Domain
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dot1x/ns-dot1x-onex_eap_error
+Struct ONEX_EAP_ERROR
+	UInteger dwWinError
+	EAP_METHOD_TYPE type
+	UInteger dwReasonCode
+	Guid rootCauseGuid
+	Guid repairGuid
+	Guid helpLinkGuid
+	UInteger _bitfield
+	ONEX_VARIABLE_BLOB RootCauseString
+	ONEX_VARIABLE_BLOB RepairString
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dot1x/ns-dot1x-onex_result_update_data
+Struct ONEX_RESULT_UPDATE_DATA
+	ONEX_STATUS oneXStatus
+	Integer BackendSupport									// ONEX_EAP_METHOD_BACKEND_SUPPORT
+	Integer fBackendEngaged									// BOOL
+	UInteger _bitfield
+	ONEX_VARIABLE_BLOB authParams
+	ONEX_VARIABLE_BLOB eapError
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dot1x/ns-dot1x-onex_status
+Struct ONEX_STATUS
+	Integer authStatus										// ONEX_AUTH_STATUS
+	UInteger dwReason
+	UInteger dwError
+End_Struct
+
+Struct ONEX_USER_INFO
+	Integer authIdentity									// ONEX_AUTH_IDENTITY
+	UInteger _bitfield
+	ONEX_VARIABLE_BLOB UserName
+	ONEX_VARIABLE_BLOB DomainName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dot1x/ns-dot1x-onex_variable_blob
+Struct ONEX_VARIABLE_BLOB
+	UInteger dwSize
+	UInteger dwOffset
+End_Struct
+
+Struct RSNA_AKM_CIPHER_PAIR
+	Integer akm												// RSNA_AKM_SUITE
+	Integer cipher											// RSNA_CIPHER_SUITE
+End_Struct
+
+Struct WDIAG_IHV_WLAN_ID
+	UShort[256] strProfileName
+	DOT11_SSID Ssid
+	Integer BssType											// DOT11_BSS_TYPE
+	UInteger dwFlags
+	UInteger dwReasonCode
+End_Struct
+
+Struct WFDSVC_CONNECTION_CAPABILITY
+	UChar bNew												// BOOLEAN
+	UChar bClient											// BOOLEAN
+	UChar bGO												// BOOLEAN
+End_Struct
+
+Struct WFD_GROUP_ID
+	UChar[6] DeviceAddress
+	Short iMissingAlignment1
+	DOT11_SSID GroupSSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_association_attributes
+Struct WLAN_ASSOCIATION_ATTRIBUTES
+	DOT11_SSID dot11Ssid
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	UChar[6] dot11Bssid
+	Short iMissingAlignment1
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UInteger uDot11PhyIndex
+	UInteger wlanSignalQuality
+	UInteger ulRxRate
+	UInteger ulTxRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_auth_cipher_pair_list
+Struct WLAN_AUTH_CIPHER_PAIR_LIST
+	UInteger dwNumberOfItems
+	DOT11_AUTH_CIPHER_PAIR[1] pAuthCipherPairList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_available_network
+Struct WLAN_AVAILABLE_NETWORK
+	UShort[256] strProfileName
+	DOT11_SSID dot11Ssid
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	UInteger uNumberOfBssids
+	Integer bNetworkConnectable								// BOOL
+	UInteger wlanNotConnectableReason
+	UInteger uNumberOfPhyTypes
+	Integer[8] dot11PhyTypes								// DOT11_PHY_TYPE
+	Integer bMorePhyTypes									// BOOL
+	UInteger wlanSignalQuality
+	Integer bSecurityEnabled								// BOOL
+	Integer dot11DefaultAuthAlgorithm						// DOT11_AUTH_ALGORITHM
+	Integer dot11DefaultCipherAlgorithm						// DOT11_CIPHER_ALGORITHM
+	UInteger dwFlags
+	UInteger dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_available_network_list
+Struct WLAN_AVAILABLE_NETWORK_LIST
+	UInteger dwNumberOfItems
+	UInteger dwIndex
+	WLAN_AVAILABLE_NETWORK[1] Network
+End_Struct
+
+Struct WLAN_AVAILABLE_NETWORK_LIST_V2
+	UInteger dwNumberOfItems
+	UInteger dwIndex
+	WLAN_AVAILABLE_NETWORK_V2[1] Network
+End_Struct
+
+Struct WLAN_AVAILABLE_NETWORK_V2
+	UShort[256] strProfileName
+	DOT11_SSID dot11Ssid
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	UInteger uNumberOfBssids
+	Integer bNetworkConnectable								// BOOL
+	UInteger wlanNotConnectableReason
+	UInteger uNumberOfPhyTypes
+	Integer[8] dot11PhyTypes								// DOT11_PHY_TYPE
+	Integer bMorePhyTypes									// BOOL
+	UInteger wlanSignalQuality
+	Integer bSecurityEnabled								// BOOL
+	Integer dot11DefaultAuthAlgorithm						// DOT11_AUTH_ALGORITHM
+	Integer dot11DefaultCipherAlgorithm						// DOT11_CIPHER_ALGORITHM
+	UInteger dwFlags
+	DOT11_ACCESSNETWORKOPTIONS AccessNetworkOptions
+	UChar[6] dot11HESSID
+	DOT11_VENUEINFO VenueInfo
+	UChar[3] cMissingAlignment1
+	UInteger dwReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_bss_entry
+Struct WLAN_BSS_ENTRY
+	DOT11_SSID dot11Ssid
+	UInteger uPhyId
+	UChar[6] dot11Bssid
+	Short iMissingAlignment1
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	Integer dot11BssPhyType									// DOT11_PHY_TYPE
+	Integer lRssi
+	UInteger uLinkQuality
+	UChar bInRegDomain										// BOOLEAN
+	UChar[1] cMissingAlignment2
+	UShort usBeaconPeriod
+	Integer iMissingAlignment3
+	UBigint ullTimestamp
+	UBigint ullHostTimestamp
+	UShort usCapabilityInformation
+	Short iMissingAlignment4
+	UInteger ulChCenterFrequency
+	WLAN_RATE_SET wlanRateSet
+	UInteger ulIeOffset
+	UInteger ulIeSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_bss_list
+Struct WLAN_BSS_LIST
+	UInteger dwTotalSize
+	UInteger dwNumberOfItems
+	WLAN_BSS_ENTRY[1] wlanBssEntries
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_connection_attributes
+Struct WLAN_CONNECTION_ATTRIBUTES
+	Integer isState											// WLAN_INTERFACE_STATE
+	Integer wlanConnectionMode								// WLAN_CONNECTION_MODE
+	UShort[256] strProfileName
+	WLAN_ASSOCIATION_ATTRIBUTES wlanAssociationAttributes
+	WLAN_SECURITY_ATTRIBUTES wlanSecurityAttributes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_connection_notification_data
+Struct WLAN_CONNECTION_NOTIFICATION_DATA
+	Integer wlanConnectionMode								// WLAN_CONNECTION_MODE
+	UShort[256] strProfileName
+	DOT11_SSID dot11Ssid
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	Integer bSecurityEnabled								// BOOL
+	UInteger wlanReasonCode
+	UInteger dwFlags										// WLAN_CONNECTION_NOTIFICATION_FLAGS
+	UShort[1] strProfileXml
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_connection_parameters
+Struct WLAN_CONNECTION_PARAMETERS
+	Integer wlanConnectionMode								// WLAN_CONNECTION_MODE
+	Integer iMissingAlignment1
+	Pointer strProfile										// PWSTR
+	Pointer pDot11Ssid										// DOT11_SSID*
+	Pointer pDesiredBssidList								// DOT11_BSSID_LIST*
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	UInteger dwFlags
+End_Struct
+
+Struct WLAN_CONNECTION_PARAMETERS_V2
+	Integer wlanConnectionMode								// WLAN_CONNECTION_MODE
+	Integer iMissingAlignment1
+	Pointer strProfile										// PWSTR
+	Pointer pDot11Ssid										// DOT11_SSID*
+	Pointer pDot11Hessid									// UChar*
+	Pointer pDesiredBssidList								// DOT11_BSSID_LIST*
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	UInteger dwFlags
+	Pointer pDot11AccessNetworkOptions						// DOT11_ACCESSNETWORKOPTIONS*
+End_Struct
+
+Struct WLAN_CONNECTION_QOS_INFO
+	WLAN_QOS_CAPABILITIES peerCapabilities
+	Integer bMSCSConfigured									// BOOL
+	Integer bDSCPToUPMappingConfigured						// BOOL
+	UInteger ulNumConfiguredSCSStreams
+	UInteger ulNumConfiguredDSCPPolicies
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_country_or_region_string_list
+Struct WLAN_COUNTRY_OR_REGION_STRING_LIST
+	UInteger dwNumberOfItems
+	UChar[3] pCountryOrRegionStringList
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_device_service_guid_list
+Struct WLAN_DEVICE_SERVICE_GUID_LIST
+	UInteger dwNumberOfItems
+	UInteger dwIndex
+	Guid[1] DeviceService
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_device_service_notification_data
+Struct WLAN_DEVICE_SERVICE_NOTIFICATION_DATA
+	Guid DeviceService
+	UInteger dwOpCode
+	UInteger dwDataSize
+	UChar[1] DataBlob
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_connection_settings
+Struct WLAN_HOSTED_NETWORK_CONNECTION_SETTINGS
+	DOT11_SSID hostedNetworkSSID
+	UInteger dwMaxNumberOfPeers
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_data_peer_state_change
+Struct WLAN_HOSTED_NETWORK_DATA_PEER_STATE_CHANGE
+	WLAN_HOSTED_NETWORK_PEER_STATE OldState
+	WLAN_HOSTED_NETWORK_PEER_STATE NewState
+	Integer PeerStateChangeReason							// WLAN_HOSTED_NETWORK_REASON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_peer_state
+Struct WLAN_HOSTED_NETWORK_PEER_STATE
+	UChar[6] PeerMacAddress
+	Short iMissingAlignment1
+	Integer PeerAuthState									// WLAN_HOSTED_NETWORK_PEER_AUTH_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_radio_state
+Struct WLAN_HOSTED_NETWORK_RADIO_STATE
+	Integer dot11SoftwareRadioState							// DOT11_RADIO_STATE
+	Integer dot11HardwareRadioState							// DOT11_RADIO_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_security_settings
+Struct WLAN_HOSTED_NETWORK_SECURITY_SETTINGS
+	Integer dot11AuthAlgo									// DOT11_AUTH_ALGORITHM
+	Integer dot11CipherAlgo									// DOT11_CIPHER_ALGORITHM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_state_change
+Struct WLAN_HOSTED_NETWORK_STATE_CHANGE
+	Integer OldState										// WLAN_HOSTED_NETWORK_STATE
+	Integer NewState										// WLAN_HOSTED_NETWORK_STATE
+	Integer StateChangeReason								// WLAN_HOSTED_NETWORK_REASON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_hosted_network_status
+Struct WLAN_HOSTED_NETWORK_STATUS
+	Integer HostedNetworkState								// WLAN_HOSTED_NETWORK_STATE
+	Guid IPDeviceID
+	UChar[6] wlanHostedNetworkBSSID
+	Short iMissingAlignment1
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UInteger ulChannelFrequency
+	UInteger dwNumberOfPeers
+	WLAN_HOSTED_NETWORK_PEER_STATE[1] PeerList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_interface_capability
+Struct WLAN_INTERFACE_CAPABILITY
+	Integer interfaceType									// WLAN_INTERFACE_TYPE
+	Integer bDot11DSupported								// BOOL
+	UInteger dwMaxDesiredSsidListSize
+	UInteger dwMaxDesiredBssidListSize
+	UInteger dwNumberOfSupportedPhys
+	Integer[64] dot11PhyTypes								// DOT11_PHY_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_interface_info
+Struct WLAN_INTERFACE_INFO
+	Guid InterfaceGuid
+	UShort[256] strInterfaceDescription
+	Integer isState											// WLAN_INTERFACE_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_interface_info_list
+Struct WLAN_INTERFACE_INFO_LIST
+	UInteger dwNumberOfItems
+	UInteger dwIndex
+	WLAN_INTERFACE_INFO[1] InterfaceInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_mac_frame_statistics
+Struct WLAN_MAC_FRAME_STATISTICS
+	UBigint ullTransmittedFrameCount
+	UBigint ullReceivedFrameCount
+	UBigint ullWEPExcludedCount
+	UBigint ullTKIPLocalMICFailures
+	UBigint ullTKIPReplays
+	UBigint ullTKIPICVErrorCount
+	UBigint ullCCMPReplays
+	UBigint ullCCMPDecryptErrors
+	UBigint ullWEPUndecryptableCount
+	UBigint ullWEPICVErrorCount
+	UBigint ullDecryptSuccessCount
+	UBigint ullDecryptFailureCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_msm_notification_data
+Struct WLAN_MSM_NOTIFICATION_DATA
+	Integer wlanConnectionMode								// WLAN_CONNECTION_MODE
+	UShort[256] strProfileName
+	DOT11_SSID dot11Ssid
+	Integer dot11BssType									// DOT11_BSS_TYPE
+	UChar[6] dot11MacAddr
+	Short iMissingAlignment1
+	Integer bSecurityEnabled								// BOOL
+	Integer bFirstPeer										// BOOL
+	Integer bLastPeer										// BOOL
+	UInteger wlanReasonCode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_phy_frame_statistics
+Struct WLAN_PHY_FRAME_STATISTICS
+	UBigint ullTransmittedFrameCount
+	UBigint ullMulticastTransmittedFrameCount
+	UBigint ullFailedCount
+	UBigint ullRetryCount
+	UBigint ullMultipleRetryCount
+	UBigint ullMaxTXLifetimeExceededCount
+	UBigint ullTransmittedFragmentCount
+	UBigint ullRTSSuccessCount
+	UBigint ullRTSFailureCount
+	UBigint ullACKFailureCount
+	UBigint ullReceivedFrameCount
+	UBigint ullMulticastReceivedFrameCount
+	UBigint ullPromiscuousReceivedFrameCount
+	UBigint ullMaxRXLifetimeExceededCount
+	UBigint ullFrameDuplicateCount
+	UBigint ullReceivedFragmentCount
+	UBigint ullPromiscuousReceivedFragmentCount
+	UBigint ullFCSErrorCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_phy_radio_state
+Struct WLAN_PHY_RADIO_STATE
+	UInteger dwPhyIndex
+	Integer dot11SoftwareRadioState							// DOT11_RADIO_STATE
+	Integer dot11HardwareRadioState							// DOT11_RADIO_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_profile_info
+Struct WLAN_PROFILE_INFO
+	UShort[256] strProfileName
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_profile_info_list
+Struct WLAN_PROFILE_INFO_LIST
+	UInteger dwNumberOfItems
+	UInteger dwIndex
+	WLAN_PROFILE_INFO[1] ProfileInfo
+End_Struct
+
+Struct WLAN_QOS_CAPABILITIES
+	Integer bMSCSSupported									// BOOL
+	Integer bDSCPToUPMappingSupported						// BOOL
+	Integer bSCSSupported									// BOOL
+	Integer bDSCPPolicySupported							// BOOL
+End_Struct
+
+Struct WLAN_QOS_INFO
+	WLAN_QOS_CAPABILITIES interfaceCapabilities
+	Integer bConnected										// BOOL
+	WLAN_CONNECTION_QOS_INFO connectionQoSInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_radio_state
+Struct WLAN_RADIO_STATE
+	UInteger dwNumberOfPhys
+	WLAN_PHY_RADIO_STATE[64] PhyRadioState
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_rate_set
+Struct WLAN_RATE_SET
+	UInteger uRateSetLength
+	UShort[126] usRateSet
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_raw_data
+Struct WLAN_RAW_DATA
+	UInteger dwDataSize
+	UChar[1] DataBlob
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_raw_data_list
+Struct WLAN_RAW_DATA_LIST
+	UInteger dwTotalSize
+	UInteger dwNumberOfItems
+	_Anonymous_e__Struct_1176[1] DataList
+End_Struct
+
+Struct WLAN_REALTIME_CONNECTION_QUALITY
+	Integer dot11PhyType									// DOT11_PHY_TYPE
+	UInteger ulLinkQuality
+	UInteger ulRxRate
+	UInteger ulTxRate
+	Integer bIsMLOConnection								// BOOL
+	UInteger ulNumLinks
+	WLAN_REALTIME_CONNECTION_QUALITY_LINK_INFO[1] linksInfo
+End_Struct
+
+Struct WLAN_REALTIME_CONNECTION_QUALITY_LINK_INFO
+	UChar ucLinkID
+	UChar[3] cMissingAlignment1
+	UInteger ulChannelCenterFrequencyMhz
+	UInteger ulBandwidth
+	Integer lRssi
+	WLAN_RATE_SET wlanRateSet
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_security_attributes
+Struct WLAN_SECURITY_ATTRIBUTES
+	Integer bSecurityEnabled								// BOOL
+	Integer bOneXEnabled									// BOOL
+	Integer dot11AuthAlgorithm								// DOT11_AUTH_ALGORITHM
+	Integer dot11CipherAlgorithm							// DOT11_CIPHER_ALGORITHM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wlanapi/ns-wlanapi-wlan_statistics
+Struct WLAN_STATISTICS
+	UBigint ullFourWayHandshakeFailures
+	UBigint ullTKIPCounterMeasuresInvoked
+	UBigint ullReserved
+	WLAN_MAC_FRAME_STATISTICS MacUcastCounters
+	WLAN_MAC_FRAME_STATISTICS MacMcastCounters
+	UInteger dwNumberOfPhys
+	Integer iMissingAlignment1
+	WLAN_PHY_FRAME_STATISTICS[1] PhyCounters
+End_Struct
+
+Struct _Anonymous_e__Struct_1176
+	UInteger dwDataOffset
+	UInteger dwDataSize
+End_Struct
+
+Struct _FHSS_e__Struct_2185
+	UInteger uHopPattern
+	UInteger uHopSet
+	UInteger uDwellTime
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

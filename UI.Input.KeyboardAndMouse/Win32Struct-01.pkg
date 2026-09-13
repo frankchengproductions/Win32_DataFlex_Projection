@@ -1,0 +1,271 @@
+Use UI
+
+Struct _Anonymous_e__Union_1701
+	// MOUSEINPUT mi // (32)
+	// KEYBDINPUT ki // (24)
+	// HARDWAREINPUT hi // (8)
+	MOUSEINPUT mi
+End_Struct
+
+Struct DEADKEY
+	UInteger dwBoth
+	UShort wchComposed
+	UShort uFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-hardwareinput
+Struct HARDWAREINPUT
+	UInteger uMsg
+	UShort wParamL
+	UShort wParamH
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-input
+Struct INPUT
+	UInteger type											// INPUT_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1701 Anonymous
+End_Struct
+
+Struct KBDNLSTABLES
+	UShort OEMIdentifier
+	UShort LayoutInformation
+	UInteger NumOfVkToF
+	Pointer pVkToF											// VK_F*
+	Integer NumOfMouseVKey
+	Integer iMissingAlignment1
+	Pointer pusMouseVKey									// UShort*
+End_Struct
+
+Struct KBDTABLES
+	Pointer pCharModifiers									// MODIFIERS*
+	Pointer pVkToWcharTable									// VK_TO_WCHAR_TABLE*
+	Pointer pDeadKey										// DEADKEY*
+	Pointer pKeyNames										// VSC_LPWSTR*
+	Pointer pKeyNamesExt									// VSC_LPWSTR*
+	Pointer pKeyNamesDead									// UShort**
+	Pointer pusVSCtoVK										// UShort*
+	UChar bMaxVSCtoVK
+	UChar[7] cMissingAlignment1
+	Pointer pVSCtoVK_E0										// VSC_VK*
+	Pointer pVSCtoVK_E1										// VSC_VK*
+	UInteger fLocaleFlags
+	UChar nLgMax
+	UChar cbLgEntry
+	Short iMissingAlignment2
+	Pointer pLigature										// LIGATURE1*
+	UInteger dwType
+	UInteger dwSubType
+End_Struct
+
+Struct KBDTABLE_DESC
+	UShort[32] wszDllName
+	UInteger dwType
+	UInteger dwSubType
+End_Struct
+
+Struct KBDTABLE_MULTI
+	UInteger nTables
+	KBDTABLE_DESC[8] aKbdTables
+End_Struct
+
+Struct KBD_TYPE_INFO
+	UInteger dwVersion
+	UInteger dwType
+	UInteger dwSubType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-keybdinput
+Struct KEYBDINPUT
+	UShort wVk												// VIRTUAL_KEY
+	UShort wScan
+	UInteger dwFlags										// KEYBD_EVENT_FLAGS
+	UInteger time
+	Integer iMissingAlignment1
+	ULongPtr dwExtraInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-lastinputinfo
+Struct LASTINPUTINFO
+	UInteger cbSize
+	UInteger dwTime
+End_Struct
+
+Struct LIGATURE1
+	UChar VirtualKey
+	UChar[1] cMissingAlignment1
+	UShort ModificationNumber
+	UShort[1] wch
+End_Struct
+
+Struct LIGATURE2
+	UChar VirtualKey
+	UChar[1] cMissingAlignment1
+	UShort ModificationNumber
+	UShort[2] wch
+End_Struct
+
+Struct LIGATURE3
+	UChar VirtualKey
+	UChar[1] cMissingAlignment1
+	UShort ModificationNumber
+	UShort[3] wch
+End_Struct
+
+Struct LIGATURE4
+	UChar VirtualKey
+	UChar[1] cMissingAlignment1
+	UShort ModificationNumber
+	UShort[4] wch
+End_Struct
+
+Struct LIGATURE5
+	UChar VirtualKey
+	UChar[1] cMissingAlignment1
+	UShort ModificationNumber
+	UShort[5] wch
+End_Struct
+
+Struct MODIFIERS
+	Pointer pVkToBit										// VK_TO_BIT*
+	UShort wMaxModBits
+	UChar[1] ModNumber
+	UChar[5] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-mouseinput
+Struct MOUSEINPUT
+	Integer dx
+	Integer dy
+	UInteger mouseData
+	UInteger dwFlags										// MOUSE_EVENT_FLAGS
+	UInteger time
+	Integer iMissingAlignment1
+	ULongPtr dwExtraInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-mousemovepoint
+Struct MOUSEMOVEPOINT
+	Integer x
+	Integer y
+	UInteger time
+	Integer iMissingAlignment1
+	ULongPtr dwExtraInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-trackmouseevent
+Struct TRACKMOUSEEVENT
+	UInteger cbSize
+	UInteger dwFlags										// TRACKMOUSEEVENT_FLAGS
+	Pointer hwndTrack										// HWND
+	UInteger dwHoverTime
+	Integer iMissingAlignment1
+End_Struct
+
+Struct VK_F
+	UChar Vk
+	UChar NLSFEProcType
+	UChar NLSFEProcCurrent
+	UChar NLSFEProcSwitch
+	VK_FPARAM[8] NLSFEProc
+	VK_FPARAM[8] NLSFEProcAlt
+End_Struct
+
+Struct VK_FPARAM
+	UChar NLSFEProcIndex
+	UChar[3] cMissingAlignment1
+	UInteger NLSFEProcParam
+End_Struct
+
+Struct VK_TO_BIT
+	UChar Vk
+	UChar ModBits
+End_Struct
+
+Struct VK_TO_WCHARS1
+	UChar VirtualKey
+	UChar Attributes
+	UShort[1] wch
+End_Struct
+
+Struct VK_TO_WCHARS10
+	UChar VirtualKey
+	UChar Attributes
+	UShort[10] wch
+End_Struct
+
+Struct VK_TO_WCHARS2
+	UChar VirtualKey
+	UChar Attributes
+	UShort[2] wch
+End_Struct
+
+Struct VK_TO_WCHARS3
+	UChar VirtualKey
+	UChar Attributes
+	UShort[3] wch
+End_Struct
+
+Struct VK_TO_WCHARS4
+	UChar VirtualKey
+	UChar Attributes
+	UShort[4] wch
+End_Struct
+
+Struct VK_TO_WCHARS5
+	UChar VirtualKey
+	UChar Attributes
+	UShort[5] wch
+End_Struct
+
+Struct VK_TO_WCHARS6
+	UChar VirtualKey
+	UChar Attributes
+	UShort[6] wch
+End_Struct
+
+Struct VK_TO_WCHARS7
+	UChar VirtualKey
+	UChar Attributes
+	UShort[7] wch
+End_Struct
+
+Struct VK_TO_WCHARS8
+	UChar VirtualKey
+	UChar Attributes
+	UShort[8] wch
+End_Struct
+
+Struct VK_TO_WCHARS9
+	UChar VirtualKey
+	UChar Attributes
+	UShort[9] wch
+End_Struct
+
+Struct VK_TO_WCHAR_TABLE
+	Pointer pVkToWchars										// VK_TO_WCHARS1*
+	UChar nModifications
+	UChar cbSize
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct VK_VSC
+	UChar Vk
+	UChar Vsc
+End_Struct
+
+Struct VSC_LPWSTR
+	UChar vsc
+	UChar[7] cMissingAlignment1
+	Pointer pwsz											// PWSTR
+End_Struct
+
+Struct VSC_VK
+	UChar Vsc
+	UChar[1] cMissingAlignment1
+	UShort Vk
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

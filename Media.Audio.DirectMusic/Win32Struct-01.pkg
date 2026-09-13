@@ -1,0 +1,409 @@
+Use UI
+
+Struct CONNECTION
+	UShort usSource
+	UShort usControl
+	UShort usDestination
+	UShort usTransform
+	Integer lScale
+End_Struct
+
+Struct CONNECTIONLIST
+	UInteger cbSize
+	UInteger cConnections
+End_Struct
+
+Struct DLSHEADER
+	UInteger cInstruments
+End_Struct
+
+Struct DLSID
+	UInteger ulData1
+	UShort usData2
+	UShort usData3
+	UChar[8] abData4
+End_Struct
+
+Struct DLSVERSION
+	UInteger dwVersionMS
+	UInteger dwVersionLS
+End_Struct
+
+Struct DMUS_ARTICPARAMS
+	DMUS_LFOPARAMS LFO
+	DMUS_VEGPARAMS VolEG
+	DMUS_PEGPARAMS PitchEG
+	DMUS_MSCPARAMS Misc
+End_Struct
+
+Struct DMUS_ARTICULATION
+	UInteger ulArt1Idx
+	UInteger ulFirstExtCkIdx
+End_Struct
+
+Struct DMUS_ARTICULATION2
+	UInteger ulArtIdx
+	UInteger ulFirstExtCkIdx
+	UInteger ulNextArtIdx
+End_Struct
+
+Struct DMUS_BUFFERDESC
+	UInteger dwSize
+	UInteger dwFlags
+	Guid guidBufferFormat
+	UInteger cbBuffer
+End_Struct
+
+Struct DMUS_CLOCKINFO7
+	UInteger dwSize
+	Integer ctType											// DMUS_CLOCKTYPE
+	Guid guidClock
+	UShort[128] wszDescription
+End_Struct
+
+Struct DMUS_CLOCKINFO8
+	UInteger dwSize
+	Integer ctType											// DMUS_CLOCKTYPE
+	Guid guidClock
+	UShort[128] wszDescription
+	UInteger dwFlags
+End_Struct
+
+Struct DMUS_COPYRIGHT
+	UInteger cbSize
+	UChar[4] byCopyright
+End_Struct
+
+Struct DMUS_DOWNLOADINFO
+	UInteger dwDLType
+	UInteger dwDLId
+	UInteger dwNumOffsetTableEntries
+	UInteger cbSize
+End_Struct
+
+Struct DMUS_EVENTHEADER
+	UInteger cbEvent
+	UInteger dwChannelGroup
+	Bigint rtDelta
+	UInteger dwFlags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DMUS_EXTENSIONCHUNK
+	UInteger cbSize
+	UInteger ulNextExtCkIdx
+	UInteger ExtCkID
+	UChar[4] byExtCk
+End_Struct
+
+Struct DMUS_INSTRUMENT
+	UInteger ulPatch
+	UInteger ulFirstRegionIdx
+	UInteger ulGlobalArtIdx
+	UInteger ulFirstExtCkIdx
+	UInteger ulCopyrightIdx
+	UInteger ulFlags
+End_Struct
+
+Struct DMUS_LFOPARAMS
+	Integer pcFrequency
+	Integer tcDelay
+	Integer gcVolumeScale
+	Integer pcPitchScale
+	Integer gcMWToVolume
+	Integer pcMWToPitch
+End_Struct
+
+Struct DMUS_MSCPARAMS
+	Integer ptDefaultPan
+End_Struct
+
+Struct DMUS_NOTERANGE
+	UInteger dwLowNote
+	UInteger dwHighNote
+End_Struct
+
+Struct DMUS_OFFSETTABLE
+	UInteger[1] ulOffsetTable
+End_Struct
+
+Struct DMUS_PEGPARAMS
+	Integer tcAttack
+	Integer tcDecay
+	Integer ptSustain
+	Integer tcRelease
+	Integer tcVel2Attack
+	Integer tcKey2Decay
+	Integer pcRange
+End_Struct
+
+Struct DMUS_PORTCAPS
+	UInteger dwSize
+	UInteger dwFlags
+	Guid guidPort
+	UInteger dwClass
+	UInteger dwType
+	UInteger dwMemorySize
+	UInteger dwMaxChannelGroups
+	UInteger dwMaxVoices
+	UInteger dwMaxAudioChannels
+	UInteger dwEffectFlags
+	UShort[128] wszDescription
+End_Struct
+
+Struct DMUS_PORTPARAMS7
+	UInteger dwSize
+	UInteger dwValidParams
+	UInteger dwVoices
+	UInteger dwChannelGroups
+	UInteger dwAudioChannels
+	UInteger dwSampleRate
+	UInteger dwEffectFlags
+	Integer fShare											// BOOL
+End_Struct
+
+Struct DMUS_PORTPARAMS8
+	UInteger dwSize
+	UInteger dwValidParams
+	UInteger dwVoices
+	UInteger dwChannelGroups
+	UInteger dwAudioChannels
+	UInteger dwSampleRate
+	UInteger dwEffectFlags
+	Integer fShare											// BOOL
+	UInteger dwFeatures
+End_Struct
+
+Struct DMUS_REGION
+	RGNRANGE RangeKey
+	RGNRANGE RangeVelocity
+	UShort fusOptions
+	UShort usKeyGroup
+	UInteger ulRegionArtIdx
+	UInteger ulNextRegionIdx
+	UInteger ulFirstExtCkIdx
+	WAVELINK WaveLink
+	WSMPL WSMP
+	WLOOP[1] WLOOP
+End_Struct
+
+Struct DMUS_SYNTHSTATS
+	UInteger dwSize
+	UInteger dwValidStats
+	UInteger dwVoices
+	UInteger dwTotalCPU
+	UInteger dwCPUPerVoice
+	UInteger dwLostNotes
+	UInteger dwFreeMemory
+	Integer lPeakVolume
+End_Struct
+
+Struct DMUS_SYNTHSTATS8
+	UInteger dwSize
+	UInteger dwValidStats
+	UInteger dwVoices
+	UInteger dwTotalCPU
+	UInteger dwCPUPerVoice
+	UInteger dwLostNotes
+	UInteger dwFreeMemory
+	Integer lPeakVolume
+	UInteger dwSynthMemUse
+End_Struct
+
+Struct DMUS_VEGPARAMS
+	Integer tcAttack
+	Integer tcDecay
+	Integer ptSustain
+	Integer tcRelease
+	Integer tcVel2Attack
+	Integer tcKey2Decay
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dmusics/ns-dmusics-dmus_voice_state
+Struct DMUS_VOICE_STATE
+	Integer bExists											// BOOL
+	Integer iMissingAlignment1
+	UBigint spPosition
+End_Struct
+
+Struct DMUS_WAVE
+	UInteger ulFirstExtCkIdx
+	UInteger ulCopyrightIdx
+	UInteger ulWaveDataIdx
+	WAVEFORMATEX WaveformatEx
+End_Struct
+
+Struct DMUS_WAVEARTDL
+	UInteger ulDownloadIdIdx
+	UInteger ulBus
+	UInteger ulBuffers
+	UInteger ulMasterDLId
+	UShort usOptions
+	Short iMissingAlignment1
+End_Struct
+
+Struct DMUS_WAVEDATA
+	UInteger cbSize
+	UChar[4] byData
+End_Struct
+
+Struct DMUS_WAVEDL
+	UInteger cbWaveData
+End_Struct
+
+Struct DMUS_WAVES_REVERB_PARAMS
+	Float fInGain
+	Float fReverbMix
+	Float fReverbTime
+	Float fHighFreqRTRatio
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_1_DATA
+	Guid DeviceId
+	Char[256] DescriptionA									// CHAR
+	UShort[256] DescriptionW
+	Char[260] ModuleA										// CHAR
+	UShort[260] ModuleW
+	Integer Type											// DIRECTSOUNDDEVICE_TYPE
+	Integer DataFlow										// DIRECTSOUNDDEVICE_DATAFLOW
+	UInteger WaveDeviceId
+	UInteger Devnode
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA
+	Integer Type											// DIRECTSOUNDDEVICE_TYPE
+	Integer DataFlow										// DIRECTSOUNDDEVICE_DATAFLOW
+	Guid DeviceId
+	Pointer Description										// PSTR
+	Pointer Module											// PSTR
+	Pointer Interface										// PSTR
+	UInteger WaveDeviceId
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_W_DATA
+	Integer Type											// DIRECTSOUNDDEVICE_TYPE
+	Integer DataFlow										// DIRECTSOUNDDEVICE_DATAFLOW
+	Guid DeviceId
+	Pointer Description										// PWSTR
+	Pointer Module											// PWSTR
+	Pointer Interface										// PWSTR
+	UInteger WaveDeviceId
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_1_DATA
+	Pointer Callback										// LPFNDIRECTSOUNDDEVICEENUMERATECALLBACK1
+	Pointer Context											// Pointer*
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_A_DATA
+	Pointer Callback										// LPFNDIRECTSOUNDDEVICEENUMERATECALLBACKA
+	Pointer Context											// Pointer*
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA
+	Pointer Callback										// LPFNDIRECTSOUNDDEVICEENUMERATECALLBACKW
+	Pointer Context											// Pointer*
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_A_DATA
+	Pointer DeviceName										// PSTR
+	Integer DataFlow										// DIRECTSOUNDDEVICE_DATAFLOW
+	Guid DeviceId
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DSPROPERTY_DIRECTSOUNDDEVICE_WAVEDEVICEMAPPING_W_DATA
+	Pointer DeviceName										// PWSTR
+	Integer DataFlow										// DIRECTSOUNDDEVICE_DATAFLOW
+	Guid DeviceId
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DVAudInfo
+	UChar[2] bAudStyle
+	UChar[2] bAudQu
+	UChar bNumAudPin
+	UChar[1] cMissingAlignment1
+	UShort[2] wAvgSamplesPerPinPerFrm
+	UShort wBlkMode
+	UShort wDIFMode
+	UShort wBlkDiv
+End_Struct
+
+Struct INSTHEADER
+	UInteger cRegions
+	MIDILOCALE Locale
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/ns-mmddk-mdevicecapsex
+Struct MDEVICECAPSEX
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pCaps											// Pointer*
+End_Struct
+
+Struct MIDILOCALE
+	UInteger ulBank
+	UInteger ulInstrument
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mmddk/ns-mmddk-midiopendesc
+Struct MIDIOPENDESC
+	Pointer hMidi											// HMIDI
+	ULongPtr dwCallback
+	ULongPtr dwInstance
+	ULongPtr dnDevNode
+	UInteger cIds
+	MIDIOPENSTRMID[1] rgIds
+	Integer iMissingAlignment1
+End_Struct
+
+Struct POOLCUE
+	UInteger ulOffset
+End_Struct
+
+Struct POOLTABLE
+	UInteger cbSize
+	UInteger cCues
+End_Struct
+
+Struct RGNHEADER
+	RGNRANGE RangeKey
+	RGNRANGE RangeVelocity
+	UShort fusOptions
+	UShort usKeyGroup
+End_Struct
+
+Struct RGNRANGE
+	UShort usLow
+	UShort usHigh
+End_Struct
+
+Struct WAVELINK
+	UShort fusOptions
+	UShort usPhaseGroup
+	UInteger ulChannel
+	UInteger ulTableIndex
+End_Struct
+
+Struct WLOOP
+	UInteger cbSize
+	UInteger ulType
+	UInteger ulStart
+	UInteger ulLength
+End_Struct
+
+Struct WSMPL
+	UInteger cbSize
+	UShort usUnityNote
+	Short sFineTune
+	Integer lAttenuation
+	UInteger fulOptions
+	UInteger cSampleLoops
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

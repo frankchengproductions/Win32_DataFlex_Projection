@@ -1,0 +1,842 @@
+Use UI
+
+Struct _Anonymous_e__Union_2071
+	// SEC_WINNT_AUTH_IDENTITY_EXW AuthIdExw // (72)
+	// SEC_WINNT_AUTH_IDENTITY_EXA AuthIdExa // (72)
+	// SEC_WINNT_AUTH_IDENTITY_A AuthId_a // (48)
+	// SEC_WINNT_AUTH_IDENTITY_W AuthId_w // (48)
+	// SEC_WINNT_AUTH_IDENTITY_EX2 AuthIdEx2 // (48)
+	SEC_WINNT_AUTH_IDENTITY_EXW AuthIdExw
+End_Struct
+
+Struct _ForestTrustData_e__Union_1160
+	// LSA_UNICODE_STRING TopLevelName // (16)
+	// LSA_FOREST_TRUST_DOMAIN_INFO DomainInfo // (40)
+	// LSA_FOREST_TRUST_BINARY_DATA Data // (16)
+	LSA_FOREST_TRUST_DOMAIN_INFO DomainInfo
+End_Struct
+
+Struct _ForestTrustData_e__Union_1161
+	// LSA_UNICODE_STRING TopLevelName // (16)
+	// LSA_FOREST_TRUST_DOMAIN_INFO DomainInfo // (40)
+	// LSA_FOREST_TRUST_BINARY_DATA BinaryData // (16)
+	// LSA_FOREST_TRUST_SCANNER_INFO ScannerInfo // (40)
+	LSA_FOREST_TRUST_DOMAIN_INFO DomainInfo
+End_Struct
+
+Struct _Info_e__Union_2072
+	// SECPKG_GSS_INFO GssInfo // (8)
+	// SECPKG_CONTEXT_THUNKS ContextThunks // (8)
+	// SECPKG_MUTUAL_AUTH_LEVEL MutualAuthLevel // (4)
+	// SECPKG_WOW_CLIENT_DLL WowClientDll // (16)
+	// SECPKG_EXTRA_OIDS ExtraOids // (44)
+	// SECPKG_NEGO2_INFO Nego2Info // (20)
+	SECPKG_EXTRA_OIDS ExtraOids
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-audit_policy_information
+Struct AUDIT_POLICY_INFORMATION
+	Guid AuditSubCategoryGuid
+	UInteger AuditingInformation
+	Guid AuditCategoryGuid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntlsa/ns-ntlsa-central_access_policy
+Struct CENTRAL_ACCESS_POLICY
+	Pointer CAPID											// PSID
+	LSA_UNICODE_STRING Name
+	LSA_UNICODE_STRING Description
+	LSA_UNICODE_STRING ChangeId
+	UInteger Flags
+	UInteger CAPECount
+	Pointer CAPEs											// CENTRAL_ACCESS_POLICY_ENTRY**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntlsa/ns-ntlsa-central_access_policy_entry
+Struct CENTRAL_ACCESS_POLICY_ENTRY
+	LSA_UNICODE_STRING Name
+	LSA_UNICODE_STRING Description
+	LSA_UNICODE_STRING ChangeId
+	UInteger LengthAppliesTo
+	Integer iMissingAlignment1
+	Pointer AppliesTo										// UChar*
+	UInteger LengthSD
+	Integer iMissingAlignment2
+	Pointer SD												// PSECURITY_DESCRIPTOR
+	UInteger LengthStagedSD
+	Integer iMissingAlignment3
+	Pointer StagedSD										// PSECURITY_DESCRIPTOR
+	UInteger Flags
+	Integer iMissingAlignment4
+End_Struct
+
+Struct CLEAR_BLOCK
+	Char[8] data											// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/schannel/ns-schannel-crypto_settings
+Struct CRYPTO_SETTINGS
+	Integer eAlgorithmUsage									// eTlsAlgorithmUsage
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING strCngAlgId
+	UInteger cChainingModes
+	Integer iMissingAlignment2
+	Pointer rgstrChainingModes								// LSA_UNICODE_STRING*
+	UInteger dwMinBitLength
+	UInteger dwMaxBitLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-domain_password_information
+Struct DOMAIN_PASSWORD_INFORMATION
+	UShort MinPasswordLength
+	UShort PasswordHistoryLength
+	UInteger PasswordProperties								// DOMAIN_PASSWORD_PROPERTIES
+	Bigint MaxPasswordAge
+	Bigint MinPasswordAge
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-encrypted_credentialw
+Struct ENCRYPTED_CREDENTIALW
+	CREDENTIALW Cred
+	UInteger ClearCredentialBlobSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KDC_PROXY_CACHE_ENTRY_DATA
+	UBigint SinceLastUsed
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING ProxyServerName
+	LSA_UNICODE_STRING ProxyServerVdir
+	UShort ProxyServerPort
+	Short iMissingAlignment1
+	LUID LogonId
+	Integer iMissingAlignment2
+	LSA_UNICODE_STRING CredUserName
+	LSA_UNICODE_STRING CredDomainName
+	UChar GlobalCache										// BOOLEAN
+	UChar[7] cMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_add_binding_cache_entry_ex_request
+Struct KERB_ADD_BINDING_CACHE_ENTRY_EX_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING RealmName
+	LSA_UNICODE_STRING KdcAddress
+	UInteger AddressType									// KERB_ADDRESS_TYPE
+	UInteger DcFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_add_binding_cache_entry_request
+Struct KERB_ADD_BINDING_CACHE_ENTRY_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING RealmName
+	LSA_UNICODE_STRING KdcAddress
+	UInteger AddressType									// KERB_ADDRESS_TYPE
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_add_credentials_request
+Struct KERB_ADD_CREDENTIALS_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING Password
+	LUID LogonId
+	UInteger Flags											// KERB_REQUEST_FLAGS
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_add_credentials_request_ex
+Struct KERB_ADD_CREDENTIALS_REQUEST_EX
+	KERB_ADD_CREDENTIALS_REQUEST Credentials
+	UInteger PrincipalNameCount
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING[1] PrincipalNames
+End_Struct
+
+Struct KERB_AUTH_DATA
+	UInteger Type
+	UInteger Length
+	Pointer Data											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_binding_cache_entry_data
+Struct KERB_BINDING_CACHE_ENTRY_DATA
+	UBigint DiscoveryTime
+	LSA_UNICODE_STRING RealmName
+	LSA_UNICODE_STRING KdcAddress
+	UInteger AddressType									// KERB_ADDRESS_TYPE
+	UInteger Flags
+	UInteger DcFlags
+	UInteger CacheFlags
+	LSA_UNICODE_STRING KdcName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_certificate_hashinfo
+Struct KERB_CERTIFICATE_HASHINFO
+	UShort StoreNameLength
+	UShort HashLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_certificate_info
+Struct KERB_CERTIFICATE_INFO
+	UInteger CertInfoSize
+	UInteger InfoType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_certificate_logon
+Struct KERB_CERTIFICATE_LOGON
+	Integer MessageType										// KERB_LOGON_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING Pin
+	UInteger Flags
+	UInteger CspDataLength
+	Pointer CspData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_certificate_s4u_logon
+Struct KERB_CERTIFICATE_S4U_LOGON
+	Integer MessageType										// KERB_LOGON_SUBMIT_TYPE
+	UInteger Flags
+	LSA_UNICODE_STRING UserPrincipalName
+	LSA_UNICODE_STRING DomainName
+	UInteger CertificateLength
+	Integer iMissingAlignment1
+	Pointer Certificate										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_certificate_unlock_logon
+Struct KERB_CERTIFICATE_UNLOCK_LOGON
+	KERB_CERTIFICATE_LOGON Logon
+	LUID LogonId
+End_Struct
+
+Struct KERB_CHANGEMACHINEPASSWORD_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UChar ForcePasswordChange								// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_changepassword_request
+Struct KERB_CHANGEPASSWORD_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING AccountName
+	LSA_UNICODE_STRING OldPassword
+	LSA_UNICODE_STRING NewPassword
+	UChar Impersonating										// BOOLEAN
+	UChar[7] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_cleanup_machine_pkinit_creds_request
+Struct KERB_CLEANUP_MACHINE_PKINIT_CREDS_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+End_Struct
+
+Struct KERB_CLOUD_KERBEROS_DEBUG_DATA
+	UInteger _bitfield
+End_Struct
+
+Struct KERB_CLOUD_KERBEROS_DEBUG_DATA_V0
+	UInteger _bitfield
+End_Struct
+
+Struct KERB_CLOUD_KERBEROS_DEBUG_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+End_Struct
+
+Struct KERB_CLOUD_KERBEROS_DEBUG_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Version
+	UInteger Length
+	UInteger[1] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_crypto_key
+Struct KERB_CRYPTO_KEY
+	Integer KeyType											// KERB_CRYPTO_KEY_TYPE
+	UInteger Length
+	Pointer Value											// UChar*
+End_Struct
+
+Struct KERB_CRYPTO_KEY32
+	Integer KeyType
+	UInteger Length
+	UInteger Offset
+End_Struct
+
+Struct KERB_DECRYPT_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	UInteger Flags
+	Integer CryptoType
+	Integer KeyUsage
+	KERB_CRYPTO_KEY Key
+	UInteger EncryptedDataSize
+	UInteger InitialVectorSize
+	Pointer InitialVector									// UChar*
+	Pointer EncryptedData									// UChar*
+End_Struct
+
+Struct KERB_DECRYPT_RESPONSE
+	UChar[1] DecryptedData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_external_name
+Struct KERB_EXTERNAL_NAME
+	Short NameType
+	UShort NameCount
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING[1] Names
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_external_ticket
+Struct KERB_EXTERNAL_TICKET
+	Pointer ServiceName										// KERB_EXTERNAL_NAME*
+	Pointer TargetName										// KERB_EXTERNAL_NAME*
+	Pointer ClientName										// KERB_EXTERNAL_NAME*
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING TargetDomainName
+	LSA_UNICODE_STRING AltTargetDomainName
+	KERB_CRYPTO_KEY SessionKey
+	UInteger TicketFlags									// KERB_TICKET_FLAGS
+	UInteger Flags
+	Bigint KeyExpirationTime
+	Bigint StartTime
+	Bigint EndTime
+	Bigint RenewUntil
+	Bigint TimeSkew
+	UInteger EncodedTicketSize
+	Integer iMissingAlignment1
+	Pointer EncodedTicket									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_interactive_logon
+Struct KERB_INTERACTIVE_LOGON
+	Integer MessageType										// KERB_LOGON_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING LogonDomainName
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING Password
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_interactive_profile
+Struct KERB_INTERACTIVE_PROFILE
+	Integer MessageType										// KERB_PROFILE_BUFFER_TYPE
+	UShort LogonCount
+	UShort BadPasswordCount
+	Bigint LogonTime
+	Bigint LogoffTime
+	Bigint KickOffTime
+	Bigint PasswordLastSet
+	Bigint PasswordCanChange
+	Bigint PasswordMustChange
+	LSA_UNICODE_STRING LogonScript
+	LSA_UNICODE_STRING HomeDirectory
+	LSA_UNICODE_STRING FullName
+	LSA_UNICODE_STRING ProfilePath
+	LSA_UNICODE_STRING HomeDirectoryDrive
+	LSA_UNICODE_STRING LogonServer
+	UInteger UserFlags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_interactive_unlock_logon
+Struct KERB_INTERACTIVE_UNLOCK_LOGON
+	KERB_INTERACTIVE_LOGON Logon
+	LUID LogonId
+End_Struct
+
+Struct KERB_NET_ADDRESS
+	UInteger Family
+	UInteger Length
+	Pointer Address											// PSTR
+End_Struct
+
+Struct KERB_NET_ADDRESSES
+	UInteger Number
+	Integer iMissingAlignment1
+	KERB_NET_ADDRESS[1] Addresses
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_purge_binding_cache_request
+Struct KERB_PURGE_BINDING_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+End_Struct
+
+Struct KERB_PURGE_KDC_PROXY_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+	LUID LogonId
+End_Struct
+
+Struct KERB_PURGE_KDC_PROXY_CACHE_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfPurged
+End_Struct
+
+Struct KERB_PURGE_TKT_CACHE_EX_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	UInteger Flags
+	KERB_TICKET_CACHE_INFO_EX TicketTemplate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_purge_tkt_cache_request
+Struct KERB_PURGE_TKT_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING ServerName
+	LSA_UNICODE_STRING RealmName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_query_binding_cache_request
+Struct KERB_QUERY_BINDING_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_query_binding_cache_response
+Struct KERB_QUERY_BINDING_CACHE_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfEntries
+	Pointer Entries											// KERB_BINDING_CACHE_ENTRY_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_query_domain_extended_policies_request
+Struct KERB_QUERY_DOMAIN_EXTENDED_POLICIES_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+	LSA_UNICODE_STRING DomainName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_query_domain_extended_policies_response
+Struct KERB_QUERY_DOMAIN_EXTENDED_POLICIES_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+	UInteger ExtendedPolicies
+	UInteger DsFlags
+End_Struct
+
+Struct KERB_QUERY_KDC_PROXY_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+	LUID LogonId
+End_Struct
+
+Struct KERB_QUERY_KDC_PROXY_CACHE_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfEntries
+	Pointer Entries											// KDC_PROXY_CACHE_ENTRY_DATA*
+End_Struct
+
+Struct KERB_QUERY_S4U2PROXY_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+	LUID LogonId
+End_Struct
+
+Struct KERB_QUERY_S4U2PROXY_CACHE_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfCreds
+	Pointer Creds											// KERB_S4U2PROXY_CRED*
+End_Struct
+
+Struct KERB_QUERY_TKT_CACHE_EX2_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfTickets
+	KERB_TICKET_CACHE_INFO_EX2[1] Tickets
+End_Struct
+
+Struct KERB_QUERY_TKT_CACHE_EX3_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfTickets
+	KERB_TICKET_CACHE_INFO_EX3[1] Tickets
+End_Struct
+
+Struct KERB_QUERY_TKT_CACHE_EX_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfTickets
+	KERB_TICKET_CACHE_INFO_EX[1] Tickets
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_query_tkt_cache_request
+Struct KERB_QUERY_TKT_CACHE_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_query_tkt_cache_response
+Struct KERB_QUERY_TKT_CACHE_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger CountOfTickets
+	KERB_TICKET_CACHE_INFO[1] Tickets
+End_Struct
+
+Struct KERB_REFRESH_POLICY_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+End_Struct
+
+Struct KERB_REFRESH_POLICY_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+End_Struct
+
+Struct KERB_REFRESH_SCCRED_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING CredentialBlob
+	LUID LogonId
+	UInteger Flags
+	Integer iMissingAlignment2
+End_Struct
+
+Struct KERB_RETRIEVE_KEY_TAB_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger Flags
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING Password
+End_Struct
+
+Struct KERB_RETRIEVE_KEY_TAB_RESPONSE
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	UInteger KeyTabLength
+	Pointer KeyTab											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_retrieve_tkt_request
+Struct KERB_RETRIEVE_TKT_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING TargetName
+	UInteger TicketFlags
+	UInteger CacheOptions
+	Integer EncryptionType									// KERB_CRYPTO_KEY_TYPE
+	Integer iMissingAlignment2
+	SecHandle CredentialsHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_retrieve_tkt_response
+Struct KERB_RETRIEVE_TKT_RESPONSE
+	KERB_EXTERNAL_TICKET Ticket
+End_Struct
+
+Struct KERB_S4U2PROXY_CACHE_ENTRY_INFO
+	LSA_UNICODE_STRING ServerName
+	UInteger Flags
+	Integer LastStatus										// NTSTATUS
+	Bigint Expiry
+End_Struct
+
+Struct KERB_S4U2PROXY_CRED
+	LSA_UNICODE_STRING UserName
+	LSA_UNICODE_STRING DomainName
+	UInteger Flags
+	Integer LastStatus										// NTSTATUS
+	Bigint Expiry
+	UInteger CountOfEntries
+	Integer iMissingAlignment1
+	Pointer Entries											// KERB_S4U2PROXY_CACHE_ENTRY_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_s4u_logon
+Struct KERB_S4U_LOGON
+	Integer MessageType										// KERB_LOGON_SUBMIT_TYPE
+	UInteger Flags
+	LSA_UNICODE_STRING ClientUpn
+	LSA_UNICODE_STRING ClientRealm
+End_Struct
+
+Struct KERB_SETPASSWORD_EX_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	Integer iMissingAlignment1
+	SecHandle CredentialsHandle
+	UInteger Flags
+	Integer iMissingAlignment2
+	LSA_UNICODE_STRING AccountRealm
+	LSA_UNICODE_STRING AccountName
+	LSA_UNICODE_STRING Password
+	LSA_UNICODE_STRING ClientRealm
+	LSA_UNICODE_STRING ClientName
+	UChar Impersonating										// BOOLEAN
+	UChar[7] cMissingAlignment3
+	LSA_UNICODE_STRING KdcAddress
+	UInteger KdcAddressType
+	Integer iMissingAlignment4
+End_Struct
+
+Struct KERB_SETPASSWORD_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	Integer iMissingAlignment1
+	SecHandle CredentialsHandle
+	UInteger Flags
+	Integer iMissingAlignment2
+	LSA_UNICODE_STRING DomainName
+	LSA_UNICODE_STRING AccountName
+	LSA_UNICODE_STRING Password
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_smart_card_logon
+Struct KERB_SMART_CARD_LOGON
+	Integer MessageType										// KERB_LOGON_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING Pin
+	UInteger CspDataLength
+	Integer iMissingAlignment2
+	Pointer CspData											// UChar*
+End_Struct
+
+Struct KERB_SMART_CARD_PROFILE
+	KERB_INTERACTIVE_PROFILE Profile
+	UInteger CertificateSize
+	Integer iMissingAlignment1
+	Pointer CertificateData									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_smart_card_unlock_logon
+Struct KERB_SMART_CARD_UNLOCK_LOGON
+	KERB_SMART_CARD_LOGON Logon
+	LUID LogonId
+End_Struct
+
+Struct KERB_SUBMIT_TKT_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID LogonId
+	UInteger Flags
+	KERB_CRYPTO_KEY32 Key
+	UInteger KerbCredSize
+	UInteger KerbCredOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_ticket_cache_info
+Struct KERB_TICKET_CACHE_INFO
+	LSA_UNICODE_STRING ServerName
+	LSA_UNICODE_STRING RealmName
+	Bigint StartTime
+	Bigint EndTime
+	Bigint RenewTime
+	Integer EncryptionType
+	UInteger TicketFlags									// KERB_TICKET_FLAGS
+End_Struct
+
+Struct KERB_TICKET_CACHE_INFO_EX
+	LSA_UNICODE_STRING ClientName
+	LSA_UNICODE_STRING ClientRealm
+	LSA_UNICODE_STRING ServerName
+	LSA_UNICODE_STRING ServerRealm
+	Bigint StartTime
+	Bigint EndTime
+	Bigint RenewTime
+	Integer EncryptionType
+	UInteger TicketFlags
+End_Struct
+
+Struct KERB_TICKET_CACHE_INFO_EX2
+	LSA_UNICODE_STRING ClientName
+	LSA_UNICODE_STRING ClientRealm
+	LSA_UNICODE_STRING ServerName
+	LSA_UNICODE_STRING ServerRealm
+	Bigint StartTime
+	Bigint EndTime
+	Bigint RenewTime
+	Integer EncryptionType
+	UInteger TicketFlags
+	UInteger SessionKeyType
+	UInteger BranchId
+End_Struct
+
+Struct KERB_TICKET_CACHE_INFO_EX3
+	LSA_UNICODE_STRING ClientName
+	LSA_UNICODE_STRING ClientRealm
+	LSA_UNICODE_STRING ServerName
+	LSA_UNICODE_STRING ServerRealm
+	Bigint StartTime
+	Bigint EndTime
+	Bigint RenewTime
+	Integer EncryptionType
+	UInteger TicketFlags
+	UInteger SessionKeyType
+	UInteger BranchId
+	UInteger CacheFlags
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING KdcCalled
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_ticket_logon
+Struct KERB_TICKET_LOGON
+	Integer MessageType										// KERB_LOGON_SUBMIT_TYPE
+	UInteger Flags
+	UInteger ServiceTicketLength
+	UInteger TicketGrantingTicketLength
+	Pointer ServiceTicket									// UChar*
+	Pointer TicketGrantingTicket							// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_ticket_profile
+Struct KERB_TICKET_PROFILE
+	KERB_INTERACTIVE_PROFILE Profile
+	KERB_CRYPTO_KEY SessionKey
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-kerb_ticket_unlock_logon
+Struct KERB_TICKET_UNLOCK_LOGON
+	KERB_TICKET_LOGON Logon
+	LUID LogonId
+End_Struct
+
+Struct KERB_TRANSFER_CRED_REQUEST
+	Integer MessageType										// KERB_PROTOCOL_MESSAGE_TYPE
+	LUID OriginLogonId
+	LUID DestinationLogonId
+	UInteger Flags
+End_Struct
+
+Struct KSEC_LIST_ENTRY
+	LIST_ENTRY List
+	Integer RefCount
+	UInteger Signature
+	Pointer OwningList										// Pointer*
+	Pointer Reserved										// Pointer*
+End_Struct
+
+Struct LOGON_HOURS
+	UShort UnitsPerWeek
+	UChar[6] cMissingAlignment1
+	Pointer LogonHours										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_auth_information
+Struct LSA_AUTH_INFORMATION
+	Bigint LastUpdateTime
+	UInteger AuthType										// LSA_AUTH_INFORMATION_AUTH_TYPE
+	UInteger AuthInfoLength
+	Pointer AuthInfo										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecpkg/ns-ntsecpkg-lsa_dispatch_table
+Struct LSA_DISPATCH_TABLE
+	Pointer CreateLogonSession								// PLSA_CREATE_LOGON_SESSION
+	Pointer DeleteLogonSession								// PLSA_DELETE_LOGON_SESSION
+	Pointer AddCredential									// PLSA_ADD_CREDENTIAL
+	Pointer GetCredentials									// PLSA_GET_CREDENTIALS
+	Pointer DeleteCredential								// PLSA_DELETE_CREDENTIAL
+	Pointer AllocateLsaHeap									// PLSA_ALLOCATE_LSA_HEAP
+	Pointer FreeLsaHeap										// PLSA_FREE_LSA_HEAP
+	Pointer AllocateClientBuffer							// PLSA_ALLOCATE_CLIENT_BUFFER
+	Pointer FreeClientBuffer								// PLSA_FREE_CLIENT_BUFFER
+	Pointer CopyToClientBuffer								// PLSA_COPY_TO_CLIENT_BUFFER
+	Pointer CopyFromClientBuffer							// PLSA_COPY_FROM_CLIENT_BUFFER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_enumeration_information
+Struct LSA_ENUMERATION_INFORMATION
+	Pointer Sid												// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_forest_trust_binary_data
+Struct LSA_FOREST_TRUST_BINARY_DATA
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer Buffer											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_forest_trust_collision_information
+Struct LSA_FOREST_TRUST_COLLISION_INFORMATION
+	UInteger RecordCount
+	Integer iMissingAlignment1
+	Pointer Entries											// LSA_FOREST_TRUST_COLLISION_RECORD**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_forest_trust_collision_record
+Struct LSA_FOREST_TRUST_COLLISION_RECORD
+	UInteger Index
+	Integer Type											// LSA_FOREST_TRUST_COLLISION_RECORD_TYPE
+	UInteger Flags
+	Integer iMissingAlignment1
+	LSA_UNICODE_STRING Name
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_forest_trust_domain_info
+Struct LSA_FOREST_TRUST_DOMAIN_INFO
+	Pointer Sid												// PSID
+	LSA_UNICODE_STRING DnsName
+	LSA_UNICODE_STRING NetbiosName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_forest_trust_information
+Struct LSA_FOREST_TRUST_INFORMATION
+	UInteger RecordCount
+	Integer iMissingAlignment1
+	Pointer Entries											// LSA_FOREST_TRUST_RECORD**
+End_Struct
+
+Struct LSA_FOREST_TRUST_INFORMATION2
+	UInteger RecordCount
+	Integer iMissingAlignment1
+	Pointer Entries											// LSA_FOREST_TRUST_RECORD2**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_forest_trust_record
+Struct LSA_FOREST_TRUST_RECORD
+	UInteger Flags
+	Integer ForestTrustType									// LSA_FOREST_TRUST_RECORD_TYPE
+	Bigint Time
+	_ForestTrustData_e__Union_1160 ForestTrustData
+End_Struct
+
+Struct LSA_FOREST_TRUST_RECORD2
+	UInteger Flags
+	Integer ForestTrustType									// LSA_FOREST_TRUST_RECORD_TYPE
+	Bigint Time
+	_ForestTrustData_e__Union_1161 ForestTrustData
+End_Struct
+
+Struct LSA_FOREST_TRUST_SCANNER_INFO
+	Pointer DomainSid										// PSID
+	LSA_UNICODE_STRING DnsName
+	LSA_UNICODE_STRING NetbiosName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntsecapi/ns-ntsecapi-lsa_last_inter_logon_info
+Struct LSA_LAST_INTER_LOGON_INFO
+	Bigint LastSuccessfulLogon
+	Bigint LastFailedLogon
+	UInteger FailedAttemptCountSinceLastSuccessfulLogon
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_object_attributes
+Struct LSA_OBJECT_ATTRIBUTES
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer RootDirectory									// HANDLE
+	Pointer ObjectName										// LSA_UNICODE_STRING*
+	UInteger Attributes
+	Integer iMissingAlignment2
+	Pointer SecurityDescriptor								// Pointer*
+	Pointer SecurityQualityOfService						// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lsalookup/ns-lsalookup-lsa_referenced_domain_list
+Struct LSA_REFERENCED_DOMAIN_LIST
+	UInteger Entries
+	Integer iMissingAlignment1
+	Pointer Domains											// LSA_TRUST_INFORMATION*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,781 @@
+Use UI
+
+Struct ICMP_MESSAGE
+	ICMP_HEADER Header
+	_Data_e__Union_3394 Data
+End_Struct
+
+Struct IGMPV3_QUERY_HEADER
+	UChar Type
+	_Anonymous1_e__Union_3408 Anonymous1
+	UShort Checksum
+	IN_ADDR MulticastAddress
+	UChar _bitfield
+	_Anonymous2_e__Union_3410 Anonymous2
+	UShort SourceCount
+End_Struct
+
+Struct IGMPV3_REPORT_HEADER
+	UChar Type
+	UChar Reserved
+	UShort Checksum
+	UShort Reserved2
+	UShort RecordCount
+End_Struct
+
+Struct IGMPV3_REPORT_RECORD_HEADER
+	UChar Type
+	UChar AuxillaryDataLength
+	UShort SourceCount
+	IN_ADDR MulticastAddress
+End_Struct
+
+Struct IGMP_HEADER
+	_Anonymous1_e__Union_3405 Anonymous1
+	_Anonymous2_e__Union_3407 Anonymous2
+	UShort Checksum
+	IN_ADDR MulticastAddress
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/in6addr/ns-in6addr-in6_addr
+Struct IN6_ADDR
+	_u_e__Union_1321 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-in6_pktinfo
+Struct IN6_PKTINFO
+	IN6_ADDR ipi6_addr
+	UInteger ipi6_ifindex
+End_Struct
+
+Struct IN6_PKTINFO_EX
+	IN6_PKTINFO pkt_info
+	SCOPE_ID scope_id
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-inet_port_range
+Struct INET_PORT_RANGE
+	UShort StartPort
+	UShort NumberOfPorts
+End_Struct
+
+Struct INET_PORT_RESERVATION_INFORMATION
+	UInteger OwningPid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-inet_port_reservation_instance
+Struct INET_PORT_RESERVATION_INSTANCE
+	INET_PORT_RANGE Reservation
+	Integer iMissingAlignment1
+	INET_PORT_RESERVATION_TOKEN Token
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-inet_port_reservation_token
+Struct INET_PORT_RESERVATION_TOKEN
+	UBigint Token
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-interface_info
+Struct INTERFACE_INFO
+	UInteger iiFlags
+	sockaddr_gen iiAddress
+	sockaddr_gen iiBroadcastAddress
+	sockaddr_gen iiNetmask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-interface_info_ex
+Struct INTERFACE_INFO_EX
+	UInteger iiFlags
+	Integer iMissingAlignment1
+	SOCKET_ADDRESS iiAddress
+	SOCKET_ADDRESS iiBroadcastAddress
+	SOCKET_ADDRESS iiNetmask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/inaddr/ns-inaddr-in_addr
+Struct IN_ADDR
+	_S_un_e__Union_1313 S_un
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-in_pktinfo
+Struct IN_PKTINFO
+	IN_ADDR ipi_addr
+	UInteger ipi_ifindex
+End_Struct
+
+Struct IN_PKTINFO_EX
+	IN_PKTINFO pkt_info
+	SCOPE_ID scope_id
+End_Struct
+
+Struct IN_RECVERR
+	Integer protocol										// IPPROTO
+	UInteger info
+	UChar type
+	UChar code
+	Short iMissingAlignment1
+End_Struct
+
+Struct IPTLS_METADATA
+	UBigint SequenceNumber
+End_Struct
+
+Struct IPV4_HEADER
+	_Anonymous1_e__Union_3395 Anonymous1
+	_Anonymous2_e__Union_3397 Anonymous2
+	UShort TotalLength
+	UShort Identification
+	_Anonymous3_e__Union_3399 Anonymous3
+	UChar TimeToLive
+	UChar Protocol
+	UShort HeaderChecksum
+	IN_ADDR SourceAddress
+	IN_ADDR DestinationAddress
+End_Struct
+
+Struct IPV4_OPTION_HEADER
+	_Anonymous_e__Union_3401 Anonymous
+	UChar OptionLength
+End_Struct
+
+Struct IPV4_ROUTING_HEADER
+	IPV4_OPTION_HEADER OptionHeader
+	UChar Pointer
+End_Struct
+
+Struct IPV4_TIMESTAMP_OPTION
+	IPV4_OPTION_HEADER OptionHeader
+	UChar Pointer
+	_Anonymous_e__Union_3403 Anonymous
+End_Struct
+
+Struct IPV6_EXTENSION_HEADER
+	UChar NextHeader
+	UChar Length
+End_Struct
+
+Struct IPV6_FRAGMENT_HEADER
+	UChar NextHeader
+	UChar Reserved
+	_Anonymous_e__Union_3414 Anonymous
+	UInteger Id
+End_Struct
+
+Struct IPV6_HEADER
+	_Anonymous_e__Union_3412 Anonymous
+	UShort PayloadLength
+	UChar NextHeader
+	UChar HopLimit
+	IN6_ADDR SourceAddress
+	IN6_ADDR DestinationAddress
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-ipv6_mreq
+Struct IPV6_MREQ
+	IN6_ADDR ipv6mr_multiaddr
+	UInteger ipv6mr_interface
+End_Struct
+
+Struct IPV6_NEIGHBOR_ADVERTISEMENT_FLAGS
+	_Anonymous_e__Union_3418 Anonymous
+End_Struct
+
+Struct IPV6_OPTION_HEADER
+	UChar Type
+	UChar DataLength
+End_Struct
+
+Struct IPV6_OPTION_JUMBOGRAM
+	IPV6_OPTION_HEADER Header
+	UChar[4] JumbogramLength
+End_Struct
+
+Struct IPV6_OPTION_ROUTER_ALERT
+	IPV6_OPTION_HEADER Header
+	UChar[2] Value
+End_Struct
+
+Struct IPV6_ROUTER_ADVERTISEMENT_FLAGS
+	_Anonymous_e__Union_3416 Anonymous
+End_Struct
+
+Struct IPV6_ROUTING_HEADER
+	UChar NextHeader
+	UChar Length
+	UChar RoutingType
+	UChar SegmentsLeft
+	UChar[4] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsnwlink/ns-wsnwlink-ipx_address_data
+Struct IPX_ADDRESS_DATA
+	Integer adapternum
+	UChar[4] netnum
+	UChar[6] nodenum
+	UChar wan												// BOOLEAN
+	UChar status											// BOOLEAN
+	Integer maxpkt
+	UInteger linkspeed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsnwlink/ns-wsnwlink-ipx_netnum_data
+Struct IPX_NETNUM_DATA
+	UChar[4] netnum
+	UShort hopcount
+	UShort netdelay
+	Integer cardnum
+	UChar[6] router
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsnwlink/ns-wsnwlink-ipx_spxconnstatus_data
+Struct IPX_SPXCONNSTATUS_DATA
+	UChar ConnectionState
+	UChar WatchDogActive
+	UShort LocalConnectionId
+	UShort RemoteConnectionId
+	UShort LocalSequenceNumber
+	UShort LocalAckNumber
+	UShort LocalAllocNumber
+	UShort RemoteAckNumber
+	UShort RemoteAllocNumber
+	UShort LocalSocket
+	UChar[6] ImmediateAddress
+	UChar[4] RemoteNetwork
+	UChar[6] RemoteNode
+	UShort RemoteSocket
+	UShort RetransmissionCount
+	UShort EstimatedRoundTripDelay
+	UShort RetransmittedPackets
+	UShort SuppressedPacket
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-ip_mreq
+Struct IP_MREQ
+	IN_ADDR imr_multiaddr
+	IN_ADDR imr_interface
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-ip_mreq_source
+Struct IP_MREQ_SOURCE
+	IN_ADDR imr_multiaddr
+	IN_ADDR imr_sourceaddr
+	IN_ADDR imr_interface
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2ipdef/ns-ws2ipdef-ip_msfilter
+Struct IP_MSFILTER
+	IN_ADDR imsf_multiaddr
+	IN_ADDR imsf_interface
+	Integer imsf_fmode										// MULTICAST_MODE_TYPE
+	UInteger imsf_numsrc
+	IN_ADDR[1] imsf_slist
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-linger
+Struct LINGER
+	UShort l_onoff
+	UShort l_linger
+End_Struct
+
+Struct LM_IRPARMS
+	UInteger nTXDataBytes
+	UInteger nRXDataBytes
+	UInteger nBaudRate
+	UInteger thresholdTime
+	UInteger discTime
+	UShort nMSLinkTurn
+	UChar nTXPackets
+	UChar nRXPackets
+End_Struct
+
+Struct MLDV2_QUERY_HEADER
+	ICMP_HEADER IcmpHeader
+	_Anonymous1_e__Union_3428 Anonymous1
+	UShort Reserved
+	IN6_ADDR MulticastAddress
+	UChar _bitfield
+	_Anonymous2_e__Union_3430 Anonymous2
+	UShort SourceCount
+End_Struct
+
+Struct MLDV2_REPORT_HEADER
+	ICMP_HEADER IcmpHeader
+	UShort Reserved
+	UShort RecordCount
+End_Struct
+
+Struct MLDV2_REPORT_RECORD_HEADER
+	UChar Type
+	UChar AuxillaryDataLength
+	UShort SourceCount
+	IN6_ADDR MulticastAddress
+End_Struct
+
+Struct MLD_HEADER
+	ICMP_HEADER IcmpHeader
+	UShort MaxRespTime
+	UShort Reserved
+	IN6_ADDR MulticastAddress
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nsemail/ns-nsemail-napi_domain_description_blob
+Struct NAPI_DOMAIN_DESCRIPTION_BLOB
+	UInteger AuthLevel
+	UInteger cchDomainName
+	UInteger OffsetNextDomainDescription
+	UInteger OffsetThisDomainName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nsemail/ns-nsemail-napi_provider_installation_blob
+Struct NAPI_PROVIDER_INSTALLATION_BLOB
+	UInteger dwVersion
+	UInteger dwProviderType
+	UInteger fSupportsWildCard
+	UInteger cDomains
+	UInteger OffsetFirstDomain
+End_Struct
+
+Struct ND_NEIGHBOR_ADVERT_HEADER
+	ICMP_MESSAGE nd_na_hdr
+	IN6_ADDR nd_na_target
+End_Struct
+
+Struct ND_NEIGHBOR_SOLICIT_HEADER
+	ICMP_MESSAGE nd_ns_hdr
+	IN6_ADDR nd_ns_target
+End_Struct
+
+Struct ND_OPTION_DNSSL
+	UChar nd_opt_dnssl_type
+	UChar nd_opt_dnssl_len
+	UShort nd_opt_dnssl_reserved
+	UInteger nd_opt_dnssl_lifetime
+End_Struct
+
+Struct ND_OPTION_HDR
+	UChar nd_opt_type
+	UChar nd_opt_len
+End_Struct
+
+Struct ND_OPTION_MTU
+	UChar nd_opt_mtu_type
+	UChar nd_opt_mtu_len
+	UShort nd_opt_mtu_reserved
+	UInteger nd_opt_mtu_mtu
+End_Struct
+
+Struct ND_OPTION_PREF64
+	UChar nd_opt_p64_type
+	UChar nd_opt_p64_len
+	_Anonymous_e__Union_3426 Anonymous
+	UChar[12] nd_opt_p64_prefix
+End_Struct
+
+Struct ND_OPTION_PREFIX_INFO
+	UChar nd_opt_pi_type
+	UChar nd_opt_pi_len
+	UChar nd_opt_pi_prefix_len
+	_Anonymous1_e__Union_3420 Anonymous1
+	UInteger nd_opt_pi_valid_time
+	UInteger nd_opt_pi_preferred_time
+	_Anonymous2_e__Union_3422 Anonymous2
+	IN6_ADDR nd_opt_pi_prefix
+End_Struct
+
+Struct ND_OPTION_RDNSS
+	UChar nd_opt_rdnss_type
+	UChar nd_opt_rdnss_len
+	UShort nd_opt_rdnss_reserved
+	UInteger nd_opt_rdnss_lifetime
+End_Struct
+
+Struct ND_OPTION_RD_HDR
+	UChar nd_opt_rh_type
+	UChar nd_opt_rh_len
+	UShort nd_opt_rh_reserved1
+	UInteger nd_opt_rh_reserved2
+End_Struct
+
+Struct ND_OPTION_ROUTE_INFO
+	UChar nd_opt_ri_type
+	UChar nd_opt_ri_len
+	UChar nd_opt_ri_prefix_len
+	_Anonymous_e__Union_3424 Anonymous
+	UInteger nd_opt_ri_route_lifetime
+	IN6_ADDR nd_opt_ri_prefix
+End_Struct
+
+Struct ND_REDIRECT_HEADER
+	ICMP_MESSAGE nd_rd_hdr
+	IN6_ADDR nd_rd_target
+	IN6_ADDR nd_rd_dst
+End_Struct
+
+Struct ND_ROUTER_ADVERT_HEADER
+	ICMP_MESSAGE nd_ra_hdr
+	UInteger nd_ra_reachable
+	UInteger nd_ra_retransmit
+End_Struct
+
+Struct ND_ROUTER_SOLICIT_HEADER
+	ICMP_MESSAGE nd_rs_hdr
+End_Struct
+
+Struct NETRESOURCE2A
+	UInteger dwScope
+	UInteger dwType
+	UInteger dwUsage
+	UInteger dwDisplayType
+	Pointer lpLocalName										// PSTR
+	Pointer lpRemoteName									// PSTR
+	Pointer lpComment										// PSTR
+	NS_INFOA ns_info
+	Guid ServiceType
+	UInteger dwProtocols
+	Integer iMissingAlignment1
+	Pointer lpiProtocols									// Integer*
+End_Struct
+
+Struct NETRESOURCE2W
+	UInteger dwScope
+	UInteger dwType
+	UInteger dwUsage
+	UInteger dwDisplayType
+	Pointer lpLocalName										// PWSTR
+	Pointer lpRemoteName									// PWSTR
+	Pointer lpComment										// PWSTR
+	NS_INFOA ns_info
+	Guid ServiceType
+	UInteger dwProtocols
+	Integer iMissingAlignment1
+	Pointer lpiProtocols									// Integer*
+End_Struct
+
+Struct NLA_BLOB
+	_header_e__Struct_3376 header
+	_data_e__Union_3377 data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nldef/ns-nldef-nl_bandwidth_information
+Struct NL_BANDWIDTH_INFORMATION
+	UBigint Bandwidth
+	UBigint Instability
+	UChar BandwidthPeaked									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nldef/ns-nldef-nl_interface_offload_rod
+Struct NL_INTERFACE_OFFLOAD_ROD
+	UChar _bitfield
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nldef/ns-nldef-nl_network_connectivity_hint
+Struct NL_NETWORK_CONNECTIVITY_HINT
+	Integer ConnectivityLevel								// NL_NETWORK_CONNECTIVITY_LEVEL_HINT
+	Integer ConnectivityCost								// NL_NETWORK_CONNECTIVITY_COST_HINT
+	UChar ApproachingDataLimit								// BOOLEAN
+	UChar OverDataLimit										// BOOLEAN
+	UChar Roaming											// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct NL_PATH_BANDWIDTH_ROD
+	UBigint Bandwidth
+	UBigint Instability
+	UChar BandwidthPeaked									// BOOLEAN
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct NPI_MODULEID
+	UShort Length
+	Short iMissingAlignment1
+	Integer Type											// NPI_MODULEID_TYPE
+	_Anonymous_e__Union_3437 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2spi/ns-ws2spi-nspv2_routine
+Struct NSPV2_ROUTINE
+	UInteger cbSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	Integer iMissingAlignment1
+	Pointer NSPv2Startup									// LPNSPV2STARTUP
+	Pointer NSPv2Cleanup									// LPNSPV2CLEANUP
+	Pointer NSPv2LookupServiceBegin							// LPNSPV2LOOKUPSERVICEBEGIN
+	Pointer NSPv2LookupServiceNextEx						// LPNSPV2LOOKUPSERVICENEXTEX
+	Pointer NSPv2LookupServiceEnd							// LPNSPV2LOOKUPSERVICEEND
+	Pointer NSPv2SetServiceEx								// LPNSPV2SETSERVICEEX
+	Pointer NSPv2ClientSessionRundown						// LPNSPV2CLIENTSESSIONRUNDOWN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ws2spi/ns-ws2spi-nsp_routine
+Struct NSP_ROUTINE
+	UInteger cbSize
+	UInteger dwMajorVersion
+	UInteger dwMinorVersion
+	Integer iMissingAlignment1
+	Pointer NSPCleanup										// LPNSPCLEANUP
+	Pointer NSPLookupServiceBegin							// LPNSPLOOKUPSERVICEBEGIN
+	Pointer NSPLookupServiceNext							// LPNSPLOOKUPSERVICENEXT
+	Pointer NSPLookupServiceEnd								// LPNSPLOOKUPSERVICEEND
+	Pointer NSPSetService									// LPNSPSETSERVICE
+	Pointer NSPInstallServiceClass							// LPNSPINSTALLSERVICECLASS
+	Pointer NSPRemoveServiceClass							// LPNSPREMOVESERVICECLASS
+	Pointer NSPGetServiceClassInfo							// LPNSPGETSERVICECLASSINFO
+	Pointer NSPIoctl										// LPNSPIOCTL
+End_Struct
+
+Struct NS_INFOA
+	UInteger dwNameSpace
+	UInteger dwNameSpaceFlags
+	Pointer lpNameSpace										// PSTR
+End_Struct
+
+Struct NS_INFOW
+	UInteger dwNameSpace
+	UInteger dwNameSpaceFlags
+	Pointer lpNameSpace										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-ns_service_infoa
+Struct NS_SERVICE_INFOA
+	UInteger dwNameSpace
+	Integer iMissingAlignment1
+	SERVICE_INFOA ServiceInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-ns_service_infow
+Struct NS_SERVICE_INFOW
+	UInteger dwNameSpace
+	Integer iMissingAlignment1
+	SERVICE_INFOW ServiceInfo
+End_Struct
+
+Struct PRIORITY_STATUS
+	Integer Sender											// SOCKET_PRIORITY_HINT
+	Integer Receiver										// SOCKET_PRIORITY_HINT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-protocol_infoa
+Struct PROTOCOL_INFOA
+	UInteger dwServiceFlags
+	Integer iAddressFamily
+	Integer iMaxSockAddr
+	Integer iMinSockAddr
+	Integer iSocketType
+	Integer iProtocol
+	UInteger dwMessageSize
+	Integer iMissingAlignment1
+	Pointer lpProtocol										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-protocol_infow
+Struct PROTOCOL_INFOW
+	UInteger dwServiceFlags
+	Integer iAddressFamily
+	Integer iMaxSockAddr
+	Integer iMinSockAddr
+	Integer iSocketType
+	Integer iProtocol
+	UInteger dwMessageSize
+	Integer iMissingAlignment1
+	Pointer lpProtocol										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-protoent
+Struct PROTOENT
+	Pointer p_name											// PSTR
+	Pointer p_aliases										// Char**
+	Short p_proto
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct Q2931_IE
+	Integer IEType											// Q2931_IE_TYPE
+	UInteger IELength
+	UChar[1] IE
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock2/ns-winsock2-qos
+Struct QOS
+	FLOWSPEC SendingFlowspec
+	FLOWSPEC ReceivingFlowspec
+	WSABUF ProviderSpecific
+End_Struct
+
+Struct RCVALL_IF
+	Integer Mode											// RCVALL_VALUE
+	UInteger Interface
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-real_time_notification_setting_input
+Struct REAL_TIME_NOTIFICATION_SETTING_INPUT
+	TRANSPORT_SETTING_ID TransportSettingId
+	Guid BrokerEventGuid
+End_Struct
+
+Struct REAL_TIME_NOTIFICATION_SETTING_INPUT_EX
+	TRANSPORT_SETTING_ID TransportSettingId
+	Guid BrokerEventGuid
+	UChar Unmark											// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mstcpip/ns-mstcpip-real_time_notification_setting_output
+Struct REAL_TIME_NOTIFICATION_SETTING_OUTPUT
+	Integer ChannelStatus									// CONTROL_CHANNEL_TRIGGER_STATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mswsockdef/ns-mswsockdef-rioresult
+Struct RIORESULT
+	Integer Status
+	UInteger BytesTransferred
+	UBigint SocketContext
+	UBigint RequestContext
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mswsockdef/ns-mswsockdef-rio_buf
+Struct RIO_BUF
+	LongPtr BufferId										// RIO_BUFFERID
+	UInteger Offset
+	UInteger Length
+End_Struct
+
+Struct RIO_CMSG_BUFFER
+	UInteger TotalLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mswsock/ns-mswsock-rio_extension_function_table
+Struct RIO_EXTENSION_FUNCTION_TABLE
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer RIOReceive										// LPFN_RIORECEIVE
+	Pointer RIOReceiveEx									// LPFN_RIORECEIVEEX
+	Pointer RIOSend											// LPFN_RIOSEND
+	Pointer RIOSendEx										// LPFN_RIOSENDEX
+	Pointer RIOCloseCompletionQueue							// LPFN_RIOCLOSECOMPLETIONQUEUE
+	Pointer RIOCreateCompletionQueue						// LPFN_RIOCREATECOMPLETIONQUEUE
+	Pointer RIOCreateRequestQueue							// LPFN_RIOCREATEREQUESTQUEUE
+	Pointer RIODequeueCompletion							// LPFN_RIODEQUEUECOMPLETION
+	Pointer RIODeregisterBuffer								// LPFN_RIODEREGISTERBUFFER
+	Pointer RIONotify										// LPFN_RIONOTIFY
+	Pointer RIORegisterBuffer								// LPFN_RIOREGISTERBUFFER
+	Pointer RIOResizeCompletionQueue						// LPFN_RIORESIZECOMPLETIONQUEUE
+	Pointer RIOResizeRequestQueue							// LPFN_RIORESIZEREQUESTQUEUE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mswsock/ns-mswsock-rio_notification_completion
+Struct RIO_NOTIFICATION_COMPLETION
+	Integer Type											// RIO_NOTIFICATION_COMPLETION_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_3383 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsrm/ns-wsrm-rm_fec_info
+Struct RM_FEC_INFO
+	UShort FECBlockSize
+	UShort FECProActivePackets
+	UChar FECGroupSize
+	UChar fFECOnDemandParityEnabled							// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsrm/ns-wsrm-rm_receiver_stats
+Struct RM_RECEIVER_STATS
+	UBigint NumODataPacketsReceived
+	UBigint NumRDataPacketsReceived
+	UBigint NumDuplicateDataPackets
+	UBigint DataBytesReceived
+	UBigint TotalBytesReceived
+	UBigint RateKBitsPerSecOverall
+	UBigint RateKBitsPerSecLast
+	UBigint TrailingEdgeSeqId
+	UBigint LeadingEdgeSeqId
+	UBigint AverageSequencesInWindow
+	UBigint MinSequencesInWindow
+	UBigint MaxSequencesInWindow
+	UBigint FirstNakSequenceNumber
+	UBigint NumPendingNaks
+	UBigint NumOutstandingNaks
+	UBigint NumDataPacketsBuffered
+	UBigint TotalSelectiveNaksSent
+	UBigint TotalParityNaksSent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsrm/ns-wsrm-rm_sender_stats
+Struct RM_SENDER_STATS
+	UBigint DataBytesSent
+	UBigint TotalBytesSent
+	UBigint NaksReceived
+	UBigint NaksReceivedTooLate
+	UBigint NumOutstandingNaks
+	UBigint NumNaksAfterRData
+	UBigint RepairPacketsSent
+	UBigint BufferSpaceAvailable
+	UBigint TrailingEdgeSeqId
+	UBigint LeadingEdgeSeqId
+	UBigint RateKBitsPerSecOverall
+	UBigint RateKBitsPerSecLast
+	UBigint TotalODataPacketsSent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wsrm/ns-wsrm-rm_send_window
+Struct RM_SEND_WINDOW
+	UInteger RateKbitsPerSec
+	UInteger WindowSizeInMSecs
+	UInteger WindowSizeInBytes
+End_Struct
+
+Struct RSS_SCALABILITY_INFO
+	UChar RssEnabled										// BOOLEAN
+End_Struct
+
+Struct SCOPE_ID
+	_Anonymous_e__Union_1355 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-servent
+Struct SERVENT
+	Pointer s_name											// PSTR
+	Pointer s_aliases										// Char**
+	Pointer s_proto											// PSTR
+	Short s_port
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winsock/ns-winsock-servent
+Struct SERVENT
+	Pointer s_name											// PSTR
+	Pointer s_aliases										// Char**
+	Short s_port
+	UChar[6] cMissingAlignment1
+	Pointer s_proto											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-service_address
+Struct SERVICE_ADDRESS
+	UInteger dwAddressType
+	UInteger dwAddressFlags
+	UInteger dwAddressLength
+	UInteger dwPrincipalLength
+	Pointer lpAddress										// UChar*
+	Pointer lpPrincipal										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/nspapi/ns-nspapi-service_addresses
+Struct SERVICE_ADDRESSES
+	UInteger dwAddressCount
+	Integer iMissingAlignment1
+	SERVICE_ADDRESS[1] Addresses
+End_Struct
+
+Struct SERVICE_ASYNC_INFO
+	Pointer lpServiceCallbackProc							// LPSERVICE_CALLBACK_PROC
+	LongPtr lParam											// LPARAM
+	Pointer hAsyncTaskHandle								// HANDLE
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,580 @@
+Use UI
+
+Struct _Anonymous_e__Union_2319
+	// Bigint ll // (8)
+	// FILETIME ft // (8)
+	Bigint ll
+End_Struct
+
+Struct _Anonymous_e__Union_2940
+	// SID Sid // (12)
+	// UChar[68] Buffer // (68)
+	UChar[68] Buffer
+End_Struct
+
+Struct _Attribute_e__Union_1183
+	// Pointer pAttributeV1									// CLAIM_SECURITY_ATTRIBUTE_V1* // (8)
+	Pointer pAttributeV1
+End_Struct
+
+Struct _Values_e__Union_1184
+	// Pointer pInt64											// Bigint* // (8)
+	// Pointer pUint64											// UBigint* // (8)
+	// Pointer ppString										// PWSTR* // (8)
+	// Pointer pFqbn											// CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE* // (8)
+	// Pointer pOctetString									// CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE* // (8)
+	Pointer pInt64
+End_Struct
+
+Struct _Values_e__Union_2941
+	// UInteger[1] pInt64 // (4)
+	// UInteger[1] pUint64 // (4)
+	// UInteger[1] ppString // (4)
+	// UInteger[1] pFqbn // (4)
+	// UInteger[1] pOctetString // (4)
+	UInteger[1] pInt64
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_allowed_ace
+Struct ACCESS_ALLOWED_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_allowed_callback_ace
+Struct ACCESS_ALLOWED_CALLBACK_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_allowed_callback_object_ace
+Struct ACCESS_ALLOWED_CALLBACK_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_allowed_object_ace
+Struct ACCESS_ALLOWED_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_denied_ace
+Struct ACCESS_DENIED_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_denied_callback_ace
+Struct ACCESS_DENIED_CALLBACK_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_denied_callback_object_ace
+Struct ACCESS_DENIED_CALLBACK_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-access_denied_object_ace
+Struct ACCESS_DENIED_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+Struct ACCESS_REASONS
+	UInteger[32] Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-ace_header
+Struct ACE_HEADER
+	UChar AceType
+	UChar AceFlags
+	UShort AceSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-acl
+Struct ACL
+	UChar AclRevision
+	UChar Sbz1
+	UShort AclSize
+	UShort AceCount
+	UShort Sbz2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-acl_revision_information
+Struct ACL_REVISION_INFORMATION
+	UInteger AclRevision
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-acl_size_information
+Struct ACL_SIZE_INFORMATION
+	UInteger AceCount
+	UInteger AclBytesInUse
+	UInteger AclBytesFree
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attributes_information
+Struct CLAIM_SECURITY_ATTRIBUTES_INFORMATION
+	UShort Version
+	UShort Reserved
+	UInteger AttributeCount
+	_Attribute_e__Union_1183 Attribute
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_fqbn_value
+Struct CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
+	UBigint Version
+	Pointer Name											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_octet_string_value
+Struct CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
+	Pointer pValue											// Pointer*
+	UInteger ValueLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_relative_v1
+Struct CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1
+	UInteger Name
+	UShort ValueType										// CLAIM_SECURITY_ATTRIBUTE_VALUE_TYPE
+	UShort Reserved
+	UInteger Flags											// CLAIM_SECURITY_ATTRIBUTE_FLAGS
+	UInteger ValueCount
+	_Values_e__Union_2941 Values
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-claim_security_attribute_v1
+Struct CLAIM_SECURITY_ATTRIBUTE_V1
+	Pointer Name											// PWSTR
+	UShort ValueType										// CLAIM_SECURITY_ATTRIBUTE_VALUE_TYPE
+	UShort Reserved
+	UInteger Flags
+	UInteger ValueCount
+	Integer iMissingAlignment1
+	_Values_e__Union_1184 Values
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-generic_mapping
+Struct GENERIC_MAPPING
+	UInteger GenericRead
+	UInteger GenericWrite
+	UInteger GenericExecute
+	UInteger GenericAll
+End_Struct
+
+Struct LLFILETIME
+	_Anonymous_e__Union_2319 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-luid_and_attributes
+Struct LUID_AND_ATTRIBUTES
+	LUID Luid
+	UInteger Attributes										// TOKEN_PRIVILEGES_ATTRIBUTES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-object_type_list
+Struct OBJECT_TYPE_LIST
+	UShort Level
+	UShort Sbz
+	Integer iMissingAlignment1
+	Pointer ObjectType										// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-privilege_set
+Struct PRIVILEGE_SET
+	UInteger PrivilegeCount
+	UInteger Control
+	LUID_AND_ATTRIBUTES[1] Privilege
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-quota_limits
+Struct QUOTA_LIMITS
+	ULongPtr PagedPoolLimit
+	ULongPtr NonPagedPoolLimit
+	ULongPtr MinimumWorkingSetSize
+	ULongPtr MaximumWorkingSetSize
+	ULongPtr PagefileLimit
+	Bigint TimeLimit
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtypesbase/ns-wtypesbase-security_attributes
+Struct SECURITY_ATTRIBUTES
+	UInteger nLength
+	Integer iMissingAlignment1
+	Pointer lpSecurityDescriptor							// Pointer*
+	Integer bInheritHandle									// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-security_capabilities
+Struct SECURITY_CAPABILITIES
+	Pointer AppContainerSid									// PSID
+	Pointer Capabilities									// SID_AND_ATTRIBUTES*
+	UInteger CapabilityCount
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-security_descriptor
+Struct SECURITY_DESCRIPTOR
+	UChar Revision
+	UChar Sbz1
+	UShort Control											// SECURITY_DESCRIPTOR_CONTROL
+	Integer iMissingAlignment1
+	Pointer Owner											// PSID
+	Pointer Group											// PSID
+	Pointer Sacl											// ACL*
+	Pointer Dacl											// ACL*
+End_Struct
+
+Struct SECURITY_DESCRIPTOR_RELATIVE
+	UChar Revision
+	UChar Sbz1
+	UShort Control											// SECURITY_DESCRIPTOR_CONTROL
+	UInteger Owner
+	UInteger Group
+	UInteger Sacl
+	UInteger Dacl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-security_quality_of_service
+Struct SECURITY_QUALITY_OF_SERVICE
+	UInteger Length
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	UChar ContextTrackingMode
+	UChar EffectiveOnly										// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct SE_ACCESS_REPLY
+	UInteger Size
+	UInteger ResultListCount
+	Pointer GrantedAccess									// UInteger*
+	Pointer AccessStatus									// UInteger*
+	Pointer AccessReason									// ACCESS_REASONS*
+	Pointer Privileges										// PRIVILEGE_SET**
+End_Struct
+
+Struct SE_ACCESS_REQUEST
+	UInteger Size
+	Integer iMissingAlignment1
+	Pointer SeSecurityDescriptor							// SE_SECURITY_DESCRIPTOR*
+	UInteger DesiredAccess
+	UInteger PreviouslyGrantedAccess
+	Pointer PrincipalSelfSid								// PSID
+	Pointer GenericMapping									// GENERIC_MAPPING*
+	UInteger ObjectTypeListCount
+	Integer iMissingAlignment2
+	Pointer ObjectTypeList									// OBJECT_TYPE_LIST*
+End_Struct
+
+Struct SE_IMPERSONATION_STATE
+	Pointer Token											// Pointer*
+	UChar CopyOnOpen										// BOOLEAN
+	UChar EffectiveOnly										// BOOLEAN
+	Short iMissingAlignment1
+	Integer Level											// SECURITY_IMPERSONATION_LEVEL
+End_Struct
+
+Struct SE_SECURITY_DESCRIPTOR
+	UInteger Size
+	UInteger Flags
+	Pointer SecurityDescriptor								// PSECURITY_DESCRIPTOR
+End_Struct
+
+Struct SE_SID
+	_Anonymous_e__Union_2940 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-sid
+Struct SID
+	UChar Revision
+	UChar SubAuthorityCount
+	SID_IDENTIFIER_AUTHORITY IdentifierAuthority
+	UInteger[1] SubAuthority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-sid_and_attributes
+Struct SID_AND_ATTRIBUTES
+	Pointer Sid												// PSID
+	UInteger Attributes
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-sid_and_attributes_hash
+Struct SID_AND_ATTRIBUTES_HASH
+	UInteger SidCount
+	Integer iMissingAlignment1
+	Pointer SidAttr											// SID_AND_ATTRIBUTES*
+	ULongPtr[32] Hash
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/NetMgmt/odj-sid_identifier_authority
+Struct SID_IDENTIFIER_AUTHORITY
+	UChar[6] Value
+End_Struct
+
+Struct SYSTEM_ACCESS_FILTER_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_alarm_ace
+Struct SYSTEM_ALARM_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_alarm_callback_ace
+Struct SYSTEM_ALARM_CALLBACK_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_alarm_callback_object_ace
+Struct SYSTEM_ALARM_CALLBACK_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_alarm_object_ace
+Struct SYSTEM_ALARM_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_audit_ace
+Struct SYSTEM_AUDIT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_audit_callback_ace
+Struct SYSTEM_AUDIT_CALLBACK_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_audit_callback_object_ace
+Struct SYSTEM_AUDIT_CALLBACK_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_audit_object_ace
+Struct SYSTEM_AUDIT_OBJECT_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger Flags											// SYSTEM_AUDIT_OBJECT_ACE_FLAGS
+	Guid ObjectType
+	Guid InheritedObjectType
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_mandatory_label_ace
+Struct SYSTEM_MANDATORY_LABEL_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+Struct SYSTEM_PROCESS_TRUST_LABEL_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_resource_attribute_ace
+Struct SYSTEM_RESOURCE_ATTRIBUTE_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-system_scoped_policy_id_ace
+Struct SYSTEM_SCOPED_POLICY_ID_ACE
+	ACE_HEADER Header
+	UInteger Mask
+	UInteger SidStart
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_access_information
+Struct TOKEN_ACCESS_INFORMATION
+	Pointer SidHash											// SID_AND_ATTRIBUTES_HASH*
+	Pointer RestrictedSidHash								// SID_AND_ATTRIBUTES_HASH*
+	Pointer Privileges										// TOKEN_PRIVILEGES*
+	LUID AuthenticationId
+	Integer TokenType										// TOKEN_TYPE
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	TOKEN_MANDATORY_POLICY MandatoryPolicy
+	UInteger Flags
+	UInteger AppContainerNumber
+	Integer iMissingAlignment1
+	Pointer PackageSid										// PSID
+	Pointer CapabilitiesHash								// SID_AND_ATTRIBUTES_HASH*
+	Pointer TrustLevelSid									// PSID
+	Pointer SecurityAttributes								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_appcontainer_information
+Struct TOKEN_APPCONTAINER_INFORMATION
+	Pointer TokenAppContainer								// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_audit_policy
+Struct TOKEN_AUDIT_POLICY
+	UChar[31] PerUserPolicy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_control
+Struct TOKEN_CONTROL
+	LUID TokenId
+	LUID AuthenticationId
+	LUID ModifiedId
+	TOKEN_SOURCE TokenSource
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_default_dacl
+Struct TOKEN_DEFAULT_DACL
+	Pointer DefaultDacl										// ACL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_device_claims
+Struct TOKEN_DEVICE_CLAIMS
+	Pointer DeviceClaims									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_elevation
+Struct TOKEN_ELEVATION
+	UInteger TokenIsElevated
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_groups
+Struct TOKEN_GROUPS
+	UInteger GroupCount
+	Integer iMissingAlignment1
+	SID_AND_ATTRIBUTES[1] Groups
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_groups_and_privileges
+Struct TOKEN_GROUPS_AND_PRIVILEGES
+	UInteger SidCount
+	UInteger SidLength
+	Pointer Sids											// SID_AND_ATTRIBUTES*
+	UInteger RestrictedSidCount
+	UInteger RestrictedSidLength
+	Pointer RestrictedSids									// SID_AND_ATTRIBUTES*
+	UInteger PrivilegeCount
+	UInteger PrivilegeLength
+	Pointer Privileges										// LUID_AND_ATTRIBUTES*
+	LUID AuthenticationId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_linked_token
+Struct TOKEN_LINKED_TOKEN
+	Pointer LinkedToken										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_mandatory_label
+Struct TOKEN_MANDATORY_LABEL
+	SID_AND_ATTRIBUTES Label
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_mandatory_policy
+Struct TOKEN_MANDATORY_POLICY
+	UInteger Policy											// TOKEN_MANDATORY_POLICY_ID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_origin
+Struct TOKEN_ORIGIN
+	LUID OriginatingLogonSession
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_owner
+Struct TOKEN_OWNER
+	Pointer Owner											// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_primary_group
+Struct TOKEN_PRIMARY_GROUP
+	Pointer PrimaryGroup									// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_privileges
+Struct TOKEN_PRIVILEGES
+	UInteger PrivilegeCount
+	LUID_AND_ATTRIBUTES[1] Privileges
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_source
+Struct TOKEN_SOURCE
+	Char[8] SourceName										// CHAR
+	LUID SourceIdentifier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_statistics
+Struct TOKEN_STATISTICS
+	LUID TokenId
+	LUID AuthenticationId
+	Bigint ExpirationTime
+	Integer TokenType										// TOKEN_TYPE
+	Integer ImpersonationLevel								// SECURITY_IMPERSONATION_LEVEL
+	UInteger DynamicCharged
+	UInteger DynamicAvailable
+	UInteger GroupCount
+	UInteger PrivilegeCount
+	LUID ModifiedId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_user
+Struct TOKEN_USER
+	SID_AND_ATTRIBUTES User
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-token_user_claims
+Struct TOKEN_USER_CLAIMS
+	Pointer UserClaims										// Pointer*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

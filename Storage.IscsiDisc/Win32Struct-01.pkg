@@ -1,0 +1,980 @@
+Use UI
+
+Struct _Anonymous_e__Union_1080
+	// IKE_AUTHENTICATION_PRESHARED_KEY PsKey // (40)
+	IKE_AUTHENTICATION_PRESHARED_KEY PsKey
+End_Struct
+
+Struct _Flags_e__Union_3222
+	// _CacheFlags_e__Struct_3223 CacheFlags // (1)
+	// UChar CacheFlagsSet // (1)
+	_CacheFlags_e__Struct_3223 CacheFlags
+End_Struct
+
+Struct _Revision_e__Union_3227
+	// UChar[8] Info // (8)
+	// UBigint AsUlonglong // (8)
+	UChar[8] Info
+End_Struct
+
+Struct ATA_PASS_THROUGH_DIRECT
+	UShort Length
+	UShort AtaFlags
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar ReservedAsUchar
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	UInteger ReservedAsUlong
+	Integer iMissingAlignment1
+	Pointer DataBuffer										// Pointer*
+	UChar[8] PreviousTaskFile
+	UChar[8] CurrentTaskFile
+End_Struct
+
+Struct ATA_PASS_THROUGH_DIRECT32
+	UShort Length
+	UShort AtaFlags
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar ReservedAsUchar
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	UInteger ReservedAsUlong
+	Integer iMissingAlignment1
+	Pointer DataBuffer										// Pointer*
+	UChar[8] PreviousTaskFile
+	UChar[8] CurrentTaskFile
+End_Struct
+
+Struct ATA_PASS_THROUGH_EX
+	UShort Length
+	UShort AtaFlags
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar ReservedAsUchar
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	UInteger ReservedAsUlong
+	Integer iMissingAlignment1
+	ULongPtr DataBufferOffset
+	UChar[8] PreviousTaskFile
+	UChar[8] CurrentTaskFile
+End_Struct
+
+Struct ATA_PASS_THROUGH_EX32
+	UShort Length
+	UShort AtaFlags
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar ReservedAsUchar
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	UInteger ReservedAsUlong
+	UInteger DataBufferOffset
+	UChar[8] PreviousTaskFile
+	UChar[8] CurrentTaskFile
+End_Struct
+
+Struct DSM_NOTIFICATION_REQUEST_BLOCK
+	UInteger Size
+	UInteger Version
+	UInteger NotifyFlags
+	UInteger DataSetProfile
+	UInteger[3] Reserved
+	UInteger DataSetRangesCount
+	MP_DEVICE_DATA_SET_RANGE[1] DataSetRanges
+End_Struct
+
+Struct DUMP_DRIVER
+	Pointer DumpDriverList									// Pointer*
+	UShort[15] DriverName
+	UShort[15] BaseName
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DUMP_DRIVER_EX
+	Pointer DumpDriverList									// Pointer*
+	UShort[15] DriverName
+	UShort[15] BaseName
+	Integer iMissingAlignment1
+	NTSCSI_UNICODE_STRING DriverFullPath
+End_Struct
+
+Struct DUMP_POINTERS
+	Pointer AdapterObject									// _ADAPTER_OBJECT*
+	Pointer MappedRegisterBase								// Pointer*
+	Pointer DumpData										// Pointer*
+	Pointer CommonBufferVa									// Pointer*
+	Bigint CommonBufferPa
+	UInteger CommonBufferSize
+	UChar AllocateCommonBuffers								// BOOLEAN
+	UChar UseDiskDump										// BOOLEAN
+	UChar[2] Spare1
+	Pointer DeviceObject									// Pointer*
+End_Struct
+
+Struct DUMP_POINTERS_EX
+	DUMP_POINTERS_VERSION Header
+	Pointer DumpData										// Pointer*
+	Pointer CommonBufferVa									// Pointer*
+	UInteger CommonBufferSize
+	UChar AllocateCommonBuffers								// BOOLEAN
+	UChar[3] cMissingAlignment1
+	Pointer DeviceObject									// Pointer*
+	Pointer DriverList										// Pointer*
+	UInteger dwPortFlags
+	UInteger MaxDeviceDumpSectionSize
+	UInteger MaxDeviceDumpLevel
+	UInteger MaxTransferSize
+	Pointer AdapterObject									// Pointer*
+	Pointer MappedRegisterBase								// Pointer*
+	Pointer DeviceReady										// BOOLEAN*
+	Pointer DumpDevicePowerOn								// PDUMP_DEVICE_POWERON_ROUTINE
+	Pointer DumpDevicePowerOnContext						// Pointer*
+End_Struct
+
+Struct DUMP_POINTERS_VERSION
+	UInteger Version
+	UInteger Size
+End_Struct
+
+Struct FIRMWARE_REQUEST_BLOCK
+	UInteger Version
+	UInteger Size
+	UInteger Function
+	UInteger Flags
+	UInteger DataBufferOffset
+	UInteger DataBufferLength
+End_Struct
+
+Struct HYBRID_DEMOTE_BY_SIZE
+	UInteger Version
+	UInteger Size
+	UChar SourcePriority
+	UChar TargetPriority
+	UShort Reserved0
+	UInteger Reserved1
+	UBigint LbaCount
+End_Struct
+
+Struct HYBRID_DIRTY_THRESHOLDS
+	UInteger Version
+	UInteger Size
+	UInteger DirtyLowThreshold
+	UInteger DirtyHighThreshold
+End_Struct
+
+Struct HYBRID_INFORMATION
+	UInteger Version
+	UInteger Size
+	UChar HybridSupported									// BOOLEAN
+	UChar[3] cMissingAlignment1
+	Integer Status											// NVCACHE_STATUS
+	Integer CacheTypeEffective								// NVCACHE_TYPE
+	Integer CacheTypeDefault								// NVCACHE_TYPE
+	UInteger FractionBase
+	Integer iMissingAlignment2
+	UBigint CacheSize
+	_Attributes_e__Struct_3224 Attributes
+	_Priorities_e__Struct_3225 Priorities
+End_Struct
+
+Struct HYBRID_REQUEST_BLOCK
+	UInteger Version
+	UInteger Size
+	UInteger Function
+	UInteger Flags
+	UInteger DataBufferOffset
+	UInteger DataBufferLength
+End_Struct
+
+Struct IDE_IO_CONTROL
+	UInteger HeaderLength
+	UChar[8] Signature
+	UInteger Timeout
+	UInteger ControlCode
+	UInteger ReturnStatus
+	UInteger DataLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-ike_authentication_information
+Struct IKE_AUTHENTICATION_INFORMATION
+	Integer AuthMethod										// IKE_AUTHENTICATION_METHOD
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1080 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-ike_authentication_preshared_key
+Struct IKE_AUTHENTICATION_PRESHARED_KEY
+	UBigint SecurityFlags
+	UChar IdType
+	UChar[3] cMissingAlignment1
+	UInteger IdLengthInBytes
+	Pointer Id												// UChar*
+	UInteger KeyLengthInBytes
+	Integer iMissingAlignment2
+	Pointer Key												// UChar*
+End_Struct
+
+Struct IO_SCSI_CAPABILITIES
+	UInteger Length
+	UInteger MaximumTransferLength
+	UInteger MaximumPhysicalPages
+	UInteger SupportedAsynchronousEvents
+	UInteger AlignmentMask
+	UChar TaggedQueuing										// BOOLEAN
+	UChar AdapterScansDown									// BOOLEAN
+	UChar AdapterUsesPio									// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_connection_infoa
+Struct ISCSI_CONNECTION_INFOA
+	ISCSI_UNIQUE_SESSION_ID ConnectionId
+	Pointer InitiatorAddress								// PSTR
+	Pointer TargetAddress									// PSTR
+	UShort InitiatorSocket
+	UShort TargetSocket
+	UChar[2] CID
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_connection_infow
+Struct ISCSI_CONNECTION_INFOW
+	ISCSI_UNIQUE_SESSION_ID ConnectionId
+	Pointer InitiatorAddress								// PWSTR
+	Pointer TargetAddress									// PWSTR
+	UShort InitiatorSocket
+	UShort TargetSocket
+	UChar[2] CID
+	Short iMissingAlignment1
+End_Struct
+
+Struct ISCSI_CONNECTION_INFO_EX
+	ISCSI_UNIQUE_SESSION_ID ConnectionId
+	UChar State
+	UChar Protocol
+	UChar HeaderDigest
+	UChar DataDigest
+	UInteger MaxRecvDataSegmentLength
+	Integer AuthType										// ISCSI_AUTH_TYPES
+	Integer iMissingAlignment1
+	UBigint EstimatedThroughput
+	UInteger MaxDatagramSize
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_device_on_sessiona
+Struct ISCSI_DEVICE_ON_SESSIONA
+	Char[256] InitiatorName									// CHAR
+	Char[224] TargetName									// CHAR
+	SCSI_ADDRESS ScsiAddress
+	Guid DeviceInterfaceType
+	Char[260] DeviceInterfaceName							// CHAR
+	Char[260] LegacyName									// CHAR
+	STORAGE_DEVICE_NUMBER StorageDeviceNumber
+	UInteger DeviceInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_device_on_sessionw
+Struct ISCSI_DEVICE_ON_SESSIONW
+	UShort[256] InitiatorName
+	UShort[224] TargetName
+	SCSI_ADDRESS ScsiAddress
+	Guid DeviceInterfaceType
+	UShort[260] DeviceInterfaceName
+	UShort[260] LegacyName
+	STORAGE_DEVICE_NUMBER StorageDeviceNumber
+	UInteger DeviceInstance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_login_options
+Struct ISCSI_LOGIN_OPTIONS
+	UInteger Version
+	UInteger InformationSpecified
+	UInteger LoginFlags
+	Integer AuthType										// ISCSI_AUTH_TYPES
+	Integer HeaderDigest									// ISCSI_DIGEST_TYPES
+	Integer DataDigest										// ISCSI_DIGEST_TYPES
+	UInteger MaximumConnections
+	UInteger DefaultTime2Wait
+	UInteger DefaultTime2Retain
+	UInteger UsernameLength
+	UInteger PasswordLength
+	Integer iMissingAlignment1
+	Pointer Username										// UChar*
+	Pointer Password										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_session_infoa
+Struct ISCSI_SESSION_INFOA
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	Pointer InitiatorName									// PSTR
+	Pointer TargetNodeName									// PSTR
+	Pointer TargetName										// PSTR
+	UChar[6] ISID
+	UChar[2] TSID
+	UInteger ConnectionCount
+	Integer iMissingAlignment1
+	Pointer Connections										// ISCSI_CONNECTION_INFOA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_session_infow
+Struct ISCSI_SESSION_INFOW
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	Pointer InitiatorName									// PWSTR
+	Pointer TargetNodeName									// PWSTR
+	Pointer TargetName										// PWSTR
+	UChar[6] ISID
+	UChar[2] TSID
+	UInteger ConnectionCount
+	Integer iMissingAlignment1
+	Pointer Connections										// ISCSI_CONNECTION_INFOW*
+End_Struct
+
+Struct ISCSI_SESSION_INFO_EX
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	UChar InitialR2t										// BOOLEAN
+	UChar ImmediateData										// BOOLEAN
+	UChar Type
+	UChar DataSequenceInOrder								// BOOLEAN
+	UChar DataPduInOrder									// BOOLEAN
+	UChar ErrorRecoveryLevel
+	Short iMissingAlignment1
+	UInteger MaxOutstandingR2t
+	UInteger FirstBurstLength
+	UInteger MaxBurstLength
+	UInteger MaximumConnections
+	UInteger ConnectionCount
+	Integer iMissingAlignment2
+	Pointer Connections										// ISCSI_CONNECTION_INFO_EX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_mappinga
+Struct ISCSI_TARGET_MAPPINGA
+	Char[256] InitiatorName									// CHAR
+	Char[224] TargetName									// CHAR
+	Char[260] OSDeviceName									// CHAR
+	Integer iMissingAlignment1
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	UInteger OSBusNumber
+	UInteger OSTargetNumber
+	UInteger LUNCount
+	Integer iMissingAlignment2
+	Pointer LUNList											// SCSI_LUN_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_mappingw
+Struct ISCSI_TARGET_MAPPINGW
+	UShort[256] InitiatorName
+	UShort[224] TargetName
+	UShort[260] OSDeviceName
+	ISCSI_UNIQUE_SESSION_ID SessionId
+	UInteger OSBusNumber
+	UInteger OSTargetNumber
+	UInteger LUNCount
+	Integer iMissingAlignment1
+	Pointer LUNList											// SCSI_LUN_LIST*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portala
+Struct ISCSI_TARGET_PORTALA
+	Char[256] SymbolicName									// CHAR
+	Char[256] Address										// CHAR
+	UShort Socket
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portalw
+Struct ISCSI_TARGET_PORTALW
+	UShort[256] SymbolicName
+	UShort[256] Address
+	UShort Socket
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_groupa
+Struct ISCSI_TARGET_PORTAL_GROUPA
+	UInteger Count
+	ISCSI_TARGET_PORTALA[1] Portals
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_groupw
+Struct ISCSI_TARGET_PORTAL_GROUPW
+	UInteger Count
+	ISCSI_TARGET_PORTALW[1] Portals
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_infoa
+Struct ISCSI_TARGET_PORTAL_INFOA
+	Char[256] InitiatorName									// CHAR
+	UInteger InitiatorPortNumber
+	Char[256] SymbolicName									// CHAR
+	Char[256] Address										// CHAR
+	UShort Socket
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_infow
+Struct ISCSI_TARGET_PORTAL_INFOW
+	UShort[256] InitiatorName
+	UInteger InitiatorPortNumber
+	UShort[256] SymbolicName
+	UShort[256] Address
+	UShort Socket
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_info_exa
+Struct ISCSI_TARGET_PORTAL_INFO_EXA
+	Char[256] InitiatorName									// CHAR
+	UInteger InitiatorPortNumber
+	Char[256] SymbolicName									// CHAR
+	Char[256] Address										// CHAR
+	UShort Socket
+	Short iMissingAlignment1
+	UBigint SecurityFlags
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_target_portal_info_exw
+Struct ISCSI_TARGET_PORTAL_INFO_EXW
+	UShort[256] InitiatorName
+	UInteger InitiatorPortNumber
+	UShort[256] SymbolicName
+	UShort[256] Address
+	UShort Socket
+	Short iMissingAlignment1
+	UBigint SecurityFlags
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_unique_session_id
+Struct ISCSI_UNIQUE_SESSION_ID
+	UBigint AdapterUnique
+	UBigint AdapterSpecific
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-iscsi_version_info
+Struct ISCSI_VERSION_INFO
+	UInteger MajorVersion
+	UInteger MinorVersion
+	UInteger BuildNumber
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH
+	SCSI_PASS_THROUGH PassThrough
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH32
+	SCSI_PASS_THROUGH32 PassThrough
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	Integer iMissingAlignment1
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH32_EX
+	UInteger PassThroughOffset
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	Integer iMissingAlignment1
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH_DIRECT
+	SCSI_PASS_THROUGH_DIRECT PassThrough
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH_DIRECT32
+	SCSI_PASS_THROUGH_DIRECT32 PassThrough
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH_DIRECT32_EX
+	UInteger PassThroughOffset
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	Integer iMissingAlignment1
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH_DIRECT_EX
+	UInteger PassThroughOffset
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	Integer iMissingAlignment1
+	UBigint MpioPathId
+End_Struct
+
+Struct MPIO_PASS_THROUGH_PATH_EX
+	UInteger PassThroughOffset
+	UInteger Version
+	UShort Length
+	UChar Flags
+	UChar PortNumber
+	Integer iMissingAlignment1
+	UBigint MpioPathId
+End_Struct
+
+Struct MP_DEVICE_DATA_SET_RANGE
+	Bigint StartingOffset
+	UBigint LengthInBytes
+End_Struct
+
+Struct NTSCSI_UNICODE_STRING
+	UShort Length
+	UShort MaximumLength
+	Integer iMissingAlignment1
+	Pointer Buffer											// PWSTR
+End_Struct
+
+Struct NVCACHE_HINT_PAYLOAD
+	UChar Command
+	UChar Feature7_0
+	UChar Feature15_8
+	UChar Count15_8
+	UChar LBA7_0
+	UChar LBA15_8
+	UChar LBA23_16
+	UChar LBA31_24
+	UChar LBA39_32
+	UChar LBA47_40
+	UChar Auxiliary7_0
+	UChar Auxiliary23_16
+	UChar[4] Reserved
+End_Struct
+
+Struct NVCACHE_PRIORITY_LEVEL_DESCRIPTOR
+	UChar PriorityLevel
+	UChar[3] Reserved0
+	UInteger ConsumedNVMSizeFraction
+	UInteger ConsumedMappingResourcesFraction
+	UInteger ConsumedNVMSizeForDirtyDataFraction
+	UInteger ConsumedMappingResourcesForDirtyDataFraction
+	UInteger Reserved1
+End_Struct
+
+Struct NVCACHE_REQUEST_BLOCK
+	UInteger NRBSize
+	UShort Function
+	Short iMissingAlignment1
+	UInteger NRBFlags
+	UInteger NRBStatus
+	UInteger Count
+	Integer iMissingAlignment2
+	UBigint LBA
+	UInteger DataBufSize
+	UInteger NVCacheStatus
+	UInteger NVCacheSubStatus
+	Integer iMissingAlignment3
+End_Struct
+
+Struct NV_FEATURE_PARAMETER
+	UShort NVPowerModeEnabled
+	UShort NVParameterReserv1
+	UShort NVCmdEnabled
+	UShort NVParameterReserv2
+	UShort NVPowerModeVer
+	UShort NVCmdVer
+	UInteger NVSize
+	UShort NVReadSpeed
+	UShort NVWrtSpeed
+	UInteger DeviceSpinUpTime
+End_Struct
+
+Struct NV_SEP_CACHE_PARAMETER
+	UInteger Version
+	UInteger Size
+	_Flags_e__Union_3222 Flags
+	UChar WriteCacheType
+	UChar WriteCacheTypeEffective
+	UChar[3] ParameterReserve1
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-persistent_iscsi_login_infoa
+Struct PERSISTENT_ISCSI_LOGIN_INFOA
+	Char[224] TargetName									// CHAR
+	UChar IsInformationalSession							// BOOLEAN
+	Char[256] InitiatorInstance								// CHAR
+	UChar[3] cMissingAlignment1
+	UInteger InitiatorPortNumber
+	ISCSI_TARGET_PORTALA TargetPortal
+	UChar[6] cMissingAlignment2
+	UBigint SecurityFlags
+	Pointer Mappings										// ISCSI_TARGET_MAPPINGA*
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-persistent_iscsi_login_infow
+Struct PERSISTENT_ISCSI_LOGIN_INFOW
+	UShort[224] TargetName
+	UChar IsInformationalSession							// BOOLEAN
+	UChar[1] cMissingAlignment1
+	UShort[256] InitiatorInstance
+	Short iMissingAlignment2
+	UInteger InitiatorPortNumber
+	ISCSI_TARGET_PORTALW TargetPortal
+	UChar[6] cMissingAlignment3
+	UBigint SecurityFlags
+	Pointer Mappings										// ISCSI_TARGET_MAPPINGW*
+	ISCSI_LOGIN_OPTIONS LoginOptions
+End_Struct
+
+Struct SCSI_ADAPTER_BUS_INFO
+	UChar NumberOfBuses
+	UChar[3] cMissingAlignment1
+	SCSI_BUS_DATA[1] BusData
+End_Struct
+
+Struct SCSI_ADDRESS
+	UInteger Length
+	UChar PortNumber
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+End_Struct
+
+Struct SCSI_BUS_DATA
+	UChar NumberOfLogicalUnits
+	UChar InitiatorBusId
+	Short iMissingAlignment1
+	UInteger InquiryDataOffset
+End_Struct
+
+Struct SCSI_INQUIRY_DATA
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar DeviceClaimed										// BOOLEAN
+	UInteger InquiryDataLength
+	UInteger NextInquiryDataOffset
+	UChar[1] InquiryData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/iscsidsc/ns-iscsidsc-scsi_lun_list
+Struct SCSI_LUN_LIST
+	UInteger OSLUN
+	Integer iMissingAlignment1
+	UBigint TargetLUN
+End_Struct
+
+Struct SCSI_PASS_THROUGH
+	UShort Length
+	UChar ScsiStatus
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar CdbLength
+	UChar SenseInfoLength
+	UChar DataIn
+	UChar[3] cMissingAlignment1
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	Integer iMissingAlignment2
+	ULongPtr DataBufferOffset
+	UInteger SenseInfoOffset
+	UChar[16] Cdb
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SCSI_PASS_THROUGH32
+	UShort Length
+	UChar ScsiStatus
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar CdbLength
+	UChar SenseInfoLength
+	UChar DataIn
+	UChar[3] cMissingAlignment1
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	UInteger DataBufferOffset
+	UInteger SenseInfoOffset
+	UChar[16] Cdb
+End_Struct
+
+Struct SCSI_PASS_THROUGH32_EX
+	UInteger Version
+	UInteger Length
+	UInteger CdbLength
+	UInteger StorAddressLength
+	UChar ScsiStatus
+	UChar SenseInfoLength
+	UChar DataDirection
+	UChar Reserved
+	UInteger TimeOutValue
+	UInteger StorAddressOffset
+	UInteger SenseInfoOffset
+	UInteger DataOutTransferLength
+	UInteger DataInTransferLength
+	UInteger DataOutBufferOffset
+	UInteger DataInBufferOffset
+	UChar[1] Cdb
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCSI_PASS_THROUGH_DIRECT
+	UShort Length
+	UChar ScsiStatus
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar CdbLength
+	UChar SenseInfoLength
+	UChar DataIn
+	UChar[3] cMissingAlignment1
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	Integer iMissingAlignment2
+	Pointer DataBuffer										// Pointer*
+	UInteger SenseInfoOffset
+	UChar[16] Cdb
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SCSI_PASS_THROUGH_DIRECT32
+	UShort Length
+	UChar ScsiStatus
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+	UChar CdbLength
+	UChar SenseInfoLength
+	UChar DataIn
+	UChar[3] cMissingAlignment1
+	UInteger DataTransferLength
+	UInteger TimeOutValue
+	Integer iMissingAlignment2
+	Pointer DataBuffer										// Pointer*
+	UInteger SenseInfoOffset
+	UChar[16] Cdb
+	Integer iMissingAlignment3
+End_Struct
+
+Struct SCSI_PASS_THROUGH_DIRECT32_EX
+	UInteger Version
+	UInteger Length
+	UInteger CdbLength
+	UInteger StorAddressLength
+	UChar ScsiStatus
+	UChar SenseInfoLength
+	UChar DataDirection
+	UChar Reserved
+	UInteger TimeOutValue
+	UInteger StorAddressOffset
+	UInteger SenseInfoOffset
+	UInteger DataOutTransferLength
+	UInteger DataInTransferLength
+	Pointer DataOutBuffer									// Pointer*
+	Pointer DataInBuffer									// Pointer*
+	UChar[1] Cdb
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SCSI_PASS_THROUGH_DIRECT_EX
+	UInteger Version
+	UInteger Length
+	UInteger CdbLength
+	UInteger StorAddressLength
+	UChar ScsiStatus
+	UChar SenseInfoLength
+	UChar DataDirection
+	UChar Reserved
+	UInteger TimeOutValue
+	UInteger StorAddressOffset
+	UInteger SenseInfoOffset
+	UInteger DataOutTransferLength
+	UInteger DataInTransferLength
+	Pointer DataOutBuffer									// Pointer*
+	Pointer DataInBuffer									// Pointer*
+	UChar[1] Cdb
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SCSI_PASS_THROUGH_EX
+	UInteger Version
+	UInteger Length
+	UInteger CdbLength
+	UInteger StorAddressLength
+	UChar ScsiStatus
+	UChar SenseInfoLength
+	UChar DataDirection
+	UChar Reserved
+	UInteger TimeOutValue
+	UInteger StorAddressOffset
+	UInteger SenseInfoOffset
+	UInteger DataOutTransferLength
+	UInteger DataInTransferLength
+	ULongPtr DataOutBufferOffset
+	ULongPtr DataInBufferOffset
+	UChar[1] Cdb
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SRB_IO_CONTROL
+	UInteger HeaderLength
+	UChar[8] Signature
+	UInteger Timeout
+	UInteger ControlCode
+	UInteger ReturnCode
+	UInteger Length
+End_Struct
+
+Struct STORAGE_DIAGNOSTIC_MP_REQUEST
+	UInteger Version
+	UInteger Size
+	Integer TargetType										// MP_STORAGE_DIAGNOSTIC_TARGET_TYPE
+	Integer Level											// MP_STORAGE_DIAGNOSTIC_LEVEL
+	Guid ProviderId
+	UInteger BufferSize
+	UInteger Reserved
+	UChar[1] DataBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_ENDURANCE_DATA_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	STORAGE_ENDURANCE_INFO EnduranceInfo
+End_Struct
+
+Struct STORAGE_ENDURANCE_INFO
+	UInteger ValidFields
+	UInteger GroupId
+	_Flags_e__Struct_3228 Flags
+	UInteger LifePercentage
+	UChar[16] BytesReadCount
+	UChar[16] ByteWriteCount
+End_Struct
+
+Struct STORAGE_FIRMWARE_ACTIVATE
+	UInteger Version
+	UInteger Size
+	UChar SlotToActivate
+	UChar[3] Reserved0
+End_Struct
+
+Struct STORAGE_FIRMWARE_DOWNLOAD
+	UInteger Version
+	UInteger Size
+	UBigint Offset
+	UBigint BufferSize
+	UChar[1] ImageBuffer
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_FIRMWARE_DOWNLOAD_V2
+	UInteger Version
+	UInteger Size
+	UBigint Offset
+	UBigint BufferSize
+	UChar Slot
+	UChar[3] Reserved
+	UInteger ImageSize
+	UChar[1] ImageBuffer
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_FIRMWARE_INFO
+	UInteger Version
+	UInteger Size
+	UChar UpgradeSupport									// BOOLEAN
+	UChar SlotCount
+	UChar ActiveSlot
+	UChar PendingActivateSlot
+	UInteger Reserved
+	STORAGE_FIRMWARE_SLOT_INFO[1] Slot
+End_Struct
+
+Struct STORAGE_FIRMWARE_INFO_V2
+	UInteger Version
+	UInteger Size
+	UChar UpgradeSupport									// BOOLEAN
+	UChar SlotCount
+	UChar ActiveSlot
+	UChar PendingActivateSlot
+	UChar FirmwareShared									// BOOLEAN
+	UChar[3] Reserved
+	UInteger ImagePayloadAlignment
+	UInteger ImagePayloadMaxSize
+	STORAGE_FIRMWARE_SLOT_INFO_V2[1] Slot
+End_Struct
+
+Struct STORAGE_FIRMWARE_SLOT_INFO
+	UChar SlotNumber
+	UChar ReadOnly											// BOOLEAN
+	UChar[6] Reserved
+	_Revision_e__Union_3227 Revision
+End_Struct
+
+Struct STORAGE_FIRMWARE_SLOT_INFO_V2
+	UChar SlotNumber
+	UChar ReadOnly											// BOOLEAN
+	UChar[6] Reserved
+	UChar[16] Revision
+End_Struct
+
+Struct _Attributes_e__Struct_3224
+	UInteger _bitfield
+End_Struct
+
+Struct _CacheFlags_e__Struct_3223
+	UChar _bitfield
+End_Struct
+
+Struct _Flags_e__Struct_3228
+	UInteger _bitfield
+End_Struct
+
+Struct _Priorities_e__Struct_3225
+	UChar PriorityLevelCount
+	UChar MaxPriorityBehavior								// BOOLEAN
+	UChar OptimalWriteGranularity
+	UChar Reserved
+	UInteger DirtyThresholdLow
+	UInteger DirtyThresholdHigh
+	_SupportedCommands_e__Struct_3226 SupportedCommands
+	NVCACHE_PRIORITY_LEVEL_DESCRIPTOR[1] Priority
+End_Struct
+
+Struct _SupportedCommands_e__Struct_3226
+	UInteger _bitfield
+	UInteger MaxEvictCommands
+	UInteger MaxLbaRangeCountForEvict
+	UInteger MaxLbaRangeCountForChangeLba
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

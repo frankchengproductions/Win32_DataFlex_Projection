@@ -1,0 +1,98 @@
+Use UI
+
+Struct _Anonymous_e__Union_1609
+	// Integer BooleanVal										// BOOL // (4)
+	// Char SByteVal // (1)
+	// Short Int16Val // (2)
+	// Integer Int32Val // (4)
+	// Bigint Int64Val // (8)
+	// UChar ByteVal // (1)
+	// UShort UInt16Val // (2)
+	// UInteger UInt32Val // (4)
+	// UBigint UInt64Val // (8)
+	// Float SingleVal // (4)
+	// Real DoubleVal // (8)
+	// UBigint FileTimeVal // (8)
+	// Pointer SysTimeVal										// SYSTEMTIME* // (8)
+	// Pointer GuidVal											// Guid* // (8)
+	// Pointer StringVal										// PWSTR // (8)
+	// Pointer AnsiStringVal									// PSTR // (8)
+	// Pointer BinaryVal										// UChar* // (8)
+	// Pointer SidVal											// PSID // (8)
+	// ULongPtr SizeTVal // (8)
+	// Pointer BooleanArr										// BOOL* // (8)
+	// Pointer SByteArr										// Char* // (8)
+	// Pointer Int16Arr										// Short* // (8)
+	// Pointer Int32Arr										// Integer* // (8)
+	// Pointer Int64Arr										// Bigint* // (8)
+	// Pointer ByteArr											// UChar* // (8)
+	// Pointer UInt16Arr										// UShort* // (8)
+	// Pointer UInt32Arr										// UInteger* // (8)
+	// Pointer UInt64Arr										// UBigint* // (8)
+	// Pointer SingleArr										// Float* // (8)
+	// Pointer DoubleArr										// Real* // (8)
+	// Pointer FileTimeArr										// FILETIME* // (8)
+	// Pointer SysTimeArr										// SYSTEMTIME* // (8)
+	// Pointer GuidArr											// Guid* // (8)
+	// Pointer StringArr										// PWSTR* // (8)
+	// Pointer AnsiStringArr									// PSTR* // (8)
+	// Pointer SidArr											// PSID* // (8)
+	// Pointer SizeTArr										// ULongPtr* // (8)
+	// LongPtr EvtHandleVal									// EVT_HANDLE // (8)
+	// Pointer XmlVal											// PWSTR // (8)
+	// Pointer XmlValArr										// PWSTR* // (8)
+	Bigint Int64Val
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-eventlogrecord
+Struct EVENTLOGRECORD
+	UInteger Length
+	UInteger Reserved
+	UInteger RecordNumber
+	UInteger TimeGenerated
+	UInteger TimeWritten
+	UInteger EventID
+	UShort EventType										// REPORT_EVENT_TYPE
+	UShort NumStrings
+	UShort EventCategory
+	UShort ReservedFlags
+	UInteger ClosingRecordNumber
+	UInteger StringOffset
+	UInteger UserSidLength
+	UInteger UserSidOffset
+	UInteger DataLength
+	UInteger DataOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-eventlog_full_information
+Struct EVENTLOG_FULL_INFORMATION
+	UInteger dwFull
+End_Struct
+
+Struct EVENTSFORLOGFILE
+	UInteger ulSize
+	UShort[256] szLogicalLogFile
+	UInteger ulNumRecords
+	EVENTLOGRECORD[1] pEventLogRecords
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winevt/ns-winevt-evt_rpc_login
+Struct EVT_RPC_LOGIN
+	Pointer Server											// PWSTR
+	Pointer User											// PWSTR
+	Pointer Domain											// PWSTR
+	Pointer Password										// PWSTR
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winevt/ns-winevt-evt_variant
+Struct EVT_VARIANT
+	_Anonymous_e__Union_1609 Anonymous
+	UInteger Count
+	UInteger Type
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

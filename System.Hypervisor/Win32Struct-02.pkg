@@ -1,0 +1,488 @@
+Use UI
+
+Struct WHV_SYNIC_SINT_DELIVERABLE_CONTEXT
+	UShort DeliverableSints
+	UShort Reserved1
+	UInteger Reserved2
+End_Struct
+
+Struct WHV_SYNTHETIC_PROCESSOR_FEATURES
+	_Anonymous_e__Union_2047 Anonymous
+End_Struct
+
+Struct WHV_SYNTHETIC_PROCESSOR_FEATURES_BANKS
+	UInteger BanksCount
+	UInteger Reserved0
+	_Anonymous_e__Union_2049 Anonymous
+End_Struct
+
+Struct WHV_TRANSLATE_GVA_RESULT
+	Integer ResultCode										// WHV_TRANSLATE_GVA_RESULT_CODE
+	UInteger Reserved
+End_Struct
+
+Struct WHV_TRIGGER_PARAMETERS
+	Integer TriggerType										// WHV_TRIGGER_TYPE
+	UInteger Reserved
+	_Anonymous_e__Union_1646 Anonymous
+End_Struct
+
+Struct WHV_UINT128
+	_Anonymous_e__Union_1615 Anonymous
+End_Struct
+
+Struct WHV_VIRTUAL_PROCESSOR_PROPERTY
+	Integer PropertyCode									// WHV_VIRTUAL_PROCESSOR_PROPERTY_CODE
+	UInteger Reserved
+	_Anonymous_e__Union_1613 Anonymous
+End_Struct
+
+Struct WHV_VPCI_DEVICE_NOTIFICATION
+	Integer NotificationType								// WHV_VPCI_DEVICE_NOTIFICATION_TYPE
+	UInteger Reserved1
+	_Anonymous_e__Union_1645 Anonymous
+End_Struct
+
+Struct WHV_VPCI_DEVICE_REGISTER
+	Integer Location										// WHV_VPCI_DEVICE_REGISTER_SPACE
+	UInteger SizeInBytes
+	UBigint OffsetInBytes
+End_Struct
+
+Struct WHV_VPCI_HARDWARE_IDS
+	UShort VendorID
+	UShort DeviceID
+	UChar RevisionID
+	UChar ProgIf
+	UChar SubClass
+	UChar BaseClass
+	UShort SubVendorID
+	UShort SubSystemID
+End_Struct
+
+Struct WHV_VPCI_INTERRUPT_TARGET
+	UInteger Vector
+	Integer Flags											// WHV_VPCI_INTERRUPT_TARGET_FLAGS
+	UInteger ProcessorCount
+	UInteger[1] Processors
+End_Struct
+
+Struct WHV_VPCI_MMIO_MAPPING
+	Integer Location										// WHV_VPCI_DEVICE_REGISTER_SPACE
+	Integer Flags											// WHV_VPCI_MMIO_RANGE_FLAGS
+	UBigint SizeInBytes
+	UBigint OffsetInBytes
+	Pointer VirtualAddress									// Pointer*
+End_Struct
+
+Struct WHV_VPCI_PROBED_BARS
+	UInteger[6] Value
+End_Struct
+
+Struct WHV_VP_EXCEPTION_CONTEXT
+	UChar InstructionByteCount
+	UChar[3] Reserved
+	UChar[16] InstructionBytes
+	WHV_VP_EXCEPTION_INFO ExceptionInfo
+	UChar ExceptionType
+	UChar[3] Reserved2
+	UInteger ErrorCode
+	UBigint ExceptionParameter
+End_Struct
+
+Struct WHV_VP_EXCEPTION_INFO
+	_Anonymous_e__Union_2066 Anonymous
+End_Struct
+
+Struct WHV_VP_EXIT_CONTEXT
+	WHV_X64_VP_EXECUTION_STATE ExecutionState
+	UChar _bitfield
+	UChar Reserved
+	UInteger Reserved2
+	WHV_X64_SEGMENT_REGISTER Cs
+	UBigint Rip
+	UBigint Rflags
+End_Struct
+
+Struct WHV_X64_APIC_EOI_CONTEXT
+	UInteger InterruptVector
+End_Struct
+
+Struct WHV_X64_APIC_INIT_SIPI_CONTEXT
+	UBigint ApicIcr
+End_Struct
+
+Struct WHV_X64_APIC_SMI_CONTEXT
+	UBigint ApicIcr
+End_Struct
+
+Struct WHV_X64_APIC_WRITE_CONTEXT
+	Integer Type											// WHV_X64_APIC_WRITE_TYPE
+	UInteger Reserved
+	UBigint WriteValue
+End_Struct
+
+Struct WHV_X64_CPUID_ACCESS_CONTEXT
+	UBigint Rax
+	UBigint Rcx
+	UBigint Rdx
+	UBigint Rbx
+	UBigint DefaultResultRax
+	UBigint DefaultResultRcx
+	UBigint DefaultResultRdx
+	UBigint DefaultResultRbx
+End_Struct
+
+Struct WHV_X64_CPUID_RESULT
+	UInteger Function
+	UInteger[3] Reserved
+	UInteger Eax
+	UInteger Ebx
+	UInteger Ecx
+	UInteger Edx
+End_Struct
+
+Struct WHV_X64_CPUID_RESULT2
+	UInteger Function
+	UInteger Index
+	UInteger VpIndex
+	Integer Flags											// WHV_X64_CPUID_RESULT2_FLAGS
+	WHV_CPUID_OUTPUT Output
+	WHV_CPUID_OUTPUT Mask
+End_Struct
+
+Struct WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTER
+	_Anonymous_e__Union_1633 Anonymous
+End_Struct
+
+Struct WHV_X64_FP_CONTROL_STATUS_REGISTER
+	_Anonymous_e__Union_1619 Anonymous
+End_Struct
+
+Struct WHV_X64_FP_REGISTER
+	_Anonymous_e__Union_1617 Anonymous
+End_Struct
+
+Struct WHV_X64_INTERRUPTION_DELIVERABLE_CONTEXT
+	Integer DeliverableType									// WHV_X64_PENDING_INTERRUPTION_TYPE
+End_Struct
+
+Struct WHV_X64_INTERRUPT_STATE_REGISTER
+	_Anonymous_e__Union_1629 Anonymous
+End_Struct
+
+Struct WHV_X64_IO_PORT_ACCESS_CONTEXT
+	UChar InstructionByteCount
+	UChar[3] Reserved
+	UChar[16] InstructionBytes
+	WHV_X64_IO_PORT_ACCESS_INFO AccessInfo
+	UShort PortNumber
+	UShort[3] Reserved2
+	UBigint Rax
+	UBigint Rcx
+	UBigint Rsi
+	UBigint Rdi
+	WHV_X64_SEGMENT_REGISTER Ds
+	WHV_X64_SEGMENT_REGISTER Es
+End_Struct
+
+Struct WHV_X64_IO_PORT_ACCESS_INFO
+	_Anonymous_e__Union_1652 Anonymous
+End_Struct
+
+Struct WHV_X64_MSR_ACCESS_CONTEXT
+	WHV_X64_MSR_ACCESS_INFO AccessInfo
+	UInteger MsrNumber
+	UBigint Rax
+	UBigint Rdx
+End_Struct
+
+Struct WHV_X64_MSR_ACCESS_INFO
+	_Anonymous_e__Union_2064 Anonymous
+End_Struct
+
+Struct WHV_X64_MSR_EXIT_BITMAP
+	_Anonymous_e__Union_2055 Anonymous
+End_Struct
+
+Struct WHV_X64_PENDING_DEBUG_EXCEPTION
+	_Anonymous_e__Union_1641 Anonymous
+End_Struct
+
+Struct WHV_X64_PENDING_EXCEPTION_EVENT
+	_Anonymous_e__Union_1635 Anonymous
+End_Struct
+
+Struct WHV_X64_PENDING_EXT_INT_EVENT
+	_Anonymous_e__Union_1637 Anonymous
+End_Struct
+
+Struct WHV_X64_PENDING_INTERRUPTION_REGISTER
+	_Anonymous_e__Union_1631 Anonymous
+End_Struct
+
+Struct WHV_X64_RDTSC_CONTEXT
+	UBigint TscAux
+	UBigint VirtualOffset
+	UBigint Tsc
+	UBigint ReferenceTime
+	WHV_X64_RDTSC_INFO RdtscInfo
+End_Struct
+
+Struct WHV_X64_RDTSC_INFO
+	_Anonymous_e__Union_2068 Anonymous
+End_Struct
+
+Struct WHV_X64_SEGMENT_REGISTER
+	UBigint Base
+	UInteger Limit
+	UShort Selector
+	_Anonymous_e__Union_1627 Anonymous
+End_Struct
+
+Struct WHV_X64_TABLE_REGISTER
+	UShort[3] Pad
+	UShort Limit
+	UBigint Base
+End_Struct
+
+Struct WHV_X64_UNSUPPORTED_FEATURE_CONTEXT
+	Integer FeatureCode										// WHV_X64_UNSUPPORTED_FEATURE_CODE
+	UInteger Reserved
+	UBigint FeatureParameter
+End_Struct
+
+Struct WHV_X64_VP_EXECUTION_STATE
+	_Anonymous_e__Union_1650 Anonymous
+End_Struct
+
+Struct WHV_X64_XMM_CONTROL_STATUS_REGISTER
+	_Anonymous_e__Union_1623 Anonymous
+End_Struct
+
+Struct _Anonymous_e__Struct_1616
+	UBigint Low64
+	UBigint High64
+End_Struct
+
+Struct _Anonymous_e__Struct_1618
+	UBigint Mantissa
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1620
+	UShort FpControl
+	UShort FpStatus
+	UChar FpTag
+	UChar Reserved
+	UShort LastFpOp
+	_Anonymous_e__Union_1621 Anonymous
+End_Struct
+
+Struct _Anonymous_e__Struct_1622
+	UInteger LastFpEip
+	UShort LastFpCs
+	UShort Reserved2
+End_Struct
+
+Struct _Anonymous_e__Struct_1624
+	_Anonymous_e__Union_1625 Anonymous
+	UInteger XmmStatusControl
+	UInteger XmmStatusControlMask
+End_Struct
+
+Struct _Anonymous_e__Struct_1626
+	UInteger LastFpDp
+	UShort LastFpDs
+	UShort Reserved
+End_Struct
+
+Struct _Anonymous_e__Struct_1628
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1630
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1632
+	UInteger _bitfield
+	UInteger ErrorCode
+End_Struct
+
+Struct _Anonymous_e__Struct_1634
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1636
+	UInteger _bitfield
+	UInteger ErrorCode
+	UBigint ExceptionParameter
+End_Struct
+
+Struct _Anonymous_e__Struct_1638
+	UBigint _bitfield
+	UBigint Reserved2
+End_Struct
+
+Struct _Anonymous_e__Struct_1640
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1642
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1644
+	Integer CacheType										// WHV_CACHE_TYPE
+	UInteger Reserved
+End_Struct
+
+Struct _Anonymous_e__Struct_1651
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1653
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1655
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1657
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1666
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_1670
+	UInteger LastFpEip
+	UShort LastFpCs
+	Short iMissingAlignment1
+End_Struct
+
+Struct _Anonymous_e__Struct_1673
+	UInteger LastFpDp
+	UShort LastFpDs
+	Short iMissingAlignment1
+End_Struct
+
+Struct _Anonymous_e__Struct_2038
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2040
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2042
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2044
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2046
+	WHV_PROCESSOR_FEATURES Bank0
+	WHV_PROCESSOR_FEATURES1 Bank1
+End_Struct
+
+Struct _Anonymous_e__Struct_2048
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2050
+	WHV_SYNTHETIC_PROCESSOR_FEATURES Bank0
+End_Struct
+
+Struct _Anonymous_e__Struct_2052
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2054
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2056
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2058
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2060
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2065
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2067
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_2069
+	UBigint _bitfield
+End_Struct
+
+Struct _ClosedSource_e__Struct_1659
+	UBigint _bitfield
+End_Struct
+
+Struct _DeviceInterrupt_e__Struct_1647
+	UBigint LogicalDeviceId
+	UBigint MsiAddress
+	UInteger MsiData
+	UInteger Reserved
+End_Struct
+
+Struct _Event_e__Struct_1649
+	UInteger ConnectionId
+End_Struct
+
+Struct _FpControlStatus_e__Struct_1668
+	UShort FpControl
+	UShort FpStatus
+	UChar FpTag
+	UChar Reserved
+	UShort LastFpOp
+	_Anonymous_e__Union_1669 Anonymous
+End_Struct
+
+Struct _OpenSource_e__Struct_1660
+	UBigint _bitfield
+End_Struct
+
+Struct _Reg128_e__Struct_1662
+	UBigint Low64
+	UBigint High64
+End_Struct
+
+Struct _Segment_e__Struct_1664
+	UBigint Base
+	UInteger Limit
+	UShort Selector
+	_Anonymous_e__Union_1665 Anonymous
+End_Struct
+
+Struct _Table_e__Struct_1667
+	UShort Limit
+	UChar[6] cMissingAlignment1
+	UBigint Base
+End_Struct
+
+Struct _XmmControlStatus_e__Struct_1671
+	_Anonymous_e__Union_1672 Anonymous
+	UInteger XmmStatusControl
+	UInteger XmmStatusControlMask
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

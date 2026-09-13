@@ -1,0 +1,851 @@
+Use UI
+
+Struct SCM_PD_PROPERTY_QUERY
+	UInteger Version
+	UInteger Size
+	Integer PropertyId										// SCM_PD_PROPERTY_ID
+	Integer QueryType										// SCM_PD_QUERY_TYPE
+	UChar[1] AdditionalParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_PROPERTY_SET
+	UInteger Version
+	UInteger Size
+	Integer PropertyId										// SCM_PD_PROPERTY_ID
+	Integer SetType											// SCM_PD_SET_TYPE
+	UChar[1] AdditionalParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SCM_PD_REINITIALIZE_MEDIA_INPUT
+	UInteger Version
+	UInteger Size
+	_Options_e__Struct_3167 Options
+End_Struct
+
+Struct SCM_PD_REINITIALIZE_MEDIA_OUTPUT
+	UInteger Version
+	UInteger Size
+	Integer Status											// SCM_PD_MEDIA_REINITIALIZATION_STATUS
+End_Struct
+
+Struct SCM_PD_RUNTIME_FW_ACTIVATION_ARM_STATE
+	UChar ArmState											// BOOLEAN
+End_Struct
+
+Struct SCM_PD_RUNTIME_FW_ACTIVATION_INFO
+	UInteger Version
+	UInteger Size
+	Integer LastFirmwareActivationStatus					// SCM_PD_LAST_FW_ACTIVATION_STATUS
+	Integer FirmwareActivationState							// SCM_PD_FIRMWARE_ACTIVATION_STATE
+End_Struct
+
+Struct SCM_PHYSICAL_DEVICES
+	UInteger Version
+	UInteger Size
+	UInteger DeviceCount
+	SCM_PHYSICAL_DEVICE_INSTANCE[1] Devices
+End_Struct
+
+Struct SCM_PHYSICAL_DEVICE_INSTANCE
+	UInteger Version
+	UInteger Size
+	UInteger NfitHandle
+	UShort[256] SymbolicLink
+End_Struct
+
+Struct SCM_REGION
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger NfitHandle
+	Guid LogicalDeviceGuid
+	Guid AddressRangeType
+	UInteger AssociatedId
+	Integer iMissingAlignment1
+	UBigint Length
+	UBigint StartingDPA
+	UBigint BaseSPA
+	UBigint SPAOffset
+	UBigint RegionOffset
+End_Struct
+
+Struct SCM_REGIONS
+	UInteger Version
+	UInteger Size
+	UInteger RegionCount
+	Integer iMissingAlignment1
+	SCM_REGION[1] Regions
+End_Struct
+
+Struct SD_CHANGE_MACHINE_SID_INPUT
+	UShort CurrentMachineSIDOffset
+	UShort CurrentMachineSIDLength
+	UShort NewMachineSIDOffset
+	UShort NewMachineSIDLength
+End_Struct
+
+Struct SD_CHANGE_MACHINE_SID_OUTPUT
+	UBigint NumSDChangedSuccess
+	UBigint NumSDChangedFail
+	UBigint NumSDUnused
+	UBigint NumSDTotal
+	UBigint NumMftSDChangedSuccess
+	UBigint NumMftSDChangedFail
+	UBigint NumMftSDTotal
+End_Struct
+
+Struct SD_ENUM_SDS_ENTRY
+	UInteger Hash
+	UInteger SecurityId
+	UBigint Offset
+	UInteger Length
+	UChar[1] Descriptor
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SD_ENUM_SDS_INPUT
+	UBigint StartingOffset
+	UBigint MaxSDEntriesToReturn
+End_Struct
+
+Struct SD_ENUM_SDS_OUTPUT
+	UBigint NextOffset
+	UBigint NumSDEntriesReturned
+	UBigint NumSDBytesReturned
+	SD_ENUM_SDS_ENTRY[1] SDEntry
+End_Struct
+
+Struct SD_GLOBAL_CHANGE_INPUT
+	UInteger Flags
+	UInteger ChangeType
+	_Anonymous_e__Union_3200 Anonymous
+End_Struct
+
+Struct SD_GLOBAL_CHANGE_OUTPUT
+	UInteger Flags
+	UInteger ChangeType
+	_Anonymous_e__Union_3201 Anonymous
+End_Struct
+
+Struct SD_QUERY_STATS_INPUT
+	UInteger Reserved
+End_Struct
+
+Struct SD_QUERY_STATS_OUTPUT
+	UBigint SdsStreamSize
+	UBigint SdsAllocationSize
+	UBigint SiiStreamSize
+	UBigint SiiAllocationSize
+	UBigint SdhStreamSize
+	UBigint SdhAllocationSize
+	UBigint NumSDTotal
+	UBigint NumSDUnused
+End_Struct
+
+Struct SENDCMDINPARAMS
+	UInteger cBufferSize
+	IDEREGS irDriveRegs
+	UChar bDriveNumber
+	UChar[3] bReserved
+	UInteger[4] dwReserved
+	UChar[1] bBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SENDCMDOUTPARAMS
+	UInteger cBufferSize
+	DRIVERSTATUS DriverStatus
+	UChar[1] bBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SET_DAX_ALLOC_ALIGNMENT_HINT_INPUT
+	UInteger Flags
+	UInteger AlignmentShift
+	UBigint FileOffsetToAlign
+	UInteger FallbackAlignmentShift
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-set_disk_attributes
+Struct SET_DISK_ATTRIBUTES
+	UInteger Version
+	UChar Persist											// BOOLEAN
+	UChar[3] Reserved1
+	UBigint Attributes
+	UBigint AttributesMask
+	UInteger[4] Reserved2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-set_partition_information
+Struct SET_PARTITION_INFORMATION
+	UChar PartitionType
+End_Struct
+
+Struct SET_PARTITION_INFORMATION_EX
+	Integer PartitionStyle									// PARTITION_STYLE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_3168 Anonymous
+End_Struct
+
+Struct SET_PURGE_FAILURE_MODE_INPUT
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-shrink_volume_information
+Struct SHRINK_VOLUME_INFORMATION
+	Integer ShrinkRequestType								// SHRINK_VOLUME_REQUEST_TYPES
+	Integer iMissingAlignment1
+	UBigint Flags
+	Bigint NewNumberOfSectors
+End_Struct
+
+Struct SI_COPYFILE
+	UInteger SourceFileNameLength
+	UInteger DestinationFileNameLength
+	UInteger Flags
+	UShort[1] FileNameBuffer
+	Short iMissingAlignment1
+End_Struct
+
+Struct SMB_SHARE_FLUSH_AND_PURGE_INPUT
+	UShort Version
+End_Struct
+
+Struct SMB_SHARE_FLUSH_AND_PURGE_OUTPUT
+	UInteger cEntriesPurged
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-starting_lcn_input_buffer
+Struct STARTING_LCN_INPUT_BUFFER
+	Bigint StartingLcn
+End_Struct
+
+Struct STARTING_LCN_INPUT_BUFFER_EX
+	Bigint StartingLcn
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-starting_vcn_input_buffer
+Struct STARTING_VCN_INPUT_BUFFER
+	Bigint StartingVcn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_access_alignment_descriptor
+Struct STORAGE_ACCESS_ALIGNMENT_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger BytesPerCacheLine
+	UInteger BytesOffsetForCacheAlignment
+	UInteger BytesPerLogicalSector
+	UInteger BytesPerPhysicalSector
+	UInteger BytesOffsetForSectorAlignment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_adapter_descriptor
+Struct STORAGE_ADAPTER_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger MaximumTransferLength
+	UInteger MaximumPhysicalPages
+	UInteger AlignmentMask
+	UChar AdapterUsesPio									// BOOLEAN
+	UChar AdapterScansDown									// BOOLEAN
+	UChar CommandQueueing									// BOOLEAN
+	UChar AcceleratedTransfer								// BOOLEAN
+	UChar BusType
+	UChar[1] cMissingAlignment1
+	UShort BusMajorVersion
+	UShort BusMinorVersion
+	UChar SrbType
+	UChar AddressType
+End_Struct
+
+Struct STORAGE_ADAPTER_SERIAL_NUMBER
+	UInteger Version
+	UInteger Size
+	UShort[128] SerialNumber
+End_Struct
+
+Struct STORAGE_ALLOCATE_BC_STREAM_INPUT
+	UInteger Version
+	UInteger RequestsPerPeriod
+	UInteger Period
+	UChar RetryFailures										// BOOLEAN
+	UChar Discardable										// BOOLEAN
+	UChar[2] Reserved1										// BOOLEAN
+	UInteger AccessType
+	UInteger AccessMode
+End_Struct
+
+Struct STORAGE_ALLOCATE_BC_STREAM_OUTPUT
+	UBigint RequestSize
+	UInteger NumOutStandingRequests
+	Integer iMissingAlignment1
+End_Struct
+
+Struct STORAGE_ATTRIBUTE_MGMT
+	UInteger Version
+	UInteger Size
+	Integer Action											// STORAGE_ATTRIBUTE_MGMT_ACTION
+	UInteger Attribute
+End_Struct
+
+Struct STORAGE_BREAK_RESERVATION_REQUEST
+	UInteger Length
+	UChar _unused
+	UChar PathId
+	UChar TargetId
+	UChar Lun
+End_Struct
+
+Struct STORAGE_BUS_RESET_REQUEST
+	UChar PathId
+End_Struct
+
+Struct STORAGE_COUNTER
+	Integer Type											// STORAGE_COUNTER_TYPE
+	Integer iMissingAlignment1
+	_Value_e__Union_3163 Value
+End_Struct
+
+Struct STORAGE_COUNTERS
+	UInteger Version
+	UInteger Size
+	UInteger NumberOfCounters
+	Integer iMissingAlignment1
+	STORAGE_COUNTER[1] Counters
+End_Struct
+
+Struct STORAGE_CRYPTO_CAPABILITY
+	UInteger Version
+	UInteger Size
+	UInteger CryptoCapabilityIndex
+	Integer AlgorithmId										// STORAGE_CRYPTO_ALGORITHM_ID
+	Integer KeySize											// STORAGE_CRYPTO_KEY_SIZE
+	UInteger DataUnitSizeBitmask
+End_Struct
+
+Struct STORAGE_CRYPTO_CAPABILITY_V2
+	UInteger Version
+	UInteger Size
+	UInteger CryptoCapabilityIndex
+	Integer AlgorithmId										// STORAGE_CRYPTO_ALGORITHM_ID
+	Integer KeySize											// STORAGE_CRYPTO_KEY_SIZE
+	UInteger DataUnitSizeBitmask
+	UShort MaxIVBitSize
+	UShort Reserved
+	STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_CRYPTO_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger NumKeysSupported
+	UInteger NumCryptoCapabilities
+	STORAGE_CRYPTO_CAPABILITY[1] CryptoCapabilities
+End_Struct
+
+Struct STORAGE_CRYPTO_DESCRIPTOR_V2
+	UInteger Version
+	UInteger Size
+	UInteger NumKeysSupported
+	UInteger NumCryptoCapabilities
+	Integer IceType											// STORAGE_ICE_TYPE
+	STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask
+	STORAGE_CRYPTO_KEY_TYPE KeyTypeBitmask
+	Short iMissingAlignment1
+	STORAGE_CRYPTO_CAPABILITY_V2[1] CryptoCapabilities
+End_Struct
+
+Struct STORAGE_CRYPTO_KEY_TYPE
+	_Anonymous_e__Union_3133 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_descriptor_header
+Struct STORAGE_DESCRIPTOR_HEADER
+	UInteger Version
+	UInteger Size
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_attributes_descriptor
+Struct STORAGE_DEVICE_ATTRIBUTES_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UBigint Attributes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_descriptor
+Struct STORAGE_DEVICE_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UChar DeviceType
+	UChar DeviceTypeModifier
+	UChar RemovableMedia									// BOOLEAN
+	UChar CommandQueueing									// BOOLEAN
+	UInteger VendorIdOffset
+	UInteger ProductIdOffset
+	UInteger ProductRevisionOffset
+	UInteger SerialNumberOffset
+	Integer BusType											// STORAGE_BUS_TYPE
+	UInteger RawPropertiesLength
+	UChar[1] RawDeviceProperties
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_DEVICE_FAULT_DOMAIN_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger NumberOfFaultDomains
+	Guid[1] FaultDomainIds
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_id_descriptor
+Struct STORAGE_DEVICE_ID_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger NumberOfIdentifiers
+	UChar[1] Identifiers
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_io_capability_descriptor
+Struct STORAGE_DEVICE_IO_CAPABILITY_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger LunMaxIoCount
+	UInteger AdapterMaxIoCount
+End_Struct
+
+Struct STORAGE_DEVICE_LED_STATE_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UBigint State
+End_Struct
+
+Struct STORAGE_DEVICE_LOCATION_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	DEVICE_LOCATION Location
+	UInteger StringOffset
+End_Struct
+
+Struct STORAGE_DEVICE_MANAGEMENT_STATUS
+	UInteger Version
+	UInteger Size
+	Integer Health											// STORAGE_DISK_HEALTH_STATUS
+	UInteger NumberOfOperationalStatus
+	UInteger NumberOfAdditionalReasons
+	Integer[16] OperationalStatus							// STORAGE_DISK_OPERATIONAL_STATUS
+	STORAGE_OPERATIONAL_REASON[1] AdditionalReasons
+End_Struct
+
+Struct STORAGE_DEVICE_NUMA_PROPERTY
+	UInteger Version
+	UInteger Size
+	UInteger NumaNode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_number
+Struct STORAGE_DEVICE_NUMBER
+	UInteger DeviceType
+	UInteger DeviceNumber
+	UInteger PartitionNumber
+End_Struct
+
+Struct STORAGE_DEVICE_NUMBERS
+	UInteger Version
+	UInteger Size
+	UInteger NumberOfDevices
+	STORAGE_DEVICE_NUMBER[1] Devices
+End_Struct
+
+Struct STORAGE_DEVICE_NUMBER_EX
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger DeviceType
+	UInteger DeviceNumber
+	Guid DeviceGuid
+	UInteger PartitionNumber
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_power_cap
+Struct STORAGE_DEVICE_POWER_CAP
+	UInteger Version
+	UInteger Size
+	Integer Units											// STORAGE_DEVICE_POWER_CAP_UNITS
+	Integer iMissingAlignment1
+	UBigint MaxPower
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_device_resiliency_descriptor
+Struct STORAGE_DEVICE_RESILIENCY_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger NameOffset
+	UInteger NumberOfLogicalCopies
+	UInteger NumberOfPhysicalCopies
+	UInteger PhysicalDiskRedundancy
+	UInteger NumberOfColumns
+	UInteger Interleave
+End_Struct
+
+Struct STORAGE_DEVICE_SELF_ENCRYPTION_PROPERTY
+	UInteger Version
+	UInteger Size
+	UChar SupportsSelfEncryption							// BOOLEAN
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_DEVICE_SELF_ENCRYPTION_PROPERTY_V2
+	UInteger Version
+	UInteger Size
+	UChar SupportsSelfEncryption							// BOOLEAN
+	UChar[3] cMissingAlignment1
+	Integer EncryptionType									// STORAGE_ENCRYPTION_TYPE
+End_Struct
+
+Struct STORAGE_DEVICE_TIERING_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger TotalNumberOfTiers
+	UInteger NumberOfTiersReturned
+	Integer iMissingAlignment1
+	STORAGE_TIER[1] Tiers
+End_Struct
+
+Struct STORAGE_DEVICE_UNSAFE_SHUTDOWN_COUNT
+	UInteger Version
+	UInteger Size
+	UInteger UnsafeShutdownCount
+End_Struct
+
+Struct STORAGE_DIAGNOSTIC_DATA
+	UInteger Version
+	UInteger Size
+	Guid ProviderId
+	UInteger BufferSize
+	UInteger Reserved
+	UChar[1] DiagnosticDataBuffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_DIAGNOSTIC_REQUEST
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	Integer TargetType										// STORAGE_DIAGNOSTIC_TARGET_TYPE
+	Integer Level											// STORAGE_DIAGNOSTIC_LEVEL
+End_Struct
+
+Struct STORAGE_EVENT_NOTIFICATION
+	UInteger Version
+	UInteger Size
+	UBigint Events
+End_Struct
+
+Struct STORAGE_FAILURE_PREDICTION_CONFIG
+	UInteger Version
+	UInteger Size
+	UChar Set												// BOOLEAN
+	UChar Enabled											// BOOLEAN
+	UShort Reserved
+End_Struct
+
+Struct STORAGE_FEATURE_SUPPORT
+	UInteger Size
+	UInteger Version
+	_Flags_e__Union_3121 Flags
+	UBigint[6] Reserved
+End_Struct
+
+Struct STORAGE_FRU_ID_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger IdentifierSize
+	UChar[1] Identifier
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_GET_BC_PROPERTIES_OUTPUT
+	UInteger MaximumRequestsPerPeriod
+	UInteger MinimumPeriod
+	UBigint MaximumRequestSize
+	UInteger EstimatedTimePerRequest
+	UInteger NumOutStandingRequests
+	UBigint RequestSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_hotplug_info
+Struct STORAGE_HOTPLUG_INFO
+	UInteger Size
+	UChar MediaRemovable									// BOOLEAN
+	UChar MediaHotplug										// BOOLEAN
+	UChar DeviceHotplug										// BOOLEAN
+	UChar WriteCacheEnableOverride							// BOOLEAN
+End_Struct
+
+Struct STORAGE_HW_CRYPTO_CAPABILITY
+	UInteger Version
+	UInteger Size
+	UInteger CryptoCapabilityIndex
+	Integer AlgorithmId										// STORAGE_CRYPTO_ALGORITHM_ID
+	Integer KeySize											// STORAGE_CRYPTO_KEY_SIZE
+	UInteger DataUnitSizeBitmask
+	UShort MaxIVBitSize
+	UShort Reserved
+	STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_HW_CRYPTO_DESCRIPTOR
+	STORAGE_DESCRIPTOR_HEADER Header
+	UInteger NumKeysSupported
+	UInteger NumCryptoCapabilities
+	UInteger OffsetToCryptoCapabilities
+	UInteger SizeOfCryptoCapability
+	Integer IceType											// STORAGE_ICE_TYPE
+	STORAGE_SECURITY_COMPLIANCE_BITMASK SecurityComplianceBitmask
+	STORAGE_CRYPTO_KEY_TYPE KeyTypeBitmask
+	Short iMissingAlignment1
+End_Struct
+
+Struct STORAGE_HW_ENDURANCE_DATA_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	STORAGE_HW_ENDURANCE_INFO EnduranceInfo
+End_Struct
+
+Struct STORAGE_HW_ENDURANCE_INFO
+	UInteger ValidFields
+	UInteger GroupId
+	_Flags_e__Struct_3150 Flags
+	UInteger LifePercentage
+	UChar[16] BytesReadCount
+	UChar[16] ByteWriteCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_hw_firmware_activate
+Struct STORAGE_HW_FIRMWARE_ACTIVATE
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UChar Slot
+	UChar[3] Reserved0
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_hw_firmware_download
+Struct STORAGE_HW_FIRMWARE_DOWNLOAD
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UChar Slot
+	UChar[3] Reserved
+	UBigint Offset
+	UBigint BufferSize
+	UChar[1] ImageBuffer
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_HW_FIRMWARE_DOWNLOAD_V2
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UChar Slot
+	UChar[3] Reserved
+	UBigint Offset
+	UBigint BufferSize
+	UInteger ImageSize
+	UInteger Reserved2
+	UChar[1] ImageBuffer
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/FileIO/storage-hw-firmware-info
+Struct STORAGE_HW_FIRMWARE_INFO
+	UInteger Version
+	UInteger Size
+	UChar _bitfield
+	UChar SlotCount
+	UChar ActiveSlot
+	UChar PendingActivateSlot
+	UChar FirmwareShared									// BOOLEAN
+	UChar[3] Reserved
+	UInteger ImagePayloadAlignment
+	UInteger ImagePayloadMaxSize
+	STORAGE_HW_FIRMWARE_SLOT_INFO[1] Slot
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/FileIO/storage-hw-firmware-info-query
+Struct STORAGE_HW_FIRMWARE_INFO_QUERY
+	UInteger Version
+	UInteger Size
+	UInteger Flags
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/FileIO/storage-hw-firmware-slot-info
+Struct STORAGE_HW_FIRMWARE_SLOT_INFO
+	UInteger Version
+	UInteger Size
+	UChar SlotNumber
+	UChar _bitfield
+	UChar[6] Reserved1
+	UChar[16] Revision
+End_Struct
+
+Struct STORAGE_IDENTIFIER
+	Integer CodeSet											// STORAGE_IDENTIFIER_CODE_SET
+	Integer Type											// STORAGE_IDENTIFIER_TYPE
+	UShort IdentifierSize
+	UShort NextOffset
+	Integer Association										// STORAGE_ASSOCIATION_TYPE
+	UChar[1] Identifier
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_IDLE_POWER
+	UInteger Version
+	UInteger Size
+	UInteger _bitfield
+	UInteger D3IdleTimeout
+End_Struct
+
+Struct STORAGE_IDLE_POWERUP_REASON
+	UInteger Version
+	UInteger Size
+	Integer PowerupReason									// STORAGE_POWERUP_REASON_TYPE
+End_Struct
+
+Struct STORAGE_LB_PROVISIONING_MAP_RESOURCES
+	UInteger Size
+	UInteger Version
+	UChar _bitfield1
+	UChar[3] Reserved1
+	UChar _bitfield2
+	UChar[3] Reserved3
+	UBigint AvailableMappingResources
+	UBigint UsedMappingResources
+End_Struct
+
+Struct STORAGE_MEDIA_SERIAL_NUMBER_DATA
+	UShort Reserved
+	UShort SerialNumberLength
+	UChar[1] SerialNumber
+	UChar[1] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_medium_product_type_descriptor
+Struct STORAGE_MEDIUM_PRODUCT_TYPE_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger MediumProductType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_miniport_descriptor
+Struct STORAGE_MINIPORT_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	Integer Portdriver										// STORAGE_PORT_CODE_SET
+	UChar LUNResetSupported									// BOOLEAN
+	UChar TargetResetSupported								// BOOLEAN
+	UShort IoTimeoutValue
+	UChar ExtraIoInfoSupported								// BOOLEAN
+	_Flags_e__Union_3129 Flags
+	UChar[2] Reserved0
+	UInteger Reserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_offload_read_output
+Struct STORAGE_OFFLOAD_READ_OUTPUT
+	UInteger OffloadReadFlags
+	UInteger Reserved
+	UBigint LengthProtected
+	UInteger TokenLength
+	STORAGE_OFFLOAD_TOKEN Token
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_offload_token
+Struct STORAGE_OFFLOAD_TOKEN
+	UChar[4] TokenType
+	UChar[2] Reserved
+	UChar[2] TokenIdLength
+	_Anonymous_e__Union_3151 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_offload_write_output
+Struct STORAGE_OFFLOAD_WRITE_OUTPUT
+	UInteger OffloadWriteFlags
+	UInteger Reserved
+	UBigint LengthCopied
+End_Struct
+
+Struct STORAGE_OPERATIONAL_REASON
+	UInteger Version
+	UInteger Size
+	Integer Reason											// STORAGE_OPERATIONAL_STATUS_REASON
+	_RawBytes_e__Union_3141 RawBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_physical_adapter_data
+Struct STORAGE_PHYSICAL_ADAPTER_DATA
+	UInteger AdapterId
+	Integer HealthStatus									// STORAGE_COMPONENT_HEALTH_STATUS
+	Integer CommandProtocol									// STORAGE_PROTOCOL_TYPE
+	STORAGE_SPEC_VERSION SpecVersion
+	UChar[8] Vendor
+	UChar[40] Model
+	UChar[16] FirmwareRevision
+	UChar[32] PhysicalLocation
+	UChar ExpanderConnected									// BOOLEAN
+	UChar[3] Reserved0
+	UInteger[3] Reserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_physical_device_data
+Struct STORAGE_PHYSICAL_DEVICE_DATA
+	UInteger DeviceId
+	UInteger Role
+	Integer HealthStatus									// STORAGE_COMPONENT_HEALTH_STATUS
+	Integer CommandProtocol									// STORAGE_PROTOCOL_TYPE
+	STORAGE_SPEC_VERSION SpecVersion
+	Integer FormFactor										// STORAGE_DEVICE_FORM_FACTOR
+	UChar[8] Vendor
+	UChar[40] Model
+	UChar[16] FirmwareRevision
+	UBigint Capacity
+	UChar[32] PhysicalLocation
+	UInteger[2] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_physical_node_data
+Struct STORAGE_PHYSICAL_NODE_DATA
+	UInteger NodeId
+	UInteger AdapterCount
+	UInteger AdapterDataLength
+	UInteger AdapterDataOffset
+	UInteger DeviceCount
+	UInteger DeviceDataLength
+	UInteger DeviceDataOffset
+	UInteger[3] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_physical_topology_descriptor
+Struct STORAGE_PHYSICAL_TOPOLOGY_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger NodeCount
+	UInteger Reserved
+	STORAGE_PHYSICAL_NODE_DATA[1] Node
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

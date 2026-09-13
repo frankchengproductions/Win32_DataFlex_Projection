@@ -1,0 +1,294 @@
+Use UI
+
+Struct _Anonymous1_e__Union_2942
+	// UBigint JobHighMemoryLimit // (8)
+	// UBigint JobMemoryLimit // (8)
+	UBigint JobHighMemoryLimit
+End_Struct
+
+Struct _Anonymous1_e__Union_2945
+	// UBigint JobHighMemoryLimit // (8)
+	// UBigint JobMemoryLimit // (8)
+	UBigint JobHighMemoryLimit
+End_Struct
+
+Struct _Anonymous2_e__Union_2943
+	// Integer RateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE // (4)
+	// Integer CpuRateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE // (4)
+	Integer RateControlTolerance
+End_Struct
+
+Struct _Anonymous2_e__Union_2946
+	// Integer RateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE // (4)
+	// Integer CpuRateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE // (4)
+	Integer RateControlTolerance
+End_Struct
+
+Struct _Anonymous3_e__Union_2944
+	// Integer RateControlToleranceInterval					// JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL // (4)
+	// Integer CpuRateControlToleranceInterval					// JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL // (4)
+	Integer RateControlToleranceInterval
+End_Struct
+
+Struct _Anonymous3_e__Union_2947
+	// Integer RateControlToleranceLimit						// JOBOBJECT_RATE_CONTROL_TOLERANCE // (4)
+	// Integer CpuRateControlToleranceLimit					// JOBOBJECT_RATE_CONTROL_TOLERANCE // (4)
+	Integer RateControlToleranceLimit
+End_Struct
+
+Struct _Anonymous_e__Union_2948
+	// UInteger CpuRate // (4)
+	// UInteger Weight // (4)
+	// _Anonymous_e__Struct_2949 Anonymous // (4)
+	UInteger CpuRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_associate_completion_port
+Struct JOBOBJECT_ASSOCIATE_COMPLETION_PORT
+	Pointer CompletionKey									// Pointer*
+	Pointer CompletionPort									// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_basic_accounting_information
+Struct JOBOBJECT_BASIC_ACCOUNTING_INFORMATION
+	Bigint TotalUserTime
+	Bigint TotalKernelTime
+	Bigint ThisPeriodTotalUserTime
+	Bigint ThisPeriodTotalKernelTime
+	UInteger TotalPageFaultCount
+	UInteger TotalProcesses
+	UInteger ActiveProcesses
+	UInteger TotalTerminatedProcesses
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_basic_and_io_accounting_information
+Struct JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION
+	JOBOBJECT_BASIC_ACCOUNTING_INFORMATION BasicInfo
+	IO_COUNTERS IoInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_basic_limit_information
+Struct JOBOBJECT_BASIC_LIMIT_INFORMATION
+	Bigint PerProcessUserTimeLimit
+	Bigint PerJobUserTimeLimit
+	UInteger LimitFlags										// JOB_OBJECT_LIMIT
+	Integer iMissingAlignment1
+	ULongPtr MinimumWorkingSetSize
+	ULongPtr MaximumWorkingSetSize
+	UInteger ActiveProcessLimit
+	Integer iMissingAlignment2
+	ULongPtr Affinity
+	UInteger PriorityClass
+	UInteger SchedulingClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_basic_process_id_list
+Struct JOBOBJECT_BASIC_PROCESS_ID_LIST
+	UInteger NumberOfAssignedProcesses
+	UInteger NumberOfProcessIdsInList
+	ULongPtr[1] ProcessIdList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_basic_ui_restrictions
+Struct JOBOBJECT_BASIC_UI_RESTRICTIONS
+	UInteger UIRestrictionsClass							// JOB_OBJECT_UILIMIT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_cpu_rate_control_information
+Struct JOBOBJECT_CPU_RATE_CONTROL_INFORMATION
+	UInteger ControlFlags									// JOB_OBJECT_CPU_RATE_CONTROL
+	_Anonymous_e__Union_2948 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_end_of_job_time_information
+Struct JOBOBJECT_END_OF_JOB_TIME_INFORMATION
+	UInteger EndOfJobTimeAction								// JOB_OBJECT_TERMINATE_AT_END_ACTION
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information
+Struct JOBOBJECT_EXTENDED_LIMIT_INFORMATION
+	JOBOBJECT_BASIC_LIMIT_INFORMATION BasicLimitInformation
+	IO_COUNTERS IoInfo
+	ULongPtr ProcessMemoryLimit
+	ULongPtr JobMemoryLimit
+	ULongPtr PeakProcessMemoryUsed
+	ULongPtr PeakJobMemoryUsed
+End_Struct
+
+Struct JOBOBJECT_IO_ATTRIBUTION_INFORMATION
+	UInteger ControlFlags
+	Integer iMissingAlignment1
+	JOBOBJECT_IO_ATTRIBUTION_STATS ReadStats
+	JOBOBJECT_IO_ATTRIBUTION_STATS WriteStats
+End_Struct
+
+Struct JOBOBJECT_IO_ATTRIBUTION_STATS
+	ULongPtr IoCount
+	UBigint TotalNonOverlappedQueueTime
+	UBigint TotalNonOverlappedServiceTime
+	UBigint TotalSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/jobapi2/ns-jobapi2-jobobject_io_rate_control_information
+Struct JOBOBJECT_IO_RATE_CONTROL_INFORMATION
+	Bigint MaxIops
+	Bigint MaxBandwidth
+	Bigint ReservationIops
+	Pointer VolumeName										// PWSTR
+	UInteger BaseIoSize
+	UInteger ControlFlags
+End_Struct
+
+Struct JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V1
+	Bigint MaxIops
+	Bigint MaxBandwidth
+	Bigint ReservationIops
+	Pointer VolumeName										// PWSTR
+	UInteger BaseIoSize
+	Integer ControlFlags									// JOB_OBJECT_IO_RATE_CONTROL_FLAGS
+	UShort VolumeNameLength
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2
+	Bigint MaxIops
+	Bigint MaxBandwidth
+	Bigint ReservationIops
+	Pointer VolumeName										// PWSTR
+	UInteger BaseIoSize
+	Integer ControlFlags									// JOB_OBJECT_IO_RATE_CONTROL_FLAGS
+	UShort VolumeNameLength
+	UChar[6] cMissingAlignment1
+	Bigint CriticalReservationIops
+	Bigint ReservationBandwidth
+	Bigint CriticalReservationBandwidth
+	Bigint MaxTimePercent
+	Bigint ReservationTimePercent
+	Bigint CriticalReservationTimePercent
+End_Struct
+
+Struct JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3
+	Bigint MaxIops
+	Bigint MaxBandwidth
+	Bigint ReservationIops
+	Pointer VolumeName										// PWSTR
+	UInteger BaseIoSize
+	Integer ControlFlags									// JOB_OBJECT_IO_RATE_CONTROL_FLAGS
+	UShort VolumeNameLength
+	UChar[6] cMissingAlignment1
+	Bigint CriticalReservationIops
+	Bigint ReservationBandwidth
+	Bigint CriticalReservationBandwidth
+	Bigint MaxTimePercent
+	Bigint ReservationTimePercent
+	Bigint CriticalReservationTimePercent
+	Bigint SoftMaxIops
+	Bigint SoftMaxBandwidth
+	Bigint SoftMaxTimePercent
+	Bigint LimitExcessNotifyIops
+	Bigint LimitExcessNotifyBandwidth
+	Bigint LimitExcessNotifyTimePercent
+End_Struct
+
+Struct JOBOBJECT_JOBSET_INFORMATION
+	UInteger MemberLevel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_limit_violation_information
+Struct JOBOBJECT_LIMIT_VIOLATION_INFORMATION
+	UInteger LimitFlags										// JOB_OBJECT_LIMIT
+	UInteger ViolationLimitFlags							// JOB_OBJECT_LIMIT
+	UBigint IoReadBytes
+	UBigint IoReadBytesLimit
+	UBigint IoWriteBytes
+	UBigint IoWriteBytesLimit
+	Bigint PerJobUserTime
+	Bigint PerJobUserTimeLimit
+	UBigint JobMemory
+	UBigint JobMemoryLimit
+	Integer RateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	Integer RateControlToleranceLimit						// JOBOBJECT_RATE_CONTROL_TOLERANCE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_limit_violation_information_2
+Struct JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2
+	UInteger LimitFlags										// JOB_OBJECT_LIMIT
+	UInteger ViolationLimitFlags							// JOB_OBJECT_LIMIT
+	UBigint IoReadBytes
+	UBigint IoReadBytesLimit
+	UBigint IoWriteBytes
+	UBigint IoWriteBytesLimit
+	Bigint PerJobUserTime
+	Bigint PerJobUserTimeLimit
+	UBigint JobMemory
+	_Anonymous1_e__Union_2945 Anonymous1
+	_Anonymous2_e__Union_2946 Anonymous2
+	_Anonymous3_e__Union_2947 Anonymous3
+	UBigint JobLowMemoryLimit
+	Integer IoRateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	Integer IoRateControlToleranceLimit						// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	Integer NetRateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	Integer NetRateControlToleranceLimit					// JOBOBJECT_RATE_CONTROL_TOLERANCE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_net_rate_control_information
+Struct JOBOBJECT_NET_RATE_CONTROL_INFORMATION
+	UBigint MaxBandwidth
+	Integer ControlFlags									// JOB_OBJECT_NET_RATE_CONTROL_FLAGS
+	UChar DscpTag
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_notification_limit_information
+Struct JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION
+	UBigint IoReadBytesLimit
+	UBigint IoWriteBytesLimit
+	Bigint PerJobUserTimeLimit
+	UBigint JobMemoryLimit
+	Integer RateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	Integer RateControlToleranceInterval					// JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
+	UInteger LimitFlags										// JOB_OBJECT_LIMIT
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_notification_limit_information_2
+Struct JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2
+	UBigint IoReadBytesLimit
+	UBigint IoWriteBytesLimit
+	Bigint PerJobUserTimeLimit
+	_Anonymous1_e__Union_2942 Anonymous1
+	_Anonymous2_e__Union_2943 Anonymous2
+	_Anonymous3_e__Union_2944 Anonymous3
+	UInteger LimitFlags										// JOB_OBJECT_LIMIT
+	Integer IoRateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	UBigint JobLowMemoryLimit
+	Integer IoRateControlToleranceInterval					// JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
+	Integer NetRateControlTolerance							// JOBOBJECT_RATE_CONTROL_TOLERANCE
+	Integer NetRateControlToleranceInterval					// JOBOBJECT_RATE_CONTROL_TOLERANCE_INTERVAL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-jobobject_security_limit_information
+Struct JOBOBJECT_SECURITY_LIMIT_INFORMATION
+	UInteger SecurityLimitFlags								// JOB_OBJECT_SECURITY
+	Integer iMissingAlignment1
+	Pointer JobToken										// HANDLE
+	Pointer SidsToDisable									// TOKEN_GROUPS*
+	Pointer PrivilegesToDelete								// TOKEN_PRIVILEGES*
+	Pointer RestrictedSids									// TOKEN_GROUPS*
+End_Struct
+
+Struct JOB_SET_ARRAY
+	Pointer JobHandle										// HANDLE
+	UInteger MemberLevel
+	UInteger Flags
+End_Struct
+
+Struct _Anonymous_e__Struct_2949
+	UShort MinRate
+	UShort MaxRate
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

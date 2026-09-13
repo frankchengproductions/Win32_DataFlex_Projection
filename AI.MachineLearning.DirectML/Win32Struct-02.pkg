@@ -1,0 +1,807 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_quantize_linear_operator_desc
+Struct DML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer ScaleTensor										// DML_TENSOR_DESC*
+	Pointer ZeroPointTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_recip_operator_desc
+Struct DML_ELEMENT_WISE_RECIP_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_round_operator_desc
+Struct DML_ELEMENT_WISE_ROUND_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer RoundingMode									// DML_ROUNDING_MODE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_sign_operator_desc
+Struct DML_ELEMENT_WISE_SIGN_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_sinh_operator_desc
+Struct DML_ELEMENT_WISE_SINH_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_sin_operator_desc
+Struct DML_ELEMENT_WISE_SIN_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_sqrt_operator_desc
+Struct DML_ELEMENT_WISE_SQRT_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_subtract_operator_desc
+Struct DML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESC
+	Pointer ATensor											// DML_TENSOR_DESC*
+	Pointer BTensor											// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_tanh_operator_desc
+Struct DML_ELEMENT_WISE_TANH_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_tan_operator_desc
+Struct DML_ELEMENT_WISE_TAN_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_element_wise_threshold_operator_desc
+Struct DML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer ScaleBias										// DML_SCALE_BIAS*
+	Float Min
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_feature_data_feature_levels
+Struct DML_FEATURE_DATA_FEATURE_LEVELS
+	Integer MaxSupportedFeatureLevel						// DML_FEATURE_LEVEL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_feature_data_tensor_data_type_support
+Struct DML_FEATURE_DATA_TENSOR_DATA_TYPE_SUPPORT
+	Integer IsSupported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_feature_query_feature_levels
+Struct DML_FEATURE_QUERY_FEATURE_LEVELS
+	UInteger RequestedFeatureLevelCount
+	Integer iMissingAlignment1
+	Pointer RequestedFeatureLevels							// DML_FEATURE_LEVEL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_feature_query_tensor_data_type_support
+Struct DML_FEATURE_QUERY_TENSOR_DATA_TYPE_SUPPORT
+	Integer DataType										// DML_TENSOR_DATA_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_fill_value_constant_operator_desc
+Struct DML_FILL_VALUE_CONSTANT_OPERATOR_DESC
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer ValueDataType									// DML_TENSOR_DATA_TYPE
+	Integer iMissingAlignment1
+	DML_SCALAR_UNION Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_fill_value_sequence_operator_desc
+Struct DML_FILL_VALUE_SEQUENCE_OPERATOR_DESC
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer ValueDataType									// DML_TENSOR_DATA_TYPE
+	Integer iMissingAlignment1
+	DML_SCALAR_UNION ValueStart
+	DML_SCALAR_UNION ValueDelta
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_gather_elements_operator_desc
+Struct DML_GATHER_ELEMENTS_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_gather_nd1_operator_desc
+Struct DML_GATHER_ND1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger InputDimensionCount
+	UInteger IndicesDimensionCount
+	UInteger BatchDimensionCount
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_gather_nd_operator_desc
+Struct DML_GATHER_ND_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger InputDimensionCount
+	UInteger IndicesDimensionCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_gather_operator_desc
+Struct DML_GATHER_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	UInteger IndexDimensions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_gemm_operator_desc
+Struct DML_GEMM_OPERATOR_DESC
+	Pointer ATensor											// DML_TENSOR_DESC*
+	Pointer BTensor											// DML_TENSOR_DESC*
+	Pointer CTensor											// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer TransA											// DML_MATRIX_TRANSFORM
+	Integer TransB											// DML_MATRIX_TRANSFORM
+	Float Alpha
+	Float Beta
+	Pointer FusedActivation									// DML_OPERATOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_graph_desc
+Struct DML_GRAPH_DESC
+	UInteger InputCount
+	UInteger OutputCount
+	UInteger NodeCount
+	Integer iMissingAlignment1
+	Pointer Nodes											// DML_GRAPH_NODE_DESC*
+	UInteger InputEdgeCount
+	Integer iMissingAlignment2
+	Pointer InputEdges										// DML_GRAPH_EDGE_DESC*
+	UInteger OutputEdgeCount
+	Integer iMissingAlignment3
+	Pointer OutputEdges										// DML_GRAPH_EDGE_DESC*
+	UInteger IntermediateEdgeCount
+	Integer iMissingAlignment4
+	Pointer IntermediateEdges								// DML_GRAPH_EDGE_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_graph_edge_desc
+Struct DML_GRAPH_EDGE_DESC
+	Integer Type											// DML_GRAPH_EDGE_TYPE
+	Integer iMissingAlignment1
+	Pointer Desc											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_graph_node_desc
+Struct DML_GRAPH_NODE_DESC
+	Integer Type											// DML_GRAPH_NODE_TYPE
+	Integer iMissingAlignment1
+	Pointer Desc											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_gru_operator_desc
+Struct DML_GRU_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer WeightTensor									// DML_TENSOR_DESC*
+	Pointer RecurrenceTensor								// DML_TENSOR_DESC*
+	Pointer BiasTensor										// DML_TENSOR_DESC*
+	Pointer HiddenInitTensor								// DML_TENSOR_DESC*
+	Pointer SequenceLengthsTensor							// DML_TENSOR_DESC*
+	Pointer OutputSequenceTensor							// DML_TENSOR_DESC*
+	Pointer OutputSingleTensor								// DML_TENSOR_DESC*
+	UInteger ActivationDescCount
+	Integer iMissingAlignment1
+	Pointer ActivationDescs									// DML_OPERATOR_DESC*
+	Integer Direction										// DML_RECURRENT_NETWORK_DIRECTION
+	Integer LinearBeforeReset								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_input_graph_edge_desc
+Struct DML_INPUT_GRAPH_EDGE_DESC
+	UInteger GraphInputIndex
+	UInteger ToNodeIndex
+	UInteger ToNodeInputIndex
+	Integer iMissingAlignment1
+	Pointer Name											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_intermediate_graph_edge_desc
+Struct DML_INTERMEDIATE_GRAPH_EDGE_DESC
+	UInteger FromNodeIndex
+	UInteger FromNodeOutputIndex
+	UInteger ToNodeIndex
+	UInteger ToNodeInputIndex
+	Pointer Name											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_join_operator_desc
+Struct DML_JOIN_OPERATOR_DESC
+	UInteger InputCount
+	Integer iMissingAlignment1
+	Pointer InputTensors									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_local_response_normalization_grad_operator_desc
+Struct DML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer InputGradientTensor								// DML_TENSOR_DESC*
+	Pointer OutputGradientTensor							// DML_TENSOR_DESC*
+	Integer CrossChannel									// BOOL
+	UInteger LocalSize
+	Float Alpha
+	Float Beta
+	Float Bias
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_local_response_normalization_operator_desc
+Struct DML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer CrossChannel									// BOOL
+	UInteger LocalSize
+	Float Alpha
+	Float Beta
+	Float Bias
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_lp_normalization_operator_desc
+Struct DML_LP_NORMALIZATION_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	Float Epsilon
+	UInteger P
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_lp_pooling_operator_desc
+Struct DML_LP_POOLING_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Strides											// UInteger*
+	Pointer WindowSize										// UInteger*
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+	UInteger P
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_lstm_operator_desc
+Struct DML_LSTM_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer WeightTensor									// DML_TENSOR_DESC*
+	Pointer RecurrenceTensor								// DML_TENSOR_DESC*
+	Pointer BiasTensor										// DML_TENSOR_DESC*
+	Pointer HiddenInitTensor								// DML_TENSOR_DESC*
+	Pointer CellMemInitTensor								// DML_TENSOR_DESC*
+	Pointer SequenceLengthsTensor							// DML_TENSOR_DESC*
+	Pointer PeepholeTensor									// DML_TENSOR_DESC*
+	Pointer OutputSequenceTensor							// DML_TENSOR_DESC*
+	Pointer OutputSingleTensor								// DML_TENSOR_DESC*
+	Pointer OutputCellSingleTensor							// DML_TENSOR_DESC*
+	UInteger ActivationDescCount
+	Integer iMissingAlignment1
+	Pointer ActivationDescs									// DML_OPERATOR_DESC*
+	Integer Direction										// DML_RECURRENT_NETWORK_DIRECTION
+	Float ClipThreshold
+	Integer UseClipThreshold								// BOOL
+	Integer CoupleInputForget								// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_matrix_multiply_integer_operator_desc
+Struct DML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESC
+	Pointer ATensor											// DML_TENSOR_DESC*
+	Pointer AZeroPointTensor								// DML_TENSOR_DESC*
+	Pointer BTensor											// DML_TENSOR_DESC*
+	Pointer BZeroPointTensor								// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_max_pooling1_operator_desc
+Struct DML_MAX_POOLING1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer OutputIndicesTensor								// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Strides											// UInteger*
+	Pointer WindowSize										// UInteger*
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_max_pooling2_operator_desc
+Struct DML_MAX_POOLING2_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer OutputIndicesTensor								// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Strides											// UInteger*
+	Pointer WindowSize										// UInteger*
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+	Pointer Dilations										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_max_pooling_grad_operator_desc
+Struct DML_MAX_POOLING_GRAD_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer InputGradientTensor								// DML_TENSOR_DESC*
+	Pointer OutputGradientTensor							// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Strides											// UInteger*
+	Pointer WindowSize										// UInteger*
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+	Pointer Dilations										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_max_pooling_operator_desc
+Struct DML_MAX_POOLING_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Strides											// UInteger*
+	Pointer WindowSize										// UInteger*
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_max_unpooling_operator_desc
+Struct DML_MAX_UNPOOLING_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_mean_variance_normalization1_operator_desc
+Struct DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer ScaleTensor										// DML_TENSOR_DESC*
+	Pointer BiasTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger AxisCount
+	Integer iMissingAlignment1
+	Pointer Axes											// UInteger*
+	Integer NormalizeVariance								// BOOL
+	Float Epsilon
+	Pointer FusedActivation									// DML_OPERATOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_mean_variance_normalization_operator_desc
+Struct DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer ScaleTensor										// DML_TENSOR_DESC*
+	Pointer BiasTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer CrossChannel									// BOOL
+	Integer NormalizeVariance								// BOOL
+	Float Epsilon
+	Integer iMissingAlignment1
+	Pointer FusedActivation									// DML_OPERATOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_nonzero_coordinates_operator_desc
+Struct DML_NONZERO_COORDINATES_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputCountTensor								// DML_TENSOR_DESC*
+	Pointer OutputCoordinatesTensor							// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_one_hot_operator_desc
+Struct DML_ONE_HOT_OPERATOR_DESC
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer ValuesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_operator_desc
+Struct DML_OPERATOR_DESC
+	Integer Type											// DML_OPERATOR_TYPE
+	Integer iMissingAlignment1
+	Pointer Desc											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_operator_graph_node_desc
+Struct DML_OPERATOR_GRAPH_NODE_DESC
+	Pointer Operator										// IDMLOperator
+	Pointer Name											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_output_graph_edge_desc
+Struct DML_OUTPUT_GRAPH_EDGE_DESC
+	UInteger FromNodeIndex
+	UInteger FromNodeOutputIndex
+	UInteger GraphOutputIndex
+	Integer iMissingAlignment1
+	Pointer Name											// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_padding1_operator_desc
+Struct DML_PADDING1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer PaddingMode										// DML_PADDING_MODE
+	Integer PaddingValueDataType							// DML_TENSOR_DATA_TYPE
+	DML_SCALAR_UNION PaddingValue
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_padding_operator_desc
+Struct DML_PADDING_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer PaddingMode										// DML_PADDING_MODE
+	Float PaddingValue
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_quantized_linear_convolution_operator_desc
+Struct DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer InputScaleTensor								// DML_TENSOR_DESC*
+	Pointer InputZeroPointTensor							// DML_TENSOR_DESC*
+	Pointer FilterTensor									// DML_TENSOR_DESC*
+	Pointer FilterScaleTensor								// DML_TENSOR_DESC*
+	Pointer FilterZeroPointTensor							// DML_TENSOR_DESC*
+	Pointer BiasTensor										// DML_TENSOR_DESC*
+	Pointer OutputScaleTensor								// DML_TENSOR_DESC*
+	Pointer OutputZeroPointTensor							// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Strides											// UInteger*
+	Pointer Dilations										// UInteger*
+	Pointer StartPadding									// UInteger*
+	Pointer EndPadding										// UInteger*
+	UInteger GroupCount
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_quantized_linear_matrix_multiply_operator_desc
+Struct DML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESC
+	Pointer ATensor											// DML_TENSOR_DESC*
+	Pointer AScaleTensor									// DML_TENSOR_DESC*
+	Pointer AZeroPointTensor								// DML_TENSOR_DESC*
+	Pointer BTensor											// DML_TENSOR_DESC*
+	Pointer BScaleTensor									// DML_TENSOR_DESC*
+	Pointer BZeroPointTensor								// DML_TENSOR_DESC*
+	Pointer OutputScaleTensor								// DML_TENSOR_DESC*
+	Pointer OutputZeroPointTensor							// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_random_generator_operator_desc
+Struct DML_RANDOM_GENERATOR_OPERATOR_DESC
+	Pointer InputStateTensor								// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Pointer OutputStateTensor								// DML_TENSOR_DESC*
+	Integer Type											// DML_RANDOM_GENERATOR_TYPE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_reduce_operator_desc
+Struct DML_REDUCE_OPERATOR_DESC
+	Integer Function										// DML_REDUCE_FUNCTION
+	Integer iMissingAlignment1
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger AxisCount
+	Integer iMissingAlignment2
+	Pointer Axes											// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_resample1_operator_desc
+Struct DML_RESAMPLE1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	UInteger DimensionCount
+	Pointer Scales											// Float*
+	Pointer InputPixelOffsets								// Float*
+	Pointer OutputPixelOffsets								// Float*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_resample_grad_operator_desc
+Struct DML_RESAMPLE_GRAD_OPERATOR_DESC
+	Pointer InputGradientTensor								// DML_TENSOR_DESC*
+	Pointer OutputGradientTensor							// DML_TENSOR_DESC*
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	UInteger DimensionCount
+	Pointer Scales											// Float*
+	Pointer InputPixelOffsets								// Float*
+	Pointer OutputPixelOffsets								// Float*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_resample_operator_desc
+Struct DML_RESAMPLE_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	UInteger ScaleCount
+	Pointer Scales											// Float*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_reverse_subsequences_desc
+Struct DML_REVERSE_SUBSEQUENCES_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer SequenceLengthsTensor							// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_rnn_operator_desc
+Struct DML_RNN_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer WeightTensor									// DML_TENSOR_DESC*
+	Pointer RecurrenceTensor								// DML_TENSOR_DESC*
+	Pointer BiasTensor										// DML_TENSOR_DESC*
+	Pointer HiddenInitTensor								// DML_TENSOR_DESC*
+	Pointer SequenceLengthsTensor							// DML_TENSOR_DESC*
+	Pointer OutputSequenceTensor							// DML_TENSOR_DESC*
+	Pointer OutputSingleTensor								// DML_TENSOR_DESC*
+	UInteger ActivationDescCount
+	Integer iMissingAlignment1
+	Pointer ActivationDescs									// DML_OPERATOR_DESC*
+	Integer Direction										// DML_RECURRENT_NETWORK_DIRECTION
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_roi_align1_operator_desc
+Struct DML_ROI_ALIGN1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer ROITensor										// DML_TENSOR_DESC*
+	Pointer BatchIndicesTensor								// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer ReductionFunction								// DML_REDUCE_FUNCTION
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	Float SpatialScaleX
+	Float SpatialScaleY
+	Float InputPixelOffset
+	Float OutputPixelOffset
+	Float OutOfBoundsInputValue
+	UInteger MinimumSamplesPerOutput
+	UInteger MaximumSamplesPerOutput
+	Integer AlignRegionsToCorners							// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_roi_align_grad_operator_desc
+Struct DML_ROI_ALIGN_GRAD_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer InputGradientTensor								// DML_TENSOR_DESC*
+	Pointer ROITensor										// DML_TENSOR_DESC*
+	Pointer BatchIndicesTensor								// DML_TENSOR_DESC*
+	Pointer OutputGradientTensor							// DML_TENSOR_DESC*
+	Pointer OutputROIGradientTensor							// DML_TENSOR_DESC*
+	Integer ReductionFunction								// DML_REDUCE_FUNCTION
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	Float SpatialScaleX
+	Float SpatialScaleY
+	Float InputPixelOffset
+	Float OutputPixelOffset
+	UInteger MinimumSamplesPerOutput
+	UInteger MaximumSamplesPerOutput
+	Integer AlignRegionsToCorners							// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_roi_align_operator_desc
+Struct DML_ROI_ALIGN_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer ROITensor										// DML_TENSOR_DESC*
+	Pointer BatchIndicesTensor								// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Integer ReductionFunction								// DML_REDUCE_FUNCTION
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	Float SpatialScaleX
+	Float SpatialScaleY
+	Float OutOfBoundsInputValue
+	UInteger MinimumSamplesPerOutput
+	UInteger MaximumSamplesPerOutput
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_roi_pooling_operator_desc
+Struct DML_ROI_POOLING_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer ROITensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Float SpatialScale
+	DML_SIZE_2D PooledSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DML_SCALAR_UNION
+	_Anonymous_e__Union_1978 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_scale_bias
+Struct DML_SCALE_BIAS
+	Float Scale
+	Float Bias
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_scatter_nd_operator_desc
+Struct DML_SCATTER_ND_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer UpdatesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger InputDimensionCount
+	UInteger IndicesDimensionCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_scatter_operator_desc
+Struct DML_SCATTER_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer IndicesTensor									// DML_TENSOR_DESC*
+	Pointer UpdatesTensor									// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger Axis
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_size_2d
+Struct DML_SIZE_2D
+	UInteger Width
+	UInteger Height
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_slice1_operator_desc
+Struct DML_SLICE1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer InputWindowOffsets								// UInteger*
+	Pointer InputWindowSizes								// UInteger*
+	Pointer InputWindowStrides								// Integer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_slice_grad_operator_desc
+Struct DML_SLICE_GRAD_OPERATOR_DESC
+	Pointer InputGradientTensor								// DML_TENSOR_DESC*
+	Pointer OutputGradientTensor							// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer InputWindowOffsets								// UInteger*
+	Pointer InputWindowSizes								// UInteger*
+	Pointer InputWindowStrides								// Integer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_slice_operator_desc
+Struct DML_SLICE_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger DimensionCount
+	Integer iMissingAlignment1
+	Pointer Offsets											// UInteger*
+	Pointer Sizes											// UInteger*
+	Pointer Strides											// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_space_to_depth1_operator_desc
+Struct DML_SPACE_TO_DEPTH1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger BlockSize
+	Integer Order											// DML_DEPTH_SPACE_ORDER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_space_to_depth_operator_desc
+Struct DML_SPACE_TO_DEPTH_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger BlockSize
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_split_operator_desc
+Struct DML_SPLIT_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	UInteger OutputCount
+	Integer iMissingAlignment1
+	Pointer OutputTensors									// DML_TENSOR_DESC*
+	UInteger Axis
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_tensor_desc
+Struct DML_TENSOR_DESC
+	Integer Type											// DML_TENSOR_TYPE
+	Integer iMissingAlignment1
+	Pointer Desc											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_tile_operator_desc
+Struct DML_TILE_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	UInteger RepeatsCount
+	Integer iMissingAlignment1
+	Pointer Repeats											// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_top_k1_operator_desc
+Struct DML_TOP_K1_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputValueTensor								// DML_TENSOR_DESC*
+	Pointer OutputIndexTensor								// DML_TENSOR_DESC*
+	UInteger Axis
+	UInteger K
+	Integer AxisDirection									// DML_AXIS_DIRECTION
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_top_k_operator_desc
+Struct DML_TOP_K_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputValueTensor								// DML_TENSOR_DESC*
+	Pointer OutputIndexTensor								// DML_TENSOR_DESC*
+	UInteger Axis
+	UInteger K
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_upsample_2d_operator_desc
+Struct DML_UPSAMPLE_2D_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	DML_SIZE_2D ScaleSize
+	Integer InterpolationMode								// DML_INTERPOLATION_MODE
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/directml/ns-directml-dml_value_scale_2d_operator_desc
+Struct DML_VALUE_SCALE_2D_OPERATOR_DESC
+	Pointer InputTensor										// DML_TENSOR_DESC*
+	Pointer OutputTensor									// DML_TENSOR_DESC*
+	Float Scale
+	UInteger ChannelCount
+	Pointer Bias											// Float*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

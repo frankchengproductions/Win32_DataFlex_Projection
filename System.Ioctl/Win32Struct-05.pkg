@@ -1,0 +1,829 @@
+Use UI
+
+Struct STORAGE_PREDICT_FAILURE
+	UInteger PredictFailure
+	UChar[512] VendorSpecific
+End_Struct
+
+Struct STORAGE_PRIORITY_HINT_SUPPORT
+	UInteger SupportFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_property_query
+Struct STORAGE_PROPERTY_QUERY
+	Integer PropertyId										// STORAGE_PROPERTY_ID
+	Integer QueryType										// STORAGE_QUERY_TYPE
+	UChar[1] AdditionalParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_PROPERTY_SET
+	Integer PropertyId										// STORAGE_PROPERTY_ID
+	Integer SetType											// STORAGE_SET_TYPE
+	UChar[1] AdditionalParameters
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_protocol_command
+Struct STORAGE_PROTOCOL_COMMAND
+	UInteger Version
+	UInteger Length
+	Integer ProtocolType									// STORAGE_PROTOCOL_TYPE
+	UInteger Flags
+	UInteger ReturnStatus
+	UInteger ErrorCode
+	UInteger CommandLength
+	UInteger ErrorInfoLength
+	UInteger DataToDeviceTransferLength
+	UInteger DataFromDeviceTransferLength
+	UInteger TimeOutValue
+	UInteger ErrorInfoOffset
+	UInteger DataToDeviceBufferOffset
+	UInteger DataFromDeviceBufferOffset
+	UInteger CommandSpecific
+	UInteger Reserved0
+	UInteger FixedProtocolReturnData
+	UInteger FixedProtocolReturnData2
+	UInteger[2] Reserved1
+	UChar[1] Command
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_protocol_data_descriptor
+Struct STORAGE_PROTOCOL_DATA_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	STORAGE_PROTOCOL_SPECIFIC_DATA ProtocolSpecificData
+End_Struct
+
+Struct STORAGE_PROTOCOL_DATA_DESCRIPTOR_EXT
+	UInteger Version
+	UInteger Size
+	STORAGE_PROTOCOL_SPECIFIC_DATA_EXT ProtocolSpecificData
+End_Struct
+
+Struct STORAGE_PROTOCOL_DATA_SUBVALUE_GET_LOG_PAGE
+	_Anonymous_e__Union_3135 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_protocol_specific_data
+Struct STORAGE_PROTOCOL_SPECIFIC_DATA
+	Integer ProtocolType									// STORAGE_PROTOCOL_TYPE
+	UInteger DataType
+	UInteger ProtocolDataRequestValue
+	UInteger ProtocolDataRequestSubValue
+	UInteger ProtocolDataOffset
+	UInteger ProtocolDataLength
+	UInteger FixedProtocolReturnData
+	UInteger ProtocolDataRequestSubValue2
+	UInteger ProtocolDataRequestSubValue3
+	UInteger ProtocolDataRequestSubValue4
+End_Struct
+
+Struct STORAGE_PROTOCOL_SPECIFIC_DATA_EXT
+	Integer ProtocolType									// STORAGE_PROTOCOL_TYPE
+	UInteger DataType
+	UInteger ProtocolDataValue
+	UInteger ProtocolDataSubValue
+	UInteger ProtocolDataOffset
+	UInteger ProtocolDataLength
+	UInteger FixedProtocolReturnData
+	UInteger ProtocolDataSubValue2
+	UInteger ProtocolDataSubValue3
+	UInteger ProtocolDataSubValue4
+	UInteger ProtocolDataSubValue5
+	UInteger ProtocolDataSubValue6
+	UInteger[4] Reserved
+End_Struct
+
+Struct STORAGE_QUERY_DEPENDENT_VOLUME_LEV1_ENTRY
+	UInteger EntryLength
+	UInteger DependencyTypeFlags
+	UInteger ProviderSpecificFlags
+	VIRTUAL_STORAGE_TYPE VirtualStorageType
+End_Struct
+
+Struct STORAGE_QUERY_DEPENDENT_VOLUME_LEV2_ENTRY
+	UInteger EntryLength
+	UInteger DependencyTypeFlags
+	UInteger ProviderSpecificFlags
+	VIRTUAL_STORAGE_TYPE VirtualStorageType
+	UInteger AncestorLevel
+	UInteger HostVolumeNameOffset
+	UInteger HostVolumeNameSize
+	UInteger DependentVolumeNameOffset
+	UInteger DependentVolumeNameSize
+	UInteger RelativePathOffset
+	UInteger RelativePathSize
+	UInteger DependentDeviceNameOffset
+	UInteger DependentDeviceNameSize
+End_Struct
+
+Struct STORAGE_QUERY_DEPENDENT_VOLUME_REQUEST
+	UInteger RequestLevel
+	UInteger RequestFlags
+End_Struct
+
+Struct STORAGE_QUERY_DEPENDENT_VOLUME_RESPONSE
+	UInteger ResponseLevel
+	UInteger NumberEntries
+	_Anonymous_e__Union_3199 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/DevIO/storage-read-capacity
+Struct STORAGE_READ_CAPACITY
+	UInteger Version
+	UInteger Size
+	UInteger BlockLength
+	Integer iMissingAlignment1
+	Bigint NumberOfBlocks
+	Bigint DiskLength
+End_Struct
+
+Struct STORAGE_REINITIALIZE_MEDIA
+	UInteger Version
+	UInteger Size
+	UInteger TimeoutInSeconds
+	_SanitizeOption_e__Struct_3155 SanitizeOption
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_rpmb_data_frame
+Struct STORAGE_RPMB_DATA_FRAME
+	UChar[196] Stuff
+	UChar[32] KeyOrMAC
+	UChar[256] Data
+	UChar[16] Nonce
+	UChar[4] WriteCounter
+	UChar[2] Address
+	UChar[2] BlockCount
+	UChar[2] OperationResult
+	UChar[2] RequestOrResponseType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_rpmb_descriptor
+Struct STORAGE_RPMB_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	UInteger SizeInBytes
+	UInteger MaxReliableWriteSizeInBytes
+	Integer FrameFormat										// STORAGE_RPMB_FRAME_TYPE
+End_Struct
+
+Struct STORAGE_SECURITY_COMPLIANCE_BITMASK
+	_Anonymous_e__Union_3131 Anonymous
+End_Struct
+
+Struct STORAGE_SPEC_VERSION
+	_Anonymous_e__Union_3137 Anonymous
+End_Struct
+
+Struct STORAGE_STACK_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	Integer StorageStackType								// STORAGE_STACK_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_temperature_data_descriptor
+Struct STORAGE_TEMPERATURE_DATA_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	Short CriticalTemperature
+	Short WarningTemperature
+	UShort InfoCount
+	UChar[2] Reserved0
+	UInteger[2] Reserved1
+	STORAGE_TEMPERATURE_INFO[1] TemperatureInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_temperature_info
+Struct STORAGE_TEMPERATURE_INFO
+	UShort Index
+	Short Temperature
+	Short OverThreshold
+	Short UnderThreshold
+	UChar OverThresholdChangable							// BOOLEAN
+	UChar UnderThresholdChangable							// BOOLEAN
+	UChar EventGenerated									// BOOLEAN
+	UChar Reserved0
+	UInteger Reserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_temperature_threshold
+Struct STORAGE_TEMPERATURE_THRESHOLD
+	UInteger Version
+	UInteger Size
+	UShort Flags
+	UShort Index
+	Short Threshold
+	UChar OverThreshold										// BOOLEAN
+	UChar Reserved
+End_Struct
+
+Struct STORAGE_TIER
+	Guid Id
+	UShort[256] Name
+	UShort[256] Description
+	UBigint Flags
+	UBigint ProvisionedCapacity
+	Integer MediaType										// STORAGE_TIER_MEDIA_TYPE
+	Integer Class											// STORAGE_TIER_CLASS
+End_Struct
+
+Struct STORAGE_TIER_REGION
+	Guid TierId
+	UBigint Offset
+	UBigint Length
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-storage_write_cache_property
+Struct STORAGE_WRITE_CACHE_PROPERTY
+	UInteger Version
+	UInteger Size
+	Integer WriteCacheType									// WRITE_CACHE_TYPE
+	Integer WriteCacheEnabled								// WRITE_CACHE_ENABLE
+	Integer WriteCacheChangeable							// WRITE_CACHE_CHANGE
+	Integer WriteThroughSupported							// WRITE_THROUGH
+	UChar FlushCacheSupported								// BOOLEAN
+	UChar UserDefinedPowerProtection						// BOOLEAN
+	UChar NVCacheEnabled									// BOOLEAN
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct STORAGE_ZONED_DEVICE_DESCRIPTOR
+	UInteger Version
+	UInteger Size
+	Integer DeviceType										// STORAGE_ZONED_DEVICE_TYPES
+	UInteger ZoneCount
+	_ZoneAttributes_e__Union_3144 ZoneAttributes
+	UInteger ZoneGroupCount
+	Integer iMissingAlignment1
+	STORAGE_ZONE_GROUP[1] ZoneGroup
+End_Struct
+
+Struct STORAGE_ZONE_DESCRIPTOR
+	UInteger Size
+	Integer ZoneType										// STORAGE_ZONE_TYPES
+	Integer ZoneCondition									// STORAGE_ZONE_CONDITION
+	UChar ResetWritePointerRecommend						// BOOLEAN
+	UChar[3] Reserved0
+	UBigint ZoneSize
+	UBigint WritePointerOffset
+End_Struct
+
+Struct STORAGE_ZONE_GROUP
+	UInteger ZoneCount
+	Integer ZoneType										// STORAGE_ZONE_TYPES
+	UBigint ZoneSize
+End_Struct
+
+Struct STREAMS_ASSOCIATE_ID_INPUT_BUFFER
+	UInteger Flags
+	UInteger StreamId
+End_Struct
+
+Struct STREAMS_QUERY_ID_OUTPUT_BUFFER
+	UInteger StreamId
+End_Struct
+
+Struct STREAMS_QUERY_PARAMETERS_OUTPUT_BUFFER
+	UInteger OptimalWriteSize
+	UInteger StreamGranularitySize
+	UInteger StreamIdMin
+	UInteger StreamIdMax
+End_Struct
+
+Struct STREAM_EXTENT_ENTRY
+	UInteger Flags
+	Integer iMissingAlignment1
+	_ExtentInformation_e__Union_3205 ExtentInformation
+End_Struct
+
+Struct STREAM_INFORMATION_ENTRY
+	UInteger Version
+	UInteger Flags
+	_StreamInformation_3206 StreamInformation
+End_Struct
+
+Struct STREAM_LAYOUT_ENTRY
+	UInteger Version
+	UInteger NextStreamOffset
+	UInteger Flags
+	UInteger ExtentInformationOffset
+	Bigint AllocationSize
+	Bigint EndOfFile
+	UInteger StreamInformationOffset
+	UInteger AttributeTypeCode
+	UInteger AttributeFlags
+	UInteger StreamIdentifierLength
+	UShort[1] StreamIdentifier
+	UChar[6] cMissingAlignment1
+End_Struct
+
+Struct TAPE_GET_STATISTICS
+	UInteger Operation
+End_Struct
+
+Struct TAPE_STATISTICS
+	UInteger Version
+	UInteger Flags
+	Bigint RecoveredWrites
+	Bigint UnrecoveredWrites
+	Bigint RecoveredReads
+	Bigint UnrecoveredReads
+	UChar CompressionRatioReads
+	UChar CompressionRatioWrites
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_create_miniversion_info
+Struct TXFS_CREATE_MINIVERSION_INFO
+	UShort StructureVersion
+	UShort StructureLength
+	UInteger BaseVersion
+	UShort MiniVersion
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_get_metadata_info_out
+Struct TXFS_GET_METADATA_INFO_OUT
+	_TxfFileId_e__Struct_3196 TxfFileId
+	Guid LockingTransaction
+	UBigint LastLsn
+	UInteger TransactionState
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_get_transacted_version
+Struct TXFS_GET_TRANSACTED_VERSION
+	UInteger ThisBaseVersion
+	UInteger LatestVersion
+	UShort ThisMiniVersion
+	UShort FirstMiniVersion
+	UShort LatestMiniVersion
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_list_transactions
+Struct TXFS_LIST_TRANSACTIONS
+	UBigint NumberOfTransactions
+	UBigint BufferSizeRequired
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_list_transactions_entry
+Struct TXFS_LIST_TRANSACTIONS_ENTRY
+	Guid TransactionId
+	UInteger TransactionState
+	UInteger Reserved1
+	UInteger Reserved2
+	Integer iMissingAlignment1
+	Bigint Reserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_list_transaction_locked_files
+Struct TXFS_LIST_TRANSACTION_LOCKED_FILES
+	Guid KtmTransaction
+	UBigint NumberOfFiles
+	UBigint BufferSizeRequired
+	UBigint Offset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_list_transaction_locked_files_entry
+Struct TXFS_LIST_TRANSACTION_LOCKED_FILES_ENTRY
+	UBigint Offset
+	UInteger NameFlags
+	Integer iMissingAlignment1
+	Bigint FileId
+	UInteger Reserved1
+	UInteger Reserved2
+	Bigint Reserved3
+	UShort[1] FileName
+	UChar[6] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_modify_rm
+Struct TXFS_MODIFY_RM
+	UInteger Flags											// TXFS_RMF_LAGS
+	UInteger LogContainerCountMax
+	UInteger LogContainerCountMin
+	UInteger LogContainerCount
+	UInteger LogGrowthIncrement
+	UInteger LogAutoShrinkPercentage
+	UBigint Reserved
+	UShort LoggingMode
+	UChar[6] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_query_rm_information
+Struct TXFS_QUERY_RM_INFORMATION
+	UInteger BytesRequired
+	Integer iMissingAlignment1
+	UBigint TailLsn
+	UBigint CurrentLsn
+	UBigint ArchiveTailLsn
+	UBigint LogContainerSize
+	Bigint HighestVirtualClock
+	UInteger LogContainerCount
+	UInteger LogContainerCountMax
+	UInteger LogContainerCountMin
+	UInteger LogGrowthIncrement
+	UInteger LogAutoShrinkPercentage
+	UInteger Flags											// TXFS_RMF_LAGS
+	UShort LoggingMode
+	UShort Reserved
+	UInteger RmState
+	UBigint LogCapacity
+	UBigint LogFree
+	UBigint TopsSize
+	UBigint TopsUsed
+	UBigint TransactionCount
+	UBigint OnePCCount
+	UBigint TwoPCCount
+	UBigint NumberLogFileFull
+	UBigint OldestTransactionAge
+	Guid RMName
+	UInteger TmLogPathOffset
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_read_backup_information_out
+Struct TXFS_READ_BACKUP_INFORMATION_OUT
+	_Anonymous_e__Union_3197 Anonymous
+End_Struct
+
+Struct TXFS_ROLLFORWARD_REDO_INFORMATION
+	Bigint LastVirtualClock
+	UBigint LastRedoLsn
+	UBigint HighestRecoveryLsn
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_savepoint_information
+Struct TXFS_SAVEPOINT_INFORMATION
+	Pointer KtmTransaction									// HANDLE
+	UInteger ActionCode
+	UInteger SavepointId
+End_Struct
+
+Struct TXFS_START_RM_INFORMATION
+	UInteger Flags
+	Integer iMissingAlignment1
+	UBigint LogContainerSize
+	UInteger LogContainerCountMin
+	UInteger LogContainerCountMax
+	UInteger LogGrowthIncrement
+	UInteger LogAutoShrinkPercentage
+	UInteger TmLogPathOffset
+	UShort TmLogPathLength
+	UShort LoggingMode
+	UShort LogPathLength
+	UShort Reserved
+	UShort[1] LogPath
+	Short iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_transaction_active_info
+Struct TXFS_TRANSACTION_ACTIVE_INFO
+	UChar TransactionsActiveAtSnapshot						// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-txfs_write_backup_information
+Struct TXFS_WRITE_BACKUP_INFORMATION
+	UChar[1] Buffer
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v0
+Struct USN_JOURNAL_DATA_V0
+	UBigint UsnJournalID
+	Bigint FirstUsn
+	Bigint NextUsn
+	Bigint LowestValidUsn
+	Bigint MaxUsn
+	UBigint MaximumSize
+	UBigint AllocationDelta
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v1
+Struct USN_JOURNAL_DATA_V1
+	UBigint UsnJournalID
+	Bigint FirstUsn
+	Bigint NextUsn
+	Bigint LowestValidUsn
+	Bigint MaxUsn
+	UBigint MaximumSize
+	UBigint AllocationDelta
+	UShort MinSupportedMajorVersion
+	UShort MaxSupportedMajorVersion
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_journal_data_v2
+Struct USN_JOURNAL_DATA_V2
+	UBigint UsnJournalID
+	Bigint FirstUsn
+	Bigint NextUsn
+	Bigint LowestValidUsn
+	Bigint MaxUsn
+	UBigint MaximumSize
+	UBigint AllocationDelta
+	UShort MinSupportedMajorVersion
+	UShort MaxSupportedMajorVersion
+	UInteger Flags
+	UBigint RangeTrackChunkSize
+	Bigint RangeTrackFileSizeThreshold
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_range_track_output
+Struct USN_RANGE_TRACK_OUTPUT
+	Bigint Usn
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_common_header
+Struct USN_RECORD_COMMON_HEADER
+	UInteger RecordLength
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_extent
+Struct USN_RECORD_EXTENT
+	Bigint Offset
+	Bigint Length
+End_Struct
+
+Struct USN_RECORD_UNION
+	_Anonymous_e__Union_3182 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v2
+Struct USN_RECORD_V2
+	UInteger RecordLength
+	UShort MajorVersion
+	UShort MinorVersion
+	UBigint FileReferenceNumber
+	UBigint ParentFileReferenceNumber
+	Bigint Usn
+	Bigint TimeStamp
+	UInteger Reason
+	UInteger SourceInfo
+	UInteger SecurityId
+	UInteger FileAttributes
+	UShort FileNameLength
+	UShort FileNameOffset
+	UShort[1] FileName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v3
+Struct USN_RECORD_V3
+	UInteger RecordLength
+	UShort MajorVersion
+	UShort MinorVersion
+	FILE_ID_128 FileReferenceNumber
+	FILE_ID_128 ParentFileReferenceNumber
+	Bigint Usn
+	Bigint TimeStamp
+	UInteger Reason
+	UInteger SourceInfo
+	UInteger SecurityId
+	UInteger FileAttributes
+	UShort FileNameLength
+	UShort FileNameOffset
+	UShort[1] FileName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_record_v4
+Struct USN_RECORD_V4
+	USN_RECORD_COMMON_HEADER Header
+	FILE_ID_128 FileReferenceNumber
+	FILE_ID_128 ParentFileReferenceNumber
+	Bigint Usn
+	UInteger Reason
+	UInteger SourceInfo										// USN_SOURCE_INFO_ID
+	UInteger RemainingExtents
+	UShort NumberOfExtents
+	UShort ExtentSize
+	USN_RECORD_EXTENT[1] Extents
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-usn_track_modified_ranges
+Struct USN_TRACK_MODIFIED_RANGES
+	UInteger Flags
+	UInteger Unused
+	UBigint ChunkSize
+	Bigint FileSizeThreshold
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-verify_information
+Struct VERIFY_INFORMATION
+	Bigint StartingOffset
+	UInteger Length
+	Integer iMissingAlignment1
+End_Struct
+
+Struct VIRTUALIZATION_INSTANCE_INFO_INPUT
+	UInteger NumberOfWorkerThreads
+	UInteger Flags
+End_Struct
+
+Struct VIRTUALIZATION_INSTANCE_INFO_INPUT_EX
+	UShort HeaderSize
+	Short iMissingAlignment1
+	UInteger Flags
+	UInteger NotificationInfoSize
+	UShort NotificationInfoOffset
+	UShort ProviderMajorVersion
+End_Struct
+
+Struct VIRTUALIZATION_INSTANCE_INFO_OUTPUT
+	Guid VirtualizationInstanceID
+End_Struct
+
+Struct VIRTUAL_STORAGE_SET_BEHAVIOR_INPUT
+	UInteger Size
+	Integer BehaviorCode									// VIRTUAL_STORAGE_BEHAVIOR_CODE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-volume_bitmap_buffer
+Struct VOLUME_BITMAP_BUFFER
+	Bigint StartingLcn
+	Bigint BitmapSize
+	UChar[1] Buffer
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-volume_disk_extents
+Struct VOLUME_DISK_EXTENTS
+	UInteger NumberOfDiskExtents
+	Integer iMissingAlignment1
+	DISK_EXTENT[1] Extents
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winioctl/ns-winioctl-volume_get_gpt_attributes_information
+Struct VOLUME_GET_GPT_ATTRIBUTES_INFORMATION
+	UBigint GptAttributes
+End_Struct
+
+Struct WIM_PROVIDER_ADD_OVERLAY_INPUT
+	UInteger WimType
+	UInteger WimIndex
+	UInteger WimFileNameOffset
+	UInteger WimFileNameLength
+End_Struct
+
+Struct WIM_PROVIDER_EXTERNAL_INFO
+	UInteger Version
+	UInteger Flags
+	Bigint DataSourceId
+	UChar[20] ResourceHash
+	Integer iMissingAlignment1
+End_Struct
+
+Struct WIM_PROVIDER_OVERLAY_ENTRY
+	UInteger NextEntryOffset
+	Integer iMissingAlignment1
+	Bigint DataSourceId
+	Guid WimGuid
+	UInteger WimFileNameOffset
+	UInteger WimType
+	UInteger WimIndex
+	UInteger Flags
+End_Struct
+
+Struct WIM_PROVIDER_REMOVE_OVERLAY_INPUT
+	Bigint DataSourceId
+End_Struct
+
+Struct WIM_PROVIDER_SUSPEND_OVERLAY_INPUT
+	Bigint DataSourceId
+End_Struct
+
+Struct WIM_PROVIDER_UPDATE_OVERLAY_INPUT
+	Bigint DataSourceId
+	UInteger WimFileNameOffset
+	UInteger WimFileNameLength
+End_Struct
+
+Struct WOF_EXTERNAL_FILE_ID
+	FILE_ID_128 FileId
+End_Struct
+
+Struct WOF_EXTERNAL_INFO
+	UInteger Version
+	UInteger Provider
+End_Struct
+
+Struct WOF_VERSION_INFO
+	UInteger WofVersion
+End_Struct
+
+Struct WRITE_USN_REASON_INPUT
+	UInteger Flags
+	UInteger UsnReasonToWrite
+End_Struct
+
+Struct _Allocate_e__Struct_3188
+	UInteger Calls
+	UInteger Clusters
+	UInteger Hints
+	UInteger RunsReturned
+	UInteger HintsHonored
+	UInteger HintsClusters
+	UInteger Cache
+	UInteger CacheClusters
+	UInteger CacheMiss
+	UInteger CacheMissClusters
+End_Struct
+
+Struct _Allocate_e__Struct_3193
+	UInteger Calls
+	UInteger RunsReturned
+	UInteger Hints
+	UInteger HintsHonored
+	UInteger Cache
+	UInteger CacheMiss
+	UBigint Clusters
+	UBigint HintsClusters
+	UBigint CacheClusters
+	UBigint CacheMissClusters
+End_Struct
+
+Struct _Anonymous1_e__Struct_3148
+	UInteger Channel
+	UInteger Device
+End_Struct
+
+Struct _Anonymous2_e__Struct_3149
+	UInteger Target
+	UInteger Lun
+End_Struct
+
+Struct _Anonymous_e__Struct_3122
+	UBigint _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3130
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3132
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3134
+	UChar _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3136
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3138
+	_MinorVersion_e__Union_3139 MinorVersion
+	UShort MajorVersion
+End_Struct
+
+Struct _Anonymous_e__Struct_3140
+	UChar SubMinor
+	UChar Minor
+End_Struct
+
+Struct _Anonymous_e__Struct_3154
+	UInteger _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3173
+	DISK_INT13_INFO Int13
+	DISK_EX_INT13_INFO ExInt13
+End_Struct
+
+Struct _Anonymous_e__Struct_3180
+	Bigint NextVcn
+	Bigint Lcn
+End_Struct
+
+Struct _Anonymous_e__Struct_3181
+	Bigint NextVcn
+	Bigint Lcn
+	UInteger ReferenceCount
+	Integer iMissingAlignment1
+End_Struct
+
+Struct _Anonymous_e__Struct_3195
+	UChar[16] BirthVolumeId
+	UChar[16] BirthObjectId
+	UChar[16] DomainId
+End_Struct
+
+Struct _Anonymous_e__Struct_3198
+	Bigint Offset
+End_Struct
+
+Struct _AtaPort_e__Struct_3161
+	UInteger dwAtaPortSpecific
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

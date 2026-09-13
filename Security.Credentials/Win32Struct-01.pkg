@@ -1,0 +1,410 @@
+Use UI
+
+Struct _Anonymous_e__Union_1825
+	// SCARD_T0_COMMAND CmdBytes // (5)
+	// UChar[5] rgbHeader // (5)
+	SCARD_T0_COMMAND CmdBytes
+End_Struct
+
+Struct _Anonymous_e__Union_1826
+	// _ReaderAndContainerParameter_e__Struct_1827 ReaderAndContainerParameter // (24)
+	// _SerialNumberParameter_e__Struct_1828 SerialNumberParameter // (12)
+	_ReaderAndContainerParameter_e__Struct_1827 ReaderAndContainerParameter
+End_Struct
+
+Struct BINARY_BLOB_CREDENTIAL_INFO
+	UInteger cbBlob
+	Integer iMissingAlignment1
+	Pointer pbBlob											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-cert_credential_info
+Struct CERT_CREDENTIAL_INFO
+	UInteger cbSize
+	UChar[20] rgbHashOfCert
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credentiala
+Struct CREDENTIALA
+	UInteger Flags											// CRED_FLAGS
+	UInteger Type											// CRED_TYPE
+	Pointer TargetName										// PSTR
+	Pointer Comment											// PSTR
+	FILETIME LastWritten
+	UInteger CredentialBlobSize
+	Integer iMissingAlignment1
+	Pointer CredentialBlob									// UChar*
+	UInteger Persist										// CRED_PERSIST
+	UInteger AttributeCount
+	Pointer Attributes										// CREDENTIAL_ATTRIBUTEA*
+	Pointer TargetAlias										// PSTR
+	Pointer UserName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credentialw
+Struct CREDENTIALW
+	UInteger Flags											// CRED_FLAGS
+	UInteger Type											// CRED_TYPE
+	Pointer TargetName										// PWSTR
+	Pointer Comment											// PWSTR
+	FILETIME LastWritten
+	UInteger CredentialBlobSize
+	Integer iMissingAlignment1
+	Pointer CredentialBlob									// UChar*
+	UInteger Persist										// CRED_PERSIST
+	UInteger AttributeCount
+	Pointer Attributes										// CREDENTIAL_ATTRIBUTEW*
+	Pointer TargetAlias										// PWSTR
+	Pointer UserName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credential_attributea
+Struct CREDENTIAL_ATTRIBUTEA
+	Pointer Keyword											// PSTR
+	UInteger Flags
+	UInteger ValueSize
+	Pointer Value											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credential_attributew
+Struct CREDENTIAL_ATTRIBUTEW
+	Pointer Keyword											// PWSTR
+	UInteger Flags
+	UInteger ValueSize
+	Pointer Value											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credential_target_informationa
+Struct CREDENTIAL_TARGET_INFORMATIONA
+	Pointer TargetName										// PSTR
+	Pointer NetbiosServerName								// PSTR
+	Pointer DnsServerName									// PSTR
+	Pointer NetbiosDomainName								// PSTR
+	Pointer DnsDomainName									// PSTR
+	Pointer DnsTreeName										// PSTR
+	Pointer PackageName										// PSTR
+	UInteger Flags
+	UInteger CredTypeCount
+	Pointer CredTypes										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credential_target_informationw
+Struct CREDENTIAL_TARGET_INFORMATIONW
+	Pointer TargetName										// PWSTR
+	Pointer NetbiosServerName								// PWSTR
+	Pointer DnsServerName									// PWSTR
+	Pointer NetbiosDomainName								// PWSTR
+	Pointer DnsDomainName									// PWSTR
+	Pointer DnsTreeName										// PWSTR
+	Pointer PackageName										// PWSTR
+	UInteger Flags
+	UInteger CredTypeCount
+	Pointer CredTypes										// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/credssp/ns-credssp-credssp_cred
+Struct CREDSSP_CRED
+	Integer Type											// CREDSPP_SUBMIT_TYPE
+	Integer iMissingAlignment1
+	Pointer pSchannelCred									// Pointer*
+	Pointer pSpnegoCred										// Pointer*
+End_Struct
+
+Struct CREDSSP_CRED_EX
+	Integer Type											// CREDSPP_SUBMIT_TYPE
+	UInteger Version
+	UInteger Flags
+	UInteger Reserved
+	CREDSSP_CRED Cred
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credui_infoa
+Struct CREDUI_INFOA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer pszMessageText									// PSTR
+	Pointer pszCaptionText									// PSTR
+	Pointer hbmBanner										// HBITMAP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-credui_infow
+Struct CREDUI_INFOW
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hwndParent										// HWND
+	Pointer pszMessageText									// PWSTR
+	Pointer pszCaptionText									// PWSTR
+	Pointer hbmBanner										// HBITMAP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/keycredmgr/ns-keycredmgr-keycredentialmanagerinfo
+Struct KeyCredentialManagerInfo
+	Guid containerId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-opencardnamea
+Struct OPENCARDNAMEA
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	ULongPtr hSCardContext
+	Pointer lpstrGroupNames									// PSTR
+	UInteger nMaxGroupNames
+	Integer iMissingAlignment2
+	Pointer lpstrCardNames									// PSTR
+	UInteger nMaxCardNames
+	Integer iMissingAlignment3
+	Pointer rgguidInterfaces								// Guid*
+	UInteger cguidInterfaces
+	Integer iMissingAlignment4
+	Pointer lpstrRdr										// PSTR
+	UInteger nMaxRdr
+	Integer iMissingAlignment5
+	Pointer lpstrCard										// PSTR
+	UInteger nMaxCard
+	Integer iMissingAlignment6
+	Pointer lpstrTitle										// PSTR
+	UInteger dwFlags
+	Integer iMissingAlignment7
+	Pointer pvUserData										// Pointer*
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+	UInteger dwActiveProtocol
+	Integer iMissingAlignment8
+	Pointer lpfnConnect										// LPOCNCONNPROCA
+	Pointer lpfnCheck										// LPOCNCHKPROC
+	Pointer lpfnDisconnect									// LPOCNDSCPROC
+	ULongPtr hCardHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-opencardnamew
+Struct OPENCARDNAMEW
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer hwndOwner										// HWND
+	ULongPtr hSCardContext
+	Pointer lpstrGroupNames									// PWSTR
+	UInteger nMaxGroupNames
+	Integer iMissingAlignment2
+	Pointer lpstrCardNames									// PWSTR
+	UInteger nMaxCardNames
+	Integer iMissingAlignment3
+	Pointer rgguidInterfaces								// Guid*
+	UInteger cguidInterfaces
+	Integer iMissingAlignment4
+	Pointer lpstrRdr										// PWSTR
+	UInteger nMaxRdr
+	Integer iMissingAlignment5
+	Pointer lpstrCard										// PWSTR
+	UInteger nMaxCard
+	Integer iMissingAlignment6
+	Pointer lpstrTitle										// PWSTR
+	UInteger dwFlags
+	Integer iMissingAlignment7
+	Pointer pvUserData										// Pointer*
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+	UInteger dwActiveProtocol
+	Integer iMissingAlignment8
+	Pointer lpfnConnect										// LPOCNCONNPROCW
+	Pointer lpfnCheck										// LPOCNCHKPROC
+	Pointer lpfnDisconnect									// LPOCNDSCPROC
+	ULongPtr hCardHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-opencardname_exa
+Struct OPENCARDNAME_EXA
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	ULongPtr hSCardContext
+	Pointer hwndOwner										// HWND
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer lpstrTitle										// PSTR
+	Pointer lpstrSearchDesc									// PSTR
+	Pointer hIcon											// HICON
+	Pointer pOpenCardSearchCriteria							// OPENCARD_SEARCH_CRITERIAA*
+	Pointer lpfnConnect										// LPOCNCONNPROCA
+	Pointer pvUserData										// Pointer*
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+	Pointer lpstrRdr										// PSTR
+	UInteger nMaxRdr
+	Integer iMissingAlignment3
+	Pointer lpstrCard										// PSTR
+	UInteger nMaxCard
+	UInteger dwActiveProtocol
+	ULongPtr hCardHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-opencardname_exw
+Struct OPENCARDNAME_EXW
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	ULongPtr hSCardContext
+	Pointer hwndOwner										// HWND
+	UInteger dwFlags
+	Integer iMissingAlignment2
+	Pointer lpstrTitle										// PWSTR
+	Pointer lpstrSearchDesc									// PWSTR
+	Pointer hIcon											// HICON
+	Pointer pOpenCardSearchCriteria							// OPENCARD_SEARCH_CRITERIAW*
+	Pointer lpfnConnect										// LPOCNCONNPROCW
+	Pointer pvUserData										// Pointer*
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+	Pointer lpstrRdr										// PWSTR
+	UInteger nMaxRdr
+	Integer iMissingAlignment3
+	Pointer lpstrCard										// PWSTR
+	UInteger nMaxCard
+	UInteger dwActiveProtocol
+	ULongPtr hCardHandle
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-opencard_search_criteriaa
+Struct OPENCARD_SEARCH_CRITERIAA
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpstrGroupNames									// PSTR
+	UInteger nMaxGroupNames
+	Integer iMissingAlignment2
+	Pointer rgguidInterfaces								// Guid*
+	UInteger cguidInterfaces
+	Integer iMissingAlignment3
+	Pointer lpstrCardNames									// PSTR
+	UInteger nMaxCardNames
+	Integer iMissingAlignment4
+	Pointer lpfnCheck										// LPOCNCHKPROC
+	Pointer lpfnConnect										// LPOCNCONNPROCA
+	Pointer lpfnDisconnect									// LPOCNDSCPROC
+	Pointer pvUserData										// Pointer*
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-opencard_search_criteriaw
+Struct OPENCARD_SEARCH_CRITERIAW
+	UInteger dwStructSize
+	Integer iMissingAlignment1
+	Pointer lpstrGroupNames									// PWSTR
+	UInteger nMaxGroupNames
+	Integer iMissingAlignment2
+	Pointer rgguidInterfaces								// Guid*
+	UInteger cguidInterfaces
+	Integer iMissingAlignment3
+	Pointer lpstrCardNames									// PWSTR
+	UInteger nMaxCardNames
+	Integer iMissingAlignment4
+	Pointer lpfnCheck										// LPOCNCHKPROC
+	Pointer lpfnConnect										// LPOCNCONNPROCW
+	Pointer lpfnDisconnect									// LPOCNDSCPROC
+	Pointer pvUserData										// Pointer*
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+End_Struct
+
+Struct READER_SEL_REQUEST
+	UInteger dwShareMode
+	UInteger dwPreferredProtocols
+	Integer MatchType										// READER_SEL_REQUEST_MATCH_TYPE
+	_Anonymous_e__Union_1826 Anonymous
+End_Struct
+
+Struct READER_SEL_RESPONSE
+	UInteger cbReaderNameOffset
+	UInteger cchReaderNameLength
+	UInteger cbCardNameOffset
+	UInteger cchCardNameLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-scard_atrmask
+Struct SCARD_ATRMASK
+	UInteger cbAtr
+	UChar[36] rgbAtr
+	UChar[36] rgbMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/SecAuthN/scard-io-request
+Struct SCARD_IO_REQUEST
+	UInteger dwProtocol
+	UInteger cbPciLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-scard_readerstatea
+Struct SCARD_READERSTATEA
+	Pointer szReader										// PSTR
+	Pointer pvUserData										// Pointer*
+	UInteger dwCurrentState									// SCARD_STATE
+	UInteger dwEventState									// SCARD_STATE
+	UInteger cbAtr
+	UChar[36] rgbAtr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winscard/ns-winscard-scard_readerstatew
+Struct SCARD_READERSTATEW
+	Pointer szReader										// PWSTR
+	Pointer pvUserData										// Pointer*
+	UInteger dwCurrentState									// SCARD_STATE
+	UInteger dwEventState									// SCARD_STATE
+	UInteger cbAtr
+	UChar[36] rgbAtr
+End_Struct
+
+Struct SCARD_T0_COMMAND
+	UChar bCla
+	UChar bIns
+	UChar bP1
+	UChar bP2
+	UChar bP3
+End_Struct
+
+Struct SCARD_T0_REQUEST
+	SCARD_IO_REQUEST ioRequest
+	UChar bSw1
+	UChar bSw2
+	_Anonymous_e__Union_1825 Anonymous
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SCARD_T1_REQUEST
+	SCARD_IO_REQUEST ioRequest
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sspi/ns-sspi-sechandle
+Struct SecHandle
+	ULongPtr dwLower
+	ULongPtr dwUpper
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/credssp/ns-credssp-secpkgcontext_clientcreds
+Struct SecPkgContext_ClientCreds
+	UInteger AuthBufferLen
+	Integer iMissingAlignment1
+	Pointer AuthBuffer										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincred/ns-wincred-username_target_credential_info
+Struct USERNAME_TARGET_CREDENTIAL_INFO
+	Pointer UserName										// PWSTR
+End_Struct
+
+Struct _ReaderAndContainerParameter_e__Struct_1827
+	UInteger cbReaderNameOffset
+	UInteger cchReaderNameLength
+	UInteger cbContainerNameOffset
+	UInteger cchContainerNameLength
+	UInteger dwDesiredCardModuleVersion
+	UInteger dwCspFlags
+End_Struct
+
+Struct _SerialNumberParameter_e__Struct_1828
+	UInteger cbSerialNumberOffset
+	UInteger cbSerialNumberLength
+	UInteger dwDesiredCardModuleVersion
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,356 @@
+Use UI
+
+Struct _Anonymous_e__Union_1203
+	// Pointer Ptr												// Pointer* // (8)
+	Pointer Ptr
+End_Struct
+
+Struct _Anonymous_e__Union_1211
+	// _Anonymous_e__Struct_1212 Anonymous // (4)
+	// UInteger ThreadUmsFlags // (4)
+	_Anonymous_e__Struct_1212 Anonymous
+End_Struct
+
+Struct _Reason_e__Union_1204
+	// _Detailed_e__Struct_1205 Detailed // (24)
+	// Pointer SimpleReasonString								// PWSTR // (8)
+	_Detailed_e__Struct_1205 Detailed
+End_Struct
+
+Struct _u_e__Union_1209
+	// UInteger Flags // (4)
+	// _s_e__Struct_1210 s // (4)
+	UInteger Flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-app_memory_information
+Struct APP_MEMORY_INFORMATION
+	UBigint AvailableCommit
+	UBigint PrivateCommitUsage
+	UBigint PeakPrivateCommitUsage
+	UBigint TotalCommitUsage
+End_Struct
+
+Struct CONDITION_VARIABLE
+	Pointer Ptr												// Pointer*
+End_Struct
+
+Struct CRITICAL_SECTION
+	Pointer DebugInfo										// CRITICAL_SECTION_DEBUG*
+	Integer LockCount
+	Integer RecursionCount
+	Pointer OwningThread									// HANDLE
+	Pointer LockSemaphore									// HANDLE
+	ULongPtr SpinCount
+End_Struct
+
+Struct CRITICAL_SECTION_DEBUG
+	UShort Type
+	UShort CreatorBackTraceIndex
+	Integer iMissingAlignment1
+	Pointer CriticalSection									// CRITICAL_SECTION*
+	LIST_ENTRY ProcessLocksList
+	UInteger EntryCount
+	UInteger ContentionCount
+	UInteger Flags
+	UShort CreatorBackTraceIndexHigh
+	UShort Identifier
+End_Struct
+
+Struct INIT_ONCE
+	_Anonymous_e__Union_1203 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-io_counters
+Struct IO_COUNTERS
+	UBigint ReadOperationCount
+	UBigint WriteOperationCount
+	UBigint OtherOperationCount
+	UBigint ReadTransferCount
+	UBigint WriteTransferCount
+	UBigint OtherTransferCount
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-memory_priority_information
+Struct MEMORY_PRIORITY_INFORMATION
+	UInteger MemoryPriority									// MEMORY_PRIORITY
+End_Struct
+
+Struct OVERRIDE_PREFETCH_PARAMETER
+	UInteger Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winternl/ns-winternl-peb
+Struct PEB
+	UChar[2] Reserved1
+	UChar BeingDebugged
+	UChar[1] Reserved2
+	Integer iMissingAlignment1
+	Pointer[2] Reserved3									// Pointer*
+	Pointer Ldr												// PEB_LDR_DATA*
+	Pointer ProcessParameters								// RTL_USER_PROCESS_PARAMETERS*
+	Pointer[3] Reserved4									// Pointer*
+	Pointer AtlThunkSListPtr								// Pointer*
+	Pointer Reserved5										// Pointer*
+	UInteger Reserved6
+	Integer iMissingAlignment2
+	Pointer Reserved7										// Pointer*
+	UInteger Reserved8
+	UInteger AtlThunkSListPtr32
+	Pointer[45] Reserved9									// Pointer*
+	UChar[96] Reserved10
+	Pointer PostProcessInitRoutine							// PPS_POST_PROCESS_INIT_ROUTINE
+	UChar[128] Reserved11
+	Pointer[1] Reserved12									// Pointer*
+	UInteger SessionId
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winternl/ns-winternl-peb_ldr_data
+Struct PEB_LDR_DATA
+	UChar[8] Reserved1
+	Pointer[3] Reserved2									// Pointer*
+	LIST_ENTRY InMemoryOrderModuleList
+End_Struct
+
+Struct PROCESS_BASIC_INFORMATION
+	Integer ExitStatus										// NTSTATUS
+	Integer iMissingAlignment1
+	Pointer PebBaseAddress									// PEB*
+	ULongPtr AffinityMask
+	Integer BasePriority
+	Integer iMissingAlignment2
+	ULongPtr UniqueProcessId
+	ULongPtr InheritedFromUniqueProcessId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_dynamic_eh_continuation_target
+Struct PROCESS_DYNAMIC_EH_CONTINUATION_TARGET
+	ULongPtr TargetAddress
+	ULongPtr Flags
+End_Struct
+
+Struct PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATION
+	UShort NumberOfTargets
+	UShort Reserved
+	UInteger Reserved2
+	Pointer Targets											// PROCESS_DYNAMIC_EH_CONTINUATION_TARGET*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winnt/ns-winnt-process_dynamic_enforced_address_range
+Struct PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE
+	ULongPtr BaseAddress
+	ULongPtr Size
+	UInteger Flags
+	Integer iMissingAlignment1
+End_Struct
+
+Struct PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATION
+	UShort NumberOfRanges
+	UShort Reserved
+	UInteger Reserved2
+	Pointer Ranges											// PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information
+Struct PROCESS_INFORMATION
+	Pointer hProcess										// HANDLE
+	Pointer hThread											// HANDLE
+	UInteger dwProcessId
+	UInteger dwThreadId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_leap_second_info
+Struct PROCESS_LEAP_SECOND_INFO
+	UInteger Flags
+	UInteger Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_machine_information
+Struct PROCESS_MACHINE_INFORMATION
+	UShort ProcessMachine									// IMAGE_FILE_MACHINE
+	UShort Res0
+	Integer MachineAttributes								// MACHINE_ATTRIBUTES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_memory_exhaustion_info
+Struct PROCESS_MEMORY_EXHAUSTION_INFO
+	UShort Version
+	UShort Reserved
+	Integer Type											// PROCESS_MEMORY_EXHAUSTION_TYPE
+	ULongPtr Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_power_throttling_state
+Struct PROCESS_POWER_THROTTLING_STATE
+	UInteger Version
+	UInteger ControlMask
+	UInteger StateMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_protection_level_information
+Struct PROCESS_PROTECTION_LEVEL_INFORMATION
+	UInteger ProtectionLevel								// PROCESS_PROTECTION_LEVEL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-reason_context
+Struct REASON_CONTEXT
+	UInteger Version
+	UInteger Flags											// POWER_REQUEST_CONTEXT_FLAGS
+	_Reason_e__Union_1204 Reason
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winternl/ns-winternl-rtl_user_process_parameters
+Struct RTL_USER_PROCESS_PARAMETERS
+	UChar[16] Reserved1
+	Pointer[10] Reserved2									// Pointer*
+	UNICODE_STRING ImagePathName
+	UNICODE_STRING CommandLine
+End_Struct
+
+Struct SRWLOCK
+	Pointer Ptr												// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
+Struct STARTUPINFOA
+	UInteger cb
+	Integer iMissingAlignment1
+	Pointer lpReserved										// PSTR
+	Pointer lpDesktop										// PSTR
+	Pointer lpTitle											// PSTR
+	UInteger dwX
+	UInteger dwY
+	UInteger dwXSize
+	UInteger dwYSize
+	UInteger dwXCountChars
+	UInteger dwYCountChars
+	UInteger dwFillAttribute
+	UInteger dwFlags										// STARTUPINFOW_FLAGS
+	UShort wShowWindow
+	UShort cbReserved2
+	Integer iMissingAlignment2
+	Pointer lpReserved2										// UChar*
+	Pointer hStdInput										// HANDLE
+	Pointer hStdOutput										// HANDLE
+	Pointer hStdError										// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-startupinfoexa
+Struct STARTUPINFOEXA
+	STARTUPINFOA StartupInfo
+	Pointer lpAttributeList									// LPPROC_THREAD_ATTRIBUTE_LIST
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-startupinfoexw
+Struct STARTUPINFOEXW
+	STARTUPINFOW StartupInfo
+	Pointer lpAttributeList									// LPPROC_THREAD_ATTRIBUTE_LIST
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfow
+Struct STARTUPINFOW
+	UInteger cb
+	Integer iMissingAlignment1
+	Pointer lpReserved										// PWSTR
+	Pointer lpDesktop										// PWSTR
+	Pointer lpTitle											// PWSTR
+	UInteger dwX
+	UInteger dwY
+	UInteger dwXSize
+	UInteger dwYSize
+	UInteger dwXCountChars
+	UInteger dwYCountChars
+	UInteger dwFillAttribute
+	UInteger dwFlags										// STARTUPINFOW_FLAGS
+	UShort wShowWindow
+	UShort cbReserved2
+	Integer iMissingAlignment2
+	Pointer lpReserved2										// UChar*
+	Pointer hStdInput										// HANDLE
+	Pointer hStdOutput										// HANDLE
+	Pointer hStdError										// HANDLE
+End_Struct
+
+Struct SYNCHRONIZATION_BARRIER
+	UInteger Reserved1
+	UInteger Reserved2
+	ULongPtr[2] Reserved3
+	UInteger Reserved4
+	UInteger Reserved5
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winternl/ns-winternl-teb
+Struct TEB
+	Pointer[12] Reserved1									// Pointer*
+	Pointer ProcessEnvironmentBlock							// PEB*
+	Pointer[399] Reserved2									// Pointer*
+	UChar[1952] Reserved3
+	Pointer[64] TlsSlots									// Pointer*
+	UChar[8] Reserved4
+	Pointer[26] Reserved5									// Pointer*
+	Pointer ReservedForOle									// Pointer*
+	Pointer[4] Reserved6									// Pointer*
+	Pointer TlsExpansionSlots								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/processthreadsapi/ns-processthreadsapi-thread_power_throttling_state
+Struct THREAD_POWER_THROTTLING_STATE
+	UInteger Version
+	UInteger ControlMask
+	UInteger StateMask
+End_Struct
+
+Struct TP_CALLBACK_ENVIRON_V3
+	UInteger Version
+	Integer iMissingAlignment1
+	LongPtr Pool											// PTP_POOL
+	LongPtr CleanupGroup									// PTP_CLEANUP_GROUP
+	Pointer CleanupGroupCancelCallback						// PTP_CLEANUP_GROUP_CANCEL_CALLBACK
+	Pointer RaceDll											// Pointer*
+	LongPtr ActivationContext
+	Pointer FinalizationCallback							// PTP_SIMPLE_CALLBACK
+	_u_e__Union_1209 u
+	Integer CallbackPriority								// TP_CALLBACK_PRIORITY
+	UInteger Size
+	Integer iMissingAlignment2
+End_Struct
+
+Struct TP_POOL_STACK_INFORMATION
+	ULongPtr StackReserve
+	ULongPtr StackCommit
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-ums_scheduler_startup_info
+Struct UMS_SCHEDULER_STARTUP_INFO
+	UInteger UmsVersion
+	Integer iMissingAlignment1
+	Pointer CompletionList									// Pointer*
+	Pointer SchedulerProc									// PRTL_UMS_SCHEDULER_ENTRY_POINT
+	Pointer SchedulerParam									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winbase/ns-winbase-ums_system_thread_information
+Struct UMS_SYSTEM_THREAD_INFORMATION
+	UInteger UmsVersion
+	_Anonymous_e__Union_1211 Anonymous
+End_Struct
+
+Struct _Anonymous_e__Struct_1212
+	UInteger _bitfield
+End_Struct
+
+Struct _Detailed_e__Struct_1205
+	Pointer LocalizedReasonModule							// HMODULE
+	UInteger LocalizedReasonId
+	UInteger ReasonStringCount
+	Pointer ReasonStrings									// PWSTR*
+End_Struct
+
+Struct _s_e__Struct_1210
+	UInteger _bitfield
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

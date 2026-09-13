@@ -1,0 +1,241 @@
+Use UI
+
+Struct _Anonymous_e__Union_1705
+	// AUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATION audioEndpointVolumeChange // (16)
+	// AUDIO_ENDPOINT_PROPERTY_CHANGE_NOTIFICATION audioEndpointPropertyChange // (40)
+	// AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATION audioSystemEffectsPropertyChange // (64)
+	// AUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATION2 audioEndpointVolumeChange2 // (16)
+	// Integer deviceOrientation								// DEVICE_ORIENTATION_TYPE // (4)
+	// AUDIO_MICROPHONE_BOOST_NOTIFICATION audioMicrophoneBoostChange // (56)
+	// AUDIO_ENVIRONMENT_STATE_CHANGE_NOTIFICATION audioEnvironmentChange // (32)
+	AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATION audioSystemEffectsPropertyChange
+End_Struct
+
+Struct _Anonymous_e__Union_1706
+	// AUDIO_ENDPOINT_VOLUME_APO_NOTIFICATION_DESCRIPTOR audioEndpointVolume // (8)
+	// AUDIO_ENDPOINT_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR audioEndpointPropertyChange // (8)
+	// AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR audioSystemEffectsPropertyChange // (24)
+	// AUDIO_MICROPHONE_BOOST_APO_NOTIFICATION_DESCRIPTOR audioMicrophoneBoost // (8)
+	AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR audioSystemEffectsPropertyChange
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/ns-audioenginebaseapo-apoinitbasestruct
+Struct APOInitBaseStruct
+	UInteger cbSize
+	Guid clsid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/ns-audioenginebaseapo-apoinitsystemeffects
+Struct APOInitSystemEffects
+	APOInitBaseStruct APOInit
+	Integer iMissingAlignment1
+	Pointer pAPOEndpointProperties							// IPropertyStore
+	Pointer pAPOSystemEffectsProperties						// IPropertyStore
+	Pointer pReserved										// Pointer*
+	Pointer pDeviceCollection								// IMMDeviceCollection
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/ns-audioenginebaseapo-apoinitsystemeffects2
+Struct APOInitSystemEffects2
+	APOInitBaseStruct APOInit
+	Integer iMissingAlignment1
+	Pointer pAPOEndpointProperties							// IPropertyStore
+	Pointer pAPOSystemEffectsProperties						// IPropertyStore
+	Pointer pReserved										// Pointer*
+	Pointer pDeviceCollection								// IMMDeviceCollection
+	UInteger nSoftwareIoDeviceInCollection
+	UInteger nSoftwareIoConnectorIndex
+	Guid AudioProcessingMode
+	Integer InitializeForDiscoveryOnly						// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-apoinitsystemeffects3
+Struct APOInitSystemEffects3
+	APOInitBaseStruct APOInit
+	Integer iMissingAlignment1
+	Pointer pAPOEndpointProperties							// IPropertyStore
+	Pointer pServiceProvider								// IServiceProvider
+	Pointer pDeviceCollection								// IMMDeviceCollection
+	UInteger nSoftwareIoDeviceInCollection
+	UInteger nSoftwareIoConnectorIndex
+	Guid AudioProcessingMode
+	Integer InitializeForDiscoveryOnly						// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+Struct APO_CONNECTION_DESCRIPTOR
+	Integer Type											// APO_CONNECTION_BUFFER_TYPE
+	Integer iMissingAlignment1
+	ULongPtr pBuffer
+	UInteger u32MaxFrameCount
+	Integer iMissingAlignment2
+	Pointer pFormat											// IAudioMediaType
+	UInteger u32Signature
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioapotypes/ns-audioapotypes-apo_connection_property
+Struct APO_CONNECTION_PROPERTY
+	ULongPtr pBuffer
+	UInteger u32ValidFrameCount
+	Integer u32BufferFlags									// APO_BUFFER_FLAGS
+	UInteger u32Signature
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioapotypes/ns-audioapotypes-apo_connection_property_v2
+Struct APO_CONNECTION_PROPERTY_V2
+	APO_CONNECTION_PROPERTY property
+	UBigint u64QPCTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-apo_notification
+Struct APO_NOTIFICATION
+	Integer type											// APO_NOTIFICATION_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1705 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-apo_notification_descriptor
+Struct APO_NOTIFICATION_DESCRIPTOR
+	Integer type											// APO_NOTIFICATION_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1706 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/ns-audioenginebaseapo-apo_reg_properties
+Struct APO_REG_PROPERTIES
+	Guid clsid
+	Integer Flags											// APO_FLAG
+	UShort[256] szFriendlyName
+	UShort[256] szCopyrightInfo
+	UInteger u32MajorVersion
+	UInteger u32MinorVersion
+	UInteger u32MinInputConnections
+	UInteger u32MaxInputConnections
+	UInteger u32MinOutputConnections
+	UInteger u32MaxOutputConnections
+	UInteger u32MaxInstances
+	UInteger u32NumAPOInterfaces
+	Guid[1] iidAPOInterfaceList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_endpoint_property_change_apo_notification_descriptor
+Struct AUDIO_ENDPOINT_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR
+	Pointer device											// IMMDevice
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_endpoint_property_change_notification
+Struct AUDIO_ENDPOINT_PROPERTY_CHANGE_NOTIFICATION
+	Pointer endpoint										// IMMDevice
+	Pointer propertyStore									// IPropertyStore
+	PROPERTYKEY propertyKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_endpoint_volume_apo_notification_descriptor
+Struct AUDIO_ENDPOINT_VOLUME_APO_NOTIFICATION_DESCRIPTOR
+	Pointer device											// IMMDevice
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_endpoint_volume_change_notification
+Struct AUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATION
+	Pointer endpoint										// IMMDevice
+	Pointer volume											// AUDIO_VOLUME_NOTIFICATION_DATA*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_endpoint_volume_change_notification2
+Struct AUDIO_ENDPOINT_VOLUME_CHANGE_NOTIFICATION2
+	Pointer endpoint										// IMMDevice
+	Pointer volume											// AUDIO_VOLUME_NOTIFICATION_DATA2*
+End_Struct
+
+Struct AUDIO_ENVIRONMENT_STATE_CHANGE_NOTIFICATION
+	Pointer propertyStore									// IPropertyStore
+	PROPERTYKEY propertyKey
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_microphone_boost_apo_notification_descriptor
+Struct AUDIO_MICROPHONE_BOOST_APO_NOTIFICATION_DESCRIPTOR
+	Pointer device											// IMMDevice
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_microphone_boost_notification
+Struct AUDIO_MICROPHONE_BOOST_NOTIFICATION
+	Pointer endpoint										// IMMDevice
+	Guid eventContext
+	Integer microphoneBoostEnabled							// BOOL
+	Float levelInDb
+	Float levelMinInDb
+	Float levelMaxInDb
+	Float levelStepInDb
+	Integer muteSupported									// BOOL
+	Integer mute											// BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_systemeffect
+Struct AUDIO_SYSTEMEFFECT
+	Guid id
+	Integer canSetState										// BOOL
+	Integer state											// AUDIO_SYSTEMEFFECT_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_systemeffects_property_change_apo_notification_descriptor
+Struct AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_APO_NOTIFICATION_DESCRIPTOR
+	Pointer device											// IMMDevice
+	Guid propertyStoreContext
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_systemeffects_property_change_notification
+Struct AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATION
+	Pointer endpoint										// IMMDevice
+	Guid propertyStoreContext
+	Integer propertyStoreType								// AUDIO_SYSTEMEFFECTS_PROPERTYSTORE_TYPE
+	Integer iMissingAlignment1
+	Pointer propertyStore									// IPropertyStore
+	PROPERTYKEY propertyKey
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineextensionapo/ns-audioengineextensionapo-audio_volume_notification_data2
+Struct AUDIO_VOLUME_NOTIFICATION_DATA2
+	Pointer notificationData								// AUDIO_VOLUME_NOTIFICATION_DATA*
+	Float masterVolumeInDb
+	Float volumeMinInDb
+	Float volumeMaxInDb
+	Float volumeIncrementInDb
+	UInteger step
+	UInteger stepCount
+	Float[1] channelVolumesInDb
+	Integer iMissingAlignment1
+End_Struct
+
+Struct AcousticEchoCanceller_Reference_Input
+	APOInitSystemEffects3 apoInitSystemEffects
+	Integer streamProperties								// APO_REFERENCE_STREAM_PROPERTIES
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioenginebaseapo/ns-audioenginebaseapo-audiofxextensionparams
+Struct AudioFXExtensionParams
+	LongPtr AddPageParam									// LPARAM
+	Pointer pwstrEndpointID									// PWSTR
+	Pointer pFxProperties									// IPropertyStore
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audiomediatype/ns-audiomediatype-uncompressedaudioformat
+Struct UNCOMPRESSEDAUDIOFORMAT
+	Guid guidFormatType
+	UInteger dwSamplesPerFrame
+	UInteger dwBytesPerSampleContainer
+	UInteger dwValidBitsPerSample
+	Float fFramesPerSecond
+	UInteger dwChannelMask
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,101 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_context
+Struct MBN_CONTEXT
+	UInteger contextID
+	Integer contextType										// MBN_CONTEXT_TYPE
+	Pointer accessString									// BSTR
+	Pointer userName										// BSTR
+	Pointer password										// BSTR
+	Integer compression										// MBN_COMPRESSION
+	Integer authType										// MBN_AUTH_PROTOCOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_device_service
+Struct MBN_DEVICE_SERVICE
+	Pointer deviceServiceID									// BSTR
+	Short dataWriteSupported								// VARIANT_BOOL
+	Short dataReadSupported									// VARIANT_BOOL
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_interface_caps
+Struct MBN_INTERFACE_CAPS
+	Integer cellularClass									// MBN_CELLULAR_CLASS
+	Integer voiceClass										// MBN_VOICE_CLASS
+	UInteger dataClass
+	Integer iMissingAlignment1
+	Pointer customDataClass									// BSTR
+	UInteger gsmBandClass
+	UInteger cdmaBandClass
+	Pointer customBandClass									// BSTR
+	UInteger smsCaps
+	UInteger controlCaps
+	Pointer deviceID										// BSTR
+	Pointer manufacturer									// BSTR
+	Pointer model											// BSTR
+	Pointer firmwareInfo									// BSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_pin_info
+Struct MBN_PIN_INFO
+	Integer pinState										// MBN_PIN_STATE
+	Integer pinType											// MBN_PIN_TYPE
+	UInteger attemptsRemaining
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_provider
+Struct MBN_PROVIDER
+	Pointer providerID										// BSTR
+	UInteger providerState
+	Integer iMissingAlignment1
+	Pointer providerName									// BSTR
+	UInteger dataClass
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_provider2
+Struct MBN_PROVIDER2
+	MBN_PROVIDER provider
+	Integer cellularClass									// MBN_CELLULAR_CLASS
+	UInteger signalStrength
+	UInteger signalError
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_sms_filter
+Struct MBN_SMS_FILTER
+	Integer flag											// MBN_SMS_FLAG
+	UInteger messageIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mbnapi/ns-mbnapi-mbn_sms_status_info
+Struct MBN_SMS_STATUS_INFO
+	UInteger flag
+	UInteger messageIndex
+End_Struct
+
+Struct __DummyPinType__
+	UInteger pinType
+End_Struct
+
+Struct __mbnapi_ReferenceRemainingTypes__
+	Integer bandClass										// MBN_BAND_CLASS
+	Integer contextConstants								// MBN_CONTEXT_CONSTANTS
+	Integer ctrlCaps										// MBN_CTRL_CAPS
+	Integer dataClass										// MBN_DATA_CLASS
+	Integer interfaceCapsConstants							// MBN_INTERFACE_CAPS_CONSTANTS
+	Integer pinConstants									// MBN_PIN_CONSTANTS
+	Integer providerConstants								// MBN_PROVIDER_CONSTANTS
+	Integer providerState									// MBN_PROVIDER_STATE
+	Integer registrationConstants							// MBN_REGISTRATION_CONSTANTS
+	Integer signalConstants									// MBN_SIGNAL_CONSTANTS
+	Integer smsCaps											// MBN_SMS_CAPS
+	Integer smsConstants									// WWAEXT_SMS_CONSTANTS
+	Integer wwaextSmsConstants								// WWAEXT_SMS_CONSTANTS
+	Integer smsStatusFlag									// MBN_SMS_STATUS_FLAG
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

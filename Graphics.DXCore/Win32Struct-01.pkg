@@ -1,0 +1,101 @@
+Use UI
+
+Struct DXCoreAdapterEngineIndex
+	UInteger physicalAdapterIndex
+	UInteger engineIndex
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxcore_interface/ns-dxcore_interface-dxcoreadaptermemorybudget
+Struct DXCoreAdapterMemoryBudget
+	UBigint budget
+	UBigint currentUsage
+	UBigint availableForReservation
+	UBigint currentReservation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxcore_interface/ns-dxcore_interface-dxcoreadaptermemorybudgetnodesegmentgroup
+Struct DXCoreAdapterMemoryBudgetNodeSegmentGroup
+	UInteger nodeIndex
+	UInteger segmentGroup									// DXCoreSegmentGroup
+End_Struct
+
+Struct DXCoreAdapterProcessSetQueryInput
+	UInteger arraySize
+	Integer iMissingAlignment1
+	Pointer processIds										// UInteger*
+End_Struct
+
+Struct DXCoreAdapterProcessSetQueryOutput
+	UInteger processesWritten
+	UInteger processesTotal
+End_Struct
+
+Struct DXCoreEngineNamePropertyInput
+	DXCoreAdapterEngineIndex adapterEngineIndex
+	UInteger engineNameLength
+	Integer iMissingAlignment1
+	Pointer engineName										// PWSTR
+End_Struct
+
+Struct DXCoreEngineNamePropertyOutput
+	UInteger engineNameLength
+End_Struct
+
+Struct DXCoreEngineQueryInput
+	DXCoreAdapterEngineIndex adapterEngineIndex
+	UInteger processId
+End_Struct
+
+Struct DXCoreEngineQueryOutput
+	UBigint runningTime
+	UChar processQuerySucceeded
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct DXCoreFrequencyQueryOutput
+	UBigint frequency
+	UBigint maxFrequency
+	UBigint maxOverclockedFrequency
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxcore_interface/ns-dxcore_interface-dxcorehardwareid
+Struct DXCoreHardwareID
+	UInteger vendorID
+	UInteger deviceID
+	UInteger subSysID
+	UInteger revision
+End_Struct
+
+Struct DXCoreHardwareIDParts
+	UInteger vendorID
+	UInteger deviceID
+	UInteger subSystemID
+	UInteger subVendorID
+	UInteger revisionID
+End_Struct
+
+Struct DXCoreMemoryQueryInput
+	UInteger physicalAdapterIndex
+	UInteger memoryType										// DXCoreMemoryType
+End_Struct
+
+Struct DXCoreMemoryUsage
+	UBigint committed
+	UBigint resident
+End_Struct
+
+Struct DXCoreProcessMemoryQueryInput
+	UInteger physicalAdapterIndex
+	UInteger memoryType										// DXCoreMemoryType
+	UInteger processId
+End_Struct
+
+Struct DXCoreProcessMemoryQueryOutput
+	DXCoreMemoryUsage memoryUsage
+	UChar processQuerySucceeded
+	UChar[7] cMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

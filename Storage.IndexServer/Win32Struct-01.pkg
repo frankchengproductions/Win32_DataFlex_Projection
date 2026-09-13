@@ -1,0 +1,96 @@
+Use UI
+
+Struct _uGuid_e__Union_2816
+	// Guid guid // (16)
+	// Pointer pguid											// Guid* // (8)
+	Guid guid
+End_Struct
+
+Struct _uGuid_e__Union_3329
+	// Guid guid // (16)
+	// Pointer pguid											// Guid* // (8)
+	Guid guid
+End_Struct
+
+Struct _uName_e__Union_2817
+	// Pointer pwszName										// PWSTR // (8)
+	// UInteger ulPropid // (4)
+	Pointer pwszName
+End_Struct
+
+Struct _uName_e__Union_3330
+	// Pointer pwszName										// PWSTR // (8)
+	// UInteger ulPropid // (4)
+	Pointer pwszName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ntquery/ns-ntquery-ci_state
+Struct CI_STATE
+	UInteger cbStruct
+	UInteger cWordList
+	UInteger cPersistentIndex
+	UInteger cQueries
+	UInteger cDocuments
+	UInteger cFreshTest
+	UInteger dwMergeProgress
+	UInteger eState
+	UInteger cFilteredDocuments
+	UInteger cTotalDocuments
+	UInteger cPendingScans
+	UInteger dwIndexSize
+	UInteger cUniqueKeys
+	UInteger cSecQDocuments
+	UInteger dwPropCacheSize
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledbguid/ns-oledbguid-dbid
+Struct DBID
+	_uGuid_e__Union_2816 uGuid
+	UInteger eKind
+	Integer iMissingAlignment1
+	_uName_e__Union_2817 uName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/oledbguid/ns-oledbguid-dbid
+Struct DBID
+	_uGuid_e__Union_3329 uGuid
+	UInteger eKind
+	Integer iMissingAlignment1
+	_uName_e__Union_3330 uName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/filter/ns-filter-filterregion
+Struct FILTERREGION
+	UInteger idChunk
+	UInteger cwcStart
+	UInteger cwcExtent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/filter/ns-filter-fullpropspec
+Struct FULLPROPSPEC
+	Guid guidPropSet
+	PROPSPEC psProperty
+End_Struct
+
+Struct IMAGE_INFO
+	UInteger Width
+	UInteger Height
+	Integer Format											// IMAGE_PIXELFORMAT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/filter/ns-filter-stat_chunk
+Struct STAT_CHUNK
+	UInteger idChunk
+	Integer breakType										// CHUNK_BREAKTYPE
+	Integer flags											// CHUNKSTATE
+	UInteger locale
+	FULLPROPSPEC attribute
+	UInteger idChunkSource
+	UInteger cwcStartSource
+	UInteger cwcLenSource
+	Integer iMissingAlignment1
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

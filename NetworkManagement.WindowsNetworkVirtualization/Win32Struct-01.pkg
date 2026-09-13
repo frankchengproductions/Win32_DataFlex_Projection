@@ -1,0 +1,85 @@
+Use UI
+
+Struct _IP_e__Union_2792
+	// IN_ADDR v4 // (4)
+	// IN6_ADDR v6 // (16)
+	// UChar[16] Addr // (16)
+	IN6_ADDR v6
+End_Struct
+
+Struct _ObjectParam_e__Union_2793
+	// WNV_PROVIDER_ADDRESS_CHANGE_PARAM ProviderAddressChange // (24)
+	// WNV_CUSTOMER_ADDRESS_CHANGE_PARAM CustomerAddressChange // (52)
+	WNV_CUSTOMER_ADDRESS_CHANGE_PARAM CustomerAddressChange
+End_Struct
+
+Struct WNV_CUSTOMER_ADDRESS_CHANGE_PARAM
+	DL_EUI48 MACAddress
+	UShort CAFamily											// ADDRESS_FAMILY
+	WNV_IP_ADDRESS CA
+	UInteger VirtualSubnetId
+	UShort PAFamily											// ADDRESS_FAMILY
+	Short iMissingAlignment1
+	WNV_IP_ADDRESS PA
+	Integer NotificationReason								// WNV_CA_NOTIFICATION_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_ip_address
+Struct WNV_IP_ADDRESS
+	_IP_e__Union_2792 IP
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_notification_param
+Struct WNV_NOTIFICATION_PARAM
+	WNV_OBJECT_HEADER Header
+	Integer NotificationType								// WNV_NOTIFICATION_TYPE
+	UInteger PendingNotifications
+	Pointer Buffer											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_object_change_param
+Struct WNV_OBJECT_CHANGE_PARAM
+	Integer ObjectType										// WNV_OBJECT_TYPE
+	_ObjectParam_e__Union_2793 ObjectParam
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_object_header
+Struct WNV_OBJECT_HEADER
+	UChar MajorVersion
+	UChar MinorVersion
+	Short iMissingAlignment1
+	UInteger Size
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_policy_mismatch_param
+Struct WNV_POLICY_MISMATCH_PARAM
+	UShort CAFamily											// ADDRESS_FAMILY
+	UShort PAFamily											// ADDRESS_FAMILY
+	UInteger VirtualSubnetId
+	WNV_IP_ADDRESS CA
+	WNV_IP_ADDRESS PA
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_provider_address_change_param
+Struct WNV_PROVIDER_ADDRESS_CHANGE_PARAM
+	UShort PAFamily											// ADDRESS_FAMILY
+	Short iMissingAlignment1
+	WNV_IP_ADDRESS PA
+	Integer AddressState									// NL_DAD_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wnvapi/ns-wnvapi-wnv_redirect_param
+Struct WNV_REDIRECT_PARAM
+	UShort CAFamily											// ADDRESS_FAMILY
+	UShort PAFamily											// ADDRESS_FAMILY
+	UShort NewPAFamily										// ADDRESS_FAMILY
+	Short iMissingAlignment1
+	UInteger VirtualSubnetId
+	WNV_IP_ADDRESS CA
+	WNV_IP_ADDRESS PA
+	WNV_IP_ADDRESS NewPA
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

@@ -1,0 +1,382 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/evcode/ns-evcode-am_wmt_event_data
+Struct AM_WMT_EVENT_DATA
+	Integer hrStatus										// HRESULT
+	Integer iMissingAlignment1
+	Pointer pData											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_copy_opl
+Struct DRM_COPY_OPL
+	UShort wMinimumCopyLevel
+	UChar[6] cMissingAlignment1
+	DRM_OPL_OUTPUT_IDS oplIdIncludes
+	DRM_OPL_OUTPUT_IDS oplIdExcludes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_minimum_output_protection_levels
+Struct DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS
+	UShort wCompressedDigitalVideo
+	UShort wUncompressedDigitalVideo
+	UShort wAnalogVideo
+	UShort wCompressedDigitalAudio
+	UShort wUncompressedDigitalAudio
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_opl_output_ids
+Struct DRM_OPL_OUTPUT_IDS
+	UShort cIds
+	UChar[6] cMissingAlignment1
+	Pointer rgIds											// Guid*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_output_protection
+Struct DRM_OUTPUT_PROTECTION
+	Guid guidId
+	UChar bConfigData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_play_opl
+Struct DRM_PLAY_OPL
+	DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS minOPL
+	UChar[6] cMissingAlignment1
+	DRM_OPL_OUTPUT_IDS oplIdReserved
+	DRM_VIDEO_OUTPUT_PROTECTION_IDS vopi
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_val16
+Struct DRM_VAL16
+	UChar[16] val
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-drm_video_output_protection_ids
+Struct DRM_VIDEO_OUTPUT_PROTECTION_IDS
+	UShort cEntries
+	UChar[6] cMissingAlignment1
+	Pointer rgVop											// DRM_OUTPUT_PROTECTION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmdrm_import_init_struct
+Struct WMDRM_IMPORT_INIT_STRUCT
+	UInteger dwVersion
+	UInteger cbEncryptedSessionKeyMessage
+	Pointer pbEncryptedSessionKeyMessage					// UChar*
+	UInteger cbEncryptedKeyMessage
+	Integer iMissingAlignment1
+	Pointer pbEncryptedKeyMessage							// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmmpeg2videoinfo
+Struct WMMPEG2VIDEOINFO
+	WMVIDEOINFOHEADER2 hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UInteger dwProfile
+	UInteger dwLevel
+	UInteger dwFlags
+	UInteger[1] dwSequenceHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmscriptformat
+Struct WMSCRIPTFORMAT
+	Guid scriptType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_buffer_segment
+Struct WMT_BUFFER_SEGMENT
+	Pointer pBuffer											// INSSBuffer
+	UInteger cbOffset
+	UInteger cbLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_colorspaceinfo_extension_data
+Struct WMT_COLORSPACEINFO_EXTENSION_DATA
+	UChar ucColorPrimaries
+	UChar ucColorTransferChar
+	UChar ucColorMatrixCoef
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_filesink_data_unit
+Struct WMT_FILESINK_DATA_UNIT
+	WMT_BUFFER_SEGMENT packetHeaderBuffer
+	UInteger cPayloads
+	Integer iMissingAlignment1
+	Pointer pPayloadHeaderBuffers							// WMT_BUFFER_SEGMENT*
+	UInteger cPayloadDataFragments
+	Integer iMissingAlignment2
+	Pointer pPayloadDataFragments							// WMT_PAYLOAD_FRAGMENT*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_payload_fragment
+Struct WMT_PAYLOAD_FRAGMENT
+	UInteger dwPayloadIndex
+	Integer iMissingAlignment1
+	WMT_BUFFER_SEGMENT segmentData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_timecode_extension_data
+Struct WMT_TIMECODE_EXTENSION_DATA
+	UShort wRange
+	Short iMissingAlignment1
+	UInteger dwTimecode
+	UInteger dwUserbits
+	UInteger dwAmFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_videoimage_sample
+Struct WMT_VIDEOIMAGE_SAMPLE
+	UInteger dwMagic
+	UInteger cbStruct
+	UInteger dwControlFlags
+	UInteger dwInputFlagsCur
+	Integer lCurMotionXtoX
+	Integer lCurMotionYtoX
+	Integer lCurMotionXoffset
+	Integer lCurMotionXtoY
+	Integer lCurMotionYtoY
+	Integer lCurMotionYoffset
+	Integer lCurBlendCoef1
+	Integer lCurBlendCoef2
+	UInteger dwInputFlagsPrev
+	Integer lPrevMotionXtoX
+	Integer lPrevMotionYtoX
+	Integer lPrevMotionXoffset
+	Integer lPrevMotionXtoY
+	Integer lPrevMotionYtoY
+	Integer lPrevMotionYoffset
+	Integer lPrevBlendCoef1
+	Integer lPrevBlendCoef2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_videoimage_sample2
+Struct WMT_VIDEOIMAGE_SAMPLE2
+	UInteger dwMagic
+	UInteger dwStructSize
+	UInteger dwControlFlags
+	UInteger dwViewportWidth
+	UInteger dwViewportHeight
+	UInteger dwCurrImageWidth
+	UInteger dwCurrImageHeight
+	Float fCurrRegionX0
+	Float fCurrRegionY0
+	Float fCurrRegionWidth
+	Float fCurrRegionHeight
+	Float fCurrBlendCoef
+	UInteger dwPrevImageWidth
+	UInteger dwPrevImageHeight
+	Float fPrevRegionX0
+	Float fPrevRegionY0
+	Float fPrevRegionWidth
+	Float fPrevRegionHeight
+	Float fPrevBlendCoef
+	UInteger dwEffectType
+	UInteger dwNumEffectParas
+	Float fEffectPara0
+	Float fEffectPara1
+	Float fEffectPara2
+	Float fEffectPara3
+	Float fEffectPara4
+	Integer bKeepPrevImage									// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_watermark_entry
+Struct WMT_WATERMARK_ENTRY
+	Integer wmetType										// WMT_WATERMARK_ENTRY_TYPE
+	Guid clsid
+	UInteger cbDisplayName
+	Pointer pwszDisplayName									// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_webstream_format
+Struct WMT_WEBSTREAM_FORMAT
+	UShort cbSize
+	UShort cbSampleHeaderFixedData
+	UShort wVersion
+	UShort wReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmt_webstream_sample_header
+Struct WMT_WEBSTREAM_SAMPLE_HEADER
+	UShort cbLength
+	UShort wPart
+	UShort cTotalParts
+	UShort wSampleType
+	UShort[1] wszURL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmvideoinfoheader
+Struct WMVIDEOINFOHEADER
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	BITMAPINFOHEADER bmiHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wmvideoinfoheader2
+Struct WMVIDEOINFOHEADER2
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	UInteger dwInterlaceFlags
+	UInteger dwCopyProtectFlags
+	UInteger dwPictAspectRatioX
+	UInteger dwPictAspectRatioY
+	UInteger dwReserved1
+	UInteger dwReserved2
+	BITMAPINFOHEADER bmiHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_address_accessentry
+Struct WM_ADDRESS_ACCESSENTRY
+	UInteger dwIPAddress
+	UInteger dwMask
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_client_properties
+Struct WM_CLIENT_PROPERTIES
+	UInteger dwIPAddress
+	UInteger dwPort
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_client_properties_ex
+Struct WM_CLIENT_PROPERTIES_EX
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pwszIPAddress									// PWSTR
+	Pointer pwszPort										// PWSTR
+	Pointer pwszDNSName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_leaky_bucket_pair
+Struct WM_LEAKY_BUCKET_PAIR
+	UInteger dwBitrate
+	UInteger msBufferWindow
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_media_type
+Struct WM_MEDIA_TYPE
+	Guid majortype
+	Guid subtype
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger lSampleSize
+	Guid formattype
+	Integer iMissingAlignment1
+	Pointer pUnk											// IUnknown
+	UInteger cbFormat
+	Integer iMissingAlignment2
+	Pointer pbFormat										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_picture
+Struct WM_PICTURE
+	Pointer pwszMIMEType									// PWSTR
+	UChar bPictureType
+	UChar[7] cMissingAlignment1
+	Pointer pwszDescription									// PWSTR
+	UInteger dwDataLen
+	Integer iMissingAlignment2
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_port_number_range
+Struct WM_PORT_NUMBER_RANGE
+	UShort wPortBegin
+	UShort wPortEnd
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_reader_clientinfo
+Struct WM_READER_CLIENTINFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer wszLang											// PWSTR
+	Pointer wszBrowserUserAgent								// PWSTR
+	Pointer wszBrowserWebPage								// PWSTR
+	UBigint qwReserved
+	Pointer pReserved										// LPARAM*
+	Pointer wszHostExe										// PWSTR
+	UBigint qwHostVersion
+	Pointer wszPlayerUserAgent								// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_reader_statistics
+Struct WM_READER_STATISTICS
+	UInteger cbSize
+	UInteger dwBandwidth
+	UInteger cPacketsReceived
+	UInteger cPacketsRecovered
+	UInteger cPacketsLost
+	UShort wQuality
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_stream_priority_record
+Struct WM_STREAM_PRIORITY_RECORD
+	UShort wStreamNumber
+	Short iMissingAlignment1
+	Integer fMandatory										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_stream_type_info
+Struct WM_STREAM_TYPE_INFO
+	Guid guidMajorType
+	UInteger cbFormat
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_synchronised_lyrics
+Struct WM_SYNCHRONISED_LYRICS
+	UChar bTimeStampFormat
+	UChar bContentType
+	UChar[6] cMissingAlignment1
+	Pointer pwszContentDescriptor							// PWSTR
+	UInteger dwLyricsLen
+	Integer iMissingAlignment2
+	Pointer pbLyrics										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_user_text
+Struct WM_USER_TEXT
+	Pointer pwszDescription									// PWSTR
+	Pointer pwszText										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_user_web_url
+Struct WM_USER_WEB_URL
+	Pointer pwszDescription									// PWSTR
+	Pointer pwszURL											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_writer_statistics
+Struct WM_WRITER_STATISTICS
+	UBigint qwSampleCount
+	UBigint qwByteCount
+	UBigint qwDroppedSampleCount
+	UBigint qwDroppedByteCount
+	UInteger dwCurrentBitrate
+	UInteger dwAverageBitrate
+	UInteger dwExpectedBitrate
+	UInteger dwCurrentSampleRate
+	UInteger dwAverageSampleRate
+	UInteger dwExpectedSampleRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wmsdkidl/ns-wmsdkidl-wm_writer_statistics_ex
+Struct WM_WRITER_STATISTICS_EX
+	UInteger dwBitratePlusOverhead
+	UInteger dwCurrentSampleDropRateInQueue
+	UInteger dwCurrentSampleDropRateInCodec
+	UInteger dwCurrentSampleDropRateInMultiplexer
+	UInteger dwTotalSampleDropsInQueue
+	UInteger dwTotalSampleDropsInCodec
+	UInteger dwTotalSampleDropsInMultiplexer
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

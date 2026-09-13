@@ -1,0 +1,1078 @@
+Use UI
+
+Struct DDVIDEOPORTSTATUS
+	UInteger dwSize
+	Integer bInUse											// BOOL
+	UInteger dwFlags
+	UInteger dwReserved1
+	DDVIDEOPORTCONNECT VideoPortType
+	ULongPtr dwReserved2
+	ULongPtr dwReserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_addattachedsurfacedata
+Struct DD_ADDATTACHEDSURFACEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Pointer lpSurfAttached									// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer AddAttachedSurface								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_attachlist
+Struct DD_ATTACHLIST
+	Pointer lpLink											// DD_ATTACHLIST*
+	Pointer lpAttached										// DD_SURFACE_LOCAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_beginmocompframedata
+Struct DD_BEGINMOCOMPFRAMEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpMoComp										// DD_MOTIONCOMP_LOCAL*
+	Pointer lpDestSurface									// DD_SURFACE_LOCAL*
+	UInteger dwInputDataSize
+	Integer iMissingAlignment1
+	Pointer lpInputData										// Pointer*
+	UInteger dwOutputDataSize
+	Integer iMissingAlignment2
+	Pointer lpOutputData									// Pointer*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_bltdata
+Struct DD_BLTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDDestSurface									// DD_SURFACE_LOCAL*
+	RECTL rDest
+	Pointer lpDDSrcSurface									// DD_SURFACE_LOCAL*
+	RECTL rSrc
+	UInteger dwFlags
+	UInteger dwROPFlags
+	DDBLTFX bltFX
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer Blt												// Pointer*
+	Integer IsClipped										// BOOL
+	RECTL rOrigDest
+	RECTL rOrigSrc
+	UInteger dwRectCnt
+	Pointer prDestRects										// RECT*
+	UInteger dwAFlags
+	DDARGB ddargbScaleFactors
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_callbacks
+Struct DD_CALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer DestroyDriver									// PDD_DESTROYDRIVER
+	Pointer CreateSurface									// PDD_CREATESURFACE
+	Pointer SetColorKey										// PDD_SETCOLORKEY
+	Pointer SetMode											// PDD_SETMODE
+	Pointer WaitForVerticalBlank							// PDD_WAITFORVERTICALBLANK
+	Pointer CanCreateSurface								// PDD_CANCREATESURFACE
+	Pointer CreatePalette									// PDD_CREATEPALETTE
+	Pointer GetScanLine										// PDD_GETSCANLINE
+	Pointer MapMemory										// PDD_MAPMEMORY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_cancreatesurfacedata
+Struct DD_CANCREATESURFACEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurfaceDesc									// DDSURFACEDESC*
+	UInteger bIsDifferentPixelFormat
+	Integer ddRVal											// HRESULT
+	Pointer CanCreateSurface								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_cancreatevportdata
+Struct DD_CANCREATEVPORTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpDDVideoPortDesc								// DDVIDEOPORTDESC*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer CanCreateVideoPort								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_clipper_global
+Struct DD_CLIPPER_GLOBAL
+	ULongPtr dwReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_clipper_local
+Struct DD_CLIPPER_LOCAL
+	ULongPtr dwReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_colorcontrolcallbacks
+Struct DD_COLORCONTROLCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer ColorControl									// PDD_COLORCB_COLORCONTROL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_colorcontroldata
+Struct DD_COLORCONTROLDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Pointer lpColorData										// DDCOLORCONTROL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer ColorControl									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_createmocompdata
+Struct DD_CREATEMOCOMPDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpMoComp										// DD_MOTIONCOMP_LOCAL*
+	Pointer lpGuid											// Guid*
+	UInteger dwUncompWidth
+	UInteger dwUncompHeight
+	DDPIXELFORMAT ddUncompPixelFormat
+	Pointer lpData											// Pointer*
+	UInteger dwDataSize
+	Integer ddRVal											// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_createpalettedata
+Struct DD_CREATEPALETTEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDPalette										// DD_PALETTE_GLOBAL*
+	Pointer lpColorTable									// PALETTEENTRY*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer CreatePalette									// Pointer*
+	Integer is_excl											// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_createsurfacedata
+Struct DD_CREATESURFACEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurfaceDesc									// DDSURFACEDESC*
+	Pointer lplpSList										// DD_SURFACE_LOCAL**
+	UInteger dwSCnt
+	Integer ddRVal											// HRESULT
+	Pointer CreateSurface									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_createsurfaceexdata
+Struct DD_CREATESURFACEEXDATA
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpDDLcl											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpDDSLcl										// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_createvportdata
+Struct DD_CREATEVPORTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpDDVideoPortDesc								// DDVIDEOPORTDESC*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer CreateVideoPort									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_d3dbufcallbacks
+Struct DD_D3DBUFCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer CanCreateD3DBuffer								// PDD_CANCREATESURFACE
+	Pointer CreateD3DBuffer									// PDD_CREATESURFACE
+	Pointer DestroyD3DBuffer								// PDD_SURFCB_DESTROYSURFACE
+	Pointer LockD3DBuffer									// PDD_SURFCB_LOCK
+	Pointer UnlockD3DBuffer									// PDD_SURFCB_UNLOCK
+End_Struct
+
+Struct DD_DESTROYDDLOCALDATA
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer pDDLcl											// DD_DIRECTDRAW_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_destroymocompdata
+Struct DD_DESTROYMOCOMPDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpMoComp										// DD_MOTIONCOMP_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_destroypalettedata
+Struct DD_DESTROYPALETTEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDPalette										// DD_PALETTE_GLOBAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer DestroyPalette									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_destroysurfacedata
+Struct DD_DESTROYSURFACEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer DestroySurface									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_destroyvportdata
+Struct DD_DESTROYVPORTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer DestroyVideoPort								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_directdraw_global
+Struct DD_DIRECTDRAW_GLOBAL
+	Pointer dhpdev											// Pointer*
+	ULongPtr dwReserved1
+	ULongPtr dwReserved2
+	Pointer lpDDVideoPortCaps								// DDVIDEOPORTCAPS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_directdraw_local
+Struct DD_DIRECTDRAW_LOCAL
+	Pointer lpGbl											// DD_DIRECTDRAW_GLOBAL*
+End_Struct
+
+Struct DD_DRVSETCOLORKEYDATA
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	UInteger dwFlags
+	DDCOLORKEY ckNew
+	Integer ddRVal											// HRESULT
+	Pointer SetColorKey										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_endmocompframedata
+Struct DD_ENDMOCOMPFRAMEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpMoComp										// DD_MOTIONCOMP_LOCAL*
+	Pointer lpInputData										// Pointer*
+	UInteger dwInputDataSize
+	Integer ddRVal											// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_flipdata
+Struct DD_FLIPDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpSurfCurr										// DD_SURFACE_LOCAL*
+	Pointer lpSurfTarg										// DD_SURFACE_LOCAL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer Flip											// Pointer*
+	Pointer lpSurfCurrLeft									// DD_SURFACE_LOCAL*
+	Pointer lpSurfTargLeft									// DD_SURFACE_LOCAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_fliptogdisurfacedata
+Struct DD_FLIPTOGDISURFACEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	UInteger dwToGDI
+	UInteger dwReserved
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer FlipToGDISurface								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_flipvportdata
+Struct DD_FLIPVPORTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	Pointer lpSurfCurr										// DD_SURFACE_LOCAL*
+	Pointer lpSurfTarg										// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer FlipVideoPort									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_freedrivermemorydata
+Struct DD_FREEDRIVERMEMORYDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer FreeDriverMemory								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getavaildrivermemorydata
+Struct DD_GETAVAILDRIVERMEMORYDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	DDSCAPS DDSCaps
+	UInteger dwTotal
+	UInteger dwFree
+	Integer ddRVal											// HRESULT
+	Pointer GetAvailDriverMemory							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getbltstatusdata
+Struct DD_GETBLTSTATUSDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer GetBltStatus									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getdriverinfodata
+Struct DD_GETDRIVERINFODATA
+	Pointer dhpdev											// Pointer*
+	UInteger dwSize
+	UInteger dwFlags
+	Guid guidInfo
+	UInteger dwExpectedSize
+	Integer iMissingAlignment1
+	Pointer lpvData											// Pointer*
+	UInteger dwActualSize
+	Integer ddRVal											// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getdriverstatedata
+Struct DD_GETDRIVERSTATEDATA
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1977 Anonymous
+	Pointer lpdwStates										// UInteger*
+	UInteger dwLength
+	Integer ddRVal											// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getflipstatusdata
+Struct DD_GETFLIPSTATUSDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+	Pointer GetFlipStatus									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dmemmgr/ns-dmemmgr-dd_getheapalignmentdata
+Struct DD_GETHEAPALIGNMENTDATA
+	ULongPtr dwInstance
+	UInteger dwHeap
+	Integer ddRVal											// HRESULT
+	Pointer GetHeapAlignment								// Pointer*
+	HEAPALIGNMENT Alignment
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getinternalmocompdata
+Struct DD_GETINTERNALMOCOMPDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpGuid											// Guid*
+	UInteger dwWidth
+	UInteger dwHeight
+	DDPIXELFORMAT ddPixelFormat
+	UInteger dwScratchMemAlloc
+	Integer ddRVal											// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getmocompcompbuffdata
+Struct DD_GETMOCOMPCOMPBUFFDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpGuid											// Guid*
+	UInteger dwWidth
+	UInteger dwHeight
+	DDPIXELFORMAT ddPixelFormat
+	UInteger dwNumTypesCompBuffs
+	Integer iMissingAlignment1
+	Pointer lpCompBuffInfo									// DDCOMPBUFFERINFO*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getmocompformatsdata
+Struct DD_GETMOCOMPFORMATSDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpGuid											// Guid*
+	UInteger dwNumFormats
+	Integer iMissingAlignment1
+	Pointer lpFormats										// DDPIXELFORMAT*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getmocompguidsdata
+Struct DD_GETMOCOMPGUIDSDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	UInteger dwNumGuids
+	Integer iMissingAlignment1
+	Pointer lpGuids											// Guid*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getscanlinedata
+Struct DD_GETSCANLINEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	UInteger dwScanLine
+	Integer ddRVal											// HRESULT
+	Pointer GetScanLine										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportbandwidthdata
+Struct DD_GETVPORTBANDWIDTHDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	Pointer lpddpfFormat									// DDPIXELFORMAT*
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpBandwidth										// DDVIDEOPORTBANDWIDTH*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer GetVideoPortBandwidth							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportconnectdata
+Struct DD_GETVPORTCONNECTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	UInteger dwPortId
+	Integer iMissingAlignment1
+	Pointer lpConnect										// DDVIDEOPORTCONNECT*
+	UInteger dwNumEntries
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortConnectInfo							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportfielddata
+Struct DD_GETVPORTFIELDDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	Integer bField											// BOOL
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortField								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportflipstatusdata
+Struct DD_GETVPORTFLIPSTATUSDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	ULongPtr fpSurface
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer GetVideoPortFlipStatus							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportinputformatdata
+Struct DD_GETVPORTINPUTFORMATDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpddpfFormat									// DDPIXELFORMAT*
+	UInteger dwNumFormats
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortInputFormats						// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportlinedata
+Struct DD_GETVPORTLINEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwLine
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortLine								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportoutputformatdata
+Struct DD_GETVPORTOUTPUTFORMATDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpddpfInputFormat								// DDPIXELFORMAT*
+	Pointer lpddpfOutputFormats								// DDPIXELFORMAT*
+	UInteger dwNumFormats
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoPortInputFormats						// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_getvportsignaldata
+Struct DD_GETVPORTSIGNALDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwStatus
+	Integer ddRVal											// HRESULT
+	Pointer GetVideoSignalStatus							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_halinfo
+Struct DD_HALINFO
+	UInteger dwSize
+	Integer iMissingAlignment1
+	VIDEOMEMORYINFO vmiData
+	DDNTCORECAPS ddCaps
+	Integer iMissingAlignment2
+	Pointer GetDriverInfo									// PDD_GETDRIVERINFO
+	UInteger dwFlags
+	Integer iMissingAlignment3
+	Pointer lpD3DGlobalDriverData							// Pointer*
+	Pointer lpD3DHALCallbacks								// Pointer*
+	Pointer lpD3DBufCallbacks								// DD_D3DBUFCALLBACKS*
+End_Struct
+
+Struct DD_HALINFO_V4
+	UInteger dwSize
+	Integer iMissingAlignment1
+	VIDEOMEMORYINFO vmiData
+	DDNTCORECAPS ddCaps
+	Integer iMissingAlignment2
+	Pointer GetDriverInfo									// PDD_GETDRIVERINFO
+	UInteger dwFlags
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_kernelcallbacks
+Struct DD_KERNELCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer SyncSurfaceData									// PDD_KERNELCB_SYNCSURFACE
+	Pointer SyncVideoPortData								// PDD_KERNELCB_SYNCVIDEOPORT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_lockdata
+Struct DD_LOCKDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	UInteger bHasRect
+	RECTL rArea
+	Integer iMissingAlignment1
+	Pointer lpSurfData										// Pointer*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer Lock											// Pointer*
+	UInteger dwFlags
+	Integer iMissingAlignment3
+	ULongPtr fpProcess
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_mapmemorydata
+Struct DD_MAPMEMORYDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Integer bMap											// BOOL
+	Integer iMissingAlignment1
+	Pointer hProcess										// HANDLE
+	ULongPtr fpProcess
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_miscellaneous2callbacks
+Struct DD_MISCELLANEOUS2CALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer AlphaBlt										// PDD_ALPHABLT
+	Pointer CreateSurfaceEx									// PDD_CREATESURFACEEX
+	Pointer GetDriverState									// PDD_GETDRIVERSTATE
+	Pointer DestroyDDLocal									// PDD_DESTROYDDLOCAL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_miscellaneouscallbacks
+Struct DD_MISCELLANEOUSCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer GetAvailDriverMemory							// PDD_GETAVAILDRIVERMEMORY
+End_Struct
+
+Struct DD_MORECAPS
+	UInteger dwSize
+	UInteger dwAlphaCaps
+	UInteger dwSVBAlphaCaps
+	UInteger dwVSBAlphaCaps
+	UInteger dwSSBAlphaCaps
+	UInteger dwFilterCaps
+	UInteger dwSVBFilterCaps
+	UInteger dwVSBFilterCaps
+	UInteger dwSSBFilterCaps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_moresurfacecaps
+Struct DD_MORESURFACECAPS
+	UInteger dwSize
+	DDSCAPSEX ddsCapsMore
+	NTExtendedHeapRestrictions_1976[1] ddsExtendedHeapRestrictions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_motioncompcallbacks
+Struct DD_MOTIONCOMPCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer GetMoCompGuids									// PDD_MOCOMPCB_GETGUIDS
+	Pointer GetMoCompFormats								// PDD_MOCOMPCB_GETFORMATS
+	Pointer CreateMoComp									// PDD_MOCOMPCB_CREATE
+	Pointer GetMoCompBuffInfo								// PDD_MOCOMPCB_GETCOMPBUFFINFO
+	Pointer GetInternalMoCompInfo							// PDD_MOCOMPCB_GETINTERNALINFO
+	Pointer BeginMoCompFrame								// PDD_MOCOMPCB_BEGINFRAME
+	Pointer EndMoCompFrame									// PDD_MOCOMPCB_ENDFRAME
+	Pointer RenderMoComp									// PDD_MOCOMPCB_RENDER
+	Pointer QueryMoCompStatus								// PDD_MOCOMPCB_QUERYSTATUS
+	Pointer DestroyMoComp									// PDD_MOCOMPCB_DESTROY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_motioncomp_local
+Struct DD_MOTIONCOMP_LOCAL
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Guid guid
+	UInteger dwUncompWidth
+	UInteger dwUncompHeight
+	DDPIXELFORMAT ddUncompPixelFormat
+	UInteger dwDriverReserved1
+	UInteger dwDriverReserved2
+	UInteger dwDriverReserved3
+	Integer iMissingAlignment1
+	Pointer lpDriverReserved1								// Pointer*
+	Pointer lpDriverReserved2								// Pointer*
+	Pointer lpDriverReserved3								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_nonlocalvidmemcaps
+Struct DD_NONLOCALVIDMEMCAPS
+	UInteger dwSize
+	UInteger dwNLVBCaps
+	UInteger dwNLVBCaps2
+	UInteger dwNLVBCKeyCaps
+	UInteger dwNLVBFXCaps
+	UInteger[8] dwNLVBRops
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_ntcallbacks
+Struct DD_NTCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer FreeDriverMemory								// PDD_FREEDRIVERMEMORY
+	Pointer SetExclusiveMode								// PDD_SETEXCLUSIVEMODE
+	Pointer FlipToGDISurface								// PDD_FLIPTOGDISURFACE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_ntprivatedrivercaps
+Struct DD_NTPRIVATEDRIVERCAPS
+	UInteger dwSize
+	UInteger dwPrivateCaps
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_palettecallbacks
+Struct DD_PALETTECALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer DestroyPalette									// PDD_PALCB_DESTROYPALETTE
+	Pointer SetEntries										// PDD_PALCB_SETENTRIES
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_palette_global
+Struct DD_PALETTE_GLOBAL
+	ULongPtr dwReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_palette_local
+Struct DD_PALETTE_LOCAL
+	UInteger dwReserved0
+	Integer iMissingAlignment1
+	ULongPtr dwReserved1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_querymocompstatusdata
+Struct DD_QUERYMOCOMPSTATUSDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpMoComp										// DD_MOTIONCOMP_LOCAL*
+	Pointer lpSurface										// DD_SURFACE_LOCAL*
+	UInteger dwFlags
+	Integer ddRVal											// HRESULT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_rendermocompdata
+Struct DD_RENDERMOCOMPDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpMoComp										// DD_MOTIONCOMP_LOCAL*
+	UInteger dwNumBuffers
+	Integer iMissingAlignment1
+	Pointer lpBufferInfo									// DDMOCOMPBUFFERINFO*
+	UInteger dwFunction
+	Integer iMissingAlignment2
+	Pointer lpInputData										// Pointer*
+	UInteger dwInputDataSize
+	Integer iMissingAlignment3
+	Pointer lpOutputData									// Pointer*
+	UInteger dwOutputDataSize
+	Integer ddRVal											// HRESULT
+End_Struct
+
+Struct DD_SETCLIPLISTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetClipList										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_setcolorkeydata
+Struct DD_SETCOLORKEYDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	UInteger dwFlags
+	DDCOLORKEY ckNew
+	Integer ddRVal											// HRESULT
+	Pointer SetColorKey										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_setentriesdata
+Struct DD_SETENTRIESDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDPalette										// DD_PALETTE_GLOBAL*
+	UInteger dwBase
+	UInteger dwNumEntries
+	Pointer lpEntries										// PALETTEENTRY*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetEntries										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_setexclusivemodedata
+Struct DD_SETEXCLUSIVEMODEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	UInteger dwEnterExcl
+	UInteger dwReserved
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetExclusiveMode								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_setoverlaypositiondata
+Struct DD_SETOVERLAYPOSITIONDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSrcSurface									// DD_SURFACE_LOCAL*
+	Pointer lpDDDestSurface									// DD_SURFACE_LOCAL*
+	Integer lXPos
+	Integer lYPos
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetOverlayPosition								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_setpalettedata
+Struct DD_SETPALETTEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Pointer lpDDPalette										// DD_PALETTE_GLOBAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer SetPalette										// Pointer*
+	Integer Attach											// BOOL
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_stereomode
+Struct DD_STEREOMODE
+	UInteger dwSize
+	UInteger dwHeight
+	UInteger dwWidth
+	UInteger dwBpp
+	UInteger dwRefreshRate
+	Integer bSupported										// BOOL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_surfacecallbacks
+Struct DD_SURFACECALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer DestroySurface									// PDD_SURFCB_DESTROYSURFACE
+	Pointer Flip											// PDD_SURFCB_FLIP
+	Pointer SetClipList										// PDD_SURFCB_SETCLIPLIST
+	Pointer Lock											// PDD_SURFCB_LOCK
+	Pointer Unlock											// PDD_SURFCB_UNLOCK
+	Pointer Blt												// PDD_SURFCB_BLT
+	Pointer SetColorKey										// PDD_SURFCB_SETCOLORKEY
+	Pointer AddAttachedSurface								// PDD_SURFCB_ADDATTACHEDSURFACE
+	Pointer GetBltStatus									// PDD_SURFCB_GETBLTSTATUS
+	Pointer GetFlipStatus									// PDD_SURFCB_GETFLIPSTATUS
+	Pointer UpdateOverlay									// PDD_SURFCB_UPDATEOVERLAY
+	Pointer SetOverlayPosition								// PDD_SURFCB_SETOVERLAYPOSITION
+	Pointer reserved4										// Pointer*
+	Pointer SetPalette										// PDD_SURFCB_SETPALETTE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_surface_global
+Struct DD_SURFACE_GLOBAL
+	_Anonymous1_e__Union_1971 Anonymous1
+	Integer iMissingAlignment1
+	_Anonymous2_e__Union_1972 Anonymous2
+	ULongPtr fpVidMem
+	_Anonymous3_e__Union_1973 Anonymous3
+	Integer yHint
+	Integer xHint
+	UInteger wHeight
+	UInteger wWidth
+	Integer iMissingAlignment2
+	ULongPtr dwReserved1
+	DDPIXELFORMAT ddpfSurface
+	ULongPtr fpHeapOffset
+	Pointer hCreatorProcess									// HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_surface_int
+Struct DD_SURFACE_INT
+	Pointer lpLcl											// DD_SURFACE_LOCAL*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_surface_local
+Struct DD_SURFACE_LOCAL
+	Pointer lpGbl											// DD_SURFACE_GLOBAL*
+	UInteger dwFlags
+	DDSCAPS ddsCaps
+	ULongPtr dwReserved1
+	_Anonymous1_e__Union_1974 Anonymous1
+	_Anonymous2_e__Union_1975 Anonymous2
+	Pointer lpSurfMore										// DD_SURFACE_MORE*
+	Pointer lpAttachList									// DD_ATTACHLIST*
+	Pointer lpAttachListFrom								// DD_ATTACHLIST*
+	RECT rcOverlaySrc
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_surface_more
+Struct DD_SURFACE_MORE
+	UInteger dwMipMapCount
+	Integer iMissingAlignment1
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwOverlayFlags
+	DDSCAPSEX ddsCapsEx
+	UInteger dwSurfaceHandle
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_syncsurfacedata
+Struct DD_SYNCSURFACEDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	UInteger dwSurfaceOffset
+	Integer iMissingAlignment1
+	ULongPtr fpLockPtr
+	Integer lPitch
+	UInteger dwOverlayOffset
+	UInteger dwDriverReserved1
+	UInteger dwDriverReserved2
+	UInteger dwDriverReserved3
+	UInteger dwDriverReserved4
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_syncvideoportdata
+Struct DD_SYNCVIDEOPORTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwOriginOffset
+	UInteger dwHeight
+	UInteger dwVBIHeight
+	UInteger dwDriverReserved1
+	UInteger dwDriverReserved2
+	UInteger dwDriverReserved3
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_unlockdata
+Struct DD_UNLOCKDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDSurface										// DD_SURFACE_LOCAL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer Unlock											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_updatenonlocalheapdata
+Struct DD_UPDATENONLOCALHEAPDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	UInteger dwHeap
+	Integer iMissingAlignment1
+	ULongPtr fpGARTLin
+	ULongPtr fpGARTDev
+	ULongPtr ulPolicyMaxBytes
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer UpdateNonLocalHeap								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_updateoverlaydata
+Struct DD_UPDATEOVERLAYDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	Pointer lpDDDestSurface									// DD_SURFACE_LOCAL*
+	RECTL rDest
+	Pointer lpDDSrcSurface									// DD_SURFACE_LOCAL*
+	RECTL rSrc
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	DDOVERLAYFX overlayFX
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer UpdateOverlay									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_updatevportdata
+Struct DD_UPDATEVPORTDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	Pointer lplpDDSurface									// DD_SURFACE_INT**
+	Pointer lplpDDVBISurface								// DD_SURFACE_INT**
+	Pointer lpVideoInfo										// DDVIDEOPORTINFO*
+	UInteger dwFlags
+	UInteger dwNumAutoflip
+	UInteger dwNumVBIAutoflip
+	Integer ddRVal											// HRESULT
+	Pointer UpdateVideoPort									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_videoportcallbacks
+Struct DD_VIDEOPORTCALLBACKS
+	UInteger dwSize
+	UInteger dwFlags
+	Pointer CanCreateVideoPort								// PDD_VPORTCB_CANCREATEVIDEOPORT
+	Pointer CreateVideoPort									// PDD_VPORTCB_CREATEVIDEOPORT
+	Pointer FlipVideoPort									// PDD_VPORTCB_FLIP
+	Pointer GetVideoPortBandwidth							// PDD_VPORTCB_GETBANDWIDTH
+	Pointer GetVideoPortInputFormats						// PDD_VPORTCB_GETINPUTFORMATS
+	Pointer GetVideoPortOutputFormats						// PDD_VPORTCB_GETOUTPUTFORMATS
+	Pointer lpReserved1										// Pointer*
+	Pointer GetVideoPortField								// PDD_VPORTCB_GETFIELD
+	Pointer GetVideoPortLine								// PDD_VPORTCB_GETLINE
+	Pointer GetVideoPortConnectInfo							// PDD_VPORTCB_GETVPORTCONNECT
+	Pointer DestroyVideoPort								// PDD_VPORTCB_DESTROYVPORT
+	Pointer GetVideoPortFlipStatus							// PDD_VPORTCB_GETFLIPSTATUS
+	Pointer UpdateVideoPort									// PDD_VPORTCB_UPDATE
+	Pointer WaitForVideoPortSync							// PDD_VPORTCB_WAITFORSYNC
+	Pointer GetVideoSignalStatus							// PDD_VPORTCB_GETSIGNALSTATUS
+	Pointer ColorControl									// PDD_VPORTCB_COLORCONTROL
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_videoport_local
+Struct DD_VIDEOPORT_LOCAL
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	DDVIDEOPORTDESC ddvpDesc
+	DDVIDEOPORTINFO ddvpInfo
+	Pointer lpSurface										// DD_SURFACE_INT*
+	Pointer lpVBISurface									// DD_SURFACE_INT*
+	UInteger dwNumAutoflip
+	UInteger dwNumVBIAutoflip
+	ULongPtr dwReserved1
+	ULongPtr dwReserved2
+	ULongPtr dwReserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_vportcolordata
+Struct DD_VPORTCOLORDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer lpColorData										// DDCOLORCONTROL*
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment2
+	Pointer ColorControl									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_waitforverticalblankdata
+Struct DD_WAITFORVERTICALBLANKDATA
+	Pointer lpDD											// DD_DIRECTDRAW_GLOBAL*
+	UInteger dwFlags
+	UInteger bIsInVB
+	ULongPtr hEvent
+	Integer ddRVal											// HRESULT
+	Integer iMissingAlignment1
+	Pointer WaitForVerticalBlank							// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddrawint/ns-ddrawint-dd_waitforvportsyncdata
+Struct DD_WAITFORVPORTSYNCDATA
+	Pointer lpDD											// DD_DIRECTDRAW_LOCAL*
+	Pointer lpVideoPort										// DD_VIDEOPORT_LOCAL*
+	UInteger dwFlags
+	UInteger dwLine
+	UInteger dwTimeOut
+	Integer ddRVal											// HRESULT
+	Pointer UpdateVideoPort									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-dxapi_interface
+Struct DXAPI_INTERFACE
+	UShort Size
+	UShort Version
+	Integer iMissingAlignment1
+	Pointer Context											// Pointer*
+	Pointer InterfaceReference								// Pointer*
+	Pointer InterfaceDereference							// Pointer*
+	Pointer DxGetIrqInfo									// PDX_GETIRQINFO
+	Pointer DxEnableIrq										// PDX_ENABLEIRQ
+	Pointer DxSkipNextField									// PDX_SKIPNEXTFIELD
+	Pointer DxBobNextField									// PDX_BOBNEXTFIELD
+	Pointer DxSetState										// PDX_SETSTATE
+	Pointer DxLock											// PDX_LOCK
+	Pointer DxFlipOverlay									// PDX_FLIPOVERLAY
+	Pointer DxFlipVideoPort									// PDX_FLIPVIDEOPORT
+	Pointer DxGetPolarity									// PDX_GETPOLARITY
+	Pointer DxGetCurrentAutoflip							// PDX_GETCURRENTAUTOFLIP
+	Pointer DxGetPreviousAutoflip							// PDX_GETPREVIOUSAUTOFLIP
+	Pointer DxTransfer										// PDX_TRANSFER
+	Pointer DxGetTransferStatus								// PDX_GETTRANSFERSTATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dxmini/ns-dxmini-dx_irqdata
+Struct DX_IRQDATA
+	UInteger dwIrqFlags
+End_Struct
+
+Struct ExtendedHeapRestrictions_1959
+	DDSCAPSEX ddsCapsEx
+	DDSCAPSEX ddsCapsExAlt
+End_Struct
+
+Struct HEAPALIAS
+	ULongPtr fpVidMem
+	Pointer lpAlias											// Pointer*
+	UInteger dwAliasSize
+	Integer iMissingAlignment1
+End_Struct
+
+Struct HEAPALIASINFO
+	UInteger dwRefCnt
+	UInteger dwFlags
+	UInteger dwNumHeaps
+	Integer iMissingAlignment1
+	Pointer lpAliases										// HEAPALIAS*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dmemmgr/ns-dmemmgr-heapalignment
+Struct HEAPALIGNMENT
+	UInteger dwSize
+	DDSCAPS ddsCaps
+	UInteger dwReserved
+	SURFACEALIGNMENT ExecuteBuffer
+	SURFACEALIGNMENT Overlay
+	SURFACEALIGNMENT Texture
+	SURFACEALIGNMENT ZBuffer
+	SURFACEALIGNMENT AlphaBuffer
+	SURFACEALIGNMENT Offscreen
+	SURFACEALIGNMENT FlipTarget
+End_Struct
+
+Struct IUNKNOWN_LIST
+	Pointer lpLink											// IUNKNOWN_LIST*
+	Pointer lpGuid											// Guid*
+	Pointer lpIUnknown										// IUnknown
+End_Struct
+
+Struct NTExtendedHeapRestrictions_1976
+	DDSCAPSEX ddsCapsEx
+	DDSCAPSEX ddsCapsExAlt
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

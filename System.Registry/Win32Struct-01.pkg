@@ -1,0 +1,72 @@
+Use UI
+
+Struct DSKTLSYSTEMTIME
+	UShort wYear
+	UShort wMonth
+	UShort wDayOfWeek
+	UShort wDay
+	UShort wHour
+	UShort wMinute
+	UShort wSecond
+	UShort wMilliseconds
+	UShort wResult
+End_Struct
+
+Struct PVALUEA
+	Pointer pv_valuename									// PSTR
+	Integer pv_valuelen
+	Integer iMissingAlignment1
+	Pointer pv_value_context								// Pointer*
+	UInteger pv_type
+	Integer iMissingAlignment2
+End_Struct
+
+Struct PVALUEW
+	Pointer pv_valuename									// PWSTR
+	Integer pv_valuelen
+	Integer iMissingAlignment1
+	Pointer pv_value_context								// Pointer*
+	UInteger pv_type
+	Integer iMissingAlignment2
+End_Struct
+
+Struct REG_PROVIDER
+	Pointer pi_R0_1val										// PQUERYHANDLER
+	Pointer pi_R0_allvals									// PQUERYHANDLER
+	Pointer pi_R3_1val										// PQUERYHANDLER
+	Pointer pi_R3_allvals									// PQUERYHANDLER
+	UInteger pi_flags
+	Integer iMissingAlignment1
+	Pointer pi_key_context									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winreg/ns-winreg-valenta
+Struct VALENTA
+	Pointer ve_valuename									// PSTR
+	UInteger ve_valuelen
+	Integer iMissingAlignment1
+	ULongPtr ve_valueptr
+	UInteger ve_type										// REG_VALUE_TYPE
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winreg/ns-winreg-valentw
+Struct VALENTW
+	Pointer ve_valuename									// PWSTR
+	UInteger ve_valuelen
+	Integer iMissingAlignment1
+	ULongPtr ve_valueptr
+	UInteger ve_type										// REG_VALUE_TYPE
+	Integer iMissingAlignment2
+End_Struct
+
+Struct val_context
+	Integer valuelen
+	Integer iMissingAlignment1
+	Pointer value_context									// Pointer*
+	Pointer val_buff_ptr									// Pointer*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

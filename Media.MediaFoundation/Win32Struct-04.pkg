@@ -1,0 +1,913 @@
+Use UI
+
+Struct DXVA_COPPStatusInput
+	Guid rApp
+	Guid guidStatusRequestID
+	UInteger dwSequence
+	UInteger cbSizeData
+	UChar[4056] StatusData
+End_Struct
+
+Struct DXVA_COPPStatusOutput
+	Guid macKDI
+	UInteger cbSizeData
+	UChar[4076] COPPStatus
+End_Struct
+
+Struct DXVA_ConfigPictureDecode
+	UInteger dwFunction
+	UInteger[3] dwReservedBits
+	Guid guidConfigBitstreamEncryption
+	Guid guidConfigMBcontrolEncryption
+	Guid guidConfigResidDiffEncryption
+	UChar bConfigBitstreamRaw
+	UChar bConfigMBcontrolRasterOrder
+	UChar bConfigResidDiffHost
+	UChar bConfigSpatialResid8
+	UChar bConfigResid8Subtraction
+	UChar bConfigSpatialHost8or9Clipping
+	UChar bConfigSpatialResidInterleaved
+	UChar bConfigIntraResidUnsigned
+	UChar bConfigResidDiffAccelerator
+	UChar bConfigHostInverseScan
+	UChar bConfigSpecificIDCT
+	UChar bConfig4GroupedCoefs
+End_Struct
+
+Struct DXVA_DeinterlaceBlt
+	UInteger Size
+	UInteger Reserved
+	Bigint rtTarget
+	RECT DstRect
+	RECT SrcRect
+	UInteger NumSourceSurfaces
+	Float Alpha
+	DXVA_VideoSample[32] Source
+End_Struct
+
+Struct DXVA_DeinterlaceBltEx
+	UInteger Size
+	DXVA_AYUVsample2 BackgroundColor
+	RECT rcTarget
+	Bigint rtTarget
+	UInteger NumSourceSurfaces
+	Float Alpha
+	DXVA_VideoSample2[32] Source
+	UInteger DestinationFormat
+	UInteger DestinationFlags
+End_Struct
+
+Struct DXVA_DeinterlaceBltEx32
+	UInteger Size
+	DXVA_AYUVsample2 BackgroundColor
+	RECT rcTarget
+	Bigint rtTarget
+	UInteger NumSourceSurfaces
+	Float Alpha
+	DXVA_VideoSample32[32] Source
+	UInteger DestinationFormat
+	UInteger DestinationFlags
+End_Struct
+
+Struct DXVA_DeinterlaceCaps
+	UInteger Size
+	UInteger NumPreviousOutputFrames
+	UInteger InputPool
+	UInteger NumForwardRefSamples
+	UInteger NumBackwardRefSamples
+	UInteger d3dOutputFormat								// D3DFORMAT
+	Integer VideoProcessingCaps								// DXVA_VideoProcessCaps
+	Integer DeinterlaceTechnology							// DXVA_DeinterlaceTech
+End_Struct
+
+Struct DXVA_DeinterlaceQueryAvailableModes
+	UInteger Size
+	UInteger NumGuids
+	Guid[32] Guids
+End_Struct
+
+Struct DXVA_DeinterlaceQueryModeCaps
+	UInteger Size
+	Guid Guid
+	DXVA_VideoDesc VideoDesc
+End_Struct
+
+Struct DXVA_ExtendedFormat
+	UInteger _bitfield
+End_Struct
+
+Struct DXVA_Frequency
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+Struct DXVA_PictureParameters
+	UShort wDecodedPictureIndex
+	UShort wDeblockedPictureIndex
+	UShort wForwardRefPictureIndex
+	UShort wBackwardRefPictureIndex
+	UShort wPicWidthInMBminus1
+	UShort wPicHeightInMBminus1
+	UChar bMacroblockWidthMinus1
+	UChar bMacroblockHeightMinus1
+	UChar bBlockWidthMinus1
+	UChar bBlockHeightMinus1
+	UChar bBPPminus1
+	UChar bPicStructure
+	UChar bSecondField
+	UChar bPicIntra
+	UChar bPicBackwardPrediction
+	UChar bBidirectionalAveragingMode
+	UChar bMVprecisionAndChromaRelation
+	UChar bChromaFormat
+	UChar bPicScanFixed
+	UChar bPicScanMethod
+	UChar bPicReadbackRequests
+	UChar bRcontrol
+	UChar bPicSpatialResid8
+	UChar bPicOverflowBlocks
+	UChar bPicExtrapolation
+	UChar bPicDeblocked
+	UChar bPicDeblockConfined
+	UChar bPic4MVallowed
+	UChar bPicOBMC
+	UChar bPicBinPB
+	UChar bMV_RPS
+	UChar bReservedBits
+	UShort wBitstreamFcodes
+	UShort wBitstreamPCEelements
+	UChar bBitstreamConcealmentNeed
+	UChar bBitstreamConcealmentMethod
+End_Struct
+
+Struct DXVA_ProcAmpControlBlt
+	UInteger Size
+	RECT DstRect
+	RECT SrcRect
+	Float Alpha
+	Float Brightness
+	Float Contrast
+	Float Hue
+	Float Saturation
+End_Struct
+
+Struct DXVA_ProcAmpControlCaps
+	UInteger Size
+	UInteger InputPool
+	UInteger d3dOutputFormat								// D3DFORMAT
+	UInteger ProcAmpControlProps
+	UInteger VideoProcessingCaps
+End_Struct
+
+Struct DXVA_ProcAmpControlQueryRange
+	UInteger Size
+	Integer ProcAmpControlProp								// DXVA_ProcAmpControlProp
+	DXVA_VideoDesc VideoDesc
+End_Struct
+
+Struct DXVA_VideoDesc
+	UInteger Size
+	UInteger SampleWidth
+	UInteger SampleHeight
+	UInteger SampleFormat
+	UInteger d3dFormat										// D3DFORMAT
+	DXVA_Frequency InputSampleFreq
+	DXVA_Frequency OutputFrameFreq
+End_Struct
+
+Struct DXVA_VideoPropertyRange
+	Float MinValue
+	Float MaxValue
+	Float DefaultValue
+	Float StepSize
+End_Struct
+
+Struct DXVA_VideoSample
+	Bigint rtStart
+	Bigint rtEnd
+	Integer SampleFormat									// DXVA_SampleFormat
+	Integer iMissingAlignment1
+	Pointer lpDDSSrcSurface									// Pointer*
+End_Struct
+
+Struct DXVA_VideoSample2
+	UInteger Size
+	UInteger Reserved
+	Bigint rtStart
+	Bigint rtEnd
+	UInteger SampleFormat
+	UInteger SampleFlags
+	Pointer lpDDSSrcSurface									// Pointer*
+	RECT rcSrc
+	RECT rcDst
+	DXVA_AYUVsample2[16] Palette
+End_Struct
+
+Struct DXVA_VideoSample2
+	Bigint rtStart
+	Bigint rtEnd
+	UInteger SampleFormat
+	UInteger SampleFlags
+	Pointer lpDDSSrcSurface									// Pointer*
+	RECT rcSrc
+	RECT rcDst
+	DXVA_AYUVsample2[16] Palette
+End_Struct
+
+Struct DXVA_VideoSample32
+	Bigint rtStart
+	Bigint rtEnd
+	UInteger SampleFormat
+	UInteger SampleFlags
+	UInteger lpDDSSrcSurface
+	RECT rcSrc
+	RECT rcDst
+	DXVA_AYUVsample2[16] Palette
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DetectedFaceBound
+	UInteger sizeInBytes
+	Float normalizedXPosition
+	Float normalizedYPosition
+	Float normalizedWidth
+	Float normalizedHeight
+	Integer confidenceValue
+	UBigint flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-digitalwindowsetting
+Struct DigitalWindowSetting
+	Real OriginX
+	Real OriginY
+	Real WindowSize
+End_Struct
+
+Struct InputQPSettings
+	UInteger minBlockSize
+	UInteger maxBlockSize
+	UInteger stepsBlockSize
+	Integer dataType										// eAVEncVideoQPMapElementDataType
+	Short minValue
+	Short maxValue
+	UShort step
+	Short iMissingAlignment1
+End_Struct
+
+Struct MACROBLOCK_DATA
+	UInteger flags
+	Short motionVectorX
+	Short motionVectorY
+	Integer QPDelta
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfargb
+Struct MFARGB
+	UChar rgbBlue
+	UChar rgbGreen
+	UChar rgbRed
+	UChar rgbAlpha
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfayuvsample
+Struct MFAYUVSample
+	UChar bCrValue
+	UChar bCbValue
+	UChar bYValue
+	UChar bSampleAlpha8
+End_Struct
+
+Struct MFAudioDecoderDegradationInfo
+	Integer eDegradationReason								// MFT_AUDIO_DECODER_DEGRADATION_REASON
+	Integer eType											// MFT_AUDIO_DECODER_DEGRADATION_TYPE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfbytestream_buffering_params
+Struct MFBYTESTREAM_BUFFERING_PARAMS
+	UBigint cbTotalFileSize
+	UBigint cbPlayableDataSize
+	Pointer prgBuckets										// MF_LEAKY_BUCKET_PAIR*
+	UInteger cBuckets
+	Integer iMissingAlignment1
+	UBigint qwNetBufferingTime
+	UBigint qwExtraBufferingTimeDuringSeek
+	UBigint qwPlayDuration
+	Float dRate
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfclock_properties
+Struct MFCLOCK_PROPERTIES
+	UBigint qwCorrelationRate
+	Guid guidClockId
+	UInteger dwClockFlags
+	Integer iMissingAlignment1
+	UBigint qwClockFrequency
+	UInteger dwClockTolerance
+	UInteger dwClockJitter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfcontentprotectiondevice_input_data
+Struct MFCONTENTPROTECTIONDEVICE_INPUT_DATA
+	UInteger HWProtectionFunctionID
+	UInteger PrivateDataByteCount
+	UInteger HWProtectionDataByteCount
+	UInteger Reserved
+	UChar[4] InputData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfcontentprotectiondevice_output_data
+Struct MFCONTENTPROTECTIONDEVICE_OUTPUT_DATA
+	UInteger PrivateDataByteCount
+	UInteger MaxHWProtectionDataByteCount
+	UInteger HWProtectionDataByteCount
+	Integer Status											// HRESULT
+	Bigint TransportTimeInHundredsOfNanoseconds
+	Bigint ExecutionTimeInHundredsOfNanoseconds
+	UChar[4] OutputData
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfcontentprotectiondevice_realtimeclient_data
+Struct MFCONTENTPROTECTIONDEVICE_REALTIMECLIENT_DATA
+	UInteger TaskIndex
+	UShort[260] ClassName
+	Integer BasePriority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mfcameraextrinsic_calibratedtransform
+Struct MFCameraExtrinsic_CalibratedTransform
+	Guid CalibrationId
+	MF_FLOAT3 Position
+	MF_QUATERNION Orientation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mfcameraextrinsics
+Struct MFCameraExtrinsics
+	UInteger TransformCount
+	MFCameraExtrinsic_CalibratedTransform[1] CalibratedTransforms
+End_Struct
+
+Struct MFCameraIntrinsic_CameraModel
+	Float FocalLength_x
+	Float FocalLength_y
+	Float PrincipalPoint_x
+	Float PrincipalPoint_y
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mfcameraintrinsic_distortionmodel
+Struct MFCameraIntrinsic_DistortionModel
+	Float Radial_k1
+	Float Radial_k2
+	Float Radial_k3
+	Float Tangential_p1
+	Float Tangential_p2
+End_Struct
+
+Struct MFCameraIntrinsic_DistortionModel6KT
+	Float Radial_k1
+	Float Radial_k2
+	Float Radial_k3
+	Float Radial_k4
+	Float Radial_k5
+	Float Radial_k6
+	Float Tangential_p1
+	Float Tangential_p2
+End_Struct
+
+Struct MFCameraIntrinsic_DistortionModelArcTan
+	Float Radial_k0
+	Float DistortionCenter_x
+	Float DistortionCenter_y
+	Float Tangential_x
+	Float Tangential_y
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mfcameraintrinsic_pinholecameramodel
+Struct MFCameraIntrinsic_PinholeCameraModel
+	MF_FLOAT2 FocalLength
+	MF_FLOAT2 PrincipalPoint
+End_Struct
+
+Struct MFExtendedCameraIntrinsic_IntrinsicModel
+	UInteger Width
+	UInteger Height
+	UInteger SplitFrameId
+	MFCameraIntrinsic_CameraModel CameraModel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mffolddown_matrix
+Struct MFFOLDDOWN_MATRIX
+	UInteger cbSize
+	UInteger cSrcChannels
+	UInteger cDstChannels
+	UInteger dwChannelMask
+	Integer[64] Coeff
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfinputtrustauthority_access_action
+Struct MFINPUTTRUSTAUTHORITY_ACCESS_ACTION
+	Integer Action											// MFPOLICYMANAGER_ACTION
+	Integer iMissingAlignment1
+	Pointer pbTicket										// UChar*
+	UInteger cbTicket
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfinputtrustauthority_access_params
+Struct MFINPUTTRUSTAUTHORITY_ACCESS_PARAMS
+	UInteger dwSize
+	UInteger dwVer
+	UInteger cbSignatureOffset
+	UInteger cbSignatureSize
+	UInteger cbExtensionOffset
+	UInteger cbExtensionSize
+	UInteger cActions
+	Integer iMissingAlignment1
+	MFINPUTTRUSTAUTHORITY_ACCESS_ACTION[1] rgOutputActions
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfmp2dlna/ns-mfmp2dlna-mfmpeg2dlnasinkstats
+Struct MFMPEG2DLNASINKSTATS
+	UBigint cBytesWritten
+	Integer fPAL											// BOOL
+	UInteger fccVideo
+	UInteger dwVideoWidth
+	UInteger dwVideoHeight
+	UBigint cVideoFramesReceived
+	UBigint cVideoFramesEncoded
+	UBigint cVideoFramesSkipped
+	UBigint cBlackVideoFramesEncoded
+	UBigint cVideoFramesDuplicated
+	UInteger cAudioSamplesPerSec
+	UInteger cAudioChannels
+	UBigint cAudioBytesReceived
+	UBigint cAudioFramesEncoded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfmediakeystatus
+Struct MFMediaKeyStatus
+	Pointer pbKeyId											// UChar*
+	UInteger cbKeyId
+	Integer eMediaKeyStatus									// MF_MEDIAKEY_STATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfnetcredentialmanagergetparam
+Struct MFNetCredentialManagerGetParam
+	Integer hrOp											// HRESULT
+	Integer fAllowLoggedOnUser								// BOOL
+	Integer fClearTextPackage								// BOOL
+	Integer iMissingAlignment1
+	Pointer pszUrl											// PWSTR
+	Pointer pszSite											// PWSTR
+	Pointer pszRealm										// PWSTR
+	Pointer pszPackage										// PWSTR
+	Integer nRetries
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfoffset
+Struct MFOffset
+	UShort fract
+	Short value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_acquire_user_credential_event
+Struct MFP_ACQUIRE_USER_CREDENTIAL_EVENT
+	MFP_EVENT_HEADER header
+	ULongPtr dwUserData
+	Integer fProceedWithAuthentication						// BOOL
+	Integer hrAuthenticationStatus							// HRESULT
+	Pointer pwszURL											// PWSTR
+	Pointer pwszSite										// PWSTR
+	Pointer pwszRealm										// PWSTR
+	Pointer pwszPackage										// PWSTR
+	Integer nRetries
+	UInteger flags
+	Pointer pCredential										// IMFNetCredential
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_error_event
+Struct MFP_ERROR_EVENT
+	MFP_EVENT_HEADER header
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_event_header
+Struct MFP_EVENT_HEADER
+	Integer eEventType										// MFP_EVENT_TYPE
+	Integer hrEvent											// HRESULT
+	Pointer pMediaPlayer									// IMFPMediaPlayer
+	Integer eState											// MFP_MEDIAPLAYER_STATE
+	Integer iMissingAlignment1
+	Pointer pPropertyStore									// IPropertyStore
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_frame_step_event
+Struct MFP_FRAME_STEP_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_mediaitem_cleared_event
+Struct MFP_MEDIAITEM_CLEARED_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_mediaitem_created_event
+Struct MFP_MEDIAITEM_CREATED_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+	ULongPtr dwUserData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_mediaitem_set_event
+Struct MFP_MEDIAITEM_SET_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_mf_event
+Struct MFP_MF_EVENT
+	MFP_EVENT_HEADER header
+	UInteger MFEventType
+	Integer iMissingAlignment1
+	Pointer pMFMediaEvent									// IMFMediaEvent
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_pause_event
+Struct MFP_PAUSE_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_playback_ended_event
+Struct MFP_PLAYBACK_ENDED_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_play_event
+Struct MFP_PLAY_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_position_set_event
+Struct MFP_POSITION_SET_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_rate_set_event
+Struct MFP_RATE_SET_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+	Float flRate
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfplay/ns-mfplay-mfp_stop_event
+Struct MFP_STOP_EVENT
+	MFP_EVENT_HEADER header
+	Pointer pMediaItem										// IMFPMediaItem
+End_Struct
+
+Struct MFPaletteEntry
+	_Anonymous_e__Union_1166 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mfpinholecameraintrinsic_intrinsicmodel
+Struct MFPinholeCameraIntrinsic_IntrinsicModel
+	UInteger Width
+	UInteger Height
+	MFCameraIntrinsic_PinholeCameraModel CameraModel
+	MFCameraIntrinsic_DistortionModel DistortionModel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mfpinholecameraintrinsics
+Struct MFPinholeCameraIntrinsics
+	UInteger IntrinsicModelCount
+	MFPinholeCameraIntrinsic_IntrinsicModel[1] IntrinsicModels
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfrr_components
+Struct MFRR_COMPONENTS
+	UInteger dwRRInfoVersion
+	UInteger dwRRComponents
+	Pointer pRRComponents									// MFRR_COMPONENT_HASH_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mfrr_component_hash_info
+Struct MFRR_COMPONENT_HASH_INFO
+	UInteger ulReason
+	UShort[43] rgHeaderHash
+	UShort[43] rgPublicKeyHash
+	UShort[260] wszName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfratio
+Struct MFRatio
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+Struct MFSampleExtensionPsnrYuv
+	Float psnrY
+	Float psnrU
+	Float psnrV
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mftoponode_attribute_update
+Struct MFTOPONODE_ATTRIBUTE_UPDATE
+	UBigint NodeId
+	Guid guidAttributeKey
+	Integer attrType										// MF_ATTRIBUTE_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_3300 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mftransform/ns-mftransform-mft_input_stream_info
+Struct MFT_INPUT_STREAM_INFO
+	Bigint hnsMaxLatency
+	UInteger dwFlags
+	UInteger cbSize
+	UInteger cbMaxLookahead
+	UInteger cbAlignment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mftransform/ns-mftransform-mft_output_data_buffer
+Struct MFT_OUTPUT_DATA_BUFFER
+	UInteger dwStreamID
+	Integer iMissingAlignment1
+	Pointer pSample											// IMFSample
+	UInteger dwStatus
+	Integer iMissingAlignment2
+	Pointer pEvents											// IMFCollection
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mftransform/ns-mftransform-mft_output_stream_info
+Struct MFT_OUTPUT_STREAM_INFO
+	UInteger dwFlags
+	UInteger cbSize
+	UInteger cbAlignment
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mft_register_type_info
+Struct MFT_REGISTER_TYPE_INFO
+	Guid guidMajorType
+	Guid guidSubtype
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mft_registration_info
+Struct MFT_REGISTRATION_INFO
+	Guid clsid
+	Guid guidCategory
+	UInteger uiFlags
+	Integer iMissingAlignment1
+	Pointer pszName											// PWSTR
+	UInteger cInTypes
+	Integer iMissingAlignment2
+	Pointer pInTypes										// MFT_REGISTER_TYPE_INFO*
+	UInteger cOutTypes
+	Integer iMissingAlignment3
+	Pointer pOutTypes										// MFT_REGISTER_TYPE_INFO*
+End_Struct
+
+Struct MFT_STREAM_STATE_PARAM
+	UInteger StreamId
+	Integer State											// MF_STREAM_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideoformat
+Struct MFVIDEOFORMAT
+	UInteger dwSize
+	Integer iMissingAlignment1
+	MFVideoInfo videoInfo
+	Guid guidFormat
+	MFVideoCompressedInfo compressedInfo
+	MFVideoSurfaceInfo surfaceInfo
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evr9/ns-evr9-mfvideoalphabitmap
+Struct MFVideoAlphaBitmap
+	Integer GetBitmapFromDC									// BOOL
+	Integer iMissingAlignment1
+	_bitmap_e__Union_3301 bitmap
+	MFVideoAlphaBitmapParams params
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/evr9/ns-evr9-mfvideoalphabitmapparams
+Struct MFVideoAlphaBitmapParams
+	UInteger dwFlags
+	UInteger clrSrcKey										// COLORREF
+	RECT rcSrc
+	MFVideoNormalizedRect nrcDest
+	Float fAlpha
+	UInteger dwFilterMode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideoarea
+Struct MFVideoArea
+	MFOffset OffsetX
+	MFOffset OffsetY
+	SIZE Area
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideocompressedinfo
+Struct MFVideoCompressedInfo
+	Bigint AvgBitrate
+	Bigint AvgBitErrorRate
+	UInteger MaxKeyFrameSpacing
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideoinfo
+Struct MFVideoInfo
+	UInteger dwWidth
+	UInteger dwHeight
+	MFRatio PixelAspectRatio
+	Integer SourceChromaSubsampling							// MFVideoChromaSubsampling
+	Integer InterlaceMode									// MFVideoInterlaceMode
+	Integer TransferFunction								// MFVideoTransferFunction
+	Integer ColorPrimaries									// MFVideoPrimaries
+	Integer TransferMatrix									// MFVideoTransferMatrix
+	Integer SourceLighting									// MFVideoLighting
+	MFRatio FramesPerSecond
+	Integer NominalRange									// MFNominalRange
+	MFVideoArea GeometricAperture
+	MFVideoArea MinimumDisplayAperture
+	MFVideoArea PanScanAperture
+	Integer iMissingAlignment1
+	UBigint VideoFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfcaptureengine/ns-mfcaptureengine-mfvideonormalizedrect
+Struct MFVideoNormalizedRect
+	Float left
+	Float top
+	Float right
+	Float bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfobjects/ns-mfobjects-mfvideosurfaceinfo
+Struct MFVideoSurfaceInfo
+	UInteger Format
+	UInteger PaletteEntries
+	MFPaletteEntry[1] Palette
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mf_byte_stream_cache_range
+Struct MF_BYTE_STREAM_CACHE_RANGE
+	UBigint qwStartOffset
+	UBigint qwEndOffset
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mf_camera_control_range_info
+Struct MF_CAMERA_CONTROL_RANGE_INFO
+	Integer minValue
+	Integer maxValue
+	Integer stepValue
+	Integer defaultValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mf_float2
+Struct MF_FLOAT2
+	Float x
+	Float y
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mf_float3
+Struct MF_FLOAT3
+	Float x
+	Float y
+	Float z
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mf_leaky_bucket_pair
+Struct MF_LEAKY_BUCKET_PAIR
+	UInteger dwBitrate
+	UInteger msBufferWindow
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mf_quaternion
+Struct MF_QUATERNION
+	Float x
+	Float y
+	Float z
+	Float w
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfreadwrite/ns-mfreadwrite-mf_sink_writer_statistics
+Struct MF_SINK_WRITER_STATISTICS
+	UInteger cb
+	Integer iMissingAlignment1
+	Bigint llLastTimestampReceived
+	Bigint llLastTimestampEncoded
+	Bigint llLastTimestampProcessed
+	Bigint llLastStreamTickReceived
+	Bigint llLastSinkSampleRequest
+	UBigint qwNumSamplesReceived
+	UBigint qwNumSamplesEncoded
+	UBigint qwNumSamplesProcessed
+	UBigint qwNumStreamTicksReceived
+	UInteger dwByteCountQueued
+	Integer iMissingAlignment2
+	UBigint qwByteCountProcessed
+	UInteger dwNumOutstandingSinkSampleRequests
+	UInteger dwAverageSampleRateReceived
+	UInteger dwAverageSampleRateEncoded
+	UInteger dwAverageSampleRateProcessed
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfidl/ns-mfidl-mf_transcode_sink_info
+Struct MF_TRANSCODE_SINK_INFO
+	UInteger dwVideoStreamID
+	Integer iMissingAlignment1
+	Pointer pVideoMediaType									// IMFMediaType
+	UInteger dwAudioStreamID
+	Integer iMissingAlignment2
+	Pointer pAudioMediaType									// IMFMediaType
+End_Struct
+
+Struct MF_VIDEO_SPHERICAL_VIEWDIRECTION
+	Integer iHeading
+	Integer iPitch
+	Integer iRoll
+End_Struct
+
+Struct MOVEREGION_INFO
+	UInteger FrameNumber
+	UInteger NumMoveRegions
+	MOVE_RECT[1] MoveRegions
+End_Struct
+
+Struct MOVE_RECT
+	POINT SourcePoint
+	RECT DestRect
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/amvideo/ns-amvideo-mpeg1videoinfo
+Struct MPEG1VIDEOINFO
+	VIDEOINFOHEADER hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UChar[1] bSequenceHeader
+	UChar[7] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/dvdmedia/ns-dvdmedia-mpeg2videoinfo
+Struct MPEG2VIDEOINFO
+	VIDEOINFOHEADER2 hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UInteger dwProfile
+	UInteger dwLevel
+	UInteger dwFlags										// MPEG2VIDEOINFO_FLAGS
+	UInteger[1] dwSequenceHeader
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mt_arbitrary_header
+Struct MT_ARBITRARY_HEADER
+	Guid majortype
+	Guid subtype
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger lSampleSize
+	Guid formattype
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/mfapi/ns-mfapi-mt_custom_video_primaries
+Struct MT_CUSTOM_VIDEO_PRIMARIES
+	Float fRx
+	Float fRy
+	Float fGx
+	Float fGy
+	Float fBx
+	Float fBy
+	Float fWx
+	Float fWy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/opmapi/ns-opmapi-opm_acp_and_cgmsa_signaling
+Struct OPM_ACP_AND_CGMSA_SIGNALING
+	OPM_RANDOM_NUMBER rnRandomNumber
+	UInteger ulStatusFlags
+	UInteger ulAvailableTVProtectionStandards
+	UInteger ulActiveTVProtectionStandard
+	UInteger ulReserved
+	UInteger ulAspectRatioValidMask1
+	UInteger ulAspectRatioData1
+	UInteger ulAspectRatioValidMask2
+	UInteger ulAspectRatioData2
+	UInteger ulAspectRatioValidMask3
+	UInteger ulAspectRatioData3
+	UInteger[4] ulReserved2
+	UInteger[4] ulReserved3
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

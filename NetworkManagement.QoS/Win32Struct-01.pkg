@@ -1,0 +1,495 @@
+Use UI
+
+Struct _Anonymous_e__Union_2221
+	// UInteger Addr // (4)
+	// UChar[4] AddrBytes // (4)
+	UInteger Addr
+End_Struct
+
+Struct _Anonymous_e__Union_2222
+	// RSVP_FILTERSPEC_V4 FilterSpecV4 // (8)
+	// RSVP_FILTERSPEC_V6 FilterSpecV6 // (20)
+	// RSVP_FILTERSPEC_V6_FLOW FilterSpecV6Flow // (20)
+	// RSVP_FILTERSPEC_V4_GPI FilterSpecV4Gpi // (8)
+	// RSVP_FILTERSPEC_V6_GPI FilterSpecV6Gpi // (20)
+	RSVP_FILTERSPEC_V6 FilterSpecV6
+End_Struct
+
+Struct _Anonymous_e__Union_2223
+	// AD_GUARANTEED Guaranteed // (16)
+	// PARAM_BUFFER[1] ParamBuffer // (12)
+	AD_GUARANTEED Guaranteed
+End_Struct
+
+Struct _Anonymous_e__Union_2224
+	// SIPAEVENT_VSM_IDK_RSA_INFO RsaKeyInfo // (16)
+	SIPAEVENT_VSM_IDK_RSA_INFO RsaKeyInfo
+End_Struct
+
+Struct _S_un_e__Union_2216
+	// _S_un_ports_e__Struct_2217 S_un_ports // (4)
+	// _S_un_icmp_e__Struct_2218 S_un_icmp // (4)
+	// UInteger S_Spi // (4)
+	_S_un_ports_e__Struct_2217 S_un_ports
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-address_list_descriptor
+Struct ADDRESS_LIST_DESCRIPTOR
+	UInteger MediaType
+	NETWORK_ADDRESS_LIST AddressList
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-ad_general_params
+Struct AD_GENERAL_PARAMS
+	UInteger IntServAwareHopCount
+	UInteger PathBandwidthEstimate
+	UInteger MinimumLatency
+	UInteger PathMTU
+	UInteger Flags
+End_Struct
+
+Struct AD_GUARANTEED
+	UInteger CTotal
+	UInteger DTotal
+	UInteger CSum
+	UInteger DSum
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-control_service
+Struct CONTROL_SERVICE
+	UInteger Length
+	UInteger Service
+	AD_GENERAL_PARAMS Overrides
+	_Anonymous_e__Union_2223 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-enumeration_buffer
+Struct ENUMERATION_BUFFER
+	UInteger Length
+	UInteger OwnerProcessId
+	UShort FlowNameLength
+	UShort[256] FlowName
+	UChar[6] cMissingAlignment1
+	Pointer pFlow											// TC_GEN_FLOW*
+	UInteger NumberOfFilters
+	Integer iMissingAlignment2
+	TC_GEN_FILTER[1] GenericFilter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-flowdescriptor
+Struct FLOWDESCRIPTOR
+	FLOWSPEC FlowSpec
+	UInteger NumFilters
+	Integer iMissingAlignment1
+	Pointer FilterList										// RSVP_FILTERSPEC*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qospol/ns-qospol-idpe_attr
+Struct IDPE_ATTR
+	UShort PeAttribLength
+	UChar PeAttribType
+	UChar PeAttribSubType
+	UChar[4] PeAttribValue
+End_Struct
+
+Struct IN_ADDR_IPV4
+	_Anonymous_e__Union_2221 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-in_addr_ipv6
+Struct IN_ADDR_IPV6
+	UChar[16] Addr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-ipx_pattern
+Struct IPX_PATTERN
+	_Src_e__Struct_2219 Src
+	_Src_e__Struct_2220 Dest
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-ip_pattern
+Struct IP_PATTERN
+	UInteger Reserved1
+	UInteger Reserved2
+	UInteger SrcAddr
+	UInteger DstAddr
+	_S_un_e__Union_2216 S_un
+	UChar ProtocolId
+	UChar[3] Reserved3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-param_buffer
+Struct PARAM_BUFFER
+	UInteger ParameterId
+	UInteger Length
+	UChar[1] Buffer
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct PLUTON_UPGRADE_IMAGEDATA
+	UShort hashAlgID
+	UShort digestSize
+	UChar[64] digest
+	UShort[64] fileName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-qos_destaddr
+Struct QOS_DESTADDR
+	QOS_OBJECT_HDR ObjectHdr
+	Pointer SocketAddress									// SOCKADDR*
+	UInteger SocketAddressLength
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qosobjs/ns-qosobjs-qos_diffserv
+Struct QOS_DIFFSERV
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger DSFieldCount
+	UChar[1] DiffservRule
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qosobjs/ns-qosobjs-qos_diffserv_rule
+Struct QOS_DIFFSERV_RULE
+	UChar InboundDSField
+	UChar ConformingOutboundDSField
+	UChar NonConformingOutboundDSField
+	UChar ConformingUserPriority
+	UChar NonConformingUserPriority
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qosobjs/ns-qosobjs-qos_ds_class
+Struct QOS_DS_CLASS
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger DSField
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos2/ns-qos2-qos_flowrate_outgoing
+Struct QOS_FLOWRATE_OUTGOING
+	UBigint Bandwidth
+	Integer ShapingBehavior									// QOS_SHAPING
+	Integer Reason											// QOS_FLOWRATE_REASON
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos2/ns-qos2-qos_flow_fundamentals
+Struct QOS_FLOW_FUNDAMENTALS
+	Integer BottleneckBandwidthSet							// BOOL
+	Integer iMissingAlignment1
+	UBigint BottleneckBandwidth
+	Integer AvailableBandwidthSet							// BOOL
+	Integer iMissingAlignment2
+	UBigint AvailableBandwidth
+	Integer RTTSet											// BOOL
+	UInteger RTT
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qosobjs/ns-qosobjs-qos_friendly_name
+Struct QOS_FRIENDLY_NAME
+	QOS_OBJECT_HDR ObjectHdr
+	UShort[256] FriendlyName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos/ns-qos-qos_object_hdr
+Struct QOS_OBJECT_HDR
+	UInteger ObjectType
+	UInteger ObjectLength
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos2/ns-qos2-qos_packet_priority
+Struct QOS_PACKET_PRIORITY
+	UInteger ConformantDSCPValue
+	UInteger NonConformantDSCPValue
+	UInteger ConformantL2Value
+	UInteger NonConformantL2Value
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos/ns-qos-qos_sd_mode
+Struct QOS_SD_MODE
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger ShapeDiscardMode
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos/ns-qos-qos_shaping_rate
+Struct QOS_SHAPING_RATE
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger ShapingRate
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qosobjs/ns-qosobjs-qos_tcp_traffic
+Struct QOS_TCP_TRAFFIC
+	QOS_OBJECT_HDR ObjectHdr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qosobjs/ns-qosobjs-qos_traffic_class
+Struct QOS_TRAFFIC_CLASS
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger TrafficClass
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qos2/ns-qos2-qos_version
+Struct QOS_VERSION
+	UShort MajorVersion
+	UShort MinorVersion
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_adspec
+Struct RSVP_ADSPEC
+	QOS_OBJECT_HDR ObjectHdr
+	AD_GENERAL_PARAMS GeneralParams
+	UInteger NumberOfServices
+	CONTROL_SERVICE[1] Services
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_filterspec
+Struct RSVP_FILTERSPEC
+	Integer Type											// FilterType
+	_Anonymous_e__Union_2222 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_filterspec_v4
+Struct RSVP_FILTERSPEC_V4
+	IN_ADDR_IPV4 Address
+	UShort Unused
+	UShort Port
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_filterspec_v4_gpi
+Struct RSVP_FILTERSPEC_V4_GPI
+	IN_ADDR_IPV4 Address
+	UInteger GeneralPortId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_filterspec_v6
+Struct RSVP_FILTERSPEC_V6
+	IN_ADDR_IPV6 Address
+	UShort UnUsed
+	UShort Port
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_filterspec_v6_flow
+Struct RSVP_FILTERSPEC_V6_FLOW
+	IN_ADDR_IPV6 Address
+	UChar UnUsed
+	UChar[3] FlowLabel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_filterspec_v6_gpi
+Struct RSVP_FILTERSPEC_V6_GPI
+	IN_ADDR_IPV6 Address
+	UInteger GeneralPortId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_policy
+Struct RSVP_POLICY
+	UShort Len
+	UShort Type
+	UChar[4] Info
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_policy_info
+Struct RSVP_POLICY_INFO
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger NumPolicyElement
+	RSVP_POLICY[1] PolicyElement
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_reserve_info
+Struct RSVP_RESERVE_INFO
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger Style
+	UInteger ConfirmRequest
+	Pointer PolicyElementList								// RSVP_POLICY_INFO*
+	UInteger NumFlowDesc
+	Integer iMissingAlignment1
+	Pointer FlowDescList									// FLOWDESCRIPTOR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/qossp/ns-qossp-rsvp_status_info
+Struct RSVP_STATUS_INFO
+	QOS_OBJECT_HDR ObjectHdr
+	UInteger StatusCode
+	UInteger ExtendedStatus1
+	UInteger ExtendedStatus2
+End_Struct
+
+Struct SIPAEVENT_KSR_SIGNATURE_PAYLOAD
+	UInteger SignAlgID
+	UInteger SignatureLength
+	UChar[1] Signature
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_REFS_ROLLBACK_PROTECTION_USER_PAYLOAD_HASH_DATA
+	UShort ChecksumType
+	UChar[1] ChecksumBuffer
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_REVOCATION_LIST_PAYLOAD
+	Bigint CreationTime
+	UInteger DigestLength
+	UShort HashAlgID
+	UChar[1] Digest
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_SBCP_INFO_PAYLOAD_V1
+	UInteger PayloadVersion
+	UInteger VarDataOffset
+	UShort HashAlgID
+	UShort DigestLength
+	UInteger Options
+	UInteger SignersCount
+	UChar[1] VarData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_SI_POLICY_CERTIFICATE_PAYLOAD
+	UShort PublisherCommonNameLength
+	UShort IssuerCommonNameLength
+	UInteger HashAlgID
+	UShort DigestLength
+	UChar[1] VarLengthData
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_SI_POLICY_PAYLOAD
+	UBigint PolicyVersion
+	UShort PolicyNameLength
+	UShort HashAlgID
+	UInteger DigestLength
+	UChar[1] VarLengthData
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_SI_POLICY_SIGNER_PAYLOAD
+	UInteger RootID
+	UInteger CertificatesLength
+	UShort CertificatesCount
+	UShort PolicyNameLength
+	UShort EKUsLength
+	UShort EKUsCount
+	UChar[1] VarLengthData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct SIPAEVENT_VSM_IDK_INFO_PAYLOAD
+	UInteger KeyAlgID
+	_Anonymous_e__Union_2224 Anonymous
+End_Struct
+
+Struct SIPAEVENT_VSM_IDK_RSA_INFO
+	UInteger KeyBitLength
+	UInteger PublicExpLengthBytes
+	UInteger ModulusSizeBytes
+	UChar[1] PublicKeyData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct TCG_PCClientPCREventStruct
+	UInteger pcrIndex
+	UInteger eventType
+	UChar[20] digest
+	UInteger eventDataSize
+	UChar[1] event
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct TCG_PCClientTaggedEventStruct
+	UInteger EventID
+	UInteger EventDataSize
+	UChar[1] EventData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tci_client_func_list
+Struct TCI_CLIENT_FUNC_LIST
+	Pointer ClNotifyHandler									// TCI_NOTIFY_HANDLER
+	Pointer ClAddFlowCompleteHandler						// TCI_ADD_FLOW_COMPLETE_HANDLER
+	Pointer ClModifyFlowCompleteHandler						// TCI_MOD_FLOW_COMPLETE_HANDLER
+	Pointer ClDeleteFlowCompleteHandler						// TCI_DEL_FLOW_COMPLETE_HANDLER
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tc_gen_filter
+Struct TC_GEN_FILTER
+	UShort AddressType
+	Short iMissingAlignment1
+	UInteger PatternSize
+	Pointer Pattern											// Pointer*
+	Pointer Mask											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tc_gen_flow
+Struct TC_GEN_FLOW
+	FLOWSPEC SendingFlowspec
+	FLOWSPEC ReceivingFlowspec
+	UInteger TcObjectsLength
+	QOS_OBJECT_HDR[1] TcObjects
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/traffic/ns-traffic-tc_ifc_descriptor
+Struct TC_IFC_DESCRIPTOR
+	UInteger Length
+	Integer iMissingAlignment1
+	Pointer pInterfaceName									// PWSTR
+	Pointer pInterfaceID									// PWSTR
+	ADDRESS_LIST_DESCRIPTOR AddressListDesc
+End_Struct
+
+Struct TC_SUPPORTED_INFO_BUFFER
+	UShort InstanceIDLength
+	UShort[256] InstanceID
+	UChar[6] cMissingAlignment1
+	UBigint InterfaceLuid
+	ADDRESS_LIST_DESCRIPTOR AddrListDesc
+End_Struct
+
+Struct WBCL_Iterator
+	Pointer firstElementPtr									// Pointer*
+	UInteger logSize
+	Integer iMissingAlignment1
+	Pointer currentElementPtr								// Pointer*
+	UInteger currentElementSize
+	UShort digestSize
+	UShort logFormat
+	UInteger numberOfDigests
+	Integer iMissingAlignment2
+	Pointer digestSizes										// Pointer*
+	UInteger supportedAlgorithms
+	UShort hashAlgorithm
+	Short iMissingAlignment3
+End_Struct
+
+Struct WBCL_LogHdr
+	UInteger signature
+	UInteger version
+	UInteger entries
+	UInteger length
+End_Struct
+
+Struct _S_un_icmp_e__Struct_2218
+	UChar s_type
+	UChar s_code
+	UShort filler
+End_Struct
+
+Struct _S_un_ports_e__Struct_2217
+	UShort s_srcport
+	UShort s_dstport
+End_Struct
+
+Struct _Src_e__Struct_2219
+	UInteger NetworkAddress
+	UChar[6] NodeAddress
+	UShort Socket
+End_Struct
+
+Struct _Src_e__Struct_2220
+	UInteger NetworkAddress
+	UChar[6] NodeAddress
+	UShort Socket
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

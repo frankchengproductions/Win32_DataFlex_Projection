@@ -1,0 +1,741 @@
+Use UI
+
+// Define WSA_ERROR For Integer
+Enum_List
+	Define WSA_WAIT_EVENT_0									For |CI$00000000
+	Define WSA_INVALID_HANDLE								For |CI$00000006
+	Define WSA_NOT_ENOUGH_MEMORY							For |CI$00000008
+	Define WSA_INVALID_PARAMETER							For |CI$00000057
+	Define WSA_WAIT_IO_COMPLETION							For |CI$000000C0
+	Define WSA_OPERATION_ABORTED							For |CI$000003E3
+	Define WSA_IO_INCOMPLETE								For |CI$000003E4
+	Define WSA_IO_PENDING									For |CI$000003E5
+	Define WSABASEERR										For |CI$00002710
+	Define WSAEINTR											For |CI$00002714
+	Define WSAEBADF											For |CI$00002719
+	Define WSAEACCES										For |CI$0000271D
+	Define WSAEFAULT										For |CI$0000271E
+	Define WSAEINVAL										For |CI$00002726
+	Define WSAEMFILE										For |CI$00002728
+	Define WSAEWOULDBLOCK									For |CI$00002733
+	Define WSAEINPROGRESS									For |CI$00002734
+	Define WSAEALREADY										For |CI$00002735
+	Define WSAENOTSOCK										For |CI$00002736
+	Define WSAEDESTADDRREQ									For |CI$00002737
+	Define WSAEMSGSIZE										For |CI$00002738
+	Define WSAEPROTOTYPE									For |CI$00002739
+	Define WSAENOPROTOOPT									For |CI$0000273A
+	Define WSAEPROTONOSUPPORT								For |CI$0000273B
+	Define WSAESOCKTNOSUPPORT								For |CI$0000273C
+	Define WSAEOPNOTSUPP									For |CI$0000273D
+	Define WSAEPFNOSUPPORT									For |CI$0000273E
+	Define WSAEAFNOSUPPORT									For |CI$0000273F
+	Define WSAEADDRINUSE									For |CI$00002740
+	Define WSAEADDRNOTAVAIL									For |CI$00002741
+	Define WSAENETDOWN										For |CI$00002742
+	Define WSAENETUNREACH									For |CI$00002743
+	Define WSAENETRESET										For |CI$00002744
+	Define WSAECONNABORTED									For |CI$00002745
+	Define WSAECONNRESET									For |CI$00002746
+	Define WSAENOBUFS										For |CI$00002747
+	Define WSAEISCONN										For |CI$00002748
+	Define WSAENOTCONN										For |CI$00002749
+	Define WSAESHUTDOWN										For |CI$0000274A
+	Define WSAETOOMANYREFS									For |CI$0000274B
+	Define WSAETIMEDOUT										For |CI$0000274C
+	Define WSAECONNREFUSED									For |CI$0000274D
+	Define WSAELOOP											For |CI$0000274E
+	Define WSAENAMETOOLONG									For |CI$0000274F
+	Define WSAEHOSTDOWN										For |CI$00002750
+	Define WSAEHOSTUNREACH									For |CI$00002751
+	Define WSAENOTEMPTY										For |CI$00002752
+	Define WSAEPROCLIM										For |CI$00002753
+	Define WSAEUSERS										For |CI$00002754
+	Define WSAEDQUOT										For |CI$00002755
+	Define WSAESTALE										For |CI$00002756
+	Define WSAEREMOTE										For |CI$00002757
+	Define WSASYSNOTREADY									For |CI$0000276B
+	Define WSAVERNOTSUPPORTED								For |CI$0000276C
+	Define WSANOTINITIALISED								For |CI$0000276D
+	Define WSAEDISCON										For |CI$00002775
+	Define WSAENOMORE										For |CI$00002776
+	Define WSAECANCELLED									For |CI$00002777
+	Define WSAEINVALIDPROCTABLE								For |CI$00002778
+	Define WSAEINVALIDPROVIDER								For |CI$00002779
+	Define WSAEPROVIDERFAILEDINIT							For |CI$0000277A
+	Define WSASYSCALLFAILURE								For |CI$0000277B
+	Define WSASERVICE_NOT_FOUND								For |CI$0000277C
+	Define WSATYPE_NOT_FOUND								For |CI$0000277D
+	Define WSA_E_NO_MORE									For |CI$0000277E
+	Define WSA_E_CANCELLED									For |CI$0000277F
+	Define WSAEREFUSED										For |CI$00002780
+	Define WSAHOST_NOT_FOUND								For |CI$00002AF9
+	Define WSATRY_AGAIN										For |CI$00002AFA
+	Define WSANO_RECOVERY									For |CI$00002AFB
+	Define WSANO_DATA										For |CI$00002AFC
+	Define WSA_QOS_RECEIVERS								For |CI$00002AFD
+	Define WSA_QOS_SENDERS									For |CI$00002AFE
+	Define WSA_QOS_NO_SENDERS								For |CI$00002AFF
+	Define WSA_QOS_NO_RECEIVERS								For |CI$00002B00
+	Define WSA_QOS_REQUEST_CONFIRMED						For |CI$00002B01
+	Define WSA_QOS_ADMISSION_FAILURE						For |CI$00002B02
+	Define WSA_QOS_POLICY_FAILURE							For |CI$00002B03
+	Define WSA_QOS_BAD_STYLE								For |CI$00002B04
+	Define WSA_QOS_BAD_OBJECT								For |CI$00002B05
+	Define WSA_QOS_TRAFFIC_CTRL_ERROR						For |CI$00002B06
+	Define WSA_QOS_GENERIC_ERROR							For |CI$00002B07
+	Define WSA_QOS_ESERVICETYPE								For |CI$00002B08
+	Define WSA_QOS_EFLOWSPEC								For |CI$00002B09
+	Define WSA_QOS_EPROVSPECBUF								For |CI$00002B0A
+	Define WSA_QOS_EFILTERSTYLE								For |CI$00002B0B
+	Define WSA_QOS_EFILTERTYPE								For |CI$00002B0C
+	Define WSA_QOS_EFILTERCOUNT								For |CI$00002B0D
+	Define WSA_QOS_EOBJLENGTH								For |CI$00002B0E
+	Define WSA_QOS_EFLOWCOUNT								For |CI$00002B0F
+	Define WSA_QOS_EUNKOWNPSOBJ								For |CI$00002B10
+	Define WSA_QOS_EPOLICYOBJ								For |CI$00002B11
+	Define WSA_QOS_EFLOWDESC								For |CI$00002B12
+	Define WSA_QOS_EPSFLOWSPEC								For |CI$00002B13
+	Define WSA_QOS_EPSFILTERSPEC							For |CI$00002B14
+	Define WSA_QOS_ESDMODEOBJ								For |CI$00002B15
+	Define WSA_QOS_ESHAPERATEOBJ							For |CI$00002B16
+	Define WSA_QOS_RESERVED_PETYPE							For |CI$00002B17
+	Define WSA_SECURE_HOST_NOT_FOUND						For |CI$00002B18
+	Define WSA_IPSEC_NAME_POLICY_ERROR						For |CI$00002B19
+End_Enum_List
+
+// Define ADDRESS_FAMILY For UShort
+Enum_List
+	Define AF_UNSPEC										For |CI$0000
+	Define AF_INET											For |CI$0002
+	Define AF_INET6											For |CI$0017
+End_Enum_List
+
+// Define SET_SERVICE_OPERATION For UInteger
+Enum_List
+	Define SERVICE_REGISTER									For |CI$00000001
+	Define SERVICE_DEREGISTER								For |CI$00000002
+	Define SERVICE_FLUSH									For |CI$00000003
+	Define SERVICE_ADD_TYPE									For |CI$00000004
+	Define SERVICE_DELETE_TYPE								For |CI$00000005
+End_Enum_List
+
+// Define SEND_RECV_FLAGS For Integer
+Enum_List
+	Define MSG_OOB											For |CI$00000001
+	Define MSG_PEEK											For |CI$00000002
+	Define MSG_DONTROUTE									For |CI$00000004
+	Define MSG_WAITALL										For |CI$00000008
+	Define MSG_PUSH_IMMEDIATE								For |CI$00000020
+End_Enum_List
+
+// Define RESOURCE_DISPLAY_TYPE For UInteger
+Enum_List
+	Define RESOURCEDISPLAYTYPE_GENERIC						For |CI$00000000
+	Define RESOURCEDISPLAYTYPE_DOMAIN						For |CI$00000001
+	Define RESOURCEDISPLAYTYPE_SERVER						For |CI$00000002
+	Define RESOURCEDISPLAYTYPE_SHARE						For |CI$00000003
+	Define RESOURCEDISPLAYTYPE_FILE							For |CI$00000004
+	Define RESOURCEDISPLAYTYPE_GROUP						For |CI$00000005
+	Define RESOURCEDISPLAYTYPE_TREE							For |CI$0000000A
+End_Enum_List
+
+// Define WSAPOLL_EVENT_FLAGS For Short
+Enum_List
+	Define POLLERR											For |CI$0001
+	Define POLLHUP											For |CI$0002
+	Define POLLNVAL											For |CI$0004
+	Define POLLWRNORM										For |CI$0010
+	Define POLLOUT											For |CI$0010
+	Define POLLWRBAND										For |CI$0020
+	Define POLLRDNORM										For |CI$0100
+	Define POLLRDBAND										For |CI$0200
+	Define POLLIN											For |CI$0300
+	Define POLLPRI											For |CI$0400
+End_Enum_List
+
+// Define WINSOCK_SHUTDOWN_HOW For Integer
+Enum_List
+	Define SD_RECEIVE										For |CI$00000000
+	Define SD_SEND											For |CI$00000001
+	Define SD_BOTH											For |CI$00000002
+End_Enum_List
+
+// Define WINSOCK_SOCKET_TYPE For Integer
+Enum_List
+	Define SOCK_STREAM										For |CI$00000001
+	Define SOCK_DGRAM										For |CI$00000002
+	Define SOCK_RAW											For |CI$00000003
+	Define SOCK_RDM											For |CI$00000004
+	Define SOCK_SEQPACKET									For |CI$00000005
+End_Enum_List
+
+// Define WSC_PROVIDER_INFO_TYPE For Integer
+Enum_List
+	Define ProviderInfoLspCategories						For |CI$00000000
+	Define ProviderInfoAudit								For |CI$00000001
+End_Enum_List
+
+// Define WSAECOMPARATOR For Integer
+Enum_List
+	Define COMP_EQUAL										For |CI$00000000
+	Define COMP_NOTLESS										For |CI$00000001
+End_Enum_List
+
+// Define WSACOMPLETIONTYPE For Integer
+Enum_List
+	Define NSP_NOTIFY_IMMEDIATELY							For |CI$00000000
+	Define NSP_NOTIFY_HWND									For |CI$00000001
+	Define NSP_NOTIFY_EVENT									For |CI$00000002
+	Define NSP_NOTIFY_PORT									For |CI$00000003
+	Define NSP_NOTIFY_APC									For |CI$00000004
+End_Enum_List
+
+// Define WSAESETSERVICEOP For Integer
+Enum_List
+	Define RNRSERVICE_REGISTER								For |CI$00000000
+	Define RNRSERVICE_DEREGISTER							For |CI$00000001
+	Define RNRSERVICE_DELETE								For |CI$00000002
+End_Enum_List
+
+// Define SOCKET_SECURITY_PROTOCOL For Integer
+Enum_List
+	Define SOCKET_SECURITY_PROTOCOL_DEFAULT					For |CI$00000000
+	Define SOCKET_SECURITY_PROTOCOL_IPSEC					For |CI$00000001
+	Define SOCKET_SECURITY_PROTOCOL_IPSEC2					For |CI$00000002
+	Define SOCKET_SECURITY_PROTOCOL_INVALID					For |CI$00000003
+End_Enum_List
+
+// Define NL_ROUTE_PROTOCOL For Integer
+Enum_List
+	Define RouteProtocolOther								For |CI$00000001
+	Define MIB_IPPROTO_OTHER								For |CI$00000001
+	Define PROTO_IP_OTHER									For |CI$00000001
+	Define RouteProtocolLocal								For |CI$00000002
+	Define MIB_IPPROTO_LOCAL								For |CI$00000002
+	Define PROTO_IP_LOCAL									For |CI$00000002
+	Define RouteProtocolNetMgmt								For |CI$00000003
+	Define MIB_IPPROTO_NETMGMT								For |CI$00000003
+	Define PROTO_IP_NETMGMT									For |CI$00000003
+	Define RouteProtocolIcmp								For |CI$00000004
+	Define MIB_IPPROTO_ICMP									For |CI$00000004
+	Define PROTO_IP_ICMP									For |CI$00000004
+	Define RouteProtocolEgp									For |CI$00000005
+	Define MIB_IPPROTO_EGP									For |CI$00000005
+	Define PROTO_IP_EGP										For |CI$00000005
+	Define RouteProtocolGgp									For |CI$00000006
+	Define MIB_IPPROTO_GGP									For |CI$00000006
+	Define PROTO_IP_GGP										For |CI$00000006
+	Define RouteProtocolHello								For |CI$00000007
+	Define MIB_IPPROTO_HELLO								For |CI$00000007
+	Define PROTO_IP_HELLO									For |CI$00000007
+	Define RouteProtocolRip									For |CI$00000008
+	Define MIB_IPPROTO_RIP									For |CI$00000008
+	Define PROTO_IP_RIP										For |CI$00000008
+	Define RouteProtocolIsIs								For |CI$00000009
+	Define MIB_IPPROTO_IS_IS								For |CI$00000009
+	Define PROTO_IP_IS_IS									For |CI$00000009
+	Define RouteProtocolEsIs								For |CI$0000000A
+	Define MIB_IPPROTO_ES_IS								For |CI$0000000A
+	Define PROTO_IP_ES_IS									For |CI$0000000A
+	Define RouteProtocolCisco								For |CI$0000000B
+	Define MIB_IPPROTO_CISCO								For |CI$0000000B
+	Define PROTO_IP_CISCO									For |CI$0000000B
+	Define RouteProtocolBbn									For |CI$0000000C
+	Define MIB_IPPROTO_BBN									For |CI$0000000C
+	Define PROTO_IP_BBN										For |CI$0000000C
+	Define RouteProtocolOspf								For |CI$0000000D
+	Define MIB_IPPROTO_OSPF									For |CI$0000000D
+	Define PROTO_IP_OSPF									For |CI$0000000D
+	Define RouteProtocolBgp									For |CI$0000000E
+	Define MIB_IPPROTO_BGP									For |CI$0000000E
+	Define PROTO_IP_BGP										For |CI$0000000E
+	Define RouteProtocolIdpr								For |CI$0000000F
+	Define MIB_IPPROTO_IDPR									For |CI$0000000F
+	Define PROTO_IP_IDPR									For |CI$0000000F
+	Define RouteProtocolEigrp								For |CI$00000010
+	Define MIB_IPPROTO_EIGRP								For |CI$00000010
+	Define PROTO_IP_EIGRP									For |CI$00000010
+	Define RouteProtocolDvmrp								For |CI$00000011
+	Define MIB_IPPROTO_DVMRP								For |CI$00000011
+	Define PROTO_IP_DVMRP									For |CI$00000011
+	Define RouteProtocolRpl									For |CI$00000012
+	Define MIB_IPPROTO_RPL									For |CI$00000012
+	Define PROTO_IP_RPL										For |CI$00000012
+	Define RouteProtocolDhcp								For |CI$00000013
+	Define MIB_IPPROTO_DHCP									For |CI$00000013
+	Define PROTO_IP_DHCP									For |CI$00000013
+	Define MIB_IPPROTO_NT_AUTOSTATIC						For |CI$00002712
+	Define PROTO_IP_NT_AUTOSTATIC							For |CI$00002712
+	Define MIB_IPPROTO_NT_STATIC							For |CI$00002716
+	Define PROTO_IP_NT_STATIC								For |CI$00002716
+	Define MIB_IPPROTO_NT_STATIC_NON_DOD					For |CI$00002717
+	Define PROTO_IP_NT_STATIC_NON_DOD						For |CI$00002717
+End_Enum_List
+
+// Define NL_PREFIX_ORIGIN For Integer
+Enum_List
+	Define IpPrefixOriginOther								For |CI$00000000
+	Define IpPrefixOriginManual								For |CI$00000001
+	Define IpPrefixOriginWellKnown							For |CI$00000002
+	Define IpPrefixOriginDhcp								For |CI$00000003
+	Define IpPrefixOriginRouterAdvertisement				For |CI$00000004
+	Define IpPrefixOriginUnchanged							For |CI$00000010
+End_Enum_List
+
+// Define NL_SUFFIX_ORIGIN For Integer
+Enum_List
+	Define NlsoOther										For |CI$00000000
+	Define IpSuffixOriginOther								For |CI$00000000
+	Define NlsoManual										For |CI$00000001
+	Define IpSuffixOriginManual								For |CI$00000001
+	Define NlsoWellKnown									For |CI$00000002
+	Define IpSuffixOriginWellKnown							For |CI$00000002
+	Define NlsoDhcp											For |CI$00000003
+	Define IpSuffixOriginDhcp								For |CI$00000003
+	Define NlsoLinkLayerAddress								For |CI$00000004
+	Define IpSuffixOriginLinkLayerAddress					For |CI$00000004
+	Define NlsoRandom										For |CI$00000005
+	Define IpSuffixOriginRandom								For |CI$00000005
+	Define IpSuffixOriginUnchanged							For |CI$00000010
+End_Enum_List
+
+// Define NL_DAD_STATE For Integer
+Enum_List
+	Define NldsInvalid										For |CI$00000000
+	Define IpDadStateInvalid								For |CI$00000000
+	Define NldsTentative									For |CI$00000001
+	Define IpDadStateTentative								For |CI$00000001
+	Define NldsDuplicate									For |CI$00000002
+	Define IpDadStateDuplicate								For |CI$00000002
+	Define NldsDeprecated									For |CI$00000003
+	Define IpDadStateDeprecated								For |CI$00000003
+	Define NldsPreferred									For |CI$00000004
+	Define IpDadStatePreferred								For |CI$00000004
+End_Enum_List
+
+// Define NL_ROUTER_DISCOVERY_BEHAVIOR For Integer
+Enum_List
+	Define RouterDiscoveryUnchanged							For -1
+	Define RouterDiscoveryDisabled							For |CI$00000000
+	Define RouterDiscoveryEnabled							For |CI$00000001
+	Define RouterDiscoveryDhcp								For |CI$00000002
+End_Enum_List
+
+// Define NL_LINK_LOCAL_ADDRESS_BEHAVIOR For Integer
+Enum_List
+	Define LinkLocalUnchanged								For -1
+	Define LinkLocalAlwaysOff								For |CI$00000000
+	Define LinkLocalDelayed									For |CI$00000001
+	Define LinkLocalAlwaysOn								For |CI$00000002
+End_Enum_List
+
+// Define NL_ROUTE_ORIGIN For Integer
+Enum_List
+	Define NlroManual										For |CI$00000000
+	Define NlroWellKnown									For |CI$00000001
+	Define NlroDHCP											For |CI$00000002
+	Define NlroRouterAdvertisement							For |CI$00000003
+	Define Nlro6to4											For |CI$00000004
+End_Enum_List
+
+// Define NL_NEIGHBOR_STATE For Integer
+Enum_List
+	Define NlnsUnreachable									For |CI$00000000
+	Define NlnsIncomplete									For |CI$00000001
+	Define NlnsProbe										For |CI$00000002
+	Define NlnsDelay										For |CI$00000003
+	Define NlnsStale										For |CI$00000004
+	Define NlnsReachable									For |CI$00000005
+	Define NlnsPermanent									For |CI$00000006
+	Define NlnsMaximum										For |CI$00000007
+End_Enum_List
+
+// Define NL_NETWORK_CONNECTIVITY_LEVEL_HINT For Integer
+Enum_List
+	Define NetworkConnectivityLevelHintUnknown				For |CI$00000000
+	Define NetworkConnectivityLevelHintNone					For |CI$00000001
+	Define NetworkConnectivityLevelHintLocalAccess			For |CI$00000002
+	Define NetworkConnectivityLevelHintInternetAccess		For |CI$00000003
+	Define NetworkConnectivityLevelHintConstrainedInternetAccess	For |CI$00000004
+	Define NetworkConnectivityLevelHintHidden				For |CI$00000005
+End_Enum_List
+
+// Define NL_NETWORK_CONNECTIVITY_COST_HINT For Integer
+Enum_List
+	Define NetworkConnectivityCostHintUnknown				For |CI$00000000
+	Define NetworkConnectivityCostHintUnrestricted			For |CI$00000001
+	Define NetworkConnectivityCostHintFixed					For |CI$00000002
+	Define NetworkConnectivityCostHintVariable				For |CI$00000003
+End_Enum_List
+
+// Define IPPROTO For Integer
+Enum_List
+	Define IPPROTO_HOPOPTS									For |CI$00000000
+	Define IPPROTO_IP										For |CI$00000000
+	Define IPPROTO_ICMP										For |CI$00000001
+	Define IPPROTO_IGMP										For |CI$00000002
+	Define IPPROTO_GGP										For |CI$00000003
+	Define IPPROTO_IPV4										For |CI$00000004
+	Define IPPROTO_ST										For |CI$00000005
+	Define IPPROTO_TCP										For |CI$00000006
+	Define IPPROTO_CBT										For |CI$00000007
+	Define IPPROTO_EGP										For |CI$00000008
+	Define IPPROTO_IGP										For |CI$00000009
+	Define IPPROTO_PUP										For |CI$0000000C
+	Define IPPROTO_UDP										For |CI$00000011
+	Define IPPROTO_IDP										For |CI$00000016
+	Define IPPROTO_RDP										For |CI$0000001B
+	Define IPPROTO_IPV6										For |CI$00000029
+	Define IPPROTO_ROUTING									For |CI$0000002B
+	Define IPPROTO_FRAGMENT									For |CI$0000002C
+	Define IPPROTO_ESP										For |CI$00000032
+	Define IPPROTO_AH										For |CI$00000033
+	Define IPPROTO_ICMPV6									For |CI$0000003A
+	Define IPPROTO_NONE										For |CI$0000003B
+	Define IPPROTO_DSTOPTS									For |CI$0000003C
+	Define IPPROTO_ND										For |CI$0000004D
+	Define IPPROTO_ICLFXBM									For |CI$0000004E
+	Define IPPROTO_PIM										For |CI$00000067
+	Define IPPROTO_PGM										For |CI$00000071
+	Define IPPROTO_RM										For |CI$00000071
+	Define IPPROTO_L2TP										For |CI$00000073
+	Define IPPROTO_SCTP										For |CI$00000084
+	Define IPPROTO_RAW										For |CI$000000FF
+	Define IPPROTO_MAX										For |CI$00000100
+	Define IPPROTO_RESERVED_RAW								For |CI$00000101
+	Define IPPROTO_RESERVED_IPSEC							For |CI$00000102
+	Define IPPROTO_RESERVED_IPSECOFFLOAD					For |CI$00000103
+	Define IPPROTO_RESERVED_WNV								For |CI$00000104
+	Define IPPROTO_RESERVED_MAX								For |CI$00000105
+End_Enum_List
+
+// Define SCOPE_LEVEL For Integer
+Enum_List
+	Define ScopeLevelInterface								For |CI$00000001
+	Define ScopeLevelLink									For |CI$00000002
+	Define ScopeLevelSubnet									For |CI$00000003
+	Define ScopeLevelAdmin									For |CI$00000004
+	Define ScopeLevelSite									For |CI$00000005
+	Define ScopeLevelOrganization							For |CI$00000008
+	Define ScopeLevelGlobal									For |CI$0000000E
+	Define ScopeLevelCount									For |CI$00000010
+End_Enum_List
+
+// Define PMTUD_STATE For Integer
+Enum_List
+	Define IP_PMTUDISC_NOT_SET								For |CI$00000000
+	Define IP_PMTUDISC_DO									For |CI$00000001
+	Define IP_PMTUDISC_DONT									For |CI$00000002
+	Define IP_PMTUDISC_PROBE								For |CI$00000003
+	Define IP_PMTUDISC_MAX									For |CI$00000004
+End_Enum_List
+
+// Define MULTICAST_MODE_TYPE For Integer
+Enum_List
+	Define MCAST_INCLUDE									For |CI$00000000
+	Define MCAST_EXCLUDE									For |CI$00000001
+End_Enum_List
+
+// Define eWINDOW_ADVANCE_METHOD For Integer
+Enum_List
+	Define E_WINDOW_ADVANCE_BY_TIME							For |CI$00000001
+	Define E_WINDOW_USE_AS_DATA_CACHE						For |CI$00000002
+End_Enum_List
+
+// Define NL_ADDRESS_TYPE For Integer
+Enum_List
+	Define NlatUnspecified									For |CI$00000000
+	Define NlatUnicast										For |CI$00000001
+	Define NlatAnycast										For |CI$00000002
+	Define NlatMulticast									For |CI$00000003
+	Define NlatBroadcast									For |CI$00000004
+	Define NlatInvalid										For |CI$00000005
+End_Enum_List
+
+// Define NL_BANDWIDTH_FLAG For Integer
+Enum_List
+	Define NlbwUnchanged									For -1
+	Define NlbwDisabled										For |CI$00000000
+	Define NlbwEnabled										For |CI$00000001
+End_Enum_List
+
+// Define NL_NETWORK_CATEGORY For Integer
+Enum_List
+	Define NetworkCategoryUnchanged							For -1
+	Define NetworkCategoryUnknown							For -1
+	Define NetworkCategoryPublic							For |CI$00000000
+	Define NetworkCategoryPrivate							For |CI$00000001
+	Define NetworkCategoryDomainAuthenticated				For |CI$00000002
+End_Enum_List
+
+// Define NL_INTERFACE_NETWORK_CATEGORY_STATE For Integer
+Enum_List
+	Define NlincCategoryUnknown								For |CI$00000000
+	Define NlincPublic										For |CI$00000001
+	Define NlincPrivate										For |CI$00000002
+	Define NlincDomainAuthenticated							For |CI$00000003
+	Define NlincCategoryStateMax							For |CI$00000004
+End_Enum_List
+
+// Define TCPSTATE For Integer
+Enum_List
+	Define TCPSTATE_CLOSED									For |CI$00000000
+	Define TCPSTATE_LISTEN									For |CI$00000001
+	Define TCPSTATE_SYN_SENT								For |CI$00000002
+	Define TCPSTATE_SYN_RCVD								For |CI$00000003
+	Define TCPSTATE_ESTABLISHED								For |CI$00000004
+	Define TCPSTATE_FIN_WAIT_1								For |CI$00000005
+	Define TCPSTATE_FIN_WAIT_2								For |CI$00000006
+	Define TCPSTATE_CLOSE_WAIT								For |CI$00000007
+	Define TCPSTATE_CLOSING									For |CI$00000008
+	Define TCPSTATE_LAST_ACK								For |CI$00000009
+	Define TCPSTATE_TIME_WAIT								For |CI$0000000A
+	Define TCPSTATE_MAX										For |CI$0000000B
+End_Enum_List
+
+// Define CONTROL_CHANNEL_TRIGGER_STATUS For Integer
+Enum_List
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_INVALID			For |CI$00000000
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_SOFTWARE_SLOT_ALLOCATED	For |CI$00000001
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_HARDWARE_SLOT_ALLOCATED	For |CI$00000002
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_POLICY_ERROR		For |CI$00000003
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_SYSTEM_ERROR		For |CI$00000004
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_TRANSPORT_DISCONNECTED	For |CI$00000005
+	Define CONTROL_CHANNEL_TRIGGER_STATUS_SERVICE_UNAVAILABLE	For |CI$00000006
+End_Enum_List
+
+// Define SOCKET_PRIORITY_HINT For Integer
+Enum_List
+	Define SocketPriorityHintVeryLow						For |CI$00000000
+	Define SocketPriorityHintLow							For |CI$00000001
+	Define SocketPriorityHintNormal							For |CI$00000002
+	Define SocketMaximumPriorityHintType					For |CI$00000003
+End_Enum_List
+
+// Define RCVALL_VALUE For Integer
+Enum_List
+	Define RCVALL_OFF										For |CI$00000000
+	Define RCVALL_ON										For |CI$00000001
+	Define RCVALL_SOCKETLEVELONLY							For |CI$00000002
+	Define RCVALL_IPLEVEL									For |CI$00000003
+End_Enum_List
+
+// Define TCP_ICW_LEVEL For Integer
+Enum_List
+	Define TCP_ICW_LEVEL_DEFAULT							For |CI$00000000
+	Define TCP_ICW_LEVEL_HIGH								For |CI$00000001
+	Define TCP_ICW_LEVEL_VERY_HIGH							For |CI$00000002
+	Define TCP_ICW_LEVEL_AGGRESSIVE							For |CI$00000003
+	Define TCP_ICW_LEVEL_EXPERIMENTAL						For |CI$00000004
+	Define TCP_ICW_LEVEL_COMPAT								For |CI$000000FE
+	Define TCP_ICW_LEVEL_MAX								For |CI$000000FF
+End_Enum_List
+
+// Define SOCKET_USAGE_TYPE For Integer
+Enum_List
+	Define SYSTEM_CRITICAL_SOCKET							For |CI$00000001
+End_Enum_List
+
+// Define WSA_COMPATIBILITY_BEHAVIOR_ID For Integer
+Enum_List
+	Define WsaBehaviorAll									For |CI$00000000
+	Define WsaBehaviorReceiveBuffering						For |CI$00000001
+	Define WsaBehaviorAutoTuning							For |CI$00000002
+End_Enum_List
+
+// Define Q2931_IE_TYPE For Integer
+Enum_List
+	Define IE_AALParameters									For |CI$00000000
+	Define IE_TrafficDescriptor								For |CI$00000001
+	Define IE_BroadbandBearerCapability						For |CI$00000002
+	Define IE_BHLI											For |CI$00000003
+	Define IE_BLLI											For |CI$00000004
+	Define IE_CalledPartyNumber								For |CI$00000005
+	Define IE_CalledPartySubaddress							For |CI$00000006
+	Define IE_CallingPartyNumber							For |CI$00000007
+	Define IE_CallingPartySubaddress						For |CI$00000008
+	Define IE_Cause											For |CI$00000009
+	Define IE_QOSClass										For |CI$0000000A
+	Define IE_TransitNetworkSelection						For |CI$0000000B
+End_Enum_List
+
+// Define AAL_TYPE For Integer
+Enum_List
+	Define AALTYPE_5										For |CI$00000005
+	Define AALTYPE_USER										For |CI$00000010
+End_Enum_List
+
+// Define NAPI_PROVIDER_TYPE For Integer
+Enum_List
+	Define ProviderType_Application							For |CI$00000001
+	Define ProviderType_Service								For |CI$00000002
+End_Enum_List
+
+// Define NAPI_PROVIDER_LEVEL For Integer
+Enum_List
+	Define ProviderLevel_None								For |CI$00000000
+	Define ProviderLevel_Secondary							For |CI$00000001
+	Define ProviderLevel_Primary							For |CI$00000002
+End_Enum_List
+
+// Define NLA_BLOB_DATA_TYPE For Integer
+Enum_List
+	Define NLA_RAW_DATA										For |CI$00000000
+	Define NLA_INTERFACE									For |CI$00000001
+	Define NLA_802_1X_LOCATION								For |CI$00000002
+	Define NLA_CONNECTIVITY									For |CI$00000003
+	Define NLA_ICS											For |CI$00000004
+End_Enum_List
+
+// Define NLA_CONNECTIVITY_TYPE For Integer
+Enum_List
+	Define NLA_NETWORK_AD_HOC								For |CI$00000000
+	Define NLA_NETWORK_MANAGED								For |CI$00000001
+	Define NLA_NETWORK_UNMANAGED							For |CI$00000002
+	Define NLA_NETWORK_UNKNOWN								For |CI$00000003
+End_Enum_List
+
+// Define NLA_INTERNET For Integer
+Enum_List
+	Define NLA_INTERNET_UNKNOWN								For |CI$00000000
+	Define NLA_INTERNET_NO									For |CI$00000001
+	Define NLA_INTERNET_YES									For |CI$00000002
+End_Enum_List
+
+// Define RIO_NOTIFICATION_COMPLETION_TYPE For Integer
+Enum_List
+	Define RIO_EVENT_COMPLETION								For |CI$00000001
+	Define RIO_IOCP_COMPLETION								For |CI$00000002
+End_Enum_List
+
+// Define IPV4_OPTION_TYPE For Integer
+Enum_List
+	Define IP_OPT_EOL										For |CI$00000000
+	Define IP_OPT_NOP										For |CI$00000001
+	Define IP_OPT_RR										For |CI$00000007
+	Define IP_OPT_TS										For |CI$00000044
+	Define IP_OPT_SECURITY									For |CI$00000082
+	Define IP_OPT_LSRR										For |CI$00000083
+	Define IP_OPT_SID										For |CI$00000088
+	Define IP_OPT_SSRR										For |CI$00000089
+	Define IP_OPT_ROUTER_ALERT								For |CI$00000094
+	Define IP_OPT_MULTIDEST									For |CI$00000095
+End_Enum_List
+
+// Define IP_OPTION_TIMESTAMP_FLAGS For Integer
+Enum_List
+	Define IP_OPTION_TIMESTAMP_ONLY							For |CI$00000000
+	Define IP_OPTION_TIMESTAMP_ADDRESS						For |CI$00000001
+	Define IP_OPTION_TIMESTAMP_SPECIFIC_ADDRESS				For |CI$00000003
+End_Enum_List
+
+// Define ICMP4_UNREACH_CODE For Integer
+Enum_List
+	Define ICMP4_UNREACH_NET								For |CI$00000000
+	Define ICMP4_UNREACH_HOST								For |CI$00000001
+	Define ICMP4_UNREACH_PROTOCOL							For |CI$00000002
+	Define ICMP4_UNREACH_PORT								For |CI$00000003
+	Define ICMP4_UNREACH_FRAG_NEEDED						For |CI$00000004
+	Define ICMP4_UNREACH_SOURCEROUTE_FAILED					For |CI$00000005
+	Define ICMP4_UNREACH_NET_UNKNOWN						For |CI$00000006
+	Define ICMP4_UNREACH_HOST_UNKNOWN						For |CI$00000007
+	Define ICMP4_UNREACH_ISOLATED							For |CI$00000008
+	Define ICMP4_UNREACH_NET_ADMIN							For |CI$00000009
+	Define ICMP4_UNREACH_HOST_ADMIN							For |CI$0000000A
+	Define ICMP4_UNREACH_NET_TOS							For |CI$0000000B
+	Define ICMP4_UNREACH_HOST_TOS							For |CI$0000000C
+	Define ICMP4_UNREACH_ADMIN								For |CI$0000000D
+End_Enum_List
+
+// Define ICMP4_TIME_EXCEED_CODE For Integer
+Enum_List
+	Define ICMP4_TIME_EXCEED_TRANSIT						For |CI$00000000
+	Define ICMP4_TIME_EXCEED_REASSEMBLY						For |CI$00000001
+End_Enum_List
+
+// Define ARP_OPCODE For Integer
+Enum_List
+	Define ARP_REQUEST										For |CI$00000001
+	Define ARP_RESPONSE										For |CI$00000002
+End_Enum_List
+
+// Define ARP_HARDWARE_TYPE For Integer
+Enum_List
+	Define ARP_HW_ENET										For |CI$00000001
+	Define ARP_HW_802										For |CI$00000006
+End_Enum_List
+
+// Define IGMP_MAX_RESP_CODE_TYPE For Integer
+Enum_List
+	Define IGMP_MAX_RESP_CODE_TYPE_NORMAL					For |CI$00000000
+	Define IGMP_MAX_RESP_CODE_TYPE_FLOAT					For |CI$00000001
+End_Enum_List
+
+// Define IPV6_OPTION_TYPE For Integer
+Enum_List
+	Define IP6OPT_PAD1										For |CI$00000000
+	Define IP6OPT_PADN										For |CI$00000001
+	Define IP6OPT_TUNNEL_LIMIT								For |CI$00000004
+	Define IP6OPT_ROUTER_ALERT								For |CI$00000005
+	Define IP6OPT_JUMBO										For |CI$000000C2
+	Define IP6OPT_NSAP_ADDR									For |CI$000000C3
+End_Enum_List
+
+// Define ND_OPTION_TYPE For Integer
+Enum_List
+	Define ND_OPT_SOURCE_LINKADDR							For |CI$00000001
+	Define ND_OPT_TARGET_LINKADDR							For |CI$00000002
+	Define ND_OPT_PREFIX_INFORMATION						For |CI$00000003
+	Define ND_OPT_REDIRECTED_HEADER							For |CI$00000004
+	Define ND_OPT_MTU										For |CI$00000005
+	Define ND_OPT_NBMA_SHORTCUT_LIMIT						For |CI$00000006
+	Define ND_OPT_ADVERTISEMENT_INTERVAL					For |CI$00000007
+	Define ND_OPT_HOME_AGENT_INFORMATION					For |CI$00000008
+	Define ND_OPT_SOURCE_ADDR_LIST							For |CI$00000009
+	Define ND_OPT_TARGET_ADDR_LIST							For |CI$0000000A
+	Define ND_OPT_ROUTE_INFO								For |CI$00000018
+	Define ND_OPT_RDNSS										For |CI$00000019
+	Define ND_OPT_DNSSL										For |CI$0000001F
+	Define ND_OPT_PREF64									For |CI$00000026
+End_Enum_List
+
+// Define ND_OPT_PREF64_PREFIX_LENGTH_CODE For Integer
+Enum_List
+	Define ND_OPT_PREF64_PREFIX_LENGTH_96					For |CI$00000000
+	Define ND_OPT_PREF64_PREFIX_LENGTH_64					For |CI$00000001
+	Define ND_OPT_PREF64_PREFIX_LENGTH_56					For |CI$00000002
+	Define ND_OPT_PREF64_PREFIX_LENGTH_48					For |CI$00000003
+	Define ND_OPT_PREF64_PREFIX_LENGTH_40					For |CI$00000004
+	Define ND_OPT_PREF64_PREFIX_LENGTH_32					For |CI$00000005
+End_Enum_List
+
+// Define MLD_MAX_RESP_CODE_TYPE For Integer
+Enum_List
+	Define MLD_MAX_RESP_CODE_TYPE_NORMAL					For |CI$00000000
+	Define MLD_MAX_RESP_CODE_TYPE_FLOAT						For |CI$00000001
+End_Enum_List
+
+// Define TUNNEL_SUB_TYPE For Integer
+Enum_List
+	Define TUNNEL_SUB_TYPE_NONE								For |CI$00000000
+	Define TUNNEL_SUB_TYPE_CP								For |CI$00000001
+	Define TUNNEL_SUB_TYPE_IPTLS							For |CI$00000002
+	Define TUNNEL_SUB_TYPE_HA								For |CI$00000003
+End_Enum_List
+
+// Define NPI_MODULEID_TYPE For Integer
+Enum_List
+	Define MIT_GUID											For |CI$00000001
+	Define MIT_IF_LUID										For |CI$00000002
+End_Enum_List
+
+// Define FALLBACK_INDEX For Integer
+Enum_List
+	Define FallbackIndexTcpFastopen							For |CI$00000000
+	Define FallbackIndexMax									For |CI$00000001
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure

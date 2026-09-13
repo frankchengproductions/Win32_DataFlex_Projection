@@ -1,0 +1,903 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_key_prov_param
+Struct CRYPT_KEY_PROV_PARAM
+	UInteger dwParam
+	Integer iMissingAlignment1
+	Pointer pbData											// UChar*
+	UInteger cbData
+	UInteger dwFlags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_key_sign_message_para
+Struct CRYPT_KEY_SIGN_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgAndCertEncodingType						// CERT_QUERY_ENCODING_TYPE
+	_Anonymous_e__Union_1053 Anonymous
+	UInteger dwKeySpec										// CERT_KEY_SPEC
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	Pointer pvHashAuxInfo									// Pointer*
+	CRYPT_ALGORITHM_IDENTIFIER PubKeyAlgorithm
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_key_verify_message_para
+Struct CRYPT_KEY_VERIFY_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgEncodingType
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_mask_gen_algorithm
+Struct CRYPT_MASK_GEN_ALGORITHM
+	Pointer pszObjId										// PSTR
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_object_locator_provider_table
+Struct CRYPT_OBJECT_LOCATOR_PROVIDER_TABLE
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pfnGet											// PFN_CRYPT_OBJECT_LOCATOR_PROVIDER_GET
+	Pointer pfnRelease										// PFN_CRYPT_OBJECT_LOCATOR_PROVIDER_RELEASE
+	Pointer pfnFreePassword									// PFN_CRYPT_OBJECT_LOCATOR_PROVIDER_FREE_PASSWORD
+	Pointer pfnFree											// PFN_CRYPT_OBJECT_LOCATOR_PROVIDER_FREE
+	Pointer pfnFreeIdentifier								// PFN_CRYPT_OBJECT_LOCATOR_PROVIDER_FREE_IDENTIFIER
+End_Struct
+
+Struct CRYPT_OBJID_TABLE
+	UInteger dwAlgId
+	Integer iMissingAlignment1
+	Pointer pszObjId										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_oid_func_entry
+Struct CRYPT_OID_FUNC_ENTRY
+	Pointer pszOID											// PSTR
+	Pointer pvFuncAddr										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_oid_info
+Struct CRYPT_OID_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pszOID											// PSTR
+	Pointer pwszName										// PWSTR
+	UInteger dwGroupId
+	_Anonymous_e__Union_1050 Anonymous
+	CRYPT_INTEGER_BLOB ExtraInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_password_credentialsa
+Struct CRYPT_PASSWORD_CREDENTIALSA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pszUsername										// PSTR
+	Pointer pszPassword										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_password_credentialsw
+Struct CRYPT_PASSWORD_CREDENTIALSW
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pszUsername										// PWSTR
+	Pointer pszPassword										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_pkcs12_pbe_params
+Struct CRYPT_PKCS12_PBE_PARAMS
+	Integer iIterations
+	UInteger cbSalt
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_pkcs8_export_params
+Struct CRYPT_PKCS8_EXPORT_PARAMS
+	ULongPtr hCryptProv
+	UInteger dwKeySpec
+	Integer iMissingAlignment1
+	Pointer pszPrivateKeyObjId								// PSTR
+	Pointer pEncryptPrivateKeyFunc							// PCRYPT_ENCRYPT_PRIVATE_KEY_FUNC
+	Pointer pVoidEncryptFunc								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_pkcs8_import_params
+Struct CRYPT_PKCS8_IMPORT_PARAMS
+	CRYPT_INTEGER_BLOB PrivateKey
+	Pointer pResolvehCryptProvFunc							// PCRYPT_RESOLVE_HCRYPTPROV_FUNC
+	Pointer pVoidResolveFunc								// Pointer*
+	Pointer pDecryptPrivateKeyFunc							// PCRYPT_DECRYPT_PRIVATE_KEY_FUNC
+	Pointer pVoidDecryptFunc								// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_private_key_info
+Struct CRYPT_PRIVATE_KEY_INFO
+	UInteger Version
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER Algorithm
+	CRYPT_INTEGER_BLOB PrivateKey
+	Pointer pAttributes										// CRYPT_ATTRIBUTES*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_property_ref
+Struct CRYPT_PROPERTY_REF
+	Pointer pszProperty										// PWSTR
+	UInteger cbValue
+	Integer iMissingAlignment1
+	Pointer pbValue											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_providers
+Struct CRYPT_PROVIDERS
+	UInteger cProviders
+	Integer iMissingAlignment1
+	Pointer rgpszProviders									// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_provider_ref
+Struct CRYPT_PROVIDER_REF
+	UInteger dwInterface
+	Integer iMissingAlignment1
+	Pointer pszFunction										// PWSTR
+	Pointer pszProvider										// PWSTR
+	UInteger cProperties
+	Integer iMissingAlignment2
+	Pointer rgpProperties									// CRYPT_PROPERTY_REF**
+	Pointer pUM												// CRYPT_IMAGE_REF*
+	Pointer pKM												// CRYPT_IMAGE_REF*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_provider_refs
+Struct CRYPT_PROVIDER_REFS
+	UInteger cProviders
+	Integer iMissingAlignment1
+	Pointer rgpProviders									// CRYPT_PROVIDER_REF**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/bcrypt/ns-bcrypt-crypt_provider_reg
+Struct CRYPT_PROVIDER_REG
+	UInteger cAliases
+	Integer iMissingAlignment1
+	Pointer rgpszAliases									// PWSTR*
+	Pointer pUM												// CRYPT_IMAGE_REG*
+	Pointer pKM												// CRYPT_IMAGE_REG*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_psource_algorithm
+Struct CRYPT_PSOURCE_ALGORITHM
+	Pointer pszObjId										// PSTR
+	CRYPT_INTEGER_BLOB EncodingParameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_rc2_cbc_parameters
+Struct CRYPT_RC2_CBC_PARAMETERS
+	UInteger dwVersion
+	Integer fIV												// BOOL
+	UChar[8] rgbIV
+End_Struct
+
+Struct CRYPT_RC4_KEY_STATE
+	UChar[16] Key
+	UChar[256] SBox
+	UChar i
+	UChar j
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_retrieve_aux_info
+Struct CRYPT_RETRIEVE_AUX_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pLastSyncTime									// FILETIME*
+	UInteger dwMaxUrlRetrievalByteCount
+	Integer iMissingAlignment2
+	Pointer pPreFetchInfo									// CRYPTNET_URL_CACHE_PRE_FETCH_INFO*
+	Pointer pFlushInfo										// CRYPTNET_URL_CACHE_FLUSH_INFO*
+	Pointer ppResponseInfo									// CRYPTNET_URL_CACHE_RESPONSE_INFO**
+	Pointer pwszCacheFileNamePrefix							// PWSTR
+	Pointer pftCacheResync									// FILETIME*
+	Integer fProxyCacheRetrieval							// BOOL
+	UInteger dwHttpStatusCode
+	Pointer ppwszErrorResponseHeaders						// PWSTR*
+	Pointer ppErrorContentBlob								// CRYPT_INTEGER_BLOB**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_rsaes_oaep_parameters
+Struct CRYPT_RSAES_OAEP_PARAMETERS
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_MASK_GEN_ALGORITHM MaskGenAlgorithm
+	CRYPT_PSOURCE_ALGORITHM PSourceAlgorithm
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_rsa_ssa_pss_parameters
+Struct CRYPT_RSA_SSA_PSS_PARAMETERS
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_MASK_GEN_ALGORITHM MaskGenAlgorithm
+	UInteger dwSaltLength
+	UInteger dwTrailerField
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_sequence_of_any
+Struct CRYPT_SEQUENCE_OF_ANY
+	UInteger cValue
+	Integer iMissingAlignment1
+	Pointer rgValue											// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_sign_message_para
+Struct CRYPT_SIGN_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgEncodingType
+	Pointer pSigningCert									// CERT_CONTEXT*
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	Pointer pvHashAuxInfo									// Pointer*
+	UInteger cMsgCert
+	Integer iMissingAlignment1
+	Pointer rgpMsgCert										// CERT_CONTEXT**
+	UInteger cMsgCrl
+	Integer iMissingAlignment2
+	Pointer rgpMsgCrl										// CRL_CONTEXT**
+	UInteger cAuthAttr
+	Integer iMissingAlignment3
+	Pointer rgAuthAttr										// CRYPT_ATTRIBUTE*
+	UInteger cUnauthAttr
+	Integer iMissingAlignment4
+	Pointer rgUnauthAttr									// CRYPT_ATTRIBUTE*
+	UInteger dwFlags
+	UInteger dwInnerContentType
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_smart_card_root_info
+Struct CRYPT_SMART_CARD_ROOT_INFO
+	UChar[16] rgbCardID
+	ROOT_INFO_LUID luid
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_smime_capabilities
+Struct CRYPT_SMIME_CAPABILITIES
+	UInteger cCapability
+	Integer iMissingAlignment1
+	Pointer rgCapability									// CRYPT_SMIME_CAPABILITY*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_smime_capability
+Struct CRYPT_SMIME_CAPABILITY
+	Pointer pszObjId										// PSTR
+	CRYPT_INTEGER_BLOB Parameters
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_timestamp_accuracy
+Struct CRYPT_TIMESTAMP_ACCURACY
+	UInteger dwSeconds
+	UInteger dwMillis
+	UInteger dwMicros
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_timestamp_context
+Struct CRYPT_TIMESTAMP_CONTEXT
+	UInteger cbEncoded
+	Integer iMissingAlignment1
+	Pointer pbEncoded										// UChar*
+	Pointer pTimeStamp										// CRYPT_TIMESTAMP_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_timestamp_info
+Struct CRYPT_TIMESTAMP_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	Pointer pszTSAPolicyId									// PSTR
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_INTEGER_BLOB HashedMessage
+	CRYPT_INTEGER_BLOB SerialNumber
+	FILETIME ftTime
+	Pointer pvAccuracy										// CRYPT_TIMESTAMP_ACCURACY*
+	Integer fOrdering										// BOOL
+	Integer iMissingAlignment2
+	CRYPT_INTEGER_BLOB Nonce
+	CRYPT_INTEGER_BLOB Tsa
+	UInteger cExtension
+	Integer iMissingAlignment3
+	Pointer rgExtension										// CERT_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_timestamp_para
+Struct CRYPT_TIMESTAMP_PARA
+	Pointer pszTSAPolicyId									// PSTR
+	Integer fRequestCerts									// BOOL
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB Nonce
+	UInteger cExtension
+	Integer iMissingAlignment2
+	Pointer rgExtension										// CERT_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_timestamp_request
+Struct CRYPT_TIMESTAMP_REQUEST
+	UInteger dwVersion										// CRYPT_TIMESTAMP_VERSION
+	Integer iMissingAlignment1
+	CRYPT_ALGORITHM_IDENTIFIER HashAlgorithm
+	CRYPT_INTEGER_BLOB HashedMessage
+	Pointer pszTSAPolicyId									// PSTR
+	CRYPT_INTEGER_BLOB Nonce
+	Integer fCertReq										// BOOL
+	UInteger cExtension
+	Pointer rgExtension										// CERT_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_timestamp_response
+Struct CRYPT_TIMESTAMP_RESPONSE
+	UInteger dwStatus										// CRYPT_TIMESTAMP_RESPONSE_STATUS
+	UInteger cFreeText
+	Pointer rgFreeText										// PWSTR*
+	CRYPT_BIT_BLOB FailureInfo
+	CRYPT_INTEGER_BLOB ContentInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_time_stamp_request_info
+Struct CRYPT_TIME_STAMP_REQUEST_INFO
+	Pointer pszTimeStampAlgorithm							// PSTR
+	Pointer pszContentType									// PSTR
+	CRYPT_INTEGER_BLOB Content
+	UInteger cAttribute
+	Integer iMissingAlignment1
+	Pointer rgAttribute										// CRYPT_ATTRIBUTE*
+End_Struct
+
+Struct CRYPT_URL_ARRAY
+	UInteger cUrl
+	Integer iMissingAlignment1
+	Pointer rgwszUrl										// PWSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_url_info
+Struct CRYPT_URL_INFO
+	UInteger cbSize
+	UInteger dwSyncDeltaTime
+	UInteger cGroup
+	Integer iMissingAlignment1
+	Pointer rgcGroupEntry									// UInteger*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_verify_cert_sign_strong_properties_info
+Struct CRYPT_VERIFY_CERT_SIGN_STRONG_PROPERTIES_INFO
+	CRYPT_INTEGER_BLOB CertSignHashCNGAlgPropData
+	CRYPT_INTEGER_BLOB CertIssuerPubKeyBitLengthPropData
+End_Struct
+
+Struct CRYPT_VERIFY_CERT_SIGN_WEAK_HASH_INFO
+	UInteger cCNGHashAlgid
+	Integer iMissingAlignment1
+	Pointer rgpwszCNGHashAlgid								// PWSTR*
+	UInteger dwWeakIndex
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_verify_message_para
+Struct CRYPT_VERIFY_MESSAGE_PARA
+	UInteger cbSize
+	UInteger dwMsgAndCertEncodingType
+	ULongPtr hCryptProv										// HCRYPTPROV_LEGACY
+	Pointer pfnGetSignerCertificate							// PFN_CRYPT_GET_SIGNER_CERTIFICATE
+	Pointer pvGetArg										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-crypt_x942_other_info
+Struct CRYPT_X942_OTHER_INFO
+	Pointer pszContentEncryptionObjId						// PSTR
+	UChar[4] rgbCounter
+	UChar[4] rgbKeyLength
+	CRYPT_INTEGER_BLOB PubInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_algorithm
+Struct CRYPT_XML_ALGORITHM
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer wszAlgorithm									// PWSTR
+	CRYPT_XML_BLOB Encoded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_algorithm_info
+Struct CRYPT_XML_ALGORITHM_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer wszAlgorithmURI									// PWSTR
+	Pointer wszName											// PWSTR
+	UInteger dwGroupId										// CRYPT_XML_GROUP_ID
+	Integer iMissingAlignment2
+	Pointer wszCNGAlgid										// PWSTR
+	Pointer wszCNGExtraAlgid								// PWSTR
+	UInteger dwSignFlags
+	UInteger dwVerifyFlags
+	Pointer pvPaddingInfo									// Pointer*
+	Pointer pvExtraInfo										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_blob
+Struct CRYPT_XML_BLOB
+	Integer dwCharset										// CRYPT_XML_CHARSET
+	UInteger cbData
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_cryptographic_interface
+Struct CRYPT_XML_CRYPTOGRAPHIC_INTERFACE
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer fpCryptXmlEncodeAlgorithm						// CryptXmlDllEncodeAlgorithm
+	Pointer fpCryptXmlCreateDigest							// CryptXmlDllCreateDigest
+	Pointer fpCryptXmlDigestData							// CryptXmlDllDigestData
+	Pointer fpCryptXmlFinalizeDigest						// CryptXmlDllFinalizeDigest
+	Pointer fpCryptXmlCloseDigest							// CryptXmlDllCloseDigest
+	Pointer fpCryptXmlSignData								// CryptXmlDllSignData
+	Pointer fpCryptXmlVerifySignature						// CryptXmlDllVerifySignature
+	Pointer fpCryptXmlGetAlgorithmInfo						// CryptXmlDllGetAlgorithmInfo
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_data_blob
+Struct CRYPT_XML_DATA_BLOB
+	UInteger cbData
+	Integer iMissingAlignment1
+	Pointer pbData											// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_data_provider
+Struct CRYPT_XML_DATA_PROVIDER
+	Pointer pvCallbackState									// Pointer*
+	UInteger cbBufferSize
+	Integer iMissingAlignment1
+	Pointer pfnRead											// PFN_CRYPT_XML_DATA_PROVIDER_READ
+	Pointer pfnClose										// PFN_CRYPT_XML_DATA_PROVIDER_CLOSE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_doc_ctxt
+Struct CRYPT_XML_DOC_CTXT
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hDocCtxt										// Pointer*
+	Pointer pTransformsConfig								// CRYPT_XML_TRANSFORM_CHAIN_CONFIG*
+	UInteger cSignature
+	Integer iMissingAlignment2
+	Pointer rgpSignature									// CRYPT_XML_SIGNATURE**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_issuer_serial
+Struct CRYPT_XML_ISSUER_SERIAL
+	Pointer wszIssuer										// PWSTR
+	Pointer wszSerial										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_keyinfo_param
+Struct CRYPT_XML_KEYINFO_PARAM
+	Pointer wszId											// PWSTR
+	Pointer wszKeyName										// PWSTR
+	CRYPT_INTEGER_BLOB SKI
+	Pointer wszSubjectName									// PWSTR
+	UInteger cCertificate
+	Integer iMissingAlignment1
+	Pointer rgCertificate									// CRYPT_INTEGER_BLOB*
+	UInteger cCRL
+	Integer iMissingAlignment2
+	Pointer rgCRL											// CRYPT_INTEGER_BLOB*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_key_dsa_key_value
+Struct CRYPT_XML_KEY_DSA_KEY_VALUE
+	CRYPT_XML_DATA_BLOB P
+	CRYPT_XML_DATA_BLOB Q
+	CRYPT_XML_DATA_BLOB G
+	CRYPT_XML_DATA_BLOB Y
+	CRYPT_XML_DATA_BLOB J
+	CRYPT_XML_DATA_BLOB Seed
+	CRYPT_XML_DATA_BLOB Counter
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_key_ecdsa_key_value
+Struct CRYPT_XML_KEY_ECDSA_KEY_VALUE
+	Pointer wszNamedCurve									// PWSTR
+	CRYPT_XML_DATA_BLOB X
+	CRYPT_XML_DATA_BLOB Y
+	CRYPT_XML_BLOB ExplicitPara
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_key_info
+Struct CRYPT_XML_KEY_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer wszId											// PWSTR
+	UInteger cKeyInfo
+	Integer iMissingAlignment2
+	Pointer rgKeyInfo										// CRYPT_XML_KEY_INFO_ITEM*
+	Pointer hVerifyKey										// BCRYPT_KEY_HANDLE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_key_info_item
+Struct CRYPT_XML_KEY_INFO_ITEM
+	UInteger dwType											// CRYPT_XML_KEYINFO_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1060 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_key_rsa_key_value
+Struct CRYPT_XML_KEY_RSA_KEY_VALUE
+	CRYPT_XML_DATA_BLOB Modulus
+	CRYPT_XML_DATA_BLOB Exponent
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_key_value
+Struct CRYPT_XML_KEY_VALUE
+	UInteger dwType											// CRYPT_XML_KEY_VALUE_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1059 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_object
+Struct CRYPT_XML_OBJECT
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hObject											// Pointer*
+	Pointer wszId											// PWSTR
+	Pointer wszMimeType										// PWSTR
+	Pointer wszEncoding										// PWSTR
+	CRYPT_XML_REFERENCES Manifest
+	CRYPT_XML_BLOB Encoded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_property
+Struct CRYPT_XML_PROPERTY
+	Integer dwPropId										// CRYPT_XML_PROPERTY_ID
+	Integer iMissingAlignment1
+	Pointer pvValue											// Pointer*
+	UInteger cbValue
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_reference
+Struct CRYPT_XML_REFERENCE
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hReference										// Pointer*
+	Pointer wszId											// PWSTR
+	Pointer wszUri											// PWSTR
+	Pointer wszType											// PWSTR
+	CRYPT_XML_ALGORITHM DigestMethod
+	CRYPT_INTEGER_BLOB DigestValue
+	UInteger cTransform
+	Integer iMissingAlignment2
+	Pointer rgTransform										// CRYPT_XML_ALGORITHM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_references
+Struct CRYPT_XML_REFERENCES
+	UInteger cReference
+	Integer iMissingAlignment1
+	Pointer rgpReference									// CRYPT_XML_REFERENCE**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_signature
+Struct CRYPT_XML_SIGNATURE
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer hSignature										// Pointer*
+	Pointer wszId											// PWSTR
+	CRYPT_XML_SIGNED_INFO SignedInfo
+	CRYPT_INTEGER_BLOB SignatureValue
+	Pointer pKeyInfo										// CRYPT_XML_KEY_INFO*
+	UInteger cObject
+	Integer iMissingAlignment2
+	Pointer rgpObject										// CRYPT_XML_OBJECT**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_signed_info
+Struct CRYPT_XML_SIGNED_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer wszId											// PWSTR
+	CRYPT_XML_ALGORITHM Canonicalization
+	CRYPT_XML_ALGORITHM SignatureMethod
+	UInteger cReference
+	Integer iMissingAlignment2
+	Pointer rgpReference									// CRYPT_XML_REFERENCE**
+	CRYPT_XML_BLOB Encoded
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_status
+Struct CRYPT_XML_STATUS
+	UInteger cbSize
+	UInteger dwErrorStatus									// CRYPT_XML_STATUS_ERROR_STATUS
+	UInteger dwInfoStatus									// CRYPT_XML_STATUS_INFO_STATUS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_transform_chain_config
+Struct CRYPT_XML_TRANSFORM_CHAIN_CONFIG
+	UInteger cbSize
+	UInteger cTransformInfo
+	Pointer rgpTransformInfo								// CRYPT_XML_TRANSFORM_INFO**
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_transform_info
+Struct CRYPT_XML_TRANSFORM_INFO
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer wszAlgorithm									// PWSTR
+	UInteger cbBufferSize
+	UInteger dwFlags										// CRYPT_XML_TRANSFORM_FLAGS
+	Pointer pfnCreateTransform								// PFN_CRYPT_XML_CREATE_TRANSFORM
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_x509data
+Struct CRYPT_XML_X509DATA
+	UInteger cX509Data
+	Integer iMissingAlignment1
+	Pointer rgX509Data										// CRYPT_XML_X509DATA_ITEM*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cryptxml/ns-cryptxml-crypt_xml_x509data_item
+Struct CRYPT_XML_X509DATA_ITEM
+	UInteger dwType											// CRYPT_XML_X509DATA_TYPE
+	Integer iMissingAlignment1
+	_Anonymous_e__Union_1061 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_any_subject_info
+Struct CTL_ANY_SUBJECT_INFO
+	CRYPT_ALGORITHM_IDENTIFIER SubjectAlgorithm
+	CRYPT_INTEGER_BLOB SubjectIdentifier
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_context
+Struct CTL_CONTEXT
+	UInteger dwMsgAndCertEncodingType
+	Integer iMissingAlignment1
+	Pointer pbCtlEncoded									// UChar*
+	UInteger cbCtlEncoded
+	Integer iMissingAlignment2
+	Pointer pCtlInfo										// CTL_INFO*
+	Pointer hCertStore										// HCERTSTORE
+	Pointer hCryptMsg										// Pointer*
+	Pointer pbCtlContent									// UChar*
+	UInteger cbCtlContent
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_entry
+Struct CTL_ENTRY
+	CRYPT_INTEGER_BLOB SubjectIdentifier
+	UInteger cAttribute
+	Integer iMissingAlignment1
+	Pointer rgAttribute										// CRYPT_ATTRIBUTE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_find_subject_para
+Struct CTL_FIND_SUBJECT_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pUsagePara										// CTL_FIND_USAGE_PARA*
+	UInteger dwSubjectType
+	Integer iMissingAlignment2
+	Pointer pvSubject										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_find_usage_para
+Struct CTL_FIND_USAGE_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CTL_USAGE SubjectUsage
+	CRYPT_INTEGER_BLOB ListIdentifier
+	Pointer pSigner											// CERT_INFO*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_info
+Struct CTL_INFO
+	UInteger dwVersion
+	Integer iMissingAlignment1
+	CTL_USAGE SubjectUsage
+	CRYPT_INTEGER_BLOB ListIdentifier
+	CRYPT_INTEGER_BLOB SequenceNumber
+	FILETIME ThisUpdate
+	FILETIME NextUpdate
+	CRYPT_ALGORITHM_IDENTIFIER SubjectAlgorithm
+	UInteger cCTLEntry
+	Integer iMissingAlignment2
+	Pointer rgCTLEntry										// CTL_ENTRY*
+	UInteger cExtension
+	Integer iMissingAlignment3
+	Pointer rgExtension										// CERT_EXTENSION*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_usage
+Struct CTL_USAGE
+	UInteger cUsageIdentifier
+	Integer iMissingAlignment1
+	Pointer rgpszUsageIdentifier							// PSTR*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_usage_match
+Struct CTL_USAGE_MATCH
+	UInteger dwType
+	Integer iMissingAlignment1
+	CTL_USAGE Usage
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_verify_usage_para
+Struct CTL_VERIFY_USAGE_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	CRYPT_INTEGER_BLOB ListIdentifier
+	UInteger cCtlStore
+	Integer iMissingAlignment2
+	Pointer rghCtlStore										// HCERTSTORE*
+	UInteger cSignerStore
+	Integer iMissingAlignment3
+	Pointer rghSignerStore									// HCERTSTORE*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ctl_verify_usage_status
+Struct CTL_VERIFY_USAGE_STATUS
+	UInteger cbSize
+	UInteger dwError
+	UInteger dwFlags
+	Integer iMissingAlignment1
+	Pointer ppCtl											// CTL_CONTEXT**
+	UInteger dwCtlEntryIndex
+	Integer iMissingAlignment2
+	Pointer ppSigner										// CERT_CONTEXT**
+	UInteger dwSignerIndex
+	Integer iMissingAlignment3
+End_Struct
+
+Struct CT_EXTRA_CERT_CHAIN_POLICY_STATUS
+	UInteger cbSize
+	Integer lErrorStatus
+	Integer lErrorSubStatus
+	UInteger cEntries
+	UInteger cValidated
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-dssseed
+Struct DSSSEED
+	UInteger counter
+	UChar[20] seed
+End_Struct
+
+Struct ENDPOINTADDRESS
+	Pointer serviceUrl										// PWSTR
+	Pointer policyUrl										// PWSTR
+	CRYPT_INTEGER_BLOB rawCertificate
+End_Struct
+
+Struct ENDPOINTADDRESS2
+	Pointer serviceUrl										// PWSTR
+	Pointer policyUrl										// PWSTR
+	UInteger identityType
+	Integer iMissingAlignment1
+	Pointer identityBytes									// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ev_extra_cert_chain_policy_para
+Struct EV_EXTRA_CERT_CHAIN_POLICY_PARA
+	UInteger cbSize
+	UInteger dwRootProgramQualifierFlags					// CERT_ROOT_PROGRAM_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-ev_extra_cert_chain_policy_status
+Struct EV_EXTRA_CERT_CHAIN_POLICY_STATUS
+	UInteger cbSize
+	UInteger dwQualifiers
+	UInteger dwIssuanceUsageIndex
+End_Struct
+
+Struct GENERIC_XML_TOKEN
+	FILETIME createDate
+	FILETIME expiryDate
+	Pointer xmlToken										// PWSTR
+	Pointer internalTokenReference							// PWSTR
+	Pointer externalTokenReference							// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-hmac_info
+Struct HMAC_INFO
+	UInteger HashAlgid										// ALG_ID
+	Integer iMissingAlignment1
+	Pointer pbInnerString									// UChar*
+	UInteger cbInnerString
+	Integer iMissingAlignment2
+	Pointer pbOuterString									// UChar*
+	UInteger cbOuterString
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wincrypt/ns-wincrypt-httpspolicycallbackdata
+Struct HTTPSPolicyCallbackData
+	_Anonymous_e__Union_2318 Anonymous
+	UInteger dwAuthType										// HTTPSPOLICY_CALLBACK_DATA_AUTH_TYPE
+	UInteger fdwChecks
+	Integer iMissingAlignment1
+	Pointer pwszServerName									// PWSTR
+End_Struct
+
+Struct INFORMATIONCARD_ASYMMETRIC_CRYPTO_PARAMETERS
+	Integer keySize
+	Integer iMissingAlignment1
+	Pointer keyExchangeAlgorithm							// PWSTR
+	Pointer signatureAlgorithm								// PWSTR
+End_Struct
+
+Struct INFORMATIONCARD_CRYPTO_HANDLE
+	Integer type											// HandleType
+	Integer iMissingAlignment1
+	Bigint expiration
+	Pointer cryptoParameters								// Pointer*
+End_Struct
+
+Struct INFORMATIONCARD_HASH_CRYPTO_PARAMETERS
+	Integer hashSize
+	INFORMATIONCARD_TRANSFORM_CRYPTO_PARAMETERS transform
+End_Struct
+
+Struct INFORMATIONCARD_SYMMETRIC_CRYPTO_PARAMETERS
+	Integer keySize
+	Integer blockSize
+	Integer feedbackSize
+End_Struct
+
+Struct INFORMATIONCARD_TRANSFORM_CRYPTO_PARAMETERS
+	Integer inputBlockSize
+	Integer outputBlockSize
+	Integer canTransformMultipleBlocks						// BOOL
+	Integer canReuseTransform								// BOOL
+End_Struct
+
+Struct InFileSignatureResource
+	UInteger dwVersion
+	UInteger dwCrcOffset
+	UChar[88] rgbSignature
+End_Struct
+
+Struct KEY_TYPE_SUBTYPE
+	UInteger dwKeySpec
+	Guid Type
+	Guid Subtype
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ncrypt/ns-ncrypt-ncrypt_alloc_para
+Struct NCRYPT_ALLOC_PARA
+	UInteger cbSize
+	Integer iMissingAlignment1
+	Pointer pfnAlloc										// PFN_NCRYPT_ALLOC
+	Pointer pfnFree											// PFN_NCRYPT_FREE
+End_Struct
+
+Struct NCRYPT_CIPHER_PADDING_INFO
+	UInteger cbSize
+	UInteger dwFlags
+	Pointer pbIV											// UChar*
+	UInteger cbIV
+	Integer iMissingAlignment1
+	Pointer pbOtherInfo										// UChar*
+	UInteger cbOtherInfo
+	Integer iMissingAlignment2
+End_Struct
+
+Struct NCRYPT_EXPORTED_ISOLATED_KEY_ENVELOPE
+	NCRYPT_EXPORTED_ISOLATED_KEY_HEADER Header
+End_Struct
+
+Struct NCRYPT_EXPORTED_ISOLATED_KEY_HEADER
+	UInteger Version
+	UInteger KeyUsage
+	UInteger _bitfield
+	UInteger cbAlgName
+	UInteger cbNonce
+	UInteger cbAuthTag
+	UInteger cbWrappingKey
+	UInteger cbIsolatedKey
+End_Struct
+
+Struct NCRYPT_ISOLATED_KEY_ATTESTED_ATTRIBUTES
+	UInteger Version
+	UInteger Flags
+	UInteger cbPublicKeyBlob
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

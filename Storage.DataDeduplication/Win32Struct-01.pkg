@@ -1,0 +1,53 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/ddpbackup/ns-ddpbackup-ddp_file_extent
+Struct DDP_FILE_EXTENT
+	Bigint Length
+	Bigint Offset
+End_Struct
+
+Struct DEDUP_CHUNK_INFO_HASH32
+	UInteger ChunkFlags
+	Integer iMissingAlignment1
+	UBigint ChunkOffsetInStream
+	UBigint ChunkSize
+	UChar[32] HashVal
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/ddpbackup/ns-ddpbackup-dedup_container_extent
+Struct DEDUP_CONTAINER_EXTENT
+	UInteger ContainerIndex
+	Integer iMissingAlignment1
+	Bigint StartOffset
+	Bigint Length
+End_Struct
+
+Struct DedupChunk
+	DedupHash Hash
+	Integer Flags											// DedupChunkFlags
+	UInteger LogicalSize
+	UInteger DataSize
+End_Struct
+
+Struct DedupHash
+	UChar[32] Hash
+End_Struct
+
+Struct DedupStream
+	Pointer Path											// BSTR
+	UBigint Offset
+	UBigint Length
+	UInteger ChunkCount
+	Integer iMissingAlignment1
+End_Struct
+
+Struct DedupStreamEntry
+	DedupHash Hash
+	UInteger LogicalSize
+	Integer iMissingAlignment1
+	UBigint Offset
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

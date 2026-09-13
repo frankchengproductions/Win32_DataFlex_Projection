@@ -1,0 +1,1117 @@
+Use UI
+
+Struct _Anonymous_e__Union_2713
+	// WTSINFOEX_LEVEL1_W WTSInfoExLevel1 // (224)
+	WTSINFOEX_LEVEL1_W WTSInfoExLevel1
+End_Struct
+
+Struct _Anonymous_e__Union_2714
+	// WTSINFOEX_LEVEL1_A WTSInfoExLevel1 // (152)
+	WTSINFOEX_LEVEL1_A WTSInfoExLevel1
+End_Struct
+
+Struct _Anonymous_e__Union_2718
+	// WTS_PROTOCOL_CACHE[4] ProtocolCache // (32)
+	// UInteger TShareCacheStats // (4)
+	// UInteger[20] Reserved // (80)
+	UInteger[20] Reserved
+End_Struct
+
+Struct _Anonymous_e__Union_2722
+	// WRDS_LISTENER_SETTINGS_1 WRdsListenerSettings1 // (16)
+	WRDS_LISTENER_SETTINGS_1 WRdsListenerSettings1
+End_Struct
+
+Struct _Anonymous_e__Union_2723
+	// WRDS_CONNECTION_SETTINGS_1 WRdsConnectionSettings1 // (3760)
+	WRDS_CONNECTION_SETTINGS_1 WRdsConnectionSettings1
+End_Struct
+
+Struct _Anonymous_e__Union_2724
+	// WRDS_SETTINGS_1 WRdsSettings1 // (124)
+	WRDS_SETTINGS_1 WRdsSettings1
+End_Struct
+
+Struct _u_e__Union_2715
+	// _ipv4_e__Struct_2716 ipv4 // (16)
+	// _ipv6_e__Struct_2717 ipv6 // (28)
+	_ipv6_e__Struct_2717 ipv6
+End_Struct
+
+Struct _u_e__Union_2719
+	// UInteger ulVal // (4)
+	// _strVal_e__Struct_2720 strVal // (16)
+	// _bVal_e__Struct_2721 bVal // (16)
+	// Guid guidVal // (16)
+	_strVal_e__Struct_2720 strVal
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tsgpolicyengine/ns-tsgpolicyengine-aaaccountingdata
+Struct AAAccountingData
+	Pointer userName										// BSTR
+	Pointer clientName										// BSTR
+	Integer authType										// AAAuthSchemes
+	Integer iMissingAlignment1
+	Pointer resourceName									// BSTR
+	Integer portNumber
+	Integer iMissingAlignment2
+	Pointer protocolName									// BSTR
+	Integer numberOfBytesReceived
+	Integer numberOfBytesTransfered
+	Pointer reasonForDisconnect								// BSTR
+	Guid mainSessionId
+	Integer subSessionId
+	Integer iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/audioengineendpoint/ns-audioengineendpoint-ae_current_position
+Struct AE_CURRENT_POSITION
+	UBigint u64DevicePosition
+	UBigint u64StreamPosition
+	UBigint u64PaddingFrames
+	Bigint hnsQPCPosition
+	Float f32FramesPerSecond
+	Integer Flag											// AE_POSITION_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tsvirtualchannels/ns-tsvirtualchannels-bitmap_renderer_statistics
+Struct BITMAP_RENDERER_STATISTICS
+	UInteger dwFramesDelivered
+	UInteger dwFramesDropped
+End_Struct
+
+Struct CHANNEL_DEF
+	Char[8] name											// CHAR
+	UInteger options
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cchannel/ns-cchannel-channel_entry_points
+Struct CHANNEL_ENTRY_POINTS
+	UInteger cbSize
+	UInteger protocolVersion
+	Pointer pVirtualChannelInit								// PVIRTUALCHANNELINIT
+	Pointer pVirtualChannelOpen								// PVIRTUALCHANNELOPEN
+	Pointer pVirtualChannelClose							// PVIRTUALCHANNELCLOSE
+	Pointer pVirtualChannelWrite							// PVIRTUALCHANNELWRITE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/pchannel/ns-pchannel-channel_pdu_header
+Struct CHANNEL_PDU_HEADER
+	UInteger length
+	UInteger flags
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sessdirpublictypes/ns-sessdirpublictypes-client_display
+Struct CLIENT_DISPLAY
+	UInteger HorizontalResolution
+	UInteger VerticalResolution
+	UInteger ColorDepth
+End_Struct
+
+Struct PRODUCT_INFOA
+	Char[256] CompanyName									// CHAR
+	Char[4] ProductID										// CHAR
+End_Struct
+
+Struct PRODUCT_INFOW
+	UShort[256] CompanyName
+	UShort[4] ProductID
+End_Struct
+
+Struct RFX_GFX_MONITOR_INFO
+	Integer left
+	Integer top
+	Integer right
+	Integer bottom
+	UInteger physicalWidth
+	UInteger physicalHeight
+	UInteger orientation
+	Integer primary											// BOOL
+End_Struct
+
+Struct RFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUEST
+	RFX_GFX_MSG_HEADER channelHdr
+End_Struct
+
+Struct RFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSE
+	RFX_GFX_MSG_HEADER channelHdr
+	UInteger reserved
+	UInteger monitorCount
+	RFX_GFX_MONITOR_INFO[16] MonitorData
+	UShort[32] clientUniqueId
+End_Struct
+
+Struct RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRM
+	RFX_GFX_MSG_HEADER channelHdr
+End_Struct
+
+Struct RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFY
+	RFX_GFX_MSG_HEADER channelHdr
+	UInteger ulWidth
+	UInteger ulHeight
+	UInteger ulBpp
+	UInteger Reserved
+End_Struct
+
+Struct RFX_GFX_MSG_DESKTOP_INPUT_RESET
+	RFX_GFX_MSG_HEADER channelHdr
+	UInteger ulWidth
+	UInteger ulHeight
+End_Struct
+
+Struct RFX_GFX_MSG_DESKTOP_RESEND_REQUEST
+	RFX_GFX_MSG_HEADER channelHdr
+	RFX_GFX_RECT RedrawRect
+End_Struct
+
+Struct RFX_GFX_MSG_DISCONNECT_NOTIFY
+	RFX_GFX_MSG_HEADER channelHdr
+	UInteger DisconnectReason
+End_Struct
+
+Struct RFX_GFX_MSG_HEADER
+	UShort uMSGType
+	UShort cbSize
+End_Struct
+
+Struct RFX_GFX_MSG_RDP_DATA
+	RFX_GFX_MSG_HEADER channelHdr
+	UChar[1] rdpData
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct RFX_GFX_RECT
+	Integer left
+	Integer top
+	Integer right
+	Integer bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/sessdirpublictypes/ns-sessdirpublictypes-tssd_connectionpoint
+Struct TSSD_ConnectionPoint
+	UChar[16] ServerAddressB
+	Integer AddressType										// TSSD_AddrV46Type
+	UShort PortNumber
+	Short iMissingAlignment1
+	UInteger AddressScope
+End_Struct
+
+Struct VM_NOTIFY_ENTRY
+	UShort[128] VmName
+	UShort[128] VmHost
+End_Struct
+
+Struct VM_NOTIFY_INFO
+	UInteger dwNumEntries
+	Integer iMissingAlignment1
+	Pointer ppVmEntries										// VM_NOTIFY_ENTRY**
+End_Struct
+
+Struct VM_PATCH_INFO
+	UInteger dwNumEntries
+	Integer iMissingAlignment1
+	Pointer pVmNames										// PWSTR*
+End_Struct
+
+Struct WRDS_CONNECTION_SETTING
+	_Anonymous_e__Union_2723 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_connection_settings
+Struct WRDS_CONNECTION_SETTINGS
+	Integer WRdsConnectionSettingLevel						// WRDS_CONNECTION_SETTING_LEVEL
+	Integer iMissingAlignment1
+	WRDS_CONNECTION_SETTING WRdsConnectionSetting
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_connection_settings_1
+Struct WRDS_CONNECTION_SETTINGS_1
+	UChar fInheritInitialProgram							// BOOLEAN
+	UChar fInheritColorDepth								// BOOLEAN
+	UChar fHideTitleBar										// BOOLEAN
+	UChar fInheritAutoLogon									// BOOLEAN
+	UChar fMaximizeShell									// BOOLEAN
+	UChar fDisablePNP										// BOOLEAN
+	UChar fPasswordIsScPin									// BOOLEAN
+	UChar fPromptForPassword								// BOOLEAN
+	UChar fDisableCpm										// BOOLEAN
+	UChar fDisableCdm										// BOOLEAN
+	UChar fDisableCcm										// BOOLEAN
+	UChar fDisableLPT										// BOOLEAN
+	UChar fDisableClip										// BOOLEAN
+	UChar fResetBroken										// BOOLEAN
+	UChar fDisableEncryption								// BOOLEAN
+	UChar fDisableAutoReconnect								// BOOLEAN
+	UChar fDisableCtrlAltDel								// BOOLEAN
+	UChar fDoubleClickDetect								// BOOLEAN
+	UChar fEnableWindowsKey									// BOOLEAN
+	UChar fUsingSavedCreds									// BOOLEAN
+	UChar fMouse											// BOOLEAN
+	UChar fNoAudioPlayback									// BOOLEAN
+	UChar fRemoteConsoleAudio								// BOOLEAN
+	UChar EncryptionLevel
+	UShort ColorDepth
+	UShort ProtocolType
+	UShort HRes
+	UShort VRes
+	UShort ClientProductId
+	UShort OutBufCountHost
+	UShort OutBufCountClient
+	UShort OutBufLength
+	UInteger KeyboardLayout
+	UInteger MaxConnectionTime
+	UInteger MaxDisconnectionTime
+	UInteger MaxIdleTime
+	UInteger PerformanceFlags
+	UInteger KeyboardType
+	UInteger KeyboardSubType
+	UInteger KeyboardFunctionKey
+	UInteger ActiveInputLocale
+	UInteger SerialNumber
+	UInteger ClientAddressFamily
+	UInteger ClientBuildNumber
+	UInteger ClientSessionId
+	UShort[257] WorkDirectory
+	UShort[257] InitialProgram
+	UShort[256] UserName
+	UShort[256] Domain
+	UShort[256] Password
+	UShort[9] ProtocolName
+	UShort[9] DisplayDriverName
+	UShort[20] DisplayDeviceName
+	UShort[33] imeFileName
+	UShort[9] AudioDriverName
+	UShort[21] ClientName
+	UShort[31] ClientAddress
+	UShort[257] ClientDirectory
+	UShort[33] ClientDigProductId
+	WTS_SOCKADDR ClientSockAddress
+	WTS_TIME_ZONE_INFORMATION ClientTimeZone
+	WRDS_LISTENER_SETTINGS WRdsListenerSettings
+	Guid EventLogActivityId
+	UInteger ContextSize
+	Integer iMissingAlignment1
+	Pointer ContextData										// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_dynamic_time_zone_information
+Struct WRDS_DYNAMIC_TIME_ZONE_INFORMATION
+	Integer Bias
+	UShort[32] StandardName
+	WTS_SYSTEMTIME StandardDate
+	Integer StandardBias
+	UShort[32] DaylightName
+	WTS_SYSTEMTIME DaylightDate
+	Integer DaylightBias
+	UShort[128] TimeZoneKeyName
+	UShort DynamicDaylightTimeDisabled
+	Short iMissingAlignment1
+End_Struct
+
+Struct WRDS_LISTENER_SETTING
+	_Anonymous_e__Union_2722 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_listener_settings
+Struct WRDS_LISTENER_SETTINGS
+	Integer WRdsListenerSettingLevel						// WRDS_LISTENER_SETTING_LEVEL
+	Integer iMissingAlignment1
+	WRDS_LISTENER_SETTING WRdsListenerSetting
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_listener_settings_1
+Struct WRDS_LISTENER_SETTINGS_1
+	UInteger MaxProtocolListenerConnectionCount
+	UInteger SecurityDescriptorSize
+	Pointer pSecurityDescriptor								// UChar*
+End_Struct
+
+Struct WRDS_SETTING
+	_Anonymous_e__Union_2724 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_settings
+Struct WRDS_SETTINGS
+	Integer WRdsSettingType									// WRDS_SETTING_TYPE
+	Integer WRdsSettingLevel								// WRDS_SETTING_LEVEL
+	WRDS_SETTING WRdsSetting
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wrds_settings_1
+Struct WRDS_SETTINGS_1
+	Integer WRdsDisableClipStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsDisableClipValue
+	Integer WRdsDisableLPTStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsDisableLPTValue
+	Integer WRdsDisableCcmStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsDisableCcmValue
+	Integer WRdsDisableCdmStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsDisableCdmValue
+	Integer WRdsDisableCpmStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsDisableCpmValue
+	Integer WRdsDisablePnpStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsDisablePnpValue
+	Integer WRdsEncryptionLevelStatus						// WRDS_SETTING_STATUS
+	UInteger WRdsEncryptionValue
+	Integer WRdsColorDepthStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsColorDepthValue
+	Integer WRdsDisableAutoReconnecetStatus					// WRDS_SETTING_STATUS
+	UInteger WRdsDisableAutoReconnecetValue
+	Integer WRdsDisableEncryptionStatus						// WRDS_SETTING_STATUS
+	UInteger WRdsDisableEncryptionValue
+	Integer WRdsResetBrokenStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsResetBrokenValue
+	Integer WRdsMaxIdleTimeStatus							// WRDS_SETTING_STATUS
+	UInteger WRdsMaxIdleTimeValue
+	Integer WRdsMaxDisconnectTimeStatus						// WRDS_SETTING_STATUS
+	UInteger WRdsMaxDisconnectTimeValue
+	Integer WRdsMaxConnectTimeStatus						// WRDS_SETTING_STATUS
+	UInteger WRdsMaxConnectTimeValue
+	Integer WRdsKeepAliveStatus								// WRDS_SETTING_STATUS
+	UChar WRdsKeepAliveStartValue							// BOOLEAN
+	UChar[3] cMissingAlignment1
+	UInteger WRdsKeepAliveIntervalValue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsclienta
+Struct WTSCLIENTA
+	Char[21] ClientName										// CHAR
+	Char[18] Domain											// CHAR
+	Char[21] UserName										// CHAR
+	Char[261] WorkDirectory									// CHAR
+	Char[261] InitialProgram								// CHAR
+	UChar EncryptionLevel
+	UChar[1] cMissingAlignment1
+	UInteger ClientAddressFamily
+	UShort[31] ClientAddress
+	UShort HRes
+	UShort VRes
+	UShort ColorDepth
+	Char[261] ClientDirectory								// CHAR
+	UChar[3] cMissingAlignment2
+	UInteger ClientBuildNumber
+	UInteger ClientHardwareId
+	UShort ClientProductId
+	UShort OutBufCountHost
+	UShort OutBufCountClient
+	UShort OutBufLength
+	Char[261] DeviceId										// CHAR
+	UChar[3] cMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsclientw
+Struct WTSCLIENTW
+	UShort[21] ClientName
+	UShort[18] Domain
+	UShort[21] UserName
+	UShort[261] WorkDirectory
+	UShort[261] InitialProgram
+	UChar EncryptionLevel
+	UChar[3] cMissingAlignment1
+	UInteger ClientAddressFamily
+	UShort[31] ClientAddress
+	UShort HRes
+	UShort VRes
+	UShort ColorDepth
+	UShort[261] ClientDirectory
+	Short iMissingAlignment2
+	UInteger ClientBuildNumber
+	UInteger ClientHardwareId
+	UShort ClientProductId
+	UShort OutBufCountHost
+	UShort OutBufCountClient
+	UShort OutBufLength
+	UShort[261] DeviceId
+	Short iMissingAlignment3
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsconfiginfoa
+Struct WTSCONFIGINFOA
+	UInteger version
+	UInteger fConnectClientDrivesAtLogon
+	UInteger fConnectPrinterAtLogon
+	UInteger fDisablePrinterRedirection
+	UInteger fDisableDefaultMainClientPrinter
+	UInteger ShadowSettings
+	Char[21] LogonUserName									// CHAR
+	Char[18] LogonDomain									// CHAR
+	Char[261] WorkDirectory									// CHAR
+	Char[261] InitialProgram								// CHAR
+	Char[261] ApplicationName								// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsconfiginfow
+Struct WTSCONFIGINFOW
+	UInteger version
+	UInteger fConnectClientDrivesAtLogon
+	UInteger fConnectPrinterAtLogon
+	UInteger fDisablePrinterRedirection
+	UInteger fDisableDefaultMainClientPrinter
+	UInteger ShadowSettings
+	UShort[21] LogonUserName
+	UShort[18] LogonDomain
+	UShort[261] WorkDirectory
+	UShort[261] InitialProgram
+	UShort[261] ApplicationName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfoa
+Struct WTSINFOA
+	Integer State											// WTS_CONNECTSTATE_CLASS
+	UInteger SessionId
+	UInteger IncomingBytes
+	UInteger OutgoingBytes
+	UInteger IncomingFrames
+	UInteger OutgoingFrames
+	UInteger IncomingCompressedBytes
+	UInteger OutgoingCompressedBy
+	Char[32] WinStationName									// CHAR
+	Char[17] Domain											// CHAR
+	Char[21] UserName										// CHAR
+	Short iMissingAlignment1
+	Bigint ConnectTime
+	Bigint DisconnectTime
+	Bigint LastInputTime
+	Bigint LogonTime
+	Bigint CurrentTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfoexa
+Struct WTSINFOEXA
+	UInteger Level
+	Integer iMissingAlignment1
+	WTSINFOEX_LEVEL_A Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfoexw
+Struct WTSINFOEXW
+	UInteger Level
+	Integer iMissingAlignment1
+	WTSINFOEX_LEVEL_W Data
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfoex_level1_a
+Struct WTSINFOEX_LEVEL1_A
+	UInteger SessionId
+	Integer SessionState									// WTS_CONNECTSTATE_CLASS
+	Integer SessionFlags
+	Char[33] WinStationName									// CHAR
+	Char[21] UserName										// CHAR
+	Char[18] DomainName										// CHAR
+	Integer iMissingAlignment1
+	Bigint LogonTime
+	Bigint ConnectTime
+	Bigint DisconnectTime
+	Bigint LastInputTime
+	Bigint CurrentTime
+	UInteger IncomingBytes
+	UInteger OutgoingBytes
+	UInteger IncomingFrames
+	UInteger OutgoingFrames
+	UInteger IncomingCompressedBytes
+	UInteger OutgoingCompressedBytes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfoex_level1_w
+Struct WTSINFOEX_LEVEL1_W
+	UInteger SessionId
+	Integer SessionState									// WTS_CONNECTSTATE_CLASS
+	Integer SessionFlags
+	UShort[33] WinStationName
+	UShort[21] UserName
+	UShort[18] DomainName
+	Integer iMissingAlignment1
+	Bigint LogonTime
+	Bigint ConnectTime
+	Bigint DisconnectTime
+	Bigint LastInputTime
+	Bigint CurrentTime
+	UInteger IncomingBytes
+	UInteger OutgoingBytes
+	UInteger IncomingFrames
+	UInteger OutgoingFrames
+	UInteger IncomingCompressedBytes
+	UInteger OutgoingCompressedBytes
+End_Struct
+
+Struct WTSINFOEX_LEVEL_A
+	_Anonymous_e__Union_2714 Anonymous
+End_Struct
+
+Struct WTSINFOEX_LEVEL_W
+	_Anonymous_e__Union_2713 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsinfow
+Struct WTSINFOW
+	Integer State											// WTS_CONNECTSTATE_CLASS
+	UInteger SessionId
+	UInteger IncomingBytes
+	UInteger OutgoingBytes
+	UInteger IncomingFrames
+	UInteger OutgoingFrames
+	UInteger IncomingCompressedBytes
+	UInteger OutgoingCompressedBytes
+	UShort[32] WinStationName
+	UShort[17] Domain
+	UShort[21] UserName
+	Integer iMissingAlignment1
+	Bigint ConnectTime
+	Bigint DisconnectTime
+	Bigint LastInputTime
+	Bigint LogonTime
+	Bigint CurrentTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtslistenerconfiga
+Struct WTSLISTENERCONFIGA
+	UInteger version
+	UInteger fEnableListener
+	UInteger MaxConnectionCount
+	UInteger fPromptForPassword
+	UInteger fInheritColorDepth
+	UInteger ColorDepth
+	UInteger fInheritBrokenTimeoutSettings
+	UInteger BrokenTimeoutSettings
+	UInteger fDisablePrinterRedirection
+	UInteger fDisableDriveRedirection
+	UInteger fDisableComPortRedirection
+	UInteger fDisableLPTPortRedirection
+	UInteger fDisableClipboardRedirection
+	UInteger fDisableAudioRedirection
+	UInteger fDisablePNPRedirection
+	UInteger fDisableDefaultMainClientPrinter
+	UInteger LanAdapter
+	UInteger PortNumber
+	UInteger fInheritShadowSettings
+	UInteger ShadowSettings
+	UInteger TimeoutSettingsConnection
+	UInteger TimeoutSettingsDisconnection
+	UInteger TimeoutSettingsIdle
+	UInteger SecurityLayer
+	UInteger MinEncryptionLevel
+	UInteger UserAuthentication
+	Char[61] Comment										// CHAR
+	Char[21] LogonUserName									// CHAR
+	Char[18] LogonDomain									// CHAR
+	Char[261] WorkDirectory									// CHAR
+	Char[261] InitialProgram								// CHAR
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtslistenerconfigw
+Struct WTSLISTENERCONFIGW
+	UInteger version
+	UInteger fEnableListener
+	UInteger MaxConnectionCount
+	UInteger fPromptForPassword
+	UInteger fInheritColorDepth
+	UInteger ColorDepth
+	UInteger fInheritBrokenTimeoutSettings
+	UInteger BrokenTimeoutSettings
+	UInteger fDisablePrinterRedirection
+	UInteger fDisableDriveRedirection
+	UInteger fDisableComPortRedirection
+	UInteger fDisableLPTPortRedirection
+	UInteger fDisableClipboardRedirection
+	UInteger fDisableAudioRedirection
+	UInteger fDisablePNPRedirection
+	UInteger fDisableDefaultMainClientPrinter
+	UInteger LanAdapter
+	UInteger PortNumber
+	UInteger fInheritShadowSettings
+	UInteger ShadowSettings
+	UInteger TimeoutSettingsConnection
+	UInteger TimeoutSettingsDisconnection
+	UInteger TimeoutSettingsIdle
+	UInteger SecurityLayer
+	UInteger MinEncryptionLevel
+	UInteger UserAuthentication
+	UShort[61] Comment
+	UShort[21] LogonUserName
+	UShort[18] LogonDomain
+	UShort[261] WorkDirectory
+	UShort[261] InitialProgram
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tssbx/ns-tssbx-wtssbx_ip_address
+Struct WTSSBX_IP_ADDRESS
+	Integer AddressFamily									// WTSSBX_ADDRESS_FAMILY
+	UChar[16] Address
+	UShort PortNumber
+	Short iMissingAlignment1
+	UInteger dwScope
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tssbx/ns-tssbx-wtssbx_machine_connect_info
+Struct WTSSBX_MACHINE_CONNECT_INFO
+	UShort[257] wczMachineFQDN
+	UShort[17] wczMachineNetBiosName
+	UInteger dwNumOfIPAddr
+	WTSSBX_IP_ADDRESS[12] IPaddr
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tssbx/ns-tssbx-wtssbx_machine_info
+Struct WTSSBX_MACHINE_INFO
+	WTSSBX_MACHINE_CONNECT_INFO ClientConnectInfo
+	UShort[257] wczFarmName
+	Short iMissingAlignment1
+	WTSSBX_IP_ADDRESS InternalIPAddress
+	UInteger dwMaxSessionsLimit
+	UInteger ServerWeight
+	Integer SingleSessionMode								// WTSSBX_MACHINE_SESSION_MODE
+	Integer InDrain											// WTSSBX_MACHINE_DRAIN
+	Integer MachineState									// WTSSBX_MACHINE_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tssbx/ns-tssbx-wtssbx_session_info
+Struct WTSSBX_SESSION_INFO
+	UShort[105] wszUserName
+	UShort[257] wszDomainName
+	UShort[257] ApplicationType
+	Short iMissingAlignment1
+	UInteger dwSessionId
+	FILETIME CreateTime
+	FILETIME DisconnectTime
+	Integer SessionState									// WTSSBX_SESSION_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-wtssession_notification
+Struct WTSSESSION_NOTIFICATION
+	UInteger cbSize
+	UInteger dwSessionId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsuserconfiga
+Struct WTSUSERCONFIGA
+	UInteger Source
+	UInteger InheritInitialProgram
+	UInteger AllowLogonTerminalServer
+	UInteger TimeoutSettingsConnections
+	UInteger TimeoutSettingsDisconnections
+	UInteger TimeoutSettingsIdle
+	UInteger DeviceClientDrives
+	UInteger DeviceClientPrinters
+	UInteger ClientDefaultPrinter
+	UInteger BrokenTimeoutSettings
+	UInteger ReconnectSettings
+	UInteger ShadowingSettings
+	UInteger TerminalServerRemoteHomeDir
+	Char[261] InitialProgram								// CHAR
+	Char[261] WorkDirectory									// CHAR
+	Char[261] TerminalServerProfilePath						// CHAR
+	Char[261] TerminalServerHomeDir							// CHAR
+	Char[4] TerminalServerHomeDirDrive						// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wtsuserconfigw
+Struct WTSUSERCONFIGW
+	UInteger Source
+	UInteger InheritInitialProgram
+	UInteger AllowLogonTerminalServer
+	UInteger TimeoutSettingsConnections
+	UInteger TimeoutSettingsDisconnections
+	UInteger TimeoutSettingsIdle
+	UInteger DeviceClientDrives
+	UInteger DeviceClientPrinters
+	UInteger ClientDefaultPrinter
+	UInteger BrokenTimeoutSettings
+	UInteger ReconnectSettings
+	UInteger ShadowingSettings
+	UInteger TerminalServerRemoteHomeDir
+	UShort[261] InitialProgram
+	UShort[261] WorkDirectory
+	UShort[261] TerminalServerProfilePath
+	UShort[261] TerminalServerHomeDir
+	UShort[4] TerminalServerHomeDirDrive
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_cache_stats
+Struct WTS_CACHE_STATS
+	UInteger Specific
+	WTS_CACHE_STATS_UN Data
+	UShort ProtocolType
+	UShort Length
+End_Struct
+
+Struct WTS_CACHE_STATS_UN
+	_Anonymous_e__Union_2718 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_client_address
+Struct WTS_CLIENT_ADDRESS
+	UInteger AddressFamily
+	UChar[20] Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_client_data
+Struct WTS_CLIENT_DATA
+	UChar fDisableCtrlAltDel								// BOOLEAN
+	UChar fDoubleClickDetect								// BOOLEAN
+	UChar fEnableWindowsKey									// BOOLEAN
+	UChar fHideTitleBar										// BOOLEAN
+	Integer fInheritAutoLogon								// BOOL
+	UChar fPromptForPassword								// BOOLEAN
+	UChar fUsingSavedCreds									// BOOLEAN
+	UShort[256] Domain
+	UShort[256] UserName
+	UShort[256] Password
+	UChar fPasswordIsScPin									// BOOLEAN
+	UChar[1] cMissingAlignment1
+	Integer fInheritInitialProgram							// BOOL
+	UShort[257] WorkDirectory
+	UShort[257] InitialProgram
+	UChar fMaximizeShell									// BOOLEAN
+	UChar EncryptionLevel
+	Short iMissingAlignment2
+	UInteger PerformanceFlags
+	UShort[9] ProtocolName
+	UShort ProtocolType
+	Integer fInheritColorDepth								// BOOL
+	UShort HRes
+	UShort VRes
+	UShort ColorDepth
+	UShort[9] DisplayDriverName
+	UShort[20] DisplayDeviceName
+	UChar fMouse											// BOOLEAN
+	UChar[3] cMissingAlignment3
+	UInteger KeyboardLayout
+	UInteger KeyboardType
+	UInteger KeyboardSubType
+	UInteger KeyboardFunctionKey
+	UShort[33] imeFileName
+	Short iMissingAlignment4
+	UInteger ActiveInputLocale
+	UChar fNoAudioPlayback									// BOOLEAN
+	UChar fRemoteConsoleAudio								// BOOLEAN
+	UShort[9] AudioDriverName
+	WTS_TIME_ZONE_INFORMATION ClientTimeZone
+	UShort[21] ClientName
+	Short iMissingAlignment5
+	UInteger SerialNumber
+	UInteger ClientAddressFamily
+	UShort[31] ClientAddress
+	Short iMissingAlignment6
+	WTS_SOCKADDR ClientSockAddress
+	UShort[257] ClientDirectory
+	Short iMissingAlignment7
+	UInteger ClientBuildNumber
+	UShort ClientProductId
+	UShort OutBufCountHost
+	UShort OutBufCountClient
+	UShort OutBufLength
+	UInteger ClientSessionId
+	UShort[33] ClientDigProductId
+	UChar fDisableCpm										// BOOLEAN
+	UChar fDisableCdm										// BOOLEAN
+	UChar fDisableCcm										// BOOLEAN
+	UChar fDisableLPT										// BOOLEAN
+	UChar fDisableClip										// BOOLEAN
+	UChar fDisablePNP										// BOOLEAN
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_client_display
+Struct WTS_CLIENT_DISPLAY
+	UInteger HorizontalResolution
+	UInteger VerticalResolution
+	UInteger ColorDepth
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_display_ioctl
+Struct WTS_DISPLAY_IOCTL
+	UChar[256] pDisplayIOCtlData
+	UInteger cbDisplayIOCtlData
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_license_capabilities
+Struct WTS_LICENSE_CAPABILITIES
+	UInteger KeyExchangeAlg
+	UInteger ProtocolVer
+	Integer fAuthenticateServer								// BOOL
+	Integer CertType										// WTS_CERT_TYPE
+	UInteger cbClientName
+	UChar[42] rgbClientName
+	Short iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_policy_data
+Struct WTS_POLICY_DATA
+	UChar fDisableEncryption								// BOOLEAN
+	UChar fDisableAutoReconnect								// BOOLEAN
+	Short iMissingAlignment1
+	UInteger ColorDepth
+	UChar MinEncryptionLevel
+	UChar fDisableCpm										// BOOLEAN
+	UChar fDisableCdm										// BOOLEAN
+	UChar fDisableCcm										// BOOLEAN
+	UChar fDisableLPT										// BOOLEAN
+	UChar fDisableClip										// BOOLEAN
+	UChar fDisablePNPRedir									// BOOLEAN
+	UChar[1] cMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_process_infoa
+Struct WTS_PROCESS_INFOA
+	UInteger SessionId
+	UInteger ProcessId
+	Pointer pProcessName									// PSTR
+	Pointer pUserSid										// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_process_infow
+Struct WTS_PROCESS_INFOW
+	UInteger SessionId
+	UInteger ProcessId
+	Pointer pProcessName									// PWSTR
+	Pointer pUserSid										// PSID
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_process_info_exa
+Struct WTS_PROCESS_INFO_EXA
+	UInteger SessionId
+	UInteger ProcessId
+	Pointer pProcessName									// PSTR
+	Pointer pUserSid										// PSID
+	UInteger NumberOfThreads
+	UInteger HandleCount
+	UInteger PagefileUsage
+	UInteger PeakPagefileUsage
+	UInteger WorkingSetSize
+	UInteger PeakWorkingSetSize
+	Bigint UserTime
+	Bigint KernelTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_process_info_exw
+Struct WTS_PROCESS_INFO_EXW
+	UInteger SessionId
+	UInteger ProcessId
+	Pointer pProcessName									// PWSTR
+	Pointer pUserSid										// PSID
+	UInteger NumberOfThreads
+	UInteger HandleCount
+	UInteger PagefileUsage
+	UInteger PeakPagefileUsage
+	UInteger WorkingSetSize
+	UInteger PeakWorkingSetSize
+	Bigint UserTime
+	Bigint KernelTime
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_property_value
+Struct WTS_PROPERTY_VALUE
+	UShort Type
+	UChar[6] cMissingAlignment1
+	_u_e__Union_2719 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_protocol_cache
+Struct WTS_PROTOCOL_CACHE
+	UInteger CacheReads
+	UInteger CacheHits
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_protocol_counters
+Struct WTS_PROTOCOL_COUNTERS
+	UInteger WdBytes
+	UInteger WdFrames
+	UInteger WaitForOutBuf
+	UInteger Frames
+	UInteger Bytes
+	UInteger CompressedBytes
+	UInteger CompressFlushes
+	UInteger Errors
+	UInteger Timeouts
+	UInteger AsyncFramingError
+	UInteger AsyncOverrunError
+	UInteger AsyncOverflowError
+	UInteger AsyncParityError
+	UInteger TdErrors
+	UShort ProtocolType
+	UShort Length
+	UShort Specific
+	Short iMissingAlignment1
+	UInteger[100] Reserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_protocol_status
+Struct WTS_PROTOCOL_STATUS
+	WTS_PROTOCOL_COUNTERS Output
+	WTS_PROTOCOL_COUNTERS Input
+	WTS_CACHE_STATS Cache
+	UInteger AsyncSignal
+	UInteger AsyncSignalMask
+	Bigint[100] Counters
+End_Struct
+
+Struct WTS_SERIALIZED_USER_CREDENTIAL
+	UInteger SerializationLength
+	Integer iMissingAlignment1
+	Pointer Serialization									// UChar*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_server_infoa
+Struct WTS_SERVER_INFOA
+	Pointer pServerName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_server_infow
+Struct WTS_SERVER_INFOW
+	Pointer pServerName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_service_state
+Struct WTS_SERVICE_STATE
+	Integer RcmServiceState									// WTS_RCM_SERVICE_STATE
+	Integer RcmDrainState									// WTS_RCM_DRAIN_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_session_address
+Struct WTS_SESSION_ADDRESS
+	UInteger AddressFamily
+	UChar[20] Address
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_session_id
+Struct WTS_SESSION_ID
+	Guid SessionUniqueGuid
+	UInteger SessionId
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_session_infoa
+Struct WTS_SESSION_INFOA
+	UInteger SessionId
+	Integer iMissingAlignment1
+	Pointer pWinStationName									// PSTR
+	Integer State											// WTS_CONNECTSTATE_CLASS
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_session_infow
+Struct WTS_SESSION_INFOW
+	UInteger SessionId
+	Integer iMissingAlignment1
+	Pointer pWinStationName									// PWSTR
+	Integer State											// WTS_CONNECTSTATE_CLASS
+	Integer iMissingAlignment2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_session_info_1a
+Struct WTS_SESSION_INFO_1A
+	UInteger ExecEnvId
+	Integer State											// WTS_CONNECTSTATE_CLASS
+	UInteger SessionId
+	Integer iMissingAlignment1
+	Pointer pSessionName									// PSTR
+	Pointer pHostName										// PSTR
+	Pointer pUserName										// PSTR
+	Pointer pDomainName										// PSTR
+	Pointer pFarmName										// PSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsapi32/ns-wtsapi32-wts_session_info_1w
+Struct WTS_SESSION_INFO_1W
+	UInteger ExecEnvId
+	Integer State											// WTS_CONNECTSTATE_CLASS
+	UInteger SessionId
+	Integer iMissingAlignment1
+	Pointer pSessionName									// PWSTR
+	Pointer pHostName										// PWSTR
+	Pointer pUserName										// PWSTR
+	Pointer pDomainName										// PWSTR
+	Pointer pFarmName										// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_small_rect
+Struct WTS_SMALL_RECT
+	Short Left
+	Short Top
+	Short Right
+	Short Bottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_sockaddr
+Struct WTS_SOCKADDR
+	UShort sin_family
+	Short iMissingAlignment1
+	_u_e__Union_2715 u
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_systemtime
+Struct WTS_SYSTEMTIME
+	UShort wYear
+	UShort wMonth
+	UShort wDayOfWeek
+	UShort wDay
+	UShort wHour
+	UShort wMinute
+	UShort wSecond
+	UShort wMilliseconds
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_time_zone_information
+Struct WTS_TIME_ZONE_INFORMATION
+	Integer Bias
+	UShort[32] StandardName
+	WTS_SYSTEMTIME StandardDate
+	Integer StandardBias
+	UShort[32] DaylightName
+	WTS_SYSTEMTIME DaylightDate
+	Integer DaylightBias
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_user_credential
+Struct WTS_USER_CREDENTIAL
+	UShort[256] UserName
+	UShort[256] Password
+	UShort[256] Domain
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/wtsdefs/ns-wtsdefs-wts_user_data
+Struct WTS_USER_DATA
+	UShort[257] WorkDirectory
+	UShort[257] InitialProgram
+	WTS_TIME_ZONE_INFORMATION UserTimeZone
+End_Struct
+
+Struct WTS_VALIDATION_INFORMATIONA
+	PRODUCT_INFOA ProductInfo
+	UChar[16384] License
+	UInteger LicenseLength
+	UChar[20] HardwareID
+	UInteger HardwareIDLength
+End_Struct
+
+Struct WTS_VALIDATION_INFORMATIONW
+	PRODUCT_INFOW ProductInfo
+	UChar[16384] License
+	UInteger LicenseLength
+	UChar[20] HardwareID
+	UInteger HardwareIDLength
+End_Struct
+
+Struct _bVal_e__Struct_2721
+	UInteger size
+	Integer iMissingAlignment1
+	Pointer pbVal											// PSTR
+End_Struct
+
+Struct _ipv4_e__Struct_2716
+	UShort sin_port
+	Short iMissingAlignment1
+	UInteger IN_ADDR
+	UChar[8] sin_zero
+End_Struct
+
+Struct _ipv6_e__Struct_2717
+	UShort sin6_port
+	Short iMissingAlignment1
+	UInteger sin6_flowinfo
+	UShort[8] sin6_addr
+	UInteger sin6_scope_id
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

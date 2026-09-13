@@ -1,0 +1,789 @@
+Use UI
+
+Struct KS_ANALOGVIDEOINFO
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwActiveWidth
+	UInteger dwActiveHeight
+	Bigint AvgTimePerFrame
+End_Struct
+
+Struct KS_BITMAPINFOHEADER
+	UInteger biSize
+	Integer biWidth
+	Integer biHeight
+	UShort biPlanes
+	UShort biBitCount
+	UInteger biCompression
+	UInteger biSizeImage
+	Integer biXPelsPerMeter
+	Integer biYPelsPerMeter
+	UInteger biClrUsed
+	UInteger biClrImportant
+End_Struct
+
+Struct KS_COLCON
+	UChar _bitfield1
+	UChar _bitfield2
+	UChar _bitfield3
+	UChar _bitfield4
+End_Struct
+
+Struct KS_COMPRESSION
+	UInteger RatioNumerator
+	UInteger RatioDenominator
+	UInteger RatioConstantMargin
+End_Struct
+
+Struct KS_COPY_MACROVISION
+	UInteger MACROVISIONLevel
+End_Struct
+
+Struct KS_DATAFORMAT_H264VIDEOINFO
+	KSDATAFORMAT DataFormat
+	KS_H264VIDEOINFO H264VideoInfoHeader
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KS_DATAFORMAT_IMAGEINFO
+	KSDATAFORMAT DataFormat
+	KS_BITMAPINFOHEADER ImageInfoHeader
+End_Struct
+
+Struct KS_DATAFORMAT_MPEGVIDEOINFO2
+	KSDATAFORMAT DataFormat
+	KS_MPEGVIDEOINFO2 MpegVideoInfoHeader2
+End_Struct
+
+Struct KS_DATAFORMAT_VBIINFOHEADER
+	KSDATAFORMAT DataFormat
+	KS_VBIINFOHEADER VBIInfoHeader
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KS_DATAFORMAT_VIDEOINFOHEADER
+	KSDATAFORMAT DataFormat
+	KS_VIDEOINFOHEADER VideoInfoHeader
+End_Struct
+
+Struct KS_DATAFORMAT_VIDEOINFOHEADER2
+	KSDATAFORMAT DataFormat
+	KS_VIDEOINFOHEADER2 VideoInfoHeader2
+End_Struct
+
+Struct KS_DATAFORMAT_VIDEOINFO_PALETTE
+	KSDATAFORMAT DataFormat
+	KS_VIDEOINFO VideoInfo
+End_Struct
+
+Struct KS_DATARANGE_ANALOGVIDEO
+	KSDATAFORMAT DataRange
+	KS_ANALOGVIDEOINFO AnalogVideoInfo
+End_Struct
+
+Struct KS_DATARANGE_H264_VIDEO
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_H264VIDEOINFO VideoInfoHeader
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KS_DATARANGE_IMAGE
+	KSDATAFORMAT DataRange
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_BITMAPINFOHEADER ImageInfoHeader
+End_Struct
+
+Struct KS_DATARANGE_MPEG1_VIDEO
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_MPEG1VIDEOINFO VideoInfoHeader
+End_Struct
+
+Struct KS_DATARANGE_MPEG2_VIDEO
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_MPEGVIDEOINFO2 VideoInfoHeader
+End_Struct
+
+Struct KS_DATARANGE_VIDEO
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_VIDEOINFOHEADER VideoInfoHeader
+End_Struct
+
+Struct KS_DATARANGE_VIDEO2
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_VIDEOINFOHEADER2 VideoInfoHeader
+End_Struct
+
+Struct KS_DATARANGE_VIDEO_PALETTE
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_VIDEOINFO VideoInfo
+End_Struct
+
+Struct KS_DATARANGE_VIDEO_VBI
+	KSDATAFORMAT DataRange
+	Integer bFixedSizeSamples								// BOOL
+	Integer bTemporalCompression							// BOOL
+	UInteger StreamDescriptionFlags
+	UInteger MemoryAllocationFlags
+	KS_VIDEO_STREAM_CONFIG_CAPS ConfigCaps
+	KS_VBIINFOHEADER VBIInfoHeader
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KS_DVDCOPY_BUSKEY
+	UChar[5] BusKey
+	UChar[1] Reserved
+End_Struct
+
+Struct KS_DVDCOPY_CHLGKEY
+	UChar[10] ChlgKey
+	UChar[2] Reserved
+End_Struct
+
+Struct KS_DVDCOPY_DISCKEY
+	UChar[2048] DiscKey
+End_Struct
+
+Struct KS_DVDCOPY_REGION
+	UChar Reserved
+	UChar RegionData
+	UChar[2] Reserved2
+End_Struct
+
+Struct KS_DVDCOPY_SET_COPY_STATE
+	UInteger DVDCopyState
+End_Struct
+
+Struct KS_DVDCOPY_TITLEKEY
+	UInteger KeyFlags
+	UInteger[2] ReservedNT
+	UChar[6] TitleKey
+	UChar[2] Reserved
+End_Struct
+
+Struct KS_DVD_YCrCb
+	UChar Reserved
+	UChar Y
+	UChar Cr
+	UChar Cb
+End_Struct
+
+Struct KS_DVD_YUV
+	UChar Reserved
+	UChar Y
+	UChar V
+	UChar U
+End_Struct
+
+Struct KS_FRAME_INFO
+	UInteger ExtendedHeaderSize
+	UInteger dwFrameFlags
+	Bigint PictureNumber
+	Bigint DropCount
+	Pointer hDirectDraw										// HANDLE
+	Pointer hSurfaceHandle									// HANDLE
+	RECT DirectDrawRect
+	_Anonymous1_e__Union_3248 Anonymous1
+	UInteger Reserved2
+	_Anonymous2_e__Union_3249 Anonymous2
+End_Struct
+
+Struct KS_FRAMING_ITEM
+	Guid MemoryType
+	Guid BusType
+	UInteger MemoryFlags
+	UInteger BusFlags
+	UInteger Flags
+	UInteger Frames
+	_Anonymous_e__Union_3237 Anonymous
+	UInteger MemoryTypeWeight
+	KS_FRAMING_RANGE PhysicalRange
+	KS_FRAMING_RANGE_WEIGHTED FramingRange
+End_Struct
+
+Struct KS_FRAMING_RANGE
+	UInteger MinFrameSize
+	UInteger MaxFrameSize
+	UInteger Stepping
+End_Struct
+
+Struct KS_FRAMING_RANGE_WEIGHTED
+	KS_FRAMING_RANGE Range
+	UInteger InPlaceWeight
+	UInteger NotInPlaceWeight
+End_Struct
+
+Struct KS_H264VIDEOINFO
+	UShort wWidth
+	UShort wHeight
+	UShort wSARwidth
+	UShort wSARheight
+	UShort wProfile
+	UChar bLevelIDC
+	UChar[1] cMissingAlignment1
+	UShort wConstrainedToolset
+	Short iMissingAlignment2
+	UInteger bmSupportedUsages
+	UShort bmCapabilities
+	Short iMissingAlignment3
+	UInteger bmSVCCapabilities
+	UInteger bmMVCCapabilities
+	UInteger dwFrameInterval
+	UChar bMaxCodecConfigDelay
+	UChar bmSupportedSliceModes
+	UChar bmSupportedSyncFrameTypes
+	UChar bResolutionScaling
+	UChar bSimulcastSupport
+	UChar bmSupportedRateControlModes
+	UShort wMaxMBperSecOneResolutionNoScalability
+	UShort wMaxMBperSecTwoResolutionsNoScalability
+	UShort wMaxMBperSecThreeResolutionsNoScalability
+	UShort wMaxMBperSecFourResolutionsNoScalability
+	UShort wMaxMBperSecOneResolutionTemporalScalability
+	UShort wMaxMBperSecTwoResolutionsTemporalScalablility
+	UShort wMaxMBperSecThreeResolutionsTemporalScalability
+	UShort wMaxMBperSecFourResolutionsTemporalScalability
+	UShort wMaxMBperSecOneResolutionTemporalQualityScalability
+	UShort wMaxMBperSecTwoResolutionsTemporalQualityScalability
+	UShort wMaxMBperSecThreeResolutionsTemporalQualityScalablity
+	UShort wMaxMBperSecFourResolutionsTemporalQualityScalability
+	UShort wMaxMBperSecOneResolutionTemporalSpatialScalability
+	UShort wMaxMBperSecTwoResolutionsTemporalSpatialScalability
+	UShort wMaxMBperSecThreeResolutionsTemporalSpatialScalablity
+	UShort wMaxMBperSecFourResolutionsTemporalSpatialScalability
+	UShort wMaxMBperSecOneResolutionFullScalability
+	UShort wMaxMBperSecTwoResolutionsFullScalability
+	UShort wMaxMBperSecThreeResolutionsFullScalability
+	UShort wMaxMBperSecFourResolutionsFullScalability
+	Short iMissingAlignment4
+End_Struct
+
+Struct KS_MPEG1VIDEOINFO
+	KS_VIDEOINFOHEADER hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UChar[1] bSequenceHeader
+	UChar[7] cMissingAlignment1
+End_Struct
+
+Struct KS_MPEGAUDIOINFO
+	UInteger dwFlags
+	UInteger dwReserved1
+	UInteger dwReserved2
+	UInteger dwReserved3
+End_Struct
+
+Struct KS_MPEGVIDEOINFO2
+	KS_VIDEOINFOHEADER2 hdr
+	UInteger dwStartTimeCode
+	UInteger cbSequenceHeader
+	UInteger dwProfile
+	UInteger dwLevel
+	UInteger dwFlags
+	UInteger[1] bSequenceHeader
+End_Struct
+
+Struct KS_RGBQUAD
+	UChar rgbBlue
+	UChar rgbGreen
+	UChar rgbRed
+	UChar rgbReserved
+End_Struct
+
+Struct KS_TRUECOLORINFO
+	UInteger[3] dwBitMasks
+	KS_RGBQUAD[256] bmiColors
+End_Struct
+
+Struct KS_TVTUNER_CHANGE_INFO
+	UInteger dwFlags
+	UInteger dwCountryCode
+	UInteger dwAnalogVideoStandard
+	UInteger dwChannel
+End_Struct
+
+Struct KS_VBIINFOHEADER
+	UInteger StartLine
+	UInteger EndLine
+	UInteger SamplingFrequency
+	UInteger MinLineStartTime
+	UInteger MaxLineStartTime
+	UInteger ActualLineStartTime
+	UInteger ActualLineEndTime
+	UInteger VideoStandard
+	UInteger SamplesPerLine
+	UInteger StrideInBytes
+	UInteger BufferSize
+End_Struct
+
+Struct KS_VBI_FRAME_INFO
+	UInteger ExtendedHeaderSize
+	UInteger dwFrameFlags
+	Bigint PictureNumber
+	Bigint DropCount
+	UInteger dwSamplingFrequency
+	KS_TVTUNER_CHANGE_INFO TvTunerChangeInfo
+	KS_VBIINFOHEADER VBIInfoHeader
+End_Struct
+
+Struct KS_VIDEOINFO
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	KS_BITMAPINFOHEADER bmiHeader
+	_Anonymous_e__Union_3246 Anonymous
+	Integer iMissingAlignment1
+End_Struct
+
+Struct KS_VIDEOINFOHEADER
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	KS_BITMAPINFOHEADER bmiHeader
+End_Struct
+
+Struct KS_VIDEOINFOHEADER2
+	RECT rcSource
+	RECT rcTarget
+	UInteger dwBitRate
+	UInteger dwBitErrorRate
+	Bigint AvgTimePerFrame
+	UInteger dwInterlaceFlags
+	UInteger dwCopyProtectFlags
+	UInteger dwPictAspectRatioX
+	UInteger dwPictAspectRatioY
+	_Anonymous_e__Union_3247 Anonymous
+	UInteger dwReserved2
+	KS_BITMAPINFOHEADER bmiHeader
+End_Struct
+
+Struct KS_VIDEO_STREAM_CONFIG_CAPS
+	Guid guid
+	UInteger VideoStandard
+	SIZE InputSize
+	SIZE MinCroppingSize
+	SIZE MaxCroppingSize
+	Integer CropGranularityX
+	Integer CropGranularityY
+	Integer CropAlignX
+	Integer CropAlignY
+	SIZE MinOutputSize
+	SIZE MaxOutputSize
+	Integer OutputGranularityX
+	Integer OutputGranularityY
+	Integer StretchTapsX
+	Integer StretchTapsY
+	Integer ShrinkTapsX
+	Integer ShrinkTapsY
+	Integer iMissingAlignment1
+	Bigint MinFrameInterval
+	Bigint MaxFrameInterval
+	Integer MinBitsPerSecond
+	Integer MaxBitsPerSecond
+End_Struct
+
+Struct LOOPEDSTREAMING_POSITION_EVENT_DATA
+	KSEVENTDATA KsEventData
+	UBigint Position
+End_Struct
+
+Struct MEDIUM_INFO
+	Integer MediaPresent									// BOOL
+	UInteger MediaType
+	Integer RecordInhibit									// BOOL
+End_Struct
+
+Struct MF_MDL_SHARED_PAYLOAD_KEY
+	_Anonymous_e__Union_3240 Anonymous
+End_Struct
+
+Struct NABTSFEC_BUFFER
+	UInteger dataSize
+	UShort groupID
+	UShort Reserved
+	UChar[448] data
+End_Struct
+
+Struct NABTS_BUFFER
+	VBICODECFILTERING_SCANLINES ScanlinesRequested
+	Bigint PictureNumber
+	NABTS_BUFFER_LINE[11] NabtsLines
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct NABTS_BUFFER_LINE
+	UChar Confidence
+	UChar[36] Bytes
+End_Struct
+
+Struct OPTIMAL_WEIGHT_TOTALS
+	Bigint MinTotalNominator
+	Bigint MaxTotalNominator
+	Bigint TotalDenominator
+End_Struct
+
+Struct PIPE_DIMENSIONS
+	KS_COMPRESSION AllocatorPin
+	KS_COMPRESSION MaxExpansionPin
+	KS_COMPRESSION EndPin
+End_Struct
+
+Struct PIPE_TERMINATION
+	UInteger Flags
+	UInteger OutsideFactors
+	UInteger Weigth
+	KS_FRAMING_RANGE PhysicalRange
+	KS_FRAMING_RANGE_WEIGHTED OptimalRange
+	KS_COMPRESSION Compression
+End_Struct
+
+Struct SECURE_BUFFER_INFO
+	Guid guidBufferIdentifier
+	UInteger cbBufferSize
+	UInteger cbCaptured
+	UBigint[16] ullReserved
+End_Struct
+
+Struct SOUNDDETECTOR_PATTERNHEADER
+	UInteger Size
+	Guid PatternType
+End_Struct
+
+Struct TRANSPORTAUDIOPARMS
+	Integer EnableOutput
+	Integer EnableRecord
+	Integer EnableSelsync
+	Integer Input
+	Integer MonitorSource
+End_Struct
+
+Struct TRANSPORTBASICPARMS
+	Integer TimeFormat
+	Integer TimeReference
+	Integer Superimpose
+	Integer EndStopAction
+	Integer RecordFormat
+	Integer StepFrames
+	Integer SetpField
+	Integer Preroll
+	Integer RecPreroll
+	Integer Postroll
+	Integer EditDelay
+	Integer PlayTCDelay
+	Integer RecTCDelay
+	Integer EditField
+	Integer FrameServo
+	Integer ColorFrameServo
+	Integer ServoRef
+	Integer WarnGenlock
+	Integer SetTracking
+	Char[40] VolumeName
+	Integer[20] Ballistic
+	Integer Speed
+	Integer CounterFormat
+	Integer TunerChannel
+	Integer TunerNumber
+	Integer TimerEvent
+	Integer TimerStartDay
+	Integer TimerStartTime
+	Integer TimerStopDay
+	Integer TimerStopTime
+End_Struct
+
+Struct TRANSPORTSTATUS
+	Integer Mode
+	Integer LastError
+	Integer RecordInhibit
+	Integer ServoLock
+	Integer MediaPresent
+	Integer MediaLength
+	Integer MediaSize
+	Integer MediaTrackCount
+	Integer MediaTrackLength
+	Integer MediaTrackSide
+	Integer MediaType
+	Integer LinkMode
+	Integer NotifyOn
+End_Struct
+
+Struct TRANSPORTVIDEOPARMS
+	Integer OutputMode
+	Integer Input
+End_Struct
+
+Struct TRANSPORT_STATE
+	UInteger Mode
+	UInteger State
+End_Struct
+
+Struct TUNER_ANALOG_CAPS_S
+	UInteger Mode
+	UInteger StandardsSupported
+	UInteger MinFrequency
+	UInteger MaxFrequency
+	UInteger TuningGranularity
+	UInteger SettlingTime
+	UInteger ScanSensingRange
+	UInteger FineTuneSensingRange
+End_Struct
+
+Struct UMPDATAFORMAT
+	Bigint Position
+	UInteger ByteCount
+	Integer iMissingAlignment1
+End_Struct
+
+Struct VBICAP_PROPERTIES_PROTECTION_S
+	KSIDENTIFIER Property
+	UInteger StreamIndex
+	UInteger Status
+End_Struct
+
+Struct VBICODECFILTERING_CC_SUBSTREAMS
+	UInteger SubstreamMask
+End_Struct
+
+Struct VBICODECFILTERING_NABTS_SUBSTREAMS
+	UInteger[128] SubstreamMask
+End_Struct
+
+Struct VBICODECFILTERING_SCANLINES
+	UInteger[32] DwordBitArray
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_CC
+	VBICODECFILTERING_STATISTICS_COMMON Common
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_CC_PIN
+	VBICODECFILTERING_STATISTICS_COMMON_PIN Common
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_COMMON
+	UInteger InputSRBsProcessed
+	UInteger OutputSRBsProcessed
+	UInteger SRBsIgnored
+	UInteger InputSRBsMissing
+	UInteger OutputSRBsMissing
+	UInteger OutputFailures
+	UInteger InternalErrors
+	UInteger ExternalErrors
+	UInteger InputDiscontinuities
+	UInteger DSPFailures
+	UInteger TvTunerChanges
+	UInteger VBIHeaderChanges
+	UInteger LineConfidenceAvg
+	UInteger BytesOutput
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_COMMON_PIN
+	UInteger SRBsProcessed
+	UInteger SRBsIgnored
+	UInteger SRBsMissing
+	UInteger InternalErrors
+	UInteger ExternalErrors
+	UInteger Discontinuities
+	UInteger LineConfidenceAvg
+	UInteger BytesOutput
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_NABTS
+	VBICODECFILTERING_STATISTICS_COMMON Common
+	UInteger FECBundleBadLines
+	UInteger FECQueueOverflows
+	UInteger FECCorrectedLines
+	UInteger FECUncorrectableLines
+	UInteger BundlesProcessed
+	UInteger BundlesSent2IP
+	UInteger FilteredLines
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_NABTS_PIN
+	VBICODECFILTERING_STATISTICS_COMMON_PIN Common
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_TELETEXT
+	VBICODECFILTERING_STATISTICS_COMMON Common
+End_Struct
+
+Struct VBICODECFILTERING_STATISTICS_TELETEXT_PIN
+	VBICODECFILTERING_STATISTICS_COMMON_PIN Common
+End_Struct
+
+Struct VIDEOFORMAT_DX12
+	KSATTRIBUTE Header
+	UInteger resourceLayout
+	UInteger resourceFlags
+	Guid customLayout
+End_Struct
+
+Struct VRAM_SURFACE_INFO
+	ULongPtr hSurface
+	Bigint VramPhysicalAddress
+	UInteger cbCaptured
+	UInteger dwWidth
+	UInteger dwHeight
+	UInteger dwLinearSize
+	Integer lPitch
+	Integer iMissingAlignment1
+	UBigint[16] ullReserved
+End_Struct
+
+Struct VRAM_SURFACE_INFO_PROPERTY_S
+	KSIDENTIFIER Property
+	Pointer pVramSurfaceInfo								// VRAM_SURFACE_INFO*
+End_Struct
+
+Struct WNF_KSCAMERA_STREAMSTATE_INFO
+	UInteger ProcessId
+	UInteger SessionId
+	UInteger StreamState
+	UInteger Reserved
+End_Struct
+
+Struct WST_BUFFER
+	VBICODECFILTERING_SCANLINES ScanlinesRequested
+	WST_BUFFER_LINE[17] WstLines
+	UChar[1] cMissingAlignment1
+End_Struct
+
+Struct WST_BUFFER_LINE
+	UChar Confidence
+	UChar[42] Bytes
+End_Struct
+
+Struct _Alignment_e__Struct_2155
+	Pointer Unused											// Pointer*
+	LongPtr[2] Alignment
+End_Struct
+
+Struct _Anonymous1_e__Struct_3230
+	Integer SignedMinimum
+	Integer SignedMaximum
+End_Struct
+
+Struct _Anonymous1_e__Struct_3233
+	Bigint SignedMinimum
+	Bigint SignedMaximum
+End_Struct
+
+Struct _Anonymous2_e__Struct_3231
+	UInteger UnsignedMinimum
+	UInteger UnsignedMaximum
+End_Struct
+
+Struct _Anonymous2_e__Struct_3234
+	UBigint UnsignedMinimum
+	UBigint UnsignedMaximum
+End_Struct
+
+Struct _Anonymous_e__Struct_1286
+	Guid Set
+	UInteger Id
+	UInteger Flags
+End_Struct
+
+Struct _Anonymous_e__Struct_1288
+	UInteger FormatSize
+	UInteger Flags
+	UInteger SampleSize
+	UInteger Reserved
+	Guid MajorFormat
+	Guid SubFormat
+	Guid Specifier
+End_Struct
+
+Struct _Anonymous_e__Struct_3239
+	UShort _bitfield
+End_Struct
+
+Struct _Anonymous_e__Struct_3250
+	UInteger Reserved3
+	UInteger Reserved4
+End_Struct
+
+Struct _Anonymous_e__Struct_3257
+	UShort PinIndex
+	UShort ProfileSensorType
+End_Struct
+
+Struct _Camera_e__Struct_3259
+	KSCAMERA_PROFILE_INFO Info
+	UInteger Reserved
+	UInteger ConcurrencyCount
+	Pointer Concurrency										// KSCAMERA_PROFILE_CONCURRENCYINFO*
+End_Struct
+
+Struct _EventHandle_e__Struct_2153
+	Pointer Event											// HANDLE
+	ULongPtr[2] Reserved
+End_Struct
+
+Struct _MaxFrameRate_e__Struct_3253
+	Integer Numerator
+	Integer Denominator
+End_Struct
+
+Struct _MaxFrameRate_e__Struct_3255
+	UInteger Numerator
+	UInteger Denominator
+End_Struct
+
+Struct _ProviderId_e__Struct_3268
+	Guid DeviceId
+	Guid ClassId
+	UInteger InstanceId
+	UInteger Reserved
+End_Struct
+
+Struct _RawAVC_e__Struct_3263
+	UInteger PayloadSize
+	UChar[512] Payload
+End_Struct
+
+Struct _RawAVC_e__Struct_3266
+	UInteger PayloadSize
+	UChar[512] Payload
+End_Struct
+
+Struct _Resolution_e__Struct_3254
+	UInteger X
+	UInteger Y
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

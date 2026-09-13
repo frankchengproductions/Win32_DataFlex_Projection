@@ -1,0 +1,682 @@
+Use UI
+
+// Define TAPI_TONEMODE For Integer
+Enum_List
+	Define TTM_RINGBACK										For |CI$00000002
+	Define TTM_BUSY											For |CI$00000004
+	Define TTM_BEEP											For |CI$00000008
+	Define TTM_BILLING										For |CI$00000010
+End_Enum_List
+
+// Define TAPI_GATHERTERM For Integer
+Enum_List
+	Define TGT_BUFFERFULL									For |CI$00000001
+	Define TGT_TERMDIGIT									For |CI$00000002
+	Define TGT_FIRSTTIMEOUT									For |CI$00000004
+	Define TGT_INTERTIMEOUT									For |CI$00000008
+	Define TGT_CANCEL										For |CI$00000010
+End_Enum_List
+
+// Define ADDRESS_EVENT For Integer
+Enum_List
+	Define AE_STATE											For |CI$00000000
+	Define AE_CAPSCHANGE									For |CI$00000001
+	Define AE_RINGING										For |CI$00000002
+	Define AE_CONFIGCHANGE									For |CI$00000003
+	Define AE_FORWARD										For |CI$00000004
+	Define AE_NEWTERMINAL									For |CI$00000005
+	Define AE_REMOVETERMINAL								For |CI$00000006
+	Define AE_MSGWAITON										For |CI$00000007
+	Define AE_MSGWAITOFF									For |CI$00000008
+	Define AE_LASTITEM										For |CI$00000008
+End_Enum_List
+
+// Define ADDRESS_STATE For Integer
+Enum_List
+	Define AS_INSERVICE										For |CI$00000000
+	Define AS_OUTOFSERVICE									For |CI$00000001
+End_Enum_List
+
+// Define CALL_STATE For Integer
+Enum_List
+	Define CS_IDLE											For |CI$00000000
+	Define CS_INPROGRESS									For |CI$00000001
+	Define CS_CONNECTED										For |CI$00000002
+	Define CS_DISCONNECTED									For |CI$00000003
+	Define CS_OFFERING										For |CI$00000004
+	Define CS_HOLD											For |CI$00000005
+	Define CS_QUEUED										For |CI$00000006
+	Define CS_LASTITEM										For |CI$00000006
+End_Enum_List
+
+// Define CALL_STATE_EVENT_CAUSE For Integer
+Enum_List
+	Define CEC_NONE											For |CI$00000000
+	Define CEC_DISCONNECT_NORMAL							For |CI$00000001
+	Define CEC_DISCONNECT_BUSY								For |CI$00000002
+	Define CEC_DISCONNECT_BADADDRESS						For |CI$00000003
+	Define CEC_DISCONNECT_NOANSWER							For |CI$00000004
+	Define CEC_DISCONNECT_CANCELLED							For |CI$00000005
+	Define CEC_DISCONNECT_REJECTED							For |CI$00000006
+	Define CEC_DISCONNECT_FAILED							For |CI$00000007
+	Define CEC_DISCONNECT_BLOCKED							For |CI$00000008
+End_Enum_List
+
+// Define CALL_MEDIA_EVENT For Integer
+Enum_List
+	Define CME_NEW_STREAM									For |CI$00000000
+	Define CME_STREAM_FAIL									For |CI$00000001
+	Define CME_TERMINAL_FAIL								For |CI$00000002
+	Define CME_STREAM_NOT_USED								For |CI$00000003
+	Define CME_STREAM_ACTIVE								For |CI$00000004
+	Define CME_STREAM_INACTIVE								For |CI$00000005
+	Define CME_LASTITEM										For |CI$00000005
+End_Enum_List
+
+// Define CALL_MEDIA_EVENT_CAUSE For Integer
+Enum_List
+	Define CMC_UNKNOWN										For |CI$00000000
+	Define CMC_BAD_DEVICE									For |CI$00000001
+	Define CMC_CONNECT_FAIL									For |CI$00000002
+	Define CMC_LOCAL_REQUEST								For |CI$00000003
+	Define CMC_REMOTE_REQUEST								For |CI$00000004
+	Define CMC_MEDIA_TIMEOUT								For |CI$00000005
+	Define CMC_MEDIA_RECOVERED								For |CI$00000006
+	Define CMC_QUALITY_OF_SERVICE							For |CI$00000007
+End_Enum_List
+
+// Define DISCONNECT_CODE For Integer
+Enum_List
+	Define DC_NORMAL										For |CI$00000000
+	Define DC_NOANSWER										For |CI$00000001
+	Define DC_REJECTED										For |CI$00000002
+End_Enum_List
+
+// Define TERMINAL_STATE For Integer
+Enum_List
+	Define TS_INUSE											For |CI$00000000
+	Define TS_NOTINUSE										For |CI$00000001
+End_Enum_List
+
+// Define TERMINAL_DIRECTION For Integer
+Enum_List
+	Define TD_CAPTURE										For |CI$00000000
+	Define TD_RENDER										For |CI$00000001
+	Define TD_BIDIRECTIONAL									For |CI$00000002
+	Define TD_MULTITRACK_MIXED								For |CI$00000003
+	Define TD_NONE											For |CI$00000004
+End_Enum_List
+
+// Define TERMINAL_TYPE For Integer
+Enum_List
+	Define TT_STATIC										For |CI$00000000
+	Define TT_DYNAMIC										For |CI$00000001
+End_Enum_List
+
+// Define CALL_PRIVILEGE For Integer
+Enum_List
+	Define CP_OWNER											For |CI$00000000
+	Define CP_MONITOR										For |CI$00000001
+End_Enum_List
+
+// Define TAPI_EVENT For Integer
+Enum_List
+	Define TE_TAPIOBJECT									For |CI$00000001
+	Define TE_ADDRESS										For |CI$00000002
+	Define TE_CALLNOTIFICATION								For |CI$00000004
+	Define TE_CALLSTATE										For |CI$00000008
+	Define TE_CALLMEDIA										For |CI$00000010
+	Define TE_CALLHUB										For |CI$00000020
+	Define TE_CALLINFOCHANGE								For |CI$00000040
+	Define TE_PRIVATE										For |CI$00000080
+	Define TE_REQUEST										For |CI$00000100
+	Define TE_AGENT											For |CI$00000200
+	Define TE_AGENTSESSION									For |CI$00000400
+	Define TE_QOSEVENT										For |CI$00000800
+	Define TE_AGENTHANDLER									For |CI$00001000
+	Define TE_ACDGROUP										For |CI$00002000
+	Define TE_QUEUE											For |CI$00004000
+	Define TE_DIGITEVENT									For |CI$00008000
+	Define TE_GENERATEEVENT									For |CI$00010000
+	Define TE_ASRTERMINAL									For |CI$00020000
+	Define TE_TTSTERMINAL									For |CI$00040000
+	Define TE_FILETERMINAL									For |CI$00080000
+	Define TE_TONETERMINAL									For |CI$00100000
+	Define TE_PHONEEVENT									For |CI$00200000
+	Define TE_TONEEVENT										For |CI$00400000
+	Define TE_GATHERDIGITS									For |CI$00800000
+	Define TE_ADDRESSDEVSPECIFIC							For |CI$01000000
+	Define TE_PHONEDEVSPECIFIC								For |CI$02000000
+End_Enum_List
+
+// Define CALL_NOTIFICATION_EVENT For Integer
+Enum_List
+	Define CNE_OWNER										For |CI$00000000
+	Define CNE_MONITOR										For |CI$00000001
+	Define CNE_LASTITEM										For |CI$00000001
+End_Enum_List
+
+// Define CALLHUB_EVENT For Integer
+Enum_List
+	Define CHE_CALLJOIN										For |CI$00000000
+	Define CHE_CALLLEAVE									For |CI$00000001
+	Define CHE_CALLHUBNEW									For |CI$00000002
+	Define CHE_CALLHUBIDLE									For |CI$00000003
+	Define CHE_LASTITEM										For |CI$00000003
+End_Enum_List
+
+// Define CALLHUB_STATE For Integer
+Enum_List
+	Define CHS_ACTIVE										For |CI$00000000
+	Define CHS_IDLE											For |CI$00000001
+End_Enum_List
+
+// Define TAPIOBJECT_EVENT For Integer
+Enum_List
+	Define TE_ADDRESSCREATE									For |CI$00000000
+	Define TE_ADDRESSREMOVE									For |CI$00000001
+	Define TE_REINIT										For |CI$00000002
+	Define TE_TRANSLATECHANGE								For |CI$00000003
+	Define TE_ADDRESSCLOSE									For |CI$00000004
+	Define TE_PHONECREATE									For |CI$00000005
+	Define TE_PHONEREMOVE									For |CI$00000006
+End_Enum_List
+
+// Define TAPI_OBJECT_TYPE For Integer
+Enum_List
+	Define TOT_NONE											For |CI$00000000
+	Define TOT_TAPI											For |CI$00000001
+	Define TOT_ADDRESS										For |CI$00000002
+	Define TOT_TERMINAL										For |CI$00000003
+	Define TOT_CALL											For |CI$00000004
+	Define TOT_CALLHUB										For |CI$00000005
+	Define TOT_PHONE										For |CI$00000006
+End_Enum_List
+
+// Define QOS_SERVICE_LEVEL For Integer
+Enum_List
+	Define QSL_NEEDED										For |CI$00000001
+	Define QSL_IF_AVAILABLE									For |CI$00000002
+	Define QSL_BEST_EFFORT									For |CI$00000003
+End_Enum_List
+
+// Define QOS_EVENT For Integer
+Enum_List
+	Define QE_NOQOS											For |CI$00000001
+	Define QE_ADMISSIONFAILURE								For |CI$00000002
+	Define QE_POLICYFAILURE									For |CI$00000003
+	Define QE_GENERICERROR									For |CI$00000004
+	Define QE_LASTITEM										For |CI$00000004
+End_Enum_List
+
+// Define CALLINFOCHANGE_CAUSE For Integer
+Enum_List
+	Define CIC_OTHER										For |CI$00000000
+	Define CIC_DEVSPECIFIC									For |CI$00000001
+	Define CIC_BEARERMODE									For |CI$00000002
+	Define CIC_RATE											For |CI$00000003
+	Define CIC_APPSPECIFIC									For |CI$00000004
+	Define CIC_CALLID										For |CI$00000005
+	Define CIC_RELATEDCALLID								For |CI$00000006
+	Define CIC_ORIGIN										For |CI$00000007
+	Define CIC_REASON										For |CI$00000008
+	Define CIC_COMPLETIONID									For |CI$00000009
+	Define CIC_NUMOWNERINCR									For |CI$0000000A
+	Define CIC_NUMOWNERDECR									For |CI$0000000B
+	Define CIC_NUMMONITORS									For |CI$0000000C
+	Define CIC_TRUNK										For |CI$0000000D
+	Define CIC_CALLERID										For |CI$0000000E
+	Define CIC_CALLEDID										For |CI$0000000F
+	Define CIC_CONNECTEDID									For |CI$00000010
+	Define CIC_REDIRECTIONID								For |CI$00000011
+	Define CIC_REDIRECTINGID								For |CI$00000012
+	Define CIC_USERUSERINFO									For |CI$00000013
+	Define CIC_HIGHLEVELCOMP								For |CI$00000014
+	Define CIC_LOWLEVELCOMP									For |CI$00000015
+	Define CIC_CHARGINGINFO									For |CI$00000016
+	Define CIC_TREATMENT									For |CI$00000017
+	Define CIC_CALLDATA										For |CI$00000018
+	Define CIC_PRIVILEGE									For |CI$00000019
+	Define CIC_MEDIATYPE									For |CI$0000001A
+	Define CIC_LASTITEM										For |CI$0000001A
+End_Enum_List
+
+// Define CALLINFO_LONG For Integer
+Enum_List
+	Define CIL_MEDIATYPESAVAILABLE							For |CI$00000000
+	Define CIL_BEARERMODE									For |CI$00000001
+	Define CIL_CALLERIDADDRESSTYPE							For |CI$00000002
+	Define CIL_CALLEDIDADDRESSTYPE							For |CI$00000003
+	Define CIL_CONNECTEDIDADDRESSTYPE						For |CI$00000004
+	Define CIL_REDIRECTIONIDADDRESSTYPE						For |CI$00000005
+	Define CIL_REDIRECTINGIDADDRESSTYPE						For |CI$00000006
+	Define CIL_ORIGIN										For |CI$00000007
+	Define CIL_REASON										For |CI$00000008
+	Define CIL_APPSPECIFIC									For |CI$00000009
+	Define CIL_CALLPARAMSFLAGS								For |CI$0000000A
+	Define CIL_CALLTREATMENT								For |CI$0000000B
+	Define CIL_MINRATE										For |CI$0000000C
+	Define CIL_MAXRATE										For |CI$0000000D
+	Define CIL_COUNTRYCODE									For |CI$0000000E
+	Define CIL_CALLID										For |CI$0000000F
+	Define CIL_RELATEDCALLID								For |CI$00000010
+	Define CIL_COMPLETIONID									For |CI$00000011
+	Define CIL_NUMBEROFOWNERS								For |CI$00000012
+	Define CIL_NUMBEROFMONITORS								For |CI$00000013
+	Define CIL_TRUNK										For |CI$00000014
+	Define CIL_RATE											For |CI$00000015
+	Define CIL_GENERATEDIGITDURATION						For |CI$00000016
+	Define CIL_MONITORDIGITMODES							For |CI$00000017
+	Define CIL_MONITORMEDIAMODES							For |CI$00000018
+End_Enum_List
+
+// Define CALLINFO_STRING For Integer
+Enum_List
+	Define CIS_CALLERIDNAME									For |CI$00000000
+	Define CIS_CALLERIDNUMBER								For |CI$00000001
+	Define CIS_CALLEDIDNAME									For |CI$00000002
+	Define CIS_CALLEDIDNUMBER								For |CI$00000003
+	Define CIS_CONNECTEDIDNAME								For |CI$00000004
+	Define CIS_CONNECTEDIDNUMBER							For |CI$00000005
+	Define CIS_REDIRECTIONIDNAME							For |CI$00000006
+	Define CIS_REDIRECTIONIDNUMBER							For |CI$00000007
+	Define CIS_REDIRECTINGIDNAME							For |CI$00000008
+	Define CIS_REDIRECTINGIDNUMBER							For |CI$00000009
+	Define CIS_CALLEDPARTYFRIENDLYNAME						For |CI$0000000A
+	Define CIS_COMMENT										For |CI$0000000B
+	Define CIS_DISPLAYABLEADDRESS							For |CI$0000000C
+	Define CIS_CALLINGPARTYID								For |CI$0000000D
+End_Enum_List
+
+// Define CALLINFO_BUFFER For Integer
+Enum_List
+	Define CIB_USERUSERINFO									For |CI$00000000
+	Define CIB_DEVSPECIFICBUFFER							For |CI$00000001
+	Define CIB_CALLDATABUFFER								For |CI$00000002
+	Define CIB_CHARGINGINFOBUFFER							For |CI$00000003
+	Define CIB_HIGHLEVELCOMPATIBILITYBUFFER					For |CI$00000004
+	Define CIB_LOWLEVELCOMPATIBILITYBUFFER					For |CI$00000005
+End_Enum_List
+
+// Define ADDRESS_CAPABILITY For Integer
+Enum_List
+	Define AC_ADDRESSTYPES									For |CI$00000000
+	Define AC_BEARERMODES									For |CI$00000001
+	Define AC_MAXACTIVECALLS								For |CI$00000002
+	Define AC_MAXONHOLDCALLS								For |CI$00000003
+	Define AC_MAXONHOLDPENDINGCALLS							For |CI$00000004
+	Define AC_MAXNUMCONFERENCE								For |CI$00000005
+	Define AC_MAXNUMTRANSCONF								For |CI$00000006
+	Define AC_MONITORDIGITSUPPORT							For |CI$00000007
+	Define AC_GENERATEDIGITSUPPORT							For |CI$00000008
+	Define AC_GENERATETONEMODES								For |CI$00000009
+	Define AC_GENERATETONEMAXNUMFREQ						For |CI$0000000A
+	Define AC_MONITORTONEMAXNUMFREQ							For |CI$0000000B
+	Define AC_MONITORTONEMAXNUMENTRIES						For |CI$0000000C
+	Define AC_DEVCAPFLAGS									For |CI$0000000D
+	Define AC_ANSWERMODES									For |CI$0000000E
+	Define AC_LINEFEATURES									For |CI$0000000F
+	Define AC_SETTABLEDEVSTATUS								For |CI$00000010
+	Define AC_PARKSUPPORT									For |CI$00000011
+	Define AC_CALLERIDSUPPORT								For |CI$00000012
+	Define AC_CALLEDIDSUPPORT								For |CI$00000013
+	Define AC_CONNECTEDIDSUPPORT							For |CI$00000014
+	Define AC_REDIRECTIONIDSUPPORT							For |CI$00000015
+	Define AC_REDIRECTINGIDSUPPORT							For |CI$00000016
+	Define AC_ADDRESSCAPFLAGS								For |CI$00000017
+	Define AC_CALLFEATURES1									For |CI$00000018
+	Define AC_CALLFEATURES2									For |CI$00000019
+	Define AC_REMOVEFROMCONFCAPS							For |CI$0000001A
+	Define AC_REMOVEFROMCONFSTATE							For |CI$0000001B
+	Define AC_TRANSFERMODES									For |CI$0000001C
+	Define AC_ADDRESSFEATURES								For |CI$0000001D
+	Define AC_PREDICTIVEAUTOTRANSFERSTATES					For |CI$0000001E
+	Define AC_MAXCALLDATASIZE								For |CI$0000001F
+	Define AC_LINEID										For |CI$00000020
+	Define AC_ADDRESSID										For |CI$00000021
+	Define AC_FORWARDMODES									For |CI$00000022
+	Define AC_MAXFORWARDENTRIES								For |CI$00000023
+	Define AC_MAXSPECIFICENTRIES							For |CI$00000024
+	Define AC_MINFWDNUMRINGS								For |CI$00000025
+	Define AC_MAXFWDNUMRINGS								For |CI$00000026
+	Define AC_MAXCALLCOMPLETIONS							For |CI$00000027
+	Define AC_CALLCOMPLETIONCONDITIONS						For |CI$00000028
+	Define AC_CALLCOMPLETIONMODES							For |CI$00000029
+	Define AC_PERMANENTDEVICEID								For |CI$0000002A
+	Define AC_GATHERDIGITSMINTIMEOUT						For |CI$0000002B
+	Define AC_GATHERDIGITSMAXTIMEOUT						For |CI$0000002C
+	Define AC_GENERATEDIGITMINDURATION						For |CI$0000002D
+	Define AC_GENERATEDIGITMAXDURATION						For |CI$0000002E
+	Define AC_GENERATEDIGITDEFAULTDURATION					For |CI$0000002F
+End_Enum_List
+
+// Define ADDRESS_CAPABILITY_STRING For Integer
+Enum_List
+	Define ACS_PROTOCOL										For |CI$00000000
+	Define ACS_ADDRESSDEVICESPECIFIC						For |CI$00000001
+	Define ACS_LINEDEVICESPECIFIC							For |CI$00000002
+	Define ACS_PROVIDERSPECIFIC								For |CI$00000003
+	Define ACS_SWITCHSPECIFIC								For |CI$00000004
+	Define ACS_PERMANENTDEVICEGUID							For |CI$00000005
+End_Enum_List
+
+// Define FULLDUPLEX_SUPPORT For Integer
+Enum_List
+	Define FDS_SUPPORTED									For |CI$00000000
+	Define FDS_NOTSUPPORTED									For |CI$00000001
+	Define FDS_UNKNOWN										For |CI$00000002
+End_Enum_List
+
+// Define FINISH_MODE For Integer
+Enum_List
+	Define FM_ASTRANSFER									For |CI$00000000
+	Define FM_ASCONFERENCE									For |CI$00000001
+End_Enum_List
+
+// Define PHONE_PRIVILEGE For Integer
+Enum_List
+	Define PP_OWNER											For |CI$00000000
+	Define PP_MONITOR										For |CI$00000001
+End_Enum_List
+
+// Define PHONE_HOOK_SWITCH_DEVICE For Integer
+Enum_List
+	Define PHSD_HANDSET										For |CI$00000001
+	Define PHSD_SPEAKERPHONE								For |CI$00000002
+	Define PHSD_HEADSET										For |CI$00000004
+End_Enum_List
+
+// Define PHONE_HOOK_SWITCH_STATE For Integer
+Enum_List
+	Define PHSS_ONHOOK										For |CI$00000001
+	Define PHSS_OFFHOOK_MIC_ONLY							For |CI$00000002
+	Define PHSS_OFFHOOK_SPEAKER_ONLY						For |CI$00000004
+	Define PHSS_OFFHOOK										For |CI$00000008
+End_Enum_List
+
+// Define PHONE_LAMP_MODE For Integer
+Enum_List
+	Define LM_DUMMY											For |CI$00000001
+	Define LM_OFF											For |CI$00000002
+	Define LM_STEADY										For |CI$00000004
+	Define LM_WINK											For |CI$00000008
+	Define LM_FLASH											For |CI$00000010
+	Define LM_FLUTTER										For |CI$00000020
+	Define LM_BROKENFLUTTER									For |CI$00000040
+	Define LM_UNKNOWN										For |CI$00000080
+End_Enum_List
+
+// Define PHONECAPS_LONG For Integer
+Enum_List
+	Define PCL_HOOKSWITCHES									For |CI$00000000
+	Define PCL_HANDSETHOOKSWITCHMODES						For |CI$00000001
+	Define PCL_HEADSETHOOKSWITCHMODES						For |CI$00000002
+	Define PCL_SPEAKERPHONEHOOKSWITCHMODES					For |CI$00000003
+	Define PCL_DISPLAYNUMROWS								For |CI$00000004
+	Define PCL_DISPLAYNUMCOLUMNS							For |CI$00000005
+	Define PCL_NUMRINGMODES									For |CI$00000006
+	Define PCL_NUMBUTTONLAMPS								For |CI$00000007
+	Define PCL_GENERICPHONE									For |CI$00000008
+End_Enum_List
+
+// Define PHONECAPS_STRING For Integer
+Enum_List
+	Define PCS_PHONENAME									For |CI$00000000
+	Define PCS_PHONEINFO									For |CI$00000001
+	Define PCS_PROVIDERINFO									For |CI$00000002
+End_Enum_List
+
+// Define PHONECAPS_BUFFER For Integer
+Enum_List
+	Define PCB_DEVSPECIFICBUFFER							For |CI$00000000
+End_Enum_List
+
+// Define PHONE_BUTTON_STATE For Integer
+Enum_List
+	Define PBS_UP											For |CI$00000001
+	Define PBS_DOWN											For |CI$00000002
+	Define PBS_UNKNOWN										For |CI$00000004
+	Define PBS_UNAVAIL										For |CI$00000008
+End_Enum_List
+
+// Define PHONE_BUTTON_MODE For Integer
+Enum_List
+	Define PBM_DUMMY										For |CI$00000000
+	Define PBM_CALL											For |CI$00000001
+	Define PBM_FEATURE										For |CI$00000002
+	Define PBM_KEYPAD										For |CI$00000003
+	Define PBM_LOCAL										For |CI$00000004
+	Define PBM_DISPLAY										For |CI$00000005
+End_Enum_List
+
+// Define PHONE_BUTTON_FUNCTION For Integer
+Enum_List
+	Define PBF_UNKNOWN										For |CI$00000000
+	Define PBF_CONFERENCE									For |CI$00000001
+	Define PBF_TRANSFER										For |CI$00000002
+	Define PBF_DROP											For |CI$00000003
+	Define PBF_HOLD											For |CI$00000004
+	Define PBF_RECALL										For |CI$00000005
+	Define PBF_DISCONNECT									For |CI$00000006
+	Define PBF_CONNECT										For |CI$00000007
+	Define PBF_MSGWAITON									For |CI$00000008
+	Define PBF_MSGWAITOFF									For |CI$00000009
+	Define PBF_SELECTRING									For |CI$0000000A
+	Define PBF_ABBREVDIAL									For |CI$0000000B
+	Define PBF_FORWARD										For |CI$0000000C
+	Define PBF_PICKUP										For |CI$0000000D
+	Define PBF_RINGAGAIN									For |CI$0000000E
+	Define PBF_PARK											For |CI$0000000F
+	Define PBF_REJECT										For |CI$00000010
+	Define PBF_REDIRECT										For |CI$00000011
+	Define PBF_MUTE											For |CI$00000012
+	Define PBF_VOLUMEUP										For |CI$00000013
+	Define PBF_VOLUMEDOWN									For |CI$00000014
+	Define PBF_SPEAKERON									For |CI$00000015
+	Define PBF_SPEAKEROFF									For |CI$00000016
+	Define PBF_FLASH										For |CI$00000017
+	Define PBF_DATAON										For |CI$00000018
+	Define PBF_DATAOFF										For |CI$00000019
+	Define PBF_DONOTDISTURB									For |CI$0000001A
+	Define PBF_INTERCOM										For |CI$0000001B
+	Define PBF_BRIDGEDAPP									For |CI$0000001C
+	Define PBF_BUSY											For |CI$0000001D
+	Define PBF_CALLAPP										For |CI$0000001E
+	Define PBF_DATETIME										For |CI$0000001F
+	Define PBF_DIRECTORY									For |CI$00000020
+	Define PBF_COVER										For |CI$00000021
+	Define PBF_CALLID										For |CI$00000022
+	Define PBF_LASTNUM										For |CI$00000023
+	Define PBF_NIGHTSRV										For |CI$00000024
+	Define PBF_SENDCALLS									For |CI$00000025
+	Define PBF_MSGINDICATOR									For |CI$00000026
+	Define PBF_REPDIAL										For |CI$00000027
+	Define PBF_SETREPDIAL									For |CI$00000028
+	Define PBF_SYSTEMSPEED									For |CI$00000029
+	Define PBF_STATIONSPEED									For |CI$0000002A
+	Define PBF_CAMPON										For |CI$0000002B
+	Define PBF_SAVEREPEAT									For |CI$0000002C
+	Define PBF_QUEUECALL									For |CI$0000002D
+	Define PBF_NONE											For |CI$0000002E
+	Define PBF_SEND											For |CI$0000002F
+End_Enum_List
+
+// Define PHONE_TONE For Integer
+Enum_List
+	Define PT_KEYPADZERO									For |CI$00000000
+	Define PT_KEYPADONE										For |CI$00000001
+	Define PT_KEYPADTWO										For |CI$00000002
+	Define PT_KEYPADTHREE									For |CI$00000003
+	Define PT_KEYPADFOUR									For |CI$00000004
+	Define PT_KEYPADFIVE									For |CI$00000005
+	Define PT_KEYPADSIX										For |CI$00000006
+	Define PT_KEYPADSEVEN									For |CI$00000007
+	Define PT_KEYPADEIGHT									For |CI$00000008
+	Define PT_KEYPADNINE									For |CI$00000009
+	Define PT_KEYPADSTAR									For |CI$0000000A
+	Define PT_KEYPADPOUND									For |CI$0000000B
+	Define PT_KEYPADA										For |CI$0000000C
+	Define PT_KEYPADB										For |CI$0000000D
+	Define PT_KEYPADC										For |CI$0000000E
+	Define PT_KEYPADD										For |CI$0000000F
+	Define PT_NORMALDIALTONE								For |CI$00000010
+	Define PT_EXTERNALDIALTONE								For |CI$00000011
+	Define PT_BUSY											For |CI$00000012
+	Define PT_RINGBACK										For |CI$00000013
+	Define PT_ERRORTONE										For |CI$00000014
+	Define PT_SILENCE										For |CI$00000015
+End_Enum_List
+
+// Define PHONE_EVENT For Integer
+Enum_List
+	Define PE_DISPLAY										For |CI$00000000
+	Define PE_LAMPMODE										For |CI$00000001
+	Define PE_RINGMODE										For |CI$00000002
+	Define PE_RINGVOLUME									For |CI$00000003
+	Define PE_HOOKSWITCH									For |CI$00000004
+	Define PE_CAPSCHANGE									For |CI$00000005
+	Define PE_BUTTON										For |CI$00000006
+	Define PE_CLOSE											For |CI$00000007
+	Define PE_NUMBERGATHERED								For |CI$00000008
+	Define PE_DIALING										For |CI$00000009
+	Define PE_ANSWER										For |CI$0000000A
+	Define PE_DISCONNECT									For |CI$0000000B
+	Define PE_LASTITEM										For |CI$0000000B
+End_Enum_List
+
+// Define TERMINAL_MEDIA_STATE For Integer
+Enum_List
+	Define TMS_IDLE											For |CI$00000000
+	Define TMS_ACTIVE										For |CI$00000001
+	Define TMS_PAUSED										For |CI$00000002
+	Define TMS_LASTITEM										For |CI$00000002
+End_Enum_List
+
+// Define FT_STATE_EVENT_CAUSE For Integer
+Enum_List
+	Define FTEC_NORMAL										For |CI$00000000
+	Define FTEC_END_OF_FILE									For |CI$00000001
+	Define FTEC_READ_ERROR									For |CI$00000002
+	Define FTEC_WRITE_ERROR									For |CI$00000003
+End_Enum_List
+
+// Define AGENT_EVENT For Integer
+Enum_List
+	Define AE_NOT_READY										For |CI$00000000
+	Define AE_READY											For |CI$00000001
+	Define AE_BUSY_ACD										For |CI$00000002
+	Define AE_BUSY_INCOMING									For |CI$00000003
+	Define AE_BUSY_OUTGOING									For |CI$00000004
+	Define AE_UNKNOWN										For |CI$00000005
+End_Enum_List
+
+// Define AGENT_STATE For Integer
+Enum_List
+	Define AS_NOT_READY										For |CI$00000000
+	Define AS_READY											For |CI$00000001
+	Define AS_BUSY_ACD										For |CI$00000002
+	Define AS_BUSY_INCOMING									For |CI$00000003
+	Define AS_BUSY_OUTGOING									For |CI$00000004
+	Define AS_UNKNOWN										For |CI$00000005
+End_Enum_List
+
+// Define AGENT_SESSION_EVENT For Integer
+Enum_List
+	Define ASE_NEW_SESSION									For |CI$00000000
+	Define ASE_NOT_READY									For |CI$00000001
+	Define ASE_READY										For |CI$00000002
+	Define ASE_BUSY											For |CI$00000003
+	Define ASE_WRAPUP										For |CI$00000004
+	Define ASE_END											For |CI$00000005
+End_Enum_List
+
+// Define AGENT_SESSION_STATE For Integer
+Enum_List
+	Define ASST_NOT_READY									For |CI$00000000
+	Define ASST_READY										For |CI$00000001
+	Define ASST_BUSY_ON_CALL								For |CI$00000002
+	Define ASST_BUSY_WRAPUP									For |CI$00000003
+	Define ASST_SESSION_ENDED								For |CI$00000004
+End_Enum_List
+
+// Define AGENTHANDLER_EVENT For Integer
+Enum_List
+	Define AHE_NEW_AGENTHANDLER								For |CI$00000000
+	Define AHE_AGENTHANDLER_REMOVED							For |CI$00000001
+End_Enum_List
+
+// Define ACDGROUP_EVENT For Integer
+Enum_List
+	Define ACDGE_NEW_GROUP									For |CI$00000000
+	Define ACDGE_GROUP_REMOVED								For |CI$00000001
+End_Enum_List
+
+// Define ACDQUEUE_EVENT For Integer
+Enum_List
+	Define ACDQE_NEW_QUEUE									For |CI$00000000
+	Define ACDQE_QUEUE_REMOVED								For |CI$00000001
+End_Enum_List
+
+// Define MSP_ADDRESS_EVENT For Integer
+Enum_List
+	Define ADDRESS_TERMINAL_AVAILABLE						For |CI$00000000
+	Define ADDRESS_TERMINAL_UNAVAILABLE						For |CI$00000001
+End_Enum_List
+
+// Define MSP_CALL_EVENT For Integer
+Enum_List
+	Define CALL_NEW_STREAM									For |CI$00000000
+	Define CALL_STREAM_FAIL									For |CI$00000001
+	Define CALL_TERMINAL_FAIL								For |CI$00000002
+	Define CALL_STREAM_NOT_USED								For |CI$00000003
+	Define CALL_STREAM_ACTIVE								For |CI$00000004
+	Define CALL_STREAM_INACTIVE								For |CI$00000005
+End_Enum_List
+
+// Define MSP_CALL_EVENT_CAUSE For Integer
+Enum_List
+	Define CALL_CAUSE_UNKNOWN								For |CI$00000000
+	Define CALL_CAUSE_BAD_DEVICE							For |CI$00000001
+	Define CALL_CAUSE_CONNECT_FAIL							For |CI$00000002
+	Define CALL_CAUSE_LOCAL_REQUEST							For |CI$00000003
+	Define CALL_CAUSE_REMOTE_REQUEST						For |CI$00000004
+	Define CALL_CAUSE_MEDIA_TIMEOUT							For |CI$00000005
+	Define CALL_CAUSE_MEDIA_RECOVERED						For |CI$00000006
+	Define CALL_CAUSE_QUALITY_OF_SERVICE					For |CI$00000007
+End_Enum_List
+
+// Define MSP_EVENT For Integer
+Enum_List
+	Define ME_ADDRESS_EVENT									For |CI$00000000
+	Define ME_CALL_EVENT									For |CI$00000001
+	Define ME_TSP_DATA										For |CI$00000002
+	Define ME_PRIVATE_EVENT									For |CI$00000003
+	Define ME_ASR_TERMINAL_EVENT							For |CI$00000004
+	Define ME_TTS_TERMINAL_EVENT							For |CI$00000005
+	Define ME_FILE_TERMINAL_EVENT							For |CI$00000006
+	Define ME_TONE_TERMINAL_EVENT							For |CI$00000007
+End_Enum_List
+
+// Define DIRECTORY_TYPE For Integer
+Enum_List
+	Define DT_NTDS											For |CI$00000001
+	Define DT_ILS											For |CI$00000002
+End_Enum_List
+
+// Define DIRECTORY_OBJECT_TYPE For Integer
+Enum_List
+	Define OT_CONFERENCE									For |CI$00000001
+	Define OT_USER											For |CI$00000002
+End_Enum_List
+
+// Define RND_ADVERTISING_SCOPE For Integer
+Enum_List
+	Define RAS_LOCAL										For |CI$00000001
+	Define RAS_SITE											For |CI$00000002
+	Define RAS_REGION										For |CI$00000003
+	Define RAS_WORLD										For |CI$00000004
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure

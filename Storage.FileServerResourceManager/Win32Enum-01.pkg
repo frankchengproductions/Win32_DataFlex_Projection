@@ -1,0 +1,378 @@
+Use UI
+
+// Define FsrmQuotaFlags For Integer
+Enum_List
+	Define FsrmQuotaFlags_Enforce							For |CI$00000100
+	Define FsrmQuotaFlags_Disable							For |CI$00000200
+	Define FsrmQuotaFlags_StatusIncomplete					For |CI$00010000
+	Define FsrmQuotaFlags_StatusRebuilding					For |CI$00020000
+End_Enum_List
+
+// Define FsrmFileScreenFlags For Integer
+Enum_List
+	Define FsrmFileScreenFlags_Enforce						For |CI$00000001
+End_Enum_List
+
+// Define FsrmCollectionState For Integer
+Enum_List
+	Define FsrmCollectionState_Fetching						For |CI$00000001
+	Define FsrmCollectionState_Committing					For |CI$00000002
+	Define FsrmCollectionState_Complete						For |CI$00000003
+	Define FsrmCollectionState_Cancelled					For |CI$00000004
+End_Enum_List
+
+// Define FsrmEnumOptions For Integer
+Enum_List
+	Define FsrmEnumOptions_None								For |CI$00000000
+	Define FsrmEnumOptions_Asynchronous						For |CI$00000001
+	Define FsrmEnumOptions_CheckRecycleBin					For |CI$00000002
+	Define FsrmEnumOptions_IncludeClusterNodes				For |CI$00000004
+	Define FsrmEnumOptions_IncludeDeprecatedObjects			For |CI$00000008
+End_Enum_List
+
+// Define FsrmCommitOptions For Integer
+Enum_List
+	Define FsrmCommitOptions_None							For |CI$00000000
+	Define FsrmCommitOptions_Asynchronous					For |CI$00000001
+End_Enum_List
+
+// Define FsrmTemplateApplyOptions For Integer
+Enum_List
+	Define FsrmTemplateApplyOptions_ApplyToDerivedMatching	For |CI$00000001
+	Define FsrmTemplateApplyOptions_ApplyToDerivedAll		For |CI$00000002
+End_Enum_List
+
+// Define FsrmActionType For Integer
+Enum_List
+	Define FsrmActionType_Unknown							For |CI$00000000
+	Define FsrmActionType_EventLog							For |CI$00000001
+	Define FsrmActionType_Email								For |CI$00000002
+	Define FsrmActionType_Command							For |CI$00000003
+	Define FsrmActionType_Report							For |CI$00000004
+End_Enum_List
+
+// Define FsrmEventType For Integer
+Enum_List
+	Define FsrmEventType_Unknown							For |CI$00000000
+	Define FsrmEventType_Information						For |CI$00000001
+	Define FsrmEventType_Warning							For |CI$00000002
+	Define FsrmEventType_Error								For |CI$00000003
+End_Enum_List
+
+// Define FsrmAccountType For Integer
+Enum_List
+	Define FsrmAccountType_Unknown							For |CI$00000000
+	Define FsrmAccountType_NetworkService					For |CI$00000001
+	Define FsrmAccountType_LocalService						For |CI$00000002
+	Define FsrmAccountType_LocalSystem						For |CI$00000003
+	Define FsrmAccountType_InProc							For |CI$00000004
+	Define FsrmAccountType_External							For |CI$00000005
+	Define FsrmAccountType_Automatic						For |CI$000001F4
+End_Enum_List
+
+// Define FsrmReportType For Integer
+Enum_List
+	Define FsrmReportType_Unknown							For |CI$00000000
+	Define FsrmReportType_LargeFiles						For |CI$00000001
+	Define FsrmReportType_FilesByType						For |CI$00000002
+	Define FsrmReportType_LeastRecentlyAccessed				For |CI$00000003
+	Define FsrmReportType_MostRecentlyAccessed				For |CI$00000004
+	Define FsrmReportType_QuotaUsage						For |CI$00000005
+	Define FsrmReportType_FilesByOwner						For |CI$00000006
+	Define FsrmReportType_ExportReport						For |CI$00000007
+	Define FsrmReportType_DuplicateFiles					For |CI$00000008
+	Define FsrmReportType_FileScreenAudit					For |CI$00000009
+	Define FsrmReportType_FilesByProperty					For |CI$0000000A
+	Define FsrmReportType_AutomaticClassification			For |CI$0000000B
+	Define FsrmReportType_Expiration						For |CI$0000000C
+	Define FsrmReportType_FoldersByProperty					For |CI$0000000D
+End_Enum_List
+
+// Define FsrmReportFormat For Integer
+Enum_List
+	Define FsrmReportFormat_Unknown							For |CI$00000000
+	Define FsrmReportFormat_DHtml							For |CI$00000001
+	Define FsrmReportFormat_Html							For |CI$00000002
+	Define FsrmReportFormat_Txt								For |CI$00000003
+	Define FsrmReportFormat_Csv								For |CI$00000004
+	Define FsrmReportFormat_Xml								For |CI$00000005
+End_Enum_List
+
+// Define FsrmReportRunningStatus For Integer
+Enum_List
+	Define FsrmReportRunningStatus_Unknown					For |CI$00000000
+	Define FsrmReportRunningStatus_NotRunning				For |CI$00000001
+	Define FsrmReportRunningStatus_Queued					For |CI$00000002
+	Define FsrmReportRunningStatus_Running					For |CI$00000003
+End_Enum_List
+
+// Define FsrmReportGenerationContext For Integer
+Enum_List
+	Define FsrmReportGenerationContext_Undefined			For |CI$00000001
+	Define FsrmReportGenerationContext_ScheduledReport		For |CI$00000002
+	Define FsrmReportGenerationContext_InteractiveReport	For |CI$00000003
+	Define FsrmReportGenerationContext_IncidentReport		For |CI$00000004
+End_Enum_List
+
+// Define FsrmReportFilter For Integer
+Enum_List
+	Define FsrmReportFilter_MinSize							For |CI$00000001
+	Define FsrmReportFilter_MinAgeDays						For |CI$00000002
+	Define FsrmReportFilter_MaxAgeDays						For |CI$00000003
+	Define FsrmReportFilter_MinQuotaUsage					For |CI$00000004
+	Define FsrmReportFilter_FileGroups						For |CI$00000005
+	Define FsrmReportFilter_Owners							For |CI$00000006
+	Define FsrmReportFilter_NamePattern						For |CI$00000007
+	Define FsrmReportFilter_Property						For |CI$00000008
+End_Enum_List
+
+// Define FsrmReportLimit For Integer
+Enum_List
+	Define FsrmReportLimit_MaxFiles							For |CI$00000001
+	Define FsrmReportLimit_MaxFileGroups					For |CI$00000002
+	Define FsrmReportLimit_MaxOwners						For |CI$00000003
+	Define FsrmReportLimit_MaxFilesPerFileGroup				For |CI$00000004
+	Define FsrmReportLimit_MaxFilesPerOwner					For |CI$00000005
+	Define FsrmReportLimit_MaxFilesPerDuplGroup				For |CI$00000006
+	Define FsrmReportLimit_MaxDuplicateGroups				For |CI$00000007
+	Define FsrmReportLimit_MaxQuotas						For |CI$00000008
+	Define FsrmReportLimit_MaxFileScreenEvents				For |CI$00000009
+	Define FsrmReportLimit_MaxPropertyValues				For |CI$0000000A
+	Define FsrmReportLimit_MaxFilesPerPropertyValue			For |CI$0000000B
+	Define FsrmReportLimit_MaxFolders						For |CI$0000000C
+End_Enum_List
+
+// Define FsrmPropertyDefinitionType For Integer
+Enum_List
+	Define FsrmPropertyDefinitionType_Unknown				For |CI$00000000
+	Define FsrmPropertyDefinitionType_OrderedList			For |CI$00000001
+	Define FsrmPropertyDefinitionType_MultiChoiceList		For |CI$00000002
+	Define FsrmPropertyDefinitionType_SingleChoiceList		For |CI$00000003
+	Define FsrmPropertyDefinitionType_String				For |CI$00000004
+	Define FsrmPropertyDefinitionType_MultiString			For |CI$00000005
+	Define FsrmPropertyDefinitionType_Int					For |CI$00000006
+	Define FsrmPropertyDefinitionType_Bool					For |CI$00000007
+	Define FsrmPropertyDefinitionType_Date					For |CI$00000008
+End_Enum_List
+
+// Define FsrmPropertyDefinitionFlags For Integer
+Enum_List
+	Define FsrmPropertyDefinitionFlags_Global				For |CI$00000001
+	Define FsrmPropertyDefinitionFlags_Deprecated			For |CI$00000002
+	Define FsrmPropertyDefinitionFlags_Secure				For |CI$00000004
+End_Enum_List
+
+// Define FsrmPropertyDefinitionAppliesTo For Integer
+Enum_List
+	Define FsrmPropertyDefinitionAppliesTo_Files			For |CI$00000001
+	Define FsrmPropertyDefinitionAppliesTo_Folders			For |CI$00000002
+End_Enum_List
+
+// Define FsrmRuleType For Integer
+Enum_List
+	Define FsrmRuleType_Unknown								For |CI$00000000
+	Define FsrmRuleType_Classification						For |CI$00000001
+	Define FsrmRuleType_Generic								For |CI$00000002
+End_Enum_List
+
+// Define FsrmRuleFlags For Integer
+Enum_List
+	Define FsrmRuleFlags_Disabled							For |CI$00000100
+	Define FsrmRuleFlags_ClearAutomaticallyClassifiedProperty	For |CI$00000400
+	Define FsrmRuleFlags_ClearManuallyClassifiedProperty	For |CI$00000800
+	Define FsrmRuleFlags_Invalid							For |CI$00001000
+End_Enum_List
+
+// Define FsrmClassificationLoggingFlags For Integer
+Enum_List
+	Define FsrmClassificationLoggingFlags_None				For |CI$00000000
+	Define FsrmClassificationLoggingFlags_ClassificationsInLogFile	For |CI$00000001
+	Define FsrmClassificationLoggingFlags_ErrorsInLogFile	For |CI$00000002
+	Define FsrmClassificationLoggingFlags_ClassificationsInSystemLog	For |CI$00000004
+	Define FsrmClassificationLoggingFlags_ErrorsInSystemLog	For |CI$00000008
+End_Enum_List
+
+// Define FsrmExecutionOption For Integer
+Enum_List
+	Define FsrmExecutionOption_Unknown						For |CI$00000000
+	Define FsrmExecutionOption_EvaluateUnset				For |CI$00000001
+	Define FsrmExecutionOption_ReEvaluate_ConsiderExistingValue	For |CI$00000002
+	Define FsrmExecutionOption_ReEvaluate_IgnoreExistingValue	For |CI$00000003
+End_Enum_List
+
+// Define FsrmStorageModuleCaps For Integer
+Enum_List
+	Define FsrmStorageModuleCaps_Unknown					For |CI$00000000
+	Define FsrmStorageModuleCaps_CanGet						For |CI$00000001
+	Define FsrmStorageModuleCaps_CanSet						For |CI$00000002
+	Define FsrmStorageModuleCaps_CanHandleDirectories		For |CI$00000004
+	Define FsrmStorageModuleCaps_CanHandleFiles				For |CI$00000008
+End_Enum_List
+
+// Define FsrmStorageModuleType For Integer
+Enum_List
+	Define FsrmStorageModuleType_Unknown					For |CI$00000000
+	Define FsrmStorageModuleType_Cache						For |CI$00000001
+	Define FsrmStorageModuleType_InFile						For |CI$00000002
+	Define FsrmStorageModuleType_Database					For |CI$00000003
+	Define FsrmStorageModuleType_System						For |CI$00000064
+End_Enum_List
+
+// Define FsrmPropertyBagFlags For Integer
+Enum_List
+	Define FsrmPropertyBagFlags_UpdatedByClassifier			For |CI$00000001
+	Define FsrmPropertyBagFlags_FailedLoadingProperties		For |CI$00000002
+	Define FsrmPropertyBagFlags_FailedSavingProperties		For |CI$00000004
+	Define FsrmPropertyBagFlags_FailedClassifyingProperties	For |CI$00000008
+End_Enum_List
+
+// Define FsrmPropertyBagField For Integer
+Enum_List
+	Define FsrmPropertyBagField_AccessVolume				For |CI$00000000
+	Define FsrmPropertyBagField_VolumeGuidName				For |CI$00000001
+End_Enum_List
+
+// Define FsrmPropertyFlags For Integer
+Enum_List
+	Define FsrmPropertyFlags_None							For |CI$00000000
+	Define FsrmPropertyFlags_Orphaned						For |CI$00000001
+	Define FsrmPropertyFlags_RetrievedFromCache				For |CI$00000002
+	Define FsrmPropertyFlags_RetrievedFromStorage			For |CI$00000004
+	Define FsrmPropertyFlags_SetByClassifier				For |CI$00000008
+	Define FsrmPropertyFlags_PropertySourceMask				For |CI$0000000E
+	Define FsrmPropertyFlags_Deleted						For |CI$00000010
+	Define FsrmPropertyFlags_Reclassified					For |CI$00000020
+	Define FsrmPropertyFlags_AggregationFailed				For |CI$00000040
+	Define FsrmPropertyFlags_Existing						For |CI$00000080
+	Define FsrmPropertyFlags_FailedLoadingProperties		For |CI$00000100
+	Define FsrmPropertyFlags_FailedClassifyingProperties	For |CI$00000200
+	Define FsrmPropertyFlags_FailedSavingProperties			For |CI$00000400
+	Define FsrmPropertyFlags_Secure							For |CI$00000800
+	Define FsrmPropertyFlags_PolicyDerived					For |CI$00001000
+	Define FsrmPropertyFlags_Inherited						For |CI$00002000
+	Define FsrmPropertyFlags_Manual							For |CI$00004000
+	Define FsrmPropertyFlags_PersistentMask					For |CI$00005000
+	Define FsrmPropertyFlags_ExplicitValueDeleted			For |CI$00008000
+	Define FsrmPropertyFlags_PropertyDeletedFromClear		For |CI$00010000
+End_Enum_List
+
+// Define FsrmPipelineModuleType For Integer
+Enum_List
+	Define FsrmPipelineModuleType_Unknown					For |CI$00000000
+	Define FsrmPipelineModuleType_Storage					For |CI$00000001
+	Define FsrmPipelineModuleType_Classifier				For |CI$00000002
+End_Enum_List
+
+// Define FsrmGetFilePropertyOptions For Integer
+Enum_List
+	Define FsrmGetFilePropertyOptions_None					For |CI$00000000
+	Define FsrmGetFilePropertyOptions_NoRuleEvaluation		For |CI$00000001
+	Define FsrmGetFilePropertyOptions_Persistent			For |CI$00000002
+	Define FsrmGetFilePropertyOptions_FailOnPersistErrors	For |CI$00000004
+	Define FsrmGetFilePropertyOptions_SkipOrphaned			For |CI$00000008
+End_Enum_List
+
+// Define FsrmFileManagementType For Integer
+Enum_List
+	Define FsrmFileManagementType_Unknown					For |CI$00000000
+	Define FsrmFileManagementType_Expiration				For |CI$00000001
+	Define FsrmFileManagementType_Custom					For |CI$00000002
+	Define FsrmFileManagementType_Rms						For |CI$00000003
+End_Enum_List
+
+// Define FsrmFileManagementLoggingFlags For Integer
+Enum_List
+	Define FsrmFileManagementLoggingFlags_None				For |CI$00000000
+	Define FsrmFileManagementLoggingFlags_Error				For |CI$00000001
+	Define FsrmFileManagementLoggingFlags_Information		For |CI$00000002
+	Define FsrmFileManagementLoggingFlags_Audit				For |CI$00000004
+End_Enum_List
+
+// Define FsrmPropertyConditionType For Integer
+Enum_List
+	Define FsrmPropertyConditionType_Unknown				For |CI$00000000
+	Define FsrmPropertyConditionType_Equal					For |CI$00000001
+	Define FsrmPropertyConditionType_NotEqual				For |CI$00000002
+	Define FsrmPropertyConditionType_GreaterThan			For |CI$00000003
+	Define FsrmPropertyConditionType_LessThan				For |CI$00000004
+	Define FsrmPropertyConditionType_Contain				For |CI$00000005
+	Define FsrmPropertyConditionType_Exist					For |CI$00000006
+	Define FsrmPropertyConditionType_NotExist				For |CI$00000007
+	Define FsrmPropertyConditionType_StartWith				For |CI$00000008
+	Define FsrmPropertyConditionType_EndWith				For |CI$00000009
+	Define FsrmPropertyConditionType_ContainedIn			For |CI$0000000A
+	Define FsrmPropertyConditionType_PrefixOf				For |CI$0000000B
+	Define FsrmPropertyConditionType_SuffixOf				For |CI$0000000C
+	Define FsrmPropertyConditionType_MatchesPattern			For |CI$0000000D
+End_Enum_List
+
+// Define FsrmFileStreamingMode For Integer
+Enum_List
+	Define FsrmFileStreamingMode_Unknown					For |CI$00000000
+	Define FsrmFileStreamingMode_Read						For |CI$00000001
+	Define FsrmFileStreamingMode_Write						For |CI$00000002
+End_Enum_List
+
+// Define FsrmFileStreamingInterfaceType For Integer
+Enum_List
+	Define FsrmFileStreamingInterfaceType_Unknown			For |CI$00000000
+	Define FsrmFileStreamingInterfaceType_ILockBytes		For |CI$00000001
+	Define FsrmFileStreamingInterfaceType_IStream			For |CI$00000002
+End_Enum_List
+
+// Define FsrmFileConditionType For Integer
+Enum_List
+	Define FsrmFileConditionType_Unknown					For |CI$00000000
+	Define FsrmFileConditionType_Property					For |CI$00000001
+End_Enum_List
+
+// Define FsrmFileSystemPropertyId For Integer
+Enum_List
+	Define FsrmFileSystemPropertyId_Undefined				For |CI$00000000
+	Define FsrmFileSystemPropertyId_FileName				For |CI$00000001
+	Define FsrmFileSystemPropertyId_DateCreated				For |CI$00000002
+	Define FsrmFileSystemPropertyId_DateLastAccessed		For |CI$00000003
+	Define FsrmFileSystemPropertyId_DateLastModified		For |CI$00000004
+	Define FsrmFileSystemPropertyId_DateNow					For |CI$00000005
+End_Enum_List
+
+// Define FsrmPropertyValueType For Integer
+Enum_List
+	Define FsrmPropertyValueType_Undefined					For |CI$00000000
+	Define FsrmPropertyValueType_Literal					For |CI$00000001
+	Define FsrmPropertyValueType_DateOffset					For |CI$00000002
+End_Enum_List
+
+// Define AdrClientDisplayFlags For Integer
+Enum_List
+	Define AdrClientDisplayFlags_AllowEmailRequests			For |CI$00000001
+	Define AdrClientDisplayFlags_ShowDeviceTroubleshooting	For |CI$00000002
+End_Enum_List
+
+// Define AdrEmailFlags For Integer
+Enum_List
+	Define AdrEmailFlags_PutDataOwnerOnToLine				For |CI$00000001
+	Define AdrEmailFlags_PutAdminOnToLine					For |CI$00000002
+	Define AdrEmailFlags_IncludeDeviceClaims				For |CI$00000004
+	Define AdrEmailFlags_IncludeUserInfo					For |CI$00000008
+	Define AdrEmailFlags_GenerateEventLog					For |CI$00000010
+End_Enum_List
+
+// Define AdrClientErrorType For Integer
+Enum_List
+	Define AdrClientErrorType_Unknown						For |CI$00000000
+	Define AdrClientErrorType_AccessDenied					For |CI$00000001
+	Define AdrClientErrorType_FileNotFound					For |CI$00000002
+End_Enum_List
+
+// Define AdrClientFlags For Integer
+Enum_List
+	Define AdrClientFlags_None								For |CI$00000000
+	Define AdrClientFlags_FailForLocalPaths					For |CI$00000001
+	Define AdrClientFlags_FailIfNotSupportedByServer		For |CI$00000002
+	Define AdrClientFlags_FailIfNotDomainJoined				For |CI$00000004
+End_Enum_List
+
+
+Procedure DataFlex_Init
+End_Procedure

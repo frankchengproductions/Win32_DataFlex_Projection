@@ -1,0 +1,982 @@
+Use UI
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fd_glyphset
+Struct FD_GLYPHSET
+	UInteger cjThis
+	UInteger flAccel
+	UInteger cGlyphsSupported
+	UInteger cRuns
+	WCRUN[1] awcrun
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fd_kerningpair
+Struct FD_KERNINGPAIR
+	UShort wcFirst
+	UShort wcSecond
+	Short fwdKern
+End_Struct
+
+Struct FD_LIGATURE
+	UInteger culThis
+	UInteger ulType
+	UInteger cLigatures
+	Integer iMissingAlignment1
+	LIGATURE[1] alig
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fd_xform
+Struct FD_XFORM
+	Float eXX
+	Float eXY
+	Float eYX
+	Float eYY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fd_xform
+Struct FD_XFORM
+	UInteger eXX
+	UInteger eXY
+	UInteger eYX
+	UInteger eYY
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-floatobj
+Struct FLOATOBJ
+	UInteger ul1
+	UInteger ul2
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-floatobj_xform
+Struct FLOATOBJ_XFORM
+	Float eM11
+	Float eM12
+	Float eM21
+	Float eM22
+	Float eDx
+	Float eDy
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-floatobj_xform
+Struct FLOATOBJ_XFORM
+	FLOATOBJ eM11
+	FLOATOBJ eM12
+	FLOATOBJ eM21
+	FLOATOBJ eM22
+	FLOATOBJ eDx
+	FLOATOBJ eDy
+End_Struct
+
+Struct FLOAT_LONG
+	_Anonymous_e__Union_1233 Anonymous
+End_Struct
+
+Struct FLOAT_LONG
+	_Anonymous_e__Union_3083 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontdiff
+Struct FONTDIFF
+	UChar jReserved1
+	UChar jReserved2
+	UChar jReserved3
+	UChar bWeight
+	UShort usWinWeight
+	UShort fsSelection
+	Short fwdAveCharWidth
+	Short fwdMaxCharInc
+	POINTL ptlCaret
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontinfo
+Struct FONTINFO
+	UInteger cjThis
+	UInteger flCaps
+	UInteger cGlyphsSupported
+	UInteger cjMaxGlyph1
+	UInteger cjMaxGlyph4
+	UInteger cjMaxGlyph8
+	UInteger cjMaxGlyph32
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontobj
+Struct FONTOBJ
+	UInteger iUniq
+	UInteger iFace
+	UInteger cxMax
+	UInteger flFontType
+	ULongPtr iTTUniq
+	ULongPtr iFile
+	SIZE sizLogResPpi
+	UInteger ulStyleSize
+	Integer iMissingAlignment1
+	Pointer pvConsumer										// Pointer*
+	Pointer pvProducer										// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-fontsim
+Struct FONTSIM
+	Integer dpBold
+	Integer dpItalic
+	Integer dpBoldItalic
+End_Struct
+
+Struct FONT_IMAGE_INFO
+	COORD FontSize
+	Integer iMissingAlignment1
+	Pointer ImageBits										// UChar*
+End_Struct
+
+Struct FSCNTL_SCREEN_INFO
+	COORD Position
+	COORD ScreenSize
+	UInteger nNumberOfChars
+End_Struct
+
+Struct FSVIDEO_COPY_FRAME_BUFFER
+	FSCNTL_SCREEN_INFO SrcScreen
+	FSCNTL_SCREEN_INFO DestScreen
+End_Struct
+
+Struct FSVIDEO_CURSOR_POSITION
+	VIDEO_CURSOR_POSITION Coord
+	UInteger dwType
+End_Struct
+
+Struct FSVIDEO_MODE_INFORMATION
+	VIDEO_MODE_INFORMATION VideoMode
+	VIDEO_MEMORY_INFORMATION VideoMemory
+End_Struct
+
+Struct FSVIDEO_REVERSE_MOUSE_POINTER
+	FSCNTL_SCREEN_INFO Screen
+	UInteger dwType
+End_Struct
+
+Struct FSVIDEO_SCREEN_INFORMATION
+	COORD ScreenSize
+	COORD FontSize
+End_Struct
+
+Struct FSVIDEO_WRITE_TO_FRAME_BUFFER
+	Pointer SrcBuffer										// CHAR_IMAGE_INFO*
+	FSCNTL_SCREEN_INFO DestScreen
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-gammaramp
+Struct GAMMARAMP
+	UShort[256] Red
+	UShort[256] Green
+	UShort[256] Blue
+End_Struct
+
+Struct GAMMA_RAMP_DXGI_1
+	GAMMA_RAMP_RGB Scale
+	GAMMA_RAMP_RGB Offset
+	GAMMA_RAMP_RGB[1025] GammaCurve
+End_Struct
+
+Struct GAMMA_RAMP_RGB
+	Float Red
+	Float Green
+	Float Blue
+End_Struct
+
+Struct GAMMA_RAMP_RGB256x3x16
+	UShort[256] Red
+	UShort[256] Green
+	UShort[256] Blue
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-gdiinfo
+Struct GDIINFO
+	UInteger ulVersion
+	UInteger ulTechnology
+	UInteger ulHorzSize
+	UInteger ulVertSize
+	UInteger ulHorzRes
+	UInteger ulVertRes
+	UInteger cBitsPixel
+	UInteger cPlanes
+	UInteger ulNumColors
+	UInteger flRaster
+	UInteger ulLogPixelsX
+	UInteger ulLogPixelsY
+	UInteger flTextCaps
+	UInteger ulDACRed
+	UInteger ulDACGreen
+	UInteger ulDACBlue
+	UInteger ulAspectX
+	UInteger ulAspectY
+	UInteger ulAspectXY
+	Integer xStyleStep
+	Integer yStyleStep
+	Integer denStyleStep
+	POINTL ptlPhysOffset
+	SIZE szlPhysSize
+	UInteger ulNumPalReg
+	COLORINFO ciDevice
+	UInteger ulDevicePelsDPI
+	UInteger ulPrimaryOrder
+	UInteger ulHTPatternSize
+	UInteger ulHTOutputFormat
+	UInteger flHTFlags
+	UInteger ulVRefresh
+	UInteger ulBltAlignment
+	UInteger ulPanningHorzRes
+	UInteger ulPanningVertRes
+	UInteger xPanningAlignment
+	UInteger yPanningAlignment
+	UInteger cxHTPat
+	UInteger cyHTPat
+	Pointer pHTPatA											// UChar*
+	Pointer pHTPatB											// UChar*
+	Pointer pHTPatC											// UChar*
+	UInteger flShadeBlend
+	UInteger ulPhysicalPixelCharacteristics
+	UInteger ulPhysicalPixelGamma
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-glyphbits
+Struct GLYPHBITS
+	POINTL ptlOrigin
+	SIZE sizlBitmap
+	UChar[1] aj
+	UChar[3] cMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-glyphdata
+Struct GLYPHDATA
+	GLYPHDEF gdf
+	UInteger hg
+	Integer fxD
+	Integer fxA
+	Integer fxAB
+	Integer fxInkTop
+	Integer fxInkBottom
+	RECTL rclInk
+	POINTQF ptqD
+End_Struct
+
+Struct GLYPHDEF
+	_Anonymous_e__Union_1234 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-glyphpos
+Struct GLYPHPOS
+	UInteger hg
+	Integer iMissingAlignment1
+	Pointer pgdf											// GLYPHDEF*
+	POINTL ptl
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-ifiextra
+Struct IFIEXTRA
+	UInteger ulIdentifier
+	Integer dpFontSig
+	UInteger cig
+	Integer dpDesignVector
+	Integer dpAxesInfoW
+	UInteger[1] aulReserved
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-ifimetrics
+Struct IFIMETRICS
+	UInteger cjThis
+	UInteger cjIfiExtra
+	Integer dpwszFamilyName
+	Integer dpwszStyleName
+	Integer dpwszFaceName
+	Integer dpwszUniqueName
+	Integer dpFontSim
+	Integer lEmbedId
+	Integer lItalicAngle
+	Integer lCharBias
+	Integer dpCharSets
+	UChar jWinCharSet
+	UChar jWinPitchAndFamily
+	UShort usWinWeight
+	UInteger flInfo
+	UShort fsSelection
+	UShort fsType
+	Short fwdUnitsPerEm
+	Short fwdLowestPPEm
+	Short fwdWinAscender
+	Short fwdWinDescender
+	Short fwdMacAscender
+	Short fwdMacDescender
+	Short fwdMacLineGap
+	Short fwdTypoAscender
+	Short fwdTypoDescender
+	Short fwdTypoLineGap
+	Short fwdAveCharWidth
+	Short fwdMaxCharInc
+	Short fwdCapHeight
+	Short fwdXHeight
+	Short fwdSubscriptXSize
+	Short fwdSubscriptYSize
+	Short fwdSubscriptXOffset
+	Short fwdSubscriptYOffset
+	Short fwdSuperscriptXSize
+	Short fwdSuperscriptYSize
+	Short fwdSuperscriptXOffset
+	Short fwdSuperscriptYOffset
+	Short fwdUnderscoreSize
+	Short fwdUnderscorePosition
+	Short fwdStrikeoutSize
+	Short fwdStrikeoutPosition
+	UChar chFirstChar
+	UChar chLastChar
+	UChar chDefaultChar
+	UChar chBreakChar
+	UShort wcFirstChar
+	UShort wcLastChar
+	UShort wcDefaultChar
+	UShort wcBreakChar
+	POINTL ptlBaseline
+	POINTL ptlAspect
+	POINTL ptlCaret
+	RECTL rclFontBox
+	UChar[4] achVendId
+	UInteger cKerningPairs
+	UInteger ulPanoseCulture
+	PANOSE panose
+	Short iMissingAlignment1
+	Pointer Align											// Pointer*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-ifimetrics
+Struct IFIMETRICS
+	UInteger cjThis
+	UInteger cjIfiExtra
+	Integer dpwszFamilyName
+	Integer dpwszStyleName
+	Integer dpwszFaceName
+	Integer dpwszUniqueName
+	Integer dpFontSim
+	Integer lEmbedId
+	Integer lItalicAngle
+	Integer lCharBias
+	Integer dpCharSets
+	UChar jWinCharSet
+	UChar jWinPitchAndFamily
+	UShort usWinWeight
+	UInteger flInfo
+	UShort fsSelection
+	UShort fsType
+	Short fwdUnitsPerEm
+	Short fwdLowestPPEm
+	Short fwdWinAscender
+	Short fwdWinDescender
+	Short fwdMacAscender
+	Short fwdMacDescender
+	Short fwdMacLineGap
+	Short fwdTypoAscender
+	Short fwdTypoDescender
+	Short fwdTypoLineGap
+	Short fwdAveCharWidth
+	Short fwdMaxCharInc
+	Short fwdCapHeight
+	Short fwdXHeight
+	Short fwdSubscriptXSize
+	Short fwdSubscriptYSize
+	Short fwdSubscriptXOffset
+	Short fwdSubscriptYOffset
+	Short fwdSuperscriptXSize
+	Short fwdSuperscriptYSize
+	Short fwdSuperscriptXOffset
+	Short fwdSuperscriptYOffset
+	Short fwdUnderscoreSize
+	Short fwdUnderscorePosition
+	Short fwdStrikeoutSize
+	Short fwdStrikeoutPosition
+	UChar chFirstChar
+	UChar chLastChar
+	UChar chDefaultChar
+	UChar chBreakChar
+	UShort wcFirstChar
+	UShort wcLastChar
+	UShort wcDefaultChar
+	UShort wcBreakChar
+	POINTL ptlBaseline
+	POINTL ptlAspect
+	POINTL ptlCaret
+	RECTL rclFontBox
+	UChar[4] achVendId
+	UInteger cKerningPairs
+	UInteger ulPanoseCulture
+	PANOSE panose
+	Short iMissingAlignment1
+End_Struct
+
+Struct INDIRECT_DISPLAY_INFO
+	LUID DisplayAdapterLuid
+	UInteger Flags
+	UInteger NumMonitors
+	UInteger DisplayAdapterTargetBase
+	UInteger DriverVersionMajor
+	UInteger DriverVersionMinor
+End_Struct
+
+Struct LIGATURE
+	UInteger culSize
+	Integer iMissingAlignment1
+	Pointer pwsz											// PWSTR
+	UInteger chglyph
+	UInteger[1] ahglyph
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-lineattrs
+Struct LINEATTRS
+	UInteger fl
+	UInteger iJoin
+	UInteger iEndCap
+	FLOAT_LONG elWidth
+	Float eMiterLimit
+	UInteger cstyle
+	Pointer pstyle											// FLOAT_LONG*
+	FLOAT_LONG elStyleState
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-lineattrs
+Struct LINEATTRS
+	UInteger fl
+	UInteger iJoin
+	UInteger iEndCap
+	FLOAT_LONG elWidth
+	UInteger eMiterLimit
+	UInteger cstyle
+	Pointer pstyle											// FLOAT_LONG*
+	FLOAT_LONG elStyleState
+	Integer iMissingAlignment1
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/lowlevelmonitorconfigurationapi/ns-lowlevelmonitorconfigurationapi-mc_timing_report
+Struct MC_TIMING_REPORT
+	UInteger dwHorizontalFrequencyInHZ
+	UInteger dwVerticalFrequencyInHZ
+	UChar bTimingStatusByte
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct MIPI_DSI_CAPS
+	UChar DSITypeMajor
+	UChar DSITypeMinor
+	UChar SpecVersionMajor
+	UChar SpecVersionMinor
+	UChar SpecVersionPatch
+	UChar[1] cMissingAlignment1
+	UShort TargetMaximumReturnPacketSize
+	UChar ResultCodeFlags
+	UChar ResultCodeStatus
+	UChar Revision
+	UChar Level
+	UChar DeviceClassHi
+	UChar DeviceClassLo
+	UChar ManufacturerHi
+	UChar ManufacturerLo
+	UChar ProductHi
+	UChar ProductLo
+	UChar LengthHi
+	UChar LengthLo
+End_Struct
+
+Struct MIPI_DSI_PACKET
+	_Anonymous1_e__Union_3103 Anonymous1
+	UChar[1] cMissingAlignment1
+	_Anonymous2_e__Union_3105 Anonymous2
+	UChar EccFiller
+	UChar[8] Payload
+	UChar[1] cMissingAlignment2
+End_Struct
+
+Struct MIPI_DSI_RESET
+	UInteger Flags
+	_Anonymous_e__Union_3108 Anonymous
+End_Struct
+
+Struct MIPI_DSI_TRANSMISSION
+	UInteger TotalBufferSize
+	UChar PacketCount
+	UChar FailedPacket
+	_Anonymous_e__Struct_3107 Anonymous
+	UShort ReadWordCount
+	UShort FinalCommandExtraPayload
+	UShort MipiErrors
+	UShort HostErrors
+	MIPI_DSI_PACKET[1] Packets
+	Short iMissingAlignment1
+End_Struct
+
+Struct OUTPUT_WIRE_FORMAT
+	Integer ColorEncoding									// OUTPUT_COLOR_ENCODING
+	UInteger BitsPerPixel
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-palobj
+Struct PALOBJ
+	UInteger ulReserved
+End_Struct
+
+Struct PANEL_BRIGHTNESS_SENSOR_DATA
+	_Anonymous_e__Union_3091 Anonymous
+	Float AlsReading
+	CHROMATICITY_COORDINATE ChromaticityCoordinate
+	Float ColorTemperature
+End_Struct
+
+Struct PANEL_GET_BACKLIGHT_REDUCTION
+	UShort BacklightUsersetting
+	UShort BacklightEffective
+	BACKLIGHT_REDUCTION_GAMMA_RAMP GammaRamp
+End_Struct
+
+Struct PANEL_GET_BRIGHTNESS
+	Integer Version											// BRIGHTNESS_INTERFACE_VERSION
+	_Anonymous_e__Union_3089 Anonymous
+End_Struct
+
+Struct PANEL_QUERY_BRIGHTNESS_CAPS
+	Integer Version											// BRIGHTNESS_INTERFACE_VERSION
+	_Anonymous_e__Union_3086 Anonymous
+End_Struct
+
+Struct PANEL_QUERY_BRIGHTNESS_RANGES
+	Integer Version											// BRIGHTNESS_INTERFACE_VERSION
+	_Anonymous_e__Union_3088 Anonymous
+End_Struct
+
+Struct PANEL_SET_BACKLIGHT_OPTIMIZATION
+	Integer Level											// BACKLIGHT_OPTIMIZATION_LEVEL
+End_Struct
+
+Struct PANEL_SET_BRIGHTNESS
+	Integer Version											// BRIGHTNESS_INTERFACE_VERSION
+	_Anonymous_e__Union_3093 Anonymous
+End_Struct
+
+Struct PANEL_SET_BRIGHTNESS_STATE
+	_Anonymous_e__Union_3095 Anonymous
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-pathdata
+Struct PATHDATA
+	UInteger flags
+	UInteger count
+	Pointer pptfx											// POINTFIX*
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-pathobj
+Struct PATHOBJ
+	UInteger fl
+	UInteger cCurves
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-perbandinfo
+Struct PERBANDINFO
+	Integer bRepeatThisBand									// BOOL
+	SIZE szlBand
+	UInteger ulHorzRes
+	UInteger ulVertRes
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/physicalmonitorenumerationapi/ns-physicalmonitorenumerationapi-physical_monitor
+Struct PHYSICAL_MONITOR
+	Pointer hPhysicalMonitor								// HANDLE
+	UShort[128] szPhysicalMonitorDescription
+End_Struct
+
+Struct POINTE
+	Float x
+	Float y
+End_Struct
+
+Struct POINTE
+	UInteger x
+	UInteger y
+End_Struct
+
+Struct POINTFIX
+	Integer x
+	Integer y
+End_Struct
+
+Struct POINTQF
+	Bigint x
+	Bigint y
+End_Struct
+
+Struct RECTFX
+	Integer xLeft
+	Integer yTop
+	Integer xRight
+	Integer yBottom
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-run
+Struct RUN
+	Integer iStart
+	Integer iStop
+End_Struct
+
+Struct SET_ACTIVE_COLOR_PROFILE_NAME
+	UShort[1] ColorProfileName
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-strobj
+Struct STROBJ
+	UInteger cGlyphs
+	UInteger flAccel
+	UInteger ulCharInc
+	RECTL rclBkGround
+	Integer iMissingAlignment1
+	Pointer pgp												// GLYPHPOS*
+	Pointer pwszOrg											// PWSTR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-surfobj
+Struct SURFOBJ
+	Pointer dhsurf											// DHSURF
+	Pointer hsurf											// HSURF
+	Pointer dhpdev											// DHPDEV
+	Pointer hdev											// HDEV
+	SIZE sizlBitmap
+	UInteger cjBits
+	Integer iMissingAlignment1
+	Pointer pvBits											// Pointer*
+	Pointer pvScan0											// Pointer*
+	Integer lDelta
+	UInteger iUniq
+	UInteger iBitmapFormat
+	UShort iType
+	UShort fjBitmap
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/cloneviewhelper/ns-cloneviewhelper-sources
+Struct Sources
+	UInteger sourceId
+	Integer numTargets
+	UInteger[1] aTargets
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/winddi/ns-winddi-type1_font
+Struct TYPE1_FONT
+	Pointer hPFM											// HANDLE
+	Pointer hPFB											// HANDLE
+	UInteger ulIdentifier
+	Integer iMissingAlignment1
+End_Struct
+
+Struct VGA_CHAR
+	Char Char												// CHAR
+	Char Attributes											// CHAR
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/tvout/ns-tvout-videoparameters
+Struct VIDEOPARAMETERS
+	Guid Guid
+	UInteger dwOffset
+	UInteger dwCommand
+	UInteger dwFlags
+	UInteger dwMode
+	UInteger dwTVStandard
+	UInteger dwAvailableModes
+	UInteger dwAvailableTVStandard
+	UInteger dwFlickerFilter
+	UInteger dwOverScanX
+	UInteger dwOverScanY
+	UInteger dwMaxUnscaledX
+	UInteger dwMaxUnscaledY
+	UInteger dwPositionX
+	UInteger dwPositionY
+	UInteger dwBrightness
+	UInteger dwContrast
+	UInteger dwCPType
+	UInteger dwCPCommand
+	UInteger dwCPStandard
+	UInteger dwCPKey
+	UInteger bCP_APSTriggerBits
+	UChar[256] bOEMCopyProtection
+End_Struct
+
+Struct VIDEO_BANK_SELECT
+	UInteger Length
+	UInteger Size
+	UInteger BankingFlags
+	UInteger BankingType
+	UInteger PlanarHCBankingType
+	UInteger BitmapWidthInBytes
+	UInteger BitmapSize
+	UInteger Granularity
+	UInteger PlanarHCGranularity
+	UInteger CodeOffset
+	UInteger PlanarHCBankCodeOffset
+	UInteger PlanarHCEnableCodeOffset
+	UInteger PlanarHCDisableCodeOffset
+End_Struct
+
+Struct VIDEO_BRIGHTNESS_POLICY
+	UChar DefaultToBiosPolicy								// BOOLEAN
+	UChar LevelCount
+	_Anonymous_e__Struct_3085[1] Level
+End_Struct
+
+Struct VIDEO_CLUT
+	UShort NumEntries
+	UShort FirstEntry
+	_Anonymous_e__Union_3084[1] LookupTable
+End_Struct
+
+Struct VIDEO_CLUTDATA
+	UChar Red
+	UChar Green
+	UChar Blue
+	UChar Unused
+End_Struct
+
+Struct VIDEO_COLOR_CAPABILITIES
+	UInteger Length
+	UInteger AttributeFlags
+	Integer RedPhosphoreDecay
+	Integer GreenPhosphoreDecay
+	Integer BluePhosphoreDecay
+	Integer WhiteChromaticity_x
+	Integer WhiteChromaticity_y
+	Integer WhiteChromaticity_Y
+	Integer RedChromaticity_x
+	Integer RedChromaticity_y
+	Integer GreenChromaticity_x
+	Integer GreenChromaticity_y
+	Integer BlueChromaticity_x
+	Integer BlueChromaticity_y
+	Integer WhiteGamma
+	Integer RedGamma
+	Integer GreenGamma
+	Integer BlueGamma
+End_Struct
+
+Struct VIDEO_COLOR_LUT_DATA
+	UInteger Length
+	UInteger LutDataFormat
+	UChar[1] LutData
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct VIDEO_CURSOR_ATTRIBUTES
+	UShort Width
+	UShort Height
+	Short Column
+	Short Row
+	UChar Rate
+	UChar Enable
+End_Struct
+
+Struct VIDEO_CURSOR_POSITION
+	Short Column
+	Short Row
+End_Struct
+
+Struct VIDEO_DEVICE_SESSION_STATUS
+	UInteger bEnable
+	UInteger bSuccess
+End_Struct
+
+Struct VIDEO_HARDWARE_STATE
+	Pointer StateHeader										// VIDEO_HARDWARE_STATE_HEADER*
+	UInteger StateLength
+	Integer iMissingAlignment1
+End_Struct
+
+Struct VIDEO_HARDWARE_STATE_HEADER
+	UInteger Length
+	UChar[48] PortValue
+	UInteger AttribIndexDataState
+	UInteger BasicSequencerOffset
+	UInteger BasicCrtContOffset
+	UInteger BasicGraphContOffset
+	UInteger BasicAttribContOffset
+	UInteger BasicDacOffset
+	UInteger BasicLatchesOffset
+	UInteger ExtendedSequencerOffset
+	UInteger ExtendedCrtContOffset
+	UInteger ExtendedGraphContOffset
+	UInteger ExtendedAttribContOffset
+	UInteger ExtendedDacOffset
+	UInteger ExtendedValidatorStateOffset
+	UInteger ExtendedMiscDataOffset
+	UInteger PlaneLength
+	UInteger Plane1Offset
+	UInteger Plane2Offset
+	UInteger Plane3Offset
+	UInteger Plane4Offset
+	UInteger VGAStateFlags
+	UInteger DIBOffset
+	UInteger DIBBitsPerPixel
+	UInteger DIBXResolution
+	UInteger DIBYResolution
+	UInteger DIBXlatOffset
+	UInteger DIBXlatLength
+	UInteger VesaInfoOffset
+	Pointer FrameBufferData									// Pointer*
+End_Struct
+
+Struct VIDEO_LOAD_FONT_INFORMATION
+	UShort WidthInPixels
+	UShort HeightInPixels
+	UInteger FontSize
+	UChar[1] Font
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct VIDEO_LUT_RGB256WORDS
+	UShort[256] Red
+	UShort[256] Green
+	UShort[256] Blue
+End_Struct
+
+Struct VIDEO_MEMORY
+	Pointer RequestedVirtualAddress							// Pointer*
+End_Struct
+
+Struct VIDEO_MEMORY_INFORMATION
+	Pointer VideoRamBase									// Pointer*
+	UInteger VideoRamLength
+	Integer iMissingAlignment1
+	Pointer FrameBufferBase									// Pointer*
+	UInteger FrameBufferLength
+	Integer iMissingAlignment2
+End_Struct
+
+Struct VIDEO_MODE
+	UInteger RequestedMode
+End_Struct
+
+Struct VIDEO_MODE_INFORMATION
+	UInteger Length
+	UInteger ModeIndex
+	UInteger VisScreenWidth
+	UInteger VisScreenHeight
+	UInteger ScreenStride
+	UInteger NumberOfPlanes
+	UInteger BitsPerPlane
+	UInteger Frequency
+	UInteger XMillimeter
+	UInteger YMillimeter
+	UInteger NumberRedBits
+	UInteger NumberGreenBits
+	UInteger NumberBlueBits
+	UInteger RedMask
+	UInteger GreenMask
+	UInteger BlueMask
+	UInteger AttributeFlags
+	UInteger VideoMemoryBitmapWidth
+	UInteger VideoMemoryBitmapHeight
+	UInteger DriverSpecificAttributeFlags
+End_Struct
+
+Struct VIDEO_MONITOR_DESCRIPTOR
+	UInteger DescriptorSize
+	UChar[1] Descriptor
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct VIDEO_NUM_MODES
+	UInteger NumModes
+	UInteger ModeInformationLength
+End_Struct
+
+Struct VIDEO_PALETTE_DATA
+	UShort NumEntries
+	UShort FirstEntry
+	UShort[1] Colors
+End_Struct
+
+Struct VIDEO_PERFORMANCE_COUNTER
+	UBigint[10] NbOfAllocationEvicted
+	UBigint[10] NbOfAllocationMarked
+	UBigint[10] NbOfAllocationRestored
+	UBigint[10] KBytesEvicted
+	UBigint[10] KBytesMarked
+	UBigint[10] KBytesRestored
+	UBigint NbProcessCommited
+	UBigint NbAllocationCommited
+	UBigint NbAllocationMarked
+	UBigint KBytesAllocated
+	UBigint KBytesAvailable
+	UBigint KBytesCurMarked
+	UBigint Reference
+	UBigint Unreference
+	UBigint TrueReference
+	UBigint NbOfPageIn
+	UBigint KBytesPageIn
+	UBigint NbOfPageOut
+	UBigint KBytesPageOut
+	UBigint NbOfRotateOut
+	UBigint KBytesRotateOut
+End_Struct
+
+Struct VIDEO_POINTER_ATTRIBUTES
+	UInteger Flags
+	UInteger Width
+	UInteger Height
+	UInteger WidthInBytes
+	UInteger Enable
+	Short Column
+	Short Row
+	UChar[1] Pixels
+	UChar[3] cMissingAlignment1
+End_Struct
+
+Struct VIDEO_POINTER_CAPABILITIES
+	UInteger Flags
+	UInteger MaxWidth
+	UInteger MaxHeight
+	UInteger HWPtrBitmapStart
+	UInteger HWPtrBitmapEnd
+End_Struct
+
+Struct VIDEO_POINTER_POSITION
+	Short Column
+	Short Row
+End_Struct
+
+Struct VIDEO_POWER_MANAGEMENT
+	UInteger Length
+	UInteger DPMSVersion
+	UInteger PowerState
+End_Struct
+
+Struct VIDEO_PUBLIC_ACCESS_RANGES
+	UInteger InIoSpace
+	UInteger MappedInIoSpace
+	Pointer VirtualAddress									// Pointer*
+End_Struct
+
+Struct VIDEO_QUERY_PERFORMANCE_COUNTER
+	UInteger BufferSize
+	Integer iMissingAlignment1
+	Pointer Buffer											// VIDEO_PERFORMANCE_COUNTER*
+End_Struct
+
+Struct VIDEO_REGISTER_VDM
+	UInteger MinimumStateSize
+End_Struct
+
+Struct VIDEO_SHARE_MEMORY
+	Pointer ProcessHandle									// HANDLE
+	UInteger ViewOffset
+	UInteger ViewSize
+	Pointer RequestedVirtualAddress							// Pointer*
+End_Struct
+
+Struct VIDEO_SHARE_MEMORY_INFORMATION
+	UInteger SharedViewOffset
+	UInteger SharedViewSize
+	Pointer VirtualAddress									// Pointer*
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

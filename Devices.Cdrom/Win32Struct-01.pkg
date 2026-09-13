@@ -1,0 +1,270 @@
+Use UI
+
+Struct _Anonymous_e__Union_1857
+	// UChar[12] Text // (12)
+	// UShort[6] WText // (12)
+	UChar[12] Text
+End_Struct
+
+Struct _Anonymous_e__Union_1858
+	// SUB_Q_CURRENT_POSITION CurrentPosition // (16)
+	// SUB_Q_MEDIA_CATALOG_NUMBER MediaCatalog // (24)
+	// SUB_Q_TRACK_ISRC TrackIsrc // (24)
+	SUB_Q_MEDIA_CATALOG_NUMBER MediaCatalog
+End_Struct
+
+Struct CDROM_DISK_DATA
+	UInteger DiskData
+End_Struct
+
+Struct CDROM_EXCEPTION_PERFORMANCE_DESCRIPTOR
+	UChar[4] Lba
+	UChar[2] Time
+End_Struct
+
+Struct CDROM_EXCLUSIVE_ACCESS
+	Integer RequestType										// EXCLUSIVE_ACCESS_REQUEST_TYPE
+	UInteger Flags
+End_Struct
+
+Struct CDROM_EXCLUSIVE_LOCK
+	CDROM_EXCLUSIVE_ACCESS Access
+	UChar[64] CallerName
+End_Struct
+
+Struct CDROM_EXCLUSIVE_LOCK_STATE
+	UChar LockState											// BOOLEAN
+	UChar[64] CallerName
+End_Struct
+
+Struct CDROM_NOMINAL_PERFORMANCE_DESCRIPTOR
+	UChar[4] StartLba
+	UChar[4] StartPerformance
+	UChar[4] EndLba
+	UChar[4] EndPerformance
+End_Struct
+
+Struct CDROM_PERFORMANCE_HEADER
+	UChar[4] DataLength
+	UChar _bitfield
+	UChar[3] Reserved2
+	UChar[1] Data
+End_Struct
+
+Struct CDROM_PERFORMANCE_REQUEST
+	Integer RequestType										// CDROM_PERFORMANCE_REQUEST_TYPE
+	Integer PerformanceType									// CDROM_PERFORMANCE_TYPE
+	Integer Exceptions										// CDROM_PERFORMANCE_EXCEPTION_TYPE
+	Integer Tolerance										// CDROM_PERFORMANCE_TOLERANCE_TYPE
+	UInteger StaringLba
+End_Struct
+
+Struct CDROM_PLAY_AUDIO_MSF
+	UChar StartingM
+	UChar StartingS
+	UChar StartingF
+	UChar EndingM
+	UChar EndingS
+	UChar EndingF
+End_Struct
+
+Struct CDROM_READ_TOC_EX
+	UChar _bitfield
+	UChar SessionTrack
+	UChar Reserved2
+	UChar Reserved3
+End_Struct
+
+Struct CDROM_SEEK_AUDIO_MSF
+	UChar M
+	UChar S
+	UChar F
+End_Struct
+
+Struct CDROM_SET_SPEED
+	Integer RequestType										// CDROM_SPEED_REQUEST
+	UShort ReadSpeed
+	UShort WriteSpeed
+	Integer RotationControl									// WRITE_ROTATION
+End_Struct
+
+Struct CDROM_SET_STREAMING
+	Integer RequestType										// CDROM_SPEED_REQUEST
+	UInteger ReadSize
+	UInteger ReadTime
+	UInteger WriteSize
+	UInteger WriteTime
+	UInteger StartLba
+	UInteger EndLba
+	Integer RotationControl									// WRITE_ROTATION
+	UChar RestoreDefaults									// BOOLEAN
+	UChar SetExact											// BOOLEAN
+	UChar RandomAccess										// BOOLEAN
+	UChar Persistent										// BOOLEAN
+End_Struct
+
+Struct CDROM_SIMPLE_OPC_INFO
+	Integer RequestType										// CDROM_OPC_INFO_TYPE
+	UChar Exclude0											// BOOLEAN
+	UChar Exclude1											// BOOLEAN
+	Short iMissingAlignment1
+End_Struct
+
+Struct CDROM_STREAMING_CONTROL
+	Integer RequestType										// STREAMING_CONTROL_REQUEST_TYPE
+End_Struct
+
+Struct CDROM_SUB_Q_DATA_FORMAT
+	UChar Format
+	UChar Track
+End_Struct
+
+Struct CDROM_TOC
+	UChar[2] Length
+	UChar FirstTrack
+	UChar LastTrack
+	TRACK_DATA[100] TrackData
+End_Struct
+
+Struct CDROM_TOC_ATIP_DATA
+	UChar[2] Length
+	UChar Reserved1
+	UChar Reserved2
+	CDROM_TOC_ATIP_DATA_BLOCK[1] Descriptors
+End_Struct
+
+Struct CDROM_TOC_ATIP_DATA_BLOCK
+	UChar _bitfield1
+	UChar _bitfield2
+	UChar _bitfield3
+	UChar Reserved7
+	UChar[3] LeadInMsf
+	UChar Reserved8
+	UChar[3] LeadOutMsf
+	UChar Reserved9
+	UChar[3] A1Values
+	UChar Reserved10
+	UChar[3] A2Values
+	UChar Reserved11
+	UChar[3] A3Values
+	UChar Reserved12
+End_Struct
+
+Struct CDROM_TOC_CD_TEXT_DATA
+	UChar[2] Length
+	UChar Reserved1
+	UChar Reserved2
+	CDROM_TOC_CD_TEXT_DATA_BLOCK[1] Descriptors
+End_Struct
+
+Struct CDROM_TOC_CD_TEXT_DATA_BLOCK
+	UChar PackType
+	UChar _bitfield1
+	UChar SequenceNumber
+	UChar _bitfield2
+	_Anonymous_e__Union_1857 Anonymous
+	UChar[2] CRC
+End_Struct
+
+Struct CDROM_TOC_FULL_TOC_DATA
+	UChar[2] Length
+	UChar FirstCompleteSession
+	UChar LastCompleteSession
+	CDROM_TOC_FULL_TOC_DATA_BLOCK[1] Descriptors
+End_Struct
+
+Struct CDROM_TOC_FULL_TOC_DATA_BLOCK
+	UChar SessionNumber
+	UChar _bitfield
+	UChar Reserved1
+	UChar Point
+	UChar[3] MsfExtra
+	UChar Zero
+	UChar[3] Msf
+End_Struct
+
+Struct CDROM_TOC_PMA_DATA
+	UChar[2] Length
+	UChar Reserved1
+	UChar Reserved2
+	CDROM_TOC_FULL_TOC_DATA_BLOCK[1] Descriptors
+End_Struct
+
+Struct CDROM_TOC_SESSION_DATA
+	UChar[2] Length
+	UChar FirstCompleteSession
+	UChar LastCompleteSession
+	TRACK_DATA[1] TrackData
+End_Struct
+
+Struct CDROM_WRITE_SPEED_DESCRIPTOR
+	UChar _bitfield
+	UChar[3] Reserved3
+	UChar[4] EndLba
+	UChar[4] ReadSpeed
+	UChar[4] WriteSpeed
+End_Struct
+
+Struct CDROM_WRITE_SPEED_REQUEST
+	Integer RequestType										// CDROM_PERFORMANCE_REQUEST_TYPE
+End_Struct
+
+Struct RAW_READ_INFO
+	Bigint DiskOffset
+	UInteger SectorCount
+	Integer TrackMode										// TRACK_MODE_TYPE
+End_Struct
+
+Struct SUB_Q_CHANNEL_DATA
+	_Anonymous_e__Union_1858 Anonymous
+End_Struct
+
+Struct SUB_Q_CURRENT_POSITION
+	SUB_Q_HEADER Header
+	UChar FormatCode
+	UChar _bitfield
+	UChar TrackNumber
+	UChar IndexNumber
+	UChar[4] AbsoluteAddress
+	UChar[4] TrackRelativeAddress
+End_Struct
+
+Struct SUB_Q_HEADER
+	UChar Reserved
+	UChar AudioStatus
+	UChar[2] DataLength
+End_Struct
+
+Struct SUB_Q_MEDIA_CATALOG_NUMBER
+	SUB_Q_HEADER Header
+	UChar FormatCode
+	UChar[3] Reserved
+	UChar _bitfield
+	UChar[15] MediaCatalog
+End_Struct
+
+Struct SUB_Q_TRACK_ISRC
+	SUB_Q_HEADER Header
+	UChar FormatCode
+	UChar Reserved0
+	UChar Track
+	UChar Reserved1
+	UChar _bitfield
+	UChar[15] TrackIsrc
+End_Struct
+
+Struct TRACK_DATA
+	UChar Reserved
+	UChar _bitfield
+	UChar TrackNumber
+	UChar Reserved1
+	UChar[4] Address
+End_Struct
+
+Struct VOLUME_CONTROL
+	UChar[4] PortVolume
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure

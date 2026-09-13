@@ -1,0 +1,87 @@
+Use UI
+
+Struct _arguments_e__Union_2092
+	// INTERACTION_ARGUMENTS_MANIPULATION manipulation // (60)
+	// INTERACTION_ARGUMENTS_TAP tap // (4)
+	// INTERACTION_ARGUMENTS_CROSS_SLIDE crossSlide // (4)
+	INTERACTION_ARGUMENTS_MANIPULATION manipulation
+End_Struct
+
+Struct _arguments_e__Union_2093
+	// INTERACTION_ARGUMENTS_MANIPULATION manipulation // (60)
+	// INTERACTION_ARGUMENTS_TAP tap // (4)
+	// INTERACTION_ARGUMENTS_CROSS_SLIDE crossSlide // (4)
+	INTERACTION_ARGUMENTS_MANIPULATION manipulation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-cross_slide_parameter
+Struct CROSS_SLIDE_PARAMETER
+	Integer threshold										// CROSS_SLIDE_THRESHOLD
+	Float distance
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-interaction_arguments_cross_slide
+Struct INTERACTION_ARGUMENTS_CROSS_SLIDE
+	UInteger flags											// CROSS_SLIDE_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-interaction_arguments_manipulation
+Struct INTERACTION_ARGUMENTS_MANIPULATION
+	MANIPULATION_TRANSFORM delta
+	MANIPULATION_TRANSFORM cumulative
+	MANIPULATION_VELOCITY velocity
+	Integer railsState										// MANIPULATION_RAILS_STATE
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-interaction_arguments_tap
+Struct INTERACTION_ARGUMENTS_TAP
+	UInteger count
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-interaction_context_configuration
+Struct INTERACTION_CONTEXT_CONFIGURATION
+	Integer interactionId									// INTERACTION_ID
+	UInteger enable											// INTERACTION_CONFIGURATION_FLAGS
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-interaction_context_output
+Struct INTERACTION_CONTEXT_OUTPUT
+	Integer interactionId									// INTERACTION_ID
+	UInteger interactionFlags								// INTERACTION_FLAGS
+	Integer inputType										// POINTER_INPUT_TYPE
+	Float x
+	Float y
+	_arguments_e__Union_2092 arguments
+End_Struct
+
+Struct INTERACTION_CONTEXT_OUTPUT2
+	Integer interactionId									// INTERACTION_ID
+	UInteger interactionFlags								// INTERACTION_FLAGS
+	Integer inputType										// POINTER_INPUT_TYPE
+	UInteger contactCount
+	UInteger currentContactCount
+	Float x
+	Float y
+	_arguments_e__Union_2093 arguments
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-manipulation_transform
+Struct MANIPULATION_TRANSFORM
+	Float translationX
+	Float translationY
+	Float scale
+	Float expansion
+	Float rotation
+End_Struct
+
+// https://learn.microsoft.com/windows/win32/api/interactioncontext/ns-interactioncontext-manipulation_velocity
+Struct MANIPULATION_VELOCITY
+	Float velocityX
+	Float velocityY
+	Float velocityExpansion
+	Float velocityAngular
+End_Struct
+
+
+Procedure DataFlex_Init
+End_Procedure
