@@ -14,6 +14,29 @@ External_Function HasExpandedResources "HasExpandedResources" api-ms-win-gaming-
 External_Function ReleaseExclusiveCpuSets "ReleaseExclusiveCpuSets" api-ms-win-gaming-expandedresources-l1-1-0.dll ;
 	Returns Integer	// HRESULT
 
+External_Function CanSetGamingFullScreenExperience "CanSetGamingFullScreenExperience" api-ms-win-gaming-experience-l1-1-0.dll ;
+	Returns Integer	// BOOL
+
+External_Function IsGamingFullScreenExperienceActive "IsGamingFullScreenExperienceActive" api-ms-win-gaming-experience-l1-1-0.dll ;
+	Returns Integer	// BOOL
+
+External_Function IsGamingFullScreenExperienceSupported "IsGamingFullScreenExperienceSupported" api-ms-win-gaming-experience-l1-1-0.dll ;
+	Returns Integer	// BOOL
+
+External_Function RegisterGamingFullScreenExperienceChangeNotification "RegisterGamingFullScreenExperienceChangeNotification" api-ms-win-gaming-experience-l1-1-0.dll ;
+	Pointer routine ;	// PGAMING_FULL_SCREEN_EXPERIENCE_CHANGE_ROUTINE
+	Pointer context ;	// Pointer*
+	Pointer registration ;	// GAMING_FULL_SCREEN_EXPERIENCE_REGISTRATION*
+	Returns Integer	// HRESULT
+
+External_Function SetGamingFullScreenExperience "SetGamingFullScreenExperience" api-ms-win-gaming-experience-l1-1-0.dll ;
+	Integer active ;	// BOOL
+	Returns Integer	// HRESULT
+
+External_Function UnregisterGamingFullScreenExperienceChangeNotification "UnregisterGamingFullScreenExperienceChangeNotification" api-ms-win-gaming-experience-l1-1-0.dll ;
+	Pointer registration ;	// GAMING_FULL_SCREEN_EXPERIENCE_REGISTRATION
+	Returns Void_Type
+
 // https://learn.microsoft.com/windows/win32/api/gamingdeviceinformation/nf-gamingdeviceinformation-getgamingdevicemodelinformation
 External_Function GetGamingDeviceModelInformation "GetGamingDeviceModelInformation" api-ms-win-gaming-deviceinformation-l1-1-0.dll ;
 	Pointer information ;	// GAMING_DEVICE_MODEL_INFORMATION*

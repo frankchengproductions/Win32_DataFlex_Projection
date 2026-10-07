@@ -97,4 +97,4 @@ Move (UuidFromStringA( ;
 ## Important Links
 * GitHub repository for the [Win32 MetaData project](https://github.com/microsoft/win32metadata)
 * Download the actual [Win32 MetaData](https://www.nuget.org/packages/Microsoft.Windows.SDK.Win32Metadata/)
-* This DataFlex Language Projection is based on [71.0.26 Preview](https://www.nuget.org/packages/Microsoft.Windows.SDK.Win32Metadata/71.0.26-preview) version of the Win32 MetaData project
+* This DataFlex Language Projection is based on [71.0.30 Preview](https://www.nuget.org/packages/Microsoft.Windows.SDK.Win32Metadata/71.0.30-preview) version of the Win32 MetaData project
